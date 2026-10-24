@@ -1,0 +1,15 @@
+---
+import Base from "../layouts/Base.astro";
+import { de } from "../i18n/de";
+import { en } from "../i18n/en";
+---
+
+<Base lang="de" page="home" title={`404 — ${de.notFound.title}`} description={de.notFound.body} noindex>
+  <section class="wrap notfound">
+    <p class="code" aria-hidden="true">404</p>
+    <h1>{de.notFound.title}</h1>
+    <p>{de.notFound.body}</p>
+    <p lang="en">{en.notFound.body}</p>
+    <a class="btn btn-primary" href="/">{de.notFound.back}</a>
+  </section>
+</Base>

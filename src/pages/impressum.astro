@@ -1,0 +1,36 @@
+---
+import Legal from "../layouts/Legal.astro";
+import Address from "../components/Address.astro";
+import { OWNER } from "../lib/site";
+---
+
+<Legal lang="de" page="imprint" title="Impressum" description="Impressum von mumcord.app — Anbieterkennzeichnung gemäß § 5 DDG." updated="Stand: Oktober 2026">
+  <h2>Angaben gemäß § 5 DDG</h2>
+  <Address lang="de" email={false} />
+
+  <h2>Kontakt</h2>
+  <p>E-Mail: <a href={`mailto:${OWNER.email}`}>{OWNER.email}</a></p>
+
+  <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+  <p>{OWNER.name} (Anschrift wie oben)</p>
+
+  <h2>Über das Projekt</h2>
+  <p>
+    Mumcord ist ein privates, nicht-kommerzielles Open-Source-Projekt unter der MIT-Lizenz. Mumcord ist mit Mumble kompatibel, aber weder mit dem Mumble-Projekt verbunden noch von ihm unterstützt.
+  </p>
+
+  <h2>Haftung für Inhalte</h2>
+  <p>
+    Als Diensteanbieter bin ich gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG bin ich als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+  </p>
+
+  <h2>Haftung für Links</h2>
+  <p>
+    Dieses Angebot enthält Links zu externen Websites Dritter (insbesondere GitHub), auf deren Inhalte ich keinen Einfluss habe. Für diese fremden Inhalte kann ich keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich.
+  </p>
+
+  <h2>Urheberrecht</h2>
+  <p>
+    Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Der Quellcode von Mumcord steht unter der MIT-Lizenz. Beiträge Dritter sind als solche gekennzeichnet.
+  </p>
+</Legal>

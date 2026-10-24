@@ -1,0 +1,103 @@
+---
+import { dicts, type Lang } from "../i18n";
+import { getLatestRelease, formatSize, ACTIONS_URL, RELEASES_URL, WIKI_URL, type Platform } from "../lib/release";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = dicts[lang].download;
+const release = await getLatestRelease();
+const platforms: Platform[] = ["windows", "macos", "linux"];
+const date = release
+  ? new Intl.DateTimeFormat(lang === "de" ? "de-DE" : "en-GB", { dateStyle: "long" }).format(new Date(release.publishedAt))
+  : "";
+
+const glyphs: Record<Platform, string> = {
+  windows: "M3 5.2 10.4 4v7.3H3V5.2Zm0 13.6 7.4 1.2v-7.2H3v6Zm8.4 1.4L21 21.6v-8.8h-9.6v7.4Zm0-16.4v7.5H21V2.4l-9.6 1.4Z",
+  macos:
+    "M16.4 12.6c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.4-1-2.4-4ZM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4Z",
+  linux: "M3 4h18a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm1 2v12h16V6H4Zm2.3 2.3 3.7 3.7-3.7 3.7-1.4-1.4 2.3-2.3-2.3-2.3 1.4-1.4ZM11 15h6v2h-6v-2Z",
+};
+---
+
+<section class="section download" id="download" aria-labelledby="download-title">
+  <div class="wrap">
+    <div class="download-head">
+      <div>
+        <p class="label" data-reveal>{t.label}</p>
+        <h2 id="download-title" class="h2" data-reveal>{t.title}</h2>
+      </div>
+      {
+        release ? (
+          <div class="release-meta" data-reveal>
+            <p class="release-tag">
+              <span class="live-dot" aria-hidden="true" />
+              {t.latest}: <strong>{release.name}</strong>
+              {release.prerelease && <span class="pill">{t.prerelease}</span>}
+            </p>
+            <p class="release-date">
+              {t.published} {date} · <a href={release.url} rel="noopener">{t.notes}</a> · <a href={RELEASES_URL} rel="noopener">{t.allReleases}</a>
+            </p>
+          </div>
+        ) : (
+          <div class="release-meta release-none" data-reveal>
+            <p>{t.noRelease}</p>
+            <p>
+              <a class="text-link" href={ACTIONS_URL} rel="noopener">{t.testBuilds} →</a>
+            </p>
+          </div>
+        )
+      }
+    </div>
+
+    <ul class="platforms">
+      {
+        platforms.map((p) => {
+          const assets = release?.assets[p] ?? [];
+          const href = assets[0]?.url ?? release?.url ?? ACTIONS_URL;
+          return (
+            <li class="platform" data-platform={p} data-reveal>
+              <a class="platform-main" href={href} rel="noopener">
+                <svg viewBox="0 0 24 24" width="34" height="34" aria-hidden="true">
+                  <path fill="currentColor" d={glyphs[p]} />
+                </svg>
+                <span class="platform-name">{t.platforms[p].name}</span>
+                <span class="platform-sub">{t.platforms[p].sub}</span>
+                <span class="platform-file">
+                  {assets[0] ? `${assets[0].name} · ${formatSize(assets[0].size)}` : release ? release.name : t.testBuilds}
+                </span>
+                <span class="platform-arrow" aria-hidden="true">↓</span>
+              </a>
+              {assets.length > 1 && (
+                <ul class="platform-more">
+                  {assets.slice(1).map((a) => (
+                    <li>
+                      <a href={a.url} rel="noopener">
+                        {a.name} · {formatSize(a.size)}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <p class="platform-warn">{t.platforms[p].warn}</p>
+            </li>
+          );
+        })
+      }
+    </ul>
+
+    <div class="download-foot" data-reveal>
+      <p>{t.unsigned}</p>
+      <p>
+        {release?.checksums && (
+          <>
+            <a class="text-link" href={release.checksums.url} rel="noopener">{t.checksums}</a> ·{" "}
+          </>
+        )}
+        <a class="text-link" href={`${WIKI_URL}/Installation`} rel="noopener">{t.howTo}</a> · {t.source}{" "}
+        <a class="text-link" href={`${WIKI_URL}/Building`} rel="noopener">{t.sourceLink}</a>
+      </p>
+    </div>
+  </div>
+</section>

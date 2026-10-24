@@ -1,0 +1,44 @@
+---
+import { dicts, routes, type Lang } from "../i18n";
+import { REPO_URL, WIKI_URL, ISSUES_URL, RELEASES_URL } from "../lib/release";
+import { OWNER } from "../lib/site";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = dicts[lang].footer;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-intro">
+      <p class="footer-tagline">{t.tagline}</p>
+      <p class="footer-fine">{t.disclaimer}</p>
+      <p class="footer-fine">{t.noTracking}</p>
+    </div>
+    <nav aria-label={t.project}>
+      <h2 class="footer-h">{t.project}</h2>
+      <ul>
+        <li><a href={REPO_URL} rel="noopener">{t.source}</a></li>
+        <li><a href={RELEASES_URL} rel="noopener">{t.releases}</a></li>
+        <li><a href={WIKI_URL} rel="noopener">{t.wiki}</a></li>
+        <li><a href={ISSUES_URL} rel="noopener">{t.issues}</a></li>
+      </ul>
+    </nav>
+    <nav aria-label={t.legal}>
+      <h2 class="footer-h">{t.legal}</h2>
+      <ul>
+        <li><a href={routes.imprint[lang]}>{t.imprint}</a></li>
+        <li><a href={routes.privacy[lang]}>{t.privacy}</a></li>
+        <li><a href={`${REPO_URL}/blob/main/LICENSE`} rel="noopener">{t.license}</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap footer-base">
+    <span>© {year} Mumcord contributors</span>
+    <span>{t.by} <a href={OWNER.url} rel="noopener">tobee94</a></span>
+  </div>
+  <div class="footer-word" aria-hidden="true">Mumcord</div>
+</footer>

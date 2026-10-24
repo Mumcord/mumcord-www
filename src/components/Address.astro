@@ -1,0 +1,16 @@
+---
+import { OWNER } from "../lib/site";
+interface Props {
+  lang: "de" | "en";
+  email?: boolean;
+}
+const { lang, email = true } = Astro.props;
+---
+
+<address>
+  {OWNER.name}<br />
+  {OWNER.street}<br />
+  {OWNER.zip} {OWNER.city}<br />
+  {OWNER.country[lang]}
+  {email && <><br /><a href={`mailto:${OWNER.email}`}>{OWNER.email}</a></>}
+</address>

@@ -1,0 +1,25 @@
+---
+import Base from "./Base.astro";
+import { pageJsonLd } from "../lib/jsonld";
+import type { Lang, PageId } from "../i18n";
+
+interface Props {
+  lang: Lang;
+  page: PageId;
+  title: string;
+  description: string;
+  updated: string;
+}
+const { lang, page, title, description, updated } = Astro.props;
+---
+
+<Base lang={lang} page={page} title={`${title} — Mumcord`} description={description} jsonLd={pageJsonLd(lang, Astro.site!, page, title)}>
+  <article class="wrap legal">
+    <p class="label">Mumcord</p>
+    <h1>{title}</h1>
+    <div class="legal-body">
+      <slot />
+      <p class="legal-updated">{updated}</p>
+    </div>
+  </article>
+</Base>

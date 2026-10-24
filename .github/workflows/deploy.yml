@@ -1,0 +1,24 @@
+# Triggers the GitLab pipeline (gitlab.fuewa.systems/tvorwachs/mumcord-www-deploy)
+# that builds the image and deploys mumcord.app. Needs the repo secret
+# GITLAB_TRIGGER_TOKEN; without it the job is skipped.
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    env:
+      TOKEN: ${{ secrets.GITLAB_TRIGGER_TOKEN }}
+    steps:
+      - name: Trigger GitLab pipeline
+        if: env.TOKEN != ''
+        run: |
+          curl --fail-with-body -sS -X POST \
+            -F "token=${TOKEN}" \
+            -F "ref=main" \
+            -F "variables[SITE_REF]=${GITHUB_SHA}" \
+            "https://gitlab.fuewa.systems/api/v4/projects/tvorwachs%2Fmumcord-www-deploy/trigger/pipeline"
