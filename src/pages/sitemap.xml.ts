@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro";
 import { routes, type PageId } from "../i18n";
 
-const priority: Record<PageId, string> = { home: "1.0", changelog: "0.6", imprint: "0.2", privacy: "0.2" };
+const priority: Record<PageId, string> = { home: "1.0", changelog: "0.6", server: "0.6", imprint: "0.2", privacy: "0.2" };
 
 // Hand-written so every URL carries its hreflang alternates.
 export const GET: APIRoute = ({ site }) => {

@@ -1,0 +1,12 @@
+---
+import Base from "../layouts/Base.astro";
+import ServerGuide from "../components/ServerGuide.astro";
+import { guides } from "../lib/server-guide";
+import { pageJsonLd } from "../lib/jsonld";
+
+const g = guides.de;
+---
+
+<Base lang="de" page="server" title={`${g.title} — Mumcord`} description={g.description} jsonLd={pageJsonLd("de", Astro.site!, "server", g.title)}>
+  <ServerGuide lang="de" />
+</Base>

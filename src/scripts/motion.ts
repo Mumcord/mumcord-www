@@ -207,3 +207,22 @@ document.querySelector("[data-gallery-next]")?.addEventListener("click", () => s
 const ua = navigator.userAgent;
 const mine = /Windows/.test(ua) ? "windows" : /Mac OS X|Macintosh/.test(ua) && !/iPhone|iPad/.test(ua) ? "macos" : /Linux|X11/.test(ua) && !/Android/.test(ua) ? "linux" : null;
 if (mine) document.querySelector(`[data-platform="${mine}"]`)?.classList.add("is-mine");
+
+// ── Copy buttons on code blocks (server guide) ───────────────────────
+for (const btn of document.querySelectorAll<HTMLButtonElement>("[data-copy]")) {
+  const label = btn.textContent;
+  btn.addEventListener("click", async () => {
+    const code = btn.closest("figure")?.querySelector("code")?.textContent ?? "";
+    try {
+      await navigator.clipboard.writeText(code);
+    } catch {
+      return;
+    }
+    btn.textContent = btn.dataset.copied ?? label;
+    btn.classList.add("is-done");
+    setTimeout(() => {
+      btn.textContent = label;
+      btn.classList.remove("is-done");
+    }, 1600);
+  });
+}

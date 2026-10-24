@@ -1,0 +1,70 @@
+---
+import { type Lang } from "../i18n";
+import { guides } from "../lib/server-guide";
+import { WIKI_URL, ISSUES_URL } from "../lib/release";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const g = guides[lang];
+---
+
+<article class="wrap guide">
+  <header class="guide-head">
+    <p class="label" data-reveal>{g.label}</p>
+    <h1 class="h2" data-reveal>{g.title}</h1>
+    <p class="body" data-reveal>{g.intro}</p>
+    <ul class="guide-facts" data-reveal>
+      {
+        g.facts.map((f) => (
+          <li>
+            <strong>{f.value}</strong>
+            <span>{f.label}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </header>
+
+  <h2 class="sr-only">{g.stepsTitle}</h2>
+  <ol class="guide-steps">
+    {
+      g.steps.map((s, i) => (
+        <li class="guide-step" id={s.id} data-reveal>
+          <a class="guide-num" href={`#${s.id}`} aria-hidden="true">{String(i + 1).padStart(2, "0")}</a>
+          <div class="guide-main">
+            <h3>{s.title}</h3>
+            {s.body.map((p) => <p set:html={p} />)}
+            {s.code?.map((c) => (
+              <figure class="code">
+                <figcaption>
+                  <span>{c.file ?? "Terminal"}</span>
+                  <button type="button" class="code-copy" data-copy data-copied={g.copied}>{g.copy}</button>
+                </figcaption>
+                <pre><code>{c.code.trimEnd()}</code></pre>
+              </figure>
+            ))}
+            {s.after?.map((p) => <p set:html={p} />)}
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+
+  <section class="guide-trouble" aria-labelledby="trouble">
+    <h2 id="trouble" data-reveal>{g.troubleTitle}</h2>
+    {
+      g.trouble.map((t) => (
+        <details class="guide-faq" data-reveal>
+          <summary>{t.q}</summary>
+          <p set:html={t.a} />
+        </details>
+      ))
+    }
+    <p class="guide-more" data-reveal>
+      {g.more} <a class="text-link" href={WIKI_URL} rel="noopener">Wiki →</a>
+      <a class="text-link" href={ISSUES_URL} rel="noopener">Issues →</a>
+    </p>
+  </section>
+</article>

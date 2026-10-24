@@ -20,6 +20,8 @@ Screenshots come from the Mumcord repo (`docs/images/screenshots`) into `src/ass
 Legal pages: `src/pages/impressum.astro`, `src/pages/datenschutz.astro` and their `en/` twins.
 The changelog (`/changelog`, `/en/changelog`) is written by hand in `src/lib/changelog.ts`; the
 date and download link of each version come from the matching GitHub release once it is published.
+The server hosting guide (`/server`, `/en/server`) lives in `src/lib/server-guide.ts`; its
+compose file pins the same `mumblevoip/mumble-server` version the Mumcord tests use.
 
 To preview the download section and changelog with a release before one exists, point
 `RELEASE_FIXTURE` at a JSON file shaped like the GitHub `/releases` API answer:
