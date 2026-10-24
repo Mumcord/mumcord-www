@@ -1,0 +1,88 @@
+---
+import { dicts, routes, type Lang } from "../i18n";
+import { changelog } from "../lib/changelog";
+import { getReleases, RELEASES_URL } from "../lib/release";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = dicts[lang].changelog;
+const releases = await getReleases();
+const dateFmt = new Intl.DateTimeFormat(lang === "de" ? "de-DE" : "en-GB", { dateStyle: "long" });
+const download = `${routes.home[lang]}#download`;
+
+// Hand-written entries first; a published GitHub release without one still gets listed.
+const written = changelog[lang].map((e) => ({ ...e, release: releases.find((r) => r.version === e.version) }));
+const extra = releases
+  .filter((r) => !written.some((e) => e.version === r.version))
+  .map((r) => ({ version: r.version, summary: t.githubOnly, groups: [], known: undefined, release: r }));
+const entries = [...written, ...extra].sort((a, b) =>
+  b.version.localeCompare(a.version, "en", { numeric: true }),
+);
+---
+
+<article class="wrap changelog">
+  <header class="changelog-head">
+    <p class="label" data-reveal>{t.label}</p>
+    <h1 class="h2" data-reveal>{t.title}</h1>
+    <p class="body" data-reveal>{t.intro}</p>
+  </header>
+
+  <ol class="cl-list">
+    {
+      entries.map((e) => (
+        <li class="cl-entry" id={`v${e.version}`} data-reveal>
+          <div class="cl-side">
+            <a class="cl-version" href={`#v${e.version}`}>v{e.version}</a>
+            {e.release ? (
+              <p class="cl-date">
+                {t.released} <time datetime={e.release.publishedAt}>{dateFmt.format(new Date(e.release.publishedAt))}</time>
+              </p>
+            ) : (
+              <p class="cl-date">
+                <span class="pill">{t.upcoming}</span>
+              </p>
+            )}
+          </div>
+          <div class="cl-main">
+            <p class="cl-summary">{e.summary}</p>
+            {e.groups.map((g) => (
+              <section class="cl-group">
+                <h2>{g.title}</h2>
+                <ul>
+                  {g.items.map((i) => (
+                    <li>{i}</li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+            {e.known && (
+              <section class="cl-group cl-known">
+                <h2>{t.known}</h2>
+                <ul>
+                  {e.known.map((i) => (
+                    <li>{i}</li>
+                  ))}
+                </ul>
+              </section>
+            )}
+            <p class="cl-links">
+              {e.release ? (
+                <>
+                  <a class="btn btn-small" href={download}>{t.download}</a>
+                  <a class="text-link" href={e.release.url} rel="noopener">{t.onGithub} →</a>
+                </>
+              ) : (
+                <>
+                  <span class="cl-note">{t.upcomingNote}</span>
+                  <a class="text-link" href={RELEASES_URL} rel="noopener">{t.onGithub} →</a>
+                </>
+              )}
+            </p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</article>

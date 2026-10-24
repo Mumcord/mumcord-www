@@ -1,0 +1,12 @@
+---
+import Base from "../../layouts/Base.astro";
+import Changelog from "../../components/Changelog.astro";
+import { dicts } from "../../i18n";
+import { pageJsonLd } from "../../lib/jsonld";
+
+const t = dicts.en.changelog;
+---
+
+<Base lang="en" page="changelog" title={`${t.title} — Mumcord`} description={t.description} jsonLd={pageJsonLd("en", Astro.site!, "changelog", t.title)}>
+  <Changelog lang="en" />
+</Base>
