@@ -2,6 +2,8 @@
 // talk to GitHub until they click a download, so the page itself stays
 // request-free. A scheduled pipeline rebuilds the site to pick up new releases.
 
+import { readFile } from "node:fs/promises";
+
 export const REPO = "ToBee94/mumcord";
 export const REPO_URL = `https://github.com/${REPO}`;
 export const RELEASES_URL = `${REPO_URL}/releases`;
@@ -19,6 +21,7 @@ export interface Asset {
 
 export interface Release {
   tag: string;
+  version: string;
   name: string;
   url: string;
   publishedAt: string;
@@ -51,9 +54,30 @@ function platformOf(name: string): Platform | null {
   return null;
 }
 
-let cached: Promise<Release | null> | undefined;
+let cached: Promise<Release[]> | undefined;
 
-async function load(): Promise<Release | null> {
+function toRelease(rel: GhRelease): Release {
+  const assets: Record<Platform, Asset[]> = { windows: [], macos: [], linux: [] };
+  let checksums: Asset | undefined;
+  for (const a of rel.assets) {
+    const asset = { name: a.name, url: a.browser_download_url, size: a.size };
+    if (/sha256sums/i.test(a.name)) checksums = asset;
+    const p = platformOf(a.name);
+    if (p) assets[p].push(asset);
+  }
+  return {
+    tag: rel.tag_name,
+    version: rel.tag_name.replace(/^v/, ""),
+    name: rel.name || rel.tag_name,
+    url: rel.html_url,
+    publishedAt: rel.published_at,
+    prerelease: rel.prerelease,
+    assets,
+    checksums,
+  };
+}
+
+async function load(): Promise<Release[]> {
   const headers: Record<string, string> = {
     Accept: "application/vnd.github+json",
     "User-Agent": "mumcord-www-build",
@@ -61,42 +85,34 @@ async function load(): Promise<Release | null> {
   if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
 
   try {
-    // /releases (not /releases/latest) so pre-releases count too: Mumcord is in alpha.
-    const res = await fetch(`https://api.github.com/repos/${REPO}/releases?per_page=10`, { headers });
-    if (!res.ok) {
-      console.warn(`[release] GitHub API answered ${res.status}; building without release data`);
-      return null;
+    let list: GhRelease[];
+    if (process.env.RELEASE_FIXTURE) {
+      // Preview the download section before a release exists (see README).
+      list = JSON.parse(await readFile(process.env.RELEASE_FIXTURE, "utf8")) as GhRelease[];
+    } else {
+      // /releases (not /releases/latest) so pre-releases count too: Mumcord is in alpha.
+      const res = await fetch(`https://api.github.com/repos/${REPO}/releases?per_page=50`, { headers });
+      if (!res.ok) {
+        console.warn(`[release] GitHub API answered ${res.status}; building without release data`);
+        return [];
+      }
+      list = (await res.json()) as GhRelease[];
     }
-    const list = (await res.json()) as GhRelease[];
-    const rel = list.find((r) => !r.draft);
-    if (!rel) return null;
-
-    const assets: Record<Platform, Asset[]> = { windows: [], macos: [], linux: [] };
-    let checksums: Asset | undefined;
-    for (const a of rel.assets) {
-      const asset = { name: a.name, url: a.browser_download_url, size: a.size };
-      if (/sha256sums/i.test(a.name)) checksums = asset;
-      const p = platformOf(a.name);
-      if (p) assets[p].push(asset);
-    }
-    return {
-      tag: rel.tag_name,
-      name: rel.name || rel.tag_name,
-      url: rel.html_url,
-      publishedAt: rel.published_at,
-      prerelease: rel.prerelease,
-      assets,
-      checksums,
-    };
+    return list.filter((r) => !r.draft).map(toRelease);
   } catch (err) {
     console.warn("[release] could not reach GitHub; building without release data", err);
-    return null;
+    return [];
   }
 }
 
-export function getLatestRelease(): Promise<Release | null> {
+/** Published releases, newest first (drafts are left out). */
+export function getReleases(): Promise<Release[]> {
   cached ??= load();
   return cached;
+}
+
+export async function getLatestRelease(): Promise<Release | null> {
+  return (await getReleases())[0] ?? null;
 }
 
 export function formatSize(bytes: number): string {

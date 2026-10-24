@@ -40,7 +40,7 @@ export function homeJsonLd(lang: Lang, site: URL, release: Release | null, scree
       isAccessibleForFree: true,
       offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
       downloadUrl: release?.url ?? RELEASES_URL,
-      ...(release && { softwareVersion: release.tag, datePublished: release.publishedAt }),
+      ...(release && { softwareVersion: release.version, datePublished: release.publishedAt }),
       featureList: t.features.items.map((f) => f.title),
       author: { "@id": `${site.origin}/#owner` },
       sameAs: [REPO_URL],
