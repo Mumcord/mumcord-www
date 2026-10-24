@@ -268,9 +268,54 @@ p {
   color: var(--text);
   background: rgb(246 240 232 / 0.06);
 }
-.nav-lang {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem !important;
+.lang-switch {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 3px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  font: 600 0.75rem var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.lang-opt {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 30px;
+  border-radius: 999px;
+  color: var(--faint);
+  text-decoration: none;
+  transition: color 0.25s;
+}
+a.lang-opt:hover {
+  color: var(--text);
+}
+.lang-opt.is-active {
+  color: var(--bg);
+}
+.lang-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 36px;
+  height: 30px;
+  border-radius: 999px;
+  background: var(--text);
+  transition: transform 0.45s var(--ease-spring);
+}
+.lang-thumb.is-en {
+  transform: translateX(36px);
+}
+/* Slide the thumb toward the other language on hover, as a hint that it switches. */
+.lang-switch:has(a.lang-opt:hover) .lang-thumb {
+  transform: translateX(6px);
+}
+.lang-switch:has(a.lang-opt:hover) .lang-thumb.is-en {
+  transform: translateX(30px);
 }
 .header-actions {
   display: flex;
@@ -1731,5 +1776,13 @@ p {
   }
   .window {
     transform: none;
+  }
+}
+
+/* Narrow phones: the hero already has the download CTA, so the header keeps
+   only brand, language and menu. */
+@media (max-width: 480px) {
+  .header-actions .btn-small {
+    display: none;
   }
 }
