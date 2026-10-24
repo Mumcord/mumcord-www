@@ -22,16 +22,17 @@ Legal pages: `src/pages/impressum.astro`, `src/pages/datenschutz.astro` and thei
 ## Container
 
 ```bash
-docker build -t mumcord-www .
+docker buildx build -t mumcord-www --load .
 docker run --rm -p 8080:80 mumcord-www   # Caddy serves dist/ with clean URLs
 ```
 
 ## Deploy
 
-Pushing to `main` triggers the GitLab pipeline in `tvorwachs/mumcord-www-deploy`
-(`.github/workflows/deploy.yml`, needs the `GITLAB_TRIGGER_TOKEN` secret), which builds the
-image for arm64 and rolls it out on the fuewa.systems server behind Traefik. A nightly
-rebuild there picks up new Mumcord releases.
+1. GitHub Actions (`.github/workflows/image.yml`) builds `ghcr.io/tobee94/mumcord-www`
+   for amd64 + arm64 on every push to `main`, nightly (fresh release data for the download
+   links) and on demand. Tags: `latest` and `sha-<commit>`.
+2. Deploying is manual: **Run pipeline** in GitLab `tvorwachs/mumcord-www-deploy`. It pulls
+   the current image on the fuewa.systems server and recreates the container behind Traefik.
 
 If the one-line inline script in `src/layouts/Base.astro` changes, update its hash in the
 `Content-Security-Policy` in `Caddyfile`.
