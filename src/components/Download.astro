@@ -1,6 +1,6 @@
 ---
 import { dicts, type Lang } from "../i18n";
-import { getLatestRelease, formatSize, ACTIONS_URL, RELEASES_URL, WIKI_URL, type Platform } from "../lib/release";
+import { getLatestRelease, formatSize, RELEASES_URL, WIKI_URL, type Platform } from "../lib/release";
 
 interface Props {
   lang: Lang;
@@ -44,7 +44,7 @@ const glyphs: Record<Platform, string> = {
           <div class="release-meta release-none" data-reveal>
             <p>{t.noRelease}</p>
             <p>
-              <a class="text-link" href={ACTIONS_URL} rel="noopener">{t.testBuilds} →</a>
+              <a class="text-link" href={RELEASES_URL} rel="noopener">{t.testBuilds} →</a>
             </p>
           </div>
         )
@@ -55,7 +55,7 @@ const glyphs: Record<Platform, string> = {
       {
         platforms.map((p) => {
           const assets = release?.assets[p] ?? [];
-          const href = assets[0]?.url ?? release?.url ?? ACTIONS_URL;
+          const href = assets[0]?.url ?? release?.url ?? RELEASES_URL;
           return (
             <li class="platform" data-platform={p} data-reveal>
               <a class="platform-main" href={href} rel="noopener">

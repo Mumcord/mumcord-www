@@ -6,7 +6,6 @@ export const REPO = "ToBee94/mumcord";
 export const REPO_URL = `https://github.com/${REPO}`;
 export const RELEASES_URL = `${REPO_URL}/releases`;
 export const LATEST_URL = `${REPO_URL}/releases/latest`;
-export const ACTIONS_URL = `${REPO_URL}/actions`;
 export const WIKI_URL = `${REPO_URL}/wiki`;
 export const ISSUES_URL = `${REPO_URL}/issues`;
 

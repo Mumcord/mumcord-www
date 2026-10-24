@@ -6,7 +6,7 @@ export const en: Dict = {
   meta: {
     title: "Mumcord — modern voice chat for any Mumble server",
     description:
-      "Mumcord is a free, Discord-style desktop client for Mumble servers: follow channels, AI noise suppression, push-to-talk even on Wayland. For Linux, Windows and macOS. Open source, no telemetry.",
+      "Mumcord is a free, Discord-style desktop client for Mumble servers: follow channels, notifications, AI noise suppression, push-to-talk even on Wayland. For Linux, Windows and macOS. Open source, no telemetry.",
   },
   nav: {
     features: "Features",
@@ -34,6 +34,7 @@ export const en: Dict = {
     "No server changes",
     "Mumble 1.4 and newer",
     "Encrypted voice",
+    "Light & dark",
     "No telemetry",
     "Linux X11 & Wayland",
     "Windows 10/11",
@@ -61,19 +62,49 @@ export const en: Dict = {
         id: "follow",
         title: "Follow channels",
         body:
-          "Read a channel's chat without joining it. Followed channels show unread messages as a badge. Single click reads, double click joins.",
+          "Click the star and you read along in a channel without joining it — or follow all of them from the server menu. Unread messages show up as a badge.",
       },
       {
         id: "audio",
-        title: "Clean sound out of the box",
+        title: "Clear sound out of the box",
         body:
-          "AI noise suppression, echo cancellation and automatic gain are on. Bitrate follows the network: down when packets drop, back up when it recovers.",
+          "AI noise suppression, echo cancellation and automatic gain are on. The bitrate follows your network: down when packets get lost, back up when it recovers.",
       },
       {
         id: "trust",
-        title: "Certificates, made clear",
+        title: "Certificates, made readable",
         body:
           "On first connect you see the server's fingerprint and decide. If it changes later, Mumcord stops with a clear warning.",
+      },
+      {
+        id: "chat",
+        title: "Discord-style chat",
+        body:
+          "Avatars, grouped messages and Markdown, with a compact layout for busy channels. The channel description and welcome message are pinned on top; images are scaled to the server's limit.",
+      },
+      {
+        id: "notify",
+        title: "Notifications, your way",
+        body:
+          "New messages as a small in-app pop-up, a system notification, both or off. Plus short, quiet sounds per event — including when you join and hang up.",
+      },
+      {
+        id: "crowd",
+        title: "Big servers stay tidy",
+        body:
+          "From six people on, avatars stack up under the channel name. Hover for a profile preview, and drag the channel and member lists to the width you like.",
+      },
+      {
+        id: "people",
+        title: "Volume per person",
+        body:
+          "0 to 200 %, local mute. Remembered by the person's certificate — even after they rename.",
+      },
+      {
+        id: "reconnect",
+        title: "Back where you were",
+        body:
+          "After a dropout Mumcord restores your channel, mute/deafen state and followed channels. After a restart it offers to rejoin your last voice channel.",
       },
       {
         id: "identity",
@@ -82,20 +113,10 @@ export const en: Dict = {
           "The client certificate lives in your system's secure storage. Import from the official Mumble client via PKCS#12, export any time.",
       },
       {
-        id: "chat",
-        title: "Chat with Markdown",
+        id: "setup",
+        title: "Ready in a minute",
         body:
-          "Bold, italic, code, links. Paste or drop images — they're scaled to the server's limit. Everything from the server is sanitized.",
-      },
-      {
-        id: "people",
-        title: "Volume per person",
-        body: "0 to 200 %, local mute. Remembered by the person's certificate — even after a rename.",
-      },
-      {
-        id: "reconnect",
-        title: "Back where you were",
-        body: "After a dropped connection Mumcord restores your channel, mute/deafen state and followed channels.",
+          "The setup wizard only asks for identity, microphone and talk mode. If you like, Mumcord opens mumble:// links and starts when you log in.",
       },
       {
         id: "a11y",
@@ -139,13 +160,17 @@ export const en: Dict = {
     label: "04 — Take a tour",
     title: "A window that feels familiar.",
     items: [
-      { src: "wizard-1-identity", caption: "Setup in about a minute: identity, microphone, talk mode." },
-      { src: "wizard-2-microphone", caption: "A mic test that plays your own voice back." },
-      { src: "follow-unread-badge", caption: "Followed channels with an unread badge." },
-      { src: "dialog-certificate-trust", caption: "Trust on first use, with fingerprint." },
-      { src: "settings-03-voice-dark", caption: "Voice activation or push-to-talk." },
+      { src: "wizard-1-identity", caption: "Set up in about a minute: identity, microphone, talk mode." },
+      { src: "wizard-3-talk-mode", caption: "Voice activation or push-to-talk, mumble:// links and start at login." },
+      { src: "follow-unread-badge", caption: "Follow channels with a star, unread messages as a badge." },
+      { src: "notification-toast", caption: "A small pop-up announces new messages from other channels." },
+      { src: "chat-compact", caption: "Compact chat layout: time, name and message on one line." },
+      { src: "channel-avatar-stack", caption: "Crowded channels show a stack of avatars instead of a long list." },
+      { src: "banner-rejoin", caption: "After a restart, back into your last voice channel." },
+      { src: "dialog-certificate-trust", caption: "Trust on first contact, with the fingerprint." },
+      { src: "settings-07-sounds-notifications-dark", caption: "Sounds and notifications, set per event." },
       { src: "settings-02-audio-dark", caption: "Switch devices without reconnecting." },
-      { src: "main-light", caption: "Light theme, fully supported." },
+      { src: "main-light", caption: "A light theme that's fully there." },
       { src: "settings-06-language-dark", caption: "English, German, Spanish." },
     ],
   },
@@ -155,10 +180,10 @@ export const en: Dict = {
     body: "The roadmap is a proposal and may change. Mobile apps and a web version are not planned. Nothing server-side will ever be required.",
     now: "now",
     steps: [
-      { tag: "Epic 1 · 1a", title: "Everyday client", body: "Everything on this page. Unsigned test builds.", now: true },
+      { tag: "Epic 1 · 1a", title: "Everyday client", body: "Everything on this page. Unsigned builds for Linux, Windows and macOS.", now: true },
       { tag: "Epic 1 · 1b", title: "Positional audio & overlay", body: "Mumble Link with the official game plugins, floating overlay." },
       { tag: "Epic 2", title: "Several servers at once", body: "Read along on all of them, talk on one." },
-      { tag: "Epic 3", title: "Comfort", body: "Global hotkeys, tray menu, desktop notifications, whisper, server browser." },
+      { tag: "Epic 3", title: "Comfort", body: "Global hotkeys, full tray menu, import from the official client, whisper, server browser." },
       { tag: "Epic 4", title: "Admin", body: "ACLs, bans, channel management." },
       { tag: "Epic 5", title: "Distribution", body: "Signed installers, auto-update, opt-in crash reports." },
     ],
@@ -173,12 +198,12 @@ export const en: Dict = {
     allReleases: "All releases",
     checksums: "Verify SHA256SUMS",
     noRelease:
-      "There's no official release yet. Unsigned test builds are produced on every push by GitHub Actions — log in, open the latest successful “Test builds” run and grab the artifact for your system.",
-    testBuilds: "Test builds on GitHub Actions",
+      "The first release isn't published yet. Releases are built from version tags, tested on fresh machines and then appear on GitHub — this page picks them up automatically.",
+    testBuilds: "Releases on GitHub",
     howTo: "Installation guide",
     platforms: {
       windows: { name: "Windows", sub: "10 / 11 · installer (.exe)", warn: "SmartScreen warns about an unknown publisher: “More info” → “Run anyway”." },
-      macos: { name: "macOS", sub: "Apple Silicon & Intel · .dmg", warn: "Gatekeeper blocks the first launch: right-click → “Open”, or allow it under Privacy & Security." },
+      macos: { name: "macOS", sub: "Universal, Apple Silicon & Intel · .dmg", warn: "Gatekeeper blocks the first launch: right-click → “Open”, or allow it under Privacy & Security." },
       linux: { name: "Linux", sub: "X11 & Wayland · AppImage", warn: "chmod +x Mumcord_*.AppImage — needs WebKitGTK 4.1 and a Secret Service keyring." },
     },
     unsigned: "Builds are unsigned for now. Signed installers arrive with Epic 5.",

@@ -4,7 +4,7 @@ export const de = {
   meta: {
     title: "Mumcord — moderner Voice-Chat für jeden Mumble-Server",
     description:
-      "Mumcord ist ein freier Desktop-Client im Discord-Stil für Mumble-Server: Kanäle folgen, KI-Rauschunterdrückung, Push-to-Talk auch unter Wayland. Für Linux, Windows und macOS. Open Source, ohne Telemetrie.",
+      "Mumcord ist ein freier Desktop-Client im Discord-Stil für Mumble-Server: Kanälen folgen, Benachrichtigungen, KI-Rauschunterdrückung, Push-to-Talk auch unter Wayland. Für Linux, Windows und macOS. Open Source, ohne Telemetrie.",
   },
   nav: {
     features: "Funktionen",
@@ -32,6 +32,7 @@ export const de = {
     "Kein Server-Umbau",
     "Mumble 1.4 und neuer",
     "Verschlüsselte Sprache",
+    "Hell & dunkel",
     "Keine Telemetrie",
     "Linux X11 & Wayland",
     "Windows 10/11",
@@ -60,7 +61,7 @@ export const de = {
         id: "follow",
         title: "Kanälen folgen",
         body:
-          "Lies den Chat eines Kanals, ohne beizutreten. Gefolgte Kanäle zeigen ungelesene Nachrichten als Badge. Einfacher Klick liest, Doppelklick tritt bei.",
+          "Ein Klick auf den Stern, und du liest einen Kanal mit, ohne beizutreten — oder folgst über das Server-Menü gleich allen. Ungelesenes steht als Badge dran.",
       },
       {
         id: "audio",
@@ -75,16 +76,22 @@ export const de = {
           "Beim ersten Verbinden siehst du den Fingerabdruck des Servers und entscheidest. Ändert er sich später, stoppt Mumcord mit einer klaren Warnung.",
       },
       {
-        id: "identity",
-        title: "Deine Identität bleibt deine",
+        id: "chat",
+        title: "Chat im Discord-Stil",
         body:
-          "Das Client-Zertifikat liegt im sicheren Speicher deines Systems. Import aus dem offiziellen Mumble-Client per PKCS#12, Export jederzeit.",
+          "Avatare, gruppierte Nachrichten und Markdown. Für volle Kanäle gibt es ein kompaktes Layout. Kanalbeschreibung und Willkommensnachricht sind oben angeheftet; Bilder werden auf das Server-Limit skaliert.",
       },
       {
-        id: "chat",
-        title: "Chat mit Markdown",
+        id: "notify",
+        title: "Benachrichtigungen, wie du willst",
         body:
-          "Fett, kursiv, Code, Links. Bilder einfügen oder reinziehen — sie werden auf das Limit des Servers skaliert. Alles vom Server wird bereinigt.",
+          "Neue Nachrichten als kleines Pop-up in der App, als Systembenachrichtigung, beides oder gar nicht. Dazu kurze, leise Töne pro Ereignis — auch beim Beitreten und Auflegen.",
+      },
+      {
+        id: "crowd",
+        title: "Auch große Server bleiben übersichtlich",
+        body:
+          "Ab sechs Leuten stapeln sich die Avatare unter dem Kanalnamen. Profilvorschau beim Drüberfahren, Kanal- und Mitgliederliste lassen sich in der Breite ziehen.",
       },
       {
         id: "people",
@@ -96,7 +103,19 @@ export const de = {
         id: "reconnect",
         title: "Kommt zurück, wo du warst",
         body:
-          "Nach einem Verbindungsabbruch stellt Mumcord Kanal, Stumm/Taub-Status und gefolgte Kanäle wieder her.",
+          "Nach einem Abbruch stellt Mumcord Kanal, Stumm/Taub-Status und gefolgte Kanäle wieder her. Nach einem Neustart bietet es an, deinem letzten Sprachkanal wieder beizutreten.",
+      },
+      {
+        id: "identity",
+        title: "Deine Identität bleibt deine",
+        body:
+          "Das Client-Zertifikat liegt im sicheren Speicher deines Systems. Import aus dem offiziellen Mumble-Client per PKCS#12, Export jederzeit.",
+      },
+      {
+        id: "setup",
+        title: "In einer Minute startklar",
+        body:
+          "Der Einrichtungsassistent fragt nur Identität, Mikrofon und Sprechmodus ab. Auf Wunsch öffnet Mumcord mumble://-Links und startet beim Anmelden mit.",
       },
       {
         id: "a11y",
@@ -141,11 +160,15 @@ export const de = {
     title: "Ein Fenster, das sich vertraut anfühlt.",
     items: [
       { src: "wizard-1-identity", caption: "Einrichtung in etwa einer Minute: Identität, Mikrofon, Sprechmodus." },
-      { src: "wizard-2-microphone", caption: "Mikrofontest, der dir deine eigene Stimme vorspielt." },
-      { src: "follow-unread-badge", caption: "Gefolgte Kanäle mit Badge für Ungelesenes." },
+      { src: "wizard-3-talk-mode", caption: "Sprachaktivierung oder Push-to-Talk, mumble://-Links und Autostart." },
+      { src: "follow-unread-badge", caption: "Kanälen per Stern folgen, Ungelesenes als Badge." },
+      { src: "notification-toast", caption: "Ein kleines Pop-up meldet neue Nachrichten aus anderen Kanälen." },
+      { src: "chat-compact", caption: "Kompaktes Chat-Layout: Zeit, Name und Nachricht in einer Zeile." },
+      { src: "channel-avatar-stack", caption: "Volle Kanäle zeigen einen Avatar-Stapel statt einer langen Liste." },
+      { src: "banner-rejoin", caption: "Nach dem Neustart zurück in den letzten Sprachkanal." },
       { src: "dialog-certificate-trust", caption: "Vertrauen beim ersten Kontakt, mit Fingerabdruck." },
-      { src: "settings-03-voice-dark", caption: "Sprachaktivierung oder Push-to-Talk." },
-      { src: "settings-02-audio-dark", caption: "Geräte wechseln ohne neu zu verbinden." },
+      { src: "settings-07-sounds-notifications-dark", caption: "Töne und Benachrichtigungen, pro Ereignis einstellbar." },
+      { src: "settings-02-audio-dark", caption: "Geräte wechseln, ohne neu zu verbinden." },
       { src: "main-light", caption: "Helles Design, vollwertig." },
       { src: "settings-06-language-dark", caption: "Deutsch, Englisch, Spanisch." },
     ],
@@ -156,10 +179,10 @@ export const de = {
     body: "Die Roadmap ist ein Vorschlag und kann sich ändern. Mobile Apps und eine Web-Version sind nicht geplant. Serverseitig wird nie etwas nötig sein.",
     now: "jetzt",
     steps: [
-      { tag: "Epic 1 · 1a", title: "Alltags-Client", body: "Alles auf dieser Seite. Test-Builds, unsigniert.", now: true },
+      { tag: "Epic 1 · 1a", title: "Alltags-Client", body: "Alles auf dieser Seite. Unsignierte Builds für Linux, Windows und macOS.", now: true },
       { tag: "Epic 1 · 1b", title: "Positional Audio & Overlay", body: "Mumble Link mit den offiziellen Spiel-Plugins, schwebendes Overlay." },
       { tag: "Epic 2", title: "Mehrere Server gleichzeitig", body: "Auf allen Servern mitlesen, auf einem sprechen." },
-      { tag: "Epic 3", title: "Komfort", body: "Globale Hotkeys, Tray-Menü, Desktop-Benachrichtigungen, Flüstern, Server-Browser." },
+      { tag: "Epic 3", title: "Komfort", body: "Globale Hotkeys, volles Tray-Menü, Import aus dem offiziellen Client, Flüstern, Server-Browser." },
       { tag: "Epic 4", title: "Admin", body: "ACLs, Banns, Kanalverwaltung." },
       { tag: "Epic 5", title: "Auslieferung", body: "Signierte Installer, Auto-Update, Absturzberichte nur mit Zustimmung." },
     ],
@@ -174,12 +197,12 @@ export const de = {
     allReleases: "Alle Releases",
     checksums: "SHA256SUMS prüfen",
     noRelease:
-      "Es gibt noch kein offizielles Release. Unsignierte Test-Builds entstehen bei jedem Push über GitHub Actions — einloggen, den letzten erfolgreichen Lauf „Test builds“ öffnen und das Artefakt für dein System laden.",
-    testBuilds: "Test-Builds auf GitHub Actions",
+      "Das erste Release ist noch nicht veröffentlicht. Releases entstehen aus Versions-Tags, werden auf frischen Rechnern getestet und erscheinen dann auf GitHub — diese Seite zeigt sie automatisch an.",
+    testBuilds: "Releases auf GitHub",
     howTo: "Installationsanleitung",
     platforms: {
       windows: { name: "Windows", sub: "10 / 11 · Installer (.exe)", warn: "SmartScreen warnt vor unbekanntem Herausgeber: „Weitere Informationen“ → „Trotzdem ausführen“." },
-      macos: { name: "macOS", sub: "Apple Silicon & Intel · .dmg", warn: "Gatekeeper blockiert beim ersten Start: Rechtsklick → „Öffnen“ oder unter Datenschutz & Sicherheit erlauben." },
+      macos: { name: "macOS", sub: "Universal, Apple Silicon & Intel · .dmg", warn: "Gatekeeper blockiert beim ersten Start: Rechtsklick → „Öffnen“ oder unter Datenschutz & Sicherheit erlauben." },
       linux: { name: "Linux", sub: "X11 & Wayland · AppImage", warn: "chmod +x Mumcord_*.AppImage — braucht WebKitGTK 4.1 und einen Secret-Service-Schlüsselbund." },
     },
     unsigned: "Builds sind derzeit unsigniert. Signierte Installer kommen mit Epic 5.",
