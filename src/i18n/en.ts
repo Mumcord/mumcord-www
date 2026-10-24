@@ -14,6 +14,7 @@ export const en: Dict = {
     roadmap: "Roadmap",
     download: "Download",
     docs: "Docs",
+    changelog: "Changelog",
     skip: "Skip to content",
     langSwitch: "Deutsch",
     menu: "Menu",
@@ -62,7 +63,7 @@ export const en: Dict = {
         id: "follow",
         title: "Follow channels",
         body:
-          "Click the star and you read along in a channel without joining it — or follow all of them from the server menu. Unread messages show up as a badge.",
+          "Click the eye and you read along in a channel without joining it — or follow all of them from the server menu. Unread messages show up as a count, in your own channel too.",
       },
       {
         id: "audio",
@@ -92,13 +93,13 @@ export const en: Dict = {
         id: "crowd",
         title: "Big servers stay tidy",
         body:
-          "From six people on, avatars stack up under the channel name. Hover for a profile preview, and drag the channel and member lists to the width you like.",
+          "Search with Ctrl+K, jump to your channel, stacked avatars from six people on. Tested with 1000 people in 305 channels — smooth at 60 fps.",
       },
       {
         id: "people",
-        title: "Volume per person",
+        title: "Right-click people",
         body:
-          "0 to 200 %, local mute. Remembered by the person's certificate — even after they rename.",
+          "Profile, mute for me, volume from 0 to 200 %, private message. Remembered by the person's certificate — even after they rename. A profile preview shows on hover.",
       },
       {
         id: "reconnect",
@@ -162,10 +163,12 @@ export const en: Dict = {
     items: [
       { src: "wizard-1-identity", caption: "Set up in about a minute: identity, microphone, talk mode." },
       { src: "wizard-3-talk-mode", caption: "Voice activation or push-to-talk, mumble:// links and start at login." },
-      { src: "follow-unread-badge", caption: "Follow channels with a star, unread messages as a badge." },
+      { src: "follow-unread-badge", caption: "Follow channels with the eye, unread messages as a count." },
       { src: "notification-toast", caption: "A small pop-up announces new messages from other channels." },
       { src: "chat-compact", caption: "Compact chat layout: time, name and message on one line." },
       { src: "channel-avatar-stack", caption: "Crowded channels show a stack of avatars instead of a long list." },
+      { src: "context-menu", caption: "Right-click: mute, volume, private message." },
+      { src: "search", caption: "Ctrl+K searches channels and people." },
       { src: "banner-rejoin", caption: "After a restart, back into your last voice channel." },
       { src: "dialog-certificate-trust", caption: "Trust on first contact, with the fingerprint." },
       { src: "settings-07-sounds-notifications-dark", caption: "Sounds and notifications, set per event." },
@@ -181,7 +184,7 @@ export const en: Dict = {
     now: "now",
     steps: [
       { tag: "Epic 1 · 1a", title: "Everyday client", body: "Everything on this page. Unsigned builds for Linux, Windows and macOS.", now: true },
-      { tag: "Epic 1 · 1b", title: "Positional audio & overlay", body: "Mumble Link with the official game plugins, floating overlay." },
+      { tag: "Epic 1 · 1b", title: "Positional audio & overlay", body: "Mumble Link with the official game plugins, floating overlay. Plus link previews, @mentions, GIFs and code highlighting in chat." },
       { tag: "Epic 2", title: "Several servers at once", body: "Read along on all of them, talk on one." },
       { tag: "Epic 3", title: "Comfort", body: "Global hotkeys, full tray menu, import from the official client, whisper, server browser." },
       { tag: "Epic 4", title: "Admin", body: "ACLs, bans, channel management." },
@@ -194,7 +197,7 @@ export const en: Dict = {
     latest: "Latest version",
     prerelease: "Pre-release",
     published: "published on",
-    notes: "Release notes",
+    notes: "What's new",
     allReleases: "All releases",
     checksums: "Verify SHA256SUMS",
     noRelease:
@@ -210,6 +213,19 @@ export const en: Dict = {
     source: "Rather build it yourself? Rust, Node 24, one command.",
     sourceLink: "Build guide in the wiki",
   },
+  changelog: {
+    title: "Changelog",
+    description: "What changed in each Mumcord version — from the first alpha on.",
+    label: "Versions",
+    intro: "What changes for you in each version. The technical details are in the releases on GitHub.",
+    released: "released",
+    upcoming: "coming up",
+    upcomingNote: "This version isn't published yet. Once the release appears on GitHub, the download shows up here.",
+    download: "Download",
+    onGithub: "Release on GitHub",
+    known: "Known limitations",
+    githubOnly: "For this version there are only the release notes on GitHub.",
+  },
   footer: {
     tagline: "Modern voice chat for Mumble servers.",
     disclaimer:
@@ -220,6 +236,7 @@ export const en: Dict = {
     wiki: "Wiki",
     issues: "Report a bug",
     releases: "Releases",
+    changelog: "Changelog",
     license: "MIT License",
     imprint: "Legal notice",
     privacy: "Privacy",

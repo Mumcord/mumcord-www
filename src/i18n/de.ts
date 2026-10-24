@@ -12,6 +12,7 @@ export const de = {
     roadmap: "Roadmap",
     download: "Download",
     docs: "Doku",
+    changelog: "Changelog",
     skip: "Zum Inhalt springen",
     langSwitch: "English",
     menu: "Menü",
@@ -61,7 +62,7 @@ export const de = {
         id: "follow",
         title: "Kanälen folgen",
         body:
-          "Ein Klick auf den Stern, und du liest einen Kanal mit, ohne beizutreten — oder folgst über das Server-Menü gleich allen. Ungelesenes steht als Badge dran.",
+          "Ein Klick aufs Auge, und du liest einen Kanal mit, ohne beizutreten — oder folgst über das Server-Menü gleich allen. Ungelesenes steht als Zähler dran, auch im eigenen Kanal.",
       },
       {
         id: "audio",
@@ -91,13 +92,13 @@ export const de = {
         id: "crowd",
         title: "Auch große Server bleiben übersichtlich",
         body:
-          "Ab sechs Leuten stapeln sich die Avatare unter dem Kanalnamen. Profilvorschau beim Drüberfahren, Kanal- und Mitgliederliste lassen sich in der Breite ziehen.",
+          "Suche mit Strg+K, ein Sprung zu deinem Kanal, gestapelte Avatare ab sechs Leuten. Getestet mit 1000 Personen in 305 Kanälen — flüssig bei 60 fps.",
       },
       {
         id: "people",
-        title: "Lautstärke pro Person",
+        title: "Rechtsklick auf Leute",
         body:
-          "0 bis 200 %, lokal stummschalten. Gemerkt am Zertifikat der Person — auch nach einer Umbenennung.",
+          "Profil, für mich stummschalten, Lautstärke von 0 bis 200 %, private Nachricht. Gemerkt am Zertifikat der Person — auch nach einer Umbenennung. Profilvorschau schon beim Drüberfahren.",
       },
       {
         id: "reconnect",
@@ -161,10 +162,12 @@ export const de = {
     items: [
       { src: "wizard-1-identity", caption: "Einrichtung in etwa einer Minute: Identität, Mikrofon, Sprechmodus." },
       { src: "wizard-3-talk-mode", caption: "Sprachaktivierung oder Push-to-Talk, mumble://-Links und Autostart." },
-      { src: "follow-unread-badge", caption: "Kanälen per Stern folgen, Ungelesenes als Badge." },
+      { src: "follow-unread-badge", caption: "Kanälen per Auge folgen, Ungelesenes als Zähler." },
       { src: "notification-toast", caption: "Ein kleines Pop-up meldet neue Nachrichten aus anderen Kanälen." },
       { src: "chat-compact", caption: "Kompaktes Chat-Layout: Zeit, Name und Nachricht in einer Zeile." },
       { src: "channel-avatar-stack", caption: "Volle Kanäle zeigen einen Avatar-Stapel statt einer langen Liste." },
+      { src: "context-menu", caption: "Rechtsklick: stummschalten, Lautstärke, private Nachricht." },
+      { src: "search", caption: "Strg+K durchsucht Kanäle und Leute." },
       { src: "banner-rejoin", caption: "Nach dem Neustart zurück in den letzten Sprachkanal." },
       { src: "dialog-certificate-trust", caption: "Vertrauen beim ersten Kontakt, mit Fingerabdruck." },
       { src: "settings-07-sounds-notifications-dark", caption: "Töne und Benachrichtigungen, pro Ereignis einstellbar." },
@@ -180,7 +183,7 @@ export const de = {
     now: "jetzt",
     steps: [
       { tag: "Epic 1 · 1a", title: "Alltags-Client", body: "Alles auf dieser Seite. Unsignierte Builds für Linux, Windows und macOS.", now: true },
-      { tag: "Epic 1 · 1b", title: "Positional Audio & Overlay", body: "Mumble Link mit den offiziellen Spiel-Plugins, schwebendes Overlay." },
+      { tag: "Epic 1 · 1b", title: "Positional Audio & Overlay", body: "Mumble Link mit den offiziellen Spiel-Plugins, schwebendes Overlay. Dazu Link-Vorschauen, @Erwähnungen, GIFs und Code-Hervorhebung im Chat." },
       { tag: "Epic 2", title: "Mehrere Server gleichzeitig", body: "Auf allen Servern mitlesen, auf einem sprechen." },
       { tag: "Epic 3", title: "Komfort", body: "Globale Hotkeys, volles Tray-Menü, Import aus dem offiziellen Client, Flüstern, Server-Browser." },
       { tag: "Epic 4", title: "Admin", body: "ACLs, Banns, Kanalverwaltung." },
@@ -193,7 +196,7 @@ export const de = {
     latest: "Neueste Version",
     prerelease: "Vorabversion",
     published: "veröffentlicht am",
-    notes: "Release-Notes",
+    notes: "Was ist neu",
     allReleases: "Alle Releases",
     checksums: "SHA256SUMS prüfen",
     noRelease:
@@ -209,6 +212,19 @@ export const de = {
     source: "Lieber selbst bauen? Rust, Node 24, ein Befehl.",
     sourceLink: "Bauanleitung im Wiki",
   },
+  changelog: {
+    title: "Changelog",
+    description: "Was sich in jeder Mumcord-Version geändert hat — von der ersten Alpha an.",
+    label: "Versionen",
+    intro: "Was sich in jeder Version für dich ändert. Die technischen Details stehen in den Releases auf GitHub.",
+    released: "veröffentlicht am",
+    upcoming: "in Vorbereitung",
+    upcomingNote: "Diese Version ist noch nicht veröffentlicht. Sobald das Release auf GitHub erscheint, steht hier der Download.",
+    download: "Herunterladen",
+    onGithub: "Release auf GitHub",
+    known: "Bekannte Einschränkungen",
+    githubOnly: "Für diese Version gibt es nur die Release-Notes auf GitHub.",
+  },
   footer: {
     tagline: "Moderner Voice-Chat für Mumble-Server.",
     disclaimer:
@@ -219,6 +235,7 @@ export const de = {
     wiki: "Wiki",
     issues: "Fehler melden",
     releases: "Releases",
+    changelog: "Changelog",
     license: "MIT-Lizenz",
     imprint: "Impressum",
     privacy: "Datenschutz",
