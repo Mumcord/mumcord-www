@@ -183,12 +183,13 @@ export const en: Dict = {
     body: "The roadmap is a proposal and may change. Mobile apps and a web version are not planned. Nothing server-side will ever be required.",
     now: "now",
     steps: [
-      { tag: "Epic 1 · 1a", title: "Everyday client", body: "Everything on this page. Unsigned builds for Linux, Windows and macOS.", now: true },
-      { tag: "Epic 1 · 1b", title: "Positional audio & overlay", body: "Mumble Link with the official game plugins, floating overlay. Plus link previews, @mentions, GIFs and code highlighting in chat." },
+      { tag: "Epic 1 · 1a", title: "Everyday client", body: "Everything on this page, as version 0.1.0. Unsigned builds for Linux, Windows and macOS.", now: true },
+      { tag: "Epic 1 · 1b", title: "More chat", body: "Link previews, YouTube and Twitch cards that load only on click, external images, @mentions, Tenor GIFs, code highlighting and a formatting toolbar." },
+      { tag: "Epic 1 · 1c", title: "In game", body: "Positional audio via Mumble Link and the official game plugins. A floating, click-through overlay shows who is talking." },
       { tag: "Epic 2", title: "Several servers at once", body: "Read along on all of them, talk on one." },
       { tag: "Epic 3", title: "Comfort", body: "Global hotkeys, full tray menu, import from the official client, whisper, server browser." },
       { tag: "Epic 4", title: "Admin", body: "ACLs, bans, channel management." },
-      { tag: "Epic 5", title: "Distribution", body: "Signed installers, auto-update, opt-in crash reports." },
+      { tag: "Epic 5", title: "Distribution", body: "Signed installers, auto-update, opt-in crash reports, package listings." },
     ],
   },
   download: {

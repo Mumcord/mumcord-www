@@ -182,12 +182,13 @@ export const de = {
     body: "Die Roadmap ist ein Vorschlag und kann sich ändern. Mobile Apps und eine Web-Version sind nicht geplant. Serverseitig wird nie etwas nötig sein.",
     now: "jetzt",
     steps: [
-      { tag: "Epic 1 · 1a", title: "Alltags-Client", body: "Alles auf dieser Seite. Unsignierte Builds für Linux, Windows und macOS.", now: true },
-      { tag: "Epic 1 · 1b", title: "Positional Audio & Overlay", body: "Mumble Link mit den offiziellen Spiel-Plugins, schwebendes Overlay. Dazu Link-Vorschauen, @Erwähnungen, GIFs und Code-Hervorhebung im Chat." },
+      { tag: "Epic 1 · 1a", title: "Alltags-Client", body: "Alles auf dieser Seite, als Version 0.1.0. Unsignierte Builds für Linux, Windows und macOS.", now: true },
+      { tag: "Epic 1 · 1b", title: "Mehr Chat", body: "Link-Vorschauen, YouTube- und Twitch-Karten, die erst beim Klick laden, externe Bilder, @Erwähnungen, Tenor-GIFs, Code-Hervorhebung und eine Formatierungsleiste." },
+      { tag: "Epic 1 · 1c", title: "Im Spiel", body: "Positional Audio über Mumble Link und die offiziellen Spiel-Plugins. Ein schwebendes, durchklickbares Overlay zeigt, wer spricht." },
       { tag: "Epic 2", title: "Mehrere Server gleichzeitig", body: "Auf allen Servern mitlesen, auf einem sprechen." },
       { tag: "Epic 3", title: "Komfort", body: "Globale Hotkeys, volles Tray-Menü, Import aus dem offiziellen Client, Flüstern, Server-Browser." },
       { tag: "Epic 4", title: "Admin", body: "ACLs, Banns, Kanalverwaltung." },
-      { tag: "Epic 5", title: "Auslieferung", body: "Signierte Installer, Auto-Update, Absturzberichte nur mit Zustimmung." },
+      { tag: "Epic 5", title: "Auslieferung", body: "Signierte Installer, Auto-Update, Absturzberichte nur mit Zustimmung, Paketquellen." },
     ],
   },
   download: {
