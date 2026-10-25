@@ -184,12 +184,14 @@ export const de = {
     now: "jetzt",
     steps: [
       { tag: "Epic 1 · 1a", title: "Alltags-Client", body: "Alles auf dieser Seite, als Version 0.1.0. Unsignierte Builds für Linux, Windows und macOS.", now: true },
-      { tag: "Epic 1 · 1b", title: "Mehr Chat", body: "Link-Vorschauen, YouTube- und Twitch-Karten, die erst beim Klick laden, externe Bilder, @Erwähnungen, Tenor-GIFs, Code-Hervorhebung und eine Formatierungsleiste." },
-      { tag: "Epic 1 · 1c", title: "Im Spiel", body: "Positional Audio über Mumble Link und die offiziellen Spiel-Plugins. Ein schwebendes, durchklickbares Overlay zeigt, wer spricht." },
+      { tag: "Epic 1 · 1b", title: "Mehr Chat", body: "Link-Vorschauen zum Wegklicken, Karten für YouTube, Twitch und Spotify, die erst beim Klick laden, externe Bilder mit Bildbetrachter und Zoom, @Erwähnungen mit eigenem Ton, GIF-Favoriten, Code-Hervorhebung und eine Formatierungsleiste. Dazu eine manuelle Schwelle für die Sprachaktivierung und, wenn du willst, „Läuft gerade“: Andere sehen, welche Musik du hörst." },
+      { tag: "Epic 1 · 1c", title: "Im Spiel", body: "Positional Audio über Mumble Link und die offiziellen Spiel-Plugins. Ein schwebendes, durchklickbares Overlay zeigt, wer spricht. Auf Wunsch „Spielt gerade“ mit Spiel beitreten über Steam, und Schnelleinstellungen per Rechtsklick aufs Zahnrad." },
+      { tag: "Epic 1 · 1d", title: "Mumcord unter sich", body: "Mumcord-Clients teilen den Chatverlauf der letzten Tage, damit du nachlesen kannst, was vor deinem Beitreten geschrieben wurde. Ein Abzeichen zeigt, wer Mumcord nutzt. Doppelklick für private Nachrichten, neues Profil und Freunde mit Online-Status." },
       { tag: "Epic 2", title: "Mehrere Server gleichzeitig", body: "Auf allen Servern mitlesen, auf einem sprechen." },
       { tag: "Epic 3", title: "Komfort", body: "Globale Hotkeys, volles Tray-Menü, Import aus dem offiziellen Client, Flüstern, Server-Browser." },
       { tag: "Epic 4", title: "Admin", body: "ACLs, Banns, Kanalverwaltung." },
       { tag: "Epic 5", title: "Auslieferung", body: "Signierte Installer, Auto-Update, Absturzberichte nur mit Zustimmung, Paketquellen." },
+      { tag: "Epic 6", title: "GIF-Suche", body: "Suche nach GIFs, ohne einen API-Schlüssel in die App zu packen, den jemand auslesen könnte. Wie genau, wird noch entschieden." },
     ],
   },
   download: {

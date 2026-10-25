@@ -85,7 +85,7 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
       known: [
         "Die Installer sind unsigniert: Windows SmartScreen und macOS Gatekeeper warnen beim ersten Start.",
         "Eine Serververbindung gleichzeitig. Mehrere Server kommen mit Epic 2.",
-        "Chat-Extras wie Link-Vorschauen und @Erwähnungen folgen mit Stufe 1b, Positional Audio und Overlay mit Stufe 1c.",
+        "Chat-Extras wie Link-Vorschauen und @Erwähnungen folgen mit Stufe 1b, Positional Audio und Overlay mit Stufe 1c, geteilter Chatverlauf und Freunde mit Stufe 1d.",
       ],
     },
   ],
@@ -157,7 +157,7 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
       known: [
         "Installers are unsigned: Windows SmartScreen and macOS Gatekeeper warn on first start.",
         "One server connection at a time. Several servers come with Epic 2.",
-        "Chat extras like link previews and @mentions follow in stage 1b, positional audio and the overlay in stage 1c.",
+        "Chat extras like link previews and @mentions follow in stage 1b, positional audio and the overlay in stage 1c, shared chat history and friends in stage 1d.",
       ],
     },
   ],
