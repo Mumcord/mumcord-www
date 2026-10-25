@@ -327,7 +327,7 @@
         {
           "tag": "Epic 2",
           "title": "Useita palvelimia ja omat teemat",
-          "body": "Lue kaikkia, puhu yhdellä. Lisäksi omat teemat väreineen ja esiasetuksineen, jaettavissa tekstinä: chat näyttää esikatselukortin, ja yhdellä klikkauksella teema tuodaan. Näet myös muiden yhteyden laadun, ja pelinsisäinen overlay tulee Windowsiin."
+          "body": "Lue kaikkia, puhu yhdellä. Lisäksi omat teemat väreineen ja esiasetuksineen, jaettavissa tekstinä: chat näyttää esikatselukortin, ja yhdellä klikkauksella teema tuodaan. Myös: yhteyden laatu kaikille, täysikokoiset kuvat suoraan Mumcordista Mumcordiin ja pelinsisäinen overlay myös Windowsiin, kun taas overlay-ikkuna poistuu. Lopuksi betana: YouTube-katselubileet ja näytönjako."
         },
         {
           "tag": "Epic 3",
@@ -815,6 +815,7 @@
         }
       ],
       "known": [
+        "Jos suljet Mumcordin, kun overlayta käyttävä peli on käynnissä, peli voi kaatua. Sulje ensin peli tai laita pelinsisäinen overlay pois päältä; tämä korjataan Epic 2:ssa.",
         "Asennusohjelmat ovat yhä allekirjoittamattomia."
       ]
     },
@@ -1100,18 +1101,25 @@
       {
         "id": "epic-2",
         "title": "Useita palvelimia ja omat teemat",
-        "summary": "Kaikkialla yhtä aikaa, ja juuri sinun tavallasi.",
+        "summary": "Kaikkialla yhtä aikaa, juuri sinun tavallasi, ja lopuksi katsotaan yhdessä.",
         "items": [
           "Yhdistä useaan palvelimeen kerralla, lue kaikkia, puhu yhdellä",
           "Omat teemat väriasetuksineen ja esiasetuksineen",
           "Jaa teemoja tekstinä: chat näyttää esikatselukortin, ja yhdellä klikkauksella teema tuodaan",
-          "Muiden yhteyden laatu: ping, pakettihävikki ja kaistanleveys valikossa ja profiilissa, kuvake, kun yhteys on huono",
+          "Yhteyden laatu, muiden ja omasi: ping, pakettihävikki, kaistanleveys ja kulkeeko ääni UDP:n vai TCP:n kautta, valikossa ja profiilissa, halutessa signaalikuvakkeella",
+          "Yhtenäinen ilme: teeman mukaiset pudotusvalikot selaimen omien sijaan, ja kaikki asetusten kentät siististi linjassa",
+          "Ohut edistymispalkki chatin kuvien alla, kun täysikokoinen kuva latautuu",
+          "Täysikokoiset kuvat kulkevat mahdollisuuksien mukaan suoraan Mumcordista Mumcordiin, mikä on paljon nopeampaa. Voi poistaa käytöstä asetuksista, koska muut näkevät IP-osoitteesi",
+          "Vain pelinsisäinen overlay jää: overlay-ikkuna poistuu. Windows saa overlayn, kun sen pelinsisäinen overlay on valmis",
+          "Korjattu: Mumcordin sulkeminen ei enää kaada käynnissä olevaa peliä, joka käyttää overlayta",
           "Siirretty Epic 1:stä: pelinsisäinen overlay Windowsissa, Flatpak-Steamissa ja HDR-näytöillä",
           "Siirretty Epic 1:stä: ”Liity kanavalle” toisella palvelimella oleville kavereille",
           "Siirretty Epic 1:stä: overlay pysyy päällimmäisenä myös reunattomassa koko näytön tilassa pelattavissa peleissä",
           "Siirretty Epic 1:stä: ”Liity peliin” myös Mumble Linkin kautta tunnistetuissa peleissä",
           "Siirretty Epic 1:stä: kuvankatseluohjelman sulkeminen pysäyttää käynnissä olevan täysikokoisen kuvan siirron",
-          "Siirretty Epic 1:stä: pelilisäosien testaus oikeilla peleillä, jotta sijaintiääni, lisäosat ja täysikokoiset kuvat pääsevät betasta"
+          "Siirretty Epic 1:stä: pelilisäosien testaus oikeilla peleillä, jotta sijaintiääni, lisäosat ja täysikokoiset kuvat pääsevät betasta",
+          "Lopuksi betana: YouTube-katselubileet, koko kanava katsoo samaa videota yhtä aikaa, toisto, tauko ja kelaus synkronoituina",
+          "Lopuksi betana: näytönjako Mumcord-käyttäjien välillä, suoraan ja ilman kenenkään muun palvelinta, IPv6:n, reitittimesi porttiohjauksen tai oman verkkosi kautta"
         ]
       },
       {
@@ -1225,7 +1233,7 @@
         "linux": "yes",
         "windows": "yes",
         "macos": "no",
-        "note": "Läpinäkyvä, läpiklikattava ja aina päällimmäisenä, säädettävä kulma, koko ja läpinäkyvyys. X11:ssä ja Waylandissa; KDE Waylandissa Mumcord luo ikkunasäännön yhdellä klikkauksella."
+        "note": "Läpinäkyvä, läpiklikattava ja aina päällimmäisenä, säädettävä kulma, koko ja läpinäkyvyys. X11:ssä ja Waylandissa; KDE Waylandissa Mumcord luo ikkunasäännön yhdellä klikkauksella. Epic 2:ssa overlay-ikkuna poistuu ja vain pelinsisäinen overlay jää."
       },
       {
         "title": "Kytkentä ilmoitusalueelta ja pika-asetuksista",
@@ -1263,7 +1271,8 @@
       "League of Legends": "varovasti: käyttää nykyään Riot Vanguardia",
       "Source Engine": "Left 4 Dead 1 ja 2, Linuxissa myös muita Source-pelejä",
       "World of Warcraft": "32- ja 64-bittinen"
-    }
+    },
+    "overlayWarning": "Tunnettu ongelma: jos suljet Mumcordin, kun overlayta käyttävä peli on käynnissä, peli voi kaatua. Sulje ensin peli tai laita pelinsisäinen overlay pois päältä. Tämä korjataan Epic 2:ssa."
   },
   "blocked": [
     {

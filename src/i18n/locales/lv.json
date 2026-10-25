@@ -327,7 +327,7 @@
         {
           "tag": "Epic 2",
           "title": "Vairāki serveri un savas tēmas",
-          "body": "Lasi līdzi visos, runā vienā. Plus pielāgotas tēmas ar krāsām un sagatavēm, kopīgojamas kā teksts: tērzēšanā parādās priekšskatījuma kartīte, viens klikšķis importē tēmu. Tu redzi arī citu savienojuma kvalitāti, un spēles pārklājums nonāk uz Windows."
+          "body": "Lasi līdzi visos, runā vienā. Plus pielāgotas tēmas ar krāsām un sagatavēm, kopīgojamas kā teksts: tērzēšanā parādās priekšskatījuma kartīte, viens klikšķis importē tēmu. Vēl: savienojuma kvalitāte visiem, attēli pilnā izmērā tieši no Mumcord uz Mumcord un spēles pārklājums arī uz Windows, bet pārklājuma logs pazūd. Beigās, kā beta: YouTube kopskatīšanās un ekrāna kopīgošana."
         },
         {
           "tag": "Epic 3",
@@ -815,6 +815,7 @@
         }
       ],
       "known": [
+        "Ja aizver Mumcord, kamēr darbojas spēle ar pārklājumu, spēle var avarēt. Vispirms aizver spēli vai izslēdz spēles pārklājumu; tas tiks salabots Epic 2.",
         "Instalētāji joprojām nav parakstīti."
       ]
     },
@@ -1100,18 +1101,25 @@
       {
         "id": "epic-2",
         "title": "Vairāki serveri un savas tēmas",
-        "summary": "Visur vienlaikus, un tā, kā tev patīk.",
+        "summary": "Visur vienlaikus, tā, kā tev patīk, un beigās – skatīšanās kopā.",
         "items": [
           "Pieslēdzies vairākiem serveriem vienlaikus, lasi līdzi visos, runā vienā",
           "Pielāgotas tēmas ar krāsu iestatījumiem un sagatavēm",
           "Kopīgo tēmas kā tekstu: tērzēšanā parādās priekšskatījuma kartīte, viens klikšķis importē tēmu",
-          "Redzi citu savienojuma kvalitāti: ping, pakešu zudumu un joslas platumu izvēlnē un profilā, ikonu, kad savienojums ir slikts",
+          "Redzi savienojuma kvalitāti, citu un savu: ping, pakešu zudumu, joslas platumu un to, vai balss iet pa UDP vai TCP, izvēlnē un profilā, pēc izvēles ar signāla ikonu",
+          "Vienots izskats: tēmai atbilstošas nolaižamās izvēlnes pārlūka izvēlņu vietā, visi iestatījumu lauki glīti izlīdzināti",
+          "Plāna progresa josla zem tērzēšanas attēliem, kamēr ielādējas pilnais izmērs",
+          "Attēli pilnā izmērā, kad iespējams, iet tieši no Mumcord uz Mumcord, un tas ir daudz ātrāk. Iestatījumos var izslēgt, jo citi redz tavu IP adresi",
+          "Paliek tikai spēles pārklājums: pārklājuma logs pazūd. Windows saņems pārklājumu, tiklīdz tur būs gatavs spēles pārklājums",
+          "Labots: Mumcord aizvēršana vairs neizraisa avāriju spēlē, kas darbojas ar pārklājumu",
           "Pārnests no Epic 1: spēles pārklājums uz Windows, ar Flatpak Steam un uz HDR ekrāniem",
           "Pārnests no Epic 1: “Pievienoties kanālam” draugiem citā serverī",
           "Pārnests no Epic 1: pārklājums paliek virspusē arī spēlēs bezrāmju pilnekrāna režīmā",
           "Pārnests no Epic 1: “Pievienoties spēlei” arī spēlēm, kas atpazītas caur Mumble Link",
           "Pārnests no Epic 1: aizverot attēlu skatītāju, tiek apturēta notiekoša attēla pārsūtīšana pilnā izmērā",
-          "Pārnests no Epic 1: spēļu spraudņu pārbaude ar īstām spēlēm, lai telpiskā skaņa, spraudņi un attēli pilnā izmērā varētu iziet no beta"
+          "Pārnests no Epic 1: spēļu spraudņu pārbaude ar īstām spēlēm, lai telpiskā skaņa, spraudņi un attēli pilnā izmērā varētu iziet no beta",
+          "Beigās, kā beta: YouTube kopskatīšanās, visi kanālā vienlaikus skatās to pašu video, ar sinhronizētu atskaņošanu, pauzi un pārtīšanu",
+          "Beigās, kā beta: ekrāna kopīgošana starp Mumcord lietotājiem, tieši un bez kāda cita servera, caur IPv6, tava maršrutētāja portu pāradresāciju vai tavu paša tīklu"
         ]
       },
       {
@@ -1225,7 +1233,7 @@
         "linux": "yes",
         "windows": "yes",
         "macos": "no",
-        "note": "Caurspīdīgs, cauri klikšķināms un vienmēr virspusē, ar stūri, izmēru un necaurredzamību. Uz X11 un Wayland; uz KDE Wayland Mumcord ar vienu klikšķi iestata loga noteikumu."
+        "note": "Caurspīdīgs, cauri klikšķināms un vienmēr virspusē, ar stūri, izmēru un necaurredzamību. Uz X11 un Wayland; uz KDE Wayland Mumcord ar vienu klikšķi iestata loga noteikumu. Ar Epic 2 pārklājuma logs pazūd un paliek tikai spēles pārklājums."
       },
       {
         "title": "Pārslēdzams no teknes un ātrajiem iestatījumiem",
@@ -1263,7 +1271,8 @@
       "League of Legends": "uzmanīgi: šodien darbojas ar Riot Vanguard",
       "Source Engine": "Left 4 Dead 1 un 2, vairāk Source spēļu uz Linux",
       "World of Warcraft": "32 un 64 biti"
-    }
+    },
+    "overlayWarning": "Zināma problēma: ja aizver Mumcord, kamēr darbojas spēle ar pārklājumu, spēle var avarēt. Vispirms aizver spēli vai izslēdz spēles pārklājumu. Tas tiks salabots Epic 2."
   },
   "blocked": [
     {

@@ -40,6 +40,7 @@ export interface GamesPage {
   overlayBody: string;
   feature: string;
   overlayRows: OverlayRow[];
+  overlayWarning: string;
   testedTitle: string;
   testedBody: string;
   tested: string[];
@@ -200,7 +201,7 @@ const source: Record<"de" | "en", GamesPage> = {
         linux: "yes",
         windows: "yes",
         macos: "no",
-        note: "Durchsichtig, durchklickbar und immer im Vordergrund, mit Ecke, Größe und Deckkraft. Unter X11 und Wayland; unter KDE Wayland legt Mumcord die Fensterregel mit einem Klick an.",
+        note: "Durchsichtig, durchklickbar und immer im Vordergrund, mit Ecke, Größe und Deckkraft. Unter X11 und Wayland; unter KDE Wayland legt Mumcord die Fensterregel mit einem Klick an. Mit Epic 2 fällt das Overlay-Fenster weg, dann bleibt nur das Overlay im Spiel.",
       },
       {
         title: "Im Tray und in den Schnelleinstellungen schaltbar",
@@ -209,6 +210,8 @@ const source: Record<"de" | "en", GamesPage> = {
         macos: "no",
       },
     ],
+    overlayWarning:
+      "Bekanntes Problem: Schließt du Mumcord, während ein Spiel mit Overlay läuft, kann das Spiel abstürzen. Schließ zuerst das Spiel oder schalte das Overlay im Spiel aus. Behoben wird das mit Epic 2.",
     testedTitle: "Getestete Spiele",
     testedBody: "Mit diesen Spielen ist das Overlay im Spiel unter Linux ausprobiert:",
     tested: ["Tyr", "Supermarket Simulator"],
@@ -297,7 +300,7 @@ const source: Record<"de" | "en", GamesPage> = {
         linux: "yes",
         windows: "yes",
         macos: "no",
-        note: "Transparent, click-through and always on top, with corner, size and opacity. On X11 and Wayland; on KDE Wayland Mumcord sets up the window rule in one click.",
+        note: "Transparent, click-through and always on top, with corner, size and opacity. On X11 and Wayland; on KDE Wayland Mumcord sets up the window rule in one click. With Epic 2 the overlay window goes away and only the in-game overlay stays.",
       },
       {
         title: "Switch from the tray and quick settings",
@@ -306,6 +309,8 @@ const source: Record<"de" | "en", GamesPage> = {
         macos: "no",
       },
     ],
+    overlayWarning:
+      "Known issue: if you close Mumcord while a game with the overlay is running, the game can crash. Close the game first or turn the in-game overlay off. This gets fixed in Epic 2.",
     testedTitle: "Tested games",
     testedBody: "The in-game overlay has been tried on Linux with these games:",
     tested: ["Tyr", "Supermarket Simulator"],

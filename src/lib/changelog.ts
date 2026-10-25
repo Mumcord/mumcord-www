@@ -33,7 +33,10 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
           ],
         },
       ],
-      known: ["Die Installer sind weiterhin unsigniert."],
+      known: [
+        "Schließt du Mumcord, während ein Spiel mit Overlay läuft, kann das Spiel abstürzen. Schließ zuerst das Spiel oder schalte das Overlay im Spiel aus; behoben wird das mit Epic 2.",
+        "Die Installer sind weiterhin unsigniert.",
+      ],
     },
     {
       version: "0.3.0",
@@ -234,7 +237,10 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
           ],
         },
       ],
-      known: ["Installers are still unsigned."],
+      known: [
+        "If you close Mumcord while a game with the overlay is running, the game can crash. Close the game first or turn the in-game overlay off; this gets fixed in Epic 2.",
+        "Installers are still unsigned.",
+      ],
     },
     {
       version: "0.3.0",

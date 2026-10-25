@@ -327,7 +327,7 @@
         {
           "tag": "Epic 2",
           "title": "Viac serverov a vlastné témy",
-          "body": "Čítaj na všetkých, hovor na jednom. K tomu vlastné témy s farbami a predvoľbami, zdieľateľné ako text: chat ukáže kartu s náhľadom, jedným klikom tému importuješ. Uvidíš aj kvalitu pripojenia ostatných a herný overlay príde na Windows."
+          "body": "Čítaj na všetkých, hovor na jednom. K tomu vlastné témy s farbami a predvoľbami, zdieľateľné ako text: chat ukáže kartu s náhľadom, jedným klikom tému importuješ. Ďalej: kvalita pripojenia pre všetkých, obrázky v plnej veľkosti priamo z Mumcordu do Mumcordu a herný overlay aj na Windows, zatiaľ čo overlay okno zmizne. Na záver, ako beta: spoločné pozeranie YouTube a zdieľanie obrazovky."
         },
         {
           "tag": "Epic 3",
@@ -815,6 +815,7 @@
         }
       ],
       "known": [
+        "Ak zatvoríš Mumcord, kým beží hra s overlayom, hra môže spadnúť. Najprv zatvor hru alebo vypni herný overlay; opraví sa to v Epicu 2.",
         "Inštalátory sú stále nepodpísané."
       ]
     },
@@ -1100,18 +1101,25 @@
       {
         "id": "epic-2",
         "title": "Viac serverov a vlastné témy",
-        "summary": "Všade naraz, a tak, ako to máš rád.",
+        "summary": "Všade naraz, tak, ako to máš rád, a na záver spoločné pozeranie.",
         "items": [
           "Pripojenie k viacerým serverom naraz, čítaj na všetkých, hovor na jednom",
           "Vlastné témy s nastavením farieb a predvoľbami",
           "Zdieľanie tém ako text: chat ukáže kartu s náhľadom, jedným klikom tému importuješ",
-          "Kvalita pripojenia ostatných: ping, strata paketov a šírka pásma v menu a profile, ikona pri zlom pripojení",
+          "Kvalita pripojenia ostatných aj tvoja: ping, strata paketov, šírka pásma a či hlas ide cez UDP alebo TCP, v menu a profile, voliteľne s ikonou signálu",
+          "Jednotný vzhľad: rozbaľovacie zoznamy v štýle témy namiesto tých z prehliadača, každé pole v nastaveniach pekne zarovnané",
+          "Tenký ukazovateľ priebehu pod obrázkami v chate, kým sa načíta plná veľkosť",
+          "Obrázky v plnej veľkosti idú, keď sa dá, priamo z Mumcordu do Mumcordu, čo je oveľa rýchlejšie. Dá sa to vypnúť v nastaveniach, lebo ostatní vidia tvoju IP adresu",
+          "Zostane len herný overlay: overlay okno zmizne. Windows dostane overlay, keď tam bude herný overlay hotový",
+          "Opravené: zatvorenie Mumcordu už nezhodí bežiacu hru, ktorá používa overlay",
           "Presunuté z Epicu 1: herný overlay na Windows, so Steamom vo Flatpaku a na HDR obrazovkách",
           "Presunuté z Epicu 1: „Pripojiť sa do kanála“ pri priateľoch na inom serveri",
           "Presunuté z Epicu 1: overlay zostane navrchu aj v hrách na celú obrazovku bez okrajov",
           "Presunuté z Epicu 1: „Pripojiť sa do hry“ aj pri hrách rozpoznaných cez Mumble Link",
           "Presunuté z Epicu 1: zatvorenie prehliadača obrázkov zastaví prebiehajúci prenos obrázka v plnej veľkosti",
-          "Presunuté z Epicu 1: otestovať herné pluginy so skutočnými hrami, aby priestorový zvuk, pluginy a obrázky v plnej veľkosti mohli opustiť betu"
+          "Presunuté z Epicu 1: otestovať herné pluginy so skutočnými hrami, aby priestorový zvuk, pluginy a obrázky v plnej veľkosti mohli opustiť betu",
+          "Na záver, ako beta: spoločné pozeranie YouTube, všetci v kanáli pozerajú to isté video naraz, so synchronizovaným prehrávaním, pauzou aj pretáčaním",
+          "Na záver, ako beta: zdieľanie obrazovky medzi používateľmi Mumcordu, priamo a bez cudzieho servera, cez IPv6, presmerovanie portov na tvojom routeri alebo tvoju vlastnú sieť"
         ]
       },
       {
@@ -1225,7 +1233,7 @@
         "linux": "yes",
         "windows": "yes",
         "macos": "no",
-        "note": "Priehľadné, dá sa cezeň klikať a je vždy navrchu, s nastavením rohu, veľkosti a priehľadnosti. Na X11 aj Waylande; na KDE Wayland Mumcord jedným klikom nastaví pravidlo okna."
+        "note": "Priehľadné, dá sa cezeň klikať a je vždy navrchu, s nastavením rohu, veľkosti a priehľadnosti. Na X11 aj Waylande; na KDE Wayland Mumcord jedným klikom nastaví pravidlo okna. S Epicom 2 overlay okno zmizne a zostane len herný overlay."
       },
       {
         "title": "Prepínanie zo systémovej lišty a rýchlych nastavení",
@@ -1263,7 +1271,8 @@
       "League of Legends": "pozor: dnes beží s Riot Vanguard",
       "Source Engine": "Left 4 Dead 1 a 2, ďalšie hry na Source na Linuxe",
       "World of Warcraft": "32 a 64 bit"
-    }
+    },
+    "overlayWarning": "Známy problém: ak zatvoríš Mumcord, kým beží hra s overlayom, hra môže spadnúť. Najprv zatvor hru alebo vypni herný overlay. Opraví sa to v Epicu 2."
   },
   "blocked": [
     {

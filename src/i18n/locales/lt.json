@@ -327,7 +327,7 @@
         {
           "tag": "Epic 2",
           "title": "Keli serveriai ir savos temos",
-          "body": "Skaityk visuose, kalbėk viename. Taip pat savos temos su spalvomis ir šablonais, kuriomis galima dalytis kaip tekstu: pokalbyje rodoma peržiūros kortelė, vienas spustelėjimas temą importuoja. Taip pat matai kitų ryšio kokybę, o perdanga žaidime ateina į Windows."
+          "body": "Skaityk visuose, kalbėk viename. Taip pat savos temos su spalvomis ir šablonais, kuriomis galima dalytis kaip tekstu: pokalbyje rodoma peržiūros kortelė, vienas spustelėjimas temą importuoja. Be to: visų ryšio kokybė, viso dydžio paveikslėliai tiesiai iš Mumcord į Mumcord ir perdanga žaidime taip pat Windows sistemoje, o perdangos langas dingsta. Pabaigoje, kaip beta: YouTube žiūrėjimas kartu ir ekrano bendrinimas."
         },
         {
           "tag": "Epic 3",
@@ -815,6 +815,7 @@
         }
       ],
       "known": [
+        "Jei uždarai Mumcord, kol veikia žaidimas su perdanga, žaidimas gali užlūžti. Pirmiau uždaryk žaidimą arba išjunk perdangą žaidime; tai bus ištaisyta 2 epike.",
         "Diegimo programos vis dar nepasirašytos."
       ]
     },
@@ -1100,18 +1101,25 @@
       {
         "id": "epic-2",
         "title": "Keli serveriai ir savos temos",
-        "summary": "Visur vienu metu ir taip, kaip tau patinka.",
+        "summary": "Visur vienu metu, taip, kaip tau patinka, o pabaigoje – žiūrėjimas kartu.",
         "items": [
           "Junkis prie kelių serverių vienu metu, skaityk visuose, kalbėk viename",
           "Savos temos su spalvų nustatymais ir šablonais",
           "Dalykis temomis kaip tekstu: pokalbyje rodoma peržiūros kortelė, vienas spustelėjimas temą importuoja",
-          "Matyk kitų ryšio kokybę: ping, paketų praradimas ir pralaidumas meniu ir profilyje, piktograma, kai ryšys prastas",
+          "Matyk ryšio kokybę – kitų ir savo: ping, paketų praradimas, pralaidumas ir ar balsas eina per UDP, ar per TCP, meniu ir profilyje, pasirinktinai su signalo piktograma",
+          "Vientisa išvaizda: temą atitinkantys išskleidžiamieji sąrašai vietoj naršyklės sąrašų, visi nustatymų laukai tvarkingai sulygiuoti",
+          "Plona eigos juosta po pokalbio paveikslėliais, kol įkeliamas viso dydžio vaizdas",
+          "Viso dydžio paveikslėliai, kai įmanoma, keliauja tiesiai iš Mumcord į Mumcord – taip daug greičiau. Nustatymuose galima išjungti, nes kiti mato tavo IP adresą",
+          "Lieka tik perdanga žaidime: perdangos langas dingsta. Windows gaus perdangą, kai ten bus paruošta perdanga žaidime",
+          "Ištaisyta: uždarius Mumcord, nebeužlūžta veikiantis žaidimas, naudojantis perdangą",
           "Perkelta iš 1 epiko: perdanga žaidime Windows sistemoje, su Flatpak Steam ir HDR ekranuose",
           "Perkelta iš 1 epiko: „Prisijungti prie kanalo“ draugams kitame serveryje",
           "Perkelta iš 1 epiko: perdanga lieka viršuje ir žaidimuose be rėmelių per visą ekraną",
           "Perkelta iš 1 epiko: „Prisijungti prie žaidimo“ ir žaidimams, aptiktiems per Mumble Link",
           "Perkelta iš 1 epiko: uždarius paveikslėlių peržiūros programą sustabdomas vykstantis viso dydžio paveikslėlio perdavimas",
-          "Perkelta iš 1 epiko: žaidimų papildinių patikra su tikrais žaidimais, kad erdvinis garsas, papildiniai ir viso dydžio paveikslėliai galėtų išeiti iš beta"
+          "Perkelta iš 1 epiko: žaidimų papildinių patikra su tikrais žaidimais, kad erdvinis garsas, papildiniai ir viso dydžio paveikslėliai galėtų išeiti iš beta",
+          "Pabaigoje, kaip beta: YouTube žiūrėjimas kartu – visi kanale vienu metu žiūri tą patį vaizdo įrašą, su sinchronizuotu paleidimu, pristabdymu ir persukimu",
+          "Pabaigoje, kaip beta: ekrano bendrinimas tarp Mumcord naudotojų, tiesiogiai ir be jokio svetimo serverio, per IPv6, tavo maršrutizatoriaus prievadų peradresavimą arba tavo paties tinklą"
         ]
       },
       {
@@ -1225,7 +1233,7 @@
         "linux": "yes",
         "windows": "yes",
         "macos": "no",
-        "note": "Permatomas, spustelėjimus praleidžiantis ir visada viršuje, su pasirenkamu kampu, dydžiu ir permatomumu. X11 ir Wayland aplinkose; KDE Wayland aplinkoje Mumcord vienu spustelėjimu sukuria lango taisyklę."
+        "note": "Permatomas, spustelėjimus praleidžiantis ir visada viršuje, su pasirenkamu kampu, dydžiu ir permatomumu. X11 ir Wayland aplinkose; KDE Wayland aplinkoje Mumcord vienu spustelėjimu sukuria lango taisyklę. Su 2 epiku perdangos langas dingsta ir lieka tik perdanga žaidime."
       },
       {
         "title": "Perjungimas iš dėklo ir greitųjų nustatymų",
@@ -1263,7 +1271,8 @@
       "League of Legends": "atsargiai: dabar veikia su Riot Vanguard",
       "Source Engine": "Left 4 Dead 1 ir 2, daugiau Source žaidimų Linux sistemoje",
       "World of Warcraft": "32 ir 64 bitų"
-    }
+    },
+    "overlayWarning": "Žinoma problema: jei uždarai Mumcord, kol veikia žaidimas su perdanga, žaidimas gali užlūžti. Pirmiau uždaryk žaidimą arba išjunk perdangą žaidime. Tai bus ištaisyta 2 epike."
   },
   "blocked": [
     {
