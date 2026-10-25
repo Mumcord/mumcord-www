@@ -167,6 +167,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
             title: "Themes und Look",
             items: [
               "Eigene Themes aus wenigen Grundfarben, mit Vorlagen und Live-Vorschau, jedes in einer dunklen und einer hellen Version; die zweite erzeugt Mumcord selbst und sorgt für gut lesbaren Kontrast",
+              "Themes als Farbkreise auswählen; eigene Themes speichern, umbenennen und löschen, die helle und die dunkle Version nebeneinander bearbeiten",
               "Themes als Text teilen: Im Chat erscheint eine Vorschaukarte, ein Klick übernimmt das Theme für die App oder für einen Server",
               "Auf Wunsch ein eigenes Theme pro Server",
               "Der Look dieser Website in der App: leuchtende Knöpfe, Farbverläufe, Glas-Effekte und leichtes Filmkorn, abschaltbar",
@@ -180,6 +181,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Große Server frieren beim ersten Anzeigen nicht mehr ein, dazu die Schalter „Leere Kanäle ausblenden“ und „Sprechende zuerst“",
               "Nachrichten gelten erst als gesendet, wenn der Server sie bestätigt; abgelehnte lassen sich erneut senden",
               "Profilkommentar mit Fett, Kursiv, Links und Listen",
+              "Ein eigener Regler für die Bitrate, bis zum höchsten Wert, den Server und Mumble zulassen",
               "Falsches Passwort? Ein Fenster fragt gleich nach dem richtigen und speichert es auf Wunsch",
               "Wer einem Kanal nur zuhört, steht mit einem Ohr-Symbol in der normalen Liste statt in einer eigenen Gruppe",
             ],
@@ -189,12 +191,15 @@ const source: Record<"de" | "en", RoadmapPage> = {
             items: [
               "Auf Nachrichten antworten, im Kanal und privat: mit einem kurzen Zitat, das auch im offiziellen Mumble-Client lesbar ist; ein Klick darauf springt zum Original",
               "Bei langen Nachrichten steht das Profilbild oben beim Namen, und beim Scrollen bleiben Bild und Name sichtbar",
+              "Antwortet jemand auf deine Nachricht, zählt das wie eine @Erwähnung",
+              "„> Text“ wird zum Zitat, auch per Knopf; „>_>“ und ähnliche Smileys bleiben, wie sie sind",
+              "Willkommensnachricht des Servers und Kanalbeschreibung lassen sich wegklicken und tauchen wieder auf, wenn sie sich ändern",
             ],
           },
           {
             title: "Verbindungsqualität",
             items: [
-              "Ping, Paketverlust, Bandbreite und UDP oder TCP im Profil und im Menü einer Person, auch für dich selbst; Admins sehen zusätzlich Client und Betriebssystem",
+              "Die Verbindung im Profil auf einen Blick (gut, mittel, schwach), aufgeklappt mit Ping, Paketverlust, Bandbreite und UDP oder TCP, auch für dich selbst; im Menü einer Person kurz Ping und Verbindungsart. Admins sehen zusätzlich Client und Betriebssystem",
               "Ein kleines Signal-Symbol bei Leuten mit schwacher Verbindung, abschaltbar",
             ],
           },
@@ -215,14 +220,15 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Direkte, verschlüsselte Verbindungen zwischen Mumcord-Nutzern über IPv6, die Portfreigabe des Routers oder das eigene Netz, ohne fremden Server",
               "Mumcord fragt vorher einmal, weil die anderen dabei deine IP-Adresse sehen; in den Einstellungen änderbar",
               "Bilder in voller Größe kommen darüber viel schneller an; klappt keine direkte Verbindung, läuft es wie bisher",
-              "Schließt du den Bildbetrachter, bricht die Übertragung ab",
+              "Schließt du den Bildbetrachter, lädt das Bild im Hintergrund weiter; abbrechen geht mit dem × am Fortschrittsbalken",
             ],
           },
           {
             title: "Zusammen schauen (Beta)",
             items: [
-              "YouTube-Watch-Party: Alle im Sprachkanal schauen dasselbe Video gleichzeitig, jeder kann pausieren und spulen",
+              "YouTube-Watch-Party: Alle im Sprachkanal schauen dasselbe Video gleichzeitig, jeder kann pausieren und spulen, mit gemeinsamer Playlist, zu der alle etwas hinzufügen",
               "Bildschirm oder Fenster teilen, für bis zu 8 Zuschauer, standardmäßig in 720p mit 30 Bildern pro Sekunde; unter Windows und macOS auf Wunsch mit dem Ton der geteilten App, unter Linux ohne Ton",
+              "Beides startest du über einen Apps-Knopf im Chat deines Sprachkanals",
             ],
           },
           {
@@ -408,6 +414,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
             title: "Themes and look",
             items: [
               "Your own themes from a few key colours, with presets and a live preview, each in a dark and a light version; Mumcord makes the second one itself and keeps the contrast readable",
+              "Pick themes as colour circles; save, rename and delete your own, and edit the light and dark versions side by side",
               "Share themes as text: the chat shows a preview card, one click applies the theme to the app or to a server",
               "A theme per server if you like",
               "This website's look in the app: glowing buttons, gradients, glass effects and a light film grain, can be switched off",
@@ -421,6 +428,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Big servers no longer freeze when first shown, plus “Hide empty channels” and “Talking people first” switches",
               "Messages only count as sent once the server confirms them; refused ones can be sent again",
               "Profile comment with bold, italic, links and lists",
+              "A bitrate slider of its own, up to the highest value the server and Mumble allow",
               "Wrong password? A window asks for the right one straight away and saves it if you like",
               "People who only listen to a channel appear in the normal list with an ear icon instead of in a group of their own",
             ],
@@ -430,12 +438,15 @@ const source: Record<"de" | "en", RoadmapPage> = {
             items: [
               "Reply to messages, in channels and in private: with a short quote that also reads fine in the official Mumble client; one click on it jumps to the original",
               "On long messages the profile picture sits at the top next to the name, and picture and name stay in view while you scroll",
+              "A reply to your message counts like an @mention",
+              "“> text” becomes a quote, also with a button; “>_>” and similar smileys stay as they are",
+              "The server's welcome message and the channel description can be closed and come back when they change",
             ],
           },
           {
             title: "Connection quality",
             items: [
-              "Ping, packet loss, bandwidth and UDP or TCP in a person's profile and menu, for yourself too; admins also see the client and operating system",
+              "The connection in a person's profile at a glance (good, fair, weak), expanded with ping, packet loss, bandwidth and UDP or TCP, for yourself too; a person's menu shows just ping and transport. Admins also see the client and operating system",
               "A small signal icon next to people with a weak connection, can be switched off",
             ],
           },
@@ -456,14 +467,15 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Direct, encrypted connections between Mumcord users over IPv6, your router's port mapping or your own network, without anyone else's server",
               "Mumcord asks once first, because the others see your IP address; you can change it in the settings",
               "Full-size images arrive much faster that way; if no direct connection works, it works as before",
-              "Closing the image viewer stops the transfer",
+              "Closing the image viewer keeps the image loading in the background; the × on the progress bar cancels it",
             ],
           },
           {
             title: "Watching together (beta)",
             items: [
-              "YouTube watch party: everyone in the voice channel watches the same video at once, anyone can pause and seek",
+              "YouTube watch party: everyone in the voice channel watches the same video at once, anyone can pause and seek, with a shared playlist everyone can add to",
               "Share a screen or a window for up to 8 viewers, 720p at 30 frames per second by default; on Windows and macOS with the shared app's sound if you like, on Linux without sound",
+              "Start both from an Apps button in your voice channel's chat",
             ],
           },
           {
