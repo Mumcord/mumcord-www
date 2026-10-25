@@ -17,6 +17,9 @@ COPY package.json package-lock.json ./
 RUN npm ci --no-audit --no-fund
 COPY . .
 ARG SITE_URL=https://mumcord.app
+# Changes on every workflow run, so the build (and its release data from GitHub) never comes
+# from the layer cache; otherwise a new Mumcord release only shows up after the next code change.
+ARG RELEASE_CHECK
 RUN --mount=type=secret,id=github_token \
     SITE_URL="$SITE_URL" GITHUB_TOKEN="$(cat /run/secrets/github_token 2>/dev/null || true)" npm run build
 

@@ -56,6 +56,7 @@ jobs:
           provenance: false
           build-args: |
             SITE_URL=https://mumcord.app
+            RELEASE_CHECK=${{ github.run_id }}-${{ github.run_attempt }}
           # The token only lives in the build stage (release data), never in the final image.
           secrets: |
             github_token=${{ secrets.GITHUB_TOKEN }}
