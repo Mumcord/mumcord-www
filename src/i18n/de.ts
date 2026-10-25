@@ -69,7 +69,7 @@ export const de = {
         id: "audio",
         title: "Klarer Klang, von Haus aus",
         body:
-          "KI-Rauschunterdrückung, Echounterdrückung und automatische Verstärkung sind an. Die Bitrate folgt dem Netz: runter bei Paketverlust, wieder hoch, wenn es sich erholt.",
+          "KI-Rauschunterdrückung, Echounterdrückung und automatische Verstärkung sind an. Die Bitrate folgt dem Netz: runter bei Paketverlust, wieder hoch, wenn es sich erholt. Für Musik gibt es einen Schalter für Musikqualität mit bis zu 510 kbit/s.",
       },
       {
         id: "trust",
@@ -183,7 +183,7 @@ export const de = {
     body: "Die Roadmap ist ein Vorschlag und kann sich ändern. Mobile Apps und eine Web-Version sind nicht geplant. Serverseitig wird nie etwas nötig sein.",
     now: "jetzt",
     steps: [
-      { tag: "Epic 1 · 1a", title: "Alltags-Client", body: "Alles auf dieser Seite, als Version 0.1.0. Unsignierte Builds für Linux, Windows und macOS.", now: true },
+      { tag: "Epic 1 · 1a", title: "Alltags-Client", body: "Alles auf dieser Seite, seit Version 0.1.0; aktuell 0.1.1. Unsignierte Builds für Linux, Windows und macOS.", now: true },
       { tag: "Epic 1 · 1b", title: "Mehr Chat", body: "Link-Vorschauen zum Wegklicken, Karten für YouTube, Twitch und Spotify, die erst beim Klick laden, externe Bilder mit Bildbetrachter und Zoom, @Erwähnungen mit eigenem Ton, GIF-Favoriten, Code-Hervorhebung und eine Formatierungsleiste. Dazu eine manuelle Schwelle für die Sprachaktivierung und, wenn du willst, „Läuft gerade“: Andere sehen, welche Musik du hörst." },
       { tag: "Epic 1 · 1c", title: "Im Spiel", body: "Positional Audio über Mumble Link und die offiziellen Spiel-Plugins. Ein schwebendes, durchklickbares Overlay zeigt, wer spricht. Auf Wunsch „Spielt gerade“ mit Spiel beitreten über Steam, und Schnelleinstellungen per Rechtsklick aufs Zahnrad." },
       { tag: "Epic 1 · 1d", title: "Mumcord unter sich", body: "Mumcord-Clients teilen den Chatverlauf der letzten Tage, damit du nachlesen kannst, was vor deinem Beitreten geschrieben wurde. Ein Abzeichen zeigt, wer Mumcord nutzt. Doppelklick für private Nachrichten, neues Profil und Freunde mit Online-Status." },

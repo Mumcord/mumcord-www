@@ -70,7 +70,7 @@ export const en: Dict = {
         id: "audio",
         title: "Clear sound out of the box",
         body:
-          "AI noise suppression, echo cancellation and automatic gain are on. The bitrate follows your network: down when packets get lost, back up when it recovers.",
+          "AI noise suppression, echo cancellation and automatic gain are on. The bitrate follows your network: down when packets get lost, back up when it recovers. For music there's a music quality switch with up to 510 kbit/s.",
       },
       {
         id: "trust",
@@ -184,7 +184,7 @@ export const en: Dict = {
     body: "The roadmap is a proposal and may change. Mobile apps and a web version are not planned. Nothing server-side will ever be required.",
     now: "now",
     steps: [
-      { tag: "Epic 1 · 1a", title: "Everyday client", body: "Everything on this page, as version 0.1.0. Unsigned builds for Linux, Windows and macOS.", now: true },
+      { tag: "Epic 1 · 1a", title: "Everyday client", body: "Everything on this page, since version 0.1.0; currently 0.1.1. Unsigned builds for Linux, Windows and macOS.", now: true },
       { tag: "Epic 1 · 1b", title: "More chat", body: "Dismissable link previews, YouTube, Twitch and Spotify cards that load only on click, external images with a zoomable image viewer, @mentions with their own sound, GIF favorites, code highlighting and a formatting toolbar. Plus a manual voice activation threshold and, if you like, “Now playing”: others see what music you are listening to." },
       { tag: "Epic 1 · 1c", title: "In game", body: "Positional audio via Mumble Link and the official game plugins. A floating, click-through overlay shows who is talking. Optional “Now gaming” with join game via Steam, and quick settings when you right-click the gear." },
       { tag: "Epic 1 · 1d", title: "Mumcord to Mumcord", body: "Mumcord clients share the chat history of the last few days, so you can read what was written before you joined. A badge shows who uses Mumcord. Double-click for private messages, a new profile and friends with online status." },
