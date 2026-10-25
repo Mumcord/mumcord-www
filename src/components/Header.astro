@@ -16,8 +16,8 @@ const m = t.menu;
 const home = routes.home[lang];
 const anchor = (id: string) => (page === "home" ? `#${id}` : `${home}#${id}`);
 
-// The newest changelog entry, marked as out or upcoming from the GitHub releases.
-const newest = changelog[lang][0];
+// The newest feature release (x.y.0, not a bug-fix release), marked as out or upcoming from the GitHub releases.
+const newest = changelog[lang].find((e) => e.version.endsWith(".0")) ?? changelog[lang][0];
 const released = (await getReleases()).some((r) => r.version === newest.version);
 
 // 24×24 stroke icons, drawn for the menu.

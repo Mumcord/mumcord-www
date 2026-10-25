@@ -21,6 +21,21 @@ export interface ChangelogEntry {
 const source: Record<"de" | "en", ChangelogEntry[]> = {
   de: [
     {
+      version: "0.3.1",
+      teaser: "Musikqualität und Links im Chat repariert.",
+      summary: "Ein kleines Update mit zwei Fixes aus den ersten Stunden mit 0.3.0.",
+      groups: [
+        {
+          title: "Behoben",
+          items: [
+            "Mit Musikqualität hören dich andere wieder: Auf Servern mit hohem Bandbreiten-Limit wurden deine Sprachpakete zu groß und gingen verloren. Andere sahen dich nur kurz aufblinken. Jetzt bleibt jedes Paket innerhalb von Mumbles Größengrenze.",
+            "Links im Chat öffnen sich wieder im Browser, auch aus dem Linux-AppImage.",
+          ],
+        },
+      ],
+      known: ["Die Installer sind weiterhin unsigniert."],
+    },
+    {
       version: "0.3.0",
       teaser: "Overlay im Spiel, Positional Audio, Freunde, geteilter Verlauf und 24 Sprachen.",
       summary:
@@ -206,6 +221,21 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
     },
   ],
   en: [
+    {
+      version: "0.3.1",
+      teaser: "Music quality and chat links fixed.",
+      summary: "A small update with two fixes from the first hours with 0.3.0.",
+      groups: [
+        {
+          title: "Fixed",
+          items: [
+            "With Music quality on, others hear you again: on servers with a high bandwidth limit your voice packets got too big and were lost, so others only saw you flash briefly. Every packet now stays within Mumble's size limit.",
+            "Links in the chat open in the browser again, also from the Linux AppImage.",
+          ],
+        },
+      ],
+      known: ["Installers are still unsigned."],
+    },
     {
       version: "0.3.0",
       teaser: "In-game overlay, positional audio, friends, shared history and 24 languages.",

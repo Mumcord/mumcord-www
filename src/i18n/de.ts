@@ -224,7 +224,7 @@ export const de = {
     all: "Die ganze Roadmap im Detail",
     steps: [
       { tag: "Epic 1", title: "Der Client für jeden Tag", body: "Seit 0.1.0 der Alltags-Client: Wizard, Server, Kanäle, Sprache, Chat und Folgen. Mit 0.2.0 kam mehr Chat: Link-Vorschauen, Karten für YouTube, Twitch und Spotify, Bilder mit Bildbetrachter, @Erwähnungen, GIF-Favoriten und Code-Hervorhebung. 0.3.0 schließt Epic 1 ab: Positional Audio (Beta), ein Overlay im Spiel unter Linux und als Fenster unter Windows, „Spielt gerade“, geteilter Chatverlauf zwischen Mumcord-Nutzern, Freunde, „Kanal beitreten“, Bilder in voller Größe und alle 24 Amtssprachen der EU." },
-      { tag: "Epic 2", title: "Mehrere Server und eigene Themes", body: "Auf allen Servern mitlesen, auf einem sprechen. Dazu eigene Themes mit Farben und Vorlagen, teilbar als Text: Im Chat erscheint eine Vorschaukarte, ein Klick übernimmt das Theme." },
+      { tag: "Epic 2", title: "Mehrere Server und eigene Themes", body: "Auf allen Servern mitlesen, auf einem sprechen. Dazu eigene Themes mit Farben und Vorlagen, teilbar als Text: Im Chat erscheint eine Vorschaukarte, ein Klick übernimmt das Theme. Außerdem siehst du die Verbindungsqualität der anderen, und das Overlay im Spiel kommt auf Windows." },
       { tag: "Epic 3", title: "Komfort", body: "Globale Hotkeys, volles Tray-Menü, Import aus dem offiziellen Client, Flüstern, Server-Browser." },
       { tag: "Epic 4", title: "Admin", body: "ACLs, Banns, Kanalverwaltung." },
       { tag: "Epic 5", title: "Auslieferung", body: "Signierte Installer, Auto-Update, Absturzberichte nur mit Zustimmung, Paketquellen." },
