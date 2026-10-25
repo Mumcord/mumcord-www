@@ -188,7 +188,7 @@ export const en: Dict = {
       { tag: "Epic 1 · 1b", title: "More chat", body: "Dismissable link previews, YouTube, Twitch and Spotify cards that load only on click, external images with a zoomable image viewer, @mentions with their own sound, GIF favorites, code highlighting and a formatting toolbar. Plus a manual voice activation threshold and, if you like, “Now playing”: others see what music you are listening to." },
       { tag: "Epic 1 · 1c", title: "In game", body: "Positional audio via Mumble Link and the official game plugins. A floating, click-through overlay shows who is talking. Optional “Now gaming” with join game via Steam, and quick settings when you right-click the gear." },
       { tag: "Epic 1 · 1d", title: "Mumcord to Mumcord", body: "Mumcord clients share the chat history of the last few days, so you can read what was written before you joined. A badge shows who uses Mumcord. Double-click for private messages, a new profile and friends with online status." },
-      { tag: "Epic 2", title: "Several servers at once", body: "Read along on all of them, talk on one." },
+      { tag: "Epic 2", title: "Several servers and your own themes", body: "Read along on all of them, talk on one. Plus custom themes with colours and presets, shareable as text: the chat shows a preview card, one click imports the theme." },
       { tag: "Epic 3", title: "Comfort", body: "Global hotkeys, full tray menu, import from the official client, whisper, server browser." },
       { tag: "Epic 4", title: "Admin", body: "ACLs, bans, channel management." },
       { tag: "Epic 5", title: "Distribution", body: "Signed installers, auto-update, opt-in crash reports, package listings." },
