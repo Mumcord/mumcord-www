@@ -29,6 +29,9 @@ export interface FeaturesPage {
   contents: string;
   newIn: string;
   zoom: string;
+  close: string;
+  prev: string;
+  next: string;
   askTitle: string;
   askBody: string;
   idea: string;
@@ -48,6 +51,9 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
     contents: "Inhalt",
     newIn: "neu in",
     zoom: "Screenshot in voller Größe öffnen",
+    close: "Schließen",
+    prev: "Vorheriger Screenshot",
+    next: "Nächster Screenshot",
     askTitle: "Fehlt etwas? Klemmt etwas?",
     askBody:
       "Wünsche und Fehler sammeln sich in den Issues auf GitHub. Du brauchst dafür ein kostenloses GitHub-Konto; die Vorlagen fragen nur das ab, was wirklich hilft.",
@@ -310,6 +316,9 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
     contents: "Contents",
     newIn: "new in",
     zoom: "Open the screenshot at full size",
+    close: "Close",
+    prev: "Previous screenshot",
+    next: "Next screenshot",
     askTitle: "Missing something? Something broken?",
     askBody:
       "Ideas and bugs are collected in the issues on GitHub. You need a free GitHub account; the templates only ask for what actually helps.",

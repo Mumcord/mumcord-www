@@ -41,7 +41,7 @@ const textOnly = (list: Feature[]) => list.filter((x) => !x.shot);
               <p>{x.body}</p>
               {x.since && <span class="pill">{f.newIn} {x.since}</span>}
             </div>
-            <a class="fp-shot" href={shot(x.shot!).src} aria-label={`${f.zoom}: ${x.alt}`}>
+            <a class="fp-shot" href={shot(x.shot!).src} aria-label={`${f.zoom}: ${x.alt}`} data-lightbox data-caption={x.title} data-alt={x.alt}>
               <Picture src={shot(x.shot!)} formats={["avif", "webp"]} widths={[640, 1100, 1600]} sizes="(min-width: 960px) 640px, 92vw" alt={x.alt ?? ""} />
             </a>
           </div>
@@ -72,4 +72,14 @@ const textOnly = (list: Feature[]) => list.filter((x) => !x.shot);
     </p>
     <p class="fp-note">{f.bugNote}</p>
   </section>
+
+  <dialog class="lightbox" data-lightbox-dialog aria-label={f.zoom}>
+    <figure>
+      <img alt="" data-lightbox-img />
+      <figcaption data-lightbox-caption></figcaption>
+    </figure>
+    <button type="button" class="lb-btn lb-close" data-lightbox-close aria-label={f.close}>×</button>
+    <button type="button" class="lb-btn lb-prev" data-lightbox-prev aria-label={f.prev}>‹</button>
+    <button type="button" class="lb-btn lb-next" data-lightbox-next aria-label={f.next}>›</button>
+  </dialog>
 </article>

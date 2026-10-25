@@ -2156,6 +2156,93 @@ a.lang-opt:hover {
 .features-more {
   margin-top: 40px;
 }
+.fp-shot {
+  cursor: zoom-in;
+}
+.lightbox {
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: clamp(16px, 4vw, 48px);
+  border: 0;
+  background: transparent;
+  color: var(--text);
+}
+.lightbox[open] {
+  display: grid;
+  place-items: center;
+}
+.lightbox::backdrop {
+  background: rgb(8 6 22 / 0.92);
+  backdrop-filter: blur(6px);
+}
+.lightbox figure {
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  cursor: zoom-out;
+}
+.lightbox img {
+  max-width: min(100%, 1600px);
+  max-height: calc(100dvh - 120px);
+  width: auto;
+  height: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  box-shadow: 0 40px 120px -40px rgb(0 0 0 / 0.9);
+}
+.lightbox figcaption {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-align: center;
+}
+.lb-btn {
+  position: fixed;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: rgb(21 15 56 / 0.85);
+  color: var(--text);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.lb-btn:hover {
+  border-color: var(--peach);
+}
+.lb-close {
+  top: 16px;
+  right: 16px;
+}
+.lb-prev,
+.lb-next {
+  top: 50%;
+  translate: 0 -50%;
+}
+.lb-prev {
+  left: 16px;
+}
+.lb-next {
+  right: 16px;
+}
+@media (max-width: 640px) {
+  .lb-prev,
+  .lb-next {
+    top: auto;
+    bottom: 16px;
+    translate: none;
+  }
+}
 
 /* ── 404 ─────────────────────────────────────────────── */
 .notfound {

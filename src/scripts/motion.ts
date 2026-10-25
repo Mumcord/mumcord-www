@@ -226,3 +226,39 @@ for (const btn of document.querySelectorAll<HTMLButtonElement>("[data-copy]")) {
     }, 1600);
   });
 }
+
+// ── Screenshot lightbox (features page) ──────────────────────────────
+const lightbox = document.querySelector<HTMLDialogElement>("[data-lightbox-dialog]");
+const shots = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-lightbox]"));
+if (lightbox && shots.length) {
+  const img = lightbox.querySelector<HTMLImageElement>("[data-lightbox-img]")!;
+  const caption = lightbox.querySelector<HTMLElement>("[data-lightbox-caption]")!;
+  let current = 0;
+  const show = (i: number) => {
+    current = (i + shots.length) % shots.length;
+    const a = shots[current];
+    img.src = a.href;
+    img.alt = a.dataset.alt ?? "";
+    caption.textContent = a.dataset.caption ?? "";
+  };
+  for (const [i, a] of shots.entries()) {
+    a.addEventListener("click", (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      show(i);
+      lightbox.showModal();
+    });
+  }
+  lightbox.querySelector("[data-lightbox-close]")?.addEventListener("click", () => lightbox.close());
+  lightbox.querySelector("[data-lightbox-prev]")?.addEventListener("click", () => show(current - 1));
+  lightbox.querySelector("[data-lightbox-next]")?.addEventListener("click", () => show(current + 1));
+  // A click on the picture or the dark area around it closes, like most image viewers.
+  lightbox.addEventListener("click", (e) => {
+    if (!(e.target as Element).closest(".lb-btn")) lightbox.close();
+  });
+  lightbox.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") show(current - 1);
+    if (e.key === "ArrowRight") show(current + 1);
+  });
+  lightbox.addEventListener("close", () => shots[current].focus());
+}
