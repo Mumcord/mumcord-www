@@ -503,6 +503,36 @@
             "title": "Reconnexion sans rien perdre",
             "body": "Si la connexion saute, tu te retrouves dans le même salon avec ton état micro/son coupé et tes salons suivis. Après un redémarrage, Mumcord te propose de rejoindre ton dernier salon vocal.",
             "alt": "Bannière proposant de rejoindre le dernier salon vocal"
+          },
+          {
+            "id": "several-servers",
+            "title": "Plusieurs serveurs à la fois",
+            "body": "Jusqu’à 5 serveurs connectés à la fois, réglable jusqu’à 15. Tu parles sur un seul, et tu lis, écris et reçois les notifications sur tous. Chaque serveur se reconnecte de lui-même après une coupure."
+          },
+          {
+            "id": "password",
+            "title": "Mauvais mot de passe, réessaie tout de suite",
+            "body": "Si le serveur refuse ton mot de passe, une fenêtre te demande aussitôt le bon. Il est enregistré si tu veux, et seulement une fois la connexion réussie."
+          },
+          {
+            "id": "linux-packages",
+            "title": "Installation sous Linux",
+            "body": "Des paquets pour Debian et Ubuntu, Fedora et openSUSE, Arch (AUR : mumcord-bin) et l’AppImage, pour x86_64 et ARM64, aussi en une ligne dans le terminal. En option, un avis quand une nouvelle version sort."
+          },
+          {
+            "id": "server-notices",
+            "title": "Notifications par serveur",
+            "body": "Les notifications et messages privés affichent le nom du serveur, et chaque serveur peut être mis en sourdine séparément."
+          },
+          {
+            "id": "across-servers",
+            "title": "Rejoindre d’un serveur à l’autre",
+            "body": "« Rejoindre le salon » marche aussi pour des amis sur un autre serveur, et les liens mumble:// vers un serveur connecté y mènent directement."
+          },
+          {
+            "id": "autostart",
+            "title": "Démarrer à l’ouverture de session",
+            "body": "« Démarrer Mumcord à l’ouverture de session » est là sur tous les systèmes."
           }
         ]
       },
@@ -556,6 +586,31 @@
             "title": "Colonne de droite en sections",
             "body": "« Dans ‹salon› », « Dans d’autres salons » avec tous les autres du serveur, et « Amis », chacune repliable. Mumcord retient ce qui est ouvert. À gauche, « Vue d’ensemble du serveur » se trouve au-dessus de l’arborescence des salons.",
             "alt": "Colonne de droite avec « Dans d’autres salons » ouvert"
+          },
+          {
+            "id": "connection-quality",
+            "title": "Qualité de connexion",
+            "body": "Un profil montre en un coup d’œil si la connexion est bonne, moyenne ou faible, et une fois déplié, il affiche le ping, la perte de paquets et la bande passante. Une petite icône de signal indique qui a une connexion faible en ce moment."
+          },
+          {
+            "id": "listeners",
+            "title": "Des auditeurs avec une oreille",
+            "body": "Les personnes qui ne font qu’écouter un salon apparaissent dans la liste normale avec une icône d’oreille, au lieu d’un groupe à part."
+          },
+          {
+            "id": "client-info",
+            "title": "Client et système pour les admins",
+            "body": "Les admins voient en plus dans un profil quel client et quel système d’exploitation une personne utilise, par exemple « Mumcord 0.4.0 » ou « Mumble 1.5 »."
+          },
+          {
+            "id": "channel-filters",
+            "title": "Masquer les salons vides",
+            "body": "Les gros serveurs ne se figent plus au premier affichage. Et en plus, les options « Masquer les salons vides » et « Personnes qui parlent en premier »."
+          },
+          {
+            "id": "profile-comment",
+            "title": "Commentaire de profil mis en forme",
+            "body": "Ton commentaire de profil gère le gras, l’italique, les liens et les listes."
           }
         ]
       },
@@ -639,6 +694,31 @@
             "id": "mention-chips",
             "title": "@mentions cliquables",
             "body": "Aperçu au survol, profil au clic, menu au clic droit."
+          },
+          {
+            "id": "replies",
+            "title": "Réponses et citations",
+            "body": "Réponds à n’importe quel message avec une courte citation que les clients officiels affichent lisiblement eux aussi ; un clic dessus mène au message d’origine. Les réponses à tes messages comptent comme une @mention, et « > texte » devient une citation."
+          },
+          {
+            "id": "welcome",
+            "title": "Fermer le message de bienvenue",
+            "body": "Le message de bienvenue du serveur et la description du salon peuvent être fermés et reviennent quand ils changent."
+          },
+          {
+            "id": "delivered",
+            "title": "Envoi confirmé",
+            "body": "Un message ne compte comme envoyé qu’une fois confirmé par le serveur. Ceux qui sont refusés peuvent être renvoyés en un clic."
+          },
+          {
+            "id": "long-messages",
+            "title": "Longs messages",
+            "body": "La photo de profil se place en haut à côté du nom, et quand tu fais défiler un long message, photo et nom restent visibles dans une fine bande en haut."
+          },
+          {
+            "id": "image-loading",
+            "title": "Les images se chargent en arrière-plan",
+            "body": "Une fine barre sous l’image montre où en est le chargement de la taille réelle. Si tu fermes la visionneuse, le chargement continue ; le × sur la barre l’annule."
           }
         ]
       },
@@ -675,6 +755,11 @@
             "title": "En écoute",
             "body": "Si tu veux, les autres utilisateurs de Mumcord voient quelle musique tu écoutes, avec pochette et progression. Sous Linux et Windows.",
             "alt": "Carte de profil avec « En écoute » et une barre de progression"
+          },
+          {
+            "id": "bitrate",
+            "title": "Le débit à la main",
+            "body": "Un curseur à part, de 16 kbit/s jusqu’à la valeur la plus haute que le serveur et Mumble permettent. En cas de perte de paquets, Mumcord continue de le baisser tout seul."
           }
         ]
       },
@@ -696,19 +781,39 @@
           {
             "id": "in-game-overlay",
             "title": "Overlay en jeu",
-            "body": "Sous Linux directement dans le jeu sous forme de couche Vulkan, aussi dans les jeux Steam et Proton, testé avec Tyr et Supermarket Simulator. Réglable par jeu ; les jeux dont l’anti-triche bloque les overlays restent exclus. Windows suivra plus tard.",
+            "body": "Sous Linux directement dans le jeu sous forme de couche Vulkan, aussi dans les jeux Steam et Proton, testé avec Tyr et Supermarket Simulator. Réglable par jeu ; les jeux dont l’anti-triche bloque les overlays restent exclus. Windows l’aura avec la 0.4.0.",
             "alt": "Paramètres, overlay en jeu avec avertissement anti-triche et choix par jeu"
           },
           {
             "id": "overlay-window",
             "title": "Overlay en fenêtre",
-            "body": "Sous Linux et Windows, une fenêtre transparente, traversable par les clics et au-dessus de tout, qui montre qui parle dans ton salon. Il n’y a pas d’overlay sous macOS.",
+            "body": "Sous Linux et Windows, une fenêtre transparente, traversable par les clics et au-dessus de tout, qui montre qui parle dans ton salon. Il n’y a pas d’overlay sous macOS. L’overlay en fenêtre disparaît avec la 0.4.0.",
             "alt": "Overlay en fenêtre par-dessus un jeu, montrant qui parle"
           },
           {
             "id": "now-gaming",
             "title": "En train de jouer",
             "body": "Si tu veux, les autres voient à quoi tu joues, avec l’image Steam et le temps de jeu. « Rejoindre la partie » pour les jeux Steam qui le permettent."
+          },
+          {
+            "id": "overlay-windows",
+            "title": "Overlay en jeu sous Windows",
+            "body": "Une fenêtre séparée et traversable au clic au-dessus du jeu. Rien n’est chargé dans le jeu, donc elle marche aussi dans les jeux avec anti-triche. Seul le plein écran exclusif la masque."
+          },
+          {
+            "id": "overlay-opengl",
+            "title": "Jeux OpenGL sous Linux",
+            "body": "Pour les jeux natifs en OpenGL comme Project Hospital, Mumcord affiche la bonne option de lancement Steam à copier, et elle continue de marcher après les mises à jour. Les couleurs dans les jeux HDR sont correctes aussi."
+          },
+          {
+            "id": "flatpak-steam",
+            "title": "Steam en Flatpak et plein écran sans bordure",
+            "body": "L’overlay en jeu aussi pour les jeux de Steam en Flatpak, et des jeux en plein écran sans bordure vérifiés sous KDE et GNOME. Fermer ou mettre à jour Mumcord ne fait plus planter un jeu en cours."
+          },
+          {
+            "id": "join-game-link",
+            "title": "« Rejoindre la partie » via Mumble Link",
+            "body": "« Rejoindre la partie » aussi pour les jeux qui partagent leur adresse de serveur via Mumble Link."
           }
         ]
       },
@@ -737,6 +842,21 @@
             "title": "Amis",
             "body": "Reconnus par leur certificat, même d’un serveur à l’autre et après un changement de nom. La liste d’amis dans la colonne de droite montre qui est en ligne et dans quel salon. L’historique privé avec tes amis est conservé.",
             "alt": "Colonne de droite avec les amis et l’endroit où ils sont en ligne"
+          },
+          {
+            "id": "direct",
+            "title": "Directement de Mumcord à Mumcord",
+            "body": "Des connexions directes et chiffrées via IPv6, la redirection de ports de ta box ou ton propre réseau, sans le serveur de quelqu’un d’autre. Les images en taille réelle arrivent ainsi beaucoup plus vite. Mumcord te demande d’abord, car les autres voient ton adresse IP."
+          },
+          {
+            "id": "watch-party",
+            "title": "Regarder ensemble",
+            "body": "Une watch party YouTube dans le salon vocal : tout le monde voit la même vidéo en même temps, chacun peut mettre en pause et avancer, avec une playlist commune."
+          },
+          {
+            "id": "screen-share",
+            "title": "Partage d’écran",
+            "body": "Un écran ou une fenêtre pour jusqu’à 8 spectateurs, en 720p à 30 images par seconde. Sous Windows et macOS avec le son de l’appli partagée si tu veux. Tu le lances depuis le bouton Applis dans le chat."
           }
         ]
       },
@@ -795,12 +915,125 @@
             "title": "Section accessibilité",
             "body": "Indications clavier visibles, annonces pour lecteur d’écran et liens d’évitement, chacun avec son propre interrupteur.",
             "alt": "Paramètres, section accessibilité"
+          },
+          {
+            "id": "custom-themes",
+            "title": "Tes propres thèmes",
+            "body": "Créés à partir de quelques couleurs clés, chacun en clair et en sombre, avec un contraste lisible. Choisis-les sous forme de cercles de couleur, partage-les dans le chat et, si tu veux, utilises-en un par serveur."
+          },
+          {
+            "id": "website-look",
+            "title": "Le look de ce site",
+            "body": "Boutons lumineux, dégradés, effets de verre et un léger grain, aussi dans l’appli, désactivable."
+          },
+          {
+            "id": "dropdowns",
+            "title": "Des réglages bien rangés",
+            "body": "Des menus déroulants aux couleurs du thème au lieu du look du navigateur, et tous les champs des réglages bien alignés."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.0",
+      "teaser": "Plusieurs serveurs à la fois, tes propres thèmes, l’overlay sous Windows et regarder ensemble.",
+      "summary": "L’Epic 2 est bouclée : plusieurs serveurs à la fois, tes propres thèmes en clair et en sombre, l’overlay en jeu aussi sous Windows, les réponses dans le chat et les premières connexions directes entre utilisateurs de Mumcord, avec watch party et partage d’écran.",
+      "groups": [
+        {
+          "title": "Plusieurs serveurs à la fois",
+          "items": [
+            "Jusqu’à 5 serveurs connectés à la fois, réglable de 1 à 15. Parle sur un seul, lis, écris et reçois les notifications sur tous.",
+            "Les serveurs marqués « Toujours se connecter au démarrage » et ceux ouverts la dernière fois se connectent tout seuls ; chaque serveur se reconnecte de lui-même après une coupure.",
+            "Les notifications et messages privés affichent le nom du serveur, les notifications peuvent être coupées par serveur.",
+            "« Rejoindre le salon » aussi pour des amis sur un autre serveur ; les liens mumble:// vers un serveur connecté y mènent directement."
+          ]
+        },
+        {
+          "title": "Thèmes et apparence",
+          "items": [
+            "Tes propres thèmes à partir de quelques couleurs clés, avec préréglages et aperçu en direct, chacun en version sombre et claire ; Mumcord crée la seconde tout seul et garde le contraste lisible.",
+            "Choisir les thèmes sous forme de cercles de couleur ; enregistrer, renommer et supprimer les tiens, et modifier les versions claire et sombre côte à côte.",
+            "Partager des thèmes en texte : le chat affiche une carte d’aperçu, un clic applique le thème à l’appli ou à un serveur.",
+            "Un thème par serveur si tu veux.",
+            "Le look de ce site dans l’appli : boutons lumineux, dégradés, effets de verre et un léger grain, désactivable."
+          ]
+        },
+        {
+          "title": "Finitions et gros serveurs",
+          "items": [
+            "Des menus déroulants aux couleurs du thème au lieu de ceux du navigateur, tous les champs des réglages bien alignés.",
+            "Une fine barre de progression sous les images du chat pendant le chargement de la taille réelle.",
+            "Les gros serveurs ne se figent plus au premier affichage, et en plus les options « Masquer les salons vides » et « Personnes qui parlent en premier ».",
+            "Les messages ne comptent comme envoyés qu’une fois confirmés par le serveur ; ceux refusés peuvent être renvoyés.",
+            "Commentaire de profil avec gras, italique, liens et listes.",
+            "Un curseur de débit à part, jusqu’à la valeur la plus haute que le serveur et Mumble permettent.",
+            "Mauvais mot de passe ? Une fenêtre demande aussitôt le bon et l’enregistre si tu veux.",
+            "Les personnes qui ne font qu’écouter un salon apparaissent dans la liste normale avec une icône d’oreille, au lieu d’un groupe à part."
+          ]
+        },
+        {
+          "title": "Chat",
+          "items": [
+            "Répondre aux messages, dans les salons et en privé : avec une courte citation qui reste lisible dans le client Mumble officiel ; un clic dessus mène au message d’origine.",
+            "Sur les longs messages, la photo de profil se place en haut à côté du nom, et photo et nom restent visibles pendant le défilement.",
+            "Une réponse à ton message compte comme une @mention.",
+            "« > texte » devient une citation, aussi avec un bouton ; « >_> » et les smileys du même genre restent tels quels.",
+            "Le message de bienvenue du serveur et la description du salon peuvent être fermés et reviennent quand ils changent."
+          ]
+        },
+        {
+          "title": "Qualité de connexion",
+          "items": [
+            "La connexion dans le profil d’une personne en un coup d’œil (bonne, moyenne, faible), dépliable avec ping, perte de paquets, bande passante et UDP ou TCP, et pour toi aussi ; le menu d’une personne affiche juste le ping et le transport. Les admins voient en plus le client et le système d’exploitation.",
+            "Une petite icône de signal à côté des personnes avec une connexion faible, désactivable."
+          ]
+        },
+        {
+          "title": "Overlay",
+          "items": [
+            "L’overlay en jeu aussi sous Windows, sous forme de fenêtre séparée et traversable au clic au-dessus du jeu. Rien n’est chargé dans le jeu, donc il marche aussi dans les jeux avec anti-triche ; seul le plein écran exclusif le masque.",
+            "Des couleurs correctes dans les jeux HDR, les jeux de Steam en Flatpak, les jeux en plein écran sans bordure vérifiés sous KDE et GNOME.",
+            "Corrigé : fermer ou mettre à jour Mumcord ne fait plus planter un jeu en cours.",
+            "L’overlay en jeu aussi dans les jeux Linux natifs en OpenGL, comme Project Hospital, Euro Truck Simulator 2 et Hearts of Iron IV : Mumcord affiche l’option de lancement Steam à copier, qui reste valable après les mises à jour.",
+            "L’overlay en fenêtre disparaît ; si tu l’utilisais, un avis unique t’emmène aux réglages de l’overlay en jeu.",
+            "« Rejoindre la partie » aussi pour les jeux qui partagent leur adresse de serveur via Mumble Link."
+          ]
+        },
+        {
+          "title": "Directement de Mumcord à Mumcord",
+          "items": [
+            "Des connexions directes et chiffrées entre utilisateurs de Mumcord via IPv6, la redirection de ports de ta box ou ton propre réseau, sans le serveur de quelqu’un d’autre.",
+            "Mumcord te demande d’abord une fois, car les autres voient ton adresse IP ; tu peux changer ça dans les réglages.",
+            "Les images en taille réelle arrivent ainsi beaucoup plus vite ; si aucune connexion directe ne marche, tout fonctionne comme avant.",
+            "Fermer la visionneuse laisse l’image se charger en arrière-plan ; le × sur la barre de progression l’annule."
+          ]
+        },
+        {
+          "title": "Regarder ensemble (bêta)",
+          "items": [
+            "Watch party YouTube : tout le salon vocal regarde la même vidéo en même temps, chacun peut mettre en pause et avancer, avec une playlist commune où tout le monde peut ajouter des vidéos.",
+            "Partager un écran ou une fenêtre pour jusqu’à 8 spectateurs, en 720p à 30 images par seconde par défaut ; sous Windows et macOS avec le son de l’appli partagée si tu veux, sous Linux sans son.",
+            "Lance les deux depuis un bouton Applis dans le chat de ton salon vocal."
+          ]
+        },
+        {
+          "title": "Installation sous Linux et mises à jour",
+          "items": [
+            "Des paquets pour Debian et Ubuntu (.deb), Fedora et openSUSE (.rpm), Arch (AUR : mumcord-bin) et l’AppImage, chacun pour x86_64 et ARM64.",
+            "Installation en une ligne dans le terminal, avec une entrée de menu et la prise en charge des liens mumble://",
+            "« Démarrer Mumcord à l’ouverture de session » sur tous les systèmes.",
+            "En option, un avis quand une nouvelle version sort ; Mumcord interroge GitHub au plus une fois par jour."
+          ]
+        }
+      ],
+      "known": [
+        "L’audio positionnel, les plugins de jeu, les images en taille réelle, regarder ensemble et le partage d’écran sont en bêta.",
+        "Sous Windows, le plein écran exclusif masque l’overlay. Passe le jeu en plein écran sans bordure ou en mode fenêtré.",
+        "Le partage d’écran a besoin d’une connexion directe. Si aucune ne marche, par exemple derrière un CGNAT, il n’est pas disponible ; il n’y a volontairement pas de serveur relais. Sous Linux, aucun son n’est partagé, et sous X11, seulement l’écran entier."
+      ]
+    },
     {
       "version": "0.3.1",
       "teaser": "Qualité musique et liens du chat corrigés.",

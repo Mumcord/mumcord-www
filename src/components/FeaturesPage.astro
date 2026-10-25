@@ -23,6 +23,8 @@ const hasBeta = all.some((x) => x.beta);
 const sinceLabel = (v: string) => `${released.has(v) ? f.newIn : f.comingIn} ${v}`;
 const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 const newest = versions[versions.length - 1];
+// Only the two newest versions get a filter; older ones are part of the basics by now.
+const filterVersions = versions.slice(-2);
 const newestCount = all.filter((x) => x.since === newest).length;
 // Shots first: the first one in a group gets the wide card, the others medium cards, text-only ones small cards.
 const ordered = (list: Feature[]) => [...withShot(list), ...textOnly(list)];
@@ -48,7 +50,7 @@ for (const g of f.groups)
     <dl class="fp-stats" data-reveal>
       <div><dt>{f.statFeatures}</dt><dd>{all.length}</dd></div>
       <div><dt>{f.statAreas}</dt><dd>{f.groups.length}</dd></div>
-      <div><dt>{f.statNew} {newest}</dt><dd>{newestCount}</dd></div>
+      <div><dt>{released.has(newest) ? f.statNew : f.comingIn} {newest}</dt><dd>{newestCount}</dd></div>
       <div><dt>{f.statPlatforms}</dt><dd>3</dd></div>
     </dl>
   </header>
@@ -59,7 +61,7 @@ for (const g of f.groups)
         <span class="fp-row-label" aria-hidden="true">{f.filterLabel}</span>
         <button type="button" aria-pressed="true" data-filter="all">{f.filterAll}</button>
         {hasBeta && <button type="button" aria-pressed="false" data-filter="beta">{f.filterBeta}</button>}
-        {versions.map((v) => <button type="button" aria-pressed="false" data-filter={`v${v}`}>{cap(sinceLabel(v))}</button>)}
+        {filterVersions.map((v) => <button type="button" aria-pressed="false" data-filter={`v${v}`}>{cap(sinceLabel(v))}</button>)}
       </div>
       <nav class="fp-toc" aria-label={f.contents} data-toc>
         <span class="fp-row-label" aria-hidden="true">{f.jump}</span>

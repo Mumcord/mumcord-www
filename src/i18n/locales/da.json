@@ -503,6 +503,36 @@
             "title": "Genforbind med det hele",
             "body": "Hvis forbindelsen ryger, er du tilbage i samme kanal med din mute/deafen-status og de kanaler, du følger. Efter en genstart tilbyder Mumcord at sætte dig tilbage i din seneste talekanal.",
             "alt": "Banner, der tilbyder at gå tilbage i den seneste talekanal"
+          },
+          {
+            "id": "several-servers",
+            "title": "Flere servere ad gangen",
+            "body": "Op til 5 servere forbundet ad gangen, kan justeres op til 15. Du taler på én og læser, skriver og får notifikationer på dem alle. Hver server forbinder igen på egen hånd efter et udfald."
+          },
+          {
+            "id": "password",
+            "title": "Forkert adgangskode, prøv igen med det samme",
+            "body": "Afviser serveren din adgangskode, spørger et vindue med det samme efter den rigtige. Den gemmes, hvis du vil, og først når forbindelsen virker."
+          },
+          {
+            "id": "linux-packages",
+            "title": "Installation på Linux",
+            "body": "Pakker til Debian og Ubuntu, Fedora og openSUSE, Arch (AUR: mumcord-bin) og AppImage, til x86_64 og ARM64, også med én linje i terminalen. Valgfrit en besked, når en ny version er ude."
+          },
+          {
+            "id": "server-notices",
+            "title": "Notifikationer pr. server",
+            "body": "Notifikationer og private beskeder viser servernavnet, og hver server kan slås fra for sig."
+          },
+          {
+            "id": "across-servers",
+            "title": "Gå ind på tværs af servere",
+            "body": "„Gå ind i kanal“ virker også for venner på en anden server, og mumble:// links til en forbundet server hopper direkte derhen."
+          },
+          {
+            "id": "autostart",
+            "title": "Start ved login",
+            "body": "„Start Mumcord, når jeg logger ind“ findes på alle systemer."
           }
         ]
       },
@@ -556,6 +586,31 @@
             "title": "Højre kolonne med sektioner",
             "body": "„I ‹kanal›“, „I andre kanaler“ med alle andre på serveren og „Venner“, hver for sig sammenklappelig. Mumcord husker, hvad der er åbent. Til venstre sidder „Serveroversigt“ over kanaltræet.",
             "alt": "Højre kolonne med „I andre kanaler“ åben"
+          },
+          {
+            "id": "connection-quality",
+            "title": "Forbindelseskvalitet",
+            "body": "En profil viser med ét blik, om forbindelsen er god, middel eller svag, og foldet ud viser den ping, pakketab og båndbredde. Et lille signalikon markerer, hvem der har en svag forbindelse lige nu."
+          },
+          {
+            "id": "listeners",
+            "title": "Lyttere med et øre",
+            "body": "Dem, der kun lytter med på en kanal, står i den normale liste med et øre-ikon i stedet for i deres egen gruppe."
+          },
+          {
+            "id": "client-info",
+            "title": "Klient og system for admins",
+            "body": "Admins ser desuden i en profil, hvilken klient og hvilket styresystem nogen bruger, fx „Mumcord 0.4.0“ eller „Mumble 1.5“."
+          },
+          {
+            "id": "channel-filters",
+            "title": "Skjul tomme kanaler",
+            "body": "Store servere fryser ikke længere, første gang de vises. Plus kontakterne „Skjul tomme kanaler“ og „Dem, der taler, først“."
+          },
+          {
+            "id": "profile-comment",
+            "title": "Formateret profilkommentar",
+            "body": "Din profilkommentar kan klare fed, kursiv, links og lister."
           }
         ]
       },
@@ -639,6 +694,31 @@
             "id": "mention-chips",
             "title": "Klikbare @omtaler",
             "body": "Forhåndsvisning, når du holder musen over, profil ved klik, menu ved højreklik."
+          },
+          {
+            "id": "replies",
+            "title": "Svar og citater",
+            "body": "Svar på enhver besked med et kort citat, som også kan læses fint i officielle klienter; ét klik på det hopper til originalen. Svar på dine beskeder tæller som en @omtale, og „> tekst“ bliver til et citat."
+          },
+          {
+            "id": "welcome",
+            "title": "Luk velkomstbeskeden",
+            "body": "Serverens velkomstbesked og kanalbeskrivelsen kan lukkes og dukker op igen, når de ændres."
+          },
+          {
+            "id": "delivered",
+            "title": "Bekræftet levering",
+            "body": "En besked tæller først som sendt, når serveren bekræfter den. Afviste kan sendes igen med ét klik."
+          },
+          {
+            "id": "long-messages",
+            "title": "Lange beskeder",
+            "body": "Profilbilledet sidder øverst ved navnet, og mens du scroller gennem en lang besked, bliver billede og navn stående i et slankt bånd øverst."
+          },
+          {
+            "id": "image-loading",
+            "title": "Billeder indlæses i baggrunden",
+            "body": "En slank statuslinje under billedet viser, hvor langt den fulde størrelse er nået. Lukker du billedfremviseren, indlæses det videre; × på statuslinjen afbryder."
           }
         ]
       },
@@ -675,6 +755,11 @@
             "title": "Lytter nu",
             "body": "Hvis du vil, kan andre Mumcord-brugere se, hvilken musik du lytter til, med cover og fremskridt. På Linux og Windows.",
             "alt": "Profilkort med „Lytter til“ og en statuslinje"
+          },
+          {
+            "id": "bitrate",
+            "title": "Bitrate i hånden",
+            "body": "En separat skyder fra 16 kbit/s op til den højeste værdi, serveren og Mumble tillader. Ved pakketab skruer Mumcord den stadig selv ned."
           }
         ]
       },
@@ -696,19 +781,39 @@
           {
             "id": "in-game-overlay",
             "title": "Overlay i spillet",
-            "body": "På Linux direkte inde i spillet som et Vulkan-lag, også i Steam- og Proton-spil, testet med Tyr og Supermarket Simulator. Indstilles for hvert spil; spil, hvis anti-cheat blokerer overlays, forbliver udelukket. Windows følger senere.",
+            "body": "På Linux direkte inde i spillet som et Vulkan-lag, også i Steam- og Proton-spil, testet med Tyr og Supermarket Simulator. Indstilles for hvert spil; spil, hvis anti-cheat blokerer overlays, forbliver udelukket. Windows får det med 0.4.0.",
             "alt": "Indstillinger, overlay i spillet med anti-cheat-advarsel og valg for hvert spil"
           },
           {
             "id": "overlay-window",
             "title": "Overlayvindue",
-            "body": "På Linux og Windows et gennemsigtigt vindue øverst over alt, som klik går igennem, og som viser, hvem der taler i din kanal. Der er intet overlay på macOS.",
+            "body": "På Linux og Windows et gennemsigtigt vindue øverst over alt, som klik går igennem, og som viser, hvem der taler i din kanal. Der er intet overlay på macOS. Overlayvinduet forsvinder med 0.4.0.",
             "alt": "Overlayvindue over et spil, der viser, hvem der taler"
           },
           {
             "id": "now-gaming",
             "title": "Spiller nu",
             "body": "Hvis du vil, kan andre se, hvad du spiller, med Steam-billedet og spilletid. „Deltag i spil“ til Steam-spil, der understøtter det."
+          },
+          {
+            "id": "overlay-windows",
+            "title": "Overlay i spillet på Windows",
+            "body": "Et separat vindue over spillet, som klik går igennem. Der indlæses intet i spillet, så det virker også i spil med anti-cheat. Kun eksklusiv fuldskærm skjuler det."
+          },
+          {
+            "id": "overlay-opengl",
+            "title": "OpenGL-spil på Linux",
+            "body": "Til native OpenGL-spil som Project Hospital viser Mumcord den rigtige Steam-startindstilling til at kopiere, og den virker stadig efter opdateringer. Farverne i HDR-spil er også rigtige."
+          },
+          {
+            "id": "flatpak-steam",
+            "title": "Flatpak-Steam og kantløs fuldskærm",
+            "body": "Overlayet i spillet også til spil fra Steam som Flatpak, og spil i kantløs fuldskærm afprøvet på KDE og GNOME. Lukker eller opdaterer du Mumcord, crasher et kørende spil ikke længere."
+          },
+          {
+            "id": "join-game-link",
+            "title": "„Deltag i spil“ via Mumble Link",
+            "body": "„Deltag i spil“ også for spil, der deler deres serveradresse via Mumble Link."
           }
         ]
       },
@@ -737,6 +842,21 @@
             "title": "Venner",
             "body": "Genkendt via certifikat, også på tværs af servere og navneskift. Vennelisten i højre kolonne viser, hvem der er online og i hvilken kanal. Privat historik med venner gemmes.",
             "alt": "Højre kolonne med venner, og hvor de er online"
+          },
+          {
+            "id": "direct",
+            "title": "Direkte fra Mumcord til Mumcord",
+            "body": "Krypterede, direkte forbindelser over IPv6, routerens port-mapping eller dit eget netværk, uden andres server. Billeder i fuld størrelse kommer på den måde meget hurtigere frem. Mumcord spørger først, for de andre ser din IP-adresse."
+          },
+          {
+            "id": "watch-party",
+            "title": "Se sammen",
+            "body": "En YouTube-watch-party i talekanalen: alle ser den samme video samtidig, alle kan sætte på pause og spole, med en fælles playliste."
+          },
+          {
+            "id": "screen-share",
+            "title": "Skærmdeling",
+            "body": "En skærm eller et vindue til op til 8 seere, i 720p med 30 billeder i sekundet. På Windows og macOS med lyden fra den delte app, hvis du vil. Du starter den fra Apps-knappen i chatten."
           }
         ]
       },
@@ -795,12 +915,125 @@
             "title": "Sektionen tilgængelighed",
             "body": "Synlige tastaturtips, meddelelser til skærmlæsere og spring-links, hver med sin egen kontakt.",
             "alt": "Indstillinger, sektionen tilgængelighed"
+          },
+          {
+            "id": "custom-themes",
+            "title": "Dine egne temaer",
+            "body": "Lavet ud fra nogle få nøglefarver, hvert i lys og mørk, med læsbar kontrast. Vælg dem som farvecirkler, del dem i chatten, og brug ét pr. server, hvis du har lyst."
+          },
+          {
+            "id": "website-look",
+            "title": "Denne hjemmesides udseende",
+            "body": "Lysende knapper, gradienter, glaseffekter og et let filmkorn, også i appen, kan slås fra."
+          },
+          {
+            "id": "dropdowns",
+            "title": "Ryddelige indstillinger",
+            "body": "Dropdowns i temaet i stedet for browserens udseende, og alle felter i indstillingerne pænt på linje."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.0",
+      "teaser": "Flere servere ad gangen, dine egne temaer, overlayet på Windows og at se sammen.",
+      "summary": "Epic 2 fuldendes: flere servere ad gangen, dine egne temaer i lys og mørk, overlayet i spillet også på Windows, svar i chatten og de første direkte forbindelser mellem Mumcord-brugere, med watch party og skærmdeling.",
+      "groups": [
+        {
+          "title": "Flere servere ad gangen",
+          "items": [
+            "Op til 5 servere forbundet ad gangen, kan justeres fra 1 til 15. Tal på én, læs, skriv og få notifikationer på dem alle.",
+            "Servere markeret med „Forbind altid ved start“ og dem, der var åbne sidst, forbinder af sig selv; hver server forbinder igen på egen hånd efter et udfald.",
+            "Notifikationer og private beskeder viser servernavnet, og notifikationer kan slås fra pr. server.",
+            "„Gå ind i kanal“ også for venner på en anden server; mumble:// links til en forbundet server hopper direkte derhen."
+          ]
+        },
+        {
+          "title": "Temaer og udseende",
+          "items": [
+            "Dine egne temaer ud fra nogle få nøglefarver, med forudindstillinger og live-forhåndsvisning, hvert i en mørk og en lys version; den anden laver Mumcord selv og holder kontrasten læsbar.",
+            "Vælg temaer som farvecirkler; gem, omdøb og slet dine egne, og rediger den lyse og den mørke version side om side.",
+            "Del temaer som tekst: chatten viser et forhåndsvisningskort, ét klik anvender temaet på appen eller på en server.",
+            "Et tema pr. server, hvis du har lyst.",
+            "Denne hjemmesides udseende i appen: lysende knapper, gradienter, glaseffekter og et let filmkorn, kan slås fra."
+          ]
+        },
+        {
+          "title": "Finpudsning og store servere",
+          "items": [
+            "Dropdowns i temaet i stedet for browserens, og alle felter i indstillingerne pænt på linje.",
+            "En slank statuslinje under chatbilleder, mens den fulde størrelse indlæses.",
+            "Store servere fryser ikke længere, første gang de vises, plus kontakterne „Skjul tomme kanaler“ og „Dem, der taler, først“.",
+            "Beskeder tæller først som sendt, når serveren bekræfter dem; afviste kan sendes igen.",
+            "Profilkommentar med fed, kursiv, links og lister.",
+            "En separat skyder til bitraten, op til den højeste værdi, serveren og Mumble tillader.",
+            "Forkert adgangskode? Et vindue spørger med det samme efter den rigtige og gemmer den, hvis du vil.",
+            "Dem, der kun lytter med på en kanal, står i den normale liste med et øre-ikon i stedet for i deres egen gruppe."
+          ]
+        },
+        {
+          "title": "Chat",
+          "items": [
+            "Svar på beskeder, i kanaler og privat: med et kort citat, der også kan læses fint i den officielle Mumble-klient; et klik på det hopper til originalen.",
+            "På lange beskeder sidder profilbilledet øverst ved navnet, og billede og navn bliver stående, mens du scroller.",
+            "Et svar på din besked tæller som en @omtale.",
+            "„> tekst“ bliver til et citat, også med en knap; „>_>“ og lignende smileys forbliver, som de er.",
+            "Serverens velkomstbesked og kanalbeskrivelsen kan lukkes og dukker op igen, når de ændres."
+          ]
+        },
+        {
+          "title": "Forbindelseskvalitet",
+          "items": [
+            "Forbindelsen i en persons profil med ét blik (god, middel, svag), kan foldes ud med ping, pakketab, båndbredde og UDP eller TCP, også for dig selv; en persons menu viser kun ping og forbindelsestype. Admins ser desuden klient og styresystem.",
+            "Et lille signalikon ved personer med en svag forbindelse, kan slås fra."
+          ]
+        },
+        {
+          "title": "Overlay",
+          "items": [
+            "Overlayet i spillet også på Windows, som et separat vindue over spillet, som klik går igennem. Der indlæses intet i spillet, så det virker også i spil med anti-cheat; kun eksklusiv fuldskærm skjuler det.",
+            "Korrekte farver i HDR-spil, spil fra Flatpak-Steam og spil i kantløs fuldskærm afprøvet på KDE og GNOME.",
+            "Rettet: lukker eller opdaterer du Mumcord, crasher et kørende spil ikke længere.",
+            "Overlayet i spillet også i native Linux-spil med OpenGL, fx Project Hospital, Euro Truck Simulator 2 og Hearts of Iron IV: Mumcord viser den rigtige Steam-startindstilling til at kopiere, og den virker stadig efter opdateringer.",
+            "Overlayvinduet forsvinder; hvis du brugte det, fører en engangsbesked dig til indstillingerne for overlayet i spillet.",
+            "„Deltag i spil“ også for spil, der deler deres serveradresse via Mumble Link."
+          ]
+        },
+        {
+          "title": "Direkte fra Mumcord til Mumcord",
+          "items": [
+            "Direkte, krypterede forbindelser mellem Mumcord-brugere over IPv6, routerens port-mapping eller dit eget netværk, uden andres server.",
+            "Mumcord spørger én gang først, for de andre ser din IP-adresse; du kan ændre det i indstillingerne.",
+            "Billeder i fuld størrelse kommer på den måde meget hurtigere frem; virker ingen direkte forbindelse, fungerer det som før.",
+            "Lukker du billedfremviseren, indlæses billedet videre i baggrunden; × på statuslinjen afbryder."
+          ]
+        },
+        {
+          "title": "Se sammen (beta)",
+          "items": [
+            "YouTube-watch-party: alle i talekanalen ser den samme video samtidig, alle kan sætte på pause og spole, med en fælles playliste, som alle kan føje til.",
+            "Del en skærm eller et vindue med op til 8 seere, som standard i 720p med 30 billeder i sekundet; på Windows og macOS med lyden fra den delte app, hvis du vil, på Linux uden lyd.",
+            "Begge dele starter du fra en Apps-knap i chatten til din talekanal."
+          ]
+        },
+        {
+          "title": "Installation på Linux og opdateringer",
+          "items": [
+            "Pakker til Debian og Ubuntu (.deb), Fedora og openSUSE (.rpm), Arch (AUR: mumcord-bin) og AppImage, hver til x86_64 og ARM64.",
+            "Installér med én linje i terminalen, med menupunkt og understøttelse af mumble:// links.",
+            "„Start Mumcord, når jeg logger ind“ på alle systemer.",
+            "Valgfrit en besked, når en ny version er ude; Mumcord spørger GitHub højst én gang om dagen."
+          ]
+        }
+      ],
+      "known": [
+        "Positionel lyd, spilplugins, billeder i fuld størrelse, at se sammen og skærmdeling er beta.",
+        "På Windows skjuler eksklusiv fuldskærm overlayet. Sæt spillet til kantløs fuldskærm eller vinduestilstand.",
+        "Skærmdeling kræver en direkte forbindelse. Virker ingen, fx bag CGNAT, er den ikke tilgængelig; der er bevidst ingen relay-server. På Linux deles der ingen lyd, og på X11 kun hele skærmen."
+      ]
+    },
     {
       "version": "0.3.1",
       "teaser": "Musikkvalitet og links i chatten rettet.",
