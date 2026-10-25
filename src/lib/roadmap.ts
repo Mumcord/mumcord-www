@@ -184,6 +184,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Ein eigener Regler für die Bitrate, bis zum höchsten Wert, den Server und Mumble zulassen",
               "Falsches Passwort? Ein Fenster fragt gleich nach dem richtigen und speichert es auf Wunsch",
               "Wer einem Kanal nur zuhört, steht mit einem Ohr-Symbol in der normalen Liste statt in einer eigenen Gruppe",
+              "Die Einstellungen für eine Person, etwa Lautstärke und Stummschalten, stehen eingeklappt im Profil, mit kurzem Hinweis, wenn etwas verstellt ist",
             ],
           },
           {
@@ -194,6 +195,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Antwortet jemand auf deine Nachricht, zählt das wie eine @Erwähnung",
               "„> Text“ wird zum Zitat, auch per Knopf; „>_>“ und ähnliche Smileys bleiben, wie sie sind",
               "Willkommensnachricht des Servers und Kanalbeschreibung lassen sich wegklicken und tauchen wieder auf, wenn sie sich ändern",
+              "Rechtsklick auf einen Link im Chat: kopieren oder öffnen",
             ],
           },
           {
@@ -229,6 +231,8 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "YouTube-Watch-Party: Alle im Sprachkanal schauen dasselbe Video gleichzeitig, jeder kann pausieren und spulen, mit gemeinsamer Playlist, zu der alle etwas hinzufügen",
               "Bildschirm oder Fenster teilen, für bis zu 8 Zuschauer, standardmäßig in 720p mit 30 Bildern pro Sekunde; unter Windows und macOS auf Wunsch mit dem Ton der geteilten App, unter Linux ohne Ton",
               "Beides startest du über einen Apps-Knopf im Chat deines Sprachkanals",
+              "Watch-Party und geteilte Bildschirme laufen in schwebenden Fenstern in der App, die du verschieben, größer ziehen und einklappen kannst; ein Hinweis oben im Chat zeigt, was im Kanal gerade läuft",
+              "Teilst du deinen Bildschirm, zeigt ein roter Balken mit „Beenden“ das deutlich an, und bei den anderen hat dein Bild einen roten Ring mit „LIVE“",
             ],
           },
           {
@@ -431,6 +435,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "A bitrate slider of its own, up to the highest value the server and Mumble allow",
               "Wrong password? A window asks for the right one straight away and saves it if you like",
               "People who only listen to a channel appear in the normal list with an ear icon instead of in a group of their own",
+              "Settings for a person, such as volume and mute, sit collapsed in their profile, with a short hint when something is changed",
             ],
           },
           {
@@ -441,6 +446,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "A reply to your message counts like an @mention",
               "“> text” becomes a quote, also with a button; “>_>” and similar smileys stay as they are",
               "The server's welcome message and the channel description can be closed and come back when they change",
+              "Right-click a link in the chat to copy or open it",
             ],
           },
           {
@@ -476,6 +482,8 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "YouTube watch party: everyone in the voice channel watches the same video at once, anyone can pause and seek, with a shared playlist everyone can add to",
               "Share a screen or a window for up to 8 viewers, 720p at 30 frames per second by default; on Windows and macOS with the shared app's sound if you like, on Linux without sound",
               "Start both from an Apps button in your voice channel's chat",
+              "The watch party and shared screens run in floating windows inside the app that you can move, resize and collapse; a hint at the top of the chat shows what is running in the channel",
+              "While you share your screen, a red bar with “End” makes it clear, and others see a red ring with “LIVE” around your picture",
             ],
           },
           {
