@@ -255,7 +255,6 @@ export const en: Dict = {
     changelog: "Changelog",
     server: "Host a server",
     license: "License (AGPL-3.0)",
-    commercial: "Commercial license",
     imprint: "Legal notice",
     privacy: "Privacy",
     noTracking: "This site sets no cookies and loads nothing from third parties.",

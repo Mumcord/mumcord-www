@@ -54,7 +54,7 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
         {
           title: "Lizenz",
           items: [
-            "Ab 0.2.0 steht Mumcord unter der GNU AGPL v3. Für geschlossene Produkte gibt es eine kommerzielle Lizenz auf Anfrage. Versionen bis 0.1.1 bleiben MIT.",
+            "Ab 0.2.0 steht Mumcord unter der GNU AGPL v3. Versionen bis 0.1.1 bleiben MIT.",
           ],
         },
       ],
@@ -174,7 +174,7 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
         {
           title: "License",
           items: [
-            "From 0.2.0 Mumcord is licensed under the GNU AGPL v3. A commercial license for closed products is available on request. Versions up to 0.1.1 stay MIT.",
+            "From 0.2.0 Mumcord is licensed under the GNU AGPL v3. Versions up to 0.1.1 stay MIT.",
           ],
         },
       ],

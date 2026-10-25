@@ -254,7 +254,6 @@ export const de = {
     changelog: "Changelog",
     server: "Eigener Server",
     license: "Lizenz (AGPL-3.0)",
-    commercial: "Kommerzielle Lizenz",
     imprint: "Impressum",
     privacy: "Datenschutz",
     noTracking: "Diese Seite setzt keine Cookies und lädt nichts von Dritten.",
