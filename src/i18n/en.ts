@@ -131,7 +131,7 @@ export const en: Dict = {
         id: "a11y",
         title: "Built for everyone",
         body:
-          "Keyboard operation, screen-reader labels, light and dark themes, system scaling. English, German and Spanish — switch without a restart.",
+          "Keyboard operation, screen-reader labels, light and dark themes, system scaling. From 0.3.0 all 24 official EU languages, switch without a restart.",
       },
     ],
     followDemo: {
@@ -182,7 +182,7 @@ export const en: Dict = {
       { src: "settings-07-sounds-notifications-dark", caption: "Sounds and notifications, set per event." },
       { src: "settings-02-audio-dark", caption: "Switch devices without reconnecting." },
       { src: "main-light", caption: "A light theme that's fully there." },
-      { src: "settings-06-language-dark", caption: "English, German, Spanish." },
+      { src: "settings-06-language-dark", caption: "Switch the language without a restart." },
     ],
   },
   roadmap: {
@@ -195,7 +195,7 @@ export const en: Dict = {
       { tag: "Epic 1 · 1a", title: "Everyday client", body: "Done since version 0.1.0: wizard, servers, channels, voice, chat and following. Unsigned builds for Linux, Windows and macOS." },
       { tag: "Epic 1 · 1b", title: "More chat", body: "Done in 0.2.0: dismissable link previews, YouTube, Twitch and Spotify cards that load only on click, external images with a zoomable image viewer, @mentions with their own sound, GIF favorites, code highlighting and a formatting toolbar. Plus a manual voice activation threshold and, if you like, “Now playing”: others see what music you are listening to." },
       { tag: "Epic 1 · 1c", title: "In game", now: true, body: "Coming in 0.3.0, together with 1d. Positional audio (beta) via Mumble Link and the official game plugins. An overlay right inside the game on Linux, set per game, otherwise and on Windows as a floating window; there is no overlay on macOS. Optional “Now gaming” with join game via Steam, clickable @mentions, quick settings on the gear and settings with search and an Accessibility section." },
-      { tag: "Epic 1 · 1d", title: "Mumcord to Mumcord", now: true, body: "Coming in 0.3.0, together with 1c. Mumcord clients share the chat history of the last few days, so you can read what was written before you joined. A badge shows who uses Mumcord. Double-click for private messages, a new profile, friends with online status and images you can drop and paste reliably. Other Mumcord users see your images at full size instead of just a preview." },
+      { tag: "Epic 1 · 1d", title: "Mumcord to Mumcord", now: true, body: "Coming in 0.3.0, together with 1c. Mumcord clients share the chat history of the last few days, so you can read what was written before you joined. A badge shows who uses Mumcord. Double-click for private messages, a new profile, friends with online status in the right column, “Join channel” on right-click and images you can drop and paste reliably. Other Mumcord users see your images at full size instead of just a preview. Plus all 24 official EU languages." },
       { tag: "Epic 2", title: "Several servers and your own themes", body: "Read along on all of them, talk on one. Plus custom themes with colours and presets, shareable as text: the chat shows a preview card, one click imports the theme." },
       { tag: "Epic 3", title: "Comfort", body: "Global hotkeys, full tray menu, import from the official client, whisper, server browser." },
       { tag: "Epic 4", title: "Admin", body: "ACLs, bans, channel management." },
@@ -221,7 +221,7 @@ export const en: Dict = {
       macos: { name: "macOS", sub: "Universal, Apple Silicon & Intel · .dmg", warn: "Gatekeeper blocks the first launch: right-click → “Open”, or allow it under Privacy & Security." },
       linux: { name: "Linux", sub: "X11 & Wayland · AppImage", warn: "chmod +x Mumcord_*.AppImage — needs WebKitGTK 4.1 and a Secret Service keyring." },
     },
-    unsigned: "Builds are unsigned for now. Signed installers arrive with Epic 5.",
+    unsigned: "Builds are unsigned for now. Signing for Windows and macOS is prepared and starts once the certificates are set up.",
     source: "Rather build it yourself? Rust, Node 24, one command.",
     sourceLink: "Build guide in the wiki",
   },

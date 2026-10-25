@@ -152,6 +152,18 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
             body: "Banner, Abzeichen, Musik oder Spiel und alle Einstellungen für die Person. Änderungen gelten sofort, mit kurzem „Gespeichert“. Das Menü per Rechtsklick hat Symbole und Schalter.",
             since: "0.3.0",
           },
+          {
+            id: "kanal-beitreten",
+            title: "Kanal einer Person beitreten",
+            body: "Rechtsklick auf eine Person oder einen Freund: „‹Kanal› beitreten“ bringt dich direkt in ihren Kanal. Erlaubt der Server das nicht, steht der Grund daneben.",
+            since: "0.3.0",
+          },
+          {
+            id: "mitgliederspalte",
+            title: "Rechte Spalte mit Bereichen",
+            body: "„In ‹Kanal›“, „In anderen Kanälen“ mit allen anderen auf dem Server und „Freunde“, jeweils einklappbar. Mumcord merkt sich, was offen ist. Links steht „Serverübersicht“ über dem Kanalbaum.",
+            since: "0.3.0",
+          },
         ],
       },
       {
@@ -367,7 +379,7 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
           {
             id: "freunde",
             title: "Freunde",
-            body: "Wiedererkannt am Zertifikat, auch über Server und Umbenennungen hinweg, mit Online-Status. Der private Verlauf mit Freunden bleibt erhalten.",
+            body: "Wiedererkannt am Zertifikat, auch über Server und Umbenennungen hinweg. Die Freunde-Liste in der rechten Spalte zeigt, wer online ist und in welchem Kanal. Der private Verlauf mit Freunden bleibt erhalten.",
             since: "0.3.0",
           },
         ],
@@ -392,8 +404,8 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
           },
           {
             id: "sprachen",
-            title: "Deutsch, Englisch, Spanisch",
-            body: "Umschalten ohne Neustart. Tray-Symbol, Start beim Anmelden und Bedienung per Tastatur und Screenreader gehören dazu.",
+            title: "Sprache wechseln ohne Neustart",
+            body: "Die Sprache gilt sofort. Tray-Symbol, Start beim Anmelden und Bedienung per Tastatur und Screenreader gehören dazu.",
             shot: "settings-06-language-dark",
             alt: "Einstellungen, Bereich Sprache der Oberfläche",
           },
@@ -403,9 +415,21 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
             body: "Die Identität liegt im sicheren Speicher des Systems. Die Diagnosedatei enthält keine Chatinhalte oder Passwörter und verlässt deinen Rechner nur, wenn du sie selbst verschickst.",
           },
           {
+            id: "eu-sprachen",
+            title: "Alle 24 Amtssprachen der EU",
+            body: "Von Bulgarisch bis Schwedisch, auch im Tray-Menü. Jede Sprache steht in ihrem eigenen Namen in der Auswahl und lässt sich unter jedem Namen suchen. Übersetzt vom Team ohne Prüfung durch Muttersprachler: Korrekturen gern als Issue.",
+            since: "0.3.0",
+          },
+          {
+            id: "datenschutz-schritt",
+            title: "Datenschutz im Wizard",
+            body: "Beim ersten Start zeigt ein kurzer Schritt, womit sich Mumcord verbindet und wann, mit Link zur vollständigen Datenschutzerklärung.",
+            since: "0.3.0",
+          },
+          {
             id: "schnelleinstellungen",
             title: "Schnelleinstellungen am Zahnrad",
-            body: "Ein Klick aufs Zahnrad: Vorschauen, Design, Overlay, Positional Audio, Musik und Spiel teilen, Profil bearbeiten und registrieren.",
+            body: "Ein Klick aufs Zahnrad: Vorschauen, Design, Overlay, Musik und Spiel teilen, Profil bearbeiten und registrieren. Beta-Funktionen wie Positional Audio stehen in einer eigenen, einklappbaren Gruppe.",
             since: "0.3.0",
           },
           {
@@ -526,6 +550,18 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
             id: "profile",
             title: "New profile",
             body: "Banner, badge, music or game and all settings for that person. Changes apply instantly with a short “Saved”. The right-click menu has icons and switches.",
+            since: "0.3.0",
+          },
+          {
+            id: "join-channel",
+            title: "Join a person's channel",
+            body: "Right-click a person or a friend: “Join ‹channel›” takes you straight to their channel. If the server does not allow it, the reason is shown next to it.",
+            since: "0.3.0",
+          },
+          {
+            id: "member-column",
+            title: "Right column with sections",
+            body: "“In ‹channel›”, “In other channels” with everyone else on the server, and “Friends”, each collapsible. Mumcord remembers what is open. On the left, “Server overview” sits above the channel tree.",
             since: "0.3.0",
           },
         ],
@@ -743,7 +779,7 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
           {
             id: "friends",
             title: "Friends",
-            body: "Recognised by certificate, also across servers and renames, with online status. Private history with friends is kept.",
+            body: "Recognised by certificate, also across servers and renames. The Friends list in the right column shows who is online and in which channel. Private history with friends is kept.",
             since: "0.3.0",
           },
         ],
@@ -768,8 +804,8 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
           },
           {
             id: "languages",
-            title: "English, German, Spanish",
-            body: "Switch without restarting. A tray icon, start at login and full keyboard and screen reader use come with it.",
+            title: "Switch language without restarting",
+            body: "The language applies at once. A tray icon, start at login and full keyboard and screen reader use come with it.",
             shot: "settings-06-language-dark",
             alt: "Settings, interface language section",
           },
@@ -779,9 +815,21 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
             body: "Your identity lives in the system's secure storage. The diagnostic file contains no chat contents or passwords and only leaves your computer if you send it yourself.",
           },
           {
+            id: "eu-languages",
+            title: "All 24 official EU languages",
+            body: "From Bulgarian to Swedish, the tray menu included. Each language is listed in its own name and can be found by any of its names. Translated by the team without review by native speakers: corrections are welcome as an issue.",
+            since: "0.3.0",
+          },
+          {
+            id: "privacy-step",
+            title: "Privacy in the wizard",
+            body: "On first start a short step shows what Mumcord connects to and when, with a link to the full privacy statement.",
+            since: "0.3.0",
+          },
+          {
             id: "quick-settings",
             title: "Quick settings on the gear",
-            body: "One click on the gear: previews, theme, overlay, positional audio, sharing music and game, edit profile and register.",
+            body: "One click on the gear: previews, theme, overlay, sharing music and game, edit profile and register. Beta features such as positional audio sit in their own collapsible group.",
             since: "0.3.0",
           },
           {

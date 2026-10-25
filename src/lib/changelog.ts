@@ -20,7 +20,7 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
     {
       version: "0.3.0",
       summary:
-        "Stufe 1c und 1d zusammen: Mumcord im Spiel mit Positional Audio und Overlay, und alles, was zwischen Mumcord-Nutzern möglich wird, vom geteilten Chatverlauf bis zu Freunden.",
+        "Stufe 1c und 1d zusammen: Mumcord im Spiel mit Positional Audio und Overlay, und alles, was zwischen Mumcord-Nutzern möglich wird, vom geteilten Chatverlauf bis zu Freunden. Dazu alle 24 Amtssprachen der EU.",
       groups: [
         {
           title: "Im Spiel",
@@ -40,7 +40,7 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
             "Knopf „Zu den neuesten“ mit Zähler, wenn du weiter oben liest.",
             "Ein Mumcord-Abzeichen zeigt, wer Mumcord nutzt, auch bei dir selbst.",
             "Bilder in voller Größe (Beta): Offizielle Clients bekommen eine Vorschau im Rahmen des Server-Limits, Mumcord-Nutzer laden das ganze Bild im Bildbetrachter direkt vom Absender. Anbieten und Laden lassen sich einzeln abschalten.",
-            "Freunde: wiedererkannt am Zertifikat, auch über Server und Umbenennungen hinweg, mit Online-Status. Der private Verlauf mit Freunden bleibt erhalten.",
+            "Freunde: wiedererkannt am Zertifikat, auch über Server und Umbenennungen hinweg. Die Freunde-Liste in der rechten Spalte zeigt, wer online ist und in welchem Kanal. Der private Verlauf mit Freunden bleibt erhalten.",
           ],
         },
         {
@@ -50,12 +50,16 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
             "Neues Profil mit Banner, Abzeichen, Musik oder Spiel und allen Einstellungen für die Person. Änderungen gelten sofort, mit kurzem „Gespeichert“.",
             "Das Menü per Rechtsklick auf Leute hat Symbole und Schalter statt Beschriftungen wie „Stummschalten“ und „Lautschalten“.",
             "@Erwähnungen sind anklickbar: Vorschau beim Drüberfahren, Profil per Klick, Menü per Rechtsklick.",
+            "„‹Kanal› beitreten“ im Menü einer Person oder eines Freundes bringt dich in ihren Kanal. Erlaubt der Server das nicht, steht der Grund daneben.",
+            "Die rechte Spalte hat einklappbare Bereiche: „In ‹Kanal›“, „In anderen Kanälen“ mit allen anderen auf dem Server und „Freunde“. Mumcord merkt sich, was offen ist. Links steht „Serverübersicht“ über dem Kanalbaum.",
           ],
         },
         {
           title: "Einstellungen und Komfort",
           items: [
-            "Ein Klick aufs Zahnrad öffnet die Schnelleinstellungen: Vorschauen, Design, Overlay, Positional Audio, Musik und Spiel teilen, Profil bearbeiten und auf dem Server registrieren.",
+            "Alle 24 Amtssprachen der EU, auch im Tray-Menü. In der Auswahl steht jede Sprache in ihrem eigenen Namen und lässt sich unter jedem Namen finden. Übersetzt hat das Team ohne Prüfung durch Muttersprachler: Fehler gern als Issue melden.",
+            "Ein neuer Schritt im Wizard zeigt vor der Wahl der Link-Vorschauen, womit sich Mumcord verbindet und wann, mit Link zur vollständigen Datenschutzerklärung.",
+            "Ein Klick aufs Zahnrad öffnet die Schnelleinstellungen: Vorschauen, Design, Overlay, Musik und Spiel teilen, Profil bearbeiten und auf dem Server registrieren. Positional Audio und die anderen Beta-Funktionen stehen in einer eigenen, einklappbaren Gruppe.",
             "Einstellungen mit Suche, die zur Einstellung springt und sie hervorhebt. Die Seitenleiste bleibt beim Scrollen stehen.",
             "Neuer Bereich Barrierefreiheit: sichtbare Tastaturhinweise, Ansagen für Screenreader und Sprunglinks, einzeln schaltbar.",
             "Unter „Über“ gibt es Links zum Changelog und zum Melden von Fehlern und Wünschen.",
@@ -74,7 +78,8 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
       known: [
         "Positional Audio, die Spiel-Plugins und Bilder in voller Größe sind Beta: Wie gut es klappt, hängt vom Spiel ab.",
         "Das Overlay im Spiel unter Windows folgt später; bis dahin gibt es dort das Overlay-Fenster. Unter macOS gibt es kein Overlay.",
-        "Die Installer sind weiterhin unsigniert.",
+        "„Kanal beitreten“ für Freunde auf einem anderen Server kommt mit Epic 2, wenn Mumcord mehrere Server gleichzeitig kann.",
+        "Die Installer sind weiterhin unsigniert. Die Signierung für Windows und macOS ist vorbereitet und startet, sobald die Zertifikate eingerichtet sind.",
       ],
     },
     {
@@ -200,7 +205,7 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
     {
       version: "0.3.0",
       summary:
-        "Stages 1c and 1d together: Mumcord in game with positional audio and an overlay, and everything that becomes possible between Mumcord users, from shared chat history to friends.",
+        "Stages 1c and 1d together: Mumcord in game with positional audio and an overlay, and everything that becomes possible between Mumcord users, from shared chat history to friends. Plus all 24 official EU languages.",
       groups: [
         {
           title: "In game",
@@ -220,7 +225,7 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
             "A “Jump to newest” button with a count when you're reading further up.",
             "A Mumcord badge shows who uses Mumcord, yourself included.",
             "Full-size images (beta): official clients get a preview within the server limit, Mumcord users load the whole image in the image viewer straight from the sender. Offering and loading can each be switched off.",
-            "Friends: recognised by certificate, also across servers and renames, with online status. Private history with friends is kept.",
+            "Friends: recognised by certificate, also across servers and renames. The Friends list in the right column shows who is online and in which channel. Private history with friends is kept.",
           ],
         },
         {
@@ -230,12 +235,16 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
             "New profile with banner, badge, music or game and all settings for that person. Changes apply instantly with a short “Saved”.",
             "The right-click menu on people has icons and switches instead of labels like “Mute” and “Unmute”.",
             "@mentions are clickable: preview on hover, profile on click, menu on right-click.",
+            "“Join ‹channel›” in the menu of a person or a friend takes you to their channel. If the server does not allow it, the reason is shown next to it.",
+            "The right column has collapsible sections: “In ‹channel›”, “In other channels” with everyone else on the server, and “Friends”. Mumcord remembers what is open. On the left, “Server overview” sits above the channel tree.",
           ],
         },
         {
           title: "Settings and comfort",
           items: [
-            "A click on the gear opens quick settings: previews, theme, overlay, positional audio, sharing music and game, edit profile and register on the server.",
+            "All 24 official EU languages, the tray menu included. The picker lists each language in its own name and finds it by any of its names. The team did the translations without review by native speakers: please report mistakes as an issue.",
+            "A new wizard step before the link preview choice shows what Mumcord connects to and when, with a link to the full privacy statement.",
+            "A click on the gear opens quick settings: previews, theme, overlay, sharing music and game, edit profile and register on the server. Positional audio and the other beta features sit in their own collapsible group.",
             "Settings with search that jumps to the setting and highlights it. The sidebar stays in place while you scroll.",
             "A new Accessibility section: visible keyboard hints, screen reader announcements and skip links, each with its own switch.",
             "“About” links to the changelog and to reporting bugs and requesting features.",
@@ -254,7 +263,8 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
       known: [
         "Positional audio, the game plugins and full-size images are beta: how well they work depends on the game.",
         "The in-game overlay on Windows comes later; until then Windows has the overlay window. There is no overlay on macOS.",
-        "Installers are still unsigned.",
+        "“Join channel” for friends on another server comes with Epic 2, once Mumcord can be on several servers at once.",
+        "Installers are still unsigned. Signing for Windows and macOS is prepared and starts once the certificates are set up.",
       ],
     },
     {

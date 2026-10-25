@@ -130,7 +130,7 @@ export const de = {
         id: "a11y",
         title: "Für alle gebaut",
         body:
-          "Tastaturbedienung, Screenreader-Labels, helles und dunkles Design, Systemskalierung. Deutsch, Englisch und Spanisch — Wechsel ohne Neustart.",
+          "Tastaturbedienung, Screenreader-Labels, helles und dunkles Design, Systemskalierung. Ab 0.3.0 alle 24 Amtssprachen der EU, Wechsel ohne Neustart.",
       },
     ],
     followDemo: {
@@ -181,7 +181,7 @@ export const de = {
       { src: "settings-07-sounds-notifications-dark", caption: "Töne und Benachrichtigungen, pro Ereignis einstellbar." },
       { src: "settings-02-audio-dark", caption: "Geräte wechseln, ohne neu zu verbinden." },
       { src: "main-light", caption: "Helles Design, vollwertig." },
-      { src: "settings-06-language-dark", caption: "Deutsch, Englisch, Spanisch." },
+      { src: "settings-06-language-dark", caption: "Sprache wechseln, ohne neu zu starten." },
     ],
   },
   roadmap: {
@@ -194,7 +194,7 @@ export const de = {
       { tag: "Epic 1 · 1a", title: "Alltags-Client", body: "Fertig seit Version 0.1.0: Wizard, Server, Kanäle, Sprache, Chat und Folgen. Unsignierte Builds für Linux, Windows und macOS." },
       { tag: "Epic 1 · 1b", title: "Mehr Chat", body: "Fertig mit 0.2.0: Link-Vorschauen zum Wegklicken, Karten für YouTube, Twitch und Spotify, die erst beim Klick laden, externe Bilder mit Bildbetrachter und Zoom, @Erwähnungen mit eigenem Ton, GIF-Favoriten, Code-Hervorhebung und eine Formatierungsleiste. Dazu eine manuelle Schwelle für die Sprachaktivierung und, wenn du willst, „Läuft gerade“: Andere sehen, welche Musik du hörst." },
       { tag: "Epic 1 · 1c", title: "Im Spiel", now: true, body: "Kommt mit 0.3.0, zusammen mit 1d. Positional Audio (Beta) über Mumble Link und die offiziellen Spiel-Plugins. Ein Overlay direkt im Spiel unter Linux, pro Spiel einstellbar, sonst und unter Windows als schwebendes Fenster; unter macOS gibt es kein Overlay. Auf Wunsch „Spielt gerade“ mit Spiel beitreten über Steam, @Erwähnungen zum Anklicken, Schnelleinstellungen am Zahnrad und Einstellungen mit Suche und eigenem Bereich für Barrierefreiheit." },
-      { tag: "Epic 1 · 1d", title: "Mumcord unter sich", now: true, body: "Kommt mit 0.3.0, zusammen mit 1c. Mumcord-Clients teilen den Chatverlauf der letzten Tage, damit du nachlesen kannst, was vor deinem Beitreten geschrieben wurde. Ein Abzeichen zeigt, wer Mumcord nutzt. Doppelklick für private Nachrichten, neues Profil, Freunde mit Online-Status und Bilder, die sich zuverlässig reinziehen und einfügen lassen. Andere Mumcord-Nutzer sehen deine Bilder in voller Größe statt nur als Vorschau." },
+      { tag: "Epic 1 · 1d", title: "Mumcord unter sich", now: true, body: "Kommt mit 0.3.0, zusammen mit 1c. Mumcord-Clients teilen den Chatverlauf der letzten Tage, damit du nachlesen kannst, was vor deinem Beitreten geschrieben wurde. Ein Abzeichen zeigt, wer Mumcord nutzt. Doppelklick für private Nachrichten, neues Profil, Freunde mit Online-Status in der rechten Spalte, „Kanal beitreten“ per Rechtsklick und Bilder, die sich zuverlässig reinziehen und einfügen lassen. Andere Mumcord-Nutzer sehen deine Bilder in voller Größe statt nur als Vorschau. Dazu alle 24 Amtssprachen der EU." },
       { tag: "Epic 2", title: "Mehrere Server und eigene Themes", body: "Auf allen Servern mitlesen, auf einem sprechen. Dazu eigene Themes mit Farben und Vorlagen, teilbar als Text: Im Chat erscheint eine Vorschaukarte, ein Klick übernimmt das Theme." },
       { tag: "Epic 3", title: "Komfort", body: "Globale Hotkeys, volles Tray-Menü, Import aus dem offiziellen Client, Flüstern, Server-Browser." },
       { tag: "Epic 4", title: "Admin", body: "ACLs, Banns, Kanalverwaltung." },
@@ -220,7 +220,7 @@ export const de = {
       macos: { name: "macOS", sub: "Universal, Apple Silicon & Intel · .dmg", warn: "Gatekeeper blockiert beim ersten Start: Rechtsklick → „Öffnen“ oder unter Datenschutz & Sicherheit erlauben." },
       linux: { name: "Linux", sub: "X11 & Wayland · AppImage", warn: "chmod +x Mumcord_*.AppImage — braucht WebKitGTK 4.1 und einen Secret-Service-Schlüsselbund." },
     },
-    unsigned: "Builds sind derzeit unsigniert. Signierte Installer kommen mit Epic 5.",
+    unsigned: "Builds sind derzeit unsigniert. Die Signierung für Windows und macOS ist vorbereitet und startet, sobald die Zertifikate eingerichtet sind.",
     source: "Lieber selbst bauen? Rust, Node 24, ein Befehl.",
     sourceLink: "Bauanleitung im Wiki",
   },
