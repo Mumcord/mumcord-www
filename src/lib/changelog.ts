@@ -1,7 +1,8 @@
 // Hand-written release notes. GitHub's generated notes only list pull requests, so the
 // changelog page tells people what changed for them. The date and download link come from
 // the matching GitHub release once it is published (see pages/changelog).
-import type { Lang } from "../i18n";
+import { localized } from "../i18n";
+import { bundles } from "../i18n/locales";
 
 export interface ChangeGroup {
   title: string;
@@ -17,7 +18,7 @@ export interface ChangelogEntry {
   known?: string[];
 }
 
-export const changelog: Record<Lang, ChangelogEntry[]> = {
+const source: Record<"de" | "en", ChangelogEntry[]> = {
   de: [
     {
       version: "0.3.0",
@@ -390,3 +391,8 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
     },
   ],
 };
+
+// Versions come from English; a version the translation lacks stays in English.
+export const changelog = localized(source, (l) =>
+  source.en.map((e) => bundles[l]?.changelog.find((t) => t.version === e.version) ?? e),
+);

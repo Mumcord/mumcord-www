@@ -1,0 +1,53 @@
+// The text of one extra language (see langs.ts), in one file under ./locales/<code>.json.
+// It holds words only: screenshots, versions, statuses, links and code come from the English
+// content and are merged in by id or position, so a translation cannot break them. Anything a
+// translation leaves out falls back to English.
+import type { Dict } from "./de";
+import type { FeaturesPage } from "../lib/features";
+import type { ChangelogEntry } from "../lib/changelog";
+import type { RoadmapPage } from "../lib/roadmap";
+import type { GamesPage } from "../lib/games";
+import type { Guide } from "../lib/server-guide";
+
+export interface FeaturesText extends Omit<FeaturesPage, "groups"> {
+  groups: {
+    id: string;
+    title: string;
+    features: { id: string; title: string; body: string; alt?: string }[];
+  }[];
+}
+
+export interface RoadmapText extends Omit<RoadmapPage, "epics"> {
+  epics: {
+    id: string;
+    title: string;
+    summary: string;
+    items?: string[];
+    groups?: { title: string; items: string[] }[];
+  }[];
+}
+
+export interface GamesText extends Omit<GamesPage, "plugins"> {
+  /** Notes for the plugin list, keyed by the (untranslated) game name. */
+  pluginNotes: Record<string, string>;
+}
+
+/** The blocked games in the English order; anti-cheat names and sources stay as they are. */
+export interface BlockedText {
+  name: string;
+  reason: string;
+}
+
+export interface GuideText extends Omit<Guide, "steps"> {
+  steps: { id: string; title: string; body: string[]; after?: string[] }[];
+}
+
+export interface LocaleBundle {
+  dict: Dict;
+  features: FeaturesText;
+  changelog: Omit<ChangelogEntry, never>[];
+  roadmap: RoadmapText;
+  games: GamesText;
+  blocked: BlockedText[];
+  server: GuideText;
+}

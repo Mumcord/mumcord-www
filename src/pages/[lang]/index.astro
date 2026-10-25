@@ -1,0 +1,20 @@
+---
+import { getImage } from "astro:assets";
+import Base from "../../layouts/Base.astro";
+import Home from "../../components/Home.astro";
+import mainDark from "../../assets/shots/main-dark.png";
+import { dicts, EXTRA_LANGS, type ExtraLang } from "../../i18n";
+import { getLatestRelease } from "../../lib/release";
+import { homeJsonLd } from "../../lib/jsonld";
+
+export const getStaticPaths = () => EXTRA_LANGS.map((lang) => ({ params: { lang } }));
+
+const lang = Astro.params.lang as ExtraLang;
+const t = dicts[lang];
+const shot = await getImage({ src: mainDark, format: "webp", width: 1600 });
+const jsonLd = homeJsonLd(lang, Astro.site!, await getLatestRelease(), shot.src);
+---
+
+<Base lang={lang} page="home" title={t.meta.title} description={t.meta.description} jsonLd={jsonLd}>
+  <Home lang={lang} />
+</Base>

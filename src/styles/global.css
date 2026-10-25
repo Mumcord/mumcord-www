@@ -89,6 +89,9 @@ a {
 h1,
 h2,
 h3 {
+  /* Some of the 24 languages have very long words; let them break instead of overflowing. */
+  overflow-wrap: break-word;
+  hyphens: auto;
   font-family: var(--font-display);
   line-height: 1.05;
   margin: 0;
@@ -562,54 +565,153 @@ p {
   stroke-linejoin: round;
 }
 
-.lang-switch {
+.lang-menu {
   position: relative;
-  display: inline-grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 3px;
-  border-radius: 999px;
+}
+.lang-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 12px;
   border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: none;
+  color: var(--text);
   font: 600 0.75rem var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.06em;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s;
 }
-.lang-opt {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 30px;
-  border-radius: 999px;
-  color: var(--faint);
-  text-decoration: none;
-  transition: color 0.25s;
+.lang-trigger > svg:first-child {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
 }
-a.lang-opt:hover {
-  color: var(--text);
+.lang-trigger:hover,
+.lang-menu.is-open .lang-trigger {
+  border-color: var(--peach);
+  background: rgb(246 240 232 / 0.06);
 }
-.lang-opt.is-active {
-  color: var(--bg);
-}
-.lang-thumb {
+.lang-panel {
   position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 36px;
-  height: 30px;
-  border-radius: 999px;
-  background: var(--text);
-  transition: transform 0.45s var(--ease-spring);
+  top: calc(100% + 12px);
+  right: 0;
+  z-index: 3;
+  width: min(560px, calc(100vw - 2 * var(--gutter)));
+  padding: 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 22px;
+  background: rgb(20 14 52 / 0.96);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  box-shadow: 0 40px 90px -30px rgb(0 0 0 / 0.85);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px) scale(0.98);
+  transform-origin: 100% 0;
+  transition:
+    opacity 0.25s var(--ease-out),
+    transform 0.35s var(--ease-out),
+    visibility 0s 0.35s;
 }
-.lang-thumb.is-en {
-  transform: translateX(36px);
+.lang-panel::before {
+  content: "";
+  position: absolute;
+  inset: -14px 0 100%;
 }
-/* Slide the thumb toward the other language on hover, as a hint that it switches. */
-.lang-switch:has(a.lang-opt:hover) .lang-thumb {
-  transform: translateX(6px);
+.lang-menu.is-open .lang-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    opacity 0.25s var(--ease-out),
+    transform 0.35s var(--ease-out);
 }
-.lang-switch:has(a.lang-opt:hover) .lang-thumb.is-en {
-  transform: translateX(30px);
+.lang-menu.is-open .nav-caret {
+  transform: rotate(180deg);
+}
+@media (hover: hover) and (min-width: 941px) {
+  .lang-menu:hover:not(.is-closed) .lang-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition:
+      opacity 0.25s var(--ease-out),
+      transform 0.35s var(--ease-out);
+  }
+}
+.lang-panel-title {
+  padding: 2px 8px 10px;
+  font: 400 0.72rem var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--peach);
+}
+.lang-panel ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (max-width: 940px) {
+  /* Anchor the panel to the whole bar, not the small button, so it never leaves the screen. */
+  .header-shell {
+    position: relative;
+  }
+  .lang-menu {
+    position: static;
+  }
+  .lang-panel {
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    width: auto;
+    max-height: calc(100dvh - 100px);
+    overflow-y: auto;
+  }
+}
+@media (max-width: 560px) {
+  .lang-panel ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.lang-panel a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+}
+.lang-panel a:hover {
+  color: var(--text);
+  background: rgb(246 240 232 / 0.07);
+}
+.lang-panel a[aria-current="true"] {
+  color: var(--text);
+  background: rgb(255 176 138 / 0.12);
+}
+.lang-code {
+  width: 2.2em;
+  font: 500 0.7rem var(--font-mono);
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.lang-panel a[aria-current="true"] .lang-code {
+  color: var(--peach);
 }
 .header-actions {
   display: flex;
@@ -805,6 +907,8 @@ a.lang-opt:hover {
   opacity: 0.5;
 }
 .h2 {
+  hyphens: auto;
+  overflow-wrap: break-word;
   font-size: clamp(2.3rem, 5.4vw, 4.4rem);
   max-width: 16ch;
   text-wrap: balance;

@@ -1,6 +1,8 @@
 // Content of the detailed roadmap page. It follows the Mumcord spec (specs/01-foundation-specification.md,
 // section 2 and the epic table) and the wiki's Roadmap page; the short version lives in the i18n dicts.
-import type { Lang } from "../i18n";
+import { localized } from "../i18n";
+import { bundles } from "../i18n/locales";
+import type { RoadmapText } from "../i18n/bundle";
 
 export type Status = "done" | "now" | "planned" | "later";
 
@@ -39,7 +41,7 @@ export interface RoadmapPage {
   epics: Stage[];
 }
 
-export const roadmapPage: Record<Lang, RoadmapPage> = {
+const source: Record<"de" | "en", RoadmapPage> = {
   de: {
     title: "Roadmap",
     description:
@@ -371,3 +373,26 @@ export const roadmapPage: Record<Lang, RoadmapPage> = {
     ],
   },
 };
+
+// Words from the translation; ids, tags, statuses and versions from English.
+const mergeRoadmap = (en: RoadmapPage, tr: RoadmapText | undefined): RoadmapPage => {
+  if (!tr) return en;
+  const { epics: _epics, ...words } = tr;
+  return {
+    ...en,
+    ...words,
+    epics: en.epics.map((e) => {
+      const te = tr.epics.find((x) => x.id === e.id);
+      if (!te) return e;
+      return {
+        ...e,
+        title: te.title,
+        summary: te.summary,
+        items: e.items && (te.items ?? e.items),
+        groups: e.groups?.map((g, i) => ({ ...g, title: te.groups?.[i]?.title ?? g.title, items: te.groups?.[i]?.items ?? g.items })),
+      };
+    }),
+  };
+};
+
+export const roadmapPage = localized(source, (l) => mergeRoadmap(source.en, bundles[l]?.roadmap));

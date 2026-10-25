@@ -28,6 +28,12 @@ platform, the games where the in-game overlay stays off (from the app's
 (Mumble's `plugins/CMakeLists.txt` at the server version the guide pins, retracted plugins left out).
 The detailed roadmap (`/roadmap`, `/en/roadmap`) lives in `src/lib/roadmap.ts`; the short version on the
 home page is in the i18n dicts. Keep both in line with the Mumcord spec and the wiki's Roadmap page.
+The site speaks the 24 official EU languages (`src/i18n/langs.ts`). German and English are written
+in the files above. The other 22 live in `src/i18n/locales/<code>.json` and serve under `/<code>/…`
+through `src/pages/[lang]/`. Those files hold only words; screenshots, versions, statuses, links and
+code come from English (merged by id in each `src/lib/*.ts`), and anything a translation lacks falls
+back to English. Legal pages stay German and English only. When English text changes, update the
+JSON files too, or the old translation keeps showing for that string.
 The server hosting guide (`/server`, `/en/server`) lives in `src/lib/server-guide.ts`; its
 compose file pins the same `mumblevoip/mumble-server` version the Mumcord tests use.
 

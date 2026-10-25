@@ -16,6 +16,7 @@ export const de = {
     server: "Server",
     skip: "Zum Inhalt springen",
     langSwitch: "English",
+    language: "Sprache",
     menu: "Menü",
   },
   menu: {
@@ -56,7 +57,7 @@ export const de = {
     "Linux X11 & Wayland",
     "Windows 10/11",
     "macOS",
-    "Deutsch · English · Español",
+    "24 EU-Sprachen",
     "WCAG 2.2 AA als Ziel",
   ],
   ptt: {

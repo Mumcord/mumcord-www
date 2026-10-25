@@ -1,6 +1,8 @@
 // Content of the features page. Every feature that has a screenshot names it by file name in
 // src/assets/shots (without .png); features without one show text only until a capture exists.
-import type { Lang } from "../i18n";
+import { localized } from "../i18n";
+import { bundles } from "../i18n/locales";
+import type { FeaturesText } from "../i18n/bundle";
 import { ISSUES_URL } from "./release";
 
 export const BUG_URL = `${ISSUES_URL}/new?template=bug_report.yml`;
@@ -53,7 +55,7 @@ export interface FeaturesPage {
   groups: FeatureGroup[];
 }
 
-export const featuresPage: Record<Lang, FeaturesPage> = {
+const source: Record<"de" | "en", FeaturesPage> = {
   de: {
     title: "Funktionen",
     description:
@@ -915,3 +917,26 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
     ],
   },
 };
+
+// Words from the translation, everything else (screenshots, versions, beta) from English.
+const mergeFeatures = (en: FeaturesPage, tr: FeaturesText | undefined): FeaturesPage => {
+  if (!tr) return en;
+  const { groups: _groups, ...words } = tr;
+  return {
+    ...en,
+    ...words,
+    groups: en.groups.map((g) => {
+      const tg = tr.groups.find((x) => x.id === g.id);
+      return {
+        ...g,
+        title: tg?.title ?? g.title,
+        features: g.features.map((f) => {
+          const tf = tg?.features.find((x) => x.id === f.id);
+          return tf ? { ...f, title: tf.title, body: tf.body, alt: tf.alt ?? f.alt } : f;
+        }),
+      };
+    }),
+  };
+};
+
+export const featuresPage = localized(source, (l) => mergeFeatures(source.en, bundles[l]?.features));

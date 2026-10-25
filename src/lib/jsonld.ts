@@ -1,4 +1,4 @@
-import { dicts, routes, type Lang, type PageId } from "../i18n";
+import { dicts, routes, LANGS, type Lang, type PageId } from "../i18n";
 import { OWNER } from "./site";
 import { REPO_URL, RELEASES_URL, type Release } from "./release";
 
@@ -20,7 +20,7 @@ export function homeJsonLd(lang: Lang, site: URL, release: Release | null, scree
       "@id": `${site.origin}/#website`,
       url: site.origin,
       name: "Mumcord",
-      inLanguage: ["de", "en"],
+      inLanguage: [...LANGS],
       publisher: { "@id": `${site.origin}/#owner` },
     },
     {
@@ -33,7 +33,7 @@ export function homeJsonLd(lang: Lang, site: URL, release: Release | null, scree
       applicationCategory: "CommunicationApplication",
       applicationSubCategory: "Voice chat",
       operatingSystem: "Windows 10, Windows 11, macOS, Linux",
-      inLanguage: ["en", "de", "es"],
+      inLanguage: [...LANGS],
       image: new URL("/og.jpg", site).href,
       screenshot: new URL(screenshot, site).href,
       license: `${REPO_URL}/blob/main/LICENSE`,

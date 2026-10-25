@@ -18,6 +18,7 @@ export const en: Dict = {
     server: "Server",
     skip: "Skip to content",
     langSwitch: "Deutsch",
+    language: "Language",
     menu: "Menu",
   },
   menu: {
@@ -58,7 +59,7 @@ export const en: Dict = {
     "Linux X11 & Wayland",
     "Windows 10/11",
     "macOS",
-    "English · Deutsch · Español",
+    "24 EU languages",
     "WCAG 2.2 AA target",
   ],
   ptt: {

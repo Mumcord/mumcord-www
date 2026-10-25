@@ -1,7 +1,12 @@
 // Step-by-step guide for hosting a standard Mumble server with Docker Compose. The compose file
 // was tested against mumblevoip/mumble-server v1.5.735 (the version Mumcord's own tests use).
 // Body strings may contain inline HTML (<code>, <strong>, <a>); they are written here, never user input.
-import type { Lang } from "../i18n";
+import { localized } from "../i18n";
+import { bundles } from "../i18n/locales";
+import type { GuideText } from "../i18n/bundle";
+
+// The compose and env files carry German or English comments; the other languages use English.
+type Lang = "de" | "en";
 
 export const IMAGE = "mumblevoip/mumble-server:v1.5.735";
 export const IMAGE_DOCS = "https://github.com/mumble-voip/mumble-docker";
@@ -110,7 +115,7 @@ SUPERUSER_PASSWORD=paste-the-random-password-here
 SERVER_PASSWORD=
 `;
 
-export const guides: Record<Lang, Guide> = {
+const source: Record<Lang, Guide> = {
   de: {
     title: "Eigenen Mumble-Server betreiben",
     description:
@@ -362,3 +367,24 @@ export const guides: Record<Lang, Guide> = {
     more: "More help is in the wiki and the issues on GitHub.",
   },
 };
+
+// Words from the translation; the code snippets always come from English.
+// Links to the English home page in the English text point to the reader's own language instead.
+const relink = (lang: string, list: string[]) => list.map((s) => s.replaceAll('href="/en#', `href="/${lang}#`));
+
+const mergeGuide = (lang: string, en: Guide, tr: GuideText | undefined): Guide => {
+  if (!tr) return { ...en, steps: en.steps.map((s) => ({ ...s, body: relink(lang, s.body), after: s.after && relink(lang, s.after) })) };
+  const { steps: _steps, ...words } = tr;
+  return {
+    ...en,
+    ...words,
+    steps: en.steps.map((s) => {
+      const ts = tr.steps.find((x) => x.id === s.id);
+      const body = ts?.body ?? s.body;
+      const after = s.after && (ts?.after ?? s.after);
+      return { ...s, title: ts?.title ?? s.title, body: relink(lang, body), after: after && relink(lang, after) };
+    }),
+  };
+};
+
+export const guides = localized(source, (l) => mergeGuide(l, source.en, bundles[l]?.server));

@@ -3,7 +3,9 @@
 // Sources: the app spec (FR-1.42, FR-1.46b, QA.54–QA.74), the app's overlay blocklist
 // (crates/engine/src/ingame_overlay/blocklist.json) and Mumble's plugin folder at the server
 // version the guide uses (plugins/CMakeLists.txt, retracted plugins left out).
-import type { Lang } from "../i18n";
+import { localized } from "../i18n";
+import { bundles } from "../i18n/locales";
+import type { BlockedText, GamesText } from "../i18n/bundle";
 
 export type Support = "yes" | "later" | "no";
 
@@ -117,7 +119,7 @@ const pluginNames = [
   "World of Warcraft",
 ];
 
-const pluginNotes: Record<Lang, Record<string, string>> = {
+const pluginNotes: Record<"de" | "en", Record<string, string>> = {
   de: {
     "Battlefield 4": "32 und 64 Bit",
     "Call of Duty: Modern Warfare 2 (2009)": "Mehrspieler und Special Ops",
@@ -134,9 +136,9 @@ const pluginNotes: Record<Lang, Record<string, string>> = {
   },
 };
 
-const plugins = (lang: Lang): PluginGame[] => pluginNames.map((name) => ({ name, note: pluginNotes[lang][name] }));
+const plugins = (notes: Record<string, string>): PluginGame[] => pluginNames.map((name) => ({ name, note: notes[name] }));
 
-export const gamesPage: Record<Lang, GamesPage> = {
+const source: Record<"de" | "en", GamesPage> = {
   de: {
     title: "Spiele",
     description:
@@ -228,7 +230,7 @@ export const gamesPage: Record<Lang, GamesPage> = {
     pluginsNote:
       "Viele Plugins sind für eine bestimmte, oft ältere Spielversion gebaut und lesen den Speicher des Spiels. Manche Anti-Cheat-Systeme können das melden, darauf weist Mumcord vor dem Einschalten hin. Mit echten Spielen geprüft werden die Plugins mit Epic 2, bis dahin bleiben sie Beta.",
     pluginsSource: "Plugins im Mumble-Repository",
-    plugins: plugins("de"),
+    plugins: plugins(pluginNotes.de),
     askTitle: "Ein Spiel fehlt oder macht Probleme?",
     askBody: "Ob ein Spiel funktioniert, eins auf die Sperrliste gehört oder ein Plugin nicht mehr passt: Meld es auf GitHub.",
     ask: "Spiel vorschlagen",
@@ -325,7 +327,7 @@ export const gamesPage: Record<Lang, GamesPage> = {
     pluginsNote:
       "Many plugins are built for one specific, often older game version and read the game's memory. Some anti-cheat systems may flag that, and Mumcord tells you before you turn one on. The plugins get checked with real games in Epic 2; until then they stay beta.",
     pluginsSource: "Plugins in the Mumble repository",
-    plugins: plugins("en"),
+    plugins: plugins(pluginNotes.en),
     askTitle: "A game is missing or causes trouble?",
     askBody: "Whether a game works, one belongs on the block list or a plugin no longer fits: report it on GitHub.",
     ask: "Suggest a game",
@@ -333,7 +335,7 @@ export const gamesPage: Record<Lang, GamesPage> = {
   },
 };
 
-export const blockedGames: Record<Lang, BlockedGame[]> = {
+const blockedSource: Record<"de" | "en", BlockedGame[]> = {
   de: [
     {
       name: "VALORANT",
@@ -411,3 +413,16 @@ export const blockedGames: Record<Lang, BlockedGame[]> = {
     },
   ],
 };
+
+const mergeGames = (en: GamesPage, tr: GamesText | undefined): GamesPage => {
+  if (!tr) return en;
+  const { pluginNotes: notes, ...words } = tr;
+  return { ...en, ...words, plugins: plugins({ ...pluginNotes.en, ...notes }) };
+};
+
+// Anti-cheat names and sources stay as in English; only the game name and the reason change.
+const mergeBlocked = (en: BlockedGame[], tr: BlockedText[] | undefined): BlockedGame[] =>
+  en.map((b, i) => (tr?.[i] ? { ...b, name: tr[i].name, reason: tr[i].reason } : b));
+
+export const gamesPage = localized(source, (l) => mergeGames(source.en, bundles[l]?.games));
+export const blockedGames = localized(blockedSource, (l) => mergeBlocked(blockedSource.en, bundles[l]?.blocked));

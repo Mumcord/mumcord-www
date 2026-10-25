@@ -347,7 +347,7 @@ const voices = [
     </div>
     <ol class="timeline">
       {
-        t.roadmap.steps.map((s) => (
+        (t.roadmap.steps as { tag: string; title: string; body: string; now?: boolean }[]).map((s) => (
           <li class:list={[{ "is-now": s.now }]} data-reveal>
             <span class="tl-dot" aria-hidden="true" />
             <p class="tl-tag">

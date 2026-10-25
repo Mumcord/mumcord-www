@@ -1,5 +1,5 @@
 ---
-import { dicts, routes, type Lang } from "../i18n";
+import { dicts, routes, type Lang, LANG_INFO } from "../i18n";
 import { getLatestRelease, formatSize, RELEASES_URL, WIKI_URL, type Platform } from "../lib/release";
 
 interface Props {
@@ -10,7 +10,7 @@ const t = dicts[lang].download;
 const release = await getLatestRelease();
 const platforms: Platform[] = ["windows", "macos", "linux"];
 const date = release
-  ? new Intl.DateTimeFormat(lang === "de" ? "de-DE" : "en-GB", { dateStyle: "long" }).format(new Date(release.publishedAt))
+  ? new Intl.DateTimeFormat(LANG_INFO[lang].intl, { dateStyle: "long" }).format(new Date(release.publishedAt))
   : "";
 
 const glyphs: Record<Platform, string> = {

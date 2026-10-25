@@ -1,5 +1,5 @@
 ---
-import { dicts, routes, type Lang } from "../i18n";
+import { dicts, routes, type Lang, LANG_INFO } from "../i18n";
 import { changelog } from "../lib/changelog";
 import { getReleases, RELEASES_URL } from "../lib/release";
 
@@ -9,7 +9,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = dicts[lang].changelog;
 const releases = await getReleases();
-const dateFmt = new Intl.DateTimeFormat(lang === "de" ? "de-DE" : "en-GB", { dateStyle: "long" });
+const dateFmt = new Intl.DateTimeFormat(LANG_INFO[lang].intl, { dateStyle: "long" });
 const download = `${routes.home[lang]}#download`;
 
 // Hand-written entries first; a published GitHub release without one still gets listed.
