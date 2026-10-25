@@ -89,7 +89,7 @@ export const en: Dict = {
   features: {
     label: "02 — What Mumcord does today",
     title: "Everything an evening session needs.",
-    intro: "As of version 0.2.0, with 0.3.0 completing Epic 1 soon. What's missing is listed honestly in the roadmap.",
+    intro: "As of version 0.3.0, Epic 1 is complete. What's missing is listed honestly in the roadmap.",
     all: "All features with screenshots",
     items: [
       {
@@ -223,7 +223,7 @@ export const en: Dict = {
     now: "now",
     all: "The full roadmap in detail",
     steps: [
-      { tag: "Epic 1", title: "The everyday client", now: true, body: "Since 0.1.0 the everyday client: wizard, servers, channels, voice, chat and following. 0.2.0 brought more chat: link previews, YouTube, Twitch and Spotify cards, images with an image viewer, @mentions, GIF favorites and code highlighting. 0.3.0 completes Epic 1: positional audio (beta), an in-game overlay on Linux and a window overlay on Windows, “Now gaming”, shared chat history between Mumcord users, friends, “Join channel”, full-size images and all 24 official EU languages." },
+      { tag: "Epic 1", title: "The everyday client", body: "Since 0.1.0 the everyday client: wizard, servers, channels, voice, chat and following. 0.2.0 brought more chat: link previews, YouTube, Twitch and Spotify cards, images with an image viewer, @mentions, GIF favorites and code highlighting. 0.3.0 completes Epic 1: positional audio (beta), an in-game overlay on Linux and a window overlay on Windows, “Now gaming”, shared chat history between Mumcord users, friends, “Join channel”, full-size images and all 24 official EU languages." },
       { tag: "Epic 2", title: "Several servers and your own themes", body: "Read along on all of them, talk on one. Plus custom themes with colours and presets, shareable as text: the chat shows a preview card, one click imports the theme." },
       { tag: "Epic 3", title: "Comfort", body: "Global hotkeys, full tray menu, import from the official client, whisper, server browser." },
       { tag: "Epic 4", title: "Admin", body: "ACLs, bans, channel management." },

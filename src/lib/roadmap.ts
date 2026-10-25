@@ -64,7 +64,7 @@ export const roadmapPage: Record<Lang, RoadmapPage> = {
         id: "epic-1",
         tag: "Epic 1",
         title: "Der Client für jeden Tag",
-        status: "now",
+        status: "done",
         version: "0.3.0",
         summary: "Alles, was eine Runde am Abend braucht. Erschienen in drei Versionen, 0.3.0 schließt Epic 1 ab.",
         groups: [
@@ -146,7 +146,7 @@ export const roadmapPage: Record<Lang, RoadmapPage> = {
         id: "epic-2",
         tag: "Epic 2",
         title: "Mehrere Server und eigene Themes",
-        status: "later",
+        status: "planned",
         summary: "Überall dabei, und so, wie es dir gefällt.",
         items: [
           "Mit mehreren Servern gleichzeitig verbunden sein und überall mitlesen, auf einem sprechen",
@@ -229,7 +229,7 @@ export const roadmapPage: Record<Lang, RoadmapPage> = {
         id: "epic-1",
         tag: "Epic 1",
         title: "The everyday client",
-        status: "now",
+        status: "done",
         version: "0.3.0",
         summary: "Everything a group needs for an evening. Released over three versions, 0.3.0 completes Epic 1.",
         groups: [
@@ -311,7 +311,7 @@ export const roadmapPage: Record<Lang, RoadmapPage> = {
         id: "epic-2",
         tag: "Epic 2",
         title: "Several servers and your own themes",
-        status: "later",
+        status: "planned",
         summary: "Everywhere at once, and the way you like it.",
         items: [
           "Connect to several servers at once, read along on all of them, talk on one",

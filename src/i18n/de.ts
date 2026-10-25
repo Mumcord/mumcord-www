@@ -88,7 +88,7 @@ export const de = {
     label: "02 — Was Mumcord heute kann",
     title: "Alles, was eine Runde am Abend braucht.",
     intro:
-      "Stand: Version 0.2.0, 0.3.0 schließt Epic 1 bald ab. Was noch fehlt, steht ehrlich in der Roadmap.",
+      "Stand: Version 0.3.0, Epic 1 ist komplett. Was noch fehlt, steht ehrlich in der Roadmap.",
     all: "Alle Funktionen mit Screenshots",
     items: [
       {
@@ -222,7 +222,7 @@ export const de = {
     now: "jetzt",
     all: "Die ganze Roadmap im Detail",
     steps: [
-      { tag: "Epic 1", title: "Der Client für jeden Tag", now: true, body: "Seit 0.1.0 der Alltags-Client: Wizard, Server, Kanäle, Sprache, Chat und Folgen. Mit 0.2.0 kam mehr Chat: Link-Vorschauen, Karten für YouTube, Twitch und Spotify, Bilder mit Bildbetrachter, @Erwähnungen, GIF-Favoriten und Code-Hervorhebung. 0.3.0 schließt Epic 1 ab: Positional Audio (Beta), ein Overlay im Spiel unter Linux und als Fenster unter Windows, „Spielt gerade“, geteilter Chatverlauf zwischen Mumcord-Nutzern, Freunde, „Kanal beitreten“, Bilder in voller Größe und alle 24 Amtssprachen der EU." },
+      { tag: "Epic 1", title: "Der Client für jeden Tag", body: "Seit 0.1.0 der Alltags-Client: Wizard, Server, Kanäle, Sprache, Chat und Folgen. Mit 0.2.0 kam mehr Chat: Link-Vorschauen, Karten für YouTube, Twitch und Spotify, Bilder mit Bildbetrachter, @Erwähnungen, GIF-Favoriten und Code-Hervorhebung. 0.3.0 schließt Epic 1 ab: Positional Audio (Beta), ein Overlay im Spiel unter Linux und als Fenster unter Windows, „Spielt gerade“, geteilter Chatverlauf zwischen Mumcord-Nutzern, Freunde, „Kanal beitreten“, Bilder in voller Größe und alle 24 Amtssprachen der EU." },
       { tag: "Epic 2", title: "Mehrere Server und eigene Themes", body: "Auf allen Servern mitlesen, auf einem sprechen. Dazu eigene Themes mit Farben und Vorlagen, teilbar als Text: Im Chat erscheint eine Vorschaukarte, ein Klick übernimmt das Theme." },
       { tag: "Epic 3", title: "Komfort", body: "Globale Hotkeys, volles Tray-Menü, Import aus dem offiziellen Client, Flüstern, Server-Browser." },
       { tag: "Epic 4", title: "Admin", body: "ACLs, Banns, Kanalverwaltung." },
