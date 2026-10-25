@@ -18,6 +18,21 @@ export interface ChangelogEntry {
 export const changelog: Record<Lang, ChangelogEntry[]> = {
   de: [
     {
+      version: "0.1.1",
+      summary:
+        "Ein kleines Update für alle, die über Mumble Musik hören oder machen: ein Schalter für Musikqualität.",
+      groups: [
+        {
+          title: "Sprache und Audio",
+          items: [
+            "Neuer Schalter „Musikqualität“ unter Einstellungen → Audio, standardmäßig aus. Eingeschaltet darf die Bitrate bis zum Limit des Servers steigen, höchstens 510 kbit/s statt 96 kbit/s, und der Opus-Encoder ist auf Musik statt Sprache eingestellt.",
+            "Mit Musikqualität sind Rauschunterdrückung und automatische Lautstärke aus, damit Musik nicht verfälscht wird. Am besten zusammen mit Push-to-Talk nutzen.",
+            "Die Bitrate passt sich weiterhin an Paketverlust an und sinkt bei schlechter Verbindung.",
+          ],
+        },
+      ],
+    },
+    {
       version: "0.1.0",
       summary:
         "Die erste öffentliche Alpha: der Alltags-Client aus Epic 1, Stufe 1a. Läuft mit jedem normalen Mumble-Server, ohne dass dort etwas installiert wird.",
@@ -75,6 +90,20 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
     },
   ],
   en: [
+    {
+      version: "0.1.1",
+      summary: "A small update for everyone who listens to or plays music over Mumble: a music quality switch.",
+      groups: [
+        {
+          title: "Voice and audio",
+          items: [
+            "New “Music quality” switch in Settings → Audio, off by default. When on, the bitrate may rise to the server's limit, at most 510 kbit/s instead of 96 kbit/s, and the Opus encoder is tuned for music instead of speech.",
+            "With music quality on, noise suppression and automatic gain are off so music isn't distorted. Works best with push-to-talk.",
+            "The bitrate still adapts to packet loss and drops on a bad connection.",
+          ],
+        },
+      ],
+    },
     {
       version: "0.1.0",
       summary:
