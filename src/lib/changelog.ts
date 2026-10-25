@@ -18,6 +18,65 @@ export interface ChangelogEntry {
 export const changelog: Record<Lang, ChangelogEntry[]> = {
   de: [
     {
+      version: "0.3.0",
+      summary:
+        "Stufe 1c und 1d zusammen: Mumcord im Spiel mit Positional Audio und Overlay, und alles, was zwischen Mumcord-Nutzern möglich wird, vom geteilten Chatverlauf bis zu Freunden.",
+      groups: [
+        {
+          title: "Im Spiel",
+          items: [
+            "Positional Audio (Beta): Stimmen von Leuten im selben Spiel kommen aus ihrer Richtung und werden mit der Entfernung leiser. Positionen kommen über Mumble Link oder die offiziellen Spiel-Plugins von Mumble, die einzeln schaltbar sind. Die Einstellungen zeigen, woher die Positionen gerade kommen.",
+            "Ein „3D“-Symbol zeigt, wer gerade Positionsdaten sendet, auch bei offiziellen Mumble-Clients und bei dir selbst. Positional Audio lässt sich auch in den Schnelleinstellungen schalten.",
+            "Overlay im Spiel unter Linux: als Vulkan-Layer mit OpenGL als Ausweichweg, auch in Steam- und Proton-Spielen, getestet unter anderem mit Tyr und Supermarket Simulator. Pro Spiel schaltbar, global „An“ oder „Aus“, im Wizard wählbar und standardmäßig aus. Vor dem Einschalten gibt es einen Hinweis zu Anti-Cheat, und Spiele, die Overlays sperren, bleiben standardmäßig ausgenommen.",
+            "Overlay-Fenster unter Linux und Windows: durchsichtig, durchklickbar und immer im Vordergrund, mit Ecke, Größe und Deckkraft, schaltbar im Tray. Es zeigt nur Leute aus deinem Kanal. Unter KDE Wayland legt Mumcord die passende Fensterregel mit einem Klick an.",
+            "„Spielt gerade“, auf Wunsch: Andere sehen, was du spielst, mit Steam-Bild und Spielzeit. „Spiel beitreten“ für Steam-Spiele, die das unterstützen.",
+          ],
+        },
+        {
+          title: "Mumcord unter sich",
+          items: [
+            "Geteilter Chatverlauf: Mumcord-Clients reichen bis zu 7 Tage Kanalverlauf weiter, damit du nachlesen kannst, was vor deinem Beitreten geschrieben wurde. Nie private Nachrichten, als „aus dem Verlauf von …“ markiert, ohne doppelte Nachrichten und abschaltbar.",
+            "Knopf „Zu den neuesten“ mit Zähler, wenn du weiter oben liest.",
+            "Ein Mumcord-Abzeichen zeigt, wer Mumcord nutzt, auch bei dir selbst.",
+            "Bilder in voller Größe (Beta): Offizielle Clients bekommen eine Vorschau im Rahmen des Server-Limits, Mumcord-Nutzer laden das ganze Bild im Bildbetrachter direkt vom Absender. Anbieten und Laden lassen sich einzeln abschalten.",
+            "Freunde: wiedererkannt am Zertifikat, auch über Server und Umbenennungen hinweg, mit Online-Status. Der private Verlauf mit Freunden bleibt erhalten.",
+          ],
+        },
+        {
+          title: "Leute",
+          items: [
+            "Doppelklick auf eine Person öffnet den privaten Chat. Ein Klick heftet ihre Karte an, mit Knöpfen für private Nachricht und Profil.",
+            "Neues Profil mit Banner, Abzeichen, Musik oder Spiel und allen Einstellungen für die Person. Änderungen gelten sofort, mit kurzem „Gespeichert“.",
+            "Das Menü per Rechtsklick auf Leute hat Symbole und Schalter statt Beschriftungen wie „Stummschalten“ und „Lautschalten“.",
+            "@Erwähnungen sind anklickbar: Vorschau beim Drüberfahren, Profil per Klick, Menü per Rechtsklick.",
+          ],
+        },
+        {
+          title: "Einstellungen und Komfort",
+          items: [
+            "Ein Klick aufs Zahnrad öffnet die Schnelleinstellungen: Vorschauen, Design, Overlay, Positional Audio, Musik und Spiel teilen, Profil bearbeiten und auf dem Server registrieren.",
+            "Einstellungen mit Suche, die zur Einstellung springt und sie hervorhebt. Die Seitenleiste bleibt beim Scrollen stehen.",
+            "Neuer Bereich Barrierefreiheit: sichtbare Tastaturhinweise, Ansagen für Screenreader und Sprunglinks, einzeln schaltbar.",
+            "Unter „Über“ gibt es Links zum Changelog und zum Melden von Fehlern und Wünschen.",
+            "Kompatibilitätsmodus unter KDE: Ein Knopf richtet die „Unterstützung für ältere X11-Anwendungen“ ein, damit Push-to-Talk mit Maustasten auch im Hintergrund geht.",
+          ],
+        },
+        {
+          title: "Behoben",
+          items: [
+            "Bilder reinziehen und einfügen klappt zuverlässig: Vorschau vor dem Senden, mehrere Bilder auf einmal, keine file://-Links mehr im Eingabefeld.",
+            "Gesendete Bilder sind scharf: bis 1920 px, PNG oder JPEG je nach Bild, das Server-Limit wird voll genutzt.",
+            "Ein GIF zu den Favoriten zu ziehen ruckelt nicht mehr, und die Favoritenauswahl bleibt auch mit vielen GIFs flüssig.",
+          ],
+        },
+      ],
+      known: [
+        "Positional Audio, die Spiel-Plugins und Bilder in voller Größe sind Beta: Wie gut es klappt, hängt vom Spiel ab.",
+        "Das Overlay im Spiel unter Windows folgt später; bis dahin gibt es dort das Overlay-Fenster. Unter macOS gibt es kein Overlay.",
+        "Die Installer sind weiterhin unsigniert.",
+      ],
+    },
+    {
       version: "0.2.0",
       summary:
         "Stufe 1b: Der Chat kann jetzt deutlich mehr. Links, Videos, Bilder und GIFs erscheinen direkt im Chat, dazu @Erwähnungen, Code-Hervorhebung und eine Formatierungsleiste. Ab dieser Version steht Mumcord unter der GNU AGPL v3.",
@@ -137,6 +196,65 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
     },
   ],
   en: [
+    {
+      version: "0.3.0",
+      summary:
+        "Stages 1c and 1d together: Mumcord in game with positional audio and an overlay, and everything that becomes possible between Mumcord users, from shared chat history to friends.",
+      groups: [
+        {
+          title: "In game",
+          items: [
+            "Positional audio (beta): voices of people in the same game come from their direction and get quieter with distance. Positions come via Mumble Link or Mumble's official game plugins, which can be switched one by one. Settings show where positions are coming from.",
+            "A “3D” icon shows who is sending positional data right now, for official Mumble clients and yourself too. Positional audio can also be switched in quick settings.",
+            "In-game overlay on Linux: a Vulkan layer with OpenGL as a fallback, also in Steam and Proton games, tested with Tyr and Supermarket Simulator among others. Set per game, global “On” or “Off”, offered in the wizard and off by default. You get an anti-cheat note before turning it on, and games known to block overlays stay excluded by default.",
+            "Overlay window on Linux and Windows: transparent, click-through and always on top, with corner, size and opacity, switchable from the tray. It only shows people in your channel. On KDE Wayland Mumcord sets up the matching window rule in one click.",
+            "Optional “Now gaming”: others see what you're playing, with the Steam picture and play time. “Join game” for Steam games that support it.",
+          ],
+        },
+        {
+          title: "Mumcord to Mumcord",
+          items: [
+            "Shared chat history: Mumcord clients pass on up to 7 days of channel history so you can read what was written before you joined. Never private messages, marked as “from …'s history”, without duplicates and can be switched off.",
+            "A “Jump to newest” button with a count when you're reading further up.",
+            "A Mumcord badge shows who uses Mumcord, yourself included.",
+            "Full-size images (beta): official clients get a preview within the server limit, Mumcord users load the whole image in the image viewer straight from the sender. Offering and loading can each be switched off.",
+            "Friends: recognised by certificate, also across servers and renames, with online status. Private history with friends is kept.",
+          ],
+        },
+        {
+          title: "People",
+          items: [
+            "Double-click a person to open the private chat. A click pins their card, with buttons for private message and profile.",
+            "New profile with banner, badge, music or game and all settings for that person. Changes apply instantly with a short “Saved”.",
+            "The right-click menu on people has icons and switches instead of labels like “Mute” and “Unmute”.",
+            "@mentions are clickable: preview on hover, profile on click, menu on right-click.",
+          ],
+        },
+        {
+          title: "Settings and comfort",
+          items: [
+            "A click on the gear opens quick settings: previews, theme, overlay, positional audio, sharing music and game, edit profile and register on the server.",
+            "Settings with search that jumps to the setting and highlights it. The sidebar stays in place while you scroll.",
+            "A new Accessibility section: visible keyboard hints, screen reader announcements and skip links, each with its own switch.",
+            "“About” links to the changelog and to reporting bugs and requesting features.",
+            "Compatibility mode on KDE: a button sets up “Legacy X11 App Support” so mouse-button push-to-talk also works in the background.",
+          ],
+        },
+        {
+          title: "Fixed",
+          items: [
+            "Dropping and pasting images works reliably: preview before sending, several images at once, no more file:// links in the input.",
+            "Sent images are sharp: up to 1920 px, PNG or JPEG depending on the image, using the full server limit.",
+            "Dragging a GIF to the favorites no longer stutters, and the favorites picker stays smooth with many GIFs.",
+          ],
+        },
+      ],
+      known: [
+        "Positional audio, the game plugins and full-size images are beta: how well they work depends on the game.",
+        "The in-game overlay on Windows comes later; until then Windows has the overlay window. There is no overlay on macOS.",
+        "Installers are still unsigned.",
+      ],
+    },
     {
       version: "0.2.0",
       summary:
