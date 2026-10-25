@@ -57,7 +57,7 @@ export const de = {
     label: "02 — Was Mumcord heute kann",
     title: "Alles, was eine Runde am Abend braucht.",
     intro:
-      "Stand: Version 0.2.0 mit Stufe 1a und 1b. Was noch fehlt, steht ehrlich in der Roadmap.",
+      "Stand: Version 0.2.0, 0.3.0 schließt Epic 1 bald ab. Was noch fehlt, steht ehrlich in der Roadmap.",
     all: "Alle Funktionen mit Screenshots",
     items: [
       {
@@ -191,10 +191,7 @@ export const de = {
     now: "jetzt",
     all: "Die ganze Roadmap im Detail",
     steps: [
-      { tag: "Epic 1 · 1a", title: "Alltags-Client", body: "Fertig seit Version 0.1.0: Wizard, Server, Kanäle, Sprache, Chat und Folgen. Unsignierte Builds für Linux, Windows und macOS." },
-      { tag: "Epic 1 · 1b", title: "Mehr Chat", body: "Fertig mit 0.2.0: Link-Vorschauen zum Wegklicken, Karten für YouTube, Twitch und Spotify, die erst beim Klick laden, externe Bilder mit Bildbetrachter und Zoom, @Erwähnungen mit eigenem Ton, GIF-Favoriten, Code-Hervorhebung und eine Formatierungsleiste. Dazu eine manuelle Schwelle für die Sprachaktivierung und, wenn du willst, „Läuft gerade“: Andere sehen, welche Musik du hörst." },
-      { tag: "Epic 1 · 1c", title: "Im Spiel", now: true, body: "Kommt mit 0.3.0, zusammen mit 1d. Positional Audio (Beta) über Mumble Link und die offiziellen Spiel-Plugins. Ein Overlay direkt im Spiel unter Linux, pro Spiel einstellbar, sonst und unter Windows als schwebendes Fenster; unter macOS gibt es kein Overlay. Auf Wunsch „Spielt gerade“ mit Spiel beitreten über Steam, @Erwähnungen zum Anklicken, Schnelleinstellungen am Zahnrad und Einstellungen mit Suche und eigenem Bereich für Barrierefreiheit." },
-      { tag: "Epic 1 · 1d", title: "Mumcord unter sich", now: true, body: "Kommt mit 0.3.0, zusammen mit 1c. Mumcord-Clients teilen den Chatverlauf der letzten Tage, damit du nachlesen kannst, was vor deinem Beitreten geschrieben wurde. Ein Abzeichen zeigt, wer Mumcord nutzt. Doppelklick für private Nachrichten, neues Profil, Freunde mit Online-Status in der rechten Spalte, „Kanal beitreten“ per Rechtsklick und Bilder, die sich zuverlässig reinziehen und einfügen lassen. Andere Mumcord-Nutzer sehen deine Bilder in voller Größe statt nur als Vorschau. Dazu alle 24 Amtssprachen der EU." },
+      { tag: "Epic 1", title: "Der Client für jeden Tag", now: true, body: "Seit 0.1.0 der Alltags-Client: Wizard, Server, Kanäle, Sprache, Chat und Folgen. Mit 0.2.0 kam mehr Chat: Link-Vorschauen, Karten für YouTube, Twitch und Spotify, Bilder mit Bildbetrachter, @Erwähnungen, GIF-Favoriten und Code-Hervorhebung. 0.3.0 schließt Epic 1 ab: Positional Audio (Beta), ein Overlay im Spiel unter Linux und als Fenster unter Windows, „Spielt gerade“, geteilter Chatverlauf zwischen Mumcord-Nutzern, Freunde, „Kanal beitreten“, Bilder in voller Größe und alle 24 Amtssprachen der EU." },
       { tag: "Epic 2", title: "Mehrere Server und eigene Themes", body: "Auf allen Servern mitlesen, auf einem sprechen. Dazu eigene Themes mit Farben und Vorlagen, teilbar als Text: Im Chat erscheint eine Vorschaukarte, ein Klick übernimmt das Theme." },
       { tag: "Epic 3", title: "Komfort", body: "Globale Hotkeys, volles Tray-Menü, Import aus dem offiziellen Client, Flüstern, Server-Browser." },
       { tag: "Epic 4", title: "Admin", body: "ACLs, Banns, Kanalverwaltung." },

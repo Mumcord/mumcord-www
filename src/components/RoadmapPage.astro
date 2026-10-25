@@ -9,8 +9,7 @@ interface Props {
 const { lang } = Astro.props;
 const r = roadmapPage[lang];
 const sections: { id: string; title: string; body: string; stages: Stage[] }[] = [
-  { id: "epic-1", title: r.epic1, body: r.epic1Body, stages: r.stages },
-  { id: "later", title: r.later, body: r.laterBody, stages: r.epics },
+  { id: "epics", title: r.epicsTitle, body: r.epicsBody, stages: r.epics },
 ];
 ---
 
@@ -20,7 +19,7 @@ const sections: { id: string; title: string; body: string; stages: Stage[] }[] =
     <h1 class="h2" data-reveal>{r.title}</h1>
     <p class="body" data-reveal>{r.intro}</p>
     <nav class="fp-toc" aria-label={r.title} data-reveal>
-      {[...r.stages, ...r.epics].map((s) => <a href={`#${s.id}`} data-status={s.status}>{s.tag.replace("Epic 1 · ", "")}</a>)}
+      {r.epics.map((s) => <a href={`#${s.id}`} data-status={s.status}>{s.tag}</a>)}
     </nav>
   </header>
 
@@ -45,11 +44,25 @@ const sections: { id: string; title: string; body: string; stages: Stage[] }[] =
                   <a href={`#${s.id}`}>{s.title}</a>
                 </h3>
                 <p class="rp-summary">{s.summary}</p>
-                <ul>
-                  {s.items.map((i) => (
-                    <li>{i}</li>
-                  ))}
-                </ul>
+                {s.items && (
+                  <ul>
+                    {s.items.map((i) => (
+                      <li>{i}</li>
+                    ))}
+                  </ul>
+                )}
+                {s.groups?.map((g) => (
+                  <div class="rp-group">
+                    <h4>
+                      {g.title} <span class="rp-version">v{g.version}</span>
+                    </h4>
+                    <ul>
+                      {g.items.map((i) => (
+                        <li>{i}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
             </li>
           ))}

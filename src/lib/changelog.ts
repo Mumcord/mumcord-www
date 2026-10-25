@@ -20,7 +20,7 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
     {
       version: "0.3.0",
       summary:
-        "Stufe 1c und 1d zusammen: Mumcord im Spiel mit Positional Audio und Overlay, und alles, was zwischen Mumcord-Nutzern möglich wird, vom geteilten Chatverlauf bis zu Freunden. Dazu alle 24 Amtssprachen der EU.",
+        "Der Abschluss von Epic 1: Mumcord im Spiel mit Positional Audio und Overlay, und alles, was zwischen Mumcord-Nutzern möglich wird, vom geteilten Chatverlauf bis zu Freunden. Dazu alle 24 Amtssprachen der EU.",
       groups: [
         {
           title: "Im Spiel",
@@ -85,7 +85,7 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
     {
       version: "0.2.0",
       summary:
-        "Stufe 1b: Der Chat kann jetzt deutlich mehr. Links, Videos, Bilder und GIFs erscheinen direkt im Chat, dazu @Erwähnungen, Code-Hervorhebung und eine Formatierungsleiste. Ab dieser Version steht Mumcord unter der GNU AGPL v3.",
+        "Der Chat kann jetzt deutlich mehr. Links, Videos, Bilder und GIFs erscheinen direkt im Chat, dazu @Erwähnungen, Code-Hervorhebung und eine Formatierungsleiste. Ab dieser Version steht Mumcord unter der GNU AGPL v3.",
       groups: [
         {
           title: "Chat",
@@ -126,7 +126,7 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
       known: [
         "Die Installer sind weiterhin unsigniert.",
         "„Läuft gerade“ funktioniert unter macOS noch nicht.",
-        "Positional Audio, Overlay und „Spielt gerade“ folgen mit Stufe 1c, geteilter Chatverlauf und Freunde mit Stufe 1d.",
+        "Positional Audio, Overlay, „Spielt gerade“, geteilter Chatverlauf und Freunde folgen mit 0.3.0.",
       ],
     },
     {
@@ -147,7 +147,7 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
     {
       version: "0.1.0",
       summary:
-        "Die erste öffentliche Alpha: der Alltags-Client aus Epic 1, Stufe 1a. Läuft mit jedem normalen Mumble-Server, ohne dass dort etwas installiert wird.",
+        "Die erste öffentliche Alpha: der Alltags-Client aus Epic 1. Läuft mit jedem normalen Mumble-Server, ohne dass dort etwas installiert wird.",
       groups: [
         {
           title: "Verbinden",
@@ -197,7 +197,7 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
       known: [
         "Die Installer sind unsigniert: Windows SmartScreen und macOS Gatekeeper warnen beim ersten Start.",
         "Eine Serververbindung gleichzeitig. Mehrere Server kommen mit Epic 2.",
-        "Chat-Extras wie Link-Vorschauen und @Erwähnungen folgen mit Stufe 1b, Positional Audio und Overlay mit Stufe 1c, geteilter Chatverlauf und Freunde mit Stufe 1d.",
+        "Chat-Extras wie Link-Vorschauen und @Erwähnungen folgen mit 0.2.0, Positional Audio, Overlay, geteilter Chatverlauf und Freunde mit 0.3.0.",
       ],
     },
   ],
@@ -205,7 +205,7 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
     {
       version: "0.3.0",
       summary:
-        "Stages 1c and 1d together: Mumcord in game with positional audio and an overlay, and everything that becomes possible between Mumcord users, from shared chat history to friends. Plus all 24 official EU languages.",
+        "Completing Epic 1: Mumcord in game with positional audio and an overlay, and everything that becomes possible between Mumcord users, from shared chat history to friends. Plus all 24 official EU languages.",
       groups: [
         {
           title: "In game",
@@ -270,7 +270,7 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
     {
       version: "0.2.0",
       summary:
-        "Stage 1b: the chat does a lot more now. Links, videos, images and GIFs show up right in the chat, plus @mentions, code highlighting and a formatting toolbar. From this version Mumcord is licensed under the GNU AGPL v3.",
+        "The chat does a lot more now. Links, videos, images and GIFs show up right in the chat, plus @mentions, code highlighting and a formatting toolbar. From this version Mumcord is licensed under the GNU AGPL v3.",
       groups: [
         {
           title: "Chat",
@@ -311,7 +311,7 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
       known: [
         "Installers are still unsigned.",
         "“Now playing” doesn't work on macOS yet.",
-        "Positional audio, the overlay and “Now gaming” follow in stage 1c, shared chat history and friends in stage 1d.",
+        "Positional audio, the overlay, “Now gaming”, shared chat history and friends follow in 0.3.0.",
       ],
     },
     {
@@ -331,7 +331,7 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
     {
       version: "0.1.0",
       summary:
-        "The first public alpha: the everyday client from Epic 1, stage 1a. Works with any standard Mumble server, with nothing to install there.",
+        "The first public alpha: the everyday client from Epic 1. Works with any standard Mumble server, with nothing to install there.",
       groups: [
         {
           title: "Connecting",
@@ -381,7 +381,7 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
       known: [
         "Installers are unsigned: Windows SmartScreen and macOS Gatekeeper warn on first start.",
         "One server connection at a time. Several servers come with Epic 2.",
-        "Chat extras like link previews and @mentions follow in stage 1b, positional audio and the overlay in stage 1c, shared chat history and friends in stage 1d.",
+        "Chat extras like link previews and @mentions follow in 0.2.0, positional audio, the overlay, shared chat history and friends in 0.3.0.",
       ],
     },
   ],
