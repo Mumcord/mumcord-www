@@ -1,0 +1,12 @@
+---
+import Base from "../layouts/Base.astro";
+import RoadmapPage from "../components/RoadmapPage.astro";
+import { roadmapPage } from "../lib/roadmap";
+import { pageJsonLd } from "../lib/jsonld";
+
+const r = roadmapPage.de;
+---
+
+<Base lang="de" page="roadmap" title={`${r.title} — Mumcord`} description={r.description} jsonLd={pageJsonLd("de", Astro.site!, "roadmap", r.title)}>
+  <RoadmapPage lang="de" />
+</Base>
