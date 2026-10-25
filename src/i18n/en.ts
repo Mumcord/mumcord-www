@@ -175,7 +175,7 @@ export const en: Dict = {
       { src: "notification-toast", caption: "A small pop-up announces new messages from other channels." },
       { src: "chat-compact", caption: "Compact chat layout: time, name and message on one line." },
       { src: "channel-avatar-stack", caption: "Crowded channels show a stack of avatars instead of a long list." },
-      { src: "context-menu", caption: "Right-click: mute, volume, private message." },
+      { src: "person-menu", caption: "Right-click: mute, volume, private message." },
       { src: "search", caption: "Ctrl+K searches channels and people." },
       { src: "banner-rejoin", caption: "After a restart, back into your last voice channel." },
       { src: "dialog-certificate-trust", caption: "Trust on first contact, with the fingerprint." },

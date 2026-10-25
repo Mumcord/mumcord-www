@@ -1,5 +1,5 @@
 ---
-import { Picture } from "astro:assets";
+import { Picture, getImage } from "astro:assets";
 import { type Lang } from "../i18n";
 import { featuresPage, BUG_URL, IDEA_URL, type Feature } from "../lib/features";
 
@@ -12,6 +12,11 @@ const shots = import.meta.glob<{ default: ImageMetadata }>("../assets/shots/*.pn
 const shot = (name: string) => shots[`../assets/shots/${name}.png`].default;
 const withShot = (list: Feature[]) => list.filter((x) => x.shot);
 const textOnly = (list: Feature[]) => list.filter((x) => !x.shot);
+// Full-size WebP for the lightbox, so a click doesn't load the original PNG.
+const full = new Map<string, string>();
+for (const g of f.groups)
+  for (const x of withShot(g.features))
+    if (!full.has(x.shot!)) full.set(x.shot!, (await getImage({ src: shot(x.shot!), format: "webp", width: 2400, quality: 82 })).src);
 ---
 
 <article class="wrap features-page">
@@ -41,7 +46,7 @@ const textOnly = (list: Feature[]) => list.filter((x) => !x.shot);
               <p>{x.body}</p>
               {x.since && <span class="pill">{f.newIn} {x.since}</span>}
             </div>
-            <a class="fp-shot" href={shot(x.shot!).src} aria-label={`${f.zoom}: ${x.alt}`} data-lightbox data-caption={x.title} data-alt={x.alt}>
+            <a class="fp-shot" href={full.get(x.shot!)} aria-label={`${f.zoom}: ${x.alt}`} data-lightbox data-caption={x.title} data-alt={x.alt}>
               <Picture src={shot(x.shot!)} formats={["avif", "webp"]} widths={[640, 1100, 1600]} sizes="(min-width: 960px) 640px, 92vw" alt={x.alt ?? ""} />
             </a>
           </div>
