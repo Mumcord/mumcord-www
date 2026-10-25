@@ -2156,6 +2156,70 @@ a.lang-opt:hover {
 .features-more {
   margin-top: 40px;
 }
+.fp-filter {
+  display: none;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 32px;
+}
+.js .fp-filter {
+  display: flex;
+}
+.fp-row-label {
+  flex-basis: 100%;
+  font: 500 0.75rem var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.fp-filter + .fp-toc {
+  margin-top: 24px;
+}
+.fp-filter button {
+  padding: 8px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    background-color 0.2s,
+    border-color 0.2s;
+}
+.fp-filter button:hover {
+  color: var(--text);
+  border-color: var(--peach);
+}
+.fp-filter button[aria-pressed="true"] {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+}
+.fp-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+.fp-text .fp-pills .pill,
+.fp-cards .fp-pills .pill {
+  margin-top: 0;
+}
+.pill-beta {
+  border-color: var(--peach) !important;
+  color: var(--peach) !important;
+}
+[data-feature][hidden],
+[data-feature-group][hidden] {
+  display: none;
+}
+.fp-empty {
+  margin-top: 48px;
+  color: var(--faint);
+}
 .fp-shot {
   cursor: zoom-in;
 }

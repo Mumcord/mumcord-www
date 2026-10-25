@@ -13,6 +13,7 @@ export interface Feature {
   shot?: string;
   alt?: string;
   since?: string;
+  beta?: boolean;
 }
 
 export interface FeatureGroup {
@@ -28,6 +29,12 @@ export interface FeaturesPage {
   intro: string;
   contents: string;
   newIn: string;
+  comingIn: string;
+  beta: string;
+  filterLabel: string;
+  filterAll: string;
+  filterBeta: string;
+  filterEmpty: string;
   zoom: string;
   close: string;
   prev: string;
@@ -47,9 +54,15 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
       "Alle Funktionen von Mumcord mit Screenshots: Server und Zertifikate, Kanälen folgen, Chat mit Vorschauen und @Erwähnungen, Push-to-Talk, Audio und Komfort.",
     label: "Was Mumcord kann",
     intro:
-      "Alles, was in der aktuellen Version steckt, mit einem Bild dazu, wo es eins gibt. Was noch kommt, steht in der Roadmap. Fehlt dir etwas oder klemmt etwas, sag es auf GitHub.",
+      "Alles, was Mumcord kann, mit einem Bild dazu, wo es eins gibt, und was mit der nächsten Version kommt. Der Filter zeigt Beta-Funktionen oder was in welcher Version neu ist. Fehlt dir etwas oder klemmt etwas, sag es auf GitHub.",
     contents: "Inhalt",
     newIn: "neu in",
+    comingIn: "kommt mit",
+    beta: "Beta",
+    filterLabel: "Filtern",
+    filterAll: "Alle",
+    filterBeta: "Beta",
+    filterEmpty: "Keine Funktionen für diesen Filter.",
     zoom: "Screenshot in voller Größe öffnen",
     close: "Schließen",
     prev: "Vorheriger Screenshot",
@@ -126,6 +139,18 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
             body: "Profil ansehen, nur für dich stummschalten, Lautstärke von 0 bis 200 % oder eine private Nachricht schreiben. Mumcord merkt sich das pro Person.",
             shot: "person-menu",
             alt: "Kontextmenü einer Person mit Lautstärkeregler",
+          },
+          {
+            id: "personenkarte",
+            title: "Doppelklick für private Nachrichten",
+            body: "Doppelklick auf eine Person öffnet den privaten Chat. Ein Klick heftet ihre Karte an, mit Knöpfen für private Nachricht und Profil.",
+            since: "0.3.0",
+          },
+          {
+            id: "profil",
+            title: "Neues Profil",
+            body: "Banner, Abzeichen, Musik oder Spiel und alle Einstellungen für die Person. Änderungen gelten sofort, mit kurzem „Gespeichert“. Das Menü per Rechtsklick hat Symbole und Schalter.",
+            since: "0.3.0",
           },
         ],
       },
@@ -226,6 +251,12 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
             alt: "Einstellungen, Bereich Chat und Verlauf",
             since: "0.2.0",
           },
+          {
+            id: "erwaehnungs-chips",
+            title: "@Erwähnungen zum Anklicken",
+            body: "Vorschau beim Drüberfahren, Profil per Klick, Menü per Rechtsklick.",
+            since: "0.3.0",
+          },
         ],
       },
       {
@@ -273,6 +304,75 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
         ],
       },
       {
+        id: "im-spiel",
+        title: "Im Spiel",
+        features: [
+          {
+            id: "positional",
+            title: "Positional Audio",
+            body: "Stimmen von Leuten im selben Spiel kommen aus ihrer Richtung und werden mit der Entfernung leiser. Über Mumble Link oder die offiziellen Spiel-Plugins von Mumble; ein „3D“-Symbol zeigt, wer Positionsdaten sendet.",
+            since: "0.3.0",
+            beta: true,
+          },
+          {
+            id: "spiel-plugins",
+            title: "Offizielle Spiel-Plugins",
+            body: "Die Plugins von Mumble liefern Positionen für unterstützte Spiele, einzeln schaltbar. Die Einstellungen zeigen, welches gerade aktiv ist.",
+            since: "0.3.0",
+            beta: true,
+          },
+          {
+            id: "overlay-im-spiel",
+            title: "Overlay im Spiel",
+            body: "Unter Linux direkt im Spiel als Vulkan-Layer, auch in Steam- und Proton-Spielen, getestet mit Tyr und Supermarket Simulator. Pro Spiel schaltbar; Spiele, deren Anti-Cheat Overlays sperrt, bleiben ausgenommen. Unter Windows folgt es später.",
+            since: "0.3.0",
+          },
+          {
+            id: "overlay-fenster",
+            title: "Overlay-Fenster",
+            body: "Unter Linux und Windows ein durchsichtiges, durchklickbares Fenster über allem, das zeigt, wer in deinem Kanal spricht. Unter macOS gibt es kein Overlay.",
+            since: "0.3.0",
+          },
+          {
+            id: "spielt-gerade",
+            title: "Spielt gerade",
+            body: "Auf Wunsch sehen andere, was du spielst, mit Steam-Bild und Spielzeit. „Spiel beitreten“ für Steam-Spiele, die das unterstützen.",
+            since: "0.3.0",
+          },
+        ],
+      },
+      {
+        id: "unter-sich",
+        title: "Mumcord unter sich",
+        features: [
+          {
+            id: "verlauf",
+            title: "Geteilter Chatverlauf",
+            body: "Mumcord-Clients reichen bis zu 7 Tage Kanalverlauf weiter, damit du nachlesen kannst, was vor deinem Beitreten geschrieben wurde. Nie private Nachrichten, abschaltbar.",
+            since: "0.3.0",
+          },
+          {
+            id: "abzeichen",
+            title: "Mumcord-Abzeichen",
+            body: "Zeigt, wer Mumcord nutzt, auch bei dir selbst.",
+            since: "0.3.0",
+          },
+          {
+            id: "volle-bilder",
+            title: "Bilder in voller Größe",
+            body: "Mumcord-Nutzer laden das ganze Bild im Bildbetrachter direkt vom Absender, offizielle Clients sehen die Vorschau. Anbieten und Laden einzeln abschaltbar.",
+            since: "0.3.0",
+            beta: true,
+          },
+          {
+            id: "freunde",
+            title: "Freunde",
+            body: "Wiedererkannt am Zertifikat, auch über Server und Umbenennungen hinweg, mit Online-Status. Der private Verlauf mit Freunden bleibt erhalten.",
+            since: "0.3.0",
+          },
+        ],
+      },
+      {
         id: "komfort",
         title: "Komfort",
         features: [
@@ -302,6 +402,24 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
             title: "Keine Telemetrie",
             body: "Die Identität liegt im sicheren Speicher des Systems. Die Diagnosedatei enthält keine Chatinhalte oder Passwörter und verlässt deinen Rechner nur, wenn du sie selbst verschickst.",
           },
+          {
+            id: "schnelleinstellungen",
+            title: "Schnelleinstellungen am Zahnrad",
+            body: "Ein Klick aufs Zahnrad: Vorschauen, Design, Overlay, Positional Audio, Musik und Spiel teilen, Profil bearbeiten und registrieren.",
+            since: "0.3.0",
+          },
+          {
+            id: "einstellungssuche",
+            title: "Einstellungen mit Suche",
+            body: "Findet Bereiche und einzelne Einstellungen, springt hin und hebt sie hervor. Die Seitenleiste bleibt beim Scrollen stehen.",
+            since: "0.3.0",
+          },
+          {
+            id: "barrierefreiheit",
+            title: "Bereich Barrierefreiheit",
+            body: "Sichtbare Tastaturhinweise, Ansagen für Screenreader und Sprunglinks, einzeln schaltbar.",
+            since: "0.3.0",
+          },
         ],
       },
     ],
@@ -312,9 +430,15 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
       "Every Mumcord feature with screenshots: servers and certificates, following channels, chat with previews and @mentions, push-to-talk, audio and comfort.",
     label: "What Mumcord does",
     intro:
-      "Everything in the current version, with a picture where there is one. What's still coming is on the roadmap. Missing something or something broken? Tell us on GitHub.",
+      "Everything Mumcord does, with a picture where there is one, plus what comes with the next version. The filter shows beta features or what's new in which version. Missing something or something broken? Tell us on GitHub.",
     contents: "Contents",
     newIn: "new in",
+    comingIn: "coming in",
+    beta: "Beta",
+    filterLabel: "Filter",
+    filterAll: "All",
+    filterBeta: "Beta",
+    filterEmpty: "No features for this filter.",
     zoom: "Open the screenshot at full size",
     close: "Close",
     prev: "Previous screenshot",
@@ -391,6 +515,18 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
             body: "See the profile, mute just for you, set the volume from 0 to 200 % or send a private message. Mumcord remembers it per person.",
             shot: "person-menu",
             alt: "Context menu of a person with a volume slider",
+          },
+          {
+            id: "person-card",
+            title: "Double-click for private messages",
+            body: "Double-click a person to open the private chat. A click pins their card, with buttons for private message and profile.",
+            since: "0.3.0",
+          },
+          {
+            id: "profile",
+            title: "New profile",
+            body: "Banner, badge, music or game and all settings for that person. Changes apply instantly with a short “Saved”. The right-click menu has icons and switches.",
+            since: "0.3.0",
           },
         ],
       },
@@ -491,6 +627,12 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
             alt: "Settings, chat and history section",
             since: "0.2.0",
           },
+          {
+            id: "mention-chips",
+            title: "Clickable @mentions",
+            body: "Preview on hover, profile on click, menu on right-click.",
+            since: "0.3.0",
+          },
         ],
       },
       {
@@ -538,6 +680,75 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
         ],
       },
       {
+        id: "in-game",
+        title: "In game",
+        features: [
+          {
+            id: "positional",
+            title: "Positional audio",
+            body: "Voices of people in the same game come from their direction and get quieter with distance. Via Mumble Link or Mumble's official game plugins; a “3D” icon shows who is sending positions.",
+            since: "0.3.0",
+            beta: true,
+          },
+          {
+            id: "game-plugins",
+            title: "Official game plugins",
+            body: "Mumble's plugins deliver positions for supported games, each with its own switch. Settings show which one is active.",
+            since: "0.3.0",
+            beta: true,
+          },
+          {
+            id: "in-game-overlay",
+            title: "In-game overlay",
+            body: "On Linux right inside the game as a Vulkan layer, also in Steam and Proton games, tested with Tyr and Supermarket Simulator. Set per game; games whose anti-cheat blocks overlays stay excluded. Windows follows later.",
+            since: "0.3.0",
+          },
+          {
+            id: "overlay-window",
+            title: "Overlay window",
+            body: "On Linux and Windows a transparent, click-through window on top of everything that shows who is talking in your channel. There is no overlay on macOS.",
+            since: "0.3.0",
+          },
+          {
+            id: "now-gaming",
+            title: "Now gaming",
+            body: "If you like, others see what you're playing, with the Steam picture and play time. “Join game” for Steam games that support it.",
+            since: "0.3.0",
+          },
+        ],
+      },
+      {
+        id: "mumcord-to-mumcord",
+        title: "Mumcord to Mumcord",
+        features: [
+          {
+            id: "history",
+            title: "Shared chat history",
+            body: "Mumcord clients pass on up to 7 days of channel history so you can read what was written before you joined. Never private messages, can be switched off.",
+            since: "0.3.0",
+          },
+          {
+            id: "badge",
+            title: "Mumcord badge",
+            body: "Shows who uses Mumcord, yourself included.",
+            since: "0.3.0",
+          },
+          {
+            id: "full-images",
+            title: "Full-size images",
+            body: "Mumcord users load the whole image in the image viewer straight from the sender, official clients see the preview. Offering and loading can each be switched off.",
+            since: "0.3.0",
+            beta: true,
+          },
+          {
+            id: "friends",
+            title: "Friends",
+            body: "Recognised by certificate, also across servers and renames, with online status. Private history with friends is kept.",
+            since: "0.3.0",
+          },
+        ],
+      },
+      {
         id: "comfort",
         title: "Comfort",
         features: [
@@ -566,6 +777,24 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
             id: "privacy",
             title: "No telemetry",
             body: "Your identity lives in the system's secure storage. The diagnostic file contains no chat contents or passwords and only leaves your computer if you send it yourself.",
+          },
+          {
+            id: "quick-settings",
+            title: "Quick settings on the gear",
+            body: "One click on the gear: previews, theme, overlay, positional audio, sharing music and game, edit profile and register.",
+            since: "0.3.0",
+          },
+          {
+            id: "settings-search",
+            title: "Settings with search",
+            body: "Finds sections and single settings, jumps there and highlights them. The sidebar stays in place while you scroll.",
+            since: "0.3.0",
+          },
+          {
+            id: "accessibility",
+            title: "Accessibility section",
+            body: "Visible keyboard hints, screen reader announcements and skip links, each with its own switch.",
+            since: "0.3.0",
           },
         ],
       },

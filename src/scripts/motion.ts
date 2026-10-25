@@ -262,3 +262,27 @@ if (lightbox && shots.length) {
   });
   lightbox.addEventListener("close", () => shots[current].focus());
 }
+
+// ── Feature filter (features page) ───────────────────────────────────
+const filterBar = document.querySelector<HTMLElement>("[data-filter-bar]");
+if (filterBar) {
+  const buttons = Array.from(filterBar.querySelectorAll<HTMLButtonElement>("[data-filter]"));
+  const features = Array.from(document.querySelectorAll<HTMLElement>("[data-feature]"));
+  const groups = Array.from(document.querySelectorAll<HTMLElement>("[data-feature-group]"));
+  const empty = document.querySelector<HTMLElement>("[data-filter-empty]");
+  const apply = (filter: string) => {
+    for (const b of buttons) b.setAttribute("aria-pressed", String(b.dataset.filter === filter));
+    for (const el of features) {
+      const match =
+        filter === "all" ||
+        (filter === "beta" && el.hasAttribute("data-beta")) ||
+        (filter.startsWith("v") && el.dataset.since === filter.slice(1));
+      el.hidden = !match;
+      // Filtered rows must show at once, not wait for the scroll reveal.
+      if (match) el.classList.add("is-in");
+    }
+    for (const g of groups) g.hidden = !g.querySelector("[data-feature]:not([hidden])");
+    if (empty) empty.hidden = features.some((el) => !el.hidden);
+  };
+  for (const b of buttons) b.addEventListener("click", () => apply(b.dataset.filter ?? "all"));
+}
