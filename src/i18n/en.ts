@@ -58,7 +58,8 @@ export const en: Dict = {
   features: {
     label: "02 — What Mumcord does today",
     title: "Everything an evening session needs.",
-    intro: "As of Epic 1, stage 1a — the everyday client. What's missing is listed honestly in the roadmap.",
+    intro: "As of version 0.2.0 with stages 1a and 1b. What's missing is listed honestly in the roadmap.",
+    all: "All features with screenshots",
     items: [
       {
         id: "follow",
@@ -244,8 +245,11 @@ export const en: Dict = {
     legal: "Legal",
     source: "Source code",
     wiki: "Wiki",
-    issues: "Report a bug",
+    issues: "All issues",
     releases: "Releases",
+    idea: "Request a feature",
+    bug: "Report a bug",
+    features: "Features",
     changelog: "Changelog",
     server: "Host a server",
     license: "License (AGPL-3.0)",

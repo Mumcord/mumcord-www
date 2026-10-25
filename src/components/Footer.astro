@@ -2,6 +2,7 @@
 import { dicts, routes, type Lang } from "../i18n";
 import { REPO_URL, WIKI_URL, ISSUES_URL, RELEASES_URL } from "../lib/release";
 import { OWNER } from "../lib/site";
+import { BUG_URL, IDEA_URL } from "../lib/features";
 
 interface Props {
   lang: Lang;
@@ -22,11 +23,14 @@ const year = new Date().getFullYear();
       <h2 class="footer-h">{t.project}</h2>
       <ul>
         <li><a href={REPO_URL} rel="noopener">{t.source}</a></li>
+        <li><a href={routes.features[lang]}>{t.features}</a></li>
         <li><a href={routes.changelog[lang]}>{t.changelog}</a></li>
         <li><a href={routes.server[lang]}>{t.server}</a></li>
         <li><a href={RELEASES_URL} rel="noopener">{t.releases}</a></li>
         <li><a href={WIKI_URL} rel="noopener">{t.wiki}</a></li>
         <li><a href={ISSUES_URL} rel="noopener">{t.issues}</a></li>
+        <li><a href={IDEA_URL} rel="noopener">{t.idea}</a></li>
+        <li><a href={BUG_URL} rel="noopener">{t.bug}</a></li>
       </ul>
     </nav>
     <nav aria-label={t.legal}>

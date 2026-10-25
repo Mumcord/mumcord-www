@@ -1,0 +1,75 @@
+---
+import { Picture } from "astro:assets";
+import { type Lang } from "../i18n";
+import { featuresPage, BUG_URL, IDEA_URL, type Feature } from "../lib/features";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const f = featuresPage[lang];
+const shots = import.meta.glob<{ default: ImageMetadata }>("../assets/shots/*.png", { eager: true });
+const shot = (name: string) => shots[`../assets/shots/${name}.png`].default;
+const withShot = (list: Feature[]) => list.filter((x) => x.shot);
+const textOnly = (list: Feature[]) => list.filter((x) => !x.shot);
+---
+
+<article class="wrap features-page">
+  <header class="fp-head">
+    <p class="label" data-reveal>{f.label}</p>
+    <h1 class="h2" data-reveal>{f.title}</h1>
+    <p class="body" data-reveal>{f.intro}</p>
+    <p class="fp-actions" data-reveal>
+      <a class="btn btn-small" href={IDEA_URL} rel="noopener">{f.idea}</a>
+      <a class="text-link" href={BUG_URL} rel="noopener">{f.bug} →</a>
+    </p>
+    <nav class="fp-toc" aria-label={f.contents} data-reveal>
+      {f.groups.map((g) => <a href={`#${g.id}`}>{g.title}</a>)}
+    </nav>
+  </header>
+
+  {
+    f.groups.map((g) => (
+      <section class="fp-group" id={g.id} aria-labelledby={`${g.id}-h`}>
+        <h2 id={`${g.id}-h`} data-reveal>{g.title}</h2>
+        {withShot(g.features).map((x) => (
+          <div class="fp-row" id={x.id} data-reveal>
+            <div class="fp-text">
+              <h3>
+                <a href={`#${x.id}`}>{x.title}</a>
+              </h3>
+              <p>{x.body}</p>
+              {x.since && <span class="pill">{f.newIn} {x.since}</span>}
+            </div>
+            <a class="fp-shot" href={shot(x.shot!).src} aria-label={`${f.zoom}: ${x.alt}`}>
+              <Picture src={shot(x.shot!)} formats={["avif", "webp"]} widths={[640, 1100, 1600]} sizes="(min-width: 960px) 640px, 92vw" alt={x.alt ?? ""} />
+            </a>
+          </div>
+        ))}
+        {textOnly(g.features).length > 0 && (
+          <ul class="fp-cards">
+            {textOnly(g.features).map((x) => (
+              <li id={x.id} data-reveal>
+                <h3>
+                  <a href={`#${x.id}`}>{x.title}</a>
+                </h3>
+                <p>{x.body}</p>
+                {x.since && <span class="pill">{f.newIn} {x.since}</span>}
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+    ))
+  }
+
+  <section class="fp-ask" aria-labelledby="ask-h" data-reveal>
+    <h2 id="ask-h">{f.askTitle}</h2>
+    <p>{f.askBody}</p>
+    <p class="fp-actions">
+      <a class="btn btn-small" href={IDEA_URL} rel="noopener">{f.idea}</a>
+      <a class="btn btn-small btn-ghost" href={BUG_URL} rel="noopener">{f.bug}</a>
+    </p>
+    <p class="fp-note">{f.bugNote}</p>
+  </section>
+</article>

@@ -57,7 +57,8 @@ export const de = {
     label: "02 — Was Mumcord heute kann",
     title: "Alles, was eine Runde am Abend braucht.",
     intro:
-      "Stand: Epic 1, Stufe 1a — der Alltags-Client. Was noch fehlt, steht ehrlich in der Roadmap.",
+      "Stand: Version 0.2.0 mit Stufe 1a und 1b. Was noch fehlt, steht ehrlich in der Roadmap.",
+    all: "Alle Funktionen mit Screenshots",
     items: [
       {
         id: "follow",
@@ -243,8 +244,11 @@ export const de = {
     legal: "Rechtliches",
     source: "Quellcode",
     wiki: "Wiki",
-    issues: "Fehler melden",
+    issues: "Alle Issues",
     releases: "Releases",
+    idea: "Feature wünschen",
+    bug: "Fehler melden",
+    features: "Funktionen",
     changelog: "Changelog",
     server: "Eigener Server",
     license: "Lizenz (AGPL-3.0)",

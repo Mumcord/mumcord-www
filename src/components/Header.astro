@@ -22,7 +22,7 @@ const anchor = (id: string) => (page === "home" ? `#${id}` : `${home}#${id}`);
     </a>
 
     <nav class="nav" id="site-nav" aria-label="Main">
-      <a href={anchor("features")}>{t.nav.features}</a>
+      <a href={routes.features[lang]} aria-current={page === "features" ? "page" : undefined}>{t.nav.features}</a>
       <a href={anchor("how")}>{t.nav.how}</a>
       <a href={anchor("roadmap")}>{t.nav.roadmap}</a>
       <a href={routes.changelog[lang]} aria-current={page === "changelog" ? "page" : undefined}>{t.nav.changelog}</a>
