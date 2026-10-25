@@ -34,7 +34,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
         },
       ],
       known: [
-        "Schließt du Mumcord, während ein Spiel mit Overlay läuft, kann das Spiel abstürzen. Schließ zuerst das Spiel oder schalte das Overlay im Spiel aus; behoben wird das mit Epic 2.",
+        "Schließt du Mumcord, während ein Spiel mit Overlay läuft, kann das Spiel abstürzen. Schließ zuerst das Spiel oder schalte das Overlay im Spiel aus; behoben wird das mit 0.4.0.",
         "Die Installer sind weiterhin unsigniert.",
       ],
     },
@@ -238,7 +238,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
         },
       ],
       known: [
-        "If you close Mumcord while a game with the overlay is running, the game can crash. Close the game first or turn the in-game overlay off; this gets fixed in Epic 2.",
+        "If you close Mumcord while a game with the overlay is running, the game can crash. Close the game first or turn the in-game overlay off; this gets fixed in 0.4.0.",
         "Installers are still unsigned.",
       ],
     },

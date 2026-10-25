@@ -326,8 +326,8 @@
         },
         {
           "tag": "Epic 2",
-          "title": "Flera servrar och egna teman",
-          "body": "Läs med på alla, prata på en. Plus egna teman med färger och förinställningar, som kan delas som text: chatten visar ett förhandsvisningskort, ett klick importerar temat. Dessutom: anslutningskvalitet för alla, bilder i full storlek direkt från Mumcord till Mumcord och overlayen i spelet även på Windows, medan overlay-fönstret försvinner. Till sist, som beta: titta tillsammans på YouTube och skärmdelning."
+          "title": "Flera servrar, teman och finputs",
+          "body": "Kommer som 0.4.0: upp till fem servrar samtidigt, prata på en och läs med på alla. Egna teman, som kan delas i chatten, även per server. Plus overlayen i spelet på Windows, andras anslutningskvalitet, Linux-paket med installation på en rad och, som beta, titta tillsammans på YouTube och skärmdelning."
         },
         {
           "tag": "Epic 3",
@@ -815,7 +815,7 @@
         }
       ],
       "known": [
-        "Om du stänger Mumcord medan ett spel med overlayen körs kan spelet krascha. Stäng spelet först eller slå av overlayen i spelet; det här fixas i Epic 2.",
+        "Om du stänger Mumcord medan ett spel med overlayen körs kan spelet krascha. Stäng spelet först eller slå av overlayen i spelet; det här fixas i 0.4.0.",
         "Installationsprogrammen är fortfarande osignerade."
       ]
     },
@@ -1016,7 +1016,8 @@
     "never": "Vad som aldrig kommer att hända",
     "neverItems": [
       "Något på servern: inga tilläggstjänster, inga serverplugins, ingen serverkonfiguration. Mumcord fungerar med alla vanliga Mumble-servrar.",
-      "Mobilappar och en webbversion."
+      "Mobilappar och en webbversion.",
+      "En reläserver för direkta anslutningar: om ingen direkt väg fungerar går Mumcord via Mumble-servern i stället."
     ],
     "ideaTitle": "Saknar du något?",
     "ideaBody": "Önskemål hamnar i issues på GitHub och går in i planeringen.",
@@ -1100,26 +1101,79 @@
       },
       {
         "id": "epic-2",
-        "title": "Flera servrar och egna teman",
-        "summary": "Överallt samtidigt, precis som du vill ha det, och till sist tittar vi tillsammans.",
-        "items": [
-          "Anslut till flera servrar samtidigt, läs med på alla, prata på en",
-          "Egna teman med färginställningar och förinställningar",
-          "Dela teman som text: chatten visar ett förhandsvisningskort, ett klick importerar temat",
-          "Se anslutningskvalitet, andras och din egen: ping, paketförlust, bandbredd och om rösten går över UDP eller TCP, i menyn och profilen, valfritt med en signalikon",
-          "Ett enhetligt utseende: rullgardinsmenyer i temat i stället för webbläsarens, varje fält i inställningarna snyggt justerat",
-          "En tunn förloppsindikator under chattbilder medan full storlek laddas",
-          "Bilder i full storlek går direkt från Mumcord till Mumcord när det går, vilket är mycket snabbare. Kan stängas av i inställningarna, eftersom de andra ser din IP-adress",
-          "Bara overlayen i spelet blir kvar: overlay-fönstret försvinner. Windows får en overlay när overlayen i spelet är klar där",
-          "Fixat: att stänga Mumcord kraschar inte längre ett spel som körs och använder overlayen",
-          "Överfört från Epic 1: overlay i spelet på Windows, med Flatpak-Steam och på HDR-skärmar",
-          "Överfört från Epic 1: ”Gå med i kanal” för vänner på en annan server",
-          "Överfört från Epic 1: overlayen ligger kvar överst även i spel i kantlös helskärm",
-          "Överfört från Epic 1: ”Gå med i spel” även för spel som upptäcks via Mumble Link",
-          "Överfört från Epic 1: att stänga bildvisaren stoppar en pågående överföring av en bild i full storlek",
-          "Överfört från Epic 1: testa spelpluginen med riktiga spel så att positionsljud, plugins och bilder i full storlek kan lämna beta",
-          "Till sist, som beta: titta tillsammans på YouTube, alla i kanalen ser samma video samtidigt, med uppspelning, paus och spolning i synk",
-          "Till sist, som beta: skärmdelning mellan Mumcord-användare, direkt och utan någon annans server, via IPv6, routerns portmappning eller ditt eget nätverk"
+        "title": "Flera servrar, teman och finputs",
+        "summary": "Allt släpps tillsammans som version 0.4.0: flera servrar, egna teman, overlayen i spelet på Windows och de första direkta anslutningarna mellan Mumcord-användare. Positionsljud, spelplugins och bilder i full storlek förblir beta.",
+        "groups": [
+          {
+            "title": "Flera servrar samtidigt",
+            "items": [
+              "Upp till 5 servrar anslutna samtidigt, går att ställa in från 1 till 15. Prata på en, läs, skriv och få aviseringar på alla",
+              "Servrar markerade med ”Anslut alltid vid start” och de som var öppna förra gången ansluter av sig själva; varje server återansluter på egen hand efter ett avbrott",
+              "Aviseringar och privata meddelanden visar servernamnet, aviseringar kan tystas per server",
+              "”Gå med i kanal” även för vänner på en annan server; mumble:// länkar till en ansluten server hoppar direkt dit"
+            ]
+          },
+          {
+            "title": "Teman och utseende",
+            "items": [
+              "Egna teman utifrån några nyckelfärger, med förinställningar och liveförhandsvisning; Mumcord håller kontrasten läsbar",
+              "Dela teman som text: chatten visar ett förhandsvisningskort, ett klick tillämpar temat på appen eller på en server",
+              "Ett tema per server om du vill",
+              "Den här webbplatsens utseende i appen: glödande knappar, gradienter, glaseffekter och ett lätt filmkorn, kan stängas av"
+            ]
+          },
+          {
+            "title": "Finputs och stora servrar",
+            "items": [
+              "Rullgardinsmenyer i temat i stället för webbläsarens, varje fält i inställningarna snyggt justerat",
+              "En tunn förloppsindikator under chattbilder medan full storlek laddas",
+              "Stora servrar fryser inte längre när de visas första gången, plus reglagen ”Dölj tomma kanaler” och ”Talande först”",
+              "Meddelanden räknas som skickade först när servern bekräftar dem; nekade kan skickas igen",
+              "Profilkommentar med fetstil, kursiv, länkar och listor"
+            ]
+          },
+          {
+            "title": "Anslutningskvalitet",
+            "items": [
+              "Ping, paketförlust, bandbredd och UDP eller TCP i en persons profil och meny, även för dig själv",
+              "En liten signalikon bredvid personer med svag anslutning, kan stängas av"
+            ]
+          },
+          {
+            "title": "Overlay",
+            "items": [
+              "Overlayen i spelet även på Windows, via DirectX 11 och 12, med samma inställningar och anti-cheat-lista som på Linux",
+              "Rätt färger i HDR-spel, spel från Flatpak-Steam, spel i kantlös helskärm kontrollerade på KDE och GNOME",
+              "Fixat: att stänga eller uppdatera Mumcord kraschar inte längre ett spel som körs",
+              "Overlay-fönstret försvinner; om du använde det tar ett engångsmeddelande dig till inställningarna för overlayen i spelet",
+              "”Gå med i spel” även för spel som delar sin serveradress via Mumble Link"
+            ]
+          },
+          {
+            "title": "Direkt från Mumcord till Mumcord",
+            "items": [
+              "Direkta, krypterade anslutningar mellan Mumcord-användare via IPv6, routerns portmappning eller ditt eget nätverk, utan någon annans server",
+              "Mumcord frågar en gång först, eftersom de andra ser din IP-adress; du kan ändra det i inställningarna",
+              "Bilder i full storlek kommer fram mycket snabbare så; om ingen direkt anslutning fungerar funkar det som förut",
+              "Att stänga bildvisaren stoppar överföringen"
+            ]
+          },
+          {
+            "title": "Titta tillsammans (beta)",
+            "items": [
+              "Titta tillsammans på YouTube: alla i röstkanalen ser samma video samtidigt, vem som helst kan pausa och spola",
+              "Dela en skärm eller ett fönster, med ljud om du vill, för upp till 8 tittare, som standard 720p i 30 bilder per sekund"
+            ]
+          },
+          {
+            "title": "Installation på Linux och uppdateringar",
+            "items": [
+              "Paket för Debian och Ubuntu (.deb), Fedora och openSUSE (.rpm), Arch (AUR: mumcord-bin) och AppImage, vart och ett för x86_64 och ARM64",
+              "Installera med en rad i terminalen, med menypost och stöd för mumble:// länkar",
+              "”Starta Mumcord när jag loggar in” på alla system",
+              "Valfritt ett tips när en ny version finns; Mumcord frågar GitHub högst en gång om dagen"
+            ]
+          }
         ]
       },
       {
@@ -1233,7 +1287,7 @@
         "linux": "yes",
         "windows": "yes",
         "macos": "no",
-        "note": "Genomskinligt, släpper igenom klick och alltid överst, med hörn, storlek och opacitet. På X11 och Wayland; på KDE Wayland sätter Mumcord upp fönsterregeln med ett klick. Med Epic 2 försvinner overlay-fönstret och bara overlayen i spelet blir kvar."
+        "note": "Genomskinligt, släpper igenom klick och alltid överst, med hörn, storlek och opacitet. På X11 och Wayland; på KDE Wayland sätter Mumcord upp fönsterregeln med ett klick. Med 0.4.0 försvinner overlay-fönstret och bara overlayen i spelet blir kvar."
       },
       {
         "title": "Slå på och av från systemfältet och snabbinställningarna",
@@ -1259,7 +1313,7 @@
     "linkBody": "Spel och moddar som stöder Mumble Link levererar sina positioner själva, inget plugin behövs. Det fungerar på Linux, Windows och macOS.",
     "pluginsTitle": "Mumbles officiella spelplugins",
     "pluginsBody": "Mumble har officiella plugins för de här spelen, för Windows och Linux. Mumcord använder pluginen från en installerad Mumble eller från sin egen pluginmapp. Varje plugin kan slås på för sig.",
-    "pluginsNote": "Många plugins är byggda för en viss, ofta äldre spelversion och läser spelets minne. Vissa anti-cheat-system kan flagga det, och Mumcord säger till innan du slår på ett. Pluginen testas med riktiga spel i Epic 2; fram till dess förblir de beta.",
+    "pluginsNote": "Många plugins är byggda för en viss, ofta äldre spelversion och läser spelets minne. Vissa anti-cheat-system kan flagga det, och Mumcord säger till innan du slår på ett. De förblir beta tills vidare, även i Epic 2; att testa dem med riktiga spel kommer senare.",
     "pluginsSource": "Plugins i Mumble-repot",
     "askTitle": "Saknas ett spel eller ställer det till problem?",
     "askBody": "Om ett spel fungerar, om ett hör hemma på blockeringslistan eller om ett plugin inte längre passar: rapportera det på GitHub.",
@@ -1272,7 +1326,7 @@
       "Source Engine": "Left 4 Dead 1 och 2, fler Source-spel på Linux",
       "World of Warcraft": "32 och 64 bitar"
     },
-    "overlayWarning": "Känt problem: om du stänger Mumcord medan ett spel med overlayen körs kan spelet krascha. Stäng spelet först eller slå av overlayen i spelet. Det här fixas i Epic 2."
+    "overlayWarning": "Känt problem: om du stänger Mumcord medan ett spel med overlayen körs kan spelet krascha. Stäng spelet först eller slå av overlayen i spelet. Det här fixas i 0.4.0."
   },
   "blocked": [
     {

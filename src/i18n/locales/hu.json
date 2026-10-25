@@ -326,8 +326,8 @@
         },
         {
           "tag": "Epic 2",
-          "title": "Több szerver és saját témák",
-          "body": "Olvass mindegyiken, beszélj az egyiken. Plusz egyedi témák színekkel és előbeállításokkal, szövegként megoszthatók: a chat előnézeti kártyát mutat, egy kattintás importálja a témát. Továbbá: kapcsolatminőség mindenkinek, teljes méretű képek közvetlenül Mumcordból Mumcordba és a játékon belüli overlay Windowson is, miközben az overlay ablak megszűnik. A végén, bétaként: közös YouTube-nézés és képernyőmegosztás."
+          "title": "Több szerver, témák és csiszolás",
+          "body": "A 0.4.0-s verzióval érkezik: egyszerre akár öt szerver, beszélj az egyiken, és olvass mindegyiken. Saját témák, a chatben megoszthatók, akár szerverenként is. Plusz a játékon belüli overlay Windowson, a többiek kapcsolatminősége, Linux-csomagok egysoros telepítéssel és bétaként közös YouTube-nézés és képernyőmegosztás."
         },
         {
           "tag": "Epic 3",
@@ -815,7 +815,7 @@
         }
       ],
       "known": [
-        "Ha bezárod a Mumcordot, miközben egy overlayt használó játék fut, a játék összeomolhat. Előbb zárd be a játékot, vagy kapcsold ki a játékon belüli overlayt; ez a 2. epicben javul.",
+        "Ha bezárod a Mumcordot, miközben egy overlayt használó játék fut, a játék összeomolhat. Előbb zárd be a játékot, vagy kapcsold ki a játékon belüli overlayt; ez a 0.4.0-s verzióban javul.",
         "A telepítők még nincsenek aláírva."
       ]
     },
@@ -1016,7 +1016,8 @@
     "never": "Ami soha nem lesz",
     "neverItems": [
       "Bármi a szerveren: nincs kísérőszolgáltatás, nincs szerverplugin, nincs szerverkonfiguráció. A Mumcord bármely szabványos Mumble-szerverrel működik.",
-      "Mobilalkalmazások és webes verzió."
+      "Mobilalkalmazások és webes verzió.",
+      "Relay szerver a közvetlen kapcsolatokhoz: ha nincs működő közvetlen út, a Mumcord inkább a Mumble-szerveren keresztül megy."
     ],
     "ideaTitle": "Hiányzik valami?",
     "ideaBody": "A kérések a GitHub issue-iba kerülnek, és beépülnek a tervezésbe.",
@@ -1100,26 +1101,79 @@
       },
       {
         "id": "epic-2",
-        "title": "Több szerver és saját témák",
-        "summary": "Mindenhol egyszerre, úgy, ahogy neked tetszik, a végén pedig közös nézés.",
-        "items": [
-          "Csatlakozás egyszerre több szerverhez, olvasás mindegyiken, beszéd az egyiken",
-          "Egyedi témák színbeállításokkal és előbeállításokkal",
-          "Témák megosztása szövegként: a chat előnézeti kártyát mutat, egy kattintás importálja a témát",
-          "Kapcsolatminőség, másoké és a tiéd: ping, csomagvesztés, sávszélesség, és hogy a hang UDP-n vagy TCP-n megy-e, a menüben és a profilban, igény szerint jelerősség-ikonnal",
-          "Egységes megjelenés: témához illő legördülő menük a böngésző sajátjai helyett, a beállítások minden mezője szépen igazítva",
-          "Vékony folyamatjelző sáv a chatképek alatt, amíg a teljes méret betöltődik",
-          "A teljes méretű képek, ha lehet, közvetlenül Mumcordból Mumcordba mennek, ami sokkal gyorsabb. A beállításokban kikapcsolható, mert a többiek látják az IP-címedet",
-          "Csak a játékon belüli overlay marad: az overlay ablak megszűnik. A Windows akkor kap overlayt, amikor ott elkészül a játékon belüli overlay",
-          "Javítva: a Mumcord bezárásakor már nem omlik össze az overlayt használó, futó játék",
-          "Az 1. epicből áthozva: játékon belüli overlay Windowson, Flatpak Steammel és HDR-kijelzőkön",
-          "Az 1. epicből áthozva: „Belépés a csatornába” más szerveren lévő barátokhoz",
-          "Az 1. epicből áthozva: az overlay a keret nélküli teljes képernyős játékok felett is felül marad",
-          "Az 1. epicből áthozva: „Csatlakozás a játékhoz” a Mumble Linken keresztül felismert játékoknál is",
-          "Az 1. epicből áthozva: a képnézegető bezárása leállítja a folyamatban lévő teljes méretű képátvitelt",
-          "Az 1. epicből áthozva: a játékpluginok ellenőrzése valódi játékokkal, hogy a térhatású hang, a pluginok és a teljes méretű képek kikerülhessenek a bétából",
-          "A végén, bétaként: közös YouTube-nézés, a csatornában mindenki ugyanazt a videót nézi egyszerre, szinkronban lévő lejátszással, szünettel és tekeréssel",
-          "A végén, bétaként: képernyőmegosztás Mumcord-felhasználók között, közvetlenül és más szervere nélkül, IPv6-on, a routered porttovábbításán vagy a saját hálózatodon keresztül"
+        "title": "Több szerver, témák és csiszolás",
+        "summary": "Minden együtt érkezik a 0.4.0-s verzióban: több szerver, saját témák, a játékon belüli overlay Windowson és az első közvetlen kapcsolatok Mumcord-felhasználók között. A térhatású hang, a játékpluginok és a teljes méretű képek bétában maradnak.",
+        "groups": [
+          {
+            "title": "Több szerver egyszerre",
+            "items": [
+              "Egyszerre akár 5 csatlakoztatott szerver, 1 és 15 között állítható. Beszélj az egyiken, olvass, írj és kapj értesítéseket mindegyikről",
+              "A „Mindig csatlakozzon induláskor” jelölésű szerverek és a legutóbb nyitva lévők maguktól csatlakoznak; minden szerver külön újracsatlakozik, ha megszakad a kapcsolat",
+              "Az értesítések és a privát üzenetek mutatják a szerver nevét, az értesítések szerverenként némíthatók",
+              "„Belépés a csatornába” más szerveren lévő barátokhoz is; a csatlakoztatott szerverre mutató mumble:// linkek egyenesen oda visznek"
+            ]
+          },
+          {
+            "title": "Témák és megjelenés",
+            "items": [
+              "Saját témák néhány alapszínből, előbeállításokkal és élő előnézettel; a Mumcord olvashatón tartja a kontrasztot",
+              "Témák megosztása szövegként: a chat előnézeti kártyát mutat, egy kattintás alkalmazza a témát az appra vagy egy szerverre",
+              "Ha szeretnéd, szerverenként külön téma",
+              "Ennek a weboldalnak a kinézete az appban: izzó gombok, színátmenetek, üveghatás és enyhe filmszemcse, kikapcsolható"
+            ]
+          },
+          {
+            "title": "Csiszolás és nagy szerverek",
+            "items": [
+              "Témához illő legördülő menük a böngésző sajátjai helyett, a beállítások minden mezője szépen igazítva",
+              "Vékony folyamatjelző sáv a chatképek alatt, amíg a teljes méret betöltődik",
+              "A nagy szerverek már nem fagynak le az első megjelenítéskor, plusz „Üres csatornák elrejtése” és „Beszélők elöl” kapcsolók",
+              "Az üzenetek csak akkor számítanak elküldöttnek, ha a szerver visszaigazolja őket; az elutasítottak újraküldhetők",
+              "Profilmegjegyzés félkövérrel, dőlttel, linkekkel és listákkal"
+            ]
+          },
+          {
+            "title": "Kapcsolatminőség",
+            "items": [
+              "Ping, csomagvesztés, sávszélesség és UDP vagy TCP valaki profiljában és menüjében, a sajátodnál is",
+              "Kis jelerősség-ikon a gyenge kapcsolatú emberek mellett, kikapcsolható"
+            ]
+          },
+          {
+            "title": "Overlay",
+            "items": [
+              "A játékon belüli overlay Windowson is, DirectX 11-en és 12-n keresztül, ugyanazokkal a beállításokkal és anti-cheat listával, mint Linuxon",
+              "Helyes színek HDR-játékokban, játékok Flatpak Steamből, keret nélküli teljes képernyős játékok KDE-n és GNOME-on ellenőrizve",
+              "Javítva: a Mumcord bezárása vagy frissítése már nem dönti össze a futó játékot",
+              "Az overlay ablak megszűnik; ha használtad, egy egyszeri értesítés átvisz a játékon belüli overlay beállításaihoz",
+              "„Csatlakozás a játékhoz” azoknál a játékoknál is, amelyek a Mumble Linken át osztják meg a szervercímüket"
+            ]
+          },
+          {
+            "title": "Közvetlenül Mumcordból Mumcordba",
+            "items": [
+              "Közvetlen, titkosított kapcsolatok Mumcord-felhasználók között IPv6-on, a routered porttovábbításán vagy a saját hálózatodon keresztül, más szervere nélkül",
+              "A Mumcord előtte egyszer rákérdez, mert a többiek látják az IP-címedet; a beállításokban módosíthatod",
+              "Így a teljes méretű képek sokkal gyorsabban érkeznek; ha nem működik közvetlen kapcsolat, minden megy úgy, mint eddig",
+              "A képnézegető bezárása leállítja az átvitelt"
+            ]
+          },
+          {
+            "title": "Közös nézés (béta)",
+            "items": [
+              "Közös YouTube-nézés: a hangcsatornában mindenki ugyanazt a videót nézi egyszerre, bárki megállíthatja és tekerhet",
+              "Képernyő vagy ablak megosztása, ha szeretnéd, hanggal, legfeljebb 8 nézőnek, alapból 720p-ben, másodpercenként 30 képkockával"
+            ]
+          },
+          {
+            "title": "Telepítés Linuxon és frissítések",
+            "items": [
+              "Csomagok Debianhoz és Ubuntuhoz (.deb), Fedorához és openSUSE-hoz (.rpm), Archhoz (AUR: mumcord-bin) és az AppImage, mindegyik x86_64-re és ARM64-re",
+              "Telepítés egyetlen sorral a terminálban, menübejegyzéssel és a mumble:// linkek támogatásával",
+              "„Mumcord indítása bejelentkezéskor” minden rendszeren",
+              "Igény szerint jelzés, ha új verzió jelenik meg; a Mumcord legfeljebb naponta egyszer kérdezi meg a GitHubot"
+            ]
+          }
         ]
       },
       {
@@ -1233,7 +1287,7 @@
         "linux": "yes",
         "windows": "yes",
         "macos": "no",
-        "note": "Átlátszó, átkattintható és mindig felül, választható sarokkal, mérettel és átlátszósággal. X11-en és Waylanden; KDE Waylanden a Mumcord egy kattintással beállítja az ablakszabályt. A 2. epickel az overlay ablak megszűnik, és csak a játékon belüli overlay marad."
+        "note": "Átlátszó, átkattintható és mindig felül, választható sarokkal, mérettel és átlátszósággal. X11-en és Waylanden; KDE Waylanden a Mumcord egy kattintással beállítja az ablakszabályt. A 0.4.0-s verzióval az overlay ablak megszűnik, és csak a játékon belüli overlay marad."
       },
       {
         "title": "Kapcsolás a tálcáról és a gyorsbeállításokból",
@@ -1259,7 +1313,7 @@
     "linkBody": "A Mumble Linket támogató játékok és modok maguk szolgáltatják a pozíciójukat, plugin nem kell. Ez Linuxon, Windowson és macOS-en is működik.",
     "pluginsTitle": "A Mumble hivatalos játékpluginjai",
     "pluginsBody": "A Mumble-nek ezekhez a játékokhoz vannak hivatalos pluginjai, Windowsra és Linuxra. A Mumcord egy telepített Mumble pluginjait használja, vagy a saját pluginmappájából. Minden plugin külön bekapcsolható.",
-    "pluginsNote": "Sok plugin egy konkrét, gyakran régebbi játékverzióhoz készült, és a játék memóriáját olvassa. Egyes anti-cheat rendszerek ezt kifogásolhatják, és a Mumcord szól, mielőtt bekapcsolnál egyet. A pluginokat a 2. epicben valódi játékokkal ellenőrizzük; addig bétában maradnak.",
+    "pluginsNote": "Sok plugin egy konkrét, gyakran régebbi játékverzióhoz készült, és a játék memóriáját olvassa. Egyes anti-cheat rendszerek ezt kifogásolhatják, és a Mumcord szól, mielőtt bekapcsolnál egyet. Egyelőre bétában maradnak, a 2. epicben is; a valódi játékokkal való ellenőrzésük később jön.",
     "pluginsSource": "Pluginok a Mumble repositoryban",
     "askTitle": "Hiányzik egy játék, vagy gondot okoz?",
     "askBody": "Akár működik egy játék, akár tiltólistára való, akár egy plugin már nem illik hozzá: jelezd a GitHubon.",
@@ -1272,7 +1326,7 @@
       "Source Engine": "Left 4 Dead 1 és 2, Linuxon további Source-játékok",
       "World of Warcraft": "32 és 64 bit"
     },
-    "overlayWarning": "Ismert hiba: ha bezárod a Mumcordot, miközben egy overlayt használó játék fut, a játék összeomolhat. Előbb zárd be a játékot, vagy kapcsold ki a játékon belüli overlayt. Ez a 2. epicben javul."
+    "overlayWarning": "Ismert hiba: ha bezárod a Mumcordot, miközben egy overlayt használó játék fut, a játék összeomolhat. Előbb zárd be a játékot, vagy kapcsold ki a játékon belüli overlayt. Ez a 0.4.0-s verzióban javul."
   },
   "blocked": [
     {

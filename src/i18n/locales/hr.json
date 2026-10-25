@@ -326,8 +326,8 @@
         },
         {
           "tag": "Epic 2",
-          "title": "Više poslužitelja i vlastite teme",
-          "body": "Čitaj na svima, pričaj na jednom. Uz to prilagođene teme s bojama i predlošcima, koje se dijele kao tekst: chat prikazuje karticu s pretpregledom, a jedan klik uvozi temu. Još i: kvaliteta veze za sve, slike u punoj veličini izravno iz Mumcorda u Mumcord i overlay u igri i na Windowsima, dok overlay prozor odlazi. Na kraju, kao beta: YouTube watch party i dijeljenje zaslona."
+          "title": "Više poslužitelja, teme i dorada",
+          "body": "Stiže kao 0.4.0: do pet poslužitelja odjednom, pričaj na jednom i prati čitanjem na svima. Vlastite teme koje se dijele u chatu, po želji i za svaki poslužitelj. Uz to overlay u igri na Windowsima, kvaliteta veze drugih ljudi, Linux paketi s instalacijom u jednom retku i, kao beta, YouTube watch party i dijeljenje zaslona."
         },
         {
           "tag": "Epic 3",
@@ -815,7 +815,7 @@
         }
       ],
       "known": [
-        "Ako zatvoriš Mumcord dok radi igra s overlayem, igra se može srušiti. Najprije zatvori igru ili isključi overlay u igri; to se popravlja u Epicu 2.",
+        "Ako zatvoriš Mumcord dok radi igra s overlayem, igra se može srušiti. Najprije zatvori igru ili isključi overlay u igri; to se popravlja u 0.4.0.",
         "Instalacijski programi još nisu potpisani."
       ]
     },
@@ -1016,7 +1016,8 @@
     "never": "Što se nikad neće dogoditi",
     "neverItems": [
       "Ništa na poslužitelju: nema pratećih servisa, nema dodataka za poslužitelj, nema konfiguracije poslužitelja. Mumcord radi s bilo kojim standardnim Mumble poslužiteljem.",
-      "Mobilne aplikacije i web verzija."
+      "Mobilne aplikacije i web verzija.",
+      "Relay poslužitelj za izravne veze: ako nijedan izravni put ne uspije, Mumcord umjesto toga ide preko Mumble poslužitelja."
     ],
     "ideaTitle": "Nešto nedostaje?",
     "ideaBody": "Prijedlozi idu u issueje na GitHubu i ulaze u planiranje.",
@@ -1100,26 +1101,79 @@
       },
       {
         "id": "epic-2",
-        "title": "Više poslužitelja i vlastite teme",
-        "summary": "Posvuda odjednom, baš kako ti se sviđa, a na kraju i zajedničko gledanje.",
-        "items": [
-          "Spajanje na više poslužitelja odjednom, čitaj na svima, pričaj na jednom",
-          "Prilagođene teme s postavkama boja i predlošcima",
-          "Dijeljenje tema kao teksta: chat prikazuje karticu s pretpregledom, jedan klik uvozi temu",
-          "Kvaliteta veze, drugih i tvoja: ping, gubitak paketa, propusnost i ide li glas preko UDP-a ili TCP-a, u izborniku i profilu, po želji s ikonom signala",
-          "Jedinstven izgled: padajući izbornici u stilu teme umjesto onih iz preglednika, sva polja u postavkama uredno poravnana",
-          "Tanka traka napretka ispod slika u chatu dok se učitava puna veličina",
-          "Slike u punoj veličini idu izravno iz Mumcorda u Mumcord kad je moguće, što je puno brže. Može se isključiti u postavkama jer drugi vide tvoju IP adresu",
-          "Ostaje samo overlay u igri: overlay prozor odlazi. Windowsi dobivaju overlay čim njihov overlay u igri bude spreman",
-          "Popravljeno: zatvaranje Mumcorda više ne ruši pokrenutu igru koja koristi overlay",
-          "Preneseno iz Epica 1: overlay u igri na Windowsima, s Flatpak Steamom i na HDR zaslonima",
-          "Preneseno iz Epica 1: „Uđi u kanal” za prijatelje na drugom poslužitelju",
-          "Preneseno iz Epica 1: overlay ostaje na vrhu i u igrama u cijelom zaslonu bez obruba",
-          "Preneseno iz Epica 1: „Pridruži se igri” i za igre prepoznate preko Mumble Linka",
-          "Preneseno iz Epica 1: zatvaranje preglednika slika zaustavlja prijenos slike u punoj veličini koji je u tijeku",
-          "Preneseno iz Epica 1: provjera dodataka za igre sa stvarnim igrama kako bi pozicijski zvuk, dodaci i slike u punoj veličini izašli iz bete",
-          "Na kraju, kao beta: YouTube watch party, svi u kanalu gledaju isti video u isto vrijeme, uz sinkronizirano puštanje, pauzu i premotavanje",
-          "Na kraju, kao beta: dijeljenje zaslona između korisnika Mumcorda, izravno i bez tuđeg poslužitelja, preko IPv6, prosljeđivanja portova na tvom routeru ili tvoje vlastite mreže"
+        "title": "Više poslužitelja, teme i dorada",
+        "summary": "Sve izlazi zajedno kao verzija 0.4.0: više poslužitelja, vlastite teme, overlay u igri na Windowsima i prve izravne veze između korisnika Mumcorda. Pozicijski zvuk, dodaci za igre i slike u punoj veličini ostaju beta.",
+        "groups": [
+          {
+            "title": "Više poslužitelja odjednom",
+            "items": [
+              "Do 5 poslužitelja spojenih odjednom, podesivo od 1 do 15. Pričaj na jednom, čitaj, piši i primaj obavijesti na svima",
+              "Poslužitelji označeni s „Uvijek se spoji pri pokretanju” i oni otvoreni prošli put spajaju se sami; svaki se poslužitelj nakon prekida sam ponovno spaja",
+              "Obavijesti i privatne poruke prikazuju ime poslužitelja, obavijesti se mogu utišati za svaki poslužitelj",
+              "„Uđi u kanal” i za prijatelje na drugom poslužitelju; mumble:// poveznice na spojeni poslužitelj vode ravno tamo"
+            ]
+          },
+          {
+            "title": "Teme i izgled",
+            "items": [
+              "Vlastite teme iz nekoliko ključnih boja, s predlošcima i pretpregledom uživo; Mumcord pazi da kontrast ostane čitljiv",
+              "Dijeljenje tema kao teksta: chat prikazuje karticu s pretpregledom, jedan klik primjenjuje temu na aplikaciju ili na poslužitelj",
+              "Po želji tema za svaki poslužitelj",
+              "Izgled ove web stranice u aplikaciji: svjetleći gumbi, prijelazi boja, efekti stakla i lagano filmsko zrno, može se isključiti"
+            ]
+          },
+          {
+            "title": "Dorada i veliki poslužitelji",
+            "items": [
+              "Padajući izbornici u stilu teme umjesto onih iz preglednika, sva polja u postavkama uredno poravnana",
+              "Tanka traka napretka ispod slika u chatu dok se učitava puna veličina",
+              "Veliki poslužitelji više se ne zamrzavaju pri prvom prikazu, uz prekidače „Sakrij prazne kanale” i „Oni koji pričaju prvi”",
+              "Poruke se smatraju poslanima tek kad ih poslužitelj potvrdi; odbijene se mogu ponovno poslati",
+              "Komentar u profilu s podebljanim tekstom, kurzivom, poveznicama i popisima"
+            ]
+          },
+          {
+            "title": "Kvaliteta veze",
+            "items": [
+              "Ping, gubitak paketa, propusnost i UDP ili TCP u profilu i izborniku osobe, i za tebe",
+              "Mala ikona signala pokraj ljudi sa slabom vezom, može se isključiti"
+            ]
+          },
+          {
+            "title": "Overlay",
+            "items": [
+              "Overlay u igri i na Windowsima, preko DirectX 11 i 12, s istim postavkama i anti-cheat popisom kao na Linuxu",
+              "Ispravne boje u HDR igrama, igre iz Flatpak Steama, igre u cijelom zaslonu bez obruba provjerene na KDE-u i GNOME-u",
+              "Popravljeno: zatvaranje ili ažuriranje Mumcorda više ne ruši pokrenutu igru",
+              "Overlay prozor odlazi; ako si ga koristio, jednokratna obavijest vodi te u postavke overlaya u igri",
+              "„Pridruži se igri” i za igre koje dijele adresu svog poslužitelja preko Mumble Linka"
+            ]
+          },
+          {
+            "title": "Izravno iz Mumcorda u Mumcord",
+            "items": [
+              "Izravne, šifrirane veze između korisnika Mumcorda preko IPv6, prosljeđivanja portova na tvom routeru ili tvoje vlastite mreže, bez tuđeg poslužitelja",
+              "Mumcord najprije jednom pita, jer drugi vide tvoju IP adresu; to možeš promijeniti u postavkama",
+              "Tako slike u punoj veličini stižu puno brže; ako izravna veza ne uspije, radi kao i prije",
+              "Zatvaranje preglednika slika zaustavlja prijenos"
+            ]
+          },
+          {
+            "title": "Zajedničko gledanje (beta)",
+            "items": [
+              "YouTube watch party: svi u glasovnom kanalu gledaju isti video u isto vrijeme, svatko može pauzirati i premotavati",
+              "Dijeljenje zaslona ili prozora, po želji sa zvukom, za do 8 gledatelja, zadano 720p pri 30 sličica u sekundi"
+            ]
+          },
+          {
+            "title": "Instalacija na Linuxu i ažuriranja",
+            "items": [
+              "Paketi za Debian i Ubuntu (.deb), Fedoru i openSUSE (.rpm), Arch (AUR: mumcord-bin) i AppImage, svaki za x86_64 i ARM64",
+              "Instalacija jednim retkom u terminalu, sa stavkom u izborniku i podrškom za mumble:// poveznice",
+              "„Pokreni Mumcord pri prijavi” na svakom sustavu",
+              "Po želji obavijest kad izađe nova verzija; Mumcord pita GitHub najviše jednom dnevno"
+            ]
+          }
         ]
       },
       {
@@ -1233,7 +1287,7 @@
         "linux": "yes",
         "windows": "yes",
         "macos": "no",
-        "note": "Proziran, propušta klikove i uvijek na vrhu, s kutom, veličinom i prozirnošću. Na X11 i Waylandu; na KDE Waylandu Mumcord jednim klikom postavlja pravilo prozora. S Epicom 2 overlay prozor odlazi i ostaje samo overlay u igri."
+        "note": "Proziran, propušta klikove i uvijek na vrhu, s kutom, veličinom i prozirnošću. Na X11 i Waylandu; na KDE Waylandu Mumcord jednim klikom postavlja pravilo prozora. S verzijom 0.4.0 overlay prozor odlazi i ostaje samo overlay u igri."
       },
       {
         "title": "Uključivanje iz trake sustava i brzih postavki",
@@ -1259,7 +1313,7 @@
     "linkBody": "Igre i modovi koji podržavaju Mumble Link sami isporučuju svoje pozicije, bez dodatka. To radi na Linuxu, Windowsima i macOS-u.",
     "pluginsTitle": "Službeni Mumble dodaci za igre",
     "pluginsBody": "Mumble ima službene dodatke za ove igre, za Windows i Linux. Mumcord koristi dodatke instaliranog Mumblea ili iz vlastite mape dodataka. Svaki se dodatak može uključiti zasebno.",
-    "pluginsNote": "Mnogi dodaci napravljeni su za jednu određenu, često stariju verziju igre i čitaju memoriju igre. Neki anti-cheat sustavi to mogu označiti, a Mumcord ti to kaže prije nego što uključiš dodatak. Dodaci se provjeravaju sa stvarnim igrama u Epicu 2; do tada ostaju beta.",
+    "pluginsNote": "Mnogi dodaci napravljeni su za jednu određenu, često stariju verziju igre i čitaju memoriju igre. Neki anti-cheat sustavi to mogu označiti, a Mumcord ti to kaže prije nego što uključiš dodatak. Zasad ostaju beta, i u Epicu 2; provjera sa stvarnim igrama dolazi kasnije.",
     "pluginsSource": "Dodaci u Mumble repozitoriju",
     "askTitle": "Neka igra nedostaje ili stvara probleme?",
     "askBody": "Radi li igra, pripada li na popis blokiranih ili dodatak više ne odgovara: prijavi to na GitHubu.",
@@ -1272,7 +1326,7 @@
       "Source Engine": "Left 4 Dead 1 i 2, više Source igara na Linuxu",
       "World of Warcraft": "32 i 64 bita"
     },
-    "overlayWarning": "Poznati problem: ako zatvoriš Mumcord dok radi igra s overlayem, igra se može srušiti. Najprije zatvori igru ili isključi overlay u igri. To se popravlja u Epicu 2."
+    "overlayWarning": "Poznati problem: ako zatvoriš Mumcord dok radi igra s overlayem, igra se može srušiti. Najprije zatvori igru ili isključi overlay u igri. To se popravlja u 0.4.0."
   },
   "blocked": [
     {

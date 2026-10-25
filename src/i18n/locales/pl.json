@@ -326,8 +326,8 @@
         },
         {
           "tag": "Epic 2",
-          "title": "Kilka serwerów i własne motywy",
-          "body": "Czytaj na wszystkich, mów na jednym. Do tego własne motywy z kolorami i presetami, do udostępniania jako tekst: czat pokazuje kartę podglądu, jedno kliknięcie importuje motyw. Poza tym: jakość połączenia wszystkich, obrazy w pełnym rozmiarze prosto z Mumcorda do Mumcorda i nakładka w grze także na Windowsie, a okno nakładki znika. Na koniec, jako beta: wspólne oglądanie YouTube i udostępnianie ekranu."
+          "title": "Kilka serwerów, motywy i szlify",
+          "body": "Nadchodzi jako 0.4.0: do pięciu serwerów naraz, mów na jednym i czytaj na wszystkich. Własne motywy, do udostępniania w czacie, także dla każdego serwera. Do tego nakładka w grze na Windowsie, jakość połączenia innych, paczki dla Linuksa z instalacją jedną linijką i, jako beta, wspólne oglądanie YouTube i udostępnianie ekranu."
         },
         {
           "tag": "Epic 3",
@@ -815,7 +815,7 @@
         }
       ],
       "known": [
-        "Jeśli zamkniesz Mumcorda, gdy działa gra z nakładką, gra może się wysypać. Najpierw zamknij grę albo wyłącz nakładkę w grze; zostanie to naprawione w Epic 2.",
+        "Jeśli zamkniesz Mumcorda, gdy działa gra z nakładką, gra może się wysypać. Najpierw zamknij grę albo wyłącz nakładkę w grze; zostanie to naprawione w 0.4.0.",
         "Instalatory nadal nie są podpisane."
       ]
     },
@@ -1016,7 +1016,8 @@
     "never": "Co nigdy się nie wydarzy",
     "neverItems": [
       "Cokolwiek na serwerze: żadnych usług towarzyszących, żadnych pluginów serwera, żadnej konfiguracji serwera. Mumcord działa z każdym standardowym serwerem Mumble.",
-      "Aplikacje mobilne i wersja webowa."
+      "Aplikacje mobilne i wersja webowa.",
+      "Serwer pośredniczący dla połączeń bezpośrednich: jeśli żadna bezpośrednia droga nie działa, Mumcord idzie zamiast tego przez serwer Mumble."
     ],
     "ideaTitle": "Czegoś brakuje?",
     "ideaBody": "Propozycje trafiają do zgłoszeń na GitHubie i są uwzględniane w planowaniu.",
@@ -1100,26 +1101,79 @@
       },
       {
         "id": "epic-2",
-        "title": "Kilka serwerów i własne motywy",
-        "summary": "Wszędzie naraz, tak, jak lubisz, a na koniec wspólne oglądanie.",
-        "items": [
-          "Połączenie z kilkoma serwerami naraz, czytanie na wszystkich, mówienie na jednym",
-          "Własne motywy z ustawieniami kolorów i presetami",
-          "Udostępnianie motywów jako tekst: czat pokazuje kartę podglądu, jedno kliknięcie importuje motyw",
-          "Jakość połączenia innych i twojego: ping, utrata pakietów, przepustowość i to, czy głos idzie przez UDP czy TCP, w menu i profilu, opcjonalnie z ikoną sygnału",
-          "Spójny wygląd: rozwijane listy w stylu motywu zamiast tych z przeglądarki, każde pole w ustawieniach równo wyrównane",
-          "Cienki pasek postępu pod obrazami w czacie, gdy ładuje się pełny rozmiar",
-          "Obrazy w pełnym rozmiarze idą, gdy to możliwe, prosto z Mumcorda do Mumcorda, co jest dużo szybsze. Można to wyłączyć w ustawieniach, bo inni widzą twój adres IP",
-          "Zostaje tylko nakładka w grze: okno nakładki znika. Windows dostanie nakładkę, gdy nakładka w grze będzie tam gotowa",
-          "Naprawione: zamknięcie Mumcorda nie wysypuje już uruchomionej gry, która korzysta z nakładki",
-          "Przeniesione z Epic 1: nakładka w grze na Windowsie, ze Steamem z Flatpaka i na ekranach HDR",
-          "Przeniesione z Epic 1: „Dołącz do kanału” dla znajomych na innym serwerze",
-          "Przeniesione z Epic 1: nakładka zostaje na wierzchu także w grach w trybie pełnoekranowym bez ramek",
-          "Przeniesione z Epic 1: „Dołącz do gry” także dla gier wykrytych przez Mumble Link",
-          "Przeniesione z Epic 1: zamknięcie przeglądarki obrazów zatrzymuje trwający transfer obrazu w pełnym rozmiarze",
-          "Przeniesione z Epic 1: sprawdzenie pluginów gier w prawdziwych grach, by dźwięk pozycyjny, pluginy i obrazy w pełnym rozmiarze mogły wyjść z bety",
-          "Na koniec, jako beta: wspólne oglądanie YouTube, wszyscy na kanale oglądają ten sam film naraz, z synchronizacją odtwarzania, pauzy i przewijania",
-          "Na koniec, jako beta: udostępnianie ekranu między użytkownikami Mumcorda, bezpośrednio i bez niczyjego serwera, przez IPv6, przekierowanie portów w twoim routerze albo twoją własną sieć"
+        "title": "Kilka serwerów, motywy i szlify",
+        "summary": "Wszystko wychodzi razem jako wersja 0.4.0: kilka serwerów, własne motywy, nakładka w grze na Windowsie i pierwsze bezpośrednie połączenia między użytkownikami Mumcorda. Dźwięk pozycyjny, pluginy gier i obrazy w pełnym rozmiarze zostają w becie.",
+        "groups": [
+          {
+            "title": "Kilka serwerów naraz",
+            "items": [
+              "Do 5 serwerów połączonych naraz, do ustawienia od 1 do 15. Mów na jednym, czytaj, pisz i dostawaj powiadomienia na wszystkich",
+              "Serwery oznaczone „Zawsze łącz przy starcie” i te otwarte ostatnio łączą się same; każdy serwer po zerwaniu sam łączy się ponownie",
+              "Powiadomienia i prywatne wiadomości pokazują nazwę serwera, powiadomienia można wyciszyć dla każdego serwera",
+              "„Dołącz do kanału” także dla znajomych na innym serwerze; linki mumble:// do połączonego serwera przenoszą prosto tam"
+            ]
+          },
+          {
+            "title": "Motywy i wygląd",
+            "items": [
+              "Własne motywy z kilku kluczowych kolorów, z presetami i podglądem na żywo; Mumcord pilnuje czytelnego kontrastu",
+              "Udostępnianie motywów jako tekst: czat pokazuje kartę podglądu, jedno kliknięcie nakłada motyw na aplikację albo na serwer",
+              "Osobny motyw dla każdego serwera, jeśli chcesz",
+              "Wygląd tej strony w aplikacji: świecące przyciski, gradienty, efekty szkła i lekkie ziarno filmowe, do wyłączenia"
+            ]
+          },
+          {
+            "title": "Szlify i duże serwery",
+            "items": [
+              "Rozwijane listy w stylu motywu zamiast tych z przeglądarki, każde pole w ustawieniach równo wyrównane",
+              "Cienki pasek postępu pod obrazami w czacie, gdy ładuje się pełny rozmiar",
+              "Duże serwery nie zamrażają się już przy pierwszym wyświetleniu, do tego przełączniki „Ukryj puste kanały” i „Mówiący na górze”",
+              "Wiadomości liczą się jako wysłane dopiero, gdy serwer je potwierdzi; odrzucone można wysłać ponownie",
+              "Komentarz w profilu z pogrubieniem, kursywą, linkami i listami"
+            ]
+          },
+          {
+            "title": "Jakość połączenia",
+            "items": [
+              "Ping, utrata pakietów, przepustowość i UDP albo TCP w profilu i menu danej osoby, także dla ciebie",
+              "Mała ikona sygnału przy osobach ze słabym połączeniem, do wyłączenia"
+            ]
+          },
+          {
+            "title": "Nakładka",
+            "items": [
+              "Nakładka w grze także na Windowsie, przez DirectX 11 i 12, z tymi samymi ustawieniami i listą anti-cheat co na Linuksie",
+              "Poprawne kolory w grach HDR, gry ze Steama z Flatpaka, gry pełnoekranowe bez ramek sprawdzone na KDE i GNOME",
+              "Naprawione: zamknięcie lub aktualizacja Mumcorda nie wysypuje już uruchomionej gry",
+              "Okno nakładki znika; jeśli z niego korzystałeś, jednorazowa informacja przeniesie cię do ustawień nakładki w grze",
+              "„Dołącz do gry” także dla gier, które udostępniają adres serwera przez Mumble Link"
+            ]
+          },
+          {
+            "title": "Prosto z Mumcorda do Mumcorda",
+            "items": [
+              "Bezpośrednie, szyfrowane połączenia między użytkownikami Mumcorda przez IPv6, przekierowanie portów w twoim routerze albo twoją własną sieć, bez niczyjego serwera",
+              "Mumcord najpierw raz pyta, bo inni widzą twój adres IP; możesz to zmienić w ustawieniach",
+              "Obrazy w pełnym rozmiarze przychodzą tak dużo szybciej; jeśli żadne bezpośrednie połączenie nie działa, wszystko działa jak dotąd",
+              "Zamknięcie przeglądarki obrazów zatrzymuje transfer"
+            ]
+          },
+          {
+            "title": "Wspólne oglądanie (beta)",
+            "items": [
+              "Wspólne oglądanie YouTube: wszyscy na kanale głosowym oglądają ten sam film naraz, każdy może pauzować i przewijać",
+              "Udostępnij ekran albo okno, z dźwiękiem, jeśli chcesz, dla maksymalnie 8 widzów, domyślnie 720p przy 30 klatkach na sekundę"
+            ]
+          },
+          {
+            "title": "Instalacja na Linuksie i aktualizacje",
+            "items": [
+              "Paczki dla Debiana i Ubuntu (.deb), Fedory i openSUSE (.rpm), Archa (AUR: mumcord-bin) i AppImage, każda dla x86_64 i ARM64",
+              "Instalacja jedną linijką w terminalu, z wpisem w menu i obsługą linków mumble://",
+              "„Uruchamiaj Mumcorda po zalogowaniu” na każdym systemie",
+              "Opcjonalnie podpowiedź, gdy wyjdzie nowa wersja; Mumcord pyta GitHub najwyżej raz dziennie"
+            ]
+          }
         ]
       },
       {
@@ -1233,7 +1287,7 @@
         "linux": "yes",
         "windows": "yes",
         "macos": "no",
-        "note": "Przezroczyste, nieklikalne i zawsze na wierzchu, z wyborem rogu, rozmiaru i przezroczystości. Na X11 i Waylandzie; na KDE Wayland Mumcord jednym kliknięciem tworzy regułę okna. Z Epic 2 okno nakładki znika i zostaje tylko nakładka w grze."
+        "note": "Przezroczyste, nieklikalne i zawsze na wierzchu, z wyborem rogu, rozmiaru i przezroczystości. Na X11 i Waylandzie; na KDE Wayland Mumcord jednym kliknięciem tworzy regułę okna. Od 0.4.0 okno nakładki znika i zostaje tylko nakładka w grze."
       },
       {
         "title": "Przełączanie z zasobnika i szybkich ustawień",
@@ -1259,7 +1313,7 @@
     "linkBody": "Gry i mody obsługujące Mumble Link same dostarczają swoje pozycje, bez potrzeby pluginu. Działa to na Linuxie, Windowsie i macOS.",
     "pluginsTitle": "Oficjalne pluginy gier Mumble",
     "pluginsBody": "Mumble ma oficjalne pluginy dla tych gier, na Windowsa i Linuxa. Mumcord używa pluginów z zainstalowanego Mumble albo z własnego folderu pluginów. Każdy plugin można włączyć osobno.",
-    "pluginsNote": "Wiele pluginów jest zbudowanych pod jedną konkretną, często starszą wersję gry i odczytuje pamięć gry. Niektóre systemy anti-cheat mogą to oflagować, a Mumcord uprzedza cię o tym przed włączeniem. Pluginy zostaną sprawdzone w prawdziwych grach w Epic 2; do tego czasu pozostają w becie.",
+    "pluginsNote": "Wiele pluginów jest zbudowanych pod jedną konkretną, często starszą wersję gry i odczytuje pamięć gry. Niektóre systemy anti-cheat mogą to oflagować, a Mumcord uprzedza cię o tym przed włączeniem. Na razie zostają w becie, także w Epic 2; sprawdzenie w prawdziwych grach przyjdzie później.",
     "pluginsSource": "Pluginy w repozytorium Mumble",
     "askTitle": "Brakuje gry albo sprawia problemy?",
     "askBody": "Czy gra działa, czy powinna trafić na listę blokad, czy plugin już nie pasuje: zgłoś to na GitHubie.",
@@ -1272,7 +1326,7 @@
       "Source Engine": "Left 4 Dead 1 i 2, więcej gier na Source na Linuxie",
       "World of Warcraft": "32 i 64 bity"
     },
-    "overlayWarning": "Znany problem: jeśli zamkniesz Mumcorda, gdy działa gra z nakładką, gra może się wysypać. Najpierw zamknij grę albo wyłącz nakładkę w grze. Zostanie to naprawione w Epic 2."
+    "overlayWarning": "Znany problem: jeśli zamkniesz Mumcorda, gdy działa gra z nakładką, gra może się wysypać. Najpierw zamknij grę albo wyłącz nakładkę w grze. Zostanie to naprawione w 0.4.0."
   },
   "blocked": [
     {

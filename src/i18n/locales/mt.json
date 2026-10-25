@@ -326,8 +326,8 @@
         },
         {
           "tag": "Epic 2",
-          "title": "Diversi servers u t-temi tiegħek",
-          "body": "Aqra fuqhom kollha, tkellem fuq wieħed. U temi personalizzati b’kuluri u presets, li taqsamhom bħala test: iċ-chat juri card ta’ preview, klikk wieħed u t-tema tiġi importata. Ukoll: il-kwalità tal-konnessjoni għal kulħadd, stampi f’daqshom sħiħ dritt minn Mumcord għal Mumcord u l-overlay fil-logħba anke fuq Windows, filwaqt li t-tieqa tal-overlay titneħħa. Fl-aħħar, bħala beta: watch party fuq YouTube u screen sharing."
+          "title": "Diversi servers, temi u rfinar",
+          "body": "Ġej bħala 0.4.0: sa ħames servers f’daqqa, tkellem fuq wieħed u aqra fuqhom kollha. It-temi tiegħek, li taqsamhom fiċ-chat, anke għal kull server. U l-overlay fil-logħba fuq Windows, il-kwalità tal-konnessjoni tal-oħrajn, pakketti għal Linux b’installazzjoni f’linja waħda u, bħala beta, watch party fuq YouTube u screen sharing."
         },
         {
           "tag": "Epic 3",
@@ -815,7 +815,7 @@
         }
       ],
       "known": [
-        "Jekk tagħlaq Mumcord waqt li logħba bl-overlay tkun għaddejja, il-logħba tista’ tikkraxxja. Agħlaq il-logħba l-ewwel jew itfi l-overlay fil-logħba; dan jissolva fl-Epic 2.",
+        "Jekk tagħlaq Mumcord waqt li logħba bl-overlay tkun għaddejja, il-logħba tista’ tikkraxxja. Agħlaq il-logħba l-ewwel jew itfi l-overlay fil-logħba; dan jissolva fil-0.4.0.",
         "L-installers għadhom mhumiex iffirmati."
       ]
     },
@@ -1016,7 +1016,8 @@
     "never": "X’qatt mhu se jsir",
     "neverItems": [
       "Xejn fuq is-server: l-ebda servizzi addizzjonali, l-ebda plugins tas-server, l-ebda konfigurazzjoni tas-server. Mumcord jaħdem ma’ kull server Mumble standard.",
-      "Apps għall-mowbajl u verżjoni web."
+      "Apps għall-mowbajl u verżjoni web.",
+      "Server relay għall-konnessjonijiet diretti: jekk l-ebda triq diretta ma taħdem, Mumcord jgħaddi mis-server Mumble minflok."
     ],
     "ideaTitle": "Hemm xi ħaġa nieqsa?",
     "ideaBody": "It-talbiet imorru fl-issues fuq GitHub u jgħinu fl-ippjanar.",
@@ -1100,26 +1101,79 @@
       },
       {
         "id": "epic-2",
-        "title": "Diversi servers u t-temi tiegħek",
-        "summary": "Kullimkien f’daqqa, kif togħġbok int, u fl-aħħar naraw flimkien.",
-        "items": [
-          "Ikkonnettja ma’ diversi servers f’daqqa, aqra fuqhom kollha, tkellem fuq wieħed",
-          "Temi personalizzati b’settings tal-kuluri u presets",
-          "Aqsam it-temi bħala test: iċ-chat juri card ta’ preview, klikk wieħed u t-tema tiġi importata",
-          "Ara l-kwalità tal-konnessjoni, tal-oħrajn u tiegħek: ping, packet loss, bandwidth u jekk il-vuċi tgħaddix fuq UDP jew TCP, fil-menu u fil-profil, jekk trid b’ikona tas-sinjal",
-          "Dehra waħda konsistenti: dropdowns bit-tema minflok dawk tal-browser, kull input fis-settings allinjat sew",
-          "Progress bar irqiqa taħt l-istampi fiċ-chat waqt li d-daqs sħiħ ikun qed jitla’",
-          "L-istampi f’daqshom sħiħ imorru dritt minn Mumcord għal Mumcord meta jkun possibbli, li hu ħafna aktar mgħaġġel. Tista’ titfih fis-settings, għax l-oħrajn jaraw l-indirizz IP tiegħek",
-          "Jibqa’ biss l-overlay fil-logħba: it-tieqa tal-overlay titneħħa. Windows jieħu overlay meta l-overlay fil-logħba tiegħu jkun lest",
-          "Issolvut: meta tagħlaq Mumcord ma jibqax jikkraxxja logħba għaddejja li tuża l-overlay",
-          "Ġej mill-Epic 1: overlay fil-logħba fuq Windows, b’Flatpak Steam u fuq skrins HDR",
-          "Ġej mill-Epic 1: “Idħol fil-kanal” għal ħbieb fuq server ieħor",
-          "Ġej mill-Epic 1: l-overlay jibqa’ fuq nett anke f’logħob borderless fullscreen",
-          "Ġej mill-Epic 1: “Idħol fil-logħba” anke għal-logħob li jinstabu permezz ta’ Mumble Link",
-          "Ġej mill-Epic 1: meta tagħlaq il-viewer tal-istampi jieqaf trasferiment ta’ stampa f’daqsha sħiħ li jkun għaddej",
-          "Ġej mill-Epic 1: ittestja l-plugins tal-logħob ma’ logħob reali biex l-awdjo pożizzjonali, il-plugins u l-istampi f’daqshom sħiħ ikunu jistgħu joħorġu mill-beta",
-          "Fl-aħħar, bħala beta: watch party fuq YouTube, kulħadd fil-kanal jara l-istess video f’daqqa, bi play, pause u seeking sinkronizzati",
-          "Fl-aħħar, bħala beta: screen sharing bejn utenti ta’ Mumcord, dirett u mingħajr is-server ta’ ħaddieħor, permezz ta’ IPv6, il-port mapping tar-router tiegħek jew in-netwerk tiegħek"
+        "title": "Diversi servers, temi u rfinar",
+        "summary": "Kollox joħroġ flimkien bħala l-verżjoni 0.4.0: diversi servers, it-temi tiegħek, l-overlay fil-logħba fuq Windows u l-ewwel konnessjonijiet diretti bejn utenti ta’ Mumcord. L-awdjo pożizzjonali, il-plugins tal-logħob u l-istampi f’daqshom sħiħ jibqgħu beta.",
+        "groups": [
+          {
+            "title": "Diversi servers f’daqqa",
+            "items": [
+              "Sa 5 servers konnessi f’daqqa, tista’ tbiddilha minn 1 sa 15. Tkellem fuq wieħed, aqra, ikteb u irċievi notifiki fuqhom kollha",
+              "Is-servers immarkati “Dejjem ikkonnettja mal-bidu” u dawk li kienu miftuħa l-aħħar darba jikkonnettjaw waħedhom; kull server jerġa’ jikkonnettja waħdu wara li jaqa’",
+              "In-notifiki u l-messaġġi privati juru l-isem tas-server, in-notifiki tista’ tagħmilhom mute għal kull server",
+              "“Idħol fil-kanal” anke għal ħbieb fuq server ieħor; links mumble:// lejn server konness jeħduk dritt hemm"
+            ]
+          },
+          {
+            "title": "Temi u dehra",
+            "items": [
+              "Temi tiegħek minn ftit kuluri ewlenin, b’presets u preview live; Mumcord iżomm il-kuntrast jinqara",
+              "Aqsam it-temi bħala test: iċ-chat juri card ta’ preview, klikk wieħed japplika t-tema għall-app jew għal server",
+              "Tema għal kull server jekk trid",
+              "Id-dehra ta’ dan il-websajt fl-app: buttuni jleqqu, gradjenti, effetti tal-ħġieġ u ftit film grain, tista’ titfih"
+            ]
+          },
+          {
+            "title": "Rfinar u servers kbar",
+            "items": [
+              "Dropdowns bit-tema minflok dawk tal-browser, kull input fis-settings allinjat sew",
+              "Progress bar irqiqa taħt l-istampi fiċ-chat waqt li d-daqs sħiħ ikun qed jitla’",
+              "Is-servers kbar ma jibqgħux jiffriżaw meta jidhru l-ewwel darba, u swiċċijiet “Aħbi l-kanali vojta” u “Min qed jitkellem l-ewwel”",
+              "Il-messaġġi jitqiesu mibgħuta biss meta s-server jikkonfermahom; dawk miċħuda tista’ terġa’ tibgħathom",
+              "Kumment tal-profil b’bold, italic, links u listi"
+            ]
+          },
+          {
+            "title": "Kwalità tal-konnessjoni",
+            "items": [
+              "Ping, packet loss, bandwidth u UDP jew TCP fil-profil u l-menu ta’ persuna, anke għalik",
+              "Ikona żgħira tas-sinjal ħdejn nies b’konnessjoni dgħajfa, tista’ titfiha"
+            ]
+          },
+          {
+            "title": "Overlay",
+            "items": [
+              "L-overlay fil-logħba anke fuq Windows, permezz ta’ DirectX 11 u 12, bl-istess settings u lista anti-cheat bħal fuq Linux",
+              "Kuluri korretti f’logħob HDR, logħob minn Flatpak Steam, logħob borderless fullscreen ivverifikati fuq KDE u GNOME",
+              "Issolvut: meta tagħlaq jew taġġorna Mumcord ma jibqax jikkraxxja logħba għaddejja",
+              "It-tieqa tal-overlay titneħħa; jekk kont tużaha, avviż ta’ darba jeħdok għas-settings tal-overlay fil-logħba",
+              "“Idħol fil-logħba” anke għal-logħob li jaqsmu l-indirizz tas-server tagħhom permezz ta’ Mumble Link"
+            ]
+          },
+          {
+            "title": "Dritt minn Mumcord għal Mumcord",
+            "items": [
+              "Konnessjonijiet diretti u kriptati bejn utenti ta’ Mumcord permezz ta’ IPv6, il-port mapping tar-router tiegħek jew in-netwerk tiegħek, mingħajr is-server ta’ ħaddieħor",
+              "Mumcord jistaqsik darba l-ewwel, għax l-oħrajn jaraw l-indirizz IP tiegħek; tista’ tbiddlu fis-settings",
+              "Hekk l-istampi f’daqshom sħiħ jaslu ħafna aktar malajr; jekk l-ebda konnessjoni diretta ma taħdem, jaħdem bħal qabel",
+              "Meta tagħlaq il-viewer tal-istampi jieqaf it-trasferiment"
+            ]
+          },
+          {
+            "title": "Naraw flimkien (beta)",
+            "items": [
+              "Watch party fuq YouTube: kulħadd fil-kanal tal-vuċi jara l-istess video f’daqqa, kulħadd jista’ jagħmel pause u seek",
+              "Aqsam skrin jew tieqa, bil-ħoss jekk trid, għal sa 8 telespettaturi, b’mod awtomatiku 720p b’30 frame fis-sekonda"
+            ]
+          },
+          {
+            "title": "Installazzjoni fuq Linux u aġġornamenti",
+            "items": [
+              "Pakketti għal Debian u Ubuntu (.deb), Fedora u openSUSE (.rpm), Arch (AUR: mumcord-bin) u l-AppImage, kull wieħed għal x86_64 u ARM64",
+              "Installa b’linja waħda fit-terminal, b’entrata fil-menu u appoġġ għal links mumble://",
+              "“Ibda Mumcord meta nidħol” fuq kull sistema",
+              "Jekk trid, avviż meta toħroġ verżjoni ġdida; Mumcord jistaqsi lil GitHub l-aktar darba kuljum"
+            ]
+          }
         ]
       },
       {
@@ -1233,7 +1287,7 @@
         "linux": "yes",
         "windows": "yes",
         "macos": "no",
-        "note": "Trasparenti, il-klikks jgħaddu minnha u dejjem fuq kollox, b’kantuniera, daqs u opaċità. Fuq X11 u Wayland; fuq KDE Wayland Mumcord jissettja r-regola tat-tieqa bi klikk wieħed. Bl-Epic 2 t-tieqa tal-overlay titneħħa u jibqa’ biss l-overlay fil-logħba."
+        "note": "Trasparenti, il-klikks jgħaddu minnha u dejjem fuq kollox, b’kantuniera, daqs u opaċità. Fuq X11 u Wayland; fuq KDE Wayland Mumcord jissettja r-regola tat-tieqa bi klikk wieħed. Bil-0.4.0 t-tieqa tal-overlay titneħħa u jibqa’ biss l-overlay fil-logħba."
       },
       {
         "title": "Ixgħel mit-tray u mis-settings malajr",
@@ -1259,7 +1313,7 @@
     "linkBody": "Logħob u mods li jappoġġjaw Mumble Link jgħaddu l-pożizzjonijiet huma stess, bla bżonn ta’ plugin. Dan jaħdem fuq Linux, Windows u macOS.",
     "pluginsTitle": "Il-plugins uffiċjali tal-logħob ta’ Mumble",
     "pluginsBody": "Mumble għandu plugins uffiċjali għal dan il-logħob, għal Windows u Linux. Mumcord juża l-plugins ta’ Mumble installat jew mill-folder tal-plugins tiegħu stess. Kull plugin jista’ jinxtegħel waħdu.",
-    "pluginsNote": "Ħafna plugins huma mibnija għal verżjoni speċifika waħda tal-logħba, ħafna drabi eqdem, u jaqraw il-memorja tal-logħba. Xi sistemi anti-cheat jistgħu jimmarkaw dan, u Mumcord javżak qabel ma tixgħel wieħed. Il-plugins jiġu ttestjati ma’ logħob reali fl-Epic 2; sa dakinhar jibqgħu beta.",
+    "pluginsNote": "Ħafna plugins huma mibnija għal verżjoni speċifika waħda tal-logħba, ħafna drabi eqdem, u jaqraw il-memorja tal-logħba. Xi sistemi anti-cheat jistgħu jimmarkaw dan, u Mumcord javżak qabel ma tixgħel wieħed. Għalissa jibqgħu beta, anke fl-Epic 2; l-ittestjar ma’ logħob reali jiġi aktar tard.",
     "pluginsSource": "Plugins fir-repożitorju ta’ Mumble",
     "askTitle": "Hemm logħba nieqsa jew li qed tagħti l-problemi?",
     "askBody": "Kemm jekk logħba taħdem, jekk waħda għandha tidħol fil-lista tal-imblukkati jew jekk plugin m’għadux jaqbel: irrapportah fuq GitHub.",
@@ -1272,7 +1326,7 @@
       "Source Engine": "Left 4 Dead 1 u 2, aktar logħob Source fuq Linux",
       "World of Warcraft": "32 u 64 bit"
     },
-    "overlayWarning": "Problema magħrufa: jekk tagħlaq Mumcord waqt li logħba bl-overlay tkun għaddejja, il-logħba tista’ tikkraxxja. Agħlaq il-logħba l-ewwel jew itfi l-overlay fil-logħba. Dan jissolva fl-Epic 2."
+    "overlayWarning": "Problema magħrufa: jekk tagħlaq Mumcord waqt li logħba bl-overlay tkun għaddejja, il-logħba tista’ tikkraxxja. Agħlaq il-logħba l-ewwel jew itfi l-overlay fil-logħba. Dan jissolva fil-0.4.0."
   },
   "blocked": [
     {

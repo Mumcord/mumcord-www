@@ -326,8 +326,8 @@
         },
         {
           "tag": "Epic 2",
-          "title": "Useita palvelimia ja omat teemat",
-          "body": "Lue kaikkia, puhu yhdellä. Lisäksi omat teemat väreineen ja esiasetuksineen, jaettavissa tekstinä: chat näyttää esikatselukortin, ja yhdellä klikkauksella teema tuodaan. Myös: yhteyden laatu kaikille, täysikokoiset kuvat suoraan Mumcordista Mumcordiin ja pelinsisäinen overlay myös Windowsiin, kun taas overlay-ikkuna poistuu. Lopuksi betana: YouTube-katselubileet ja näytönjako."
+          "title": "Useita palvelimia, teemoja ja viimeistelyä",
+          "body": "Tulossa versiona 0.4.0: jopa viisi palvelinta kerralla, puhu yhdellä ja lue mukana kaikilla. Omat teemat, jaettavissa chatissa, myös palvelinkohtaisesti. Lisäksi pelinsisäinen overlay Windowsissa, muiden yhteyden laatu, Linux-paketit yhden rivin asennuksella ja betana YouTube-katselubileet ja näytönjako."
         },
         {
           "tag": "Epic 3",
@@ -815,7 +815,7 @@
         }
       ],
       "known": [
-        "Jos suljet Mumcordin, kun overlayta käyttävä peli on käynnissä, peli voi kaatua. Sulje ensin peli tai laita pelinsisäinen overlay pois päältä; tämä korjataan Epic 2:ssa.",
+        "Jos suljet Mumcordin, kun overlayta käyttävä peli on käynnissä, peli voi kaatua. Sulje ensin peli tai laita pelinsisäinen overlay pois päältä; tämä korjataan versiossa 0.4.0.",
         "Asennusohjelmat ovat yhä allekirjoittamattomia."
       ]
     },
@@ -1016,7 +1016,8 @@
     "never": "Mitä ei tule koskaan",
     "neverItems": [
       "Mitään palvelimelle: ei oheispalveluita, ei palvelinlisäosia, ei palvelimen konfigurointia. Mumcord toimii minkä tahansa tavallisen Mumble-palvelimen kanssa.",
-      "Mobiilisovellukset ja verkkoversio."
+      "Mobiilisovellukset ja verkkoversio.",
+      "Välityspalvelin suorille yhteyksille: jos mikään suora reitti ei toimi, Mumcord kulkee sen sijaan Mumble-palvelimen kautta."
     ],
     "ideaTitle": "Puuttuuko jotain?",
     "ideaBody": "Toiveet kirjataan GitHubin issueihin, ja ne otetaan huomioon suunnittelussa.",
@@ -1100,26 +1101,79 @@
       },
       {
         "id": "epic-2",
-        "title": "Useita palvelimia ja omat teemat",
-        "summary": "Kaikkialla yhtä aikaa, juuri sinun tavallasi, ja lopuksi katsotaan yhdessä.",
-        "items": [
-          "Yhdistä useaan palvelimeen kerralla, lue kaikkia, puhu yhdellä",
-          "Omat teemat väriasetuksineen ja esiasetuksineen",
-          "Jaa teemoja tekstinä: chat näyttää esikatselukortin, ja yhdellä klikkauksella teema tuodaan",
-          "Yhteyden laatu, muiden ja omasi: ping, pakettihävikki, kaistanleveys ja kulkeeko ääni UDP:n vai TCP:n kautta, valikossa ja profiilissa, halutessa signaalikuvakkeella",
-          "Yhtenäinen ilme: teeman mukaiset pudotusvalikot selaimen omien sijaan, ja kaikki asetusten kentät siististi linjassa",
-          "Ohut edistymispalkki chatin kuvien alla, kun täysikokoinen kuva latautuu",
-          "Täysikokoiset kuvat kulkevat mahdollisuuksien mukaan suoraan Mumcordista Mumcordiin, mikä on paljon nopeampaa. Voi poistaa käytöstä asetuksista, koska muut näkevät IP-osoitteesi",
-          "Vain pelinsisäinen overlay jää: overlay-ikkuna poistuu. Windows saa overlayn, kun sen pelinsisäinen overlay on valmis",
-          "Korjattu: Mumcordin sulkeminen ei enää kaada käynnissä olevaa peliä, joka käyttää overlayta",
-          "Siirretty Epic 1:stä: pelinsisäinen overlay Windowsissa, Flatpak-Steamissa ja HDR-näytöillä",
-          "Siirretty Epic 1:stä: ”Liity kanavalle” toisella palvelimella oleville kavereille",
-          "Siirretty Epic 1:stä: overlay pysyy päällimmäisenä myös reunattomassa koko näytön tilassa pelattavissa peleissä",
-          "Siirretty Epic 1:stä: ”Liity peliin” myös Mumble Linkin kautta tunnistetuissa peleissä",
-          "Siirretty Epic 1:stä: kuvankatseluohjelman sulkeminen pysäyttää käynnissä olevan täysikokoisen kuvan siirron",
-          "Siirretty Epic 1:stä: pelilisäosien testaus oikeilla peleillä, jotta sijaintiääni, lisäosat ja täysikokoiset kuvat pääsevät betasta",
-          "Lopuksi betana: YouTube-katselubileet, koko kanava katsoo samaa videota yhtä aikaa, toisto, tauko ja kelaus synkronoituina",
-          "Lopuksi betana: näytönjako Mumcord-käyttäjien välillä, suoraan ja ilman kenenkään muun palvelinta, IPv6:n, reitittimesi porttiohjauksen tai oman verkkosi kautta"
+        "title": "Useita palvelimia, teemoja ja viimeistelyä",
+        "summary": "Kaikki julkaistaan yhdessä versiona 0.4.0: useita palvelimia, omat teemat, pelinsisäinen overlay Windowsissa ja ensimmäiset suorat yhteydet Mumcord-käyttäjien välillä. Sijaintiääni, pelilisäosat ja täysikokoiset kuvat pysyvät betana.",
+        "groups": [
+          {
+            "title": "Useita palvelimia kerralla",
+            "items": [
+              "Jopa 5 palvelinta yhdistettynä kerralla, säädettävissä 1–15. Puhu yhdellä, lue, kirjoita ja saa ilmoitukset kaikilta",
+              "Palvelimet, joissa on ”Yhdistä aina käynnistyksessä”, ja viimeksi auki olleet yhdistyvät itsestään; jokainen palvelin yhdistyy uudelleen omillaan katkoksen jälkeen",
+              "Ilmoitukset ja yksityisviestit näyttävät palvelimen nimen, ilmoitukset voi mykistää palvelinkohtaisesti",
+              "”Liity kanavalle” myös toisella palvelimella oleville kavereille; mumble:// linkit yhdistettyyn palvelimeen hyppäävät suoraan sinne"
+            ]
+          },
+          {
+            "title": "Teemat ja ilme",
+            "items": [
+              "Omat teemat muutamasta pääväristä, esiasetuksilla ja reaaliaikaisella esikatselulla; Mumcord pitää kontrastin luettavana",
+              "Jaa teemoja tekstinä: chat näyttää esikatselukortin, ja yhdellä klikkauksella teema otetaan käyttöön sovellukseen tai palvelimelle",
+              "Halutessasi oma teema jokaiselle palvelimelle",
+              "Tämän sivuston ilme sovelluksessa: hehkuvat painikkeet, liukuvärit, lasiefektit ja kevyt filmirae, voi poistaa käytöstä"
+            ]
+          },
+          {
+            "title": "Viimeistelyä ja isoja palvelimia",
+            "items": [
+              "Teeman mukaiset pudotusvalikot selaimen omien sijaan, ja kaikki asetusten kentät siististi linjassa",
+              "Ohut edistymispalkki chatin kuvien alla, kun täysikokoinen kuva latautuu",
+              "Isot palvelimet eivät enää jäädy, kun ne näytetään ensimmäistä kertaa, lisäksi kytkimet ”Piilota tyhjät kanavat” ja ”Puhujat ensin”",
+              "Viestit lasketaan lähetetyiksi vasta, kun palvelin vahvistaa ne; hylätyt voi lähettää uudelleen",
+              "Profiilikommentissa lihavointi, kursiivi, linkit ja listat"
+            ]
+          },
+          {
+            "title": "Yhteyden laatu",
+            "items": [
+              "Ping, pakettihävikki, kaistanleveys sekä UDP tai TCP henkilön profiilissa ja valikossa, myös omasi",
+              "Pieni signaalikuvake heikon yhteyden omaavien vieressä, voi poistaa käytöstä"
+            ]
+          },
+          {
+            "title": "Overlay",
+            "items": [
+              "Pelinsisäinen overlay myös Windowsissa DirectX 11:n ja 12:n kautta, samoilla asetuksilla ja huijauksenestolistalla kuin Linuxissa",
+              "Oikeat värit HDR-peleissä, pelit Flatpak-Steamista, reunattomat koko näytön pelit tarkistettu KDE:ssä ja GNOMEssa",
+              "Korjattu: Mumcordin sulkeminen tai päivittäminen ei enää kaada käynnissä olevaa peliä",
+              "Overlay-ikkuna poistuu; jos käytit sitä, kertailmoitus vie pelinsisäisen overlayn asetuksiin",
+              "”Liity peliin” myös peleissä, jotka jakavat palvelimensa osoitteen Mumble Linkin kautta"
+            ]
+          },
+          {
+            "title": "Suoraan Mumcordista Mumcordiin",
+            "items": [
+              "Suorat, salatut yhteydet Mumcord-käyttäjien välillä IPv6:n, reitittimesi porttiohjauksen tai oman verkkosi kautta, ilman kenenkään muun palvelinta",
+              "Mumcord kysyy ensin kerran, koska muut näkevät IP-osoitteesi; voit muuttaa sen asetuksista",
+              "Täysikokoiset kuvat tulevat näin paljon nopeammin; jos mikään suora yhteys ei toimi, kaikki toimii kuten ennenkin",
+              "Kuvankatseluohjelman sulkeminen pysäyttää siirron"
+            ]
+          },
+          {
+            "title": "Yhdessä katsominen (beta)",
+            "items": [
+              "YouTube-katselubileet: kaikki puhekanavalla katsovat samaa videota yhtä aikaa, kuka tahansa voi pysäyttää ja kelata",
+              "Jaa näyttö tai ikkuna, halutessasi äänen kanssa, jopa 8 katsojalle, oletuksena 720p 30 kuvaa sekunnissa"
+            ]
+          },
+          {
+            "title": "Asennus Linuxissa ja päivitykset",
+            "items": [
+              "Paketit Debianille ja Ubuntulle (.deb), Fedoralle ja openSUSElle (.rpm), Archille (AUR: mumcord-bin) ja AppImage, kukin x86_64:lle ja ARM64:lle",
+              "Asennus yhdellä rivillä päätteessä, valikkomerkinnällä ja mumble:// linkkien tuella",
+              "”Käynnistä Mumcord, kun kirjaudun sisään” kaikissa järjestelmissä",
+              "Halutessasi vihje, kun uusi versio on julkaistu; Mumcord kysyy GitHubilta enintään kerran päivässä"
+            ]
+          }
         ]
       },
       {
@@ -1233,7 +1287,7 @@
         "linux": "yes",
         "windows": "yes",
         "macos": "no",
-        "note": "Läpinäkyvä, läpiklikattava ja aina päällimmäisenä, säädettävä kulma, koko ja läpinäkyvyys. X11:ssä ja Waylandissa; KDE Waylandissa Mumcord luo ikkunasäännön yhdellä klikkauksella. Epic 2:ssa overlay-ikkuna poistuu ja vain pelinsisäinen overlay jää."
+        "note": "Läpinäkyvä, läpiklikattava ja aina päällimmäisenä, säädettävä kulma, koko ja läpinäkyvyys. X11:ssä ja Waylandissa; KDE Waylandissa Mumcord luo ikkunasäännön yhdellä klikkauksella. Versiossa 0.4.0 overlay-ikkuna poistuu ja vain pelinsisäinen overlay jää."
       },
       {
         "title": "Kytkentä ilmoitusalueelta ja pika-asetuksista",
@@ -1259,7 +1313,7 @@
     "linkBody": "Mumble Linkiä tukevat pelit ja modit toimittavat sijaintinsa itse, lisäosaa ei tarvita. Tämä toimii Linuxissa, Windowsissa ja macOS:llä.",
     "pluginsTitle": "Mumblen viralliset pelilisäosat",
     "pluginsBody": "Mumblella on viralliset lisäosat näille peleille Windowsille ja Linuxille. Mumcord käyttää asennetun Mumblen lisäosia tai omaa lisäosakansiotaan. Jokaisen lisäosan voi kytkeä päälle erikseen.",
-    "pluginsNote": "Monet lisäosat on tehty yhdelle tietylle, usein vanhemmalle peliversiolle, ja ne lukevat pelin muistia. Jotkin huijauksenestojärjestelmät saattavat liputtaa sen, ja Mumcord kertoo tästä ennen kuin kytket lisäosan päälle. Lisäosat tarkistetaan oikeilla peleillä Epic 2:ssa; siihen asti ne pysyvät betana.",
+    "pluginsNote": "Monet lisäosat on tehty yhdelle tietylle, usein vanhemmalle peliversiolle, ja ne lukevat pelin muistia. Jotkin huijauksenestojärjestelmät saattavat liputtaa sen, ja Mumcord kertoo tästä ennen kuin kytket lisäosan päälle. Ne pysyvät toistaiseksi betana, myös Epic 2:ssa; testaus oikeilla peleillä tulee myöhemmin.",
     "pluginsSource": "Lisäosat Mumblen repositoriossa",
     "askTitle": "Puuttuuko peli tai aiheuttaako se ongelmia?",
     "askBody": "Toimiiko peli, kuuluuko jokin estolistalle vai eikö lisäosa enää sovi: ilmoita siitä GitHubissa.",
@@ -1272,7 +1326,7 @@
       "Source Engine": "Left 4 Dead 1 ja 2, Linuxissa myös muita Source-pelejä",
       "World of Warcraft": "32- ja 64-bittinen"
     },
-    "overlayWarning": "Tunnettu ongelma: jos suljet Mumcordin, kun overlayta käyttävä peli on käynnissä, peli voi kaatua. Sulje ensin peli tai laita pelinsisäinen overlay pois päältä. Tämä korjataan Epic 2:ssa."
+    "overlayWarning": "Tunnettu ongelma: jos suljet Mumcordin, kun overlayta käyttävä peli on käynnissä, peli voi kaatua. Sulje ensin peli tai laita pelinsisäinen overlay pois päältä. Tämä korjataan versiossa 0.4.0."
   },
   "blocked": [
     {

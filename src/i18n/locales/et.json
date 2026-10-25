@@ -326,8 +326,8 @@
         },
         {
           "tag": "Epic 2",
-          "title": "Mitu serverit ja sinu enda teemad",
-          "body": "Loe kõigis kaasa, räägi ühes. Lisaks kohandatud teemad värvide ja eelseadistustega, jagatavad tekstina: vestlus näitab eelvaatekaarti, üks klõps impordib teema. Veel: ühenduse kvaliteet kõigile, täissuuruses pildid otse Mumcordist Mumcordi ja mängusisene ülekate ka Windowsis, samal ajal kui ülekatteaken kaob. Lõpuks, beetana: YouTube’i ühisvaatamine ja ekraanijagamine."
+          "title": "Mitu serverit, teemad ja lihvimine",
+          "body": "Tuleb versioonina 0.4.0: kuni viis serverit korraga, räägi ühes ja loe kõigis kaasa. Sinu enda teemad, jagatavad vestluses, soovi korral ka serveri kaupa. Lisaks mängusisene ülekate Windowsis, teiste ühenduse kvaliteet, Linuxi paketid üherealise paigaldusega ning beetana YouTube’i ühisvaatamine ja ekraanijagamine."
         },
         {
           "tag": "Epic 3",
@@ -815,7 +815,7 @@
         }
       ],
       "known": [
-        "Kui sulged Mumcordi ajal, kui ülekattega mäng käib, võib mäng kokku joosta. Sulge enne mäng või lülita mängusisene ülekate välja; see parandatakse Epic 2-s.",
+        "Kui sulged Mumcordi ajal, kui ülekattega mäng käib, võib mäng kokku joosta. Sulge enne mäng või lülita mängusisene ülekate välja; see parandatakse versioonis 0.4.0.",
         "Paigaldajad on endiselt allkirjastamata."
       ]
     },
@@ -1016,7 +1016,8 @@
     "never": "Mida ei tule kunagi",
     "neverItems": [
       "Midagi serveris: ei kaasteenuseid, ei serveripluginaid, ei serveri seadistamist. Mumcord töötab iga tavalise Mumble-serveriga.",
-      "Mobiilirakendused ja veebiversioon."
+      "Mobiilirakendused ja veebiversioon.",
+      "Releeserver otseühenduste jaoks: kui ükski otsetee ei tööta, läheb Mumcord hoopis läbi Mumble-serveri."
     ],
     "ideaTitle": "Midagi on puudu?",
     "ideaBody": "Soovid lähevad GitHubi issue'desse ja on planeerimise sisendiks.",
@@ -1100,26 +1101,79 @@
       },
       {
         "id": "epic-2",
-        "title": "Mitu serverit ja sinu enda teemad",
-        "summary": "Igal pool korraga, nii nagu sulle meeldib, ja lõpuks koos vaatamine.",
-        "items": [
-          "Ühendu korraga mitme serveriga, loe kõigis kaasa, räägi ühes",
-          "Kohandatud teemad värviseadete ja eelseadistustega",
-          "Jaga teemasid tekstina: vestlus näitab eelvaatekaarti, üks klõps impordib teema",
-          "Ühenduse kvaliteet, nii teistel kui ka sinul: ping, pakettide kadu, ribalaius ja kas hääl käib üle UDP või TCP, menüüs ja profiilis, soovi korral signaaliikooniga",
-          "Ühtne välimus: teemaga sobivad rippmenüüd brauseri omade asemel, kõik seadete väljad kenasti joondatud",
-          "Õhuke edenemisriba vestluse piltide all, kuni täissuurus laeb",
-          "Täissuuruses pildid liiguvad võimaluse korral otse Mumcordist Mumcordi, mis on palju kiirem. Saab seadetes välja lülitada, sest teised näevad sinu IP-aadressi",
-          "Alles jääb ainult mängusisene ülekate: ülekatteaken kaob. Windows saab ülekatte, kui selle mängusisene ülekate valmis on",
-          "Parandatud: Mumcordi sulgemine ei lase enam ülekatet kasutaval käimasoleval mängul kokku joosta",
-          "Üle toodud Epic 1-st: mängusisene ülekate Windowsis, Flatpaki Steamiga ja HDR-ekraanidel",
-          "Üle toodud Epic 1-st: „Liitu kanaliga“ teises serveris olevate sõprade jaoks",
-          "Üle toodud Epic 1-st: ülekate jääb peale ka ääristeta täisekraanil mängude puhul",
-          "Üle toodud Epic 1-st: „Liitu mänguga“ ka Mumble Linki kaudu tuvastatud mängudes",
-          "Üle toodud Epic 1-st: pildivaaturi sulgemine peatab käimasoleva täissuuruses pildi ülekande",
-          "Üle toodud Epic 1-st: mängupluginate kontroll päris mängudega, et ruumiline heli, pluginad ja täissuuruses pildid saaksid beetast välja",
-          "Lõpuks, beetana: YouTube’i ühisvaatamine, kogu kanal vaatab sama videot korraga, esitus, paus ja kerimine sünkroonis",
-          "Lõpuks, beetana: ekraanijagamine Mumcordi kasutajate vahel, otse ja ilma kellegi teise serverita, üle IPv6, ruuteri pordisuunamise või sinu enda võrgu"
+        "title": "Mitu serverit, teemad ja lihvimine",
+        "summary": "Kõik tuleb koos versioonina 0.4.0: mitu serverit, sinu enda teemad, mängusisene ülekate Windowsis ja esimesed otseühendused Mumcordi kasutajate vahel. Ruumiline heli, mängupluginad ja täissuuruses pildid jäävad beetasse.",
+        "groups": [
+          {
+            "title": "Mitu serverit korraga",
+            "items": [
+              "Kuni 5 serverit korraga ühendatud, seadistatav 1 kuni 15. Räägi ühes, loe, kirjuta ja saa teavitusi kõigist",
+              "Serverid märkega „Ühendu alati käivitamisel“ ja eelmisel korral avatud serverid ühenduvad ise; iga server ühendub katkestuse järel ise uuesti",
+              "Teavitused ja privaatsõnumid näitavad serveri nime, teavitusi saab serveri kaupa vaigistada",
+              "„Liitu kanaliga“ ka teises serveris olevate sõprade jaoks; mumble:// lingid ühendatud serverisse viivad otse sinna"
+            ]
+          },
+          {
+            "title": "Teemad ja välimus",
+            "items": [
+              "Sinu enda teemad mõnest põhivärvist, eelseadistuste ja reaalajas eelvaatega; Mumcord hoiab kontrasti loetavana",
+              "Jaga teemasid tekstina: vestlus näitab eelvaatekaarti, üks klõps rakendab teema kogu äpile või ühele serverile",
+              "Soovi korral oma teema igale serverile",
+              "Selle veebilehe välimus äpis: helendavad nupud, üleminekud, klaasiefektid ja kerge filmitera, saab välja lülitada"
+            ]
+          },
+          {
+            "title": "Lihvimine ja suured serverid",
+            "items": [
+              "Teemaga sobivad rippmenüüd brauseri omade asemel, kõik seadete väljad kenasti joondatud",
+              "Õhuke edenemisriba vestluse piltide all, kuni täissuurus laeb",
+              "Suured serverid ei hangu enam esmakordsel kuvamisel, lisaks lülitid „Peida tühjad kanalid“ ja „Rääkijad ees“",
+              "Sõnum loetakse saadetuks alles siis, kui server selle kinnitab; tagasi lükatud sõnumeid saab uuesti saata",
+              "Profiili kommentaar paksu ja kaldkirja, linkide ja loenditega"
+            ]
+          },
+          {
+            "title": "Ühenduse kvaliteet",
+            "items": [
+              "Ping, pakettide kadu, ribalaius ja UDP või TCP inimese profiilis ja menüüs, ka sinu enda puhul",
+              "Väike signaaliikoon nõrga ühendusega inimeste kõrval, saab välja lülitada"
+            ]
+          },
+          {
+            "title": "Ülekate",
+            "items": [
+              "Mängusisene ülekate ka Windowsis, DirectX 11 ja 12 kaudu, samade seadete ja petuvastuse nimekirjaga nagu Linuxis",
+              "Õiged värvid HDR-mängudes, mängud Flatpaki Steamist, ääristeta täisekraanil mängud KDE-s ja GNOME-is kontrollitud",
+              "Parandatud: Mumcordi sulgemine või uuendamine ei lase enam käimasoleval mängul kokku joosta",
+              "Ülekatteaken kaob; kui sa seda kasutasid, viib ühekordne teade sind mängusisese ülekatte seadetesse",
+              "„Liitu mänguga“ ka mängudes, mis jagavad oma serveri aadressi Mumble Linki kaudu"
+            ]
+          },
+          {
+            "title": "Otse Mumcordist Mumcordi",
+            "items": [
+              "Otsesed, krüpteeritud ühendused Mumcordi kasutajate vahel üle IPv6, ruuteri pordisuunamise või sinu enda võrgu, ilma kellegi teise serverita",
+              "Mumcord küsib enne korra luba, sest teised näevad sinu IP-aadressi; seda saab seadetes muuta",
+              "Nii jõuavad täissuuruses pildid palju kiiremini kohale; kui otseühendus ei tööta, käib kõik nagu varem",
+              "Pildivaaturi sulgemine peatab ülekande"
+            ]
+          },
+          {
+            "title": "Koos vaatamine (beeta)",
+            "items": [
+              "YouTube’i ühisvaatamine: kõik häälkanalis vaatavad sama videot korraga, igaüks saab peatada ja kerida",
+              "Jaga ekraani või akent, soovi korral heliga, kuni 8 vaatajale, vaikimisi 720p ja 30 kaadrit sekundis"
+            ]
+          },
+          {
+            "title": "Paigaldus Linuxis ja uuendused",
+            "items": [
+              "Paketid Debianile ja Ubuntule (.deb), Fedorale ja openSUSE-le (.rpm), Archile (AUR: mumcord-bin) ja AppImage, igaüks x86_64 ja ARM64 jaoks",
+              "Paigaldus ühe reaga terminalis, koos menüükirje ja mumble:// linkide toega",
+              "„Käivita Mumcord sisselogimisel“ igas süsteemis",
+              "Soovi korral teade, kui uus versioon ilmub; Mumcord küsib GitHubilt kõige rohkem kord päevas"
+            ]
+          }
         ]
       },
       {
@@ -1233,7 +1287,7 @@
         "linux": "yes",
         "windows": "yes",
         "macos": "no",
-        "note": "Läbipaistev, läbiklõpsatav ja alati peal, valitava nurga, suuruse ja läbipaistmatusega. X11-s ja Waylandis; KDE Waylandis seab Mumcord aknareegli üles ühe klõpsuga. Epic 2-ga ülekatteaken kaob ja alles jääb ainult mängusisene ülekate."
+        "note": "Läbipaistev, läbiklõpsatav ja alati peal, valitava nurga, suuruse ja läbipaistmatusega. X11-s ja Waylandis; KDE Waylandis seab Mumcord aknareegli üles ühe klõpsuga. Versiooniga 0.4.0 ülekatteaken kaob ja alles jääb ainult mängusisene ülekate."
       },
       {
         "title": "Lülitatav salvest ja kiirseadetest",
@@ -1259,7 +1313,7 @@
     "linkBody": "Mängud ja modid, mis toetavad Mumble Linki, edastavad oma asukohad ise, pluginat pole vaja. See töötab Linuxis, Windowsis ja macOS-is.",
     "pluginsTitle": "Mumble'i ametlikud mängupluginad",
     "pluginsBody": "Mumble'il on nende mängude jaoks ametlikud pluginad, Windowsile ja Linuxile. Mumcord kasutab paigaldatud Mumble'i või oma pluginakausta pluginaid. Iga pluginat saab eraldi sisse lülitada.",
-    "pluginsNote": "Paljud pluginad on tehtud ühe kindla, sageli vanema mänguversiooni jaoks ja loevad mängu mälu. Mõni petuvastussüsteem võib selle märgistada ja Mumcord ütleb sulle seda enne, kui mõne sisse lülitad. Pluginaid kontrollitakse päris mängudega Epic 2 käigus; seni jäävad need beetasse.",
+    "pluginsNote": "Paljud pluginad on tehtud ühe kindla, sageli vanema mänguversiooni jaoks ja loevad mängu mälu. Mõni petuvastussüsteem võib selle märgistada ja Mumcord ütleb sulle seda enne, kui mõne sisse lülitad. Praegu jäävad need beetasse, ka Epic 2-s; nende kontroll päris mängudega tuleb hiljem.",
     "pluginsSource": "Pluginad Mumble'i repositooriumis",
     "askTitle": "Mõni mäng on puudu või teeb muret?",
     "askBody": "Kas mäng töötab, kuulub mõni blokeerimisnimekirja või ei sobi plugin enam: anna sellest GitHubis teada.",
@@ -1272,7 +1326,7 @@
       "Source Engine": "Left 4 Dead 1 ja 2, Linuxis veel teisi Source'i mänge",
       "World of Warcraft": "32- ja 64-bitine"
     },
-    "overlayWarning": "Teadaolev probleem: kui sulged Mumcordi ajal, kui ülekattega mäng käib, võib mäng kokku joosta. Sulge enne mäng või lülita mängusisene ülekate välja. See parandatakse Epic 2-s."
+    "overlayWarning": "Teadaolev probleem: kui sulged Mumcordi ajal, kui ülekattega mäng käib, võib mäng kokku joosta. Sulge enne mäng või lülita mängusisene ülekate välja. See parandatakse versioonis 0.4.0."
   },
   "blocked": [
     {

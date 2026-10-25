@@ -326,8 +326,8 @@
         },
         {
           "tag": "Epic 2",
-          "title": "Più server e temi tutti tuoi",
-          "body": "Leggi su tutti, parla su uno. In più temi personalizzati con colori e preset, condivisibili come testo: la chat mostra una scheda di anteprima, un clic e il tema è importato. E poi: la qualità della connessione di tutti, immagini a grandezza piena direttamente da Mumcord a Mumcord e l'overlay in gioco anche su Windows, mentre la finestra overlay sparisce. Alla fine, in beta: watch party di YouTube e condivisione dello schermo."
+          "title": "Più server, temi e rifiniture",
+          "body": "Arriva con la 0.4.0: fino a cinque server insieme, parli su uno e leggi su tutti. Temi tutti tuoi, condivisibili in chat, anche per server. In più l'overlay in gioco su Windows, la qualità della connessione degli altri, pacchetti Linux con installazione in una riga e, in beta, watch party di YouTube e condivisione dello schermo."
         },
         {
           "tag": "Epic 3",
@@ -815,7 +815,7 @@
         }
       ],
       "known": [
-        "Se chiudi Mumcord mentre è in corso un gioco con l'overlay, il gioco può crashare. Chiudi prima il gioco o disattiva l'overlay in gioco; sarà risolto nell'Epic 2.",
+        "Se chiudi Mumcord mentre è in corso un gioco con l'overlay, il gioco può crashare. Chiudi prima il gioco o disattiva l'overlay in gioco; sarà risolto nella 0.4.0.",
         "Gli installer non sono ancora firmati."
       ]
     },
@@ -1016,7 +1016,8 @@
     "never": "Cosa non succederà mai",
     "neverItems": [
       "Niente sul server: nessun servizio aggiuntivo, nessun plugin per il server, nessuna configurazione del server. Mumcord funziona con qualsiasi server Mumble standard.",
-      "App mobile e versione web."
+      "App mobile e versione web.",
+      "Un server relay per le connessioni dirette: se nessun percorso diretto funziona, Mumcord passa invece dal server Mumble."
     ],
     "ideaTitle": "Manca qualcosa?",
     "ideaBody": "Le richieste finiscono nelle issue su GitHub e confluiscono nella pianificazione.",
@@ -1100,26 +1101,79 @@
       },
       {
         "id": "epic-2",
-        "title": "Più server e temi tutti tuoi",
-        "summary": "Ovunque contemporaneamente, come piace a te, e alla fine si guarda insieme.",
-        "items": [
-          "Connettiti a più server insieme, leggi su tutti, parla su uno",
-          "Temi personalizzati con impostazioni dei colori e preset",
-          "Condividi i temi come testo: la chat mostra una scheda di anteprima, un clic e il tema è importato",
-          "Vedi la qualità della connessione, degli altri e la tua: ping, perdita di pacchetti, banda e se la voce passa via UDP o TCP, nel menu e nel profilo, a scelta con un'icona del segnale",
-          "Un aspetto coerente: menu a tendina con il tema invece di quelli del browser, ogni campo nelle impostazioni ben allineato",
-          "Una sottile barra di avanzamento sotto le immagini in chat mentre si carica la grandezza piena",
-          "Le immagini a grandezza piena vanno direttamente da Mumcord a Mumcord quando possibile, ed è molto più veloce. Si può disattivare nelle impostazioni, perché gli altri vedono il tuo indirizzo IP",
-          "Resta solo l'overlay in gioco: la finestra overlay sparisce. Windows riceve un overlay quando il suo overlay in gioco è pronto",
-          "Risolto: chiudere Mumcord non fa più crashare un gioco in corso che usa l'overlay",
-          "Ripreso dall'Epic 1: overlay in gioco su Windows, con Steam in Flatpak e su schermi HDR",
-          "Ripreso dall'Epic 1: “Entra nel canale” per gli amici su un altro server",
-          "Ripreso dall'Epic 1: l'overlay resta in primo piano anche nei giochi a schermo intero senza bordi",
-          "Ripreso dall'Epic 1: “Unisciti al gioco” anche per i giochi rilevati tramite Mumble Link",
-          "Ripreso dall'Epic 1: chiudere il visualizzatore di immagini interrompe un trasferimento in corso di un'immagine a grandezza piena",
-          "Ripreso dall'Epic 1: verificare i plugin di gioco con giochi reali, così audio posizionale, plugin e immagini a grandezza piena possono uscire dalla beta",
-          "Alla fine, in beta: watch party di YouTube, tutti nel canale guardano lo stesso video insieme, con play, pausa e salti sincronizzati",
-          "Alla fine, in beta: condivisione dello schermo tra utenti Mumcord, diretta e senza il server di nessun altro, tramite IPv6, il port mapping del tuo router o la tua rete"
+        "title": "Più server, temi e rifiniture",
+        "summary": "Esce tutto insieme come versione 0.4.0: più server, temi tutti tuoi, l'overlay in gioco su Windows e le prime connessioni dirette tra utenti Mumcord. Audio posizionale, plugin di gioco e immagini a grandezza piena restano in beta.",
+        "groups": [
+          {
+            "title": "Più server insieme",
+            "items": [
+              "Fino a 5 server connessi insieme, regolabile da 1 a 15. Parli su uno, leggi, scrivi e ricevi notifiche su tutti",
+              "I server con “Connetti sempre all'avvio” e quelli aperti l'ultima volta si connettono da soli; ogni server si riconnette per conto suo dopo una caduta",
+              "Notifiche e messaggi privati mostrano il nome del server, le notifiche si possono silenziare per server",
+              "“Entra nel canale” anche per gli amici su un altro server; i link mumble:// verso un server connesso ti portano subito lì"
+            ]
+          },
+          {
+            "title": "Temi e aspetto",
+            "items": [
+              "Temi personalizzati partendo da pochi colori chiave, con preset e anteprima dal vivo; Mumcord mantiene il contrasto leggibile",
+              "Condividi i temi come testo: la chat mostra una scheda di anteprima, un clic applica il tema all'app o a un server",
+              "Un tema per server, se vuoi",
+              "L'aspetto di questo sito nell'app: pulsanti luminosi, sfumature, effetti vetro e una leggera grana da pellicola, disattivabili"
+            ]
+          },
+          {
+            "title": "Rifiniture e server grandi",
+            "items": [
+              "Menu a tendina con il tema invece di quelli del browser, ogni campo nelle impostazioni ben allineato",
+              "Una sottile barra di avanzamento sotto le immagini in chat mentre si carica la grandezza piena",
+              "I server grandi non si bloccano più alla prima visualizzazione, in più gli interruttori “Nascondi canali vuoti” e “Prima chi parla”",
+              "I messaggi contano come inviati solo quando il server li conferma; quelli rifiutati si possono rinviare",
+              "Commento del profilo con grassetto, corsivo, link ed elenchi"
+            ]
+          },
+          {
+            "title": "Qualità della connessione",
+            "items": [
+              "Ping, perdita di pacchetti, banda e UDP o TCP nel profilo e nel menu di una persona, anche per te",
+              "Una piccola icona del segnale accanto a chi ha una connessione debole, disattivabile"
+            ]
+          },
+          {
+            "title": "Overlay",
+            "items": [
+              "L'overlay in gioco anche su Windows, tramite DirectX 11 e 12, con le stesse impostazioni e la stessa lista anti-cheat di Linux",
+              "Colori corretti nei giochi HDR, giochi da Steam in Flatpak, giochi a schermo intero senza bordi verificati su KDE e GNOME",
+              "Risolto: chiudere o aggiornare Mumcord non fa più crashare un gioco in corso",
+              "La finestra overlay sparisce; se la usavi, un avviso una tantum ti porta alle impostazioni dell'overlay in gioco",
+              "“Unisciti al gioco” anche per i giochi che condividono l'indirizzo del server tramite Mumble Link"
+            ]
+          },
+          {
+            "title": "Direttamente da Mumcord a Mumcord",
+            "items": [
+              "Connessioni dirette e cifrate tra utenti Mumcord tramite IPv6, il port mapping del tuo router o la tua rete, senza il server di nessun altro",
+              "Mumcord prima chiede una volta, perché gli altri vedono il tuo indirizzo IP; puoi cambiarlo nelle impostazioni",
+              "Così le immagini a grandezza piena arrivano molto più in fretta; se nessuna connessione diretta funziona, va come prima",
+              "Chiudere il visualizzatore di immagini interrompe il trasferimento"
+            ]
+          },
+          {
+            "title": "Guardare insieme (beta)",
+            "items": [
+              "Watch party di YouTube: tutti nel canale vocale guardano lo stesso video insieme, chiunque può mettere in pausa e saltare",
+              "Condividi uno schermo o una finestra, con l'audio se vuoi, per massimo 8 spettatori, di base 720p a 30 fotogrammi al secondo"
+            ]
+          },
+          {
+            "title": "Installazione su Linux e aggiornamenti",
+            "items": [
+              "Pacchetti per Debian e Ubuntu (.deb), Fedora e openSUSE (.rpm), Arch (AUR: mumcord-bin) e l'AppImage, ognuno per x86_64 e ARM64",
+              "Installazione con una riga nel terminale, con voce di menu e supporto per i link mumble://",
+              "“Avvia Mumcord all'accesso” su ogni sistema",
+              "A scelta un avviso quando esce una nuova versione; Mumcord chiede a GitHub al massimo una volta al giorno"
+            ]
+          }
         ]
       },
       {
@@ -1233,7 +1287,7 @@
         "linux": "yes",
         "windows": "yes",
         "macos": "no",
-        "note": "Trasparente, attraversabile dai clic e sempre in primo piano, con angolo, dimensione e opacità. Su X11 e Wayland; su KDE Wayland Mumcord crea la regola della finestra con un clic. Con l'Epic 2 la finestra overlay sparisce e resta solo l'overlay in gioco."
+        "note": "Trasparente, attraversabile dai clic e sempre in primo piano, con angolo, dimensione e opacità. Su X11 e Wayland; su KDE Wayland Mumcord crea la regola della finestra con un clic. Con la 0.4.0 la finestra overlay sparisce e resta solo l'overlay in gioco."
       },
       {
         "title": "Attivabile dall'area di notifica e dalle impostazioni rapide",
@@ -1259,7 +1313,7 @@
     "linkBody": "I giochi e le mod che supportano Mumble Link forniscono da soli le proprie posizioni, senza bisogno di plugin. Funziona su Linux, Windows e macOS.",
     "pluginsTitle": "I plugin di gioco ufficiali di Mumble",
     "pluginsBody": "Mumble ha plugin ufficiali per questi giochi, per Windows e Linux. Mumcord usa i plugin di un Mumble installato o della propria cartella dei plugin. Ogni plugin si può attivare singolarmente.",
-    "pluginsNote": "Molti plugin sono fatti per una specifica versione del gioco, spesso vecchia, e leggono la memoria del gioco. Alcuni sistemi anti-cheat potrebbero segnalarlo, e Mumcord te lo dice prima che tu ne attivi uno. I plugin verranno verificati con giochi reali nell'Epic 2; fino ad allora restano in beta.",
+    "pluginsNote": "Molti plugin sono fatti per una specifica versione del gioco, spesso vecchia, e leggono la memoria del gioco. Alcuni sistemi anti-cheat potrebbero segnalarlo, e Mumcord te lo dice prima che tu ne attivi uno. Per ora restano in beta, anche nell'Epic 2; la verifica con giochi reali arriverà più avanti.",
     "pluginsSource": "Plugin nel repository di Mumble",
     "askTitle": "Manca un gioco o crea problemi?",
     "askBody": "Che un gioco funzioni, che vada nella lista dei bloccati o che un plugin non sia più adatto: segnalalo su GitHub.",
@@ -1272,7 +1326,7 @@
       "Source Engine": "Left 4 Dead 1 e 2, altri giochi Source su Linux",
       "World of Warcraft": "32 e 64 bit"
     },
-    "overlayWarning": "Problema noto: se chiudi Mumcord mentre è in corso un gioco con l'overlay, il gioco può crashare. Chiudi prima il gioco o disattiva l'overlay in gioco. Sarà risolto nell'Epic 2."
+    "overlayWarning": "Problema noto: se chiudi Mumcord mentre è in corso un gioco con l'overlay, il gioco può crashare. Chiudi prima il gioco o disattiva l'overlay in gioco. Sarà risolto nella 0.4.0."
   },
   "blocked": [
     {

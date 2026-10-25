@@ -326,8 +326,8 @@
         },
         {
           "tag": "Epic 2",
-          "title": "Vairāki serveri un savas tēmas",
-          "body": "Lasi līdzi visos, runā vienā. Plus pielāgotas tēmas ar krāsām un sagatavēm, kopīgojamas kā teksts: tērzēšanā parādās priekšskatījuma kartīte, viens klikšķis importē tēmu. Vēl: savienojuma kvalitāte visiem, attēli pilnā izmērā tieši no Mumcord uz Mumcord un spēles pārklājums arī uz Windows, bet pārklājuma logs pazūd. Beigās, kā beta: YouTube kopskatīšanās un ekrāna kopīgošana."
+          "title": "Vairāki serveri, tēmas un noslīpēšana",
+          "body": "Nāk kā 0.4.0: līdz pieciem serveriem vienlaikus, runā vienā un lasi līdzi visos. Savas tēmas, kopīgojamas tērzēšanā, arī katram serverim atsevišķi. Plus spēles pārklājums uz Windows, citu savienojuma kvalitāte, Linux pakotnes ar instalēšanu vienā rindā un, kā beta, YouTube kopskatīšanās un ekrāna kopīgošana."
         },
         {
           "tag": "Epic 3",
@@ -815,7 +815,7 @@
         }
       ],
       "known": [
-        "Ja aizver Mumcord, kamēr darbojas spēle ar pārklājumu, spēle var avarēt. Vispirms aizver spēli vai izslēdz spēles pārklājumu; tas tiks salabots Epic 2.",
+        "Ja aizver Mumcord, kamēr darbojas spēle ar pārklājumu, spēle var avarēt. Vispirms aizver spēli vai izslēdz spēles pārklājumu; tas tiks salabots 0.4.0.",
         "Instalētāji joprojām nav parakstīti."
       ]
     },
@@ -1016,7 +1016,8 @@
     "never": "Kas nekad nenotiks",
     "neverItems": [
       "Nekas serverī: ne pavadošie servisi, ne servera spraudņi, ne servera konfigurācija. Mumcord darbojas ar jebkuru standarta Mumble serveri.",
-      "Mobilās lietotnes un tīmekļa versija."
+      "Mobilās lietotnes un tīmekļa versija.",
+      "Starpniekserveris tiešajiem savienojumiem: ja neviens tiešais ceļš nedarbojas, Mumcord tā vietā iet caur Mumble serveri."
     ],
     "ideaTitle": "Kaut kā trūkst?",
     "ideaBody": "Vēlmes nonāk GitHub pieteikumos (issues) un tiek ņemtas vērā plānošanā.",
@@ -1100,26 +1101,79 @@
       },
       {
         "id": "epic-2",
-        "title": "Vairāki serveri un savas tēmas",
-        "summary": "Visur vienlaikus, tā, kā tev patīk, un beigās – skatīšanās kopā.",
-        "items": [
-          "Pieslēdzies vairākiem serveriem vienlaikus, lasi līdzi visos, runā vienā",
-          "Pielāgotas tēmas ar krāsu iestatījumiem un sagatavēm",
-          "Kopīgo tēmas kā tekstu: tērzēšanā parādās priekšskatījuma kartīte, viens klikšķis importē tēmu",
-          "Redzi savienojuma kvalitāti, citu un savu: ping, pakešu zudumu, joslas platumu un to, vai balss iet pa UDP vai TCP, izvēlnē un profilā, pēc izvēles ar signāla ikonu",
-          "Vienots izskats: tēmai atbilstošas nolaižamās izvēlnes pārlūka izvēlņu vietā, visi iestatījumu lauki glīti izlīdzināti",
-          "Plāna progresa josla zem tērzēšanas attēliem, kamēr ielādējas pilnais izmērs",
-          "Attēli pilnā izmērā, kad iespējams, iet tieši no Mumcord uz Mumcord, un tas ir daudz ātrāk. Iestatījumos var izslēgt, jo citi redz tavu IP adresi",
-          "Paliek tikai spēles pārklājums: pārklājuma logs pazūd. Windows saņems pārklājumu, tiklīdz tur būs gatavs spēles pārklājums",
-          "Labots: Mumcord aizvēršana vairs neizraisa avāriju spēlē, kas darbojas ar pārklājumu",
-          "Pārnests no Epic 1: spēles pārklājums uz Windows, ar Flatpak Steam un uz HDR ekrāniem",
-          "Pārnests no Epic 1: “Pievienoties kanālam” draugiem citā serverī",
-          "Pārnests no Epic 1: pārklājums paliek virspusē arī spēlēs bezrāmju pilnekrāna režīmā",
-          "Pārnests no Epic 1: “Pievienoties spēlei” arī spēlēm, kas atpazītas caur Mumble Link",
-          "Pārnests no Epic 1: aizverot attēlu skatītāju, tiek apturēta notiekoša attēla pārsūtīšana pilnā izmērā",
-          "Pārnests no Epic 1: spēļu spraudņu pārbaude ar īstām spēlēm, lai telpiskā skaņa, spraudņi un attēli pilnā izmērā varētu iziet no beta",
-          "Beigās, kā beta: YouTube kopskatīšanās, visi kanālā vienlaikus skatās to pašu video, ar sinhronizētu atskaņošanu, pauzi un pārtīšanu",
-          "Beigās, kā beta: ekrāna kopīgošana starp Mumcord lietotājiem, tieši un bez kāda cita servera, caur IPv6, tava maršrutētāja portu pāradresāciju vai tavu paša tīklu"
+        "title": "Vairāki serveri, tēmas un noslīpēšana",
+        "summary": "Viss iznāk kopā kā versija 0.4.0: vairāki serveri, savas tēmas, spēles pārklājums uz Windows un pirmie tiešie savienojumi starp Mumcord lietotājiem. Telpiskā skaņa, spēļu spraudņi un attēli pilnā izmērā paliek beta.",
+        "groups": [
+          {
+            "title": "Vairāki serveri vienlaikus",
+            "items": [
+              "Līdz 5 serveriem pieslēgti vienlaikus, iestatāms no 1 līdz 15. Runā vienā, lasi, raksti un saņem paziņojumus visos",
+              "Serveri ar “Vienmēr pieslēgties startā” un pagājušajā reizē atvērtie pieslēdzas paši; katrs serveris pēc pārtraukuma pats pieslēdzas no jauna",
+              "Paziņojumos un privātajās ziņās redzams servera nosaukums, paziņojumus var apklusināt katram serverim atsevišķi",
+              "“Pievienoties kanālam” arī draugiem citā serverī; mumble:// saites uz pieslēgtu serveri aizved tieši turp"
+            ]
+          },
+          {
+            "title": "Tēmas un izskats",
+            "items": [
+              "Savas tēmas no dažām galvenajām krāsām, ar sagatavēm un tiešo priekšskatījumu; Mumcord rūpējas, lai kontrasts paliktu salasāms",
+              "Kopīgo tēmas kā tekstu: tērzēšanā parādās priekšskatījuma kartīte, viens klikšķis pielieto tēmu lietotnei vai serverim",
+              "Ja gribi, sava tēma katram serverim",
+              "Šīs vietnes izskats lietotnē: mirdzošas pogas, krāsu pārejas, stikla efekti un viegls filmas graudainums, var izslēgt"
+            ]
+          },
+          {
+            "title": "Noslīpēšana un lieli serveri",
+            "items": [
+              "Tēmai atbilstošas nolaižamās izvēlnes pārlūka izvēlņu vietā, visi iestatījumu lauki glīti izlīdzināti",
+              "Plāna progresa josla zem tērzēšanas attēliem, kamēr ielādējas pilnais izmērs",
+              "Lieli serveri vairs nesastingst, kad tos parāda pirmo reizi, plus slēdži “Slēpt tukšos kanālus” un “Runātāji pirmie”",
+              "Ziņas skaitās nosūtītas tikai tad, kad serveris tās apstiprina; noraidītās var nosūtīt vēlreiz",
+              "Profila komentārs ar treknrakstu, slīprakstu, saitēm un sarakstiem"
+            ]
+          },
+          {
+            "title": "Savienojuma kvalitāte",
+            "items": [
+              "Ping, pakešu zudums, joslas platums un UDP vai TCP cilvēka profilā un izvēlnē, arī tev pašam",
+              "Neliela signāla ikona blakus cilvēkiem ar vāju savienojumu, var izslēgt"
+            ]
+          },
+          {
+            "title": "Pārklājums",
+            "items": [
+              "Spēles pārklājums arī uz Windows, caur DirectX 11 un 12, ar tiem pašiem iestatījumiem un pretkrāpšanas sarakstu kā uz Linux",
+              "Pareizas krāsas HDR spēlēs, spēles no Flatpak Steam, bezrāmju pilnekrāna spēles pārbaudītas uz KDE un GNOME",
+              "Labots: Mumcord aizvēršana vai atjaunināšana vairs neizraisa avāriju spēlē, kas darbojas",
+              "Pārklājuma logs pazūd; ja to lietoji, vienreizējs paziņojums aizved uz spēles pārklājuma iestatījumiem",
+              "“Pievienoties spēlei” arī spēlēm, kas caur Mumble Link kopīgo sava servera adresi"
+            ]
+          },
+          {
+            "title": "Tieši no Mumcord uz Mumcord",
+            "items": [
+              "Tieši, šifrēti savienojumi starp Mumcord lietotājiem caur IPv6, tava maršrutētāja portu pāradresāciju vai tavu paša tīklu, bez kāda cita servera",
+              "Mumcord vispirms vienreiz pajautā, jo citi redz tavu IP adresi; to var mainīt iestatījumos",
+              "Tā attēli pilnā izmērā pienāk daudz ātrāk; ja neviens tiešais savienojums nedarbojas, viss strādā kā līdz šim",
+              "Aizverot attēlu skatītāju, pārsūtīšana tiek apturēta"
+            ]
+          },
+          {
+            "title": "Skatīšanās kopā (beta)",
+            "items": [
+              "YouTube kopskatīšanās: visi balss kanālā vienlaikus skatās to pašu video, ikviens var pauzēt un pārtīt",
+              "Kopīgo ekrānu vai logu, ja gribi, ar skaņu, līdz 8 skatītājiem, pēc noklusējuma 720p ar 30 kadriem sekundē"
+            ]
+          },
+          {
+            "title": "Instalēšana uz Linux un atjauninājumi",
+            "items": [
+              "Pakotnes Debian un Ubuntu (.deb), Fedora un openSUSE (.rpm), Arch (AUR: mumcord-bin) un AppImage, katra x86_64 un ARM64",
+              "Instalēšana ar vienu rindu terminālī, ar izvēlnes ierakstu un mumble:// saišu atbalstu",
+              "“Palaist Mumcord, kad piesakos” uz katras sistēmas",
+              "Pēc izvēles norāde, kad iznākusi jauna versija; Mumcord jautā GitHub ne biežāk kā reizi dienā"
+            ]
+          }
         ]
       },
       {
@@ -1233,7 +1287,7 @@
         "linux": "yes",
         "windows": "yes",
         "macos": "no",
-        "note": "Caurspīdīgs, cauri klikšķināms un vienmēr virspusē, ar stūri, izmēru un necaurredzamību. Uz X11 un Wayland; uz KDE Wayland Mumcord ar vienu klikšķi iestata loga noteikumu. Ar Epic 2 pārklājuma logs pazūd un paliek tikai spēles pārklājums."
+        "note": "Caurspīdīgs, cauri klikšķināms un vienmēr virspusē, ar stūri, izmēru un necaurredzamību. Uz X11 un Wayland; uz KDE Wayland Mumcord ar vienu klikšķi iestata loga noteikumu. Ar 0.4.0 pārklājuma logs pazūd un paliek tikai spēles pārklājums."
       },
       {
         "title": "Pārslēdzams no teknes un ātrajiem iestatījumiem",
@@ -1259,7 +1313,7 @@
     "linkBody": "Spēles un modi, kas atbalsta Mumble Link, paši nodod savas pozīcijas, spraudnis nav vajadzīgs. Tas strādā uz Linux, Windows un macOS.",
     "pluginsTitle": "Oficiālie Mumble spēļu spraudņi",
     "pluginsBody": "Mumble ir oficiāli spraudņi šīm spēlēm, Windows un Linux. Mumcord izmanto instalētā Mumble spraudņus vai tos no savas spraudņu mapes. Katru spraudni var ieslēgt atsevišķi.",
-    "pluginsNote": "Daudzi spraudņi ir veidoti vienai konkrētai, bieži vecākai spēles versijai un lasa spēles atmiņu. Dažas pretkrāpšanas sistēmas to var atzīmēt, un Mumcord tev to pasaka, pirms tu kādu ieslēdz. Spraudņi tiks pārbaudīti ar īstām spēlēm Epic 2; līdz tam tie paliek beta.",
+    "pluginsNote": "Daudzi spraudņi ir veidoti vienai konkrētai, bieži vecākai spēles versijai un lasa spēles atmiņu. Dažas pretkrāpšanas sistēmas to var atzīmēt, un Mumcord tev to pasaka, pirms tu kādu ieslēdz. Pagaidām tie paliek beta, arī Epic 2; pārbaude ar īstām spēlēm būs vēlāk.",
     "pluginsSource": "Spraudņi Mumble repozitorijā",
     "askTitle": "Kādas spēles trūkst vai tā rada problēmas?",
     "askBody": "Vai spēle strādā, vai tai vieta bloķēto sarakstā, vai spraudnis vairs neder: ziņo par to GitHub.",
@@ -1272,7 +1326,7 @@
       "Source Engine": "Left 4 Dead 1 un 2, vairāk Source spēļu uz Linux",
       "World of Warcraft": "32 un 64 biti"
     },
-    "overlayWarning": "Zināma problēma: ja aizver Mumcord, kamēr darbojas spēle ar pārklājumu, spēle var avarēt. Vispirms aizver spēli vai izslēdz spēles pārklājumu. Tas tiks salabots Epic 2."
+    "overlayWarning": "Zināma problēma: ja aizver Mumcord, kamēr darbojas spēle ar pārklājumu, spēle var avarēt. Vispirms aizver spēli vai izslēdz spēles pārklājumu. Tas tiks salabots 0.4.0."
   },
   "blocked": [
     {

@@ -326,8 +326,8 @@
         },
         {
           "tag": "Epic 2",
-          "title": "Več strežnikov in lastne teme",
-          "body": "Beri na vseh, govori na enem. Poleg tega lastne teme z barvami in predlogami, ki jih deliš kot besedilo: klepet pokaže kartico s predogledom, en klik uvozi temo. Še: kakovost povezave za vse, slike v polni velikosti neposredno iz Mumcorda v Mumcord in prekrivni sloj v igri tudi na Windows, prekrivno okno pa izgine. Na koncu, kot beta: skupno gledanje YouTube in deljenje zaslona."
+          "title": "Več strežnikov, teme in dodelava",
+          "body": "Prihaja kot 0.4.0: do pet strežnikov hkrati, govori na enem in beri na vseh. Lastne teme, ki jih deliš v klepetu, tudi za vsak strežnik posebej. Poleg tega prekrivni sloj v igri na Windows, kakovost povezave drugih, paketi za Linux z namestitvijo v eni vrstici in, kot beta, skupno gledanje YouTube in deljenje zaslona."
         },
         {
           "tag": "Epic 3",
@@ -815,7 +815,7 @@
         }
       ],
       "known": [
-        "Če zapreš Mumcord, medtem ko teče igra s prekrivnim slojem, se igra lahko sesuje. Najprej zapri igro ali izklopi prekrivni sloj v igri; to bo popravljeno v Epic 2.",
+        "Če zapreš Mumcord, medtem ko teče igra s prekrivnim slojem, se igra lahko sesuje. Najprej zapri igro ali izklopi prekrivni sloj v igri; to bo popravljeno v 0.4.0.",
         "Namestitveni programi še niso podpisani."
       ]
     },
@@ -1016,7 +1016,8 @@
     "never": "Česa ne bo nikoli",
     "neverItems": [
       "Karkoli na strežniku: brez spremljevalnih storitev, brez strežniških vtičnikov, brez konfiguracije strežnika. Mumcord deluje z vsakim standardnim strežnikom Mumble.",
-      "Mobilne aplikacije in spletna različica."
+      "Mobilne aplikacije in spletna različica.",
+      "Posredniški strežnik za neposredne povezave: če nobena neposredna pot ne deluje, gre Mumcord namesto tega prek strežnika Mumble."
     ],
     "ideaTitle": "Ti kaj manjka?",
     "ideaBody": "Predlogi gredo v prijave (issues) na GitHubu in se upoštevajo pri načrtovanju.",
@@ -1100,26 +1101,79 @@
       },
       {
         "id": "epic-2",
-        "title": "Več strežnikov in lastne teme",
-        "summary": "Povsod hkrati, tako, kot ti je všeč, in na koncu skupno gledanje.",
-        "items": [
-          "Poveži se z več strežniki hkrati, beri na vseh, govori na enem",
-          "Lastne teme z nastavitvami barv in predlogami",
-          "Deli teme kot besedilo: klepet pokaže kartico s predogledom, en klik uvozi temo",
-          "Glej kakovost povezave, drugih in svoje: ping, izguba paketov, pasovna širina in ali gre glas prek UDP ali TCP, v meniju in profilu, po želji z ikono signala",
-          "Enoten videz: spustni seznami v slogu teme namesto brskalnikovih, vsako polje v nastavitvah lepo poravnano",
-          "Tanka vrstica napredka pod slikami v klepetu, medtem ko se nalaga polna velikost",
-          "Slike v polni velikosti gredo, ko je mogoče, neposredno iz Mumcorda v Mumcord, kar je veliko hitreje. V nastavitvah se da izklopiti, ker drugi vidijo tvoj naslov IP",
-          "Ostane samo prekrivni sloj v igri: prekrivno okno izgine. Windows dobi prekrivni sloj, ko bo tam pripravljen prekrivni sloj v igri",
-          "Popravljeno: zapiranje Mumcorda ne sesuje več igre, ki teče in uporablja prekrivni sloj",
-          "Preneseno iz Epic 1: prekrivni sloj v igri na Windows, s Flatpak Steamom in na zaslonih HDR",
-          "Preneseno iz Epic 1: »Pridruži se kanalu« za prijatelje na drugem strežniku",
-          "Preneseno iz Epic 1: prekrivni sloj ostane na vrhu tudi v igrah v celozaslonskem načinu brez robov",
-          "Preneseno iz Epic 1: »Pridruži se igri« tudi za igre, zaznane prek Mumble Link",
-          "Preneseno iz Epic 1: zapiranje pregledovalnika slik ustavi tekoč prenos slike v polni velikosti",
-          "Preneseno iz Epic 1: preizkus vtičnikov za igre s pravimi igrami, da lahko pozicijski zvok, vtičniki in slike v polni velikosti zapustijo beto",
-          "Na koncu, kot beta: skupno gledanje YouTube, vsi v kanalu hkrati gledajo isti video, s sinhroniziranim predvajanjem, premorom in previjanjem",
-          "Na koncu, kot beta: deljenje zaslona med uporabniki Mumcorda, neposredno in brez tujega strežnika, prek IPv6, preslikave vrat v tvojem usmerjevalniku ali tvojega lastnega omrežja"
+        "title": "Več strežnikov, teme in dodelava",
+        "summary": "Vse izide skupaj kot različica 0.4.0: več strežnikov, lastne teme, prekrivni sloj v igri na Windows in prve neposredne povezave med uporabniki Mumcorda. Pozicijski zvok, vtičniki za igre in slike v polni velikosti ostanejo v beti.",
+        "groups": [
+          {
+            "title": "Več strežnikov hkrati",
+            "items": [
+              "Do 5 strežnikov povezanih hkrati, nastavljivo od 1 do 15. Govori na enem, beri, piši in prejemaj obvestila na vseh",
+              "Strežniki z oznako »Vedno se poveži ob zagonu« in tisti, odprti zadnjič, se povežejo sami; vsak strežnik se po prekinitvi sam znova poveže",
+              "Obvestila in zasebna sporočila pokažejo ime strežnika, obvestila lahko utišaš za vsak strežnik posebej",
+              "»Pridruži se kanalu« tudi za prijatelje na drugem strežniku; mumble:// povezave do povezanega strežnika te odpeljejo naravnost tja"
+            ]
+          },
+          {
+            "title": "Teme in videz",
+            "items": [
+              "Lastne teme iz nekaj ključnih barv, s predlogami in sprotnim predogledom; Mumcord poskrbi, da kontrast ostane berljiv",
+              "Deli teme kot besedilo: klepet pokaže kartico s predogledom, en klik uporabi temo za aplikacijo ali za strežnik",
+              "Po želji tema za vsak strežnik",
+              "Videz te spletne strani v aplikaciji: žareči gumbi, prelivi, stekleni učinki in rahlo filmsko zrno, da se izklopiti"
+            ]
+          },
+          {
+            "title": "Dodelava in veliki strežniki",
+            "items": [
+              "Spustni seznami v slogu teme namesto brskalnikovih, vsako polje v nastavitvah lepo poravnano",
+              "Tanka vrstica napredka pod slikami v klepetu, medtem ko se nalaga polna velikost",
+              "Veliki strežniki ob prvem prikazu ne zamrznejo več, poleg tega stikali »Skrij prazne kanale« in »Govorci najprej«",
+              "Sporočila štejejo kot poslana šele, ko jih strežnik potrdi; zavrnjena lahko pošlješ znova",
+              "Komentar v profilu s krepkim, ležečim tiskom, povezavami in seznami"
+            ]
+          },
+          {
+            "title": "Kakovost povezave",
+            "items": [
+              "Ping, izguba paketov, pasovna širina in UDP ali TCP v profilu in meniju osebe, tudi zate",
+              "Majhna ikona signala ob ljudeh s šibko povezavo, da se izklopiti"
+            ]
+          },
+          {
+            "title": "Prekrivni sloj",
+            "items": [
+              "Prekrivni sloj v igri tudi na Windows, prek DirectX 11 in 12, z enakimi nastavitvami in seznamom zaščite pred goljufanjem kot na Linuxu",
+              "Pravilne barve v igrah HDR, igre iz Flatpak Steama, celozaslonske igre brez robov preverjene na KDE in GNOME",
+              "Popravljeno: zapiranje ali posodabljanje Mumcorda ne sesuje več igre, ki teče",
+              "Prekrivno okno izgine; če si ga uporabljal, te enkratno obvestilo odpelje do nastavitev prekrivnega sloja v igri",
+              "»Pridruži se igri« tudi za igre, ki prek Mumble Link delijo naslov svojega strežnika"
+            ]
+          },
+          {
+            "title": "Naravnost iz Mumcorda v Mumcord",
+            "items": [
+              "Neposredne, šifrirane povezave med uporabniki Mumcorda prek IPv6, preslikave vrat v tvojem usmerjevalniku ali tvojega lastnega omrežja, brez tujega strežnika",
+              "Mumcord te najprej enkrat vpraša, ker drugi vidijo tvoj naslov IP; spremeniš lahko v nastavitvah",
+              "Slike v polni velikosti tako prispejo veliko hitreje; če nobena neposredna povezava ne deluje, gre kot doslej",
+              "Zapiranje pregledovalnika slik ustavi prenos"
+            ]
+          },
+          {
+            "title": "Skupno gledanje (beta)",
+            "items": [
+              "Skupno gledanje YouTube: vsi v glasovnem kanalu hkrati gledajo isti video, vsak lahko ustavi in previje",
+              "Deli zaslon ali okno, po želji z zvokom, za do 8 gledalcev, privzeto 720p pri 30 sličicah na sekundo"
+            ]
+          },
+          {
+            "title": "Namestitev na Linux in posodobitve",
+            "items": [
+              "Paketi za Debian in Ubuntu (.deb), Fedoro in openSUSE (.rpm), Arch (AUR: mumcord-bin) in AppImage, vsak za x86_64 in ARM64",
+              "Namestitev z eno vrstico v terminalu, z vnosom v meniju in podporo za povezave mumble://",
+              "»Zaženi Mumcord ob prijavi« na vsakem sistemu",
+              "Po želji namig, ko izide nova različica; Mumcord GitHub vpraša največ enkrat na dan"
+            ]
+          }
         ]
       },
       {
@@ -1233,7 +1287,7 @@
         "linux": "yes",
         "windows": "yes",
         "macos": "no",
-        "note": "Prozorno, skozi katero lahko klikaš, vedno na vrhu, z izbiro kota, velikosti in prosojnosti. Na X11 in Waylandu; na KDE Wayland Mumcord z enim klikom nastavi pravilo okna. Z Epic 2 prekrivno okno izgine in ostane samo prekrivni sloj v igri."
+        "note": "Prozorno, skozi katero lahko klikaš, vedno na vrhu, z izbiro kota, velikosti in prosojnosti. Na X11 in Waylandu; na KDE Wayland Mumcord z enim klikom nastavi pravilo okna. Z 0.4.0 prekrivno okno izgine in ostane samo prekrivni sloj v igri."
       },
       {
         "title": "Vklop iz sistemske vrstice in hitrih nastavitev",
@@ -1259,7 +1313,7 @@
     "linkBody": "Igre in modi, ki podpirajo Mumble Link, svoje položaje dostavljajo sami, vtičnik ni potreben. To deluje na Linuxu, Windows in macOS.",
     "pluginsTitle": "Uradni vtičniki za igre Mumble",
     "pluginsBody": "Mumble ima za te igre uradne vtičnike za Windows in Linux. Mumcord uporablja vtičnike nameščenega Mumbla ali iz lastne mape z vtičniki. Vsak vtičnik lahko vklopiš posebej.",
-    "pluginsNote": "Mnogi vtičniki so narejeni za eno določeno, pogosto starejšo različico igre in berejo pomnilnik igre. Nekateri sistemi za zaščito pred goljufanjem to lahko označijo, zato te Mumcord opozori, preden kakšnega vklopiš. Vtičnike bomo s pravimi igrami preverili v Epic 2; do takrat ostanejo v beti.",
+    "pluginsNote": "Mnogi vtičniki so narejeni za eno določeno, pogosto starejšo različico igre in berejo pomnilnik igre. Nekateri sistemi za zaščito pred goljufanjem to lahko označijo, zato te Mumcord opozori, preden kakšnega vklopiš. Zaenkrat ostanejo v beti, tudi v Epic 2; preverjanje s pravimi igrami pride pozneje.",
     "pluginsSource": "Vtičniki v repozitoriju Mumble",
     "askTitle": "Manjka igra ali povzroča težave?",
     "askBody": "Ali igra deluje, ali spada na seznam blokiranih ali vtičnik ne ustreza več: prijavi na GitHubu.",
@@ -1272,7 +1326,7 @@
       "Source Engine": "Left 4 Dead 1 in 2, več iger Source na Linuxu",
       "World of Warcraft": "32- in 64-bitno"
     },
-    "overlayWarning": "Znana težava: če zapreš Mumcord, medtem ko teče igra s prekrivnim slojem, se igra lahko sesuje. Najprej zapri igro ali izklopi prekrivni sloj v igri. To bo popravljeno v Epic 2."
+    "overlayWarning": "Znana težava: če zapreš Mumcord, medtem ko teče igra s prekrivnim slojem, se igra lahko sesuje. Najprej zapri igro ali izklopi prekrivni sloj v igri. To bo popravljeno v 0.4.0."
   },
   "blocked": [
     {

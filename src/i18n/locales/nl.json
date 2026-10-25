@@ -326,8 +326,8 @@
         },
         {
           "tag": "Epic 2",
-          "title": "Meerdere servers en je eigen thema's",
-          "body": "Op allemaal meelezen, op één praten. Plus eigen thema's met kleuren en presets, te delen als tekst: de chat toont een voorbeeldkaart, met één klik importeer je het thema. Verder: verbindingskwaliteit voor iedereen, afbeeldingen op volle grootte rechtstreeks van Mumcord naar Mumcord en de in-game overlay ook op Windows, terwijl het overlayvenster verdwijnt. Aan het eind, als bèta: YouTube-watchparty en scherm delen."
+          "title": "Meerdere servers, thema's en afwerking",
+          "body": "Komt als 0.4.0: tot vijf servers tegelijk, op één praten en op allemaal meelezen. Je eigen thema's, te delen in de chat, ook per server. Plus de in-game overlay op Windows, de verbindingskwaliteit van anderen, Linux-pakketten met installatie in één regel en, als bèta, YouTube-watchparty en scherm delen."
         },
         {
           "tag": "Epic 3",
@@ -815,7 +815,7 @@
         }
       ],
       "known": [
-        "Als je Mumcord sluit terwijl een game met de overlay draait, kan de game crashen. Sluit eerst de game of zet de in-game overlay uit; dit wordt opgelost in Epic 2.",
+        "Als je Mumcord sluit terwijl een game met de overlay draait, kan de game crashen. Sluit eerst de game of zet de in-game overlay uit; dit wordt opgelost in 0.4.0.",
         "De installers zijn nog niet ondertekend."
       ]
     },
@@ -1016,7 +1016,8 @@
     "never": "Wat er nooit komt",
     "neverItems": [
       "Wat dan ook op de server: geen begeleidende diensten, geen serverplugins, geen serverconfiguratie. Mumcord werkt met elke standaard Mumble-server.",
-      "Mobiele apps en een webversie."
+      "Mobiele apps en een webversie.",
+      "Een relayserver voor directe verbindingen: als geen directe weg werkt, gaat Mumcord in plaats daarvan via de Mumble-server."
     ],
     "ideaTitle": "Mis je iets?",
     "ideaBody": "Wensen komen in de issues op GitHub terecht en worden meegenomen in de planning.",
@@ -1100,26 +1101,79 @@
       },
       {
         "id": "epic-2",
-        "title": "Meerdere servers en je eigen thema's",
-        "summary": "Overal tegelijk, precies zoals jij het wilt, en aan het eind samen kijken.",
-        "items": [
-          "Met meerdere servers tegelijk verbinden, op allemaal meelezen, op één praten",
-          "Eigen thema's met kleurinstellingen en presets",
-          "Thema's delen als tekst: de chat toont een voorbeeldkaart, met één klik importeer je het thema",
-          "De verbindingskwaliteit zien, van anderen en van jezelf: ping, pakketverlies, bandbreedte en of spraak via UDP of TCP gaat, in het menu en profiel, optioneel met een signaalicoon",
-          "Eén consistente look: dropdowns in je thema in plaats van die van de browser, elk invoerveld in de instellingen netjes uitgelijnd",
-          "Een dunne voortgangsbalk onder chatafbeeldingen terwijl de volle grootte laadt",
-          "Afbeeldingen op volle grootte gaan waar het kan rechtstreeks van Mumcord naar Mumcord, en dat is veel sneller. Uit te zetten in de instellingen, want de anderen zien je IP-adres",
-          "Alleen de in-game overlay blijft: het overlayvenster verdwijnt. Windows krijgt een overlay zodra de in-game overlay daar klaar is",
-          "Opgelost: Mumcord sluiten laat een lopende game die de overlay gebruikt niet meer crashen",
-          "Overgenomen uit Epic 1: in-game overlay op Windows, met Flatpak-Steam en op HDR-schermen",
-          "Overgenomen uit Epic 1: „Kanaal binnengaan” voor vrienden op een andere server",
-          "Overgenomen uit Epic 1: de overlay blijft ook bovenop randloze fullscreen-games",
-          "Overgenomen uit Epic 1: „Game joinen” ook voor games die via Mumble Link herkend worden",
-          "Overgenomen uit Epic 1: de afbeeldingsviewer sluiten stopt een lopende overdracht van een afbeelding op volle grootte",
-          "Overgenomen uit Epic 1: de gameplugins testen met echte games, zodat positionele audio, plugins en afbeeldingen op volle grootte uit de bèta kunnen",
-          "Aan het eind, als bèta: YouTube-watchparty, iedereen in het kanaal kijkt tegelijk dezelfde video, met afspelen, pauzeren en spoelen synchroon",
-          "Aan het eind, als bèta: scherm delen tussen Mumcord-gebruikers, direct en zonder andermans server, via IPv6, de portmapping van je router of je eigen netwerk"
+        "title": "Meerdere servers, thema's en afwerking",
+        "summary": "Alles komt samen uit als versie 0.4.0: meerdere servers, je eigen thema's, de in-game overlay op Windows en de eerste directe verbindingen tussen Mumcord-gebruikers. Positionele audio, gameplugins en afbeeldingen op volle grootte blijven bèta.",
+        "groups": [
+          {
+            "title": "Meerdere servers tegelijk",
+            "items": [
+              "Tot 5 servers tegelijk verbonden, instelbaar van 1 tot 15. Praat op één, lees, schrijf en krijg meldingen op allemaal",
+              "Servers met „Altijd verbinden bij start” en die van de vorige keer verbinden vanzelf; elke server maakt na een onderbreking zelf opnieuw verbinding",
+              "Meldingen en privéberichten tonen de servernaam, meldingen kun je per server dempen",
+              "„Kanaal binnengaan” ook voor vrienden op een andere server; mumble:// links naar een verbonden server springen er meteen heen"
+            ]
+          },
+          {
+            "title": "Thema's en uiterlijk",
+            "items": [
+              "Eigen thema's uit een paar hoofdkleuren, met presets en een live voorbeeld; Mumcord houdt het contrast leesbaar",
+              "Thema's delen als tekst: de chat toont een voorbeeldkaart, met één klik zet je het thema op de app of op een server",
+              "Een thema per server als je wilt",
+              "De look van deze website in de app: gloeiende knoppen, kleurverlopen, glaseffecten en een lichte filmkorrel, uit te zetten"
+            ]
+          },
+          {
+            "title": "Afwerking en grote servers",
+            "items": [
+              "Dropdowns in je thema in plaats van die van de browser, elk invoerveld in de instellingen netjes uitgelijnd",
+              "Een dunne voortgangsbalk onder chatafbeeldingen terwijl de volle grootte laadt",
+              "Grote servers bevriezen niet meer als ze voor het eerst verschijnen, plus de schakelaars „Lege kanalen verbergen” en „Pratende mensen eerst”",
+              "Berichten tellen pas als verzonden zodra de server ze bevestigt; geweigerde berichten kun je opnieuw versturen",
+              "Profielcommentaar met vet, cursief, links en lijsten"
+            ]
+          },
+          {
+            "title": "Verbindingskwaliteit",
+            "items": [
+              "Ping, pakketverlies, bandbreedte en UDP of TCP in iemands profiel en menu, ook voor jezelf",
+              "Een klein signaalicoon naast mensen met een zwakke verbinding, uit te zetten"
+            ]
+          },
+          {
+            "title": "Overlay",
+            "items": [
+              "De in-game overlay ook op Windows, via DirectX 11 en 12, met dezelfde instellingen en anti-cheatlijst als op Linux",
+              "Juiste kleuren in HDR-games, games uit Flatpak-Steam, randloze fullscreen-games getest op KDE en GNOME",
+              "Opgelost: Mumcord sluiten of bijwerken laat een lopende game niet meer crashen",
+              "Het overlayvenster verdwijnt; als je het gebruikte, brengt een eenmalige melding je naar de instellingen van de in-game overlay",
+              "„Game joinen” ook voor games die hun serveradres via Mumble Link delen"
+            ]
+          },
+          {
+            "title": "Rechtstreeks van Mumcord naar Mumcord",
+            "items": [
+              "Directe, versleutelde verbindingen tussen Mumcord-gebruikers via IPv6, de portmapping van je router of je eigen netwerk, zonder andermans server",
+              "Mumcord vraagt het eerst één keer, want de anderen zien je IP-adres; je kunt het aanpassen in de instellingen",
+              "Afbeeldingen op volle grootte komen zo veel sneller binnen; lukt geen directe verbinding, dan werkt het zoals voorheen",
+              "De afbeeldingsviewer sluiten stopt de overdracht"
+            ]
+          },
+          {
+            "title": "Samen kijken (bèta)",
+            "items": [
+              "YouTube-watchparty: iedereen in het spraakkanaal kijkt tegelijk dezelfde video, iedereen kan pauzeren en spoelen",
+              "Deel een scherm of een venster, met geluid als je wilt, voor maximaal 8 kijkers, standaard 720p met 30 beelden per seconde"
+            ]
+          },
+          {
+            "title": "Installeren op Linux en updates",
+            "items": [
+              "Pakketten voor Debian en Ubuntu (.deb), Fedora en openSUSE (.rpm), Arch (AUR: mumcord-bin) en de AppImage, elk voor x86_64 en ARM64",
+              "Installeren met één regel in de terminal, met menu-item en ondersteuning voor mumble:// links",
+              "„Mumcord starten als ik inlog” op elk systeem",
+              "Optioneel een hint als er een nieuwe versie is; Mumcord vraagt het GitHub hooguit één keer per dag"
+            ]
+          }
         ]
       },
       {
@@ -1233,7 +1287,7 @@
         "linux": "yes",
         "windows": "yes",
         "macos": "no",
-        "note": "Transparant, laat klikken door en ligt altijd bovenop, met hoek, grootte en dekking. Op X11 en Wayland; op KDE Wayland stelt Mumcord met één klik de vensterregel in. Met Epic 2 verdwijnt het overlayvenster en blijft alleen de in-game overlay."
+        "note": "Transparant, laat klikken door en ligt altijd bovenop, met hoek, grootte en dekking. Op X11 en Wayland; op KDE Wayland stelt Mumcord met één klik de vensterregel in. Met 0.4.0 verdwijnt het overlayvenster en blijft alleen de in-game overlay."
       },
       {
         "title": "Aan en uit via de tray en de snelle instellingen",
@@ -1259,7 +1313,7 @@
     "linkBody": "Games en mods die Mumble Link ondersteunen, leveren hun posities zelf, zonder plugin. Dit werkt op Linux, Windows en macOS.",
     "pluginsTitle": "Officiële gameplugins van Mumble",
     "pluginsBody": "Mumble heeft officiële plugins voor deze games, voor Windows en Linux. Mumcord gebruikt de plugins van een geïnstalleerde Mumble of uit de eigen pluginmap. Elke plugin is apart aan te zetten.",
-    "pluginsNote": "Veel plugins zijn gemaakt voor één specifieke, vaak oudere gameversie en lezen het geheugen van de game. Sommige anti-cheatsystemen kunnen dat aanmerken, en Mumcord waarschuwt je voordat je er een aanzet. De plugins worden in Epic 2 met echte games gecontroleerd; tot die tijd blijven ze bèta.",
+    "pluginsNote": "Veel plugins zijn gemaakt voor één specifieke, vaak oudere gameversie en lezen het geheugen van de game. Sommige anti-cheatsystemen kunnen dat aanmerken, en Mumcord waarschuwt je voordat je er een aanzet. Ze blijven voorlopig bèta, ook in Epic 2; ze met echte games controleren komt later.",
     "pluginsSource": "Plugins in de Mumble-repository",
     "askTitle": "Ontbreekt er een game of geeft er een problemen?",
     "askBody": "Of een game werkt, er een op de blokkeerlijst hoort of een plugin niet meer past: meld het op GitHub.",
@@ -1272,7 +1326,7 @@
       "Source Engine": "Left 4 Dead 1 en 2, meer Source-games op Linux",
       "World of Warcraft": "32 en 64 bit"
     },
-    "overlayWarning": "Bekend probleem: als je Mumcord sluit terwijl een game met de overlay draait, kan de game crashen. Sluit eerst de game of zet de in-game overlay uit. Dit wordt opgelost in Epic 2."
+    "overlayWarning": "Bekend probleem: als je Mumcord sluit terwijl een game met de overlay draait, kan de game crashen. Sluit eerst de game of zet de in-game overlay uit. Dit wordt opgelost in 0.4.0."
   },
   "blocked": [
     {

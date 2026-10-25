@@ -326,8 +326,8 @@
         },
         {
           "tag": "Epic 2",
-          "title": "Keli serveriai ir savos temos",
-          "body": "Skaityk visuose, kalbėk viename. Taip pat savos temos su spalvomis ir šablonais, kuriomis galima dalytis kaip tekstu: pokalbyje rodoma peržiūros kortelė, vienas spustelėjimas temą importuoja. Be to: visų ryšio kokybė, viso dydžio paveikslėliai tiesiai iš Mumcord į Mumcord ir perdanga žaidime taip pat Windows sistemoje, o perdangos langas dingsta. Pabaigoje, kaip beta: YouTube žiūrėjimas kartu ir ekrano bendrinimas."
+          "title": "Keli serveriai, temos ir šlifavimas",
+          "body": "Ateina kaip 0.4.0: iki penkių serverių vienu metu, kalbėk viename ir skaityk visuose. Savos temos, kuriomis galima dalytis pokalbyje, ir atskirai kiekvienam serveriui. Taip pat perdanga žaidime Windows sistemoje, kitų ryšio kokybė, Linux paketai su diegimu viena eilute ir, kaip beta, YouTube žiūrėjimas kartu bei ekrano bendrinimas."
         },
         {
           "tag": "Epic 3",
@@ -815,7 +815,7 @@
         }
       ],
       "known": [
-        "Jei uždarai Mumcord, kol veikia žaidimas su perdanga, žaidimas gali užlūžti. Pirmiau uždaryk žaidimą arba išjunk perdangą žaidime; tai bus ištaisyta 2 epike.",
+        "Jei uždarai Mumcord, kol veikia žaidimas su perdanga, žaidimas gali užlūžti. Pirmiau uždaryk žaidimą arba išjunk perdangą žaidime; tai bus ištaisyta 0.4.0 versijoje.",
         "Diegimo programos vis dar nepasirašytos."
       ]
     },
@@ -1016,7 +1016,8 @@
     "never": "Ko niekada nebus",
     "neverItems": [
       "Nieko serveryje: jokių pagalbinių paslaugų, jokių serverio papildinių, jokios serverio konfigūracijos. Mumcord veikia su bet kuriuo standartiniu Mumble serveriu.",
-      "Mobiliųjų programėlių ir žiniatinklio versijos."
+      "Mobiliųjų programėlių ir žiniatinklio versijos.",
+      "Retransliavimo serverio tiesioginiams ryšiams: jei joks tiesioginis kelias neveikia, Mumcord vietoj to eina per Mumble serverį."
     ],
     "ideaTitle": "Ko nors trūksta?",
     "ideaBody": "Pageidavimai keliauja į GitHub issues ir naudojami planuojant.",
@@ -1100,26 +1101,79 @@
       },
       {
         "id": "epic-2",
-        "title": "Keli serveriai ir savos temos",
-        "summary": "Visur vienu metu, taip, kaip tau patinka, o pabaigoje – žiūrėjimas kartu.",
-        "items": [
-          "Junkis prie kelių serverių vienu metu, skaityk visuose, kalbėk viename",
-          "Savos temos su spalvų nustatymais ir šablonais",
-          "Dalykis temomis kaip tekstu: pokalbyje rodoma peržiūros kortelė, vienas spustelėjimas temą importuoja",
-          "Matyk ryšio kokybę – kitų ir savo: ping, paketų praradimas, pralaidumas ir ar balsas eina per UDP, ar per TCP, meniu ir profilyje, pasirinktinai su signalo piktograma",
-          "Vientisa išvaizda: temą atitinkantys išskleidžiamieji sąrašai vietoj naršyklės sąrašų, visi nustatymų laukai tvarkingai sulygiuoti",
-          "Plona eigos juosta po pokalbio paveikslėliais, kol įkeliamas viso dydžio vaizdas",
-          "Viso dydžio paveikslėliai, kai įmanoma, keliauja tiesiai iš Mumcord į Mumcord – taip daug greičiau. Nustatymuose galima išjungti, nes kiti mato tavo IP adresą",
-          "Lieka tik perdanga žaidime: perdangos langas dingsta. Windows gaus perdangą, kai ten bus paruošta perdanga žaidime",
-          "Ištaisyta: uždarius Mumcord, nebeužlūžta veikiantis žaidimas, naudojantis perdangą",
-          "Perkelta iš 1 epiko: perdanga žaidime Windows sistemoje, su Flatpak Steam ir HDR ekranuose",
-          "Perkelta iš 1 epiko: „Prisijungti prie kanalo“ draugams kitame serveryje",
-          "Perkelta iš 1 epiko: perdanga lieka viršuje ir žaidimuose be rėmelių per visą ekraną",
-          "Perkelta iš 1 epiko: „Prisijungti prie žaidimo“ ir žaidimams, aptiktiems per Mumble Link",
-          "Perkelta iš 1 epiko: uždarius paveikslėlių peržiūros programą sustabdomas vykstantis viso dydžio paveikslėlio perdavimas",
-          "Perkelta iš 1 epiko: žaidimų papildinių patikra su tikrais žaidimais, kad erdvinis garsas, papildiniai ir viso dydžio paveikslėliai galėtų išeiti iš beta",
-          "Pabaigoje, kaip beta: YouTube žiūrėjimas kartu – visi kanale vienu metu žiūri tą patį vaizdo įrašą, su sinchronizuotu paleidimu, pristabdymu ir persukimu",
-          "Pabaigoje, kaip beta: ekrano bendrinimas tarp Mumcord naudotojų, tiesiogiai ir be jokio svetimo serverio, per IPv6, tavo maršrutizatoriaus prievadų peradresavimą arba tavo paties tinklą"
+        "title": "Keli serveriai, temos ir šlifavimas",
+        "summary": "Viskas išleidžiama kartu kaip 0.4.0 versija: keli serveriai, savos temos, perdanga žaidime Windows sistemoje ir pirmieji tiesioginiai ryšiai tarp Mumcord naudotojų. Erdvinis garsas, žaidimų papildiniai ir viso dydžio paveikslėliai lieka beta.",
+        "groups": [
+          {
+            "title": "Keli serveriai vienu metu",
+            "items": [
+              "Iki 5 serverių prijungta vienu metu, galima nustatyti nuo 1 iki 15. Kalbėk viename, skaityk, rašyk ir gauk pranešimus visuose",
+              "Serveriai su „Visada jungtis paleidžiant“ ir praėjusį kartą atidaryti prisijungia patys; kiekvienas serveris po atsijungimo pats prisijungia iš naujo",
+              "Pranešimuose ir asmeninėse žinutėse rodomas serverio pavadinimas, pranešimus galima nutildyti atskirai kiekvienam serveriui",
+              "„Prisijungti prie kanalo“ ir draugams kitame serveryje; mumble:// nuorodos į prijungtą serverį nuveda tiesiai ten"
+            ]
+          },
+          {
+            "title": "Temos ir išvaizda",
+            "items": [
+              "Savos temos iš kelių pagrindinių spalvų, su šablonais ir tiesiogine peržiūra; Mumcord pasirūpina, kad kontrastas liktų įskaitomas",
+              "Dalykis temomis kaip tekstu: pokalbyje rodoma peržiūros kortelė, vienas spustelėjimas pritaiko temą programai arba serveriui",
+              "Jei nori, atskira tema kiekvienam serveriui",
+              "Šios svetainės išvaizda programoje: švytintys mygtukai, gradientai, stiklo efektai ir lengvas plėvelės grūdėtumas, galima išjungti"
+            ]
+          },
+          {
+            "title": "Šlifavimas ir dideli serveriai",
+            "items": [
+              "Temą atitinkantys išskleidžiamieji sąrašai vietoj naršyklės sąrašų, visi nustatymų laukai tvarkingai sulygiuoti",
+              "Plona eigos juosta po pokalbio paveikslėliais, kol įkeliamas viso dydžio vaizdas",
+              "Dideli serveriai nebeužstringa pirmą kartą rodomi, taip pat jungikliai „Slėpti tuščius kanalus“ ir „Kalbantys pirmiau“",
+              "Žinutės laikomos išsiųstomis tik tada, kai serveris jas patvirtina; atmestas galima išsiųsti dar kartą",
+              "Profilio komentaras su paryškinimu, kursyvu, nuorodomis ir sąrašais"
+            ]
+          },
+          {
+            "title": "Ryšio kokybė",
+            "items": [
+              "Ping, paketų praradimas, pralaidumas ir UDP ar TCP žmogaus profilyje ir meniu, taip pat ir tavo",
+              "Maža signalo piktograma prie žmonių su silpnu ryšiu, galima išjungti"
+            ]
+          },
+          {
+            "title": "Perdanga",
+            "items": [
+              "Perdanga žaidime ir Windows sistemoje, per DirectX 11 ir 12, su tais pačiais nustatymais ir apsaugos nuo sukčiavimo sąrašu kaip Linux",
+              "Teisingos spalvos HDR žaidimuose, žaidimai iš Flatpak Steam, žaidimai be rėmelių per visą ekraną patikrinti KDE ir GNOME aplinkose",
+              "Ištaisyta: uždarius ar atnaujinus Mumcord, veikiantis žaidimas nebeužlūžta",
+              "Perdangos langas dingsta; jei juo naudojaisi, vienkartinis pranešimas nuveda į perdangos žaidime nustatymus",
+              "„Prisijungti prie žaidimo“ ir žaidimams, kurie per Mumble Link perduoda savo serverio adresą"
+            ]
+          },
+          {
+            "title": "Tiesiai iš Mumcord į Mumcord",
+            "items": [
+              "Tiesioginiai, šifruoti ryšiai tarp Mumcord naudotojų per IPv6, tavo maršrutizatoriaus prievadų peradresavimą arba tavo paties tinklą, be jokio svetimo serverio",
+              "Mumcord pirmiau vieną kartą paklausia, nes kiti mato tavo IP adresą; tai gali pakeisti nustatymuose",
+              "Taip viso dydžio paveikslėliai atkeliauja daug greičiau; jei joks tiesioginis ryšys nepavyksta, viskas veikia kaip anksčiau",
+              "Uždarius paveikslėlių peržiūros programą perdavimas sustabdomas"
+            ]
+          },
+          {
+            "title": "Žiūrėjimas kartu (beta)",
+            "items": [
+              "YouTube žiūrėjimas kartu: visi balso kanale vienu metu žiūri tą patį vaizdo įrašą, bet kas gali pristabdyti ir persukti",
+              "Bendrink ekraną arba langą, jei nori, su garsu, iki 8 žiūrovų, numatytai 720p, 30 kadrų per sekundę"
+            ]
+          },
+          {
+            "title": "Diegimas Linux sistemoje ir atnaujinimai",
+            "items": [
+              "Paketai Debian ir Ubuntu (.deb), Fedora ir openSUSE (.rpm), Arch (AUR: mumcord-bin) ir AppImage, kiekvienas x86_64 ir ARM64",
+              "Diegimas viena eilute terminale, su meniu įrašu ir mumble:// nuorodų palaikymu",
+              "„Paleisti Mumcord prisijungus“ kiekvienoje sistemoje",
+              "Pasirinktinai priminimas, kai išeina nauja versija; Mumcord klausia GitHub ne dažniau kaip kartą per dieną"
+            ]
+          }
         ]
       },
       {
@@ -1233,7 +1287,7 @@
         "linux": "yes",
         "windows": "yes",
         "macos": "no",
-        "note": "Permatomas, spustelėjimus praleidžiantis ir visada viršuje, su pasirenkamu kampu, dydžiu ir permatomumu. X11 ir Wayland aplinkose; KDE Wayland aplinkoje Mumcord vienu spustelėjimu sukuria lango taisyklę. Su 2 epiku perdangos langas dingsta ir lieka tik perdanga žaidime."
+        "note": "Permatomas, spustelėjimus praleidžiantis ir visada viršuje, su pasirenkamu kampu, dydžiu ir permatomumu. X11 ir Wayland aplinkose; KDE Wayland aplinkoje Mumcord vienu spustelėjimu sukuria lango taisyklę. Nuo 0.4.0 versijos perdangos langas dingsta ir lieka tik perdanga žaidime."
       },
       {
         "title": "Perjungimas iš dėklo ir greitųjų nustatymų",
@@ -1259,7 +1313,7 @@
     "linkBody": "Žaidimai ir modifikacijos, palaikantys Mumble Link, patys perduoda savo pozicijas, papildinio nereikia. Tai veikia Linux, Windows ir macOS sistemose.",
     "pluginsTitle": "Oficialūs Mumble žaidimų papildiniai",
     "pluginsBody": "Mumble turi oficialius papildinius šiems žaidimams, skirtus Windows ir Linux. Mumcord naudoja įdiegto Mumble papildinius arba papildinius iš savo papildinių aplanko. Kiekvieną papildinį galima įjungti atskirai.",
-    "pluginsNote": "Daug papildinių sukurta vienai konkrečiai, dažnai senesnei žaidimo versijai ir skaito žaidimo atmintį. Kai kurios apsaugos nuo sukčiavimo sistemos gali tai pažymėti, todėl Mumcord tave perspėja prieš įjungiant. Papildiniai bus patikrinti su tikrais žaidimais 2 epike; iki tol jie lieka beta.",
+    "pluginsNote": "Daug papildinių sukurta vienai konkrečiai, dažnai senesnei žaidimo versijai ir skaito žaidimo atmintį. Kai kurios apsaugos nuo sukčiavimo sistemos gali tai pažymėti, todėl Mumcord tave perspėja prieš įjungiant. Kol kas jie lieka beta, ir 2 epike; patikra su tikrais žaidimais bus vėliau.",
     "pluginsSource": "Papildiniai Mumble saugykloje",
     "askTitle": "Trūksta žaidimo ar jis kelia problemų?",
     "askBody": "Ar žaidimas veikia, ar jam vieta blokavimo sąraše, ar papildinys nebetinka – pranešk GitHub.",
@@ -1272,7 +1326,7 @@
       "Source Engine": "Left 4 Dead 1 ir 2, daugiau Source žaidimų Linux sistemoje",
       "World of Warcraft": "32 ir 64 bitų"
     },
-    "overlayWarning": "Žinoma problema: jei uždarai Mumcord, kol veikia žaidimas su perdanga, žaidimas gali užlūžti. Pirmiau uždaryk žaidimą arba išjunk perdangą žaidime. Tai bus ištaisyta 2 epike."
+    "overlayWarning": "Žinoma problema: jei uždarai Mumcord, kol veikia žaidimas su perdanga, žaidimas gali užlūžti. Pirmiau uždaryk žaidimą arba išjunk perdangą žaidime. Tai bus ištaisyta 0.4.0 versijoje."
   },
   "blocked": [
     {

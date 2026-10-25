@@ -201,7 +201,7 @@ const source: Record<"de" | "en", GamesPage> = {
         linux: "yes",
         windows: "yes",
         macos: "no",
-        note: "Durchsichtig, durchklickbar und immer im Vordergrund, mit Ecke, Größe und Deckkraft. Unter X11 und Wayland; unter KDE Wayland legt Mumcord die Fensterregel mit einem Klick an. Mit Epic 2 fällt das Overlay-Fenster weg, dann bleibt nur das Overlay im Spiel.",
+        note: "Durchsichtig, durchklickbar und immer im Vordergrund, mit Ecke, Größe und Deckkraft. Unter X11 und Wayland; unter KDE Wayland legt Mumcord die Fensterregel mit einem Klick an. Mit 0.4.0 fällt das Overlay-Fenster weg, dann bleibt nur das Overlay im Spiel.",
       },
       {
         title: "Im Tray und in den Schnelleinstellungen schaltbar",
@@ -211,10 +211,10 @@ const source: Record<"de" | "en", GamesPage> = {
       },
     ],
     overlayWarning:
-      "Bekanntes Problem: Schließt du Mumcord, während ein Spiel mit Overlay läuft, kann das Spiel abstürzen. Schließ zuerst das Spiel oder schalte das Overlay im Spiel aus. Behoben wird das mit Epic 2.",
+      "Bekanntes Problem: Schließt du Mumcord, während ein Spiel mit Overlay läuft, kann das Spiel abstürzen. Schließ zuerst das Spiel oder schalte das Overlay im Spiel aus. Behoben wird das mit 0.4.0.",
     testedTitle: "Getestete Spiele",
     testedBody: "Mit diesen Spielen ist das Overlay im Spiel unter Linux ausprobiert:",
-    tested: ["Tyr", "Supermarket Simulator"],
+    tested: ["Tyr", "Supermarket Simulator", "Die Gilde 1 Remake: Europa 1410", "Stronghold 4 (Demo)", "Escape from Duckov", "Sid Meier's Civilization VII", "theHunter: Call of the Wild", "GG-Party"],
     testedAsk: "Läuft es bei dir in einem anderen Spiel, oder klappt etwas nicht? Schreib es in ein Issue, dann kommt das Spiel auf die Liste.",
     blockedTitle: "Hier bleibt das Overlay im Spiel aus",
     blockedBody:
@@ -231,7 +231,7 @@ const source: Record<"de" | "en", GamesPage> = {
     pluginsBody:
       "Für diese Spiele gibt es offizielle Plugins von Mumble, für Windows und Linux. Mumcord nutzt die Plugins einer installierten Mumble-Version oder aus seinem eigenen Plugin-Ordner. Jedes Plugin lässt sich einzeln einschalten.",
     pluginsNote:
-      "Viele Plugins sind für eine bestimmte, oft ältere Spielversion gebaut und lesen den Speicher des Spiels. Manche Anti-Cheat-Systeme können das melden, darauf weist Mumcord vor dem Einschalten hin. Mit echten Spielen geprüft werden die Plugins mit Epic 2, bis dahin bleiben sie Beta.",
+      "Viele Plugins sind für eine bestimmte, oft ältere Spielversion gebaut und lesen den Speicher des Spiels. Manche Anti-Cheat-Systeme können das melden, darauf weist Mumcord vor dem Einschalten hin. Sie bleiben vorerst Beta, auch mit Epic 2; mit echten Spielen geprüft werden sie später.",
     pluginsSource: "Plugins im Mumble-Repository",
     plugins: plugins(pluginNotes.de),
     askTitle: "Ein Spiel fehlt oder macht Probleme?",
@@ -300,7 +300,7 @@ const source: Record<"de" | "en", GamesPage> = {
         linux: "yes",
         windows: "yes",
         macos: "no",
-        note: "Transparent, click-through and always on top, with corner, size and opacity. On X11 and Wayland; on KDE Wayland Mumcord sets up the window rule in one click. With Epic 2 the overlay window goes away and only the in-game overlay stays.",
+        note: "Transparent, click-through and always on top, with corner, size and opacity. On X11 and Wayland; on KDE Wayland Mumcord sets up the window rule in one click. With 0.4.0 the overlay window goes away and only the in-game overlay stays.",
       },
       {
         title: "Switch from the tray and quick settings",
@@ -310,10 +310,10 @@ const source: Record<"de" | "en", GamesPage> = {
       },
     ],
     overlayWarning:
-      "Known issue: if you close Mumcord while a game with the overlay is running, the game can crash. Close the game first or turn the in-game overlay off. This gets fixed in Epic 2.",
+      "Known issue: if you close Mumcord while a game with the overlay is running, the game can crash. Close the game first or turn the in-game overlay off. This gets fixed in 0.4.0.",
     testedTitle: "Tested games",
     testedBody: "The in-game overlay has been tried on Linux with these games:",
-    tested: ["Tyr", "Supermarket Simulator"],
+    tested: ["Tyr", "Supermarket Simulator", "Die Gilde 1 Remake: Europa 1410", "Stronghold 4 (Demo)", "Escape from Duckov", "Sid Meier's Civilization VII", "theHunter: Call of the Wild", "GG-Party"],
     testedAsk: "Does it work for you in another game, or does something break? Open an issue and the game goes on the list.",
     blockedTitle: "Where the in-game overlay stays off",
     blockedBody:
@@ -330,7 +330,7 @@ const source: Record<"de" | "en", GamesPage> = {
     pluginsBody:
       "Mumble has official plugins for these games, for Windows and Linux. Mumcord uses the plugins of an installed Mumble or from its own plugin folder. Each plugin can be switched on by itself.",
     pluginsNote:
-      "Many plugins are built for one specific, often older game version and read the game's memory. Some anti-cheat systems may flag that, and Mumcord tells you before you turn one on. The plugins get checked with real games in Epic 2; until then they stay beta.",
+      "Many plugins are built for one specific, often older game version and read the game's memory. Some anti-cheat systems may flag that, and Mumcord tells you before you turn one on. They stay beta for now, Epic 2 included; checking them with real games comes later.",
     pluginsSource: "Plugins in the Mumble repository",
     plugins: plugins(pluginNotes.en),
     askTitle: "A game is missing or causes trouble?",
@@ -422,7 +422,8 @@ const blockedSource: Record<"de" | "en", BlockedGame[]> = {
 const mergeGames = (en: GamesPage, tr: GamesText | undefined): GamesPage => {
   if (!tr) return en;
   const { pluginNotes: notes, ...words } = tr;
-  return { ...en, ...words, plugins: plugins({ ...pluginNotes.en, ...notes }) };
+  // Game titles are not translated, so the tested list always comes from English.
+  return { ...en, ...words, tested: en.tested, plugins: plugins({ ...pluginNotes.en, ...notes }) };
 };
 
 // Anti-cheat names and sources stay as in English; only the game name and the reason change.

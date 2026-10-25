@@ -326,8 +326,8 @@
         },
         {
           "tag": "Epic 2",
-          "title": "Mai multe servere și teme proprii",
-          "body": "Citești pe toate, vorbești pe unul. Plus teme personalizate cu culori și presetări, care se pot partaja ca text: chatul arată un card de previzualizare, iar un clic importă tema. Și: calitatea conexiunii pentru toți, imagini la dimensiune completă direct de la Mumcord la Mumcord și overlay-ul în joc și pe Windows, în timp ce fereastra overlay dispare. La final, ca beta: watch party pe YouTube și partajarea ecranului."
+          "title": "Mai multe servere, teme și finisaje",
+          "body": "Vine ca 0.4.0: până la cinci servere deodată, vorbești pe unul și citești pe toate. Teme proprii, care se pot partaja în chat, și pe server. Plus overlay-ul în joc pe Windows, calitatea conexiunii celorlalți, pachete Linux cu instalare dintr-o singură linie și, ca beta, watch party pe YouTube și partajarea ecranului."
         },
         {
           "tag": "Epic 3",
@@ -815,7 +815,7 @@
         }
       ],
       "known": [
-        "Dacă închizi Mumcord cât timp rulează un joc cu overlay-ul, jocul poate da crash. Închide mai întâi jocul sau oprește overlay-ul în joc; se rezolvă în Epic 2.",
+        "Dacă închizi Mumcord cât timp rulează un joc cu overlay-ul, jocul poate da crash. Închide mai întâi jocul sau oprește overlay-ul în joc; se rezolvă în 0.4.0.",
         "Instalatoarele sunt încă nesemnate."
       ]
     },
@@ -1016,7 +1016,8 @@
     "never": "Ce nu se va întâmpla niciodată",
     "neverItems": [
       "Nimic pe server: fără servicii însoțitoare, fără pluginuri de server, fără configurare pe server. Mumcord merge cu orice server Mumble standard.",
-      "Aplicații mobile și o versiune web."
+      "Aplicații mobile și o versiune web.",
+      "Un server releu pentru conexiunile directe: dacă nu merge nicio cale directă, Mumcord trece în schimb prin serverul Mumble."
     ],
     "ideaTitle": "Îți lipsește ceva?",
     "ideaBody": "Cererile ajung în issue-urile de pe GitHub și contează la planificare.",
@@ -1100,26 +1101,79 @@
       },
       {
         "id": "epic-2",
-        "title": "Mai multe servere și teme proprii",
-        "summary": "Peste tot deodată, exact cum îți place, iar la final vizionare împreună.",
-        "items": [
-          "Conectare la mai multe servere deodată: citești pe toate, vorbești pe unul",
-          "Teme personalizate cu setări de culoare și presetări",
-          "Teme partajate ca text: chatul arată un card de previzualizare, un clic importă tema",
-          "Vezi calitatea conexiunii, a celorlalți și a ta: ping, pierdere de pachete, lățime de bandă și dacă vocea trece prin UDP sau TCP, în meniu și în profil, opțional cu o pictogramă de semnal",
-          "Un aspect unitar: liste derulante pe tema ta în loc de cele ale browserului, fiecare câmp din setări aliniat frumos",
-          "O bară de progres subțire sub imaginile din chat cât timp se încarcă dimensiunea completă",
-          "Imaginile la dimensiune completă merg direct de la Mumcord la Mumcord când se poate, ceea ce e mult mai rapid. Se poate dezactiva din setări, pentru că ceilalți îți văd adresa IP",
-          "Rămâne doar overlay-ul în joc: fereastra overlay dispare. Windows primește un overlay când overlay-ul în joc e gata acolo",
-          "Reparat: închiderea Mumcord nu mai dă crash unui joc pornit care folosește overlay-ul",
-          "Preluat din Epic 1: overlay în joc pe Windows, cu Steam din Flatpak și pe ecrane HDR",
-          "Preluat din Epic 1: „Intră în canal” pentru prieteni de pe alt server",
-          "Preluat din Epic 1: overlay-ul rămâne deasupra și în jocurile pe ecran complet fără margini",
-          "Preluat din Epic 1: „Intră în joc” și pentru jocurile detectate prin Mumble Link",
-          "Preluat din Epic 1: închiderea vizualizatorului de imagini oprește un transfer în curs al unei imagini la dimensiune completă",
-          "Preluat din Epic 1: verificarea pluginurilor de jocuri cu jocuri reale, ca audio pozițional, pluginurile și imaginile la dimensiune completă să poată ieși din beta",
-          "La final, ca beta: watch party pe YouTube, toți din canal se uită la același video deodată, cu redare, pauză și derulare sincronizate",
-          "La final, ca beta: partajarea ecranului între utilizatorii Mumcord, direct și fără serverul altcuiva, prin IPv6, redirecționarea porturilor din routerul tău sau propria ta rețea"
+        "title": "Mai multe servere, teme și finisaje",
+        "summary": "Totul apare împreună ca versiunea 0.4.0: mai multe servere, teme proprii, overlay-ul în joc pe Windows și primele conexiuni directe între utilizatorii Mumcord. Audio pozițional, pluginurile de jocuri și imaginile la dimensiune completă rămân beta.",
+        "groups": [
+          {
+            "title": "Mai multe servere deodată",
+            "items": [
+              "Până la 5 servere conectate deodată, reglabil de la 1 la 15. Vorbești pe unul, citești, scrii și primești notificări pe toate",
+              "Serverele marcate cu „Conectează mereu la pornire” și cele deschise data trecută se conectează singure; fiecare server se reconectează singur după o întrerupere",
+              "Notificările și mesajele private arată numele serverului, notificările se pot opri pe fiecare server",
+              "„Intră în canal” și pentru prieteni de pe alt server; linkurile mumble:// spre un server conectat te duc direct acolo"
+            ]
+          },
+          {
+            "title": "Teme și aspect",
+            "items": [
+              "Teme proprii din câteva culori de bază, cu presetări și previzualizare live; Mumcord păstrează contrastul lizibil",
+              "Teme partajate ca text: chatul arată un card de previzualizare, un clic aplică tema aplicației sau unui server",
+              "O temă pe fiecare server, dacă vrei",
+              "Aspectul acestui site în aplicație: butoane strălucitoare, degradeuri, efecte de sticlă și o granulație fină de film, se pot dezactiva"
+            ]
+          },
+          {
+            "title": "Finisaje și servere mari",
+            "items": [
+              "Liste derulante pe tema ta în loc de cele ale browserului, fiecare câmp din setări aliniat frumos",
+              "O bară de progres subțire sub imaginile din chat cât timp se încarcă dimensiunea completă",
+              "Serverele mari nu mai îngheață la prima afișare, plus comutatoarele „Ascunde canalele goale” și „Cei care vorbesc primii”",
+              "Mesajele contează ca trimise abia când serverul le confirmă; cele refuzate se pot retrimite",
+              "Comentariu de profil cu bold, italic, linkuri și liste"
+            ]
+          },
+          {
+            "title": "Calitatea conexiunii",
+            "items": [
+              "Ping, pierdere de pachete, lățime de bandă și UDP sau TCP în profilul și meniul unei persoane, și pentru tine",
+              "O mică pictogramă de semnal lângă cei cu o conexiune slabă, se poate dezactiva"
+            ]
+          },
+          {
+            "title": "Overlay",
+            "items": [
+              "Overlay-ul în joc și pe Windows, prin DirectX 11 și 12, cu aceleași setări și aceeași listă anti-cheat ca pe Linux",
+              "Culori corecte în jocurile HDR, jocuri din Steam din Flatpak, jocuri pe ecran complet fără margini verificate pe KDE și GNOME",
+              "Reparat: închiderea sau actualizarea Mumcord nu mai dă crash unui joc pornit",
+              "Fereastra overlay dispare; dacă o foloseai, un aviz unic te duce la setările overlay-ului în joc",
+              "„Intră în joc” și pentru jocurile care își partajează adresa serverului prin Mumble Link"
+            ]
+          },
+          {
+            "title": "Direct de la Mumcord la Mumcord",
+            "items": [
+              "Conexiuni directe, criptate, între utilizatorii Mumcord prin IPv6, redirecționarea porturilor din routerul tău sau propria ta rețea, fără serverul altcuiva",
+              "Mumcord întreabă o dată înainte, pentru că ceilalți îți văd adresa IP; poți schimba asta din setări",
+              "Așa imaginile la dimensiune completă ajung mult mai repede; dacă nu merge nicio conexiune directă, merge ca înainte",
+              "Închiderea vizualizatorului de imagini oprește transferul"
+            ]
+          },
+          {
+            "title": "Vizionare împreună (beta)",
+            "items": [
+              "Watch party pe YouTube: toți din canalul vocal se uită la același video deodată, oricine poate pune pauză și derula",
+              "Partajează un ecran sau o fereastră, cu sunet dacă vrei, pentru până la 8 spectatori, implicit 720p la 30 de cadre pe secundă"
+            ]
+          },
+          {
+            "title": "Instalare pe Linux și actualizări",
+            "items": [
+              "Pachete pentru Debian și Ubuntu (.deb), Fedora și openSUSE (.rpm), Arch (AUR: mumcord-bin) și AppImage, fiecare pentru x86_64 și ARM64",
+              "Instalare dintr-o linie în terminal, cu intrare în meniu și suport pentru linkuri mumble://",
+              "„Pornește Mumcord când mă conectez” pe orice sistem",
+              "Opțional un indiciu când apare o versiune nouă; Mumcord întreabă GitHub cel mult o dată pe zi"
+            ]
+          }
         ]
       },
       {
@@ -1233,7 +1287,7 @@
         "linux": "yes",
         "windows": "yes",
         "macos": "no",
-        "note": "Transparentă, prin care poți da clic și mereu deasupra, cu colț, dimensiune și opacitate. Pe X11 și Wayland; pe KDE Wayland, Mumcord configurează regula de fereastră dintr-un clic. Odată cu Epic 2, fereastra overlay dispare și rămâne doar overlay-ul în joc."
+        "note": "Transparentă, prin care poți da clic și mereu deasupra, cu colț, dimensiune și opacitate. Pe X11 și Wayland; pe KDE Wayland, Mumcord configurează regula de fereastră dintr-un clic. Odată cu 0.4.0, fereastra overlay dispare și rămâne doar overlay-ul în joc."
       },
       {
         "title": "Comutare din bara de sistem și din setările rapide",
@@ -1259,7 +1313,7 @@
     "linkBody": "Jocurile și modurile care suportă Mumble Link își livrează singure pozițiile, fără niciun plugin. Merge pe Linux, Windows și macOS.",
     "pluginsTitle": "Pluginurile oficiale de jocuri ale Mumble",
     "pluginsBody": "Mumble are pluginuri oficiale pentru aceste jocuri, pentru Windows și Linux. Mumcord folosește pluginurile unui Mumble instalat sau pe cele din propriul folder de pluginuri. Fiecare plugin se poate porni separat.",
-    "pluginsNote": "Multe pluginuri sunt făcute pentru o anumită versiune a jocului, adesea mai veche, și citesc memoria jocului. Unele sisteme anti-cheat pot semnala asta, iar Mumcord te avertizează înainte să pornești unul. Pluginurile vor fi verificate cu jocuri reale în Epic 2; până atunci rămân beta.",
+    "pluginsNote": "Multe pluginuri sunt făcute pentru o anumită versiune a jocului, adesea mai veche, și citesc memoria jocului. Unele sisteme anti-cheat pot semnala asta, iar Mumcord te avertizează înainte să pornești unul. Deocamdată rămân beta, inclusiv în Epic 2; verificarea cu jocuri reale vine mai târziu.",
     "pluginsSource": "Pluginurile din repository-ul Mumble",
     "askTitle": "Lipsește un joc sau face probleme?",
     "askBody": "Fie că un joc merge, că ar trebui pus pe lista de blocare sau că un plugin nu se mai potrivește: raportează pe GitHub.",
@@ -1272,7 +1326,7 @@
       "Source Engine": "Left 4 Dead 1 și 2, mai multe jocuri Source pe Linux",
       "World of Warcraft": "32 și 64 de biți"
     },
-    "overlayWarning": "Problemă cunoscută: dacă închizi Mumcord cât timp rulează un joc cu overlay-ul, jocul poate da crash. Închide mai întâi jocul sau oprește overlay-ul în joc. Se rezolvă în Epic 2."
+    "overlayWarning": "Problemă cunoscută: dacă închizi Mumcord cât timp rulează un joc cu overlay-ul, jocul poate da crash. Închide mai întâi jocul sau oprește overlay-ul în joc. Se rezolvă în 0.4.0."
   },
   "blocked": [
     {

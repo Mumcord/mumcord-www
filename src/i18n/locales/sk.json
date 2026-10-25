@@ -326,8 +326,8 @@
         },
         {
           "tag": "Epic 2",
-          "title": "Viac serverov a vlastné témy",
-          "body": "Čítaj na všetkých, hovor na jednom. K tomu vlastné témy s farbami a predvoľbami, zdieľateľné ako text: chat ukáže kartu s náhľadom, jedným klikom tému importuješ. Ďalej: kvalita pripojenia pre všetkých, obrázky v plnej veľkosti priamo z Mumcordu do Mumcordu a herný overlay aj na Windows, zatiaľ čo overlay okno zmizne. Na záver, ako beta: spoločné pozeranie YouTube a zdieľanie obrazovky."
+          "title": "Viac serverov, témy a vyladenie",
+          "body": "Prichádza ako 0.4.0: až päť serverov naraz, hovor na jednom a čítaj na všetkých. Vlastné témy, zdieľateľné v chate, aj pre každý server. K tomu herný overlay na Windows, kvalita pripojenia ostatných, balíky pre Linux s inštaláciou jedným riadkom a ako beta spoločné pozeranie YouTube a zdieľanie obrazovky."
         },
         {
           "tag": "Epic 3",
@@ -815,7 +815,7 @@
         }
       ],
       "known": [
-        "Ak zatvoríš Mumcord, kým beží hra s overlayom, hra môže spadnúť. Najprv zatvor hru alebo vypni herný overlay; opraví sa to v Epicu 2.",
+        "Ak zatvoríš Mumcord, kým beží hra s overlayom, hra môže spadnúť. Najprv zatvor hru alebo vypni herný overlay; opraví sa to v 0.4.0.",
         "Inštalátory sú stále nepodpísané."
       ]
     },
@@ -1016,7 +1016,8 @@
     "never": "Čo sa nikdy nestane",
     "neverItems": [
       "Čokoľvek na serveri: žiadne sprievodné služby, žiadne serverové pluginy, žiadna konfigurácia servera. Mumcord funguje s každým štandardným Mumble serverom.",
-      "Mobilné aplikácie a webová verzia."
+      "Mobilné aplikácie a webová verzia.",
+      "Relay server pre priame spojenia: ak nefunguje žiadna priama cesta, Mumcord ide namiesto toho cez Mumble server."
     ],
     "ideaTitle": "Niečo ti chýba?",
     "ideaBody": "Požiadavky idú do issues na GitHube a premietajú sa do plánovania.",
@@ -1100,26 +1101,79 @@
       },
       {
         "id": "epic-2",
-        "title": "Viac serverov a vlastné témy",
-        "summary": "Všade naraz, tak, ako to máš rád, a na záver spoločné pozeranie.",
-        "items": [
-          "Pripojenie k viacerým serverom naraz, čítaj na všetkých, hovor na jednom",
-          "Vlastné témy s nastavením farieb a predvoľbami",
-          "Zdieľanie tém ako text: chat ukáže kartu s náhľadom, jedným klikom tému importuješ",
-          "Kvalita pripojenia ostatných aj tvoja: ping, strata paketov, šírka pásma a či hlas ide cez UDP alebo TCP, v menu a profile, voliteľne s ikonou signálu",
-          "Jednotný vzhľad: rozbaľovacie zoznamy v štýle témy namiesto tých z prehliadača, každé pole v nastaveniach pekne zarovnané",
-          "Tenký ukazovateľ priebehu pod obrázkami v chate, kým sa načíta plná veľkosť",
-          "Obrázky v plnej veľkosti idú, keď sa dá, priamo z Mumcordu do Mumcordu, čo je oveľa rýchlejšie. Dá sa to vypnúť v nastaveniach, lebo ostatní vidia tvoju IP adresu",
-          "Zostane len herný overlay: overlay okno zmizne. Windows dostane overlay, keď tam bude herný overlay hotový",
-          "Opravené: zatvorenie Mumcordu už nezhodí bežiacu hru, ktorá používa overlay",
-          "Presunuté z Epicu 1: herný overlay na Windows, so Steamom vo Flatpaku a na HDR obrazovkách",
-          "Presunuté z Epicu 1: „Pripojiť sa do kanála“ pri priateľoch na inom serveri",
-          "Presunuté z Epicu 1: overlay zostane navrchu aj v hrách na celú obrazovku bez okrajov",
-          "Presunuté z Epicu 1: „Pripojiť sa do hry“ aj pri hrách rozpoznaných cez Mumble Link",
-          "Presunuté z Epicu 1: zatvorenie prehliadača obrázkov zastaví prebiehajúci prenos obrázka v plnej veľkosti",
-          "Presunuté z Epicu 1: otestovať herné pluginy so skutočnými hrami, aby priestorový zvuk, pluginy a obrázky v plnej veľkosti mohli opustiť betu",
-          "Na záver, ako beta: spoločné pozeranie YouTube, všetci v kanáli pozerajú to isté video naraz, so synchronizovaným prehrávaním, pauzou aj pretáčaním",
-          "Na záver, ako beta: zdieľanie obrazovky medzi používateľmi Mumcordu, priamo a bez cudzieho servera, cez IPv6, presmerovanie portov na tvojom routeri alebo tvoju vlastnú sieť"
+        "title": "Viac serverov, témy a vyladenie",
+        "summary": "Všetko vyjde naraz ako verzia 0.4.0: viac serverov, vlastné témy, herný overlay na Windows a prvé priame spojenia medzi používateľmi Mumcordu. Priestorový zvuk, herné pluginy a obrázky v plnej veľkosti zostávajú v bete.",
+        "groups": [
+          {
+            "title": "Viac serverov naraz",
+            "items": [
+              "Až 5 serverov pripojených naraz, nastaviteľné od 1 do 15. Hovor na jednom, čítaj, píš a dostávaj upozornenia na všetkých",
+              "Servery označené „Vždy pripojiť pri štarte“ a tie otvorené naposledy sa pripoja samy; každý server sa po výpadku sám znova pripojí",
+              "Upozornenia a súkromné správy ukazujú názov servera, upozornenia sa dajú stlmiť pre každý server zvlášť",
+              "„Pripojiť sa do kanála“ aj pri priateľoch na inom serveri; mumble:// odkazy na pripojený server ťa zavedú rovno tam"
+            ]
+          },
+          {
+            "title": "Témy a vzhľad",
+            "items": [
+              "Vlastné témy z pár hlavných farieb, s predvoľbami a živým náhľadom; Mumcord udrží kontrast čitateľný",
+              "Zdieľanie tém ako text: chat ukáže kartu s náhľadom, jedným klikom použiješ tému na aplikáciu alebo na server",
+              "Ak chceš, vlastná téma pre každý server",
+              "Vzhľad tohto webu v aplikácii: žiariace tlačidlá, prechody farieb, sklenené efekty a jemné filmové zrno, dá sa vypnúť"
+            ]
+          },
+          {
+            "title": "Vyladenie a veľké servery",
+            "items": [
+              "Rozbaľovacie zoznamy v štýle témy namiesto tých z prehliadača, každé pole v nastaveniach pekne zarovnané",
+              "Tenký ukazovateľ priebehu pod obrázkami v chate, kým sa načíta plná veľkosť",
+              "Veľké servery už nezamrznú pri prvom zobrazení, k tomu prepínače „Skryť prázdne kanály“ a „Hovoriaci navrchu“",
+              "Správy sa rátajú ako odoslané až vtedy, keď ich server potvrdí; odmietnuté sa dajú poslať znova",
+              "Komentár v profile s tučným písmom, kurzívou, odkazmi a zoznamami"
+            ]
+          },
+          {
+            "title": "Kvalita pripojenia",
+            "items": [
+              "Ping, strata paketov, šírka pásma a UDP alebo TCP v profile a menu človeka, aj pre teba",
+              "Malá ikona signálu pri ľuďoch so slabým pripojením, dá sa vypnúť"
+            ]
+          },
+          {
+            "title": "Overlay",
+            "items": [
+              "Herný overlay aj na Windows, cez DirectX 11 a 12, s rovnakými nastaveniami a anti-cheat zoznamom ako na Linuxe",
+              "Správne farby v HDR hrách, hry zo Steamu vo Flatpaku, hry na celú obrazovku bez okrajov preverené na KDE a GNOME",
+              "Opravené: zatvorenie alebo aktualizácia Mumcordu už nezhodí bežiacu hru",
+              "Overlay okno zmizne; ak si ho používal, jednorazové upozornenie ťa zavedie do nastavení herného overlayu",
+              "„Pripojiť sa do hry“ aj pri hrách, ktoré cez Mumble Link zdieľajú adresu svojho servera"
+            ]
+          },
+          {
+            "title": "Priamo z Mumcordu do Mumcordu",
+            "items": [
+              "Priame, šifrované spojenia medzi používateľmi Mumcordu cez IPv6, presmerovanie portov na tvojom routeri alebo tvoju vlastnú sieť, bez cudzieho servera",
+              "Mumcord sa najprv raz opýta, lebo ostatní vidia tvoju IP adresu; zmeniť to môžeš v nastaveniach",
+              "Obrázky v plnej veľkosti tak prídu oveľa rýchlejšie; ak žiadne priame spojenie nefunguje, ide to ako doteraz",
+              "Zatvorenie prehliadača obrázkov zastaví prenos"
+            ]
+          },
+          {
+            "title": "Spoločné pozeranie (beta)",
+            "items": [
+              "Spoločné pozeranie YouTube: všetci v hlasovom kanáli pozerajú to isté video naraz, ktokoľvek môže pozastaviť a pretáčať",
+              "Zdieľaj obrazovku alebo okno, ak chceš, aj so zvukom, až pre 8 divákov, predvolene 720p pri 30 snímkach za sekundu"
+            ]
+          },
+          {
+            "title": "Inštalácia na Linuxe a aktualizácie",
+            "items": [
+              "Balíky pre Debian a Ubuntu (.deb), Fedoru a openSUSE (.rpm), Arch (AUR: mumcord-bin) a AppImage, každý pre x86_64 aj ARM64",
+              "Inštalácia jedným riadkom v termináli, s položkou v menu a podporou mumble:// odkazov",
+              "„Spustiť Mumcord po prihlásení“ na každom systéme",
+              "Voliteľne upozornenie, keď vyjde nová verzia; Mumcord sa GitHubu pýta najviac raz denne"
+            ]
+          }
         ]
       },
       {
@@ -1233,7 +1287,7 @@
         "linux": "yes",
         "windows": "yes",
         "macos": "no",
-        "note": "Priehľadné, dá sa cezeň klikať a je vždy navrchu, s nastavením rohu, veľkosti a priehľadnosti. Na X11 aj Waylande; na KDE Wayland Mumcord jedným klikom nastaví pravidlo okna. S Epicom 2 overlay okno zmizne a zostane len herný overlay."
+        "note": "Priehľadné, dá sa cezeň klikať a je vždy navrchu, s nastavením rohu, veľkosti a priehľadnosti. Na X11 aj Waylande; na KDE Wayland Mumcord jedným klikom nastaví pravidlo okna. S verziou 0.4.0 overlay okno zmizne a zostane len herný overlay."
       },
       {
         "title": "Prepínanie zo systémovej lišty a rýchlych nastavení",
@@ -1259,7 +1313,7 @@
     "linkBody": "Hry a módy, ktoré podporujú Mumble Link, dodávajú polohy samy, bez pluginu. Funguje to na Linuxe, Windows aj macOS.",
     "pluginsTitle": "Oficiálne herné pluginy Mumble",
     "pluginsBody": "Mumble má pre tieto hry oficiálne pluginy pre Windows a Linux. Mumcord používa pluginy z nainštalovaného Mumble alebo zo svojho vlastného priečinka pluginov. Každý plugin sa dá zapnúť samostatne.",
-    "pluginsNote": "Mnohé pluginy sú vytvorené pre jednu konkrétnu, často staršiu verziu hry a čítajú pamäť hry. Niektoré anti-cheat systémy to môžu označiť a Mumcord ťa na to upozorní skôr, než plugin zapneš. Pluginy sa v Epicu 2 preveria so skutočnými hrami; dovtedy zostávajú v bete.",
+    "pluginsNote": "Mnohé pluginy sú vytvorené pre jednu konkrétnu, často staršiu verziu hry a čítajú pamäť hry. Niektoré anti-cheat systémy to môžu označiť a Mumcord ťa na to upozorní skôr, než plugin zapneš. Zatiaľ zostávajú v bete, aj v Epicu 2; preverenie so skutočnými hrami príde neskôr.",
     "pluginsSource": "Pluginy v repozitári Mumble",
     "askTitle": "Chýba nejaká hra alebo robí problémy?",
     "askBody": "Či hra funguje, patrí na zoznam blokovaných, alebo plugin už nesedí: nahlás to na GitHube.",
@@ -1272,7 +1326,7 @@
       "Source Engine": "Left 4 Dead 1 a 2, ďalšie hry na Source na Linuxe",
       "World of Warcraft": "32 a 64 bit"
     },
-    "overlayWarning": "Známy problém: ak zatvoríš Mumcord, kým beží hra s overlayom, hra môže spadnúť. Najprv zatvor hru alebo vypni herný overlay. Opraví sa to v Epicu 2."
+    "overlayWarning": "Známy problém: ak zatvoríš Mumcord, kým beží hra s overlayom, hra môže spadnúť. Najprv zatvor hru alebo vypni herný overlay. Opraví sa to v 0.4.0."
   },
   "blocked": [
     {
