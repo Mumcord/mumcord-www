@@ -44,6 +44,8 @@ export interface GamesPage {
   testedTitle: string;
   testedBody: string;
   tested: string[];
+  notWorkingTitle: string;
+  notWorking: string[];
   testedAsk: string;
   blockedTitle: string;
   blockedBody: string;
@@ -214,7 +216,9 @@ const source: Record<"de" | "en", GamesPage> = {
       "Bekanntes Problem: Schließt du Mumcord, während ein Spiel mit Overlay läuft, kann das Spiel abstürzen. Schließ zuerst das Spiel oder schalte das Overlay im Spiel aus. Behoben wird das mit 0.4.0.",
     testedTitle: "Getestete Spiele",
     testedBody: "Mit diesen Spielen ist das Overlay im Spiel unter Linux ausprobiert:",
-    tested: ["Tyr", "Supermarket Simulator", "Die Gilde 1 Remake: Europa 1410", "Stronghold 4 (Demo)", "Escape from Duckov", "Sid Meier's Civilization VII", "theHunter: Call of the Wild", "GG-Party"],
+    tested: ["Tyr", "Supermarket Simulator", "Die Gilde 1 Remake: Europa 1410", "Stronghold 4 (Demo)", "Escape from Duckov", "Sid Meier's Civilization VII", "theHunter: Call of the Wild", "GG-Party", "Train Sim World 6", "Ready or Not", "Big Ambitions", "Grand Theft Auto V Enhanced", "No Man's Sky", "TCG Card Shop Simulator", "Tropico 6", "Workers & Resources: Soviet Republic", "ARC Raiders"],
+    notWorkingTitle: "Geht noch nicht",
+    notWorking: ["Project Hospital", "Euro Truck Simulator 2", "Hearts of Iron IV"],
     testedAsk: "Läuft es bei dir in einem anderen Spiel, oder klappt etwas nicht? Schreib es in ein Issue, dann kommt das Spiel auf die Liste.",
     blockedTitle: "Hier bleibt das Overlay im Spiel aus",
     blockedBody:
@@ -313,7 +317,9 @@ const source: Record<"de" | "en", GamesPage> = {
       "Known issue: if you close Mumcord while a game with the overlay is running, the game can crash. Close the game first or turn the in-game overlay off. This gets fixed in 0.4.0.",
     testedTitle: "Tested games",
     testedBody: "The in-game overlay has been tried on Linux with these games:",
-    tested: ["Tyr", "Supermarket Simulator", "Die Gilde 1 Remake: Europa 1410", "Stronghold 4 (Demo)", "Escape from Duckov", "Sid Meier's Civilization VII", "theHunter: Call of the Wild", "GG-Party"],
+    tested: ["Tyr", "Supermarket Simulator", "Die Gilde 1 Remake: Europa 1410", "Stronghold 4 (Demo)", "Escape from Duckov", "Sid Meier's Civilization VII", "theHunter: Call of the Wild", "GG-Party", "Train Sim World 6", "Ready or Not", "Big Ambitions", "Grand Theft Auto V Enhanced", "No Man's Sky", "TCG Card Shop Simulator", "Tropico 6", "Workers & Resources: Soviet Republic", "ARC Raiders"],
+    notWorkingTitle: "Doesn't work yet",
+    notWorking: ["Project Hospital", "Euro Truck Simulator 2", "Hearts of Iron IV"],
     testedAsk: "Does it work for you in another game, or does something break? Open an issue and the game goes on the list.",
     blockedTitle: "Where the in-game overlay stays off",
     blockedBody:
@@ -423,7 +429,7 @@ const mergeGames = (en: GamesPage, tr: GamesText | undefined): GamesPage => {
   if (!tr) return en;
   const { pluginNotes: notes, ...words } = tr;
   // Game titles are not translated, so the tested list always comes from English.
-  return { ...en, ...words, tested: en.tested, plugins: plugins({ ...pluginNotes.en, ...notes }) };
+  return { ...en, ...words, tested: en.tested, notWorking: en.notWorking, plugins: plugins({ ...pluginNotes.en, ...notes }) };
 };
 
 // Anti-cheat names and sources stay as in English; only the game name and the reason change.
