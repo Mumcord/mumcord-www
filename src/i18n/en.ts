@@ -170,7 +170,7 @@ export const en: Dict = {
     title: "A window that feels familiar.",
     items: [
       { src: "wizard-1-identity", caption: "Set up in about a minute: identity, microphone, talk mode." },
-      { src: "wizard-3-talk-mode", caption: "Voice activation or push-to-talk, mumble:// links and start at login." },
+      { src: "wizard-4-talk-mode", caption: "Voice activation or push-to-talk, mumble:// links and start at login." },
       { src: "follow-unread-badge", caption: "Follow channels with the eye, unread messages as a count." },
       { src: "notification-toast", caption: "A small pop-up announces new messages from other channels." },
       { src: "chat-compact", caption: "Compact chat layout: time, name and message on one line." },
@@ -179,10 +179,10 @@ export const en: Dict = {
       { src: "search", caption: "Ctrl+K searches channels and people." },
       { src: "banner-rejoin", caption: "After a restart, back into your last voice channel." },
       { src: "dialog-certificate-trust", caption: "Trust on first contact, with the fingerprint." },
-      { src: "settings-07-sounds-notifications-dark", caption: "Sounds and notifications, set per event." },
+      { src: "settings-08-sounds-notifications-dark", caption: "Sounds and notifications, set per event." },
       { src: "settings-02-audio-dark", caption: "Switch devices without reconnecting." },
       { src: "main-light", caption: "A light theme that's fully there." },
-      { src: "settings-06-language-dark", caption: "Switch the language without a restart." },
+      { src: "settings-07-language-dark", caption: "24 official EU languages, each in its own name." },
     ],
   },
   roadmap: {

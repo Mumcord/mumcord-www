@@ -169,7 +169,7 @@ export const de = {
     title: "Ein Fenster, das sich vertraut anfühlt.",
     items: [
       { src: "wizard-1-identity", caption: "Einrichtung in etwa einer Minute: Identität, Mikrofon, Sprechmodus." },
-      { src: "wizard-3-talk-mode", caption: "Sprachaktivierung oder Push-to-Talk, mumble://-Links und Autostart." },
+      { src: "wizard-4-talk-mode", caption: "Sprachaktivierung oder Push-to-Talk, mumble://-Links und Autostart." },
       { src: "follow-unread-badge", caption: "Kanälen per Auge folgen, Ungelesenes als Zähler." },
       { src: "notification-toast", caption: "Ein kleines Pop-up meldet neue Nachrichten aus anderen Kanälen." },
       { src: "chat-compact", caption: "Kompaktes Chat-Layout: Zeit, Name und Nachricht in einer Zeile." },
@@ -178,10 +178,10 @@ export const de = {
       { src: "search", caption: "Strg+K durchsucht Kanäle und Leute." },
       { src: "banner-rejoin", caption: "Nach dem Neustart zurück in den letzten Sprachkanal." },
       { src: "dialog-certificate-trust", caption: "Vertrauen beim ersten Kontakt, mit Fingerabdruck." },
-      { src: "settings-07-sounds-notifications-dark", caption: "Töne und Benachrichtigungen, pro Ereignis einstellbar." },
+      { src: "settings-08-sounds-notifications-dark", caption: "Töne und Benachrichtigungen, pro Ereignis einstellbar." },
       { src: "settings-02-audio-dark", caption: "Geräte wechseln, ohne neu zu verbinden." },
       { src: "main-light", caption: "Helles Design, vollwertig." },
-      { src: "settings-06-language-dark", caption: "Sprache wechseln, ohne neu zu starten." },
+      { src: "settings-07-language-dark", caption: "24 Amtssprachen der EU, jede in ihrem eigenen Namen." },
     ],
   },
   roadmap: {
