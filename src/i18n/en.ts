@@ -21,7 +21,7 @@ export const en: Dict = {
     menu: "Menu",
   },
   hero: {
-    kicker: "Alpha · Open source · MIT",
+    kicker: "Alpha · Open source · AGPL",
     titleA: "Your Mumble server.",
     titleB: "Finally cosy.",
     lead:
@@ -70,7 +70,7 @@ export const en: Dict = {
         id: "audio",
         title: "Clear sound out of the box",
         body:
-          "AI noise suppression, echo cancellation and automatic gain are on. The bitrate follows your network: down when packets get lost, back up when it recovers. For music there's a music quality switch with up to 510 kbit/s.",
+          "AI noise suppression, echo cancellation and automatic gain are on. The bitrate follows your network: down when packets get lost, back up when it recovers. For music there's a music quality switch with up to 510 kbit/s, and you can set the voice activation threshold by hand.",
       },
       {
         id: "trust",
@@ -82,7 +82,13 @@ export const en: Dict = {
         id: "chat",
         title: "Discord-style chat",
         body:
-          "Avatars, grouped messages and Markdown, with a compact layout for busy channels. The channel description and welcome message are pinned on top; images are scaled to the server's limit.",
+          "Avatars, grouped messages and Markdown with a formatting toolbar and shortcuts. @mentions with autocomplete and their own sound, code with syntax highlighting. A compact layout for busy channels; the channel description and welcome message are pinned on top.",
+      },
+      {
+        id: "media",
+        title: "Links you can see",
+        body:
+          "Link previews, YouTube, Twitch and Spotify cards that load only on click, and external images right in the chat, with an image viewer and zoom. GIF favorites by right-click. All of it can be switched off and never loads from local network addresses.",
       },
       {
         id: "notify",
@@ -184,8 +190,8 @@ export const en: Dict = {
     body: "The roadmap is a proposal and may change. Mobile apps and a web version are not planned. Nothing server-side will ever be required.",
     now: "now",
     steps: [
-      { tag: "Epic 1 · 1a", title: "Everyday client", body: "Everything on this page, since version 0.1.0; currently 0.1.1. Unsigned builds for Linux, Windows and macOS.", now: true },
-      { tag: "Epic 1 · 1b", title: "More chat", body: "Dismissable link previews, YouTube, Twitch and Spotify cards that load only on click, external images with a zoomable image viewer, @mentions with their own sound, GIF favorites, code highlighting and a formatting toolbar. Plus a manual voice activation threshold and, if you like, “Now playing”: others see what music you are listening to." },
+      { tag: "Epic 1 · 1a", title: "Everyday client", body: "Done since version 0.1.0: wizard, servers, channels, voice, chat and following. Unsigned builds for Linux, Windows and macOS." },
+      { tag: "Epic 1 · 1b", title: "More chat", now: true, body: "New in 0.2.0: dismissable link previews, YouTube, Twitch and Spotify cards that load only on click, external images with a zoomable image viewer, @mentions with their own sound, GIF favorites, code highlighting and a formatting toolbar. Plus a manual voice activation threshold and, if you like, “Now playing”: others see what music you are listening to." },
       { tag: "Epic 1 · 1c", title: "In game", body: "Positional audio via Mumble Link and the official game plugins. A floating, click-through overlay shows who is talking. Optional “Now gaming” with join game via Steam, and quick settings when you right-click the gear." },
       { tag: "Epic 1 · 1d", title: "Mumcord to Mumcord", body: "Mumcord clients share the chat history of the last few days, so you can read what was written before you joined. A badge shows who uses Mumcord. Double-click for private messages, a new profile and friends with online status." },
       { tag: "Epic 2", title: "Several servers at once", body: "Read along on all of them, talk on one." },
@@ -242,7 +248,8 @@ export const en: Dict = {
     releases: "Releases",
     changelog: "Changelog",
     server: "Host a server",
-    license: "MIT License",
+    license: "License (AGPL-3.0)",
+    commercial: "Commercial license",
     imprint: "Legal notice",
     privacy: "Privacy",
     noTracking: "This site sets no cookies and loads nothing from third parties.",

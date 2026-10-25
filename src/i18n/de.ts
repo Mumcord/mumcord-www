@@ -19,7 +19,7 @@ export const de = {
     menu: "Menü",
   },
   hero: {
-    kicker: "Alpha · Open Source · MIT",
+    kicker: "Alpha · Open Source · AGPL",
     titleA: "Dein Mumble-Server.",
     titleB: "Endlich gemütlich.",
     lead:
@@ -69,7 +69,7 @@ export const de = {
         id: "audio",
         title: "Klarer Klang, von Haus aus",
         body:
-          "KI-Rauschunterdrückung, Echounterdrückung und automatische Verstärkung sind an. Die Bitrate folgt dem Netz: runter bei Paketverlust, wieder hoch, wenn es sich erholt. Für Musik gibt es einen Schalter für Musikqualität mit bis zu 510 kbit/s.",
+          "KI-Rauschunterdrückung, Echounterdrückung und automatische Verstärkung sind an. Die Bitrate folgt dem Netz: runter bei Paketverlust, wieder hoch, wenn es sich erholt. Für Musik gibt es einen Schalter für Musikqualität mit bis zu 510 kbit/s, und die Schwelle der Sprachaktivierung lässt sich von Hand setzen.",
       },
       {
         id: "trust",
@@ -81,7 +81,13 @@ export const de = {
         id: "chat",
         title: "Chat im Discord-Stil",
         body:
-          "Avatare, gruppierte Nachrichten und Markdown. Für volle Kanäle gibt es ein kompaktes Layout. Kanalbeschreibung und Willkommensnachricht sind oben angeheftet; Bilder werden auf das Server-Limit skaliert.",
+          "Avatare, gruppierte Nachrichten und Markdown mit Formatierungsleiste und Tastenkürzeln. @Erwähnungen mit Autovervollständigung und eigenem Ton, Code mit Syntax-Hervorhebung. Für volle Kanäle gibt es ein kompaktes Layout; Kanalbeschreibung und Willkommensnachricht sind oben angeheftet.",
+      },
+      {
+        id: "media",
+        title: "Links, die man sieht",
+        body:
+          "Link-Vorschauen, Karten für YouTube, Twitch und Spotify, die erst beim Klick laden, und externe Bilder direkt im Chat, mit Bildbetrachter und Zoom. GIF-Favoriten per Rechtsklick. Alles abschaltbar, nie von Adressen im lokalen Netz.",
       },
       {
         id: "notify",
@@ -183,8 +189,8 @@ export const de = {
     body: "Die Roadmap ist ein Vorschlag und kann sich ändern. Mobile Apps und eine Web-Version sind nicht geplant. Serverseitig wird nie etwas nötig sein.",
     now: "jetzt",
     steps: [
-      { tag: "Epic 1 · 1a", title: "Alltags-Client", body: "Alles auf dieser Seite, seit Version 0.1.0; aktuell 0.1.1. Unsignierte Builds für Linux, Windows und macOS.", now: true },
-      { tag: "Epic 1 · 1b", title: "Mehr Chat", body: "Link-Vorschauen zum Wegklicken, Karten für YouTube, Twitch und Spotify, die erst beim Klick laden, externe Bilder mit Bildbetrachter und Zoom, @Erwähnungen mit eigenem Ton, GIF-Favoriten, Code-Hervorhebung und eine Formatierungsleiste. Dazu eine manuelle Schwelle für die Sprachaktivierung und, wenn du willst, „Läuft gerade“: Andere sehen, welche Musik du hörst." },
+      { tag: "Epic 1 · 1a", title: "Alltags-Client", body: "Fertig seit Version 0.1.0: Wizard, Server, Kanäle, Sprache, Chat und Folgen. Unsignierte Builds für Linux, Windows und macOS." },
+      { tag: "Epic 1 · 1b", title: "Mehr Chat", now: true, body: "Neu in 0.2.0: Link-Vorschauen zum Wegklicken, Karten für YouTube, Twitch und Spotify, die erst beim Klick laden, externe Bilder mit Bildbetrachter und Zoom, @Erwähnungen mit eigenem Ton, GIF-Favoriten, Code-Hervorhebung und eine Formatierungsleiste. Dazu eine manuelle Schwelle für die Sprachaktivierung und, wenn du willst, „Läuft gerade“: Andere sehen, welche Musik du hörst." },
       { tag: "Epic 1 · 1c", title: "Im Spiel", body: "Positional Audio über Mumble Link und die offiziellen Spiel-Plugins. Ein schwebendes, durchklickbares Overlay zeigt, wer spricht. Auf Wunsch „Spielt gerade“ mit Spiel beitreten über Steam, und Schnelleinstellungen per Rechtsklick aufs Zahnrad." },
       { tag: "Epic 1 · 1d", title: "Mumcord unter sich", body: "Mumcord-Clients teilen den Chatverlauf der letzten Tage, damit du nachlesen kannst, was vor deinem Beitreten geschrieben wurde. Ein Abzeichen zeigt, wer Mumcord nutzt. Doppelklick für private Nachrichten, neues Profil und Freunde mit Online-Status." },
       { tag: "Epic 2", title: "Mehrere Server gleichzeitig", body: "Auf allen Servern mitlesen, auf einem sprechen." },
@@ -241,7 +247,8 @@ export const de = {
     releases: "Releases",
     changelog: "Changelog",
     server: "Eigener Server",
-    license: "MIT-Lizenz",
+    license: "Lizenz (AGPL-3.0)",
+    commercial: "Kommerzielle Lizenz",
     imprint: "Impressum",
     privacy: "Datenschutz",
     noTracking: "Diese Seite setzt keine Cookies und lädt nichts von Dritten.",

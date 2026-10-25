@@ -18,6 +18,53 @@ export interface ChangelogEntry {
 export const changelog: Record<Lang, ChangelogEntry[]> = {
   de: [
     {
+      version: "0.2.0",
+      summary:
+        "Stufe 1b: Der Chat kann jetzt deutlich mehr. Links, Videos, Bilder und GIFs erscheinen direkt im Chat, dazu @Erwähnungen, Code-Hervorhebung und eine Formatierungsleiste. Ab dieser Version steht Mumcord unter der GNU AGPL v3.",
+      groups: [
+        {
+          title: "Chat",
+          items: [
+            "Link-Vorschauen mit Titel, Beschreibung und Bild. An standardmäßig, abschaltbar im Wizard und in den Einstellungen; Vorschauen lassen sich pro Nachricht wegklicken.",
+            "Karten für YouTube, Twitch und Spotify. Der Player lädt erst, wenn du draufklickst.",
+            "Externe Bilder und Bildlinks direkt im Chat. Ein Klick öffnet den Bildbetrachter mit Zoom, Verschieben, Pfeiltasten durch alle Bilder des Chats und „Bild speichern“.",
+            "GIFs: Links zu Giphy und Tenor spielen direkt ab, mit Hinweis auf die Quelle. Per Rechtsklick als Favorit speichern und über den GIF-Knopf wieder senden. Eine GIF-Suche gibt es bewusst nicht, dafür müsste ein API-Schlüssel in die App.",
+            "@Erwähnungen mit Autovervollständigung. Erwähnungen werden hervorgehoben, benachrichtigen auch in stillen Kanälen und haben einen eigenen Ton; Ton und Benachrichtigung sind getrennt schaltbar.",
+            "Code-Blöcke und Inline-Code mit Syntax-Hervorhebung.",
+            "Formatierungsleiste und Kürzel: Strg+B fett, Strg+I kursiv, Strg+Shift+X durchgestrichen, Strg+E Code, Strg+K Link.",
+            "Aufräumen: Vorschauen und Bilder werden nach einstellbaren Tagen gelöscht (Standard 7), auf Wunsch auch alte Chatverläufe.",
+          ],
+        },
+        {
+          title: "Sprache und Audio",
+          items: [
+            "Sprachaktivierung mit manueller Schwelle: ein Regler über der Live-Pegelanzeige, mit kurzer Haltezeit, damit Wortenden nicht abgeschnitten werden.",
+            "„Läuft gerade“, standardmäßig aus: Andere Mumcord-Nutzer sehen Titel, Cover und Fortschritt der Musik, die du hörst. Offizielle Clients sehen eine Zeile im Kommentar. Unter Linux und Windows; macOS noch nicht.",
+            "Ist das gewählte Audiogerät weg, startet Mumcord die Streams nicht mehr ständig neu, sondern versucht es im Hintergrund weiter.",
+          ],
+        },
+        {
+          title: "Kleinigkeiten",
+          items: [
+            "Der Einstellungen-Knopf ist jetzt ein Zahnrad.",
+            "Bei Push-to-Talk zeigt das Mikrofon unten links durchgestrichen an, solange die Taste nicht gedrückt ist.",
+            "Der Chat, den du gerade offen hast, zeigt keinen kurz aufblitzenden Ungelesen-Zähler mehr.",
+          ],
+        },
+        {
+          title: "Lizenz",
+          items: [
+            "Ab 0.2.0 steht Mumcord unter der GNU AGPL v3. Für geschlossene Produkte gibt es eine kommerzielle Lizenz auf Anfrage. Versionen bis 0.1.1 bleiben MIT.",
+          ],
+        },
+      ],
+      known: [
+        "Die Installer sind weiterhin unsigniert.",
+        "„Läuft gerade“ funktioniert unter macOS noch nicht.",
+        "Positional Audio, Overlay und „Spielt gerade“ folgen mit Stufe 1c, geteilter Chatverlauf und Freunde mit Stufe 1d.",
+      ],
+    },
+    {
       version: "0.1.1",
       summary:
         "Ein kleines Update für alle, die über Mumble Musik hören oder machen: ein Schalter für Musikqualität.",
@@ -90,6 +137,53 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
     },
   ],
   en: [
+    {
+      version: "0.2.0",
+      summary:
+        "Stage 1b: the chat does a lot more now. Links, videos, images and GIFs show up right in the chat, plus @mentions, code highlighting and a formatting toolbar. From this version Mumcord is licensed under the GNU AGPL v3.",
+      groups: [
+        {
+          title: "Chat",
+          items: [
+            "Link previews with title, description and image. On by default, can be switched off in the wizard and in settings; previews can be dismissed per message.",
+            "Cards for YouTube, Twitch and Spotify. The player loads only when you click it.",
+            "External images and image links right in the chat. A click opens the image viewer with zoom, panning, arrow keys through all images of the chat and “Save image”.",
+            "GIFs: Giphy and Tenor links play inline, with a credit to the source. Save them as favorites by right-click and send them again from the GIF button. There is no GIF search on purpose, since it would need an API key inside the app.",
+            "@mentions with autocomplete. Mentions are highlighted, notify you even in quiet channels and have their own sound; sound and notification have separate switches.",
+            "Code blocks and inline code with syntax highlighting.",
+            "Formatting toolbar and shortcuts: Ctrl+B bold, Ctrl+I italic, Ctrl+Shift+X strikethrough, Ctrl+E code, Ctrl+K link.",
+            "Clean-up: previews and images are deleted after a number of days you choose (default 7), old chat history too if you want.",
+          ],
+        },
+        {
+          title: "Voice and audio",
+          items: [
+            "Voice activation with a manual threshold: a slider over the live level meter, with a short hold so word endings aren't cut off.",
+            "“Now playing”, off by default: other Mumcord users see the title, cover and progress of the music you're listening to. Official clients see a line in your comment. On Linux and Windows; not on macOS yet.",
+            "When the chosen audio device is gone, Mumcord no longer keeps restarting the streams but retries in the background.",
+          ],
+        },
+        {
+          title: "Small things",
+          items: [
+            "The settings button is a gear now.",
+            "With push-to-talk, the microphone at the bottom left shows crossed out while the key isn't held.",
+            "The chat you have open no longer flashes a brief unread count.",
+          ],
+        },
+        {
+          title: "License",
+          items: [
+            "From 0.2.0 Mumcord is licensed under the GNU AGPL v3. A commercial license for closed products is available on request. Versions up to 0.1.1 stay MIT.",
+          ],
+        },
+      ],
+      known: [
+        "Installers are still unsigned.",
+        "“Now playing” doesn't work on macOS yet.",
+        "Positional audio, the overlay and “Now gaming” follow in stage 1c, shared chat history and friends in stage 1d.",
+      ],
+    },
     {
       version: "0.1.1",
       summary: "A small update for everyone who listens to or plays music over Mumble: a music quality switch.",
