@@ -22,6 +22,12 @@ const versions = [...new Set(all.map((x) => x.since).filter((v): v is string => 
 const hasBeta = all.some((x) => x.beta);
 const sinceLabel = (v: string) => `${released.has(v) ? f.newIn : f.comingIn} ${v}`;
 const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
+const newest = versions[versions.length - 1];
+const newestCount = all.filter((x) => x.since === newest).length;
+// Shots first: the first one in a group gets the wide card, the others medium cards, text-only ones small cards.
+const ordered = (list: Feature[]) => [...withShot(list), ...textOnly(list)];
+const size = (x: Feature, i: number) => (!x.shot ? "sm" : i === 0 ? "lg" : "md");
+const pad = (n: number) => String(n).padStart(2, "0");
 // Full-size WebP for the lightbox, so a click doesn't load the original PNG.
 const full = new Map<string, string>();
 for (const g of f.groups)
@@ -29,83 +35,90 @@ for (const g of f.groups)
     if (!full.has(x.shot!)) full.set(x.shot!, (await getImage({ src: shot(x.shot!), format: "webp", width: 2400, quality: 82 })).src);
 ---
 
-<article class="wrap features-page">
-  <header class="fp-head">
+<article class="features-page">
+  <header class="wrap fp-head">
+    <div class="fp-head-glow" aria-hidden="true"></div>
     <p class="label" data-reveal>{f.label}</p>
-    <h1 class="h2" data-reveal>{f.title}</h1>
+    <h1 class="fp-title" data-reveal>{f.title}</h1>
     <p class="body" data-reveal>{f.intro}</p>
     <p class="fp-actions" data-reveal>
-      <a class="btn btn-small" href={IDEA_URL} rel="noopener">{f.idea}</a>
+      <a class="btn btn-small btn-glow" href={IDEA_URL} rel="noopener">{f.idea}</a>
       <a class="text-link" href={BUG_URL} rel="noopener">{f.bug} →</a>
     </p>
-    <div class="fp-filter" role="group" aria-label={f.filterLabel} data-filter-bar>
-      <span class="fp-row-label" aria-hidden="true">{f.filterLabel}</span>
-      <button type="button" aria-pressed="true" data-filter="all">{f.filterAll}</button>
-      {hasBeta && <button type="button" aria-pressed="false" data-filter="beta">{f.filterBeta}</button>}
-      {versions.map((v) => <button type="button" aria-pressed="false" data-filter={`v${v}`}>{cap(sinceLabel(v))}</button>)}
-    </div>
-    <nav class="fp-toc" aria-label={f.contents} data-reveal>
-      <span class="fp-row-label" aria-hidden="true">{f.contents}</span>
-      {f.groups.map((g) => <a href={`#${g.id}`}>{g.title}</a>)}
-    </nav>
+    <dl class="fp-stats" data-reveal>
+      <div><dt>{f.statFeatures}</dt><dd>{all.length}</dd></div>
+      <div><dt>{f.statAreas}</dt><dd>{f.groups.length}</dd></div>
+      <div><dt>{f.statNew} {newest}</dt><dd>{newestCount}</dd></div>
+      <div><dt>{f.statPlatforms}</dt><dd>3</dd></div>
+    </dl>
   </header>
 
-  {
-    f.groups.map((g) => (
-      <section class="fp-group" id={g.id} aria-labelledby={`${g.id}-h`} data-feature-group>
-        <h2 id={`${g.id}-h`} data-reveal>{g.title}</h2>
-        {withShot(g.features).map((x) => (
-          <div class="fp-row" id={x.id} data-feature data-since={x.since} data-beta={x.beta ? "" : undefined} data-reveal>
-            <div class="fp-text">
-              <h3>
-                <a href={`#${x.id}`}>{x.title}</a>
-              </h3>
-              <p>{x.body}</p>
-              {(x.since || x.beta) && (
-                <p class="fp-pills">
-                  {x.beta && <span class="pill pill-beta">{f.beta}</span>}
-                  {x.since && <span class="pill">{sinceLabel(x.since)}</span>}
-                </p>
-              )}
-            </div>
-            <a class="fp-shot" href={full.get(x.shot!)} aria-label={`${f.zoom}: ${x.alt}`} data-lightbox data-caption={x.title} data-alt={x.alt}>
-              <Picture src={shot(x.shot!)} formats={["avif", "webp"]} widths={[640, 1100, 1600]} sizes="(min-width: 960px) 640px, 92vw" alt={x.alt ?? ""} />
-            </a>
-          </div>
-        ))}
-        {textOnly(g.features).length > 0 && (
-          <ul class="fp-cards">
-            {textOnly(g.features).map((x) => (
-              <li id={x.id} data-feature data-since={x.since} data-beta={x.beta ? "" : undefined} data-reveal>
-                <h3>
-                  <a href={`#${x.id}`}>{x.title}</a>
-                </h3>
-                <p>{x.body}</p>
-                {(x.since || x.beta) && (
-                <p class="fp-pills">
-                  {x.beta && <span class="pill pill-beta">{f.beta}</span>}
-                  {x.since && <span class="pill">{sinceLabel(x.since)}</span>}
-                </p>
-              )}
-              </li>
+  <div class="fp-bar" data-fp-bar>
+    <div class="wrap fp-bar-inner">
+      <div class="fp-filter" role="group" aria-label={f.filterLabel} data-filter-bar>
+        <span class="fp-row-label" aria-hidden="true">{f.filterLabel}</span>
+        <button type="button" aria-pressed="true" data-filter="all">{f.filterAll}</button>
+        {hasBeta && <button type="button" aria-pressed="false" data-filter="beta">{f.filterBeta}</button>}
+        {versions.map((v) => <button type="button" aria-pressed="false" data-filter={`v${v}`}>{cap(sinceLabel(v))}</button>)}
+      </div>
+      <nav class="fp-toc" aria-label={f.contents} data-toc>
+        <span class="fp-row-label" aria-hidden="true">{f.jump}</span>
+        {f.groups.map((g) => <a href={`#${g.id}`}>{g.title}</a>)}
+      </nav>
+    </div>
+  </div>
+
+  <div class="wrap">
+    {
+      f.groups.map((g, gi) => (
+        <section class="fp-group" id={g.id} aria-labelledby={`${g.id}-h`} data-feature-group>
+          <header class="fp-group-head" data-reveal>
+            <span class="fp-group-num" aria-hidden="true">{pad(gi + 1)}</span>
+            <h2 id={`${g.id}-h`}>{g.title}</h2>
+            <span class="fp-group-count">{g.features.length} {f.count}</span>
+          </header>
+          <div class="fp-bento">
+            {ordered(g.features).map((x, i) => (
+              <article class={`fp-card fp-card-${size(x, i)}`} id={x.id} data-feature data-since={x.since} data-beta={x.beta ? "" : undefined} data-reveal data-spot>
+                {x.shot && (
+                  <a class="fp-media" href={full.get(x.shot)} aria-label={`${f.zoom}: ${x.alt}`} data-lightbox data-caption={x.title} data-alt={x.alt}>
+                    <Picture src={shot(x.shot)} formats={["avif", "webp"]} widths={[640, 1100, 1600]} sizes={size(x, i) === "lg" ? "(min-width: 960px) 760px, 92vw" : "(min-width: 960px) 560px, 92vw"} alt={x.alt ?? ""} />
+                    <span class="fp-zoom" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" /></svg>
+                    </span>
+                  </a>
+                )}
+                <div class="fp-body">
+                  {(x.since || x.beta) && (
+                    <p class="fp-pills">
+                      {x.since && <span class:list={["pill", { "pill-new": x.since === newest }]}>{sinceLabel(x.since)}</span>}
+                      {x.beta && <span class="pill pill-beta">{f.beta}</span>}
+                    </p>
+                  )}
+                  <h3>
+                    <a href={`#${x.id}`}>{x.title}</a>
+                  </h3>
+                  <p>{x.body}</p>
+                </div>
+              </article>
             ))}
-          </ul>
-        )}
-      </section>
-    ))
-  }
+          </div>
+        </section>
+      ))
+    }
 
-  <p class="fp-empty" data-filter-empty hidden>{f.filterEmpty}</p>
+    <p class="fp-empty" data-filter-empty hidden>{f.filterEmpty}</p>
 
-  <section class="fp-ask" aria-labelledby="ask-h" data-reveal>
-    <h2 id="ask-h">{f.askTitle}</h2>
-    <p>{f.askBody}</p>
-    <p class="fp-actions">
-      <a class="btn btn-small" href={IDEA_URL} rel="noopener">{f.idea}</a>
-      <a class="btn btn-small btn-ghost" href={BUG_URL} rel="noopener">{f.bug}</a>
-    </p>
-    <p class="fp-note">{f.bugNote}</p>
-  </section>
+    <section class="fp-ask" aria-labelledby="ask-h" data-reveal>
+      <h2 id="ask-h">{f.askTitle}</h2>
+      <p>{f.askBody}</p>
+      <p class="fp-actions">
+        <a class="btn btn-small" href={IDEA_URL} rel="noopener">{f.idea}</a>
+        <a class="btn btn-small btn-ghost" href={BUG_URL} rel="noopener">{f.bug}</a>
+      </p>
+      <p class="fp-note">{f.bugNote}</p>
+    </section>
+  </div>
 
   <dialog class="lightbox" data-lightbox-dialog aria-label={f.zoom}>
     <figure>

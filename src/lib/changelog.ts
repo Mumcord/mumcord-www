@@ -11,6 +11,8 @@ export interface ChangeGroup {
 export interface ChangelogEntry {
   version: string;
   summary: string;
+  // One line for the header menu; falls back to the summary.
+  teaser?: string;
   groups: ChangeGroup[];
   known?: string[];
 }
@@ -19,6 +21,7 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
   de: [
     {
       version: "0.3.0",
+      teaser: "Overlay im Spiel, Positional Audio, Freunde, geteilter Verlauf und 24 Sprachen.",
       summary:
         "Der Abschluss von Epic 1: Mumcord im Spiel mit Positional Audio und Overlay, und alles, was zwischen Mumcord-Nutzern möglich wird, vom geteilten Chatverlauf bis zu Freunden. Dazu alle 24 Amtssprachen der EU.",
       groups: [
@@ -204,6 +207,7 @@ export const changelog: Record<Lang, ChangelogEntry[]> = {
   en: [
     {
       version: "0.3.0",
+      teaser: "In-game overlay, positional audio, friends, shared history and 24 languages.",
       summary:
         "Completing Epic 1: Mumcord in game with positional audio and an overlay, and everything that becomes possible between Mumcord users, from shared chat history to friends. Plus all 24 official EU languages.",
       groups: [

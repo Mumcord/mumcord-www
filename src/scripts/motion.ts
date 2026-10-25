@@ -45,6 +45,37 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") setMenu(false);
 });
 
+// ── Header menus: hover opens them for mice (CSS), click or Enter everywhere ──
+const menus = [...document.querySelectorAll<HTMLElement>("[data-menu]")];
+const setOpen = (item: HTMLElement, open: boolean) => {
+  item.classList.toggle("is-open", open);
+  item.querySelector("button")?.setAttribute("aria-expanded", String(open));
+};
+for (const item of menus) {
+  const button = item.querySelector("button");
+  button?.addEventListener("click", () => {
+    const open = !item.classList.contains("is-open");
+    menus.forEach((m) => m !== item && setOpen(m, false));
+    item.classList.remove("is-closed");
+    setOpen(item, open);
+  });
+  item.addEventListener("focusout", (e) => {
+    if (!item.contains(e.relatedTarget as Node | null)) setOpen(item, false);
+  });
+  item.addEventListener("pointerleave", () => item.classList.remove("is-closed"));
+}
+document.addEventListener("click", (e) => {
+  menus.forEach((m) => !m.contains(e.target as Node) && setOpen(m, false));
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Escape") return;
+  const open = menus.find((m) => m.classList.contains("is-open") || m.matches(":hover"));
+  if (!open) return;
+  setOpen(open, false);
+  open.classList.add("is-closed");
+  open.querySelector("button")?.focus();
+});
+
 // ── Hero window: tilted at rest, flattens as you scroll into it ──────
 const tilt = document.querySelector<HTMLElement>("[data-tilt]");
 let ticking = false;
@@ -285,4 +316,36 @@ if (filterBar) {
     if (empty) empty.hidden = features.some((el) => !el.hidden);
   };
   for (const b of buttons) b.addEventListener("click", () => apply(b.dataset.filter ?? "all"));
+}
+
+// ── Cards: a soft light follows the pointer ──────────────────────────
+for (const card of document.querySelectorAll<HTMLElement>("[data-spot]")) {
+  card.addEventListener("pointermove", (e) => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+    card.style.setProperty("--my", `${e.clientY - r.top}px`);
+  });
+}
+
+// ── Features page: mark the section you are in ───────────────────────
+const tocLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-toc] a"));
+if (tocLinks.length && "IntersectionObserver" in window) {
+  const byId = new Map(tocLinks.map((a) => [a.hash.slice(1), a]));
+  const spy = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        for (const a of tocLinks) a.classList.toggle("is-active", a === byId.get(e.target.id));
+        // Keep the active link visible in the bar on narrow screens, without moving the page.
+        const link = byId.get(e.target.id);
+        const bar = link?.parentElement;
+        if (link && bar) bar.scrollTo({ left: link.offsetLeft - bar.clientWidth / 2 + link.clientWidth / 2, behavior: "smooth" });
+      }
+    },
+    { rootMargin: "-45% 0px -50% 0px" },
+  );
+  for (const id of byId.keys()) {
+    const el = document.getElementById(id);
+    if (el) spy.observe(el);
+  }
 }

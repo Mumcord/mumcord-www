@@ -2,7 +2,9 @@
 import { Image } from "astro:assets";
 import icon from "../assets/mumcord-icon.png";
 import { dicts, routes, type Lang, type PageId } from "../i18n";
-import { WIKI_URL, REPO_URL } from "../lib/release";
+import { WIKI_URL, REPO_URL, ISSUES_URL, getReleases } from "../lib/release";
+import { BUG_URL, IDEA_URL } from "../lib/features";
+import { changelog } from "../lib/changelog";
 
 interface Props {
   lang: Lang;
@@ -10,47 +12,149 @@ interface Props {
 }
 const { lang, page } = Astro.props;
 const t = dicts[lang];
+const m = t.menu;
 const home = routes.home[lang];
 const anchor = (id: string) => (page === "home" ? `#${id}` : `${home}#${id}`);
+
+// The newest changelog entry, marked as out or upcoming from the GitHub releases.
+const newest = changelog[lang][0];
+const released = (await getReleases()).some((r) => r.version === newest.version);
+
+// 24×24 stroke icons, drawn for the menu.
+const icons: Record<string, string> = {
+  features: "M4 5h7v7H4zM13 5h7v4h-7zM13 11h7v8h-7zM4 14h7v5H4z",
+  games: "M7 9v4M5 11h4M15.5 10.5h.01M18 12.5h.01M6.5 6h11A4.5 4.5 0 0 1 22 10.5v1.8a3.7 3.7 0 0 1-6.6 2.3L14.5 13.5h-5l-.9 1.1A3.7 3.7 0 0 1 2 12.3v-1.8A4.5 4.5 0 0 1 6.5 6Z",
+  how: "M12 3v4M12 17v4M3 12h4M17 12h4M6.3 6.3l2.8 2.8M14.9 14.9l2.8 2.8M6.3 17.7l2.8-2.8M14.9 9.1l2.8-2.8",
+  roadmap: "M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2ZM9 4v14M15 6v14",
+  changelog: "M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01",
+  server: "M4 4h16v6H4zM4 14h16v6H4zM8 7h.01M8 17h.01",
+  source: "M9 18 3 12l6-6M15 6l6 6-6 6",
+  docs: "M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5ZM4 19a2 2 0 0 1 2-2h13",
+  idea: "M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z",
+  bug: "M8 8a4 4 0 0 1 8 0v2H8V8ZM6 10h12v4a6 6 0 0 1-12 0v-4ZM12 10v10M3 13h3M18 13h3M4 7l2 2M20 7l-2 2M4 20l2.5-2.5M20 20l-2.5-2.5",
+  issues: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18ZM12 8v4M12 16h.01",
+};
+
+const product = [
+  { key: "features", href: routes.features[lang], current: page === "features" },
+  { key: "games", href: routes.games[lang], current: page === "games" },
+  { key: "roadmap", href: routes.roadmap[lang], current: page === "roadmap" },
+  { key: "changelog", href: routes.changelog[lang], current: page === "changelog" },
+] as const;
+const community = [
+  { key: "source", href: REPO_URL, external: true },
+  { key: "docs", href: WIKI_URL, external: true },
+  { key: "idea", href: IDEA_URL, external: true },
+  { key: "bug", href: BUG_URL, external: true },
+  { key: "issues", href: ISSUES_URL, external: true },
+] as const;
+const productCurrent = product.some((p) => p.current);
 ---
 
 <header class="site-header" data-header>
-  <div class="wrap header-row">
-    <a class="brand" href={home} aria-label="Mumcord">
-      <Image src={icon} alt="" width={36} height={36} loading="eager" />
-      <span>Mumcord</span>
-    </a>
-
-    <nav class="nav" id="site-nav" aria-label="Main">
-      <a href={routes.features[lang]} aria-current={page === "features" ? "page" : undefined}>{t.nav.features}</a>
-      <a href={anchor("how")}>{t.nav.how}</a>
-      <a href={routes.roadmap[lang]} aria-current={page === "roadmap" ? "page" : undefined}>{t.nav.roadmap}</a>
-      <a href={routes.changelog[lang]} aria-current={page === "changelog" ? "page" : undefined}>{t.nav.changelog}</a>
-      <a href={routes.server[lang]} aria-current={page === "server" ? "page" : undefined}>{t.nav.server}</a>
-      <a href={WIKI_URL} rel="noopener">{t.nav.docs}</a>
-    </nav>
-
-    <div class="header-actions">
-      <div class="lang-switch" role="group" aria-label={lang === "de" ? "Sprache" : "Language"}>
-        {
-          (["de", "en"] as const).map((l) =>
-            l === lang ? (
-              <span class="lang-opt is-active" aria-current="true">{l}</span>
-            ) : (
-              <a class="lang-opt" href={routes[page][l]} hreflang={l} lang={l} aria-label={t.nav.langSwitch}>{l}</a>
-            ),
-          )
-        }
-        <span class:list={["lang-thumb", { "is-en": lang === "en" }]} aria-hidden="true"></span>
-      </div>
-      <a class="icon-link" href={REPO_URL} rel="noopener" aria-label="GitHub">
-        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.7 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+  <div class="header-shell">
+    <div class="header-row">
+      <a class="brand" href={home} aria-label="Mumcord">
+        <Image src={icon} alt="" width={36} height={36} loading="eager" />
+        <span>Mumcord</span>
       </a>
-      <a class="btn btn-small" href={anchor("download")}>{t.nav.download}</a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
-        <span class="sr-only">{t.nav.menu}</span>
-        <span class="menu-bars" aria-hidden="true"></span>
-      </button>
+
+      <nav class="nav" id="site-nav" aria-label="Main">
+        <div class="nav-item" data-menu>
+          <button class:list={["nav-trigger", { "is-current": productCurrent }]} type="button" aria-expanded="false" aria-controls="menu-product">
+            {m.product}
+            <svg class="nav-caret" viewBox="0 0 12 12" aria-hidden="true"><path d="m3 4.5 3 3 3-3" /></svg>
+          </button>
+          <div class="nav-panel nav-panel-wide" id="menu-product">
+            <ul class="nav-grid">
+              {
+                product.map((p) => (
+                  <li>
+                    <a class="nav-card" href={p.href} aria-current={p.current ? "page" : undefined}>
+                      <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d={icons[p.key]} /></svg>
+                      <span class="nav-card-text">
+                        <b>{m[p.key].title}</b>
+                        <span>{m[p.key].desc}</span>
+                      </span>
+                    </a>
+                  </li>
+                ))
+              }
+              <li>
+                <a class="nav-card" href={anchor("how")}>
+                  <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d={icons.how} /></svg>
+                  <span class="nav-card-text">
+                    <b>{m.how.title}</b>
+                    <span>{m.how.desc}</span>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <a class="nav-feature" href={routes.changelog[lang]}>
+              <span class="nav-feature-kicker">
+                <span class="nav-feature-dot" aria-hidden="true"></span>
+                {released ? m.newIn : m.comingIn} {newest.version}
+              </span>
+              <span class="nav-feature-text">{newest.teaser ?? newest.summary}</span>
+              <span class="nav-feature-cta">{m.whatsNew} →</span>
+            </a>
+          </div>
+        </div>
+
+        <a class="nav-link" href={routes.server[lang]} aria-current={page === "server" ? "page" : undefined}>{t.nav.server}</a>
+
+        <div class="nav-item" data-menu>
+          <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="menu-community">
+            {m.community}
+            <svg class="nav-caret" viewBox="0 0 12 12" aria-hidden="true"><path d="m3 4.5 3 3 3-3" /></svg>
+          </button>
+          <div class="nav-panel" id="menu-community">
+            <ul class="nav-list">
+              {
+                community.map((c) => (
+                  <li>
+                    <a class="nav-card nav-card-small" href={c.href} rel="noopener">
+                      <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d={icons[c.key]} /></svg>
+                      <span class="nav-card-text">
+                        <b>{m[c.key].title}</b>
+                        <span>{m[c.key].desc}</span>
+                      </span>
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+
+        <a class="btn nav-mobile-download" href={anchor("download")}>{t.nav.download}</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switch" role="group" aria-label={lang === "de" ? "Sprache" : "Language"}>
+          {
+            (["de", "en"] as const).map((l) =>
+              l === lang ? (
+                <span class="lang-opt is-active" aria-current="true">{l}</span>
+              ) : (
+                <a class="lang-opt" href={routes[page][l]} hreflang={l} lang={l} aria-label={t.nav.langSwitch}>{l}</a>
+              ),
+            )
+          }
+          <span class:list={["lang-thumb", { "is-en": lang === "en" }]} aria-hidden="true"></span>
+        </div>
+        <a class="icon-link" href={REPO_URL} rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.7 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+        </a>
+        <a class="btn btn-small btn-glow" href={anchor("download")}>
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14" /></svg>
+          {t.nav.download}
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+          <span class="sr-only">{t.nav.menu}</span>
+          <span class="menu-bars" aria-hidden="true"></span>
+        </button>
+      </div>
     </div>
   </div>
 </header>

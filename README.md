@@ -22,6 +22,10 @@ The changelog (`/changelog`, `/en/changelog`) is written by hand in `src/lib/cha
 date and download link of each version come from the matching GitHub release once it is published.
 The features page (`/funktionen`, `/en/features`) lives in `src/lib/features.ts`; each feature
 names its screenshot in `src/assets/shots`, features without one show as text cards.
+The games page (`/spiele`, `/en/games`) lives in `src/lib/games.ts`: the overlay table per
+platform, the games where the in-game overlay stays off (from the app's
+`crates/engine/src/ingame_overlay/blocklist.json`) and the official Mumble game plugins
+(Mumble's `plugins/CMakeLists.txt` at the server version the guide pins, retracted plugins left out).
 The detailed roadmap (`/roadmap`, `/en/roadmap`) lives in `src/lib/roadmap.ts`; the short version on the
 home page is in the i18n dicts. Keep both in line with the Mumcord spec and the wiki's Roadmap page.
 The server hosting guide (`/server`, `/en/server`) lives in `src/lib/server-guide.ts`; its

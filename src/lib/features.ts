@@ -35,6 +35,12 @@ export interface FeaturesPage {
   filterAll: string;
   filterBeta: string;
   filterEmpty: string;
+  jump: string;
+  statFeatures: string;
+  statAreas: string;
+  statPlatforms: string;
+  statNew: string;
+  count: string;
   zoom: string;
   close: string;
   prev: string;
@@ -63,6 +69,12 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
     filterAll: "Alle",
     filterBeta: "Beta",
     filterEmpty: "Keine Funktionen für diesen Filter.",
+    jump: "Springen",
+    statFeatures: "Funktionen",
+    statAreas: "Bereiche",
+    statPlatforms: "Systeme",
+    statNew: "neu in",
+    count: "Funktionen",
     zoom: "Screenshot in voller Größe öffnen",
     close: "Schließen",
     prev: "Vorheriger Screenshot",
@@ -487,6 +499,12 @@ export const featuresPage: Record<Lang, FeaturesPage> = {
     filterAll: "All",
     filterBeta: "Beta",
     filterEmpty: "No features for this filter.",
+    jump: "Jump to",
+    statFeatures: "features",
+    statAreas: "areas",
+    statPlatforms: "systems",
+    statNew: "new in",
+    count: "features",
     zoom: "Open the screenshot at full size",
     close: "Close",
     prev: "Previous screenshot",

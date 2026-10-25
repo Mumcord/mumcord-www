@@ -1,0 +1,156 @@
+---
+import { Picture } from "astro:assets";
+import type { Lang } from "../i18n";
+import { gamesPage, blockedGames, PLUGINS_URL, type Support } from "../lib/games";
+import { BUG_URL, IDEA_URL } from "../lib/features";
+import overlayShot from "../assets/shots/overlay-window.png";
+import ingameShot from "../assets/shots/settings-09b-overlay-ingame-dark.png";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const g = gamesPage[lang];
+const blocked = blockedGames[lang];
+const platforms = [
+  { key: "linux", name: "Linux" },
+  { key: "windows", name: "Windows" },
+  { key: "macos", name: "macOS" },
+] as const;
+const mark: Record<Support, string> = { yes: "✓", later: "◷", no: "–" };
+---
+
+<article class="wrap games-page">
+  <header class="rp-head gp-head">
+    <p class="label" data-reveal>{g.label}</p>
+    <h1 class="h2" data-reveal>{g.title}</h1>
+    <p class="body" data-reveal>{g.intro}</p>
+    <nav class="fp-toc" aria-label={g.title} data-reveal>
+      <a href="#overlay">{g.toc.overlay}</a>
+      <a href="#tested">{g.toc.tested}</a>
+      <a href="#blocked">{g.toc.blocked}</a>
+      <a href="#positional">{g.toc.positional}</a>
+    </nav>
+  </header>
+
+  <section class="gp-section" id="overlay" aria-labelledby="overlay-h">
+    <div class="gp-split">
+      <div>
+        <h2 id="overlay-h" data-reveal>{g.overlayTitle}</h2>
+        <p class="gp-lead" data-reveal>{g.overlayBody}</p>
+      </div>
+      <figure class="gp-shot" data-reveal>
+        <Picture src={overlayShot} formats={["avif", "webp"]} widths={[640, 1280]} sizes="(min-width: 920px) 480px, 92vw" alt="" />
+      </figure>
+    </div>
+
+    <div class="gp-table-wrap" data-reveal>
+      <table class="gp-table">
+        <thead>
+          <tr>
+            <th scope="col">{g.feature}</th>
+            {platforms.map((p) => <th scope="col">{p.name}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {
+            g.overlayRows.map((row) => (
+              <tr>
+                <th scope="row">
+                  <span class="gp-row-title">{row.title}</span>
+                  {row.note && <span class="gp-row-note">{row.note}</span>}
+                </th>
+                {platforms.map((p) => (
+                  <td data-label={p.name}>
+                    <span class="gp-pill" data-support={row[p.key]}>
+                      <span aria-hidden="true">{mark[row[p.key]]}</span>
+                      {g.support[row[p.key]]}
+                    </span>
+                  </td>
+                ))}
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="gp-section" id="tested" aria-labelledby="tested-h">
+    <h2 id="tested-h" data-reveal>{g.testedTitle}</h2>
+    <p class="gp-lead" data-reveal>{g.testedBody}</p>
+    <ul class="gp-chips" data-reveal>
+      {g.tested.map((t) => <li><span class="gp-chip-dot" aria-hidden="true" />{t}<span class="gp-chip-os">Linux</span></li>)}
+    </ul>
+    <p class="gp-fine" data-reveal>{g.testedAsk} <a class="text-link" href={IDEA_URL} rel="noopener">{g.ask}</a></p>
+  </section>
+
+  <section class="gp-section" id="blocked" aria-labelledby="blocked-h">
+    <div class="gp-split">
+      <div>
+        <h2 id="blocked-h" data-reveal>{g.blockedTitle}</h2>
+        <p class="gp-lead" data-reveal>{g.blockedBody}</p>
+      </div>
+      <figure class="gp-shot" data-reveal>
+        <Picture src={ingameShot} formats={["avif", "webp"]} widths={[720, 1440]} sizes="(min-width: 920px) 480px, 92vw" alt="" />
+      </figure>
+    </div>
+    <ul class="gp-blocked">
+      {
+        blocked.map((b) => (
+          <li data-reveal>
+            <p class="gp-ac">
+              {g.antiCheat}: <b>{b.antiCheat}</b>
+            </p>
+            <h3>{b.name}</h3>
+            <p>{b.reason}</p>
+            <a class="gp-source" href={b.source} rel="noopener">
+              {g.sourceLabel} ↗
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="gp-section" id="positional" aria-labelledby="positional-h">
+    <h2 id="positional-h" data-reveal>{g.positionalTitle}</h2>
+    <p class="gp-lead" data-reveal>{g.positionalBody}</p>
+    <div class="gp-ways">
+      <div class="gp-way" data-reveal>
+        <h3>{g.linkTitle}</h3>
+        <p>{g.linkBody}</p>
+        <p class="gp-os">
+          {platforms.map((p) => <span>{p.name}</span>)}
+        </p>
+      </div>
+      <div class="gp-way" data-reveal>
+        <h3>{g.pluginsTitle}</h3>
+        <p>{g.pluginsBody}</p>
+        <p class="gp-os"><span>Windows</span><span>Linux</span></p>
+      </div>
+    </div>
+    <ul class="gp-plugins" data-reveal>
+      {
+        g.plugins.map((p) => (
+          <li>
+            {p.name}
+            {p.note && <span>{p.note}</span>}
+          </li>
+        ))
+      }
+    </ul>
+    <p class="gp-fine" data-reveal>
+      {g.pluginsNote} <a class="text-link" href={PLUGINS_URL} rel="noopener">{g.pluginsSource}</a>
+    </p>
+  </section>
+
+  <section class="fp-ask" aria-labelledby="gp-ask-h" data-reveal>
+    <h2 id="gp-ask-h">{g.askTitle}</h2>
+    <p>{g.askBody}</p>
+    <p class="fp-actions">
+      <a class="btn btn-small" href={IDEA_URL} rel="noopener">{g.ask}</a>
+      <a class="text-link" href={BUG_URL} rel="noopener">{g.bug} →</a>
+    </p>
+  </section>
+</article>

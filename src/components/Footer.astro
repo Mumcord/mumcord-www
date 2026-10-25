@@ -1,6 +1,8 @@
 ---
+import { Image } from "astro:assets";
+import icon from "../assets/mumcord-icon.png";
 import { dicts, routes, type Lang } from "../i18n";
-import { REPO_URL, WIKI_URL, ISSUES_URL, RELEASES_URL } from "../lib/release";
+import { REPO_URL, WIKI_URL, ISSUES_URL, RELEASES_URL, getLatestRelease } from "../lib/release";
 import { OWNER } from "../lib/site";
 import { BUG_URL, IDEA_URL } from "../lib/features";
 
@@ -10,42 +12,126 @@ interface Props {
 const { lang } = Astro.props;
 const t = dicts[lang].footer;
 const year = new Date().getFullYear();
+const latest = await getLatestRelease();
+const download = `${routes.home[lang]}#download`;
+
+const columns = [
+  {
+    title: t.product,
+    links: [
+      { label: t.features, href: routes.features[lang] },
+      { label: t.games, href: routes.games[lang] },
+      { label: t.roadmap, href: routes.roadmap[lang] },
+      { label: t.changelog, href: routes.changelog[lang] },
+      { label: t.download, href: download },
+    ],
+  },
+  {
+    title: t.host,
+    links: [
+      { label: t.server, href: routes.server[lang] },
+      { label: t.wiki, href: WIKI_URL, external: true },
+      { label: t.releases, href: RELEASES_URL, external: true },
+    ],
+  },
+  {
+    title: t.community,
+    links: [
+      { label: t.source, href: REPO_URL, external: true },
+      { label: t.idea, href: IDEA_URL, external: true },
+      { label: t.bug, href: BUG_URL, external: true },
+      { label: t.issues, href: ISSUES_URL, external: true },
+    ],
+  },
+  {
+    title: t.legal,
+    links: [
+      { label: t.imprint, href: routes.imprint[lang] },
+      { label: t.privacy, href: routes.privacy[lang] },
+      { label: t.license, href: `${REPO_URL}/blob/main/LICENSE`, external: true },
+    ],
+  },
+];
 ---
 
 <footer class="site-footer">
-  <div class="wrap footer-grid">
-    <div class="footer-intro">
-      <p class="footer-tagline">{t.tagline}</p>
-      <p class="footer-fine">{t.disclaimer}</p>
-      <p class="footer-fine">{t.noTracking}</p>
+  <div class="wrap">
+    <section class="footer-cta" aria-labelledby="footer-cta-h">
+      <div class="footer-cta-glow" aria-hidden="true"></div>
+      <div class="footer-cta-text">
+        <h2 id="footer-cta-h">{t.ctaTitle}</h2>
+        <p>{t.ctaBody}</p>
+      </div>
+      <div class="footer-cta-actions">
+        <a class="btn btn-glow" href={download}>{t.ctaDownload}</a>
+        <a class="btn btn-ghost" href={routes.server[lang]}>{t.ctaServer}</a>
+      </div>
+      <ul class="footer-os" aria-label={t.platforms}>
+        <li>Linux</li>
+        <li>Windows</li>
+        <li>macOS</li>
+      </ul>
+    </section>
+
+    <div class="footer-grid">
+      <div class="footer-intro">
+        <a class="brand" href={routes.home[lang]} aria-label="Mumcord">
+          <Image src={icon} alt="" width={32} height={32} loading="eager" />
+          <span>Mumcord</span>
+        </a>
+        <p class="footer-tagline">{t.tagline}</p>
+        {
+          latest && (
+            <a class="footer-version" href={routes.changelog[lang]}>
+              <span class="footer-version-dot" aria-hidden="true" />
+              {t.current} v{latest.version}
+            </a>
+          )
+        }
+      </div>
+      {
+        columns.map((c) => (
+          <nav aria-label={c.title}>
+            <h2 class="footer-h">{c.title}</h2>
+            <ul>
+              {c.links.map((l) => (
+                <li>
+                  <a href={l.href} rel={l.external ? "noopener" : undefined}>
+                    {l.label}
+                    {l.external && <span class="footer-ext" aria-hidden="true">↗</span>}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))
+      }
     </div>
-    <nav aria-label={t.project}>
-      <h2 class="footer-h">{t.project}</h2>
-      <ul>
-        <li><a href={REPO_URL} rel="noopener">{t.source}</a></li>
-        <li><a href={routes.features[lang]}>{t.features}</a></li>
-        <li><a href={routes.roadmap[lang]}>{t.roadmap}</a></li>
-        <li><a href={routes.changelog[lang]}>{t.changelog}</a></li>
-        <li><a href={routes.server[lang]}>{t.server}</a></li>
-        <li><a href={RELEASES_URL} rel="noopener">{t.releases}</a></li>
-        <li><a href={WIKI_URL} rel="noopener">{t.wiki}</a></li>
-        <li><a href={ISSUES_URL} rel="noopener">{t.issues}</a></li>
-        <li><a href={IDEA_URL} rel="noopener">{t.idea}</a></li>
-        <li><a href={BUG_URL} rel="noopener">{t.bug}</a></li>
-      </ul>
-    </nav>
-    <nav aria-label={t.legal}>
-      <h2 class="footer-h">{t.legal}</h2>
-      <ul>
-        <li><a href={routes.imprint[lang]}>{t.imprint}</a></li>
-        <li><a href={routes.privacy[lang]}>{t.privacy}</a></li>
-        <li><a href={`${REPO_URL}/blob/main/LICENSE`} rel="noopener">{t.license}</a></li>
-      </ul>
-    </nav>
-  </div>
-  <div class="wrap footer-base">
-    <span>© {year} Mumcord contributors</span>
-    <span>{t.by} <a href={OWNER.url} rel="noopener">tobee94</a></span>
+
+    <p class="footer-love">
+      <span class="sr-only">{t.loveAll}</span>
+      <span aria-hidden="true">{t.loveMade} <span class="footer-heart">♥</span></span>
+      <span class="footer-eu" aria-hidden="true">
+        {t.loveIn}
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#2b3bb0" />{Array.from({ length: 12 }, (_, i) => <circle cx={12 + 6.6 * Math.sin((i * Math.PI) / 6)} cy={12 - 6.6 * Math.cos((i * Math.PI) / 6)} r="1.15" fill="#ffd23f" />)}</svg>
+      </span>
+      <span class="footer-for" aria-hidden="true">{t.loveFor}</span>
+      <span class="footer-words" aria-hidden="true">{t.loveWords.map((w) => <span>{w}</span>)}</span>
+    </p>
+
+    <div class="footer-notes">
+      <p>{t.disclaimer}</p>
+      <p class="footer-private">
+        <span aria-hidden="true">●</span>
+        {t.noTracking}
+      </p>
+    </div>
+
+    <div class="footer-base">
+      <span>© {year} Mumcord contributors · AGPL-3.0</span>
+      <span>{t.by} <a href={OWNER.url} rel="noopener">tobee94</a></span>
+      <a class="footer-top" href="#top">{t.top} ↑</a>
+    </div>
   </div>
   <div class="footer-word" aria-hidden="true">Mumcord</div>
 </footer>

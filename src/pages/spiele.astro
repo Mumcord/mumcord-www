@@ -1,0 +1,12 @@
+---
+import Base from "../layouts/Base.astro";
+import GamesPage from "../components/GamesPage.astro";
+import { gamesPage } from "../lib/games";
+import { pageJsonLd } from "../lib/jsonld";
+
+const g = gamesPage.de;
+---
+
+<Base lang="de" page="games" title={`${g.title} — Mumcord`} description={g.description} jsonLd={pageJsonLd("de", Astro.site!, "games", g.title)}>
+  <GamesPage lang="de" />
+</Base>

@@ -6,7 +6,7 @@ import icon from "../assets/mumcord-icon.png";
 import Diagram from "./Diagram.astro";
 import Download from "./Download.astro";
 import { dicts, routes, type Lang } from "../i18n";
-import { REPO_URL, getLatestRelease } from "../lib/release";
+import { REPO_URL, getLatestRelease, getReleases } from "../lib/release";
 import { wavePath } from "../lib/wave";
 
 interface Props {
@@ -23,6 +23,14 @@ const noisy = wavePath({ seed: 7, width: 600, height: 80, points: 220, noise: 0.
 const clean = wavePath({ seed: 7, width: 600, height: 80, points: 220, noise: 0.04, speech: 0.9 });
 const fingerprint = "4F:9A:C1:07:3B:E2:58:D0:1A:7C:96:E4:2F:B3:0D:61";
 const [showcase, rest] = [t.features.items.slice(0, 3), t.features.items.slice(3)];
+const sp = t.spotlight;
+const spotlightOut = (await getReleases()).some((r) => r.version === "0.3.0");
+// Voices placed around the listener in the positional audio tile: angle in degrees, distance 0–1.
+const voices = [
+  { name: "Maya", angle: -50, dist: 0.55, hue: "var(--peach)" },
+  { name: "Priya", angle: 35, dist: 0.8, hue: "var(--pink)" },
+  { name: "Jonas", angle: 150, dist: 0.4, hue: "var(--violet)" },
+];
 ---
 
 <!-- Hero -->
@@ -113,6 +121,84 @@ const [showcase, rest] = [t.features.items.slice(0, 3), t.features.items.slice(3
   </div>
 </section>
 
+<!-- Spotlight: what 0.3.0 brings -->
+<section class="section spotlight" id="neu" aria-labelledby="spotlight-title">
+  <div class="spotlight-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="section-head spotlight-head">
+      <p class="label" data-reveal>{spotlightOut ? sp.label : sp.labelSoon}</p>
+      <h2 id="spotlight-title" class="h2" data-reveal>{sp.title}</h2>
+      <p class="body" data-reveal>{sp.body}</p>
+    </div>
+
+    <div class="sp-bento">
+      <a class="sp-tile sp-overlay" href={routes.games[lang]} data-reveal data-spot>
+        <div class="sp-media">
+          <Picture src={shot("overlay-window")} formats={["avif", "webp"]} widths={[640, 1280]} sizes="(min-width: 1080px) 700px, 92vw" alt="" />
+        </div>
+        <div class="sp-text">
+          <h3>{sp.overlay.title}</h3>
+          <p>{sp.overlay.body}</p>
+          <span class="sp-more">{sp.games} →</span>
+        </div>
+      </a>
+
+      <div class="sp-tile sp-positional" data-reveal data-spot>
+        <div class="sp-radar" aria-hidden="true">
+          <span class="sp-ring"></span><span class="sp-ring"></span><span class="sp-ring"></span>
+          <span class="sp-you">{sp.positional.you}</span>
+          {
+            voices.map((v) => (
+              <span class="sp-voice" style={`--a: ${v.angle}deg; --d: ${v.dist}; --c: ${v.hue}`}>
+                <i>{v.name}</i>
+              </span>
+            ))
+          }
+        </div>
+        <div class="sp-text">
+          <p class="sp-pills"><span class="pill pill-beta">{sp.beta}</span></p>
+          <h3>{sp.positional.title}</h3>
+          <p>{sp.positional.body}</p>
+        </div>
+      </div>
+
+      <div class="sp-tile sp-friends" data-reveal data-spot>
+        <div class="sp-media sp-crop">
+          <Picture src={shot("members-friends")} formats={["avif", "webp"]} widths={[900, 1600, 2880]} sizes="(min-width: 1080px) 800px, 100vw" alt="" />
+        </div>
+        <div class="sp-text">
+          <h3>{sp.friends.title}</h3>
+          <p>{sp.friends.body}</p>
+        </div>
+      </div>
+
+      <div class="sp-tile sp-history" data-reveal data-spot>
+        <div class="sp-media sp-crop">
+          <Picture src={shot("chat-history-sync")} formats={["avif", "webp"]} widths={[900, 1600, 2880]} sizes="(min-width: 1080px) 800px, 100vw" alt="" />
+        </div>
+        <div class="sp-text">
+          <h3>{sp.history.title}</h3>
+          <p>{sp.history.body}</p>
+        </div>
+      </div>
+
+      <div class="sp-tile sp-languages" data-reveal data-spot>
+        <p class="sp-big">24</p>
+        <p class="sp-hello" aria-hidden="true">{sp.languages.words.map((w) => <span>{w}</span>)}</p>
+        <div class="sp-text">
+          <h3>{sp.languages.title}</h3>
+          <p>{sp.languages.body}</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="sp-actions" data-reveal>
+      <a class="btn btn-small btn-glow" href={routes.games[lang]}>{sp.games}</a>
+      <a class="text-link" href={routes.changelog[lang]}>{sp.changelog} →</a>
+    </p>
+  </div>
+</section>
+
 <!-- Features -->
 <section class="section features" id="features" aria-labelledby="features-title">
   <div class="wrap">
@@ -173,7 +259,7 @@ const [showcase, rest] = [t.features.items.slice(0, 3), t.features.items.slice(3
     <ol class="feature-list">
       {
         rest.map((f, i) => (
-          <li data-reveal>
+          <li data-reveal data-spot>
             <span class="feature-no">{String(i + 4).padStart(2, "0")}</span>
             <div>
               <h3>{f.title}</h3>
