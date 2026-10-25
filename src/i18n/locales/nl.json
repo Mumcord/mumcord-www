@@ -1116,7 +1116,7 @@
           {
             "title": "Thema's en uiterlijk",
             "items": [
-              "Eigen thema's uit een paar hoofdkleuren, met presets en een live voorbeeld; Mumcord houdt het contrast leesbaar",
+              "Je eigen thema’s uit een paar basiskleuren, met presets en een live voorbeeld, elk in een donkere en een lichte versie; Mumcord maakt de tweede zelf en houdt het contrast goed leesbaar",
               "Thema's delen als tekst: de chat toont een voorbeeldkaart, met één klik zet je het thema op de app of op een server",
               "Een thema per server als je wilt",
               "De look van deze website in de app: gloeiende knoppen, kleurverlopen, glaseffecten en een lichte filmkorrel, uit te zetten"
@@ -1129,23 +1129,32 @@
               "Een dunne voortgangsbalk onder chatafbeeldingen terwijl de volle grootte laadt",
               "Grote servers bevriezen niet meer als ze voor het eerst verschijnen, plus de schakelaars „Lege kanalen verbergen” en „Pratende mensen eerst”",
               "Berichten tellen pas als verzonden zodra de server ze bevestigt; geweigerde berichten kun je opnieuw versturen",
-              "Profielcommentaar met vet, cursief, links en lijsten"
+              "Profielcommentaar met vet, cursief, links en lijsten",
+              "Verkeerd wachtwoord? Een venster vraagt meteen om het juiste en slaat het op als je wilt",
+              "Wie alleen meeluistert in een kanaal, staat met een oor-icoon in de gewone lijst in plaats van in een eigen groep"
+            ]
+          },
+          {
+            "title": "Chat",
+            "items": [
+              "Op berichten reageren, in kanalen en privé: met een kort citaat dat ook in de officiële Mumble-client goed leesbaar is; één klik erop springt naar het origineel",
+              "Bij lange berichten staat de profielfoto bovenaan naast de naam, en foto en naam blijven in beeld terwijl je scrollt"
             ]
           },
           {
             "title": "Verbindingskwaliteit",
             "items": [
-              "Ping, pakketverlies, bandbreedte en UDP of TCP in iemands profiel en menu, ook voor jezelf",
+              "Ping, pakketverlies, bandbreedte en UDP of TCP in iemands profiel en menu, ook voor jezelf; admins zien daarnaast de client en het besturingssysteem",
               "Een klein signaalicoon naast mensen met een zwakke verbinding, uit te zetten"
             ]
           },
           {
             "title": "Overlay",
             "items": [
-              "De in-game overlay ook op Windows, via DirectX 11 en 12, met dezelfde instellingen en anti-cheatlijst als op Linux",
+              "De in-game overlay nu ook op Windows, als apart, doorklikbaar venster boven de game. Er wordt niets in de game geladen, dus het werkt ook in games met anti-cheat; alleen exclusief volledig scherm verbergt het",
               "Juiste kleuren in HDR-games, games uit Flatpak-Steam, randloze fullscreen-games getest op KDE en GNOME",
               "Opgelost: Mumcord sluiten of bijwerken laat een lopende game niet meer crashen",
-              "De in-game overlay ook in native Linux-games met OpenGL, zoals Project Hospital, Euro Truck Simulator 2 en Hearts of Iron IV",
+              "De in-game overlay ook in native Linux-games met OpenGL, zoals Project Hospital, Euro Truck Simulator 2 en Hearts of Iron IV: Mumcord toont de juiste Steam-startoptie om te kopiëren, en die blijft werken na updates",
               "Het overlayvenster verdwijnt; als je het gebruikte, brengt een eenmalige melding je naar de instellingen van de in-game overlay",
               "„Game joinen” ook voor games die hun serveradres via Mumble Link delen"
             ]
@@ -1163,7 +1172,7 @@
             "title": "Samen kijken (bèta)",
             "items": [
               "YouTube-watchparty: iedereen in het spraakkanaal kijkt tegelijk dezelfde video, iedereen kan pauzeren en spoelen",
-              "Deel een scherm of een venster, met geluid als je wilt, voor maximaal 8 kijkers, standaard 720p met 30 beelden per seconde"
+              "Een scherm of venster delen met maximaal 8 kijkers, standaard in 720p met 30 beelden per seconde; op Windows en macOS desgewenst met het geluid van de gedeelde app, op Linux zonder geluid"
             ]
           },
           {
@@ -1246,7 +1255,7 @@
         "linux": "yes",
         "windows": "later",
         "macos": "no",
-        "note": "Op Linux een Vulkan-layer zoals MangoHud, met OpenGL als fallback. Op Windows komt hij na tests op echte hardware."
+        "note": "Op Linux een Vulkan-laag zoals MangoHud, met OpenGL als uitwijkroute. Op Windows komt het met 0.4.0 als apart, doorklikbaar venster boven de game dat niets in de game laadt; exclusief volledig scherm verbergt het."
       },
       {
         "title": "Steam- en Proton-games",
@@ -1272,9 +1281,9 @@
       {
         "title": "Uit in games met strenge anti-cheat",
         "linux": "yes",
-        "windows": "later",
+        "windows": "no",
         "macos": "no",
-        "note": "De lijst staat verderop. Aanzetten vraagt om een uitdrukkelijke bevestiging."
+        "note": "De lijst staat verderop. Aanzetten vraagt om een uitdrukkelijke bevestiging. Windows heeft de lijst niet nodig: de overlay raakt de game daar nooit aan en werkt ook met anti-cheat."
       },
       {
         "title": "HDR-schermen",
@@ -1301,7 +1310,22 @@
     "testedBody": "De in-game overlay is op Linux uitgeprobeerd met deze games:",
     "tested": [
       "Tyr",
-      "Supermarket Simulator"
+      "Supermarket Simulator",
+      "Die Gilde 1 Remake: Europa 1410",
+      "Stronghold 4 (Demo)",
+      "Escape from Duckov",
+      "Sid Meier's Civilization VII",
+      "theHunter: Call of the Wild",
+      "GG-Party",
+      "Train Sim World 6",
+      "Ready or Not",
+      "Big Ambitions",
+      "Grand Theft Auto V Enhanced",
+      "No Man's Sky",
+      "TCG Card Shop Simulator",
+      "Tropico 6",
+      "Workers & Resources: Soviet Republic",
+      "ARC Raiders"
     ],
     "testedAsk": "Werkt het bij jou in een andere game, of gaat er iets mis? Open een issue, dan komt de game op de lijst.",
     "blockedTitle": "Waar de in-game overlay uit blijft",
@@ -1328,7 +1352,12 @@
       "World of Warcraft": "32 en 64 bit"
     },
     "overlayWarning": "Bekend probleem: als je Mumcord sluit terwijl een game met de overlay draait, kan de game crashen. Sluit eerst de game of zet de in-game overlay uit. Dit wordt opgelost in 0.4.0.",
-    "notWorkingTitle": "Werkt nog niet"
+    "notWorkingTitle": "Werkt nog niet",
+    "notWorking": [
+      "Project Hospital",
+      "Euro Truck Simulator 2",
+      "Hearts of Iron IV"
+    ]
   },
   "blocked": [
     {

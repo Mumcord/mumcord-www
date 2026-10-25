@@ -1116,7 +1116,7 @@
           {
             "title": "Teme i izgled",
             "items": [
-              "Vlastite teme iz nekoliko ključnih boja, s predlošcima i pretpregledom uživo; Mumcord pazi da kontrast ostane čitljiv",
+              "Vlastite teme iz nekoliko ključnih boja, s predlošcima i pretpregledom uživo, svaka u tamnoj i svijetloj verziji; drugu Mumcord napravi sam i pazi da kontrast ostane čitljiv",
               "Dijeljenje tema kao teksta: chat prikazuje karticu s pretpregledom, jedan klik primjenjuje temu na aplikaciju ili na poslužitelj",
               "Po želji tema za svaki poslužitelj",
               "Izgled ove web stranice u aplikaciji: svjetleći gumbi, prijelazi boja, efekti stakla i lagano filmsko zrno, može se isključiti"
@@ -1129,23 +1129,32 @@
               "Tanka traka napretka ispod slika u chatu dok se učitava puna veličina",
               "Veliki poslužitelji više se ne zamrzavaju pri prvom prikazu, uz prekidače „Sakrij prazne kanale” i „Oni koji pričaju prvi”",
               "Poruke se smatraju poslanima tek kad ih poslužitelj potvrdi; odbijene se mogu ponovno poslati",
-              "Komentar u profilu s podebljanim tekstom, kurzivom, poveznicama i popisima"
+              "Komentar u profilu s podebljanim tekstom, kurzivom, poveznicama i popisima",
+              "Kriva lozinka? Prozor odmah traži ispravnu i sprema je ako želiš",
+              "Tko kanal samo sluša, stoji na običnom popisu s ikonom uha umjesto u zasebnoj grupi"
+            ]
+          },
+          {
+            "title": "Chat",
+            "items": [
+              "Odgovaranje na poruke, u kanalima i privatno: s kratkim citatom koji se dobro čita i u službenom Mumble klijentu; klik na njega vodi do izvorne poruke",
+              "Kod dugih poruka profilna slika stoji gore uz ime, a slika i ime ostaju vidljivi dok se pomičeš"
             ]
           },
           {
             "title": "Kvaliteta veze",
             "items": [
-              "Ping, gubitak paketa, propusnost i UDP ili TCP u profilu i izborniku osobe, i za tebe",
+              "Ping, gubitak paketa, propusnost i UDP ili TCP u profilu i izborniku osobe, i za tebe; admini vide još i klijent i operacijski sustav",
               "Mala ikona signala pokraj ljudi sa slabom vezom, može se isključiti"
             ]
           },
           {
             "title": "Overlay",
             "items": [
-              "Overlay u igri i na Windowsima, preko DirectX 11 i 12, s istim postavkama i anti-cheat popisom kao na Linuxu",
+              "Overlay u igri i na Windowsima, kao zaseban prozor iznad igre kroz koji prolaze klikovi. U igru se ništa ne učitava, pa radi i u igrama s anti-cheatom; skriva ga samo ekskluzivni puni zaslon",
               "Ispravne boje u HDR igrama, igre iz Flatpak Steama, igre u cijelom zaslonu bez obruba provjerene na KDE-u i GNOME-u",
               "Popravljeno: zatvaranje ili ažuriranje Mumcorda više ne ruši pokrenutu igru",
-              "Overlay u igri i u izvornim Linux igrama s OpenGL-om, npr. Project Hospital, Euro Truck Simulator 2 i Hearts of Iron IV",
+              "Overlay u igri i u izvornim Linux igrama s OpenGL-om, npr. Project Hospital, Euro Truck Simulator 2 i Hearts of Iron IV: Mumcord prikazuje pravu Steam opciju pokretanja za kopiranje, koja vrijedi i nakon ažuriranja",
               "Overlay prozor odlazi; ako si ga koristio, jednokratna obavijest vodi te u postavke overlaya u igri",
               "„Pridruži se igri” i za igre koje dijele adresu svog poslužitelja preko Mumble Linka"
             ]
@@ -1163,7 +1172,7 @@
             "title": "Zajedničko gledanje (beta)",
             "items": [
               "YouTube watch party: svi u glasovnom kanalu gledaju isti video u isto vrijeme, svatko može pauzirati i premotavati",
-              "Dijeljenje zaslona ili prozora, po želji sa zvukom, za do 8 gledatelja, zadano 720p pri 30 sličica u sekundi"
+              "Dijeljenje zaslona ili prozora za do 8 gledatelja, zadano 720p pri 30 sličica u sekundi; na Windowsima i macOS-u po želji sa zvukom dijeljene aplikacije, na Linuxu bez zvuka"
             ]
           },
           {
@@ -1246,7 +1255,7 @@
         "linux": "yes",
         "windows": "later",
         "macos": "no",
-        "note": "Na Linuxu Vulkan sloj kao MangoHud, s OpenGL-om kao rezervom. Na Windowsima dolazi nakon testiranja na stvarnom hardveru."
+        "note": "Na Linuxu Vulkan sloj kao MangoHud, s OpenGL-om kao rezervom. Na Windowsima dolazi s 0.4.0 kao zaseban prozor iznad igre kroz koji prolaze klikovi i koji u igru ništa ne učitava; ekskluzivni puni zaslon ga skriva."
       },
       {
         "title": "Steam i Proton igre",
@@ -1272,9 +1281,9 @@
       {
         "title": "Isključen u igrama sa strogim anti-cheatom",
         "linux": "yes",
-        "windows": "later",
+        "windows": "no",
         "macos": "no",
-        "note": "Popis je niže. Uključivanje traži izričitu potvrdu."
+        "note": "Popis je niže. Uključivanje traži izričitu potvrdu. Windowsima popis ne treba: ondje overlay nikad ne dira igru i radi i s anti-cheatom."
       },
       {
         "title": "HDR zasloni",
@@ -1301,7 +1310,22 @@
     "testedBody": "Overlay u igri isproban je na Linuxu s ovim igrama:",
     "tested": [
       "Tyr",
-      "Supermarket Simulator"
+      "Supermarket Simulator",
+      "Die Gilde 1 Remake: Europa 1410",
+      "Stronghold 4 (Demo)",
+      "Escape from Duckov",
+      "Sid Meier's Civilization VII",
+      "theHunter: Call of the Wild",
+      "GG-Party",
+      "Train Sim World 6",
+      "Ready or Not",
+      "Big Ambitions",
+      "Grand Theft Auto V Enhanced",
+      "No Man's Sky",
+      "TCG Card Shop Simulator",
+      "Tropico 6",
+      "Workers & Resources: Soviet Republic",
+      "ARC Raiders"
     ],
     "testedAsk": "Radi li ti u nekoj drugoj igri ili se nešto kvari? Otvori issue i igra ide na popis.",
     "blockedTitle": "Gdje overlay u igri ostaje isključen",
@@ -1328,7 +1352,12 @@
       "World of Warcraft": "32 i 64 bita"
     },
     "overlayWarning": "Poznati problem: ako zatvoriš Mumcord dok radi igra s overlayem, igra se može srušiti. Najprije zatvori igru ili isključi overlay u igri. To se popravlja u 0.4.0.",
-    "notWorkingTitle": "Još ne radi"
+    "notWorkingTitle": "Još ne radi",
+    "notWorking": [
+      "Project Hospital",
+      "Euro Truck Simulator 2",
+      "Hearts of Iron IV"
+    ]
   },
   "blocked": [
     {

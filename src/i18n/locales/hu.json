@@ -1116,7 +1116,7 @@
           {
             "title": "Témák és megjelenés",
             "items": [
-              "Saját témák néhány alapszínből, előbeállításokkal és élő előnézettel; a Mumcord olvashatón tartja a kontrasztot",
+              "Saját témák néhány alapszínből, előbeállításokkal és élő előnézettel, mindegyik sötét és világos változatban; a másodikat a Mumcord maga készíti el, és olvashatón tartja a kontrasztot",
               "Témák megosztása szövegként: a chat előnézeti kártyát mutat, egy kattintás alkalmazza a témát az appra vagy egy szerverre",
               "Ha szeretnéd, szerverenként külön téma",
               "Ennek a weboldalnak a kinézete az appban: izzó gombok, színátmenetek, üveghatás és enyhe filmszemcse, kikapcsolható"
@@ -1129,23 +1129,32 @@
               "Vékony folyamatjelző sáv a chatképek alatt, amíg a teljes méret betöltődik",
               "A nagy szerverek már nem fagynak le az első megjelenítéskor, plusz „Üres csatornák elrejtése” és „Beszélők elöl” kapcsolók",
               "Az üzenetek csak akkor számítanak elküldöttnek, ha a szerver visszaigazolja őket; az elutasítottak újraküldhetők",
-              "Profilmegjegyzés félkövérrel, dőlttel, linkekkel és listákkal"
+              "Profilmegjegyzés félkövérrel, dőlttel, linkekkel és listákkal",
+              "Rossz jelszó? Egy ablak azonnal elkéri a helyeset, és ha szeretnéd, elmenti",
+              "Aki csak hallgatja a csatornát, a sima listában szerepel egy fül ikonnal, nem külön csoportban"
+            ]
+          },
+          {
+            "title": "Chat",
+            "items": [
+              "Válasz üzenetekre csatornákban és privátban: rövid idézettel, ami a hivatalos Mumble kliensben is jól olvasható; rákattintva az eredeti üzenethez ugrasz",
+              "Hosszú üzeneteknél a profilkép fent, a név mellett van, és görgetés közben a kép és a név is látható marad"
             ]
           },
           {
             "title": "Kapcsolatminőség",
             "items": [
-              "Ping, csomagvesztés, sávszélesség és UDP vagy TCP valaki profiljában és menüjében, a sajátodnál is",
+              "Ping, csomagvesztés, sávszélesség és UDP vagy TCP valaki profiljában és menüjében, a sajátodnál is; az adminok a klienst és az operációs rendszert is látják",
               "Kis jelerősség-ikon a gyenge kapcsolatú emberek mellett, kikapcsolható"
             ]
           },
           {
             "title": "Overlay",
             "items": [
-              "A játékon belüli overlay Windowson is, DirectX 11-en és 12-n keresztül, ugyanazokkal a beállításokkal és anti-cheat listával, mint Linuxon",
+              "A játékon belüli overlay Windowson is, külön, kattintásokat átengedő ablakként a játék fölött. Semmi nem töltődik be a játékba, így anti-cheates játékokban is megy; csak a kizárólagos teljes képernyő rejti el",
               "Helyes színek HDR-játékokban, játékok Flatpak Steamből, keret nélküli teljes képernyős játékok KDE-n és GNOME-on ellenőrizve",
               "Javítva: a Mumcord bezárása vagy frissítése már nem dönti össze a futó játékot",
-              "A játékon belüli overlay az OpenGL-t használó natív Linux-játékokban is, például: Project Hospital, Euro Truck Simulator 2 és Hearts of Iron IV",
+              "A játékon belüli overlay az OpenGL-t használó natív Linux-játékokban is, például: Project Hospital, Euro Truck Simulator 2 és Hearts of Iron IV: a Mumcord megmutatja a megfelelő Steam-indítási opciót másoláshoz, és az frissítések után is működik",
               "Az overlay ablak megszűnik; ha használtad, egy egyszeri értesítés átvisz a játékon belüli overlay beállításaihoz",
               "„Csatlakozás a játékhoz” azoknál a játékoknál is, amelyek a Mumble Linken át osztják meg a szervercímüket"
             ]
@@ -1163,7 +1172,7 @@
             "title": "Közös nézés (béta)",
             "items": [
               "Közös YouTube-nézés: a hangcsatornában mindenki ugyanazt a videót nézi egyszerre, bárki megállíthatja és tekerhet",
-              "Képernyő vagy ablak megosztása, ha szeretnéd, hanggal, legfeljebb 8 nézőnek, alapból 720p-ben, másodpercenként 30 képkockával"
+              "Képernyő vagy ablak megosztása legfeljebb 8 nézőnek, alapból 720p-ben, másodpercenként 30 képkockával; Windowson és macOS-en ha szeretnéd, a megosztott app hangjával, Linuxon hang nélkül"
             ]
           },
           {
@@ -1246,7 +1255,7 @@
         "linux": "yes",
         "windows": "later",
         "macos": "no",
-        "note": "Linuxon Vulkan-réteg, mint a MangoHud, OpenGL-tartalékkal. Windowsra valódi hardveren végzett tesztelés után érkezik."
+        "note": "Linuxon Vulkan-réteg, mint a MangoHud, OpenGL-tartalékkal. Windowsra a 0.4.0-val érkezik, külön, kattintásokat átengedő ablakként a játék fölött, ami semmit nem tölt be a játékba; a kizárólagos teljes képernyő elrejti."
       },
       {
         "title": "Steam- és Proton-játékok",
@@ -1272,9 +1281,9 @@
       {
         "title": "Kikapcsolva a szigorú anti-cheattel védett játékokban",
         "linux": "yes",
-        "windows": "later",
+        "windows": "no",
         "macos": "no",
-        "note": "A lista lejjebb található. A bekapcsoláshoz kifejezett megerősítés kell."
+        "note": "A lista lejjebb található. A bekapcsoláshoz kifejezett megerősítés kell. Windowson nincs szükség a listára: ott az overlay sosem nyúl a játékhoz, és anti-cheattel is megy."
       },
       {
         "title": "HDR-kijelzők",
@@ -1301,7 +1310,22 @@
     "testedBody": "A játékon belüli overlayt Linuxon ezekkel a játékokkal próbáltuk ki:",
     "tested": [
       "Tyr",
-      "Supermarket Simulator"
+      "Supermarket Simulator",
+      "Die Gilde 1 Remake: Europa 1410",
+      "Stronghold 4 (Demo)",
+      "Escape from Duckov",
+      "Sid Meier's Civilization VII",
+      "theHunter: Call of the Wild",
+      "GG-Party",
+      "Train Sim World 6",
+      "Ready or Not",
+      "Big Ambitions",
+      "Grand Theft Auto V Enhanced",
+      "No Man's Sky",
+      "TCG Card Shop Simulator",
+      "Tropico 6",
+      "Workers & Resources: Soviet Republic",
+      "ARC Raiders"
     ],
     "testedAsk": "Nálad egy másik játékban is működik, vagy valami elromlik? Nyiss egy issue-t, és a játék felkerül a listára.",
     "blockedTitle": "Ahol a játékon belüli overlay kikapcsolva marad",
@@ -1328,7 +1352,12 @@
       "World of Warcraft": "32 és 64 bit"
     },
     "overlayWarning": "Ismert hiba: ha bezárod a Mumcordot, miközben egy overlayt használó játék fut, a játék összeomolhat. Előbb zárd be a játékot, vagy kapcsold ki a játékon belüli overlayt. Ez a 0.4.0-s verzióban javul.",
-    "notWorkingTitle": "Még nem működik"
+    "notWorkingTitle": "Még nem működik",
+    "notWorking": [
+      "Project Hospital",
+      "Euro Truck Simulator 2",
+      "Hearts of Iron IV"
+    ]
   },
   "blocked": [
     {

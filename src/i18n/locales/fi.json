@@ -1116,7 +1116,7 @@
           {
             "title": "Teemat ja ilme",
             "items": [
-              "Omat teemat muutamasta pääväristä, esiasetuksilla ja reaaliaikaisella esikatselulla; Mumcord pitää kontrastin luettavana",
+              "Omat teemat muutamasta pääväristä, esiasetuksilla ja reaaliaikaisella esikatselulla, jokainen tummana ja vaaleana versiona; toisen Mumcord tekee itse ja pitää kontrastin luettavana",
               "Jaa teemoja tekstinä: chat näyttää esikatselukortin, ja yhdellä klikkauksella teema otetaan käyttöön sovellukseen tai palvelimelle",
               "Halutessasi oma teema jokaiselle palvelimelle",
               "Tämän sivuston ilme sovelluksessa: hehkuvat painikkeet, liukuvärit, lasiefektit ja kevyt filmirae, voi poistaa käytöstä"
@@ -1129,23 +1129,32 @@
               "Ohut edistymispalkki chatin kuvien alla, kun täysikokoinen kuva latautuu",
               "Isot palvelimet eivät enää jäädy, kun ne näytetään ensimmäistä kertaa, lisäksi kytkimet ”Piilota tyhjät kanavat” ja ”Puhujat ensin”",
               "Viestit lasketaan lähetetyiksi vasta, kun palvelin vahvistaa ne; hylätyt voi lähettää uudelleen",
-              "Profiilikommentissa lihavointi, kursiivi, linkit ja listat"
+              "Profiilikommentissa lihavointi, kursiivi, linkit ja listat",
+              "Väärä salasana? Ikkuna kysyy heti oikeaa ja tallentaa sen halutessasi",
+              "Kanavaa pelkästään kuuntelevat näkyvät tavallisessa listassa korvakuvakkeen kanssa eivätkä omassa ryhmässään"
+            ]
+          },
+          {
+            "title": "Chat",
+            "items": [
+              "Vastaa viesteihin kanavilla ja yksityisesti: lyhyellä lainauksella, joka näkyy luettavana myös virallisessa Mumble-asiakasohjelmassa; klikkaus siihen vie alkuperäiseen viestiin",
+              "Pitkissä viesteissä profiilikuva on ylhäällä nimen vieressä, ja kuva ja nimi pysyvät näkyvissä vierittäessä"
             ]
           },
           {
             "title": "Yhteyden laatu",
             "items": [
-              "Ping, pakettihävikki, kaistanleveys sekä UDP tai TCP henkilön profiilissa ja valikossa, myös omasi",
+              "Ping, pakettihävikki, kaistanleveys sekä UDP tai TCP henkilön profiilissa ja valikossa, myös omasi; ylläpitäjät näkevät lisäksi asiakasohjelman ja käyttöjärjestelmän",
               "Pieni signaalikuvake heikon yhteyden omaavien vieressä, voi poistaa käytöstä"
             ]
           },
           {
             "title": "Overlay",
             "items": [
-              "Pelinsisäinen overlay myös Windowsissa DirectX 11:n ja 12:n kautta, samoilla asetuksilla ja huijauksenestolistalla kuin Linuxissa",
+              "Pelinsisäinen overlay myös Windowsissa, omana, klikkaukset läpi päästävänä ikkunana pelin päällä. Peliin ei ladata mitään, joten se toimii myös huijauksenestoa käyttävissä peleissä; vain eksklusiivinen koko näyttö piilottaa sen",
               "Oikeat värit HDR-peleissä, pelit Flatpak-Steamista, reunattomat koko näytön pelit tarkistettu KDE:ssä ja GNOMEssa",
               "Korjattu: Mumcordin sulkeminen tai päivittäminen ei enää kaada käynnissä olevaa peliä",
-              "Pelinsisäinen overlay myös OpenGL:ää käyttävissä natiiveissa Linux-peleissä, kuten Project Hospital, Euro Truck Simulator 2 ja Hearts of Iron IV",
+              "Pelinsisäinen overlay myös OpenGL:ää käyttävissä natiiveissa Linux-peleissä, kuten Project Hospital, Euro Truck Simulator 2 ja Hearts of Iron IV: Mumcord näyttää kopioitavan Steam-käynnistysvalinnan, joka toimii myös päivitysten jälkeen",
               "Overlay-ikkuna poistuu; jos käytit sitä, kertailmoitus vie pelinsisäisen overlayn asetuksiin",
               "”Liity peliin” myös peleissä, jotka jakavat palvelimensa osoitteen Mumble Linkin kautta"
             ]
@@ -1163,7 +1172,7 @@
             "title": "Yhdessä katsominen (beta)",
             "items": [
               "YouTube-katselubileet: kaikki puhekanavalla katsovat samaa videota yhtä aikaa, kuka tahansa voi pysäyttää ja kelata",
-              "Jaa näyttö tai ikkuna, halutessasi äänen kanssa, jopa 8 katsojalle, oletuksena 720p 30 kuvaa sekunnissa"
+              "Jaa näyttö tai ikkuna jopa 8 katsojalle, oletuksena 720p 30 kuvaa sekunnissa; Windowsissa ja macOS:ssä halutessasi jaetun sovelluksen äänen kanssa, Linuxissa ilman ääntä"
             ]
           },
           {
@@ -1246,7 +1255,7 @@
         "linux": "yes",
         "windows": "later",
         "macos": "no",
-        "note": "Linuxissa Vulkan-kerros kuten MangoHud, varalla OpenGL. Windowsiin se tulee, kun sitä on testattu oikealla laitteistolla."
+        "note": "Linuxissa Vulkan-kerros kuten MangoHud, varalla OpenGL. Windowsiin se tulee versiossa 0.4.0 omana, klikkaukset läpi päästävänä ikkunana pelin päällä, joka ei lataa peliin mitään; eksklusiivinen koko näyttö piilottaa sen."
       },
       {
         "title": "Steam- ja Proton-pelit",
@@ -1272,9 +1281,9 @@
       {
         "title": "Pois peleissä, joissa on tiukka huijauksenesto",
         "linux": "yes",
-        "windows": "later",
+        "windows": "no",
         "macos": "no",
-        "note": "Lista on alempana. Päälle kytkeminen vaatii erillisen vahvistuksen."
+        "note": "Lista on alempana. Päälle kytkeminen vaatii erillisen vahvistuksen. Windows ei tarvitse listaa: siellä overlay ei koske peliin lainkaan ja toimii myös huijauksenestoa käyttävissä peleissä."
       },
       {
         "title": "HDR-näytöt",
@@ -1301,7 +1310,22 @@
     "testedBody": "Pelinsisäistä overlayta on kokeiltu Linuxissa näillä peleillä:",
     "tested": [
       "Tyr",
-      "Supermarket Simulator"
+      "Supermarket Simulator",
+      "Die Gilde 1 Remake: Europa 1410",
+      "Stronghold 4 (Demo)",
+      "Escape from Duckov",
+      "Sid Meier's Civilization VII",
+      "theHunter: Call of the Wild",
+      "GG-Party",
+      "Train Sim World 6",
+      "Ready or Not",
+      "Big Ambitions",
+      "Grand Theft Auto V Enhanced",
+      "No Man's Sky",
+      "TCG Card Shop Simulator",
+      "Tropico 6",
+      "Workers & Resources: Soviet Republic",
+      "ARC Raiders"
     ],
     "testedAsk": "Toimiiko se sinulla jossain muussa pelissä, vai meneekö jokin rikki? Avaa issue, niin peli lisätään listalle.",
     "blockedTitle": "Missä pelinsisäinen overlay pysyy pois päältä",
@@ -1328,7 +1352,12 @@
       "World of Warcraft": "32- ja 64-bittinen"
     },
     "overlayWarning": "Tunnettu ongelma: jos suljet Mumcordin, kun overlayta käyttävä peli on käynnissä, peli voi kaatua. Sulje ensin peli tai laita pelinsisäinen overlay pois päältä. Tämä korjataan versiossa 0.4.0.",
-    "notWorkingTitle": "Ei vielä toimi"
+    "notWorkingTitle": "Ei vielä toimi",
+    "notWorking": [
+      "Project Hospital",
+      "Euro Truck Simulator 2",
+      "Hearts of Iron IV"
+    ]
   },
   "blocked": [
     {

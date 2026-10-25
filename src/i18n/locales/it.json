@@ -1116,7 +1116,7 @@
           {
             "title": "Temi e aspetto",
             "items": [
-              "Temi personalizzati partendo da pochi colori chiave, con preset e anteprima dal vivo; Mumcord mantiene il contrasto leggibile",
+              "I tuoi temi da pochi colori chiave, con preset e anteprima dal vivo, ognuno in versione scura e chiara; la seconda la crea Mumcord da solo e mantiene il contrasto leggibile",
               "Condividi i temi come testo: la chat mostra una scheda di anteprima, un clic applica il tema all'app o a un server",
               "Un tema per server, se vuoi",
               "L'aspetto di questo sito nell'app: pulsanti luminosi, sfumature, effetti vetro e una leggera grana da pellicola, disattivabili"
@@ -1129,23 +1129,32 @@
               "Una sottile barra di avanzamento sotto le immagini in chat mentre si carica la grandezza piena",
               "I server grandi non si bloccano più alla prima visualizzazione, in più gli interruttori “Nascondi canali vuoti” e “Prima chi parla”",
               "I messaggi contano come inviati solo quando il server li conferma; quelli rifiutati si possono rinviare",
-              "Commento del profilo con grassetto, corsivo, link ed elenchi"
+              "Commento del profilo con grassetto, corsivo, link ed elenchi",
+              "Password sbagliata? Una finestra ti chiede subito quella giusta e, se vuoi, la salva",
+              "Chi ascolta soltanto un canale compare nella lista normale con un’icona a forma di orecchio, invece che in un gruppo a parte"
+            ]
+          },
+          {
+            "title": "Chat",
+            "items": [
+              "Rispondere ai messaggi, nei canali e in privato: con una breve citazione leggibile anche nel client Mumble ufficiale; un clic sopra porta al messaggio originale",
+              "Nei messaggi lunghi l’immagine del profilo sta in alto accanto al nome, e immagine e nome restano visibili mentre scorri"
             ]
           },
           {
             "title": "Qualità della connessione",
             "items": [
-              "Ping, perdita di pacchetti, banda e UDP o TCP nel profilo e nel menu di una persona, anche per te",
+              "Ping, perdita di pacchetti, banda e UDP o TCP nel profilo e nel menu di una persona, anche per te; gli admin vedono anche il client e il sistema operativo",
               "Una piccola icona del segnale accanto a chi ha una connessione debole, disattivabile"
             ]
           },
           {
             "title": "Overlay",
             "items": [
-              "L'overlay in gioco anche su Windows, tramite DirectX 11 e 12, con le stesse impostazioni e la stessa lista anti-cheat di Linux",
+              "L’overlay in gioco anche su Windows, come finestra separata e attraversabile dai clic sopra il gioco. Non carica niente nel gioco, quindi funziona anche nei giochi con anti-cheat; solo lo schermo intero esclusivo lo nasconde",
               "Colori corretti nei giochi HDR, giochi da Steam in Flatpak, giochi a schermo intero senza bordi verificati su KDE e GNOME",
               "Risolto: chiudere o aggiornare Mumcord non fa più crashare un gioco in corso",
-              "L'overlay in gioco anche nei giochi Linux nativi con OpenGL, come Project Hospital, Euro Truck Simulator 2 e Hearts of Iron IV",
+              "L'overlay in gioco anche nei giochi Linux nativi con OpenGL, come Project Hospital, Euro Truck Simulator 2 e Hearts of Iron IV: Mumcord mostra l’opzione di avvio di Steam da copiare, che resta valida anche dopo gli aggiornamenti",
               "La finestra overlay sparisce; se la usavi, un avviso una tantum ti porta alle impostazioni dell'overlay in gioco",
               "“Unisciti al gioco” anche per i giochi che condividono l'indirizzo del server tramite Mumble Link"
             ]
@@ -1163,7 +1172,7 @@
             "title": "Guardare insieme (beta)",
             "items": [
               "Watch party di YouTube: tutti nel canale vocale guardano lo stesso video insieme, chiunque può mettere in pausa e saltare",
-              "Condividi uno schermo o una finestra, con l'audio se vuoi, per massimo 8 spettatori, di base 720p a 30 fotogrammi al secondo"
+              "Condividere uno schermo o una finestra con fino a 8 spettatori, di default in 720p a 30 fotogrammi al secondo; su Windows e macOS, se vuoi, con l’audio dell’app condivisa, su Linux senza audio"
             ]
           },
           {
@@ -1246,7 +1255,7 @@
         "linux": "yes",
         "windows": "later",
         "macos": "no",
-        "note": "Su Linux un layer Vulkan come MangoHud, con OpenGL come ripiego. Su Windows arriverà dopo i test su hardware reale."
+        "note": "Su Linux è un layer Vulkan come MangoHud, con OpenGL come ripiego. Su Windows arriva con la 0.4.0 come finestra separata e attraversabile dai clic sopra il gioco, che non carica niente nel gioco; lo schermo intero esclusivo lo nasconde."
       },
       {
         "title": "Giochi Steam e Proton",
@@ -1272,9 +1281,9 @@
       {
         "title": "Disattivato nei giochi con anti-cheat rigido",
         "linux": "yes",
-        "windows": "later",
+        "windows": "no",
         "macos": "no",
-        "note": "La lista è più in basso. Per attivarlo serve una conferma esplicita."
+        "note": "La lista è più in basso. Per attivarlo serve una conferma esplicita. Su Windows la lista non serve: lì l’overlay non tocca mai il gioco e funziona anche con l’anti-cheat."
       },
       {
         "title": "Schermi HDR",
@@ -1301,7 +1310,22 @@
     "testedBody": "L'overlay in gioco è stato provato su Linux con questi giochi:",
     "tested": [
       "Tyr",
-      "Supermarket Simulator"
+      "Supermarket Simulator",
+      "Die Gilde 1 Remake: Europa 1410",
+      "Stronghold 4 (Demo)",
+      "Escape from Duckov",
+      "Sid Meier's Civilization VII",
+      "theHunter: Call of the Wild",
+      "GG-Party",
+      "Train Sim World 6",
+      "Ready or Not",
+      "Big Ambitions",
+      "Grand Theft Auto V Enhanced",
+      "No Man's Sky",
+      "TCG Card Shop Simulator",
+      "Tropico 6",
+      "Workers & Resources: Soviet Republic",
+      "ARC Raiders"
     ],
     "testedAsk": "Funziona anche in un altro gioco, o qualcosa si rompe? Apri una issue e il gioco finisce nella lista.",
     "blockedTitle": "Dove l'overlay in gioco resta disattivato",
@@ -1328,7 +1352,12 @@
       "World of Warcraft": "32 e 64 bit"
     },
     "overlayWarning": "Problema noto: se chiudi Mumcord mentre è in corso un gioco con l'overlay, il gioco può crashare. Chiudi prima il gioco o disattiva l'overlay in gioco. Sarà risolto nella 0.4.0.",
-    "notWorkingTitle": "Non funziona ancora"
+    "notWorkingTitle": "Non funziona ancora",
+    "notWorking": [
+      "Project Hospital",
+      "Euro Truck Simulator 2",
+      "Hearts of Iron IV"
+    ]
   },
   "blocked": [
     {

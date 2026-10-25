@@ -1116,7 +1116,7 @@
           {
             "title": "Teme in videz",
             "items": [
-              "Lastne teme iz nekaj ključnih barv, s predlogami in sprotnim predogledom; Mumcord poskrbi, da kontrast ostane berljiv",
+              "Lastne teme iz nekaj ključnih barv, s predlogami in sprotnim predogledom, vsaka v temni in svetli različici; drugo naredi Mumcord sam in poskrbi, da kontrast ostane berljiv",
               "Deli teme kot besedilo: klepet pokaže kartico s predogledom, en klik uporabi temo za aplikacijo ali za strežnik",
               "Po želji tema za vsak strežnik",
               "Videz te spletne strani v aplikaciji: žareči gumbi, prelivi, stekleni učinki in rahlo filmsko zrno, da se izklopiti"
@@ -1129,23 +1129,32 @@
               "Tanka vrstica napredka pod slikami v klepetu, medtem ko se nalaga polna velikost",
               "Veliki strežniki ob prvem prikazu ne zamrznejo več, poleg tega stikali »Skrij prazne kanale« in »Govorci najprej«",
               "Sporočila štejejo kot poslana šele, ko jih strežnik potrdi; zavrnjena lahko pošlješ znova",
-              "Komentar v profilu s krepkim, ležečim tiskom, povezavami in seznami"
+              "Komentar v profilu s krepkim, ležečim tiskom, povezavami in seznami",
+              "Napačno geslo? Okno takoj vpraša za pravo in ga po želji shrani",
+              "Kdor kanal samo posluša, je na običajnem seznamu z ikono ušesa, ne v svoji skupini"
+            ]
+          },
+          {
+            "title": "Klepet",
+            "items": [
+              "Odgovori na sporočila v kanalih in zasebno: s kratkim citatom, ki je berljiv tudi v uradnem odjemalcu Mumble; klik nanj skoči na izvirnik",
+              "Pri dolgih sporočilih je profilna slika zgoraj ob imenu, slika in ime pa ostaneta vidna med drsenjem"
             ]
           },
           {
             "title": "Kakovost povezave",
             "items": [
-              "Ping, izguba paketov, pasovna širina in UDP ali TCP v profilu in meniju osebe, tudi zate",
+              "Ping, izguba paketov, pasovna širina in UDP ali TCP v profilu in meniju osebe, tudi zate; skrbniki vidijo še odjemalca in operacijski sistem",
               "Majhna ikona signala ob ljudeh s šibko povezavo, da se izklopiti"
             ]
           },
           {
             "title": "Prekrivni sloj",
             "items": [
-              "Prekrivni sloj v igri tudi na Windows, prek DirectX 11 in 12, z enakimi nastavitvami in seznamom zaščite pred goljufanjem kot na Linuxu",
+              "Prekrivni sloj v igri tudi na Windows, kot ločeno okno nad igro, skozi katero gredo kliki. V igro se nič ne naloži, zato deluje tudi v igrah z zaščito pred goljufanjem; skrije ga le izključni celozaslonski način",
               "Pravilne barve v igrah HDR, igre iz Flatpak Steama, celozaslonske igre brez robov preverjene na KDE in GNOME",
               "Popravljeno: zapiranje ali posodabljanje Mumcorda ne sesuje več igre, ki teče",
-              "Prekrivni sloj v igri tudi v izvornih igrah za Linux z OpenGL, na primer Project Hospital, Euro Truck Simulator 2 in Hearts of Iron IV",
+              "Prekrivni sloj v igri tudi v izvornih igrah za Linux z OpenGL, na primer Project Hospital, Euro Truck Simulator 2 in Hearts of Iron IV: Mumcord pokaže pravo možnost zagona za Steam za kopiranje, ki velja tudi po posodobitvah",
               "Prekrivno okno izgine; če si ga uporabljal, te enkratno obvestilo odpelje do nastavitev prekrivnega sloja v igri",
               "»Pridruži se igri« tudi za igre, ki prek Mumble Link delijo naslov svojega strežnika"
             ]
@@ -1163,7 +1172,7 @@
             "title": "Skupno gledanje (beta)",
             "items": [
               "Skupno gledanje YouTube: vsi v glasovnem kanalu hkrati gledajo isti video, vsak lahko ustavi in previje",
-              "Deli zaslon ali okno, po želji z zvokom, za do 8 gledalcev, privzeto 720p pri 30 sličicah na sekundo"
+              "Deli zaslon ali okno z do 8 gledalci, privzeto 720p pri 30 sličicah na sekundo; na Windows in macOS po želji z zvokom deljene aplikacije, na Linuxu brez zvoka"
             ]
           },
           {
@@ -1246,7 +1255,7 @@
         "linux": "yes",
         "windows": "later",
         "macos": "no",
-        "note": "Na Linuxu sloj Vulkan, kot MangoHud, z OpenGL kot rezervo. Na Windows pride po preizkusih na pravi strojni opremi."
+        "note": "Na Linuxu sloj Vulkan, kot MangoHud, z OpenGL kot rezervo. Na Windows pride z 0.4.0 kot ločeno okno nad igro, skozi katero gredo kliki in ki v igro ne naloži ničesar; izključni celozaslonski način ga skrije."
       },
       {
         "title": "Igre Steam in Proton",
@@ -1272,9 +1281,9 @@
       {
         "title": "Izklopljeno v igrah s strogo zaščito pred goljufanjem",
         "linux": "yes",
-        "windows": "later",
+        "windows": "no",
         "macos": "no",
-        "note": "Seznam je spodaj. Vklop zahteva izrecno potrditev."
+        "note": "Seznam je spodaj. Vklop zahteva izrecno potrditev. Windows seznama ne potrebuje: tam se prekrivni sloj igre sploh ne dotakne in deluje tudi z zaščito pred goljufanjem."
       },
       {
         "title": "Zasloni HDR",
@@ -1301,7 +1310,22 @@
     "testedBody": "Prekrivni sloj v igri je bil na Linuxu preizkušen s temi igrami:",
     "tested": [
       "Tyr",
-      "Supermarket Simulator"
+      "Supermarket Simulator",
+      "Die Gilde 1 Remake: Europa 1410",
+      "Stronghold 4 (Demo)",
+      "Escape from Duckov",
+      "Sid Meier's Civilization VII",
+      "theHunter: Call of the Wild",
+      "GG-Party",
+      "Train Sim World 6",
+      "Ready or Not",
+      "Big Ambitions",
+      "Grand Theft Auto V Enhanced",
+      "No Man's Sky",
+      "TCG Card Shop Simulator",
+      "Tropico 6",
+      "Workers & Resources: Soviet Republic",
+      "ARC Raiders"
     ],
     "testedAsk": "Ti deluje v kakšni drugi igri ali se kaj pokvari? Odpri prijavo na GitHubu in igra pride na seznam.",
     "blockedTitle": "Kje prekrivni sloj v igri ostane izklopljen",
@@ -1328,7 +1352,12 @@
       "World of Warcraft": "32- in 64-bitno"
     },
     "overlayWarning": "Znana težava: če zapreš Mumcord, medtem ko teče igra s prekrivnim slojem, se igra lahko sesuje. Najprej zapri igro ali izklopi prekrivni sloj v igri. To bo popravljeno v 0.4.0.",
-    "notWorkingTitle": "Še ne deluje"
+    "notWorkingTitle": "Še ne deluje",
+    "notWorking": [
+      "Project Hospital",
+      "Euro Truck Simulator 2",
+      "Hearts of Iron IV"
+    ]
   },
   "blocked": [
     {

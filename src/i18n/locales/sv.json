@@ -1116,7 +1116,7 @@
           {
             "title": "Teman och utseende",
             "items": [
-              "Egna teman utifrån några nyckelfärger, med förinställningar och liveförhandsvisning; Mumcord håller kontrasten läsbar",
+              "Egna teman utifrån några nyckelfärger, med förinställningar och liveförhandsvisning, var och ett i en mörk och en ljus version; den andra gör Mumcord själv och håller kontrasten läsbar",
               "Dela teman som text: chatten visar ett förhandsvisningskort, ett klick tillämpar temat på appen eller på en server",
               "Ett tema per server om du vill",
               "Den här webbplatsens utseende i appen: glödande knappar, gradienter, glaseffekter och ett lätt filmkorn, kan stängas av"
@@ -1129,23 +1129,32 @@
               "En tunn förloppsindikator under chattbilder medan full storlek laddas",
               "Stora servrar fryser inte längre när de visas första gången, plus reglagen ”Dölj tomma kanaler” och ”Talande först”",
               "Meddelanden räknas som skickade först när servern bekräftar dem; nekade kan skickas igen",
-              "Profilkommentar med fetstil, kursiv, länkar och listor"
+              "Profilkommentar med fetstil, kursiv, länkar och listor",
+              "Fel lösenord? Ett fönster frågar direkt efter rätt lösenord och sparar det om du vill",
+              "Den som bara lyssnar på en kanal syns i den vanliga listan med en öron-ikon i stället för i en egen grupp"
+            ]
+          },
+          {
+            "title": "Chatt",
+            "items": [
+              "Svara på meddelanden, i kanaler och privat: med ett kort citat som också går bra att läsa i den officiella Mumble-klienten; ett klick på det hoppar till originalet",
+              "På långa meddelanden sitter profilbilden högst upp vid namnet, och bild och namn syns kvar medan du scrollar"
             ]
           },
           {
             "title": "Anslutningskvalitet",
             "items": [
-              "Ping, paketförlust, bandbredd och UDP eller TCP i en persons profil och meny, även för dig själv",
+              "Ping, paketförlust, bandbredd och UDP eller TCP i en persons profil och meny, även för dig själv; admins ser dessutom klient och operativsystem",
               "En liten signalikon bredvid personer med svag anslutning, kan stängas av"
             ]
           },
           {
             "title": "Overlay",
             "items": [
-              "Overlayen i spelet även på Windows, via DirectX 11 och 12, med samma inställningar och anti-cheat-lista som på Linux",
+              "Overlayen i spelet även på Windows, som ett eget, klickgenomsläppligt fönster över spelet. Inget laddas in i spelet, så den funkar även i spel med anti-cheat; bara exklusiv helskärm döljer den",
               "Rätt färger i HDR-spel, spel från Flatpak-Steam, spel i kantlös helskärm kontrollerade på KDE och GNOME",
               "Fixat: att stänga eller uppdatera Mumcord kraschar inte längre ett spel som körs",
-              "Overlayen i spelet även i inbyggda Linux-spel med OpenGL, till exempel Project Hospital, Euro Truck Simulator 2 och Hearts of Iron IV",
+              "Overlayen i spelet även i inbyggda Linux-spel med OpenGL, till exempel Project Hospital, Euro Truck Simulator 2 och Hearts of Iron IV: Mumcord visar rätt startalternativ för Steam att kopiera, och det fortsätter gälla efter uppdateringar",
               "Overlay-fönstret försvinner; om du använde det tar ett engångsmeddelande dig till inställningarna för overlayen i spelet",
               "”Gå med i spel” även för spel som delar sin serveradress via Mumble Link"
             ]
@@ -1163,7 +1172,7 @@
             "title": "Titta tillsammans (beta)",
             "items": [
               "Titta tillsammans på YouTube: alla i röstkanalen ser samma video samtidigt, vem som helst kan pausa och spola",
-              "Dela en skärm eller ett fönster, med ljud om du vill, för upp till 8 tittare, som standard 720p i 30 bilder per sekund"
+              "Dela en skärm eller ett fönster med upp till 8 tittare, som standard 720p i 30 bilder per sekund; på Windows och macOS med ljudet från den delade appen om du vill, på Linux utan ljud"
             ]
           },
           {
@@ -1246,7 +1255,7 @@
         "linux": "yes",
         "windows": "later",
         "macos": "no",
-        "note": "På Linux ett Vulkan-lager som MangoHud, med OpenGL som reserv. På Windows kommer den efter tester på riktig hårdvara."
+        "note": "På Linux ett Vulkan-lager som MangoHud, med OpenGL som reserv. På Windows kommer den med 0.4.0 som ett eget, klickgenomsläppligt fönster över spelet som inte laddar in något i spelet; exklusiv helskärm döljer den."
       },
       {
         "title": "Steam- och Proton-spel",
@@ -1272,9 +1281,9 @@
       {
         "title": "Av i spel med strikt anti-cheat",
         "linux": "yes",
-        "windows": "later",
+        "windows": "no",
         "macos": "no",
-        "note": "Listan finns längre ner. För att slå på den krävs en uttrycklig bekräftelse."
+        "note": "Listan finns längre ner. För att slå på den krävs en uttrycklig bekräftelse. Windows behöver inte listan: där rör overlayen aldrig spelet och funkar även med anti-cheat."
       },
       {
         "title": "HDR-skärmar",
@@ -1301,7 +1310,22 @@
     "testedBody": "Overlayen i spelet har provats på Linux med de här spelen:",
     "tested": [
       "Tyr",
-      "Supermarket Simulator"
+      "Supermarket Simulator",
+      "Die Gilde 1 Remake: Europa 1410",
+      "Stronghold 4 (Demo)",
+      "Escape from Duckov",
+      "Sid Meier's Civilization VII",
+      "theHunter: Call of the Wild",
+      "GG-Party",
+      "Train Sim World 6",
+      "Ready or Not",
+      "Big Ambitions",
+      "Grand Theft Auto V Enhanced",
+      "No Man's Sky",
+      "TCG Card Shop Simulator",
+      "Tropico 6",
+      "Workers & Resources: Soviet Republic",
+      "ARC Raiders"
     ],
     "testedAsk": "Fungerar den för dig i ett annat spel, eller går något sönder? Öppna ett issue så hamnar spelet på listan.",
     "blockedTitle": "Där overlayen i spelet förblir avstängd",
@@ -1328,7 +1352,12 @@
       "World of Warcraft": "32 och 64 bitar"
     },
     "overlayWarning": "Känt problem: om du stänger Mumcord medan ett spel med overlayen körs kan spelet krascha. Stäng spelet först eller slå av overlayen i spelet. Det här fixas i 0.4.0.",
-    "notWorkingTitle": "Funkar inte än"
+    "notWorkingTitle": "Funkar inte än",
+    "notWorking": [
+      "Project Hospital",
+      "Euro Truck Simulator 2",
+      "Hearts of Iron IV"
+    ]
   },
   "blocked": [
     {

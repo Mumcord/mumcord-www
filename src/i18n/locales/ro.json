@@ -1116,7 +1116,7 @@
           {
             "title": "Teme și aspect",
             "items": [
-              "Teme proprii din câteva culori de bază, cu presetări și previzualizare live; Mumcord păstrează contrastul lizibil",
+              "Teme proprii din câteva culori de bază, cu presetări și previzualizare live, fiecare într-o versiune întunecată și una deschisă; a doua o face Mumcord singur și păstrează contrastul lizibil",
               "Teme partajate ca text: chatul arată un card de previzualizare, un clic aplică tema aplicației sau unui server",
               "O temă pe fiecare server, dacă vrei",
               "Aspectul acestui site în aplicație: butoane strălucitoare, degradeuri, efecte de sticlă și o granulație fină de film, se pot dezactiva"
@@ -1129,23 +1129,32 @@
               "O bară de progres subțire sub imaginile din chat cât timp se încarcă dimensiunea completă",
               "Serverele mari nu mai îngheață la prima afișare, plus comutatoarele „Ascunde canalele goale” și „Cei care vorbesc primii”",
               "Mesajele contează ca trimise abia când serverul le confirmă; cele refuzate se pot retrimite",
-              "Comentariu de profil cu bold, italic, linkuri și liste"
+              "Comentariu de profil cu bold, italic, linkuri și liste",
+              "Parolă greșită? O fereastră îți cere imediat parola corectă și o salvează dacă vrei",
+              "Cine doar ascultă un canal apare în lista normală cu o pictogramă de ureche, nu într-un grup separat"
+            ]
+          },
+          {
+            "title": "Chat",
+            "items": [
+              "Răspunde la mesaje, în canale și în privat: cu un citat scurt care se citește bine și în clientul oficial Mumble; un clic pe el te duce la mesajul original",
+              "La mesajele lungi, poza de profil stă sus lângă nume, iar poza și numele rămân la vedere cât timp derulezi"
             ]
           },
           {
             "title": "Calitatea conexiunii",
             "items": [
-              "Ping, pierdere de pachete, lățime de bandă și UDP sau TCP în profilul și meniul unei persoane, și pentru tine",
+              "Ping, pierdere de pachete, lățime de bandă și UDP sau TCP în profilul și meniul unei persoane, și pentru tine; adminii văd în plus clientul și sistemul de operare",
               "O mică pictogramă de semnal lângă cei cu o conexiune slabă, se poate dezactiva"
             ]
           },
           {
             "title": "Overlay",
             "items": [
-              "Overlay-ul în joc și pe Windows, prin DirectX 11 și 12, cu aceleași setări și aceeași listă anti-cheat ca pe Linux",
+              "Overlay-ul în joc și pe Windows, ca fereastră separată deasupra jocului, prin care trec clicurile. Nu se încarcă nimic în joc, așa că merge și în jocurile cu anti-cheat; doar ecranul complet exclusiv îl ascunde",
               "Culori corecte în jocurile HDR, jocuri din Steam din Flatpak, jocuri pe ecran complet fără margini verificate pe KDE și GNOME",
               "Reparat: închiderea sau actualizarea Mumcord nu mai dă crash unui joc pornit",
-              "Overlay-ul în joc și în jocurile native pentru Linux cu OpenGL, de exemplu Project Hospital, Euro Truck Simulator 2 și Hearts of Iron IV",
+              "Overlay-ul în joc și în jocurile native pentru Linux cu OpenGL, de exemplu Project Hospital, Euro Truck Simulator 2 și Hearts of Iron IV: Mumcord îți arată opțiunea de lansare Steam potrivită de copiat, care rămâne valabilă și după actualizări",
               "Fereastra overlay dispare; dacă o foloseai, un aviz unic te duce la setările overlay-ului în joc",
               "„Intră în joc” și pentru jocurile care își partajează adresa serverului prin Mumble Link"
             ]
@@ -1163,7 +1172,7 @@
             "title": "Vizionare împreună (beta)",
             "items": [
               "Watch party pe YouTube: toți din canalul vocal se uită la același video deodată, oricine poate pune pauză și derula",
-              "Partajează un ecran sau o fereastră, cu sunet dacă vrei, pentru până la 8 spectatori, implicit 720p la 30 de cadre pe secundă"
+              "Partajează un ecran sau o fereastră cu până la 8 spectatori, implicit 720p la 30 de cadre pe secundă; pe Windows și macOS cu sunetul aplicației partajate dacă vrei, pe Linux fără sunet"
             ]
           },
           {
@@ -1246,7 +1255,7 @@
         "linux": "yes",
         "windows": "later",
         "macos": "no",
-        "note": "Pe Linux, un layer Vulkan ca MangoHud, cu OpenGL ca rezervă. Pe Windows vine după teste pe hardware real."
+        "note": "Pe Linux, un layer Vulkan ca MangoHud, cu OpenGL ca rezervă. Pe Windows vine cu 0.4.0 ca fereastră separată deasupra jocului, prin care trec clicurile și care nu încarcă nimic în joc; ecranul complet exclusiv îl ascunde."
       },
       {
         "title": "Jocuri Steam și Proton",
@@ -1272,9 +1281,9 @@
       {
         "title": "Oprit în jocurile cu anti-cheat strict",
         "linux": "yes",
-        "windows": "later",
+        "windows": "no",
         "macos": "no",
-        "note": "Lista e mai jos. Pornirea necesită o confirmare explicită."
+        "note": "Lista e mai jos. Pornirea necesită o confirmare explicită. Windows nu are nevoie de listă: acolo overlay-ul nu atinge niciodată jocul și merge și cu anti-cheat."
       },
       {
         "title": "Ecrane HDR",
@@ -1301,7 +1310,22 @@
     "testedBody": "Overlay-ul în joc a fost încercat pe Linux cu aceste jocuri:",
     "tested": [
       "Tyr",
-      "Supermarket Simulator"
+      "Supermarket Simulator",
+      "Die Gilde 1 Remake: Europa 1410",
+      "Stronghold 4 (Demo)",
+      "Escape from Duckov",
+      "Sid Meier's Civilization VII",
+      "theHunter: Call of the Wild",
+      "GG-Party",
+      "Train Sim World 6",
+      "Ready or Not",
+      "Big Ambitions",
+      "Grand Theft Auto V Enhanced",
+      "No Man's Sky",
+      "TCG Card Shop Simulator",
+      "Tropico 6",
+      "Workers & Resources: Soviet Republic",
+      "ARC Raiders"
     ],
     "testedAsk": "Îți merge în alt joc sau se strică ceva? Deschide un issue și jocul ajunge pe listă.",
     "blockedTitle": "Unde overlay-ul în joc rămâne oprit",
@@ -1328,7 +1352,12 @@
       "World of Warcraft": "32 și 64 de biți"
     },
     "overlayWarning": "Problemă cunoscută: dacă închizi Mumcord cât timp rulează un joc cu overlay-ul, jocul poate da crash. Închide mai întâi jocul sau oprește overlay-ul în joc. Se rezolvă în 0.4.0.",
-    "notWorkingTitle": "Încă nu merge"
+    "notWorkingTitle": "Încă nu merge",
+    "notWorking": [
+      "Project Hospital",
+      "Euro Truck Simulator 2",
+      "Hearts of Iron IV"
+    ]
   },
   "blocked": [
     {

@@ -166,7 +166,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           {
             title: "Themes und Look",
             items: [
-              "Eigene Themes aus wenigen Grundfarben, mit Vorlagen und Live-Vorschau; Mumcord sorgt für gut lesbaren Kontrast",
+              "Eigene Themes aus wenigen Grundfarben, mit Vorlagen und Live-Vorschau, jedes in einer dunklen und einer hellen Version; die zweite erzeugt Mumcord selbst und sorgt für gut lesbaren Kontrast",
               "Themes als Text teilen: Im Chat erscheint eine Vorschaukarte, ein Klick übernimmt das Theme für die App oder für einen Server",
               "Auf Wunsch ein eigenes Theme pro Server",
               "Der Look dieser Website in der App: leuchtende Knöpfe, Farbverläufe, Glas-Effekte und leichtes Filmkorn, abschaltbar",
@@ -180,22 +180,31 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Große Server frieren beim ersten Anzeigen nicht mehr ein, dazu die Schalter „Leere Kanäle ausblenden“ und „Sprechende zuerst“",
               "Nachrichten gelten erst als gesendet, wenn der Server sie bestätigt; abgelehnte lassen sich erneut senden",
               "Profilkommentar mit Fett, Kursiv, Links und Listen",
+              "Falsches Passwort? Ein Fenster fragt gleich nach dem richtigen und speichert es auf Wunsch",
+              "Wer einem Kanal nur zuhört, steht mit einem Ohr-Symbol in der normalen Liste statt in einer eigenen Gruppe",
+            ],
+          },
+          {
+            title: "Chat",
+            items: [
+              "Auf Nachrichten antworten, im Kanal und privat: mit einem kurzen Zitat, das auch im offiziellen Mumble-Client lesbar ist; ein Klick darauf springt zum Original",
+              "Bei langen Nachrichten steht das Profilbild oben beim Namen, und beim Scrollen bleiben Bild und Name sichtbar",
             ],
           },
           {
             title: "Verbindungsqualität",
             items: [
-              "Ping, Paketverlust, Bandbreite und UDP oder TCP im Profil und im Menü einer Person, auch für dich selbst",
+              "Ping, Paketverlust, Bandbreite und UDP oder TCP im Profil und im Menü einer Person, auch für dich selbst; Admins sehen zusätzlich Client und Betriebssystem",
               "Ein kleines Signal-Symbol bei Leuten mit schwacher Verbindung, abschaltbar",
             ],
           },
           {
             title: "Overlay",
             items: [
-              "Overlay im Spiel jetzt auch unter Windows, über DirectX 11 und 12, mit denselben Einstellungen und derselben Anti-Cheat-Liste wie unter Linux",
+              "Overlay im Spiel jetzt auch unter Windows, als eigenes, durchklickbares Fenster über dem Spiel. Es lädt nichts ins Spiel und geht deshalb auch in Spielen mit Anti-Cheat; nur im exklusiven Vollbild bleibt es unsichtbar",
               "Richtige Farben in HDR-Spielen, Spiele aus Flatpak-Steam, randlose Vollbildspiele unter KDE und GNOME geprüft",
               "Behoben: Schließt oder aktualisierst du Mumcord, stürzt ein laufendes Spiel nicht mehr ab",
-              "Overlay im Spiel auch in nativen Linux-Spielen mit OpenGL, zum Beispiel Project Hospital, Euro Truck Simulator 2 und Hearts of Iron IV",
+              "Overlay im Spiel auch in nativen Linux-Spielen mit OpenGL, zum Beispiel Project Hospital, Euro Truck Simulator 2 und Hearts of Iron IV: Mumcord zeigt die passende Steam-Startoption zum Kopieren, die auch nach Updates gilt",
               "Das Overlay-Fenster fällt weg; wer es genutzt hat, bekommt einmal einen Hinweis und landet in den Einstellungen für das Overlay im Spiel",
               "„Spiel beitreten“ auch für Spiele, die ihre Serveradresse über Mumble Link mitteilen",
             ],
@@ -213,7 +222,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
             title: "Zusammen schauen (Beta)",
             items: [
               "YouTube-Watch-Party: Alle im Sprachkanal schauen dasselbe Video gleichzeitig, jeder kann pausieren und spulen",
-              "Bildschirm oder Fenster teilen, auf Wunsch mit Ton, für bis zu 8 Zuschauer, standardmäßig in 720p mit 30 Bildern pro Sekunde",
+              "Bildschirm oder Fenster teilen, für bis zu 8 Zuschauer, standardmäßig in 720p mit 30 Bildern pro Sekunde; unter Windows und macOS auf Wunsch mit dem Ton der geteilten App, unter Linux ohne Ton",
             ],
           },
           {
@@ -398,7 +407,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           {
             title: "Themes and look",
             items: [
-              "Your own themes from a few key colours, with presets and a live preview; Mumcord keeps the contrast readable",
+              "Your own themes from a few key colours, with presets and a live preview, each in a dark and a light version; Mumcord makes the second one itself and keeps the contrast readable",
               "Share themes as text: the chat shows a preview card, one click applies the theme to the app or to a server",
               "A theme per server if you like",
               "This website's look in the app: glowing buttons, gradients, glass effects and a light film grain, can be switched off",
@@ -412,22 +421,31 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Big servers no longer freeze when first shown, plus “Hide empty channels” and “Talking people first” switches",
               "Messages only count as sent once the server confirms them; refused ones can be sent again",
               "Profile comment with bold, italic, links and lists",
+              "Wrong password? A window asks for the right one straight away and saves it if you like",
+              "People who only listen to a channel appear in the normal list with an ear icon instead of in a group of their own",
+            ],
+          },
+          {
+            title: "Chat",
+            items: [
+              "Reply to messages, in channels and in private: with a short quote that also reads fine in the official Mumble client; one click on it jumps to the original",
+              "On long messages the profile picture sits at the top next to the name, and picture and name stay in view while you scroll",
             ],
           },
           {
             title: "Connection quality",
             items: [
-              "Ping, packet loss, bandwidth and UDP or TCP in a person's profile and menu, for yourself too",
+              "Ping, packet loss, bandwidth and UDP or TCP in a person's profile and menu, for yourself too; admins also see the client and operating system",
               "A small signal icon next to people with a weak connection, can be switched off",
             ],
           },
           {
             title: "Overlay",
             items: [
-              "The in-game overlay on Windows too, through DirectX 11 and 12, with the same settings and anti-cheat list as on Linux",
+              "The in-game overlay on Windows too, as a separate click-through window over the game. Nothing is loaded into the game, so it also works in games with anti-cheat; only exclusive fullscreen hides it",
               "Correct colours in HDR games, games from Flatpak Steam, borderless fullscreen games checked on KDE and GNOME",
               "Fixed: closing or updating Mumcord no longer crashes a running game",
-              "The in-game overlay in native Linux games that use OpenGL too, such as Project Hospital, Euro Truck Simulator 2 and Hearts of Iron IV",
+              "The in-game overlay in native Linux games that use OpenGL too, such as Project Hospital, Euro Truck Simulator 2 and Hearts of Iron IV: Mumcord shows the right Steam launch option to copy, and it keeps working after updates",
               "The overlay window goes away; if you used it, a one-time notice takes you to the in-game overlay settings",
               "“Join game” also for games that share their server address through Mumble Link",
             ],
@@ -445,7 +463,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
             title: "Watching together (beta)",
             items: [
               "YouTube watch party: everyone in the voice channel watches the same video at once, anyone can pause and seek",
-              "Share a screen or a window, with sound if you like, for up to 8 viewers, 720p at 30 frames per second by default",
+              "Share a screen or a window for up to 8 viewers, 720p at 30 frames per second by default; on Windows and macOS with the shared app's sound if you like, on Linux without sound",
             ],
           },
           {

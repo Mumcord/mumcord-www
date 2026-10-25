@@ -1116,7 +1116,7 @@
           {
             "title": "Motivy a vzhled",
             "items": [
-              "Vlastní motivy z několika hlavních barev, s předvolbami a živým náhledem; Mumcord hlídá, aby kontrast zůstal čitelný",
+              "Vlastní motivy z několika hlavních barev, s předvolbami a živým náhledem, každý v tmavé a světlé verzi; tu druhou vytvoří Mumcord sám a hlídá, aby kontrast zůstal čitelný",
               "Sdílení motivů jako text: chat ukáže kartu s náhledem, jedním kliknutím motiv použiješ na aplikaci nebo na server",
               "Když chceš, vlastní motiv pro každý server",
               "Vzhled tohoto webu v aplikaci: zářící tlačítka, přechody, skleněné efekty a jemné filmové zrno, dá se vypnout"
@@ -1129,23 +1129,32 @@
               "Tenký ukazatel průběhu pod obrázky v chatu, zatímco se načítá plná velikost",
               "Velké servery už při prvním zobrazení nezamrznou, k tomu přepínače „Skrýt prázdné kanály“ a „Mluvící nahoru“",
               "Zprávy se počítají jako odeslané, až když je server potvrdí; odmítnuté jde poslat znovu",
-              "Komentář v profilu s tučným písmem, kurzívou, odkazy a seznamy"
+              "Komentář v profilu s tučným písmem, kurzívou, odkazy a seznamy",
+              "Špatné heslo? Okno se hned zeptá na správné a na přání ho uloží",
+              "Kdo kanál jen poslouchá, je v normálním seznamu s ikonou ucha, a ne ve vlastní skupině"
+            ]
+          },
+          {
+            "title": "Chat",
+            "items": [
+              "Odpovídání na zprávy v kanálech i soukromě: s krátkou citací, která se dobře čte i v oficiálním klientu Mumble; kliknutím na ni skočíš na původní zprávu",
+              "U dlouhých zpráv je profilová fotka nahoře u jména a fotka i jméno zůstávají při posouvání vidět"
             ]
           },
           {
             "title": "Kvalita připojení",
             "items": [
-              "Ping, ztráta paketů, šířka pásma a UDP nebo TCP v profilu a nabídce člověka, i u tebe",
+              "Ping, ztráta paketů, šířka pásma a UDP nebo TCP v profilu a nabídce člověka, i u tebe; admini navíc vidí klienta a operační systém",
               "Malá ikona signálu u lidí se slabým připojením, dá se vypnout"
             ]
           },
           {
             "title": "Overlay",
             "items": [
-              "Herní overlay i na Windows, přes DirectX 11 a 12, se stejným nastavením a seznamem anti-cheatů jako na Linuxu",
+              "Herní overlay i na Windows, jako samostatné okno nad hrou, kterým projdou kliknutí. Do hry se nic nenačítá, takže funguje i ve hrách s anti-cheatem; skryje ho jen exkluzivní celá obrazovka",
               "Správné barvy v HDR hrách, hry ze Steamu z Flatpaku, hry v režimu celé obrazovky bez okrajů vyzkoušené na KDE a GNOME",
               "Opraveno: zavření nebo aktualizace Mumcordu už neshodí běžící hru",
-              "Herní overlay i v nativních linuxových hrách s OpenGL, třeba Project Hospital, Euro Truck Simulator 2 a Hearts of Iron IV",
+              "Herní overlay i v nativních linuxových hrách s OpenGL, třeba Project Hospital, Euro Truck Simulator 2 a Hearts of Iron IV: Mumcord ukáže správnou spouštěcí volbu Steamu ke zkopírování, která platí i po aktualizacích",
               "Okno overlaye zmizí; pokud jsi ho používal, jednorázové upozornění tě zavede do nastavení herního overlaye",
               "„Připojit se do hry“ i u her, které sdílejí adresu svého serveru přes Mumble Link"
             ]
@@ -1163,7 +1172,7 @@
             "title": "Společné sledování (beta)",
             "items": [
               "Společné sledování YouTube: všichni v hlasovém kanálu sledují stejné video naráz, kdokoli může pauzovat a přetáčet",
-              "Sdílení obrazovky nebo okna, klidně se zvukem, až pro 8 diváků, výchozí 720p při 30 snímcích za sekundu"
+              "Sdílení obrazovky nebo okna až pro 8 diváků, výchozí 720p při 30 snímcích za sekundu; na Windows a macOS klidně se zvukem sdílené aplikace, na Linuxu bez zvuku"
             ]
           },
           {
@@ -1246,7 +1255,7 @@
         "linux": "yes",
         "windows": "later",
         "macos": "no",
-        "note": "Na Linuxu vrstva Vulkan jako MangoHud, se záložním OpenGL. Na Windows přijde po otestování na skutečném hardwaru."
+        "note": "Na Linuxu vrstva Vulkan jako MangoHud, se záložním OpenGL. Na Windows přijde s 0.4.0 jako samostatné okno nad hrou, kterým projdou kliknutí a které do hry nic nenačítá; exkluzivní celá obrazovka ho skryje."
       },
       {
         "title": "Hry přes Steam a Proton",
@@ -1272,9 +1281,9 @@
       {
         "title": "Vypnutý ve hrách s přísným anti-cheatem",
         "linux": "yes",
-        "windows": "later",
+        "windows": "no",
         "macos": "no",
-        "note": "Seznam najdeš níž. Zapnutí vyžaduje výslovné potvrzení."
+        "note": "Seznam najdeš níž. Zapnutí vyžaduje výslovné potvrzení. Windows seznam nepotřebuje: overlay se tam hry vůbec nedotkne a funguje i s anti-cheatem."
       },
       {
         "title": "HDR obrazovky",
@@ -1301,7 +1310,22 @@
     "testedBody": "Herní overlay byl na Linuxu vyzkoušen s těmito hrami:",
     "tested": [
       "Tyr",
-      "Supermarket Simulator"
+      "Supermarket Simulator",
+      "Die Gilde 1 Remake: Europa 1410",
+      "Stronghold 4 (Demo)",
+      "Escape from Duckov",
+      "Sid Meier's Civilization VII",
+      "theHunter: Call of the Wild",
+      "GG-Party",
+      "Train Sim World 6",
+      "Ready or Not",
+      "Big Ambitions",
+      "Grand Theft Auto V Enhanced",
+      "No Man's Sky",
+      "TCG Card Shop Simulator",
+      "Tropico 6",
+      "Workers & Resources: Soviet Republic",
+      "ARC Raiders"
     ],
     "testedAsk": "Funguje ti v jiné hře, nebo se něco rozbije? Založ issue a hra se dostane na seznam.",
     "blockedTitle": "Kde herní overlay zůstává vypnutý",
@@ -1328,7 +1352,12 @@
       "World of Warcraft": "32 a 64 bit"
     },
     "overlayWarning": "Známý problém: když zavřeš Mumcord, zatímco běží hra s overlayem, hra může spadnout. Nejdřív zavři hru, nebo herní overlay vypni. Opraví se to v 0.4.0.",
-    "notWorkingTitle": "Zatím nefunguje"
+    "notWorkingTitle": "Zatím nefunguje",
+    "notWorking": [
+      "Project Hospital",
+      "Euro Truck Simulator 2",
+      "Hearts of Iron IV"
+    ]
   },
   "blocked": [
     {

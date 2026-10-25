@@ -1116,7 +1116,7 @@
           {
             "title": "Teemad ja välimus",
             "items": [
-              "Sinu enda teemad mõnest põhivärvist, eelseadistuste ja reaalajas eelvaatega; Mumcord hoiab kontrasti loetavana",
+              "Sinu enda teemad mõnest põhivärvist, eelseadistuste ja reaalajas eelvaatega, igaüks tumeda ja heleda versioonina; teise teeb Mumcord ise ja hoiab kontrasti loetavana",
               "Jaga teemasid tekstina: vestlus näitab eelvaatekaarti, üks klõps rakendab teema kogu äpile või ühele serverile",
               "Soovi korral oma teema igale serverile",
               "Selle veebilehe välimus äpis: helendavad nupud, üleminekud, klaasiefektid ja kerge filmitera, saab välja lülitada"
@@ -1129,23 +1129,32 @@
               "Õhuke edenemisriba vestluse piltide all, kuni täissuurus laeb",
               "Suured serverid ei hangu enam esmakordsel kuvamisel, lisaks lülitid „Peida tühjad kanalid“ ja „Rääkijad ees“",
               "Sõnum loetakse saadetuks alles siis, kui server selle kinnitab; tagasi lükatud sõnumeid saab uuesti saata",
-              "Profiili kommentaar paksu ja kaldkirja, linkide ja loenditega"
+              "Profiili kommentaar paksu ja kaldkirja, linkide ja loenditega",
+              "Vale parool? Aken küsib kohe õiget ja salvestab selle soovi korral",
+              "Kes kanalit ainult kuulab, on tavalises nimekirjas kõrvaikooniga, mitte omaette grupis"
+            ]
+          },
+          {
+            "title": "Vestlus",
+            "items": [
+              "Vasta sõnumitele kanalites ja privaatselt: lühikese tsitaadiga, mis on loetav ka ametlikus Mumble’i kliendis; klõps sellel viib algse sõnumini",
+              "Pikkade sõnumite puhul on profiilipilt üleval nime juures ning pilt ja nimi jäävad kerimisel nähtavale"
             ]
           },
           {
             "title": "Ühenduse kvaliteet",
             "items": [
-              "Ping, pakettide kadu, ribalaius ja UDP või TCP inimese profiilis ja menüüs, ka sinu enda puhul",
+              "Ping, pakettide kadu, ribalaius ja UDP või TCP inimese profiilis ja menüüs, ka sinu enda puhul; adminid näevad lisaks klienti ja operatsioonisüsteemi",
               "Väike signaaliikoon nõrga ühendusega inimeste kõrval, saab välja lülitada"
             ]
           },
           {
             "title": "Ülekate",
             "items": [
-              "Mängusisene ülekate ka Windowsis, DirectX 11 ja 12 kaudu, samade seadete ja petuvastuse nimekirjaga nagu Linuxis",
+              "Mängusisene ülekate ka Windowsis, eraldi aknana mängu kohal, millest klõpsud lähevad läbi. Mängu ei laadita midagi, seega töötab see ka petuvastusega mängudes; ainult eksklusiivne täisekraan peidab selle",
               "Õiged värvid HDR-mängudes, mängud Flatpaki Steamist, ääristeta täisekraanil mängud KDE-s ja GNOME-is kontrollitud",
               "Parandatud: Mumcordi sulgemine või uuendamine ei lase enam käimasoleval mängul kokku joosta",
-              "Mängusisene ülekate ka OpenGL-i kasutavates Linuxi omamängudes, näiteks Project Hospital, Euro Truck Simulator 2 ja Hearts of Iron IV",
+              "Mängusisene ülekate ka OpenGL-i kasutavates Linuxi omamängudes, näiteks Project Hospital, Euro Truck Simulator 2 ja Hearts of Iron IV: Mumcord näitab õiget Steami käivitusvalikut kopeerimiseks ja see kehtib ka pärast uuendusi",
               "Ülekatteaken kaob; kui sa seda kasutasid, viib ühekordne teade sind mängusisese ülekatte seadetesse",
               "„Liitu mänguga“ ka mängudes, mis jagavad oma serveri aadressi Mumble Linki kaudu"
             ]
@@ -1163,7 +1172,7 @@
             "title": "Koos vaatamine (beeta)",
             "items": [
               "YouTube’i ühisvaatamine: kõik häälkanalis vaatavad sama videot korraga, igaüks saab peatada ja kerida",
-              "Jaga ekraani või akent, soovi korral heliga, kuni 8 vaatajale, vaikimisi 720p ja 30 kaadrit sekundis"
+              "Jaga ekraani või akent kuni 8 vaatajale, vaikimisi 720p ja 30 kaadrit sekundis; Windowsis ja macOS-is soovi korral jagatud rakenduse heliga, Linuxis ilma helita"
             ]
           },
           {
@@ -1246,7 +1255,7 @@
         "linux": "yes",
         "windows": "later",
         "macos": "no",
-        "note": "Linuxis Vulkani kiht nagu MangoHud, varuvariandina OpenGL. Windowsis tuleb see pärast testimist päris riistvaral."
+        "note": "Linuxis Vulkani kiht nagu MangoHud, varuvariandina OpenGL. Windowsis tuleb see versiooniga 0.4.0 eraldi aknana mängu kohal, millest klõpsud lähevad läbi ja mis ei laadi mängu midagi; eksklusiivne täisekraan peidab selle."
       },
       {
         "title": "Steami ja Protoni mängud",
@@ -1272,9 +1281,9 @@
       {
         "title": "Range petuvastusega mängudes väljas",
         "linux": "yes",
-        "windows": "later",
+        "windows": "no",
         "macos": "no",
-        "note": "Nimekiri on allpool. Sisselülitamine vajab selget kinnitust."
+        "note": "Nimekiri on allpool. Sisselülitamine vajab selget kinnitust. Windows nimekirja ei vaja: seal ei puutu ülekate mängu üldse ja töötab ka petuvastusega."
       },
       {
         "title": "HDR-ekraanid",
@@ -1301,7 +1310,22 @@
     "testedBody": "Mängusisest ülekatet on Linuxis proovitud nende mängudega:",
     "tested": [
       "Tyr",
-      "Supermarket Simulator"
+      "Supermarket Simulator",
+      "Die Gilde 1 Remake: Europa 1410",
+      "Stronghold 4 (Demo)",
+      "Escape from Duckov",
+      "Sid Meier's Civilization VII",
+      "theHunter: Call of the Wild",
+      "GG-Party",
+      "Train Sim World 6",
+      "Ready or Not",
+      "Big Ambitions",
+      "Grand Theft Auto V Enhanced",
+      "No Man's Sky",
+      "TCG Card Shop Simulator",
+      "Tropico 6",
+      "Workers & Resources: Soviet Republic",
+      "ARC Raiders"
     ],
     "testedAsk": "Kas see töötab sul mõnes teises mängus või läheb midagi katki? Ava issue ja mäng läheb nimekirja.",
     "blockedTitle": "Kus mängusisene ülekate jääb välja",
@@ -1328,7 +1352,12 @@
       "World of Warcraft": "32- ja 64-bitine"
     },
     "overlayWarning": "Teadaolev probleem: kui sulged Mumcordi ajal, kui ülekattega mäng käib, võib mäng kokku joosta. Sulge enne mäng või lülita mängusisene ülekate välja. See parandatakse versioonis 0.4.0.",
-    "notWorkingTitle": "Veel ei tööta"
+    "notWorkingTitle": "Veel ei tööta",
+    "notWorking": [
+      "Project Hospital",
+      "Euro Truck Simulator 2",
+      "Hearts of Iron IV"
+    ]
   },
   "blocked": [
     {

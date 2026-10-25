@@ -1116,7 +1116,7 @@
           {
             "title": "Motywy i wygląd",
             "items": [
-              "Własne motywy z kilku kluczowych kolorów, z presetami i podglądem na żywo; Mumcord pilnuje czytelnego kontrastu",
+              "Własne motywy z kilku kluczowych kolorów, z presetami i podglądem na żywo, każdy w wersji ciemnej i jasnej; drugą Mumcord tworzy sam i pilnuje czytelnego kontrastu",
               "Udostępnianie motywów jako tekst: czat pokazuje kartę podglądu, jedno kliknięcie nakłada motyw na aplikację albo na serwer",
               "Osobny motyw dla każdego serwera, jeśli chcesz",
               "Wygląd tej strony w aplikacji: świecące przyciski, gradienty, efekty szkła i lekkie ziarno filmowe, do wyłączenia"
@@ -1129,23 +1129,32 @@
               "Cienki pasek postępu pod obrazami w czacie, gdy ładuje się pełny rozmiar",
               "Duże serwery nie zamrażają się już przy pierwszym wyświetleniu, do tego przełączniki „Ukryj puste kanały” i „Mówiący na górze”",
               "Wiadomości liczą się jako wysłane dopiero, gdy serwer je potwierdzi; odrzucone można wysłać ponownie",
-              "Komentarz w profilu z pogrubieniem, kursywą, linkami i listami"
+              "Komentarz w profilu z pogrubieniem, kursywą, linkami i listami",
+              "Złe hasło? Okno od razu pyta o właściwe i na życzenie je zapisuje",
+              "Kto tylko słucha kanału, jest na zwykłej liście z ikoną ucha, a nie w osobnej grupie"
+            ]
+          },
+          {
+            "title": "Czat",
+            "items": [
+              "Odpowiadanie na wiadomości, na kanałach i prywatnie: z krótkim cytatem, który czyta się dobrze także w oficjalnym kliencie Mumble; kliknięcie w niego przenosi do oryginału",
+              "Przy długich wiadomościach zdjęcie profilowe jest u góry obok nazwy, a zdjęcie i nazwa zostają widoczne podczas przewijania"
             ]
           },
           {
             "title": "Jakość połączenia",
             "items": [
-              "Ping, utrata pakietów, przepustowość i UDP albo TCP w profilu i menu danej osoby, także dla ciebie",
+              "Ping, utrata pakietów, przepustowość i UDP albo TCP w profilu i menu danej osoby, także dla ciebie; admini widzą też klienta i system operacyjny",
               "Mała ikona sygnału przy osobach ze słabym połączeniem, do wyłączenia"
             ]
           },
           {
             "title": "Nakładka",
             "items": [
-              "Nakładka w grze także na Windowsie, przez DirectX 11 i 12, z tymi samymi ustawieniami i listą anti-cheat co na Linuksie",
+              "Nakładka w grze także na Windowsie, jako osobne, przeklikiwalne okno nad grą. Nic nie jest ładowane do gry, więc działa też w grach z anti-cheatem; ukrywa ją tylko wyłączny tryb pełnoekranowy",
               "Poprawne kolory w grach HDR, gry ze Steama z Flatpaka, gry pełnoekranowe bez ramek sprawdzone na KDE i GNOME",
               "Naprawione: zamknięcie lub aktualizacja Mumcorda nie wysypuje już uruchomionej gry",
-              "Nakładka w grze także w natywnych grach na Linuksa z OpenGL, np. Project Hospital, Euro Truck Simulator 2 i Hearts of Iron IV",
+              "Nakładka w grze także w natywnych grach na Linuksa z OpenGL, np. Project Hospital, Euro Truck Simulator 2 i Hearts of Iron IV: Mumcord pokazuje właściwą opcję uruchamiania Steam do skopiowania, która działa także po aktualizacjach",
               "Okno nakładki znika; jeśli z niego korzystałeś, jednorazowa informacja przeniesie cię do ustawień nakładki w grze",
               "„Dołącz do gry” także dla gier, które udostępniają adres serwera przez Mumble Link"
             ]
@@ -1163,7 +1172,7 @@
             "title": "Wspólne oglądanie (beta)",
             "items": [
               "Wspólne oglądanie YouTube: wszyscy na kanale głosowym oglądają ten sam film naraz, każdy może pauzować i przewijać",
-              "Udostępnij ekran albo okno, z dźwiękiem, jeśli chcesz, dla maksymalnie 8 widzów, domyślnie 720p przy 30 klatkach na sekundę"
+              "Udostępnianie ekranu lub okna maksymalnie 8 widzom, domyślnie w 720p przy 30 klatkach na sekundę; na Windowsie i macOS na życzenie z dźwiękiem udostępnianej aplikacji, na Linuksie bez dźwięku"
             ]
           },
           {
@@ -1246,7 +1255,7 @@
         "linux": "yes",
         "windows": "later",
         "macos": "no",
-        "note": "Na Linuxie warstwa Vulkan jak MangoHud, z OpenGL jako rozwiązaniem awaryjnym. Na Windowsie pojawi się po testach na prawdziwym sprzęcie."
+        "note": "Na Linuksie jako warstwa Vulkan jak MangoHud, z OpenGL jako zapasem. Na Windowsie pojawi się w 0.4.0 jako osobne, przeklikiwalne okno nad grą, które nic do gry nie ładuje; wyłączny tryb pełnoekranowy ją ukrywa."
       },
       {
         "title": "Gry ze Steama i przez Proton",
@@ -1272,9 +1281,9 @@
       {
         "title": "Wyłączona w grach z restrykcyjnym anti-cheatem",
         "linux": "yes",
-        "windows": "later",
+        "windows": "no",
         "macos": "no",
-        "note": "Lista jest niżej. Włączenie wymaga wyraźnego potwierdzenia."
+        "note": "Lista jest niżej. Włączenie wymaga wyraźnego potwierdzenia. Windows nie potrzebuje tej listy: nakładka nie dotyka tam gry i działa też z anti-cheatem."
       },
       {
         "title": "Ekrany HDR",
@@ -1301,7 +1310,22 @@
     "testedBody": "Nakładkę w grze wypróbowano na Linuxie z tymi grami:",
     "tested": [
       "Tyr",
-      "Supermarket Simulator"
+      "Supermarket Simulator",
+      "Die Gilde 1 Remake: Europa 1410",
+      "Stronghold 4 (Demo)",
+      "Escape from Duckov",
+      "Sid Meier's Civilization VII",
+      "theHunter: Call of the Wild",
+      "GG-Party",
+      "Train Sim World 6",
+      "Ready or Not",
+      "Big Ambitions",
+      "Grand Theft Auto V Enhanced",
+      "No Man's Sky",
+      "TCG Card Shop Simulator",
+      "Tropico 6",
+      "Workers & Resources: Soviet Republic",
+      "ARC Raiders"
     ],
     "testedAsk": "Działa u ciebie w innej grze albo coś się psuje? Otwórz zgłoszenie, a gra trafi na listę.",
     "blockedTitle": "Gdzie nakładka w grze pozostaje wyłączona",
@@ -1328,7 +1352,12 @@
       "World of Warcraft": "32 i 64 bity"
     },
     "overlayWarning": "Znany problem: jeśli zamkniesz Mumcorda, gdy działa gra z nakładką, gra może się wysypać. Najpierw zamknij grę albo wyłącz nakładkę w grze. Zostanie to naprawione w 0.4.0.",
-    "notWorkingTitle": "Jeszcze nie działa"
+    "notWorkingTitle": "Jeszcze nie działa",
+    "notWorking": [
+      "Project Hospital",
+      "Euro Truck Simulator 2",
+      "Hearts of Iron IV"
+    ]
   },
   "blocked": [
     {

@@ -161,7 +161,7 @@ const source: Record<"de" | "en", GamesPage> = {
         linux: "yes",
         windows: "later",
         macos: "no",
-        note: "Unter Linux als Vulkan-Layer wie MangoHud, mit OpenGL als Ausweichweg. Unter Windows kommt es nach Tests auf echter Hardware.",
+        note: "Unter Linux als Vulkan-Layer wie MangoHud, mit OpenGL als Ausweichweg. Unter Windows kommt es mit 0.4.0 als eigenes, durchklickbares Fenster über dem Spiel, das nichts ins Spiel lädt; im exklusiven Vollbild bleibt es unsichtbar.",
       },
       {
         title: "Steam- und Proton-Spiele",
@@ -187,9 +187,9 @@ const source: Record<"de" | "en", GamesPage> = {
       {
         title: "Aus bei Spielen mit strengem Anti-Cheat",
         linux: "yes",
-        windows: "later",
+        windows: "no",
         macos: "no",
-        note: "Die Liste steht weiter unten. Einschalten geht nur mit ausdrücklicher Bestätigung.",
+        note: "Die Liste steht weiter unten. Einschalten geht nur mit ausdrücklicher Bestätigung. Unter Windows braucht es die Liste nicht: Das Overlay rührt das Spiel dort nicht an und geht auch mit Anti-Cheat.",
       },
       {
         title: "HDR-Bildschirme",
@@ -262,7 +262,7 @@ const source: Record<"de" | "en", GamesPage> = {
         linux: "yes",
         windows: "later",
         macos: "no",
-        note: "On Linux a Vulkan layer like MangoHud, with OpenGL as a fallback. On Windows it comes after testing on real hardware.",
+        note: "On Linux a Vulkan layer like MangoHud, with OpenGL as a fallback. On Windows it comes with 0.4.0 as a separate click-through window over the game that loads nothing into it; exclusive fullscreen hides it.",
       },
       {
         title: "Steam and Proton games",
@@ -288,9 +288,9 @@ const source: Record<"de" | "en", GamesPage> = {
       {
         title: "Off in games with strict anti-cheat",
         linux: "yes",
-        windows: "later",
+        windows: "no",
         macos: "no",
-        note: "The list is further down. Turning it on needs an explicit confirmation.",
+        note: "The list is further down. Turning it on needs an explicit confirmation. Windows doesn't need the list: the overlay never touches the game there and also works with anti-cheat.",
       },
       {
         title: "HDR screens",
