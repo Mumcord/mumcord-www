@@ -1660,7 +1660,7 @@ p {
   .sp-bento {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .sp-overlay {
+  .sp-servers {
     grid-column: 1 / -1;
   }
 }
@@ -1669,19 +1669,17 @@ p {
     grid-template-columns: repeat(12, minmax(0, 1fr));
     grid-auto-rows: minmax(0, auto);
   }
-  .sp-overlay {
+  .sp-servers {
     grid-column: span 8;
     grid-row: span 2;
   }
-  .sp-positional {
+  .sp-themes {
     grid-column: span 4;
     grid-row: span 2;
   }
-  .sp-friends,
-  .sp-history {
-    grid-column: span 4;
-  }
-  .sp-languages {
+  .sp-win,
+  .sp-together,
+  .sp-replies {
     grid-column: span 4;
   }
 }
@@ -1728,7 +1726,7 @@ p {
   font-size: clamp(1.35rem, 2vw, 1.7rem);
   letter-spacing: -0.02em;
 }
-.sp-overlay .sp-text h3 {
+.sp-servers .sp-text h3 {
   font-size: clamp(1.7rem, 3vw, 2.4rem);
 }
 .sp-text p {
@@ -1745,117 +1743,198 @@ p {
   font-weight: 600;
   color: var(--peach);
 }
-.sp-media {
+/* Several servers: the server rail and notifications from the other servers. */
+.sp-servers-demo {
+  display: flex;
+  gap: 18px;
+  margin: 24px 24px 0;
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: rgb(14 10 38 / 0.6);
+}
+.sp-rail {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sp-rail li {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--c) 30%, var(--bg-3));
+  color: var(--text);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.sp-rail li.is-add {
+  border: 1px dashed var(--line-strong);
+  color: var(--faint);
+}
+.sp-rail li.is-talking {
+  box-shadow: 0 0 0 3px var(--live);
+  animation: rail-talk 2.4s ease-out infinite;
+}
+@keyframes rail-talk {
+  0% {
+    box-shadow: 0 0 0 3px var(--live), 0 0 0 3px rgb(62 227 158 / 0.5);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 3px var(--live), 0 0 0 14px transparent;
+  }
+}
+.sp-rail b {
+  position: absolute;
+  right: -6px;
+  bottom: -4px;
+  min-width: 20px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--pink);
+  color: #1a1033;
+  font-size: 0.7rem;
+  text-align: center;
+  border: 2px solid var(--bg);
+}
+.sp-toasts {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  min-width: 0;
+  flex: 1;
+}
+.sp-voice-here {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--live);
+  font-weight: 600;
+}
+.sp-toast {
+  display: grid;
+  gap: 2px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgb(29 22 80 / 0.8);
+  font-size: 0.9rem;
+  animation: toast-in 6s var(--ease-out) infinite;
+}
+.sp-toast:nth-child(3) {
+  animation-delay: 3s;
+}
+.sp-toast-head {
+  color: var(--faint);
+  font-size: 0.78rem;
+}
+@keyframes toast-in {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: none;
+  }
+  8%,
+  45% {
+    opacity: 1;
+    transform: translateX(-4px);
+  }
+}
+
+/* Themes: colour circles, one picked after the other, and the light/dark switch. */
+.sp-swatches {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 28px 28px 0;
+}
+.sp-swatches span {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--g);
+  box-shadow: 0 0 0 0 transparent;
+  animation: swatch-pick 12s ease-in-out infinite;
+}
+.sp-swatches span:nth-child(2) { animation-delay: 2s; }
+.sp-swatches span:nth-child(3) { animation-delay: 4s; }
+.sp-swatches span:nth-child(4) { animation-delay: 6s; }
+.sp-swatches span:nth-child(5) { animation-delay: 8s; }
+.sp-swatches span:nth-child(6) { animation-delay: 10s; }
+@keyframes swatch-pick {
+  0%,
+  18%,
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+    transform: none;
+  }
+  3%,
+  14% {
+    box-shadow: 0 0 0 3px var(--bg), 0 0 0 6px var(--text);
+    transform: scale(1.06);
+  }
+}
+.sp-mode {
+  display: inline-flex;
+  align-self: flex-start;
+  gap: 4px;
+  margin: 24px 28px 0;
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.sp-mode span {
+  padding: 6px 14px;
+  border-radius: 999px;
+  color: var(--muted);
+}
+.sp-mode .is-on {
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* Windows overlay: who is talking, in the corner of a game. */
+.sp-game {
+  position: relative;
+  aspect-ratio: 16 / 8;
   margin: 10px 10px 0;
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid var(--line);
+  background:
+    radial-gradient(60% 80% at 70% 100%, rgb(62 227 158 / 0.35), transparent 70%),
+    linear-gradient(180deg, #2c4a7a, #e08a5a 70%, #3b2a1a);
 }
-.sp-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.9s var(--ease-out);
-}
-.sp-tile:hover .sp-media img {
-  transform: scale(1.04);
-}
-/* Crop the wide app screenshots to the interesting part. */
-.sp-crop {
-  aspect-ratio: 16 / 10;
-}
-.sp-friends .sp-crop img {
-  object-position: 100% 0;
-  transform-origin: 100% 62%;
-}
-.sp-friends .sp-crop img,
-.sp-history .sp-crop img {
-  scale: 1.9;
-}
-.sp-history .sp-crop img {
-  object-position: 40% 0;
-  transform-origin: 40% 0;
-}
-
-/* Positional audio: voices placed on a radar around "you". */
-.sp-radar {
-  position: relative;
-  aspect-ratio: 1;
-  margin: 24px 24px 0;
-  border-radius: 50%;
-  isolation: isolate;
-  background: radial-gradient(circle, rgb(62 227 158 / 0.12), transparent 60%);
-}
-/* The sweep turns; the voices stay put. */
-.sp-radar::after {
-  content: "";
+.sp-ov {
   position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: 50%;
-  background: conic-gradient(from 0deg, rgb(62 227 158 / 0.3), transparent 22%, transparent);
-  animation: radar-sweep 5s linear infinite;
-}
-@keyframes radar-sweep {
-  to {
-    rotate: 1turn;
-  }
-}
-.sp-ring {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  border-radius: 50%;
-  border: 1px dashed rgb(246 240 232 / 0.16);
-}
-.sp-ring:nth-child(2) {
-  inset: 18%;
-}
-.sp-ring:nth-child(3) {
-  inset: 36%;
-}
-.sp-you {
-  position: absolute;
-  inset: 0;
-  margin: auto;
+  top: 12px;
+  left: 12px;
   display: grid;
-  place-items: center;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: var(--text);
-  color: var(--bg);
-  font-weight: 700;
-  font-size: 0.85rem;
-  box-shadow: 0 0 0 8px rgb(246 240 232 / 0.08);
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.sp-voice {
-  --r: calc(var(--d) * 46%);
-  position: absolute;
-  left: calc(50% + var(--r) * sin(var(--a)));
-  top: calc(50% - var(--r) * cos(var(--a)));
-  width: 0;
-  height: 0;
-}
-.sp-voice i {
-  position: absolute;
-  translate: -50% -50%;
-  padding: 5px 12px;
+.sp-ov li {
+  padding: 4px 12px 4px 10px;
   border-radius: 999px;
-  background: var(--c);
-  color: #1a1033;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 0.8rem;
-  white-space: nowrap;
-  box-shadow: 0 0 0 0 var(--c);
+  background: rgb(14 10 38 / 0.72);
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-left: 3px solid transparent;
+}
+.sp-ov li.is-talking {
+  border-left-color: var(--live);
   animation: voice-talk 2.4s ease-out infinite;
-}
-.sp-voice:nth-of-type(2) i {
-  animation-delay: 0.8s;
-}
-.sp-voice:nth-of-type(3) i {
-  animation-delay: 1.6s;
+  --c: var(--live);
 }
 @keyframes voice-talk {
   0% {
@@ -1863,68 +1942,137 @@ p {
   }
   70%,
   100% {
-    box-shadow: 0 0 0 14px transparent;
+    box-shadow: 0 0 0 10px transparent;
   }
 }
 
-/* 24 languages: a big number and greetings fading through. */
-.sp-languages {
-  background:
-    radial-gradient(120% 90% at 100% 0%, rgb(255 176 138 / 0.25), transparent 60%),
-    linear-gradient(180deg, rgb(29 22 80 / 0.7), rgb(21 15 56 / 0.6));
-}
-.sp-big {
-  padding: 22px 26px 0;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(4.5rem, 9vw, 7rem);
-  line-height: 0.9;
-  letter-spacing: -0.06em;
-  background: linear-gradient(120deg, var(--peach), var(--pink), var(--violet));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.sp-hello {
-  position: relative;
-  display: grid;
-  height: 1.6em;
-  margin: 6px 26px 0;
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 700;
+/* Watch together: the floating party widget. */
+.sp-widget {
+  margin: 10px 10px 0;
+  border-radius: 20px;
+  border: 1px solid var(--line-strong);
+  background: rgb(14 10 38 / 0.8);
   overflow: hidden;
+  box-shadow: 0 30px 60px -30px rgb(0 0 0 / 0.7);
 }
-.sp-hello span {
-  grid-area: 1 / 1;
-  opacity: 0;
-  transform: translateY(70%);
-  animation: hello-cycle 20s var(--ease-out) infinite;
+.sp-widget-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
 }
-.sp-hello span:nth-child(2) { animation-delay: 2s; }
-.sp-hello span:nth-child(3) { animation-delay: 4s; }
-.sp-hello span:nth-child(4) { animation-delay: 6s; }
-.sp-hello span:nth-child(5) { animation-delay: 8s; }
-.sp-hello span:nth-child(6) { animation-delay: 10s; }
-.sp-hello span:nth-child(7) { animation-delay: 12s; }
-.sp-hello span:nth-child(8) { animation-delay: 14s; }
-.sp-hello span:nth-child(9) { animation-delay: 16s; }
-.sp-hello span:nth-child(10) { animation-delay: 18s; }
-@keyframes hello-cycle {
-  0% {
-    opacity: 0;
-    transform: translateY(70%);
+.sp-avatars {
+  display: flex;
+}
+.sp-avatars i {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  margin-left: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+  background: var(--violet);
+  font-style: normal;
+  font-size: 0.6rem;
+}
+.sp-avatars i:first-child {
+  margin-left: 0;
+  background: var(--peach);
+}
+.sp-avatars i:nth-child(2) {
+  background: var(--pink);
+}
+.sp-widget-btns {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+.sp-widget-btns i {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  background: var(--line-strong);
+}
+.sp-video {
+  position: relative;
+  aspect-ratio: 16 / 6;
+  background: linear-gradient(120deg, #3a1d6e, #ff6fa8 55%, #ffb08a);
+}
+.sp-play {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 0;
+  height: 0;
+  border-left: 18px solid rgb(246 240 232 / 0.9);
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+}
+.sp-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--text) 0 40%, rgb(246 240 232 / 0.25) 40%);
+  animation: party-progress 16s linear infinite;
+  background-size: 250% 100%;
+}
+@keyframes party-progress {
+  from {
+    background-position: 100% 0;
   }
-  1.5%,
-  9.5% {
-    opacity: 1;
-    transform: none;
+  to {
+    background-position: 0 0;
   }
-  10.5%,
-  100% {
-    opacity: 0;
-    transform: translateY(-70%);
-  }
+}
+.sp-next {
+  padding: 8px 12px;
+  font-size: 0.78rem;
+  color: var(--faint);
+}
+
+/* Replies: a quoted message and the answer. */
+.sp-chat {
+  display: grid;
+  gap: 12px;
+  margin: 24px 24px 0;
+}
+.sp-msg {
+  display: flex;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+.sp-msg > i {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--c);
+  color: #1a1033;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+.sp-msg span {
+  display: grid;
+  gap: 2px;
+  color: var(--muted);
+}
+.sp-msg strong {
+  color: var(--text);
+}
+.sp-msg em {
+  font-style: normal;
+  font-size: 0.78rem;
+  color: var(--faint);
+  padding-left: 8px;
+  border-left: 2px solid var(--violet);
 }
 .sp-actions {
   display: flex;
@@ -1934,14 +2082,12 @@ p {
   margin-top: 36px;
 }
 @media (prefers-reduced-motion: reduce) {
-  .sp-radar::after,
-  .sp-voice i,
-  .sp-hello span {
+  .sp-rail li,
+  .sp-toast,
+  .sp-swatches span,
+  .sp-ov li,
+  .sp-progress {
     animation: none;
-  }
-  .sp-hello span:first-child {
-    opacity: 1;
-    transform: none;
   }
 }
 

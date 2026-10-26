@@ -15,6 +15,8 @@ export interface Feature {
   shot?: string;
   alt?: string;
   since?: string;
+  /** Hidden once this version is released, for features it removes. */
+  until?: string;
   beta?: boolean;
 }
 
@@ -256,6 +258,12 @@ const source: Record<"de" | "en", FeaturesPage> = {
             body: "Lautstärke, Stummschalten und Notiz für jemanden stehen eingeklappt im Profil. Ist etwas verstellt, zeigt die Zeile es kurz an, etwa „Lautstärke 60 %“.",
             since: "0.4.0",
           },
+          {
+            id: "kanal-passwoerter",
+            title: "Kanäle mit Passwort",
+            body: "Braucht ein Kanal ein Passwort, fragt Mumcord danach und merkt es sich pro Server, auch nach dem Neuverbinden. Kanäle, die du nicht betreten darfst, zeigen ein kleines Schloss.",
+            since: "0.4.0",
+          },
         ],
       },
       {
@@ -484,6 +492,7 @@ const source: Record<"de" | "en", FeaturesPage> = {
             shot: "overlay-window",
             alt: "Overlay-Fenster über einem Spiel, zeigt, wer spricht",
             since: "0.3.0",
+            until: "0.4.0",
           },
           {
             id: "spielt-gerade",
@@ -682,6 +691,12 @@ const source: Record<"de" | "en", FeaturesPage> = {
             id: "auswahllisten",
             title: "Aufgeräumte Einstellungen",
             body: "Eigene Auswahllisten im Theme statt der Browser-Optik, und alle Eingabefelder in den Einstellungen sauber ausgerichtet.",
+            since: "0.4.0",
+          },
+          {
+            id: "tooltips",
+            title: "Tooltips im Theme",
+            body: "Jeder Tooltip im Look deines Themes, hell oder dunkel, auch mit der Tastatur erreichbar.",
             since: "0.4.0",
           },
         ],
@@ -886,6 +901,12 @@ const source: Record<"de" | "en", FeaturesPage> = {
             id: "person-settings",
             title: "Settings per person",
             body: "Volume, mute and a note for someone sit collapsed in their profile. When something is changed, the row shows it briefly, such as “Volume 60 %”.",
+            since: "0.4.0",
+          },
+          {
+            id: "channel-passwords",
+            title: "Channels with a password",
+            body: "If a channel needs a password, Mumcord asks for it and remembers it per server, also after reconnecting. Channels you may not enter show a small lock.",
             since: "0.4.0",
           },
         ],
@@ -1116,6 +1137,7 @@ const source: Record<"de" | "en", FeaturesPage> = {
             shot: "overlay-window",
             alt: "Overlay window over a game showing who is talking",
             since: "0.3.0",
+            until: "0.4.0",
           },
           {
             id: "now-gaming",
@@ -1314,6 +1336,12 @@ const source: Record<"de" | "en", FeaturesPage> = {
             id: "dropdowns",
             title: "Tidy settings",
             body: "Themed dropdowns instead of the browser's look, and every input in the settings neatly aligned.",
+            since: "0.4.0",
+          },
+          {
+            id: "tooltips",
+            title: "Themed tooltips",
+            body: "Every tooltip in your theme's look, light or dark, and reachable with the keyboard too.",
             since: "0.4.0",
           },
         ],

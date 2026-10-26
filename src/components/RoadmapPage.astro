@@ -2,12 +2,16 @@
 import { routes, type Lang } from "../i18n";
 import { roadmapPage, type Stage } from "../lib/roadmap";
 import { IDEA_URL } from "../lib/features";
+import { getReleases } from "../lib/release";
 
 interface Props {
   lang: Lang;
 }
 const { lang } = Astro.props;
-const r = roadmapPage[lang];
+const page = roadmapPage[lang];
+// An epic counts as done once the GitHub release of its version is out.
+const released = new Set((await getReleases()).map((x) => x.version));
+const r = { ...page, epics: page.epics.map((s) => (s.version && released.has(s.version) ? { ...s, status: "done" as const } : s)) };
 const sections: { id: string; title: string; body: string; stages: Stage[] }[] = [
   { id: "epics", title: r.epicsTitle, body: r.epicsBody, stages: r.epics },
 ];

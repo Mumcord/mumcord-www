@@ -57,6 +57,8 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "Falsches Passwort? Ein Fenster fragt gleich nach dem richtigen und speichert es auf Wunsch.",
             "Wer einem Kanal nur zuhört, steht mit einem Ohr-Symbol in der normalen Liste statt in einer eigenen Gruppe.",
             "Die Einstellungen für eine Person, etwa Lautstärke und Stummschalten, stehen eingeklappt im Profil, mit kurzem Hinweis, wenn etwas verstellt ist.",
+            "Kanäle mit Passwort: Mumcord fragt danach und merkt es sich pro Server, gesperrte Kanäle zeigen ein Schloss.",
+            "Tooltips im Look des Themes statt der grauen System-Tooltips.",
           ],
         },
         {
@@ -68,6 +70,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "„> Text“ wird zum Zitat, auch per Knopf; „>_>“ und ähnliche Smileys bleiben, wie sie sind.",
             "Willkommensnachricht des Servers und Kanalbeschreibung lassen sich wegklicken und tauchen wieder auf, wenn sie sich ändern.",
             "Rechtsklick auf einen Link im Chat: kopieren oder öffnen.",
+            "Behoben: YouTube- und Twitch-Videos spielen auch in den fertigen Versionen unter Linux und macOS direkt im Chat.",
           ],
         },
         {
@@ -367,6 +370,8 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "Wrong password? A window asks for the right one straight away and saves it if you like.",
             "People who only listen to a channel appear in the normal list with an ear icon instead of in a group of their own.",
             "Settings for a person, such as volume and mute, sit collapsed in their profile, with a short hint when something is changed.",
+            "Channels with a password: Mumcord asks for it and remembers it per server, and locked channels show a lock.",
+            "Tooltips in the theme's look instead of the grey system ones.",
           ],
         },
         {
@@ -378,6 +383,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "“> text” becomes a quote, also with a button; “>_>” and similar smileys stay as they are.",
             "The server's welcome message and the channel description can be closed and come back when they change.",
             "Right-click a link in the chat to copy or open it.",
+            "Fixed: YouTube and Twitch videos play right in the chat in the released versions on Linux and macOS too.",
           ],
         },
         {

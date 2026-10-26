@@ -1,7 +1,8 @@
 ---
 import { Picture } from "astro:assets";
 import type { Lang } from "../i18n";
-import { gamesPage, blockedGames, PLUGINS_URL, type Support } from "../lib/games";
+import { gamesPage, blockedGames, PLUGINS_URL, NEXT_VERSION, type Support } from "../lib/games";
+import { getReleases } from "../lib/release";
 import { BUG_URL, IDEA_URL } from "../lib/features";
 import overlayShot from "../assets/shots/overlay-window.png";
 import ingameShot from "../assets/shots/settings-09b-overlay-ingame-dark.png";
@@ -11,6 +12,13 @@ interface Props {
 }
 const { lang } = Astro.props;
 const g = gamesPage[lang];
+// Once the next release is out, its overlay changes show and the rows it removes go away.
+const nextOut = (await getReleases()).some((r) => r.version === NEXT_VERSION);
+const rows = g.overlayRows
+  .filter((r) => !(nextOut && r.goneInNext))
+  .map((r) => (nextOut && r.next ? { ...r, ...r.next, note: r.next.note ?? r.note } : r));
+const overlayBody = nextOut ? g.next.overlayBody : g.overlayBody;
+const blockedBody = nextOut ? g.next.blockedBody : g.blockedBody;
 const blocked = blockedGames[lang];
 const platforms = [
   { key: "linux", name: "Linux" },
@@ -37,7 +45,7 @@ const mark: Record<Support, string> = { yes: "✓", later: "◷", no: "–" };
     <div class="gp-split">
       <div>
         <h2 id="overlay-h" data-reveal>{g.overlayTitle}</h2>
-        <p class="gp-lead" data-reveal>{g.overlayBody}</p>
+        <p class="gp-lead" data-reveal>{overlayBody}</p>
       </div>
       <figure class="gp-shot" data-reveal>
         <Picture src={overlayShot} formats={["avif", "webp"]} widths={[640, 1280]} sizes="(min-width: 920px) 480px, 92vw" alt="" />
@@ -54,7 +62,7 @@ const mark: Record<Support, string> = { yes: "✓", later: "◷", no: "–" };
         </thead>
         <tbody>
           {
-            g.overlayRows.map((row) => (
+            rows.map((row) => (
               <tr>
                 <th scope="row">
                   <span class="gp-row-title">{row.title}</span>
@@ -74,10 +82,14 @@ const mark: Record<Support, string> = { yes: "✓", later: "◷", no: "–" };
         </tbody>
       </table>
     </div>
-    <p class="gp-warning" role="note" data-reveal>
-      <span aria-hidden="true">!</span>
-      {g.overlayWarning}
-    </p>
+    {
+      !nextOut && (
+        <p class="gp-warning" role="note" data-reveal>
+          <span aria-hidden="true">!</span>
+          {g.overlayWarning}
+        </p>
+      )
+    }
   </section>
 
   <section class="gp-section" id="tested" aria-labelledby="tested-h">
@@ -103,7 +115,7 @@ const mark: Record<Support, string> = { yes: "✓", later: "◷", no: "–" };
     <div class="gp-split">
       <div>
         <h2 id="blocked-h" data-reveal>{g.blockedTitle}</h2>
-        <p class="gp-lead" data-reveal>{g.blockedBody}</p>
+        <p class="gp-lead" data-reveal>{blockedBody}</p>
       </div>
       <figure class="gp-shot" data-reveal>
         <Picture src={ingameShot} formats={["avif", "webp"]} widths={[720, 1440]} sizes="(min-width: 920px) 480px, 92vw" alt="" />

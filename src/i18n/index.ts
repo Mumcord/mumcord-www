@@ -21,11 +21,7 @@ const mergeDict = (lang: string, tr: Partial<Dict> | undefined): Dict => {
     const base = (en as Record<string, unknown>)[k];
     out[k] = base && typeof base === "object" && !Array.isArray(base) && v && typeof v === "object" && !Array.isArray(v) ? { ...base, ...v } : v;
   }
-  const dict = out as Dict;
-  // The ticker used to list three UI languages; translations made before the switch to 24 keep
-  // that line, so it is replaced with the translated "24 official EU languages".
-  const ticker = dict.ticker.map((item) => (item === "English · Deutsch · Español" ? `24 ${dict.spotlight.languages.title}` : item));
-  return { ...dict, ticker, lang, locale: LANG_INFO[lang as Lang].og };
+  return { ...(out as Dict), lang, locale: LANG_INFO[lang as Lang].og };
 };
 
 export const dicts: Record<Lang, Dict> = localized({ de, en }, (l) => mergeDict(l, bundles[l]?.dict));

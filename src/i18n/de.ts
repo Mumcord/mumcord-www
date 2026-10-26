@@ -72,24 +72,25 @@ export const de = {
     note: "Nur eine Animation. Die Seite nutzt dein Mikrofon nicht.",
   },
   spotlight: {
-    label: "Neu in 0.3.0",
-    labelSoon: "Bald: 0.3.0",
-    title: "Jetzt auch im Spiel. Und unter Freunden.",
-    body: "Mit 0.3.0 ist Epic 1 komplett: Mumcord zeigt im Spiel, wer spricht, setzt Stimmen in den Raum und verbindet Mumcord-Nutzer untereinander.",
-    overlay: { title: "Overlay im Spiel", body: "Wer in deinem Kanal spricht, direkt über dem Spiel. Unter Linux als Vulkan-Layer, sonst als schwebendes Fenster. Spiele mit strengem Anti-Cheat bleiben aus." },
-    positional: { title: "Positional Audio", body: "Stimmen kommen aus der Richtung der anderen und werden mit der Entfernung leiser.", you: "Du" },
-    friends: { title: "Freunde", body: "Wiedererkannt am Zertifikat, mit Online-Status und Kanal. Ein Rechtsklick, und du bist bei ihnen." },
-    history: { title: "Geteilter Verlauf", body: "Lies nach, was vor deinem Beitreten geschrieben wurde, von anderen Mumcord-Nutzern im Kanal." },
-    languages: { title: "Amtssprachen der EU", body: "Von Bulgarisch bis Schwedisch, jede in ihrem eigenen Namen.", words: ["Hallo", "Hello", "Bonjour", "Ciao", "Hola", "Cześć", "Hej", "Olá", "Γεια", "Tere"] },
+    label: "Neu in 0.4.0",
+    labelSoon: "Bald: 0.4.0",
+    title: "Alle Server. Dein Look. Zusammen schauen.",
+    body: "Mit 0.4.0 ist Epic 2 komplett: mehrere Server gleichzeitig, eigene Themes, das Overlay jetzt auch unter Windows und Watch-Partys im Sprachkanal.",
+    servers: { title: "Mehrere Server gleichzeitig", body: "Bis zu fünf auf einmal: Du sprichst auf einem und liest, schreibst und bekommst Benachrichtigungen auf allen.", talking: "hier sprichst du" },
+    themes: { title: "Eigene Themes", body: "Aus wenigen Farben, jedes hell und dunkel. Teil sie im Chat oder gib jedem Server sein eigenes.", light: "Hell", dark: "Dunkel" },
+    overlay: { title: "Overlay unter Windows", body: "Ein durchklickbares Fenster über dem Spiel, das nichts ins Spiel lädt. Deshalb geht es auch mit Anti-Cheat." },
+    together: { title: "Zusammen schauen", body: "YouTube-Watch-Party mit gemeinsamer Playlist und Bildschirm teilen, in Fenstern, die du frei verschiebst.", party: "Watch-Party", next: "Als Nächstes" },
+    replies: { title: "Antworten im Chat", body: "Mit Zitat, das auch offizielle Clients lesbar zeigen. Ein Klick springt zum Original.", quote: "Wer ist heute dabei?", reply: "Ich, ab 20 Uhr!" },
     beta: "Beta",
     games: "Alles zu Spielen",
     changelog: "Alle Neuerungen",
   },
+
   features: {
     label: "02 — Was Mumcord heute kann",
     title: "Alles, was eine Runde am Abend braucht.",
     intro:
-      "Stand: Version 0.3.0, Epic 1 ist komplett. Was noch fehlt, steht ehrlich in der Roadmap.",
+      "Was Mumcord in der aktuellen Version kann. Was noch fehlt, steht ehrlich in der Roadmap.",
     all: "Alle Funktionen mit Screenshots",
     items: [
       {
@@ -224,8 +225,8 @@ export const de = {
     all: "Die ganze Roadmap im Detail",
     steps: [
       { tag: "Epic 1", title: "Der Client für jeden Tag", body: "Seit 0.1.0 der Alltags-Client: Wizard, Server, Kanäle, Sprache, Chat und Folgen. Mit 0.2.0 kam mehr Chat: Link-Vorschauen, Karten für YouTube, Twitch und Spotify, Bilder mit Bildbetrachter, @Erwähnungen, GIF-Favoriten und Code-Hervorhebung. 0.3.0 schließt Epic 1 ab: Positional Audio (Beta), ein Overlay im Spiel unter Linux und als Fenster unter Windows, „Spielt gerade“, geteilter Chatverlauf zwischen Mumcord-Nutzern, Freunde, „Kanal beitreten“, Bilder in voller Größe und alle 24 Amtssprachen der EU." },
-      { tag: "Epic 2", title: "Mehrere Server, Themes und Feinschliff", body: "Kommt als 0.4.0: bis zu fünf Server gleichzeitig, auf einem sprechen und überall mitlesen. Eigene Themes, teilbar im Chat, auch pro Server. Dazu das Overlay im Spiel unter Windows, die Verbindungsqualität der anderen, Linux-Pakete mit Installation in einer Zeile und, als Beta, YouTube-Watch-Party und Bildschirm teilen." },
-      { tag: "Epic 3", title: "Komfort", body: "Globale Hotkeys, volles Tray-Menü, Import aus dem offiziellen Client, Flüstern, Server-Browser." },
+      { tag: "Epic 2", title: "Mehrere Server, Themes und Feinschliff", body: "Mit 0.4.0: bis zu fünf Server gleichzeitig, auf einem sprechen und überall mitlesen. Eigene Themes, teilbar im Chat, auch pro Server. Dazu das Overlay im Spiel unter Windows, die Verbindungsqualität der anderen, Linux-Pakete mit Installation in einer Zeile und, als Beta, YouTube-Watch-Party und Bildschirm teilen." },
+      { tag: "Epic 3", title: "Komfort", body: "Globale Hotkeys, volles Tray-Menü, Import aus dem offiziellen Client, Flüstern, Server-Browser, „Bitte nicht stören“ sowie @all und @channel." },
       { tag: "Epic 4", title: "Admin", body: "ACLs, Banns, Kanalverwaltung." },
       { tag: "Epic 5", title: "Auslieferung", body: "Signierte Installer, Auto-Update, Absturzberichte nur mit Zustimmung, Paketquellen." },
       { tag: "Epic 6", title: "GIF-Suche", body: "Suche nach GIFs, ohne einen API-Schlüssel in die App zu packen, den jemand auslesen könnte. Wie genau, wird noch entschieden." },

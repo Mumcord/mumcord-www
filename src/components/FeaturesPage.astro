@@ -8,13 +8,15 @@ interface Props {
   lang: Lang;
 }
 const { lang } = Astro.props;
-const f = featuresPage[lang];
+const page = featuresPage[lang];
 const shots = import.meta.glob<{ default: ImageMetadata }>("../assets/shots/*.png", { eager: true });
 const shot = (name: string) => shots[`../assets/shots/${name}.png`].default;
 const withShot = (list: Feature[]) => list.filter((x) => x.shot);
 const textOnly = (list: Feature[]) => list.filter((x) => !x.shot);
 // A version counts as out once its GitHub release is published; until then its features say "coming in".
 const released = new Set((await getReleases()).map((r) => r.version));
+// Features a released version removed are left out.
+const f = { ...page, groups: page.groups.map((g) => ({ ...g, features: g.features.filter((x) => !(x.until && released.has(x.until))) })) };
 const all = f.groups.flatMap((g) => g.features);
 const versions = [...new Set(all.map((x) => x.since).filter((v): v is string => !!v))].sort((a, b) =>
   a.localeCompare(b, "en", { numeric: true }),

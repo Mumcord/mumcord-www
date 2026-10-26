@@ -37,6 +37,12 @@ JSON files too, or the old translation keeps showing for that string.
 The server hosting guide (`/server`, `/en/server`) lives in `src/lib/server-guide.ts`; its
 compose file pins the same `mumblevoip/mumble-server` version the Mumcord tests use.
 
+The next feature release is prepared ahead of time and switches over by itself once its GitHub
+release is published: the changelog entry and the features marked `since` that version say "new in"
+instead of "coming in", features with `until` that version disappear, the roadmap epic with that
+`version` counts as done, the home spotlight label changes, and the games page shows each overlay
+row's `next` state (rows with `goneInNext` go away, `NEXT_VERSION` in `src/lib/games.ts`).
+
 To preview the download section and changelog with a release before one exists, point
 `RELEASE_FIXTURE` at a JSON file shaped like the GitHub `/releases` API answer:
 

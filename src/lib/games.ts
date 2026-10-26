@@ -9,12 +9,19 @@ import type { BlockedText, GamesText } from "../i18n/bundle";
 
 export type Support = "yes" | "later" | "no";
 
+/** The next feature release. Once its GitHub release is out, the page shows the `next` state. */
+export const NEXT_VERSION = "0.4.0";
+
 export interface OverlayRow {
   title: string;
   linux: Support;
   windows: Support;
   macos: Support;
   note?: string;
+  /** What changes with NEXT_VERSION; its note replaces the current one. */
+  next?: { linux?: Support; windows?: Support; macos?: Support; note?: string };
+  /** The row goes away with NEXT_VERSION. */
+  goneInNext?: boolean;
 }
 
 export interface BlockedGame {
@@ -40,7 +47,10 @@ export interface GamesPage {
   overlayBody: string;
   feature: string;
   overlayRows: OverlayRow[];
+  /** Shown until NEXT_VERSION is out, which fixes it. */
   overlayWarning: string;
+  /** Texts that replace the current ones once NEXT_VERSION is out. */
+  next: { overlayBody: string; blockedBody: string };
   testedTitle: string;
   testedBody: string;
   tested: string[];
@@ -161,6 +171,10 @@ const source: Record<"de" | "en", GamesPage> = {
         linux: "yes",
         windows: "later",
         macos: "no",
+        next: {
+          windows: "yes",
+          note: "Unter Linux als Vulkan-Layer wie MangoHud, mit OpenGL als Ausweichweg. Unter Windows als eigenes, durchklickbares Fenster über dem Spiel, das nichts ins Spiel lädt; im exklusiven Vollbild bleibt es unsichtbar.",
+        },
         note: "Unter Linux als Vulkan-Layer wie MangoHud, mit OpenGL als Ausweichweg. Unter Windows kommt es mit 0.4.0 als eigenes, durchklickbares Fenster über dem Spiel, das nichts ins Spiel lädt; im exklusiven Vollbild bleibt es unsichtbar.",
       },
       {
@@ -169,6 +183,7 @@ const source: Record<"de" | "en", GamesPage> = {
         windows: "later",
         macos: "no",
         note: "Steam als Flatpak wird noch nicht unterstützt.",
+        next: { windows: "yes", note: "Auch Steam als Flatpak." },
       },
       {
         title: "Startet von selbst mit dem Spiel",
@@ -176,6 +191,7 @@ const source: Record<"de" | "en", GamesPage> = {
         windows: "later",
         macos: "no",
         note: "Global „An“ oder „Aus“ mit Ausnahmen pro Spiel, im Wizard wählbar, standardmäßig aus.",
+        next: { windows: "yes" },
       },
       {
         title: "Pro Spiel einstellbar",
@@ -183,6 +199,7 @@ const source: Record<"de" | "en", GamesPage> = {
         windows: "later",
         macos: "no",
         note: "An oder aus, Position, Größe, Deckkraft und Inhalt. Vor dem Einschalten gibt es einen Hinweis zu Anti-Cheat.",
+        next: { windows: "yes" },
       },
       {
         title: "Aus bei Spielen mit strengem Anti-Cheat",
@@ -197,6 +214,7 @@ const source: Record<"de" | "en", GamesPage> = {
         windows: "later",
         macos: "no",
         note: "Auf HDR-Ausgaben (HDR10/PQ) stimmen die Farben des Overlays im Spiel noch nicht.",
+        next: { linux: "yes", windows: "yes", note: "Auch auf HDR-Ausgaben (HDR10/PQ) stimmen die Farben des Overlays." },
       },
       {
         title: "Overlay-Fenster",
@@ -204,6 +222,7 @@ const source: Record<"de" | "en", GamesPage> = {
         windows: "yes",
         macos: "no",
         note: "Durchsichtig, durchklickbar und immer im Vordergrund, mit Ecke, Größe und Deckkraft. Unter X11 und Wayland; unter KDE Wayland legt Mumcord die Fensterregel mit einem Klick an. Mit 0.4.0 fällt das Overlay-Fenster weg, dann bleibt nur das Overlay im Spiel.",
+        goneInNext: true,
       },
       {
         title: "Im Tray und in den Schnelleinstellungen schaltbar",
@@ -214,6 +233,12 @@ const source: Record<"de" | "en", GamesPage> = {
     ],
     overlayWarning:
       "Bekanntes Problem: Schließt du Mumcord, während ein Spiel mit Overlay läuft, kann das Spiel abstürzen. Schließ zuerst das Spiel oder schalte das Overlay im Spiel aus. Behoben wird das mit 0.4.0.",
+    next: {
+      overlayBody:
+        "Das Overlay zeigt im Spiel, wer in deinem Kanal spricht: unter Linux direkt im Spiel, unter Windows als durchklickbares Fenster über dem Spiel.",
+      blockedBody:
+        "Diese Spiele sperren oder melden Programme, die ins Spiel zeichnen. Unter Linux lässt Mumcord das Overlay im Spiel dort standardmäßig aus, auch wenn es global an ist, und zeigt den Grund an. Unter Windows gilt die Liste nicht, weil das Overlay dort das Spiel nicht anrührt. Die Liste wird von Hand gepflegt und mit jedem Release aktualisiert.",
+    },
     testedTitle: "Getestete Spiele",
     testedBody: "Mit diesen Spielen ist das Overlay im Spiel unter Linux ausprobiert:",
     tested: ["Tyr", "Supermarket Simulator", "Die Gilde 1 Remake: Europa 1410", "Stronghold 4 (Demo)", "Escape from Duckov", "Sid Meier's Civilization VII", "theHunter: Call of the Wild", "GG-Party", "Train Sim World 6", "Ready or Not", "Big Ambitions", "Grand Theft Auto V Enhanced", "No Man's Sky", "TCG Card Shop Simulator", "Tropico 6", "Workers & Resources: Soviet Republic", "ARC Raiders"],
@@ -262,6 +287,10 @@ const source: Record<"de" | "en", GamesPage> = {
         linux: "yes",
         windows: "later",
         macos: "no",
+        next: {
+          windows: "yes",
+          note: "On Linux a Vulkan layer like MangoHud, with OpenGL as a fallback. On Windows a separate click-through window over the game that loads nothing into it; exclusive fullscreen hides it.",
+        },
         note: "On Linux a Vulkan layer like MangoHud, with OpenGL as a fallback. On Windows it comes with 0.4.0 as a separate click-through window over the game that loads nothing into it; exclusive fullscreen hides it.",
       },
       {
@@ -270,6 +299,7 @@ const source: Record<"de" | "en", GamesPage> = {
         windows: "later",
         macos: "no",
         note: "Steam as a Flatpak is not supported yet.",
+        next: { windows: "yes", note: "Steam as a Flatpak too." },
       },
       {
         title: "Starts with the game",
@@ -277,6 +307,7 @@ const source: Record<"de" | "en", GamesPage> = {
         windows: "later",
         macos: "no",
         note: "Global “On” or “Off” with exceptions per game, offered in the wizard, off by default.",
+        next: { windows: "yes" },
       },
       {
         title: "Set per game",
@@ -284,6 +315,7 @@ const source: Record<"de" | "en", GamesPage> = {
         windows: "later",
         macos: "no",
         note: "On or off, position, size, opacity and content. You get an anti-cheat note before turning it on.",
+        next: { windows: "yes" },
       },
       {
         title: "Off in games with strict anti-cheat",
@@ -298,6 +330,7 @@ const source: Record<"de" | "en", GamesPage> = {
         windows: "later",
         macos: "no",
         note: "On HDR outputs (HDR10/PQ) the colours of the in-game overlay are not right yet.",
+        next: { linux: "yes", windows: "yes", note: "The overlay's colours are right on HDR outputs (HDR10/PQ) too." },
       },
       {
         title: "Overlay window",
@@ -305,6 +338,7 @@ const source: Record<"de" | "en", GamesPage> = {
         windows: "yes",
         macos: "no",
         note: "Transparent, click-through and always on top, with corner, size and opacity. On X11 and Wayland; on KDE Wayland Mumcord sets up the window rule in one click. With 0.4.0 the overlay window goes away and only the in-game overlay stays.",
+        goneInNext: true,
       },
       {
         title: "Switch from the tray and quick settings",
@@ -315,6 +349,12 @@ const source: Record<"de" | "en", GamesPage> = {
     ],
     overlayWarning:
       "Known issue: if you close Mumcord while a game with the overlay is running, the game can crash. Close the game first or turn the in-game overlay off. This gets fixed in 0.4.0.",
+    next: {
+      overlayBody:
+        "The overlay shows who is talking in your channel while you play: on Linux right inside the game, on Windows as a click-through window over the game.",
+      blockedBody:
+        "These games block or report programs that draw into the game. On Linux Mumcord keeps the in-game overlay off there by default, even when it is globally on, and shows the reason. On Windows the list doesn't apply, because the overlay never touches the game there. The list is curated by hand and updated with every release.",
+    },
     testedTitle: "Tested games",
     testedBody: "The in-game overlay has been tried on Linux with these games:",
     tested: ["Tyr", "Supermarket Simulator", "Die Gilde 1 Remake: Europa 1410", "Stronghold 4 (Demo)", "Escape from Duckov", "Sid Meier's Civilization VII", "theHunter: Call of the Wild", "GG-Party", "Train Sim World 6", "Ready or Not", "Big Ambitions", "Grand Theft Auto V Enhanced", "No Man's Sky", "TCG Card Shop Simulator", "Tropico 6", "Workers & Resources: Soviet Republic", "ARC Raiders"],
@@ -429,7 +469,20 @@ const mergeGames = (en: GamesPage, tr: GamesText | undefined): GamesPage => {
   if (!tr) return en;
   const { pluginNotes: notes, ...words } = tr;
   // Game titles are not translated, so the tested list always comes from English.
-  return { ...en, ...words, tested: en.tested, notWorking: en.notWorking, plugins: plugins({ ...pluginNotes.en, ...notes }) };
+  // Support values and release switches come from English; only the words are translated.
+  const overlayRows = en.overlayRows.map((r, i) => {
+    const t = words.overlayRows?.[i];
+    return { ...r, title: t?.title ?? r.title, note: t?.note ?? r.note, next: r.next && { ...r.next, note: t?.next?.note ?? r.next.note } };
+  });
+  return {
+    ...en,
+    ...words,
+    overlayRows,
+    next: { ...en.next, ...words.next },
+    tested: en.tested,
+    notWorking: en.notWorking,
+    plugins: plugins({ ...pluginNotes.en, ...notes }),
+  };
 };
 
 // Anti-cheat names and sources stay as in English; only the game name and the reason change.
