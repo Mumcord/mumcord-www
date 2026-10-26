@@ -6,7 +6,7 @@ export const en: Dict = {
   meta: {
     title: "Mumcord — modern voice chat for any Mumble server",
     description:
-      "Mumcord is a free, Discord-style desktop client for Mumble servers: follow channels, notifications, AI noise suppression, push-to-talk even on Wayland. For Linux, Windows and macOS. Open source, no telemetry.",
+      "Mumcord is a free, modern desktop client for Mumble servers: follow channels, notifications, AI noise suppression, push-to-talk even on Wayland. For Linux, Windows and macOS. Open source, no telemetry.",
   },
   nav: {
     features: "Features",
@@ -44,7 +44,7 @@ export const en: Dict = {
     titleA: "Your Mumble server.",
     titleB: "Finally cosy.",
     lead:
-      "Mumcord is a Discord-style desktop client that speaks the Mumble protocol. Server bar, channels, chat and member list — on any standard Mumble server. Nothing changes on the server.",
+      "Mumcord is a modern desktop client that speaks the Mumble protocol. Server bar, channels, chat and member list — on any standard Mumble server. Nothing changes on the server.",
     ctaDownload: "Download",
     ctaSource: "Source on GitHub",
     meta: "Linux · Windows · macOS",
@@ -67,7 +67,7 @@ export const en: Dict = {
     label: "01 — Push-to-talk",
     title: "Hold the key. Start talking.",
     body:
-      "Keys and mouse buttons, even while a game has focus. On Wayland through the global-shortcuts portal — or in compatibility mode, like TeamSpeak.",
+      "Keys and mouse buttons, even while a game has focus. On Wayland through the global-shortcuts portal — or in compatibility mode.",
     hint: "Hold space or press the key",
     idle: "Muted",
     live: "You're talking",
@@ -121,7 +121,7 @@ export const en: Dict = {
       },
       {
         id: "chat",
-        title: "Discord-style chat",
+        title: "Modern chat",
         body:
           "Avatars, grouped messages and Markdown with a formatting toolbar and shortcuts. @mentions with autocomplete and their own sound, code with syntax highlighting. A compact layout for busy channels; the channel description and welcome message are pinned on top.",
       },

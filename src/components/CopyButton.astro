@@ -1,0 +1,20 @@
+---
+// One copy button for every copyable thing on the site. Without `text` it copies the code of the
+// <figure> it sits in (server guide). The click handler lives in src/scripts/motion.ts (CSP).
+interface Props {
+  text?: string;
+  label: string;
+  copied: string;
+  failed?: string;
+  class?: string;
+}
+const { text = "", label, copied, failed, class: cls } = Astro.props;
+---
+
+<button type="button" class:list={["copy-btn", cls]} data-copy={text} data-copied={copied} data-failed={failed}>
+  <span class="copy-icons" aria-hidden="true">
+    <svg class="copy-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2.5"></rect><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"></path></svg>
+    <svg class="copy-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+  </span>
+  <span class="copy-text"><span class="copy-label">{label}</span><span class="copy-done" aria-hidden="true">{copied}</span></span>
+</button>

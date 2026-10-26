@@ -4,7 +4,7 @@ export const de = {
   meta: {
     title: "Mumcord — moderner Voice-Chat für jeden Mumble-Server",
     description:
-      "Mumcord ist ein freier Desktop-Client im Discord-Stil für Mumble-Server: Kanälen folgen, Benachrichtigungen, KI-Rauschunterdrückung, Push-to-Talk auch unter Wayland. Für Linux, Windows und macOS. Open Source, ohne Telemetrie.",
+      "Mumcord ist ein freier, moderner Desktop-Client für Mumble-Server: Kanälen folgen, Benachrichtigungen, KI-Rauschunterdrückung, Push-to-Talk auch unter Wayland. Für Linux, Windows und macOS. Open Source, ohne Telemetrie.",
   },
   nav: {
     features: "Funktionen",
@@ -42,7 +42,7 @@ export const de = {
     titleA: "Dein Mumble-Server.",
     titleB: "Endlich gemütlich.",
     lead:
-      "Mumcord ist ein Desktop-Client im Discord-Stil, der das Mumble-Protokoll spricht. Server-Leiste, Kanäle, Chat und Mitgliederliste — auf jedem ganz normalen Mumble-Server. Am Server ändert sich nichts.",
+      "Mumcord ist ein moderner Desktop-Client, der das Mumble-Protokoll spricht. Server-Leiste, Kanäle, Chat und Mitgliederliste — auf jedem ganz normalen Mumble-Server. Am Server ändert sich nichts.",
     ctaDownload: "Herunterladen",
     ctaSource: "Quellcode auf GitHub",
     meta: "Linux · Windows · macOS",
@@ -65,7 +65,7 @@ export const de = {
     label: "01 — Push-to-Talk",
     title: "Halt die Taste. Red los.",
     body:
-      "Tasten und Maustasten, auch wenn ein Spiel im Vordergrund läuft. Unter Wayland über das Global-Shortcuts-Portal — oder im Kompatibilitätsmodus wie bei TeamSpeak.",
+      "Tasten und Maustasten, auch wenn ein Spiel im Vordergrund läuft. Unter Wayland über das Global-Shortcuts-Portal — oder im Kompatibilitätsmodus.",
     hint: "Leertaste halten oder Taste drücken",
     idle: "Stumm",
     live: "Du sprichst",
@@ -120,7 +120,7 @@ export const de = {
       },
       {
         id: "chat",
-        title: "Chat im Discord-Stil",
+        title: "Moderner Chat",
         body:
           "Avatare, gruppierte Nachrichten und Markdown mit Formatierungsleiste und Tastenkürzeln. @Erwähnungen mit Autovervollständigung und eigenem Ton, Code mit Syntax-Hervorhebung. Für volle Kanäle gibt es ein kompaktes Layout; Kanalbeschreibung und Willkommensnachricht sind oben angeheftet.",
       },

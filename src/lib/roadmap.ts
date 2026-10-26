@@ -78,7 +78,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
             items: [
             "Einrichtung in einer Minute: Identität, Mikrofon, Sprechmodus",
             "Server-Leiste, mumble://-Links und Zertifikatsprüfung beim ersten Kontakt",
-            "Fenster im Discord-Stil mit Kanalliste, Chat und Mitgliederliste",
+            "Fenster mit Server-Leiste, Kanalliste, Chat und Mitgliederliste",
             "Push-to-Talk mit Tasten und Maustasten, auch unter Wayland, oder Sprachaktivierung",
             "Rauschunterdrückung, Echounterdrückung, Lautstärke pro Person",
             "Chat in Kanälen und privat, Markdown, Bilder, Verlauf auf deinem Rechner",
@@ -108,7 +108,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
             version: "0.3.0",
             items: [
             "Positional Audio (Beta) über Mumble Link und die offiziellen Spiel-Plugins von Mumble, auch in den Schnelleinstellungen schaltbar. Ein „3D“-Symbol zeigt, wer gerade Positionsdaten sendet",
-            "Overlay direkt im Spiel, auch im exklusiven Vollbild: unter Linux als Vulkan-Layer (wie MangoHud), auch in Steam- und Proton-Spielen, getestet zum Beispiel mit Tyr und Supermarket Simulator. Unter Windows folgt es später über die Grafikschnittstelle des Spiels (wie bei Discord), bis dahin gibt es das Overlay-Fenster",
+            "Overlay direkt im Spiel, auch im exklusiven Vollbild: unter Linux als Vulkan-Layer (wie MangoHud), auch in Steam- und Proton-Spielen, getestet zum Beispiel mit Tyr und Supermarket Simulator. Unter Windows folgt es später über die Grafikschnittstelle des Spiels, bis dahin gibt es das Overlay-Fenster",
             "Pro Spiel ein- und ausschaltbar, mit Position, Größe und Deckkraft. Vor dem Einschalten gibt es einen Hinweis zu Anti-Cheat",
             "Startet von selbst mit dem Spiel. Global „Aus“ oder „An“ mit Ausnahmen pro Spiel, im Wizard wählbar, standardmäßig aus",
             "Spiele, deren Anti-Cheat Overlays sperrt oder meldet, bleiben standardmäßig ausgenommen, mit Begründung: VALORANT und League of Legends (Riot Vanguard), Call of Duty mit Modern Warfare II/III, Warzone und Black Ops 6 (Ricochet), Counter-Strike 2 in FACEIT-Matches (FACEIT Anti-Cheat), PUBG: BATTLEGROUNDS (BattlEye) und Apex Legends (Easy Anti-Cheat)",
@@ -337,7 +337,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
             items: [
             "Setup in a minute: identity, microphone, talk mode",
             "Server bar, mumble:// links and a certificate check on first contact",
-            "Discord-style window with channel list, chat and member list",
+            "Window with server bar, channel list, chat and member list",
             "Push-to-talk with keys and mouse buttons, also on Wayland, or voice activation",
             "Noise suppression, echo cancellation, volume per person",
             "Channel and private chat, Markdown, images, history on your computer",
@@ -367,7 +367,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
             version: "0.3.0",
             items: [
             "Positional audio (beta) via Mumble Link and Mumble's official game plugins, also switchable in quick settings. A “3D” icon shows who is sending positional data right now",
-            "Overlay right inside the game, also in exclusive fullscreen: a Vulkan layer on Linux (like MangoHud), also in Steam and Proton games, tested with Tyr and Supermarket Simulator for example. On Windows it comes later via the game's graphics API (like Discord); until then there is the overlay window",
+            "Overlay right inside the game, also in exclusive fullscreen: a Vulkan layer on Linux (like MangoHud), also in Steam and Proton games, tested with Tyr and Supermarket Simulator for example. On Windows it comes later via the game's graphics API; until then there is the overlay window",
             "Switched on or off per game, with position, size and opacity. You get an anti-cheat note before turning it on",
             "Starts by itself with the game. Global “Off” or “On” with per-game exceptions, offered in the wizard, off by default",
             "Games whose anti-cheat blocks or reports overlays stay excluded by default, with the reason shown: VALORANT and League of Legends (Riot Vanguard), Call of Duty with Modern Warfare II/III, Warzone and Black Ops 6 (Ricochet), Counter-Strike 2 in FACEIT matches (FACEIT Anti-Cheat), PUBG: BATTLEGROUNDS (BattlEye) and Apex Legends (Easy Anti-Cheat)",

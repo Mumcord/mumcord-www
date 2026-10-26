@@ -2379,7 +2379,7 @@ p {
   top: 8px;
   bottom: 8px;
   width: 2px;
-  background: linear-gradient(var(--live) 0 12%, var(--line-strong) 12%);
+  background: linear-gradient(var(--live) 0 calc(var(--done, 0.12) * 100%), var(--line-strong) 0);
 }
 .timeline li {
   position: relative;
@@ -2395,10 +2395,28 @@ p {
   background: var(--bg);
   border: 2px solid var(--line-strong);
 }
+.is-done .tl-dot {
+  background: var(--live);
+  border-color: var(--live);
+}
+.is-done .tl-dot::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0;
+  width: 4px;
+  height: 8px;
+  border: solid #0e2a1d;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
 .is-now .tl-dot {
   background: var(--live);
   border-color: var(--live);
   animation: pulse 2s infinite;
+}
+.is-planned .tl-dot {
+  border-color: var(--live);
 }
 .tl-tag {
   font-family: var(--font-mono);
@@ -2419,7 +2437,11 @@ p {
   font-size: 1.6rem;
   margin: 8px 0 6px;
 }
-.timeline li:not(.is-now) h3 {
+.is-planned .tl-tag em {
+  background: rgb(167 139 255 / 0.14);
+  color: var(--violet);
+}
+.timeline li:is(.is-later, .is-planned) h3 {
   color: var(--muted);
 }
 .timeline p:not(.tl-tag) {
@@ -2603,6 +2625,7 @@ p {
   }
 }
 .footer-cta-glow {
+  will-change: transform;
   position: absolute;
   inset: -40%;
   z-index: -1;
@@ -3067,26 +3090,6 @@ p {
   border-bottom: 1px solid var(--line);
   font: 500 0.75rem var(--font-mono);
   color: var(--faint);
-}
-.code-copy {
-  padding: 5px 12px;
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  background: none;
-  color: var(--muted);
-  font: inherit;
-  cursor: pointer;
-  transition:
-    color 0.2s,
-    border-color 0.2s;
-}
-.code-copy:hover {
-  color: var(--text);
-  border-color: var(--peach);
-}
-.code-copy.is-done {
-  color: var(--live);
-  border-color: var(--live);
 }
 .code pre {
   margin: 0;
@@ -4329,6 +4332,7 @@ p {
   padding-top: clamp(56px, 9vw, 120px);
 }
 .th-head-glow {
+  will-change: transform;
   position: absolute;
   top: -140px;
   left: 50%;
@@ -4554,13 +4558,6 @@ p {
   opacity: 0.8;
   color: var(--t-text);
   background: none;
-}
-.th-code .btn {
-  flex: none;
-}
-.th-code .btn.is-copied {
-  background: var(--live);
-  color: #0e2a1d;
 }
 .th-how {
   margin-top: clamp(80px, 10vw, 140px);
@@ -4858,13 +4855,6 @@ p {
 .one-line-cmd code span {
   color: var(--live);
 }
-.one-line-cmd .btn {
-  flex: none;
-}
-.one-line-cmd .btn.is-copied {
-  background: var(--live);
-  color: #0e2a1d;
-}
 .one-line-cmd.is-soon code {
   opacity: 0.6;
 }
@@ -4927,8 +4917,102 @@ p {
   .one-line-label {
     flex-basis: 100%;
   }
-  .one-line-cmd .btn {
+  .one-line-cmd .copy-btn {
     width: 100%;
-    justify-content: center;
   }
+}
+
+/* ── Copy button (installer, themes, server guide) ───── */
+.copy-btn {
+  --c: var(--peach);
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 16px 0 13px;
+  border: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--c) 12%, transparent);
+  color: var(--c);
+  font: 600 0.875rem/1 var(--font-body);
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    color 0.2s,
+    transform 0.2s var(--ease-spring);
+}
+.copy-btn:hover {
+  background: color-mix(in srgb, var(--c) 22%, transparent);
+  border-color: var(--c);
+}
+.copy-btn:active {
+  transform: scale(0.96);
+}
+.copy-btn:focus-visible {
+  outline: 2px solid var(--c);
+  outline-offset: 2px;
+}
+.copy-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.copy-text,
+.copy-icons {
+  display: grid;
+}
+.copy-text > *,
+.copy-icons > * {
+  grid-area: 1 / 1;
+  transition: opacity 0.2s;
+}
+.copy-done,
+.copy-check,
+.copy-btn.is-copied .copy-label,
+.copy-btn.is-copied .copy-icon {
+  opacity: 0;
+}
+.copy-btn.is-copied {
+  --c: var(--live);
+}
+.copy-btn.is-copied .copy-done,
+.copy-btn.is-copied .copy-check {
+  opacity: 1;
+}
+/* On a theme card the button takes the theme's accent. */
+.th-code .copy-btn {
+  --c: var(--t-accent);
+  height: 34px;
+  border-radius: 999px;
+}
+.th-code .copy-btn.is-copied {
+  --c: var(--t-talking);
+}
+/* In a code block header: small and quiet until hovered. */
+.copy-btn.is-quiet {
+  --c: var(--muted);
+  height: 28px;
+  padding: 0 11px 0 9px;
+  border-radius: 8px;
+  font-size: 0.8125rem;
+}
+.copy-btn.is-quiet:hover {
+  --c: var(--text);
+}
+.copy-btn.is-quiet.is-copied {
+  --c: var(--live);
+}
+
+/* Set by motion.ts while a section is off screen. */
+[data-offscreen] *,
+[data-offscreen] *::before,
+[data-offscreen] *::after {
+  animation-play-state: paused !important;
 }

@@ -9,6 +9,7 @@ import { dicts, routes, type Lang } from "../i18n";
 import { REPO_URL, getLatestRelease, getReleases } from "../lib/release";
 import { wavePath } from "../lib/wave";
 import { tour, allThemes, THEME_COLOR_KEYS } from "../lib/themes";
+import { roadmapPage } from "../lib/roadmap";
 
 interface Props {
   lang: Lang;
@@ -26,6 +27,10 @@ const fingerprint = "4F:9A:C1:07:3B:E2:58:D0:1A:7C:96:E4:2F:B3:0D:61";
 const [showcase, rest] = [t.features.items.slice(0, 3), t.features.items.slice(3)];
 const sp = t.spotlight;
 const spotlightOut = (await getReleases()).some((r) => r.version === "0.4.0");
+// The timeline takes each epic's status from the roadmap; an epic is done once its release is out.
+const released = new Set((await getReleases()).map((r) => r.version));
+const epicStatus = roadmapPage.en.epics.map((e) => (e.version && released.has(e.version) ? "done" : e.status));
+const doneCount = epicStatus.filter((x) => x === "done").length;
 // Demo data for the 0.4.0 tiles; names stay the same in every language.
 const servers = [
   { tag: "TF", hue: "var(--peach)", talking: true },
@@ -427,14 +432,14 @@ const tourColors = tour.map((x) => allThemes.find((th) => th.id === x.theme)?.[x
       <h2 id="roadmap-title" class="h2" data-reveal>{t.roadmap.title}</h2>
       <p class="body" data-reveal>{t.roadmap.body}</p>
     </div>
-    <ol class="timeline">
+    <ol class="timeline" style={`--done: ${doneCount / t.roadmap.steps.length}`}>
       {
-        (t.roadmap.steps as { tag: string; title: string; body: string; now?: boolean }[]).map((s) => (
-          <li class:list={[{ "is-now": s.now }]} data-reveal>
+        t.roadmap.steps.map((s, i) => (
+          <li class:list={[`is-${epicStatus[i] ?? "later"}`]} data-reveal>
             <span class="tl-dot" aria-hidden="true" />
             <p class="tl-tag">
               {s.tag}
-              {s.now && <em>{t.roadmap.now}</em>}
+              {epicStatus[i] !== "later" && <em>{roadmapPage[lang].status[epicStatus[i]]}</em>}
             </p>
             <h3>{s.title}</h3>
             <p>{s.body}</p>

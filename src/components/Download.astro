@@ -1,4 +1,5 @@
 ---
+import CopyButton from "./CopyButton.astro";
 import { dicts, routes, type Lang, LANG_INFO } from "../i18n";
 import { getLatestRelease, formatSize, RELEASES_URL, WIKI_URL, INSTALL_COMMAND, UNINSTALL_COMMAND, type Platform } from "../lib/release";
 
@@ -106,9 +107,7 @@ const glyphs: Record<Platform, string> = {
             {i > 0 && <span class="one-line-label">{c.label}</span>}
             <code><span aria-hidden="true">$ </span>{c.cmd}</code>
             {installerOut && (
-              <button type="button" class="btn btn-small" data-copy={c.cmd} data-copied={one.copied} data-failed={one.failed}>
-                {one.copy}
-              </button>
+              <CopyButton text={c.cmd} label={one.copy} copied={one.copied} failed={one.failed} />
             )}
           </div>
         ))

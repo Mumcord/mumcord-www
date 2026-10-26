@@ -280,7 +280,7 @@ const source: Record<"de" | "en", FeaturesPage> = {
         features: [
           {
             id: "chat-stil",
-            title: "Chat im Discord-Stil",
+            title: "Moderner Chat",
             body: "Avatare, gruppierte Nachrichten, Markdown und eingefügte Bilder. Kanalbeschreibung und Willkommensnachricht sind oben angeheftet.",
             shot: "main-dark",
             alt: "Hauptfenster mit Chat, Kanalliste und Mitgliederliste",
@@ -432,7 +432,7 @@ const source: Record<"de" | "en", FeaturesPage> = {
           {
             id: "push-to-talk",
             title: "Push-to-Talk überall",
-            body: "Tasten und Maustasten, auch wenn ein Spiel im Vordergrund läuft. Unter Wayland über das Shortcut-Portal oder im Kompatibilitätsmodus wie bei TeamSpeak.",
+            body: "Tasten und Maustasten, auch wenn ein Spiel im Vordergrund läuft. Unter Wayland über das Shortcut-Portal oder im Kompatibilitätsmodus.",
             shot: "wizard-4-talk-mode",
             alt: "Einrichtungsassistent, Schritt Sprechmodus",
           },
@@ -957,7 +957,7 @@ const source: Record<"de" | "en", FeaturesPage> = {
         features: [
           {
             id: "chat-style",
-            title: "Discord-style chat",
+            title: "Modern chat",
             body: "Avatars, grouped messages, Markdown and pasted images. The channel description and welcome message are pinned on top.",
             shot: "main-dark",
             alt: "Main window with chat, channel list and member list",
@@ -1109,7 +1109,7 @@ const source: Record<"de" | "en", FeaturesPage> = {
           {
             id: "push-to-talk",
             title: "Push-to-talk everywhere",
-            body: "Keys and mouse buttons, even with a game in the foreground. On Wayland via the shortcuts portal or in a TeamSpeak-like compatibility mode.",
+            body: "Keys and mouse buttons, even with a game in the foreground. On Wayland via the shortcuts portal or in a compatibility mode.",
             shot: "wizard-4-talk-mode",
             alt: "Setup wizard, talk mode step",
           },

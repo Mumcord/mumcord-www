@@ -1,4 +1,5 @@
 ---
+import CopyButton from "./CopyButton.astro";
 import { type Lang } from "../i18n";
 import { guides } from "../lib/server-guide";
 import { WIKI_URL, ISSUES_URL } from "../lib/release";
@@ -40,7 +41,7 @@ const g = guides[lang];
               <figure class="code">
                 <figcaption>
                   <span>{c.file ?? "Terminal"}</span>
-                  <button type="button" class="code-copy" data-copy data-copied={g.copied}>{g.copy}</button>
+                  <CopyButton label={g.copy} copied={g.copied} class="is-quiet" />
                 </figcaption>
                 <pre><code>{c.code.trimEnd()}</code></pre>
               </figure>

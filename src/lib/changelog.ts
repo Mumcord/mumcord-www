@@ -294,7 +294,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
           title: "Kanäle und Chat",
           items: [
             "Kanälen per Auge folgen oder über das Server-Menü allen folgen; Ungelesenes als Zähler, auch für den eigenen Kanal.",
-            "Chat im Discord-Stil mit Avataren und gruppierten Nachrichten, wahlweise kompakt. Markdown, Bilder einfügen oder reinziehen.",
+            "Chat mit Avataren und gruppierten Nachrichten, wahlweise kompakt. Markdown, Bilder einfügen oder reinziehen.",
             "Kanalbeschreibung und Willkommensnachricht oben im Chat angeheftet.",
             "Avatar-Stapel für eingeklappte und volle Kanäle, Profilvorschau beim Drüberfahren.",
             "Rechtsklick auf Personen: Profil, für mich stummschalten, Lautstärke 0–200 %, private Nachricht.",
@@ -606,7 +606,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
           title: "Channels and chat",
           items: [
             "Follow channels with the eye, or follow all from the server menu; unread counts, also for your own channel.",
-            "Discord-style chat with avatars and grouped messages, or a compact layout. Markdown, paste or drop images.",
+            "Chat with avatars and grouped messages, or a compact layout. Markdown, paste or drop images.",
             "Channel description and welcome message pinned at the top of the chat.",
             "Avatar stacks for collapsed and crowded channels, profile preview on hover.",
             "Right-click a person: profile, mute for me, volume 0–200 %, private message.",

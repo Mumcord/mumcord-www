@@ -79,13 +79,18 @@ document.addEventListener("keydown", (e) => {
 // ── Hero window: tilted at rest, flattens as you scroll into it ──────
 const tilt = document.querySelector<HTMLElement>("[data-tilt]");
 let ticking = false;
+let lastTilt = -1;
 const onScroll = () => {
   ticking = false;
   header?.classList.toggle("is-scrolled", scrollY > 8);
   if (tilt && !reduced) {
+    // Set the transform itself, not inherited custom properties: those restyle the whole window
+    // subtree on every scrolled frame. Past the end of the tilt nothing changes any more.
     const p = Math.min(1, Math.max(0, scrollY / (innerHeight * 0.6)));
-    tilt.style.setProperty("--tilt", `${(14 * (1 - p)).toFixed(2)}deg`);
-    tilt.style.setProperty("--tilt-scale", (0.94 + 0.06 * p).toFixed(3));
+    if (p !== lastTilt) {
+      lastTilt = p;
+      tilt.style.transform = `rotateX(${(14 * (1 - p)).toFixed(2)}deg) scale(${(0.94 + 0.06 * p).toFixed(3)})`;
+    }
   }
 };
 addEventListener("scroll", () => {
@@ -239,25 +244,6 @@ const ua = navigator.userAgent;
 const mine = /Windows/.test(ua) ? "windows" : /Mac OS X|Macintosh/.test(ua) && !/iPhone|iPad/.test(ua) ? "macos" : /Linux|X11/.test(ua) && !/Android/.test(ua) ? "linux" : null;
 if (mine) document.querySelector(`[data-platform="${mine}"]`)?.classList.add("is-mine");
 
-// ── Copy buttons on code blocks (server guide) ───────────────────────
-for (const btn of document.querySelectorAll<HTMLButtonElement>("[data-copy]")) {
-  const label = btn.textContent;
-  btn.addEventListener("click", async () => {
-    const code = btn.closest("figure")?.querySelector("code")?.textContent ?? "";
-    try {
-      await navigator.clipboard.writeText(code);
-    } catch {
-      return;
-    }
-    btn.textContent = btn.dataset.copied ?? label;
-    btn.classList.add("is-done");
-    setTimeout(() => {
-      btn.textContent = label;
-      btn.classList.remove("is-done");
-    }, 1600);
-  });
-}
-
 // ── Screenshot lightbox (features page) ──────────────────────────────
 const lightbox = document.querySelector<HTMLDialogElement>("[data-lightbox-dialog]");
 const shots = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-lightbox]"));
@@ -405,10 +391,12 @@ for (const card of document.querySelectorAll<HTMLElement>("[data-theme-card]")) 
     });
   }
 }
+// Every copy button: copies its data-copy text, or else the code of the <figure> it sits in.
 for (const b of document.querySelectorAll<HTMLButtonElement>("[data-copy]")) {
   b.addEventListener("click", async () => {
+    const text = b.dataset.copy || b.closest("figure")?.querySelector("pre code")?.textContent || "";
     try {
-      await navigator.clipboard.writeText(b.dataset.copy ?? "");
+      await navigator.clipboard.writeText(text);
       b.classList.add("is-copied");
       setTimeout(() => b.classList.remove("is-copied"), 1600);
       say(b.dataset.copied ?? "");
@@ -416,4 +404,16 @@ for (const b of document.querySelectorAll<HTMLButtonElement>("[data-copy]")) {
       say(b.dataset.failed ?? "");
     }
   });
+}
+
+// ── Looping animations pause while their section is off screen ───────
+// Many demos loop forever (pulsing rings, spinning glows); off screen they only cost frames.
+const sleeper = new IntersectionObserver(
+  (entries) => {
+    for (const e of entries) e.target.toggleAttribute("data-offscreen", !e.isIntersecting);
+  },
+  { rootMargin: "200px 0px" },
+);
+for (const el of document.querySelectorAll("main section, footer")) {
+  if (!el.parentElement?.closest("section")) sleeper.observe(el);
 }
