@@ -59,6 +59,15 @@ function platformOf(name: string): Platform | null {
   return null;
 }
 
+// The first asset is the platform's main download: the x86_64 AppImage on Linux (it runs on any
+// distro), then the native packages, x86_64 before ARM.
+function rank(name: string): number {
+  const n = name.toLowerCase();
+  const arm = /aarch64|arm64/.test(n) ? 10 : 0;
+  const kind = n.endsWith(".appimage") ? 0 : n.endsWith(".deb") ? 1 : n.endsWith(".rpm") ? 2 : 3;
+  return arm + kind;
+}
+
 let cached: Promise<Release[]> | undefined;
 
 function toRelease(rel: GhRelease): Release {
@@ -72,6 +81,7 @@ function toRelease(rel: GhRelease): Release {
     const p = platformOf(a.name);
     if (p) assets[p].push(asset);
   }
+  for (const p of Object.keys(assets) as Platform[]) assets[p].sort((x, y) => rank(x.name) - rank(y.name));
   return {
     tag: rel.tag_name,
     version: rel.tag_name.replace(/^v/, ""),

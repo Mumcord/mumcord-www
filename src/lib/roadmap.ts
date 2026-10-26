@@ -256,7 +256,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         id: "epic-3",
         tag: "Epic 3",
         title: "Komfort",
-        status: "later",
+        status: "planned",
         summary: "Feinschliff für Vielnutzer.",
         items: [
           "Globale Tastenkürzel über Push-to-Talk hinaus",
@@ -515,7 +515,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         id: "epic-3",
         tag: "Epic 3",
         title: "Comfort",
-        status: "later",
+        status: "planned",
         summary: "Polish for heavy users.",
         items: [
           "Global shortcuts beyond push-to-talk",
