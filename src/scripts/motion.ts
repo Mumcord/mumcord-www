@@ -385,3 +385,35 @@ if (tourEl) {
   addEventListener("resize", update);
   update();
 }
+
+// ── Themes page: light/dark switch per card, copy the share message ──
+// In this bundled file, not inline in the page: the site's CSP blocks inline scripts.
+const toast = document.querySelector<HTMLElement>("[data-toast]");
+let hide = 0;
+const say = (text: string) => {
+  if (!toast) return;
+  toast.textContent = text;
+  toast.classList.add("is-on");
+  clearTimeout(hide);
+  hide = window.setTimeout(() => toast.classList.remove("is-on"), 2200);
+};
+for (const card of document.querySelectorAll<HTMLElement>("[data-theme-card]")) {
+  for (const b of card.querySelectorAll<HTMLButtonElement>("[data-mode-button]")) {
+    b.addEventListener("click", () => {
+      card.dataset.mode = b.dataset.modeButton;
+      card.querySelectorAll("[data-mode-button]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    });
+  }
+}
+for (const b of document.querySelectorAll<HTMLButtonElement>("[data-copy]")) {
+  b.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(b.dataset.copy ?? "");
+      b.classList.add("is-copied");
+      setTimeout(() => b.classList.remove("is-copied"), 1600);
+      say(b.dataset.copied ?? "");
+    } catch {
+      say(b.dataset.failed ?? "");
+    }
+  });
+}
