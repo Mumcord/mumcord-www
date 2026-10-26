@@ -376,7 +376,7 @@ const source: Record<"de" | "en", FeaturesPage> = {
           {
             id: "zugestellt",
             title: "Zustellung bestätigt",
-            body: "Eine Nachricht gilt erst als gesendet, wenn der Server sie bestätigt. Abgelehnte lassen sich mit einem Klick erneut senden.",
+            body: "Deine Nachricht erscheint sofort, leicht grau, bis der Server sie bestätigt. Klappt das nicht, bleibt der Text erhalten, und du kannst ihn erneut senden oder löschen.",
             since: "0.4.0",
           },
           {
@@ -581,6 +581,20 @@ const source: Record<"de" | "en", FeaturesPage> = {
             title: "Live, und alle sehen es",
             body: "Teilst du deinen Bildschirm, zeigt ein roter Balken über deinem Profil das an, mit „Beenden“ und der Zahl der Zuschauer. Bei den anderen hat dein Bild einen roten Ring mit „LIVE“.",
             since: "0.4.0",
+          },
+          {
+            id: "ducking",
+            title: "Leiser, wenn jemand spricht",
+            body: "Solange im Kanal jemand redet, wird der Ton von Watch-Party und geteiltem Bildschirm leiser und danach wieder lauter. Wie leise, stellst du selbst ein, oder du schaltest es ab.",
+            since: "0.4.0",
+            beta: true,
+          },
+          {
+            id: "aktivitaetstoene",
+            title: "Töne für Watch-Party und Teilen",
+            body: "Ein kurzer Ton, wenn jemand eine Watch-Party startet, beitritt oder verlässt und wenn jemand seinen Bildschirm teilt oder dir zuschaut. Jeder Ton ist einzeln abschaltbar.",
+            since: "0.4.0",
+            beta: true,
           },
         ],
       },
@@ -994,7 +1008,7 @@ const source: Record<"de" | "en", FeaturesPage> = {
           {
             id: "delivered",
             title: "Confirmed delivery",
-            body: "A message only counts as sent once the server confirms it. Refused ones can be sent again with one click.",
+            body: "Your message shows up at once, slightly grey until the server confirms it. If that fails, the text is kept and you can send it again or delete it.",
             since: "0.4.0",
           },
           {
@@ -1199,6 +1213,20 @@ const source: Record<"de" | "en", FeaturesPage> = {
             title: "Live, and everyone sees it",
             body: "While you share your screen, a red bar above your profile says so, with “End” and the number of viewers. Others see a red ring with “LIVE” around your picture.",
             since: "0.4.0",
+          },
+          {
+            id: "ducking",
+            title: "Quieter while people talk",
+            body: "While someone in the channel talks, the sound of the watch party and the shared screen gets quieter and comes back afterwards. You set how quiet, or switch it off.",
+            since: "0.4.0",
+            beta: true,
+          },
+          {
+            id: "activity-sounds",
+            title: "Sounds for watch parties and sharing",
+            body: "A short sound when someone starts, joins or leaves a watch party and when someone shares their screen or starts watching yours. Each sound can be switched off.",
+            since: "0.4.0",
+            beta: true,
           },
         ],
       },

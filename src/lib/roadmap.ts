@@ -179,7 +179,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Eigene Auswahllisten statt der Browser-Optik, alle Eingabefelder in den Einstellungen sauber ausgerichtet",
               "Ein schmaler Fortschrittsbalken unter Bildern im Chat, während die volle Größe lädt",
               "Große Server frieren beim ersten Anzeigen nicht mehr ein, dazu die Schalter „Leere Kanäle ausblenden“ und „Sprechende zuerst“",
-              "Nachrichten gelten erst als gesendet, wenn der Server sie bestätigt; abgelehnte lassen sich erneut senden",
+              "Gesendete Nachrichten erscheinen sofort, leicht grau, bis der Server sie bestätigt; klappt das nicht, lassen sie sich erneut senden oder löschen",
               "Profilkommentar mit Fett, Kursiv, Links und Listen",
               "Ein eigener Regler für die Bitrate, bis zum höchsten Wert, den Server und Mumble zulassen",
               "Falsches Passwort? Ein Fenster fragt gleich nach dem richtigen und speichert es auf Wunsch",
@@ -233,6 +233,9 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Beides startest du über einen Apps-Knopf im Chat deines Sprachkanals",
               "Watch-Party und geteilte Bildschirme laufen in schwebenden Fenstern in der App, die du verschieben, größer ziehen und einklappen kannst; ein Hinweis oben im Chat zeigt, was im Kanal gerade läuft",
               "Teilst du deinen Bildschirm, zeigt ein roter Balken mit „Beenden“ das deutlich an, und bei den anderen hat dein Bild einen roten Ring mit „LIVE“",
+              "Wer später in den Kanal kommt, sieht laufende Watch-Partys und geteilte Bildschirme sofort; eine neue Watch-Party wartet pausiert, bis jemand auf Play drückt",
+              "Der Ton von Video und geteiltem Bildschirm wird leiser, solange jemand spricht, einstellbar",
+              "Kurze Töne, wenn jemand eine Watch-Party startet, beitritt oder verlässt und wenn jemand seinen Bildschirm teilt; jeder Ton einzeln abschaltbar",
             ],
           },
           {
@@ -258,6 +261,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           "Einstellungen aus dem offiziellen Mumble-Client übernehmen",
           "Flüstern und Rufen in andere Kanäle",
           "Öffentlicher Server-Browser",
+          "„Bitte nicht stören“: Ein Schalter macht Benachrichtigungen, Töne und Pop-ups stumm, Stimmen hörst du weiter",
         ],
       },
       {
@@ -430,7 +434,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Themed dropdowns instead of the browser's, every input in the settings neatly aligned",
               "A slim progress bar under chat images while the full size loads",
               "Big servers no longer freeze when first shown, plus “Hide empty channels” and “Talking people first” switches",
-              "Messages only count as sent once the server confirms them; refused ones can be sent again",
+              "Sent messages show up at once, slightly grey until the server confirms them; if that fails, you can send them again or delete them",
               "Profile comment with bold, italic, links and lists",
               "A bitrate slider of its own, up to the highest value the server and Mumble allow",
               "Wrong password? A window asks for the right one straight away and saves it if you like",
@@ -484,6 +488,9 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Start both from an Apps button in your voice channel's chat",
               "The watch party and shared screens run in floating windows inside the app that you can move, resize and collapse; a hint at the top of the chat shows what is running in the channel",
               "While you share your screen, a red bar with “End” makes it clear, and others see a red ring with “LIVE” around your picture",
+              "Anyone who joins the channel later sees running watch parties and shared screens at once; a new watch party waits, paused, until someone presses Play",
+              "The sound of the video and the shared screen gets quieter while someone talks, adjustable",
+              "Short sounds when someone starts, joins or leaves a watch party and when someone shares their screen; each sound can be switched off",
             ],
           },
           {
@@ -509,6 +516,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           "Import settings from the official Mumble client",
           "Whisper and shout to other channels",
           "Public server browser",
+          "Do Not Disturb: one switch silences notifications, sounds and pop-ups, and you still hear voices",
         ],
       },
       {
