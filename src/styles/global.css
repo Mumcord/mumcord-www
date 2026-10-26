@@ -845,7 +845,8 @@ p {
     -webkit-backdrop-filter: none;
     box-shadow: none;
     opacity: 1;
-    visibility: visible;
+    /* Inherit, not visible: a visible child of the closed sheet would still catch taps. */
+    visibility: inherit;
     transform: none;
     transition: none;
   }
