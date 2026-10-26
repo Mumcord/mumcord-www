@@ -4911,8 +4911,24 @@ p {
   color: var(--muted);
   font-size: 0.95rem;
 }
-@media (max-width: 560px) {
+/* Narrow screens: the whole command stays readable, wrapped, with the button below it. */
+@media (max-width: 640px) {
+  .one-line-cmd {
+    flex-wrap: wrap;
+    padding: 12px 14px;
+  }
+  .one-line-cmd code {
+    flex-basis: 100%;
+    overflow: visible;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    padding: 0;
+  }
   .one-line-label {
-    display: none;
+    flex-basis: 100%;
+  }
+  .one-line-cmd .btn {
+    width: 100%;
+    justify-content: center;
   }
 }
