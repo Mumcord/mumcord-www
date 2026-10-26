@@ -1,6 +1,6 @@
 ---
 import { dicts, routes, type Lang, LANG_INFO } from "../i18n";
-import { getLatestRelease, formatSize, RELEASES_URL, WIKI_URL, type Platform } from "../lib/release";
+import { getLatestRelease, formatSize, RELEASES_URL, WIKI_URL, INSTALL_COMMAND, UNINSTALL_COMMAND, type Platform } from "../lib/release";
 
 interface Props {
   lang: Lang;
@@ -9,6 +9,9 @@ const { lang } = Astro.props;
 const t = dicts[lang].download;
 const release = await getLatestRelease();
 const platforms: Platform[] = ["windows", "macos", "linux"];
+const one = t.oneLine;
+// The command only works once the latest release ships install.sh; until then it is a preview.
+const installerOut = !!release?.installer;
 const date = release
   ? new Intl.DateTimeFormat(LANG_INFO[lang].intl, { dateStyle: "long" }).format(new Date(release.publishedAt))
   : "";
@@ -87,6 +90,41 @@ const glyphs: Record<Platform, string> = {
         })
       }
     </ul>
+
+    <div class="one-line" data-reveal>
+      <div class="one-line-head">
+        <h3>{one.title}</h3>
+        {!installerOut && <span class="pill">{one.soon}</span>}
+      </div>
+      <p class="one-line-body">{one.body}</p>
+      {
+        [
+          { cmd: INSTALL_COMMAND, label: one.title },
+          { cmd: UNINSTALL_COMMAND, label: one.uninstall },
+        ].map((c, i) => (
+          <div class:list={["one-line-cmd", { "is-soon": !installerOut, "is-small": i > 0 }]}>
+            {i > 0 && <span class="one-line-label">{c.label}</span>}
+            <code><span aria-hidden="true">$ </span>{c.cmd}</code>
+            {installerOut && (
+              <button type="button" class="btn btn-small" data-copy={c.cmd} data-copied={one.copied} data-failed={one.failed}>
+                {one.copy}
+              </button>
+            )}
+          </div>
+        ))
+      }
+      <table class="one-line-table">
+        <thead>
+          <tr><th scope="col">{one.distroHead}</th><th scope="col">{one.howHead}</th></tr>
+        </thead>
+        <tbody>
+          {one.rows.map((r) => <tr><th scope="row">{r.distro}</th><td>{r.how}</td></tr>)}
+        </tbody>
+      </table>
+      <p class="one-line-note">{one.manager}</p>
+      <p class="one-line-note">{one.asks}</p>
+      <p class="th-toast" role="status" aria-live="polite" data-toast></p>
+    </div>
 
     <div class="download-foot" data-reveal>
       <p>{t.unsigned}</p>

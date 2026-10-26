@@ -10,6 +10,9 @@ export const RELEASES_URL = `${REPO_URL}/releases`;
 export const LATEST_URL = `${REPO_URL}/releases/latest`;
 export const WIKI_URL = `${REPO_URL}/wiki`;
 export const ISSUES_URL = `${REPO_URL}/issues`;
+/** The Linux installer as users type it; always the latest release's copy. */
+export const INSTALL_COMMAND = `curl -fsSL ${REPO_URL}/releases/latest/download/install.sh | sh`;
+export const UNINSTALL_COMMAND = `${INSTALL_COMMAND} -s -- --uninstall`;
 
 export type Platform = "windows" | "macos" | "linux";
 
@@ -28,6 +31,8 @@ export interface Release {
   prerelease: boolean;
   assets: Record<Platform, Asset[]>;
   checksums?: Asset;
+  /** The one-line Linux installer (install.sh), in releases that ship it. */
+  installer?: Asset;
 }
 
 interface GhAsset {
@@ -59,9 +64,11 @@ let cached: Promise<Release[]> | undefined;
 function toRelease(rel: GhRelease): Release {
   const assets: Record<Platform, Asset[]> = { windows: [], macos: [], linux: [] };
   let checksums: Asset | undefined;
+  let installer: Asset | undefined;
   for (const a of rel.assets) {
     const asset = { name: a.name, url: a.browser_download_url, size: a.size };
     if (/sha256sums/i.test(a.name)) checksums = asset;
+    if (a.name === "install.sh") installer = asset;
     const p = platformOf(a.name);
     if (p) assets[p].push(asset);
   }
@@ -74,6 +81,7 @@ function toRelease(rel: GhRelease): Release {
     prerelease: rel.prerelease,
     assets,
     checksums,
+    installer,
   };
 }
 

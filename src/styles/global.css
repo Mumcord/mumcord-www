@@ -4808,3 +4808,111 @@ p {
 .th-desc {
   opacity: 0.85;
 }
+
+/* ── Download: Linux in one line ─────────────────────── */
+.one-line {
+  margin-top: 28px;
+  padding: clamp(22px, 3vw, 34px);
+  border-radius: 28px;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(80% 120% at 100% 0%, rgb(62 227 158 / 0.1), transparent 60%),
+    linear-gradient(180deg, rgb(29 22 80 / 0.7), rgb(21 15 56 / 0.6));
+}
+.one-line-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+}
+.one-line-head h3 {
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  letter-spacing: -0.02em;
+}
+.one-line-body {
+  margin-top: 10px;
+  max-width: 70ch;
+  color: var(--muted);
+}
+.one-line-cmd {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 8px 8px 8px 18px;
+  border-radius: 18px;
+  border: 1px solid var(--line-strong);
+  background: rgb(8 6 24 / 0.75);
+}
+.one-line-cmd code {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 8px 0;
+  font: 0.88rem var(--font-mono);
+  color: var(--text);
+  background: none;
+  scrollbar-width: thin;
+}
+.one-line-cmd code span {
+  color: var(--live);
+}
+.one-line-cmd .btn {
+  flex: none;
+}
+.one-line-cmd .btn.is-copied {
+  background: var(--live);
+  color: #0e2a1d;
+}
+.one-line-cmd.is-soon code {
+  opacity: 0.6;
+}
+.one-line-cmd.is-small {
+  margin-top: 10px;
+  padding-block: 4px;
+  background: rgb(8 6 24 / 0.45);
+}
+.one-line-cmd.is-small code {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.one-line-label {
+  flex: none;
+  font: 0.78rem var(--font-mono);
+  color: var(--faint);
+}
+.one-line-table {
+  width: 100%;
+  margin-top: 22px;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.one-line-table th,
+.one-line-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+.one-line-table thead th {
+  font: 0.75rem var(--font-mono);
+  letter-spacing: 0.04em;
+  color: var(--peach);
+}
+.one-line-table tbody th {
+  font-weight: 600;
+}
+.one-line-table td {
+  color: var(--muted);
+}
+.one-line-note {
+  margin-top: 14px;
+  max-width: 75ch;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+@media (max-width: 560px) {
+  .one-line-label {
+    display: none;
+  }
+}
