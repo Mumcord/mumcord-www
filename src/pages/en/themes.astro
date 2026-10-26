@@ -1,0 +1,12 @@
+---
+import Base from "../../layouts/Base.astro";
+import ThemesPage from "../../components/ThemesPage.astro";
+import { themesPage } from "../../lib/themes";
+import { pageJsonLd } from "../../lib/jsonld";
+
+const t = themesPage.en;
+---
+
+<Base lang="en" page="themes" title={`${t.title} — Mumcord`} description={t.description} jsonLd={pageJsonLd("en", Astro.site!, "themes", t.title)}>
+  <ThemesPage lang="en" />
+</Base>

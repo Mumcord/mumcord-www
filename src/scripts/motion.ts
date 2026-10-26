@@ -349,3 +349,39 @@ if (tocLinks.length && "IntersectionObserver" in window) {
     if (el) spy.observe(el);
   }
 }
+
+// ── Home theme tour: scrolling through the section flips the stack ───
+const tourEl = document.querySelector<HTMLElement>("[data-theme-tour]");
+if (tourEl) {
+  const count = Number(getComputedStyle(tourEl).getPropertyValue("--n")) || 1;
+  const names = [...tourEl.querySelectorAll<HTMLElement>("[data-tour-name]")];
+  const dots = [...tourEl.querySelectorAll<HTMLElement>("[data-tour-dot]")];
+  let shown = -1;
+  const update = () => {
+    const r = tourEl.getBoundingClientRect();
+    const run = r.height - innerHeight;
+    const p = run > 0 ? Math.min(1, Math.max(0, -r.top / run)) * (count - 1) : 0;
+    tourEl.style.setProperty("--p", p.toFixed(3));
+    const active = Math.round(p);
+    if (active !== shown) {
+      shown = active;
+      names.forEach((n, i) => n.classList.toggle("is-on", i === active));
+      dots.forEach((d, i) => d.classList.toggle("is-on", i === active));
+    }
+  };
+  let queued = false;
+  addEventListener(
+    "scroll",
+    () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => {
+        queued = false;
+        update();
+      });
+    },
+    { passive: true },
+  );
+  addEventListener("resize", update);
+  update();
+}

@@ -6,7 +6,7 @@ import { EXTRA_LANGS, LANGS, LANG_INFO, type Lang } from "./langs";
 export { LANGS, EXTRA_LANGS, LANG_INFO };
 export type { Lang };
 export type { ExtraLang } from "./langs";
-export type PageId = "home" | "features" | "games" | "roadmap" | "changelog" | "server" | "imprint" | "privacy";
+export type PageId = "home" | "features" | "games" | "themes" | "roadmap" | "changelog" | "server" | "imprint" | "privacy";
 
 /** Builds a per-language record: German and English as given, the others from their translation file. */
 export function localized<T>(base: { de: T; en: T }, extra: (lang: (typeof EXTRA_LANGS)[number]) => T): Record<Lang, T> {
@@ -30,6 +30,7 @@ const base: Record<PageId, { de: string; en: string }> = {
   home: { de: "/", en: "/en" },
   features: { de: "/funktionen", en: "/en/features" },
   games: { de: "/spiele", en: "/en/games" },
+  themes: { de: "/themes", en: "/en/themes" },
   roadmap: { de: "/roadmap", en: "/en/roadmap" },
   changelog: { de: "/changelog", en: "/en/changelog" },
   server: { de: "/server", en: "/en/server" },

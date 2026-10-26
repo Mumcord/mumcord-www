@@ -29,6 +29,7 @@ export const en: Dict = {
     whatsNew: "What's new",
     features: { title: "Features", desc: "Everything Mumcord does, with screenshots" },
     games: { title: "Games", desc: "Overlay, positional audio and anti-cheat" },
+    themes: { title: "Themes", desc: "Looks to copy, light and dark" },
     roadmap: { title: "Roadmap", desc: "What's done and what's next" },
     changelog: { title: "Changelog", desc: "What every version brought" },
     how: { title: "How it works", desc: "One client for any Mumble server" },
@@ -88,6 +89,12 @@ export const en: Dict = {
     changelog: "Everything new",
   },
 
+  themesTour: {
+    label: "Themes",
+    title: "Your Mumcord. Your colours.",
+    body: "Presets or themes all your own, each in light and dark. Keep scrolling to flip through a few.",
+    cta: "Themes to copy",
+  },
   features: {
     label: "02 — What Mumcord does today",
     title: "Everything an evening session needs.",
@@ -278,6 +285,7 @@ export const en: Dict = {
     host: "Hosting and docs",
     community: "Get involved",
     games: "Games",
+    themes: "Themes",
     download: "Download",
     current: "Current",
     top: "Back to top",

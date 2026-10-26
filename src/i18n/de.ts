@@ -27,6 +27,7 @@ export const de = {
     whatsNew: "Was neu ist",
     features: { title: "Funktionen", desc: "Alles, was Mumcord kann, mit Screenshots" },
     games: { title: "Spiele", desc: "Overlay, Positional Audio und Anti-Cheat" },
+    themes: { title: "Themes", desc: "Looks zum Kopieren, hell und dunkel" },
     roadmap: { title: "Roadmap", desc: "Was fertig ist und was als Nächstes kommt" },
     changelog: { title: "Changelog", desc: "Was jede Version gebracht hat" },
     how: { title: "So funktioniert's", desc: "Ein Client für jeden Mumble-Server" },
@@ -86,6 +87,12 @@ export const de = {
     changelog: "Alle Neuerungen",
   },
 
+  themesTour: {
+    label: "Themes",
+    title: "Dein Mumcord. Deine Farben.",
+    body: "Vorlagen oder ganz eigene Themes, jedes hell und dunkel. Scroll weiter und blätter durch ein paar davon.",
+    cta: "Themes zum Kopieren",
+  },
   features: {
     label: "02 — Was Mumcord heute kann",
     title: "Alles, was eine Runde am Abend braucht.",
@@ -277,6 +284,7 @@ export const de = {
     host: "Hosten und Doku",
     community: "Mitmachen",
     games: "Spiele",
+    themes: "Themes",
     download: "Download",
     current: "Aktuell",
     top: "Nach oben",

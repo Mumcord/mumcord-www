@@ -8,6 +8,7 @@ import type { ChangelogEntry } from "../lib/changelog";
 import type { RoadmapPage } from "../lib/roadmap";
 import type { GamesPage } from "../lib/games";
 import type { Guide } from "../lib/server-guide";
+import type { ThemesPage } from "../lib/themes";
 
 export interface FeaturesText extends Omit<FeaturesPage, "groups"> {
   groups: {
@@ -50,4 +51,11 @@ export interface LocaleBundle {
   games: GamesText;
   blocked: BlockedText[];
   server: GuideText;
+  /** Missing in translations made before the themes page; English fills in. */
+  themes?: ThemesText;
+}
+
+export interface ThemesText extends Omit<ThemesPage, "groups"> {
+  /** Gallery words by group and theme id; the themes themselves come from English. */
+  gallery?: { groups: Record<string, { title: string; intro: string }>; descriptions: Record<string, string> };
 }

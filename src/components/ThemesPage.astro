@@ -1,0 +1,107 @@
+---
+import type { Lang } from "../i18n";
+import ThemeCard from "./ThemeCard.astro";
+import { themes, themesPage } from "../lib/themes";
+import { IDEA_URL } from "../lib/features";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = themesPage[lang];
+---
+
+<article class="themes-page">
+  <header class="wrap th-head">
+    <div class="th-head-glow" aria-hidden="true"></div>
+    <p class="label" data-reveal>{t.label}</p>
+    <h1 class="th-title" data-reveal>{t.headline}</h1>
+    <p class="body" data-reveal>{t.intro}</p>
+    <p class="th-since" data-reveal><span class="pill">{t.since}</span></p>
+    <nav class="fp-toc th-toc" aria-label={t.title} data-reveal>
+      <a href="#built-in">{t.presetsTitle}</a>
+      {t.groups.map((g) => <a href={`#${g.id}`}>{g.title}</a>)}
+    </nav>
+  </header>
+
+  <section class="wrap th-group" id="built-in" aria-labelledby="th-g-built-in">
+    <div class="th-group-head">
+      <h2 id="th-g-built-in" class="h2" data-reveal>{t.presetsTitle}</h2>
+      <p class="body" data-reveal>{t.presetsIntro}</p>
+    </div>
+    <ul class="th-grid">
+      {themes.map((th) => <ThemeCard th={th} t={t} />)}
+    </ul>
+  </section>
+
+  {
+    t.groups.map((g) => (
+      <section class="wrap th-group" id={g.id} aria-labelledby={`th-g-${g.id}`}>
+        <div class="th-group-head">
+          <h2 id={`th-g-${g.id}`} class="h2" data-reveal>
+            {g.title}
+            <span class="th-group-count">{g.themes.length}</span>
+          </h2>
+          <p class="body" data-reveal>{g.intro}</p>
+        </div>
+        <ul class="th-grid">
+          {g.themes.map((th) => <ThemeCard th={th} t={t} />)}
+        </ul>
+      </section>
+    ))
+  }
+
+  <section class="wrap th-how" aria-labelledby="th-how-h">
+    <h2 id="th-how-h" class="h2" data-reveal>{t.howTitle}</h2>
+    <ol class="th-steps">
+      {
+        t.steps.map((s, i) => (
+          <li data-reveal>
+            <span class="th-step-num" aria-hidden="true">{i + 1}</span>
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="wrap fp-ask" aria-labelledby="th-share-h" data-reveal>
+    <h2 id="th-share-h">{t.shareTitle}</h2>
+    <p>{t.shareBody}</p>
+    <p class="fp-actions"><a class="btn btn-small" href={IDEA_URL} rel="noopener">{t.share}</a></p>
+  </section>
+  <p class="th-toast" role="status" aria-live="polite" data-toast></p>
+</article>
+
+<script>
+  const toast = document.querySelector<HTMLElement>("[data-toast]");
+  let hide = 0;
+  const say = (text: string) => {
+    if (!toast) return;
+    toast.textContent = text;
+    toast.classList.add("is-on");
+    clearTimeout(hide);
+    hide = window.setTimeout(() => toast.classList.remove("is-on"), 2200);
+  };
+  for (const card of document.querySelectorAll<HTMLElement>("[data-theme-card]")) {
+    for (const b of card.querySelectorAll<HTMLButtonElement>("[data-mode-button]")) {
+      b.addEventListener("click", () => {
+        card.dataset.mode = b.dataset.modeButton;
+        card.querySelectorAll("[data-mode-button]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      });
+    }
+  }
+  for (const b of document.querySelectorAll<HTMLButtonElement>("[data-copy]")) {
+    b.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(b.dataset.copy ?? "");
+        b.classList.add("is-copied");
+        setTimeout(() => b.classList.remove("is-copied"), 1600);
+        say(b.dataset.copied ?? "");
+      } catch {
+        say(b.dataset.failed ?? "");
+      }
+    });
+  }
+</script>

@@ -1,0 +1,52 @@
+---
+import { Picture } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import { shareMessage, themeCode, THEME_COLOR_KEYS, type Theme, type ThemesPage } from "../lib/themes";
+
+interface Props {
+  th: Theme & { description?: string };
+  t: ThemesPage;
+}
+const { th, t } = Astro.props;
+const shots = import.meta.glob<{ default: ImageMetadata }>("../assets/shots/**/*.png", { eager: true });
+const shot = (name: string) => shots[`../assets/shots/${name}.png`].default;
+const modes = ["dark", "light"] as const;
+---
+
+<li class="th-card" id={th.id} data-theme-card data-mode="dark" style={modes.map((m) => THEME_COLOR_KEYS.map((k) => `--${m}-${k}: ${th[m][k]}`).join("; ")).join("; ")} data-reveal data-spot>
+  <div class="th-media">
+    {modes.map((m) =>
+      th.shots[m] ? (
+        <Picture class={`th-shot th-shot-${m}`} src={shot(th.shots[m]!)} formats={["avif", "webp"]} widths={[640, 1100, 1600]} sizes="(min-width: 980px) 600px, 92vw" alt="" />
+      ) : null,
+    )}
+  </div>
+  <div class="th-body">
+    <div class="th-top">
+      <h3>{th.name}</h3>
+      <span class="pill">{th.kind === "preset" ? t.preset : t.community}</span>
+      <div class="th-modes" role="group" aria-label={th.name}>
+        {modes.map((m) => (
+          <button type="button" data-mode-button={m} aria-pressed={m === "dark" ? "true" : "false"}>
+            {t[m]}
+          </button>
+        ))}
+      </div>
+    </div>
+    <ul class="th-swatches" aria-label={t.codeLabel}>
+      {THEME_COLOR_KEYS.map((k) => (
+        <li style={`--k: var(--t-${k})`} title={t.colors[k]}>
+          <span class="sr-only">{t.colors[k]}</span>
+        </li>
+      ))}
+    </ul>
+    {th.description && <p class="th-desc">{th.description}</p>}
+    {th.kind === "preset" && <p class="th-note">{t.presetNote}</p>}
+    <div class="th-code">
+      <code aria-label={t.codeLabel}>{themeCode(th)}</code>
+      <button type="button" class="btn btn-small btn-glow" data-copy={shareMessage(th)} data-copied={t.copied} data-failed={t.copyFailed}>
+        {t.copy}
+      </button>
+    </div>
+  </div>
+</li>

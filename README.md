@@ -37,6 +37,11 @@ JSON files too, or the old translation keeps showing for that string.
 The server hosting guide (`/server`, `/en/server`) lives in `src/lib/server-guide.ts`; its
 compose file pins the same `mumblevoip/mumble-server` version the Mumcord tests use.
 
+The themes page (`/themes`, `/en/themes`) lives in `src/lib/themes.ts`. The built-in presets carry the
+app's colours (`ui/src/theme/themeModel.ts`), their codes are built like the app's `shareCodec.ts`. The
+community gallery is `src/lib/theme-gallery.json`, read from the app's `docs/themes/gallery.md`
+(names, descriptions, screenshots under `docs/images/screenshots/gallery`, verified codes).
+
 The next feature release is prepared ahead of time and switches over by itself once its GitHub
 release is published: the changelog entry and the features marked `since` that version say "new in"
 instead of "coming in", features with `until` that version disappear, the roadmap epic with that

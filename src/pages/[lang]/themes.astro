@@ -1,0 +1,16 @@
+---
+import Base from "../../layouts/Base.astro";
+import ThemesPage from "../../components/ThemesPage.astro";
+import { EXTRA_LANGS, type ExtraLang } from "../../i18n";
+import { themesPage } from "../../lib/themes";
+import { pageJsonLd } from "../../lib/jsonld";
+
+export const getStaticPaths = () => EXTRA_LANGS.map((lang) => ({ params: { lang } }));
+
+const lang = Astro.params.lang as ExtraLang;
+const t = themesPage[lang];
+---
+
+<Base lang={lang} page="themes" title={`${t.title} — Mumcord`} description={t.description} jsonLd={pageJsonLd(lang, Astro.site!, "themes", t.title)}>
+  <ThemesPage lang={lang} />
+</Base>
