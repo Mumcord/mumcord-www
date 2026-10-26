@@ -22,12 +22,13 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
   de: [
     {
       version: "0.4.2",
-      teaser: "Keine Flut von Schlüsselbund-Abfragen mehr unter macOS.",
-      summary: "Ein kleines Update mit zwei Fixes: keine Flut von Schlüsselbund-Abfragen mehr nach einem Update unter macOS, und wer später in einen Kanal kommt, sieht laufende Bildschirmfreigaben und Watch-Partys zuverlässiger.",
+      teaser: "YouTube im Linux-AppImage repariert, keine Schlüsselbund-Flut mehr unter macOS.",
+      summary: "Ein kleines Update mit drei Fixes: YouTube spielt im Linux-AppImage wieder, keine Flut von Schlüsselbund-Abfragen mehr nach einem Update unter macOS, und wer später in einen Kanal kommt, sieht laufende Bildschirmfreigaben und Watch-Partys zuverlässiger.",
       groups: [
         {
           title: "Behoben",
           items: [
+            "YouTube-Videos in Watch-Partys spielen im Linux-AppImage wieder, statt „Dieses Video kann in deinem Browser nicht abgespielt werden“ zu zeigen: Das AppImage bringt jetzt den Opus-Audio-Parser mit, den YouTube braucht.",
             "Keine Flut von Schlüsselbund-Abfragen mehr nach einem Update unter macOS: Ein abgelehnter oder fehlgeschlagener Zugriff wird nicht mehr bei jeder Aktualisierung der Serverliste, jeder Benachrichtigung und jedem Neuverbinden wiederholt, und die Identität wird nur einmal pro Sitzung gelesen.",
             "Wer einem Sprachkanal beitritt, während jemand seinen Bildschirm teilt oder eine Watch-Party läuft, sieht das jetzt zuverlässiger: Die Ankündigung wird ein zweites Mal geschickt, falls der Server die erste verschluckt hat.",
           ],
@@ -373,12 +374,13 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
   en: [
     {
       version: "0.4.2",
-      teaser: "No more flood of keychain prompts on macOS.",
-      summary: "A small update with two fixes: no more flood of keychain prompts after updating on macOS, and people who join a channel later see a running screen share or watch party more reliably.",
+      teaser: "YouTube fixed in the Linux AppImage, no more keychain prompt flood on macOS.",
+      summary: "A small update with three fixes: YouTube plays in the Linux AppImage again, no more flood of keychain prompts after updating on macOS, and people who join a channel later see a running screen share or watch party more reliably.",
       groups: [
         {
           title: "Fixed",
           items: [
+            "YouTube videos in watch parties play in the Linux AppImage again instead of showing “This video can't be played in your browser”: the AppImage now ships the Opus audio parser YouTube needs.",
             "No more flood of keychain prompts after updating on macOS: a denied or failed keychain read is no longer repeated for every server list refresh, notification or reconnect, and the identity is read only once per session.",
             "People who join a voice channel while someone is sharing their screen or a watch party is running now see it more reliably: the announcement is sent a second time in case the server dropped the first.",
           ],
