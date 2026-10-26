@@ -411,6 +411,11 @@
         "copy": "Kopiraj",
         "copied": "Kopirano!",
         "failed": "Kopiranje ni uspelo. Označi ukaz in ga kopiraj ročno."
+      },
+      "signed": {
+        "macos": "Podpisano in notarizirano pri Applu: odpre se brez opozorila.",
+        "windows": "Podpisano. SmartScreen lahko ob začetku še vedno opozori: »Več informacij« → »Vseeno zaženi«.",
+        "windowsPending": "Gradnje za macOS so podpisane in notarizirane pri Applu. Namestitveni program za Windows še ni podpisan; podpisovanje se začne, ko bo certifikat urejen."
       }
     },
     "changelog": {
@@ -1028,6 +1033,33 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.1",
+      "teaser": "Podpisano in notarizirano za macOS, povezave popravljene.",
+      "summary": "Majhna posodobitev, predvsem za macOS: gradnje so zdaj podpisane in notarizirane pri Applu, povezave s strežniki v domačem omrežju spet delujejo, Mumcord pa veliko redkeje zahteva ključavnik.",
+      "groups": [
+        {
+          "title": "macOS",
+          "items": [
+            "Povezave spet delujejo: Mumcord zdaj zahteva dovoljenje Lokalno omrežje. Brez njega je macOS 15 in novejši blokiral povezave s strežniki v domačem omrežju.",
+            "Jasni razlogi, ko povezava ne uspe, v aplikaciji in v dnevniku, na primer »No route to host« z napotkom na Sistemske nastavitve → Zasebnost in varnost → Lokalno omrežje.",
+            "Precej manj zahtev za ključavnik: vsaka shranjena skrivnost se prebere le enkrat na sejo, Mumcord pa uporablja manj elementov ključavnika. Elementi iz starejših različic se ob prvi uporabi združijo.",
+            "Zahteva za mikrofon se prikaže samo enkrat, ko se mikrofon prvič uporabi, ne pa ob izpisu naprav v čarovniku za nastavitev ali v nastavitvah.",
+            "Stran z diagnostiko spet našteje zvočne naprave, tudi ko zvok ne teče.",
+            "Podpisano in notarizirano pri Applu: Mumcord se odpre brez opozorila Gatekeeper, odgovori za mikrofon in ključavnik pa se ohranijo tudi po posodobitvah."
+          ]
+        },
+        {
+          "title": "Popravljeno",
+          "items": [
+            "Ko hkrati odpovesta dva strežnika, se njuni zahtevi za geslo in certifikat ne prekrivata več."
+          ]
+        }
+      ],
+      "known": [
+        "Namestitveni program za Windows še ni podpisan."
+      ]
+    },
     {
       "version": "0.4.0",
       "teaser": "Več strežnikov hkrati, lastne teme, prekrivni sloj na Windows in skupno gledanje.",

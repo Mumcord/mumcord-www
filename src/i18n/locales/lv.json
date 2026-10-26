@@ -411,6 +411,11 @@
         "copy": "Kopēt",
         "copied": "Nokopēts!",
         "failed": "Kopēšana neizdevās. Atlasi komandu un nokopē to manuāli."
+      },
+      "signed": {
+        "macos": "Apple parakstīts un apstiprināts: atveras bez brīdinājuma.",
+        "windows": "Parakstīts. SmartScreen sākumā joprojām var brīdināt: “Vairāk informācijas” → “Tik un tā palaist”.",
+        "windowsPending": "macOS būvējumus paraksta un apstiprina Apple. Windows instalētājs joprojām nav parakstīts; parakstīšana sāksies, tiklīdz būs iestatīts sertifikāts."
       }
     },
     "changelog": {
@@ -1028,6 +1033,33 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.1",
+      "teaser": "Parakstīts un notariāli apstiprināts macOS, savienojumi salaboti.",
+      "summary": "Neliels atjauninājums, galvenokārt macOS: būvējumus tagad paraksta un apstiprina Apple, savienojumi ar serveriem mājas tīklā atkal darbojas, un Mumcord atslēgu piekariņu prasa daudz retāk.",
+      "groups": [
+        {
+          "title": "macOS",
+          "items": [
+            "Savienojumi atkal darbojas: Mumcord tagad prasa Local Network atļauju. Bez tās macOS 15 un jaunāka bloķēja savienojumus ar serveriem mājas tīklā.",
+            "Skaidri iemesli, kāpēc savienojums neizdodas, lietotnē un žurnālā, piemēram, “No route to host” ar norādi uz System Settings → Privacy & Security → Local Network.",
+            "Daudz mazāk atslēgu piekariņa uzvedņu: katrs saglabātais noslēpums sesijā tiek nolasīts tikai vienu reizi, un Mumcord izmanto mazāk atslēgu piekariņa vienumu. Vecāku versiju vienumi tiek apvienoti pirmajā lietošanas reizē.",
+            "Mikrofona uzvedne parādās tikai vienu reizi, kad mikrofons tiek izmantots pirmo reizi, nevis tad, kad ierīces tiek uzskaitītas iestatīšanas vednī vai iestatījumos.",
+            "Diagnostikas lapa atkal rāda audio ierīces, pat ja skaņa nedarbojas.",
+            "Apple parakstīts un apstiprināts: Mumcord atveras bez Gatekeeper brīdinājuma, un mikrofona un atslēgu piekariņa atbildes saglabājas arī pēc atjauninājumiem."
+          ]
+        },
+        {
+          "title": "Labots",
+          "items": [
+            "Kad divi serveri neizdodas vienlaikus, to paroļu un sertifikātu uzvednes vairs nesaduras."
+          ]
+        }
+      ],
+      "known": [
+        "Windows instalētājs joprojām nav parakstīts."
+      ]
+    },
     {
       "version": "0.4.0",
       "teaser": "Vairāki serveri vienlaikus, savas tēmas, pārklājums uz Windows un skatīšanās kopā.",

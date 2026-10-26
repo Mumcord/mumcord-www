@@ -33,6 +33,8 @@ export interface Release {
   checksums?: Asset;
   /** The one-line Linux installer (install.sh), in releases that ship it. */
   installer?: Asset;
+  /** Whether the release notes say the platform's build is signed (written by Mumcord's release.yml). */
+  signed: Record<"windows" | "macos", boolean>;
 }
 
 interface GhAsset {
@@ -48,6 +50,7 @@ interface GhRelease {
   published_at: string;
   prerelease: boolean;
   draft: boolean;
+  body?: string | null;
   assets: GhAsset[];
 }
 
@@ -92,6 +95,10 @@ function toRelease(rel: GhRelease): Release {
     assets,
     checksums,
     installer,
+    signed: {
+      windows: /Windows: the app and installer are signed/.test(rel.body ?? ""),
+      macos: /macOS: the app is signed and notarized/.test(rel.body ?? ""),
+    },
   };
 }
 

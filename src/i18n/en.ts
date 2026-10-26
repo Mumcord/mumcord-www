@@ -258,6 +258,11 @@ export const en: Dict = {
       macos: { name: "macOS", sub: "Universal, Apple Silicon & Intel · .dmg", warn: "Gatekeeper blocks the first launch: right-click → “Open”, or allow it under Privacy & Security." },
       linux: { name: "Linux", sub: "X11 & Wayland · AppImage", warn: "chmod +x Mumcord_*.AppImage — needs WebKitGTK 4.1 and a Secret Service keyring." },
     },
+    signed: {
+      macos: "Signed and notarized by Apple: opens without a warning.",
+      windows: "Signed. SmartScreen may still warn at first: “More info” → “Run anyway”.",
+      windowsPending: "The macOS builds are signed and notarized by Apple. The Windows installer is still unsigned; signing starts once the certificate is set up.",
+    },
     unsigned: "Builds are unsigned for now. Signing for Windows and macOS is prepared and starts once the certificates are set up.",
     source: "Rather build it yourself? Rust, Node 24, one command.",
     sourceLink: "Build guide in the wiki",

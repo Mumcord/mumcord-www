@@ -411,6 +411,11 @@
         "copy": "Kopiera",
         "copied": "Kopierat!",
         "failed": "Det gick inte att kopiera. Markera kommandot och kopiera det manuellt."
+      },
+      "signed": {
+        "macos": "Signerat och notariserat av Apple: öppnas utan varning.",
+        "windows": "Signerat. SmartScreen kan fortfarande varna i början: ”Mer information” → ”Kör ändå”.",
+        "windowsPending": "Byggena för macOS är signerade och notariserade av Apple. Installationsprogrammet för Windows är fortfarande osignerat; signeringen startar när certifikatet är på plats."
       }
     },
     "changelog": {
@@ -1028,6 +1033,33 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.1",
+      "teaser": "Signerat och notariserat för macOS, anslutningar fixade.",
+      "summary": "En liten uppdatering, mest för macOS: byggena är nu signerade och notariserade av Apple, anslutningar till servrar i ditt hemnätverk fungerar igen, och Mumcord frågar efter nyckelringen mycket mer sällan.",
+      "groups": [
+        {
+          "title": "macOS",
+          "items": [
+            "Anslutningarna fungerar igen: Mumcord ber nu om behörigheten Lokalt nätverk. Utan den blockerade macOS 15 och senare anslutningar till servrar i ditt hemnätverk.",
+            "Tydliga orsaker när en anslutning misslyckas, i appen och i loggen, till exempel ”No route to host” med en hänvisning till Systeminställningar → Integritet och säkerhet → Lokalt nätverk.",
+            "Mycket färre nyckelringsfrågor: varje sparad hemlighet läses bara en gång per session, och Mumcord använder färre nyckelringsobjekt. Objekt från äldre versioner slås ihop vid första användningen.",
+            "Mikrofonfrågan visas bara en gång, när mikrofonen används första gången, inte när enheter listas i installationsguiden eller inställningarna.",
+            "Diagnostiksidan listar ljudenheter igen, även när inget ljud körs.",
+            "Signerat och notariserat av Apple: Mumcord öppnas utan Gatekeeper-varning, och svar om mikrofon och nyckelring behålls mellan uppdateringar."
+          ]
+        },
+        {
+          "title": "Fixat",
+          "items": [
+            "När två servrar misslyckas samtidigt krockar inte längre deras lösenords- och certifikatfrågor."
+          ]
+        }
+      ],
+      "known": [
+        "Installationsprogrammet för Windows är fortfarande osignerat."
+      ]
+    },
     {
       "version": "0.4.0",
       "teaser": "Flera servrar samtidigt, egna teman, overlayen på Windows och att titta tillsammans.",

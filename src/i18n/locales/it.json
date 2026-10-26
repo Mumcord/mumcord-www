@@ -411,6 +411,11 @@
         "copy": "Copia",
         "copied": "Copiato!",
         "failed": "Copia non riuscita. Seleziona il comando e copialo a mano."
+      },
+      "signed": {
+        "macos": "Firmato e notarizzato da Apple: si apre senza avvisi.",
+        "windows": "Firmato. SmartScreen potrebbe comunque avvisare all'inizio: “Ulteriori informazioni” → “Esegui comunque”.",
+        "windowsPending": "Le build per macOS sono firmate e notarizzate da Apple. L'installer per Windows non è ancora firmato; la firma inizierà quando il certificato sarà configurato."
       }
     },
     "changelog": {
@@ -1028,6 +1033,33 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.1",
+      "teaser": "Firmato e notarizzato per macOS, connessioni sistemate.",
+      "summary": "Un piccolo aggiornamento, soprattutto per macOS: le build sono ora firmate e notarizzate da Apple, le connessioni ai server della tua rete domestica funzionano di nuovo e Mumcord chiede il portachiavi molto meno spesso.",
+      "groups": [
+        {
+          "title": "macOS",
+          "items": [
+            "Le connessioni funzionano di nuovo: Mumcord ora chiede il permesso Rete locale. Senza, macOS 15 e successivi bloccavano le connessioni ai server della tua rete domestica.",
+            "Motivi chiari quando una connessione fallisce, nell'app e nel log, per esempio “No route to host” con un rimando a Impostazioni di Sistema → Privacy e sicurezza → Rete locale.",
+            "Molte meno richieste del portachiavi: ogni segreto salvato viene letto una sola volta per sessione e Mumcord usa meno elementi del portachiavi. Gli elementi delle versioni precedenti vengono uniti al primo utilizzo.",
+            "La richiesta per il microfono compare una sola volta, quando il microfono viene usato per la prima volta, non quando si elencano i dispositivi nella procedura guidata o nelle impostazioni.",
+            "La pagina di diagnostica elenca di nuovo i dispositivi audio, anche quando non c'è audio in corso.",
+            "Firmato e notarizzato da Apple: Mumcord si apre senza avviso di Gatekeeper, e le risposte per microfono e portachiavi vengono mantenute tra un aggiornamento e l'altro."
+          ]
+        },
+        {
+          "title": "Correzioni",
+          "items": [
+            "Quando due server falliscono nello stesso momento, le loro richieste di password e certificato non si scontrano più."
+          ]
+        }
+      ],
+      "known": [
+        "L'installer per Windows non è ancora firmato."
+      ]
+    },
     {
       "version": "0.4.0",
       "teaser": "Più server contemporaneamente, temi tutti tuoi, l'overlay su Windows e guardare insieme.",

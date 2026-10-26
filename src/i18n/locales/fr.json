@@ -411,6 +411,11 @@
         "copy": "Copier",
         "copied": "Copié !",
         "failed": "La copie n’a pas marché. Sélectionne la commande et copie-la à la main."
+      },
+      "signed": {
+        "macos": "Signé et notarié par Apple : s’ouvre sans avertissement.",
+        "windows": "Signé. SmartScreen peut encore avertir au début : « Informations complémentaires » → « Exécuter quand même ».",
+        "windowsPending": "Les builds macOS sont signés et notariés par Apple. L’installateur Windows n’est toujours pas signé ; la signature commencera dès que le certificat sera en place."
       }
     },
     "changelog": {
@@ -1028,6 +1033,33 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.1",
+      "teaser": "Signé et notarié pour macOS, connexions corrigées.",
+      "summary": "Une petite mise à jour, surtout pour macOS : les builds sont maintenant signés et notariés par Apple, les connexions aux serveurs de ton réseau local fonctionnent à nouveau, et Mumcord demande beaucoup moins souvent le trousseau.",
+      "groups": [
+        {
+          "title": "macOS",
+          "items": [
+            "Les connexions refonctionnent : Mumcord demande maintenant l’autorisation Réseau local. Sans elle, macOS 15 et les versions suivantes bloquaient les connexions aux serveurs de ton réseau local.",
+            "Des raisons claires quand une connexion échoue, dans l’app et dans le journal, par exemple « No route to host » avec un renvoi vers Réglages Système → Confidentialité et sécurité → Réseau local.",
+            "Bien moins de demandes de trousseau : chaque secret enregistré n’est lu qu’une fois par session, et Mumcord utilise moins d’éléments du trousseau. Les éléments des anciennes versions sont fusionnés à la première utilisation.",
+            "La demande d’accès au micro n’apparaît qu’une fois, à la première utilisation du micro, et non plus quand les périphériques sont listés dans l’assistant de configuration ou les réglages.",
+            "La page de diagnostic liste à nouveau les périphériques audio, même quand aucun son n’est actif.",
+            "Signé et notarié par Apple : Mumcord s’ouvre sans avertissement Gatekeeper, et les réponses pour le micro et le trousseau sont conservées d’une mise à jour à l’autre."
+          ]
+        },
+        {
+          "title": "Corrigé",
+          "items": [
+            "Quand deux serveurs échouent en même temps, leurs demandes de mot de passe et de certificat n’entrent plus en conflit."
+          ]
+        }
+      ],
+      "known": [
+        "L’installateur Windows n’est toujours pas signé."
+      ]
+    },
     {
       "version": "0.4.0",
       "teaser": "Plusieurs serveurs à la fois, tes propres thèmes, l’overlay sous Windows et regarder ensemble.",

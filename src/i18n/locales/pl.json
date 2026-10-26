@@ -411,6 +411,11 @@
         "copy": "Kopiuj",
         "copied": "Skopiowano!",
         "failed": "Nie udało się skopiować. Zaznacz polecenie i skopiuj je ręcznie."
+      },
+      "signed": {
+        "macos": "Podpisane i poświadczone przez Apple: otwiera się bez ostrzeżenia.",
+        "windows": "Podpisane. SmartScreen może na początku nadal ostrzegać: „Więcej informacji” → „Uruchom mimo to”.",
+        "windowsPending": "Kompilacje macOS są podpisane i poświadczone przez Apple. Instalator Windows nadal nie jest podpisany; podpisywanie ruszy, gdy certyfikat zostanie skonfigurowany."
       }
     },
     "changelog": {
@@ -1028,6 +1033,33 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.1",
+      "teaser": "Podpisane i poświadczone dla macOS, połączenia naprawione.",
+      "summary": "Mała aktualizacja, głównie dla macOS: kompilacje są teraz podpisane i poświadczone przez Apple, połączenia z serwerami w sieci domowej znów działają, a Mumcord znacznie rzadziej prosi o pęk kluczy.",
+      "groups": [
+        {
+          "title": "macOS",
+          "items": [
+            "Połączenia znów działają: Mumcord prosi teraz o uprawnienie Sieć lokalna. Bez niego macOS 15 i nowszy blokował połączenia z serwerami w sieci domowej.",
+            "Jasne przyczyny nieudanego połączenia, w aplikacji i w logu, na przykład „No route to host” ze wskazówką, by otworzyć Ustawienia systemowe → Prywatność i ochrona → Sieć lokalna.",
+            "Znacznie mniej próśb o pęk kluczy: każdy zapisany sekret jest odczytywany tylko raz na sesję, a Mumcord używa mniej elementów pęku kluczy. Elementy ze starszych wersji są łączone przy pierwszym użyciu.",
+            "Prośba o dostęp do mikrofonu pojawia się tylko raz, gdy mikrofon jest użyty po raz pierwszy, a nie przy wyświetlaniu urządzeń w kreatorze konfiguracji czy ustawieniach.",
+            "Strona diagnostyki znów pokazuje urządzenia audio, nawet gdy dźwięk nie działa.",
+            "Podpisane i poświadczone przez Apple: Mumcord otwiera się bez ostrzeżenia Gatekeepera, a odpowiedzi dla mikrofonu i pęku kluczy są zachowywane między aktualizacjami."
+          ]
+        },
+        {
+          "title": "Naprawione",
+          "items": [
+            "Gdy dwa serwery zawodzą jednocześnie, ich prośby o hasło i certyfikat już się nie nakładają."
+          ]
+        }
+      ],
+      "known": [
+        "Instalator Windows nadal nie jest podpisany."
+      ]
+    },
     {
       "version": "0.4.0",
       "teaser": "Kilka serwerów naraz, własne motywy, nakładka na Windowsie i wspólne oglądanie.",

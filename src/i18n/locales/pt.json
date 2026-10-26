@@ -411,6 +411,11 @@
         "copy": "Copiar",
         "copied": "Copiado!",
         "failed": "Não foi possível copiar. Seleciona o comando e copia-o à mão."
+      },
+      "signed": {
+        "macos": "Assinado e notarizado pela Apple: abre sem aviso.",
+        "windows": "Assinado. O SmartScreen ainda pode avisar no início: “Mais informações” → “Executar mesmo assim”.",
+        "windowsPending": "As versões para macOS estão assinadas e notarizadas pela Apple. O instalador para Windows ainda não está assinado; a assinatura começa quando o certificado estiver configurado."
       }
     },
     "changelog": {
@@ -1028,6 +1033,33 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.1",
+      "teaser": "Assinado e notarizado para macOS, ligações corrigidas.",
+      "summary": "Uma pequena atualização, sobretudo para o macOS: as versões passam a ser assinadas e notarizadas pela Apple, as ligações a servidores na tua rede doméstica voltam a funcionar e o Mumcord pede o porta-chaves muito menos vezes.",
+      "groups": [
+        {
+          "title": "macOS",
+          "items": [
+            "As ligações voltam a funcionar: o Mumcord passa a pedir a permissão de Rede Local. Sem ela, o macOS 15 e posterior bloqueava as ligações a servidores na tua rede doméstica.",
+            "Motivos claros quando uma ligação falha, na app e no registo, por exemplo “No route to host” com uma indicação para Definições do Sistema → Privacidade e Segurança → Rede Local.",
+            "Muito menos pedidos do porta-chaves: cada segredo guardado é lido só uma vez por sessão e o Mumcord usa menos itens do porta-chaves. Os itens de versões antigas são reunidos na primeira utilização.",
+            "O pedido do microfone aparece só uma vez, quando o microfone é usado pela primeira vez, e não ao listar dispositivos no assistente de configuração ou nas definições.",
+            "A página de diagnóstico volta a listar os dispositivos de áudio, mesmo sem áudio a correr.",
+            "Assinado e notarizado pela Apple: o Mumcord abre sem aviso do Gatekeeper e as respostas sobre o microfone e o porta-chaves mantêm-se entre atualizações."
+          ]
+        },
+        {
+          "title": "Corrigido",
+          "items": [
+            "Quando dois servidores falham ao mesmo tempo, os pedidos de palavra-passe e de certificado deixam de colidir."
+          ]
+        }
+      ],
+      "known": [
+        "O instalador para Windows ainda não está assinado."
+      ]
+    },
     {
       "version": "0.4.0",
       "teaser": "Vários servidores ao mesmo tempo, temas teus, o overlay no Windows e ver em conjunto.",

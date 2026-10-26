@@ -411,6 +411,11 @@
         "copy": "Kopeeri",
         "copied": "Kopeeritud!",
         "failed": "Kopeerimine ei õnnestunud. Vali käsk ja kopeeri see käsitsi."
+      },
+      "signed": {
+        "macos": "Apple'i allkirjastatud ja notariseeritud: avaneb ilma hoiatuseta.",
+        "windows": "Allkirjastatud. SmartScreen võib alguses siiski hoiatada: „Rohkem teavet“ → „Käivita siiski“.",
+        "windowsPending": "macOS-i järgud on Apple'i allkirjastatud ja notariseeritud. Windowsi paigaldaja on endiselt allkirjastamata; allkirjastamine algab, kui sertifikaat on seadistatud."
       }
     },
     "changelog": {
@@ -1028,6 +1033,33 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.1",
+      "teaser": "macOS-i jaoks allkirjastatud ja notariseeritud, ühendused parandatud.",
+      "summary": "Väike uuendus, peamiselt macOS-i jaoks: järgud on nüüd Apple'i allkirjastatud ja notariseeritud, ühendused kodumaises võrgus olevate serveritega töötavad jälle ja Mumcord küsib võtmehoidlat palju harvemini.",
+      "groups": [
+        {
+          "title": "macOS",
+          "items": [
+            "Ühendused töötavad jälle: Mumcord küsib nüüd luba „Local Network“. Ilma selleta blokeeris macOS 15 ja uuem ühendused kodumaises võrgus olevate serveritega.",
+            "Selged põhjused, kui ühendus ebaõnnestub, äpis ja logis, näiteks „No route to host“ koos viitega System Settings → Privacy & Security → Local Network.",
+            "Palju vähem võtmehoidla küsimisi: iga salvestatud saladus loetakse sessiooni jooksul vaid ühe korra ja Mumcord kasutab vähem võtmehoidla kirjeid. Vanemate versioonide kirjed liidetakse esmakordsel kasutamisel.",
+            "Mikrofoni küsimine ilmub vaid ühe korra, kui mikrofoni esimest korda kasutatakse, mitte seadmete loetlemisel seadistusviisardis või seadetes.",
+            "Diagnostikaleht loetleb heliseadmed jälle, ka siis, kui heli ei tööta.",
+            "Apple'i allkirjastatud ja notariseeritud: Mumcord avaneb ilma Gatekeeperi hoiatuseta ning mikrofoni ja võtmehoidla vastused säilivad uuenduste vahel."
+          ]
+        },
+        {
+          "title": "Parandatud",
+          "items": [
+            "Kui kaks serverit ebaõnnestuvad korraga, ei lähe nende parooli- ja sertifikaadiküsimised enam segamini."
+          ]
+        }
+      ],
+      "known": [
+        "Windowsi paigaldaja on endiselt allkirjastamata."
+      ]
+    },
     {
       "version": "0.4.0",
       "teaser": "Mitu serverit korraga, sinu enda teemad, ülekate Windowsis ja koos vaatamine.",

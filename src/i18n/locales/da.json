@@ -411,6 +411,11 @@
         "copy": "Kopiér",
         "copied": "Kopieret!",
         "failed": "Kopieringen virkede ikke. Markér kommandoen, og kopiér den manuelt."
+      },
+      "signed": {
+        "macos": "Signeret og notariseret af Apple: åbner uden advarsel.",
+        "windows": "Signeret. SmartScreen kan stadig advare i starten: „Flere oplysninger“ → „Kør alligevel“.",
+        "windowsPending": "macOS-buildsene er signeret og notariseret af Apple. Windows-installationsprogrammet er stadig usigneret; signeringen starter, når certifikatet er sat op."
       }
     },
     "changelog": {
@@ -1028,6 +1033,33 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.1",
+      "teaser": "Signeret og notariseret til macOS, forbindelser rettet.",
+      "summary": "En lille opdatering, mest til macOS: buildsene er nu signeret og notariseret af Apple, forbindelser til servere på dit hjemmenetværk virker igen, og Mumcord spørger langt sjældnere om nøgleringen.",
+      "groups": [
+        {
+          "title": "macOS",
+          "items": [
+            "Forbindelser virker igen: Mumcord beder nu om tilladelsen „Lokalt netværk“. Uden den blokerede macOS 15 og nyere forbindelser til servere på dit hjemmenetværk.",
+            "Tydelige årsager, når en forbindelse mislykkes, i appen og i loggen, for eksempel „No route to host“ med en henvisning til Systemindstillinger → Anonymitet og sikkerhed → Lokalt netværk.",
+            "Langt færre spørgsmål om nøgleringen: hver gemt hemmelighed læses kun én gang pr. session, og Mumcord bruger færre nøgleringsposter. Poster fra ældre versioner samles ved første brug.",
+            "Mikrofonspørgsmålet vises kun én gang, når mikrofonen bruges første gang, ikke når enhederne vises i opsætningsguiden eller indstillingerne.",
+            "Diagnosesiden viser igen lydenhederne, også når der ikke kører lyd.",
+            "Signeret og notariseret af Apple: Mumcord åbner uden Gatekeeper-advarsel, og svar om mikrofon og nøglering bevares på tværs af opdateringer."
+          ]
+        },
+        {
+          "title": "Rettet",
+          "items": [
+            "Når to servere fejler på samme tid, kolliderer deres adgangskode- og certifikatspørgsmål ikke længere."
+          ]
+        }
+      ],
+      "known": [
+        "Windows-installationsprogrammet er stadig usigneret."
+      ]
+    },
     {
       "version": "0.4.0",
       "teaser": "Flere servere ad gangen, dine egne temaer, overlayet på Windows og at se sammen.",

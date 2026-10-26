@@ -257,6 +257,11 @@ export const de = {
       macos: { name: "macOS", sub: "Universal, Apple Silicon & Intel · .dmg", warn: "Gatekeeper blockiert beim ersten Start: Rechtsklick → „Öffnen“ oder unter Datenschutz & Sicherheit erlauben." },
       linux: { name: "Linux", sub: "X11 & Wayland · AppImage", warn: "chmod +x Mumcord_*.AppImage — braucht WebKitGTK 4.1 und einen Secret-Service-Schlüsselbund." },
     },
+    signed: {
+      macos: "Signiert und von Apple notarisiert: öffnet sich ohne Warnung.",
+      windows: "Signiert. SmartScreen kann anfangs trotzdem warnen: „Weitere Informationen“ → „Trotzdem ausführen“.",
+      windowsPending: "Die macOS-Builds sind signiert und von Apple notarisiert. Der Windows-Installer ist noch unsigniert; die Signierung startet, sobald das Zertifikat eingerichtet ist.",
+    },
     unsigned: "Builds sind derzeit unsigniert. Die Signierung für Windows und macOS ist vorbereitet und startet, sobald die Zertifikate eingerichtet sind.",
     source: "Lieber selbst bauen? Rust, Node 24, ein Befehl.",
     sourceLink: "Bauanleitung im Wiki",

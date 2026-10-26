@@ -411,6 +411,11 @@
         "copy": "Kopiëren",
         "copied": "Gekopieerd!",
         "failed": "Kopiëren is mislukt. Selecteer het commando en kopieer het zelf."
+      },
+      "signed": {
+        "macos": "Ondertekend en genotariseerd door Apple: opent zonder waarschuwing.",
+        "windows": "Ondertekend. SmartScreen kan in het begin nog waarschuwen: „Meer informatie” → „Toch uitvoeren”.",
+        "windowsPending": "De macOS-builds zijn ondertekend en genotariseerd door Apple. De Windows-installer is nog niet ondertekend; ondertekening start zodra het certificaat is geregeld."
       }
     },
     "changelog": {
@@ -1028,6 +1033,33 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.1",
+      "teaser": "Ondertekend en genotariseerd voor macOS, verbindingen opgelost.",
+      "summary": "Een kleine update, vooral voor macOS: de builds zijn nu ondertekend en genotariseerd door Apple, verbindingen met servers in je thuisnetwerk werken weer, en Mumcord vraagt veel minder vaak om de sleutelhanger.",
+      "groups": [
+        {
+          "title": "macOS",
+          "items": [
+            "Verbindingen werken weer: Mumcord vraagt nu om de toestemming Lokaal netwerk. Zonder die toestemming blokkeerde macOS 15 en nieuwer verbindingen met servers in je thuisnetwerk.",
+            "Duidelijke redenen als een verbinding mislukt, in de app en in het log, bijvoorbeeld „No route to host” met een verwijzing naar Systeeminstellingen → Privacy en beveiliging → Lokaal netwerk.",
+            "Veel minder sleutelhangerprompts: elk opgeslagen geheim wordt maar één keer per sessie gelezen, en Mumcord gebruikt minder sleutelhangeritems. Items van oudere versies worden bij het eerste gebruik samengevoegd.",
+            "De microfoonprompt verschijnt maar één keer, wanneer de microfoon voor het eerst wordt gebruikt, niet bij het tonen van apparaten in de installatiewizard of de instellingen.",
+            "De diagnosepagina toont weer audioapparaten, ook als er geen audio draait.",
+            "Ondertekend en genotariseerd door Apple: Mumcord opent zonder Gatekeeper-waarschuwing, en antwoorden voor microfoon en sleutelhanger blijven bewaard bij updates."
+          ]
+        },
+        {
+          "title": "Opgelost",
+          "items": [
+            "Als twee servers tegelijk mislukken, botsen hun wachtwoord- en certificaatprompts niet meer."
+          ]
+        }
+      ],
+      "known": [
+        "De Windows-installer is nog niet ondertekend."
+      ]
+    },
     {
       "version": "0.4.0",
       "teaser": "Meerdere servers tegelijk, je eigen thema's, de overlay op Windows en samen kijken.",

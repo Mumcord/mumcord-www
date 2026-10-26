@@ -411,6 +411,11 @@
         "copy": "Másolás",
         "copied": "Másolva!",
         "failed": "A másolás nem sikerült. Jelöld ki a parancsot, és másold ki kézzel."
+      },
+      "signed": {
+        "macos": "Az Apple aláírta és notarizálta: figyelmeztetés nélkül megnyílik.",
+        "windows": "Aláírt. A SmartScreen eleinte még figyelmeztethet: „További információ” → „Futtatás mindenképp”.",
+        "windowsPending": "A macOS-buildeket az Apple aláírta és notarizálta. A Windows-telepítő még nincs aláírva; az aláírás akkor indul, amint a tanúsítvány készen áll."
       }
     },
     "changelog": {
@@ -1028,6 +1033,33 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.1",
+      "teaser": "Aláírt és hitelesített macOS-verziók, javított kapcsolatok.",
+      "summary": "Kis frissítés, főleg macOS-re: a buildeket az Apple most aláírta és notarizálta, a házi hálózaton lévő szerverekhez újra működik a csatlakozás, és a Mumcord sokkal ritkábban kéri a kulcstartót.",
+      "groups": [
+        {
+          "title": "macOS",
+          "items": [
+            "A kapcsolatok újra működnek: a Mumcord most kéri a Helyi hálózat engedélyt. Enélkül a macOS 15 és újabb blokkolta a házi hálózaton lévő szerverekhez való csatlakozást.",
+            "Érthető okok, ha a kapcsolat nem sikerül, az appban és a naplóban is, például „No route to host”, útmutatással a Rendszerbeállítások → Adatvédelem és biztonság → Helyi hálózat menüpontra.",
+            "Sokkal kevesebb kulcstartó-kérés: minden mentett titok munkamenetenként csak egyszer kerül beolvasásra, és a Mumcord kevesebb kulcstartó-elemet használ. A régebbi verziók elemei az első használatkor egyesülnek.",
+            "A mikrofonkérés csak egyszer jelenik meg, a mikrofon első használatakor, nem pedig az eszközök listázásakor a beállítóvarázslóban vagy a beállításokban.",
+            "A diagnosztikai oldal újra listázza a hangeszközöket, akkor is, ha nem fut hang.",
+            "Az Apple aláírta és notarizálta: a Mumcord Gatekeeper-figyelmeztetés nélkül nyílik meg, a mikrofonra és a kulcstartóra adott válaszok pedig megmaradnak a frissítések során."
+          ]
+        },
+        {
+          "title": "Javítva",
+          "items": [
+            "Ha két szerver egyszerre hibázik, a jelszó- és tanúsítványkéréseik már nem ütköznek."
+          ]
+        }
+      ],
+      "known": [
+        "A Windows-telepítő még nincs aláírva."
+      ]
+    },
     {
       "version": "0.4.0",
       "teaser": "Több szerver egyszerre, saját témák, overlay Windowson és közös nézés.",

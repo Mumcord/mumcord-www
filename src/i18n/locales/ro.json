@@ -411,6 +411,11 @@
         "copy": "Copiază",
         "copied": "Copiat!",
         "failed": "Copierea n-a mers. Selectează comanda și copiaz-o manual."
+      },
+      "signed": {
+        "macos": "Semnat și notarizat de Apple: se deschide fără avertisment.",
+        "windows": "Semnat. SmartScreen poate avertiza totuși la început: „Mai multe informații” → „Rulează oricum”.",
+        "windowsPending": "Build-urile pentru macOS sunt semnate și notarizate de Apple. Instalatorul pentru Windows este încă nesemnat; semnarea începe imediat ce certificatul este configurat."
       }
     },
     "changelog": {
@@ -1028,6 +1033,33 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.1",
+      "teaser": "Semnat și notarizat pentru macOS, conexiuni reparate.",
+      "summary": "O actualizare mică, mai ales pentru macOS: build-urile sunt acum semnate și notarizate de Apple, conexiunile la servere din rețeaua ta de acasă merg din nou, iar Mumcord cere Keychain mult mai rar.",
+      "groups": [
+        {
+          "title": "macOS",
+          "items": [
+            "Conexiunile merg din nou: Mumcord cere acum permisiunea Rețea locală. Fără ea, macOS 15 și mai nou bloca conexiunile la servere din rețeaua ta de acasă.",
+            "Motive clare când o conexiune eșuează, în aplicație și în jurnal, de exemplu „No route to host” cu o trimitere la Setări sistem → Confidențialitate și securitate → Rețea locală.",
+            "Mult mai puține cereri pentru Keychain: fiecare secret salvat se citește o singură dată pe sesiune, iar Mumcord folosește mai puține elemente Keychain. Elementele din versiunile vechi se îmbină la prima folosire.",
+            "Cererea pentru microfon apare o singură dată, când microfonul e folosit prima oară, nu la listarea dispozitivelor din asistentul de configurare sau din setări.",
+            "Pagina de diagnosticare listează din nou dispozitivele audio, chiar și când nu rulează audio.",
+            "Semnat și notarizat de Apple: Mumcord se deschide fără avertisment Gatekeeper, iar răspunsurile pentru microfon și Keychain se păstrează între actualizări."
+          ]
+        },
+        {
+          "title": "Reparat",
+          "items": [
+            "Când două servere eșuează în același timp, cererile lor de parolă și de certificat nu se mai suprapun."
+          ]
+        }
+      ],
+      "known": [
+        "Instalatorul pentru Windows este încă nesemnat."
+      ]
+    },
     {
       "version": "0.4.0",
       "teaser": "Mai multe servere deodată, teme proprii, overlay-ul pe Windows și vizionare împreună.",

@@ -411,6 +411,11 @@
         "copy": "Kopioi",
         "copied": "Kopioitu!",
         "failed": "Kopiointi ei onnistunut. Valitse komento ja kopioi se käsin."
+      },
+      "signed": {
+        "macos": "Applen allekirjoittama ja notarisoima: avautuu ilman varoitusta.",
+        "windows": "Allekirjoitettu. SmartScreen voi silti varoittaa aluksi: ”Lisätietoja” → ”Suorita silti”.",
+        "windowsPending": "macOS-versiot on allekirjoitettu ja notarisoitu Applen toimesta. Windowsin asennusohjelma on yhä allekirjoittamaton; allekirjoitus alkaa, kun varmenne on otettu käyttöön."
       }
     },
     "changelog": {
@@ -1028,6 +1033,33 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.1",
+      "teaser": "macOS-versiot allekirjoitettu ja notarisoitu, yhteydet korjattu.",
+      "summary": "Pieni päivitys, enimmäkseen macOSille: versiot on nyt allekirjoitettu ja notarisoitu Applen toimesta, yhteydet kotiverkon palvelimiin toimivat taas, ja Mumcord kysyy avainnippua paljon harvemmin.",
+      "groups": [
+        {
+          "title": "macOS",
+          "items": [
+            "Yhteydet toimivat taas: Mumcord pyytää nyt Paikallinen verkko -lupaa. Ilman sitä macOS 15 ja uudemmat estivät yhteydet kotiverkon palvelimiin.",
+            "Selkeät syyt, kun yhteys epäonnistuu, sekä sovelluksessa että lokissa, esimerkiksi ”No route to host” ja ohje kohtaan Järjestelmäasetukset → Tietosuoja ja turvallisuus → Paikallinen verkko.",
+            "Paljon vähemmän avainnipun kyselyjä: jokainen tallennettu salaisuus luetaan vain kerran istunnossa, ja Mumcord käyttää vähemmän avainnipun kohteita. Vanhempien versioiden kohteet yhdistetään ensimmäisellä käyttökerralla.",
+            "Mikrofonikysely näkyy vain kerran, kun mikrofonia käytetään ensimmäistä kertaa, ei silloin kun laitteet listataan käyttöönottoavustajassa tai asetuksissa.",
+            "Diagnostiikkasivu listaa äänilaitteet taas, vaikka ääntä ei olisi käynnissä.",
+            "Applen allekirjoittama ja notarisoima: Mumcord avautuu ilman Gatekeeper-varoitusta, ja mikrofoni- ja avainnippuvastaukset säilyvät päivitysten yli."
+          ]
+        },
+        {
+          "title": "Korjattu",
+          "items": [
+            "Kun kaksi palvelinta epäonnistuu samaan aikaan, niiden salasana- ja varmennekyselyt eivät enää mene päällekkäin."
+          ]
+        }
+      ],
+      "known": [
+        "Windowsin asennusohjelma on yhä allekirjoittamaton."
+      ]
+    },
     {
       "version": "0.4.0",
       "teaser": "Useita palvelimia kerralla, omat teemat, overlay Windowsissa ja yhdessä katsominen.",

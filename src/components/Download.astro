@@ -85,7 +85,11 @@ const glyphs: Record<Platform, string> = {
                   ))}
                 </ul>
               )}
-              <p class="platform-warn">{t.platforms[p].warn}</p>
+              {p !== "linux" && release?.signed[p] ? (
+                <p class="platform-signed">{t.signed[p]}</p>
+              ) : (
+                <p class="platform-warn">{t.platforms[p].warn}</p>
+              )}
             </li>
           );
         })
@@ -126,7 +130,7 @@ const glyphs: Record<Platform, string> = {
     </div>
 
     <div class="download-foot" data-reveal>
-      <p>{t.unsigned}</p>
+      {!release?.signed.windows && <p>{release?.signed.macos ? t.signed.windowsPending : t.unsigned}</p>}
       <p>
         {release?.checksums && (
           <>

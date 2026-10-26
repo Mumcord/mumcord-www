@@ -48,6 +48,9 @@ instead of "coming in", features with `until` that version disappear, the roadma
 `version` counts as done, the home spotlight label changes, and the games page shows each overlay
 row's `next` state (rows with `goneInNext` go away, `NEXT_VERSION` in `src/lib/games.ts`).
 
+The download cards read the latest release's notes: when Mumcord's release workflow says the macOS or
+Windows build is signed, that card shows "signed" instead of the Gatekeeper or SmartScreen warning.
+
 To preview the download section and changelog with a release before one exists, point
 `RELEASE_FIXTURE` at a JSON file shaped like the GitHub `/releases` API answer:
 

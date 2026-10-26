@@ -21,6 +21,29 @@ export interface ChangelogEntry {
 const source: Record<"de" | "en", ChangelogEntry[]> = {
   de: [
     {
+      version: "0.4.1",
+      teaser: "Für macOS signiert und notarisiert, Verbindungen repariert.",
+      summary: "Ein kleines Update, vor allem für macOS: Die Builds sind jetzt signiert und von Apple notarisiert, Verbindungen zu Servern im Heimnetz klappen wieder, und Mumcord fragt viel seltener nach dem Schlüsselbund.",
+      groups: [
+        {
+          title: "macOS",
+          items: [
+            "Verbindungen klappen wieder: Mumcord fragt jetzt nach der Erlaubnis für das lokale Netzwerk. Ohne sie hat macOS 15 und neuer Verbindungen zu Servern im Heimnetz blockiert.",
+            "Klare Gründe, wenn eine Verbindung scheitert, in der App und im Log, etwa „Keine Route zum Host“ mit dem Hinweis auf Systemeinstellungen → Datenschutz & Sicherheit → Lokales Netzwerk.",
+            "Weit weniger Schlüsselbund-Abfragen: Jedes gespeicherte Geheimnis wird nur einmal pro Sitzung gelesen, und Mumcord braucht weniger Einträge. Einträge älterer Versionen werden beim ersten Mal zusammengeführt.",
+            "Die Frage nach dem Mikrofon kommt nur noch einmal, wenn es zum ersten Mal gebraucht wird, nicht schon beim Auflisten der Geräte im Einrichtungsassistenten oder in den Einstellungen.",
+            "Die Diagnose-Seite zeigt die Audiogeräte wieder an, auch wenn gerade kein Ton läuft.",
+            "Signiert und von Apple notarisiert: Mumcord öffnet sich ohne Gatekeeper-Warnung, und Fragen nach Mikrofon und Schlüsselbund bleiben über Updates hinweg beantwortet.",
+          ],
+        },
+        {
+          title: "Behoben",
+          items: ["Scheitern zwei Server gleichzeitig, kommen sich ihre Fragen nach Passwort und Zertifikat nicht mehr in die Quere."],
+        },
+      ],
+      known: ["Der Windows-Installer ist weiterhin unsigniert."],
+    },
+    {
       version: "0.4.0",
       teaser: "Mehrere Server gleichzeitig, eigene Themes, Overlay unter Windows und Zusammen schauen.",
       summary:
@@ -333,6 +356,29 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
     },
   ],
   en: [
+    {
+      version: "0.4.1",
+      teaser: "Signed and notarized for macOS, connections fixed.",
+      summary: "A small update, mostly for macOS: the builds are now signed and notarized by Apple, connections to servers in your home network work again, and Mumcord asks for the keychain far less often.",
+      groups: [
+        {
+          title: "macOS",
+          items: [
+            "Connections work again: Mumcord now asks for the Local Network permission. Without it, macOS 15 and later blocked connections to servers in your home network.",
+            "Clear reasons when a connection fails, in the app and in the log, for example “No route to host” with a pointer to System Settings → Privacy & Security → Local Network.",
+            "Far fewer keychain prompts: each saved secret is read only once per session, and Mumcord uses fewer keychain items. Items from older versions are merged on first use.",
+            "The microphone prompt appears only once, when the microphone is first used, not when listing devices in the setup wizard or settings.",
+            "The diagnostics page lists audio devices again, even when no audio is running.",
+            "Signed and notarized by Apple: Mumcord opens without a Gatekeeper warning, and microphone and keychain answers are kept across updates.",
+          ],
+        },
+        {
+          title: "Fixed",
+          items: ["When two servers fail at the same time, their password and certificate prompts no longer collide."],
+        },
+      ],
+      known: ["The Windows installer is still unsigned."],
+    },
     {
       version: "0.4.0",
       teaser: "Several servers at once, your own themes, the overlay on Windows and watching together.",

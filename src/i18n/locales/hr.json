@@ -411,6 +411,11 @@
         "copy": "Kopiraj",
         "copied": "Kopirano!",
         "failed": "Kopiranje nije uspjelo. Označi naredbu i kopiraj je ručno."
+      },
+      "signed": {
+        "macos": "Potpisao i notarizirao Apple: otvara se bez upozorenja.",
+        "windows": "Potpisano. SmartScreen i dalje može upozoriti na početku: „Više informacija” → „Ipak pokreni”.",
+        "windowsPending": "macOS buildovi potpisani su i notarizirani od Applea. Windows instalacijski program još nije potpisan; potpisivanje počinje čim certifikat bude postavljen."
       }
     },
     "changelog": {
@@ -1028,6 +1033,33 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.1",
+      "teaser": "Potpisano i notarizirano za macOS, veze popravljene.",
+      "summary": "Malo ažuriranje, uglavnom za macOS: buildovi su sada potpisani i notarizirani od Applea, veze s poslužiteljima u kućnoj mreži opet rade, a Mumcord puno rjeđe traži privjesak ključeva.",
+      "groups": [
+        {
+          "title": "macOS",
+          "items": [
+            "Veze opet rade: Mumcord sada traži dozvolu Lokalna mreža. Bez nje je macOS 15 i noviji blokirao veze s poslužiteljima u kućnoj mreži.",
+            "Jasni razlozi kad veza ne uspije, u aplikaciji i u zapisniku, na primjer „No route to host” s uputom na Postavke sustava → Privatnost i sigurnost → Lokalna mreža.",
+            "Mnogo manje upita za privjesak ključeva: svaka spremljena tajna čita se samo jednom po sesiji, a Mumcord koristi manje stavki privjeska. Stavke iz starijih verzija spajaju se pri prvom korištenju.",
+            "Upit za mikrofon pojavljuje se samo jednom, pri prvom korištenju mikrofona, a ne pri popisivanju uređaja u čarobnjaku za postavljanje ili u postavkama.",
+            "Stranica s dijagnostikom opet prikazuje audio uređaje, čak i kad zvuk nije pokrenut.",
+            "Potpisao i notarizirao Apple: Mumcord se otvara bez Gatekeeper upozorenja, a odgovori za mikrofon i privjesak ključeva ostaju sačuvani kroz ažuriranja."
+          ]
+        },
+        {
+          "title": "Popravljeno",
+          "items": [
+            "Kad dva poslužitelja zakažu istodobno, njihovi upiti za lozinku i certifikat više se ne sudaraju."
+          ]
+        }
+      ],
+      "known": [
+        "Windows instalacijski program još nije potpisan."
+      ]
+    },
     {
       "version": "0.4.0",
       "teaser": "Više poslužitelja odjednom, vlastite teme, overlay na Windowsima i zajedničko gledanje.",

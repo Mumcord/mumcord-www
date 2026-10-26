@@ -411,6 +411,11 @@
         "copy": "Kopírovat",
         "copied": "Zkopírováno!",
         "failed": "Kopírování nevyšlo. Označ příkaz a zkopíruj ho ručně."
+      },
+      "signed": {
+        "macos": "Podepsáno a notarizováno Applem: otevře se bez varování.",
+        "windows": "Podepsáno. SmartScreen zpočátku stále může varovat: „Další informace“ → „Přesto spustit“.",
+        "windowsPending": "Sestavení pro macOS jsou podepsaná a notarizovaná Applem. Instalátor pro Windows je stále nepodepsaný; podepisování začne, jakmile bude nastaven certifikát."
       }
     },
     "changelog": {
@@ -1028,6 +1033,33 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.1",
+      "teaser": "Podepsáno a notarizováno pro macOS, připojení opravena.",
+      "summary": "Malá aktualizace, hlavně pro macOS: sestavení jsou teď podepsaná a notarizovaná Applem, připojení k serverům v domácí síti zase fungují a Mumcord se na klíčenku ptá mnohem méně.",
+      "groups": [
+        {
+          "title": "macOS",
+          "items": [
+            "Připojení zase fungují: Mumcord teď žádá o oprávnění „Místní síť“. Bez něj macOS 15 a novější blokoval připojení k serverům v domácí síti.",
+            "Jasné důvody, když se připojení nepovede, v aplikaci i v logu, například „No route to host“ s odkazem na Nastavení systému → Soukromí a bezpečnost → Místní síť.",
+            "Mnohem méně dotazů na klíčenku: každé uložené tajemství se za relaci přečte jen jednou a Mumcord používá méně položek klíčenky. Položky ze starších verzí se při prvním použití sloučí.",
+            "Dotaz na mikrofon se objeví jen jednou, při prvním použití mikrofonu, ne při výpisu zařízení v průvodci nastavením nebo v nastavení.",
+            "Stránka diagnostiky zase vypíše zvuková zařízení, i když žádný zvuk neběží.",
+            "Podepsáno a notarizováno Applem: Mumcord se otevře bez varování Gatekeeperu a odpovědi pro mikrofon a klíčenku se při aktualizacích zachovají."
+          ]
+        },
+        {
+          "title": "Opraveno",
+          "items": [
+            "Když selžou dva servery najednou, jejich výzvy k zadání hesla a certifikátu se už nepřekrývají."
+          ]
+        }
+      ],
+      "known": [
+        "Instalátor pro Windows je stále nepodepsaný."
+      ]
+    },
     {
       "version": "0.4.0",
       "teaser": "Víc serverů najednou, vlastní motivy, overlay na Windows a společné sledování.",

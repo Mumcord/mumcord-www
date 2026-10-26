@@ -411,6 +411,11 @@
         "copy": "Kopírovať",
         "copied": "Skopírované!",
         "failed": "Kopírovanie nevyšlo. Označ príkaz a skopíruj ho ručne."
+      },
+      "signed": {
+        "macos": "Podpísané a notarizované Applom: otvorí sa bez varovania.",
+        "windows": "Podpísané. SmartScreen môže spočiatku stále varovať: „Ďalšie informácie“ → „Spustiť aj tak“.",
+        "windowsPending": "Zostavenia pre macOS sú podpísané a notarizované Applom. Inštalátor pre Windows je stále nepodpísaný; podpisovanie sa spustí, keď bude certifikát nastavený."
       }
     },
     "changelog": {
@@ -1028,6 +1033,33 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.1",
+      "teaser": "Podpísané a notarizované pre macOS, opravené pripojenia.",
+      "summary": "Malá aktualizácia, hlavne pre macOS: zostavenia sú teraz podpísané a notarizované Applom, pripojenia k serverom v domácej sieti zase fungujú a Mumcord žiada o kľúčenku oveľa menej často.",
+      "groups": [
+        {
+          "title": "macOS",
+          "items": [
+            "Pripojenia zase fungujú: Mumcord teraz žiada o povolenie Lokálna sieť. Bez neho macOS 15 a novší blokoval pripojenia k serverom v domácej sieti.",
+            "Jasné dôvody, keď pripojenie zlyhá, v aplikácii aj v logu, napríklad „No route to host“ s odkazom na Systémové nastavenia → Súkromie a bezpečnosť → Lokálna sieť.",
+            "Oveľa menej výziev na kľúčenku: každé uložené tajomstvo sa číta len raz za reláciu a Mumcord používa menej položiek v kľúčenke. Položky zo starších verzií sa pri prvom použití zlúčia.",
+            "Výzva na mikrofón sa zobrazí iba raz, keď sa mikrofón prvýkrát použije, nie pri výpise zariadení v sprievodcovi nastavením ani v nastaveniach.",
+            "Stránka diagnostiky zase vypíše zvukové zariadenia, aj keď nebeží žiadny zvuk.",
+            "Podpísané a notarizované Applom: Mumcord sa otvorí bez varovania Gatekeeperu a odpovede pre mikrofón a kľúčenku sa zachovajú aj po aktualizáciách."
+          ]
+        },
+        {
+          "title": "Opravené",
+          "items": [
+            "Keď zlyhajú dva servery naraz, ich výzvy na heslo a certifikát sa už neprekrývajú."
+          ]
+        }
+      ],
+      "known": [
+        "Inštalátor pre Windows je stále nepodpísaný."
+      ]
+    },
     {
       "version": "0.4.0",
       "teaser": "Viac serverov naraz, vlastné témy, overlay na Windows a spoločné pozeranie.",
