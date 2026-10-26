@@ -21,6 +21,21 @@ export interface ChangelogEntry {
 const source: Record<"de" | "en", ChangelogEntry[]> = {
   de: [
     {
+      version: "0.4.2",
+      teaser: "Keine Flut von Schlüsselbund-Abfragen mehr unter macOS.",
+      summary: "Ein kleines Update mit zwei Fixes: keine Flut von Schlüsselbund-Abfragen mehr nach einem Update unter macOS, und wer später in einen Kanal kommt, sieht laufende Bildschirmfreigaben und Watch-Partys zuverlässiger.",
+      groups: [
+        {
+          title: "Behoben",
+          items: [
+            "Keine Flut von Schlüsselbund-Abfragen mehr nach einem Update unter macOS: Ein abgelehnter oder fehlgeschlagener Zugriff wird nicht mehr bei jeder Aktualisierung der Serverliste, jeder Benachrichtigung und jedem Neuverbinden wiederholt, und die Identität wird nur einmal pro Sitzung gelesen.",
+            "Wer einem Sprachkanal beitritt, während jemand seinen Bildschirm teilt oder eine Watch-Party läuft, sieht das jetzt zuverlässiger: Die Ankündigung wird ein zweites Mal geschickt, falls der Server die erste verschluckt hat.",
+          ],
+        },
+      ],
+      known: ["Der Windows-Installer ist weiterhin unsigniert."],
+    },
+    {
       version: "0.4.1",
       teaser: "Für macOS signiert und notarisiert, Verbindungen repariert.",
       summary: "Ein kleines Update, vor allem für macOS: Die Builds sind jetzt signiert und von Apple notarisiert, Verbindungen zu Servern im Heimnetz klappen wieder, und Mumcord fragt viel seltener nach dem Schlüsselbund.",
@@ -356,6 +371,21 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
     },
   ],
   en: [
+    {
+      version: "0.4.2",
+      teaser: "No more flood of keychain prompts on macOS.",
+      summary: "A small update with two fixes: no more flood of keychain prompts after updating on macOS, and people who join a channel later see a running screen share or watch party more reliably.",
+      groups: [
+        {
+          title: "Fixed",
+          items: [
+            "No more flood of keychain prompts after updating on macOS: a denied or failed keychain read is no longer repeated for every server list refresh, notification or reconnect, and the identity is read only once per session.",
+            "People who join a voice channel while someone is sharing their screen or a watch party is running now see it more reliably: the announcement is sent a second time in case the server dropped the first.",
+          ],
+        },
+      ],
+      known: ["The Windows installer is still unsigned."],
+    },
     {
       version: "0.4.1",
       teaser: "Signed and notarized for macOS, connections fixed.",
