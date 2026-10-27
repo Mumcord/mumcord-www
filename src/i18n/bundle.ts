@@ -9,6 +9,7 @@ import type { RoadmapPage } from "../lib/roadmap";
 import type { GamesPage } from "../lib/games";
 import type { Guide } from "../lib/server-guide";
 import type { ThemesPage } from "../lib/themes";
+import type { MumbotText } from "../lib/mumbot";
 
 export interface FeaturesText extends Omit<FeaturesPage, "groups"> {
   groups: {
@@ -53,6 +54,8 @@ export interface LocaleBundle {
   server: GuideText;
   /** Missing in translations made before the themes page; English fills in. */
   themes?: ThemesText;
+  /** Missing in translations made before the Mumbot page; English fills in. */
+  mumbot?: MumbotText;
 }
 
 export interface ThemesText extends Omit<ThemesPage, "groups"> {

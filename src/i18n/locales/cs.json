@@ -68,6 +68,26 @@
       "themes": {
         "title": "Motivy",
         "desc": "Vzhledy ke zkopírování, světlé i tmavé"
+      },
+      "botAbout": {
+        "title": "Mumbot",
+        "desc": "Boti pro jakýkoli Mumble server"
+      },
+      "botDownload": {
+        "title": "Stáhnout",
+        "desc": "Linux, Windows, macOS a Docker"
+      },
+      "botRoadmap": {
+        "title": "Plán vývoje",
+        "desc": "Co je hotové a co přijde"
+      },
+      "botSource": {
+        "title": "Zdrojový kód",
+        "desc": "Open source pod licencí AGPL-3.0"
+      },
+      "botIssues": {
+        "title": "Issues",
+        "desc": "Nápady a chyby pro Mumbot"
       }
     },
     "hero": {
@@ -313,7 +333,7 @@
     "roadmap": {
       "label": "05 — Kam to směřuje",
       "title": "Upřímně: tohle je alfa.",
-      "body": "Plán vývoje je návrh a může se změnit. Mobilní aplikace ani webová verze se neplánují. Nic na straně serveru nebude nikdy potřeba.",
+      "body": "Plán vývoje je návrh a může se změnit.",
       "now": "teď",
       "all": "Celý plán vývoje podrobně",
       "steps": [
@@ -330,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Pohodlí",
-          "body": "Globální klávesové zkratky, plné menu v systémové liště, import z oficiálního klienta, šeptání, prohlížeč serverů, „Nerušit“, @all a @channel."
+          "body": "Globální klávesové zkratky, plné menu v systémové liště, import z oficiálního klienta, šeptání, prohlížeč serverů, „Nerušit“, @all a @channel, karty zpráv pro boty a k tomu volitelný relay pro přímá spojení."
         },
         {
           "tag": "Epic 4",
@@ -474,7 +494,8 @@
       "privacy": "Ochrana soukromí",
       "noTracking": "Tento web nenastavuje žádné cookies a nic nenačítá od třetích stran.",
       "by": "Projekt od",
-      "themes": "Motivy"
+      "themes": "Motivy",
+      "botAbout": "Přehled"
     },
     "notFound": {
       "title": "Kanál nenalezen",
@@ -1387,7 +1408,7 @@
   ],
   "roadmap": {
     "title": "Plán vývoje",
-    "description": "Plán vývoje Mumcordu podrobně: co přináší Epic 1, co se plánuje potom a co se nikdy nestane.",
+    "description": "Plán vývoje Mumcordu podrobně: co který epic přináší, co je hotové a co přijde dál.",
     "label": "Kam to směřuje",
     "intro": "Mumcord se vyvíjí po epicích. Epic 1 je verzí 0.3.0 hotový. Tady je, co který epic přináší. Plán vývoje je návrh: pořadí i rozsah se ještě můžou změnit.",
     "status": {
@@ -1398,12 +1419,6 @@
     },
     "epicsTitle": "Epicy",
     "epicsBody": "Epic 1 je klient na každý den. Potom přijdou větší stavební bloky, jejichž pořadí ještě není pevně dané.",
-    "never": "Co se nikdy nestane",
-    "neverItems": [
-      "Cokoli na serveru: žádné doprovodné služby, žádné serverové pluginy, žádná konfigurace serveru. Mumcord funguje s jakýmkoli standardním Mumble serverem.",
-      "Mobilní aplikace a webová verze.",
-      "Relay server pro přímá spojení: když žádná přímá cesta nejde, Mumcord jde místo toho přes Mumble server."
-    ],
     "ideaTitle": "Něco ti chybí?",
     "ideaBody": "Požadavky patří do issues na GitHubu a promítají se do plánování.",
     "idea": "Navrhnout funkci",
@@ -1590,15 +1605,44 @@
       {
         "id": "epic-3",
         "title": "Pohodlí",
-        "summary": "Doladění pro náročné uživatele.",
-        "items": [
-          "Globální klávesové zkratky nad rámec push-to-talk",
-          "Plné menu v systémové liště",
-          "Import nastavení z oficiálního klienta Mumble",
-          "Šeptání a volání do jiných kanálů",
-          "Veřejný prohlížeč serverů",
-          "Nerušit: jeden přepínač ztlumí upozornění, zvuky a vyskakovací okna a hlasy pořád slyšíš",
-          "@all a @channel, kterými zmíníš všechny na serveru nebo v kanálu"
+        "summary": "Doladění pro náročné uživatele, karty zpráv pro boty, volitelný relay pro přímá spojení a nástroj pro ladění.",
+        "groups": [
+          {
+            "title": "Pohodlí na každý den",
+            "items": [
+              "Globální klávesové zkratky nad rámec push-to-talk",
+              "Plné menu v systémové liště",
+              "Import nastavení z oficiálního klienta Mumble",
+              "Šeptání a volání do jiných kanálů",
+              "Veřejný prohlížeč serverů",
+              "Nerušit: jeden přepínač ztlumí upozornění, zvuky a vyskakovací okna a hlasy pořád slyšíš",
+              "@all a @channel, kterými zmíníš všechny na serveru nebo v kanálu"
+            ]
+          },
+          {
+            "title": "Karty zpráv",
+            "items": [
+              "Boti a monitoring posílají místo prostého textu kompaktní kartu: nadpis, formátovaný text, volitelně obrázek, třeba graf, a odkaz na dashboard",
+              "Stavové barvy pro info, úspěch, varování a chybu, vždy i s textovým popiskem",
+              "Obrázky se načítají jen se zapnutými náhledy odkazů a jdou přes Mumcord, nikdy přímo z cizího serveru",
+              "Oficiální klienti Mumble vidí stejnou zprávu jako běžný, úhledně formátovaný text"
+            ]
+          },
+          {
+            "title": "Přímá spojení přes relay",
+            "items": [
+              "Když žádné přímé spojení nefunguje, třeba za CGNAT, nebo nechceš ukazovat svou IP adresu, předá data mumpeer relay",
+              "Obsah zůstává šifrovaný end-to-end; relay jen přeposílá bajty a pustí dovnitř jen uživatele svého serveru",
+              "Volitelné: komunita může relay provozovat spolu s Mumbotem. Bez relaye funguje všechno jako dřív",
+              "Tvoje volba: relay vypnutý, jen když přímé spojení selže, nebo vždy, aby tvoje IP adresa zůstala skrytá"
+            ]
+          },
+          {
+            "title": "Pro ladění",
+            "items": [
+              "Skrytý inspektor paketů: ukazuje odeslané a přijaté zprávy Mumcordu, s filtry a exportem. Jen lokálně, nic se neloguje ani nikam neposílá"
+            ]
+          }
         ]
       },
       {
@@ -2036,5 +2080,109 @@
         "coffee": "Hnědé tóny espressa a pěnky, hřejivé a příjemné pro oči."
       }
     }
+  },
+  "mumbot": {
+    "title": "Mumbot",
+    "description": "Mumbot: boti pro jakýkoli standardní Mumble server. Webhook bot posílá zprávy zvenčí do tvých kanálů, testovací bot automaticky kontroluje Mumble klienty.",
+    "label": "Boti pro Mumble",
+    "intro": "Mumbot se přihlašuje jako člověk, s vlastním certifikátem. Proto běží na jakémkoli standardním Mumble serveru, bez pluginu a beze změny konfigurace serveru. Z rodiny Mumcordu, open source pod licencí AGPL-3.0.",
+    "toc": {
+      "bots": "Boti",
+      "download": "Stáhnout",
+      "roadmap": "Plán vývoje"
+    },
+    "botsTitle": "Dva boti, jeden program",
+    "botsBody": "Oba žijí ve stejném programu, `mumbot`, pro Linux, Windows a macOS a jako Docker image.",
+    "webhook": {
+      "title": "Webhook bot",
+      "body": "Monitoring, CI nebo tvůj vlastní skript pošle jeden HTTP požadavek s API klíčem a bot vloží text do kanálu Mumble.",
+      "points": [
+        "Pro každý klíč nastavíš, do kterých kanálů smí psát",
+        "Tučné písmo, kurzíva, kód, seznamy a odkazy v Markdownu",
+        "Hesla kanálů, opětovné připojení po výpadku a stálá identita díky certifikátu",
+        "Omezení rychlosti a jasná odpověď, jestli zpráva dorazila"
+      ]
+    },
+    "testbot": {
+      "title": "Testovací bot",
+      "body": "Skriptovaný druhý účastník pro automatické testy Mumble klientů. Běží na něm i testy samotného Mumcordu.",
+      "points": [
+        "Ovládej chat, stav, oprávnění a moderaci a čekej na podmínky",
+        "Přehrávej a nahrávej hlas a kontroluj jeho úroveň, se skutečným kodekem Opus",
+        "Zátěžový test zaplní lokální server až 1000 uživateli",
+        "Návratový kód 0 znamená úspěch: hodí se do jakéhokoli CI"
+      ]
+    },
+    "downloadTitle": "Stáhnout",
+    "downloadBody": "Archiv obsahuje program `mumbot`, README a ukázkovou konfiguraci `bot.example.toml`.",
+    "docker": "Nebo jako Docker image pro amd64 a arm64:",
+    "examples": "Hotové příklady pro Docker Compose: webhook bot, webhook bot s vlastním Mumble serverem na vyzkoušení a testovací bot v CI",
+    "checksums": "Kontrolní součty",
+    "noRelease": "Ke stažení je všechno na GitHubu.",
+    "prerelease": "Předběžná verze",
+    "copy": "Kopírovat",
+    "copied": "Zkopírováno",
+    "roadmapTitle": "Plán vývoje",
+    "roadmapBody": "Stejně jako Mumcord se i Mumbot vyvíjí po epicích. Epic 2 je návrh z otevřených issues a ještě se podrobně naplánuje.",
+    "status": {
+      "done": "hotovo",
+      "now": "rozpracováno",
+      "planned": "na řadě",
+      "later": "později"
+    },
+    "epics": [
+      {
+        "id": "epic-0",
+        "title": "Testovací bot",
+        "summary": "Skriptovaný bot z testů Mumcordu, teď jako samostatný program.",
+        "items": [
+          "Chat, stav, oprávnění a moderace, čekání na podmínky a skriptovací režim",
+          "Přehrávání, nahrávání a kontrola úrovně hlasu, s kodekem Opus jako v Mumcordu",
+          "Zátěžový test až s 1000 uživateli na lokálním testovacím serveru"
+        ]
+      },
+      {
+        "id": "epic-1",
+        "title": "Webhook bot",
+        "summary": "Zprávy zvenčí do kanálu Mumble.",
+        "items": [
+          "HTTP API s API klíči a povolenými kanály pro každý klíč",
+          "Markdown, hesla kanálů, opětovné připojení a omezení rychlosti",
+          "Programy pro Linux, Windows a macOS a Docker image",
+          "Od 0.1.1: příklady pro Docker Compose a dokumentace ke konfiguraci, příkazové řádce, HTTP API a zabezpečení"
+        ]
+      },
+      {
+        "id": "epic-2",
+        "title": "Moduly, hudba a historie",
+        "summary": "Z jednoho bota se stává sada nástrojů.",
+        "items": [
+          "Moduly: v konfiguraci nebo na příkazové řádce vybereš, kteří boti poběží, v jednom programu a jednom image",
+          "Hudební bot: pošli MP3 nebo odkazy přes HTTP a bot je přehraje v hlasovém kanálu, s frontou",
+          "Bot historie: uchovává chat kanálů, které smí vidět, a předá ho uživatelům Mumcordu, kteří byli offline. Nikdy soukromé zprávy",
+          "Karty zpráv: webhook posílá upozornění s nadpisem, stavovou barvou, grafem a odkazem, které Mumcord zobrazí jako kartu",
+          "Nastavitelný bitrate pro řeč a hudbu, nikdy nad limit serveru",
+          "Peer modul: registruje uživatele serveru u mumpeer relaye a dá Mumcordu vědět, že relay existuje"
+        ]
+      },
+      {
+        "id": "later",
+        "tag": "Potom",
+        "title": "Nápady",
+        "summary": "Zatím nenaplánované, ale zapsané.",
+        "items": [
+          "Bot, který čte chat a odpovídá na příkazy",
+          "Převod textu na řeč nebo zvuky upozornění v kanálu",
+          "Jeden bot pro víc serverů nebo s víc identitami",
+          "Šeptání a soukromé zprávy, výměna klíčů bez restartu, vestavěné TLS",
+          "Zapamatovat si certifikát serveru při prvním kontaktu a odmítnout změněný"
+        ]
+      }
+    ],
+    "ideaTitle": "Nápad na bota?",
+    "ideaBody": "Přání patří do issues Mumbotu na GitHubu.",
+    "idea": "Navrhnout nápad",
+    "source": "Zdrojový kód na GitHubu",
+    "docs": "Dokumentace"
   }
 }

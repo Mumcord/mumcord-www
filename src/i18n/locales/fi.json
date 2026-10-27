@@ -68,6 +68,26 @@
       "themes": {
         "title": "Teemat",
         "desc": "Ilmeitä kopioitavaksi, vaaleat ja tummat"
+      },
+      "botAbout": {
+        "title": "Mumbot",
+        "desc": "Botit mille tahansa Mumble-palvelimelle"
+      },
+      "botDownload": {
+        "title": "Lataa",
+        "desc": "Linux, Windows, macOS ja Docker"
+      },
+      "botRoadmap": {
+        "title": "Tiekartta",
+        "desc": "Mitä on valmiina ja mitä on tulossa"
+      },
+      "botSource": {
+        "title": "Lähdekoodi",
+        "desc": "Avointa lähdekoodia, AGPL-3.0-lisenssi"
+      },
+      "botIssues": {
+        "title": "Issuet",
+        "desc": "Ideat ja bugit Mumbotille"
       }
     },
     "hero": {
@@ -313,7 +333,7 @@
     "roadmap": {
       "label": "05 — Mihin ollaan menossa",
       "title": "Rehellisesti: tämä on alfa.",
-      "body": "Tiekartta on ehdotus ja voi muuttua. Mobiilisovelluksia tai verkkoversiota ei ole suunnitteilla. Palvelimelta ei koskaan vaadita mitään.",
+      "body": "Tiekartta on ehdotus ja voi muuttua.",
       "now": "nyt",
       "all": "Koko tiekartta yksityiskohtaisesti",
       "steps": [
@@ -330,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Mukavuus",
-          "body": "Globaalit pikanäppäimet, täysi ilmoitusalueen valikko, tuonti virallisesta sovelluksesta, kuiskaus, palvelinselain, ”Älä häiritse” sekä @all ja @channel."
+          "body": "Globaalit pikanäppäimet, täysi ilmoitusalueen valikko, tuonti virallisesta sovelluksesta, kuiskaus, palvelinselain, ”Älä häiritse”, @all ja @channel, viestikortit boteille sekä valinnainen välityspalvelin suoria yhteyksiä varten."
         },
         {
           "tag": "Epic 4",
@@ -474,7 +494,8 @@
       "privacy": "Tietosuoja",
       "noTracking": "Tämä sivusto ei aseta evästeitä eikä lataa mitään kolmansilta osapuolilta.",
       "by": "Projektin takana",
-      "themes": "Teemat"
+      "themes": "Teemat",
+      "botAbout": "Yleiskatsaus"
     },
     "notFound": {
       "title": "Kanavaa ei löytynyt",
@@ -1387,7 +1408,7 @@
   ],
   "roadmap": {
     "title": "Tiekartta",
-    "description": "Mumcordin tiekartta yksityiskohtaisesti: mitä Epic 1 tuo, mitä sen jälkeen on suunnitteilla ja mitä ei tule koskaan.",
+    "description": "Mumcordin tiekartta yksityiskohtaisesti: mitä kukin eepos tuo, mikä on valmista ja mitä tulee seuraavaksi.",
     "label": "Mihin ollaan menossa",
     "intro": "Mumcordia rakennetaan eepoksina. Epic 1 valmistuu versiossa 0.3.0. Tässä on, mitä kukin eepos tuo. Tiekartta on ehdotus: järjestys ja laajuus voivat vielä muuttua.",
     "status": {
@@ -1398,12 +1419,6 @@
     },
     "epicsTitle": "Eepokset",
     "epicsBody": "Epic 1 on arjen sovellus. Sen jälkeen tulevat isommat kokonaisuudet, joiden järjestystä ei ole vielä lyöty lukkoon.",
-    "never": "Mitä ei tule koskaan",
-    "neverItems": [
-      "Mitään palvelimelle: ei oheispalveluita, ei palvelinlisäosia, ei palvelimen konfigurointia. Mumcord toimii minkä tahansa tavallisen Mumble-palvelimen kanssa.",
-      "Mobiilisovellukset ja verkkoversio.",
-      "Välityspalvelin suorille yhteyksille: jos mikään suora reitti ei toimi, Mumcord kulkee sen sijaan Mumble-palvelimen kautta."
-    ],
     "ideaTitle": "Puuttuuko jotain?",
     "ideaBody": "Toiveet kirjataan GitHubin issueihin, ja ne otetaan huomioon suunnittelussa.",
     "idea": "Ehdota ominaisuutta",
@@ -1590,15 +1605,44 @@
       {
         "id": "epic-3",
         "title": "Mukavuus",
-        "summary": "Hiomista ahkerille käyttäjille.",
-        "items": [
-          "Globaalit pikanäppäimet push-to-talkin lisäksi",
-          "Täysi ilmoitusalueen valikko",
-          "Asetusten tuonti virallisesta Mumble-sovelluksesta",
-          "Kuiskaus ja huuto muille kanaville",
-          "Julkinen palvelinselain",
-          "Älä häiritse: yksi kytkin hiljentää ilmoitukset, äänet ja ponnahdusikkunat, ja kuulet silti puheäänet",
-          "@all ja @channel, joilla mainitset kaikki palvelimella tai kanavalla"
+        "summary": "Hiomista ahkerille käyttäjille, viestikortit boteille, valinnainen välityspalvelin suoria yhteyksiä varten ja työkalu vianetsintään.",
+        "groups": [
+          {
+            "title": "Arjen mukavuus",
+            "items": [
+              "Globaalit pikanäppäimet push-to-talkin lisäksi",
+              "Täysi ilmoitusalueen valikko",
+              "Asetusten tuonti virallisesta Mumble-sovelluksesta",
+              "Kuiskaus ja huuto muille kanaville",
+              "Julkinen palvelinselain",
+              "Älä häiritse: yksi kytkin hiljentää ilmoitukset, äänet ja ponnahdusikkunat, ja kuulet silti puheäänet",
+              "@all ja @channel, joilla mainitset kaikki palvelimella tai kanavalla"
+            ]
+          },
+          {
+            "title": "Viestikortit",
+            "items": [
+              "Botit ja valvonta lähettävät pelkän tekstin sijaan tiiviin kortin: otsikon, muotoiltua tekstiä, halutessa kuvan, kuten kaavion, ja linkin hallintapaneeliin",
+              "Tilavärit tiedolle, onnistumiselle, varoitukselle ja virheelle, aina myös tekstimerkinnällä",
+              "Kuvat latautuvat vain, kun linkkien esikatselut ovat päällä, ja ne kulkevat Mumcordin kautta, eivät koskaan suoraan toiselta palvelimelta",
+              "Viralliset Mumble-sovellukset näkevät saman viestin tavallisena, siististi muotoiltuna tekstinä"
+            ]
+          },
+          {
+            "title": "Suorat yhteydet välityspalvelimen kautta",
+            "items": [
+              "Jos suora yhteys ei onnistu, esimerkiksi CGNAT:n takana, tai et halua näyttää IP-osoitettasi, mumpeer-välityspalvelin välittää datan",
+              "Sisältö pysyy päästä päähän salattuna; välityspalvelin vain välittää tavuja eteenpäin ja päästää sisään vain oman palvelimensa käyttäjät",
+              "Valinnainen: yhteisö voi ajaa välityspalvelinta yhdessä Mumbotin kanssa. Ilman sitä kaikki toimii kuten ennenkin",
+              "Sinä päätät: välityspalvelin pois, vain kun suora yhteys epäonnistuu, tai aina, jolloin IP-osoitteesi pysyy piilossa"
+            ]
+          },
+          {
+            "title": "Vianetsintään",
+            "items": [
+              "Piilotettu pakettitarkastin: näyttää lähetetyt ja vastaanotetut Mumcord-viestit, suodattimien ja viennin kera. Vain paikallisesti, mitään ei kirjata eikä lähetetä minnekään"
+            ]
+          }
         ]
       },
       {
@@ -2036,5 +2080,109 @@
         "coffee": "Espressonruskeaa ja cremaa, lämmin ja silmille lempeä."
       }
     }
+  },
+  "mumbot": {
+    "title": "Mumbot",
+    "description": "Mumbot: botit mille tahansa tavalliselle Mumble-palvelimelle. Webhook-botti tuo viestejä ulkopuolelta kanaviisi, testibotti testaa Mumble-sovelluksia automaattisesti.",
+    "label": "Botit Mumbleen",
+    "intro": "Mumbot kirjautuu sisään kuin ihminen, omalla varmenteellaan. Siksi se toimii millä tahansa tavallisella Mumble-palvelimella ilman lisäosaa ja ilman muutoksia palvelimen asetuksiin. Mumcord-perheestä, avointa lähdekoodia AGPL-3.0-lisenssillä.",
+    "toc": {
+      "bots": "Botit",
+      "download": "Lataa",
+      "roadmap": "Tiekartta"
+    },
+    "botsTitle": "Kaksi bottia, yksi ohjelma",
+    "botsBody": "Molemmat ovat samassa ohjelmassa, `mumbot`, Linuxille, Windowsille, macOS:lle ja Docker-imagena.",
+    "webhook": {
+      "title": "Webhook-botti",
+      "body": "Valvonta, CI tai oma skriptisi lähettää yhden HTTP-pyynnön API-avaimella, ja botti kirjoittaa tekstin Mumble-kanavalle.",
+      "points": [
+        "Määritä avainkohtaisesti, mille kanaville se saa kirjoittaa",
+        "Lihavointi, kursiivi, koodi, listat ja linkit Markdownilla",
+        "Kanavien salasanat, uudelleenyhdistäminen katkosten jälkeen ja pysyvä identiteetti varmenteen ansiosta",
+        "Nopeusrajoitus ja selkeä vastaus siitä, menikö viesti perille"
+      ]
+    },
+    "testbot": {
+      "title": "Testibotti",
+      "body": "Skriptattu toinen osallistuja Mumble-sovellusten automaattisiin testeihin. Mumcordin omat testit pyörivät sillä.",
+      "points": [
+        "Ohjaa chattia, tilaa, oikeuksia ja moderointia, ja odota ehtojen täyttymistä",
+        "Toista, nauhoita ja tarkista puheen taso, aidolla Opuksella",
+        "Kuormitustesti täyttää paikallisen palvelimen jopa 1000 käyttäjällä",
+        "Paluukoodi 0 tarkoittaa hyväksyttyä: sopii mihin tahansa CI:hin"
+      ]
+    },
+    "downloadTitle": "Lataa",
+    "downloadBody": "Arkisto sisältää ohjelman `mumbot`, README-tiedoston ja esimerkkiasetukset, `bot.example.toml`.",
+    "docker": "Tai Docker-imagena amd64:lle ja arm64:lle:",
+    "examples": "Valmiit Docker Compose -esimerkit: webhook-botti, webhook-botti omalla Mumble-palvelimella kokeilua varten ja testibotti CI:ssä",
+    "checksums": "Tarkistussummat",
+    "noRelease": "Lataukset löytyvät GitHubista.",
+    "prerelease": "Esiversio",
+    "copy": "Kopioi",
+    "copied": "Kopioitu",
+    "roadmapTitle": "Tiekartta",
+    "roadmapBody": "Mumcordin tavoin Mumbotia rakennetaan eepoksina. Epic 2 on avoimiin issueihin perustuva ehdotus, ja se suunnitellaan vielä tarkemmin.",
+    "status": {
+      "done": "valmis",
+      "now": "työn alla",
+      "planned": "seuraavaksi",
+      "later": "myöhemmin"
+    },
+    "epics": [
+      {
+        "id": "epic-0",
+        "title": "Testibotti",
+        "summary": "Mumcordin testien skriptattu botti, nyt omana ohjelmanaan.",
+        "items": [
+          "Chat, tila, oikeudet ja moderointi, ehtojen odottaminen ja skriptitila",
+          "Puheen toisto, nauhoitus ja tason tarkistus, Opuksella kuten Mumcordissa",
+          "Kuormitustesti jopa 1000 käyttäjällä paikallisella testipalvelimella"
+        ]
+      },
+      {
+        "id": "epic-1",
+        "title": "Webhook-botti",
+        "summary": "Viestejä ulkopuolelta Mumble-kanavalle.",
+        "items": [
+          "HTTP API, API-avaimet ja sallitut kanavat avainkohtaisesti",
+          "Markdown, kanavien salasanat, uudelleenyhdistäminen ja nopeusrajoitus",
+          "Ohjelmat Linuxille, Windowsille ja macOS:lle sekä Docker-image",
+          "Versiosta 0.1.1 alkaen: Docker Compose -esimerkit ja ohjeet asetuksista, komentorivistä, HTTP API:sta ja tietoturvasta"
+        ]
+      },
+      {
+        "id": "epic-2",
+        "title": "Moduulit, musiikki ja historia",
+        "summary": "Yhdestä botista tulee työkalupakki.",
+        "items": [
+          "Moduulit: valitse asetuksissa tai komentorivillä, mitkä botit ovat käynnissä, yhdessä ohjelmassa ja yhdessä imagessa",
+          "Musiikkibotti: lähetä MP3-tiedostoja tai linkkejä HTTP:llä, ja botti soittaa ne puhekanavalla jonosta",
+          "Historiabotti: tallentaa niiden kanavien chatin, jotka se saa nähdä, ja välittää sen Mumcord-käyttäjille, jotka olivat offline-tilassa. Ei koskaan yksityisviestejä",
+          "Viestikortit: webhook lähettää hälytyksiä otsikolla, tilavärillä, kaaviolla ja linkillä, ja Mumcord näyttää ne korttina",
+          "Säädettävä bittinopeus puheelle ja musiikille, ei koskaan palvelimen rajan yli",
+          "Peer-moduuli: rekisteröi palvelimen käyttäjät mumpeer-välityspalvelimelle ja kertoo Mumcordille, että välityspalvelin on olemassa"
+        ]
+      },
+      {
+        "id": "later",
+        "tag": "Sen jälkeen",
+        "title": "Ideat",
+        "summary": "Ei vielä suunniteltu, mutta kirjattu muistiin.",
+        "items": [
+          "Botti, joka lukee chattia ja vastaa komentoihin",
+          "Puhesynteesi tai hälytysäänet kanavalla",
+          "Yksi botti useille palvelimille tai usealla identiteetillä",
+          "Kuiskaukset ja yksityisviestit, avainten vaihto ilman uudelleenkäynnistystä, sisäänrakennettu TLS",
+          "Palvelimen varmenteen muistaminen ensimmäisellä kerralla ja muuttuneen varmenteen hylkääminen"
+        ]
+      }
+    ],
+    "ideaTitle": "Idea botiksi?",
+    "ideaBody": "Toiveet kirjataan Mumbotin issueihin GitHubissa.",
+    "idea": "Ehdota ideaa",
+    "source": "Lähdekoodi GitHubissa",
+    "docs": "Ohjeet"
   }
 }

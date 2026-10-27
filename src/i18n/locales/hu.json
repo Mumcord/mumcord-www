@@ -68,6 +68,26 @@
       "themes": {
         "title": "Témák",
         "desc": "Másolható kinézetek, világos és sötét"
+      },
+      "botAbout": {
+        "title": "Mumbot",
+        "desc": "Botok bármely Mumble-szerverhez"
+      },
+      "botDownload": {
+        "title": "Letöltés",
+        "desc": "Linux, Windows, macOS és Docker"
+      },
+      "botRoadmap": {
+        "title": "Ütemterv",
+        "desc": "Mi van kész, és mi jön ezután"
+      },
+      "botSource": {
+        "title": "Forráskód",
+        "desc": "Nyílt forráskód, AGPL-3.0 licenc alatt"
+      },
+      "botIssues": {
+        "title": "Issue-k",
+        "desc": "Ötletek és hibák a Mumbothoz"
       }
     },
     "hero": {
@@ -313,7 +333,7 @@
     "roadmap": {
       "label": "05 — Merre tartunk",
       "title": "Őszintén: ez egy alfa.",
-      "body": "Az ütemterv javaslat, és változhat. Mobilalkalmazás és webes verzió nincs tervben. Szerveroldali módosításra soha nem lesz szükség.",
+      "body": "Az ütemterv javaslat, és változhat.",
       "now": "most",
       "all": "A teljes ütemterv részletesen",
       "steps": [
@@ -330,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Kényelem",
-          "body": "Globális gyorsbillentyűk, teljes tálcamenü, importálás a hivatalos kliensből, suttogás, szerverböngésző, „Ne zavarjanak”, @all és @channel."
+          "body": "Globális gyorsbillentyűk, teljes tálcamenü, importálás a hivatalos kliensből, suttogás, szerverböngésző, „Ne zavarjanak”, @all és @channel, üzenetkártyák botoknak, plusz egy opcionális relay a közvetlen kapcsolatokhoz."
         },
         {
           "tag": "Epic 4",
@@ -474,7 +494,8 @@
       "privacy": "Adatvédelem",
       "noTracking": "Ez az oldal nem használ sütiket, és semmit sem tölt be harmadik felektől.",
       "by": "Készítette:",
-      "themes": "Témák"
+      "themes": "Témák",
+      "botAbout": "Áttekintés"
     },
     "notFound": {
       "title": "A csatorna nem található",
@@ -1387,7 +1408,7 @@
   ],
   "roadmap": {
     "title": "Ütemterv",
-    "description": "A Mumcord ütemterve részletesen: mit hoz az 1. epic, mi a terv utána, és mi nem lesz soha.",
+    "description": "A Mumcord ütemterve részletesen: mit hoz az egyes epic, mi van kész, és mi jön ezután.",
     "label": "Merre tartunk",
     "intro": "A Mumcord epicekben készül. Az 1. epic a 0.3.0-s verzióval zárul le. Itt látod, mit hoz az egyes epic. Az ütemterv javaslat: a sorrend és a terjedelem még változhat.",
     "status": {
@@ -1398,12 +1419,6 @@
     },
     "epicsTitle": "Az epicek",
     "epicsBody": "Az 1. epic a mindennapi kliens. Utána nagyobb építőkövek jönnek, amelyek sorrendje még nem végleges.",
-    "never": "Ami soha nem lesz",
-    "neverItems": [
-      "Bármi a szerveren: nincs kísérőszolgáltatás, nincs szerverplugin, nincs szerverkonfiguráció. A Mumcord bármely szabványos Mumble-szerverrel működik.",
-      "Mobilalkalmazások és webes verzió.",
-      "Relay szerver a közvetlen kapcsolatokhoz: ha nincs működő közvetlen út, a Mumcord inkább a Mumble-szerveren keresztül megy."
-    ],
     "ideaTitle": "Hiányzik valami?",
     "ideaBody": "A kérések a GitHub issue-iba kerülnek, és beépülnek a tervezésbe.",
     "idea": "Funkció kérése",
@@ -1590,15 +1605,44 @@
       {
         "id": "epic-3",
         "title": "Kényelem",
-        "summary": "Csiszolás a sokat használóknak.",
-        "items": [
-          "Globális gyorsbillentyűk a push-to-talkon túl",
-          "Teljes tálcamenü",
-          "Beállítások importálása a hivatalos Mumble kliensből",
-          "Suttogás és kiáltás más csatornákba",
-          "Nyilvános szerverböngésző",
-          "Ne zavarjanak: egyetlen kapcsoló elnémítja az értesítéseket, a hangjelzéseket és a felugró ablakokat, a többiek hangját viszont továbbra is hallod",
-          "@all és @channel, hogy mindenkit megemlíts a szerveren vagy a csatornán"
+        "summary": "Csiszolás a sokat használóknak, üzenetkártyák botoknak, opcionális relay a közvetlen kapcsolatokhoz és egy hibakereső eszköz.",
+        "groups": [
+          {
+            "title": "Kényelem a mindennapokban",
+            "items": [
+              "Globális gyorsbillentyűk a push-to-talkon túl",
+              "Teljes tálcamenü",
+              "Beállítások importálása a hivatalos Mumble kliensből",
+              "Suttogás és kiáltás más csatornákba",
+              "Nyilvános szerverböngésző",
+              "Ne zavarjanak: egyetlen kapcsoló elnémítja az értesítéseket, a hangjelzéseket és a felugró ablakokat, a többiek hangját viszont továbbra is hallod",
+              "@all és @channel, hogy mindenkit megemlíts a szerveren vagy a csatornán"
+            ]
+          },
+          {
+            "title": "Üzenetkártyák",
+            "items": [
+              "A botok és a monitoring sima szöveg helyett tömör kártyát küldenek: cím, formázott szöveg, opcionálisan egy kép, például grafikon, és egy link a dashboardra",
+              "Állapotszínek infóhoz, sikerhez, figyelmeztetéshez és hibához, mindig szöveges címkével is",
+              "A képek csak bekapcsolt linkelőnézetekkel töltődnek be, és a Mumcordon keresztül jönnek, sosem közvetlenül az idegen szerverről",
+              "A hivatalos Mumble kliensek ugyanazt az üzenetet normál, szépen formázott szövegként látják"
+            ]
+          },
+          {
+            "title": "Közvetlen kapcsolatok relayen át",
+            "items": [
+              "Ha egyetlen közvetlen kapcsolat sem működik, például CGNAT mögött, vagy nem akarod megmutatni az IP-címedet, egy mumpeer relay továbbítja az adatokat",
+              "A tartalom végponttól végpontig titkosított marad; a relay csak továbbadja a bájtokat, és csak a saját szervere felhasználóit engedi be",
+              "Opcionális: egy közösség a Mumbottal együtt futtathatja a relayt. Relay nélkül minden úgy működik, mint eddig",
+              "Te döntöd el: relay kikapcsolva, csak ha a közvetlen kapcsolat nem jön létre, vagy mindig, hogy az IP-címed rejtve maradjon"
+            ]
+          },
+          {
+            "title": "Hibakereséshez",
+            "items": [
+              "Rejtett csomagvizsgáló: megmutatja az elküldött és fogadott Mumcord-üzeneteket, szűrőkkel és exporttal. Csak helyben, semmit nem naplóz és nem küld sehova"
+            ]
+          }
         ]
       },
       {
@@ -2036,5 +2080,109 @@
         "coffee": "Eszpresszóbarna és kávéhab, meleg és kíméletes a szemnek."
       }
     }
+  },
+  "mumbot": {
+    "title": "Mumbot",
+    "description": "Mumbot: botok bármely szabványos Mumble-szerverhez. A webhook bot kívülről érkező üzeneteket tesz közzé a csatornáidon, a tesztbot automatikusan ellenőrzi a Mumble klienseket.",
+    "label": "Botok Mumble-höz",
+    "intro": "A Mumbot úgy jelentkezik be, mint egy ember, saját tanúsítvánnyal. Ezért bármely szabványos Mumble-szerveren fut, plugin nélkül és a szerverkonfiguráció módosítása nélkül. A Mumcord családjából, nyílt forráskód AGPL-3.0 licenc alatt.",
+    "toc": {
+      "bots": "A botok",
+      "download": "Letöltés",
+      "roadmap": "Ütemterv"
+    },
+    "botsTitle": "Két bot, egy program",
+    "botsBody": "Mindkettő ugyanabban a programban lakik, ez a `mumbot`, Linuxra, Windowsra és macOS-re, valamint Docker image-ként.",
+    "webhook": {
+      "title": "Webhook bot",
+      "body": "A monitoring, a CI vagy a saját szkripted egyetlen HTTP-kérést küld egy API-kulccsal, a bot pedig beteszi a szöveget egy Mumble-csatornába.",
+      "points": [
+        "Kulcsonként beállítod, mely csatornákba írhat",
+        "Félkövér, dőlt, kód, listák és linkek Markdownban",
+        "Csatornajelszavak, újracsatlakozás megszakadás után és állandó identitás a tanúsítványnak köszönhetően",
+        "Sebességkorlát és egyértelmű válasz, hogy megérkezett-e az üzenet"
+      ]
+    },
+    "testbot": {
+      "title": "Tesztbot",
+      "body": "Szkriptelt második résztvevő Mumble kliensek automatizált teszteléséhez. A Mumcord saját tesztjei is ezen futnak.",
+      "points": [
+        "Vezéreld a chatet, az állapotot, a jogosultságokat és a moderálást, és várj feltételekre",
+        "Hang lejátszása, felvétele és szintjének ellenőrzése, valódi Opus kodekkel",
+        "A terhelési teszt akár 1000 felhasználóval tölt meg egy helyi szervert",
+        "A 0-s kilépési kód sikert jelent: bármilyen CI-ba beillik"
+      ]
+    },
+    "downloadTitle": "Letöltés",
+    "downloadBody": "Az archívumban a `mumbot` program, a README és egy példakonfiguráció, a `bot.example.toml` található.",
+    "docker": "Vagy Docker image-ként amd64-re és arm64-re:",
+    "examples": "Kész Docker Compose példák: webhook bot, webhook bot saját Mumble-szerverrel a kipróbáláshoz és tesztbot CI-ban",
+    "checksums": "Ellenőrzőösszegek",
+    "noRelease": "A letöltések a GitHubon vannak.",
+    "prerelease": "Előzetes kiadás",
+    "copy": "Másolás",
+    "copied": "Kimásolva",
+    "roadmapTitle": "Ütemterv",
+    "roadmapBody": "A Mumcordhoz hasonlóan a Mumbot is epicekben készül. A 2. epic a nyitott issue-kból összeállított javaslat, a részletes tervezése még hátravan.",
+    "status": {
+      "done": "kész",
+      "now": "folyamatban",
+      "planned": "következik",
+      "later": "később"
+    },
+    "epics": [
+      {
+        "id": "epic-0",
+        "title": "Tesztbot",
+        "summary": "A Mumcord tesztjeiből ismert szkriptelt bot, most önálló programként.",
+        "items": [
+          "Chat, állapot, jogosultságok és moderálás, várakozás feltételekre és szkriptmód",
+          "Hang lejátszása, felvétele és szintjének ellenőrzése, Opus kodekkel, ahogy a Mumcordban",
+          "Terhelési teszt akár 1000 felhasználóval egy helyi tesztszerveren"
+        ]
+      },
+      {
+        "id": "epic-1",
+        "title": "Webhook bot",
+        "summary": "Kívülről érkező üzenetek egy Mumble-csatornába.",
+        "items": [
+          "HTTP API API-kulcsokkal és kulcsonként engedélyezett csatornákkal",
+          "Markdown, csatornajelszavak, újracsatlakozás és sebességkorlát",
+          "Programok Linuxra, Windowsra és macOS-re, valamint Docker image",
+          "A 0.1.1 óta: Docker Compose példák és dokumentáció a konfigurációhoz, a parancssorhoz, a HTTP API-hoz és a biztonsághoz"
+        ]
+      },
+      {
+        "id": "epic-2",
+        "title": "Modulok, zene és előzmények",
+        "summary": "Egy botból eszköztár lesz.",
+        "items": [
+          "Modulok: a konfigurációban vagy a parancssorban választod ki, mely botok fussanak, egy programban és egy image-ben",
+          "Zenebot: küldj MP3-akat vagy linkeket HTTP-n, a bot pedig lejátssza őket a hangcsatornán, lejátszási sorral",
+          "Előzménybot: megőrzi azoknak a csatornáknak a chatjét, amelyeket láthat, és átadja azoknak a Mumcord-felhasználóknak, akik offline voltak. Privát üzeneteket soha",
+          "Üzenetkártyák: a webhook címmel, állapotszínnel, grafikonnal és linkkel küld riasztásokat, amelyeket a Mumcord kártyaként jelenít meg",
+          "Állítható bitráta beszédhez és zenéhez, sosem a szerver korlátja fölött",
+          "Peer modul: regisztrálja a szerver felhasználóit egy mumpeer relaynél, és jelzi a Mumcordnak, hogy létezik relay"
+        ]
+      },
+      {
+        "id": "later",
+        "tag": "Utána",
+        "title": "Ötletek",
+        "summary": "Még nincs betervezve, de fel van jegyezve.",
+        "items": [
+          "Bot, amely olvassa a chatet és válaszol a parancsokra",
+          "Szövegfelolvasás vagy riasztási hangok egy csatornában",
+          "Egy bot több szerverhez vagy több identitással",
+          "Suttogás és privát üzenetek, kulcscsere újraindítás nélkül, beépített TLS",
+          "A szerver tanúsítványának megjegyzése az első kapcsolódáskor, és a megváltozott elutasítása"
+        ]
+      }
+    ],
+    "ideaTitle": "Van ötleted egy botra?",
+    "ideaBody": "A kívánságok a Mumbot GitHub-issue-iba kerülnek.",
+    "idea": "Ötlet beküldése",
+    "source": "Forráskód a GitHubon",
+    "docs": "Dokumentáció"
   }
 }

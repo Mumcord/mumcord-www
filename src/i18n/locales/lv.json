@@ -68,6 +68,26 @@
       "themes": {
         "title": "Tēmas",
         "desc": "Stili kopēšanai, gaiši un tumši"
+      },
+      "botAbout": {
+        "title": "Mumbot",
+        "desc": "Boti jebkuram Mumble serverim"
+      },
+      "botDownload": {
+        "title": "Lejupielāde",
+        "desc": "Linux, Windows, macOS un Docker"
+      },
+      "botRoadmap": {
+        "title": "Ceļvedis",
+        "desc": "Kas ir gatavs un kas sekos"
+      },
+      "botSource": {
+        "title": "Pirmkods",
+        "desc": "Atvērtais kods ar AGPL-3.0 licenci"
+      },
+      "botIssues": {
+        "title": "Pieteikumi",
+        "desc": "Idejas un kļūdas saistībā ar Mumbot"
       }
     },
     "hero": {
@@ -313,7 +333,7 @@
     "roadmap": {
       "label": "05 — Uz kurieni ejam",
       "title": "Godīgi: šī ir alfa versija.",
-      "body": "Ceļvedis ir priekšlikums un var mainīties. Mobilās lietotnes un tīmekļa versija nav plānotas. Nekas servera pusē nekad nebūs vajadzīgs.",
+      "body": "Ceļvedis ir priekšlikums un var mainīties.",
       "now": "tagad",
       "all": "Pilns ceļvedis detalizēti",
       "steps": [
@@ -330,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Ērtības",
-          "body": "Globālie karstie taustiņi, pilna teknes izvēlne, imports no oficiālā klienta, čuksti, serveru pārlūks, “Netraucēt”, kā arī @all un @channel."
+          "body": "Globālie karstie taustiņi, pilna teknes izvēlne, imports no oficiālā klienta, čuksti, serveru pārlūks, “Netraucēt”, @all un @channel, ziņu kartītes botiem, kā arī neobligāts starpserveris tiešajiem savienojumiem."
         },
         {
           "tag": "Epic 4",
@@ -474,7 +494,8 @@
       "privacy": "Privātums",
       "noTracking": "Šī vietne neizmanto sīkdatnes un neko neielādē no trešajām pusēm.",
       "by": "Projekts no",
-      "themes": "Tēmas"
+      "themes": "Tēmas",
+      "botAbout": "Pārskats"
     },
     "notFound": {
       "title": "Kanāls nav atrasts",
@@ -1387,7 +1408,7 @@
   ],
   "roadmap": {
     "title": "Ceļvedis",
-    "description": "Mumcord ceļvedis detalizēti: ko atnes Epic 1, kas plānots pēc tam un kas nekad nenotiks.",
+    "description": "Mumcord ceļvedis detalizēti: ko atnes katrs epiks, kas ir gatavs un kas sekos.",
     "label": "Uz kurieni ejam",
     "intro": "Mumcord tiek būvēts epikos. Epic 1 tiek pabeigts ar versiju 0.3.0. Lūk, ko atnes katrs epiks. Ceļvedis ir priekšlikums: secība un apjoms vēl var mainīties.",
     "status": {
@@ -1398,12 +1419,6 @@
     },
     "epicsTitle": "Epiki",
     "epicsBody": "Epic 1 ir ikdienas klients. Pēc tam nāk lielāki būvbloki, kuru secība vēl nav noteikta.",
-    "never": "Kas nekad nenotiks",
-    "neverItems": [
-      "Nekas serverī: ne pavadošie servisi, ne servera spraudņi, ne servera konfigurācija. Mumcord darbojas ar jebkuru standarta Mumble serveri.",
-      "Mobilās lietotnes un tīmekļa versija.",
-      "Starpniekserveris tiešajiem savienojumiem: ja neviens tiešais ceļš nedarbojas, Mumcord tā vietā iet caur Mumble serveri."
-    ],
     "ideaTitle": "Kaut kā trūkst?",
     "ideaBody": "Vēlmes nonāk GitHub pieteikumos (issues) un tiek ņemtas vērā plānošanā.",
     "idea": "Ierosini funkciju",
@@ -1590,15 +1605,44 @@
       {
         "id": "epic-3",
         "title": "Ērtības",
-        "summary": "Noslīpēšana aktīvajiem lietotājiem.",
-        "items": [
-          "Globālie īsinājumtaustiņi ne tikai push-to-talk",
-          "Pilna teknes izvēlne",
-          "Iestatījumu imports no oficiālā Mumble klienta",
-          "Čukstēšana un kliegšana uz citiem kanāliem",
-          "Publisks serveru pārlūks",
-          "Netraucēt: viens slēdzis apklusina paziņojumus, skaņas un uznirstošos logus, un balsis tu joprojām dzirdi",
-          "@all un @channel, lai pieminētu visus serverī vai kanālā"
+        "summary": "Noslīpēšana aktīvajiem lietotājiem, ziņu kartītes botiem, neobligāts starpserveris tiešajiem savienojumiem un rīks atkļūdošanai.",
+        "groups": [
+          {
+            "title": "Ikdienas ērtības",
+            "items": [
+              "Globālie īsinājumtaustiņi ne tikai push-to-talk",
+              "Pilna teknes izvēlne",
+              "Iestatījumu imports no oficiālā Mumble klienta",
+              "Čukstēšana un kliegšana uz citiem kanāliem",
+              "Publisks serveru pārlūks",
+              "Netraucēt: viens slēdzis apklusina paziņojumus, skaņas un uznirstošos logus, un balsis tu joprojām dzirdi",
+              "@all un @channel, lai pieminētu visus serverī vai kanālā"
+            ]
+          },
+          {
+            "title": "Ziņu kartītes",
+            "items": [
+              "Boti un monitorings vienkārša teksta vietā sūta kompaktu kartīti: virsrakstu, formatētu tekstu, pēc izvēles attēlu, piemēram, grafiku, un saiti uz paneli",
+              "Statusa krāsas informācijai, veiksmei, brīdinājumam un kļūdai, vienmēr arī ar teksta etiķeti",
+              "Attēli ielādējas tikai tad, ja ieslēgti saišu priekšskatījumi, un iet caur Mumcord, nekad tieši no otra servera",
+              "Oficiālie Mumble klienti to pašu ziņu redz kā parastu, glīti formatētu tekstu"
+            ]
+          },
+          {
+            "title": "Tiešie savienojumi caur starpserveri",
+            "items": [
+              "Ja tiešais savienojums nedarbojas, piemēram, aiz CGNAT, vai tu nevēlies rādīt savu IP adresi, datus pārsūta mumpeer starpserveris (relay)",
+              "Saturs paliek šifrēts no gala līdz galam; starpserveris tikai nodod baitus tālāk un ielaiž tikai sava servera lietotājus",
+              "Pēc izvēles: kopiena var darbināt starpserveri kopā ar Mumbot. Bez tā viss darbojas kā līdz šim",
+              "Tava izvēle: starpserveris izslēgts, tikai tad, ja tiešais savienojums neizdodas, vai vienmēr, lai tava IP adrese paliktu slēpta"
+            ]
+          },
+          {
+            "title": "Atkļūdošanai",
+            "items": [
+              "Slēpts pakešu inspektors: rāda nosūtītās un saņemtās Mumcord ziņas, ar filtriem un eksportu. Tikai lokāli, nekas netiek žurnalēts vai kaut kur sūtīts"
+            ]
+          }
         ]
       },
       {
@@ -2036,5 +2080,109 @@
         "coffee": "Espresso brūni toņi un krēms, silti un acīm patīkami."
       }
     }
+  },
+  "mumbot": {
+    "title": "Mumbot",
+    "description": "Mumbot: boti jebkuram standarta Mumble serverim. Webhook bots ievieto ziņas no ārpuses tavos kanālos, testa bots automātiski pārbauda Mumble klientus.",
+    "label": "Boti Mumble",
+    "intro": "Mumbot pieslēdzas kā cilvēks, ar savu sertifikātu. Tāpēc tas darbojas jebkurā standarta Mumble serverī, bez spraudņa un bez izmaiņām servera konfigurācijā. No Mumcord saimes, atvērtais kods ar AGPL-3.0 licenci.",
+    "toc": {
+      "bots": "Boti",
+      "download": "Lejupielāde",
+      "roadmap": "Ceļvedis"
+    },
+    "botsTitle": "Divi boti, viena programma",
+    "botsBody": "Abi dzīvo vienā programmā, `mumbot`, Linux, Windows, macOS un kā Docker attēls.",
+    "webhook": {
+      "title": "Webhook bots",
+      "body": "Monitorings, CI vai tavs paša skripts nosūta vienu HTTP pieprasījumu ar API atslēgu, un bots ievieto tekstu Mumble kanālā.",
+      "points": [
+        "Katrai atslēgai nosaki, kuros kanālos tā drīkst rakstīt",
+        "Treknraksts, slīpraksts, kods, saraksti un saites Markdown formātā",
+        "Kanālu paroles, atkārtota pieslēgšanās pēc pārrāvumiem un pastāvīga identitāte ar sertifikāta palīdzību",
+        "Pieprasījumu ierobežojums un skaidra atbilde, vai ziņa ir nonākusi galā"
+      ]
+    },
+    "testbot": {
+      "title": "Testa bots",
+      "body": "Ar skriptu vadīts otrs dalībnieks Mumble klientu automātiskajiem testiem. Uz tā darbojas arī paša Mumcord testi.",
+      "points": [
+        "Vada tērzēšanu, statusu, atļaujas un moderēšanu un gaida nosacījumus",
+        "Atskaņo, ieraksta un pārbauda balss līmeni, ar īstu Opus",
+        "Slodzes tests piepilda lokālu serveri ar līdz 1000 lietotājiem",
+        "Izejas kods 0 nozīmē, ka tests izturēts: der jebkurai CI"
+      ]
+    },
+    "downloadTitle": "Lejupielāde",
+    "downloadBody": "Arhīvā ir programma `mumbot`, README un konfigurācijas piemērs `bot.example.toml`.",
+    "docker": "Vai kā Docker attēls amd64 un arm64:",
+    "examples": "Gatavi Docker Compose piemēri: webhook bots, webhook bots ar savu Mumble serveri izmēģināšanai un testa bots CI vidē",
+    "checksums": "Kontrolsummas",
+    "noRelease": "Lejupielādes ir GitHub.",
+    "prerelease": "Pirmsizlaide",
+    "copy": "Kopēt",
+    "copied": "Nokopēts",
+    "roadmapTitle": "Ceļvedis",
+    "roadmapBody": "Tāpat kā Mumcord, arī Mumbot tiek būvēts epikos. Epic 2 ir priekšlikums no atvērtajiem pieteikumiem, un to vēl plānos detalizēti.",
+    "status": {
+      "done": "gatavs",
+      "now": "procesā",
+      "planned": "nākamais",
+      "later": "vēlāk"
+    },
+    "epics": [
+      {
+        "id": "epic-0",
+        "title": "Testa bots",
+        "summary": "Ar skriptu vadītais bots no Mumcord testiem, tagad atsevišķa programma.",
+        "items": [
+          "Tērzēšana, statuss, atļaujas un moderēšana, nosacījumu gaidīšana un skripta režīms",
+          "Balss atskaņošana, ierakstīšana un līmeņa pārbaude, ar Opus kā Mumcord",
+          "Slodzes tests ar līdz 1000 lietotājiem lokālā testa serverī"
+        ]
+      },
+      {
+        "id": "epic-1",
+        "title": "Webhook bots",
+        "summary": "Ziņas no ārpuses Mumble kanālā.",
+        "items": [
+          "HTTP API ar API atslēgām un atļautajiem kanāliem katrai atslēgai",
+          "Markdown, kanālu paroles, atkārtota pieslēgšanās un pieprasījumu ierobežojums",
+          "Programmas Linux, Windows un macOS, kā arī Docker attēls",
+          "Kopš 0.1.1: Docker Compose piemēri un dokumentācija par konfigurāciju, komandrindu, HTTP API un drošību"
+        ]
+      },
+      {
+        "id": "epic-2",
+        "title": "Moduļi, mūzika un vēsture",
+        "summary": "Viens bots kļūst par rīku komplektu.",
+        "items": [
+          "Moduļi: konfigurācijā vai komandrindā izvēlies, kuri boti darbojas, vienā programmā un vienā attēlā",
+          "Mūzikas bots: sūti MP3 vai saites caur HTTP, un bots tos atskaņo balss kanālā ar rindu",
+          "Vēstures bots: glabā to kanālu tērzēšanu, kurus drīkst redzēt, un nodod to Mumcord lietotājiem, kuri bija bezsaistē. Nekad privātās ziņas",
+          "Ziņu kartītes: webhook sūta brīdinājumus ar virsrakstu, statusa krāsu, grafiku un saiti, ko Mumcord rāda kā kartīti",
+          "Regulējams bitu pārraides ātrums runai un mūzikai, nekad virs servera robežas",
+          "Peer modulis: reģistrē servera lietotājus mumpeer starpserverī un paziņo Mumcord, ka starpserveris pastāv"
+        ]
+      },
+      {
+        "id": "later",
+        "tag": "Pēc tam",
+        "title": "Idejas",
+        "summary": "Vēl nav plānots, bet pierakstīts.",
+        "items": [
+          "Bots, kas lasa tērzēšanu un atbild uz komandām",
+          "Teksta pārvēršana runā vai brīdinājuma skaņas kanālā",
+          "Viens bots vairākiem serveriem vai ar vairākām identitātēm",
+          "Čuksti un privātās ziņas, atslēgu maiņa bez restartēšanas, iebūvēts TLS",
+          "Atcerēties servera sertifikātu pirmajā saskarē un atteikt mainītu"
+        ]
+      }
+    ],
+    "ideaTitle": "Ideja botam?",
+    "ideaBody": "Vēlmes nonāk Mumbot pieteikumos GitHub.",
+    "idea": "Ierosini ideju",
+    "source": "Pirmkods GitHub",
+    "docs": "Dokumentācija"
   }
 }

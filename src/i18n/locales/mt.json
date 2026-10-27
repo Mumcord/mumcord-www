@@ -68,6 +68,26 @@
       "themes": {
         "title": "Temi",
         "desc": "Dehriet biex tikkopja, ċari u skuri"
+      },
+      "botAbout": {
+        "title": "Mumbot",
+        "desc": "Bots għal kull server Mumble"
+      },
+      "botDownload": {
+        "title": "Niżżel",
+        "desc": "Linux, Windows, macOS u Docker"
+      },
+      "botRoadmap": {
+        "title": "Pjan",
+        "desc": "X’sar u x’ġej"
+      },
+      "botSource": {
+        "title": "Kodiċi sors",
+        "desc": "Open source taħt AGPL-3.0"
+      },
+      "botIssues": {
+        "title": "Issues",
+        "desc": "Ideat u bugs għal Mumbot"
       }
     },
     "hero": {
@@ -313,7 +333,7 @@
     "roadmap": {
       "label": "05 — Fejn sejrin",
       "title": "Onestament: din hija alpha.",
-      "body": "Il-pjan huwa proposta u jista’ jinbidel. Apps għall-mowbajl u verżjoni web mhumiex ippjanati. Qatt ma se jkun meħtieġ xejn fuq is-server.",
+      "body": "Il-pjan huwa proposta u jista’ jinbidel.",
       "now": "issa",
       "all": "Il-pjan sħiħ fid-dettall",
       "steps": [
@@ -330,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Kumdità",
-          "body": "Hotkeys globali, menu sħiħ fit-tray, importazzjoni mill-client uffiċjali, whisper, browser tas-servers, Do Not Disturb u @all u @channel."
+          "body": "Hotkeys globali, menu sħiħ fit-tray, importazzjoni mill-client uffiċjali, whisper, browser tas-servers, Do Not Disturb, @all u @channel, cards tal-messaġġi għall-bots, u relay mhux obbligatorju għal konnessjonijiet diretti."
         },
         {
           "tag": "Epic 4",
@@ -474,7 +494,8 @@
       "privacy": "Privatezza",
       "noTracking": "Dan is-sit ma jpoġġi l-ebda cookies u ma jgħabbi xejn minn partijiet terzi.",
       "by": "Proġett ta’",
-      "themes": "Temi"
+      "themes": "Temi",
+      "botAbout": "Ħarsa ġenerali"
     },
     "notFound": {
       "title": "Kanal ma nstabx",
@@ -1387,7 +1408,7 @@
   ],
   "roadmap": {
     "title": "Pjan",
-    "description": "Il-pjan ta’ Mumcord fid-dettall: x’iġib l-Epic 1, x’hemm ippjanat wara u x’qatt mhu se jsir.",
+    "description": "Il-pjan ta’ Mumcord fid-dettall: x’iġib kull epic, x’sar diġà u x’ġej wara.",
     "label": "Fejn sejrin",
     "intro": "Mumcord jinbena f’epics. L-Epic 1 jitlesta bil-verżjoni 0.3.0. Dan huwa dak li jġib kull epic. Il-pjan huwa proposta: l-ordni u l-ambitu għadhom jistgħu jinbidlu.",
     "status": {
@@ -1398,12 +1419,6 @@
     },
     "epicsTitle": "L-epics",
     "epicsBody": "L-Epic 1 huwa l-client ta’ kuljum. Wara jiġu blokki akbar li l-ordni tagħhom għadha mhix deċiża.",
-    "never": "X’qatt mhu se jsir",
-    "neverItems": [
-      "Xejn fuq is-server: l-ebda servizzi addizzjonali, l-ebda plugins tas-server, l-ebda konfigurazzjoni tas-server. Mumcord jaħdem ma’ kull server Mumble standard.",
-      "Apps għall-mowbajl u verżjoni web.",
-      "Server relay għall-konnessjonijiet diretti: jekk l-ebda triq diretta ma taħdem, Mumcord jgħaddi mis-server Mumble minflok."
-    ],
     "ideaTitle": "Hemm xi ħaġa nieqsa?",
     "ideaBody": "It-talbiet imorru fl-issues fuq GitHub u jgħinu fl-ippjanar.",
     "idea": "Itlob karatteristika",
@@ -1590,15 +1605,44 @@
       {
         "id": "epic-3",
         "title": "Kumdità",
-        "summary": "Irfinar għal min jużah ħafna.",
-        "items": [
-          "Shortcuts globali lil hinn mill-push-to-talk",
-          "Menu sħiħ fit-tray",
-          "Importa s-settings mill-client uffiċjali ta’ Mumble",
-          "Whisper u shout lil kanali oħra",
-          "Browser pubbliku tas-servers",
-          "Do Not Disturb: swiċċ wieħed isikket in-notifiki, il-ħsejjes u l-pop-ups, u l-vuċijiet xorta tismagħhom",
-          "@all u @channel biex issemmi lil kulħadd fuq is-server jew fil-kanal"
+        "summary": "Irfinar għal min jużah ħafna, cards tal-messaġġi għall-bots, relay mhux obbligatorju għal konnessjonijiet diretti u għodda għad-debugging.",
+        "groups": [
+          {
+            "title": "Kumdità ta’ kuljum",
+            "items": [
+              "Shortcuts globali lil hinn mill-push-to-talk",
+              "Menu sħiħ fit-tray",
+              "Importa s-settings mill-client uffiċjali ta’ Mumble",
+              "Whisper u shout lil kanali oħra",
+              "Browser pubbliku tas-servers",
+              "Do Not Disturb: swiċċ wieħed isikket in-notifiki, il-ħsejjes u l-pop-ups, u l-vuċijiet xorta tismagħhom",
+              "@all u @channel biex issemmi lil kulħadd fuq is-server jew fil-kanal"
+            ]
+          },
+          {
+            "title": "Cards tal-messaġġi",
+            "items": [
+              "Il-bots u l-monitoraġġ jibagħtu card kompatta minflok test sempliċi: titlu, test ifformattjat, u jekk trid stampa bħal graff u link għad-dashboard",
+              "Kuluri tal-istatus għal info, suċċess, twissija u żball, dejjem b’tikketta tat-test ukoll",
+              "L-istampi jitgħabbew biss meta l-previews tal-links ikunu mixgħula u jgħaddu minn Mumcord, qatt dritt mis-server l-ieħor",
+              "Il-clients uffiċjali ta’ Mumble jaraw l-istess messaġġ bħala test normali, ifformattjat sew"
+            ]
+          },
+          {
+            "title": "Konnessjonijiet diretti permezz ta’ relay",
+            "items": [
+              "Jekk l-ebda konnessjoni diretta ma taħdem, pereżempju wara CGNAT, jew ma tridx turi l-indirizz IP tiegħek, relay ta’ mumpeer jgħaddi d-data",
+              "Il-kontenut jibqa’ encrypted end-to-end; ir-relay jgħaddi l-bytes biss u jdaħħal biss utenti tas-server tiegħu stess",
+              "Mhux obbligatorju: komunità tista’ tħaddem ir-relay flimkien ma’ Mumbot. Mingħajr relay kollox jaħdem bħal qabel",
+              "Inti tagħżel: relay mitfi, biss meta l-konnessjoni diretta ma tirnexxix, jew dejjem, biex l-indirizz IP tiegħek jibqa’ moħbi"
+            ]
+          },
+          {
+            "title": "Għad-debugging",
+            "items": [
+              "Packet inspector moħbi: juri l-messaġġi ta’ Mumcord li jintbagħtu u jaslu, b’filtri u export. Lokali biss, xejn ma jiġi rreġistrat jew mibgħut x’imkien"
+            ]
+          }
         ]
       },
       {
@@ -2036,5 +2080,109 @@
         "coffee": "Kannella tal-espresso u krema, sħun u ma jgħejjux l-għajnejn."
       }
     }
+  },
+  "mumbot": {
+    "title": "Mumbot",
+    "description": "Mumbot: bots għal kull server Mumble standard. Webhook bot jpoġġi fil-kanali tiegħek messaġġi li jiġu minn barra, test bot jiċċekkja l-clients ta’ Mumble awtomatikament.",
+    "label": "Bots għal Mumble",
+    "intro": "Mumbot jidħol bħal persuna, b’ċertifikat tiegħu stess. Għalhekk jaħdem fuq kull server Mumble standard, mingħajr plugin u mingħajr ebda bidla fil-config tas-server. Mill-familja Mumcord, open source taħt AGPL-3.0.",
+    "toc": {
+      "bots": "Il-bots",
+      "download": "Niżżel",
+      "roadmap": "Pjan"
+    },
+    "botsTitle": "Żewġ bots, programm wieħed",
+    "botsBody": "It-tnejn jgħixu fl-istess programm, `mumbot`, għal Linux, Windows, macOS u bħala Docker image.",
+    "webhook": {
+      "title": "Webhook bot",
+      "body": "Il-monitoraġġ, is-CI jew l-iskript tiegħek jibgħat request HTTP wieħed b’API key, u l-bot ipoġġi t-test f’kanal ta’ Mumble.",
+      "points": [
+        "Għal kull key tagħżel f’liema kanali tista’ tikteb",
+        "Bold, italic, kodiċi, listi u links f’Markdown",
+        "Passwords tal-kanali, jerġa’ jikkonnettja wara qtugħ u identità fissa permezz taċ-ċertifikat tiegħu",
+        "Rate limit u tweġiba ċara jekk il-messaġġ wasalx"
+      ]
+    },
+    "testbot": {
+      "title": "Test bot",
+      "body": "It-tieni parteċipant skriptjat għal testijiet awtomatiċi tal-clients ta’ Mumble. It-testijiet ta’ Mumcord stess jaħdmu fuqu.",
+      "points": [
+        "Ikkontrolla ċ-chat, l-istat, il-permessi u l-moderazzjoni, u stenna kundizzjonijiet",
+        "Doqq, irrekordja u ċċekkja l-livell tal-leħen, b’Opus veru",
+        "Load test jimla server lokali b’sa 1000 utent",
+        "Exit code 0 ifisser għadda: jidħol f’kull CI"
+      ]
+    },
+    "downloadTitle": "Niżżel",
+    "downloadBody": "L-arkivju fih il-programm `mumbot`, ir-README u config ta’ eżempju, `bot.example.toml`.",
+    "docker": "Jew bħala Docker image għal amd64 u arm64:",
+    "examples": "Eżempji lesti ta’ Docker Compose: webhook bot, webhook bot b’server Mumble tiegħu biex tipprovah, u test bot fis-CI",
+    "checksums": "Checksums",
+    "noRelease": "Id-downloads jinsabu fuq GitHub.",
+    "prerelease": "Pre-release",
+    "copy": "Ikkopja",
+    "copied": "Ikkopjat",
+    "roadmapTitle": "Pjan",
+    "roadmapBody": "Bħal Mumcord, Mumbot jinbena f’epics. L-Epic 2 huwa proposta mill-issues miftuħa u għad irid jiġi ppjanat fid-dettall.",
+    "status": {
+      "done": "lest",
+      "now": "għaddej",
+      "planned": "li jmiss",
+      "later": "aktar tard"
+    },
+    "epics": [
+      {
+        "id": "epic-0",
+        "title": "Test bot",
+        "summary": "Il-bot skriptjat mit-testijiet ta’ Mumcord, issa programm għalih.",
+        "items": [
+          "Chat, stat, permessi u moderazzjoni, stennija għal kundizzjonijiet u script mode",
+          "Doqq, irrekordja u ċċekkja l-livell tal-leħen, b’Opus bħal f’Mumcord",
+          "Load test b’sa 1000 utent fuq server tat-test lokali"
+        ]
+      },
+      {
+        "id": "epic-1",
+        "title": "Webhook bot",
+        "summary": "Messaġġi minn barra f’kanal ta’ Mumble.",
+        "items": [
+          "HTTP API b’API keys u kanali permessi għal kull key",
+          "Markdown, passwords tal-kanali, reconnects u rate limit",
+          "Programmi għal Linux, Windows u macOS u Docker image",
+          "Minn 0.1.1: eżempji ta’ Docker Compose u dokumentazzjoni għall-config, il-command line, l-HTTP API u s-sigurtà"
+        ]
+      },
+      {
+        "id": "epic-2",
+        "title": "Moduli, mużika u storja",
+        "summary": "Bot wieħed isir kaxxa tal-għodda.",
+        "items": [
+          "Moduli: agħżel liema bots jaħdmu fil-config jew fuq il-command line, fi programm wieħed u image waħda",
+          "Music bot: ibgħat MP3s jew links permezz ta’ HTTP, u l-bot idoqqhom fil-voice channel b’kju",
+          "History bot: iżomm iċ-chat tal-kanali li jista’ jara u jagħtih lill-utenti ta’ Mumcord li kienu offline. Qatt messaġġi privati",
+          "Cards tal-messaġġi: il-webhook jibgħat alerts b’titlu, kulur tal-istatus, graff u link li Mumcord juri bħala card",
+          "Bitrate li tista’ taġġusta għall-leħen u l-mużika, qatt ’il fuq mil-limitu tas-server",
+          "Peer module: jirreġistra l-utenti tas-server ma’ relay ta’ mumpeer u jgħid lil Mumcord li r-relay jeżisti"
+        ]
+      },
+      {
+        "id": "later",
+        "tag": "Lil hinn",
+        "title": "Ideat",
+        "summary": "Għadu mhux ippjanat, iżda nnotat.",
+        "items": [
+          "Bot li jaqra ċ-chat u jwieġeb għal commands",
+          "Text-to-speech jew ħsejjes ta’ alert f’kanal",
+          "Bot wieħed għal diversi servers jew b’diversi identitajiet",
+          "Whispers u messaġġi privati, tibdil tal-keys mingħajr restart, TLS integrat",
+          "Ftakar iċ-ċertifikat tas-server fl-ewwel kuntatt u rrifjuta wieħed mibdul"
+        ]
+      }
+    ],
+    "ideaTitle": "Għandek idea għal bot?",
+    "ideaBody": "Ix-xewqat imorru fl-issues ta’ Mumbot fuq GitHub.",
+    "idea": "Ipproponi idea",
+    "source": "Kodiċi sors fuq GitHub",
+    "docs": "Dokumentazzjoni"
   }
 }

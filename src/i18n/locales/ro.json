@@ -68,6 +68,26 @@
       "themes": {
         "title": "Teme",
         "desc": "Stiluri de copiat, deschise și întunecate"
+      },
+      "botAbout": {
+        "title": "Mumbot",
+        "desc": "Boți pentru orice server Mumble"
+      },
+      "botDownload": {
+        "title": "Descarcă",
+        "desc": "Linux, Windows, macOS și Docker"
+      },
+      "botRoadmap": {
+        "title": "Roadmap",
+        "desc": "Ce e gata și ce urmează"
+      },
+      "botSource": {
+        "title": "Cod sursă",
+        "desc": "Open source sub AGPL-3.0"
+      },
+      "botIssues": {
+        "title": "Issue-uri",
+        "desc": "Idei și buguri pentru Mumbot"
       }
     },
     "hero": {
@@ -313,7 +333,7 @@
     "roadmap": {
       "label": "05 — Încotro mergem",
       "title": "Sincer: e o versiune alfa.",
-      "body": "Roadmap-ul e o propunere și se poate schimba. Aplicații mobile și o versiune web nu sunt planificate. Nu va fi nevoie niciodată de nimic pe server.",
+      "body": "Roadmap-ul e o propunere și se poate schimba.",
       "now": "acum",
       "all": "Roadmap-ul complet, în detaliu",
       "steps": [
@@ -330,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Confort",
-          "body": "Scurtături globale, meniu complet în bara de sistem, import din clientul oficial, șoaptă, browser de servere, Nu deranja și @all și @channel."
+          "body": "Scurtături globale, meniu complet în bara de sistem, import din clientul oficial, șoaptă, browser de servere, Nu deranja, @all și @channel, carduri de mesaj pentru boți și un releu opțional pentru conexiuni directe."
         },
         {
           "tag": "Epic 4",
@@ -474,7 +494,8 @@
       "privacy": "Confidențialitate",
       "noTracking": "Site-ul ăsta nu setează cookie-uri și nu încarcă nimic de la terți.",
       "by": "Un proiect de",
-      "themes": "Teme"
+      "themes": "Teme",
+      "botAbout": "Prezentare"
     },
     "notFound": {
       "title": "Canal negăsit",
@@ -1387,7 +1408,7 @@
   ],
   "roadmap": {
     "title": "Roadmap",
-    "description": "Roadmap-ul Mumcord în detaliu: ce aduce Epic 1, ce e planificat după aceea și ce nu se va întâmpla niciodată.",
+    "description": "Roadmap-ul Mumcord în detaliu: ce aduce fiecare epic, ce e gata și ce urmează.",
     "label": "Încotro mergem",
     "intro": "Mumcord se construiește în epicuri. Epic 1 e complet odată cu versiunea 0.3.0. Iată ce aduce fiecare epic. Roadmap-ul e o propunere: ordinea și conținutul se pot încă schimba.",
     "status": {
@@ -1398,12 +1419,6 @@
     },
     "epicsTitle": "Epicurile",
     "epicsBody": "Epic 1 e clientul de zi cu zi. După el vin componente mai mari, a căror ordine nu e încă stabilită.",
-    "never": "Ce nu se va întâmpla niciodată",
-    "neverItems": [
-      "Nimic pe server: fără servicii însoțitoare, fără pluginuri de server, fără configurare pe server. Mumcord merge cu orice server Mumble standard.",
-      "Aplicații mobile și o versiune web.",
-      "Un server releu pentru conexiunile directe: dacă nu merge nicio cale directă, Mumcord trece în schimb prin serverul Mumble."
-    ],
     "ideaTitle": "Îți lipsește ceva?",
     "ideaBody": "Cererile ajung în issue-urile de pe GitHub și contează la planificare.",
     "idea": "Propune o funcție",
@@ -1590,15 +1605,44 @@
       {
         "id": "epic-3",
         "title": "Confort",
-        "summary": "Finisaje pentru utilizatorii înrăiți.",
-        "items": [
-          "Scurtături globale dincolo de push-to-talk",
-          "Meniu complet în bara de sistem",
-          "Importul setărilor din clientul oficial Mumble",
-          "Șoaptă și strigăt către alte canale",
-          "Browser public de servere",
-          "Nu deranja: un singur comutator oprește notificările, sunetele și pop-up-urile, iar vocile le auzi în continuare",
-          "@all și @channel ca să-i menționezi pe toți de pe server sau din canal"
+        "summary": "Finisaje pentru utilizatorii înrăiți, carduri de mesaj pentru boți, un releu opțional pentru conexiuni directe și o unealtă pentru depanare.",
+        "groups": [
+          {
+            "title": "Confort de zi cu zi",
+            "items": [
+              "Scurtături globale dincolo de push-to-talk",
+              "Meniu complet în bara de sistem",
+              "Importul setărilor din clientul oficial Mumble",
+              "Șoaptă și strigăt către alte canale",
+              "Browser public de servere",
+              "Nu deranja: un singur comutator oprește notificările, sunetele și pop-up-urile, iar vocile le auzi în continuare",
+              "@all și @channel ca să-i menționezi pe toți de pe server sau din canal"
+            ]
+          },
+          {
+            "title": "Carduri de mesaj",
+            "items": [
+              "Boții și monitorizarea trimit un card compact în loc de text simplu: un titlu, text formatat, opțional o imagine, cum ar fi un grafic, și un link către dashboard",
+              "Culori de stare pentru info, succes, avertisment și eroare, mereu și cu o etichetă text",
+              "Imaginile se încarcă doar cu previzualizările de linkuri pornite și trec prin Mumcord, niciodată direct de pe celălalt server",
+              "Clienții Mumble oficiali văd același mesaj ca text normal, frumos formatat"
+            ]
+          },
+          {
+            "title": "Conexiuni directe printr-un releu",
+            "items": [
+              "Dacă nu merge nicio conexiune directă, de exemplu în spatele CGNAT, sau nu vrei să-ți arăți adresa IP, un releu mumpeer transmite datele mai departe",
+              "Conținutul rămâne criptat end-to-end; releul doar trece octeții mai departe și primește doar utilizatori ai propriului server",
+              "Opțional: o comunitate poate rula releul împreună cu Mumbot. Fără releu, totul merge ca până acum",
+              "Alegerea ta: releu oprit, doar când conexiunea directă nu reușește, sau mereu, ca adresa ta IP să rămână ascunsă"
+            ]
+          },
+          {
+            "title": "Pentru depanare",
+            "items": [
+              "Inspector de pachete ascuns: arată mesajele Mumcord trimise și primite, cu filtre și export. Doar local, nimic nu e logat sau trimis nicăieri"
+            ]
+          }
         ]
       },
       {
@@ -2036,5 +2080,109 @@
         "coffee": "Maro de espresso și cremă, cald și blând cu ochii."
       }
     }
+  },
+  "mumbot": {
+    "title": "Mumbot",
+    "description": "Mumbot: boți pentru orice server Mumble standard. Un bot webhook postează în canalele tale mesaje venite din afară, un bot de test verifică automat clienții Mumble.",
+    "label": "Boți pentru Mumble",
+    "intro": "Mumbot se conectează ca un om, cu propriul certificat. De aceea merge pe orice server Mumble standard, fără plugin și fără nicio schimbare în configurația serverului. Din familia Mumcord, open source sub AGPL-3.0.",
+    "toc": {
+      "bots": "Boții",
+      "download": "Descarcă",
+      "roadmap": "Roadmap"
+    },
+    "botsTitle": "Doi boți, un singur program",
+    "botsBody": "Amândoi stau în același program, `mumbot`, pentru Linux, Windows, macOS și ca imagine Docker.",
+    "webhook": {
+      "title": "Bot webhook",
+      "body": "Monitorizarea, CI-ul sau propriul tău script trimite un request HTTP cu o cheie API, iar botul postează textul într-un canal Mumble.",
+      "points": [
+        "Stabilești pentru fiecare cheie în ce canale poate scrie",
+        "Bold, italic, cod, liste și linkuri în Markdown",
+        "Parole de canal, reconectare după întreruperi și o identitate fixă prin certificatul său",
+        "Limită de rată și un răspuns clar dacă mesajul a ajuns"
+      ]
+    },
+    "testbot": {
+      "title": "Bot de test",
+      "body": "Un al doilea participant scriptat pentru testarea automată a clienților Mumble. Chiar testele Mumcord rulează pe el.",
+      "points": [
+        "Controlează chatul, starea, permisiunile și moderarea, și așteaptă condiții",
+        "Redă, înregistrează și verifică nivelul vocii, cu Opus adevărat",
+        "Un test de încărcare umple un server local cu până la 1000 de utilizatori",
+        "Exit code 0 înseamnă trecut: se potrivește în orice CI"
+      ]
+    },
+    "downloadTitle": "Descarcă",
+    "downloadBody": "Arhiva conține programul `mumbot`, README-ul și o configurație de exemplu, `bot.example.toml`.",
+    "docker": "Sau ca imagine Docker pentru amd64 și arm64:",
+    "examples": "Exemple Docker Compose gata de folosit: bot webhook, bot webhook cu propriul server Mumble ca să-l încerci și bot de test în CI",
+    "checksums": "Sume de control",
+    "noRelease": "Descărcările sunt pe GitHub.",
+    "prerelease": "Pre-release",
+    "copy": "Copiază",
+    "copied": "Copiat",
+    "roadmapTitle": "Roadmap",
+    "roadmapBody": "La fel ca Mumcord, Mumbot se construiește în epicuri. Epic 2 e o propunere pornită de la issue-urile deschise și urmează să fie planificat în detaliu.",
+    "status": {
+      "done": "gata",
+      "now": "în lucru",
+      "planned": "urmează",
+      "later": "mai târziu"
+    },
+    "epics": [
+      {
+        "id": "epic-0",
+        "title": "Bot de test",
+        "summary": "Botul scriptat din testele Mumcord, acum un program de sine stătător.",
+        "items": [
+          "Chat, stare, permisiuni și moderare, așteptarea unor condiții și un mod script",
+          "Redarea, înregistrarea și verificarea nivelului vocii, cu Opus ca în Mumcord",
+          "Test de încărcare cu până la 1000 de utilizatori pe un server de test local"
+        ]
+      },
+      {
+        "id": "epic-1",
+        "title": "Bot webhook",
+        "summary": "Mesaje din afară într-un canal Mumble.",
+        "items": [
+          "API HTTP cu chei API și canale permise pentru fiecare cheie",
+          "Markdown, parole de canal, reconectare și limită de rată",
+          "Programe pentru Linux, Windows și macOS și o imagine Docker",
+          "De la 0.1.1: exemple Docker Compose și documentație pentru configurație, linia de comandă, API-ul HTTP și securitate"
+        ]
+      },
+      {
+        "id": "epic-2",
+        "title": "Module, muzică și istoric",
+        "summary": "Un bot devine o trusă de unelte.",
+        "items": [
+          "Module: alegi ce boți rulează, în configurație sau din linia de comandă, într-un singur program și o singură imagine",
+          "Bot de muzică: trimiți MP3-uri sau linkuri prin HTTP, iar botul le redă în canalul de voce, cu o coadă",
+          "Bot de istoric: păstrează chatul canalelor pe care le poate vedea și îl dă utilizatorilor Mumcord care au fost offline. Niciodată mesajele private",
+          "Carduri de mesaj: webhook-ul trimite alerte cu titlu, culoare de stare, grafic și link, pe care Mumcord le arată ca un card",
+          "Bitrate reglabil pentru voce și muzică, niciodată peste limita serverului",
+          "Modul peer: înregistrează utilizatorii serverului la un releu mumpeer și îi spune lui Mumcord că releul există"
+        ]
+      },
+      {
+        "id": "later",
+        "tag": "Mai departe",
+        "title": "Idei",
+        "summary": "Încă neplanificate, dar notate.",
+        "items": [
+          "Un bot care citește chatul și răspunde la comenzi",
+          "Text-to-speech sau sunete de alertă într-un canal",
+          "Un bot pentru mai multe servere sau cu mai multe identități",
+          "Șoapte și mesaje private, schimbarea cheilor fără repornire, TLS integrat",
+          "Ține minte certificatul serverului la primul contact și refuză unul schimbat"
+        ]
+      }
+    ],
+    "ideaTitle": "Ai o idee de bot?",
+    "ideaBody": "Dorințele ajung în issue-urile Mumbot de pe GitHub.",
+    "idea": "Propune o idee",
+    "source": "Cod sursă pe GitHub",
+    "docs": "Documentație"
   }
 }

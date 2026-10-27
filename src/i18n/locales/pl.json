@@ -68,6 +68,26 @@
       "themes": {
         "title": "Motywy",
         "desc": "Wygląd do skopiowania, jasny i ciemny"
+      },
+      "botAbout": {
+        "title": "Mumbot",
+        "desc": "Boty dla każdego serwera Mumble"
+      },
+      "botDownload": {
+        "title": "Pobierz",
+        "desc": "Linux, Windows, macOS i Docker"
+      },
+      "botRoadmap": {
+        "title": "Plan rozwoju",
+        "desc": "Co gotowe, a co dalej"
+      },
+      "botSource": {
+        "title": "Kod źródłowy",
+        "desc": "Open source na licencji AGPL-3.0"
+      },
+      "botIssues": {
+        "title": "Zgłoszenia",
+        "desc": "Pomysły i błędy dla Mumbota"
       }
     },
     "hero": {
@@ -313,7 +333,7 @@
     "roadmap": {
       "label": "05 — Dokąd zmierzamy",
       "title": "Szczerze: to jest alfa.",
-      "body": "Plan rozwoju to propozycja i może się zmienić. Aplikacje mobilne i wersja webowa nie są planowane. Nigdy nie będzie wymagane nic po stronie serwera.",
+      "body": "Plan rozwoju to propozycja i może się zmienić.",
       "now": "teraz",
       "all": "Pełny plan rozwoju ze szczegółami",
       "steps": [
@@ -330,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Wygoda",
-          "body": "Globalne skróty klawiszowe, pełne menu w zasobniku, import z oficjalnego klienta, szeptanie, przeglądarka serwerów, Nie przeszkadzać oraz @all i @channel."
+          "body": "Globalne skróty klawiszowe, pełne menu w zasobniku, import z oficjalnego klienta, szeptanie, przeglądarka serwerów, Nie przeszkadzać, @all i @channel, karty wiadomości dla botów, a do tego opcjonalny przekaźnik dla połączeń bezpośrednich."
         },
         {
           "tag": "Epic 4",
@@ -474,7 +494,8 @@
       "privacy": "Prywatność",
       "noTracking": "Ta strona nie ustawia ciasteczek i nie ładuje niczego od podmiotów trzecich.",
       "by": "Projekt autorstwa",
-      "themes": "Motywy"
+      "themes": "Motywy",
+      "botAbout": "Przegląd"
     },
     "notFound": {
       "title": "Nie znaleziono kanału",
@@ -1387,7 +1408,7 @@
   ],
   "roadmap": {
     "title": "Plan rozwoju",
-    "description": "Plan rozwoju Mumcorda ze szczegółami: co przynosi Epic 1, co jest zaplanowane później i co nigdy się nie wydarzy.",
+    "description": "Plan rozwoju Mumcorda ze szczegółami: co przynosi każdy epik, co jest gotowe i co będzie dalej.",
     "label": "Dokąd zmierzamy",
     "intro": "Mumcord powstaje w epikach. Epic 1 kończy się wraz z wersją 0.3.0. Oto, co przynosi każdy epik. Plan rozwoju to propozycja: kolejność i zakres mogą się jeszcze zmienić.",
     "status": {
@@ -1398,12 +1419,6 @@
     },
     "epicsTitle": "Epiki",
     "epicsBody": "Epic 1 to klient na co dzień. Potem przyjdą większe elementy, których kolejność nie jest jeszcze ustalona.",
-    "never": "Co nigdy się nie wydarzy",
-    "neverItems": [
-      "Cokolwiek na serwerze: żadnych usług towarzyszących, żadnych pluginów serwera, żadnej konfiguracji serwera. Mumcord działa z każdym standardowym serwerem Mumble.",
-      "Aplikacje mobilne i wersja webowa.",
-      "Serwer pośredniczący dla połączeń bezpośrednich: jeśli żadna bezpośrednia droga nie działa, Mumcord idzie zamiast tego przez serwer Mumble."
-    ],
     "ideaTitle": "Czegoś brakuje?",
     "ideaBody": "Propozycje trafiają do zgłoszeń na GitHubie i są uwzględniane w planowaniu.",
     "idea": "Zaproponuj funkcję",
@@ -1590,15 +1605,44 @@
       {
         "id": "epic-3",
         "title": "Wygoda",
-        "summary": "Szlify dla intensywnych użytkowników.",
-        "items": [
-          "Globalne skróty poza push-to-talk",
-          "Pełne menu w zasobniku",
-          "Import ustawień z oficjalnego klienta Mumble",
-          "Szeptanie i wołanie do innych kanałów",
-          "Publiczna przeglądarka serwerów",
-          "Nie przeszkadzać: jeden przełącznik wycisza powiadomienia, dźwięki i wyskakujące okienka, a głosy nadal słyszysz",
-          "@all i @channel, by oznaczyć wszystkich na serwerze lub na kanale"
+        "summary": "Szlify dla intensywnych użytkowników, karty wiadomości dla botów, opcjonalny przekaźnik dla połączeń bezpośrednich i narzędzie do debugowania.",
+        "groups": [
+          {
+            "title": "Wygoda na co dzień",
+            "items": [
+              "Globalne skróty poza push-to-talk",
+              "Pełne menu w zasobniku",
+              "Import ustawień z oficjalnego klienta Mumble",
+              "Szeptanie i wołanie do innych kanałów",
+              "Publiczna przeglądarka serwerów",
+              "Nie przeszkadzać: jeden przełącznik wycisza powiadomienia, dźwięki i wyskakujące okienka, a głosy nadal słyszysz",
+              "@all i @channel, by oznaczyć wszystkich na serwerze lub na kanale"
+            ]
+          },
+          {
+            "title": "Karty wiadomości",
+            "items": [
+              "Boty i monitoring zamiast zwykłego tekstu wysyłają zwięzłą kartę: tytuł, sformatowany tekst, opcjonalnie obraz, np. wykres, i link do dashboardu",
+              "Kolory statusu dla informacji, sukcesu, ostrzeżenia i błędu, zawsze także z etykietą tekstową",
+              "Obrazy ładują się tylko przy włączonych podglądach linków i przechodzą przez Mumcord, nigdy prosto z obcego serwera",
+              "Oficjalne klienty Mumble widzą tę samą wiadomość jako zwykły, starannie sformatowany tekst"
+            ]
+          },
+          {
+            "title": "Połączenia bezpośrednie przez przekaźnik",
+            "items": [
+              "Gdy żadne połączenie bezpośrednie nie działa, np. za CGNAT, albo nie chcesz pokazywać swojego adresu IP, dane przekazuje przekaźnik mumpeer",
+              "Treść pozostaje szyfrowana end-to-end; przekaźnik tylko przesyła bajty dalej i wpuszcza wyłącznie użytkowników własnego serwera",
+              "Opcjonalnie: społeczność może uruchomić przekaźnik razem z Mumbotem. Bez przekaźnika wszystko działa jak dotąd",
+              "Twój wybór: przekaźnik wyłączony, tylko gdy połączenie bezpośrednie zawiedzie, albo zawsze, by twój adres IP pozostał ukryty"
+            ]
+          },
+          {
+            "title": "Do debugowania",
+            "items": [
+              "Ukryty inspektor pakietów: pokazuje wysłane i odebrane wiadomości Mumcorda, z filtrami i eksportem. Tylko lokalnie, nic nie jest logowane ani nigdzie wysyłane"
+            ]
+          }
         ]
       },
       {
@@ -2036,5 +2080,109 @@
         "coffee": "Brązy espresso i crema, ciepłe i łagodne dla oczu."
       }
     }
+  },
+  "mumbot": {
+    "title": "Mumbot",
+    "description": "Mumbot: boty dla każdego standardowego serwera Mumble. Bot webhook publikuje na twoich kanałach wiadomości z zewnątrz, bot testowy automatycznie sprawdza klienty Mumble.",
+    "label": "Boty dla Mumble",
+    "intro": "Mumbot loguje się jak człowiek, z własnym certyfikatem. Dlatego działa na każdym standardowym serwerze Mumble, bez wtyczki i bez zmian w konfiguracji serwera. Z rodziny Mumcorda, open source na licencji AGPL-3.0.",
+    "toc": {
+      "bots": "Boty",
+      "download": "Pobierz",
+      "roadmap": "Plan rozwoju"
+    },
+    "botsTitle": "Dwa boty, jeden program",
+    "botsBody": "Oba mieszkają w tym samym programie, `mumbot`, dla Linuxa, Windowsa i macOS oraz jako obraz Docker.",
+    "webhook": {
+      "title": "Bot webhook",
+      "body": "Monitoring, CI albo twój własny skrypt wysyła jedno żądanie HTTP z kluczem API, a bot publikuje tekst na kanale Mumble.",
+      "points": [
+        "Dla każdego klucza ustawisz, na których kanałach może pisać",
+        "Pogrubienie, kursywa, kod, listy i linki w Markdown",
+        "Hasła kanałów, ponowne łączenie po zerwaniu i stała tożsamość dzięki certyfikatowi",
+        "Limit częstotliwości i jasna odpowiedź, czy wiadomość dotarła"
+      ]
+    },
+    "testbot": {
+      "title": "Bot testowy",
+      "body": "Oskryptowany drugi uczestnik do automatycznych testów klientów Mumble. Na nim działają testy samego Mumcorda.",
+      "points": [
+        "Steruj czatem, stanem, uprawnieniami i moderacją oraz czekaj na warunki",
+        "Odtwarzaj i nagrywaj głos oraz sprawdzaj jego poziom, z prawdziwym kodekiem Opus",
+        "Test obciążeniowy zapełnia lokalny serwer nawet 1000 użytkownikami",
+        "Kod wyjścia 0 oznacza zaliczone: pasuje do każdego CI"
+      ]
+    },
+    "downloadTitle": "Pobierz",
+    "downloadBody": "Archiwum zawiera program `mumbot`, README i przykładową konfigurację, `bot.example.toml`.",
+    "docker": "Albo jako obraz Docker dla amd64 i arm64:",
+    "examples": "Gotowe przykłady Docker Compose: bot webhook, bot webhook z własnym serwerem Mumble do wypróbowania i bot testowy w CI",
+    "checksums": "Sumy kontrolne",
+    "noRelease": "Pliki do pobrania są na GitHubie.",
+    "prerelease": "Wersja wstępna",
+    "copy": "Kopiuj",
+    "copied": "Skopiowano",
+    "roadmapTitle": "Plan rozwoju",
+    "roadmapBody": "Tak jak Mumcord, Mumbot powstaje w epikach. Epic 2 to propozycja na podstawie otwartych zgłoszeń i dopiero zostanie szczegółowo zaplanowany.",
+    "status": {
+      "done": "gotowe",
+      "now": "w trakcie",
+      "planned": "następne",
+      "later": "później"
+    },
+    "epics": [
+      {
+        "id": "epic-0",
+        "title": "Bot testowy",
+        "summary": "Oskryptowany bot z testów Mumcorda, teraz jako osobny program.",
+        "items": [
+          "Czat, stan, uprawnienia i moderacja, czekanie na warunki i tryb skryptowy",
+          "Odtwarzanie, nagrywanie i sprawdzanie poziomu głosu, z kodekiem Opus jak w Mumcordzie",
+          "Test obciążeniowy z maksymalnie 1000 użytkowników na lokalnym serwerze testowym"
+        ]
+      },
+      {
+        "id": "epic-1",
+        "title": "Bot webhook",
+        "summary": "Wiadomości z zewnątrz na kanale Mumble.",
+        "items": [
+          "HTTP API z kluczami API i dozwolonymi kanałami dla każdego klucza",
+          "Markdown, hasła kanałów, ponowne łączenie i limit częstotliwości",
+          "Programy dla Linuxa, Windowsa i macOS oraz obraz Docker",
+          "Od 0.1.1: przykłady Docker Compose i dokumentacja konfiguracji, wiersza poleceń, HTTP API i bezpieczeństwa"
+        ]
+      },
+      {
+        "id": "epic-2",
+        "title": "Moduły, muzyka i historia",
+        "summary": "Jeden bot staje się zestawem narzędzi.",
+        "items": [
+          "Moduły: w konfiguracji lub w wierszu poleceń wybierasz, które boty działają, w jednym programie i jednym obrazie",
+          "Bot muzyczny: wyślij pliki MP3 lub linki przez HTTP, a bot odtworzy je na kanale głosowym, z kolejką",
+          "Bot historii: przechowuje czat kanałów, które może widzieć, i przekazuje go użytkownikom Mumcorda, którzy byli offline. Nigdy prywatnych wiadomości",
+          "Karty wiadomości: webhook wysyła alerty z tytułem, kolorem statusu, wykresem i linkiem, które Mumcord pokazuje jako kartę",
+          "Regulowany bitrate dla mowy i muzyki, nigdy powyżej limitu serwera",
+          "Moduł peer: rejestruje użytkowników serwera w przekaźniku mumpeer i daje Mumcordowi znać, że przekaźnik istnieje"
+        ]
+      },
+      {
+        "id": "later",
+        "tag": "Potem",
+        "title": "Pomysły",
+        "summary": "Jeszcze nie zaplanowane, ale zanotowane.",
+        "items": [
+          "Bot, który czyta czat i odpowiada na polecenia",
+          "Synteza mowy lub dźwięki alertów na kanale",
+          "Jeden bot dla kilku serwerów lub z kilkoma tożsamościami",
+          "Szepty i prywatne wiadomości, wymiana kluczy bez restartu, wbudowany TLS",
+          "Zapamiętanie certyfikatu serwera przy pierwszym kontakcie i odrzucanie zmienionego"
+        ]
+      }
+    ],
+    "ideaTitle": "Pomysł na bota?",
+    "ideaBody": "Życzenia trafiają do zgłoszeń Mumbota na GitHubie.",
+    "idea": "Zaproponuj pomysł",
+    "source": "Kod źródłowy na GitHubie",
+    "docs": "Dokumentacja"
   }
 }

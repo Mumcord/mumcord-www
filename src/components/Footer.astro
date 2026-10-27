@@ -5,7 +5,7 @@ import { dicts, routes, type Lang } from "../i18n";
 import { REPO_URL, WIKI_URL, ISSUES_URL, RELEASES_URL, getLatestRelease } from "../lib/release";
 import { OWNER } from "../lib/site";
 import { BUG_URL, IDEA_URL } from "../lib/features";
-import { MUMBOT_REPO_URL, MUMBOT_MILESTONES_URL } from "../lib/mumbot";
+import { MUMBOT_REPO_URL } from "../lib/mumbot";
 
 interface Props {
   lang: Lang;
@@ -31,8 +31,10 @@ const columns = [
   {
     title: "Mumbot",
     links: [
-      { label: t.botAbout, href: MUMBOT_REPO_URL, external: true },
-      { label: t.roadmap, href: MUMBOT_MILESTONES_URL, external: true },
+      { label: t.botAbout, href: routes.mumbot[lang] },
+      { label: t.download, href: `${routes.mumbot[lang]}#download` },
+      { label: t.roadmap, href: `${routes.mumbot[lang]}#roadmap` },
+      { label: t.source, href: MUMBOT_REPO_URL, external: true },
     ],
   },
   {

@@ -1,0 +1,172 @@
+---
+import CopyButton from "./CopyButton.astro";
+import type { Lang } from "../i18n";
+import { formatSize } from "../lib/release";
+import {
+  mumbotPage,
+  getMumbotRelease,
+  MUMBOT_CODE,
+  MUMBOT_REPO_URL,
+  MUMBOT_RELEASES_URL,
+  MUMBOT_IDEA_URL,
+  MUMBOT_DOCS_URL,
+  MUMBOT_CLI_URL,
+  MUMBOT_EXAMPLES_URL,
+  type BotPlatform,
+} from "../lib/mumbot";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const p = mumbotPage[lang];
+const release = await getMumbotRelease();
+const version = release?.version ?? "latest";
+const platforms: BotPlatform[] = ["linux", "linuxArm", "windows", "macos"];
+// `code` in the texts becomes <code>; everything else is escaped.
+const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const md = (s: string) => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>");
+const bots = [
+  { id: "webhook", ...p.webhook, code: MUMBOT_CODE.webhook, file: "Terminal", docs: MUMBOT_DOCS_URL },
+  { id: "testbot", ...p.testbot, code: MUMBOT_CODE.testbot, file: "Terminal", docs: MUMBOT_CLI_URL },
+];
+---
+
+<article class="wrap mumbot-page">
+  <header class="rp-head mb-head">
+    <p class="label" data-reveal>{p.label}</p>
+    <h1 class="h2" data-reveal>{p.title}</h1>
+    <p class="body" data-reveal>{p.intro}</p>
+    {
+      release && (
+        <p class="mb-release" data-reveal>
+          <span class="live-dot" aria-hidden="true" />
+          <a href={release.url} rel="noopener">v{release.version}</a>
+          {release.prerelease && <span class="pill">{p.prerelease}</span>}
+        </p>
+      )
+    }
+    <nav class="fp-toc" aria-label={p.title} data-reveal>
+      <a href="#bots">{p.toc.bots}</a>
+      <a href="#download">{p.toc.download}</a>
+      <a href="#roadmap">{p.toc.roadmap}</a>
+    </nav>
+  </header>
+
+  <section class="rp-section" id="bots" aria-labelledby="bots-h">
+    <h2 id="bots-h" data-reveal>{p.botsTitle}</h2>
+    <p class="rp-section-body" data-reveal set:html={md(p.botsBody)} />
+    <div class="mb-bots">
+      {
+        bots.map((b) => (
+          <section class="mb-bot" id={b.id} aria-labelledby={`${b.id}-h`} data-reveal>
+            <h3 id={`${b.id}-h`}>{b.title}</h3>
+            <p>{b.body}</p>
+            <ul>
+              {b.points.map((i) => (
+                <li>{i}</li>
+              ))}
+            </ul>
+            <figure class="code">
+              <figcaption>
+                <span>{b.file}</span>
+                <CopyButton label={p.copy} copied={p.copied} class="is-quiet" />
+              </figcaption>
+              <pre><code>{b.code}</code></pre>
+            </figure>
+            <a class="text-link" href={b.docs} rel="noopener">{p.docs} →</a>
+          </section>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="rp-section" id="download" aria-labelledby="mb-download-h">
+    <h2 id="mb-download-h" data-reveal>{p.downloadTitle}</h2>
+    <p class="rp-section-body" data-reveal set:html={md(p.downloadBody)} />
+    {
+      release ? (
+        <ul class="mb-downloads" data-reveal>
+          {platforms.map((k) => {
+            const a = release.assets[k];
+            return (
+              a && (
+                <li>
+                  <a href={a.url} rel="noopener">
+                    <span class="mb-dl-name">{p.platforms[k]}</span>
+                    <span class="mb-dl-file">
+                      {a.name} · {formatSize(a.size)}
+                    </span>
+                    <span class="mb-dl-arrow" aria-hidden="true">↓</span>
+                  </a>
+                </li>
+              )
+            );
+          })}
+        </ul>
+      ) : (
+        <p data-reveal>
+          <a class="text-link" href={MUMBOT_RELEASES_URL} rel="noopener">{p.noRelease} →</a>
+        </p>
+      )
+    }
+    <p class="mb-docker-label" data-reveal>{p.docker}</p>
+    <figure class="code" data-reveal>
+      <figcaption>
+        <span>Docker</span>
+        <CopyButton label={p.copy} copied={p.copied} class="is-quiet" />
+      </figcaption>
+      <pre><code>{MUMBOT_CODE.docker(version)}</code></pre>
+    </figure>
+    <p class="mb-sums" data-reveal>
+      <a class="text-link" href={MUMBOT_EXAMPLES_URL} rel="noopener">{p.examples} →</a>
+    </p>
+    {release?.checksums && (
+      <p class="mb-sums" data-reveal>
+        <a class="text-link" href={release.checksums.url} rel="noopener">{p.checksums} (SHA256SUMS) →</a>
+      </p>
+    )}
+  </section>
+
+  <section class="rp-section" id="roadmap" aria-labelledby="mb-roadmap-h">
+    <h2 id="mb-roadmap-h" data-reveal>{p.roadmapTitle}</h2>
+    <p class="rp-section-body" data-reveal>{p.roadmapBody}</p>
+    <ol class="rp-stages">
+      {
+        p.epics.map((s) => (
+          <li class="rp-stage" id={`mumbot-${s.id}`} data-status={s.status} data-reveal>
+            <div class="rp-side">
+              <p class="tl-tag">{s.tag}</p>
+              <p class="rp-status">
+                <span class="rp-dot" aria-hidden="true" />
+                {p.status[s.status]}
+                {s.version && <span class="rp-version">v{s.version}</span>}
+              </p>
+            </div>
+            <div class="rp-main">
+              <h3>
+                <a href={`#mumbot-${s.id}`}>{s.title}</a>
+              </h3>
+              <p class="rp-summary">{s.summary}</p>
+              <ul>
+                {s.items.map((i) => (
+                  <li>{i}</li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+
+  <section class="fp-ask" aria-labelledby="mb-ask-h" data-reveal>
+    <h2 id="mb-ask-h">{p.ideaTitle}</h2>
+    <p>{p.ideaBody}</p>
+    <p class="fp-actions">
+      <a class="btn btn-small" href={MUMBOT_IDEA_URL} rel="noopener">{p.idea}</a>
+      <a class="text-link" href={MUMBOT_REPO_URL} rel="noopener">{p.source} →</a>
+    </p>
+  </section>
+</article>

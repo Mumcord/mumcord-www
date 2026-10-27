@@ -68,6 +68,26 @@
       "themes": {
         "title": "Teman",
         "desc": "Stilar att kopiera, ljusa och mörka"
+      },
+      "botAbout": {
+        "title": "Mumbot",
+        "desc": "Bottar för alla Mumble-servrar"
+      },
+      "botDownload": {
+        "title": "Ladda ner",
+        "desc": "Linux, Windows, macOS och Docker"
+      },
+      "botRoadmap": {
+        "title": "Roadmap",
+        "desc": "Vad som är klart och vad som är på gång"
+      },
+      "botSource": {
+        "title": "Källkod",
+        "desc": "Öppen källkod under AGPL-3.0"
+      },
+      "botIssues": {
+        "title": "Issues",
+        "desc": "Idéer och buggar för Mumbot"
       }
     },
     "hero": {
@@ -313,7 +333,7 @@
     "roadmap": {
       "label": "05 – Vart det är på väg",
       "title": "Ärligt talat: det här är en alfa.",
-      "body": "Roadmappen är ett förslag och kan ändras. Mobilappar och en webbversion är inte planerade. Inget på serversidan kommer någonsin att krävas.",
+      "body": "Roadmappen är ett förslag och kan ändras.",
       "now": "nu",
       "all": "Hela roadmappen i detalj",
       "steps": [
@@ -330,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Bekvämlighet",
-          "body": "Globala snabbtangenter, fullständig meny i systemfältet, import från den officiella klienten, viskning, serverbläddrare, ”Stör ej” samt @all och @channel."
+          "body": "Globala snabbtangenter, fullständig meny i systemfältet, import från den officiella klienten, viskning, serverbläddrare, ”Stör ej”, @all och @channel, meddelandekort för bottar samt ett valfritt relä för direktanslutningar."
         },
         {
           "tag": "Epic 4",
@@ -474,7 +494,8 @@
       "privacy": "Integritet",
       "noTracking": "Den här webbplatsen sätter inga cookies och laddar inget från tredje part.",
       "by": "Ett projekt av",
-      "themes": "Teman"
+      "themes": "Teman",
+      "botAbout": "Översikt"
     },
     "notFound": {
       "title": "Kanalen hittades inte",
@@ -1387,7 +1408,7 @@
   ],
   "roadmap": {
     "title": "Roadmap",
-    "description": "Mumcords roadmap i detalj: vad Epic 1 ger, vad som planeras efter det och vad som aldrig kommer att hända.",
+    "description": "Mumcords roadmap i detalj: vad varje epic ger, vad som är klart och vad som kommer härnäst.",
     "label": "Vart det är på väg",
     "intro": "Mumcord byggs i epics. Epic 1 slutförs med version 0.3.0. Här är vad varje epic ger. Roadmappen är ett förslag: ordning och omfattning kan fortfarande ändras.",
     "status": {
@@ -1398,12 +1419,6 @@
     },
     "epicsTitle": "Epics",
     "epicsBody": "Epic 1 är vardagsklienten. Efter det kommer större byggstenar vars ordning inte är bestämd än.",
-    "never": "Vad som aldrig kommer att hända",
-    "neverItems": [
-      "Något på servern: inga tilläggstjänster, inga serverplugins, ingen serverkonfiguration. Mumcord fungerar med alla vanliga Mumble-servrar.",
-      "Mobilappar och en webbversion.",
-      "En reläserver för direkta anslutningar: om ingen direkt väg fungerar går Mumcord via Mumble-servern i stället."
-    ],
     "ideaTitle": "Saknar du något?",
     "ideaBody": "Önskemål hamnar i issues på GitHub och går in i planeringen.",
     "idea": "Önska en funktion",
@@ -1590,15 +1605,44 @@
       {
         "id": "epic-3",
         "title": "Bekvämlighet",
-        "summary": "Finputs för flitiga användare.",
-        "items": [
-          "Globala kortkommandon utöver push-to-talk",
-          "Fullständig meny i systemfältet",
-          "Importera inställningar från den officiella Mumble-klienten",
-          "Viska och ropa till andra kanaler",
-          "Offentlig serverbläddrare",
-          "Stör ej: ett reglage tystar aviseringar, ljud och popup-fönster, och du hör fortfarande röster",
-          "@all och @channel för att nämna alla på servern eller i kanalen"
+        "summary": "Finputs för flitiga användare, meddelandekort för bottar, ett valfritt relä för direktanslutningar och ett verktyg för felsökning.",
+        "groups": [
+          {
+            "title": "Vardaglig bekvämlighet",
+            "items": [
+              "Globala kortkommandon utöver push-to-talk",
+              "Fullständig meny i systemfältet",
+              "Importera inställningar från den officiella Mumble-klienten",
+              "Viska och ropa till andra kanaler",
+              "Offentlig serverbläddrare",
+              "Stör ej: ett reglage tystar aviseringar, ljud och popup-fönster, och du hör fortfarande röster",
+              "@all och @channel för att nämna alla på servern eller i kanalen"
+            ]
+          },
+          {
+            "title": "Meddelandekort",
+            "items": [
+              "Bottar och övervakning skickar ett kompakt kort i stället för ren text: en rubrik, formaterad text, eventuellt en bild som ett diagram och en länk till dashboarden",
+              "Statusfärger för info, lyckat, varning och fel, alltid med en textetikett också",
+              "Bilder laddas bara när länkförhandsvisningar är på och går via Mumcord, aldrig direkt från den andra servern",
+              "Officiella Mumble-klienter ser samma meddelande som vanlig, snyggt formaterad text"
+            ]
+          },
+          {
+            "title": "Direktanslutningar via ett relä",
+            "items": [
+              "Om ingen direktanslutning fungerar, till exempel bakom CGNAT, eller om du inte vill visa din IP-adress, vidarebefordrar ett mumpeer-relä datan",
+              "Innehållet förblir end-to-end-krypterat; reläet skickar bara vidare bytes och släpper bara in användare från sin egen server",
+              "Valfritt: en community kan köra reläet tillsammans med Mumbot. Utan relä fungerar allt som förut",
+              "Du väljer: relä av, bara när en direktanslutning misslyckas, eller alltid, så att din IP-adress förblir dold"
+            ]
+          },
+          {
+            "title": "För felsökning",
+            "items": [
+              "Dold paketinspektör: visar skickade och mottagna Mumcord-meddelanden, med filter och export. Bara lokalt, inget loggas eller skickas någonstans"
+            ]
+          }
         ]
       },
       {
@@ -2036,5 +2080,109 @@
         "coffee": "Espressobruna toner och crema, varmt och skönt för ögonen."
       }
     }
+  },
+  "mumbot": {
+    "title": "Mumbot",
+    "description": "Mumbot: bottar för alla vanliga Mumble-servrar. En webhook-bot skriver meddelanden utifrån i dina kanaler, en testbot testar Mumble-klienter automatiskt.",
+    "label": "Bottar för Mumble",
+    "intro": "Mumbot loggar in som en människa, med ett eget certifikat. Därför körs den på alla vanliga Mumble-servrar, utan plugin och utan ändringar i serverkonfigurationen. Från Mumcord-familjen, öppen källkod under AGPL-3.0.",
+    "toc": {
+      "bots": "Bottarna",
+      "download": "Ladda ner",
+      "roadmap": "Roadmap"
+    },
+    "botsTitle": "Två bottar, ett program",
+    "botsBody": "Båda finns i samma program, `mumbot`, för Linux, Windows, macOS och som Docker-image.",
+    "webhook": {
+      "title": "Webhook-bot",
+      "body": "Övervakning, CI eller ditt eget skript skickar en HTTP-förfrågan med en API-nyckel, och botten skriver texten i en Mumble-kanal.",
+      "points": [
+        "Ställ in per nyckel vilka kanaler den får skriva i",
+        "Fetstil, kursiv, kod, listor och länkar i Markdown",
+        "Kanallösenord, återanslutning efter avbrott och en fast identitet genom sitt certifikat",
+        "Rate limit och ett tydligt svar om meddelandet kom fram"
+      ]
+    },
+    "testbot": {
+      "title": "Testbot",
+      "body": "En skriptad andra deltagare för automatiska tester av Mumble-klienter. Mumcords egna tester körs med den.",
+      "points": [
+        "Styr chatt, status, behörigheter och moderering, och vänta på villkor",
+        "Spela upp, spela in och kontrollera nivån på röst, med äkta Opus",
+        "Ett lasttest fyller en lokal server med upp till 1000 användare",
+        "Exitkod 0 betyder godkänt: passar in i alla CI"
+      ]
+    },
+    "downloadTitle": "Ladda ner",
+    "downloadBody": "Arkivet innehåller programmet `mumbot`, README-filen och en exempelkonfiguration, `bot.example.toml`.",
+    "docker": "Eller som Docker-image för amd64 och arm64:",
+    "examples": "Färdiga Docker Compose-exempel: webhook-bot, webhook-bot med en egen Mumble-server att testa med, och testbot i CI",
+    "checksums": "Kontrollsummor",
+    "noRelease": "Nedladdningarna finns på GitHub.",
+    "prerelease": "Förhandsversion",
+    "copy": "Kopiera",
+    "copied": "Kopierat",
+    "roadmapTitle": "Roadmap",
+    "roadmapBody": "Precis som Mumcord byggs Mumbot i epics. Epic 2 är ett förslag utifrån de öppna issues och planeras fortfarande i detalj.",
+    "status": {
+      "done": "klart",
+      "now": "pågår",
+      "planned": "näst på tur",
+      "later": "senare"
+    },
+    "epics": [
+      {
+        "id": "epic-0",
+        "title": "Testbot",
+        "summary": "Den skriptade botten från Mumcords tester, nu ett eget program.",
+        "items": [
+          "Chatt, status, behörigheter och moderering, väntan på villkor och ett skriptläge",
+          "Spela upp, spela in och kontrollera nivån på röst, med Opus som i Mumcord",
+          "Lasttest med upp till 1000 användare på en lokal testserver"
+        ]
+      },
+      {
+        "id": "epic-1",
+        "title": "Webhook-bot",
+        "summary": "Meddelanden utifrån in i en Mumble-kanal.",
+        "items": [
+          "HTTP API med API-nycklar och tillåtna kanaler per nyckel",
+          "Markdown, kanallösenord, återanslutning och rate limit",
+          "Program för Linux, Windows och macOS och en Docker-image",
+          "Sedan 0.1.1: Docker Compose-exempel och dokumentation om konfiguration, kommandorad, HTTP API och säkerhet"
+        ]
+      },
+      {
+        "id": "epic-2",
+        "title": "Moduler, musik och historik",
+        "summary": "En bot blir en verktygslåda.",
+        "items": [
+          "Moduler: välj i konfigurationen eller på kommandoraden vilka bottar som körs, i ett program och en image",
+          "Musikbot: skicka MP3-filer eller länkar via HTTP, och botten spelar dem i röstkanalen med en kö",
+          "Historikbot: sparar chatten i de kanaler den får se och lämnar den till Mumcord-användare som var offline. Aldrig privata meddelanden",
+          "Meddelandekort: webhooken skickar larm med rubrik, statusfärg, diagram och länk som Mumcord visar som ett kort",
+          "Justerbar bithastighet för tal och musik, aldrig över serverns gräns",
+          "Peer-modul: registrerar serverns användare hos ett mumpeer-relä och talar om för Mumcord att reläet finns"
+        ]
+      },
+      {
+        "id": "later",
+        "tag": "Därefter",
+        "title": "Idéer",
+        "summary": "Inte planerat än, men antecknat.",
+        "items": [
+          "En bot som läser chatten och svarar på kommandon",
+          "Text-till-tal eller larmljud i en kanal",
+          "En bot för flera servrar eller med flera identiteter",
+          "Viskningar och privata meddelanden, byta nycklar utan omstart, inbyggd TLS",
+          "Komma ihåg serverns certifikat vid första kontakten och vägra ett ändrat"
+        ]
+      }
+    ],
+    "ideaTitle": "En idé till en bot?",
+    "ideaBody": "Önskemål hamnar i Mumbots issues på GitHub.",
+    "idea": "Föreslå en idé",
+    "source": "Källkod på GitHub",
+    "docs": "Dokumentation"
   }
 }
