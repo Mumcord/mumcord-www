@@ -1,0 +1,37 @@
+# Type-checks and builds the site on every pull request (Dependabot's included), so a
+# dependency bump that breaks the build never reaches main and the image.
+name: Check
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+      - run: npm run check
+      - run: npm run build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker image builds
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false
+          provenance: false

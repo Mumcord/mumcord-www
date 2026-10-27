@@ -1,0 +1,70 @@
+# Weekly dependency updates, grouped so a normal week brings few PRs. Every PR runs the
+# Check workflow; merging to main builds a new image, deploying stays manual.
+#
+# The cooldown holds back versions until they have been out for a while, so a broken or
+# hijacked release is usually pulled before it reaches us. Security updates skip it.
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/Berlin
+    cooldown:
+      default-days: 5
+      semver-major-days: 14
+    open-pull-requests-limit: 5
+    versioning-strategy: increase
+    commit-message:
+      prefix: fix
+      include: scope
+    labels: [dependencies]
+    groups:
+      astro:
+        patterns: ["astro", "@astrojs/*"]
+      fonts:
+        patterns: ["@fontsource*"]
+      minor-and-patch:
+        update-types: [minor, patch]
+    ignore:
+      # Types follow the Node version in the Dockerfile, which moves by hand.
+      - dependency-name: "@types/node"
+        update-types: [version-update:semver-major]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/Berlin
+    cooldown:
+      default-days: 5
+    commit-message:
+      prefix: ci
+    labels: [dependencies]
+    groups:
+      actions:
+        patterns: ["*"]
+
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/Berlin
+    cooldown:
+      default-days: 5
+    commit-message:
+      prefix: ci
+    labels: [dependencies]
+    ignore:
+      # Stay on the Node LTS line; the next LTS is a deliberate switch.
+      - dependency-name: node
+        update-types: [version-update:semver-major]
+      - dependency-name: caddy
+        update-types: [version-update:semver-major]
