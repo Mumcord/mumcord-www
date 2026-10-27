@@ -33,6 +33,9 @@ updates:
       # Types follow the Node version in the Dockerfile, which moves by hand.
       - dependency-name: "@types/node"
         update-types: [version-update:semver-major]
+      # @astrojs/check 0.9.12 only accepts TypeScript 5 or 6. Drop this once it allows 7.
+      - dependency-name: typescript
+        update-types: [version-update:semver-major]
 
   - package-ecosystem: github-actions
     directory: /
