@@ -68,6 +68,26 @@
       "themes": {
         "title": "Thema's",
         "desc": "Looks om te kopiëren, licht en donker"
+      },
+      "botAbout": {
+        "title": "Mumbot",
+        "desc": "Bots voor elke Mumble-server"
+      },
+      "botDownload": {
+        "title": "Downloaden",
+        "desc": "Linux, Windows, macOS en Docker"
+      },
+      "botRoadmap": {
+        "title": "Roadmap",
+        "desc": "Wat af is en wat er nog komt"
+      },
+      "botSource": {
+        "title": "Broncode",
+        "desc": "Open source onder AGPL-3.0"
+      },
+      "botIssues": {
+        "title": "Issues",
+        "desc": "Ideeën en bugs voor Mumbot"
       }
     },
     "hero": {
@@ -313,7 +333,7 @@
     "roadmap": {
       "label": "05 — Waar het heen gaat",
       "title": "Eerlijk is eerlijk: dit is een alpha.",
-      "body": "De roadmap is een voorstel en kan veranderen. Mobiele apps en een webversie staan niet op de planning. Aan de serverkant zal nooit iets nodig zijn.",
+      "body": "De roadmap is een voorstel en kan veranderen.",
       "now": "nu",
       "all": "De volledige roadmap in detail",
       "steps": [
@@ -330,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Comfort",
-          "body": "Globale sneltoetsen, volledig traymenu, import uit de officiële client, fluisteren, serverbrowser, Niet storen, @all en @channel."
+          "body": "Globale sneltoetsen, volledig traymenu, import uit de officiële client, fluisteren, serverbrowser, Niet storen, @all en @channel, berichtkaarten voor bots, plus een optionele relay voor directe verbindingen."
         },
         {
           "tag": "Epic 4",
@@ -474,7 +494,8 @@
       "privacy": "Privacy",
       "noTracking": "Deze site plaatst geen cookies en laadt niets van derden.",
       "by": "Een project van",
-      "themes": "Thema's"
+      "themes": "Thema's",
+      "botAbout": "Overzicht"
     },
     "notFound": {
       "title": "Kanaal niet gevonden",
@@ -1387,7 +1408,7 @@
   ],
   "roadmap": {
     "title": "Roadmap",
-    "description": "De roadmap van Mumcord in detail: wat Epic 1 brengt, wat daarna gepland is en wat er nooit komt.",
+    "description": "De roadmap van Mumcord in detail: wat elke epic brengt, wat af is en wat er nog komt.",
     "label": "Waar het heen gaat",
     "intro": "Mumcord wordt in epics gebouwd. Met versie 0.3.0 is Epic 1 af. Dit brengt elke epic. De roadmap is een voorstel: volgorde en omvang kunnen nog veranderen.",
     "status": {
@@ -1398,12 +1419,6 @@
     },
     "epicsTitle": "De epics",
     "epicsBody": "Epic 1 is de client voor elke dag. Daarna komen grotere bouwstenen waarvan de volgorde nog niet vastligt.",
-    "never": "Wat er nooit komt",
-    "neverItems": [
-      "Wat dan ook op de server: geen begeleidende diensten, geen serverplugins, geen serverconfiguratie. Mumcord werkt met elke standaard Mumble-server.",
-      "Mobiele apps en een webversie.",
-      "Een relayserver voor directe verbindingen: als geen directe weg werkt, gaat Mumcord in plaats daarvan via de Mumble-server."
-    ],
     "ideaTitle": "Mis je iets?",
     "ideaBody": "Wensen komen in de issues op GitHub terecht en worden meegenomen in de planning.",
     "idea": "Functie aanvragen",
@@ -1590,15 +1605,44 @@
       {
         "id": "epic-3",
         "title": "Comfort",
-        "summary": "Afwerking voor fanatieke gebruikers.",
-        "items": [
-          "Globale sneltoetsen naast push-to-talk",
-          "Volledig traymenu",
-          "Instellingen importeren uit de officiële Mumble-client",
-          "Fluisteren en roepen naar andere kanalen",
-          "Openbare serverbrowser",
-          "Niet storen: één schakelaar zet meldingen, geluiden en pop-ups stil, en stemmen hoor je gewoon nog",
-          "@all en @channel om iedereen op de server of in het kanaal te vermelden"
+        "summary": "Afwerking voor fanatieke gebruikers, berichtkaarten voor bots, een optionele relay voor directe verbindingen en een hulpmiddel om te debuggen.",
+        "groups": [
+          {
+            "title": "Comfort voor elke dag",
+            "items": [
+              "Globale sneltoetsen naast push-to-talk",
+              "Volledig traymenu",
+              "Instellingen importeren uit de officiële Mumble-client",
+              "Fluisteren en roepen naar andere kanalen",
+              "Openbare serverbrowser",
+              "Niet storen: één schakelaar zet meldingen, geluiden en pop-ups stil, en stemmen hoor je gewoon nog",
+              "@all en @channel om iedereen op de server of in het kanaal te vermelden"
+            ]
+          },
+          {
+            "title": "Berichtkaarten",
+            "items": [
+              "Bots en monitoring sturen een compacte kaart in plaats van platte tekst: een titel, opgemaakte tekst, eventueel een afbeelding zoals een grafiek en een link naar het dashboard",
+              "Statuskleuren voor info, succes, waarschuwing en fout, altijd ook met een tekstlabel",
+              "Afbeeldingen laden alleen als linkvoorbeelden aan staan en gaan via Mumcord, nooit rechtstreeks van de andere server",
+              "Officiële Mumble-clients zien hetzelfde bericht als gewone, netjes opgemaakte tekst"
+            ]
+          },
+          {
+            "title": "Directe verbindingen via een relay",
+            "items": [
+              "Lukt er geen directe verbinding, bijvoorbeeld achter CGNAT, of wil je je IP-adres niet laten zien, dan stuurt een mumpeer-relay de data door",
+              "De inhoud blijft end-to-end versleuteld; de relay geeft alleen bytes door en laat alleen gebruikers van zijn eigen server toe",
+              "Optioneel: een community kan de relay samen met Mumbot draaien. Zonder relay werkt alles zoals voorheen",
+              "Jij kiest: relay uit, alleen als een directe verbinding mislukt, of altijd, zodat je IP-adres verborgen blijft"
+            ]
+          },
+          {
+            "title": "Om te debuggen",
+            "items": [
+              "Verborgen pakketinspector: toont de verzonden en ontvangen Mumcord-berichten, met filters en export. Alleen lokaal, er wordt niets gelogd of ergens heen gestuurd"
+            ]
+          }
         ]
       },
       {
@@ -2036,5 +2080,109 @@
         "coffee": "Espressobruin en crema, warm en rustig voor je ogen."
       }
     }
+  },
+  "mumbot": {
+    "title": "Mumbot",
+    "description": "Mumbot: bots voor elke standaard Mumble-server. Een webhookbot zet berichten van buitenaf in je kanalen, een testbot test Mumble-clients automatisch.",
+    "label": "Bots voor Mumble",
+    "intro": "Mumbot logt in zoals een mens, met een eigen certificaat. Daarom draait hij op elke standaard Mumble-server, zonder plug-in en zonder iets aan de serverconfiguratie te veranderen. Uit de Mumcord-familie, open source onder AGPL-3.0.",
+    "toc": {
+      "bots": "De bots",
+      "download": "Downloaden",
+      "roadmap": "Roadmap"
+    },
+    "botsTitle": "Twee bots, één programma",
+    "botsBody": "Beide zitten in hetzelfde programma, `mumbot`, voor Linux, Windows, macOS en als Docker-image.",
+    "webhook": {
+      "title": "Webhookbot",
+      "body": "Monitoring, CI of je eigen script stuurt één HTTP-verzoek met een API-sleutel, en de bot zet de tekst in een Mumble-kanaal.",
+      "points": [
+        "Stel per sleutel in naar welke kanalen hij mag schrijven",
+        "Vet, cursief, code, lijsten en links in Markdown",
+        "Kanaalwachtwoorden, opnieuw verbinden na een onderbreking en een vaste identiteit via zijn certificaat",
+        "Rate limit en een duidelijk antwoord of het bericht is aangekomen"
+      ]
+    },
+    "testbot": {
+      "title": "Testbot",
+      "body": "Een gescripte tweede deelnemer voor automatische tests van Mumble-clients. De eigen tests van Mumcord draaien ermee.",
+      "points": [
+        "Chat, status, rechten en moderatie aansturen en op voorwaarden wachten",
+        "Spraak afspelen, opnemen en het niveau controleren, met echte Opus",
+        "Een loadtest vult een lokale server met tot 1000 gebruikers",
+        "Exitcode 0 betekent geslaagd: past in elke CI"
+      ]
+    },
+    "downloadTitle": "Downloaden",
+    "downloadBody": "Het archief bevat het programma `mumbot`, de README en een voorbeeldconfiguratie, `bot.example.toml`.",
+    "docker": "Of als Docker-image voor amd64 en arm64:",
+    "examples": "Kant-en-klare Docker Compose-voorbeelden: webhookbot, webhookbot met een eigen Mumble-server om uit te proberen, en testbot in CI",
+    "checksums": "Checksums",
+    "noRelease": "De downloads staan op GitHub.",
+    "prerelease": "Pre-release",
+    "copy": "Kopiëren",
+    "copied": "Gekopieerd",
+    "roadmapTitle": "Roadmap",
+    "roadmapBody": "Net als Mumcord wordt Mumbot in epics gebouwd. Epic 2 is een voorstel op basis van de open issues en wordt nog in detail gepland.",
+    "status": {
+      "done": "klaar",
+      "now": "mee bezig",
+      "planned": "hierna",
+      "later": "later"
+    },
+    "epics": [
+      {
+        "id": "epic-0",
+        "title": "Testbot",
+        "summary": "De gescripte bot uit de tests van Mumcord, nu een eigen programma.",
+        "items": [
+          "Chat, status, rechten en moderatie, wachten op voorwaarden en een scriptmodus",
+          "Spraak afspelen, opnemen en het niveau controleren, met Opus zoals in Mumcord",
+          "Loadtest met tot 1000 gebruikers op een lokale testserver"
+        ]
+      },
+      {
+        "id": "epic-1",
+        "title": "Webhookbot",
+        "summary": "Berichten van buitenaf in een Mumble-kanaal.",
+        "items": [
+          "HTTP API met API-sleutels en toegestane kanalen per sleutel",
+          "Markdown, kanaalwachtwoorden, opnieuw verbinden en een rate limit",
+          "Programma's voor Linux, Windows en macOS en een Docker-image",
+          "Sinds 0.1.1: Docker Compose-voorbeelden en documentatie over configuratie, commandoregel, HTTP API en beveiliging"
+        ]
+      },
+      {
+        "id": "epic-2",
+        "title": "Modules, muziek en geschiedenis",
+        "summary": "Eén bot wordt een gereedschapskist.",
+        "items": [
+          "Modules: kies in de configuratie of op de commandoregel welke bots draaien, in één programma en één image",
+          "Muziekbot: stuur mp3's of links via HTTP, en de bot speelt ze af in het spraakkanaal, met een wachtrij",
+          "Geschiedenisbot: bewaart de chat van de kanalen die hij mag zien en geeft die door aan Mumcord-gebruikers die offline waren. Nooit privéberichten",
+          "Berichtkaarten: de webhook stuurt meldingen met een titel, statuskleur, grafiek en link, die Mumcord als kaart toont",
+          "Instelbare bitrate voor spraak en muziek, nooit boven de limiet van de server",
+          "Peermodule: meldt de gebruikers van de server aan bij een mumpeer-relay en laat Mumcord weten dat de relay er is"
+        ]
+      },
+      {
+        "id": "later",
+        "tag": "Daarna",
+        "title": "Ideeën",
+        "summary": "Nog niet gepland, maar genoteerd.",
+        "items": [
+          "Een bot die de chat leest en op commando's reageert",
+          "Tekst-naar-spraak of waarschuwingsgeluiden in een kanaal",
+          "Eén bot voor meerdere servers of met meerdere identiteiten",
+          "Fluisteren en privéberichten, sleutels wisselen zonder herstart, ingebouwde TLS",
+          "Het certificaat van de server bij het eerste contact onthouden en een gewijzigd certificaat weigeren"
+        ]
+      }
+    ],
+    "ideaTitle": "Een idee voor een bot?",
+    "ideaBody": "Wensen komen terecht in de issues van Mumbot op GitHub.",
+    "idea": "Idee voorstellen",
+    "source": "Broncode op GitHub",
+    "docs": "Documentatie"
   }
 }

@@ -68,6 +68,26 @@
       "themes": {
         "title": "Teemad",
         "desc": "Kopeeritavad stiilid, hele ja tume"
+      },
+      "botAbout": {
+        "title": "Mumbot",
+        "desc": "Botid igale Mumble-serverile"
+      },
+      "botDownload": {
+        "title": "Allalaadimine",
+        "desc": "Linux, Windows, macOS ja Docker"
+      },
+      "botRoadmap": {
+        "title": "Teekaart",
+        "desc": "Mis on valmis ja mis tuleb järgmiseks"
+      },
+      "botSource": {
+        "title": "Lähtekood",
+        "desc": "Avatud lähtekood AGPL-3.0 litsentsiga"
+      },
+      "botIssues": {
+        "title": "Issue'd",
+        "desc": "Mumboti ideed ja vead"
       }
     },
     "hero": {
@@ -313,7 +333,7 @@
     "roadmap": {
       "label": "05 — Kuhu see liigub",
       "title": "Ausalt: see on alfa.",
-      "body": "Teekaart on ettepanek ja võib muutuda. Mobiilirakendusi ega veebiversiooni pole plaanis. Serveri poolt ei ole kunagi midagi vaja.",
+      "body": "Teekaart on ettepanek ja võib muutuda.",
       "now": "praegu",
       "all": "Kogu teekaart üksikasjalikult",
       "steps": [
@@ -330,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Mugavus",
-          "body": "Globaalsed kiirklahvid, täielik salvemenüü, import ametlikust kliendist, sosistamine, serveribrauser, „Mitte segada“ ning @all ja @channel."
+          "body": "Globaalsed kiirklahvid, täielik salvemenüü, import ametlikust kliendist, sosistamine, serveribrauser, „Mitte segada“, @all ja @channel, sõnumikaardid bottidele ning valikuline vahendusserver otseühenduste jaoks."
         },
         {
           "tag": "Epic 4",
@@ -474,7 +494,8 @@
       "privacy": "Privaatsus",
       "noTracking": "See sait ei kasuta küpsiseid ega laadi midagi kolmandatelt osapooltelt.",
       "by": "Projekt, mille taga on",
-      "themes": "Teemad"
+      "themes": "Teemad",
+      "botAbout": "Ülevaade"
     },
     "notFound": {
       "title": "Kanalit ei leitud",
@@ -1387,7 +1408,7 @@
   ],
   "roadmap": {
     "title": "Teekaart",
-    "description": "Mumcordi teekaart üksikasjalikult: mida toob Epic 1, mis on plaanis pärast seda ja mida ei tule kunagi.",
+    "description": "Mumcordi teekaart üksikasjalikult: mida iga epic toob, mis on valmis ja mis tuleb järgmiseks.",
     "label": "Kuhu see liigub",
     "intro": "Mumcordi ehitatakse epicute kaupa. Epic 1 saab valmis versiooniga 0.3.0. Siin on kirjas, mida iga epic toob. Teekaart on ettepanek: järjekord ja ulatus võivad veel muutuda.",
     "status": {
@@ -1398,12 +1419,6 @@
     },
     "epicsTitle": "Epicud",
     "epicsBody": "Epic 1 on igapäevane klient. Pärast seda tulevad suuremad ehitusplokid, mille järjekord pole veel paigas.",
-    "never": "Mida ei tule kunagi",
-    "neverItems": [
-      "Midagi serveris: ei kaasteenuseid, ei serveripluginaid, ei serveri seadistamist. Mumcord töötab iga tavalise Mumble-serveriga.",
-      "Mobiilirakendused ja veebiversioon.",
-      "Releeserver otseühenduste jaoks: kui ükski otsetee ei tööta, läheb Mumcord hoopis läbi Mumble-serveri."
-    ],
     "ideaTitle": "Midagi on puudu?",
     "ideaBody": "Soovid lähevad GitHubi issue'desse ja on planeerimise sisendiks.",
     "idea": "Soovi funktsiooni",
@@ -1590,15 +1605,44 @@
       {
         "id": "epic-3",
         "title": "Mugavus",
-        "summary": "Viimistlus aktiivsetele kasutajatele.",
-        "items": [
-          "Globaalsed otseteed lisaks push-to-talkile",
-          "Täielik salvemenüü",
-          "Seadete import ametlikust Mumble'i kliendist",
-          "Sosista ja hõika teistesse kanalitesse",
-          "Avalik serveribrauser",
-          "Mitte segada: üks lüliti vaigistab teavitused, helid ja hüpikaknad ning hääli kuuled ikka",
-          "@all ja @channel, et mainida kõiki serveris või kanalis"
+        "summary": "Viimistlus aktiivsetele kasutajatele, sõnumikaardid bottidele, valikuline vahendusserver otseühenduste jaoks ja tööriist silumiseks.",
+        "groups": [
+          {
+            "title": "Igapäevane mugavus",
+            "items": [
+              "Globaalsed otseteed lisaks push-to-talkile",
+              "Täielik salvemenüü",
+              "Seadete import ametlikust Mumble'i kliendist",
+              "Sosista ja hõika teistesse kanalitesse",
+              "Avalik serveribrauser",
+              "Mitte segada: üks lüliti vaigistab teavitused, helid ja hüpikaknad ning hääli kuuled ikka",
+              "@all ja @channel, et mainida kõiki serveris või kanalis"
+            ]
+          },
+          {
+            "title": "Sõnumikaardid",
+            "items": [
+              "Botid ja monitooring saadavad lihtteksti asemel kompaktse kaardi: pealkiri, vormindatud tekst, soovi korral pilt, näiteks graafik, ja link juhtpaneelile",
+              "Olekuvärvid teabe, õnnestumise, hoiatuse ja vea jaoks, alati ka tekstisildiga",
+              "Pildid laaditakse ainult siis, kui linkide eelvaated on sees, ja need liiguvad läbi Mumcordi, mitte kunagi otse teisest serverist",
+              "Ametlikud Mumble'i kliendid näevad sama sõnumit tavalise, korralikult vormindatud tekstina"
+            ]
+          },
+          {
+            "title": "Otseühendused vahendusserveri kaudu",
+            "items": [
+              "Kui otseühendus ei õnnestu, näiteks CGNAT-i taga, või sa ei taha oma IP-aadressi näidata, edastab andmed mumpeeri vahendusserver",
+              "Sisu jääb otspunktkrüpteerituks; vahendusserver ainult edastab baite ja laseb sisse vaid oma serveri kasutajaid",
+              "Valikuline: kogukond saab vahendusserverit käitada koos Mumbotiga. Ilma selleta töötab kõik nagu varem",
+              "Sinu valik: vahendusserver väljas, ainult siis, kui otseühendus ebaõnnestub, või alati, et su IP-aadress jääks varjatuks"
+            ]
+          },
+          {
+            "title": "Silumiseks",
+            "items": [
+              "Peidetud paketiinspektor: näitab saadetud ja vastuvõetud Mumcordi sõnumeid, koos filtrite ja ekspordiga. Ainult kohalikult, midagi ei logita ega saadeta kuhugi"
+            ]
+          }
         ]
       },
       {
@@ -2036,5 +2080,109 @@
         "coffee": "Espressopruunid toonid ja crema, soojad ja silmasõbralikud."
       }
     }
+  },
+  "mumbot": {
+    "title": "Mumbot",
+    "description": "Mumbot: botid igale tavalisele Mumble-serverile. Veebihaagi bot postitab sõnumeid väljastpoolt sinu kanalitesse, testbot testib Mumble'i kliente automaatselt.",
+    "label": "Botid Mumble'ile",
+    "intro": "Mumbot logib sisse nagu inimene, oma sertifikaadiga. Seetõttu töötab see igal tavalisel Mumble-serveril, ilma pluginata ja ilma serveri seadistust muutmata. Mumcordi perest, avatud lähtekood AGPL-3.0 litsentsiga.",
+    "toc": {
+      "bots": "Botid",
+      "download": "Allalaadimine",
+      "roadmap": "Teekaart"
+    },
+    "botsTitle": "Kaks botti, üks programm",
+    "botsBody": "Mõlemad on samas programmis `mumbot`, Linuxile, Windowsile, macOS-ile ja Dockeri kujutisena.",
+    "webhook": {
+      "title": "Veebihaagi bot",
+      "body": "Monitooring, CI või sinu oma skript saadab ühe HTTP-päringu API-võtmega ja bot postitab teksti Mumble'i kanalisse.",
+      "points": [
+        "Määra iga võtme jaoks, millistesse kanalitesse see tohib kirjutada",
+        "Paks ja kaldkiri, kood, loendid ja lingid Markdownis",
+        "Kanalite paroolid, taasühendumine pärast katkestusi ja püsiv identiteet sertifikaadi abil",
+        "Päringute piirang ja selge vastus, kas sõnum jõudis kohale"
+      ]
+    },
+    "testbot": {
+      "title": "Testbot",
+      "body": "Skriptitud teine osaleja Mumble'i klientide automaattestideks. Mumcordi enda testid jooksevad sellega.",
+      "points": [
+        "Juhi vestlust, olekut, õigusi ja modereerimist ning oota tingimuste täitumist",
+        "Esita, salvesta ja kontrolli kõne taset, päris Opusega",
+        "Koormustest täidab kohaliku serveri kuni 1000 kasutajaga",
+        "Väljumiskood 0 tähendab läbitud: sobib igasse CI-sse"
+      ]
+    },
+    "downloadTitle": "Allalaadimine",
+    "downloadBody": "Arhiivis on programm `mumbot`, README ja näidisseadistus `bot.example.toml`.",
+    "docker": "Või Dockeri kujutisena amd64 ja arm64 jaoks:",
+    "examples": "Valmis Docker Compose'i näited: veebihaagi bot, veebihaagi bot oma Mumble-serveriga proovimiseks ja testbot CI-s",
+    "checksums": "Kontrollsummad",
+    "noRelease": "Allalaadimised on GitHubis.",
+    "prerelease": "Eelversioon",
+    "copy": "Kopeeri",
+    "copied": "Kopeeritud",
+    "roadmapTitle": "Teekaart",
+    "roadmapBody": "Nagu Mumcordi, ehitatakse ka Mumbotit epicute kaupa. Epic 2 on avatud issue'de põhjal tehtud ettepanek ja seda planeeritakse veel üksikasjalikult.",
+    "status": {
+      "done": "valmis",
+      "now": "töös",
+      "planned": "järgmisena",
+      "later": "hiljem"
+    },
+    "epics": [
+      {
+        "id": "epic-0",
+        "title": "Testbot",
+        "summary": "Mumcordi testide skriptitud bot, nüüd eraldi programmina.",
+        "items": [
+          "Vestlus, olek, õigused ja modereerimine, tingimuste ootamine ja skriptirežiim",
+          "Kõne esitamine, salvestamine ja taseme kontroll, Opusega nagu Mumcordis",
+          "Koormustest kuni 1000 kasutajaga kohalikul testserveril"
+        ]
+      },
+      {
+        "id": "epic-1",
+        "title": "Veebihaagi bot",
+        "summary": "Sõnumid väljastpoolt Mumble'i kanalisse.",
+        "items": [
+          "HTTP API koos API-võtmete ja lubatud kanalitega iga võtme kohta",
+          "Markdown, kanalite paroolid, taasühendumine ja päringute piirang",
+          "Programmid Linuxile, Windowsile ja macOS-ile ning Dockeri kujutis",
+          "Alates 0.1.1: Docker Compose'i näited ja dokumentatsioon seadistuse, käsurea, HTTP API ja turvalisuse kohta"
+        ]
+      },
+      {
+        "id": "epic-2",
+        "title": "Moodulid, muusika ja ajalugu",
+        "summary": "Ühest botist saab tööriistakomplekt.",
+        "items": [
+          "Moodulid: vali seadistuses või käsureal, millised botid töötavad, ühes programmis ja ühes kujutises",
+          "Muusikabot: saada MP3-faile või linke üle HTTP ja bot mängib neid häälkanalis järjekorraga",
+          "Ajaloobot: hoiab alles nende kanalite vestluse, mida tal on lubatud näha, ja annab selle edasi Mumcordi kasutajatele, kes olid võrgust väljas. Privaatsõnumeid mitte kunagi",
+          "Sõnumikaardid: veebihaak saadab hoiatusi pealkirja, olekuvärvi, graafiku ja lingiga, mida Mumcord näitab kaardina",
+          "Reguleeritav bitikiirus kõnele ja muusikale, mitte kunagi üle serveri piiri",
+          "Peer-moodul: registreerib serveri kasutajad mumpeeri vahendusserveris ja annab Mumcordile teada, et vahendusserver on olemas"
+        ]
+      },
+      {
+        "id": "later",
+        "tag": "Edasi",
+        "title": "Ideed",
+        "summary": "Veel planeerimata, aga kirja pandud.",
+        "items": [
+          "Bot, mis loeb vestlust ja vastab käskudele",
+          "Kõnesüntees või hoiatushelid kanalis",
+          "Üks bot mitmele serverile või mitme identiteediga",
+          "Sosinad ja privaatsõnumid, võtmete vahetamine ilma taaskäivituseta, sisseehitatud TLS",
+          "Serveri sertifikaadi meelespidamine esimesel kontaktil ja muutunud sertifikaadi tagasilükkamine"
+        ]
+      }
+    ],
+    "ideaTitle": "Idee botiks?",
+    "ideaBody": "Soovid lähevad Mumboti issue'desse GitHubis.",
+    "idea": "Paku idee",
+    "source": "Lähtekood GitHubis",
+    "docs": "Juhendid"
   }
 }

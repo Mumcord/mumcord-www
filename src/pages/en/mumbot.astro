@@ -1,0 +1,12 @@
+---
+import Base from "../../layouts/Base.astro";
+import MumbotPage from "../../components/MumbotPage.astro";
+import { mumbotPage } from "../../lib/mumbot";
+import { pageJsonLd } from "../../lib/jsonld";
+
+const r = mumbotPage.en;
+---
+
+<Base lang="en" page="mumbot" title={`${r.title} — ${r.label}`} description={r.description} jsonLd={pageJsonLd("en", Astro.site!, "mumbot", r.title)}>
+  <MumbotPage lang="en" />
+</Base>

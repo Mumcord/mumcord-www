@@ -68,6 +68,26 @@
       "themes": {
         "title": "Teme",
         "desc": "Izgledi za kopiranje, svijetli i tamni"
+      },
+      "botAbout": {
+        "title": "Mumbot",
+        "desc": "Botovi za bilo koji Mumble poslužitelj"
+      },
+      "botDownload": {
+        "title": "Preuzimanje",
+        "desc": "Linux, Windows, macOS i Docker"
+      },
+      "botRoadmap": {
+        "title": "Plan razvoja",
+        "desc": "Što je gotovo, a što slijedi"
+      },
+      "botSource": {
+        "title": "Izvorni kod",
+        "desc": "Otvoreni kod pod licencom AGPL-3.0"
+      },
+      "botIssues": {
+        "title": "Issueji",
+        "desc": "Ideje i greške za Mumbot"
       }
     },
     "hero": {
@@ -313,7 +333,7 @@
     "roadmap": {
       "label": "05 — Kamo idemo",
       "title": "Iskreno: ovo je alfa.",
-      "body": "Plan razvoja je prijedlog i može se mijenjati. Mobilne aplikacije i web verzija nisu planirane. Ništa na strani poslužitelja nikad neće biti potrebno.",
+      "body": "Plan razvoja je prijedlog i može se mijenjati.",
       "now": "sada",
       "all": "Cijeli plan razvoja u detalje",
       "steps": [
@@ -330,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Udobnost",
-          "body": "Globalni prečaci, potpuni izbornik u traci sustava, uvoz iz službenog klijenta, šaputanje, preglednik poslužitelja, „Ne uznemiruj”, @all i @channel."
+          "body": "Globalni prečaci, potpuni izbornik u traci sustava, uvoz iz službenog klijenta, šaputanje, preglednik poslužitelja, „Ne uznemiruj”, @all i @channel, kartice poruka za botove te opcionalni relay za izravne veze."
         },
         {
           "tag": "Epic 4",
@@ -474,7 +494,8 @@
       "privacy": "Privatnost",
       "noTracking": "Ova stranica ne postavlja kolačiće i ne učitava ništa od trećih strana.",
       "by": "Projekt autora",
-      "themes": "Teme"
+      "themes": "Teme",
+      "botAbout": "Pregled"
     },
     "notFound": {
       "title": "Kanal nije pronađen",
@@ -1387,7 +1408,7 @@
   ],
   "roadmap": {
     "title": "Plan razvoja",
-    "description": "Plan razvoja Mumcorda u detalje: što donosi Epic 1, što je planirano nakon toga i što se nikad neće dogoditi.",
+    "description": "Plan razvoja Mumcorda u detalje: što donosi svaki epic, što je gotovo i što slijedi.",
     "label": "Kamo idemo",
     "intro": "Mumcord se gradi u epicima. Epic 1 dovršen je verzijom 0.3.0. Ovo donosi svaki epic. Plan razvoja je prijedlog: redoslijed i opseg još se mogu promijeniti.",
     "status": {
@@ -1398,12 +1419,6 @@
     },
     "epicsTitle": "Epici",
     "epicsBody": "Epic 1 je klijent za svaki dan. Nakon toga dolaze veći gradivni blokovi čiji redoslijed još nije određen.",
-    "never": "Što se nikad neće dogoditi",
-    "neverItems": [
-      "Ništa na poslužitelju: nema pratećih servisa, nema dodataka za poslužitelj, nema konfiguracije poslužitelja. Mumcord radi s bilo kojim standardnim Mumble poslužiteljem.",
-      "Mobilne aplikacije i web verzija.",
-      "Relay poslužitelj za izravne veze: ako nijedan izravni put ne uspije, Mumcord umjesto toga ide preko Mumble poslužitelja."
-    ],
     "ideaTitle": "Nešto nedostaje?",
     "ideaBody": "Prijedlozi idu u issueje na GitHubu i ulaze u planiranje.",
     "idea": "Predloži značajku",
@@ -1590,15 +1605,44 @@
       {
         "id": "epic-3",
         "title": "Udobnost",
-        "summary": "Dorada za one koji ga puno koriste.",
-        "items": [
-          "Globalni prečaci osim push-to-talka",
-          "Potpuni izbornik u traci sustava",
-          "Uvoz postavki iz službenog Mumble klijenta",
-          "Šaputanje i vikanje prema drugim kanalima",
-          "Javni preglednik poslužitelja",
-          "Ne uznemiruj: jedan prekidač utišava obavijesti, zvukove i skočne prozore, a glasove i dalje čuješ",
-          "@all i @channel za spominjanje svih na poslužitelju ili u kanalu"
+        "summary": "Dorada za one koji ga puno koriste, kartice poruka za botove, opcionalni relay za izravne veze i alat za otklanjanje grešaka.",
+        "groups": [
+          {
+            "title": "Udobnost za svaki dan",
+            "items": [
+              "Globalni prečaci osim push-to-talka",
+              "Potpuni izbornik u traci sustava",
+              "Uvoz postavki iz službenog Mumble klijenta",
+              "Šaputanje i vikanje prema drugim kanalima",
+              "Javni preglednik poslužitelja",
+              "Ne uznemiruj: jedan prekidač utišava obavijesti, zvukove i skočne prozore, a glasove i dalje čuješ",
+              "@all i @channel za spominjanje svih na poslužitelju ili u kanalu"
+            ]
+          },
+          {
+            "title": "Kartice poruka",
+            "items": [
+              "Botovi i monitoring umjesto običnog teksta šalju kompaktnu karticu: naslov, formatirani tekst, po želji sliku poput grafa i poveznicu na dashboard",
+              "Boje statusa za info, uspjeh, upozorenje i grešku, uvijek i s tekstualnom oznakom",
+              "Slike se učitavaju samo s uključenim pretpregledima poveznica i idu preko Mumcorda, nikad izravno s tuđeg poslužitelja",
+              "Službeni Mumble klijenti vide istu poruku kao običan, uredno formatiran tekst"
+            ]
+          },
+          {
+            "title": "Izravne veze preko relaya",
+            "items": [
+              "Ako nijedna izravna veza ne radi, primjerice iza CGNAT-a, ili ne želiš pokazati svoju IP adresu, podatke prosljeđuje mumpeer relay",
+              "Sadržaj ostaje end-to-end šifriran; relay samo prosljeđuje bajtove i pušta unutra samo korisnike vlastitog poslužitelja",
+              "Opcionalno: zajednica može pokretati relay zajedno s Mumbotom. Bez relaya sve radi kao i dosad",
+              "Tvoj izbor: relay isključen, samo kad izravna veza ne uspije, ili uvijek, da tvoja IP adresa ostane skrivena"
+            ]
+          },
+          {
+            "title": "Za otklanjanje grešaka",
+            "items": [
+              "Skriveni inspektor paketa: prikazuje poslane i primljene Mumcord poruke, s filtrima i izvozom. Samo lokalno, ništa se ne bilježi niti igdje šalje"
+            ]
+          }
         ]
       },
       {
@@ -2036,5 +2080,109 @@
         "coffee": "Smeđi tonovi espressa i pjene, topli i ugodni za oči."
       }
     }
+  },
+  "mumbot": {
+    "title": "Mumbot",
+    "description": "Mumbot: botovi za bilo koji standardni Mumble poslužitelj. Webhook bot objavljuje poruke izvana u tvojim kanalima, testni bot automatski provjerava Mumble klijente.",
+    "label": "Botovi za Mumble",
+    "intro": "Mumbot se prijavljuje kao čovjek, s vlastitim certifikatom. Zato radi na bilo kojem standardnom Mumble poslužitelju, bez plugina i bez promjena u konfiguraciji poslužitelja. Iz obitelji Mumcord, otvoreni kod pod licencom AGPL-3.0.",
+    "toc": {
+      "bots": "Botovi",
+      "download": "Preuzimanje",
+      "roadmap": "Plan razvoja"
+    },
+    "botsTitle": "Dva bota, jedan program",
+    "botsBody": "Oba žive u istom programu, `mumbot`, za Linux, Windows i macOS te kao Docker image.",
+    "webhook": {
+      "title": "Webhook bot",
+      "body": "Monitoring, CI ili tvoja vlastita skripta pošalje jedan HTTP zahtjev s API ključem, a bot objavi tekst u Mumble kanalu.",
+      "points": [
+        "Za svaki ključ odrediš u koje kanale smije pisati",
+        "Podebljano, kurziv, kod, popisi i poveznice u Markdownu",
+        "Lozinke kanala, ponovno spajanje nakon prekida i stalni identitet zahvaljujući certifikatu",
+        "Ograničenje brzine i jasan odgovor je li poruka stigla"
+      ]
+    },
+    "testbot": {
+      "title": "Testni bot",
+      "body": "Skriptirani drugi sudionik za automatizirane testove Mumble klijenata. Na njemu se vrte i Mumcordovi vlastiti testovi.",
+      "points": [
+        "Upravljaj chatom, stanjem, dopuštenjima i moderacijom te čekaj na uvjete",
+        "Reproduciraj i snimaj glas te provjeravaj njegovu razinu, s pravim Opus kodekom",
+        "Test opterećenja puni lokalni poslužitelj s do 1000 korisnika",
+        "Izlazni kod 0 znači prošlo: uklapa se u bilo koji CI"
+      ]
+    },
+    "downloadTitle": "Preuzimanje",
+    "downloadBody": "Arhiva sadrži program `mumbot`, README i primjer konfiguracije, `bot.example.toml`.",
+    "docker": "Ili kao Docker image za amd64 i arm64:",
+    "examples": "Gotovi Docker Compose primjeri: webhook bot, webhook bot s vlastitim Mumble poslužiteljem za isprobavanje i testni bot u CI-ju",
+    "checksums": "Kontrolni zbrojevi",
+    "noRelease": "Preuzimanja su na GitHubu.",
+    "prerelease": "Predizdanje",
+    "copy": "Kopiraj",
+    "copied": "Kopirano",
+    "roadmapTitle": "Plan razvoja",
+    "roadmapBody": "Kao i Mumcord, Mumbot se gradi u epicima. Epic 2 je prijedlog iz otvorenih issueja i tek će se detaljno planirati.",
+    "status": {
+      "done": "gotovo",
+      "now": "u tijeku",
+      "planned": "sljedeće",
+      "later": "kasnije"
+    },
+    "epics": [
+      {
+        "id": "epic-0",
+        "title": "Testni bot",
+        "summary": "Skriptirani bot iz Mumcordovih testova, sada kao zaseban program.",
+        "items": [
+          "Chat, stanje, dopuštenja i moderacija, čekanje na uvjete i skriptni način rada",
+          "Reprodukcija, snimanje i provjera razine glasa, s Opus kodekom kao u Mumcordu",
+          "Test opterećenja s do 1000 korisnika na lokalnom testnom poslužitelju"
+        ]
+      },
+      {
+        "id": "epic-1",
+        "title": "Webhook bot",
+        "summary": "Poruke izvana u Mumble kanal.",
+        "items": [
+          "HTTP API s API ključevima i dopuštenim kanalima po ključu",
+          "Markdown, lozinke kanala, ponovno spajanje i ograničenje brzine",
+          "Programi za Linux, Windows i macOS te Docker image",
+          "Od 0.1.1: Docker Compose primjeri i dokumentacija za konfiguraciju, naredbeni redak, HTTP API i sigurnost"
+        ]
+      },
+      {
+        "id": "epic-2",
+        "title": "Moduli, glazba i povijest",
+        "summary": "Jedan bot postaje komplet alata.",
+        "items": [
+          "Moduli: u konfiguraciji ili naredbenom retku biraš koji botovi rade, u jednom programu i jednom imageu",
+          "Glazbeni bot: pošalji MP3-ice ili poveznice preko HTTP-a, a bot ih pušta u glasovnom kanalu, s redom čekanja",
+          "Bot za povijest: čuva chat kanala koje smije vidjeti i predaje ga korisnicima Mumcorda koji su bili offline. Nikad privatne poruke",
+          "Kartice poruka: webhook šalje upozorenja s naslovom, bojom statusa, grafom i poveznicom, koja Mumcord prikazuje kao karticu",
+          "Podesiv bitrate za govor i glazbu, nikad iznad ograničenja poslužitelja",
+          "Peer modul: registrira korisnike poslužitelja kod mumpeer relaya i javlja Mumcordu da relay postoji"
+        ]
+      },
+      {
+        "id": "later",
+        "tag": "Nakon toga",
+        "title": "Ideje",
+        "summary": "Još nije planirano, ali je zabilježeno.",
+        "items": [
+          "Bot koji čita chat i odgovara na naredbe",
+          "Pretvaranje teksta u govor ili zvukovi upozorenja u kanalu",
+          "Jedan bot za više poslužitelja ili s više identiteta",
+          "Šaputanje i privatne poruke, zamjena ključeva bez ponovnog pokretanja, ugrađeni TLS",
+          "Zapamtiti certifikat poslužitelja pri prvom kontaktu i odbiti promijenjeni"
+        ]
+      }
+    ],
+    "ideaTitle": "Imaš ideju za bota?",
+    "ideaBody": "Želje idu u Mumbotove issueje na GitHubu.",
+    "idea": "Predloži ideju",
+    "source": "Izvorni kod na GitHubu",
+    "docs": "Dokumentacija"
   }
 }

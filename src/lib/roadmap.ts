@@ -33,8 +33,6 @@ export interface RoadmapPage {
   status: Record<Status, string>;
   epicsTitle: string;
   epicsBody: string;
-  never: string;
-  neverItems: string[];
   ideaTitle: string;
   ideaBody: string;
   idea: string;
@@ -46,19 +44,13 @@ const source: Record<"de" | "en", RoadmapPage> = {
   de: {
     title: "Roadmap",
     description:
-      "Die Roadmap von Mumcord im Detail: was Epic 1 bringt, was danach geplant ist und was es nie geben wird.",
+      "Die Roadmap von Mumcord im Detail: was jedes Epic bringt, was fertig ist und was als Nächstes kommt.",
     label: "Wohin es geht",
     intro:
       "Mumcord wird in Epics gebaut. Epic 1 wird mit Version 0.3.0 komplett. Hier steht, was jedes Epic bringt. Die Roadmap ist ein Vorschlag: Reihenfolge und Umfang können sich noch ändern.",
     status: { done: "fertig", now: "in Arbeit", planned: "als Nächstes", later: "später" },
     epicsTitle: "Die Epics",
     epicsBody: "Epic 1 ist der Client für jeden Tag. Danach kommen größere Bausteine, deren Reihenfolge noch nicht feststeht.",
-    never: "Was es nie geben wird",
-    neverItems: [
-      "Etwas auf dem Server: keine Begleitdienste, keine Server-Plugins, keine Serverkonfiguration. Mumcord läuft mit jedem normalen Mumble-Server.",
-      "Mobile Apps und eine Web-Version.",
-      "Ein Vermittlungs- oder Relay-Server für direkte Verbindungen: Klappt keine direkte Verbindung, nutzt Mumcord den Weg über den Mumble-Server.",
-    ],
     ideaTitle: "Dir fehlt etwas?",
     ideaBody: "Wünsche landen in den Issues auf GitHub und fließen in die Planung ein.",
     idea: "Feature wünschen",
@@ -257,15 +249,44 @@ const source: Record<"de" | "en", RoadmapPage> = {
         tag: "Epic 3",
         title: "Komfort",
         status: "planned",
-        summary: "Feinschliff für Vielnutzer.",
-        items: [
-          "Globale Tastenkürzel über Push-to-Talk hinaus",
-          "Volles Tray-Menü",
-          "Einstellungen aus dem offiziellen Mumble-Client übernehmen",
-          "Flüstern und Rufen in andere Kanäle",
-          "Öffentlicher Server-Browser",
-          "„Bitte nicht stören“: Ein Schalter macht Benachrichtigungen, Töne und Pop-ups stumm, Stimmen hörst du weiter",
-          "@all und @channel, um alle auf dem Server oder im Kanal zu erwähnen",
+        summary: "Feinschliff für Vielnutzer, Nachrichtenkarten für Bots, ein optionales Relay für direkte Verbindungen und ein Werkzeug für die Fehlersuche.",
+        groups: [
+          {
+            title: "Komfort im Alltag",
+            items: [
+              "Globale Tastenkürzel über Push-to-Talk hinaus",
+              "Volles Tray-Menü",
+              "Einstellungen aus dem offiziellen Mumble-Client übernehmen",
+              "Flüstern und Rufen in andere Kanäle",
+              "Öffentlicher Server-Browser",
+              "„Bitte nicht stören“: Ein Schalter macht Benachrichtigungen, Töne und Pop-ups stumm, Stimmen hörst du weiter",
+              "@all und @channel, um alle auf dem Server oder im Kanal zu erwähnen",
+            ],
+          },
+          {
+            title: "Nachrichtenkarten",
+            items: [
+              "Bots und Monitoring schicken statt reinem Text eine kompakte Karte: Titel, formatierter Text, optional ein Bild wie ein Graph und ein Link zum Dashboard",
+              "Statusfarben für Info, Erfolg, Warnung und Fehler, immer zusätzlich als Text",
+              "Bilder laden nur mit eingeschalteten Link-Vorschauen und über Mumcord, nie direkt vom fremden Server",
+              "Offizielle Mumble-Clients sehen dieselbe Nachricht als normalen, sauber formatierten Text",
+            ],
+          },
+          {
+            title: "Direkte Verbindungen über ein Relay",
+            items: [
+              "Klappt keine direkte Verbindung, etwa hinter CGNAT, oder willst du deine IP-Adresse nicht zeigen, leitet ein mumpeer-Relay die Daten weiter",
+              "Der Inhalt bleibt Ende-zu-Ende verschlüsselt, das Relay reicht nur Bytes durch und lässt nur Nutzer des eigenen Servers rein",
+              "Optional: Eine Community kann das Relay zusammen mit Mumbot betreiben. Ohne Relay funktioniert alles wie bisher",
+              "Einstellbar: Relay aus, nur wenn direkt nicht klappt, oder immer, damit deine IP-Adresse verborgen bleibt",
+            ],
+          },
+          {
+            title: "Für die Fehlersuche",
+            items: [
+              "Versteckter Paket-Inspektor: zeigt die Mumcord-Nachrichten, die gesendet und empfangen werden, mit Filtern und Export. Nur lokal, nichts wird geloggt oder verschickt",
+            ],
+          },
         ],
       },
       {
@@ -305,19 +326,13 @@ const source: Record<"de" | "en", RoadmapPage> = {
   en: {
     title: "Roadmap",
     description:
-      "Mumcord's roadmap in detail: what Epic 1 brings, what is planned after that and what will never happen.",
+      "Mumcord's roadmap in detail: what each epic brings, what is done and what comes next.",
     label: "Where it's going",
     intro:
       "Mumcord is built in epics. Epic 1 is completed by version 0.3.0. This is what each epic brings. The roadmap is a proposal: order and scope can still change.",
     status: { done: "done", now: "in progress", planned: "up next", later: "later" },
     epicsTitle: "The epics",
     epicsBody: "Epic 1 is the everyday client. After that come bigger building blocks whose order isn't fixed yet.",
-    never: "What will never happen",
-    neverItems: [
-      "Anything on the server: no companion services, no server plugins, no server configuration. Mumcord works with any standard Mumble server.",
-      "Mobile apps and a web version.",
-      "A relay server for direct connections: if no direct path works, Mumcord goes through the Mumble server instead.",
-    ],
     ideaTitle: "Missing something?",
     ideaBody: "Requests go into the issues on GitHub and feed into the planning.",
     idea: "Request a feature",
@@ -516,15 +531,44 @@ const source: Record<"de" | "en", RoadmapPage> = {
         tag: "Epic 3",
         title: "Comfort",
         status: "planned",
-        summary: "Polish for heavy users.",
-        items: [
-          "Global shortcuts beyond push-to-talk",
-          "Full tray menu",
-          "Import settings from the official Mumble client",
-          "Whisper and shout to other channels",
-          "Public server browser",
-          "Do Not Disturb: one switch silences notifications, sounds and pop-ups, and you still hear voices",
-          "@all and @channel to mention everyone on the server or in the channel",
+        summary: "Polish for heavy users, message cards for bots, an optional relay for direct connections and a tool for debugging.",
+        groups: [
+          {
+            title: "Everyday comfort",
+            items: [
+              "Global shortcuts beyond push-to-talk",
+              "Full tray menu",
+              "Import settings from the official Mumble client",
+              "Whisper and shout to other channels",
+              "Public server browser",
+              "Do Not Disturb: one switch silences notifications, sounds and pop-ups, and you still hear voices",
+              "@all and @channel to mention everyone on the server or in the channel",
+            ],
+          },
+          {
+            title: "Message cards",
+            items: [
+              "Bots and monitoring send a compact card instead of plain text: a title, formatted text, optionally an image such as a graph and a link to the dashboard",
+              "Status colours for info, success, warning and error, always with a text label too",
+              "Images only load with link previews on and go through Mumcord, never straight from the other server",
+              "Official Mumble clients see the same message as normal, neatly formatted text",
+            ],
+          },
+          {
+            title: "Direct connections through a relay",
+            items: [
+              "If no direct connection works, for example behind CGNAT, or you don't want to show your IP address, a mumpeer relay forwards the data",
+              "The content stays end-to-end encrypted; the relay only passes bytes along and only lets in users of its own server",
+              "Optional: a community can run the relay together with Mumbot. Without a relay everything works as before",
+              "Your choice: relay off, only when a direct connection fails, or always, so your IP address stays hidden",
+            ],
+          },
+          {
+            title: "For debugging",
+            items: [
+              "Hidden packet inspector: shows the Mumcord messages sent and received, with filters and export. Local only, nothing is logged or sent anywhere",
+            ],
+          },
         ],
       },
       {

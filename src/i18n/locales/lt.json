@@ -68,6 +68,26 @@
       "themes": {
         "title": "Temos",
         "desc": "Stiliai kopijuoti, šviesūs ir tamsūs"
+      },
+      "botAbout": {
+        "title": "Mumbot",
+        "desc": "Botai bet kuriam Mumble serveriui"
+      },
+      "botDownload": {
+        "title": "Atsisiųsti",
+        "desc": "Linux, Windows, macOS ir Docker"
+      },
+      "botRoadmap": {
+        "title": "Planas",
+        "desc": "Kas padaryta ir kas toliau"
+      },
+      "botSource": {
+        "title": "Išeitinis kodas",
+        "desc": "Atvirasis kodas pagal AGPL-3.0"
+      },
+      "botIssues": {
+        "title": "Issues",
+        "desc": "Idėjos ir klaidos, susijusios su Mumbot"
       }
     },
     "hero": {
@@ -313,7 +333,7 @@
     "roadmap": {
       "label": "05 — Kur judame",
       "title": "Sąžiningai: tai alfa versija.",
-      "body": "Planas yra pasiūlymas ir gali keistis. Mobiliųjų programėlių ir žiniatinklio versijos neplanuojama. Serverio pusėje niekada nieko nereikės.",
+      "body": "Planas yra pasiūlymas ir gali keistis.",
       "now": "dabar",
       "all": "Visas planas išsamiai",
       "steps": [
@@ -330,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Patogumas",
-          "body": "Globalūs spartieji klavišai, pilnas dėklo meniu, importas iš oficialaus kliento, šnabždesys, serverių naršyklė, „Netrukdyti“ bei @all ir @channel."
+          "body": "Globalūs spartieji klavišai, pilnas dėklo meniu, importas iš oficialaus kliento, šnabždesys, serverių naršyklė, „Netrukdyti“, @all ir @channel, žinučių kortelės botams ir pasirenkamas tarpinis serveris tiesioginiams ryšiams."
         },
         {
           "tag": "Epic 4",
@@ -474,7 +494,8 @@
       "privacy": "Privatumas",
       "noTracking": "Ši svetainė nenaudoja slapukų ir nieko neįkelia iš trečiųjų šalių.",
       "by": "Projektą kuria",
-      "themes": "Temos"
+      "themes": "Temos",
+      "botAbout": "Apžvalga"
     },
     "notFound": {
       "title": "Kanalas nerastas",
@@ -1387,7 +1408,7 @@
   ],
   "roadmap": {
     "title": "Planas",
-    "description": "Išsamus Mumcord planas: ką atneša 1 epikas, kas planuojama po to ir ko niekada nebus.",
+    "description": "Išsamus Mumcord planas: ką atneša kiekvienas epikas, kas jau padaryta ir kas bus toliau.",
     "label": "Kur judame",
     "intro": "Mumcord kuriamas epikais. 1 epikas užbaigiamas 0.3.0 versija. Štai ką atneša kiekvienas epikas. Planas yra pasiūlymas: eiliškumas ir apimtis dar gali keistis.",
     "status": {
@@ -1398,12 +1419,6 @@
     },
     "epicsTitle": "Epikai",
     "epicsBody": "1 epikas – kasdienis klientas. Po jo eina didesni blokai, kurių eiliškumas dar nenustatytas.",
-    "never": "Ko niekada nebus",
-    "neverItems": [
-      "Nieko serveryje: jokių pagalbinių paslaugų, jokių serverio papildinių, jokios serverio konfigūracijos. Mumcord veikia su bet kuriuo standartiniu Mumble serveriu.",
-      "Mobiliųjų programėlių ir žiniatinklio versijos.",
-      "Retransliavimo serverio tiesioginiams ryšiams: jei joks tiesioginis kelias neveikia, Mumcord vietoj to eina per Mumble serverį."
-    ],
     "ideaTitle": "Ko nors trūksta?",
     "ideaBody": "Pageidavimai keliauja į GitHub issues ir naudojami planuojant.",
     "idea": "Pasiūlyk funkciją",
@@ -1590,15 +1605,44 @@
       {
         "id": "epic-3",
         "title": "Patogumas",
-        "summary": "Šlifavimas aktyviems naudotojams.",
-        "items": [
-          "Globalūs spartieji klavišai ne tik „spausk ir kalbėk“",
-          "Pilnas dėklo meniu",
-          "Nustatymų importas iš oficialaus Mumble kliento",
-          "Šnabždėjimas ir šaukimas į kitus kanalus",
-          "Viešų serverių naršyklė",
-          "Netrukdyti: vienas jungiklis nutildo pranešimus, garsus ir iššokančius langelius, o balsus vis tiek girdi",
-          "@all ir @channel, kad paminėtum visus serveryje arba kanale"
+        "summary": "Šlifavimas aktyviems naudotojams, žinučių kortelės botams, pasirenkamas tarpinis serveris tiesioginiams ryšiams ir derinimo įrankis.",
+        "groups": [
+          {
+            "title": "Kasdienis patogumas",
+            "items": [
+              "Globalūs spartieji klavišai ne tik „spausk ir kalbėk“",
+              "Pilnas dėklo meniu",
+              "Nustatymų importas iš oficialaus Mumble kliento",
+              "Šnabždėjimas ir šaukimas į kitus kanalus",
+              "Viešų serverių naršyklė",
+              "Netrukdyti: vienas jungiklis nutildo pranešimus, garsus ir iššokančius langelius, o balsus vis tiek girdi",
+              "@all ir @channel, kad paminėtum visus serveryje arba kanale"
+            ]
+          },
+          {
+            "title": "Žinučių kortelės",
+            "items": [
+              "Botai ir stebėsenos sistemos vietoj paprasto teksto siunčia kompaktišką kortelę: pavadinimą, formatuotą tekstą, pasirinktinai paveikslėlį, pavyzdžiui, grafiką, ir nuorodą į skydelį",
+              "Būsenos spalvos informacijai, sėkmei, įspėjimui ir klaidai, visada kartu su tekstine žyma",
+              "Paveikslėliai įkeliami tik įjungus nuorodų peržiūras ir keliauja per Mumcord, niekada tiesiai iš kito serverio",
+              "Oficialūs Mumble klientai tą pačią žinutę mato kaip įprastą, tvarkingai suformatuotą tekstą"
+            ]
+          },
+          {
+            "title": "Tiesioginiai ryšiai per tarpinį serverį",
+            "items": [
+              "Jei tiesioginis ryšys neveikia, pavyzdžiui, už CGNAT, arba nenori rodyti savo IP adreso, duomenis persiunčia mumpeer tarpinis serveris (relay)",
+              "Turinys lieka užšifruotas nuo galo iki galo; tarpinis serveris tik perduoda baitus ir įleidžia tik savo serverio naudotojus",
+              "Pasirinktinai: bendruomenė gali paleisti tarpinį serverį kartu su Mumbot. Be jo viskas veikia kaip anksčiau",
+              "Tu renkiesi: tarpinis serveris išjungtas, tik kai nepavyksta tiesioginis ryšys, arba visada, kad tavo IP adresas liktų paslėptas"
+            ]
+          },
+          {
+            "title": "Derinimui",
+            "items": [
+              "Paslėptas paketų inspektorius: rodo išsiųstas ir gautas Mumcord žinutes, su filtrais ir eksportu. Tik vietoje, niekas neregistruojama ir niekur nesiunčiama"
+            ]
+          }
         ]
       },
       {
@@ -2036,5 +2080,109 @@
         "coffee": "Espreso rudumas ir kavos putelė, šilta ir akims malonu."
       }
     }
+  },
+  "mumbot": {
+    "title": "Mumbot",
+    "description": "Mumbot: botai bet kuriam standartiniam Mumble serveriui. Webhook botas skelbia žinutes iš išorės tavo kanaluose, testavimo botas automatiškai tikrina Mumble klientus.",
+    "label": "Botai Mumble",
+    "intro": "Mumbot prisijungia kaip žmogus, su savo sertifikatu. Todėl jis veikia bet kuriame standartiniame Mumble serveryje, be įskiepio ir be jokių serverio konfigūracijos pakeitimų. Iš Mumcord šeimos, atvirasis kodas pagal AGPL-3.0.",
+    "toc": {
+      "bots": "Botai",
+      "download": "Atsisiųsti",
+      "roadmap": "Planas"
+    },
+    "botsTitle": "Du botai, viena programa",
+    "botsBody": "Abu gyvena toje pačioje programoje, `mumbot`, skirtoje Linux, Windows, macOS ir kaip Docker atvaizdas.",
+    "webhook": {
+      "title": "Webhook botas",
+      "body": "Stebėsenos sistema, CI ar tavo paties scenarijus siunčia vieną HTTP užklausą su API raktu, o botas paskelbia tekstą Mumble kanale.",
+      "points": [
+        "Kiekvienam raktui nustatyk, į kuriuos kanalus jis gali rašyti",
+        "Paryškintas ir pasvirasis tekstas, kodas, sąrašai ir nuorodos Markdown formatu",
+        "Kanalų slaptažodžiai, prisijungimas iš naujo po nutrūkimo ir pastovi tapatybė dėl sertifikato",
+        "Užklausų ribojimas ir aiškus atsakymas, ar žinutė pasiekė tikslą"
+      ]
+    },
+    "testbot": {
+      "title": "Testavimo botas",
+      "body": "Scenarijumi valdomas antras dalyvis automatiniams Mumble klientų testams. Jį naudoja ir paties Mumcord testai.",
+      "points": [
+        "Valdo pokalbį, būseną, teises ir moderavimą bei laukia sąlygų",
+        "Groja, įrašo ir tikrina balso lygį, su tikru Opus",
+        "Apkrovos testas užpildo vietinį serverį iki 1000 naudotojų",
+        "Išėjimo kodas 0 reiškia, kad testas praeitas: tinka bet kuriai CI"
+      ]
+    },
+    "downloadTitle": "Atsisiųsti",
+    "downloadBody": "Archyve yra programa `mumbot`, README ir konfigūracijos pavyzdys `bot.example.toml`.",
+    "docker": "Arba kaip Docker atvaizdas, skirtas amd64 ir arm64:",
+    "examples": "Paruošti Docker Compose pavyzdžiai: webhook botas, webhook botas su savo Mumble serveriu išbandymui ir testavimo botas CI",
+    "checksums": "Kontrolinės sumos",
+    "noRelease": "Atsisiuntimai yra GitHub.",
+    "prerelease": "Išankstinė versija",
+    "copy": "Kopijuoti",
+    "copied": "Nukopijuota",
+    "roadmapTitle": "Planas",
+    "roadmapBody": "Kaip ir Mumcord, Mumbot kuriamas epikais. 2 epikas – pasiūlymas iš atvirų issues, jis dar bus išsamiai suplanuotas.",
+    "status": {
+      "done": "atlikta",
+      "now": "vykdoma",
+      "planned": "toliau",
+      "later": "vėliau"
+    },
+    "epics": [
+      {
+        "id": "epic-0",
+        "title": "Testavimo botas",
+        "summary": "Scenarijumi valdomas botas iš Mumcord testų, dabar atskira programa.",
+        "items": [
+          "Pokalbis, būsena, teisės ir moderavimas, sąlygų laukimas ir scenarijaus režimas",
+          "Balso grojimas, įrašymas ir lygio tikrinimas, su Opus kaip Mumcord",
+          "Apkrovos testas su iki 1000 naudotojų vietiniame testiniame serveryje"
+        ]
+      },
+      {
+        "id": "epic-1",
+        "title": "Webhook botas",
+        "summary": "Žinutės iš išorės į Mumble kanalą.",
+        "items": [
+          "HTTP API su API raktais ir leidžiamais kanalais kiekvienam raktui",
+          "Markdown, kanalų slaptažodžiai, prisijungimas iš naujo ir užklausų ribojimas",
+          "Programos Linux, Windows ir macOS bei Docker atvaizdas",
+          "Nuo 0.1.1: Docker Compose pavyzdžiai ir dokumentacija apie konfigūraciją, komandų eilutę, HTTP API ir saugumą"
+        ]
+      },
+      {
+        "id": "epic-2",
+        "title": "Moduliai, muzika ir istorija",
+        "summary": "Vienas botas tampa įrankių rinkiniu.",
+        "items": [
+          "Moduliai: konfigūracijoje arba komandų eilutėje pasirink, kurie botai veikia, vienoje programoje ir viename atvaizde",
+          "Muzikos botas: siųsk MP3 arba nuorodas per HTTP, o botas jas groja balso kanale su eile",
+          "Istorijos botas: saugo kanalų, kuriuos mato, pokalbius ir perduoda juos Mumcord naudotojams, kurie buvo neprisijungę. Niekada privačių žinučių",
+          "Žinučių kortelės: webhook siunčia įspėjimus su pavadinimu, būsenos spalva, grafiku ir nuoroda, kuriuos Mumcord rodo kaip kortelę",
+          "Reguliuojama bitų sparta kalbai ir muzikai, niekada ne didesnė už serverio ribą",
+          "Peer modulis: užregistruoja serverio naudotojus mumpeer tarpiniame serveryje ir praneša Mumcord, kad jis yra"
+        ]
+      },
+      {
+        "id": "later",
+        "tag": "Ateityje",
+        "title": "Idėjos",
+        "summary": "Dar nesuplanuota, bet užsirašyta.",
+        "items": [
+          "Botas, kuris skaito pokalbį ir atsako į komandas",
+          "Teksto įgarsinimas arba įspėjimo garsai kanale",
+          "Vienas botas keliems serveriams arba su keliomis tapatybėmis",
+          "Šnabždesiai ir privačios žinutės, raktų keitimas be paleidimo iš naujo, integruotas TLS",
+          "Įsiminti serverio sertifikatą pirmo kontakto metu ir atmesti pasikeitusį"
+        ]
+      }
+    ],
+    "ideaTitle": "Turi idėją botui?",
+    "ideaBody": "Pageidavimai keliauja į Mumbot issues GitHub.",
+    "idea": "Pasiūlyk idėją",
+    "source": "Kodas GitHub",
+    "docs": "Dokumentacija"
   }
 }
