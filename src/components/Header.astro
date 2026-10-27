@@ -5,6 +5,7 @@ import { dicts, routes, LANGS, LANG_INFO, type Lang, type PageId } from "../i18n
 import { WIKI_URL, REPO_URL, ISSUES_URL, getReleases } from "../lib/release";
 import { BUG_URL, IDEA_URL } from "../lib/features";
 import { changelog } from "../lib/changelog";
+import { MUMBOT_REPO_URL, MUMBOT_MILESTONES_URL, MUMBOT_ISSUES_URL } from "../lib/mumbot";
 
 interface Props {
   lang: Lang;
@@ -34,6 +35,7 @@ const icons: Record<string, string> = {
   idea: "M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z",
   bug: "M8 8a4 4 0 0 1 8 0v2H8V8ZM6 10h12v4a6 6 0 0 1-12 0v-4ZM12 10v10M3 13h3M18 13h3M4 7l2 2M20 7l-2 2M4 20l2.5-2.5M20 20l-2.5-2.5",
   issues: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18ZM12 8v4M12 16h.01",
+  bot: "M12 3v3M8 21h8M5 8h14v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8ZM9.5 12.5h.01M14.5 12.5h.01M2 12v3M22 12v3",
 };
 
 const product = [
@@ -50,6 +52,11 @@ const community = [
   { key: "bug", href: BUG_URL, external: true },
   { key: "issues", href: ISSUES_URL, external: true },
 ] as const;
+const mumbot = [
+  { key: "botAbout", icon: "bot", href: MUMBOT_REPO_URL },
+  { key: "botRoadmap", icon: "roadmap", href: MUMBOT_MILESTONES_URL },
+  { key: "botIssues", icon: "issues", href: MUMBOT_ISSUES_URL },
+] as const;
 const productCurrent = product.some((p) => p.current);
 ---
 
@@ -64,7 +71,7 @@ const productCurrent = product.some((p) => p.current);
       <nav class="nav" id="site-nav" aria-label="Main">
         <div class="nav-item" data-menu>
           <button class:list={["nav-trigger", { "is-current": productCurrent }]} type="button" aria-expanded="false" aria-controls="menu-product">
-            {m.product}
+            Mumcord
             <svg class="nav-caret" viewBox="0 0 12 12" aria-hidden="true"><path d="m3 4.5 3 3 3-3" /></svg>
           </button>
           <div class="nav-panel nav-panel-wide" id="menu-product">
@@ -100,6 +107,30 @@ const productCurrent = product.some((p) => p.current);
               <span class="nav-feature-text">{newest.teaser ?? newest.summary}</span>
               <span class="nav-feature-cta">{m.whatsNew} →</span>
             </a>
+          </div>
+        </div>
+
+        <div class="nav-item" data-menu>
+          <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="menu-mumbot">
+            Mumbot
+            <svg class="nav-caret" viewBox="0 0 12 12" aria-hidden="true"><path d="m3 4.5 3 3 3-3" /></svg>
+          </button>
+          <div class="nav-panel" id="menu-mumbot">
+            <ul class="nav-list">
+              {
+                mumbot.map((b) => (
+                  <li>
+                    <a class="nav-card nav-card-small" href={b.href} rel="noopener">
+                      <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d={icons[b.icon]} /></svg>
+                      <span class="nav-card-text">
+                        <b>{m[b.key].title}</b>
+                        <span>{m[b.key].desc}</span>
+                      </span>
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
           </div>
         </div>
 

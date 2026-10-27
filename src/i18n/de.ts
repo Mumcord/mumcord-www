@@ -36,6 +36,9 @@ export const de = {
     idea: { title: "Feature wünschen", desc: "Deine Idee als Issue" },
     bug: { title: "Fehler melden", desc: "Am besten mit Diagnosedatei" },
     issues: { title: "Alle Issues", desc: "Was gerade offen ist" },
+    botAbout: { title: "Über Mumbot", desc: "Der Bot als eigenes Projekt" },
+    botRoadmap: { title: "Roadmap", desc: "Meilensteine auf GitHub" },
+    botIssues: { title: "Issues", desc: "Ideen und Fehler zum Bot" },
   },
   hero: {
     kicker: "Alpha · Open Source · AGPL",
@@ -304,6 +307,7 @@ export const de = {
     loveFor: "für",
     loveWords: ["Gamer", "Freundeskreise", "Gilden", "Communities", "Entwickler"],
     loveAll: "Mit Liebe gemacht in der EU, für Gamer, Freundeskreise, Gilden, Communities und Entwickler.",
+    botAbout: "Über Mumbot",
     product: "Produkt",
     host: "Hosten und Doku",
     community: "Mitmachen",

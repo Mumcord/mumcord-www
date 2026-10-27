@@ -38,6 +38,9 @@ export const en: Dict = {
     idea: { title: "Request a feature", desc: "Your idea as an issue" },
     bug: { title: "Report a bug", desc: "Ideally with a diagnostic file" },
     issues: { title: "All issues", desc: "What's open right now" },
+    botAbout: { title: "About Mumbot", desc: "The bot as its own project" },
+    botRoadmap: { title: "Roadmap", desc: "Milestones on GitHub" },
+    botIssues: { title: "Issues", desc: "Ideas and bugs for the bot" },
   },
   hero: {
     kicker: "Alpha · Open source · AGPL",
@@ -305,6 +308,7 @@ export const en: Dict = {
     loveFor: "for",
     loveWords: ["gamers", "friends", "guilds", "communities", "developers"],
     loveAll: "Made with love in the EU, for gamers, friends, guilds, communities and developers.",
+    botAbout: "About Mumbot",
     product: "Product",
     host: "Hosting and docs",
     community: "Get involved",
