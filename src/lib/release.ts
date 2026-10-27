@@ -4,7 +4,7 @@
 
 import { readFile } from "node:fs/promises";
 
-export const REPO = "ToBee94/mumcord";
+export const REPO = "Mumcord/mumcord";
 export const REPO_URL = `https://github.com/${REPO}`;
 export const RELEASES_URL = `${REPO_URL}/releases`;
 export const LATEST_URL = `${REPO_URL}/releases/latest`;

@@ -1,6 +1,6 @@
 # mumcord-www
 
-Website for [Mumcord](https://github.com/ToBee94/mumcord) — live at **https://mumcord.app**.
+Website for [Mumcord](https://github.com/Mumcord/mumcord) — live at **https://mumcord.app**.
 
 Static [Astro](https://astro.build) site, German (`/`) and English (`/en`). No cookies, no
 tracking, no third-party requests: fonts are self-hosted, the latest release is read from the
@@ -67,7 +67,7 @@ docker run --rm -p 8080:80 mumcord-www   # Caddy serves dist/ with clean URLs
 
 ## Deploy
 
-1. GitHub Actions (`.github/workflows/image.yml`) builds `ghcr.io/tobee94/mumcord-www`
+1. GitHub Actions (`.github/workflows/image.yml`) builds `ghcr.io/mumcord/mumcord-www`
    for amd64 + arm64 on every push to `main`, nightly (fresh release data for the download
    links) and on demand. Tags: `latest` and `sha-<commit>`.
 2. Deploying is manual: **Run pipeline** in GitLab `tvorwachs/mumcord-www-deploy`. It pulls
