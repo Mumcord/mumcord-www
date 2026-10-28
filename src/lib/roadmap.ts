@@ -250,7 +250,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         title: "Komfort",
         status: "planned",
         version: "0.5.0",
-        summary: "Feinschliff für Vielnutzer, Nachrichtenkarten für Bots und ein optionales Relay für direkte Verbindungen.",
+        summary: "Feinschliff für Vielnutzer und ein optionales Relay für direkte Verbindungen.",
         groups: [
           {
             title: "Komfort im Alltag",
@@ -262,15 +262,6 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Öffentlicher Server-Browser",
               "„Bitte nicht stören“: Ein Schalter macht Benachrichtigungen, Töne und Pop-ups stumm, Stimmen hörst du weiter",
               "@all und @channel, um alle auf dem Server oder im Kanal zu erwähnen",
-            ],
-          },
-          {
-            title: "Nachrichtenkarten",
-            items: [
-              "Bots und Monitoring schicken statt reinem Text eine kompakte Karte: Titel, formatierter Text, optional ein Bild wie ein Graph und ein Link zum Dashboard",
-              "Statusfarben für Info, Erfolg, Warnung und Fehler, immer zusätzlich als Text",
-              "Bilder laden nur mit eingeschalteten Link-Vorschauen und über Mumcord, nie direkt vom fremden Server",
-              "Offizielle Mumble-Clients sehen dieselbe Nachricht als normalen, sauber formatierten Text",
             ],
           },
           {
@@ -527,7 +518,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         title: "Comfort",
         status: "planned",
         version: "0.5.0",
-        summary: "Polish for heavy users, message cards for bots and an optional relay for direct connections.",
+        summary: "Polish for heavy users and an optional relay for direct connections.",
         groups: [
           {
             title: "Everyday comfort",
@@ -539,15 +530,6 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Public server browser",
               "Do Not Disturb: one switch silences notifications, sounds and pop-ups, and you still hear voices",
               "@all and @channel to mention everyone on the server or in the channel",
-            ],
-          },
-          {
-            title: "Message cards",
-            items: [
-              "Bots and monitoring send a compact card instead of plain text: a title, formatted text, optionally an image such as a graph and a link to the dashboard",
-              "Status colours for info, success, warning and error, always with a text label too",
-              "Images only load with link previews on and go through Mumcord, never straight from the other server",
-              "Official Mumble clients see the same message as normal, neatly formatted text",
             ],
           },
           {

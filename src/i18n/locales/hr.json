@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Udobnost",
-          "body": "Globalni prečaci, potpuni izbornik u traci sustava, uvoz iz službenog klijenta, šaputanje, preglednik poslužitelja, „Ne uznemiruj”, @all i @channel, kartice poruka za botove te opcionalni relay za izravne veze."
+          "body": "Globalni prečaci, potpuni izbornik u traci sustava, uvoz iz službenog klijenta, šaputanje, preglednik poslužitelja, „Ne uznemiruj”, @all i @channel te opcionalni relay za izravne veze."
         },
         {
           "tag": "Epic 4",
@@ -597,6 +597,11 @@
             "id": "autostart",
             "title": "Pokretanje pri prijavi",
             "body": "„Pokreni Mumcord pri prijavi” postoji na svakom sustavu."
+          },
+          {
+            "id": "failure-banner",
+            "title": "Trake s greškom koje ne gnjave",
+            "body": "Kad spajanje ne uspije, traka navodi poslužitelj i nestaje nakon 60 sekundi ili s ✕. Ikona poslužitelja i dalje prikazuje neuspjeh."
           }
         ]
       },
@@ -805,6 +810,17 @@
             "title": "Kopiranje poveznica",
             "body": "Desni klik na poveznicu u chatu nudi „Kopiraj poveznicu” i „Otvori poveznicu”.",
             "alt": "Kontekstni izbornik poveznice s „Kopiraj poveznicu” i „Otvori poveznicu”"
+          },
+          {
+            "id": "message-cards",
+            "title": "Kartice poruka",
+            "body": "Botovi i ljudi objavljuju kompaktne kartice s naslovom, bojom statusa, ikonom, formatiranim tekstom, slikom i poveznicom, za buildove, upozorenja ili dashboarde. Službeni Mumble klijenti vide istu poruku kao čitljiv tekst.",
+            "alt": "Chat s dvije kartice poruka od bota: potpuna kartica s ikonom, naslovom, tekstom, grafom i poveznicom, a ispod nje jednostavna kartica s naslovom i poveznicom"
+          },
+          {
+            "id": "paste-images",
+            "title": "Lijepljenje slika s Ctrl+V",
+            "body": "Snimke zaslona, „Kopiraj sliku” iz preglednika i slikovne datoteke kopirane u upravitelju datoteka s Ctrl+V idu ravno u polje za poruku kao privitak."
           }
         ]
       },
@@ -1048,12 +1064,61 @@
             "id": "tooltips",
             "title": "Opisi alata u stilu teme",
             "body": "Svaki opis alata u izgledu tvoje teme, svijetle ili tamne, a do njega dolaziš i tipkovnicom."
+          },
+          {
+            "id": "packet-inspector",
+            "title": "Inspektor paketa za otklanjanje grešaka",
+            "body": "Skriveno za programere: sedam klikova na verziju u Postavke → O aplikaciji otključava ga. U vlastitom prozoru prikazuje koji se Mumcord podaci šalju i primaju, s filtrima, brojačima i izvozom kao JSON ili Markdown.",
+            "alt": "Inspektor paketa s filtrima, brojačima po vrsti i smjeru i jednim proširenim retkom paketa"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.3",
+      "teaser": "Kartice poruka za botove, lijepljenje slika s Ctrl+V, trake s greškom mogu se zatvoriti.",
+      "summary": "Kartice poruka stižu ranije nego što je planirano: botovi i ljudi objavljuju kompaktne kartice sa statusom, slikom i poveznicom. Uz to slike iz međuspremnika stižu u chat, traka nakon greške pri spajanju više ne ostaje zauvijek, a poruke poslane neposredno prije prekida veze više se ne gube.",
+      "groups": [
+        {
+          "title": "Novo",
+          "items": [
+            "Kartice poruka: botovi i ljudi objavljuju kompaktnu karticu s naslovom, bojom statusa (info, uspjeh, upozorenje, greška, uvijek i navedeno tekstom), ikonom, formatiranim tekstom, slikom i poveznicom, napisanu kao jednostavan blok [card]. Službeni Mumble klijenti vide istu poruku kao čitljiv tekst. Slike se učitavaju samo s uključenim pretpregledima poveznica, preko Mumcorda."
+          ]
+        },
+        {
+          "title": "Poboljšano",
+          "items": [
+            "Lijepljenje slika iz međuspremnika: Ctrl+V sa snimkom zaslona, „Kopiraj sliku” iz preglednika ili kopiranom slikovnom datotekom prilaže sliku jednako kao ispuštenu, unutar istih ograničenja veličine.",
+            "Traka nakon greške pri spajanju nestaje nakon 60 sekundi i može se odmah zatvoriti s ✕. Navodi poslužitelj i vraća se tek pri sljedećem neuspjehu. Popis poslužitelja i dalje prikazuje grešku.",
+            "Linux instalacijski program pita za gst-libav (za H.264 videozapise) samo kad nedostaje i odmah ga instalira ako želiš. Uz to novi izgled: traka, numerirani koraci s napretkom i sažetak na kraju."
+          ]
+        },
+        {
+          "title": "Popravljeno",
+          "items": [
+            "Poruke koje pošalješ neposredno prije prekida veze ili izlaska više se ne gube: Mumcord najprije pošalje sve što još čeka u redu."
+          ]
+        },
+        {
+          "title": "Za otklanjanje grešaka",
+          "items": [
+            "Skriveni inspektor paketa: sedam klikova na verziju u Postavke → O aplikaciji otključava ga. U vlastitom prozoru prikazuje poslane i primljene Mumcord podatke, s filtrima, brojačima i izvozom kao JSON ili Markdown. Samo lokalno, ništa se nikamo ne šalje."
+          ]
+        },
+        {
+          "title": "Za programere",
+          "items": [
+            "Biblioteke za Mumble protokol, glas, pohranu i izravne veze objavljuju se na crates.io uz svako izdanje: mumcord-protocol, mumcord-codec, mumcord-audio, mumcord-store i mumcord-p2p. Mumbot se već temelji na njima.",
+            "Svako izdanje dobiva popis sastavnica (SBOM) svih biblioteka, a obavijesti trećih strana u Postavke → O aplikaciji generiraju se automatski."
+          ]
+        }
+      ],
+      "known": [
+        "Windows instalacijski program još nije potpisan."
+      ]
+    },
     {
       "version": "0.4.2",
       "teaser": "YouTube popravljen u Linux AppImageu, kraj poplavi upita za privjesak ključeva na macOS-u.",
@@ -1605,7 +1670,7 @@
       {
         "id": "epic-3",
         "title": "Udobnost",
-        "summary": "Dorada za one koji ga puno koriste, kartice poruka za botove i opcionalni relay za izravne veze.",
+        "summary": "Dorada za one koji ga puno koriste i opcionalni relay za izravne veze.",
         "groups": [
           {
             "title": "Udobnost za svaki dan",
@@ -1617,15 +1682,6 @@
               "Javni preglednik poslužitelja",
               "Ne uznemiruj: jedan prekidač utišava obavijesti, zvukove i skočne prozore, a glasove i dalje čuješ",
               "@all i @channel za spominjanje svih na poslužitelju ili u kanalu"
-            ]
-          },
-          {
-            "title": "Kartice poruka",
-            "items": [
-              "Botovi i monitoring umjesto običnog teksta šalju kompaktnu karticu: naslov, formatirani tekst, po želji sliku poput grafa i poveznicu na dashboard",
-              "Boje statusa za info, uspjeh, upozorenje i grešku, uvijek i s tekstualnom oznakom",
-              "Slike se učitavaju samo s uključenim pretpregledima poveznica i idu preko Mumcorda, nikad izravno s tuđeg poslužitelja",
-              "Službeni Mumble klijenti vide istu poruku kao običan, uredno formatiran tekst"
             ]
           },
           {

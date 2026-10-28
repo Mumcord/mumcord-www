@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Comfort",
-          "body": "Scorciatoie globali, menu completo nell'area di notifica, importazione dal client ufficiale, sussurro, browser dei server, Non disturbare, @all e @channel, schede messaggio per i bot e un relay opzionale per le connessioni dirette."
+          "body": "Scorciatoie globali, menu completo nell'area di notifica, importazione dal client ufficiale, sussurro, browser dei server, Non disturbare, @all e @channel e un relay opzionale per le connessioni dirette."
         },
         {
           "tag": "Epic 4",
@@ -597,6 +597,11 @@
             "id": "autostart",
             "title": "Avvio all'accesso",
             "body": "“Avvia Mumcord all'accesso” c'è su ogni sistema."
+          },
+          {
+            "id": "failure-banner",
+            "title": "Banner di errore che non assillano",
+            "body": "Quando una connessione non riesce, il banner indica il server e sparisce dopo 60 secondi o con ✕. L'icona del server continua a mostrare l'errore."
           }
         ]
       },
@@ -805,6 +810,17 @@
             "title": "Copiare i link",
             "body": "Il clic destro su un link nella chat offre “Copia link” e “Apri link”.",
             "alt": "Menu contestuale di un link con “Copia link” e “Apri link”"
+          },
+          {
+            "id": "message-cards",
+            "title": "Schede messaggio",
+            "body": "Bot e persone pubblicano schede compatte con titolo, colore di stato, icona, testo formattato, un'immagine e un link, per build, avvisi o dashboard. I client Mumble ufficiali vedono lo stesso messaggio come testo leggibile.",
+            "alt": "Chat con due schede messaggio di un bot: una scheda completa con icona, titolo, testo, un grafico e un link, e sotto una scheda semplice con titolo e link"
+          },
+          {
+            "id": "paste-images",
+            "title": "Incolla immagini con Ctrl+V",
+            "body": "Screenshot, “Copia immagine” dal browser e file immagine copiati nel file manager finiscono con Ctrl+V direttamente nel campo del messaggio come allegato."
           }
         ]
       },
@@ -1048,12 +1064,61 @@
             "id": "tooltips",
             "title": "Tooltip a tema",
             "body": "Ogni tooltip con l'aspetto del tuo tema, chiaro o scuro, e raggiungibile anche da tastiera."
+          },
+          {
+            "id": "packet-inspector",
+            "title": "Ispettore di pacchetti per il debug",
+            "body": "Nascosto per gli sviluppatori: sette clic sulla versione in Impostazioni → Informazioni lo sbloccano. In una finestra tutta sua mostra quali dati Mumcord vengono inviati e ricevuti, con filtri, contatori ed esportazione in JSON o Markdown.",
+            "alt": "Ispettore di pacchetti con filtri, contatori per tipo e direzione e una riga di pacchetto espansa"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.3",
+      "teaser": "Schede messaggio per i bot, incolla immagini con Ctrl+V, i banner di errore si possono chiudere.",
+      "summary": "Le schede messaggio arrivano prima del previsto: bot e persone pubblicano schede compatte con uno stato, un'immagine e un link. In più le immagini dagli appunti finiscono nella chat, il banner dopo un errore di connessione non resta più lì per sempre e i messaggi inviati poco prima di disconnettersi non vanno più persi.",
+      "groups": [
+        {
+          "title": "Novità",
+          "items": [
+            "Schede messaggio: bot e persone pubblicano una scheda compatta con un titolo, un colore di stato (info, successo, avviso, errore, sempre indicato anche a parole), un'icona, testo formattato, un'immagine e un link, scritta come un semplice blocco [card]. I client Mumble ufficiali vedono lo stesso messaggio come testo leggibile. Le immagini si caricano solo con le anteprime dei link attive, passando da Mumcord."
+          ]
+        },
+        {
+          "title": "Miglioramenti",
+          "items": [
+            "Incolla immagini dagli appunti: Ctrl+V con uno screenshot, “Copia immagine” da un browser o un file immagine copiato allega l'immagine come se l'avessi trascinata, entro gli stessi limiti di dimensione.",
+            "Il banner dopo un errore di connessione sparisce dopo 60 secondi e si può chiudere subito con ✕. Indica il server e torna solo al fallimento successivo. L'elenco dei server continua a mostrare l'errore.",
+            "L'installer per Linux chiede di gst-libav (per i video H.264) solo se manca e, se vuoi, lo installa subito. In più un nuovo aspetto: un banner, passaggi numerati con avanzamento e un riepilogo alla fine."
+          ]
+        },
+        {
+          "title": "Correzioni",
+          "items": [
+            "I messaggi che invii poco prima di disconnetterti o di uscire non vanno più persi: Mumcord invia prima tutto ciò che è ancora in coda."
+          ]
+        },
+        {
+          "title": "Per il debug",
+          "items": [
+            "Un ispettore di pacchetti nascosto: sette clic sulla versione in Impostazioni → Informazioni lo sbloccano. In una finestra tutta sua mostra i dati Mumcord inviati e ricevuti, con filtri, contatori ed esportazione in JSON o Markdown. Solo in locale, non viene inviato nulla da nessuna parte."
+          ]
+        },
+        {
+          "title": "Per gli sviluppatori",
+          "items": [
+            "Le librerie per il protocollo Mumble, la voce, l'archiviazione e le connessioni dirette vengono pubblicate su crates.io a ogni versione: mumcord-protocol, mumcord-codec, mumcord-audio, mumcord-store e mumcord-p2p. Mumbot si basa già su di esse.",
+            "Ogni versione riceve una distinta dei componenti (SBOM) di tutte le librerie, e le note di terze parti in Impostazioni → Informazioni vengono generate automaticamente."
+          ]
+        }
+      ],
+      "known": [
+        "L'installer per Windows non è ancora firmato."
+      ]
+    },
     {
       "version": "0.4.2",
       "teaser": "YouTube corretto nell'AppImage per Linux, niente più raffica di richieste del portachiavi su macOS.",
@@ -1605,7 +1670,7 @@
       {
         "id": "epic-3",
         "title": "Comfort",
-        "summary": "Rifiniture per chi lo usa tanto, schede messaggio per i bot e un relay opzionale per le connessioni dirette.",
+        "summary": "Rifiniture per chi lo usa tanto e un relay opzionale per le connessioni dirette.",
         "groups": [
           {
             "title": "Comfort di tutti i giorni",
@@ -1617,15 +1682,6 @@
               "Browser pubblico dei server",
               "Non disturbare: un solo interruttore silenzia notifiche, suoni e pop-up, e continui a sentire le voci",
               "@all e @channel per menzionare tutti sul server o nel canale"
-            ]
-          },
-          {
-            "title": "Schede messaggio",
-            "items": [
-              "Bot e monitoraggio inviano una scheda compatta invece di testo semplice: un titolo, testo formattato, facoltativamente un'immagine come un grafico e un link alla dashboard",
-              "Colori di stato per info, successo, avviso ed errore, sempre anche con un'etichetta di testo",
-              "Le immagini si caricano solo con le anteprime dei link attive e passano da Mumcord, mai direttamente dall'altro server",
-              "I client Mumble ufficiali vedono lo stesso messaggio come normale testo, ben formattato"
             ]
           },
           {

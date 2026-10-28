@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Compord",
-          "body": "Aicearraí domhanda, roghchlár tráidire iomlán, iompórtáil ón gcliant oifigiúil, cogar, brabhsálaí freastalaithe, Ná Cuir Isteach Orm, @all agus @channel, cártaí teachtaireachta do bhotanna, agus athsheachadán roghnach do naisc dhíreacha."
+          "body": "Aicearraí domhanda, roghchlár tráidire iomlán, iompórtáil ón gcliant oifigiúil, cogar, brabhsálaí freastalaithe, Ná Cuir Isteach Orm, @all agus @channel, agus athsheachadán roghnach do naisc dhíreacha."
         },
         {
           "tag": "Epic 4",
@@ -597,6 +597,11 @@
             "id": "autostart",
             "title": "Tosú ag logáil isteach",
             "body": "Tá “Tosaigh Mumcord nuair a logálaim isteach” ar fáil ar gach córas."
+          },
+          {
+            "id": "failure-banner",
+            "title": "Meirgí earráide nach gcránaíonn thú",
+            "body": "Nuair a theipeann ar cheangal, ainmníonn an meirge an freastalaí agus imíonn sé tar éis 60 soicind nó le ✕. Leanann deilbhín an fhreastalaí ag taispeáint na teipe."
           }
         ]
       },
@@ -805,6 +810,17 @@
             "title": "Cóipeáil naisc",
             "body": "Nuair a dheaschliceálann tú ar nasc sa chomhrá, gheobhaidh tú “Cóipeáil an nasc” agus “Oscail an nasc”.",
             "alt": "Roghchlár deaschliceála ar nasc le “Cóipeáil an nasc” agus “Oscail an nasc”"
+          },
+          {
+            "id": "message-cards",
+            "title": "Cártaí teachtaireachta",
+            "body": "Postálann botanna agus daoine cártaí dlútha le teideal, dath stádais, deilbhín, téacs formáidithe, íomhá agus nasc, do thógálacha, foláirimh nó deaiseanna. Feiceann cliaint oifigiúla Mumble an teachtaireacht chéanna mar théacs inléite.",
+            "alt": "Comhrá le dhá chárta teachtaireachta ó bhota: cárta iomlán le deilbhín, teideal, téacs, graf agus nasc, agus faoina bhun cárta simplí le teideal agus nasc"
+          },
+          {
+            "id": "paste-images",
+            "title": "Greamaigh íomhánna le Ctrl+V",
+            "body": "Téann gabhálacha scáileáin, “Cóipeáil íomhá” ón mbrabhsálaí agus comhaid íomhá a cóipeáladh sa bhainisteoir comhad díreach isteach i mbosca na teachtaireachta mar cheangaltán le Ctrl+V."
           }
         ]
       },
@@ -1048,12 +1064,61 @@
             "id": "tooltips",
             "title": "Leideanna uirlise sa téama",
             "body": "Gach leid uirlise i stíl do théama, geal nó dorcha, agus is féidir teacht orthu leis an méarchlár freisin."
+          },
+          {
+            "id": "packet-inspector",
+            "title": "Cigire paicéad le haghaidh dífhabhtaithe",
+            "body": "I bhfolach d’fhorbróirí: díghlasálann seacht gcliceáil ar an leagan faoi Socruithe → Maidir le é. Ina fhuinneog féin taispeánann sé cé na sonraí Mumcord a sheoltar agus a fhaightear, le scagairí, áiritheoirí agus easpórtáil mar JSON nó Markdown.",
+            "alt": "Cigire paicéad le scagairí, áiritheoirí de réir cineáil agus treo, agus ró paicéid amháin leathnaithe"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.3",
+      "teaser": "Cártaí teachtaireachta do bhotanna, greamaigh íomhánna le Ctrl+V, is féidir meirgí earráide a dhúnadh.",
+      "summary": "Tagann cártaí teachtaireachta níos luaithe ná mar a bhí beartaithe: postálann botanna agus daoine cártaí dlútha le stádas, íomhá agus nasc. Chomh maith leis sin, tagann íomhánna ón ngearrthaisce isteach sa chomhrá, ní fhanann an meirge tar éis earráid cheangail ann go deo a thuilleadh, agus ní chailltear teachtaireachtaí a seoladh díreach roimh dhínascadh a thuilleadh.",
+      "groups": [
+        {
+          "title": "Nua",
+          "items": [
+            "Cártaí teachtaireachta: postálann botanna agus daoine cárta dlúth le teideal, dath stádais (eolas, rath, rabhadh, earráid, ainmnithe i dtéacs i gcónaí freisin), deilbhín, téacs formáidithe, íomhá agus nasc, scríofa mar bhloc simplí [card]. Feiceann cliaint oifigiúla Mumble an teachtaireacht chéanna mar théacs inléite. Ní lódálann íomhánna ach nuair atá réamhamhairc ar naisc ar siúl, trí Mumcord."
+          ]
+        },
+        {
+          "title": "Feabhsaithe",
+          "items": [
+            "Greamaigh íomhánna ón ngearrthaisce: le Ctrl+V, ceanglaíonn gabháil scáileáin, “Cóipeáil íomhá” ó bhrabhsálaí nó comhad íomhá cóipeáilte an íomhá díreach mar a dhéanfadh ceann a scaoilfeá isteach, laistigh de na teorainneacha méide céanna.",
+            "Imíonn an meirge tar éis earráid cheangail i ndiaidh 60 soicind agus is féidir é a dhúnadh láithreach le ✕. Ainmníonn sé an freastalaí agus ní thagann sé ar ais go dtí an chéad teip eile. Leanann liosta na bhfreastalaithe ag taispeáint na hearráide.",
+            "Ní fhiafraíonn suiteálaí Linux faoi gst-libav (d’fhíseáin H.264) ach nuair atá sé in easnamh, agus suiteálann sé láithreach é más mian leat. Chomh maith leis sin, cuma nua: meirge, céimeanna uimhrithe le dul chun cinn agus achoimre ag an deireadh."
+          ]
+        },
+        {
+          "title": "Ceartaithe",
+          "items": [
+            "Ní chailltear teachtaireachtaí a sheolann tú díreach roimh dhínascadh nó scor a thuilleadh: seolann Mumcord gach a bhfuil fós ag fanacht sa scuaine ar dtús."
+          ]
+        },
+        {
+          "title": "Le haghaidh dífhabhtaithe",
+          "items": [
+            "Cigire paicéad i bhfolach: díghlasálann seacht gcliceáil ar an leagan faoi Socruithe → Maidir le é. Ina fhuinneog féin taispeánann sé na sonraí Mumcord a seoladh agus a fuarthas, le scagairí, áiritheoirí agus easpórtáil mar JSON nó Markdown. Áitiúil amháin, ní sheoltar aon rud áit ar bith."
+          ]
+        },
+        {
+          "title": "D’fhorbróirí",
+          "items": [
+            "Foilsítear na leabharlanna don phrótacal Mumble, don ghuth, don stóráil agus do naisc dhíreacha ar crates.io le gach eisiúint: mumcord-protocol, mumcord-codec, mumcord-audio, mumcord-store agus mumcord-p2p. Tógann Mumbot orthu cheana féin.",
+            "Faigheann gach eisiúint bille ábhar (SBOM) de na leabharlanna go léir, agus gintear na fógraí tríú páirtí faoi Socruithe → Maidir le go huathoibríoch."
+          ]
+        }
+      ],
+      "known": [
+        "Níl suiteálaí Windows sínithe fós."
+      ]
+    },
     {
       "version": "0.4.2",
       "teaser": "YouTube ceartaithe in AppImage Linux, deireadh leis an tuile leideanna seinn eochraí ar macOS.",
@@ -1605,7 +1670,7 @@
       {
         "id": "epic-3",
         "title": "Compord",
-        "summary": "Snasú d’úsáideoirí troma, cártaí teachtaireachta do bhotanna agus athsheachadán roghnach do naisc dhíreacha.",
+        "summary": "Snasú d’úsáideoirí troma agus athsheachadán roghnach do naisc dhíreacha.",
         "groups": [
           {
             "title": "Compord laethúil",
@@ -1617,15 +1682,6 @@
               "Brabhsálaí freastalaithe poiblí",
               "Ná Cuir Isteach Orm: múchann lasc amháin fógraí, fuaimeanna agus preabfhuinneoga, agus cloiseann tú guthanna fós",
               "@all agus @channel chun gach duine ar an bhfreastalaí nó sa chainéal a lua"
-            ]
-          },
-          {
-            "title": "Cártaí teachtaireachta",
-            "items": [
-              "Seolann botanna agus monatóireacht cárta dlúth in ionad gnáth-théacs: teideal, téacs formáidithe, íomhá más mian leat, mar ghraf, agus nasc chuig an deais",
-              "Dathanna stádais d’eolas, rath, rabhadh agus earráid, i gcónaí le lipéad téacs freisin",
-              "Ní lódálann íomhánna ach nuair atá réamhamhairc ar naisc ar siúl, agus téann siad trí Mumcord, ní go díreach ón bhfreastalaí eile riamh",
-              "Feiceann cliaint oifigiúla Mumble an teachtaireacht chéanna mar ghnáth-théacs atá formáidithe go néata"
             ]
           },
           {

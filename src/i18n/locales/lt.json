@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Patogumas",
-          "body": "Globalūs spartieji klavišai, pilnas dėklo meniu, importas iš oficialaus kliento, šnabždesys, serverių naršyklė, „Netrukdyti“, @all ir @channel, žinučių kortelės botams ir pasirenkamas tarpinis serveris tiesioginiams ryšiams."
+          "body": "Globalūs spartieji klavišai, pilnas dėklo meniu, importas iš oficialaus kliento, šnabždesys, serverių naršyklė, „Netrukdyti“, @all ir @channel bei pasirenkamas tarpinis serveris tiesioginiams ryšiams."
         },
         {
           "tag": "Epic 4",
@@ -597,6 +597,11 @@
             "id": "autostart",
             "title": "Paleidimas prisijungus",
             "body": "„Paleisti Mumcord prisijungus“ yra kiekvienoje sistemoje."
+          },
+          {
+            "id": "failure-banner",
+            "title": "Klaidų juostos, kurios neerzina",
+            "body": "Kai ryšys nepavyksta, juostoje nurodomas serveris, ir ji dingsta po 60 sekundžių arba paspaudus ✕. Serverio piktograma toliau rodo nesėkmę."
           }
         ]
       },
@@ -805,6 +810,17 @@
             "title": "Kopijuok nuorodas",
             "body": "Dešiniuoju spustelėjus nuorodą pokalbyje, siūloma „Kopijuoti nuorodą“ ir „Atidaryti nuorodą“.",
             "alt": "Nuorodos kontekstinis meniu su „Kopijuoti nuorodą“ ir „Atidaryti nuorodą“"
+          },
+          {
+            "id": "message-cards",
+            "title": "Žinučių kortelės",
+            "body": "Botai ir žmonės skelbia kompaktiškas korteles su pavadinimu, būsenos spalva, piktograma, formatuotu tekstu, paveikslėliu ir nuoroda, skirtas kompiliavimo rezultatams, įspėjimams ar suvestinėms. Oficialūs Mumble klientai tą pačią žinutę mato kaip skaitomą tekstą.",
+            "alt": "Pokalbis su dviem boto žinučių kortelėmis: pilna kortelė su piktograma, pavadinimu, tekstu, grafiku ir nuoroda, o po ja paprasta kortelė su pavadinimu ir nuoroda"
+          },
+          {
+            "id": "paste-images",
+            "title": "Paveikslėlių įklijavimas su Ctrl+V",
+            "body": "Ekrano kopijos, „Kopijuoti paveikslėlį“ iš naršyklės ir failų tvarkytuvėje nukopijuoti paveikslėlių failai su Ctrl+V iškart patenka į žinutės įvesties lauką kaip priedas."
           }
         ]
       },
@@ -1048,12 +1064,61 @@
             "id": "tooltips",
             "title": "Paaiškinimai tavo temoje",
             "body": "Kiekvienas iškylantysis paaiškinimas tavo temos stiliumi, šviesus ar tamsus, be to, pasiekiamas ir klaviatūra."
+          },
+          {
+            "id": "packet-inspector",
+            "title": "Paketų inspektorius derinimui",
+            "body": "Paslėptas kūrėjams: septyni spustelėjimai ant versijos skiltyje Nustatymai → Apie jį atrakina. Atskirame lange jis rodo, kokie Mumcord duomenys siunčiami ir gaunami, su filtrais, skaitikliais ir eksportu į JSON ar Markdown.",
+            "alt": "Paketų inspektorius su filtrais, skaitikliais pagal tipą ir kryptį bei viena išskleista paketo eilute"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.3",
+      "teaser": "Žinučių kortelės botams, paveikslėlių įklijavimas su Ctrl+V, klaidų juostas galima uždaryti.",
+      "summary": "Žinučių kortelės atkeliauja anksčiau nei planuota: botai ir žmonės skelbia kompaktiškas korteles su būsena, paveikslėliu ir nuoroda. Be to, paveikslėliai iš iškarpinės patenka į pokalbį, juosta po ryšio klaidos nebekabo amžinai, o žinutės, išsiųstos prieš pat atsijungiant, nebedingsta.",
+      "groups": [
+        {
+          "title": "Nauja",
+          "items": [
+            "Žinučių kortelės: botai ir žmonės skelbia kompaktišką kortelę su pavadinimu, būsenos spalva (informacija, sėkmė, įspėjimas, klaida, visada įvardijama ir tekstu), piktograma, formatuotu tekstu, paveikslėliu ir nuoroda, užrašytą kaip paprastas [card] blokas. Oficialūs Mumble klientai tą pačią žinutę mato kaip skaitomą tekstą. Paveikslėliai įkeliami tik įjungus nuorodų peržiūras, per Mumcord."
+          ]
+        },
+        {
+          "title": "Patobulinta",
+          "items": [
+            "Paveikslėlių įklijavimas iš iškarpinės: Ctrl+V su ekrano kopija, „Kopijuoti paveikslėlį“ naršyklėje ar nukopijuotas paveikslėlio failas prideda paveikslėlį taip pat kaip nutemptą, laikantis tų pačių dydžio ribų.",
+            "Juosta po ryšio klaidos dingsta po 60 sekundžių, o ✕ ją uždaro iš karto. Joje nurodomas serveris, ir ji vėl pasirodo tik po kito nepavykimo. Serverių sąraše klaida rodoma toliau.",
+            "Linux diegimo programa klausia apie gst-libav (H.264 vaizdo įrašams) tik tada, kai jo trūksta, ir, jei nori, iškart jį įdiegia. Be to, nauja išvaizda: juosta, sunumeruoti žingsniai su eiga ir santrauka pabaigoje."
+          ]
+        },
+        {
+          "title": "Ištaisyta",
+          "items": [
+            "Žinutės, kurias išsiunti prieš pat atsijungdamas ar išeidamas, nebedingsta: Mumcord pirmiausia išsiunčia viską, kas dar laukia eilėje."
+          ]
+        },
+        {
+          "title": "Derinimui",
+          "items": [
+            "Paslėptas paketų inspektorius: septyni spustelėjimai ant versijos skiltyje Nustatymai → Apie jį atrakina. Atskirame lange jis rodo siunčiamus ir gaunamus Mumcord duomenis, su filtrais, skaitikliais ir eksportu į JSON ar Markdown. Tik vietoje, niekas niekur nesiunčiama."
+          ]
+        },
+        {
+          "title": "Kūrėjams",
+          "items": [
+            "Mumble protokolo, balso, saugyklos ir tiesioginių ryšių bibliotekos su kiekvienu leidimu skelbiamos crates.io: mumcord-protocol, mumcord-codec, mumcord-audio, mumcord-store ir mumcord-p2p. Mumbot jau jomis remiasi.",
+            "Kiekvienas leidimas gauna visų bibliotekų komponentų sąrašą (SBOM), o trečiųjų šalių pranešimai skiltyje Nustatymai → Apie generuojami automatiškai."
+          ]
+        }
+      ],
+      "known": [
+        "Windows diegimo programa vis dar nepasirašyta."
+      ]
+    },
     {
       "version": "0.4.2",
       "teaser": "YouTube pataisytas Linux AppImage, nebe raktų pakabuko užklausų gausos macOS sistemoje.",
@@ -1605,7 +1670,7 @@
       {
         "id": "epic-3",
         "title": "Patogumas",
-        "summary": "Šlifavimas aktyviems naudotojams, žinučių kortelės botams ir pasirenkamas tarpinis serveris tiesioginiams ryšiams.",
+        "summary": "Šlifavimas aktyviems naudotojams ir pasirenkamas tarpinis serveris tiesioginiams ryšiams.",
         "groups": [
           {
             "title": "Kasdienis patogumas",
@@ -1617,15 +1682,6 @@
               "Viešų serverių naršyklė",
               "Netrukdyti: vienas jungiklis nutildo pranešimus, garsus ir iššokančius langelius, o balsus vis tiek girdi",
               "@all ir @channel, kad paminėtum visus serveryje arba kanale"
-            ]
-          },
-          {
-            "title": "Žinučių kortelės",
-            "items": [
-              "Botai ir stebėsenos sistemos vietoj paprasto teksto siunčia kompaktišką kortelę: pavadinimą, formatuotą tekstą, pasirinktinai paveikslėlį, pavyzdžiui, grafiką, ir nuorodą į skydelį",
-              "Būsenos spalvos informacijai, sėkmei, įspėjimui ir klaidai, visada kartu su tekstine žyma",
-              "Paveikslėliai įkeliami tik įjungus nuorodų peržiūras ir keliauja per Mumcord, niekada tiesiai iš kito serverio",
-              "Oficialūs Mumble klientai tą pačią žinutę mato kaip įprastą, tvarkingai suformatuotą tekstą"
             ]
           },
           {

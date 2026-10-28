@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Pohodlie",
-          "body": "Globálne klávesové skratky, kompletné menu v systémovej lište, import z oficiálneho klienta, šepot, prehliadač serverov, „Nerušiť“, @all a @channel, karty správ pre botov a k tomu voliteľný relay pre priame spojenia."
+          "body": "Globálne klávesové skratky, kompletné menu v systémovej lište, import z oficiálneho klienta, šepot, prehliadač serverov, „Nerušiť“, @all a @channel a k tomu voliteľný relay pre priame spojenia."
         },
         {
           "tag": "Epic 4",
@@ -597,6 +597,11 @@
             "id": "autostart",
             "title": "Spustenie po prihlásení",
             "body": "„Spustiť Mumcord po prihlásení“ nájdeš na každom systéme."
+          },
+          {
+            "id": "failure-banner",
+            "title": "Chybové bannery, ktoré neotravujú",
+            "body": "Keď pripojenie zlyhá, banner uvedie server a zmizne po 60 sekundách alebo cez ✕. Ikona servera zlyhanie naďalej ukazuje."
           }
         ]
       },
@@ -805,6 +810,17 @@
             "title": "Kopírovanie odkazov",
             "body": "Pravý klik na odkaz v chate ponúkne „Kopírovať odkaz“ a „Otvoriť odkaz“.",
             "alt": "Kontextové menu odkazu s „Kopírovať odkaz“ a „Otvoriť odkaz“"
+          },
+          {
+            "id": "message-cards",
+            "title": "Karty správ",
+            "body": "Boti aj ľudia posielajú kompaktné karty s nadpisom, stavovou farbou, ikonou, formátovaným textom, obrázkom a odkazom, pre buildy, upozornenia alebo dashboardy. Oficiálne klienty Mumble vidia tú istú správu ako čitateľný text.",
+            "alt": "Chat s dvoma kartami správ od bota: plná karta s ikonou, nadpisom, textom, grafom a odkazom a pod ňou jednoduchá karta s nadpisom a odkazom"
+          },
+          {
+            "id": "paste-images",
+            "title": "Vkladanie obrázkov cez Ctrl+V",
+            "body": "Snímky obrazovky, „Kopírovať obrázok“ z prehliadača a obrázkové súbory skopírované v správcovi súborov sa cez Ctrl+V dostanú rovno do poľa správy ako príloha."
           }
         ]
       },
@@ -1048,12 +1064,61 @@
             "id": "tooltips",
             "title": "Bublinové nápovedy v štýle témy",
             "body": "Každá nápoveda vo vzhľade tvojej témy, svetlej alebo tmavej, a dostupná aj z klávesnice."
+          },
+          {
+            "id": "packet-inspector",
+            "title": "Inšpektor paketov na ladenie",
+            "body": "Skrytý pre vývojárov: sedem kliknutí na verziu v Nastavenia → O aplikácii ho odomkne. Vo vlastnom okne ukazuje, aké dáta Mumcordu sa odosielajú a prijímajú, s filtrami, počítadlami a exportom ako JSON alebo Markdown.",
+            "alt": "Inšpektor paketov s filtrami, počítadlami podľa typu a smeru a jedným rozbaleným riadkom paketu"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.3",
+      "teaser": "Karty správ pre botov, vkladanie obrázkov cez Ctrl+V, chybové bannery sa dajú zavrieť.",
+      "summary": "Karty správ prichádzajú skôr, než bolo v pláne: boti aj ľudia posielajú kompaktné karty so stavom, obrázkom a odkazom. Navyše obrázky zo schránky sa dostanú do chatu, banner po chybe pripojenia už nezostáva navždy a správy odoslané tesne pred odpojením sa už nestratia.",
+      "groups": [
+        {
+          "title": "Nové",
+          "items": [
+            "Karty správ: boti aj ľudia posielajú kompaktnú kartu s nadpisom, stavovou farbou (info, úspech, varovanie, chyba, vždy uvedená aj textom), ikonou, formátovaným textom, obrázkom a odkazom, zapísanú ako jednoduchý blok [card]. Oficiálne klienty Mumble vidia tú istú správu ako čitateľný text. Obrázky sa načítajú len so zapnutými náhľadmi odkazov, cez Mumcord."
+          ]
+        },
+        {
+          "title": "Vylepšené",
+          "items": [
+            "Vkladanie obrázkov zo schránky: Ctrl+V so snímkou obrazovky, „Kopírovať obrázok“ z prehliadača alebo skopírovaný obrázkový súbor priloží obrázok rovnako ako pretiahnutý, v rovnakých limitoch veľkosti.",
+            "Banner po chybe pripojenia zmizne po 60 sekundách a dá sa hneď zavrieť cez ✕. Uvádza server a vráti sa až pri ďalšom zlyhaní. Zoznam serverov chybu naďalej ukazuje.",
+            "Inštalátor pre Linux sa pýta na gst-libav (pre videá H.264) len vtedy, keď chýba, a ak chceš, hneď ho nainštaluje. K tomu nový vzhľad: banner, očíslované kroky s priebehom a zhrnutie na konci."
+          ]
+        },
+        {
+          "title": "Opravené",
+          "items": [
+            "Správy, ktoré pošleš tesne pred odpojením alebo ukončením, sa už nestratia: Mumcord najprv odošle všetko, čo ešte čaká vo fronte."
+          ]
+        },
+        {
+          "title": "Na ladenie",
+          "items": [
+            "Skrytý inšpektor paketov: sedem kliknutí na verziu v Nastavenia → O aplikácii ho odomkne. Vo vlastnom okne ukazuje odoslané a prijaté dáta Mumcordu, s filtrami, počítadlami a exportom ako JSON alebo Markdown. Len lokálne, nič sa nikam neposiela."
+          ]
+        },
+        {
+          "title": "Pre vývojárov",
+          "items": [
+            "Knižnice pre protokol Mumble, hlas, úložisko a priame spojenia sa s každým vydaním zverejňujú na crates.io: mumcord-protocol, mumcord-codec, mumcord-audio, mumcord-store a mumcord-p2p. Mumbot na nich už stavia.",
+            "Každé vydanie dostane súpis komponentov (SBOM) všetkých knižníc a upozornenia tretích strán v Nastavenia → O aplikácii sa generujú automaticky."
+          ]
+        }
+      ],
+      "known": [
+        "Inštalátor pre Windows je stále nepodpísaný."
+      ]
+    },
     {
       "version": "0.4.2",
       "teaser": "YouTube opravené v AppImage pre Linux, už žiadna záplava žiadostí o kľúčenku na macOS.",
@@ -1605,7 +1670,7 @@
       {
         "id": "epic-3",
         "title": "Pohodlie",
-        "summary": "Vylepšenia pre náročných používateľov, karty správ pre botov a voliteľný relay pre priame spojenia.",
+        "summary": "Vylepšenia pre náročných používateľov a voliteľný relay pre priame spojenia.",
         "groups": [
           {
             "title": "Pohodlie na každý deň",
@@ -1617,15 +1682,6 @@
               "Verejný prehliadač serverov",
               "Nerušiť: jeden prepínač stlmí upozornenia, zvuky a vyskakovacie okná a hlasy stále počuješ",
               "@all a @channel, ktorými spomenieš všetkých na serveri alebo v kanáli"
-            ]
-          },
-          {
-            "title": "Karty správ",
-            "items": [
-              "Boti a monitoring posielajú namiesto obyčajného textu kompaktnú kartu: nadpis, formátovaný text, voliteľne obrázok, napríklad graf, a odkaz na dashboard",
-              "Stavové farby pre info, úspech, varovanie a chybu, vždy aj s textovým popisom",
-              "Obrázky sa načítajú len so zapnutými náhľadmi odkazov a idú cez Mumcord, nikdy priamo z cudzieho servera",
-              "Oficiálni klienti Mumble vidia tú istú správu ako bežný, úhľadne formátovaný text"
             ]
           },
           {

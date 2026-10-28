@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Udobje",
-          "body": "Globalne bližnjice, poln meni v sistemski vrstici, uvoz iz uradnega odjemalca, šepetanje, brskalnik strežnikov, »Ne moti«, @all in @channel, kartice sporočil za bote ter neobvezen posrednik za neposredne povezave."
+          "body": "Globalne bližnjice, poln meni v sistemski vrstici, uvoz iz uradnega odjemalca, šepetanje, brskalnik strežnikov, »Ne moti«, @all in @channel ter neobvezen posrednik za neposredne povezave."
         },
         {
           "tag": "Epic 4",
@@ -597,6 +597,11 @@
             "id": "autostart",
             "title": "Zagon ob prijavi",
             "body": "»Zaženi Mumcord ob prijavi« je na voljo na vsakem sistemu."
+          },
+          {
+            "id": "failure-banner",
+            "title": "Pasice z napakami, ki ne težijo",
+            "body": "Ko povezava ne uspe, pasica navede strežnik in izgine po 60 sekundah ali z ✕. Ikona strežnika napako še naprej prikazuje."
           }
         ]
       },
@@ -805,6 +810,17 @@
             "title": "Kopiranje povezav",
             "body": "Desni klik na povezavo v klepetu ponudi »Kopiraj povezavo« in »Odpri povezavo«.",
             "alt": "Priročni meni povezave s »Kopiraj povezavo« in »Odpri povezavo«"
+          },
+          {
+            "id": "message-cards",
+            "title": "Kartice sporočil",
+            "body": "Boti in ljudje objavljajo strnjene kartice z naslovom, barvo stanja, ikono, oblikovanim besedilom, sliko in povezavo, za gradnje, opozorila ali nadzorne plošče. Uradni odjemalci Mumble vidijo isto sporočilo kot berljivo besedilo.",
+            "alt": "Klepet z dvema karticama sporočil bota: polna kartica z ikono, naslovom, besedilom, grafom in povezavo, pod njo pa preprosta kartica z naslovom in povezavo"
+          },
+          {
+            "id": "paste-images",
+            "title": "Lepljenje slik s Ctrl+V",
+            "body": "Posnetki zaslona, »Kopiraj sliko« iz brskalnika in slikovne datoteke, kopirane v upravitelju datotek, gredo s Ctrl+V naravnost v polje za sporočilo kot priloga."
           }
         ]
       },
@@ -1048,12 +1064,61 @@
             "id": "tooltips",
             "title": "Orodni namigi v slogu teme",
             "body": "Vsak orodni namig v videzu tvoje teme, svetle ali temne, in dosegljiv tudi s tipkovnico."
+          },
+          {
+            "id": "packet-inspector",
+            "title": "Pregledovalnik paketov za razhroščevanje",
+            "body": "Skrit za razvijalce: sedem klikov na različico v Nastavitve → O aplikaciji ga odklene. V lastnem oknu prikaže, kateri podatki Mumcorda se pošiljajo in prejemajo, s filtri, števci in izvozom kot JSON ali Markdown.",
+            "alt": "Pregledovalnik paketov s filtri, števci po vrsti in smeri ter eno razširjeno vrstico paketa"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.3",
+      "teaser": "Kartice sporočil za bote, lepljenje slik s Ctrl+V, pasice z napakami lahko zapreš.",
+      "summary": "Kartice sporočil prihajajo prej, kot je bilo načrtovano: boti in ljudje objavljajo strnjene kartice s stanjem, sliko in povezavo. Poleg tega slike iz odložišča pristanejo v klepetu, pasica po napaki povezave ne ostane več za vedno, sporočila, poslana tik pred prekinitvijo povezave, pa se ne izgubijo več.",
+      "groups": [
+        {
+          "title": "Novo",
+          "items": [
+            "Kartice sporočil: boti in ljudje objavijo strnjeno kartico z naslovom, barvo stanja (informacija, uspeh, opozorilo, napaka, vedno navedena tudi z besedilom), ikono, oblikovanim besedilom, sliko in povezavo, zapisano kot preprost blok [card]. Uradni odjemalci Mumble vidijo isto sporočilo kot berljivo besedilo. Slike se naložijo le z vklopljenimi predogledi povezav, prek Mumcorda."
+          ]
+        },
+        {
+          "title": "Izboljšano",
+          "items": [
+            "Lepljenje slik iz odložišča: Ctrl+V s posnetkom zaslona, »Kopiraj sliko« iz brskalnika ali kopirana slikovna datoteka priloži sliko enako kot povlečeno, znotraj istih omejitev velikosti.",
+            "Pasica po napaki povezave izgine po 60 sekundah in jo lahko takoj zapreš z ✕. Navede strežnik in se vrne šele ob naslednji napaki. Seznam strežnikov napako še naprej prikazuje.",
+            "Namestitveni program za Linux vpraša za gst-libav (za videe H.264) le, ko manjka, in ga po želji takoj namesti. Poleg tega nov videz: pasica, oštevilčeni koraki z napredkom in povzetek na koncu."
+          ]
+        },
+        {
+          "title": "Popravljeno",
+          "items": [
+            "Sporočila, ki jih pošlješ tik pred prekinitvijo povezave ali izhodom, se ne izgubijo več: Mumcord najprej pošlje vse, kar še čaka v vrsti."
+          ]
+        },
+        {
+          "title": "Za razhroščevanje",
+          "items": [
+            "Skrit pregledovalnik paketov: sedem klikov na različico v Nastavitve → O aplikaciji ga odklene. V lastnem oknu prikaže poslane in prejete podatke Mumcorda, s filtri, števci in izvozom kot JSON ali Markdown. Samo lokalno, nič se nikamor ne pošlje."
+          ]
+        },
+        {
+          "title": "Za razvijalce",
+          "items": [
+            "Knjižnice za protokol Mumble, glas, shranjevanje in neposredne povezave so ob vsaki izdaji objavljene na crates.io: mumcord-protocol, mumcord-codec, mumcord-audio, mumcord-store in mumcord-p2p. Mumbot že gradi na njih.",
+            "Vsaka izdaja dobi popis komponent (SBOM) vseh knjižnic, obvestila tretjih oseb v Nastavitve → O aplikaciji pa se ustvarijo samodejno."
+          ]
+        }
+      ],
+      "known": [
+        "Namestitveni program za Windows še ni podpisan."
+      ]
+    },
     {
       "version": "0.4.2",
       "teaser": "YouTube popravljen v AppImage za Linux, konec poplave zahtev za ključavnik v macOS.",
@@ -1605,7 +1670,7 @@
       {
         "id": "epic-3",
         "title": "Udobje",
-        "summary": "Izpiljeno za zahtevne uporabnike, kartice sporočil za bote in neobvezen posrednik za neposredne povezave.",
+        "summary": "Izpiljeno za zahtevne uporabnike in neobvezen posrednik za neposredne povezave.",
         "groups": [
           {
             "title": "Udobje za vsak dan",
@@ -1617,15 +1682,6 @@
               "Javni brskalnik strežnikov",
               "Ne moti: eno stikalo utiša obvestila, zvoke in pojavna okna, glasove pa še vedno slišiš",
               "@all in @channel, s katerima omeniš vse na strežniku ali v kanalu"
-            ]
-          },
-          {
-            "title": "Kartice sporočil",
-            "items": [
-              "Boti in nadzorni sistemi namesto golega besedila pošljejo strnjeno kartico: naslov, oblikovano besedilo, po želji sliko, na primer graf, in povezavo do nadzorne plošče",
-              "Barve stanja za informacijo, uspeh, opozorilo in napako, vedno tudi z besedilno oznako",
-              "Slike se naložijo le z vklopljenimi predogledi povezav in gredo prek Mumcorda, nikoli neposredno s tujega strežnika",
-              "Uradni odjemalci Mumble vidijo isto sporočilo kot običajno, lepo oblikovano besedilo"
             ]
           },
           {

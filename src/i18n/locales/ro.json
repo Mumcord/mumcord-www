@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Confort",
-          "body": "Scurtături globale, meniu complet în bara de sistem, import din clientul oficial, șoaptă, browser de servere, Nu deranja, @all și @channel, carduri de mesaj pentru boți și un releu opțional pentru conexiuni directe."
+          "body": "Scurtături globale, meniu complet în bara de sistem, import din clientul oficial, șoaptă, browser de servere, Nu deranja, @all și @channel, plus un releu opțional pentru conexiuni directe."
         },
         {
           "tag": "Epic 4",
@@ -597,6 +597,11 @@
             "id": "autostart",
             "title": "Pornire la conectare",
             "body": "„Pornește Mumcord când mă conectez” există pe orice sistem."
+          },
+          {
+            "id": "failure-banner",
+            "title": "Bannere de eroare care nu te sâcâie",
+            "body": "Când o conexiune eșuează, bannerul numește serverul și dispare după 60 de secunde sau cu ✕. Pictograma serverului arată în continuare eșecul."
           }
         ]
       },
@@ -805,6 +810,17 @@
             "title": "Copiază linkuri",
             "body": "Clic dreapta pe un link din chat îți oferă „Copiază linkul” și „Deschide linkul”.",
             "alt": "Meniul de clic dreapta pe un link, cu „Copiază linkul” și „Deschide linkul”"
+          },
+          {
+            "id": "message-cards",
+            "title": "Carduri de mesaj",
+            "body": "Boții și oamenii postează carduri compacte cu titlu, culoare de stare, pictogramă, text formatat, o imagine și un link, pentru build-uri, alerte sau dashboarduri. Clienții oficiali Mumble văd același mesaj ca text lizibil.",
+            "alt": "Chat cu două carduri de mesaj de la un bot: un card complet cu pictogramă, titlu, text, un grafic și un link, iar dedesubt un card simplu cu titlu și link"
+          },
+          {
+            "id": "paste-images",
+            "title": "Lipește imagini cu Ctrl+V",
+            "body": "Capturile de ecran, „Copiază imaginea” din browser și fișierele imagine copiate în managerul de fișiere ajung direct în câmpul de mesaj ca atașament cu Ctrl+V."
           }
         ]
       },
@@ -1048,12 +1064,61 @@
             "id": "tooltips",
             "title": "Tooltipuri pe tema ta",
             "body": "Fiecare tooltip în stilul temei tale, deschisă sau întunecată, și accesibil și din tastatură."
+          },
+          {
+            "id": "packet-inspector",
+            "title": "Inspector de pachete pentru depanare",
+            "body": "Ascuns pentru dezvoltatori: șapte clicuri pe versiunea din Setări → Despre îl deblochează. Într-o fereastră proprie arată ce date Mumcord sunt trimise și primite, cu filtre, contoare și export ca JSON sau Markdown.",
+            "alt": "Inspector de pachete cu filtre, contoare pe tip și direcție și un rând de pachet extins"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.3",
+      "teaser": "Carduri de mesaj pentru boți, lipire de imagini cu Ctrl+V, bannerele de eroare se pot închide.",
+      "summary": "Cardurile de mesaj sosesc mai devreme decât era planificat: boții și oamenii postează carduri compacte cu o stare, o imagine și un link. În plus, imaginile din clipboard ajung în chat, bannerul de după o eroare de conexiune nu mai rămâne la nesfârșit, iar mesajele trimise chiar înainte de deconectare nu se mai pierd.",
+      "groups": [
+        {
+          "title": "Nou",
+          "items": [
+            "Carduri de mesaj: boții și oamenii postează un card compact cu un titlu, o culoare de stare (info, succes, avertisment, eroare, mereu numită și în text), o pictogramă, text formatat, o imagine și un link, scris ca un simplu bloc [card]. Clienții oficiali Mumble văd același mesaj ca text lizibil. Imaginile se încarcă doar cu previzualizările de linkuri pornite, prin Mumcord."
+          ]
+        },
+        {
+          "title": "Îmbunătățit",
+          "items": [
+            "Lipește imagini din clipboard: Ctrl+V cu o captură de ecran, „Copiază imaginea” dintr-un browser sau un fișier imagine copiat atașează imaginea ca pe una trasă cu mouse-ul, în aceleași limite de mărime.",
+            "Bannerul de după o eroare de conexiune dispare după 60 de secunde și se poate închide imediat cu ✕. Numește serverul și revine doar la următorul eșec. Lista de servere arată în continuare eroarea.",
+            "Instalatorul pentru Linux întreabă de gst-libav (pentru videoclipuri H.264) doar când lipsește și îl instalează imediat dacă vrei. Plus un aspect nou: un banner, pași numerotați cu progres și un rezumat la final."
+          ]
+        },
+        {
+          "title": "Reparat",
+          "items": [
+            "Mesajele pe care le trimiți chiar înainte să te deconectezi sau să închizi aplicația nu se mai pierd: Mumcord trimite întâi tot ce mai așteaptă în coadă."
+          ]
+        },
+        {
+          "title": "Pentru depanare",
+          "items": [
+            "Un inspector de pachete ascuns: șapte clicuri pe versiunea din Setări → Despre îl deblochează. Într-o fereastră proprie arată datele Mumcord trimise și primite, cu filtre, contoare și export ca JSON sau Markdown. Doar local, nu se trimite nimic nicăieri."
+          ]
+        },
+        {
+          "title": "Pentru dezvoltatori",
+          "items": [
+            "Bibliotecile pentru protocolul Mumble, voce, stocare și conexiuni directe sunt publicate pe crates.io la fiecare versiune: mumcord-protocol, mumcord-codec, mumcord-audio, mumcord-store și mumcord-p2p. Mumbot se bazează deja pe ele.",
+            "Fiecare versiune primește o listă de componente (SBOM) a tuturor bibliotecilor, iar notificările terților din Setări → Despre sunt generate automat."
+          ]
+        }
+      ],
+      "known": [
+        "Instalatorul pentru Windows este încă nesemnat."
+      ]
+    },
     {
       "version": "0.4.2",
       "teaser": "YouTube reparat în AppImage pentru Linux, gata cu avalanșa de cereri Keychain pe macOS.",
@@ -1605,7 +1670,7 @@
       {
         "id": "epic-3",
         "title": "Confort",
-        "summary": "Finisaje pentru utilizatorii înrăiți, carduri de mesaj pentru boți și un releu opțional pentru conexiuni directe.",
+        "summary": "Finisaje pentru utilizatorii înrăiți și un releu opțional pentru conexiuni directe.",
         "groups": [
           {
             "title": "Confort de zi cu zi",
@@ -1617,15 +1682,6 @@
               "Browser public de servere",
               "Nu deranja: un singur comutator oprește notificările, sunetele și pop-up-urile, iar vocile le auzi în continuare",
               "@all și @channel ca să-i menționezi pe toți de pe server sau din canal"
-            ]
-          },
-          {
-            "title": "Carduri de mesaj",
-            "items": [
-              "Boții și monitorizarea trimit un card compact în loc de text simplu: un titlu, text formatat, opțional o imagine, cum ar fi un grafic, și un link către dashboard",
-              "Culori de stare pentru info, succes, avertisment și eroare, mereu și cu o etichetă text",
-              "Imaginile se încarcă doar cu previzualizările de linkuri pornite și trec prin Mumcord, niciodată direct de pe celălalt server",
-              "Clienții Mumble oficiali văd același mesaj ca text normal, frumos formatat"
             ]
           },
           {

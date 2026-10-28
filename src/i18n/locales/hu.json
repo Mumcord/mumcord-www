@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Kényelem",
-          "body": "Globális gyorsbillentyűk, teljes tálcamenü, importálás a hivatalos kliensből, suttogás, szerverböngésző, „Ne zavarjanak”, @all és @channel, üzenetkártyák botoknak, plusz egy opcionális relay a közvetlen kapcsolatokhoz."
+          "body": "Globális gyorsbillentyűk, teljes tálcamenü, importálás a hivatalos kliensből, suttogás, szerverböngésző, „Ne zavarjanak”, @all és @channel, plusz egy opcionális relay a közvetlen kapcsolatokhoz."
         },
         {
           "tag": "Epic 4",
@@ -597,6 +597,11 @@
             "id": "autostart",
             "title": "Indítás bejelentkezéskor",
             "body": "A „Mumcord indítása bejelentkezéskor” minden rendszeren megvan."
+          },
+          {
+            "id": "failure-banner",
+            "title": "Hibasávok, amelyek nem idegesítenek",
+            "body": "Ha egy kapcsolat meghiúsul, a sáv megnevezi a szervert, és 60 másodperc után vagy ✕-szel eltűnik. A szerver ikonja továbbra is jelzi a hibát."
           }
         ]
       },
@@ -805,6 +810,17 @@
             "title": "Linkek másolása",
             "body": "Jobb klikk egy linkre a chatben, és ott a „Link másolása” meg a „Link megnyitása”.",
             "alt": "Egy link helyi menüje „Link másolása” és „Link megnyitása” ponttal"
+          },
+          {
+            "id": "message-cards",
+            "title": "Üzenetkártyák",
+            "body": "A botok és az emberek tömör kártyákat küldenek címmel, állapotszínnel, ikonnal, formázott szöveggel, képpel és linkkel, buildekhez, riasztásokhoz vagy dashboardokhoz. A hivatalos Mumble kliensek ugyanazt az üzenetet olvasható szövegként látják.",
+            "alt": "Chat egy bot két üzenetkártyájával: egy teljes kártya ikonnal, címmel, szöveggel, grafikonnal és linkkel, alatta egy egyszerű kártya címmel és linkkel"
+          },
+          {
+            "id": "paste-images",
+            "title": "Képbeillesztés Ctrl+V-vel",
+            "body": "A képernyőképek, a böngésző „Kép másolása” funkciója és a fájlkezelőben másolt képfájlok Ctrl+V-vel egyenesen az üzenetmezőbe kerülnek mellékletként."
           }
         ]
       },
@@ -1048,12 +1064,61 @@
             "id": "tooltips",
             "title": "Témához illő elemleírások",
             "body": "Minden elemleírás a témád kinézetében, világosan vagy sötéten, és billentyűzettel is elérhető."
+          },
+          {
+            "id": "packet-inspector",
+            "title": "Csomagvizsgáló hibakereséshez",
+            "body": "Fejlesztőknek elrejtve: hét kattintás a verzióra a Beállítások → Névjegy alatt feloldja. Saját ablakban mutatja, milyen Mumcord-adatok mennek ki és jönnek be, szűrőkkel, számlálókkal és JSON- vagy Markdown-exporttal.",
+            "alt": "Csomagvizsgáló szűrőkkel, típus és irány szerinti számlálókkal és egy kinyitott csomagsorral"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.3",
+      "teaser": "Üzenetkártyák botoknak, képbeillesztés Ctrl+V-vel, a hibasávok bezárhatók.",
+      "summary": "Az üzenetkártyák a tervezettnél korábban érkeznek: a botok és az emberek tömör kártyákat küldenek állapottal, képpel és linkkel. Emellett a vágólapon lévő képek bekerülnek a chatbe, a kapcsolódási hiba utáni sáv már nem marad ott örökre, és a kapcsolat bontása előtt közvetlenül elküldött üzenetek sem vesznek el többé.",
+      "groups": [
+        {
+          "title": "Új",
+          "items": [
+            "Üzenetkártyák: a botok és az emberek tömör kártyát küldenek címmel, állapotszínnel (infó, siker, figyelmeztetés, hiba, mindig szövegesen is megnevezve), ikonnal, formázott szöveggel, képpel és linkkel, egyszerű [card] blokkként megírva. A hivatalos Mumble kliensek ugyanazt az üzenetet olvasható szövegként látják. A képek csak bekapcsolt linkelőnézetekkel töltődnek be, a Mumcordon keresztül."
+          ]
+        },
+        {
+          "title": "Továbbfejlesztve",
+          "items": [
+            "Képek beillesztése a vágólapról: a Ctrl+V egy képernyőképpel, a böngésző „Kép másolása” funkciójával vagy egy másolt képfájllal ugyanúgy csatolja a képet, mint egy behúzottat, ugyanazokon a méretkorlátokon belül.",
+            "A kapcsolódási hiba utáni sáv 60 másodperc után eltűnik, és ✕-szel azonnal bezárható. Megnevezi a szervert, és csak a következő hibánál jelenik meg újra. A szerverlista továbbra is mutatja a hibát.",
+            "A Linuxos telepítő csak akkor kérdez rá a gst-libavra (a H.264-videókhoz), ha hiányzik, és ha szeretnéd, azonnal telepíti. Emellett új megjelenés: egy fejléc, számozott lépések előrehaladással és egy összefoglaló a végén."
+          ]
+        },
+        {
+          "title": "Javítva",
+          "items": [
+            "A közvetlenül a kapcsolat bontása vagy a kilépés előtt elküldött üzeneteid nem vesznek el többé: a Mumcord előbb elküld mindent, ami még a sorban vár."
+          ]
+        },
+        {
+          "title": "Hibakereséshez",
+          "items": [
+            "Rejtett csomagvizsgáló: hét kattintás a verzióra a Beállítások → Névjegy alatt feloldja. Saját ablakban mutatja az elküldött és fogadott Mumcord-adatokat, szűrőkkel, számlálókkal és JSON- vagy Markdown-exporttal. Csak helyben működik, semmit nem küld sehová."
+          ]
+        },
+        {
+          "title": "Fejlesztőknek",
+          "items": [
+            "A Mumble-protokoll, a hang, a tárolás és a közvetlen kapcsolatok könyvtárai minden kiadással megjelennek a crates.io-n: mumcord-protocol, mumcord-codec, mumcord-audio, mumcord-store és mumcord-p2p. A Mumbot már ezekre épül.",
+            "Minden kiadás kap egy anyagjegyzéket (SBOM) az összes könyvtárról, és a Beállítások → Névjegy alatti harmadik féltől származó közlemények automatikusan készülnek."
+          ]
+        }
+      ],
+      "known": [
+        "A Windows-telepítő még nincs aláírva."
+      ]
+    },
     {
       "version": "0.4.2",
       "teaser": "A YouTube javítva a Linuxos AppImage-ben, vége a kulcstartó-kérdések áradatának macOS-en.",
@@ -1605,7 +1670,7 @@
       {
         "id": "epic-3",
         "title": "Kényelem",
-        "summary": "Csiszolás a sokat használóknak, üzenetkártyák botoknak és opcionális relay a közvetlen kapcsolatokhoz.",
+        "summary": "Csiszolás a sokat használóknak és opcionális relay a közvetlen kapcsolatokhoz.",
         "groups": [
           {
             "title": "Kényelem a mindennapokban",
@@ -1617,15 +1682,6 @@
               "Nyilvános szerverböngésző",
               "Ne zavarjanak: egyetlen kapcsoló elnémítja az értesítéseket, a hangjelzéseket és a felugró ablakokat, a többiek hangját viszont továbbra is hallod",
               "@all és @channel, hogy mindenkit megemlíts a szerveren vagy a csatornán"
-            ]
-          },
-          {
-            "title": "Üzenetkártyák",
-            "items": [
-              "A botok és a monitoring sima szöveg helyett tömör kártyát küldenek: cím, formázott szöveg, opcionálisan egy kép, például grafikon, és egy link a dashboardra",
-              "Állapotszínek infóhoz, sikerhez, figyelmeztetéshez és hibához, mindig szöveges címkével is",
-              "A képek csak bekapcsolt linkelőnézetekkel töltődnek be, és a Mumcordon keresztül jönnek, sosem közvetlenül az idegen szerverről",
-              "A hivatalos Mumble kliensek ugyanazt az üzenetet normál, szépen formázott szövegként látják"
             ]
           },
           {

@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Kumdità",
-          "body": "Hotkeys globali, menu sħiħ fit-tray, importazzjoni mill-client uffiċjali, whisper, browser tas-servers, Do Not Disturb, @all u @channel, cards tal-messaġġi għall-bots, u relay mhux obbligatorju għal konnessjonijiet diretti."
+          "body": "Hotkeys globali, menu sħiħ fit-tray, importazzjoni mill-client uffiċjali, whisper, browser tas-servers, Do Not Disturb, @all u @channel, u relay mhux obbligatorju għal konnessjonijiet diretti."
         },
         {
           "tag": "Epic 4",
@@ -597,6 +597,11 @@
             "id": "autostart",
             "title": "Ibda meta tidħol",
             "body": "“Ibda Mumcord meta nidħol” issibha fuq kull sistema."
+          },
+          {
+            "id": "failure-banner",
+            "title": "Banners tal-iżbalji li ma jdejqux",
+            "body": "Meta konnessjoni tfalli, il-banner isemmi s-server u jisparixxi wara 60 sekonda jew bil-✕. L-ikona tas-server tibqa’ turi l-falliment."
           }
         ]
       },
@@ -805,6 +810,17 @@
             "title": "Ikkopja l-links",
             "body": "Right-click fuq link fiċ-chat joffrilek “Ikkopja l-link” u “Iftaħ il-link”.",
             "alt": "Menu tar-right-click fuq link b’“Ikkopja l-link” u “Iftaħ il-link”"
+          },
+          {
+            "id": "message-cards",
+            "title": "Cards tal-messaġġi",
+            "body": "Il-bots u n-nies jibagħtu cards kompatti b’titlu, kulur tal-istatus, ikona, test ifformattjat, stampa u link, għal builds, alerts jew dashboards. Il-clients uffiċjali ta’ Mumble jaraw l-istess messaġġ bħala test li jinqara.",
+            "alt": "Chat b’żewġ cards tal-messaġġi minn bot: card sħiħa b’ikona, titlu, test, graff u link, u taħtha card sempliċi b’titlu u link"
+          },
+          {
+            "id": "paste-images",
+            "title": "Waħħal stampi b’Ctrl+V",
+            "body": "Screenshots, “Ikkopja l-istampa” mill-browser u fajls ta’ stampi kkupjati fil-file manager jidħlu dritt fil-kaxxa tal-messaġġ bħala attachment b’Ctrl+V."
           }
         ]
       },
@@ -1048,12 +1064,61 @@
             "id": "tooltips",
             "title": "Tooltips bit-tema",
             "body": "Kull tooltip fid-dehra tat-tema tiegħek, ċara jew skura, u tista’ tilħqu anke bit-tastiera."
+          },
+          {
+            "id": "packet-inspector",
+            "title": "Packet inspector għad-debugging",
+            "body": "Moħbi għall-iżviluppaturi: seba’ klikks fuq il-verżjoni f’Settings → Dwar jiftħuh. F’tieqa għalih, juri liema data ta’ Mumcord tintbagħat u tasal, b’filtri, counters u esportazzjoni bħala JSON jew Markdown.",
+            "alt": "Packet inspector b’filtri, counters skont it-tip u d-direzzjoni u ringiela waħda ta’ pakkett miftuħa"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.3",
+      "teaser": "Cards tal-messaġġi għall-bots, waħħal stampi b’Ctrl+V, il-banners tal-iżbalji jistgħu jingħalqu.",
+      "summary": "Il-cards tal-messaġġi waslu qabel kien ippjanat: il-bots u n-nies jibagħtu cards kompatti bi status, stampa u link. Barra minn hekk, l-istampi mill-clipboard jaslu fiċ-chat, il-banner wara żball fil-konnessjoni ma jibqax hemm għal dejjem, u l-messaġġi mibgħuta eżatt qabel ma tiskonnettja ma jintilfux aktar.",
+      "groups": [
+        {
+          "title": "Ġdid",
+          "items": [
+            "Cards tal-messaġġi: il-bots u n-nies jibagħtu card kompatta b’titlu, kulur tal-istatus (info, suċċess, twissija, żball, dejjem imsemmi wkoll bit-test), ikona, test ifformattjat, stampa u link, miktuba bħala blokk [card] sempliċi. Il-clients uffiċjali ta’ Mumble jaraw l-istess messaġġ bħala test li jinqara. L-istampi jitgħabbew biss meta l-previews tal-links ikunu mixgħula, permezz ta’ Mumcord."
+          ]
+        },
+        {
+          "title": "Imtejjeb",
+          "items": [
+            "Waħħal stampi mill-clipboard: Ctrl+V bi screenshot, “Ikkopja l-istampa” minn browser jew fajl ta’ stampa kkupjat iżid l-istampa bħal waħda mkaxkra, fl-istess limiti tad-daqs.",
+            "Il-banner wara żball fil-konnessjoni jisparixxi wara 60 sekonda u jista’ jingħalaq minnufih bil-✕. Isemmi s-server u jerġa’ jidher biss mal-falliment li jmiss. Il-lista tas-servers tibqa’ turi l-iżball.",
+            "L-installer ta’ Linux jistaqsi dwar gst-libav (għall-vidjows H.264) biss meta jkun nieqes, u jinstallah minnufih jekk trid. Barra minn hekk, dehra ġdida: banner, passi nnumerati bil-progress u sommarju fl-aħħar."
+          ]
+        },
+        {
+          "title": "Imsewwi",
+          "items": [
+            "Il-messaġġi li tibgħat eżatt qabel ma tiskonnettja jew toħroġ ma jintilfux aktar: Mumcord l-ewwel jibgħat kull ma jkun għadu qed jistenna fil-kju."
+          ]
+        },
+        {
+          "title": "Għad-debugging",
+          "items": [
+            "Packet inspector moħbi: seba’ klikks fuq il-verżjoni f’Settings → Dwar jiftħuh. F’tieqa għalih, juri d-data ta’ Mumcord mibgħuta u riċevuta, b’filtri, counters u esportazzjoni bħala JSON jew Markdown. Lokali biss, xejn ma jintbagħat imkien."
+          ]
+        },
+        {
+          "title": "Għall-iżviluppaturi",
+          "items": [
+            "Il-libreriji għall-protokoll ta’ Mumble, il-leħen, il-ħażna u l-konnessjonijiet diretti jiġu ppubblikati fuq crates.io ma’ kull release: mumcord-protocol, mumcord-codec, mumcord-audio, mumcord-store u mumcord-p2p. Mumbot diġà mibni fuqhom.",
+            "Kull release jieħu lista tal-komponenti (SBOM) tal-libreriji kollha, u l-avviżi ta’ partijiet terzi f’Settings → Dwar jiġu ġġenerati awtomatikament."
+          ]
+        }
+      ],
+      "known": [
+        "L-installer ta’ Windows għadu mhux iffirmat."
+      ]
+    },
     {
       "version": "0.4.2",
       "teaser": "YouTube ssewwa fl-AppImage ta’ Linux, ebda aktar fwieda ta’ talbiet tal-keychain fuq macOS.",
@@ -1605,7 +1670,7 @@
       {
         "id": "epic-3",
         "title": "Kumdità",
-        "summary": "Irfinar għal min jużah ħafna, cards tal-messaġġi għall-bots u relay mhux obbligatorju għal konnessjonijiet diretti.",
+        "summary": "Irfinar għal min jużah ħafna u relay mhux obbligatorju għal konnessjonijiet diretti.",
         "groups": [
           {
             "title": "Kumdità ta’ kuljum",
@@ -1617,15 +1682,6 @@
               "Browser pubbliku tas-servers",
               "Do Not Disturb: swiċċ wieħed isikket in-notifiki, il-ħsejjes u l-pop-ups, u l-vuċijiet xorta tismagħhom",
               "@all u @channel biex issemmi lil kulħadd fuq is-server jew fil-kanal"
-            ]
-          },
-          {
-            "title": "Cards tal-messaġġi",
-            "items": [
-              "Il-bots u l-monitoraġġ jibagħtu card kompatta minflok test sempliċi: titlu, test ifformattjat, u jekk trid stampa bħal graff u link għad-dashboard",
-              "Kuluri tal-istatus għal info, suċċess, twissija u żball, dejjem b’tikketta tat-test ukoll",
-              "L-istampi jitgħabbew biss meta l-previews tal-links ikunu mixgħula u jgħaddu minn Mumcord, qatt dritt mis-server l-ieħor",
-              "Il-clients uffiċjali ta’ Mumble jaraw l-istess messaġġ bħala test normali, ifformattjat sew"
             ]
           },
           {

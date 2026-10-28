@@ -22,9 +22,15 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
   de: [
     {
       version: "0.4.3",
-      teaser: "Bilder per Strg+V einfügen, Fehlerbanner lassen sich schließen.",
-      summary: "Ein kleines Update: Bilder aus der Zwischenablage landen im Chat, das Banner nach einem Verbindungsfehler bleibt nicht mehr für immer stehen, und Nachrichten kurz vor dem Trennen gehen nicht mehr verloren.",
+      teaser: "Nachrichtenkarten für Bots, Bilder per Strg+V, Fehlerbanner lassen sich schließen.",
+      summary: "Nachrichtenkarten kommen früher als geplant: Bots und Menschen posten kompakte Karten mit Status, Bild und Link. Dazu landen Bilder aus der Zwischenablage im Chat, das Banner nach einem Verbindungsfehler bleibt nicht mehr für immer stehen, und Nachrichten kurz vor dem Trennen gehen nicht mehr verloren.",
       groups: [
+        {
+          title: "Neu",
+          items: [
+            "Nachrichtenkarten: Bots und Menschen posten eine kompakte Karte mit Titel, Statusfarbe (Info, Erfolg, Warnung, Fehler, immer auch als Text), Symbol, formatiertem Text, Bild und Link, geschrieben als einfacher [card]-Block. Offizielle Mumble-Clients sehen dieselbe Nachricht als lesbaren Text. Bilder laden nur mit eingeschalteten Link-Vorschauen und über Mumcord.",
+          ],
+        },
         {
           title: "Verbessert",
           items: [
@@ -42,7 +48,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
         {
           title: "Für die Fehlersuche",
           items: [
-            "Ein versteckter Paket-Inspektor zeigt die Mumcord-Nachrichten, die gesendet und empfangen werden, mit Filtern und Export. Nur lokal, nichts wird geloggt oder verschickt.",
+            "Ein versteckter Paketinspektor: Sieben Klicks auf die Version unter Einstellungen → Über schalten ihn frei. Er zeigt in einem eigenen Fenster die Mumcord-Daten, die gesendet und empfangen werden, mit Filtern, Zählern und Export als JSON oder Markdown. Nur lokal, nichts wird verschickt.",
           ],
         },
         {
@@ -409,9 +415,15 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
   en: [
     {
       version: "0.4.3",
-      teaser: "Paste images with Ctrl+V, error banners can be closed.",
-      summary: "A small update: images from the clipboard land in the chat, the banner after a connection error no longer stays forever, and messages sent right before disconnecting are no longer lost.",
+      teaser: "Message cards for bots, paste images with Ctrl+V, error banners can be closed.",
+      summary: "Message cards arrive earlier than planned: bots and people post compact cards with a status, an image and a link. Plus images from the clipboard land in the chat, the banner after a connection error no longer stays forever, and messages sent right before disconnecting are no longer lost.",
       groups: [
+        {
+          title: "New",
+          items: [
+            "Message cards: bots and people post a compact card with a title, a status colour (info, success, warning, error, always also named in text), an icon, formatted text, an image and a link, written as a simple [card] block. Official Mumble clients see the same message as readable text. Images load only with link previews on, through Mumcord.",
+          ],
+        },
         {
           title: "Improved",
           items: [
@@ -429,7 +441,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
         {
           title: "For debugging",
           items: [
-            "A hidden packet inspector shows the Mumcord messages sent and received, with filters and export. Local only, nothing is logged or sent anywhere.",
+            "A hidden packet inspector: seven clicks on the version under Settings → About unlock it. In a window of its own it shows the Mumcord data sent and received, with filters, counters and export as JSON or Markdown. Local only, nothing is sent anywhere.",
           ],
         },
         {
