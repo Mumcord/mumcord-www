@@ -249,7 +249,8 @@ const source: Record<"de" | "en", RoadmapPage> = {
         tag: "Epic 3",
         title: "Komfort",
         status: "planned",
-        summary: "Feinschliff für Vielnutzer, Nachrichtenkarten für Bots, ein optionales Relay für direkte Verbindungen und ein Werkzeug für die Fehlersuche.",
+        version: "0.5.0",
+        summary: "Feinschliff für Vielnutzer und ein optionales Relay für direkte Verbindungen.",
         groups: [
           {
             title: "Komfort im Alltag",
@@ -264,27 +265,12 @@ const source: Record<"de" | "en", RoadmapPage> = {
             ],
           },
           {
-            title: "Nachrichtenkarten",
-            items: [
-              "Bots und Monitoring schicken statt reinem Text eine kompakte Karte: Titel, formatierter Text, optional ein Bild wie ein Graph und ein Link zum Dashboard",
-              "Statusfarben für Info, Erfolg, Warnung und Fehler, immer zusätzlich als Text",
-              "Bilder laden nur mit eingeschalteten Link-Vorschauen und über Mumcord, nie direkt vom fremden Server",
-              "Offizielle Mumble-Clients sehen dieselbe Nachricht als normalen, sauber formatierten Text",
-            ],
-          },
-          {
             title: "Direkte Verbindungen über ein Relay",
             items: [
               "Klappt keine direkte Verbindung, etwa hinter CGNAT, oder willst du deine IP-Adresse nicht zeigen, leitet ein mumpeer-Relay die Daten weiter",
               "Der Inhalt bleibt Ende-zu-Ende verschlüsselt, das Relay reicht nur Bytes durch und lässt nur Nutzer des eigenen Servers rein",
               "Optional: Eine Community kann das Relay zusammen mit Mumbot betreiben. Ohne Relay funktioniert alles wie bisher",
               "Einstellbar: Relay aus, nur wenn direkt nicht klappt, oder immer, damit deine IP-Adresse verborgen bleibt",
-            ],
-          },
-          {
-            title: "Für die Fehlersuche",
-            items: [
-              "Versteckter Paket-Inspektor: zeigt die Mumcord-Nachrichten, die gesendet und empfangen werden, mit Filtern und Export. Nur lokal, nichts wird geloggt oder verschickt",
             ],
           },
         ],
@@ -531,7 +517,8 @@ const source: Record<"de" | "en", RoadmapPage> = {
         tag: "Epic 3",
         title: "Comfort",
         status: "planned",
-        summary: "Polish for heavy users, message cards for bots, an optional relay for direct connections and a tool for debugging.",
+        version: "0.5.0",
+        summary: "Polish for heavy users and an optional relay for direct connections.",
         groups: [
           {
             title: "Everyday comfort",
@@ -546,27 +533,12 @@ const source: Record<"de" | "en", RoadmapPage> = {
             ],
           },
           {
-            title: "Message cards",
-            items: [
-              "Bots and monitoring send a compact card instead of plain text: a title, formatted text, optionally an image such as a graph and a link to the dashboard",
-              "Status colours for info, success, warning and error, always with a text label too",
-              "Images only load with link previews on and go through Mumcord, never straight from the other server",
-              "Official Mumble clients see the same message as normal, neatly formatted text",
-            ],
-          },
-          {
             title: "Direct connections through a relay",
             items: [
               "If no direct connection works, for example behind CGNAT, or you don't want to show your IP address, a mumpeer relay forwards the data",
               "The content stays end-to-end encrypted; the relay only passes bytes along and only lets in users of its own server",
               "Optional: a community can run the relay together with Mumbot. Without a relay everything works as before",
               "Your choice: relay off, only when a direct connection fails, or always, so your IP address stays hidden",
-            ],
-          },
-          {
-            title: "For debugging",
-            items: [
-              "Hidden packet inspector: shows the Mumcord messages sent and received, with filters and export. Local only, nothing is logged or sent anywhere",
             ],
           },
         ],

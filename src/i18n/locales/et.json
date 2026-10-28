@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Mugavus",
-          "body": "Globaalsed kiirklahvid, täielik salvemenüü, import ametlikust kliendist, sosistamine, serveribrauser, „Mitte segada“, @all ja @channel, sõnumikaardid bottidele ning valikuline vahendusserver otseühenduste jaoks."
+          "body": "Globaalsed kiirklahvid, täielik salvemenüü, import ametlikust kliendist, sosistamine, serveribrauser, „Mitte segada“, @all ja @channel ning valikuline vahendusserver otseühenduste jaoks."
         },
         {
           "tag": "Epic 4",
@@ -597,6 +597,11 @@
             "id": "autostart",
             "title": "Käivitus sisselogimisel",
             "body": "„Käivita Mumcord sisselogimisel“ on olemas igas süsteemis."
+          },
+          {
+            "id": "failure-banner",
+            "title": "Veabännerid, mis ei tüüta",
+            "body": "Kui ühendus ebaõnnestub, nimetab bänner serveri ja kaob 60 sekundi pärast või ✕-ga. Serveri ikoon näitab tõrget edasi."
           }
         ]
       },
@@ -805,6 +810,17 @@
             "title": "Linkide kopeerimine",
             "body": "Paremklõps vestluses lingil pakub valikuid „Kopeeri link“ ja „Ava link“.",
             "alt": "Lingi paremklõpsumenüü valikutega „Kopeeri link“ ja „Ava link“"
+          },
+          {
+            "id": "message-cards",
+            "title": "Sõnumikaardid",
+            "body": "Botid ja inimesed postitavad kompaktseid kaarte pealkirja, olekuvärvi, ikooni, vormindatud teksti, pildi ja lingiga, näiteks buildide, hoiatuste või juhtpaneelide jaoks. Ametlikud Mumble'i kliendid näevad sama sõnumit loetava tekstina.",
+            "alt": "Vestlus kahe boti sõnumikaardiga: täielik kaart ikooni, pealkirja, teksti, graafiku ja lingiga ning selle all lihtne kaart pealkirja ja lingiga"
+          },
+          {
+            "id": "paste-images",
+            "title": "Piltide kleepimine Ctrl+V-ga",
+            "body": "Ekraanipildid, „Kopeeri pilt“ brauserist ja failihalduris kopeeritud pildifailid jõuavad Ctrl+V-ga otse sisestusvälja manusena."
           }
         ]
       },
@@ -1048,12 +1064,61 @@
             "id": "tooltips",
             "title": "Teemaga kohtspikrid",
             "body": "Iga kohtspikker sinu teema välimusega, hele või tume, ja kättesaadav ka klaviatuuriga."
+          },
+          {
+            "id": "packet-inspector",
+            "title": "Paketiinspektor silumiseks",
+            "body": "Arendajate jaoks peidetud: seitse klõpsu versioonil jaotises Seaded → Teave avavad selle. Eraldi aknas näitab see, milliseid Mumcordi andmeid saadetakse ja vastu võetakse, koos filtrite, loendurite ja ekspordiga JSON-i või Markdowni vormingus.",
+            "alt": "Paketiinspektor filtrite, tüübi ja suuna kaupa loendurite ning ühe lahtivolditud paketireaga"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.3",
+      "teaser": "Sõnumikaardid bottidele, piltide kleepimine Ctrl+V-ga, veabännereid saab sulgeda.",
+      "summary": "Sõnumikaardid jõuavad kohale plaanitust varem: botid ja inimesed postitavad kompaktseid kaarte oleku, pildi ja lingiga. Lisaks jõuavad lõikelaua pildid vestlusesse, ühendusvea järel ilmuv bänner ei jää enam igaveseks ette ning vahetult enne ühenduse katkestamist saadetud sõnumid ei lähe enam kaduma.",
+      "groups": [
+        {
+          "title": "Uus",
+          "items": [
+            "Sõnumikaardid: botid ja inimesed postitavad kompaktse kaardi pealkirja, olekuvärvi (teave, õnnestumine, hoiatus, viga, alati ka tekstina nimetatud), ikooni, vormindatud teksti, pildi ja lingiga, kirjutatuna lihtsa [card]-plokina. Ametlikud Mumble'i kliendid näevad sama sõnumit loetava tekstina. Pildid laaditakse ainult siis, kui linkide eelvaated on sees, läbi Mumcordi."
+          ]
+        },
+        {
+          "title": "Täiustatud",
+          "items": [
+            "Piltide kleepimine lõikelaualt: Ctrl+V ekraanipildiga, „Kopeeri pilt“ brauserist või kopeeritud pildifail lisab pildi manusena nagu lohistatud pildi, samade suurusepiirangutega.",
+            "Ühendusvea järel ilmuv bänner kaob 60 sekundi pärast ja selle saab ✕-ga kohe sulgeda. See nimetab serveri ja tuleb tagasi alles järgmise tõrke korral. Serverinimekiri näitab viga edasi.",
+            "Linuxi paigaldaja küsib gst-libav'i (H.264 videote jaoks) ainult siis, kui see puudub, ja paigaldab selle soovi korral kohe. Lisaks uus välimus: bänner, nummerdatud sammud koos edenemisega ja kokkuvõte lõpus."
+          ]
+        },
+        {
+          "title": "Parandatud",
+          "items": [
+            "Sõnumid, mille saadad vahetult enne ühenduse katkestamist või väljumist, ei lähe enam kaduma: Mumcord saadab kõigepealt ära kõik, mis veel järjekorras ootab."
+          ]
+        },
+        {
+          "title": "Silumiseks",
+          "items": [
+            "Peidetud paketiinspektor: seitse klõpsu versioonil jaotises Seaded → Teave avavad selle. Eraldi aknas näitab see saadetud ja vastu võetud Mumcordi andmeid, koos filtrite, loendurite ja ekspordiga JSON-i või Markdowni vormingus. Ainult kohalikult, midagi ei saadeta kuhugi."
+          ]
+        },
+        {
+          "title": "Arendajatele",
+          "items": [
+            "Mumble'i protokolli, hääle, salvestuse ja otseühenduste teegid avaldatakse iga väljalaskega crates.io-s: mumcord-protocol, mumcord-codec, mumcord-audio, mumcord-store ja mumcord-p2p. Mumbot tugineb neile juba praegu.",
+            "Iga väljalase saab kõigi teekide komponendiloendi (SBOM) ning kolmandate osapoolte teatised jaotises Seaded → Teave luuakse automaatselt."
+          ]
+        }
+      ],
+      "known": [
+        "Windowsi paigaldaja on endiselt allkirjastamata."
+      ]
+    },
     {
       "version": "0.4.2",
       "teaser": "YouTube töötab Linuxi AppImage'is taas, macOS-is enam ei tule võtmehoidla küsimuste tulva.",
@@ -1605,7 +1670,7 @@
       {
         "id": "epic-3",
         "title": "Mugavus",
-        "summary": "Viimistlus aktiivsetele kasutajatele, sõnumikaardid bottidele, valikuline vahendusserver otseühenduste jaoks ja tööriist silumiseks.",
+        "summary": "Viimistlus aktiivsetele kasutajatele ja valikuline vahendusserver otseühenduste jaoks.",
         "groups": [
           {
             "title": "Igapäevane mugavus",
@@ -1620,27 +1685,12 @@
             ]
           },
           {
-            "title": "Sõnumikaardid",
-            "items": [
-              "Botid ja monitooring saadavad lihtteksti asemel kompaktse kaardi: pealkiri, vormindatud tekst, soovi korral pilt, näiteks graafik, ja link juhtpaneelile",
-              "Olekuvärvid teabe, õnnestumise, hoiatuse ja vea jaoks, alati ka tekstisildiga",
-              "Pildid laaditakse ainult siis, kui linkide eelvaated on sees, ja need liiguvad läbi Mumcordi, mitte kunagi otse teisest serverist",
-              "Ametlikud Mumble'i kliendid näevad sama sõnumit tavalise, korralikult vormindatud tekstina"
-            ]
-          },
-          {
             "title": "Otseühendused vahendusserveri kaudu",
             "items": [
               "Kui otseühendus ei õnnestu, näiteks CGNAT-i taga, või sa ei taha oma IP-aadressi näidata, edastab andmed mumpeeri vahendusserver",
               "Sisu jääb otspunktkrüpteerituks; vahendusserver ainult edastab baite ja laseb sisse vaid oma serveri kasutajaid",
               "Valikuline: kogukond saab vahendusserverit käitada koos Mumbotiga. Ilma selleta töötab kõik nagu varem",
               "Sinu valik: vahendusserver väljas, ainult siis, kui otseühendus ebaõnnestub, või alati, et su IP-aadress jääks varjatuks"
-            ]
-          },
-          {
-            "title": "Silumiseks",
-            "items": [
-              "Peidetud paketiinspektor: näitab saadetud ja vastuvõetud Mumcordi sõnumeid, koos filtrite ja ekspordiga. Ainult kohalikult, midagi ei logita ega saadeta kuhugi"
             ]
           }
         ]

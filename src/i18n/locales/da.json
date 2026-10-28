@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Komfort",
-          "body": "Globale genvejstaster, komplet bakkemenu, import fra den officielle klient, hvisken, serverbrowser, „Forstyr ikke“, @all og @channel, beskedkort til bots samt et valgfrit relay til direkte forbindelser."
+          "body": "Globale genvejstaster, komplet bakkemenu, import fra den officielle klient, hvisken, serverbrowser, „Forstyr ikke“, @all og @channel samt et valgfrit relay til direkte forbindelser."
         },
         {
           "tag": "Epic 4",
@@ -597,6 +597,11 @@
             "id": "autostart",
             "title": "Start ved login",
             "body": "„Start Mumcord, når jeg logger ind“ findes på alle systemer."
+          },
+          {
+            "id": "failure-banner",
+            "title": "Fejlbannere, der ikke plager",
+            "body": "Når en forbindelse mislykkes, nævner banneret serveren og forsvinder efter 60 sekunder eller med ✕. Serverikonet bliver ved med at vise fejlen."
           }
         ]
       },
@@ -805,6 +810,17 @@
             "title": "Kopiér links",
             "body": "Højreklikker du på et link i chatten, får du „Kopiér link“ og „Åbn link“.",
             "alt": "Højrekliksmenu på et link med „Kopiér link“ og „Åbn link“"
+          },
+          {
+            "id": "message-cards",
+            "title": "Beskedkort",
+            "body": "Bots og personer poster kompakte kort med titel, statusfarve, ikon, formateret tekst, et billede og et link, til builds, alarmer eller dashboards. Officielle Mumble-klienter ser den samme besked som læsbar tekst.",
+            "alt": "Chat med to beskedkort fra en bot: et fuldt kort med ikon, titel, tekst, en graf og et link og under det et enkelt kort med titel og link"
+          },
+          {
+            "id": "paste-images",
+            "title": "Indsæt billeder med Ctrl+V",
+            "body": "Skærmbilleder, „Kopiér billede“ fra browseren og billedfiler kopieret i filhåndteringen havner med Ctrl+V direkte i beskedfeltet som vedhæftning."
           }
         ]
       },
@@ -1048,12 +1064,61 @@
             "id": "tooltips",
             "title": "Værktøjstip i dit tema",
             "body": "Alle værktøjstip i dit temas udseende, lyst eller mørkt, og de kan også nås med tastaturet."
+          },
+          {
+            "id": "packet-inspector",
+            "title": "Pakkeinspektør til fejlfinding",
+            "body": "Skjult for udviklere: syv klik på versionen under Indstillinger → Om låser den op. I sit eget vindue viser den, hvilke Mumcord-data der sendes og modtages, med filtre, tællere og eksport som JSON eller Markdown.",
+            "alt": "Pakkeinspektør med filtre, tællere pr. type og retning og én udfoldet pakkerække"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.3",
+      "teaser": "Beskedkort til bots, indsæt billeder med Ctrl+V, fejlbannere kan lukkes.",
+      "summary": "Beskedkort kommer tidligere end planlagt: bots og personer poster kompakte kort med en status, et billede og et link. Derudover lander billeder fra udklipsholderen i chatten, banneret efter en forbindelsesfejl bliver ikke længere stående for evigt, og beskeder, der sendes lige før du afbryder forbindelsen, går ikke længere tabt.",
+      "groups": [
+        {
+          "title": "Nyt",
+          "items": [
+            "Beskedkort: bots og personer poster et kompakt kort med en titel, en statusfarve (info, succes, advarsel, fejl, altid også nævnt i tekst), et ikon, formateret tekst, et billede og et link, skrevet som en enkel [card]-blok. Officielle Mumble-klienter ser den samme besked som læsbar tekst. Billeder indlæses kun, når linkforhåndsvisninger er slået til, gennem Mumcord."
+          ]
+        },
+        {
+          "title": "Forbedret",
+          "items": [
+            "Indsæt billeder fra udklipsholderen: Ctrl+V med et skærmbillede, „Kopiér billede“ fra en browser eller en kopieret billedfil vedhæfter billedet ligesom et, der er trukket ind, inden for de samme størrelsesgrænser.",
+            "Banneret efter en forbindelsesfejl forsvinder efter 60 sekunder og kan lukkes med det samme med ✕. Det nævner serveren og kommer kun igen ved næste fejl. Serverlisten bliver ved med at vise fejlen.",
+            "Linux-installationsprogrammet spørger kun om gst-libav (til H.264-videoer), når det mangler, og installerer det med det samme, hvis du vil. Derudover et nyt udseende: et banner, nummererede trin med fremskridt og en opsummering til sidst."
+          ]
+        },
+        {
+          "title": "Rettet",
+          "items": [
+            "Beskeder, du sender lige før du afbryder forbindelsen eller lukker, går ikke længere tabt: Mumcord sender først alt, der stadig venter i køen."
+          ]
+        },
+        {
+          "title": "Til fejlfinding",
+          "items": [
+            "En skjult pakkeinspektør: syv klik på versionen under Indstillinger → Om låser den op. I sit eget vindue viser den de Mumcord-data, der sendes og modtages, med filtre, tællere og eksport som JSON eller Markdown. Kun lokalt, intet sendes nogen steder hen."
+          ]
+        },
+        {
+          "title": "Til udviklere",
+          "items": [
+            "Bibliotekerne til Mumble-protokollen, tale, lagring og direkte forbindelser udgives på crates.io med hver udgivelse: mumcord-protocol, mumcord-codec, mumcord-audio, mumcord-store og mumcord-p2p. Mumbot bygger allerede på dem.",
+            "Hver udgivelse får en stykliste (SBOM) over alle biblioteker, og tredjepartsmeddelelserne under Indstillinger → Om genereres automatisk."
+          ]
+        }
+      ],
+      "known": [
+        "Windows-installationsprogrammet er stadig usigneret."
+      ]
+    },
     {
       "version": "0.4.2",
       "teaser": "YouTube er rettet i Linux-AppImage, ikke flere store mængder nøgleringsspørgsmål på macOS.",
@@ -1605,7 +1670,7 @@
       {
         "id": "epic-3",
         "title": "Komfort",
-        "summary": "Finpudsning til flittige brugere, beskedkort til bots, et valgfrit relay til direkte forbindelser og et værktøj til fejlfinding.",
+        "summary": "Finpudsning til flittige brugere og et valgfrit relay til direkte forbindelser.",
         "groups": [
           {
             "title": "Komfort i hverdagen",
@@ -1620,27 +1685,12 @@
             ]
           },
           {
-            "title": "Beskedkort",
-            "items": [
-              "Bots og overvågning sender et kompakt kort i stedet for ren tekst: en titel, formateret tekst, eventuelt et billede som en graf og et link til dashboardet",
-              "Statusfarver for info, succes, advarsel og fejl, altid også med en tekstetiket",
-              "Billeder indlæses kun, når linkforhåndsvisninger er slået til, og går gennem Mumcord, aldrig direkte fra den anden server",
-              "Officielle Mumble-klienter ser den samme besked som almindelig, pænt formateret tekst"
-            ]
-          },
-          {
             "title": "Direkte forbindelser via et relay",
             "items": [
               "Virker ingen direkte forbindelse, fx bag CGNAT, eller vil du ikke vise din IP-adresse, sender et mumpeer-relay dataene videre",
               "Indholdet forbliver end-to-end-krypteret; relayet sender kun bytes videre og lukker kun brugere fra sin egen server ind",
               "Valgfrit: et community kan køre relayet sammen med Mumbot. Uden relay virker alt som før",
               "Du vælger: relay fra, kun når en direkte forbindelse fejler, eller altid, så din IP-adresse forbliver skjult"
-            ]
-          },
-          {
-            "title": "Til fejlfinding",
-            "items": [
-              "Skjult pakkeinspektør: viser de sendte og modtagne Mumcord-beskeder, med filtre og eksport. Kun lokalt, intet logges eller sendes nogen steder hen"
             ]
           }
         ]

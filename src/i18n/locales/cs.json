@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Pohodlí",
-          "body": "Globální klávesové zkratky, plné menu v systémové liště, import z oficiálního klienta, šeptání, prohlížeč serverů, „Nerušit“, @all a @channel, karty zpráv pro boty a k tomu volitelný relay pro přímá spojení."
+          "body": "Globální klávesové zkratky, plné menu v systémové liště, import z oficiálního klienta, šeptání, prohlížeč serverů, „Nerušit“, @all a @channel a k tomu volitelný relay pro přímá spojení."
         },
         {
           "tag": "Epic 4",
@@ -597,6 +597,11 @@
             "id": "autostart",
             "title": "Spuštění po přihlášení",
             "body": "„Spustit Mumcord po přihlášení“ najdeš na každém systému."
+          },
+          {
+            "id": "failure-banner",
+            "title": "Chybové bannery, které neotravují",
+            "body": "Když připojení selže, banner uvede název serveru a zmizí po 60 sekundách nebo přes ✕. Ikona serveru selhání dál ukazuje."
           }
         ]
       },
@@ -805,6 +810,17 @@
             "title": "Kopírování odkazů",
             "body": "Pravým tlačítkem na odkaz v chatu dostaneš „Kopírovat odkaz“ a „Otevřít odkaz“.",
             "alt": "Kontextové menu odkazu s „Kopírovat odkaz“ a „Otevřít odkaz“"
+          },
+          {
+            "id": "message-cards",
+            "title": "Karty zpráv",
+            "body": "Boti i lidé posílají kompaktní karty s nadpisem, stavovou barvou, ikonou, formátovaným textem, obrázkem a odkazem, pro buildy, upozornění nebo dashboardy. Oficiální klienti Mumble vidí stejnou zprávu jako čitelný text.",
+            "alt": "Chat se dvěma kartami zpráv od bota: plná karta s ikonou, nadpisem, textem, grafem a odkazem a pod ní jednoduchá karta s nadpisem a odkazem"
+          },
+          {
+            "id": "paste-images",
+            "title": "Vkládání obrázků přes Ctrl+V",
+            "body": "Snímky obrazovky, „Kopírovat obrázek“ z prohlížeče i soubory s obrázky zkopírované ve správci souborů skončí přes Ctrl+V rovnou v poli pro zprávu jako příloha."
           }
         ]
       },
@@ -1048,12 +1064,61 @@
             "id": "tooltips",
             "title": "Bublinové nápovědy ve stylu motivu",
             "body": "Každá nápověda ve vzhledu tvého motivu, světlém nebo tmavém, a dostupná i z klávesnice."
+          },
+          {
+            "id": "packet-inspector",
+            "title": "Inspektor paketů pro ladění",
+            "body": "Skrytý pro vývojáře: odemkne ho sedm kliknutí na verzi v Nastavení → O aplikaci. Ve vlastním okně ukazuje, jaká data Mumcordu se odesílají a přijímají, s filtry, počítadly a exportem do JSON nebo Markdownu.",
+            "alt": "Inspektor paketů s filtry, počítadly podle typu a směru a jedním rozbaleným řádkem paketu"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.3",
+      "teaser": "Karty zpráv pro boty, vkládání obrázků přes Ctrl+V, chybové bannery jdou zavřít.",
+      "summary": "Karty zpráv přicházejí dřív, než bylo v plánu: boti i lidé posílají kompaktní karty se stavem, obrázkem a odkazem. K tomu se obrázky ze schránky dostanou do chatu, banner po chybě připojení už nezůstává navždy a zprávy odeslané těsně před odpojením se už neztrácejí.",
+      "groups": [
+        {
+          "title": "Nové",
+          "items": [
+            "Karty zpráv: boti i lidé posílají kompaktní kartu s nadpisem, stavovou barvou (info, úspěch, varování, chyba, vždy pojmenovanou i textem), ikonou, formátovaným textem, obrázkem a odkazem, zapsanou jako jednoduchý blok [card]. Oficiální klienti Mumble vidí stejnou zprávu jako čitelný text. Obrázky se načítají jen se zapnutými náhledy odkazů, přes Mumcord."
+          ]
+        },
+        {
+          "title": "Vylepšeno",
+          "items": [
+            "Vkládání obrázků ze schránky: Ctrl+V se snímkem obrazovky, „Kopírovat obrázek“ z prohlížeče nebo zkopírovaný soubor s obrázkem připojí obrázek stejně jako přetažený, se stejnými limity velikosti.",
+            "Banner po chybě připojení po 60 sekundách zmizí a dá se hned zavřít přes ✕. Uvádí název serveru a vrátí se až při dalším selhání. Seznam serverů chybu dál ukazuje.",
+            "Instalátor pro Linux se na gst-libav (pro videa H.264) ptá jen tehdy, když chybí, a pokud chceš, hned ho nainstaluje. K tomu nový vzhled: banner, číslované kroky s průběhem a shrnutí na konci."
+          ]
+        },
+        {
+          "title": "Opraveno",
+          "items": [
+            "Zprávy, které pošleš těsně před odpojením nebo ukončením, se už neztrácejí: Mumcord nejdřív odešle všechno, co ještě čeká ve frontě."
+          ]
+        },
+        {
+          "title": "Pro ladění",
+          "items": [
+            "Skrytý inspektor paketů: odemkne ho sedm kliknutí na verzi v Nastavení → O aplikaci. Ve vlastním okně ukazuje odesílaná a přijímaná data Mumcordu, s filtry, počítadly a exportem do JSON nebo Markdownu. Jen lokálně, nic se nikam neposílá."
+          ]
+        },
+        {
+          "title": "Pro vývojáře",
+          "items": [
+            "Knihovny pro protokol Mumble, hlas, úložiště a přímá spojení vycházejí s každým vydáním na crates.io: mumcord-protocol, mumcord-codec, mumcord-audio, mumcord-store a mumcord-p2p. Mumbot na nich už staví.",
+            "Každé vydání dostane soupis součástí (SBOM) všech knihoven a upozornění třetích stran v Nastavení → O aplikaci se generují automaticky."
+          ]
+        }
+      ],
+      "known": [
+        "Instalátor pro Windows je stále nepodepsaný."
+      ]
+    },
     {
       "version": "0.4.2",
       "teaser": "YouTube opraveno v AppImage pro Linux, konec záplavy dotazů na klíčenku v macOS.",
@@ -1605,7 +1670,7 @@
       {
         "id": "epic-3",
         "title": "Pohodlí",
-        "summary": "Doladění pro náročné uživatele, karty zpráv pro boty, volitelný relay pro přímá spojení a nástroj pro ladění.",
+        "summary": "Doladění pro náročné uživatele a volitelný relay pro přímá spojení.",
         "groups": [
           {
             "title": "Pohodlí na každý den",
@@ -1620,27 +1685,12 @@
             ]
           },
           {
-            "title": "Karty zpráv",
-            "items": [
-              "Boti a monitoring posílají místo prostého textu kompaktní kartu: nadpis, formátovaný text, volitelně obrázek, třeba graf, a odkaz na dashboard",
-              "Stavové barvy pro info, úspěch, varování a chybu, vždy i s textovým popiskem",
-              "Obrázky se načítají jen se zapnutými náhledy odkazů a jdou přes Mumcord, nikdy přímo z cizího serveru",
-              "Oficiální klienti Mumble vidí stejnou zprávu jako běžný, úhledně formátovaný text"
-            ]
-          },
-          {
             "title": "Přímá spojení přes relay",
             "items": [
               "Když žádné přímé spojení nefunguje, třeba za CGNAT, nebo nechceš ukazovat svou IP adresu, předá data mumpeer relay",
               "Obsah zůstává šifrovaný end-to-end; relay jen přeposílá bajty a pustí dovnitř jen uživatele svého serveru",
               "Volitelné: komunita může relay provozovat spolu s Mumbotem. Bez relaye funguje všechno jako dřív",
               "Tvoje volba: relay vypnutý, jen když přímé spojení selže, nebo vždy, aby tvoje IP adresa zůstala skrytá"
-            ]
-          },
-          {
-            "title": "Pro ladění",
-            "items": [
-              "Skrytý inspektor paketů: ukazuje odeslané a přijaté zprávy Mumcordu, s filtry a exportem. Jen lokálně, nic se neloguje ani nikam neposílá"
             ]
           }
         ]

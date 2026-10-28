@@ -18,7 +18,9 @@ const released = new Set((await getReleases()).map((r) => r.version));
 // Features a released version removed are left out.
 const f = { ...page, groups: page.groups.map((g) => ({ ...g, features: g.features.filter((x) => !(x.until && released.has(x.until))) })) };
 const all = f.groups.flatMap((g) => g.features);
-const versions = [...new Set(all.map((x) => x.since).filter((v): v is string => !!v))].sort((a, b) =>
+// Patch releases are filtered under their feature release: 0.4.3 counts as 0.4.0 but keeps its own label.
+const minor = (v: string) => v.replace(/\.\d+$/, ".0");
+const versions = [...new Set(all.map((x) => x.since && minor(x.since)).filter((v): v is string => !!v))].sort((a, b) =>
   a.localeCompare(b, "en", { numeric: true }),
 );
 const hasBeta = all.some((x) => x.beta);
@@ -27,7 +29,7 @@ const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 const newest = versions[versions.length - 1];
 // Only the two newest versions get a filter; older ones are part of the basics by now.
 const filterVersions = versions.slice(-2);
-const newestCount = all.filter((x) => x.since === newest).length;
+const newestCount = all.filter((x) => x.since && minor(x.since) === newest).length;
 // Shots first: the first one in a group gets the wide card, the others medium cards, text-only ones small cards.
 const ordered = (list: Feature[]) => [...withShot(list), ...textOnly(list)];
 const size = (x: Feature, i: number) => (!x.shot ? "sm" : i === 0 ? "lg" : "md");
@@ -83,7 +85,7 @@ for (const g of f.groups)
           </header>
           <div class="fp-bento">
             {ordered(g.features).map((x, i) => (
-              <article class={`fp-card fp-card-${size(x, i)}`} id={x.id} data-feature data-since={x.since} data-beta={x.beta ? "" : undefined} data-reveal data-spot>
+              <article class={`fp-card fp-card-${size(x, i)}`} id={x.id} data-feature data-since={x.since && minor(x.since)} data-beta={x.beta ? "" : undefined} data-reveal data-spot>
                 {x.shot && (
                   <a class="fp-media" href={full.get(x.shot)} aria-label={`${f.zoom}: ${x.alt}`} data-lightbox data-caption={x.title} data-alt={x.alt}>
                     <Picture src={shot(x.shot)} formats={["avif", "webp"]} widths={[640, 1100, 1600]} sizes={size(x, i) === "lg" ? "(min-width: 960px) 760px, 92vw" : "(min-width: 960px) 560px, 92vw"} alt={x.alt ?? ""} />
@@ -95,7 +97,7 @@ for (const g of f.groups)
                 <div class="fp-body">
                   {(x.since || x.beta) && (
                     <p class="fp-pills">
-                      {x.since && <span class:list={["pill", { "pill-new": x.since === newest }]}>{sinceLabel(x.since)}</span>}
+                      {x.since && <span class:list={["pill", { "pill-new": minor(x.since) === newest }]}>{sinceLabel(x.since)}</span>}
                       {x.beta && <span class="pill pill-beta">{f.beta}</span>}
                     </p>
                   )}

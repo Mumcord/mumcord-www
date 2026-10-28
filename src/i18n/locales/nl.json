@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Comfort",
-          "body": "Globale sneltoetsen, volledig traymenu, import uit de officiële client, fluisteren, serverbrowser, Niet storen, @all en @channel, berichtkaarten voor bots, plus een optionele relay voor directe verbindingen."
+          "body": "Globale sneltoetsen, volledig traymenu, import uit de officiële client, fluisteren, serverbrowser, Niet storen, @all en @channel, plus een optionele relay voor directe verbindingen."
         },
         {
           "tag": "Epic 4",
@@ -597,6 +597,11 @@
             "id": "autostart",
             "title": "Starten bij inloggen",
             "body": "„Mumcord starten als ik inlog” is er op elk systeem."
+          },
+          {
+            "id": "failure-banner",
+            "title": "Foutbanners die niet zeuren",
+            "body": "Als een verbinding mislukt, noemt de banner de server en verdwijnt hij na 60 seconden of met ✕. Het servericoon blijft de fout tonen."
           }
         ]
       },
@@ -805,6 +810,17 @@
             "title": "Links kopiëren",
             "body": "Rechtsklik op een link in de chat en je krijgt „Link kopiëren” en „Link openen”.",
             "alt": "Rechtsklikmenu op een link met „Link kopiëren” en „Link openen”"
+          },
+          {
+            "id": "message-cards",
+            "title": "Berichtkaarten",
+            "body": "Bots en mensen plaatsen compacte kaarten met een titel, statuskleur, icoon, opgemaakte tekst, een afbeelding en een link, voor builds, meldingen of dashboards. Officiële Mumble-clients zien hetzelfde bericht als leesbare tekst.",
+            "alt": "Chat met twee berichtkaarten van een bot: een volledige kaart met icoon, titel, tekst, een grafiek en een link, en daaronder een eenvoudige kaart met titel en link"
+          },
+          {
+            "id": "paste-images",
+            "title": "Afbeeldingen plakken met Ctrl+V",
+            "body": "Screenshots, „Afbeelding kopiëren” uit de browser en in de bestandsbeheerder gekopieerde afbeeldingsbestanden gaan met Ctrl+V direct als bijlage in het invoerveld."
           }
         ]
       },
@@ -1048,12 +1064,61 @@
             "id": "tooltips",
             "title": "Tooltips in je thema",
             "body": "Elke tooltip in de stijl van je thema, licht of donker, en ook met het toetsenbord te bereiken."
+          },
+          {
+            "id": "packet-inspector",
+            "title": "Pakketinspector voor debuggen",
+            "body": "Verborgen voor ontwikkelaars: zeven klikken op de versie onder Instellingen → Over ontgrendelen hem. In een eigen venster toont hij welke Mumcord-gegevens worden verstuurd en ontvangen, met filters, tellers en export als JSON of Markdown.",
+            "alt": "Pakketinspector met filters, tellers per type en richting en één uitgeklapte pakketregel"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.3",
+      "teaser": "Berichtkaarten voor bots, afbeeldingen plakken met Ctrl+V, foutbanners zijn te sluiten.",
+      "summary": "Berichtkaarten komen eerder dan gepland: bots en mensen plaatsen compacte kaarten met een status, een afbeelding en een link. Plus: afbeeldingen van het klembord belanden in de chat, de banner na een verbindingsfout blijft niet meer eeuwig staan, en berichten die vlak voor het verbreken van de verbinding zijn verstuurd, gaan niet meer verloren.",
+      "groups": [
+        {
+          "title": "Nieuw",
+          "items": [
+            "Berichtkaarten: bots en mensen plaatsen een compacte kaart met een titel, een statuskleur (info, succes, waarschuwing, fout, altijd ook in tekst benoemd), een icoon, opgemaakte tekst, een afbeelding en een link, geschreven als een eenvoudig [card]-blok. Officiële Mumble-clients zien hetzelfde bericht als leesbare tekst. Afbeeldingen laden alleen als linkvoorbeelden aanstaan, via Mumcord."
+          ]
+        },
+        {
+          "title": "Verbeterd",
+          "items": [
+            "Afbeeldingen plakken vanaf het klembord: Ctrl+V met een screenshot, „Afbeelding kopiëren” in een browser of een gekopieerd afbeeldingsbestand voegt de afbeelding toe alsof je hem erin had gesleept, binnen dezelfde groottelimieten.",
+            "De banner na een verbindingsfout verdwijnt na 60 seconden en is met ✕ meteen te sluiten. Hij noemt de server en komt pas terug bij de volgende mislukking. De serverlijst blijft de fout tonen.",
+            "De Linux-installer vraagt alleen naar gst-libav (voor H.264-video's) als het ontbreekt, en installeert het meteen als je wilt. Plus een nieuw uiterlijk: een banner, genummerde stappen met voortgang en een samenvatting aan het eind."
+          ]
+        },
+        {
+          "title": "Opgelost",
+          "items": [
+            "Berichten die je vlak voor het verbreken van de verbinding of het afsluiten verstuurt, gaan niet meer verloren: Mumcord verstuurt eerst alles wat nog in de wachtrij staat."
+          ]
+        },
+        {
+          "title": "Voor debuggen",
+          "items": [
+            "Een verborgen pakketinspector: zeven klikken op de versie onder Instellingen → Over ontgrendelen hem. In een eigen venster toont hij de verstuurde en ontvangen Mumcord-gegevens, met filters, tellers en export als JSON of Markdown. Alleen lokaal, er wordt niets verstuurd."
+          ]
+        },
+        {
+          "title": "Voor ontwikkelaars",
+          "items": [
+            "De bibliotheken voor het Mumble-protocol, spraak, opslag en directe verbindingen worden bij elke release gepubliceerd op crates.io: mumcord-protocol, mumcord-codec, mumcord-audio, mumcord-store en mumcord-p2p. Mumbot bouwt er al op.",
+            "Elke release krijgt een stuklijst (SBOM) van alle bibliotheken, en de vermeldingen van derden onder Instellingen → Over worden automatisch gegenereerd."
+          ]
+        }
+      ],
+      "known": [
+        "De Windows-installer is nog niet ondertekend."
+      ]
+    },
     {
       "version": "0.4.2",
       "teaser": "YouTube gerepareerd in de Linux-AppImage, geen stortvloed aan sleutelhangerverzoeken meer op macOS.",
@@ -1605,7 +1670,7 @@
       {
         "id": "epic-3",
         "title": "Comfort",
-        "summary": "Afwerking voor fanatieke gebruikers, berichtkaarten voor bots, een optionele relay voor directe verbindingen en een hulpmiddel om te debuggen.",
+        "summary": "Afwerking voor fanatieke gebruikers en een optionele relay voor directe verbindingen.",
         "groups": [
           {
             "title": "Comfort voor elke dag",
@@ -1620,27 +1685,12 @@
             ]
           },
           {
-            "title": "Berichtkaarten",
-            "items": [
-              "Bots en monitoring sturen een compacte kaart in plaats van platte tekst: een titel, opgemaakte tekst, eventueel een afbeelding zoals een grafiek en een link naar het dashboard",
-              "Statuskleuren voor info, succes, waarschuwing en fout, altijd ook met een tekstlabel",
-              "Afbeeldingen laden alleen als linkvoorbeelden aan staan en gaan via Mumcord, nooit rechtstreeks van de andere server",
-              "Officiële Mumble-clients zien hetzelfde bericht als gewone, netjes opgemaakte tekst"
-            ]
-          },
-          {
             "title": "Directe verbindingen via een relay",
             "items": [
               "Lukt er geen directe verbinding, bijvoorbeeld achter CGNAT, of wil je je IP-adres niet laten zien, dan stuurt een mumpeer-relay de data door",
               "De inhoud blijft end-to-end versleuteld; de relay geeft alleen bytes door en laat alleen gebruikers van zijn eigen server toe",
               "Optioneel: een community kan de relay samen met Mumbot draaien. Zonder relay werkt alles zoals voorheen",
               "Jij kiest: relay uit, alleen als een directe verbinding mislukt, of altijd, zodat je IP-adres verborgen blijft"
-            ]
-          },
-          {
-            "title": "Om te debuggen",
-            "items": [
-              "Verborgen pakketinspector: toont de verzonden en ontvangen Mumcord-berichten, met filters en export. Alleen lokaal, er wordt niets gelogd of ergens heen gestuurd"
             ]
           }
         ]

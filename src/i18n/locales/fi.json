@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Mukavuus",
-          "body": "Globaalit pikanäppäimet, täysi ilmoitusalueen valikko, tuonti virallisesta sovelluksesta, kuiskaus, palvelinselain, ”Älä häiritse”, @all ja @channel, viestikortit boteille sekä valinnainen välityspalvelin suoria yhteyksiä varten."
+          "body": "Globaalit pikanäppäimet, täysi ilmoitusalueen valikko, tuonti virallisesta sovelluksesta, kuiskaus, palvelinselain, ”Älä häiritse”, @all ja @channel sekä valinnainen välityspalvelin suoria yhteyksiä varten."
         },
         {
           "tag": "Epic 4",
@@ -597,6 +597,11 @@
             "id": "autostart",
             "title": "Käynnistys kirjautuessa",
             "body": "”Käynnistä Mumcord, kun kirjaudun sisään” löytyy kaikista järjestelmistä."
+          },
+          {
+            "id": "failure-banner",
+            "title": "Virhebannerit, jotka eivät nalkuta",
+            "body": "Kun yhteys epäonnistuu, banneri kertoo palvelimen nimen ja katoaa 60 sekunnin kuluttua tai ✕:llä. Palvelimen kuvake näyttää virheen edelleen."
           }
         ]
       },
@@ -805,6 +810,17 @@
             "title": "Linkkien kopiointi",
             "body": "Kun klikkaat chatin linkkiä hiiren oikealla, saat vaihtoehdot ”Kopioi linkki” ja ”Avaa linkki”.",
             "alt": "Linkin pikavalikko, jossa ”Kopioi linkki” ja ”Avaa linkki”"
+          },
+          {
+            "id": "message-cards",
+            "title": "Viestikortit",
+            "body": "Botit ja ihmiset lähettävät tiiviitä kortteja, joissa on otsikko, tilaväri, kuvake, muotoiltua tekstiä, kuva ja linkki, esimerkiksi buildeista, hälytyksistä tai hallintapaneeleista. Viralliset Mumble-sovellukset näkevät saman viestin luettavana tekstinä.",
+            "alt": "Chat, jossa on kaksi botin viestikorttia: täysi kortti kuvakkeen, otsikon, tekstin, kaavion ja linkin kera, ja sen alla yksinkertainen kortti otsikolla ja linkillä"
+          },
+          {
+            "id": "paste-images",
+            "title": "Liitä kuvia Ctrl+V:llä",
+            "body": "Kuvakaappaukset, selaimen ”Kopioi kuva” ja tiedostonhallinnassa kopioidut kuvatiedostot menevät Ctrl+V:llä suoraan viestikenttään liitteeksi."
           }
         ]
       },
@@ -1048,12 +1064,61 @@
             "id": "tooltips",
             "title": "Teeman mukaiset työkaluvihjeet",
             "body": "Jokainen työkaluvihje teemasi tyylillä, vaaleana tai tummana, ja käytettävissä myös näppäimistöllä."
+          },
+          {
+            "id": "packet-inspector",
+            "title": "Pakettitarkastin vianetsintään",
+            "body": "Piilotettu kehittäjille: seitsemän klikkausta versionumeroon kohdassa Asetukset → Tietoja avaa sen. Omassa ikkunassaan se näyttää, mitä Mumcord-dataa lähetetään ja vastaanotetaan, suodattimien, laskurien sekä JSON- tai Markdown-viennin kera.",
+            "alt": "Pakettitarkastin suodattimineen, laskureineen tyypin ja suunnan mukaan sekä yksi pakettirivi avattuna"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.3",
+      "teaser": "Viestikortit boteille, kuvien liittäminen Ctrl+V:llä, virhebannerit voi sulkea.",
+      "summary": "Viestikortit tulevat suunniteltua aiemmin: botit ja ihmiset lähettävät tiiviitä kortteja, joissa on tila, kuva ja linkki. Lisäksi leikepöydän kuvat päätyvät chattiin, yhteysvirheen jälkeinen banneri ei enää jää näkyviin ikuisesti, eikä juuri ennen yhteyden katkaisemista lähetettyjä viestejä enää menetetä.",
+      "groups": [
+        {
+          "title": "Uutta",
+          "items": [
+            "Viestikortit: botit ja ihmiset lähettävät tiiviin kortin, jossa on otsikko, tilaväri (tieto, onnistuminen, varoitus, virhe, aina myös tekstinä), kuvake, muotoiltua tekstiä, kuva ja linkki, kirjoitettuna yksinkertaisena [card]-lohkona. Viralliset Mumble-sovellukset näkevät saman viestin luettavana tekstinä. Kuvat latautuvat vain, kun linkkien esikatselut ovat päällä, ja ne kulkevat Mumcordin kautta."
+          ]
+        },
+        {
+          "title": "Parannettu",
+          "items": [
+            "Liitä kuvia leikepöydältä: Ctrl+V kuvakaappauksen, selaimen ”Kopioi kuva” -toiminnon tai kopioidun kuvatiedoston kanssa liittää kuvan samalla tavalla kuin pudotetun, samoissa kokorajoissa.",
+            "Yhteysvirheen jälkeinen banneri katoaa 60 sekunnin kuluttua, ja sen voi sulkea heti ✕:llä. Se kertoo palvelimen nimen ja palaa vasta seuraavan epäonnistumisen yhteydessä. Palvelinluettelo näyttää virheen edelleen.",
+            "Linuxin asennusohjelma kysyy gst-libavista (H.264-videoita varten) vain, jos se puuttuu, ja asentaa sen halutessasi saman tien. Lisäksi uusi ilme: banneri, numeroidut vaiheet edistymisen kera ja yhteenveto lopussa."
+          ]
+        },
+        {
+          "title": "Korjattu",
+          "items": [
+            "Viestit, jotka lähetät juuri ennen yhteyden katkaisemista tai sovelluksen sulkemista, eivät enää katoa: Mumcord lähettää ensin kaiken, mikä vielä odottaa jonossa."
+          ]
+        },
+        {
+          "title": "Vianetsintään",
+          "items": [
+            "Piilotettu pakettitarkastin: seitsemän klikkausta versionumeroon kohdassa Asetukset → Tietoja avaa sen. Omassa ikkunassaan se näyttää lähetetyn ja vastaanotetun Mumcord-datan suodattimien, laskurien sekä JSON- tai Markdown-viennin kera. Vain paikallinen, mitään ei lähetetä minnekään."
+          ]
+        },
+        {
+          "title": "Kehittäjille",
+          "items": [
+            "Mumble-protokollan, äänen, tallennuksen ja suorien yhteyksien kirjastot julkaistaan crates.iossa jokaisen julkaisun yhteydessä: mumcord-protocol, mumcord-codec, mumcord-audio, mumcord-store ja mumcord-p2p. Mumbot rakentuu jo niiden päälle.",
+            "Jokainen julkaisu saa kaikkien kirjastojen materiaaliluettelon (SBOM), ja kolmansien osapuolten tiedot kohdassa Asetukset → Tietoja luodaan automaattisesti."
+          ]
+        }
+      ],
+      "known": [
+        "Windowsin asennusohjelma on yhä allekirjoittamaton."
+      ]
+    },
     {
       "version": "0.4.2",
       "teaser": "YouTube korjattu Linuxin AppImagessa, macOSilla ei enää tulvaa avainnippukyselyjä.",
@@ -1605,7 +1670,7 @@
       {
         "id": "epic-3",
         "title": "Mukavuus",
-        "summary": "Hiomista ahkerille käyttäjille, viestikortit boteille, valinnainen välityspalvelin suoria yhteyksiä varten ja työkalu vianetsintään.",
+        "summary": "Hiomista ahkerille käyttäjille ja valinnainen välityspalvelin suoria yhteyksiä varten.",
         "groups": [
           {
             "title": "Arjen mukavuus",
@@ -1620,27 +1685,12 @@
             ]
           },
           {
-            "title": "Viestikortit",
-            "items": [
-              "Botit ja valvonta lähettävät pelkän tekstin sijaan tiiviin kortin: otsikon, muotoiltua tekstiä, halutessa kuvan, kuten kaavion, ja linkin hallintapaneeliin",
-              "Tilavärit tiedolle, onnistumiselle, varoitukselle ja virheelle, aina myös tekstimerkinnällä",
-              "Kuvat latautuvat vain, kun linkkien esikatselut ovat päällä, ja ne kulkevat Mumcordin kautta, eivät koskaan suoraan toiselta palvelimelta",
-              "Viralliset Mumble-sovellukset näkevät saman viestin tavallisena, siististi muotoiltuna tekstinä"
-            ]
-          },
-          {
             "title": "Suorat yhteydet välityspalvelimen kautta",
             "items": [
               "Jos suora yhteys ei onnistu, esimerkiksi CGNAT:n takana, tai et halua näyttää IP-osoitettasi, mumpeer-välityspalvelin välittää datan",
               "Sisältö pysyy päästä päähän salattuna; välityspalvelin vain välittää tavuja eteenpäin ja päästää sisään vain oman palvelimensa käyttäjät",
               "Valinnainen: yhteisö voi ajaa välityspalvelinta yhdessä Mumbotin kanssa. Ilman sitä kaikki toimii kuten ennenkin",
               "Sinä päätät: välityspalvelin pois, vain kun suora yhteys epäonnistuu, tai aina, jolloin IP-osoitteesi pysyy piilossa"
-            ]
-          },
-          {
-            "title": "Vianetsintään",
-            "items": [
-              "Piilotettu pakettitarkastin: näyttää lähetetyt ja vastaanotetut Mumcord-viestit, suodattimien ja viennin kera. Vain paikallisesti, mitään ei kirjata eikä lähetetä minnekään"
             ]
           }
         ]

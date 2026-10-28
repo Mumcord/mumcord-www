@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Ērtības",
-          "body": "Globālie karstie taustiņi, pilna teknes izvēlne, imports no oficiālā klienta, čuksti, serveru pārlūks, “Netraucēt”, @all un @channel, ziņu kartītes botiem, kā arī neobligāts starpserveris tiešajiem savienojumiem."
+          "body": "Globālie karstie taustiņi, pilna teknes izvēlne, imports no oficiālā klienta, čuksti, serveru pārlūks, “Netraucēt”, @all un @channel, kā arī neobligāts starpserveris tiešajiem savienojumiem."
         },
         {
           "tag": "Epic 4",
@@ -597,6 +597,11 @@
             "id": "autostart",
             "title": "Palaišana, piesakoties sistēmā",
             "body": "“Palaist Mumcord, kad piesakos” ir pieejams uz katras sistēmas."
+          },
+          {
+            "id": "failure-banner",
+            "title": "Kļūdu joslas, kas neuzbāžas",
+            "body": "Ja savienojums neizdodas, josla nosauc serveri un pazūd pēc 60 sekundēm vai ar ✕. Servera ikona kļūmi rāda arī turpmāk."
           }
         ]
       },
@@ -805,6 +810,17 @@
             "title": "Saišu kopēšana",
             "body": "Ar labo klikšķi uz saites tērzēšanā tiek piedāvāts “Kopēt saiti” un “Atvērt saiti”.",
             "alt": "Saites konteksta izvēlne ar “Kopēt saiti” un “Atvērt saiti”"
+          },
+          {
+            "id": "message-cards",
+            "title": "Ziņu kartītes",
+            "body": "Boti un cilvēki publicē kompaktas kartītes ar virsrakstu, statusa krāsu, ikonu, formatētu tekstu, attēlu un saiti, piemērotas būvējumiem, brīdinājumiem vai informācijas paneļiem. Oficiālie Mumble klienti to pašu ziņu redz kā lasāmu tekstu.",
+            "alt": "Tērzēšana ar divām bota ziņu kartītēm: pilna kartīte ar ikonu, virsrakstu, tekstu, grafiku un saiti, un zem tās vienkārša kartīte ar virsrakstu un saiti"
+          },
+          {
+            "id": "paste-images",
+            "title": "Attēlu ielīmēšana ar Ctrl+V",
+            "body": "Ekrānuzņēmumi, “Kopēt attēlu” no pārlūka un failu pārvaldniekā nokopēti attēlu faili ar Ctrl+V nonāk tieši ziņas ievadē kā pielikums."
           }
         ]
       },
@@ -1048,12 +1064,61 @@
             "id": "tooltips",
             "title": "Rīka padomi tavā tēmā",
             "body": "Katrs rīka padoms tavas tēmas izskatā, gaišs vai tumšs, un pieejams arī ar tastatūru."
+          },
+          {
+            "id": "packet-inspector",
+            "title": "Pakešu inspektors atkļūdošanai",
+            "body": "Slēpts izstrādātājiem: septiņi klikšķi uz versijas sadaļā Iestatījumi → Par lietotni to atbloķē. Atsevišķā logā tas rāda, kādi Mumcord dati tiek nosūtīti un saņemti, ar filtriem, skaitītājiem un eksportu JSON vai Markdown formātā.",
+            "alt": "Pakešu inspektors ar filtriem, skaitītājiem pēc veida un virziena un vienu izvērstu paketes rindu"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.3",
+      "teaser": "Ziņu kartītes botiem, attēlu ielīmēšana ar Ctrl+V, kļūdu joslas var aizvērt.",
+      "summary": "Ziņu kartītes ierodas agrāk, nekā plānots: boti un cilvēki publicē kompaktas kartītes ar statusu, attēlu un saiti. Turklāt attēli no starpliktuves nonāk tērzēšanā, josla pēc savienojuma kļūdas vairs nepaliek uz visiem laikiem, un ziņas, kas nosūtītas tieši pirms atvienošanās, vairs nepazūd.",
+      "groups": [
+        {
+          "title": "Jaunumi",
+          "items": [
+            "Ziņu kartītes: boti un cilvēki publicē kompaktu kartīti ar virsrakstu, statusa krāsu (informācija, veiksme, brīdinājums, kļūda, vienmēr nosaukta arī tekstā), ikonu, formatētu tekstu, attēlu un saiti, kas uzrakstīta kā vienkāršs [card] bloks. Oficiālie Mumble klienti to pašu ziņu redz kā lasāmu tekstu. Attēli ielādējas tikai ar ieslēgtiem saišu priekšskatījumiem, caur Mumcord."
+          ]
+        },
+        {
+          "title": "Uzlabojumi",
+          "items": [
+            "Attēlu ielīmēšana no starpliktuves: Ctrl+V ar ekrānuzņēmumu, “Kopēt attēlu” pārlūkā vai nokopēts attēla fails pievieno attēlu tāpat kā ievilktu, ar tiem pašiem izmēra ierobežojumiem.",
+            "Josla pēc savienojuma kļūdas pazūd pēc 60 sekundēm, un ar ✕ to var aizvērt uzreiz. Tā nosauc serveri un atgriežas tikai pie nākamās kļūmes. Serveru saraksts kļūdu rāda arī turpmāk.",
+            "Linux instalētājs jautā par gst-libav (H.264 video) tikai tad, ja tā trūkst, un, ja vēlies, uzreiz to instalē. Turklāt jauns izskats: josla, numurēti soļi ar progresu un kopsavilkums beigās."
+          ]
+        },
+        {
+          "title": "Labots",
+          "items": [
+            "Ziņas, ko nosūti tieši pirms atvienošanās vai iziešanas, vairs nepazūd: Mumcord vispirms nosūta visu, kas vēl gaida rindā."
+          ]
+        },
+        {
+          "title": "Atkļūdošanai",
+          "items": [
+            "Slēpts pakešu inspektors: septiņi klikšķi uz versijas sadaļā Iestatījumi → Par lietotni to atbloķē. Atsevišķā logā tas rāda nosūtītos un saņemtos Mumcord datus, ar filtriem, skaitītājiem un eksportu JSON vai Markdown formātā. Tikai lokāli, nekas netiek nekur sūtīts."
+          ]
+        },
+        {
+          "title": "Izstrādātājiem",
+          "items": [
+            "Bibliotēkas Mumble protokolam, balsij, glabāšanai un tiešajiem savienojumiem ar katru laidienu tiek publicētas crates.io: mumcord-protocol, mumcord-codec, mumcord-audio, mumcord-store un mumcord-p2p. Mumbot jau balstās uz tām.",
+            "Katrs laidiens saņem visu bibliotēku komponentu sarakstu (SBOM), un trešo pušu paziņojumi sadaļā Iestatījumi → Par lietotni tiek ģenerēti automātiski."
+          ]
+        }
+      ],
+      "known": [
+        "Windows instalētājs joprojām nav parakstīts."
+      ]
+    },
     {
       "version": "0.4.2",
       "teaser": "YouTube salabots Linux AppImage, vairs nav atslēgu piekariņa pieprasījumu plūdu macOS.",
@@ -1605,7 +1670,7 @@
       {
         "id": "epic-3",
         "title": "Ērtības",
-        "summary": "Noslīpēšana aktīvajiem lietotājiem, ziņu kartītes botiem, neobligāts starpserveris tiešajiem savienojumiem un rīks atkļūdošanai.",
+        "summary": "Noslīpēšana aktīvajiem lietotājiem un neobligāts starpserveris tiešajiem savienojumiem.",
         "groups": [
           {
             "title": "Ikdienas ērtības",
@@ -1620,27 +1685,12 @@
             ]
           },
           {
-            "title": "Ziņu kartītes",
-            "items": [
-              "Boti un monitorings vienkārša teksta vietā sūta kompaktu kartīti: virsrakstu, formatētu tekstu, pēc izvēles attēlu, piemēram, grafiku, un saiti uz paneli",
-              "Statusa krāsas informācijai, veiksmei, brīdinājumam un kļūdai, vienmēr arī ar teksta etiķeti",
-              "Attēli ielādējas tikai tad, ja ieslēgti saišu priekšskatījumi, un iet caur Mumcord, nekad tieši no otra servera",
-              "Oficiālie Mumble klienti to pašu ziņu redz kā parastu, glīti formatētu tekstu"
-            ]
-          },
-          {
             "title": "Tiešie savienojumi caur starpserveri",
             "items": [
               "Ja tiešais savienojums nedarbojas, piemēram, aiz CGNAT, vai tu nevēlies rādīt savu IP adresi, datus pārsūta mumpeer starpserveris (relay)",
               "Saturs paliek šifrēts no gala līdz galam; starpserveris tikai nodod baitus tālāk un ielaiž tikai sava servera lietotājus",
               "Pēc izvēles: kopiena var darbināt starpserveri kopā ar Mumbot. Bez tā viss darbojas kā līdz šim",
               "Tava izvēle: starpserveris izslēgts, tikai tad, ja tiešais savienojums neizdodas, vai vienmēr, lai tava IP adrese paliktu slēpta"
-            ]
-          },
-          {
-            "title": "Atkļūdošanai",
-            "items": [
-              "Slēpts pakešu inspektors: rāda nosūtītās un saņemtās Mumcord ziņas, ar filtriem un eksportu. Tikai lokāli, nekas netiek žurnalēts vai kaut kur sūtīts"
             ]
           }
         ]

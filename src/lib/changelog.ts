@@ -21,6 +21,47 @@ export interface ChangelogEntry {
 const source: Record<"de" | "en", ChangelogEntry[]> = {
   de: [
     {
+      version: "0.4.3",
+      teaser: "Nachrichtenkarten für Bots, Bilder per Strg+V, Fehlerbanner lassen sich schließen.",
+      summary: "Nachrichtenkarten kommen früher als geplant: Bots und Menschen posten kompakte Karten mit Status, Bild und Link. Dazu landen Bilder aus der Zwischenablage im Chat, das Banner nach einem Verbindungsfehler bleibt nicht mehr für immer stehen, und Nachrichten kurz vor dem Trennen gehen nicht mehr verloren.",
+      groups: [
+        {
+          title: "Neu",
+          items: [
+            "Nachrichtenkarten: Bots und Menschen posten eine kompakte Karte mit Titel, Statusfarbe (Info, Erfolg, Warnung, Fehler, immer auch als Text), Symbol, formatiertem Text, Bild und Link, geschrieben als einfacher [card]-Block. Offizielle Mumble-Clients sehen dieselbe Nachricht als lesbaren Text. Bilder laden nur mit eingeschalteten Link-Vorschauen und über Mumcord.",
+          ],
+        },
+        {
+          title: "Verbessert",
+          items: [
+            "Bilder aus der Zwischenablage einfügen: Strg+V mit einem Screenshot, „Bild kopieren“ aus dem Browser oder einer kopierten Bilddatei hängt das Bild an wie ein hineingezogenes, mit denselben Größengrenzen.",
+            "Das Banner nach einem Verbindungsfehler verschwindet nach 60 Sekunden und lässt sich mit ✕ sofort schließen. Es nennt den Namen des Servers und erscheint erst beim nächsten Fehlschlag wieder. Die Serverliste zeigt den Fehler weiter an.",
+            "Der Linux-Installer fragt nur noch nach gst-libav (für H.264-Videos), wenn es fehlt, und installiert es auf Wunsch gleich mit. Dazu ein neuer Look: Banner, nummerierte Schritte mit Fortschritt und eine Zusammenfassung am Ende.",
+          ],
+        },
+        {
+          title: "Behoben",
+          items: [
+            "Nachrichten, die du direkt vor dem Trennen oder Beenden schickst, gehen nicht mehr verloren: Mumcord schickt erst alles ab, was noch in der Warteschlange steht.",
+          ],
+        },
+        {
+          title: "Für die Fehlersuche",
+          items: [
+            "Ein versteckter Paketinspektor: Sieben Klicks auf die Version unter Einstellungen → Über schalten ihn frei. Er zeigt in einem eigenen Fenster die Mumcord-Daten, die gesendet und empfangen werden, mit Filtern, Zählern und Export als JSON oder Markdown. Nur lokal, nichts wird verschickt.",
+          ],
+        },
+        {
+          title: "Für Entwickler",
+          items: [
+            "Die Bibliotheken für das Mumble-Protokoll, Sprache, Speicher und direkte Verbindungen erscheinen mit jedem Release auf crates.io: mumcord-protocol, mumcord-codec, mumcord-audio, mumcord-store und mumcord-p2p. Mumbot baut schon darauf auf.",
+            "Jedes Release bekommt eine Stückliste (SBOM) aller Bibliotheken, und die Hinweise zu Drittanbietern unter Einstellungen → Über werden automatisch erzeugt.",
+          ],
+        },
+      ],
+      known: ["Der Windows-Installer ist weiterhin unsigniert."],
+    },
+    {
       version: "0.4.2",
       teaser: "YouTube im Linux-AppImage repariert, keine Schlüsselbund-Flut mehr unter macOS.",
       summary: "Ein kleines Update mit drei Fixes: YouTube spielt im Linux-AppImage wieder, keine Flut von Schlüsselbund-Abfragen mehr nach einem Update unter macOS, und wer später in einen Kanal kommt, sieht laufende Bildschirmfreigaben und Watch-Partys zuverlässiger.",
@@ -372,6 +413,47 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
     },
   ],
   en: [
+    {
+      version: "0.4.3",
+      teaser: "Message cards for bots, paste images with Ctrl+V, error banners can be closed.",
+      summary: "Message cards arrive earlier than planned: bots and people post compact cards with a status, an image and a link. Plus images from the clipboard land in the chat, the banner after a connection error no longer stays forever, and messages sent right before disconnecting are no longer lost.",
+      groups: [
+        {
+          title: "New",
+          items: [
+            "Message cards: bots and people post a compact card with a title, a status colour (info, success, warning, error, always also named in text), an icon, formatted text, an image and a link, written as a simple [card] block. Official Mumble clients see the same message as readable text. Images load only with link previews on, through Mumcord.",
+          ],
+        },
+        {
+          title: "Improved",
+          items: [
+            "Paste images from the clipboard: Ctrl+V with a screenshot, “Copy image” from a browser or a copied image file attaches the image like a dropped one, within the same size limits.",
+            "The banner after a connection error goes away after 60 seconds and can be closed at once with ✕. It names the server and only comes back on the next failure. The server list keeps showing the error.",
+            "The Linux installer only asks about gst-libav (for H.264 videos) when it is missing, and installs it right away if you like. Plus a new look: a banner, numbered steps with progress and a summary at the end.",
+          ],
+        },
+        {
+          title: "Fixed",
+          items: [
+            "Messages you send right before disconnecting or quitting are no longer lost: Mumcord first sends everything still waiting in the queue.",
+          ],
+        },
+        {
+          title: "For debugging",
+          items: [
+            "A hidden packet inspector: seven clicks on the version under Settings → About unlock it. In a window of its own it shows the Mumcord data sent and received, with filters, counters and export as JSON or Markdown. Local only, nothing is sent anywhere.",
+          ],
+        },
+        {
+          title: "For developers",
+          items: [
+            "The libraries for the Mumble protocol, voice, storage and direct connections are published on crates.io with every release: mumcord-protocol, mumcord-codec, mumcord-audio, mumcord-store and mumcord-p2p. Mumbot already builds on them.",
+            "Every release gets a bill of materials (SBOM) of all libraries, and the third-party notices under Settings → About are generated automatically.",
+          ],
+        },
+      ],
+      known: ["The Windows installer is still unsigned."],
+    },
     {
       version: "0.4.2",
       teaser: "YouTube fixed in the Linux AppImage, no more keychain prompt flood on macOS.",
