@@ -45,6 +45,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
           items: [
             "Markierten Text im Chat kopieren geht wieder: Der Rechtsklick bietet zuerst „Kopieren“, Strg+C kopiert den reinen Text mit Zeilenumbrüchen, und die Markierung bleibt dabei sichtbar.",
             "Eingefügte Bilddaten, etwa ein Screenshot aus Spectacle oder „Bild kopieren“ im Browser, landen unter Linux wieder im Chat.",
+            "Die Kopieren-Knöpfe an Code-Blöcken, im Paketinspektor und beim Teilen von Themes funktionieren jetzt auch unter Linux.",
             "Gelöschter Chatverlauf kommt über den Verlaufsabgleich nicht mehr zurück, wenn du einem Kanal wieder beitrittst.",
             "In der kompakten Ansicht überlagert der Titel der Theme-Karte nicht mehr das Vorschaubild, und Nachrichtenkarten verrutschen nicht mehr.",
           ],
@@ -470,6 +471,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
           items: [
             "Copying selected chat text works again: the right-click menu offers “Copy” first, Ctrl+C copies the plain text with its line breaks, and the selection stays visible.",
             "Pasted image data, such as a Spectacle screenshot or “Copy image” in a browser, lands in the chat again on Linux.",
+            "The Copy buttons on code blocks, in the packet inspector and for sharing themes now work on Linux too.",
             "Deleted chat history no longer comes back through history sync when you rejoin a channel.",
             "In the compact layout the theme card's title no longer covers its thumbnail, and message cards no longer shift.",
           ],

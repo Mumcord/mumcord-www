@@ -250,7 +250,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         title: "Komfort",
         status: "planned",
         version: "0.5.0",
-        summary: "Feinschliff für Vielnutzer, mehr Ruhe mit Blockieren, Nachrichtenfilter und Benachrichtigungszentrale, dazu ein optionales Relay für direkte Verbindungen.",
+        summary: "Feinschliff für Vielnutzer: mehr Ruhe mit Blockieren, Nachrichtenfilter und Benachrichtigungszentrale, mehrere Identitäten, Server-Info, ein Low-Latency-Modus zum Musizieren und ein optionales Relay für direkte Verbindungen.",
         groups: [
           {
             title: "Komfort im Alltag",
@@ -262,6 +262,9 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Öffentlicher Server-Browser",
               "„Bitte nicht stören“: Ein Schalter macht Benachrichtigungen, Töne und Pop-ups stumm, Stimmen hörst du weiter",
               "@all und @channel, um alle auf dem Server oder im Kanal zu erwähnen",
+              "Mikrofon und Kopfhörer per Rechtsklick auf Stumm und Taub wechseln, mit Lautstärke und Pegelanzeige",
+              "Rechtsklick auf Auflegen: nur die Sprache verlassen und weiter mitlesen, einen Server trennen oder alle",
+              "Den Einrichtungsassistenten erneut starten, ohne die Identität anzufassen",
             ],
           },
           {
@@ -270,6 +273,22 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Personen blockieren: keine Nachrichten, keine Stimme und keine Einladungen mehr von ihnen, erkannt am Zertifikat statt am Namen",
               "Private Nachrichten nur von Freunden, von allen oder von niemandem, auch pro Server. Fremde landen bei den Nachrichtenanfragen",
               "Eine Benachrichtigungszentrale an der Glocke sammelt Erwähnungen, Antworten, Anfragen und Einladungen von allen Servern, bei „Bitte nicht stören“ auch alles, was sonst aufpoppen würde",
+            ],
+          },
+          {
+            title: "Server und Identitäten",
+            items: [
+              "Mehrere Identitäten verwalten und pro Server wählen, mit der du dich verbindest",
+              "Ein aufgeräumter Dialog für Server hinzufügen und bearbeiten, mit Identität und „Verbindung testen“",
+              "Server-Info: Version, Limits, Zertifikat und deine Rechte auf einen Blick, ganz ohne Änderung am Server",
+              "Gespeicherte Kanal-Passwörter zeigen, zu welchem Kanal sie gehören, und lassen sich benennen",
+            ],
+          },
+          {
+            title: "Klang und Musik",
+            items: [
+              "Rechtsklick auf die Verbindungsinfo: Bitrate, Musikqualität und Low-Latency-Modus direkt im Gespräch einstellen",
+              "Low-Latency-Modus, um gemeinsam Musik zu machen: rund 40 statt 90 ms vom Mund zum Ohr, auch auf normalen Mumble-Servern",
             ],
           },
           {
@@ -526,7 +545,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         title: "Comfort",
         status: "planned",
         version: "0.5.0",
-        summary: "Polish for heavy users, more peace with blocking, a message filter and a notification centre, plus an optional relay for direct connections.",
+        summary: "Polish for heavy users: more peace with blocking, a message filter and a notification centre, several identities, server info, a low-latency mode for making music and an optional relay for direct connections.",
         groups: [
           {
             title: "Everyday comfort",
@@ -538,6 +557,9 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Public server browser",
               "Do Not Disturb: one switch silences notifications, sounds and pop-ups, and you still hear voices",
               "@all and @channel to mention everyone on the server or in the channel",
+              "Switch microphone and headphones with a right-click on mute and deafen, with volume and a level meter",
+              "Right-click hang up: leave voice and keep reading, disconnect one server or all of them",
+              "Run the setup wizard again without touching your identity",
             ],
           },
           {
@@ -546,6 +568,22 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Block people: no more messages, voice or invites from them, recognised by their certificate instead of their name",
               "Private messages from friends only, from everyone or from nobody, per server too. Strangers end up in message requests",
               "A notification centre behind a bell collects mentions, replies, requests and invites from every server, and during Do Not Disturb everything that would otherwise pop up",
+            ],
+          },
+          {
+            title: "Servers and identities",
+            items: [
+              "Manage several identities and choose per server which one you connect with",
+              "A tidy dialog for adding and editing servers, with identity and “Test connection”",
+              "Server info: version, limits, certificate and your permissions at a glance, without any server change",
+              "Saved channel passwords show which channel they belong to and can be named",
+            ],
+          },
+          {
+            title: "Sound and music",
+            items: [
+              "Right-click the connection info: set bitrate, music quality and low-latency mode right in the conversation",
+              "Low-latency mode for making music together: about 40 instead of 90 ms mouth to ear, on standard Mumble servers too",
             ],
           },
           {
