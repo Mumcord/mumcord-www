@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Conforto",
-          "body": "Atalhos globais, menu completo na área de notificação, importação do cliente oficial, sussurro, explorador de servidores, Não incomodar, @all e @channel, e um relay opcional para ligações diretas."
+          "body": "Atalhos globais, menu completo na área de notificação, importação do cliente oficial, sussurro, explorador de servidores, Não incomodar, @all e @channel, bloqueio, mensagens privadas só de amigos, um centro de notificações, e um relay opcional para ligações diretas."
         },
         {
           "tag": "Epic 4",
@@ -821,6 +821,17 @@
             "id": "paste-images",
             "title": "Colar imagens com Ctrl+V",
             "body": "Capturas de ecrã, “Copiar imagem” no browser e ficheiros de imagem copiados no gestor de ficheiros vão diretamente para a caixa de mensagem como anexo com Ctrl+V."
+          },
+          {
+            "id": "code-blocks",
+            "title": "Blocos de código com Copiar e Transferir",
+            "body": "Escreve a linguagem depois dos três acentos graves, de sql, rust e php a cmd, Dockerfile e hex dumps, e o bloco é realçado exatamente como tal. Os botões no canto copiam o código ou guardam-no como ficheiro.",
+            "alt": "Bloco de código SQL com a etiqueta da linguagem e os botões Copiar e Transferir no canto"
+          },
+          {
+            "id": "image-menu",
+            "title": "Copiar e guardar imagens",
+            "body": "Clica com o botão direito numa imagem no chat ou no visualizador de imagens: copiar imagem, guardar imagem no original, um GIF com a sua animação, copiar endereço da imagem ou abri-la no visualizador."
           }
         ]
       },
@@ -862,6 +873,11 @@
             "id": "bitrate",
             "title": "Taxa de bits à mão",
             "body": "Um controlo próprio desde 16 kbit/s até ao valor mais alto que o servidor e o Mumble permitem. Com perda de pacotes, o Mumcord continua a baixá-la sozinho."
+          },
+          {
+            "id": "realtime-audio",
+            "title": "Estável sob carga",
+            "body": "A captura e a reprodução recebem prioridade em tempo real, por isso a voz estala e falha menos enquanto um jogo ou uma compilação mantém o computador ocupado. As informações da ligação mostram as quebras de som e se o áudio em tempo real está ativo."
           }
         ]
       },
@@ -1070,12 +1086,51 @@
             "title": "Inspetor de pacotes para depuração",
             "body": "Escondido para programadores: sete cliques na versão em Definições → Acerca de desbloqueiam-no. Numa janela própria, mostra que dados do Mumcord são enviados e recebidos, com filtros, contadores e exportação em JSON ou Markdown.",
             "alt": "Inspetor de pacotes com filtros, contadores por tipo e direção e uma linha de pacote expandida"
+          },
+          {
+            "id": "clear-cache",
+            "title": "Limpar a cache",
+            "body": "Definições → Privacidade mostra quanto espaço ocupam as pré-visualizações de links, as imagens e o motor web, e limpa-os com um só botão, também um a um. O histórico de chat, os servidores, os amigos e as notas nunca são tocados."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.4",
+      "teaser": "Copiar e transferir código, guardar imagens com o botão direito, limpar a cache, voz mais estável sob carga.",
+      "summary": "Uma atualização para o chat do dia a dia: blocos de código com copiar, transferir e mais linguagens, copiar e guardar imagens com o botão direito, e um botão para limpar a cache. Além disso, a voz estala menos sob carga, e copiar e colar voltam a funcionar de forma fiável.",
+      "groups": [
+        {
+          "title": "Novo",
+          "items": [
+            "Os blocos de código têm botões Copiar e Transferir no canto. A linguagem depois dos três acentos graves, como sql, rust ou php, é realçada exatamente como tal e indicada no canto. Entre as novas estão PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx e hex dumps.",
+            "Clica com o botão direito numa imagem no chat: copiar imagem, guardar imagem, copiar endereço da imagem e abrir no visualizador de imagens. O visualizador de imagens tem os mesmos botões. Guardar mantém o original, um GIF com a sua animação.",
+            "Definições → Privacidade mostra quanto espaço ocupam as caches e limpa-as com um só botão, também uma a uma. O histórico de chat, as definições, os servidores, os certificados, os amigos e as notas nunca são tocados."
+          ]
+        },
+        {
+          "title": "Melhorado",
+          "items": [
+            "A voz estala e falha menos sob carga pesada: o Mumcord pede ao sistema prioridade em tempo real para a captura e a reprodução, e uma breve falha já não reinicia todo o áudio. As informações da ligação e o ficheiro de diagnóstico mostram as quebras de som, os pacotes atrasados e se o áudio em tempo real está ativo.",
+            "GIFs grandes do GIPHY já não tornam a aplicação lenta: o chat mostra uma versão mais pequena, à medida."
+          ]
+        },
+        {
+          "title": "Corrigido",
+          "items": [
+            "Copiar texto selecionado do chat volta a funcionar: o menu do clique direito oferece primeiro “Copiar”, Ctrl+C copia o texto simples com as quebras de linha, e a seleção continua visível.",
+            "Dados de imagem colados, como uma captura de ecrã do Spectacle ou “Copiar imagem” num browser, voltam a chegar ao chat no Linux.",
+            "O histórico de chat apagado já não volta através da sincronização do histórico quando voltas a entrar num canal.",
+            "No layout compacto, o título do cartão do tema já não tapa a miniatura, e os cartões de mensagem já não se deslocam."
+          ]
+        }
+      ],
+      "known": [
+        "O instalador para Windows ainda não está assinado."
+      ]
+    },
     {
       "version": "0.4.3",
       "teaser": "Cartões de mensagem para bots, colar imagens com Ctrl+V, banners de erro podem ser fechados.",
@@ -1670,7 +1725,7 @@
       {
         "id": "epic-3",
         "title": "Conforto",
-        "summary": "Acabamentos para quem usa muito e um relay opcional para ligações diretas.",
+        "summary": "Acabamentos para quem usa muito, mais paz com bloqueio, um filtro de mensagens e um centro de notificações, e um relay opcional para ligações diretas.",
         "groups": [
           {
             "title": "Conforto no dia a dia",
@@ -1682,6 +1737,14 @@
               "Explorador de servidores públicos",
               "Não incomodar: um só interruptor silencia notificações, sons e pop-ups, e continuas a ouvir as vozes",
               "@all e @channel para mencionar toda a gente no servidor ou no canal"
+            ]
+          },
+          {
+            "title": "Paz e privacidade",
+            "items": [
+              "Bloquear pessoas: acabaram-se as mensagens, a voz e os convites delas, reconhecidas pelo certificado em vez do nome",
+              "Mensagens privadas só de amigos, de toda a gente ou de ninguém, também por servidor. Os desconhecidos vão parar aos pedidos de mensagem",
+              "Um centro de notificações atrás de um sino reúne menções, respostas, pedidos e convites de todos os servidores e, durante o Não incomodar, tudo o que de outra forma apareceria em pop-up"
             ]
           },
           {

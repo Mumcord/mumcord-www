@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Compord",
-          "body": "Aicearraí domhanda, roghchlár tráidire iomlán, iompórtáil ón gcliant oifigiúil, cogar, brabhsálaí freastalaithe, Ná Cuir Isteach Orm, @all agus @channel, agus athsheachadán roghnach do naisc dhíreacha."
+          "body": "Aicearraí domhanda, roghchlár tráidire iomlán, iompórtáil ón gcliant oifigiúil, cogar, brabhsálaí freastalaithe, Ná Cuir Isteach Orm, @all agus @channel, bacadh, teachtaireachtaí príobháideacha ó chairde amháin, lárionad fógraí, agus athsheachadán roghnach do naisc dhíreacha."
         },
         {
           "tag": "Epic 4",
@@ -821,6 +821,17 @@
             "id": "paste-images",
             "title": "Greamaigh íomhánna le Ctrl+V",
             "body": "Téann gabhálacha scáileáin, “Cóipeáil íomhá” ón mbrabhsálaí agus comhaid íomhá a cóipeáladh sa bhainisteoir comhad díreach isteach i mbosca na teachtaireachta mar cheangaltán le Ctrl+V."
+          },
+          {
+            "id": "code-blocks",
+            "title": "Bloic chóid le Cóipeáil agus Íoslódáil",
+            "body": "Scríobh an teanga tar éis na dtrí backtick, ó sql, rust agus php go cmd, Dockerfile agus dumpaí heics, agus aibhsítear an bloc go díreach mar sin. Cóipeálann na cnaipí sa chúinne an cód nó sábhálann siad mar chomhad é.",
+            "alt": "Bloc cóid SQL le lipéad na teanga agus na cnaipí Cóipeáil agus Íoslódáil ina chúinne"
+          },
+          {
+            "id": "image-menu",
+            "title": "Cóipeáil agus sábháil íomhánna",
+            "body": "Deaschliceáil ar íomhá sa chomhrá nó san amharcóir íomhánna: cóipeáil íomhá, sábháil íomhá ina bunleagan, GIF lena bheochan, cóipeáil seoladh na híomhá nó oscail san amharcóir í."
           }
         ]
       },
@@ -862,6 +873,11 @@
             "id": "bitrate",
             "title": "Ráta giotán de láimh",
             "body": "Sleamhnán dá chuid féin ó 16 kbit/s suas go dtí an luach is airde a cheadaíonn an freastalaí agus Mumble. Nuair a chailltear paicéid, laghdaíonn Mumcord é fós leis féin."
+          },
+          {
+            "id": "realtime-audio",
+            "title": "Seasmhach faoi ualach",
+            "body": "Faigheann gabháil agus athsheinm tosaíocht fíor-ama, mar sin bíonn níos lú gíoscáin agus briseadh sa ghuth fad a choinníonn cluiche nó tógáil an ríomhaire gnóthach. Taispeánann an t-eolas ceangail bristeacha agus an bhfuil fuaim fíor-ama ar siúl."
           }
         ]
       },
@@ -1070,12 +1086,51 @@
             "title": "Cigire paicéad le haghaidh dífhabhtaithe",
             "body": "I bhfolach d’fhorbróirí: díghlasálann seacht gcliceáil ar an leagan faoi Socruithe → Maidir le é. Ina fhuinneog féin taispeánann sé cé na sonraí Mumcord a sheoltar agus a fhaightear, le scagairí, áiritheoirí agus easpórtáil mar JSON nó Markdown.",
             "alt": "Cigire paicéad le scagairí, áiritheoirí de réir cineáil agus treo, agus ró paicéid amháin leathnaithe"
+          },
+          {
+            "id": "clear-cache",
+            "title": "Glan an taisce",
+            "body": "Taispeánann Socruithe → Príobháideachas an méid spáis a thógann réamhamhairc ar naisc, íomhánna agus an t-inneall gréasáin, agus glanann sé iad le brú cnaipe, ceann ar cheann freisin. Ní bhaintear choíche le stair chomhrá, freastalaithe, cairde ná nótaí."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.4",
+      "teaser": "Cóipeáil agus íoslódáil cód, sábháil íomhánna le deaschliceáil, glan an taisce, guth níos seasmhaí faoi ualach.",
+      "summary": "Nuashonrú don chomhrá laethúil: bloic chóid le cóipeáil, íoslódáil agus níos mó teangacha, cóipeáil agus sábháil íomhánna le deaschliceáil, agus cnaipe chun an taisce a ghlanadh. Chomh maith leis sin, bíonn níos lú gíoscáin sa ghuth faoi ualach, agus oibríonn cóipeáil agus greamú go hiontaofa arís.",
+      "groups": [
+        {
+          "title": "Nua",
+          "items": [
+            "Tá cnaipí Cóipeáil agus Íoslódáil i gcúinne na mbloc cóid. Aibhsítear an teanga tar éis na dtrí backtick, mar shampla sql, rust nó php, go díreach mar sin agus taispeántar sa chúinne í. I measc na gceann nua tá PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx agus dumpaí heics.",
+            "Deaschliceáil ar íomhá sa chomhrá: cóipeáil íomhá, sábháil íomhá, cóipeáil seoladh na híomhá agus oscail san amharcóir íomhánna. Tá na cnaipí céanna ag an amharcóir íomhánna. Coinníonn sábháil an bunleagan, GIF lena bheochan.",
+            "Taispeánann Socruithe → Príobháideachas an méid spáis a thógann na taiscí agus glanann sé iad le brú cnaipe, ceann ar cheann freisin. Ní bhaintear choíche le stair chomhrá, socruithe, freastalaithe, teastais, cairde ná nótaí."
+          ]
+        },
+        {
+          "title": "Feabhsaithe",
+          "items": [
+            "Bíonn níos lú gíoscáin agus briseadh sa ghuth faoi ualach trom: iarrann Mumcord tosaíocht fíor-ama ar an gcóras don ghabháil agus don athsheinm, agus ní atosaíonn briseadh gearr an fhuaim go léir a thuilleadh. Taispeánann an t-eolas ceangail agus an comhad diagnóiseach bristeacha, paicéid dhéanacha agus an bhfuil fuaim fíor-ama ar siúl.",
+            "Ní mhoillíonn GIFanna móra ó GIPHY an aip a thuilleadh: taispeánann an comhrá leagan níos lú a oireann."
+          ]
+        },
+        {
+          "title": "Ceartaithe",
+          "items": [
+            "Oibríonn cóipeáil téacs roghnaithe an chomhrá arís: tairgeann an roghchlár deaschliceála “Cóipeáil” ar dtús, cóipeálann Ctrl+C an gnáth-théacs lena bhristeacha líne, agus fanann an rogha le feiceáil.",
+            "Tagann sonraí íomhá greamaithe, mar shampla gabháil scáileáin Spectacle nó “Cóipeáil íomhá” i mbrabhsálaí, isteach sa chomhrá arís ar Linux.",
+            "Ní thagann stair chomhrá scriosta ar ais a thuilleadh tríd an stair chomhrá roinnte nuair a théann tú isteach i gcainéal arís.",
+            "Sa leagan amach dlúth ní chlúdaíonn teideal an chárta téama a mhionsamhail a thuilleadh, agus ní bhogann cártaí teachtaireachta a thuilleadh."
+          ]
+        }
+      ],
+      "known": [
+        "Níl suiteálaí Windows sínithe fós."
+      ]
+    },
     {
       "version": "0.4.3",
       "teaser": "Cártaí teachtaireachta do bhotanna, greamaigh íomhánna le Ctrl+V, is féidir meirgí earráide a dhúnadh.",
@@ -1670,7 +1725,7 @@
       {
         "id": "epic-3",
         "title": "Compord",
-        "summary": "Snasú d’úsáideoirí troma agus athsheachadán roghnach do naisc dhíreacha.",
+        "summary": "Snasú d’úsáideoirí troma, níos mó suaimhnis le bacadh, scagaire teachtaireachtaí agus lárionad fógraí, agus athsheachadán roghnach do naisc dhíreacha.",
         "groups": [
           {
             "title": "Compord laethúil",
@@ -1682,6 +1737,14 @@
               "Brabhsálaí freastalaithe poiblí",
               "Ná Cuir Isteach Orm: múchann lasc amháin fógraí, fuaimeanna agus preabfhuinneoga, agus cloiseann tú guthanna fós",
               "@all agus @channel chun gach duine ar an bhfreastalaí nó sa chainéal a lua"
+            ]
+          },
+          {
+            "title": "Suaimhneas agus príobháideacht",
+            "items": [
+              "Cuir bac ar dhaoine: gan teachtaireachtaí, guth ná cuirí uathu a thuilleadh, aitheanta de réir a dteastais seachas a n-ainm",
+              "Teachtaireachtaí príobháideacha ó chairde amháin, ó chách nó gan iad ar chor ar bith, do gach freastalaí freisin. Téann strainséirí isteach in iarratais teachtaireachta",
+              "Bailíonn lárionad fógraí taobh thiar de chlog luanna, freagraí, iarratais agus cuirí ó gach freastalaí, agus le linn Ná Cuir Isteach Orm gach rud a phreabfadh aníos murach sin"
             ]
           },
           {

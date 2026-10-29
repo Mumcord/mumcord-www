@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Udobnost",
-          "body": "Globalni prečaci, potpuni izbornik u traci sustava, uvoz iz službenog klijenta, šaputanje, preglednik poslužitelja, „Ne uznemiruj”, @all i @channel te opcionalni relay za izravne veze."
+          "body": "Globalni prečaci, potpuni izbornik u traci sustava, uvoz iz službenog klijenta, šaputanje, preglednik poslužitelja, „Ne uznemiruj”, @all i @channel, blokiranje, privatne poruke samo od prijatelja, centar obavijesti te opcionalni relay za izravne veze."
         },
         {
           "tag": "Epic 4",
@@ -821,6 +821,17 @@
             "id": "paste-images",
             "title": "Lijepljenje slika s Ctrl+V",
             "body": "Snimke zaslona, „Kopiraj sliku” iz preglednika i slikovne datoteke kopirane u upravitelju datoteka s Ctrl+V idu ravno u polje za poruku kao privitak."
+          },
+          {
+            "id": "code-blocks",
+            "title": "Blokovi koda s Kopiraj i Preuzmi",
+            "body": "Napiši jezik nakon tri backticka, od sql, rust i php do cmd, Dockerfile i hex dumpova, i blok se ističe upravo tako. Gumbi u kutu kopiraju kod ili ga spremaju kao datoteku.",
+            "alt": "SQL blok koda s oznakom jezika i gumbima Kopiraj i Preuzmi u kutu"
+          },
+          {
+            "id": "image-menu",
+            "title": "Kopiranje i spremanje slika",
+            "body": "Desni klik na sliku u chatu ili u pregledniku slika: kopiraj sliku, spremi sliku u izvorniku, GIF s animacijom, kopiraj adresu slike ili je otvori u pregledniku."
           }
         ]
       },
@@ -862,6 +873,11 @@
             "id": "bitrate",
             "title": "Bitrate ručno",
             "body": "Zaseban klizač od 16 kbit/s do najviše vrijednosti koju dopuštaju poslužitelj i Mumble. Kod gubitka paketa Mumcord ga i dalje sam smanjuje."
+          },
+          {
+            "id": "realtime-audio",
+            "title": "Stabilno pod opterećenjem",
+            "body": "Snimanje i reprodukcija dobivaju prioritet u stvarnom vremenu, pa glas manje pucketa i prekida se dok igra ili build drži računalo zauzetim. Podaci o vezi pokazuju prekide i je li zvuk u stvarnom vremenu uključen."
           }
         ]
       },
@@ -1070,12 +1086,51 @@
             "title": "Inspektor paketa za otklanjanje grešaka",
             "body": "Skriveno za programere: sedam klikova na verziju u Postavke → O aplikaciji otključava ga. U vlastitom prozoru prikazuje koji se Mumcord podaci šalju i primaju, s filtrima, brojačima i izvozom kao JSON ili Markdown.",
             "alt": "Inspektor paketa s filtrima, brojačima po vrsti i smjeru i jednim proširenim retkom paketa"
+          },
+          {
+            "id": "clear-cache",
+            "title": "Brisanje predmemorije",
+            "body": "Postavke → Privatnost pokazuju koliko prostora zauzimaju pretpregledi poveznica, slike i web-mehanizam te ih brišu jednim klikom, i pojedinačno. Povijest chata, poslužitelji, prijatelji i bilješke nikad se ne diraju."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.4",
+      "teaser": "Kopiranje i preuzimanje koda, spremanje slika desnim klikom, brisanje predmemorije, stabilniji glas pod opterećenjem.",
+      "summary": "Ažuriranje za svakodnevni chat: blokovi koda s kopiranjem, preuzimanjem i više jezika, kopiranje i spremanje slika desnim klikom te gumb za brisanje predmemorije. Uz to glas manje pucketa pod opterećenjem, a kopiranje i lijepljenje opet pouzdano rade.",
+      "groups": [
+        {
+          "title": "Novo",
+          "items": [
+            "Blokovi koda imaju u kutu gumbe Kopiraj i Preuzmi. Jezik nakon tri backticka, primjerice sql, rust ili php, ističe se upravo tako i prikazuje u kutu. Među novima su PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx i hex dumpovi.",
+            "Desni klik na sliku u chatu: kopiraj sliku, spremi sliku, kopiraj adresu slike i otvori u pregledniku slika. Preglednik slika ima iste gumbe. Sprema se izvornik, GIF s animacijom.",
+            "Postavke → Privatnost pokazuju koliko prostora zauzimaju predmemorije i brišu ih jednim klikom, i pojedinačno. Povijest chata, postavke, poslužitelji, certifikati, prijatelji i bilješke nikad se ne diraju."
+          ]
+        },
+        {
+          "title": "Poboljšano",
+          "items": [
+            "Glas manje pucketa i prekida se pod velikim opterećenjem: Mumcord od sustava traži prioritet u stvarnom vremenu za snimanje i reprodukciju, a kratki zastoj više ne pokreće cijeli zvuk ispočetka. Podaci o vezi i dijagnostička datoteka pokazuju prekide, zakašnjele pakete i je li zvuk u stvarnom vremenu uključen.",
+            "Veliki GIF-ovi s GIPHY-ja više ne usporavaju aplikaciju: chat prikazuje manju verziju koja odgovara."
+          ]
+        },
+        {
+          "title": "Popravljeno",
+          "items": [
+            "Kopiranje odabranog teksta u chatu opet radi: izbornik desnog klika nudi „Kopiraj” na prvom mjestu, Ctrl+C kopira običan tekst s prijelomima redaka, a odabir ostaje vidljiv.",
+            "Zalijepljeni podaci slike, poput snimke zaslona iz Spectaclea ili „Kopiraj sliku” u pregledniku, opet stižu u chat na Linuxu.",
+            "Obrisana povijest chata više se ne vraća putem zajedničke povijesti chata kad se ponovno pridružiš kanalu.",
+            "U kompaktnom izgledu naslov kartice teme više ne prekriva njezinu sličicu, a kartice poruka više se ne pomiču."
+          ]
+        }
+      ],
+      "known": [
+        "Windows instalacijski program još nije potpisan."
+      ]
+    },
     {
       "version": "0.4.3",
       "teaser": "Kartice poruka za botove, lijepljenje slika s Ctrl+V, trake s greškom mogu se zatvoriti.",
@@ -1670,7 +1725,7 @@
       {
         "id": "epic-3",
         "title": "Udobnost",
-        "summary": "Dorada za one koji ga puno koriste i opcionalni relay za izravne veze.",
+        "summary": "Dorada za one koji ga puno koriste, više mira uz blokiranje, filtar poruka i centar obavijesti te opcionalni relay za izravne veze.",
         "groups": [
           {
             "title": "Udobnost za svaki dan",
@@ -1682,6 +1737,14 @@
               "Javni preglednik poslužitelja",
               "Ne uznemiruj: jedan prekidač utišava obavijesti, zvukove i skočne prozore, a glasove i dalje čuješ",
               "@all i @channel za spominjanje svih na poslužitelju ili u kanalu"
+            ]
+          },
+          {
+            "title": "Mir i privatnost",
+            "items": [
+              "Blokiraj ljude: od njih više nema poruka, glasa ni pozivnica, prepoznaju se po certifikatu umjesto po imenu",
+              "Privatne poruke samo od prijatelja, od svih ili ni od koga, i za svaki poslužitelj. Nepoznati završavaju u zahtjevima za poruke",
+              "Centar obavijesti iza zvonca skuplja spominjanja, odgovore, zahtjeve i pozivnice sa svih poslužitelja, a tijekom „Ne uznemiruj” sve što bi inače iskočilo"
             ]
           },
           {

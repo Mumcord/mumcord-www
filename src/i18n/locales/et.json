@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Mugavus",
-          "body": "Globaalsed kiirklahvid, täielik salvemenüü, import ametlikust kliendist, sosistamine, serveribrauser, „Mitte segada“, @all ja @channel ning valikuline vahendusserver otseühenduste jaoks."
+          "body": "Globaalsed kiirklahvid, täielik salvemenüü, import ametlikust kliendist, sosistamine, serveribrauser, „Mitte segada“, @all ja @channel, blokeerimine, privaatsõnumid ainult sõpradelt, teavituskeskus ning valikuline vahendusserver otseühenduste jaoks."
         },
         {
           "tag": "Epic 4",
@@ -821,6 +821,17 @@
             "id": "paste-images",
             "title": "Piltide kleepimine Ctrl+V-ga",
             "body": "Ekraanipildid, „Kopeeri pilt“ brauserist ja failihalduris kopeeritud pildifailid jõuavad Ctrl+V-ga otse sisestusvälja manusena."
+          },
+          {
+            "id": "code-blocks",
+            "title": "Koodiplokid nuppudega Kopeeri ja Laadi alla",
+            "body": "Kirjuta keel kolme tagurpidi ülakoma järele, alates sql-ist, rustist ja php-st kuni cmd, Dockerfile'i ja hex-väljavõteteni, ja plokk tõstetakse esile täpselt selle keelena. Nurgas olevad nupud kopeerivad koodi või salvestavad selle failina.",
+            "alt": "SQL-koodiplokk keelesildi ning nurgas olevate nuppudega Kopeeri ja Laadi alla"
+          },
+          {
+            "id": "image-menu",
+            "title": "Piltide kopeerimine ja salvestamine",
+            "body": "Paremklõps pildil vestluses või pildivaaturis: kopeeri pilt, salvesta pilt originaalina, GIF koos animatsiooniga, kopeeri pildi aadress või ava see vaaturis."
           }
         ]
       },
@@ -862,6 +873,11 @@
             "id": "bitrate",
             "title": "Bitikiirus käsitsi",
             "body": "Eraldi liugur alates 16 kbit/s kuni kõrgeima väärtuseni, mida server ja Mumble lubavad. Pakettide kao korral keerab Mumcord selle ikka ise madalamaks."
+          },
+          {
+            "id": "realtime-audio",
+            "title": "Stabiilne koormuse all",
+            "body": "Salvestamine ja taasesitus saavad reaalajaprioriteedi, nii et hääl praksub ja katkeb vähem, kui mäng või build arvutit hõivab. Ühenduse teave näitab katkestusi ja seda, kas reaalajaheli on sees."
           }
         ]
       },
@@ -1070,12 +1086,51 @@
             "title": "Paketiinspektor silumiseks",
             "body": "Arendajate jaoks peidetud: seitse klõpsu versioonil jaotises Seaded → Teave avavad selle. Eraldi aknas näitab see, milliseid Mumcordi andmeid saadetakse ja vastu võetakse, koos filtrite, loendurite ja ekspordiga JSON-i või Markdowni vormingus.",
             "alt": "Paketiinspektor filtrite, tüübi ja suuna kaupa loendurite ning ühe lahtivolditud paketireaga"
+          },
+          {
+            "id": "clear-cache",
+            "title": "Vahemälu tühjendamine",
+            "body": "Seaded → Privaatsus näitab, kui palju ruumi linkide eelvaated, pildid ja veebimootor võtavad, ning tühjendab need ühe nupuvajutusega, ka ükshaaval. Vestlusajalugu, servereid, sõpru ja märkmeid ei puudutata kunagi."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.4",
+      "teaser": "Koodi kopeerimine ja allalaadimine, piltide salvestamine paremklõpsuga, vahemälu tühjendamine, stabiilsem hääl koormuse all.",
+      "summary": "Uuendus igapäevaseks vestluseks: koodiplokid kopeerimise, allalaadimise ja rohkemate keeltega, piltide kopeerimine ja salvestamine paremklõpsuga ning nupp vahemälu tühjendamiseks. Lisaks praksub hääl koormuse all vähem ning kopeerimine ja kleepimine töötavad taas usaldusväärselt.",
+      "groups": [
+        {
+          "title": "Uus",
+          "items": [
+            "Koodiplokkidel on nurgas nupud Kopeeri ja Laadi alla. Kolme tagurpidi ülakoma järel olev keel, näiteks sql, rust või php, tõstetakse esile täpselt selle keelena ja kuvatakse nurgas. Uute hulgas on PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx ja hex-väljavõtted.",
+            "Paremklõps vestluses oleval pildil: kopeeri pilt, salvesta pilt, kopeeri pildi aadress ja ava pildivaaturis. Pildivaaturis on samad nupud. Salvestamisel jääb alles originaal, GIF koos animatsiooniga.",
+            "Seaded → Privaatsus näitab, kui palju ruumi vahemälud võtavad, ja tühjendab need ühe nupuvajutusega, ka ükshaaval. Vestlusajalugu, seadeid, servereid, sertifikaate, sõpru ja märkmeid ei puudutata kunagi."
+          ]
+        },
+        {
+          "title": "Täiustatud",
+          "items": [
+            "Hääl praksub ja katkeb suure koormuse all vähem: Mumcord palub süsteemilt salvestamisele ja taasesitusele reaalajaprioriteeti ning lühike tõrge ei käivita enam kogu heli uuesti. Ühenduse teave ja diagnostikafail näitavad katkestusi, hilinenud pakette ja seda, kas reaalajaheli on sees.",
+            "Suured GIF-id GIPHY-st ei aeglusta enam rakendust: vestlus näitab väiksemat versiooni, mis mahub ära."
+          ]
+        },
+        {
+          "title": "Parandatud",
+          "items": [
+            "Valitud vestlusteksti kopeerimine töötab taas: paremklõpsumenüü pakub esimesena „Kopeeri“, Ctrl+C kopeerib lihtteksti koos reavahetustega ja valik jääb nähtavaks.",
+            "Kleebitud pildiandmed, näiteks Spectacle'i ekraanipilt või „Kopeeri pilt“ brauseris, jõuavad Linuxis taas vestlusse.",
+            "Kustutatud vestlusajalugu ei tule enam ajaloo sünkroonimise kaudu tagasi, kui kanaliga uuesti liitud.",
+            "Kompaktses paigutuses ei kata teemakaardi pealkiri enam selle pisipilti ja sõnumikaardid ei nihku enam."
+          ]
+        }
+      ],
+      "known": [
+        "Windowsi paigaldaja on endiselt allkirjastamata."
+      ]
+    },
     {
       "version": "0.4.3",
       "teaser": "Sõnumikaardid bottidele, piltide kleepimine Ctrl+V-ga, veabännereid saab sulgeda.",
@@ -1670,7 +1725,7 @@
       {
         "id": "epic-3",
         "title": "Mugavus",
-        "summary": "Viimistlus aktiivsetele kasutajatele ja valikuline vahendusserver otseühenduste jaoks.",
+        "summary": "Viimistlus aktiivsetele kasutajatele, rohkem rahu blokeerimise, sõnumifiltri ja teavituskeskusega ning valikuline vahendusserver otseühenduste jaoks.",
         "groups": [
           {
             "title": "Igapäevane mugavus",
@@ -1682,6 +1737,14 @@
               "Avalik serveribrauser",
               "Mitte segada: üks lüliti vaigistab teavitused, helid ja hüpikaknad ning hääli kuuled ikka",
               "@all ja @channel, et mainida kõiki serveris või kanalis"
+            ]
+          },
+          {
+            "title": "Rahu ja privaatsus",
+            "items": [
+              "Inimeste blokeerimine: nendelt enam ei tule sõnumeid, häält ega kutseid, tuvastatud sertifikaadi, mitte nime järgi",
+              "Privaatsõnumid ainult sõpradelt, kõigilt või mitte kelleltki, ka serveri kaupa. Võõrad satuvad sõnumitaotluste alla",
+              "Kellukese taga olev teavituskeskus kogub kõigist serveritest mainimised, vastused, taotlused ja kutsed ning režiimis „Mitte segada“ kõik, mis muidu hüppaks esile"
             ]
           },
           {

@@ -250,7 +250,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         title: "Komfort",
         status: "planned",
         version: "0.5.0",
-        summary: "Feinschliff für Vielnutzer und ein optionales Relay für direkte Verbindungen.",
+        summary: "Feinschliff für Vielnutzer, mehr Ruhe mit Blockieren, Nachrichtenfilter und Benachrichtigungszentrale, dazu ein optionales Relay für direkte Verbindungen.",
         groups: [
           {
             title: "Komfort im Alltag",
@@ -262,6 +262,14 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Öffentlicher Server-Browser",
               "„Bitte nicht stören“: Ein Schalter macht Benachrichtigungen, Töne und Pop-ups stumm, Stimmen hörst du weiter",
               "@all und @channel, um alle auf dem Server oder im Kanal zu erwähnen",
+            ],
+          },
+          {
+            title: "Ruhe und Privatsphäre",
+            items: [
+              "Personen blockieren: keine Nachrichten, keine Stimme und keine Einladungen mehr von ihnen, erkannt am Zertifikat statt am Namen",
+              "Private Nachrichten nur von Freunden, von allen oder von niemandem, auch pro Server. Fremde landen bei den Nachrichtenanfragen",
+              "Eine Benachrichtigungszentrale an der Glocke sammelt Erwähnungen, Antworten, Anfragen und Einladungen von allen Servern, bei „Bitte nicht stören“ auch alles, was sonst aufpoppen würde",
             ],
           },
           {
@@ -518,7 +526,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         title: "Comfort",
         status: "planned",
         version: "0.5.0",
-        summary: "Polish for heavy users and an optional relay for direct connections.",
+        summary: "Polish for heavy users, more peace with blocking, a message filter and a notification centre, plus an optional relay for direct connections.",
         groups: [
           {
             title: "Everyday comfort",
@@ -530,6 +538,14 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Public server browser",
               "Do Not Disturb: one switch silences notifications, sounds and pop-ups, and you still hear voices",
               "@all and @channel to mention everyone on the server or in the channel",
+            ],
+          },
+          {
+            title: "Peace and privacy",
+            items: [
+              "Block people: no more messages, voice or invites from them, recognised by their certificate instead of their name",
+              "Private messages from friends only, from everyone or from nobody, per server too. Strangers end up in message requests",
+              "A notification centre behind a bell collects mentions, replies, requests and invites from every server, and during Do Not Disturb everything that would otherwise pop up",
             ],
           },
           {

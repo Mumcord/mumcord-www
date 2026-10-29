@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Patogumas",
-          "body": "Globalūs spartieji klavišai, pilnas dėklo meniu, importas iš oficialaus kliento, šnabždesys, serverių naršyklė, „Netrukdyti“, @all ir @channel bei pasirenkamas tarpinis serveris tiesioginiams ryšiams."
+          "body": "Globalūs spartieji klavišai, pilnas dėklo meniu, importas iš oficialaus kliento, šnabždesys, serverių naršyklė, „Netrukdyti“, @all ir @channel, blokavimas, asmeninės žinutės tik iš draugų, pranešimų centras bei pasirenkamas tarpinis serveris tiesioginiams ryšiams."
         },
         {
           "tag": "Epic 4",
@@ -821,6 +821,17 @@
             "id": "paste-images",
             "title": "Paveikslėlių įklijavimas su Ctrl+V",
             "body": "Ekrano kopijos, „Kopijuoti paveikslėlį“ iš naršyklės ir failų tvarkytuvėje nukopijuoti paveikslėlių failai su Ctrl+V iškart patenka į žinutės įvesties lauką kaip priedas."
+          },
+          {
+            "id": "code-blocks",
+            "title": "Kodo blokai su kopijavimu ir atsisiuntimu",
+            "body": "Po trijų atvirkštinių kabučių parašyk kalbą, nuo sql, rust ir php iki cmd, Dockerfile ir šešioliktainių išrašų, ir blokas bus paryškintas būtent taip. Kampe esantys mygtukai nukopijuoja kodą arba išsaugo jį kaip failą.",
+            "alt": "SQL kodo blokas su kalbos žyma ir kopijavimo bei atsisiuntimo mygtukais kampe"
+          },
+          {
+            "id": "image-menu",
+            "title": "Kopijuok ir išsaugok paveikslėlius",
+            "body": "Dešiniuoju spustelėk paveikslėlį pokalbyje arba paveikslėlių peržiūroje: kopijuoti paveikslėlį, išsaugoti paveikslėlį kaip originalą, GIF – su animacija, kopijuoti paveikslėlio adresą arba atidaryti peržiūroje."
           }
         ]
       },
@@ -862,6 +873,11 @@
             "id": "bitrate",
             "title": "Bitų sparta rankiniu būdu",
             "body": "Atskiras slankiklis nuo 16 kbit/s iki didžiausios vertės, kurią leidžia serveris ir Mumble. Praradus paketų, Mumcord vis tiek pats ją sumažina."
+          },
+          {
+            "id": "realtime-audio",
+            "title": "Stabilu esant apkrovai",
+            "body": "Įrašymas ir atkūrimas gauna realaus laiko prioritetą, todėl balsas mažiau traška ir rečiau nutrūksta, kol žaidimas ar kompiliavimas apkrauna kompiuterį. Ryšio informacija rodo nutrūkimus ir ar įjungtas realaus laiko garsas."
           }
         ]
       },
@@ -1070,12 +1086,51 @@
             "title": "Paketų inspektorius derinimui",
             "body": "Paslėptas kūrėjams: septyni spustelėjimai ant versijos skiltyje Nustatymai → Apie jį atrakina. Atskirame lange jis rodo, kokie Mumcord duomenys siunčiami ir gaunami, su filtrais, skaitikliais ir eksportu į JSON ar Markdown.",
             "alt": "Paketų inspektorius su filtrais, skaitikliais pagal tipą ir kryptį bei viena išskleista paketo eilute"
+          },
+          {
+            "id": "clear-cache",
+            "title": "Išvalyk podėlį",
+            "body": "Nustatymai → Privatumas rodo, kiek vietos užima nuorodų peržiūros, paveikslėliai ir naršyklės variklis, ir vienu mygtuko paspaudimu juos išvalo, taip pat po vieną. Pokalbių istorija, serveriai, draugai ir užrašai lieka nepaliesti."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.4",
+      "teaser": "Kopijuok ir atsisiųsk kodą, išsaugok paveikslėlius dešiniuoju spustelėjimu, išvalyk podėlį, stabilesnis balsas esant apkrovai.",
+      "summary": "Atnaujinimas kasdieniam pokalbiui: kodo blokai su kopijavimu, atsisiuntimu ir daugiau kalbų, paveikslėlių kopijavimas ir išsaugojimas dešiniuoju spustelėjimu bei mygtukas podėliui išvalyti. Be to, esant apkrovai balsas mažiau traška, o kopijavimas ir įklijavimas vėl veikia patikimai.",
+      "groups": [
+        {
+          "title": "Nauja",
+          "items": [
+            "Kodo blokų kampe yra kopijavimo ir atsisiuntimo mygtukai. Kalba po trijų atvirkštinių kabučių (backticks), pavyzdžiui, sql, rust ar php, paryškinama būtent taip ir rodoma kampe. Tarp naujų yra PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx ir šešioliktainiai išrašai (hex dumps).",
+            "Dešiniuoju spustelėk paveikslėlį pokalbyje: kopijuoti paveikslėlį, išsaugoti paveikslėlį, kopijuoti paveikslėlio adresą ir atidaryti paveikslėlių peržiūroje. Paveikslėlių peržiūra turi tuos pačius mygtukus. Išsaugomas originalas, GIF – su animacija.",
+            "Nustatymai → Privatumas rodo, kiek vietos užima podėliai, ir vienu mygtuko paspaudimu juos išvalo, taip pat po vieną. Pokalbių istorija, nustatymai, serveriai, sertifikatai, draugai ir užrašai lieka nepaliesti."
+          ]
+        },
+        {
+          "title": "Patobulinta",
+          "items": [
+            "Esant didelei apkrovai balsas mažiau traška ir rečiau nutrūksta: Mumcord prašo sistemos realaus laiko prioriteto įrašymui ir atkūrimui, o trumpas strigimas nebepaleidžia viso garso iš naujo. Ryšio informacija ir diagnostikos failas rodo nutrūkimus, pavėlavusius paketus ir ar įjungtas realaus laiko garsas.",
+            "Dideli GIPHY GIF nebelėtina programos: pokalbyje rodoma mažesnė, tinkamo dydžio versija."
+          ]
+        },
+        {
+          "title": "Ištaisyta",
+          "items": [
+            "Pažymėto pokalbio teksto kopijavimas vėl veikia: kontekstinis meniu pirmiausia siūlo „Kopijuoti“, Ctrl+C nukopijuoja paprastą tekstą su eilučių lūžiais, o žymėjimas lieka matomas.",
+            "Įklijuoti paveikslėlio duomenys, pavyzdžiui, Spectacle ekrano kopija ar „Kopijuoti paveikslėlį“ naršyklėje, Linux sistemoje vėl patenka į pokalbį.",
+            "Ištrinta pokalbių istorija nebegrįžta per istorijos sinchronizavimą, kai vėl prisijungi prie kanalo.",
+            "Kompaktiškame išdėstyme temos kortelės pavadinimas nebeuždengia jos miniatiūros, o žinučių kortelės nebepasislenka."
+          ]
+        }
+      ],
+      "known": [
+        "Windows diegimo programa vis dar nepasirašyta."
+      ]
+    },
     {
       "version": "0.4.3",
       "teaser": "Žinučių kortelės botams, paveikslėlių įklijavimas su Ctrl+V, klaidų juostas galima uždaryti.",
@@ -1670,7 +1725,7 @@
       {
         "id": "epic-3",
         "title": "Patogumas",
-        "summary": "Šlifavimas aktyviems naudotojams ir pasirenkamas tarpinis serveris tiesioginiams ryšiams.",
+        "summary": "Šlifavimas aktyviems naudotojams, daugiau ramybės su blokavimu, žinučių filtru ir pranešimų centru bei pasirenkamas tarpinis serveris tiesioginiams ryšiams.",
         "groups": [
           {
             "title": "Kasdienis patogumas",
@@ -1682,6 +1737,14 @@
               "Viešų serverių naršyklė",
               "Netrukdyti: vienas jungiklis nutildo pranešimus, garsus ir iššokančius langelius, o balsus vis tiek girdi",
               "@all ir @channel, kad paminėtum visus serveryje arba kanale"
+            ]
+          },
+          {
+            "title": "Ramybė ir privatumas",
+            "items": [
+              "Žmonių blokavimas: jokių jų žinučių, balso ar kvietimų, atpažįstama pagal sertifikatą, o ne pagal vardą",
+              "Asmeninės žinutės tik iš draugų, iš visų arba iš nieko, taip pat atskirai kiekvienam serveriui. Nepažįstamieji patenka į žinučių užklausas",
+              "Pranešimų centras po varpeliu surenka paminėjimus, atsakymus, užklausas ir kvietimus iš visų serverių, o veikiant „Netrukdyti“ – viską, kas kitaip iššoktų"
             ]
           },
           {

@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Pohodlie",
-          "body": "Globálne klávesové skratky, kompletné menu v systémovej lište, import z oficiálneho klienta, šepot, prehliadač serverov, „Nerušiť“, @all a @channel a k tomu voliteľný relay pre priame spojenia."
+          "body": "Globálne klávesové skratky, kompletné menu v systémovej lište, import z oficiálneho klienta, šepot, prehliadač serverov, „Nerušiť“, @all a @channel, blokovanie, súkromné správy len od priateľov, centrum upozornení a k tomu voliteľný relay pre priame spojenia."
         },
         {
           "tag": "Epic 4",
@@ -821,6 +821,17 @@
             "id": "paste-images",
             "title": "Vkladanie obrázkov cez Ctrl+V",
             "body": "Snímky obrazovky, „Kopírovať obrázok“ z prehliadača a obrázkové súbory skopírované v správcovi súborov sa cez Ctrl+V dostanú rovno do poľa správy ako príloha."
+          },
+          {
+            "id": "code-blocks",
+            "title": "Bloky kódu s Kopírovať a Stiahnuť",
+            "body": "Napíš jazyk za tri spätné apostrofy, od sql, rust a php po cmd, Dockerfile a hex dumpy, a blok sa zvýrazní presne ako tento jazyk. Tlačidlá v rohu skopírujú kód alebo ho uložia ako súbor.",
+            "alt": "Blok kódu SQL s označením jazyka a tlačidlami Kopírovať a Stiahnuť v rohu"
+          },
+          {
+            "id": "image-menu",
+            "title": "Kopírovanie a ukladanie obrázkov",
+            "body": "Pravý klik na obrázok v chate alebo v prehliadači obrázkov: kopírovať obrázok, uložiť obrázok v origináli, GIF aj s animáciou, kopírovať adresu obrázka alebo ho otvoriť v prehliadači."
           }
         ]
       },
@@ -862,6 +873,11 @@
             "id": "bitrate",
             "title": "Bitrate ručne",
             "body": "Vlastný posuvník od 16 kbit/s až po najvyššiu hodnotu, ktorú dovolí server a Mumble. Pri strate paketov ho Mumcord aj tak sám zníži."
+          },
+          {
+            "id": "realtime-audio",
+            "title": "Stabilne pri záťaži",
+            "body": "Záznam a prehrávanie dostanú prioritu v reálnom čase, takže hlas menej praská a vypadáva, kým hra alebo build vyťažuje počítač. Informácie o pripojení ukazujú výpadky a to, či je zapnutý zvuk v reálnom čase."
           }
         ]
       },
@@ -1070,12 +1086,51 @@
             "title": "Inšpektor paketov na ladenie",
             "body": "Skrytý pre vývojárov: sedem kliknutí na verziu v Nastavenia → O aplikácii ho odomkne. Vo vlastnom okne ukazuje, aké dáta Mumcordu sa odosielajú a prijímajú, s filtrami, počítadlami a exportom ako JSON alebo Markdown.",
             "alt": "Inšpektor paketov s filtrami, počítadlami podľa typu a smeru a jedným rozbaleným riadkom paketu"
+          },
+          {
+            "id": "clear-cache",
+            "title": "Vymazanie vyrovnávacej pamäte",
+            "body": "Nastavenia → Súkromie ukazuje, koľko miesta zaberajú náhľady odkazov, obrázky a webové jadro, a jedným tlačidlom ich vymaže, aj po jednom. História chatu, servery, priatelia a poznámky zostanú vždy nedotknuté."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.4",
+      "teaser": "Kopírovanie a sťahovanie kódu, ukladanie obrázkov pravým klikom, vymazanie vyrovnávacej pamäte, stabilnejší hlas pri záťaži.",
+      "summary": "Aktualizácia pre každodenný chat: bloky kódu s kopírovaním, sťahovaním a ďalšími jazykmi, kopírovanie a ukladanie obrázkov pravým klikom a tlačidlo na vymazanie vyrovnávacej pamäte. Navyše hlas pri záťaži menej praská a kopírovanie a vkladanie opäť spoľahlivo fungujú.",
+      "groups": [
+        {
+          "title": "Nové",
+          "items": [
+            "Bloky kódu majú v rohu tlačidlá Kopírovať a Stiahnuť. Jazyk za tromi spätnými apostrofmi, napríklad sql, rust alebo php, sa zvýrazní presne ako tento jazyk a zobrazí sa v rohu. Nové sú okrem iného PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx a hex dumpy.",
+            "Pravý klik na obrázok v chate: kopírovať obrázok, uložiť obrázok, kopírovať adresu obrázka a otvoriť v prehliadači obrázkov. Prehliadač obrázkov má rovnaké tlačidlá. Uloženie zachová originál, GIF aj s animáciou.",
+            "Nastavenia → Súkromie ukazuje, koľko miesta zaberajú vyrovnávacie pamäte, a jedným tlačidlom ich vymaže, aj po jednej. História chatu, nastavenia, servery, certifikáty, priatelia a poznámky zostanú vždy nedotknuté."
+          ]
+        },
+        {
+          "title": "Vylepšené",
+          "items": [
+            "Hlas pri veľkej záťaži menej praská a vypadáva: Mumcord žiada od systému prioritu v reálnom čase pre záznam a prehrávanie a krátke zakolísanie už nereštartuje celý zvuk. Informácie o pripojení a diagnostický súbor ukazujú výpadky, oneskorené pakety a to, či je zapnutý zvuk v reálnom čase.",
+            "Veľké GIFy z GIPHY už nespomaľujú aplikáciu: chat zobrazí menšiu verziu, ktorá sa zmestí."
+          ]
+        },
+        {
+          "title": "Opravené",
+          "items": [
+            "Kopírovanie označeného textu v chate opäť funguje: menu pravého tlačidla ponúka ako prvé „Kopírovať“, Ctrl+C skopíruje čistý text so zalomeniami riadkov a označenie zostane viditeľné.",
+            "Vložené obrazové dáta, napríklad snímka obrazovky zo Spectacle alebo „Kopírovať obrázok“ z prehliadača, sa na Linuxe opäť dostanú do chatu.",
+            "Vymazaná história chatu sa už nevráti cez synchronizáciu histórie, keď sa znova pripojíš do kanála.",
+            "V kompaktnom rozložení už nadpis karty témy neprekrýva jej náhľad a karty správ sa už neposúvajú."
+          ]
+        }
+      ],
+      "known": [
+        "Inštalátor pre Windows je stále nepodpísaný."
+      ]
+    },
     {
       "version": "0.4.3",
       "teaser": "Karty správ pre botov, vkladanie obrázkov cez Ctrl+V, chybové bannery sa dajú zavrieť.",
@@ -1670,7 +1725,7 @@
       {
         "id": "epic-3",
         "title": "Pohodlie",
-        "summary": "Vylepšenia pre náročných používateľov a voliteľný relay pre priame spojenia.",
+        "summary": "Vylepšenia pre náročných používateľov, viac pokoja vďaka blokovaniu, filtru správ a centru upozornení a k tomu voliteľný relay pre priame spojenia.",
         "groups": [
           {
             "title": "Pohodlie na každý deň",
@@ -1682,6 +1737,14 @@
               "Verejný prehliadač serverov",
               "Nerušiť: jeden prepínač stlmí upozornenia, zvuky a vyskakovacie okná a hlasy stále počuješ",
               "@all a @channel, ktorými spomenieš všetkých na serveri alebo v kanáli"
+            ]
+          },
+          {
+            "title": "Pokoj a súkromie",
+            "items": [
+              "Blokovanie ľudí: žiadne ďalšie správy, hlas ani pozvánky od nich, rozpoznaní podľa certifikátu namiesto mena",
+              "Súkromné správy len od priateľov, od všetkých alebo od nikoho, aj podľa servera. Cudzí ľudia skončia v žiadostiach o správu",
+              "Centrum upozornení za zvončekom zhromažďuje zmienky, odpovede, žiadosti a pozvánky zo všetkých serverov a počas režimu Nerušiť aj všetko, čo by inak vyskočilo"
             ]
           },
           {

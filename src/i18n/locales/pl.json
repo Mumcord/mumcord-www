@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Wygoda",
-          "body": "Globalne skróty klawiszowe, pełne menu w zasobniku, import z oficjalnego klienta, szeptanie, przeglądarka serwerów, Nie przeszkadzać, @all i @channel, a do tego opcjonalny przekaźnik dla połączeń bezpośrednich."
+          "body": "Globalne skróty klawiszowe, pełne menu w zasobniku, import z oficjalnego klienta, szeptanie, przeglądarka serwerów, Nie przeszkadzać, @all i @channel, blokowanie, prywatne wiadomości tylko od znajomych, centrum powiadomień, a do tego opcjonalny przekaźnik dla połączeń bezpośrednich."
         },
         {
           "tag": "Epic 4",
@@ -821,6 +821,17 @@
             "id": "paste-images",
             "title": "Wklejanie obrazów przez Ctrl+V",
             "body": "Zrzuty ekranu, „Kopiuj obraz” z przeglądarki i pliki obrazów skopiowane w menedżerze plików trafiają przez Ctrl+V prosto do pola wiadomości jako załącznik."
+          },
+          {
+            "id": "code-blocks",
+            "title": "Bloki kodu z Kopiuj i Pobierz",
+            "body": "Wpisz język po trzech grawisach, od sql, rust i php po cmd, Dockerfile i zrzuty hex, a blok zostanie podświetlony dokładnie tak. Przyciski w rogu kopiują kod albo zapisują go jako plik.",
+            "alt": "Blok kodu SQL z etykietą języka i przyciskami Kopiuj i Pobierz w rogu"
+          },
+          {
+            "id": "image-menu",
+            "title": "Kopiowanie i zapisywanie obrazów",
+            "body": "Prawy przycisk na obrazie w czacie albo w przeglądarce obrazów: kopiuj obraz, zapisz obraz w oryginale, GIF z animacją, kopiuj adres obrazu albo otwórz go w przeglądarce."
           }
         ]
       },
@@ -862,6 +873,11 @@
             "id": "bitrate",
             "title": "Bitrate ręcznie",
             "body": "Osobny suwak od 16 kbit/s aż do najwyższej wartości, na jaką pozwalają serwer i Mumble. Przy utracie pakietów Mumcord nadal sam go obniża."
+          },
+          {
+            "id": "realtime-audio",
+            "title": "Stabilnie pod obciążeniem",
+            "body": "Nagrywanie i odtwarzanie dostają priorytet czasu rzeczywistego, więc głos mniej trzeszczy i się urywa, gdy gra albo kompilacja zajmuje komputer. Informacje o połączeniu pokazują przerwy i to, czy dźwięk w czasie rzeczywistym jest włączony."
           }
         ]
       },
@@ -1070,12 +1086,51 @@
             "title": "Inspektor pakietów do debugowania",
             "body": "Ukryty dla programistów: siedem kliknięć w wersję w Ustawienia → O aplikacji go odblokowuje. W osobnym oknie pokazuje, jakie dane Mumcord są wysyłane i odbierane, z filtrami, licznikami i eksportem do JSON lub Markdown.",
             "alt": "Inspektor pakietów z filtrami, licznikami według typu i kierunku oraz jednym rozwiniętym wierszem pakietu"
+          },
+          {
+            "id": "clear-cache",
+            "title": "Czyszczenie pamięci podręcznej",
+            "body": "Ustawienia → Prywatność pokazują, ile miejsca zajmują podglądy linków, obrazy i silnik przeglądarki, i czyszczą je jednym przyciskiem, także pojedynczo. Historia czatu, serwery, znajomi i notatki pozostają nietknięte."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.4",
+      "teaser": "Kopiuj i pobieraj kod, zapisuj obrazy prawym przyciskiem, czyść pamięć podręczną, stabilniejszy głos pod obciążeniem.",
+      "summary": "Aktualizacja na co dzień w czacie: bloki kodu z kopiowaniem, pobieraniem i większą liczbą języków, kopiowanie i zapisywanie obrazów prawym przyciskiem oraz przycisk do czyszczenia pamięci podręcznej. Do tego głos mniej trzeszczy pod obciążeniem, a kopiowanie i wklejanie znów działają niezawodnie.",
+      "groups": [
+        {
+          "title": "Nowe",
+          "items": [
+            "Bloki kodu mają w rogu przyciski Kopiuj i Pobierz. Język podany po trzech grawisach (backtickach), np. sql, rust czy php, jest podświetlany dokładnie tak i wyświetlany w rogu. Nowe są m.in. PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx i zrzuty hex.",
+            "Prawy przycisk na obrazie w czacie: kopiuj obraz, zapisz obraz, kopiuj adres obrazu i otwórz w przeglądarce obrazów. Przeglądarka obrazów ma te same przyciski. Zapisywany jest oryginał, GIF z animacją.",
+            "Ustawienia → Prywatność pokazują, ile miejsca zajmują pamięci podręczne, i czyszczą je jednym przyciskiem, także pojedynczo. Historia czatu, ustawienia, serwery, certyfikaty, znajomi i notatki pozostają nietknięte."
+          ]
+        },
+        {
+          "title": "Ulepszone",
+          "items": [
+            "Głos rzadziej trzeszczy i się urywa przy dużym obciążeniu: Mumcord prosi system o priorytet czasu rzeczywistego dla nagrywania i odtwarzania, a krótka czkawka nie restartuje już całego dźwięku. Informacje o połączeniu i plik diagnostyczny pokazują przerwy, spóźnione pakiety i to, czy dźwięk w czasie rzeczywistym jest włączony.",
+            "Duże GIF-y z GIPHY nie spowalniają już aplikacji: czat pokazuje mniejszą, pasującą wersję."
+          ]
+        },
+        {
+          "title": "Naprawione",
+          "items": [
+            "Kopiowanie zaznaczonego tekstu czatu znów działa: menu prawego przycisku proponuje najpierw „Kopiuj”, Ctrl+C kopiuje zwykły tekst z podziałami wierszy, a zaznaczenie pozostaje widoczne.",
+            "Wklejone dane obrazu, np. zrzut ekranu ze Spectacle albo „Kopiuj obraz” w przeglądarce, znów trafiają do czatu w systemie Linux.",
+            "Usunięta historia czatu nie wraca już przez synchronizację historii, gdy ponownie dołączasz do kanału.",
+            "W układzie kompaktowym tytuł karty motywu nie zasłania już jej miniatury, a karty wiadomości już się nie przesuwają."
+          ]
+        }
+      ],
+      "known": [
+        "Instalator Windows nadal nie jest podpisany."
+      ]
+    },
     {
       "version": "0.4.3",
       "teaser": "Karty wiadomości dla botów, wklejanie obrazów przez Ctrl+V, banery błędów można zamknąć.",
@@ -1670,7 +1725,7 @@
       {
         "id": "epic-3",
         "title": "Wygoda",
-        "summary": "Szlify dla intensywnych użytkowników i opcjonalny przekaźnik dla połączeń bezpośrednich.",
+        "summary": "Szlify dla intensywnych użytkowników, więcej spokoju dzięki blokowaniu, filtrowi wiadomości i centrum powiadomień, a do tego opcjonalny przekaźnik dla połączeń bezpośrednich.",
         "groups": [
           {
             "title": "Wygoda na co dzień",
@@ -1682,6 +1737,14 @@
               "Publiczna przeglądarka serwerów",
               "Nie przeszkadzać: jeden przełącznik wycisza powiadomienia, dźwięki i wyskakujące okienka, a głosy nadal słyszysz",
               "@all i @channel, by oznaczyć wszystkich na serwerze lub na kanale"
+            ]
+          },
+          {
+            "title": "Spokój i prywatność",
+            "items": [
+              "Blokowanie osób: koniec z ich wiadomościami, głosem i zaproszeniami, rozpoznawanie po certyfikacie zamiast po nicku",
+              "Prywatne wiadomości tylko od znajomych, od wszystkich albo od nikogo, także dla każdego serwera osobno. Obcy trafiają do próśb o wiadomość",
+              "Centrum powiadomień pod dzwonkiem zbiera wzmianki, odpowiedzi, prośby i zaproszenia ze wszystkich serwerów, a w trybie Nie przeszkadzać wszystko, co inaczej by wyskoczyło"
             ]
           },
           {

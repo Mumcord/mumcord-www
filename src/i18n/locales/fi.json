@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Mukavuus",
-          "body": "Globaalit pikanäppäimet, täysi ilmoitusalueen valikko, tuonti virallisesta sovelluksesta, kuiskaus, palvelinselain, ”Älä häiritse”, @all ja @channel sekä valinnainen välityspalvelin suoria yhteyksiä varten."
+          "body": "Globaalit pikanäppäimet, täysi ilmoitusalueen valikko, tuonti virallisesta sovelluksesta, kuiskaus, palvelinselain, ”Älä häiritse”, @all ja @channel, estäminen, yksityisviestit vain kavereilta, ilmoituskeskus sekä valinnainen välityspalvelin suoria yhteyksiä varten."
         },
         {
           "tag": "Epic 4",
@@ -821,6 +821,17 @@
             "id": "paste-images",
             "title": "Liitä kuvia Ctrl+V:llä",
             "body": "Kuvakaappaukset, selaimen ”Kopioi kuva” ja tiedostonhallinnassa kopioidut kuvatiedostot menevät Ctrl+V:llä suoraan viestikenttään liitteeksi."
+          },
+          {
+            "id": "code-blocks",
+            "title": "Koodilohkot, joissa Kopioi ja Lataa",
+            "body": "Kirjoita kieli kolmen backtick-merkin perään, sql:stä, rustista ja php:stä cmd:hen, Dockerfileen ja heksadumppeihin, niin lohko korostetaan juuri sellaisena. Kulman painikkeet kopioivat koodin tai tallentavat sen tiedostoksi.",
+            "alt": "SQL-koodilohko, jonka kulmassa on kielimerkintä sekä Kopioi- ja Lataa-painikkeet"
+          },
+          {
+            "id": "image-menu",
+            "title": "Kuvien kopiointi ja tallennus",
+            "body": "Klikkaa kuvaa hiiren oikealla chatissa tai kuvankatseluohjelmassa: kopioi kuva, tallenna kuva alkuperäisenä, GIF animaatioineen, kopioi kuvan osoite tai avaa se katseluohjelmassa."
           }
         ]
       },
@@ -862,6 +873,11 @@
             "id": "bitrate",
             "title": "Bittinopeus käsin",
             "body": "Oma liukusäädin 16 kbit/s:sta aina suurimpaan arvoon, jonka palvelin ja Mumble sallivat. Pakettihävikin sattuessa Mumcord laskee sitä silti itse."
+          },
+          {
+            "id": "realtime-audio",
+            "title": "Vakaa kuormituksessa",
+            "body": "Äänen tallennus ja toisto saavat reaaliaikaisen prioriteetin, joten puheääni rätisee ja katkeilee vähemmän, kun peli tai buildi pitää koneen kiireisenä. Yhteyden tiedot näyttävät katkokset ja sen, onko reaaliaikainen ääni päällä."
           }
         ]
       },
@@ -1070,12 +1086,51 @@
             "title": "Pakettitarkastin vianetsintään",
             "body": "Piilotettu kehittäjille: seitsemän klikkausta versionumeroon kohdassa Asetukset → Tietoja avaa sen. Omassa ikkunassaan se näyttää, mitä Mumcord-dataa lähetetään ja vastaanotetaan, suodattimien, laskurien sekä JSON- tai Markdown-viennin kera.",
             "alt": "Pakettitarkastin suodattimineen, laskureineen tyypin ja suunnan mukaan sekä yksi pakettirivi avattuna"
+          },
+          {
+            "id": "clear-cache",
+            "title": "Välimuistin tyhjennys",
+            "body": "Asetukset → Yksityisyys näyttää, paljonko tilaa linkkien esikatselut, kuvat ja selainmoottori vievät, ja tyhjentää ne napin painalluksella, myös yksitellen. Chat-historiaan, palvelimiin, kavereihin ja muistiinpanoihin ei kosketa."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.4",
+      "teaser": "Kopioi ja lataa koodia, tallenna kuvia hiiren oikealla, tyhjennä välimuisti, vakaampi puheääni kuormituksessa.",
+      "summary": "Päivitys arjen chattiin: koodilohkot, joissa on kopiointi, lataus ja lisää kieliä, kuvien kopiointi ja tallennus hiiren oikealla sekä painike välimuistin tyhjentämiseen. Lisäksi puheääni rätisee kuormituksessa vähemmän, ja kopiointi ja liittäminen toimivat taas luotettavasti.",
+      "groups": [
+        {
+          "title": "Uutta",
+          "items": [
+            "Koodilohkojen kulmassa on Kopioi- ja Lataa-painikkeet. Kolmen backtick-merkin jälkeen kirjoitettu kieli, kuten sql, rust tai php, korostetaan juuri sellaisena ja näytetään kulmassa. Uusia ovat muun muassa PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx ja heksadumpit.",
+            "Klikkaa chatin kuvaa hiiren oikealla: kopioi kuva, tallenna kuva, kopioi kuvan osoite ja avaa kuvankatseluohjelmassa. Kuvankatseluohjelmassa on samat painikkeet. Tallennus säilyttää alkuperäisen, GIFin animaatioineen.",
+            "Asetukset → Yksityisyys näyttää, paljonko tilaa välimuistit vievät, ja tyhjentää ne napin painalluksella, myös yksitellen. Chat-historiaan, asetuksiin, palvelimiin, varmenteisiin, kavereihin ja muistiinpanoihin ei kosketa."
+          ]
+        },
+        {
+          "title": "Parannettu",
+          "items": [
+            "Puheääni rätisee ja katkeilee raskaassa kuormituksessa harvemmin: Mumcord pyytää järjestelmältä reaaliaikaista prioriteettia äänen tallennukselle ja toistolle, eikä lyhyt katkos enää käynnistä koko ääntä uudelleen. Yhteyden tiedot ja diagnostiikkatiedosto näyttävät katkokset, myöhästyneet paketit ja sen, onko reaaliaikainen ääni päällä.",
+            "Suuret GIPHYn GIFit eivät enää hidasta sovellusta: chat näyttää pienemmän, sopivan version."
+          ]
+        },
+        {
+          "title": "Korjattu",
+          "items": [
+            "Valitun chat-tekstin kopiointi toimii taas: hiiren oikean painikkeen valikossa ”Kopioi” on ensimmäisenä, Ctrl+C kopioi pelkän tekstin rivinvaihtoineen, ja valinta pysyy näkyvissä.",
+            "Liitetty kuvadata, kuten Spectaclen kuvakaappaus tai selaimen ”Kopioi kuva”, päätyy taas chattiin Linuxissa.",
+            "Poistettu chat-historia ei enää palaa jaetun chat-historian kautta, kun liityt kanavalle uudelleen.",
+            "Tiiviissä asettelussa teemakortin otsikko ei enää peitä sen pikkukuvaa, eivätkä viestikortit enää siirry."
+          ]
+        }
+      ],
+      "known": [
+        "Windowsin asennusohjelma on yhä allekirjoittamaton."
+      ]
+    },
     {
       "version": "0.4.3",
       "teaser": "Viestikortit boteille, kuvien liittäminen Ctrl+V:llä, virhebannerit voi sulkea.",
@@ -1146,7 +1201,7 @@
           "title": "macOS",
           "items": [
             "Yhteydet toimivat taas: Mumcord pyytää nyt Paikallinen verkko -lupaa. Ilman sitä macOS 15 ja uudemmat estivät yhteydet kotiverkon palvelimiin.",
-            "Selkeät syyt, kun yhteys epäonnistuu, sekä sovelluksessa että lokissa, esimerkiksi ”No route to host” ja ohje kohtaan Järjestelmäasetukset → Tietosuoja ja turvallisuus → Paikallinen verkko.",
+            "Selkeät syyt, kun yhteys epäonnistuu, sekä sovelluksessa että lokissa, esimerkiksi ”No route to host” ja ohje kohtaan Järjestelmäasetukset → Yksityisyys ja turvallisuus → Paikallinen verkko.",
             "Paljon vähemmän avainnipun kyselyjä: jokainen tallennettu salaisuus luetaan vain kerran istunnossa, ja Mumcord käyttää vähemmän avainnipun kohteita. Vanhempien versioiden kohteet yhdistetään ensimmäisellä käyttökerralla.",
             "Mikrofonikysely näkyy vain kerran, kun mikrofonia käytetään ensimmäistä kertaa, ei silloin kun laitteet listataan käyttöönottoavustajassa tai asetuksissa.",
             "Diagnostiikkasivu listaa äänilaitteet taas, vaikka ääntä ei olisi käynnissä.",
@@ -1670,7 +1725,7 @@
       {
         "id": "epic-3",
         "title": "Mukavuus",
-        "summary": "Hiomista ahkerille käyttäjille ja valinnainen välityspalvelin suoria yhteyksiä varten.",
+        "summary": "Hiomista ahkerille käyttäjille, enemmän rauhaa estämisen, viestisuodattimen ja ilmoituskeskuksen avulla sekä valinnainen välityspalvelin suoria yhteyksiä varten.",
         "groups": [
           {
             "title": "Arjen mukavuus",
@@ -1682,6 +1737,14 @@
               "Julkinen palvelinselain",
               "Älä häiritse: yksi kytkin hiljentää ilmoitukset, äänet ja ponnahdusikkunat, ja kuulet silti puheäänet",
               "@all ja @channel, joilla mainitset kaikki palvelimella tai kanavalla"
+            ]
+          },
+          {
+            "title": "Rauhaa ja yksityisyyttä",
+            "items": [
+              "Estä ihmisiä: ei enää viestejä, puheääntä tai kutsuja heiltä, tunnistetaan varmenteesta eikä nimestä",
+              "Yksityisviestit vain kavereilta, kaikilta tai ei keneltäkään, myös palvelinkohtaisesti. Tuntemattomat päätyvät viestipyyntöihin",
+              "Kellon takana oleva ilmoituskeskus kokoaa maininnat, vastaukset, pyynnöt ja kutsut kaikilta palvelimilta, ja ”Älä häiritse” -tilan aikana kaiken, mikä muuten ponnahtaisi esiin"
             ]
           },
           {

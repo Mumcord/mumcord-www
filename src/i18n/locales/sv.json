@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Bekvämlighet",
-          "body": "Globala snabbtangenter, fullständig meny i systemfältet, import från den officiella klienten, viskning, serverbläddrare, ”Stör ej”, @all och @channel samt ett valfritt relä för direktanslutningar."
+          "body": "Globala snabbtangenter, fullständig meny i systemfältet, import från den officiella klienten, viskning, serverbläddrare, ”Stör ej”, @all och @channel, blockering, privata meddelanden bara från vänner, ett aviseringscenter samt ett valfritt relä för direktanslutningar."
         },
         {
           "tag": "Epic 4",
@@ -821,6 +821,17 @@
             "id": "paste-images",
             "title": "Klistra in bilder med Ctrl+V",
             "body": "Skärmbilder, ”Kopiera bild” från webbläsaren och bildfiler som kopierats i filhanteraren hamnar direkt i meddelandefältet som en bilaga med Ctrl+V."
+          },
+          {
+            "id": "code-blocks",
+            "title": "Kodblock med Kopiera och Ladda ner",
+            "body": "Skriv språket efter de tre backticksen, från sql, rust och php till cmd, Dockerfile och hexdumpar, så markeras blocket som just det språket. Knapparna i hörnet kopierar koden eller sparar den som fil.",
+            "alt": "SQL-kodblock med språketiketten och knapparna Kopiera och Ladda ner i hörnet"
+          },
+          {
+            "id": "image-menu",
+            "title": "Kopiera och spara bilder",
+            "body": "Högerklicka på en bild i chatten eller i bildvisaren: kopiera bild, spara bild i original, en GIF med sin animation, kopiera bildadress eller öppna den i bildvisaren."
           }
         ]
       },
@@ -862,6 +873,11 @@
             "id": "bitrate",
             "title": "Bithastighet för hand",
             "body": "Ett eget reglage från 16 kbit/s upp till det högsta värde servern och Mumble tillåter. Vid paketförlust sänker Mumcord den ändå av sig själv."
+          },
+          {
+            "id": "realtime-audio",
+            "title": "Stabil under belastning",
+            "body": "Inspelning och uppspelning får realtidsprioritet, så rösten knastrar och får färre avbrott medan ett spel eller ett bygge håller datorn sysselsatt. Anslutningsinformationen visar avbrott och om realtidsljud är på."
           }
         ]
       },
@@ -1070,12 +1086,51 @@
             "title": "Paketinspektör för felsökning",
             "body": "Dold för utvecklare: sju klick på versionen under Inställningar → Om låser upp den. I ett eget fönster visar den vilken Mumcord-data som skickas och tas emot, med filter, räknare och export som JSON eller Markdown.",
             "alt": "Paketinspektör med filter, räknare per typ och riktning och en expanderad paketrad"
+          },
+          {
+            "id": "clear-cache",
+            "title": "Rensa cachen",
+            "body": "Inställningar → Integritet visar hur mycket plats länkförhandsvisningar, bilder och webbmotorn tar, och rensar dem med ett knapptryck, även en i taget. Chatthistorik, servrar, vänner och anteckningar rörs aldrig."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.4",
+      "teaser": "Kopiera och ladda ner kod, spara bilder med högerklick, rensa cachen, stabilare röst under belastning.",
+      "summary": "En uppdatering för vardagschatten: kodblock med kopiera, ladda ner och fler språk, kopiera och spara bilder med högerklick, och en knapp för att rensa cachen. Dessutom knastrar rösten mindre under belastning, och kopiera och klistra in fungerar pålitligt igen.",
+      "groups": [
+        {
+          "title": "Nytt",
+          "items": [
+            "Kodblock har knapparna Kopiera och Ladda ner i hörnet. Språket efter de tre backticksen, som sql, rust eller php, markeras som just det språket och visas i hörnet. Nya är bland annat PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx och hexdumpar.",
+            "Högerklicka på en bild i chatten: kopiera bild, spara bild, kopiera bildadress och öppna i bildvisaren. Bildvisaren har samma knappar. Sparandet behåller originalet, en GIF med sin animation.",
+            "Inställningar → Integritet visar hur mycket plats cacharna tar och rensar dem med ett knapptryck, även en i taget. Chatthistorik, inställningar, servrar, certifikat, vänner och anteckningar rörs aldrig."
+          ]
+        },
+        {
+          "title": "Förbättrat",
+          "items": [
+            "Rösten knastrar och får färre avbrott under tung belastning: Mumcord ber systemet om realtidsprioritet för inspelning och uppspelning, och en kort hicka startar inte längre om allt ljud. Anslutningsinformationen och diagnostikfilen visar avbrott, sena paket och om realtidsljud är på.",
+            "Stora GIF-bilder från GIPHY gör inte längre appen långsam: chatten visar en mindre version som passar."
+          ]
+        },
+        {
+          "title": "Fixat",
+          "items": [
+            "Att kopiera markerad chattext fungerar igen: högerklicksmenyn erbjuder ”Kopiera” först, Ctrl+C kopierar den rena texten med radbrytningar, och markeringen förblir synlig.",
+            "Inklistrad bilddata, som en skärmbild från Spectacle eller ”Kopiera bild” i en webbläsare, hamnar i chatten igen på Linux.",
+            "Raderad chatthistorik kommer inte längre tillbaka via historiksynkningen när du går med i en kanal igen.",
+            "I den kompakta layouten täcker temakortets rubrik inte längre miniatyren, och meddelandekorten flyttar sig inte längre."
+          ]
+        }
+      ],
+      "known": [
+        "Installationsprogrammet för Windows är fortfarande osignerat."
+      ]
+    },
     {
       "version": "0.4.3",
       "teaser": "Meddelandekort för bottar, klistra in bilder med Ctrl+V, felbanners kan stängas.",
@@ -1670,7 +1725,7 @@
       {
         "id": "epic-3",
         "title": "Bekvämlighet",
-        "summary": "Finputs för flitiga användare och ett valfritt relä för direktanslutningar.",
+        "summary": "Finputs för flitiga användare, mer lugn med blockering, ett meddelandefilter och ett aviseringscenter, samt ett valfritt relä för direktanslutningar.",
         "groups": [
           {
             "title": "Vardaglig bekvämlighet",
@@ -1682,6 +1737,14 @@
               "Offentlig serverbläddrare",
               "Stör ej: ett reglage tystar aviseringar, ljud och popup-fönster, och du hör fortfarande röster",
               "@all och @channel för att nämna alla på servern eller i kanalen"
+            ]
+          },
+          {
+            "title": "Lugn och integritet",
+            "items": [
+              "Blockera personer: inga fler meddelanden, röst eller inbjudningar från dem, igenkända via certifikatet i stället för namnet",
+              "Privata meddelanden bara från vänner, från alla eller från ingen, även per server. Främlingar hamnar bland meddelandeförfrågningarna",
+              "Ett aviseringscenter bakom en klocka samlar omnämnanden, svar, förfrågningar och inbjudningar från alla servrar, och under Stör ej allt som annars skulle poppa upp"
             ]
           },
           {

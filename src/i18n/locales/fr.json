@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Confort",
-          "body": "Raccourcis globaux, menu complet dans la zone de notification, import depuis le client officiel, chuchotement, navigateur de serveurs, Ne pas déranger, @all et @channel, et un relais optionnel pour les connexions directes."
+          "body": "Raccourcis globaux, menu complet dans la zone de notification, import depuis le client officiel, chuchotement, navigateur de serveurs, Ne pas déranger, @all et @channel, blocage, messages privés de tes amis uniquement, un centre de notifications, et un relais optionnel pour les connexions directes."
         },
         {
           "tag": "Epic 4",
@@ -821,6 +821,17 @@
             "id": "paste-images",
             "title": "Coller des images avec Ctrl+V",
             "body": "Les captures d’écran, « Copier l’image » depuis le navigateur et les fichiers image copiés dans le gestionnaire de fichiers arrivent directement dans la zone de saisie comme pièce jointe avec Ctrl+V."
+          },
+          {
+            "id": "code-blocks",
+            "title": "Blocs de code avec Copier et Télécharger",
+            "body": "Écris le langage après les trois backticks, de sql, rust et php à cmd, Dockerfile et les dumps hexadécimaux, et le bloc est coloré exactement comme tel. Les boutons dans le coin copient le code ou l’enregistrent dans un fichier.",
+            "alt": "Bloc de code SQL avec l’indication du langage et les boutons Copier et Télécharger dans son coin"
+          },
+          {
+            "id": "image-menu",
+            "title": "Copier et enregistrer les images",
+            "body": "Clic droit sur une image dans le chat ou dans la visionneuse d’images : copier l’image, enregistrer l’image dans son original, un GIF avec son animation, copier l’adresse de l’image ou l’ouvrir dans la visionneuse."
           }
         ]
       },
@@ -862,6 +873,11 @@
             "id": "bitrate",
             "title": "Le débit à la main",
             "body": "Un curseur à part, de 16 kbit/s jusqu’à la valeur la plus haute que le serveur et Mumble permettent. En cas de perte de paquets, Mumcord continue de le baisser tout seul."
+          },
+          {
+            "id": "realtime-audio",
+            "title": "Stable sous charge",
+            "body": "La capture et la lecture reçoivent une priorité temps réel : la voix grésille et décroche donc moins pendant qu’un jeu ou une compilation occupe l’ordinateur. Les infos de connexion indiquent les décrochages et si l’audio temps réel est actif."
           }
         ]
       },
@@ -1070,12 +1086,51 @@
             "title": "Inspecteur de paquets pour le débogage",
             "body": "Caché pour les développeurs : sept clics sur la version dans Paramètres → À propos le déverrouillent. Dans sa propre fenêtre, il montre quelles données Mumcord sont envoyées et reçues, avec filtres, compteurs et export en JSON ou Markdown.",
             "alt": "Inspecteur de paquets avec filtres, compteurs par type et par direction, et une ligne de paquet dépliée"
+          },
+          {
+            "id": "clear-cache",
+            "title": "Vider le cache",
+            "body": "Paramètres → Confidentialité montre la place occupée par les aperçus de liens, les images et le moteur web, et les vide d’un simple clic, un par un aussi. L’historique de chat, les serveurs, les amis et les notes ne sont jamais touchés."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.4",
+      "teaser": "Copier et télécharger du code, enregistrer les images d’un clic droit, vider le cache, une voix plus stable sous charge.",
+      "summary": "Une mise à jour pour le chat au quotidien : des blocs de code avec copie, téléchargement et plus de langages, copier et enregistrer les images d’un clic droit, et un bouton pour vider le cache. En plus, la voix grésille moins sous charge, et le copier-coller fonctionne de nouveau de façon fiable.",
+      "groups": [
+        {
+          "title": "Nouveau",
+          "items": [
+            "Les blocs de code ont des boutons Copier et Télécharger dans leur coin. Le langage indiqué après les trois backticks, comme sql, rust ou php, est coloré exactement comme tel et affiché dans le coin. Parmi les nouveaux : PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx et les dumps hexadécimaux.",
+            "Clic droit sur une image dans le chat : copier l’image, enregistrer l’image, copier l’adresse de l’image et ouvrir dans la visionneuse d’images. La visionneuse a les mêmes boutons. L’enregistrement conserve l’original, un GIF avec son animation.",
+            "Paramètres → Confidentialité montre la place occupée par les caches et les vide d’un simple clic, un par un aussi. L’historique de chat, les paramètres, les serveurs, les certificats, les amis et les notes ne sont jamais touchés."
+          ]
+        },
+        {
+          "title": "Amélioré",
+          "items": [
+            "La voix grésille et décroche moins sous forte charge : Mumcord demande au système une priorité temps réel pour la capture et la lecture, et un court accroc ne relance plus tout l’audio. Les infos de connexion et le fichier de diagnostic indiquent les décrochages, les paquets en retard et si l’audio temps réel est actif.",
+            "Les gros GIF de GIPHY ne ralentissent plus l’app : le chat affiche une version plus petite et adaptée."
+          ]
+        },
+        {
+          "title": "Corrigé",
+          "items": [
+            "Copier le texte sélectionné du chat fonctionne de nouveau : le menu du clic droit propose « Copier » en premier, Ctrl+C copie le texte brut avec ses retours à la ligne, et la sélection reste visible.",
+            "Les données d’image collées, comme une capture d’écran Spectacle ou « Copier l’image » depuis un navigateur, atterrissent de nouveau dans le chat sous Linux.",
+            "L’historique de chat supprimé ne revient plus par l’historique de chat partagé quand tu rejoins un salon.",
+            "En disposition compacte, le titre de la carte de thème ne recouvre plus sa miniature, et les cartes de message ne se décalent plus."
+          ]
+        }
+      ],
+      "known": [
+        "L’installateur Windows n’est toujours pas signé."
+      ]
+    },
     {
       "version": "0.4.3",
       "teaser": "Cartes de message pour les bots, coller des images avec Ctrl+V, les bannières d’erreur se ferment.",
@@ -1670,7 +1725,7 @@
       {
         "id": "epic-3",
         "title": "Confort",
-        "summary": "Des finitions pour les gros utilisateurs et un relais optionnel pour les connexions directes.",
+        "summary": "Des finitions pour les gros utilisateurs, plus de tranquillité avec le blocage, un filtre de messages et un centre de notifications, et un relais optionnel pour les connexions directes.",
         "groups": [
           {
             "title": "Le confort au quotidien",
@@ -1682,6 +1737,14 @@
               "Navigateur de serveurs publics",
               "Ne pas déranger : un seul interrupteur coupe notifications, sons et pop-ups, et tu entends toujours les voix",
               "@all et @channel pour mentionner tout le monde sur le serveur ou dans le salon"
+            ]
+          },
+          {
+            "title": "Tranquillité et vie privée",
+            "items": [
+              "Bloquer des personnes : plus de messages, de voix ni d’invitations de leur part, reconnues par leur certificat plutôt que par leur nom",
+              "Messages privés uniquement de tes amis, de tout le monde ou de personne, par serveur aussi. Les inconnus atterrissent dans les demandes de message",
+              "Un centre de notifications derrière une cloche rassemble mentions, réponses, demandes et invitations de tous les serveurs, et pendant Ne pas déranger tout ce qui s’afficherait sinon"
             ]
           },
           {

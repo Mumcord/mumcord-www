@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Ērtības",
-          "body": "Globālie karstie taustiņi, pilna teknes izvēlne, imports no oficiālā klienta, čuksti, serveru pārlūks, “Netraucēt”, @all un @channel, kā arī neobligāts starpserveris tiešajiem savienojumiem."
+          "body": "Globālie karstie taustiņi, pilna teknes izvēlne, imports no oficiālā klienta, čuksti, serveru pārlūks, “Netraucēt”, @all un @channel, bloķēšana, privātās ziņas tikai no draugiem, paziņojumu centrs, kā arī neobligāts starpserveris tiešajiem savienojumiem."
         },
         {
           "tag": "Epic 4",
@@ -821,6 +821,17 @@
             "id": "paste-images",
             "title": "Attēlu ielīmēšana ar Ctrl+V",
             "body": "Ekrānuzņēmumi, “Kopēt attēlu” no pārlūka un failu pārvaldniekā nokopēti attēlu faili ar Ctrl+V nonāk tieši ziņas ievadē kā pielikums."
+          },
+          {
+            "id": "code-blocks",
+            "title": "Koda bloki ar kopēšanu un lejupielādi",
+            "body": "Uzraksti valodu pēc trim backtick zīmēm, no sql, rust un php līdz cmd, Dockerfile un heksadecimālajām izdrukām, un bloks tiek izcelts tieši tā. Pogas stūrī nokopē kodu vai saglabā to kā failu.",
+            "alt": "SQL koda bloks ar valodas etiķeti un kopēšanas un lejupielādes pogām stūrī"
+          },
+          {
+            "id": "image-menu",
+            "title": "Attēlu kopēšana un saglabāšana",
+            "body": "Labais klikšķis uz attēla tērzēšanā vai attēlu skatītājā: kopēt attēlu, saglabāt attēlu oriģinālā, GIF ar animāciju, kopēt attēla adresi vai atvērt to skatītājā."
           }
         ]
       },
@@ -862,6 +873,11 @@
             "id": "bitrate",
             "title": "Bitu pārraides ātrums ar roku",
             "body": "Atsevišķs slīdnis no 16 kbit/s līdz augstākajai vērtībai, ko atļauj serveris un Mumble. Pakešu zuduma gadījumā Mumcord to joprojām pats samazina."
+          },
+          {
+            "id": "realtime-audio",
+            "title": "Stabili slodzes laikā",
+            "body": "Ierakstīšana un atskaņošana saņem reāllaika prioritāti, tāpēc balss mazāk sprakšķ un pārtrūkst, kamēr spēle vai būvējums noslogo datoru. Savienojuma informācija rāda pārtraukumus un to, vai reāllaika skaņa ir ieslēgta."
           }
         ]
       },
@@ -1070,12 +1086,51 @@
             "title": "Pakešu inspektors atkļūdošanai",
             "body": "Slēpts izstrādātājiem: septiņi klikšķi uz versijas sadaļā Iestatījumi → Par lietotni to atbloķē. Atsevišķā logā tas rāda, kādi Mumcord dati tiek nosūtīti un saņemti, ar filtriem, skaitītājiem un eksportu JSON vai Markdown formātā.",
             "alt": "Pakešu inspektors ar filtriem, skaitītājiem pēc veida un virziena un vienu izvērstu paketes rindu"
+          },
+          {
+            "id": "clear-cache",
+            "title": "Kešatmiņas iztīrīšana",
+            "body": "Iestatījumi → Privātums rāda, cik daudz vietas aizņem saišu priekšskatījumi, attēli un tīmekļa dzinējs, un iztīra tos ar vienu pogas spiedienu, arī pa vienam. Tērzēšanas vēsture, serveri, draugi un piezīmes netiek aiztikti."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.4",
+      "teaser": "Kopē un lejupielādē kodu, saglabā attēlus ar labo klikšķi, iztīri kešatmiņu, stabilāka balss slodzes laikā.",
+      "summary": "Atjauninājums ikdienas tērzēšanai: koda bloki ar kopēšanu, lejupielādi un vairāk valodām, attēlu kopēšana un saglabāšana ar labo klikšķi un poga kešatmiņas iztīrīšanai. Turklāt balss slodzes laikā mazāk sprakšķ, un kopēšana un ielīmēšana atkal darbojas uzticami.",
+      "groups": [
+        {
+          "title": "Jaunumi",
+          "items": [
+            "Koda blokiem stūrī ir kopēšanas un lejupielādes pogas. Valoda pēc trim backtick zīmēm, piemēram, sql, rust vai php, tiek izcelta tieši tā un parādīta stūrī. Starp jaunajām ir PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx un heksadecimālās izdrukas.",
+            "Labais klikšķis uz attēla tērzēšanā: kopēt attēlu, saglabāt attēlu, kopēt attēla adresi un atvērt attēlu skatītājā. Attēlu skatītājam ir tās pašas pogas. Saglabāts tiek oriģināls, GIF ar animāciju.",
+            "Iestatījumi → Privātums rāda, cik daudz vietas aizņem kešatmiņas, un iztīra tās ar vienu pogas spiedienu, arī pa vienai. Tērzēšanas vēsture, iestatījumi, serveri, sertifikāti, draugi un piezīmes netiek aiztikti."
+          ]
+        },
+        {
+          "title": "Uzlabojumi",
+          "items": [
+            "Lielas slodzes laikā balss mazāk sprakšķ un pārtrūkst: Mumcord lūdz sistēmai reāllaika prioritāti ierakstīšanai un atskaņošanai, un īsa aizķeršanās vairs nerestartē visu skaņu. Savienojuma informācija un diagnostikas fails rāda pārtraukumus, novēlotas paketes un to, vai reāllaika skaņa ir ieslēgta.",
+            "Lieli GIF no GIPHY vairs nebremzē lietotni: tērzēšanā tiek rādīta mazāka, piemērota versija."
+          ]
+        },
+        {
+          "title": "Labots",
+          "items": [
+            "Atlasīta tērzēšanas teksta kopēšana atkal darbojas: labā klikšķa izvēlne vispirms piedāvā “Kopēt”, Ctrl+C nokopē vienkāršu tekstu ar rindu pārnesumiem, un atlase paliek redzama.",
+            "Ielīmēti attēla dati, piemēram, Spectacle ekrānuzņēmums vai “Kopēt attēlu” pārlūkā, Linux vidē atkal nonāk tērzēšanā.",
+            "Dzēsta tērzēšanas vēsture vairs neatgriežas caur vēstures sinhronizāciju, kad tu atkal pievienojies kanālam.",
+            "Kompaktajā izkārtojumā tēmas kartītes virsraksts vairs nenosedz tās sīktēlu, un ziņu kartītes vairs nepārbīdās."
+          ]
+        }
+      ],
+      "known": [
+        "Windows instalētājs joprojām nav parakstīts."
+      ]
+    },
     {
       "version": "0.4.3",
       "teaser": "Ziņu kartītes botiem, attēlu ielīmēšana ar Ctrl+V, kļūdu joslas var aizvērt.",
@@ -1670,7 +1725,7 @@
       {
         "id": "epic-3",
         "title": "Ērtības",
-        "summary": "Noslīpēšana aktīvajiem lietotājiem un neobligāts starpserveris tiešajiem savienojumiem.",
+        "summary": "Noslīpēšana aktīvajiem lietotājiem, vairāk miera ar bloķēšanu, ziņu filtru un paziņojumu centru, kā arī neobligāts starpserveris tiešajiem savienojumiem.",
         "groups": [
           {
             "title": "Ikdienas ērtības",
@@ -1682,6 +1737,14 @@
               "Publisks serveru pārlūks",
               "Netraucēt: viens slēdzis apklusina paziņojumus, skaņas un uznirstošos logus, un balsis tu joprojām dzirdi",
               "@all un @channel, lai pieminētu visus serverī vai kanālā"
+            ]
+          },
+          {
+            "title": "Miers un privātums",
+            "items": [
+              "Cilvēku bloķēšana: vairs nekādu ziņu, balss vai ielūgumu no viņiem, atpazīti pēc sertifikāta, nevis pēc vārda",
+              "Privātās ziņas tikai no draugiem, no visiem vai ne no viena, arī katram serverim atsevišķi. Svešinieki nonāk ziņu pieprasījumos",
+              "Paziņojumu centrs aiz zvaniņa apkopo pieminējumus, atbildes, pieprasījumus un ielūgumus no visiem serveriem, un režīmā “Netraucēt” – visu, kas citādi uznirtu"
             ]
           },
           {
