@@ -4345,7 +4345,19 @@ p {
   border-radius: 20px;
   background: rgb(14 10 38 / 0.55);
 }
-/* The first group and a last one that would sit alone get the full width. */
+/* Three tiles per row after a full-width first group; a last row of one or two fills the width. */
+@media (min-width: 1000px) {
+  .rm-bento {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  .rm-tile {
+    grid-column: span 2;
+  }
+  .rm-tile:nth-child(3n + 2):nth-last-child(2),
+  .rm-tile:nth-child(3n + 3):last-child {
+    grid-column: span 3;
+  }
+}
 .rm-tile:first-child,
 .rm-tile:last-child:nth-child(3n + 2) {
   grid-column: 1 / -1;

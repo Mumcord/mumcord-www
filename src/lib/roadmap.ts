@@ -275,7 +275,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         title: "Komfort",
         status: "planned",
         version: "0.5.0",
-        summary: "Feinschliff für Vielnutzer: mehr Ruhe mit Blockieren, Nachrichtenfilter und Benachrichtigungszentrale, mehrere Identitäten, Server-Info, ein Low-Latency-Modus zum Musizieren und ein optionales Relay für direkte Verbindungen.",
+        summary: "Feinschliff für Vielnutzer: mehr Ruhe mit Blockieren, Nachrichtenfilter und Benachrichtigungszentrale, mehrere Identitäten, Server-Info, ein neues Design für Assistent, Einstellungen und Watch-Party, ein Low-Latency-Modus zum Musizieren und ein optionales Relay für direkte Verbindungen.",
         groups: [
           {
             title: "Komfort im Alltag",
@@ -305,11 +305,30 @@ const source: Record<"de" | "en", RoadmapPage> = {
             ],
           },
           {
+            title: "Neues Design",
+            items: [
+              "Ein neuer Einrichtungsassistent, ruhig und klar: Voreinstellungen von „Alles an“ bis „Maximale Privatsphäre“, in rund zwei Minuten fertig",
+              "Einstellungen neu geordnet: weniger, klarere Bereiche, einheitliche Karten und eine Suche, die jede Einstellung findet",
+              "Watch-Party und Bildschirm teilen bekommen eine eigene Kino-Ansicht mit Zeitleiste, Lautstärke, Playlist und wer gerade zuschaut",
+              "Video oder geteilten Bildschirm in ein eigenes Fenster lösen, etwa auf den zweiten Monitor oder über ein Spiel, auf Wunsch immer im Vordergrund",
+            ],
+            mockups: [
+              { shot: "wizard-1-welcome-dark", issue: 159, caption: "Der neue Einrichtungsassistent" },
+              { shot: "wizard-0-presets-dark", issue: 159, caption: "Voreinstellungen im Assistenten" },
+              { shot: "settings-a-voice-audio-dark", issue: 161, caption: "Neue Einstellungen: Stimme und Audio" },
+              { shot: "settings-b-privacy-connections-dark", issue: 161, caption: "Neue Einstellungen: Privatsphäre und Verbindungen" },
+              { shot: "watch-together-dark", issue: 163, caption: "Gemeinsam schauen in der neuen Ansicht" },
+              { shot: "screen-share-viewer-dark", issue: 163, caption: "Einen geteilten Bildschirm ansehen" },
+              { shot: "pop-out-dark", issue: 164, caption: "Video im eigenen Fenster" },
+            ],
+          },
+          {
             title: "Ruhe und Privatsphäre",
             items: [
               "Personen blockieren: keine Nachrichten, keine Stimme und keine Einladungen mehr von ihnen, erkannt am Zertifikat statt am Namen",
               "Private Nachrichten nur von Freunden, von allen oder von niemandem, auch pro Server. Fremde landen bei den Nachrichtenanfragen",
               "Eine Benachrichtigungszentrale an der Glocke sammelt Erwähnungen, Antworten, Anfragen und Einladungen von allen Servern, bei „Bitte nicht stören“ auch alles, was sonst aufpoppen würde",
+              "Watch-Partys laden nichts von YouTube oder Twitch, solange eingebettete Inhalte ausgeschaltet sind",
             ],
             mockups: [
               { shot: "block-menu-dark", issue: 140, caption: "Eine Person blockieren" },
@@ -607,7 +626,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         title: "Comfort",
         status: "planned",
         version: "0.5.0",
-        summary: "Polish for heavy users: more peace with blocking, a message filter and a notification centre, several identities, server info, a low-latency mode for making music and an optional relay for direct connections.",
+        summary: "Polish for heavy users: more peace with blocking, a message filter and a notification centre, several identities, server info, a fresh design for the wizard, settings and watch party, a low-latency mode for making music and an optional relay for direct connections.",
         groups: [
           {
             title: "Everyday comfort",
@@ -637,11 +656,30 @@ const source: Record<"de" | "en", RoadmapPage> = {
             ],
           },
           {
+            title: "A fresh design",
+            items: [
+              "A new setup wizard, calm and clear: presets from “Everything on” to “Maximum privacy”, done in about two minutes",
+              "Settings reorganised: fewer, clearer sections, consistent cards and a search that finds every setting",
+              "Watch party and screen sharing get a cinema-like view of their own with a timeline, volume, playlist and who is watching",
+              "Pop a video or a shared screen out into its own window, onto a second monitor or over a game, always on top if you like",
+            ],
+            mockups: [
+              { shot: "wizard-1-welcome-dark", issue: 159, caption: "The new setup wizard" },
+              { shot: "wizard-0-presets-dark", issue: 159, caption: "Presets in the wizard" },
+              { shot: "settings-a-voice-audio-dark", issue: 161, caption: "New settings: voice and audio" },
+              { shot: "settings-b-privacy-connections-dark", issue: 161, caption: "New settings: privacy and connections" },
+              { shot: "watch-together-dark", issue: 163, caption: "Watching together in the new view" },
+              { shot: "screen-share-viewer-dark", issue: 163, caption: "Watching a shared screen" },
+              { shot: "pop-out-dark", issue: 164, caption: "A video in its own window" },
+            ],
+          },
+          {
             title: "Peace and privacy",
             items: [
               "Block people: no more messages, voice or invites from them, recognised by their certificate instead of their name",
               "Private messages from friends only, from everyone or from nobody, per server too. Strangers end up in message requests",
               "A notification centre behind a bell collects mentions, replies, requests and invites from every server, and during Do Not Disturb everything that would otherwise pop up",
+              "Watch parties load nothing from YouTube or Twitch while embedded content is off",
             ],
             mockups: [
               { shot: "block-menu-dark", issue: 140, caption: "Blocking a person" },
