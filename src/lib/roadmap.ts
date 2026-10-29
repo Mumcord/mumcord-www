@@ -23,6 +23,14 @@ export interface StageGroup {
   /** Shown as a pill; left out when the whole epic ships as one version. */
   version?: string;
   items: string[];
+  /** Design sketches from the issues, by file name in src/assets/mockups (without .png). */
+  mockups?: Mockup[];
+}
+
+export interface Mockup {
+  shot: string;
+  issue: number;
+  caption: string;
 }
 
 export interface RoadmapPage {
@@ -31,8 +39,17 @@ export interface RoadmapPage {
   label: string;
   intro: string;
   status: Record<Status, string>;
-  epicsTitle: string;
-  epicsBody: string;
+  doneTitle: string;
+  nextTitle: string;
+  laterTitle: string;
+  /** "{n}" is replaced with the number of delivered items. */
+  delivered: string;
+  showAll: string;
+  statDone: string;
+  statReleases: string;
+  statNext: string;
+  mockupsTitle: string;
+  mockupsNote: string;
   ideaTitle: string;
   ideaBody: string;
   idea: string;
@@ -47,10 +64,18 @@ const source: Record<"de" | "en", RoadmapPage> = {
       "Die Roadmap von Mumcord im Detail: was jedes Epic bringt, was fertig ist und was als Nächstes kommt.",
     label: "Wohin es geht",
     intro:
-      "Mumcord wird in Epics gebaut. Epic 1 wird mit Version 0.3.0 komplett. Hier steht, was jedes Epic bringt. Die Roadmap ist ein Vorschlag: Reihenfolge und Umfang können sich noch ändern.",
+      "Mumcord wächst in Epics: große Etappen, die jeweils mit einer eigenen Version erscheinen. Hier siehst du, was schon geschafft ist, woran gerade gebaut wird und was danach kommt. Die Roadmap ist ein Vorschlag, Reihenfolge und Umfang können sich ändern.",
     status: { done: "fertig", now: "in Arbeit", planned: "als Nächstes", later: "später" },
-    epicsTitle: "Die Epics",
-    epicsBody: "Epic 1 ist der Client für jeden Tag. Danach kommen größere Bausteine, deren Reihenfolge noch nicht feststeht.",
+    doneTitle: "Geschafft",
+    nextTitle: "Als Nächstes",
+    laterTitle: "Danach",
+    delivered: "{n} Punkte geliefert",
+    showAll: "Alle anzeigen",
+    statDone: "Epics fertig",
+    statReleases: "Releases",
+    statNext: "Nächstes Ziel",
+    mockupsTitle: "Entwürfe aus den Issues",
+    mockupsNote: "Skizzen, nicht final. Namen und Inhalte sind erfunden.",
     ideaTitle: "Dir fehlt etwas?",
     ideaBody: "Wünsche landen in den Issues auf GitHub und fließen in die Planung ein.",
     idea: "Feature wünschen",
@@ -266,6 +291,18 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Rechtsklick auf Auflegen: nur die Sprache verlassen und weiter mitlesen, einen Server trennen oder alle",
               "Den Einrichtungsassistenten erneut starten, ohne die Identität anzufassen",
             ],
+            mockups: [
+              { shot: "epic3-64-hotkeys-settings-dark", issue: 64, caption: "Globale Tastenkürzel in den Einstellungen" },
+              { shot: "epic3-65-tray-menu-and-icon-states-dark", issue: 65, caption: "Volles Tray-Menü und Symbolzustände" },
+              { shot: "66-import-wizard-dark", issue: 66, caption: "Einstellungen aus Mumble übernehmen" },
+              { shot: "67-whisper-live-dark", issue: 67, caption: "Flüstern in einen anderen Kanal" },
+              { shot: "68-server-browser-dark", issue: 68, caption: "Öffentlicher Server-Browser" },
+              { shot: "epic3-69-dnd-quick-settings-dark", issue: 69, caption: "„Bitte nicht stören“ in den Schnelleinstellungen" },
+              { shot: "70-mentions-dark", issue: 70, caption: "@channel und @all im Eingabefeld" },
+              { shot: "io-devices-dark", issue: 153, caption: "Geräte wechseln an Stumm und Taub" },
+              { shot: "disconnect-menu-dark", issue: 154, caption: "Menü am Auflegen-Knopf" },
+              { shot: "epic3-rerun-wizard-dark", issue: 149, caption: "Einrichtungsassistent erneut starten" },
+            ],
           },
           {
             title: "Ruhe und Privatsphäre",
@@ -273,6 +310,11 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Personen blockieren: keine Nachrichten, keine Stimme und keine Einladungen mehr von ihnen, erkannt am Zertifikat statt am Namen",
               "Private Nachrichten nur von Freunden, von allen oder von niemandem, auch pro Server. Fremde landen bei den Nachrichtenanfragen",
               "Eine Benachrichtigungszentrale an der Glocke sammelt Erwähnungen, Antworten, Anfragen und Einladungen von allen Servern, bei „Bitte nicht stören“ auch alles, was sonst aufpoppen würde",
+            ],
+            mockups: [
+              { shot: "block-menu-dark", issue: 140, caption: "Eine Person blockieren" },
+              { shot: "pm-chat-request-dark", issue: 141, caption: "Nachrichtenanfrage einer fremden Person" },
+              { shot: "notification-centre-dark", issue: 143, caption: "Benachrichtigungszentrale" },
             ],
           },
           {
@@ -283,12 +325,21 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Server-Info: Version, Limits, Zertifikat und deine Rechte auf einen Blick, ganz ohne Änderung am Server",
               "Gespeicherte Kanal-Passwörter zeigen, zu welchem Kanal sie gehören, und lassen sich benennen",
             ],
+            mockups: [
+              { shot: "epic3-ids-dark", issue: 148, caption: "Mehrere Identitäten verwalten" },
+              { shot: "server-dialog-dark", issue: 151, caption: "Neuer Dialog für Server" },
+              { shot: "server-info-dark", issue: 147, caption: "Server-Info" },
+            ],
           },
           {
             title: "Klang und Musik",
             items: [
               "Rechtsklick auf die Verbindungsinfo: Bitrate, Musikqualität und Low-Latency-Modus direkt im Gespräch einstellen",
               "Low-Latency-Modus, um gemeinsam Musik zu machen: rund 40 statt 90 ms vom Mund zum Ohr, auch auf normalen Mumble-Servern",
+            ],
+            mockups: [
+              { shot: "connection-quick-panel-dark", issue: 155, caption: "Sprachqualität direkt an der Verbindungsinfo" },
+              { shot: "low-latency-dark", issue: 156, caption: "Low-Latency-Modus" },
             ],
           },
           {
@@ -298,6 +349,9 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Der Inhalt bleibt Ende-zu-Ende verschlüsselt, das Relay reicht nur Bytes durch und lässt nur Nutzer des eigenen Servers rein",
               "Optional: Eine Community kann das Relay zusammen mit Mumbot betreiben. Ohne Relay funktioniert alles wie bisher",
               "Einstellbar: Relay aus, nur wenn direkt nicht klappt, oder immer, damit deine IP-Adresse verborgen bleibt",
+            ],
+            mockups: [
+              { shot: "epic3-62-relay-setting-and-connection-info-dark", issue: 62, caption: "Relay-Einstellung und Verbindungsinfo" },
             ],
           },
         ],
@@ -342,10 +396,18 @@ const source: Record<"de" | "en", RoadmapPage> = {
       "Mumcord's roadmap in detail: what each epic brings, what is done and what comes next.",
     label: "Where it's going",
     intro:
-      "Mumcord is built in epics. Epic 1 is completed by version 0.3.0. This is what each epic brings. The roadmap is a proposal: order and scope can still change.",
+      "Mumcord grows in epics: big stages that each ship as their own version. Here you can see what is done, what is being built right now and what comes after. The roadmap is a proposal, order and scope may change.",
     status: { done: "done", now: "in progress", planned: "up next", later: "later" },
-    epicsTitle: "The epics",
-    epicsBody: "Epic 1 is the everyday client. After that come bigger building blocks whose order isn't fixed yet.",
+    doneTitle: "Done",
+    nextTitle: "Up next",
+    laterTitle: "After that",
+    delivered: "{n} things delivered",
+    showAll: "Show all",
+    statDone: "Epics done",
+    statReleases: "Releases",
+    statNext: "Next target",
+    mockupsTitle: "Sketches from the issues",
+    mockupsNote: "Design sketches, not final. Names and content are made up.",
     ideaTitle: "Missing something?",
     ideaBody: "Requests go into the issues on GitHub and feed into the planning.",
     idea: "Request a feature",
@@ -561,6 +623,18 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Right-click hang up: leave voice and keep reading, disconnect one server or all of them",
               "Run the setup wizard again without touching your identity",
             ],
+            mockups: [
+              { shot: "epic3-64-hotkeys-settings-dark", issue: 64, caption: "Global shortcuts in the settings" },
+              { shot: "epic3-65-tray-menu-and-icon-states-dark", issue: 65, caption: "Full tray menu and icon states" },
+              { shot: "66-import-wizard-dark", issue: 66, caption: "Importing settings from Mumble" },
+              { shot: "67-whisper-live-dark", issue: 67, caption: "Whispering to another channel" },
+              { shot: "68-server-browser-dark", issue: 68, caption: "Public server browser" },
+              { shot: "epic3-69-dnd-quick-settings-dark", issue: 69, caption: "Do Not Disturb in the quick settings" },
+              { shot: "70-mentions-dark", issue: 70, caption: "@channel and @all in the message input" },
+              { shot: "io-devices-dark", issue: 153, caption: "Switching devices from mute and deafen" },
+              { shot: "disconnect-menu-dark", issue: 154, caption: "The hang-up button menu" },
+              { shot: "epic3-rerun-wizard-dark", issue: 149, caption: "Running the setup wizard again" },
+            ],
           },
           {
             title: "Peace and privacy",
@@ -568,6 +642,11 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Block people: no more messages, voice or invites from them, recognised by their certificate instead of their name",
               "Private messages from friends only, from everyone or from nobody, per server too. Strangers end up in message requests",
               "A notification centre behind a bell collects mentions, replies, requests and invites from every server, and during Do Not Disturb everything that would otherwise pop up",
+            ],
+            mockups: [
+              { shot: "block-menu-dark", issue: 140, caption: "Blocking a person" },
+              { shot: "pm-chat-request-dark", issue: 141, caption: "A message request from a stranger" },
+              { shot: "notification-centre-dark", issue: 143, caption: "Notification centre" },
             ],
           },
           {
@@ -578,12 +657,21 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Server info: version, limits, certificate and your permissions at a glance, without any server change",
               "Saved channel passwords show which channel they belong to and can be named",
             ],
+            mockups: [
+              { shot: "epic3-ids-dark", issue: 148, caption: "Managing several identities" },
+              { shot: "server-dialog-dark", issue: 151, caption: "The new server dialog" },
+              { shot: "server-info-dark", issue: 147, caption: "Server info" },
+            ],
           },
           {
             title: "Sound and music",
             items: [
               "Right-click the connection info: set bitrate, music quality and low-latency mode right in the conversation",
               "Low-latency mode for making music together: about 40 instead of 90 ms mouth to ear, on standard Mumble servers too",
+            ],
+            mockups: [
+              { shot: "connection-quick-panel-dark", issue: 155, caption: "Voice quality right at the connection info" },
+              { shot: "low-latency-dark", issue: 156, caption: "Low-latency mode" },
             ],
           },
           {
@@ -593,6 +681,9 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "The content stays end-to-end encrypted; the relay only passes bytes along and only lets in users of its own server",
               "Optional: a community can run the relay together with Mumbot. Without a relay everything works as before",
               "Your choice: relay off, only when a direct connection fails, or always, so your IP address stays hidden",
+            ],
+            mockups: [
+              { shot: "epic3-62-relay-setting-and-connection-info-dark", issue: 62, caption: "Relay setting and connection info" },
             ],
           },
         ],
@@ -648,7 +739,12 @@ const mergeRoadmap = (en: RoadmapPage, tr: RoadmapText | undefined): RoadmapPage
         title: te.title,
         summary: te.summary,
         items: e.items && (te.items ?? e.items),
-        groups: e.groups?.map((g, i) => ({ ...g, title: te.groups?.[i]?.title ?? g.title, items: te.groups?.[i]?.items ?? g.items })),
+        groups: e.groups?.map((g, i) => ({
+          ...g,
+          title: te.groups?.[i]?.title ?? g.title,
+          items: te.groups?.[i]?.items ?? g.items,
+          mockups: g.mockups?.map((m, j) => ({ ...m, caption: te.groups?.[i]?.mockups?.[j] ?? m.caption })),
+        })),
       };
     }),
   };

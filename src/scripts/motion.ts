@@ -417,3 +417,19 @@ const sleeper = new IntersectionObserver(
 for (const el of document.querySelectorAll("main section, footer")) {
   if (!el.parentElement?.closest("section")) sleeper.observe(el);
 }
+
+// ── Sideways strips (roadmap mockups) ───────────────────────────────
+for (const strip of document.querySelectorAll<HTMLElement>("[data-strip]")) {
+  const box = strip.parentElement!;
+  const prev = box.querySelector<HTMLButtonElement>("[data-strip-prev]");
+  const next = box.querySelector<HTMLButtonElement>("[data-strip-next]");
+  const step = () => (strip.querySelector("li")?.getBoundingClientRect().width ?? 300) + 16;
+  const update = () => {
+    if (prev) prev.disabled = strip.scrollLeft <= 4;
+    if (next) next.disabled = strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 4;
+  };
+  prev?.addEventListener("click", () => strip.scrollBy({ left: -step(), behavior: "smooth" }));
+  next?.addEventListener("click", () => strip.scrollBy({ left: step(), behavior: "smooth" }));
+  strip.addEventListener("scroll", update, { passive: true });
+  update();
+}

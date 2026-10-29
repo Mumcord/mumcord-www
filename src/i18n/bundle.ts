@@ -25,7 +25,8 @@ export interface RoadmapText extends Omit<RoadmapPage, "epics"> {
     title: string;
     summary: string;
     items?: string[];
-    groups?: { title: string; items: string[] }[];
+    /** Mockup captions in the English order. */
+    groups?: { title: string; items: string[]; mockups?: string[] }[];
   }[];
 }
 
