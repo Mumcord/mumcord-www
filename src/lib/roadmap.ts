@@ -311,6 +311,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Einstellungen neu geordnet: weniger, klarere Bereiche, einheitliche Karten und eine Suche, die jede Einstellung findet",
               "Watch-Party und Bildschirm teilen bekommen eine eigene Kino-Ansicht mit Zeitleiste, Lautstärke, Playlist und wer gerade zuschaut",
               "Video oder geteilten Bildschirm in ein eigenes Fenster lösen, etwa auf den zweiten Monitor oder über ein Spiel, auf Wunsch immer im Vordergrund",
+              "Die Mitgliederspalte rechts einklappen, ganz oder zu einer schmalen Leiste mit Profilbildern, damit der Chat mehr Platz hat",
             ],
             mockups: [
               { shot: "wizard-1-welcome-dark", issue: 159, caption: "Der neue Einrichtungsassistent" },
@@ -320,6 +321,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               { shot: "watch-together-dark", issue: 163, caption: "Gemeinsam schauen in der neuen Ansicht" },
               { shot: "screen-share-viewer-dark", issue: 163, caption: "Einen geteilten Bildschirm ansehen" },
               { shot: "pop-out-dark", issue: 164, caption: "Video im eigenen Fenster" },
+              { shot: "layout-b-dark", issue: 165, caption: "Mitgliederspalte als schmale Leiste" },
             ],
           },
           {
@@ -662,6 +664,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Settings reorganised: fewer, clearer sections, consistent cards and a search that finds every setting",
               "Watch party and screen sharing get a cinema-like view of their own with a timeline, volume, playlist and who is watching",
               "Pop a video or a shared screen out into its own window, onto a second monitor or over a game, always on top if you like",
+              "Collapse the member column on the right, fully or to a slim rail of avatars, so the chat gets more room",
             ],
             mockups: [
               { shot: "wizard-1-welcome-dark", issue: 159, caption: "The new setup wizard" },
@@ -671,6 +674,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               { shot: "watch-together-dark", issue: 163, caption: "Watching together in the new view" },
               { shot: "screen-share-viewer-dark", issue: 163, caption: "Watching a shared screen" },
               { shot: "pop-out-dark", issue: 164, caption: "A video in its own window" },
+              { shot: "layout-b-dark", issue: 165, caption: "The member column as a slim rail" },
             ],
           },
           {
