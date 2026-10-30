@@ -1,0 +1,46 @@
+---
+import { Image } from "astro:assets";
+import { dicts, type Lang } from "../i18n";
+import { REPO_URL } from "../lib/release";
+import { getContributors } from "../lib/contributors";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = dicts[lang].contributors;
+const people = await getContributors();
+const nf = new Intl.NumberFormat(lang);
+---
+
+{
+  people.length > 0 && (
+    <section class="section contributors" id="contributors" aria-labelledby="contributors-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="label" data-reveal>{t.label}</p>
+          <h2 id="contributors-title" class="h2" data-reveal>{t.title}</h2>
+          <p class="body" data-reveal>{t.body}</p>
+        </div>
+        <ul class="people">
+          {people.map((p) => (
+            <li data-reveal>
+              <a href={p.url} rel="noopener">
+                <Image src={p.avatar} alt="" width={64} height={64} loading="lazy" />
+                <span class="people-name">{p.name}</span>
+                <span class="people-meta">
+                  @{p.login}
+                  {" · "}
+                  <span>{`${nf.format(p.commits)} ${t.commits}`}</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="roadmap-more" data-reveal>
+          <a class="btn btn-small" href={REPO_URL} rel="noopener">{t.join}</a>
+        </p>
+      </div>
+    </section>
+  )
+}

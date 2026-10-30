@@ -349,6 +349,13 @@ export const de = {
     body: "Hier ist niemand. Vielleicht hat sich der Server umbenannt — oder der Link war nie da.",
     back: "Zurück zur Lobby",
   },
+  contributors: {
+    label: "07 — Dahinter",
+    title: "Die Leute, die an Mumcord bauen.",
+    body: "Alle, die Code zu Mumcord, Mumbot oder dieser Website beigetragen haben. Die Liste kommt bei jedem Build frisch von GitHub.",
+    commits: "Commits",
+    join: "Mitmachen auf GitHub",
+  },
 };
 
 export type Dict = typeof de;

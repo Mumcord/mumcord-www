@@ -350,4 +350,11 @@ export const en: Dict = {
     body: "Nobody's here. Maybe the server was renamed — or the link never existed.",
     back: "Back to the lobby",
   },
+  contributors: {
+    label: "07 — Behind it",
+    title: "The people building Mumcord.",
+    body: "Everyone who contributed code to Mumcord, Mumbot or this website. The list comes fresh from GitHub with every build.",
+    commits: "commits",
+    join: "Contribute on GitHub",
+  },
 };
