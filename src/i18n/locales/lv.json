@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Ērtības",
-          "body": "Globālie karstie taustiņi, pilna teknes izvēlne, imports no oficiālā klienta, čuksti, serveru pārlūks, “Netraucēt”, @all un @channel, kā arī neobligāts starpserveris tiešajiem savienojumiem."
+          "body": "Globālie karstie taustiņi, pilna teknes izvēlne, imports no oficiālā klienta, čuksti, serveru pārlūks, “Netraucēt”, @all un @channel, bloķēšana, privātās ziņas tikai no draugiem, paziņojumu centrs, vairākas identitātes, servera informācija, jauns dizains vednim, iestatījumiem un watch party, zemas latentuma režīms muzicēšanai, kā arī neobligāts starpserveris tiešajiem savienojumiem."
         },
         {
           "tag": "Epic 4",
@@ -821,6 +821,17 @@
             "id": "paste-images",
             "title": "Attēlu ielīmēšana ar Ctrl+V",
             "body": "Ekrānuzņēmumi, “Kopēt attēlu” no pārlūka un failu pārvaldniekā nokopēti attēlu faili ar Ctrl+V nonāk tieši ziņas ievadē kā pielikums."
+          },
+          {
+            "id": "code-blocks",
+            "title": "Koda bloki ar kopēšanu un lejupielādi",
+            "body": "Uzraksti valodu pēc trim backtick zīmēm, no sql, rust un php līdz cmd, Dockerfile un heksadecimālajām izdrukām, un bloks tiek izcelts tieši tā. Pogas stūrī nokopē kodu vai saglabā to kā failu.",
+            "alt": "SQL koda bloks ar valodas etiķeti un kopēšanas un lejupielādes pogām stūrī"
+          },
+          {
+            "id": "image-menu",
+            "title": "Attēlu kopēšana un saglabāšana",
+            "body": "Labais klikšķis uz attēla tērzēšanā vai attēlu skatītājā: kopēt attēlu, saglabāt attēlu oriģinālā, GIF ar animāciju, kopēt attēla adresi vai atvērt to skatītājā."
           }
         ]
       },
@@ -862,6 +873,11 @@
             "id": "bitrate",
             "title": "Bitu pārraides ātrums ar roku",
             "body": "Atsevišķs slīdnis no 16 kbit/s līdz augstākajai vērtībai, ko atļauj serveris un Mumble. Pakešu zuduma gadījumā Mumcord to joprojām pats samazina."
+          },
+          {
+            "id": "realtime-audio",
+            "title": "Stabili slodzes laikā",
+            "body": "Ierakstīšana un atskaņošana saņem reāllaika prioritāti, tāpēc balss mazāk sprakšķ un pārtrūkst, kamēr spēle vai būvējums noslogo datoru. Savienojuma informācija rāda pārtraukumus un to, vai reāllaika skaņa ir ieslēgta."
           }
         ]
       },
@@ -1070,12 +1086,52 @@
             "title": "Pakešu inspektors atkļūdošanai",
             "body": "Slēpts izstrādātājiem: septiņi klikšķi uz versijas sadaļā Iestatījumi → Par lietotni to atbloķē. Atsevišķā logā tas rāda, kādi Mumcord dati tiek nosūtīti un saņemti, ar filtriem, skaitītājiem un eksportu JSON vai Markdown formātā.",
             "alt": "Pakešu inspektors ar filtriem, skaitītājiem pēc veida un virziena un vienu izvērstu paketes rindu"
+          },
+          {
+            "id": "clear-cache",
+            "title": "Kešatmiņas iztīrīšana",
+            "body": "Iestatījumi → Privātums rāda, cik daudz vietas aizņem saišu priekšskatījumi, attēli un tīmekļa dzinējs, un iztīra tos ar vienu pogas spiedienu, arī pa vienam. Tērzēšanas vēsture, serveri, draugi un piezīmes netiek aiztikti."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.4",
+      "teaser": "Kopē un lejupielādē kodu, saglabā attēlus ar labo klikšķi, iztīri kešatmiņu, stabilāka balss slodzes laikā.",
+      "summary": "Atjauninājums ikdienas tērzēšanai: koda bloki ar kopēšanu, lejupielādi un vairāk valodām, attēlu kopēšana un saglabāšana ar labo klikšķi un poga kešatmiņas iztīrīšanai. Turklāt balss slodzes laikā mazāk sprakšķ, un kopēšana un ielīmēšana atkal darbojas uzticami.",
+      "groups": [
+        {
+          "title": "Jaunumi",
+          "items": [
+            "Koda blokiem stūrī ir kopēšanas un lejupielādes pogas. Valoda pēc trim backtick zīmēm, piemēram, sql, rust vai php, tiek izcelta tieši tā un parādīta stūrī. Starp jaunajām ir PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx un heksadecimālās izdrukas.",
+            "Labais klikšķis uz attēla tērzēšanā: kopēt attēlu, saglabāt attēlu, kopēt attēla adresi un atvērt attēlu skatītājā. Attēlu skatītājam ir tās pašas pogas. Saglabāts tiek oriģināls, GIF ar animāciju.",
+            "Iestatījumi → Privātums rāda, cik daudz vietas aizņem kešatmiņas, un iztīra tās ar vienu pogas spiedienu, arī pa vienai. Tērzēšanas vēsture, iestatījumi, serveri, sertifikāti, draugi un piezīmes netiek aiztikti."
+          ]
+        },
+        {
+          "title": "Uzlabojumi",
+          "items": [
+            "Lielas slodzes laikā balss mazāk sprakšķ un pārtrūkst: Mumcord lūdz sistēmai reāllaika prioritāti ierakstīšanai un atskaņošanai, un īsa aizķeršanās vairs nerestartē visu skaņu. Savienojuma informācija un diagnostikas fails rāda pārtraukumus, novēlotas paketes un to, vai reāllaika skaņa ir ieslēgta.",
+            "Lieli GIF no GIPHY vairs nebremzē lietotni: tērzēšanā tiek rādīta mazāka, piemērota versija."
+          ]
+        },
+        {
+          "title": "Labots",
+          "items": [
+            "Atlasīta tērzēšanas teksta kopēšana atkal darbojas: labā klikšķa izvēlne vispirms piedāvā “Kopēt”, Ctrl+C nokopē vienkāršu tekstu ar rindu pārnesumiem, un atlase paliek redzama.",
+            "Ielīmēti attēla dati, piemēram, Spectacle ekrānuzņēmums vai “Kopēt attēlu” pārlūkā, Linux vidē atkal nonāk tērzēšanā.",
+            "Pogas “Kopēt” koda blokos, pakešu inspektorā un tēmu kopīgošanai tagad darbojas arī Linux vidē.",
+            "Dzēsta tērzēšanas vēsture vairs neatgriežas caur vēstures sinhronizāciju, kad tu atkal pievienojies kanālam.",
+            "Kompaktajā izkārtojumā tēmas kartītes virsraksts vairs nenosedz tās sīktēlu, un ziņu kartītes vairs nepārbīdās."
+          ]
+        }
+      ],
+      "known": [
+        "Windows instalētājs joprojām nav parakstīts."
+      ]
+    },
     {
       "version": "0.4.3",
       "teaser": "Ziņu kartītes botiem, attēlu ielīmēšana ar Ctrl+V, kļūdu joslas var aizvērt.",
@@ -1475,15 +1531,13 @@
     "title": "Ceļvedis",
     "description": "Mumcord ceļvedis detalizēti: ko atnes katrs epiks, kas ir gatavs un kas sekos.",
     "label": "Uz kurieni ejam",
-    "intro": "Mumcord tiek būvēts epikos. Epic 1 tiek pabeigts ar versiju 0.3.0. Lūk, ko atnes katrs epiks. Ceļvedis ir priekšlikums: secība un apjoms vēl var mainīties.",
+    "intro": "Mumcord aug epikos: lielos posmos, kas katrs iznāk kā sava versija. Šeit redzi, kas ir gatavs, kas top tieši tagad un kas nāks pēc tam. Ceļvedis ir priekšlikums: secība un apjoms var mainīties.",
     "status": {
       "done": "gatavs",
       "now": "procesā",
       "planned": "nākamais",
       "later": "vēlāk"
     },
-    "epicsTitle": "Epiki",
-    "epicsBody": "Epic 1 ir ikdienas klients. Pēc tam nāk lielāki būvbloki, kuru secība vēl nav noteikta.",
     "ideaTitle": "Kaut kā trūkst?",
     "ideaBody": "Vēlmes nonāk GitHub pieteikumos (issues) un tiek ņemtas vērā plānošanā.",
     "idea": "Ierosini funkciju",
@@ -1670,7 +1724,7 @@
       {
         "id": "epic-3",
         "title": "Ērtības",
-        "summary": "Noslīpēšana aktīvajiem lietotājiem un neobligāts starpserveris tiešajiem savienojumiem.",
+        "summary": "Noslīpēšana aktīvajiem lietotājiem, vairāk miera ar bloķēšanu, ziņu filtru un paziņojumu centru, vairākas identitātes, servera informācija, jauns dizains vednim, iestatījumiem un watch party, zemas latentuma režīms muzicēšanai, kā arī neobligāts starpserveris tiešajiem savienojumiem.",
         "groups": [
           {
             "title": "Ikdienas ērtības",
@@ -1681,7 +1735,81 @@
               "Čukstēšana un kliegšana uz citiem kanāliem",
               "Publisks serveru pārlūks",
               "Netraucēt: viens slēdzis apklusina paziņojumus, skaņas un uznirstošos logus, un balsis tu joprojām dzirdi",
-              "@all un @channel, lai pieminētu visus serverī vai kanālā"
+              "@all un @channel, lai pieminētu visus serverī vai kanālā",
+              "Mikrofona un austiņu pārslēgšana ar labo klikšķi uz mikrofona un skaņas izslēgšanas pogām, ar skaļumu un līmeņa mērītāju",
+              "Labais klikšķis uz klausules: pamet balsi un turpini lasīt, atvienojies no viena servera vai no visiem",
+              "Iestatīšanas vedņa palaišana vēlreiz, neaizskarot tavu identitāti"
+            ],
+            "mockups": [
+              "Globālie īsinājumtaustiņi iestatījumos",
+              "Pilna teknes izvēlne un ikonas stāvokļi",
+              "Iestatījumu imports no Mumble",
+              "Čukstēšana uz citu kanālu",
+              "Publisks serveru pārlūks",
+              "Netraucēt ātrajos iestatījumos",
+              "@channel un @all ziņas laukā",
+              "Ierīču pārslēgšana no mikrofona un skaņas izslēgšanas",
+              "Klausules pogas izvēlne",
+              "Iestatīšanas vedņa palaišana vēlreiz"
+            ]
+          },
+          {
+            "title": "Jauns dizains",
+            "items": [
+              "Jauns iestatīšanas vednis, mierīgs un skaidrs: priekšiestatījumi no “Viss ieslēgts” līdz “Maksimāls privātums”, gatavs aptuveni divās minūtēs",
+              "Pārkārtoti iestatījumi: mazāk un skaidrākas sadaļas, vienotas kartītes un meklēšana, kas atrod katru iestatījumu",
+              "Watch party un ekrāna kopīgošana iegūst savu kinozālei līdzīgu skatu ar laika joslu, skaļumu, atskaņošanas sarakstu un to, kas skatās",
+              "Izcel video vai kopīgotu ekrānu atsevišķā logā, uz otra monitora vai virs spēles, ja vēlies, vienmēr virspusē",
+              "Sakļauj labo kolonnu pilnībā vai līdz šaurai avatāru joslai, lai tērzēšanai būtu vairāk vietas"
+            ],
+            "mockups": [
+              "Jaunais iestatīšanas vednis",
+              "Priekšiestatījumi vednī",
+              "Jaunie iestatījumi: balss un audio",
+              "Jaunie iestatījumi: privātums un savienojumi",
+              "Skatīšanās kopā jaunajā skatā",
+              "Kopīgota ekrāna skatīšanās",
+              "Video atsevišķā logā",
+              "Labā kolonna kā šaura josla"
+            ]
+          },
+          {
+            "title": "Miers un privātums",
+            "items": [
+              "Cilvēku bloķēšana: vairs nekādu ziņu, balss vai ielūgumu no viņiem, atpazīti pēc sertifikāta, nevis pēc vārda",
+              "Privātās ziņas tikai no draugiem, no visiem vai ne no viena, arī katram serverim atsevišķi. Svešinieki nonāk ziņu pieprasījumos",
+              "Paziņojumu centrs aiz zvaniņa apkopo pieminējumus, atbildes, pieprasījumus un ielūgumus no visiem serveriem, un režīmā “Netraucēt” – visu, kas citādi uznirtu",
+              "Watch party neielādē neko no YouTube vai Twitch, kamēr iegultais saturs ir izslēgts"
+            ],
+            "mockups": [
+              "Cilvēka bloķēšana",
+              "Ziņas pieprasījums no svešinieka",
+              "Paziņojumu centrs"
+            ]
+          },
+          {
+            "title": "Serveri un identitātes",
+            "items": [
+              "Pārvaldi vairākas identitātes un katram serverim izvēlies, ar kuru pieslēgties",
+              "Pārskatāms dialogs serveru pievienošanai un rediģēšanai, ar identitāti un “Pārbaudīt savienojumu”",
+              "Servera informācija: versija, limiti, sertifikāts un tavas atļaujas vienā skatienā, bez jebkādām izmaiņām serverī",
+              "Saglabātās kanālu paroles rāda, kuram kanālam tās pieder, un tām var dot nosaukumu"
+            ],
+            "mockups": [
+              "Vairāku identitāšu pārvaldība",
+              "Jaunais servera dialogs",
+              "Servera informācija"
+            ]
+          },
+          {
+            "title": "Skaņa un mūzika",
+            "items": [
+              "Labais klikšķis uz savienojuma informācijas: iestati bitu pārraides ātrumu, mūzikas kvalitāti un zemas latentuma režīmu tieši sarunas laikā",
+              "Zemas latentuma režīms kopīgai muzicēšanai: aptuveni 40, nevis 90 ms no mutes līdz ausij, arī standarta Mumble serveros"
+            ],
+            "mockups": [
+              "Balss kvalitāte tieši savienojuma informācijā",
+              "Zemas latentuma režīms"
             ]
           },
           {
@@ -1691,6 +1819,9 @@
               "Saturs paliek šifrēts no gala līdz galam; starpserveris tikai nodod baitus tālāk un ielaiž tikai sava servera lietotājus",
               "Pēc izvēles: kopiena var darbināt starpserveri kopā ar Mumbot. Bez tā viss darbojas kā līdz šim",
               "Tava izvēle: starpserveris izslēgts, tikai tad, ja tiešais savienojums neizdodas, vai vienmēr, lai tava IP adrese paliktu slēpta"
+            ],
+            "mockups": [
+              "Starpservera iestatījums un savienojuma informācija"
             ]
           }
         ]
@@ -1725,7 +1856,17 @@
           "Iespējas ir neliels starpniekserviss vai tava paša atslēga; tiks izlemts vēlāk"
         ]
       }
-    ]
+    ],
+    "doneTitle": "Gatavs",
+    "nextTitle": "Nākamais",
+    "laterTitle": "Vēlāk",
+    "delivered": "Piegādātas lietas: {n}",
+    "showAll": "Rādīt visu",
+    "statDone": "Pabeigtie epiki",
+    "statReleases": "Laidieni",
+    "statNext": "Nākamais mērķis",
+    "mockupsTitle": "Skices no pieteikumiem",
+    "mockupsNote": "Dizaina skices, ne galīgās. Vārdi un saturs ir izdomāti."
   },
   "games": {
     "title": "Spēles",

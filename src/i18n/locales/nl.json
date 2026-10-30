@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Comfort",
-          "body": "Globale sneltoetsen, volledig traymenu, import uit de officiële client, fluisteren, serverbrowser, Niet storen, @all en @channel, plus een optionele relay voor directe verbindingen."
+          "body": "Globale sneltoetsen, volledig traymenu, import uit de officiële client, fluisteren, serverbrowser, Niet storen, @all en @channel, blokkeren, privéberichten alleen van vrienden, een meldingencentrum, meerdere identiteiten, serverinfo, een fris ontwerp voor de wizard, de instellingen en de watchparty, een lage-latentiemodus om muziek te maken, plus een optionele relay voor directe verbindingen."
         },
         {
           "tag": "Epic 4",
@@ -821,6 +821,17 @@
             "id": "paste-images",
             "title": "Afbeeldingen plakken met Ctrl+V",
             "body": "Screenshots, „Afbeelding kopiëren” uit de browser en in de bestandsbeheerder gekopieerde afbeeldingsbestanden gaan met Ctrl+V direct als bijlage in het invoerveld."
+          },
+          {
+            "id": "code-blocks",
+            "title": "Codeblokken met kopiëren en downloaden",
+            "body": "Schrijf de taal na de drie backticks, van sql, rust en php tot cmd, Dockerfile en hexdumps, en het blok wordt precies zo gemarkeerd. Knoppen in de hoek kopiëren de code of slaan hem op als bestand.",
+            "alt": "SQL-codeblok met het taallabel en de knoppen om te kopiëren en te downloaden in de hoek"
+          },
+          {
+            "id": "image-menu",
+            "title": "Afbeeldingen kopiëren en opslaan",
+            "body": "Rechtsklik op een afbeelding in de chat of de afbeeldingsviewer: afbeelding kopiëren, afbeelding opslaan in het origineel, een GIF met zijn animatie, afbeeldingsadres kopiëren of openen in de viewer."
           }
         ]
       },
@@ -862,6 +873,11 @@
             "id": "bitrate",
             "title": "Bitrate met de hand",
             "body": "Een eigen schuifregelaar van 16 kbit/s tot de hoogste waarde die de server en Mumble toestaan. Bij pakketverlies regelt Mumcord hem nog steeds zelf omlaag."
+          },
+          {
+            "id": "realtime-audio",
+            "title": "Stabiel onder belasting",
+            "body": "Opname en weergave krijgen realtime prioriteit, zodat spraak minder kraakt en wegvalt terwijl een game of een build de computer bezighoudt. De verbindingsinfo toont uitval en of realtime audio aanstaat."
           }
         ]
       },
@@ -1070,12 +1086,52 @@
             "title": "Pakketinspector voor debuggen",
             "body": "Verborgen voor ontwikkelaars: zeven klikken op de versie onder Instellingen → Over ontgrendelen hem. In een eigen venster toont hij welke Mumcord-gegevens worden verstuurd en ontvangen, met filters, tellers en export als JSON of Markdown.",
             "alt": "Pakketinspector met filters, tellers per type en richting en één uitgeklapte pakketregel"
+          },
+          {
+            "id": "clear-cache",
+            "title": "De cache wissen",
+            "body": "Instellingen → Privacy laat zien hoeveel ruimte linkvoorbeelden, afbeeldingen en de webengine innemen, en wist ze met één druk op de knop, ook een voor een. Chatgeschiedenis, servers, vrienden en notities blijven onaangeroerd."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.4",
+      "teaser": "Code kopiëren en downloaden, afbeeldingen opslaan met een rechtsklik, de cache wissen, stabielere spraak onder belasting.",
+      "summary": "Een update voor de chat van elke dag: codeblokken met kopiëren, downloaden en meer talen, afbeeldingen kopiëren en opslaan met een rechtsklik, en een knop om de cache te wissen. Plus: spraak kraakt minder onder belasting, en kopiëren en plakken werken weer betrouwbaar.",
+      "groups": [
+        {
+          "title": "Nieuw",
+          "items": [
+            "Codeblokken hebben in de hoek knoppen om te kopiëren en te downloaden. De taal na de drie backticks, zoals sql, rust of php, wordt precies zo gemarkeerd en in de hoek getoond. Nieuw zijn onder meer PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx en hexdumps.",
+            "Rechtsklik op een afbeelding in de chat: afbeelding kopiëren, afbeelding opslaan, afbeeldingsadres kopiëren en openen in de afbeeldingsviewer. De afbeeldingsviewer heeft dezelfde knoppen. Opslaan bewaart het origineel, een GIF met zijn animatie.",
+            "Instellingen → Privacy laat zien hoeveel ruimte de caches innemen en wist ze met één druk op de knop, ook een voor een. Chatgeschiedenis, instellingen, servers, certificaten, vrienden en notities blijven onaangeroerd."
+          ]
+        },
+        {
+          "title": "Verbeterd",
+          "items": [
+            "Spraak kraakt en valt minder weg onder zware belasting: Mumcord vraagt het systeem om realtime prioriteit voor opname en weergave, en een korte hapering start niet meer alle audio opnieuw. De verbindingsinfo en het diagnosebestand tonen uitval, late pakketten en of realtime audio aanstaat.",
+            "Grote GIF's van GIPHY vertragen de app niet meer: de chat toont een kleinere versie die past."
+          ]
+        },
+        {
+          "title": "Opgelost",
+          "items": [
+            "Geselecteerde chattekst kopiëren werkt weer: het rechtsklikmenu biedt eerst „Kopiëren”, Ctrl+C kopieert de platte tekst met zijn regeleinden, en de selectie blijft zichtbaar.",
+            "Geplakte afbeeldingsgegevens, zoals een screenshot uit Spectacle of „Afbeelding kopiëren” in een browser, belanden op Linux weer in de chat.",
+            "De kopieerknoppen bij codeblokken, in de pakketinspector en voor het delen van thema's werken nu ook op Linux.",
+            "Verwijderde chatgeschiedenis komt niet meer terug via de geschiedenissynchronisatie als je een kanaal opnieuw binnengaat.",
+            "In de compacte weergave bedekt de titel van de themakaart zijn miniatuur niet meer, en berichtkaarten verschuiven niet meer."
+          ]
+        }
+      ],
+      "known": [
+        "De Windows-installer is nog niet ondertekend."
+      ]
+    },
     {
       "version": "0.4.3",
       "teaser": "Berichtkaarten voor bots, afbeeldingen plakken met Ctrl+V, foutbanners zijn te sluiten.",
@@ -1475,15 +1531,13 @@
     "title": "Roadmap",
     "description": "De roadmap van Mumcord in detail: wat elke epic brengt, wat af is en wat er nog komt.",
     "label": "Waar het heen gaat",
-    "intro": "Mumcord wordt in epics gebouwd. Met versie 0.3.0 is Epic 1 af. Dit brengt elke epic. De roadmap is een voorstel: volgorde en omvang kunnen nog veranderen.",
+    "intro": "Mumcord groeit in epics: grote stappen die elk als eigen versie uitkomen. Hier zie je wat klaar is, waar nu aan gebouwd wordt en wat daarna komt. De roadmap is een voorstel: volgorde en omvang kunnen veranderen.",
     "status": {
       "done": "klaar",
       "now": "mee bezig",
       "planned": "hierna",
       "later": "later"
     },
-    "epicsTitle": "De epics",
-    "epicsBody": "Epic 1 is de client voor elke dag. Daarna komen grotere bouwstenen waarvan de volgorde nog niet vastligt.",
     "ideaTitle": "Mis je iets?",
     "ideaBody": "Wensen komen in de issues op GitHub terecht en worden meegenomen in de planning.",
     "idea": "Functie aanvragen",
@@ -1670,7 +1724,7 @@
       {
         "id": "epic-3",
         "title": "Comfort",
-        "summary": "Afwerking voor fanatieke gebruikers en een optionele relay voor directe verbindingen.",
+        "summary": "Afwerking voor fanatieke gebruikers, meer rust met blokkeren, een berichtfilter en een meldingencentrum, meerdere identiteiten, serverinfo, een fris ontwerp voor de wizard, de instellingen en de watchparty, een lage-latentiemodus om muziek te maken, plus een optionele relay voor directe verbindingen.",
         "groups": [
           {
             "title": "Comfort voor elke dag",
@@ -1681,7 +1735,81 @@
               "Fluisteren en roepen naar andere kanalen",
               "Openbare serverbrowser",
               "Niet storen: één schakelaar zet meldingen, geluiden en pop-ups stil, en stemmen hoor je gewoon nog",
-              "@all en @channel om iedereen op de server of in het kanaal te vermelden"
+              "@all en @channel om iedereen op de server of in het kanaal te vermelden",
+              "Microfoon en koptelefoon wisselen met een rechtsklik op dempen en doof, met volume en een niveaumeter",
+              "Rechtsklik op ophangen: spraak verlaten en verder meelezen, één server of alle servers verbreken",
+              "De installatiewizard opnieuw doorlopen zonder aan je identiteit te komen"
+            ],
+            "mockups": [
+              "Globale sneltoetsen in de instellingen",
+              "Volledig traymenu en icoonstatussen",
+              "Instellingen importeren uit Mumble",
+              "Fluisteren naar een ander kanaal",
+              "Openbare serverbrowser",
+              "Niet storen in de snelle instellingen",
+              "@channel en @all in het berichtveld",
+              "Apparaten wisselen via dempen en doof",
+              "Het menu van de ophangknop",
+              "De installatiewizard opnieuw doorlopen"
+            ]
+          },
+          {
+            "title": "Een fris ontwerp",
+            "items": [
+              "Een nieuwe installatiewizard, rustig en helder: presets van „Alles aan” tot „Maximale privacy”, klaar in zo’n twee minuten",
+              "Instellingen opnieuw ingedeeld: minder en duidelijkere secties, consistente kaarten en een zoekfunctie die elke instelling vindt",
+              "Watchparty en scherm delen krijgen een eigen weergave als in de bioscoop, met tijdlijn, volume, playlist en wie er meekijkt",
+              "Haal een video of gedeeld scherm los in een eigen venster, op een tweede monitor of boven een game, als je wilt altijd bovenop",
+              "Klap de rechterkolom helemaal in of tot een smalle strook avatars, zodat de chat meer ruimte krijgt"
+            ],
+            "mockups": [
+              "De nieuwe installatiewizard",
+              "Presets in de wizard",
+              "Nieuwe instellingen: spraak en audio",
+              "Nieuwe instellingen: privacy en verbindingen",
+              "Samen kijken in de nieuwe weergave",
+              "Een gedeeld scherm bekijken",
+              "Een video in een eigen venster",
+              "De rechterkolom als smalle strook"
+            ]
+          },
+          {
+            "title": "Rust en privacy",
+            "items": [
+              "Mensen blokkeren: geen berichten, spraak of uitnodigingen meer van hen, herkend aan hun certificaat in plaats van hun naam",
+              "Privéberichten alleen van vrienden, van iedereen of van niemand, ook per server. Onbekenden komen terecht bij de berichtverzoeken",
+              "Een meldingencentrum achter een belletje verzamelt vermeldingen, reacties, verzoeken en uitnodigingen van alle servers, en tijdens Niet storen alles wat anders zou opduiken",
+              "Watchparty’s laden niets van YouTube of Twitch zolang ingesloten inhoud uit staat"
+            ],
+            "mockups": [
+              "Iemand blokkeren",
+              "Een berichtverzoek van een onbekende",
+              "Meldingencentrum"
+            ]
+          },
+          {
+            "title": "Servers en identiteiten",
+            "items": [
+              "Meerdere identiteiten beheren en per server kiezen met welke je verbindt",
+              "Een overzichtelijk venster voor servers toevoegen en bewerken, met identiteit en „Verbinding testen”",
+              "Serverinfo: versie, limieten, certificaat en je rechten in één oogopslag, zonder enige wijziging aan de server",
+              "Opgeslagen kanaalwachtwoorden tonen bij welk kanaal ze horen en kunnen een naam krijgen"
+            ],
+            "mockups": [
+              "Meerdere identiteiten beheren",
+              "Het nieuwe servervenster",
+              "Serverinfo"
+            ]
+          },
+          {
+            "title": "Geluid en muziek",
+            "items": [
+              "Rechtsklik op de verbindingsinfo: bitrate, muziekkwaliteit en lage-latentiemodus direct tijdens het gesprek instellen",
+              "Lage-latentiemodus om samen muziek te maken: ongeveer 40 in plaats van 90 ms van mond tot oor, ook op standaard Mumble-servers"
+            ],
+            "mockups": [
+              "Spraakkwaliteit direct bij de verbindingsinfo",
+              "Lage-latentiemodus"
             ]
           },
           {
@@ -1691,6 +1819,9 @@
               "De inhoud blijft end-to-end versleuteld; de relay geeft alleen bytes door en laat alleen gebruikers van zijn eigen server toe",
               "Optioneel: een community kan de relay samen met Mumbot draaien. Zonder relay werkt alles zoals voorheen",
               "Jij kiest: relay uit, alleen als een directe verbinding mislukt, of altijd, zodat je IP-adres verborgen blijft"
+            ],
+            "mockups": [
+              "Relay-instelling en verbindingsinfo"
             ]
           }
         ]
@@ -1725,7 +1856,17 @@
           "Opties zijn een kleine relaydienst of je eigen sleutel; wordt later besloten"
         ]
       }
-    ]
+    ],
+    "doneTitle": "Klaar",
+    "nextTitle": "Hierna",
+    "laterTitle": "Later",
+    "delivered": "{n} dingen opgeleverd",
+    "showAll": "Alles tonen",
+    "statDone": "Epics klaar",
+    "statReleases": "Releases",
+    "statNext": "Volgend doel",
+    "mockupsTitle": "Schetsen uit de issues",
+    "mockupsNote": "Ontwerpschetsen, niet definitief. Namen en inhoud zijn verzonnen."
   },
   "games": {
     "title": "Games",

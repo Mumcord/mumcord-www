@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Komfort",
-          "body": "Globale genvejstaster, komplet bakkemenu, import fra den officielle klient, hvisken, serverbrowser, „Forstyr ikke“, @all og @channel samt et valgfrit relay til direkte forbindelser."
+          "body": "Globale genvejstaster, komplet bakkemenu, import fra den officielle klient, hvisken, serverbrowser, „Forstyr ikke“, @all og @channel, blokering, private beskeder kun fra venner, et notifikationscenter, flere identiteter, serverinfo, et frisk design til guiden, indstillingerne og watch-partyen, en tilstand med lav latens til at spille musik samt et valgfrit relay til direkte forbindelser."
         },
         {
           "tag": "Epic 4",
@@ -821,6 +821,17 @@
             "id": "paste-images",
             "title": "Indsæt billeder med Ctrl+V",
             "body": "Skærmbilleder, „Kopiér billede“ fra browseren og billedfiler kopieret i filhåndteringen havner med Ctrl+V direkte i beskedfeltet som vedhæftning."
+          },
+          {
+            "id": "code-blocks",
+            "title": "Kodeblokke med Kopiér og Download",
+            "body": "Skriv sproget efter de tre backticks, fra sql, rust og php til cmd, Dockerfile og hex-dumps, så fremhæves blokken præcis som det. Knapper i hjørnet kopierer koden eller gemmer den som fil.",
+            "alt": "SQL-kodeblok med sprogmærkat og knapperne Kopiér og Download i hjørnet"
+          },
+          {
+            "id": "image-menu",
+            "title": "Kopiér og gem billeder",
+            "body": "Højreklik på et billede i chatten eller i billedfremviseren: kopiér billede, gem billede i originalen, en GIF med sin animation, kopiér billedadresse eller åbn det i fremviseren."
           }
         ]
       },
@@ -862,6 +873,11 @@
             "id": "bitrate",
             "title": "Bitrate i hånden",
             "body": "En separat skyder fra 16 kbit/s op til den højeste værdi, serveren og Mumble tillader. Ved pakketab skruer Mumcord den stadig selv ned."
+          },
+          {
+            "id": "realtime-audio",
+            "title": "Stabil under belastning",
+            "body": "Optagelse og afspilning får realtidsprioritet, så stemmen knitrer og falder mindre ud, mens et spil eller et build holder computeren travl. Forbindelsesinfo viser udfald og om realtidslyd er slået til."
           }
         ]
       },
@@ -1070,12 +1086,52 @@
             "title": "Pakkeinspektør til fejlfinding",
             "body": "Skjult for udviklere: syv klik på versionen under Indstillinger → Om låser den op. I sit eget vindue viser den, hvilke Mumcord-data der sendes og modtages, med filtre, tællere og eksport som JSON eller Markdown.",
             "alt": "Pakkeinspektør med filtre, tællere pr. type og retning og én udfoldet pakkerække"
+          },
+          {
+            "id": "clear-cache",
+            "title": "Ryd cachen",
+            "body": "Indstillinger → Privatliv viser, hvor meget plads linkforhåndsvisninger, billeder og webmotoren fylder, og rydder dem med et tryk på en knap, også én ad gangen. Chathistorik, servere, venner og noter røres aldrig."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.4",
+      "teaser": "Kopiér og download kode, gem billeder med højreklik, ryd cachen, mere stabil stemme under belastning.",
+      "summary": "En opdatering til hverdagen i chatten: kodeblokke med kopiering, download og flere sprog, kopiér og gem billeder med højreklik og en knap til at rydde cachen. Desuden knitrer stemmen mindre under belastning, og kopiér og indsæt virker pålideligt igen.",
+      "groups": [
+        {
+          "title": "Nyt",
+          "items": [
+            "Kodeblokke har knapperne Kopiér og Download i hjørnet. Sproget efter de tre backticks, fx sql, rust eller php, fremhæves præcis som det og vises i hjørnet. Blandt de nye er PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx og hex-dumps.",
+            "Højreklik på et billede i chatten: kopiér billede, gem billede, kopiér billedadresse og åbn i billedfremviseren. Billedfremviseren har de samme knapper. Når du gemmer, beholdes originalen, en GIF med sin animation.",
+            "Indstillinger → Privatliv viser, hvor meget plads cacherne fylder, og rydder dem med et tryk på en knap, også én ad gangen. Chathistorik, indstillinger, servere, certifikater, venner og noter røres aldrig."
+          ]
+        },
+        {
+          "title": "Forbedret",
+          "items": [
+            "Stemmen knitrer og falder mindre ud under tung belastning: Mumcord beder systemet om realtidsprioritet til optagelse og afspilning, og et kort hik genstarter ikke længere al lyd. Forbindelsesinfo og diagnosefilen viser udfald, forsinkede pakker og om realtidslyd er slået til.",
+            "Store GIF'er fra GIPHY gør ikke længere appen langsom: chatten viser en mindre version, der passer."
+          ]
+        },
+        {
+          "title": "Rettet",
+          "items": [
+            "Kopiering af markeret chattekst virker igen: højrekliksmenuen tilbyder „Kopiér“ først, Ctrl+C kopierer den rene tekst med linjeskift, og markeringen forbliver synlig.",
+            "Indsatte billeddata, fx et skærmbillede fra Spectacle eller „Kopiér billede“ i en browser, havner igen i chatten på Linux.",
+            "Kopiér-knapperne på kodeblokke, i pakkeinspektøren og til deling af temaer virker nu også på Linux.",
+            "Slettet chathistorik kommer ikke længere tilbage via historiksynkroniseringen, når du kommer ind i en kanal igen.",
+            "I det kompakte layout dækker temakortets titel ikke længere dets miniature, og beskedkort flytter sig ikke længere."
+          ]
+        }
+      ],
+      "known": [
+        "Windows-installationsprogrammet er stadig usigneret."
+      ]
+    },
     {
       "version": "0.4.3",
       "teaser": "Beskedkort til bots, indsæt billeder med Ctrl+V, fejlbannere kan lukkes.",
@@ -1475,15 +1531,13 @@
     "title": "Roadmap",
     "description": "Mumcords roadmap i detaljer: hvad hver epic bringer, hvad der er færdigt, og hvad der kommer næste gang.",
     "label": "Hvor det går hen",
-    "intro": "Mumcord bygges i epics. Epic 1 er fuldendt med version 0.3.0. Her er, hvad hver epic bringer. Roadmappen er et forslag: rækkefølge og omfang kan stadig ændre sig.",
+    "intro": "Mumcord vokser i epics: store etaper, der hver udkommer som deres egen version. Her kan du se, hvad der er færdigt, hvad der bygges lige nu, og hvad der kommer bagefter. Roadmappen er et forslag, rækkefølge og omfang kan ændre sig.",
     "status": {
       "done": "færdig",
       "now": "i gang",
       "planned": "næste",
       "later": "senere"
     },
-    "epicsTitle": "Epics",
-    "epicsBody": "Epic 1 er klienten til hverdagen. Derefter kommer større byggeklodser, hvis rækkefølge endnu ikke ligger fast.",
     "ideaTitle": "Mangler du noget?",
     "ideaBody": "Ønsker samles i issues på GitHub og indgår i planlægningen.",
     "idea": "Foreslå en funktion",
@@ -1670,7 +1724,7 @@
       {
         "id": "epic-3",
         "title": "Komfort",
-        "summary": "Finpudsning til flittige brugere og et valgfrit relay til direkte forbindelser.",
+        "summary": "Finpudsning til flittige brugere, mere ro med blokering, et beskedfilter og et notifikationscenter, flere identiteter, serverinfo, et frisk design til guiden, indstillingerne og watch-partyen, en tilstand med lav latens til at spille musik samt et valgfrit relay til direkte forbindelser.",
         "groups": [
           {
             "title": "Komfort i hverdagen",
@@ -1681,7 +1735,81 @@
               "Hvisk og råb til andre kanaler",
               "Offentlig serverbrowser",
               "Forstyr ikke: én kontakt slår notifikationer, lyde og pop-ups fra, og du hører stadig stemmer",
-              "@all og @channel til at omtale alle på serveren eller i kanalen"
+              "@all og @channel til at omtale alle på serveren eller i kanalen",
+              "Skift mikrofon og hovedtelefoner med et højreklik på mute og deafen, med lydstyrke og niveaumåler",
+              "Højreklik på læg på: forlad talekanalen og læs videre, afbryd én server eller dem alle",
+              "Kør opsætningsguiden igen uden at røre din identitet"
+            ],
+            "mockups": [
+              "Globale genveje i indstillingerne",
+              "Komplet bakkemenu og ikontilstande",
+              "Importér indstillinger fra Mumble",
+              "Hvisk til en anden kanal",
+              "Offentlig serverbrowser",
+              "Forstyr ikke i hurtigindstillingerne",
+              "@channel og @all i beskedfeltet",
+              "Skift enheder fra mute og deafen",
+              "Menuen på læg på-knappen",
+              "Kør opsætningsguiden igen"
+            ]
+          },
+          {
+            "title": "Et frisk design",
+            "items": [
+              "En ny opsætningsguide, rolig og overskuelig: forudindstillinger fra „Alt slået til“ til „Maksimalt privatliv“, klar på cirka to minutter",
+              "Indstillingerne omorganiseret: færre og tydeligere sektioner, ensartede kort og en søgning, der finder hver eneste indstilling",
+              "Watch-party og skærmdeling får deres egen biograflignende visning med tidslinje, lydstyrke, playliste og hvem der ser med",
+              "Tag en video eller en delt skærm ud i sit eget vindue, over på en anden skærm eller oven på et spil, altid øverst hvis du vil",
+              "Klap højre kolonne helt sammen eller ned til en smal stribe avatarer, så chatten får mere plads"
+            ],
+            "mockups": [
+              "Den nye opsætningsguide",
+              "Forudindstillinger i guiden",
+              "Nye indstillinger: stemme og lyd",
+              "Nye indstillinger: privatliv og forbindelser",
+              "Se sammen i den nye visning",
+              "Se en delt skærm",
+              "En video i sit eget vindue",
+              "Højre kolonne som en smal stribe"
+            ]
+          },
+          {
+            "title": "Ro og privatliv",
+            "items": [
+              "Bloker folk: ingen beskeder, stemme eller invitationer fra dem længere, genkendt via deres certifikat i stedet for deres navn",
+              "Private beskeder kun fra venner, fra alle eller fra ingen, også per server. Fremmede havner i beskedanmodninger",
+              "Et notifikationscenter bag en klokke samler omtaler, svar, anmodninger og invitationer fra alle servere, og under Forstyr ikke alt det, der ellers ville poppe op",
+              "Watch-partyer indlæser intet fra YouTube eller Twitch, så længe indlejret indhold er slået fra"
+            ],
+            "mockups": [
+              "Bloker en person",
+              "En beskedanmodning fra en fremmed",
+              "Notifikationscenter"
+            ]
+          },
+          {
+            "title": "Servere og identiteter",
+            "items": [
+              "Administrér flere identiteter, og vælg per server, hvilken du forbinder med",
+              "En overskuelig dialog til at tilføje og redigere servere, med identitet og „Test forbindelse“",
+              "Serverinfo: version, grænser, certifikat og dine rettigheder på ét blik, uden nogen ændring på serveren",
+              "Gemte kanaladgangskoder viser, hvilken kanal de hører til, og kan navngives"
+            ],
+            "mockups": [
+              "Administrér flere identiteter",
+              "Den nye serverdialog",
+              "Serverinfo"
+            ]
+          },
+          {
+            "title": "Lyd og musik",
+            "items": [
+              "Højreklik på forbindelsesinfoen: indstil bitrate, musikkvalitet og tilstanden med lav latens direkte i samtalen",
+              "Tilstand med lav latens til at spille musik sammen: omkring 40 i stedet for 90 ms fra mund til øre, også på almindelige Mumble-servere"
+            ],
+            "mockups": [
+              "Lydkvalitet direkte i forbindelsesinfoen",
+              "Tilstand med lav latens"
             ]
           },
           {
@@ -1691,6 +1819,9 @@
               "Indholdet forbliver end-to-end-krypteret; relayet sender kun bytes videre og lukker kun brugere fra sin egen server ind",
               "Valgfrit: et community kan køre relayet sammen med Mumbot. Uden relay virker alt som før",
               "Du vælger: relay fra, kun når en direkte forbindelse fejler, eller altid, så din IP-adresse forbliver skjult"
+            ],
+            "mockups": [
+              "Relay-indstilling og forbindelsesinfo"
             ]
           }
         ]
@@ -1725,7 +1856,17 @@
           "Mulighederne er en lille relætjeneste eller din egen nøgle; besluttes senere"
         ]
       }
-    ]
+    ],
+    "doneTitle": "Færdigt",
+    "nextTitle": "Næste",
+    "laterTitle": "Derefter",
+    "delivered": "{n} ting leveret",
+    "showAll": "Vis alle",
+    "statDone": "Færdige epics",
+    "statReleases": "Udgivelser",
+    "statNext": "Næste mål",
+    "mockupsTitle": "Skitser fra issues",
+    "mockupsNote": "Designskitser, ikke endelige. Navne og indhold er opdigtede."
   },
   "games": {
     "title": "Spil",

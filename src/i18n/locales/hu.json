@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Kényelem",
-          "body": "Globális gyorsbillentyűk, teljes tálcamenü, importálás a hivatalos kliensből, suttogás, szerverböngésző, „Ne zavarjanak”, @all és @channel, plusz egy opcionális relay a közvetlen kapcsolatokhoz."
+          "body": "Globális gyorsbillentyűk, teljes tálcamenü, importálás a hivatalos kliensből, suttogás, szerverböngésző, „Ne zavarjanak”, @all és @channel, letiltás, privát üzenetek csak barátoktól, értesítési központ, több identitás, szerverinfó, friss dizájn a varázslóhoz, a beállításokhoz és a watch partyhoz, alacsony késleltetésű mód zenéléshez, plusz egy opcionális relay a közvetlen kapcsolatokhoz."
         },
         {
           "tag": "Epic 4",
@@ -821,6 +821,17 @@
             "id": "paste-images",
             "title": "Képbeillesztés Ctrl+V-vel",
             "body": "A képernyőképek, a böngésző „Kép másolása” funkciója és a fájlkezelőben másolt képfájlok Ctrl+V-vel egyenesen az üzenetmezőbe kerülnek mellékletként."
+          },
+          {
+            "id": "code-blocks",
+            "title": "Kódblokkok Másolás és Letöltés gombbal",
+            "body": "Írd a nyelvet a három backtick után, az sql-től, a rusttól és a php-tól a cmd-ig, a Dockerfile-ig és a hexdumpokig, és a blokk pontosan úgy lesz kiemelve. A sarokban lévő gombok kimásolják a kódot, vagy fájlként mentik.",
+            "alt": "SQL-kódblokk a nyelv jelölésével és a Másolás és Letöltés gombokkal a sarkában"
+          },
+          {
+            "id": "image-menu",
+            "title": "Képek másolása és mentése",
+            "body": "Jobb klikk egy képre a chatben vagy a képnézegetőben: kép másolása, kép mentése eredeti formájában, a GIF az animációjával együtt, képcím másolása vagy megnyitás a nézegetőben."
           }
         ]
       },
@@ -862,6 +873,11 @@
             "id": "bitrate",
             "title": "Bitráta kézzel",
             "body": "Külön csúszka 16 kbit/s-tól egészen a legmagasabb értékig, amit a szerver és a Mumble enged. Csomagvesztésnél a Mumcord továbbra is magától lejjebb veszi."
+          },
+          {
+            "id": "realtime-audio",
+            "title": "Stabil terhelés alatt",
+            "body": "A rögzítés és a lejátszás valós idejű prioritást kap, így a hang kevésbé recseg és szakad meg, miközben egy játék vagy egy build lefoglalja a gépet. A kapcsolati adatok mutatják a kieséseket, és azt, hogy be van-e kapcsolva a valós idejű hang."
           }
         ]
       },
@@ -1070,12 +1086,52 @@
             "title": "Csomagvizsgáló hibakereséshez",
             "body": "Fejlesztőknek elrejtve: hét kattintás a verzióra a Beállítások → Névjegy alatt feloldja. Saját ablakban mutatja, milyen Mumcord-adatok mennek ki és jönnek be, szűrőkkel, számlálókkal és JSON- vagy Markdown-exporttal.",
             "alt": "Csomagvizsgáló szűrőkkel, típus és irány szerinti számlálókkal és egy kinyitott csomagsorral"
+          },
+          {
+            "id": "clear-cache",
+            "title": "Gyorsítótár ürítése",
+            "body": "A Beállítások → Adatvédelem megmutatja, mennyi helyet foglalnak a linkelőnézetek, a képek és a webmotor, és egy gombnyomással kiüríti őket, egyenként is. A chatelőzményekhez, szerverekhez, barátokhoz és jegyzetekhez soha nem nyúl."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.4",
+      "teaser": "Kód másolása és letöltése, képek mentése jobb klikkel, gyorsítótár ürítése, stabilabb hang terhelés alatt.",
+      "summary": "Frissítés a mindennapi chathez: kódblokkok másolással, letöltéssel és több nyelvvel, képek másolása és mentése jobb klikkel, és egy gomb a gyorsítótár ürítéséhez. Emellett a hang kevésbé recseg terhelés alatt, a másolás és a beillesztés pedig újra megbízhatóan működik.",
+      "groups": [
+        {
+          "title": "Új",
+          "items": [
+            "A kódblokkok sarkában Másolás és Letöltés gomb van. A három backtick után megadott nyelvet, például sql, rust vagy php, pontosan úgy emeli ki, és a sarokban meg is jeleníti. Újak többek között: PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx és hexdumpok.",
+            "Jobb klikk egy képre a chatben: kép másolása, kép mentése, képcím másolása és megnyitás a képnézegetőben. A képnézegetőben ugyanezek a gombok vannak. A mentés megtartja az eredetit, a GIF-et az animációjával együtt.",
+            "A Beállítások → Adatvédelem megmutatja, mennyi helyet foglalnak a gyorsítótárak, és egy gombnyomással kiüríti őket, egyenként is. A chatelőzményekhez, beállításokhoz, szerverekhez, tanúsítványokhoz, barátokhoz és jegyzetekhez soha nem nyúl."
+          ]
+        },
+        {
+          "title": "Továbbfejlesztve",
+          "items": [
+            "A hang nagy terhelés alatt ritkábban recseg és szakad meg: a Mumcord valós idejű prioritást kér a rendszertől a rögzítéshez és a lejátszáshoz, és egy rövid akadás már nem indítja újra az egész hangot. A kapcsolati adatok és a diagnosztikai fájl mutatják a kieséseket, a késve érkező csomagokat, és azt, hogy be van-e kapcsolva a valós idejű hang.",
+            "A GIPHY nagy GIF-jei már nem lassítják le az appot: a chat egy kisebb, megfelelő változatot mutat."
+          ]
+        },
+        {
+          "title": "Javítva",
+          "items": [
+            "A kijelölt chatszöveg másolása újra működik: a jobb klikkes menü elsőként a „Másolás” lehetőséget kínálja, a Ctrl+C a sima szöveget másolja a sortörésekkel együtt, a kijelölés pedig látható marad.",
+            "A beillesztett képadatok, például egy Spectacle-képernyőkép vagy a böngésző „Kép másolása” funkciója, Linuxon újra bekerülnek a chatbe.",
+            "A Másolás gombok a kódblokkokon, a csomagvizsgálóban és a témák megosztásánál most már Linuxon is működnek.",
+            "A törölt chatelőzmények már nem térnek vissza a közös chatelőzményeken keresztül, amikor újra belépsz egy csatornába.",
+            "Kompakt elrendezésben a témakártya címe már nem takarja el a bélyegképét, és az üzenetkártyák sem csúsznak el többé."
+          ]
+        }
+      ],
+      "known": [
+        "A Windows-telepítő még nincs aláírva."
+      ]
+    },
     {
       "version": "0.4.3",
       "teaser": "Üzenetkártyák botoknak, képbeillesztés Ctrl+V-vel, a hibasávok bezárhatók.",
@@ -1475,15 +1531,13 @@
     "title": "Ütemterv",
     "description": "A Mumcord ütemterve részletesen: mit hoz az egyes epic, mi van kész, és mi jön ezután.",
     "label": "Merre tartunk",
-    "intro": "A Mumcord epicekben készül. Az 1. epic a 0.3.0-s verzióval zárul le. Itt látod, mit hoz az egyes epic. Az ütemterv javaslat: a sorrend és a terjedelem még változhat.",
+    "intro": "A Mumcord epicekben növekszik: nagy szakaszokban, amelyek mindegyike saját verzióként jelenik meg. Itt látod, mi van kész, min dolgozunk éppen, és mi jön utána. Az ütemterv javaslat, a sorrend és a terjedelem változhat.",
     "status": {
       "done": "kész",
       "now": "folyamatban",
       "planned": "következik",
       "later": "később"
     },
-    "epicsTitle": "Az epicek",
-    "epicsBody": "Az 1. epic a mindennapi kliens. Utána nagyobb építőkövek jönnek, amelyek sorrendje még nem végleges.",
     "ideaTitle": "Hiányzik valami?",
     "ideaBody": "A kérések a GitHub issue-iba kerülnek, és beépülnek a tervezésbe.",
     "idea": "Funkció kérése",
@@ -1670,7 +1724,7 @@
       {
         "id": "epic-3",
         "title": "Kényelem",
-        "summary": "Csiszolás a sokat használóknak és opcionális relay a közvetlen kapcsolatokhoz.",
+        "summary": "Csiszolás a sokat használóknak, több nyugalom letiltással, üzenetszűrővel és értesítési központtal, több identitás, szerverinfó, friss dizájn a varázslóhoz, a beállításokhoz és a watch partyhoz, alacsony késleltetésű mód zenéléshez, plusz opcionális relay a közvetlen kapcsolatokhoz.",
         "groups": [
           {
             "title": "Kényelem a mindennapokban",
@@ -1681,7 +1735,81 @@
               "Suttogás és kiáltás más csatornákba",
               "Nyilvános szerverböngésző",
               "Ne zavarjanak: egyetlen kapcsoló elnémítja az értesítéseket, a hangjelzéseket és a felugró ablakokat, a többiek hangját viszont továbbra is hallod",
-              "@all és @channel, hogy mindenkit megemlíts a szerveren vagy a csatornán"
+              "@all és @channel, hogy mindenkit megemlíts a szerveren vagy a csatornán",
+              "Mikrofon és fejhallgató váltása jobb klikkel a némítás és a süketítés gombon, hangerővel és szintjelzővel",
+              "Jobb klikk a hívás bontására: kilépsz a hangból, és tovább olvasol, vagy lecsatlakozol egy szerverről vagy mindről",
+              "A beállítási varázsló újrafuttatása az identitásod érintése nélkül"
+            ],
+            "mockups": [
+              "Globális gyorsbillentyűk a beállításokban",
+              "Teljes tálcamenü és ikonállapotok",
+              "Beállítások importálása a Mumble-ből",
+              "Suttogás egy másik csatornába",
+              "Nyilvános szerverböngésző",
+              "Ne zavarjanak a gyorsbeállításokban",
+              "@channel és @all az üzenetmezőben",
+              "Eszközváltás a némítás és a süketítés gombról",
+              "A hívásbontás gomb menüje",
+              "A beállítási varázsló újrafuttatása"
+            ]
+          },
+          {
+            "title": "Friss dizájn",
+            "items": [
+              "Új beállítási varázsló, nyugodt és átlátható: előbeállítások a „Minden bekapcsolva” lehetőségtől a „Maximális adatvédelem” lehetőségig, nagyjából két perc alatt kész",
+              "Átszervezett beállítások: kevesebb, átláthatóbb szakasz, egységes kártyák és egy keresés, amely minden beállítást megtalál",
+              "A watch party és a képernyőmegosztás saját, moziszerű nézetet kap idővonallal, hangerővel, lejátszási listával és azzal, hogy ki nézi",
+              "Tedd át a videót vagy a megosztott képernyőt egy saját ablakba, egy második monitorra vagy egy játék fölé, ha szeretnéd, mindig felül",
+              "Csukd össze a jobb oldali oszlopot teljesen vagy egy keskeny avatarsávvá, hogy a chatnek több hely jusson"
+            ],
+            "mockups": [
+              "Az új beállítási varázsló",
+              "Előbeállítások a varázslóban",
+              "Új beállítások: hang és audió",
+              "Új beállítások: adatvédelem és kapcsolatok",
+              "Közös nézés az új nézetben",
+              "Megosztott képernyő nézése",
+              "Videó saját ablakban",
+              "A jobb oldali oszlop keskeny sávként"
+            ]
+          },
+          {
+            "title": "Nyugalom és adatvédelem",
+            "items": [
+              "Emberek letiltása: tőlük többé nem jön üzenet, hang vagy meghívó, és a felismerés a tanúsítványuk alapján történik, nem a nevük alapján",
+              "Privát üzenetek csak barátoktól, mindenkitől vagy senkitől, szerverenként is. Az ismeretlenek az üzenetkérések közé kerülnek",
+              "Egy csengő mögötti értesítési központ összegyűjti az említéseket, válaszokat, kéréseket és meghívókat minden szerverről, a „Ne zavarjanak” alatt pedig mindent, ami egyébként felugrana",
+              "A watch partyk semmit sem töltenek be a YouTube-ról vagy a Twitchről, amíg a beágyazott tartalom ki van kapcsolva"
+            ],
+            "mockups": [
+              "Egy ember letiltása",
+              "Üzenetkérés egy ismeretlentől",
+              "Értesítési központ"
+            ]
+          },
+          {
+            "title": "Szerverek és identitások",
+            "items": [
+              "Több identitás kezelése, és szerverenként kiválaszthatod, melyikkel csatlakozol",
+              "Áttekinthető ablak szerverek hozzáadásához és szerkesztéséhez, identitással és „Kapcsolat tesztelése” gombbal",
+              "Szerverinfó: verzió, korlátok, tanúsítvány és a jogosultságaid egy pillantással, mindenféle szerveroldali változtatás nélkül",
+              "A mentett csatornajelszavak mutatják, melyik csatornához tartoznak, és el is nevezhetők"
+            ],
+            "mockups": [
+              "Több identitás kezelése",
+              "Az új szerverablak",
+              "Szerverinfó"
+            ]
+          },
+          {
+            "title": "Hang és zene",
+            "items": [
+              "Jobb klikk a kapcsolati adatokra: bitráta, zeneminőség és alacsony késleltetésű mód beállítása közvetlenül a beszélgetésben",
+              "Alacsony késleltetésű mód közös zenéléshez: szájtól fülig nagyjából 40 ms 90 helyett, normál Mumble szervereken is"
+            ],
+            "mockups": [
+              "Hangminőség közvetlenül a kapcsolati adatoknál",
+              "Alacsony késleltetésű mód"
             ]
           },
           {
@@ -1691,6 +1819,9 @@
               "A tartalom végponttól végpontig titkosított marad; a relay csak továbbadja a bájtokat, és csak a saját szervere felhasználóit engedi be",
               "Opcionális: egy közösség a Mumbottal együtt futtathatja a relayt. Relay nélkül minden úgy működik, mint eddig",
               "Te döntöd el: relay kikapcsolva, csak ha a közvetlen kapcsolat nem jön létre, vagy mindig, hogy az IP-címed rejtve maradjon"
+            ],
+            "mockups": [
+              "Relay-beállítás és kapcsolati adatok"
             ]
           }
         ]
@@ -1725,7 +1856,17 @@
           "A lehetőségek: egy kis közvetítőszolgáltatás vagy saját kulcs; később dől el"
         ]
       }
-    ]
+    ],
+    "doneTitle": "Kész",
+    "nextTitle": "Következik",
+    "laterTitle": "Utána",
+    "delivered": "{n} dolog elkészült",
+    "showAll": "Összes megjelenítése",
+    "statDone": "Kész epicek",
+    "statReleases": "Kiadások",
+    "statNext": "Következő cél",
+    "mockupsTitle": "Vázlatok az issue-kból",
+    "mockupsNote": "Tervvázlatok, nem végleges változatok. A nevek és a tartalom kitaláltak."
   },
   "games": {
     "title": "Játékok",

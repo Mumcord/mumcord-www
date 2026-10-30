@@ -21,6 +21,39 @@ export interface ChangelogEntry {
 const source: Record<"de" | "en", ChangelogEntry[]> = {
   de: [
     {
+      version: "0.4.4",
+      teaser: "Code kopieren und herunterladen, Bilder per Rechtsklick speichern, Cache leeren, Sprache stabiler unter Last.",
+      summary: "Ein Update für den Alltag im Chat: Code-Blöcke mit Kopieren, Herunterladen und mehr Sprachen, Bilder per Rechtsklick kopieren und speichern, ein Knopf zum Cache leeren. Dazu knackt die Sprache unter Last weniger, und Kopieren und Einfügen funktionieren wieder zuverlässig.",
+      groups: [
+        {
+          title: "Neu",
+          items: [
+            "Code-Blöcke haben in der Ecke Knöpfe zum Kopieren und Herunterladen. Die Sprache hinter den drei Backticks, etwa sql, rust oder php, wird genau so hervorgehoben und in der Ecke angezeigt. Neu sind unter anderem PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx und Hex-Dumps.",
+            "Rechtsklick auf ein Bild im Chat: Bild kopieren, Bild speichern, Bildadresse kopieren und im Bildbetrachter öffnen. Der Bildbetrachter hat dieselben Knöpfe. Gespeichert wird das Original, ein GIF mit Animation.",
+            "Einstellungen → Datenschutz zeigt, wie viel Platz die Caches belegen, und leert sie auf Knopfdruck, auch einzeln. Chatverlauf, Einstellungen, Server, Zertifikate, Freunde und Notizen bleiben unangetastet.",
+          ],
+        },
+        {
+          title: "Verbessert",
+          items: [
+            "Die Sprache knackt und bricht unter hoher Last seltener ab: Mumcord bittet das System für Aufnahme und Wiedergabe um Echtzeit-Priorität, und ein kurzer Aussetzer startet nicht mehr den ganzen Ton neu. Verbindungsinfo und Diagnosedatei zeigen Aussetzer, verspätete Pakete und ob Echtzeit-Audio aktiv ist.",
+            "Große GIFs von GIPHY bremsen die App nicht mehr aus: Der Chat zeigt eine kleinere, passende Version.",
+          ],
+        },
+        {
+          title: "Behoben",
+          items: [
+            "Markierten Text im Chat kopieren geht wieder: Der Rechtsklick bietet zuerst „Kopieren“, Strg+C kopiert den reinen Text mit Zeilenumbrüchen, und die Markierung bleibt dabei sichtbar.",
+            "Eingefügte Bilddaten, etwa ein Screenshot aus Spectacle oder „Bild kopieren“ im Browser, landen unter Linux wieder im Chat.",
+            "Die Kopieren-Knöpfe an Code-Blöcken, im Paketinspektor und beim Teilen von Themes funktionieren jetzt auch unter Linux.",
+            "Gelöschter Chatverlauf kommt über den Verlaufsabgleich nicht mehr zurück, wenn du einem Kanal wieder beitrittst.",
+            "In der kompakten Ansicht überlagert der Titel der Theme-Karte nicht mehr das Vorschaubild, und Nachrichtenkarten verrutschen nicht mehr.",
+          ],
+        },
+      ],
+      known: ["Der Windows-Installer ist weiterhin unsigniert."],
+    },
+    {
       version: "0.4.3",
       teaser: "Nachrichtenkarten für Bots, Bilder per Strg+V, Fehlerbanner lassen sich schließen.",
       summary: "Nachrichtenkarten kommen früher als geplant: Bots und Menschen posten kompakte Karten mit Status, Bild und Link. Dazu landen Bilder aus der Zwischenablage im Chat, das Banner nach einem Verbindungsfehler bleibt nicht mehr für immer stehen, und Nachrichten kurz vor dem Trennen gehen nicht mehr verloren.",
@@ -413,6 +446,39 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
     },
   ],
   en: [
+    {
+      version: "0.4.4",
+      teaser: "Copy and download code, save images with a right-click, clear the cache, steadier voice under load.",
+      summary: "An update for everyday chat: code blocks with copy, download and more languages, copy and save images with a right-click, and a button to clear the cache. Plus voice crackles less under load, and copy and paste work reliably again.",
+      groups: [
+        {
+          title: "New",
+          items: [
+            "Code blocks have Copy and Download buttons in their corner. The language after the three backticks, such as sql, rust or php, is highlighted as exactly that and shown in the corner. New ones include PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx and hex dumps.",
+            "Right-click an image in the chat: copy image, save image, copy image address and open in the image viewer. The image viewer has the same buttons. Saving keeps the original, a GIF with its animation.",
+            "Settings → Privacy shows how much space the caches take and clears them at the push of a button, one by one too. Chat history, settings, servers, certificates, friends and notes are never touched.",
+          ],
+        },
+        {
+          title: "Improved",
+          items: [
+            "Voice crackles and drops out less under heavy load: Mumcord asks the system for real-time priority for capture and playback, and a short hiccup no longer restarts all audio. Connection info and the diagnostic file show dropouts, late packets and whether real-time audio is on.",
+            "Large GIFs from GIPHY no longer slow the app down: the chat shows a smaller version that fits.",
+          ],
+        },
+        {
+          title: "Fixed",
+          items: [
+            "Copying selected chat text works again: the right-click menu offers “Copy” first, Ctrl+C copies the plain text with its line breaks, and the selection stays visible.",
+            "Pasted image data, such as a Spectacle screenshot or “Copy image” in a browser, lands in the chat again on Linux.",
+            "The Copy buttons on code blocks, in the packet inspector and for sharing themes now work on Linux too.",
+            "Deleted chat history no longer comes back through history sync when you rejoin a channel.",
+            "In the compact layout the theme card's title no longer covers its thumbnail, and message cards no longer shift.",
+          ],
+        },
+      ],
+      known: ["The Windows installer is still unsigned."],
+    },
     {
       version: "0.4.3",
       teaser: "Message cards for bots, paste images with Ctrl+V, error banners can be closed.",

@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Comfort",
-          "body": "Scorciatoie globali, menu completo nell'area di notifica, importazione dal client ufficiale, sussurro, browser dei server, Non disturbare, @all e @channel e un relay opzionale per le connessioni dirette."
+          "body": "Scorciatoie globali, menu completo nell'area di notifica, importazione dal client ufficiale, sussurro, browser dei server, Non disturbare, @all e @channel, blocco, messaggi privati solo dagli amici, un centro notifiche, più identità, info sul server, un nuovo design per la configurazione guidata, le impostazioni e la watch party, una modalità a bassa latenza per fare musica e un relay opzionale per le connessioni dirette."
         },
         {
           "tag": "Epic 4",
@@ -821,6 +821,17 @@
             "id": "paste-images",
             "title": "Incolla immagini con Ctrl+V",
             "body": "Screenshot, “Copia immagine” dal browser e file immagine copiati nel file manager finiscono con Ctrl+V direttamente nel campo del messaggio come allegato."
+          },
+          {
+            "id": "code-blocks",
+            "title": "Blocchi di codice con Copia e Scarica",
+            "body": "Scrivi il linguaggio dopo i tre backtick, da sql, rust e php fino a cmd, Dockerfile e dump esadecimali, e il blocco viene evidenziato esattamente così. I pulsanti nell'angolo copiano il codice o lo salvano come file.",
+            "alt": "Blocco di codice SQL con l'indicazione del linguaggio e i pulsanti Copia e Scarica nell'angolo"
+          },
+          {
+            "id": "image-menu",
+            "title": "Copia e salva le immagini",
+            "body": "Clic destro su un'immagine nella chat o nel visualizzatore di immagini: copia immagine, salva immagine nell'originale, una GIF con la sua animazione, copia indirizzo immagine o aprila nel visualizzatore."
           }
         ]
       },
@@ -862,6 +873,11 @@
             "id": "bitrate",
             "title": "Bitrate a mano",
             "body": "Un cursore apposito da 16 kbit/s fino al valore più alto che server e Mumble consentono. Con perdita di pacchetti, Mumcord continua comunque ad abbassarlo da solo."
+          },
+          {
+            "id": "realtime-audio",
+            "title": "Stabile sotto carico",
+            "body": "Acquisizione e riproduzione ottengono la priorità in tempo reale, così la voce gracchia e si interrompe meno mentre un gioco o una build tengono occupato il computer. Le info sulla connessione mostrano le interruzioni e se l'audio in tempo reale è attivo."
           }
         ]
       },
@@ -1070,12 +1086,52 @@
             "title": "Ispettore di pacchetti per il debug",
             "body": "Nascosto per gli sviluppatori: sette clic sulla versione in Impostazioni → Informazioni lo sbloccano. In una finestra tutta sua mostra quali dati Mumcord vengono inviati e ricevuti, con filtri, contatori ed esportazione in JSON o Markdown.",
             "alt": "Ispettore di pacchetti con filtri, contatori per tipo e direzione e una riga di pacchetto espansa"
+          },
+          {
+            "id": "clear-cache",
+            "title": "Svuota la cache",
+            "body": "Impostazioni → Privacy mostra quanto spazio occupano anteprime dei link, immagini e motore web, e li svuota con un clic, anche uno alla volta. Cronologia della chat, server, amici e note non vengono mai toccati."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.4",
+      "teaser": "Copia e scarica il codice, salva le immagini con il clic destro, svuota la cache, voce più stabile sotto carico.",
+      "summary": "Un aggiornamento per la chat di tutti i giorni: blocchi di codice con copia, download e più linguaggi, copia e salva le immagini con il clic destro e un pulsante per svuotare la cache. In più la voce gracchia meno sotto carico, e copia e incolla funzionano di nuovo in modo affidabile.",
+      "groups": [
+        {
+          "title": "Novità",
+          "items": [
+            "I blocchi di codice hanno i pulsanti Copia e Scarica nell'angolo. Il linguaggio dopo i tre backtick, come sql, rust o php, viene evidenziato esattamente così e mostrato nell'angolo. Tra i nuovi ci sono PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx e i dump esadecimali.",
+            "Clic destro su un'immagine nella chat: copia immagine, salva immagine, copia indirizzo immagine e apri nel visualizzatore di immagini. Il visualizzatore di immagini ha gli stessi pulsanti. Il salvataggio mantiene l'originale, una GIF con la sua animazione.",
+            "Impostazioni → Privacy mostra quanto spazio occupano le cache e le svuota con un clic, anche una alla volta. Cronologia della chat, impostazioni, server, certificati, amici e note non vengono mai toccati."
+          ]
+        },
+        {
+          "title": "Miglioramenti",
+          "items": [
+            "La voce gracchia e si interrompe meno sotto carico elevato: Mumcord chiede al sistema la priorità in tempo reale per acquisizione e riproduzione, e un breve intoppo non fa più ripartire tutto l'audio. Le info sulla connessione e il file di diagnostica mostrano interruzioni, pacchetti in ritardo e se l'audio in tempo reale è attivo.",
+            "Le GIF grandi di GIPHY non rallentano più l'app: la chat mostra una versione più piccola e adatta."
+          ]
+        },
+        {
+          "title": "Correzioni",
+          "items": [
+            "Copiare il testo selezionato nella chat funziona di nuovo: il menu del clic destro offre “Copia” per primo, Ctrl+C copia il testo semplice con i suoi a capo e la selezione resta visibile.",
+            "I dati immagine incollati, come uno screenshot di Spectacle o “Copia immagine” da un browser, finiscono di nuovo nella chat su Linux.",
+            "I pulsanti Copia nei blocchi di codice, nell'ispettore di pacchetti e per condividere i temi ora funzionano anche su Linux.",
+            "La cronologia della chat eliminata non torna più tramite la cronologia della chat condivisa quando rientri in un canale.",
+            "Nel layout compatto il titolo della scheda del tema non copre più la sua miniatura, e le schede messaggio non si spostano più."
+          ]
+        }
+      ],
+      "known": [
+        "L'installer per Windows non è ancora firmato."
+      ]
+    },
     {
       "version": "0.4.3",
       "teaser": "Schede messaggio per i bot, incolla immagini con Ctrl+V, i banner di errore si possono chiudere.",
@@ -1475,15 +1531,13 @@
     "title": "Roadmap",
     "description": "La roadmap di Mumcord nel dettaglio: cosa porta ogni epic, cosa è fatto e cosa arriva dopo.",
     "label": "Dove stiamo andando",
-    "intro": "Mumcord si sviluppa per epic. L'Epic 1 si completa con la versione 0.3.0. Ecco cosa porta ogni epic. La roadmap è una proposta: ordine e contenuti possono ancora cambiare.",
+    "intro": "Mumcord cresce per epic: grandi tappe che escono ognuna come versione a sé. Qui vedi cosa è fatto, cosa si sta costruendo adesso e cosa arriva dopo. La roadmap è una proposta: ordine e contenuti possono cambiare.",
     "status": {
       "done": "fatto",
       "now": "in corso",
       "planned": "il prossimo",
       "later": "più avanti"
     },
-    "epicsTitle": "Gli epic",
-    "epicsBody": "L'Epic 1 è il client di tutti i giorni. Dopo arrivano blocchi più grandi, il cui ordine non è ancora fissato.",
     "ideaTitle": "Manca qualcosa?",
     "ideaBody": "Le richieste finiscono nelle issue su GitHub e confluiscono nella pianificazione.",
     "idea": "Proponi una funzione",
@@ -1670,7 +1724,7 @@
       {
         "id": "epic-3",
         "title": "Comfort",
-        "summary": "Rifiniture per chi lo usa tanto e un relay opzionale per le connessioni dirette.",
+        "summary": "Rifiniture per chi lo usa tanto, più tranquillità con il blocco, un filtro dei messaggi e un centro notifiche, più identità, info sul server, un nuovo design per la configurazione guidata, le impostazioni e la watch party, una modalità a bassa latenza per fare musica e un relay opzionale per le connessioni dirette.",
         "groups": [
           {
             "title": "Comfort di tutti i giorni",
@@ -1681,7 +1735,81 @@
               "Sussurrare e gridare ad altri canali",
               "Browser pubblico dei server",
               "Non disturbare: un solo interruttore silenzia notifiche, suoni e pop-up, e continui a sentire le voci",
-              "@all e @channel per menzionare tutti sul server o nel canale"
+              "@all e @channel per menzionare tutti sul server o nel canale",
+              "Cambia microfono e cuffie con il clic destro su disattiva microfono e disattiva audio, con volume e indicatore di livello",
+              "Clic destro su riaggancia: esci dalla voce e continua a leggere, disconnetti un server o tutti",
+              "Riavvia la configurazione guidata senza toccare la tua identità"
+            ],
+            "mockups": [
+              "Scorciatoie globali nelle impostazioni",
+              "Menu completo nell'area di notifica e stati dell'icona",
+              "Importazione delle impostazioni da Mumble",
+              "Sussurrare a un altro canale",
+              "Browser pubblico dei server",
+              "Non disturbare nelle impostazioni rapide",
+              "@channel e @all nel campo del messaggio",
+              "Cambiare dispositivi da disattiva microfono e disattiva audio",
+              "Il menu del pulsante riaggancia",
+              "Riavviare la configurazione guidata"
+            ]
+          },
+          {
+            "title": "Un design tutto nuovo",
+            "items": [
+              "Una nuova configurazione guidata, calma e chiara: preset da “Tutto attivo” a “Massima privacy”, fatto in circa due minuti",
+              "Impostazioni riorganizzate: sezioni meno numerose e più chiare, schede coerenti e una ricerca che trova ogni impostazione",
+              "Watch party e condivisione dello schermo hanno una vista tutta loro, come al cinema, con timeline, volume, playlist e chi sta guardando",
+              "Sposta un video o uno schermo condiviso in una finestra tutta sua, su un secondo monitor o sopra un gioco, se vuoi sempre in primo piano",
+              "Richiudi la colonna destra del tutto o in una sottile barra di avatar, così la chat ha più spazio"
+            ],
+            "mockups": [
+              "La nuova configurazione guidata",
+              "I preset nella configurazione guidata",
+              "Nuove impostazioni: voce e audio",
+              "Nuove impostazioni: privacy e connessioni",
+              "Guardare insieme nella nuova vista",
+              "Guardare uno schermo condiviso",
+              "Un video in una finestra tutta sua",
+              "La colonna destra come barra sottile"
+            ]
+          },
+          {
+            "title": "Tranquillità e privacy",
+            "items": [
+              "Blocca le persone: niente più messaggi, voce o inviti da parte loro, riconosciute dal certificato anziché dal nome",
+              "Messaggi privati solo dagli amici, da tutti o da nessuno, anche per server. Gli sconosciuti finiscono nelle richieste di messaggio",
+              "Un centro notifiche dietro una campanella raccoglie menzioni, risposte, richieste e inviti da tutti i server e, durante Non disturbare, tutto ciò che altrimenti comparirebbe",
+              "Le watch party non caricano nulla da YouTube o Twitch finché i contenuti incorporati sono disattivati"
+            ],
+            "mockups": [
+              "Bloccare una persona",
+              "Una richiesta di messaggio da uno sconosciuto",
+              "Centro notifiche"
+            ]
+          },
+          {
+            "title": "Server e identità",
+            "items": [
+              "Gestisci più identità e scegli per ogni server con quale connetterti",
+              "Una finestra ordinata per aggiungere e modificare i server, con identità e “Prova connessione”",
+              "Info sul server: versione, limiti, certificato e i tuoi permessi a colpo d'occhio, senza modifiche al server",
+              "Le password dei canali salvate mostrano a quale canale appartengono e puoi dar loro un nome"
+            ],
+            "mockups": [
+              "Gestire più identità",
+              "La nuova finestra dei server",
+              "Info sul server"
+            ]
+          },
+          {
+            "title": "Suono e musica",
+            "items": [
+              "Clic destro sulle info sulla connessione: imposta bitrate, qualità musica e modalità a bassa latenza direttamente nella conversazione",
+              "Modalità a bassa latenza per fare musica insieme: circa 40 invece di 90 ms dalla bocca all'orecchio, anche sui server Mumble standard"
+            ],
+            "mockups": [
+              "La qualità della voce direttamente nelle info sulla connessione",
+              "Modalità a bassa latenza"
             ]
           },
           {
@@ -1691,6 +1819,9 @@
               "Il contenuto resta cifrato end-to-end; il relay si limita a passare i byte e fa entrare solo gli utenti del proprio server",
               "Facoltativo: una community può gestire il relay insieme a Mumbot. Senza relay tutto funziona come prima",
               "Scegli tu: relay spento, solo quando la connessione diretta non riesce, oppure sempre, così il tuo indirizzo IP resta nascosto"
+            ],
+            "mockups": [
+              "Impostazione del relay e info sulla connessione"
             ]
           }
         ]
@@ -1725,7 +1856,17 @@
           "Le opzioni sono un piccolo servizio relay o una tua chiave; da decidere più avanti"
         ]
       }
-    ]
+    ],
+    "doneTitle": "Fatto",
+    "nextTitle": "Il prossimo",
+    "laterTitle": "Più avanti",
+    "delivered": "{n} cose consegnate",
+    "showAll": "Mostra tutto",
+    "statDone": "Epic completati",
+    "statReleases": "Versioni",
+    "statNext": "Prossimo obiettivo",
+    "mockupsTitle": "Bozzetti dalle issue",
+    "mockupsNote": "Bozzetti di design, non definitivi. Nomi e contenuti sono inventati."
   },
   "games": {
     "title": "Giochi",

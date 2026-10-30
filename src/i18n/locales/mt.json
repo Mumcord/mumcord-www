@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Kumdità",
-          "body": "Hotkeys globali, menu sħiħ fit-tray, importazzjoni mill-client uffiċjali, whisper, browser tas-servers, Do Not Disturb, @all u @channel, u relay mhux obbligatorju għal konnessjonijiet diretti."
+          "body": "Hotkeys globali, menu sħiħ fit-tray, importazzjoni mill-client uffiċjali, whisper, browser tas-servers, Do Not Disturb, @all u @channel, imblukkar, messaġġi privati mill-ħbieb biss, ċentru tan-notifiki, diversi identitajiet, informazzjoni tas-server, disinn ġdid għall-wizard, is-settings u l-watch party, mod ta’ latency baxxa biex tagħmel il-mużika, u relay mhux obbligatorju għal konnessjonijiet diretti."
         },
         {
           "tag": "Epic 4",
@@ -821,6 +821,17 @@
             "id": "paste-images",
             "title": "Waħħal stampi b’Ctrl+V",
             "body": "Screenshots, “Ikkopja l-istampa” mill-browser u fajls ta’ stampi kkupjati fil-file manager jidħlu dritt fil-kaxxa tal-messaġġ bħala attachment b’Ctrl+V."
+          },
+          {
+            "id": "code-blocks",
+            "title": "Blokki tal-kodiċi b’Ikkopja u Download",
+            "body": "Ikteb il-lingwa wara t-tliet backticks, minn sql, rust u php sa cmd, Dockerfile u hex dumps, u l-blokk jiġi enfasizzat eżatt hekk. Il-buttuni fil-kantuniera jikkupjaw il-kodiċi jew isalvawh bħala fajl.",
+            "alt": "Blokk tal-kodiċi SQL bit-tikketta tal-lingwa u l-buttuni Ikkopja u Download fil-kantuniera"
+          },
+          {
+            "id": "image-menu",
+            "title": "Ikkopja u salva l-istampi",
+            "body": "Right-click fuq stampa fiċ-chat jew fil-viewer tal-istampi: ikkopja l-istampa, salva l-istampa fl-oriġinal tagħha, GIF bl-animazzjoni tiegħu, ikkopja l-indirizz tal-istampa jew iftaħha fil-viewer."
           }
         ]
       },
@@ -862,6 +873,11 @@
             "id": "bitrate",
             "title": "Bitrate bl-idejn",
             "body": "Slider apposta minn 16 kbit/s sal-ogħla valur li jippermettu s-server u Mumble. Meta jintilfu l-pakketti, Mumcord xorta jbaxxih waħdu."
+          },
+          {
+            "id": "realtime-audio",
+            "title": "Stabbli taħt tagħbija",
+            "body": "Ir-reġistrazzjoni u d-daqq jieħdu prijorità real-time, għalhekk il-leħen iqarqaċ u jaqta’ inqas waqt li logħba jew build iżommu l-kompjuter okkupat. L-informazzjoni tal-konnessjoni turi l-qtugħ u jekk l-awdjo real-time huwiex mixgħul."
           }
         ]
       },
@@ -1070,12 +1086,52 @@
             "title": "Packet inspector għad-debugging",
             "body": "Moħbi għall-iżviluppaturi: seba’ klikks fuq il-verżjoni f’Settings → Dwar jiftħuh. F’tieqa għalih, juri liema data ta’ Mumcord tintbagħat u tasal, b’filtri, counters u esportazzjoni bħala JSON jew Markdown.",
             "alt": "Packet inspector b’filtri, counters skont it-tip u d-direzzjoni u ringiela waħda ta’ pakkett miftuħa"
+          },
+          {
+            "id": "clear-cache",
+            "title": "Naddaf il-cache",
+            "body": "Settings → Privatezza juri kemm jieħdu spazju l-previews tal-links, l-istampi u l-web engine, u jnaddafhom b’buttuna, anke wieħed wieħed. L-istorja taċ-chat, is-servers, il-ħbieb u n-noti qatt ma jintmessu."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.4",
+      "teaser": "Ikkopja u niżżel il-kodiċi, salva l-istampi b’right-click, naddaf il-cache, leħen aktar stabbli taħt tagħbija.",
+      "summary": "Aġġornament għaċ-chat ta’ kuljum: blokki tal-kodiċi b’ikkopja, download u aktar lingwi, ikkopja u salva l-istampi b’right-click, u buttuna biex tnaddaf il-cache. U l-leħen iqarqaċ inqas taħt tagħbija, u l-copy u paste jerġgħu jaħdmu b’mod affidabbli.",
+      "groups": [
+        {
+          "title": "Ġdid",
+          "items": [
+            "Il-blokki tal-kodiċi għandhom buttuni Ikkopja u Download fil-kantuniera. Il-lingwa wara t-tliet backticks, bħal sql, rust jew php, tiġi enfasizzata eżatt hekk u tidher fil-kantuniera. Fost il-ġodda hemm PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx u hex dumps.",
+            "Right-click fuq stampa fiċ-chat: ikkopja l-istampa, salva l-istampa, ikkopja l-indirizz tal-istampa u iftaħ fil-viewer tal-istampi. Il-viewer tal-istampi għandu l-istess buttuni. Is-salvataġġ iżomm l-oriġinal, GIF bl-animazzjoni tiegħu.",
+            "Settings → Privatezza juri kemm jieħdu spazju l-caches u jnaddafhom b’buttuna, anke waħda waħda. L-istorja taċ-chat, is-settings, is-servers, iċ-ċertifikati, il-ħbieb u n-noti qatt ma jintmessu."
+          ]
+        },
+        {
+          "title": "Imtejjeb",
+          "items": [
+            "Il-leħen iqarqaċ u jaqta’ inqas taħt tagħbija qawwija: Mumcord jitlob lis-sistema prijorità real-time għar-reġistrazzjoni u d-daqq, u waqfa qasira ma tibqax terġa’ tibda l-awdjo kollu. L-informazzjoni tal-konnessjoni u l-fajl dijanjostiku juru l-qtugħ, il-pakketti li jaslu tard u jekk l-awdjo real-time huwiex mixgħul.",
+            "GIFs kbar minn GIPHY ma jibqgħux idewmu l-app: iċ-chat juri verżjoni iżgħar li tidħol sew."
+          ]
+        },
+        {
+          "title": "Imsewwi",
+          "items": [
+            "L-ikkupjar ta’ test magħżul fiċ-chat jerġa’ jaħdem: il-menu tar-right-click joffri “Ikkopja” l-ewwel, Ctrl+C jikkopja t-test sempliċi bil-qtugħ tal-linji tiegħu, u l-għażla tibqa’ tidher.",
+            "Data ta’ stampa mwaħħla, bħal screenshot ta’ Spectacle jew “Ikkopja l-istampa” f’browser, terġa’ tasal fiċ-chat fuq Linux.",
+            "Il-buttuni Ikkopja fuq il-blokki tal-kodiċi, fil-packet inspector u biex taqsam it-temi issa jaħdmu anke fuq Linux.",
+            "L-istorja taċ-chat imħassra ma tibqax terġa’ lura permezz tas-sync tal-istorja meta terġa’ tidħol f’kanal.",
+            "Fil-layout kompatt it-titlu tal-card tat-tema ma jibqax ikopri t-thumbnail tagħha, u l-cards tal-messaġġi ma jibqgħux jiċċaqilqu."
+          ]
+        }
+      ],
+      "known": [
+        "L-installer ta’ Windows għadu mhux iffirmat."
+      ]
+    },
     {
       "version": "0.4.3",
       "teaser": "Cards tal-messaġġi għall-bots, waħħal stampi b’Ctrl+V, il-banners tal-iżbalji jistgħu jingħalqu.",
@@ -1475,15 +1531,13 @@
     "title": "Pjan",
     "description": "Il-pjan ta’ Mumcord fid-dettall: x’iġib kull epic, x’sar diġà u x’ġej wara.",
     "label": "Fejn sejrin",
-    "intro": "Mumcord jinbena f’epics. L-Epic 1 jitlesta bil-verżjoni 0.3.0. Dan huwa dak li jġib kull epic. Il-pjan huwa proposta: l-ordni u l-ambitu għadhom jistgħu jinbidlu.",
+    "intro": "Mumcord jikber f’epics: stadji kbar li kull wieħed joħroġ bħala verżjoni tiegħu. Hawn tara x’inhu lest, x’qed jinbena bħalissa u x’jiġi wara. Il-pjan huwa proposta: l-ordni u l-ambitu jistgħu jinbidlu.",
     "status": {
       "done": "lest",
       "now": "għaddej",
       "planned": "li jmiss",
       "later": "aktar tard"
     },
-    "epicsTitle": "L-epics",
-    "epicsBody": "L-Epic 1 huwa l-client ta’ kuljum. Wara jiġu blokki akbar li l-ordni tagħhom għadha mhix deċiża.",
     "ideaTitle": "Hemm xi ħaġa nieqsa?",
     "ideaBody": "It-talbiet imorru fl-issues fuq GitHub u jgħinu fl-ippjanar.",
     "idea": "Itlob karatteristika",
@@ -1670,7 +1724,7 @@
       {
         "id": "epic-3",
         "title": "Kumdità",
-        "summary": "Irfinar għal min jużah ħafna u relay mhux obbligatorju għal konnessjonijiet diretti.",
+        "summary": "Irfinar għal min jużah ħafna, aktar paċi bl-imblukkar, filtru tal-messaġġi u ċentru tan-notifiki, diversi identitajiet, informazzjoni tas-server, disinn ġdid għall-wizard, is-settings u l-watch party, mod ta’ latency baxxa biex tagħmel il-mużika, u relay mhux obbligatorju għal konnessjonijiet diretti.",
         "groups": [
           {
             "title": "Kumdità ta’ kuljum",
@@ -1681,7 +1735,81 @@
               "Whisper u shout lil kanali oħra",
               "Browser pubbliku tas-servers",
               "Do Not Disturb: swiċċ wieħed isikket in-notifiki, il-ħsejjes u l-pop-ups, u l-vuċijiet xorta tismagħhom",
-              "@all u @channel biex issemmi lil kulħadd fuq is-server jew fil-kanal"
+              "@all u @channel biex issemmi lil kulħadd fuq is-server jew fil-kanal",
+              "Biddel il-mikrofonu u l-headphones b’right-click fuq mute u deafen, bil-volum u indikatur tal-livell",
+              "Right-click fuq hang up: oħroġ mill-leħen u ibqa’ aqra, iddiskonnettja server wieħed jew kollha",
+              "Erġa’ ħaddem il-wizard tas-setup mingħajr ma tmiss l-identità tiegħek"
+            ],
+            "mockups": [
+              "Shortcuts globali fis-settings",
+              "Menu sħiħ fit-tray u l-istati tal-ikona",
+              "Importa s-settings minn Mumble",
+              "Whisper lil kanal ieħor",
+              "Browser pubbliku tas-servers",
+              "Do Not Disturb fis-settings ta’ malajr",
+              "@channel u @all fil-kaxxa tal-messaġġ",
+              "Biddel l-apparati minn mute u deafen",
+              "Il-menu tal-buttuna hang up",
+              "Erġa’ ħaddem il-wizard tas-setup"
+            ]
+          },
+          {
+            "title": "Disinn ġdid",
+            "items": [
+              "Wizard tas-setup ġdid, kalm u ċar: presets minn “Kollox mixgħul” sa “Privatezza massima”, lest f’madwar żewġ minuti",
+              "Settings organizzati mill-ġdid: sezzjonijiet inqas u aktar ċari, cards konsistenti u tfittxija li ssib kull setting",
+              "Il-watch party u s-screen sharing jieħdu veduta tagħhom bħal fiċ-ċinema, b’timeline, volum, playlist u min qed jara",
+              "Oħroġ video jew skrin maqsum fit-tieqa tiegħu, fuq it-tieni monitor jew fuq logħba, dejjem fuq nett jekk trid",
+              "Agħlaq il-kolonna tal-lemin għal kollox jew għal strixxa rqiqa ta’ avatars, biex iċ-chat ikollu aktar spazju"
+            ],
+            "mockups": [
+              "Il-wizard tas-setup il-ġdid",
+              "Presets fil-wizard",
+              "Settings ġodda: leħen u awdjo",
+              "Settings ġodda: privatezza u konnessjonijiet",
+              "Naraw flimkien fil-veduta l-ġdida",
+              "Tara skrin maqsum",
+              "Video fit-tieqa tiegħu",
+              "Il-kolonna tal-lemin bħala strixxa rqiqa"
+            ]
+          },
+          {
+            "title": "Paċi u privatezza",
+            "items": [
+              "Imblokka n-nies: l-ebda messaġġi, leħen jew stediniet aktar mingħandhom, magħrufa miċ-ċertifikat tagħhom minflok mill-isem",
+              "Messaġġi privati mill-ħbieb biss, minn kulħadd jew minn ħadd, anke għal kull server. Il-barranin jispiċċaw fit-talbiet għal messaġġi",
+              "Ċentru tan-notifiki wara qanpiena jiġbor il-mentions, it-tweġibiet, it-talbiet u l-istediniet minn kull server, u waqt Do Not Disturb kull ma kien se jitfaċċa",
+              "Il-watch parties ma jtellgħu xejn minn YouTube jew Twitch sakemm il-kontenut embedded ikun mitfi"
+            ],
+            "mockups": [
+              "Imblokka persuna",
+              "Talba għal messaġġ minn barrani",
+              "Ċentru tan-notifiki"
+            ]
+          },
+          {
+            "title": "Servers u identitajiet",
+            "items": [
+              "Immaniġġja diversi identitajiet u agħżel għal kull server b’liema waħda tikkonnettja",
+              "Dialog irranġat biex iżżid u tbiddel is-servers, bl-identità u “Ittestja l-konnessjoni”",
+              "Informazzjoni tas-server: verżjoni, limiti, ċertifikat u l-permessi tiegħek f’daqqa t’għajn, mingħajr ebda bidla fis-server",
+              "Il-passwords tal-kanali salvati juru għal liema kanal huma u tista’ tagħtihom isem"
+            ],
+            "mockups": [
+              "Immaniġġja diversi identitajiet",
+              "Id-dialog il-ġdid tas-server",
+              "Informazzjoni tas-server"
+            ]
+          },
+          {
+            "title": "Ħoss u mużika",
+            "items": [
+              "Right-click fuq l-informazzjoni tal-konnessjoni: issettja l-bitrate, il-kwalità tal-mużika u l-mod ta’ latency baxxa dritt fil-konversazzjoni",
+              "Mod ta’ latency baxxa biex tagħmlu l-mużika flimkien: madwar 40 minflok 90 ms mill-ħalq sal-widna, anke fuq servers standard ta’ Mumble"
+            ],
+            "mockups": [
+              "Il-kwalità tal-leħen dritt fl-informazzjoni tal-konnessjoni",
+              "Mod ta’ latency baxxa"
             ]
           },
           {
@@ -1691,6 +1819,9 @@
               "Il-kontenut jibqa’ encrypted end-to-end; ir-relay jgħaddi l-bytes biss u jdaħħal biss utenti tas-server tiegħu stess",
               "Mhux obbligatorju: komunità tista’ tħaddem ir-relay flimkien ma’ Mumbot. Mingħajr relay kollox jaħdem bħal qabel",
               "Inti tagħżel: relay mitfi, biss meta l-konnessjoni diretta ma tirnexxix, jew dejjem, biex l-indirizz IP tiegħek jibqa’ moħbi"
+            ],
+            "mockups": [
+              "Is-setting tar-relay u l-informazzjoni tal-konnessjoni"
             ]
           }
         ]
@@ -1725,7 +1856,17 @@
           "L-għażliet huma servizz relay żgħir jew il-key tiegħek stess; jiġi deċiż aktar tard"
         ]
       }
-    ]
+    ],
+    "doneTitle": "Lest",
+    "nextTitle": "Li jmiss",
+    "laterTitle": "Aktar tard",
+    "delivered": "Imwettqa: {n}",
+    "showAll": "Uri kollox",
+    "statDone": "Epics lesti",
+    "statReleases": "Ħarġiet",
+    "statNext": "Il-mira li jmiss",
+    "mockupsTitle": "Skeċċijiet mill-issues",
+    "mockupsNote": "Skeċċijiet tad-disinn, mhux finali. L-ismijiet u l-kontenut huma inventati."
   },
   "games": {
     "title": "Logħob",

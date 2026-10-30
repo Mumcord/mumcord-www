@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Mukavuus",
-          "body": "Globaalit pikanäppäimet, täysi ilmoitusalueen valikko, tuonti virallisesta sovelluksesta, kuiskaus, palvelinselain, ”Älä häiritse”, @all ja @channel sekä valinnainen välityspalvelin suoria yhteyksiä varten."
+          "body": "Globaalit pikanäppäimet, täysi ilmoitusalueen valikko, tuonti virallisesta sovelluksesta, kuiskaus, palvelinselain, ”Älä häiritse”, @all ja @channel, estäminen, yksityisviestit vain kavereilta, ilmoituskeskus, useita identiteettejä, palvelimen tiedot, raikas ulkoasu ohjatulle käyttöönotolle, asetuksille ja watch partylle, matalan viiveen tila musisointiin sekä valinnainen välityspalvelin suoria yhteyksiä varten."
         },
         {
           "tag": "Epic 4",
@@ -821,6 +821,17 @@
             "id": "paste-images",
             "title": "Liitä kuvia Ctrl+V:llä",
             "body": "Kuvakaappaukset, selaimen ”Kopioi kuva” ja tiedostonhallinnassa kopioidut kuvatiedostot menevät Ctrl+V:llä suoraan viestikenttään liitteeksi."
+          },
+          {
+            "id": "code-blocks",
+            "title": "Koodilohkot, joissa Kopioi ja Lataa",
+            "body": "Kirjoita kieli kolmen backtick-merkin perään, sql:stä, rustista ja php:stä cmd:hen, Dockerfileen ja heksadumppeihin, niin lohko korostetaan juuri sellaisena. Kulman painikkeet kopioivat koodin tai tallentavat sen tiedostoksi.",
+            "alt": "SQL-koodilohko, jonka kulmassa on kielimerkintä sekä Kopioi- ja Lataa-painikkeet"
+          },
+          {
+            "id": "image-menu",
+            "title": "Kuvien kopiointi ja tallennus",
+            "body": "Klikkaa kuvaa hiiren oikealla chatissa tai kuvankatseluohjelmassa: kopioi kuva, tallenna kuva alkuperäisenä, GIF animaatioineen, kopioi kuvan osoite tai avaa se katseluohjelmassa."
           }
         ]
       },
@@ -862,6 +873,11 @@
             "id": "bitrate",
             "title": "Bittinopeus käsin",
             "body": "Oma liukusäädin 16 kbit/s:sta aina suurimpaan arvoon, jonka palvelin ja Mumble sallivat. Pakettihävikin sattuessa Mumcord laskee sitä silti itse."
+          },
+          {
+            "id": "realtime-audio",
+            "title": "Vakaa kuormituksessa",
+            "body": "Äänen tallennus ja toisto saavat reaaliaikaisen prioriteetin, joten puheääni rätisee ja katkeilee vähemmän, kun peli tai buildi pitää koneen kiireisenä. Yhteyden tiedot näyttävät katkokset ja sen, onko reaaliaikainen ääni päällä."
           }
         ]
       },
@@ -1070,12 +1086,52 @@
             "title": "Pakettitarkastin vianetsintään",
             "body": "Piilotettu kehittäjille: seitsemän klikkausta versionumeroon kohdassa Asetukset → Tietoja avaa sen. Omassa ikkunassaan se näyttää, mitä Mumcord-dataa lähetetään ja vastaanotetaan, suodattimien, laskurien sekä JSON- tai Markdown-viennin kera.",
             "alt": "Pakettitarkastin suodattimineen, laskureineen tyypin ja suunnan mukaan sekä yksi pakettirivi avattuna"
+          },
+          {
+            "id": "clear-cache",
+            "title": "Välimuistin tyhjennys",
+            "body": "Asetukset → Yksityisyys näyttää, paljonko tilaa linkkien esikatselut, kuvat ja selainmoottori vievät, ja tyhjentää ne napin painalluksella, myös yksitellen. Chat-historiaan, palvelimiin, kavereihin ja muistiinpanoihin ei kosketa."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.4",
+      "teaser": "Kopioi ja lataa koodia, tallenna kuvia hiiren oikealla, tyhjennä välimuisti, vakaampi puheääni kuormituksessa.",
+      "summary": "Päivitys arjen chattiin: koodilohkot, joissa on kopiointi, lataus ja lisää kieliä, kuvien kopiointi ja tallennus hiiren oikealla sekä painike välimuistin tyhjentämiseen. Lisäksi puheääni rätisee kuormituksessa vähemmän, ja kopiointi ja liittäminen toimivat taas luotettavasti.",
+      "groups": [
+        {
+          "title": "Uutta",
+          "items": [
+            "Koodilohkojen kulmassa on Kopioi- ja Lataa-painikkeet. Kolmen backtick-merkin jälkeen kirjoitettu kieli, kuten sql, rust tai php, korostetaan juuri sellaisena ja näytetään kulmassa. Uusia ovat muun muassa PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx ja heksadumpit.",
+            "Klikkaa chatin kuvaa hiiren oikealla: kopioi kuva, tallenna kuva, kopioi kuvan osoite ja avaa kuvankatseluohjelmassa. Kuvankatseluohjelmassa on samat painikkeet. Tallennus säilyttää alkuperäisen, GIFin animaatioineen.",
+            "Asetukset → Yksityisyys näyttää, paljonko tilaa välimuistit vievät, ja tyhjentää ne napin painalluksella, myös yksitellen. Chat-historiaan, asetuksiin, palvelimiin, varmenteisiin, kavereihin ja muistiinpanoihin ei kosketa."
+          ]
+        },
+        {
+          "title": "Parannettu",
+          "items": [
+            "Puheääni rätisee ja katkeilee raskaassa kuormituksessa harvemmin: Mumcord pyytää järjestelmältä reaaliaikaista prioriteettia äänen tallennukselle ja toistolle, eikä lyhyt katkos enää käynnistä koko ääntä uudelleen. Yhteyden tiedot ja diagnostiikkatiedosto näyttävät katkokset, myöhästyneet paketit ja sen, onko reaaliaikainen ääni päällä.",
+            "Suuret GIPHYn GIFit eivät enää hidasta sovellusta: chat näyttää pienemmän, sopivan version."
+          ]
+        },
+        {
+          "title": "Korjattu",
+          "items": [
+            "Valitun chat-tekstin kopiointi toimii taas: hiiren oikean painikkeen valikossa ”Kopioi” on ensimmäisenä, Ctrl+C kopioi pelkän tekstin rivinvaihtoineen, ja valinta pysyy näkyvissä.",
+            "Liitetty kuvadata, kuten Spectaclen kuvakaappaus tai selaimen ”Kopioi kuva”, päätyy taas chattiin Linuxissa.",
+            "Kopioi-painikkeet koodilohkoissa, pakettitarkastimessa ja teemojen jakamisessa toimivat nyt myös Linuxissa.",
+            "Poistettu chat-historia ei enää palaa jaetun chat-historian kautta, kun liityt kanavalle uudelleen.",
+            "Tiiviissä asettelussa teemakortin otsikko ei enää peitä sen pikkukuvaa, eivätkä viestikortit enää siirry."
+          ]
+        }
+      ],
+      "known": [
+        "Windowsin asennusohjelma on yhä allekirjoittamaton."
+      ]
+    },
     {
       "version": "0.4.3",
       "teaser": "Viestikortit boteille, kuvien liittäminen Ctrl+V:llä, virhebannerit voi sulkea.",
@@ -1146,7 +1202,7 @@
           "title": "macOS",
           "items": [
             "Yhteydet toimivat taas: Mumcord pyytää nyt Paikallinen verkko -lupaa. Ilman sitä macOS 15 ja uudemmat estivät yhteydet kotiverkon palvelimiin.",
-            "Selkeät syyt, kun yhteys epäonnistuu, sekä sovelluksessa että lokissa, esimerkiksi ”No route to host” ja ohje kohtaan Järjestelmäasetukset → Tietosuoja ja turvallisuus → Paikallinen verkko.",
+            "Selkeät syyt, kun yhteys epäonnistuu, sekä sovelluksessa että lokissa, esimerkiksi ”No route to host” ja ohje kohtaan Järjestelmäasetukset → Yksityisyys ja turvallisuus → Paikallinen verkko.",
             "Paljon vähemmän avainnipun kyselyjä: jokainen tallennettu salaisuus luetaan vain kerran istunnossa, ja Mumcord käyttää vähemmän avainnipun kohteita. Vanhempien versioiden kohteet yhdistetään ensimmäisellä käyttökerralla.",
             "Mikrofonikysely näkyy vain kerran, kun mikrofonia käytetään ensimmäistä kertaa, ei silloin kun laitteet listataan käyttöönottoavustajassa tai asetuksissa.",
             "Diagnostiikkasivu listaa äänilaitteet taas, vaikka ääntä ei olisi käynnissä.",
@@ -1475,15 +1531,13 @@
     "title": "Tiekartta",
     "description": "Mumcordin tiekartta yksityiskohtaisesti: mitä kukin eepos tuo, mikä on valmista ja mitä tulee seuraavaksi.",
     "label": "Mihin ollaan menossa",
-    "intro": "Mumcordia rakennetaan eepoksina. Epic 1 valmistuu versiossa 0.3.0. Tässä on, mitä kukin eepos tuo. Tiekartta on ehdotus: järjestys ja laajuus voivat vielä muuttua.",
+    "intro": "Mumcord kasvaa eepoksina: suurina vaiheina, joista jokainen julkaistaan omana versionaan. Täältä näet, mikä on valmista, mitä rakennetaan juuri nyt ja mitä tulee sen jälkeen. Tiekartta on ehdotus, järjestys ja laajuus voivat muuttua.",
     "status": {
       "done": "valmis",
       "now": "työn alla",
       "planned": "seuraavaksi",
       "later": "myöhemmin"
     },
-    "epicsTitle": "Eepokset",
-    "epicsBody": "Epic 1 on arjen sovellus. Sen jälkeen tulevat isommat kokonaisuudet, joiden järjestystä ei ole vielä lyöty lukkoon.",
     "ideaTitle": "Puuttuuko jotain?",
     "ideaBody": "Toiveet kirjataan GitHubin issueihin, ja ne otetaan huomioon suunnittelussa.",
     "idea": "Ehdota ominaisuutta",
@@ -1670,7 +1724,7 @@
       {
         "id": "epic-3",
         "title": "Mukavuus",
-        "summary": "Hiomista ahkerille käyttäjille ja valinnainen välityspalvelin suoria yhteyksiä varten.",
+        "summary": "Hiomista ahkerille käyttäjille, enemmän rauhaa estämisen, viestisuodattimen ja ilmoituskeskuksen avulla, useita identiteettejä, palvelimen tiedot, raikas ulkoasu ohjatulle käyttöönotolle, asetuksille ja watch partylle, matalan viiveen tila musisointiin sekä valinnainen välityspalvelin suoria yhteyksiä varten.",
         "groups": [
           {
             "title": "Arjen mukavuus",
@@ -1681,7 +1735,81 @@
               "Kuiskaus ja huuto muille kanaville",
               "Julkinen palvelinselain",
               "Älä häiritse: yksi kytkin hiljentää ilmoitukset, äänet ja ponnahdusikkunat, ja kuulet silti puheäänet",
-              "@all ja @channel, joilla mainitset kaikki palvelimella tai kanavalla"
+              "@all ja @channel, joilla mainitset kaikki palvelimella tai kanavalla",
+              "Mikrofonin ja kuulokkeiden vaihto oikealla klikkauksella mykistys- ja kuuroutuspainikkeesta, äänenvoimakkuuden ja tasomittarin kera",
+              "Oikea klikkaus lopetuspainikkeeseen: poistu puheesta ja jatka lukemista, katkaise yhteys yhteen palvelimeen tai kaikkiin",
+              "Ohjatun käyttöönoton uudelleenajo koskematta identiteettiisi"
+            ],
+            "mockups": [
+              "Globaalit pikanäppäimet asetuksissa",
+              "Täysi ilmoitusalueen valikko ja kuvakkeen tilat",
+              "Asetusten tuonti Mumblesta",
+              "Kuiskaus toiselle kanavalle",
+              "Julkinen palvelinselain",
+              "Älä häiritse pika-asetuksissa",
+              "@channel ja @all viestikentässä",
+              "Laitteiden vaihto mykistys- ja kuuroutuspainikkeista",
+              "Lopetuspainikkeen valikko",
+              "Ohjatun käyttöönoton uudelleenajo"
+            ]
+          },
+          {
+            "title": "Raikas ulkoasu",
+            "items": [
+              "Uusi ohjattu käyttöönotto, rauhallinen ja selkeä: esiasetukset ”Kaikki päällä” -asetuksesta ”Suurin tietosuoja” -asetukseen, valmista noin kahdessa minuutissa",
+              "Asetukset uudelleen järjestettyinä: vähemmän ja selkeämpiä osioita, yhtenäiset kortit ja haku, joka löytää jokaisen asetuksen",
+              "Watch party ja näytön jakaminen saavat oman elokuvateatterimaisen näkymän, jossa on aikajana, äänenvoimakkuus, soittolista ja tieto siitä, kuka katsoo",
+              "Irrota video tai jaettu näyttö omaan ikkunaansa, toiselle näytölle tai pelin päälle, halutessasi aina päällimmäiseksi",
+              "Taita oikea sarake kokonaan kokoon tai kapeaksi avatarpalkiksi, niin chatille jää enemmän tilaa"
+            ],
+            "mockups": [
+              "Uusi ohjattu käyttöönotto",
+              "Esiasetukset ohjatussa käyttöönotossa",
+              "Uudet asetukset: puhe ja ääni",
+              "Uudet asetukset: tietosuoja ja yhteydet",
+              "Yhdessä katsominen uudessa näkymässä",
+              "Jaetun näytön katsominen",
+              "Video omassa ikkunassaan",
+              "Oikea sarake kapeana palkkina"
+            ]
+          },
+          {
+            "title": "Rauhaa ja yksityisyyttä",
+            "items": [
+              "Estä ihmisiä: ei enää viestejä, puheääntä tai kutsuja heiltä, tunnistetaan varmenteesta eikä nimestä",
+              "Yksityisviestit vain kavereilta, kaikilta tai ei keneltäkään, myös palvelinkohtaisesti. Tuntemattomat päätyvät viestipyyntöihin",
+              "Kellon takana oleva ilmoituskeskus kokoaa maininnat, vastaukset, pyynnöt ja kutsut kaikilta palvelimilta, ja ”Älä häiritse” -tilan aikana kaiken, mikä muuten ponnahtaisi esiin",
+              "Watch partyt eivät lataa mitään YouTubesta tai Twitchistä, kun upotettu sisältö on pois päältä"
+            ],
+            "mockups": [
+              "Ihmisen estäminen",
+              "Viestipyyntö tuntemattomalta",
+              "Ilmoituskeskus"
+            ]
+          },
+          {
+            "title": "Palvelimet ja identiteetit",
+            "items": [
+              "Useiden identiteettien hallinta ja palvelinkohtainen valinta, millä niistä yhdistät",
+              "Selkeä ikkuna palvelinten lisäämiseen ja muokkaamiseen, identiteetin ja ”Testaa yhteys” -painikkeen kera",
+              "Palvelimen tiedot: versio, rajat, varmenne ja oikeutesi yhdellä silmäyksellä, ilman mitään muutoksia palvelimeen",
+              "Tallennetut kanavasalasanat näyttävät, mihin kanavaan ne kuuluvat, ja ne voi nimetä"
+            ],
+            "mockups": [
+              "Useiden identiteettien hallinta",
+              "Uusi palvelinikkuna",
+              "Palvelimen tiedot"
+            ]
+          },
+          {
+            "title": "Ääni ja musiikki",
+            "items": [
+              "Oikea klikkaus yhteyden tietoihin: säädä bittinopeus, musiikkilaatu ja matalan viiveen tila suoraan keskustelussa",
+              "Matalan viiveen tila yhteiseen musisointiin: suusta korvaan noin 40 ms 90:n sijaan, myös tavallisilla Mumble-palvelimilla"
+            ],
+            "mockups": [
+              "Äänenlaatu suoraan yhteyden tiedoissa",
+              "Matalan viiveen tila"
             ]
           },
           {
@@ -1691,6 +1819,9 @@
               "Sisältö pysyy päästä päähän salattuna; välityspalvelin vain välittää tavuja eteenpäin ja päästää sisään vain oman palvelimensa käyttäjät",
               "Valinnainen: yhteisö voi ajaa välityspalvelinta yhdessä Mumbotin kanssa. Ilman sitä kaikki toimii kuten ennenkin",
               "Sinä päätät: välityspalvelin pois, vain kun suora yhteys epäonnistuu, tai aina, jolloin IP-osoitteesi pysyy piilossa"
+            ],
+            "mockups": [
+              "Välityspalvelimen asetus ja yhteyden tiedot"
             ]
           }
         ]
@@ -1725,7 +1856,17 @@
           "Vaihtoehtoina pieni välityspalvelu tai oma avain; päätetään myöhemmin"
         ]
       }
-    ]
+    ],
+    "doneTitle": "Valmiina",
+    "nextTitle": "Seuraavaksi",
+    "laterTitle": "Sen jälkeen",
+    "delivered": "{n} asiaa toimitettu",
+    "showAll": "Näytä kaikki",
+    "statDone": "Valmiit eepokset",
+    "statReleases": "Julkaisut",
+    "statNext": "Seuraava tavoite",
+    "mockupsTitle": "Luonnoksia issueista",
+    "mockupsNote": "Suunnitteluluonnoksia, eivät lopullisia. Nimet ja sisältö ovat keksittyjä."
   },
   "games": {
     "title": "Pelit",

@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Pohodlí",
-          "body": "Globální klávesové zkratky, plné menu v systémové liště, import z oficiálního klienta, šeptání, prohlížeč serverů, „Nerušit“, @all a @channel a k tomu volitelný relay pro přímá spojení."
+          "body": "Globální klávesové zkratky, plné menu v systémové liště, import z oficiálního klienta, šeptání, prohlížeč serverů, „Nerušit“, @all a @channel, blokování, soukromé zprávy jen od přátel, centrum upozornění, více identit, informace o serveru, svěží design průvodce, nastavení a watch party, režim nízké latence pro hraní hudby a k tomu volitelný relay pro přímá spojení."
         },
         {
           "tag": "Epic 4",
@@ -821,6 +821,17 @@
             "id": "paste-images",
             "title": "Vkládání obrázků přes Ctrl+V",
             "body": "Snímky obrazovky, „Kopírovat obrázek“ z prohlížeče i soubory s obrázky zkopírované ve správci souborů skončí přes Ctrl+V rovnou v poli pro zprávu jako příloha."
+          },
+          {
+            "id": "code-blocks",
+            "title": "Bloky kódu s tlačítky Kopírovat a Stáhnout",
+            "body": "Napiš jazyk za tři zpětné apostrofy, od sql, rust a php po cmd, Dockerfile a hex dumpy, a blok se zvýrazní přesně jako ten jazyk. Tlačítka v rohu kód zkopírují nebo ho uloží jako soubor.",
+            "alt": "Blok kódu SQL s označením jazyka a tlačítky Kopírovat a Stáhnout v rohu"
+          },
+          {
+            "id": "image-menu",
+            "title": "Kopírování a ukládání obrázků",
+            "body": "Pravé tlačítko na obrázku v chatu nebo v prohlížeči obrázků: kopírovat obrázek, uložit obrázek v originále, GIF i s animací, kopírovat adresu obrázku nebo ho otevřít v prohlížeči."
           }
         ]
       },
@@ -862,6 +873,11 @@
             "id": "bitrate",
             "title": "Bitrate ručně",
             "body": "Vlastní posuvník od 16 kbit/s až do nejvyšší hodnoty, kterou server a Mumble dovolí. Při ztrátě paketů ho Mumcord i tak sám sníží."
+          },
+          {
+            "id": "realtime-audio",
+            "title": "Stabilní i při zátěži",
+            "body": "Záznam a přehrávání dostanou prioritu v reálném čase, takže hlas méně praská a vypadává, zatímco hra nebo build vytěžuje počítač. Informace o připojení ukazují výpadky a jestli je zapnuté audio v reálném čase."
           }
         ]
       },
@@ -1070,12 +1086,52 @@
             "title": "Inspektor paketů pro ladění",
             "body": "Skrytý pro vývojáře: odemkne ho sedm kliknutí na verzi v Nastavení → O aplikaci. Ve vlastním okně ukazuje, jaká data Mumcordu se odesílají a přijímají, s filtry, počítadly a exportem do JSON nebo Markdownu.",
             "alt": "Inspektor paketů s filtry, počítadly podle typu a směru a jedním rozbaleným řádkem paketu"
+          },
+          {
+            "id": "clear-cache",
+            "title": "Vymazání mezipaměti",
+            "body": "Nastavení → Soukromí ukazuje, kolik místa zabírají náhledy odkazů, obrázky a webový engine, a vymaže je stiskem tlačítka, i jednotlivě. Historie chatu, servery, přátelé a poznámky zůstanou vždy nedotčené."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.4",
+      "teaser": "Kopírování a stahování kódu, ukládání obrázků pravým tlačítkem, vymazání mezipaměti, stabilnější hlas při zátěži.",
+      "summary": "Aktualizace pro každodenní chat: bloky kódu s kopírováním, stahováním a dalšími jazyky, kopírování a ukládání obrázků pravým tlačítkem a tlačítko pro vymazání mezipaměti. K tomu hlas při zátěži méně praská a kopírování a vkládání zase spolehlivě funguje.",
+      "groups": [
+        {
+          "title": "Nové",
+          "items": [
+            "Bloky kódu mají v rohu tlačítka Kopírovat a Stáhnout. Jazyk za třemi zpětnými apostrofy, třeba sql, rust nebo php, se zvýrazní přesně jako ten jazyk a ukáže se v rohu. Mezi novými jsou PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx a hex dumpy.",
+            "Pravé tlačítko na obrázku v chatu: kopírovat obrázek, uložit obrázek, kopírovat adresu obrázku a otevřít v prohlížeči obrázků. Prohlížeč obrázků má stejná tlačítka. Při ukládání zůstane originál, GIF i s animací.",
+            "Nastavení → Soukromí ukazuje, kolik místa zabírají mezipaměti, a vymaže je stiskem tlačítka, i jednotlivě. Historie chatu, nastavení, servery, certifikáty, přátelé a poznámky zůstanou vždy nedotčené."
+          ]
+        },
+        {
+          "title": "Vylepšeno",
+          "items": [
+            "Hlas při velké zátěži méně praská a vypadává: Mumcord žádá systém o prioritu v reálném čase pro záznam a přehrávání a krátké zaškobrtnutí už nerestartuje celé audio. Informace o připojení a diagnostický soubor ukazují výpadky, opožděné pakety a jestli je zapnuté audio v reálném čase.",
+            "Velké GIFy z GIPHY už aplikaci nezpomalují: chat ukáže menší verzi, která se vejde."
+          ]
+        },
+        {
+          "title": "Opraveno",
+          "items": [
+            "Kopírování vybraného textu z chatu zase funguje: menu pravého tlačítka nabízí jako první „Kopírovat“, Ctrl+C zkopíruje prostý text i se zalomeními řádků a výběr zůstane viditelný.",
+            "Vložená data obrázku, třeba snímek obrazovky ze Spectacle nebo „Kopírovat obrázek“ v prohlížeči, se na Linuxu zase dostanou do chatu.",
+            "Tlačítka Kopírovat u bloků kódu, v inspektoru paketů a při sdílení motivů teď fungují i na Linuxu.",
+            "Smazaná historie chatu se už nevrací přes synchronizaci historie, když se znovu připojíš do kanálu.",
+            "V kompaktním rozložení už nadpis karty motivu nezakrývá její náhled a karty zpráv se už neposouvají."
+          ]
+        }
+      ],
+      "known": [
+        "Instalátor pro Windows je stále nepodepsaný."
+      ]
+    },
     {
       "version": "0.4.3",
       "teaser": "Karty zpráv pro boty, vkládání obrázků přes Ctrl+V, chybové bannery jdou zavřít.",
@@ -1475,15 +1531,13 @@
     "title": "Plán vývoje",
     "description": "Plán vývoje Mumcordu podrobně: co který epic přináší, co je hotové a co přijde dál.",
     "label": "Kam to směřuje",
-    "intro": "Mumcord se vyvíjí po epicích. Epic 1 je verzí 0.3.0 hotový. Tady je, co který epic přináší. Plán vývoje je návrh: pořadí i rozsah se ještě můžou změnit.",
+    "intro": "Mumcord roste po epicích: velkých etapách, z nichž každá vychází jako vlastní verze. Tady vidíš, co je hotové, co se právě staví a co přijde potom. Plán vývoje je návrh, pořadí i rozsah se můžou změnit.",
     "status": {
       "done": "hotovo",
       "now": "rozpracováno",
       "planned": "na řadě",
       "later": "později"
     },
-    "epicsTitle": "Epicy",
-    "epicsBody": "Epic 1 je klient na každý den. Potom přijdou větší stavební bloky, jejichž pořadí ještě není pevně dané.",
     "ideaTitle": "Něco ti chybí?",
     "ideaBody": "Požadavky patří do issues na GitHubu a promítají se do plánování.",
     "idea": "Navrhnout funkci",
@@ -1670,7 +1724,7 @@
       {
         "id": "epic-3",
         "title": "Pohodlí",
-        "summary": "Doladění pro náročné uživatele a volitelný relay pro přímá spojení.",
+        "summary": "Doladění pro náročné uživatele, víc klidu díky blokování, filtru zpráv a centru upozornění, více identit, informace o serveru, svěží design průvodce, nastavení a watch party, režim nízké latence pro hraní hudby a k tomu volitelný relay pro přímá spojení.",
         "groups": [
           {
             "title": "Pohodlí na každý den",
@@ -1681,7 +1735,81 @@
               "Šeptání a volání do jiných kanálů",
               "Veřejný prohlížeč serverů",
               "Nerušit: jeden přepínač ztlumí upozornění, zvuky a vyskakovací okna a hlasy pořád slyšíš",
-              "@all a @channel, kterými zmíníš všechny na serveru nebo v kanálu"
+              "@all a @channel, kterými zmíníš všechny na serveru nebo v kanálu",
+              "Přepínání mikrofonu a sluchátek pravým tlačítkem na ztlumení mikrofonu a zvuku, s hlasitostí a ukazatelem úrovně",
+              "Pravé tlačítko na zavěšení: opusť hlas a čti dál, odpoj jeden server nebo všechny",
+              "Opětovné spuštění průvodce nastavením bez zásahu do tvé identity"
+            ],
+            "mockups": [
+              "Globální klávesové zkratky v nastavení",
+              "Plné menu v systémové liště a stavy ikony",
+              "Import nastavení z Mumble",
+              "Šeptání do jiného kanálu",
+              "Veřejný prohlížeč serverů",
+              "Nerušit v rychlém nastavení",
+              "@channel a @all v poli pro zprávu",
+              "Přepínání zařízení ze ztlumení mikrofonu a zvuku",
+              "Menu tlačítka pro zavěšení",
+              "Opětovné spuštění průvodce nastavením"
+            ]
+          },
+          {
+            "title": "Svěží design",
+            "items": [
+              "Nový průvodce nastavením, klidný a přehledný: předvolby od „Vše zapnuto“ po „Maximální soukromí“, hotovo zhruba za dvě minuty",
+              "Přeuspořádané nastavení: méně a přehlednějších sekcí, jednotné karty a hledání, které najde každé nastavení",
+              "Watch party a sdílení obrazovky dostanou vlastní zobrazení jako v kině, s časovou osou, hlasitostí, playlistem a přehledem, kdo se dívá",
+              "Vytáhni video nebo sdílenou obrazovku do vlastního okna, na druhý monitor nebo přes hru, a když chceš, vždy navrchu",
+              "Sbal pravý sloupec úplně nebo na úzký pruh avatarů, ať má chat víc místa"
+            ],
+            "mockups": [
+              "Nový průvodce nastavením",
+              "Předvolby v průvodci",
+              "Nové nastavení: hlas a zvuk",
+              "Nové nastavení: soukromí a připojení",
+              "Společné sledování v novém zobrazení",
+              "Sledování sdílené obrazovky",
+              "Video ve vlastním okně",
+              "Pravý sloupec jako úzký pruh"
+            ]
+          },
+          {
+            "title": "Klid a soukromí",
+            "items": [
+              "Blokování lidí: už od nich žádné zprávy, hlas ani pozvánky, rozpoznaní podle certifikátu místo jména",
+              "Soukromé zprávy jen od přátel, od všech nebo od nikoho, i pro každý server zvlášť. Cizí lidé skončí v žádostech o zprávu",
+              "Centrum upozornění za zvonečkem sbírá zmínky, odpovědi, žádosti a pozvánky ze všech serverů a během režimu Nerušit i všechno, co by jinak vyskočilo",
+              "Watch party nenačítá nic z YouTube ani Twitche, dokud je vložený obsah vypnutý"
+            ],
+            "mockups": [
+              "Blokování člověka",
+              "Žádost o zprávu od cizího člověka",
+              "Centrum upozornění"
+            ]
+          },
+          {
+            "title": "Servery a identity",
+            "items": [
+              "Správa více identit a volba pro každý server, se kterou se připojíš",
+              "Přehledný dialog pro přidávání a úpravu serverů, s identitou a „Otestovat připojení“",
+              "Informace o serveru: verze, limity, certifikát a tvoje oprávnění na jeden pohled, bez jakékoli změny na serveru",
+              "Uložená hesla kanálů ukazují, ke kterému kanálu patří, a dají se pojmenovat"
+            ],
+            "mockups": [
+              "Správa více identit",
+              "Nový dialog pro servery",
+              "Informace o serveru"
+            ]
+          },
+          {
+            "title": "Zvuk a hudba",
+            "items": [
+              "Pravé tlačítko na informace o připojení: nastav bitrate, kvalitu hudby a režim nízké latence přímo v hovoru",
+              "Režim nízké latence pro společné hraní hudby: asi 40 místo 90 ms od úst k uchu, i na standardních serverech Mumble"
+            ],
+            "mockups": [
+              "Kvalita hlasu přímo u informací o připojení",
+              "Režim nízké latence"
             ]
           },
           {
@@ -1691,6 +1819,9 @@
               "Obsah zůstává šifrovaný end-to-end; relay jen přeposílá bajty a pustí dovnitř jen uživatele svého serveru",
               "Volitelné: komunita může relay provozovat spolu s Mumbotem. Bez relaye funguje všechno jako dřív",
               "Tvoje volba: relay vypnutý, jen když přímé spojení selže, nebo vždy, aby tvoje IP adresa zůstala skrytá"
+            ],
+            "mockups": [
+              "Nastavení relaye a informace o připojení"
             ]
           }
         ]
@@ -1725,7 +1856,17 @@
           "Možnosti jsou malá přeposílací služba nebo vlastní klíč; rozhodne se později"
         ]
       }
-    ]
+    ],
+    "doneTitle": "Hotovo",
+    "nextTitle": "Na řadě",
+    "laterTitle": "Potom",
+    "delivered": "{n} věcí dodáno",
+    "showAll": "Zobrazit vše",
+    "statDone": "Hotové epicy",
+    "statReleases": "Vydání",
+    "statNext": "Další cíl",
+    "mockupsTitle": "Skici z issues",
+    "mockupsNote": "Návrhové skici, nejsou finální. Jména a obsah jsou smyšlené."
   },
   "games": {
     "title": "Hry",

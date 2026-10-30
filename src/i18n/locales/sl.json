@@ -350,7 +350,7 @@
         {
           "tag": "Epic 3",
           "title": "Udobje",
-          "body": "Globalne bližnjice, poln meni v sistemski vrstici, uvoz iz uradnega odjemalca, šepetanje, brskalnik strežnikov, »Ne moti«, @all in @channel ter neobvezen posrednik za neposredne povezave."
+          "body": "Globalne bližnjice, poln meni v sistemski vrstici, uvoz iz uradnega odjemalca, šepetanje, brskalnik strežnikov, »Ne moti«, @all in @channel, blokiranje, zasebna sporočila samo od prijateljev, središče za obvestila, več identitet, podatki o strežniku, nova podoba čarovnika, nastavitev in skupnega gledanja, način nizke zakasnitve za muziciranje ter neobvezen posrednik za neposredne povezave."
         },
         {
           "tag": "Epic 4",
@@ -821,6 +821,17 @@
             "id": "paste-images",
             "title": "Lepljenje slik s Ctrl+V",
             "body": "Posnetki zaslona, »Kopiraj sliko« iz brskalnika in slikovne datoteke, kopirane v upravitelju datotek, gredo s Ctrl+V naravnost v polje za sporočilo kot priloga."
+          },
+          {
+            "id": "code-blocks",
+            "title": "Bloki kode s Kopiraj in Prenesi",
+            "body": "Za tremi krativci napiši jezik, od sql, rust in php do cmd, Dockerfile in šestnajstiških izpisov, in blok se obarva natanko kot ta jezik. Gumba v kotu kopirata kodo ali jo shranita kot datoteko.",
+            "alt": "Blok kode SQL z oznako jezika ter gumboma Kopiraj in Prenesi v kotu"
+          },
+          {
+            "id": "image-menu",
+            "title": "Kopiranje in shranjevanje slik",
+            "body": "Desni klik na sliko v klepetu ali v pregledovalniku slik: kopiraj sliko, shrani sliko v izvirniku, GIF z animacijo vred, kopiraj naslov slike ali jo odpri v pregledovalniku."
           }
         ]
       },
@@ -862,6 +873,11 @@
             "id": "bitrate",
             "title": "Bitna hitrost ročno",
             "body": "Lasten drsnik od 16 kbit/s do najvišje vrednosti, ki jo dovolita strežnik in Mumble. Ob izgubi paketov jo Mumcord še vedno sam zniža."
+          },
+          {
+            "id": "realtime-audio",
+            "title": "Stabilno pod obremenitvijo",
+            "body": "Zajem in predvajanje dobita prednost v realnem času, zato glas manj prasketa in prekinja, medtem ko igra ali gradnja zaposluje računalnik. Podatki o povezavi prikažejo izpade in ali je zvok v realnem času vklopljen."
           }
         ]
       },
@@ -1070,12 +1086,52 @@
             "title": "Pregledovalnik paketov za razhroščevanje",
             "body": "Skrit za razvijalce: sedem klikov na različico v Nastavitve → O aplikaciji ga odklene. V lastnem oknu prikaže, kateri podatki Mumcorda se pošiljajo in prejemajo, s filtri, števci in izvozom kot JSON ali Markdown.",
             "alt": "Pregledovalnik paketov s filtri, števci po vrsti in smeri ter eno razširjeno vrstico paketa"
+          },
+          {
+            "id": "clear-cache",
+            "title": "Izprazni predpomnilnik",
+            "body": "Nastavitve → Zasebnost pokaže, koliko prostora zasedajo predogledi povezav, slike in spletni pogon, in jih izprazni s pritiskom na gumb, tudi posamično. Zgodovine klepeta, strežnikov, prijateljev in opomb se nikoli ne dotakne."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.4.4",
+      "teaser": "Kopiranje in prenos kode, shranjevanje slik z desnim klikom, praznjenje predpomnilnika, stabilnejši glas pod obremenitvijo.",
+      "summary": "Posodobitev za vsakdanji klepet: bloki kode s kopiranjem, prenosom in več jeziki, kopiranje in shranjevanje slik z desnim klikom ter gumb za praznjenje predpomnilnika. Poleg tega glas pod obremenitvijo manj prasketa, kopiranje in lepljenje pa spet zanesljivo delujeta.",
+      "groups": [
+        {
+          "title": "Novo",
+          "items": [
+            "Bloki kode imajo v kotu gumba Kopiraj in Prenesi. Jezik za tremi krativci, na primer sql, rust ali php, se obarva natanko kot ta jezik in se prikaže v kotu. Med novimi so PHP, Ruby, Kotlin, Swift, Lua, PowerShell, cmd, Dockerfile, TOML, nginx in šestnajstiški izpisi.",
+            "Desni klik na sliko v klepetu: kopiraj sliko, shrani sliko, kopiraj naslov slike in odpri v pregledovalniku slik. Pregledovalnik slik ima enake gumbe. Shranjevanje ohrani izvirnik, GIF z animacijo vred.",
+            "Nastavitve → Zasebnost pokaže, koliko prostora zasedajo predpomnilniki, in jih izprazni s pritiskom na gumb, tudi posamično. Zgodovine klepeta, nastavitev, strežnikov, certifikatov, prijateljev in opomb se nikoli ne dotakne."
+          ]
+        },
+        {
+          "title": "Izboljšano",
+          "items": [
+            "Glas pod veliko obremenitvijo manj prasketa in prekinja: Mumcord od sistema zahteva prednost v realnem času za zajem in predvajanje, kratek zastoj pa ne zažene več vsega zvoka znova. Podatki o povezavi in diagnostična datoteka prikažejo izpade, zakasnele pakete in ali je zvok v realnem času vklopljen.",
+            "Veliki GIF-i z GIPHY ne upočasnjujejo več aplikacije: klepet prikaže manjšo različico, ki se prilega."
+          ]
+        },
+        {
+          "title": "Popravljeno",
+          "items": [
+            "Kopiranje izbranega besedila v klepetu spet deluje: meni desnega klika najprej ponudi »Kopiraj«, Ctrl+C kopira navadno besedilo s prelomi vrstic, izbor pa ostane viden.",
+            "Prilepljeni slikovni podatki, na primer posnetek zaslona iz Spectacle ali »Kopiraj sliko« iz brskalnika, na Linuxu spet pristanejo v klepetu.",
+            "Gumbi Kopiraj pri blokih kode, v pregledovalniku paketov in za deljenje tem zdaj delujejo tudi na Linuxu.",
+            "Izbrisana zgodovina klepeta se ne vrne več prek sinhronizacije zgodovine, ko se znova pridružiš kanalu.",
+            "V kompaktni postavitvi naslov kartice teme ne prekriva več njene sličice, kartice sporočil pa se ne premikajo več."
+          ]
+        }
+      ],
+      "known": [
+        "Namestitveni program za Windows še ni podpisan."
+      ]
+    },
     {
       "version": "0.4.3",
       "teaser": "Kartice sporočil za bote, lepljenje slik s Ctrl+V, pasice z napakami lahko zapreš.",
@@ -1475,15 +1531,13 @@
     "title": "Načrt razvoja",
     "description": "Načrt razvoja Mumcorda v podrobnostih: kaj prinaša vsak epik, kaj je narejeno in kaj sledi.",
     "label": "Kam gremo",
-    "intro": "Mumcord nastaja po epikih. Epic 1 se zaključi z različico 0.3.0. Tukaj je, kaj prinaša vsak epik. Načrt razvoja je predlog: vrstni red in obseg se še lahko spremenita.",
+    "intro": "Mumcord raste po epikih: velikih korakih, od katerih vsak izide kot svoja različica. Tukaj vidiš, kaj je končano, kaj nastaja prav zdaj in kaj pride potem. Načrt razvoja je predlog: vrstni red in obseg se lahko spremenita.",
     "status": {
       "done": "končano",
       "now": "v delu",
       "planned": "naslednje",
       "later": "pozneje"
     },
-    "epicsTitle": "Epiki",
-    "epicsBody": "Epic 1 je odjemalec za vsak dan. Potem pridejo večji gradniki, katerih vrstni red še ni določen.",
     "ideaTitle": "Ti kaj manjka?",
     "ideaBody": "Predlogi gredo v prijave (issues) na GitHubu in se upoštevajo pri načrtovanju.",
     "idea": "Predlagaj funkcijo",
@@ -1670,7 +1724,7 @@
       {
         "id": "epic-3",
         "title": "Udobje",
-        "summary": "Izpiljeno za zahtevne uporabnike in neobvezen posrednik za neposredne povezave.",
+        "summary": "Izpiljeno za zahtevne uporabnike, več miru z blokiranjem, filtrom sporočil in središčem za obvestila, več identitet, podatki o strežniku, nova podoba čarovnika, nastavitev in skupnega gledanja, način nizke zakasnitve za muziciranje ter neobvezen posrednik za neposredne povezave.",
         "groups": [
           {
             "title": "Udobje za vsak dan",
@@ -1681,7 +1735,81 @@
               "Šepetanje in vpitje v druge kanale",
               "Javni brskalnik strežnikov",
               "Ne moti: eno stikalo utiša obvestila, zvoke in pojavna okna, glasove pa še vedno slišiš",
-              "@all in @channel, s katerima omeniš vse na strežniku ali v kanalu"
+              "@all in @channel, s katerima omeniš vse na strežniku ali v kanalu",
+              "Menjava mikrofona in slušalk z desnim klikom na utišanje mikrofona in zvoka, z glasnostjo in merilnikom ravni",
+              "Desni klik na prekinitev: zapusti glasovni kanal in beri naprej, prekini povezavo z enim strežnikom ali z vsemi",
+              "Ponoven zagon čarovnika za nastavitev, ne da bi se dotaknil tvoje identitete"
+            ],
+            "mockups": [
+              "Globalne bližnjice v nastavitvah",
+              "Poln meni v sistemski vrstici in stanja ikone",
+              "Uvoz nastavitev iz Mumbla",
+              "Šepetanje v drug kanal",
+              "Javni brskalnik strežnikov",
+              "Ne moti v hitrih nastavitvah",
+              "@channel in @all v polju za sporočilo",
+              "Menjava naprav prek utišanja mikrofona in zvoka",
+              "Meni gumba za prekinitev",
+              "Ponoven zagon čarovnika za nastavitev"
+            ]
+          },
+          {
+            "title": "Nova podoba",
+            "items": [
+              "Nov čarovnik za nastavitev, miren in jasen: prednastavitve od »Vse vklopljeno« do »Največja zasebnost«, končano v približno dveh minutah",
+              "Preurejene nastavitve: manj in jasnejših razdelkov, enotne kartice in iskanje, ki najde vsako nastavitev",
+              "Skupno gledanje in deljenje zaslona dobita svoj pogled kot v kinu, s časovnico, glasnostjo, seznamom predvajanja in tem, kdo gleda",
+              "Premakni video ali deljeni zaslon v svoje okno, na drug monitor ali čez igro, po želji vedno na vrhu",
+              "Zloži desni stolpec povsem ali v ozek trak avatarjev, da ima klepet več prostora"
+            ],
+            "mockups": [
+              "Novi čarovnik za nastavitev",
+              "Prednastavitve v čarovniku",
+              "Nove nastavitve: glas in zvok",
+              "Nove nastavitve: zasebnost in povezave",
+              "Skupno gledanje v novem pogledu",
+              "Gledanje deljenega zaslona",
+              "Video v svojem oknu",
+              "Desni stolpec kot ozek trak"
+            ]
+          },
+          {
+            "title": "Mir in zasebnost",
+            "items": [
+              "Blokiranje oseb: nič več sporočil, glasu ali povabil od njih, prepoznanih po certifikatu namesto po imenu",
+              "Zasebna sporočila samo od prijateljev, od vseh ali od nikogar, tudi za vsak strežnik posebej. Neznanci pristanejo med prošnjami za sporočila",
+              "Središče za obvestila za zvončkom zbira omembe, odgovore, prošnje in povabila z vseh strežnikov, med Ne moti pa tudi vse, kar bi sicer skočilo na zaslon",
+              "Skupno gledanje ne naloži ničesar z YouTuba ali Twitcha, dokler je vdelana vsebina izklopljena"
+            ],
+            "mockups": [
+              "Blokiranje osebe",
+              "Prošnja za sporočilo od neznanca",
+              "Središče za obvestila"
+            ]
+          },
+          {
+            "title": "Strežniki in identitete",
+            "items": [
+              "Upravljaj več identitet in za vsak strežnik izberi, s katero se povežeš",
+              "Pregledno pogovorno okno za dodajanje in urejanje strežnikov, z identiteto in »Preizkusi povezavo«",
+              "Podatki o strežniku: različica, omejitve, certifikat in tvoja dovoljenja na prvi pogled, brez kakršnih koli sprememb na strežniku",
+              "Shranjena gesla kanalov pokažejo, kateremu kanalu pripadajo, in jih lahko poimenuješ"
+            ],
+            "mockups": [
+              "Upravljanje več identitet",
+              "Novo pogovorno okno strežnika",
+              "Podatki o strežniku"
+            ]
+          },
+          {
+            "title": "Zvok in glasba",
+            "items": [
+              "Desni klik na podatke o povezavi: nastavi bitno hitrost, glasbeno kakovost in način nizke zakasnitve kar med pogovorom",
+              "Način nizke zakasnitve za skupno muziciranje: približno 40 namesto 90 ms od ust do ušesa, tudi na standardnih strežnikih Mumble"
+            ],
+            "mockups": [
+              "Kakovost glasu kar v podatkih o povezavi",
+              "Način nizke zakasnitve"
             ]
           },
           {
@@ -1691,6 +1819,9 @@
               "Vsebina ostane šifrirana od konca do konca; posrednik le prenaša bajte naprej in spusti noter samo uporabnike svojega strežnika",
               "Neobvezno: skupnost lahko posrednik poganja skupaj z Mumbotom. Brez posrednika vse deluje kot doslej",
               "Tvoja izbira: posrednik izklopljen, le ko neposredna povezava ne uspe, ali vedno, da tvoj naslov IP ostane skrit"
+            ],
+            "mockups": [
+              "Nastavitev posrednika in podatki o povezavi"
             ]
           }
         ]
@@ -1725,7 +1856,17 @@
           "Možnosti sta majhna posredniška storitev ali tvoj lasten ključ; odločitev pride pozneje"
         ]
       }
-    ]
+    ],
+    "doneTitle": "Končano",
+    "nextTitle": "Naslednje",
+    "laterTitle": "Pozneje",
+    "delivered": "Dostavljeno: {n}",
+    "showAll": "Pokaži vse",
+    "statDone": "Končani epiki",
+    "statReleases": "Izdaje",
+    "statNext": "Naslednji cilj",
+    "mockupsTitle": "Skice iz prijav",
+    "mockupsNote": "Oblikovalske skice, niso dokončne. Imena in vsebina so izmišljeni."
   },
   "games": {
     "title": "Igre",
