@@ -6,4 +6,6 @@ export default defineConfig({
   trailingSlash: "never",
   build: { format: "file" },
   compressHTML: true,
+  // Contributor avatars are fetched at build time and served from the site.
+  image: { domains: ["avatars.githubusercontent.com"] },
 });

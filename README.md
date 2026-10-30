@@ -26,6 +26,9 @@ The games page (`/spiele`, `/en/games`) lives in `src/lib/games.ts`: the overlay
 platform, the games where the in-game overlay stays off (from the app's
 `crates/engine/src/ingame_overlay/blocklist.json`) and the official Mumble game plugins
 (Mumble's `plugins/CMakeLists.txt` at the server version the guide pins, retracted plugins left out).
+The contributors section at the end of the home page comes from `src/lib/contributors.ts`: everyone who
+committed to the app, Mumbot or this site, read from the GitHub API at build time (bots left out); the
+avatars are downloaded during the build and served by the site.
 The detailed roadmap (`/roadmap`, `/en/roadmap`) lives in `src/lib/roadmap.ts`; the short version on the
 home page is in the i18n dicts. Keep both in line with the Mumcord spec and the wiki's Roadmap page.
 The site speaks the 24 official EU languages (`src/i18n/langs.ts`). German and English are written
