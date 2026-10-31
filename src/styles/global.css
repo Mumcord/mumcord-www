@@ -2995,28 +2995,139 @@ p {
 /* ── Server guide ────────────────────────────────────── */
 .guide {
   padding-block: clamp(56px, 9vw, 120px);
+  overflow-x: clip;
+}
+.guide-head {
+  position: relative;
+}
+.guide-head::before {
+  /* The same soft aurora as the roadmap hero. */
+  content: "";
+  position: absolute;
+  inset: -140px -10% auto;
+  height: 560px;
+  z-index: -1;
+  background:
+    radial-gradient(40% 60% at 18% 40%, rgb(155 123 255 / 0.3), transparent 70%),
+    radial-gradient(35% 55% at 78% 28%, rgb(255 111 168 / 0.2), transparent 70%),
+    radial-gradient(30% 50% at 55% 85%, rgb(62 227 158 / 0.12), transparent 70%);
+  filter: blur(20px);
+  pointer-events: none;
+}
+.guide-hero {
+  display: grid;
+  gap: 48px;
+  align-items: center;
+}
+@media (min-width: 980px) {
+  .guide-hero {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  }
+}
+.guide-title {
+  margin: 0 0 20px;
+  font: 800 clamp(2.6rem, 6.5vw, 5.2rem) / 0.95 var(--font-display);
+  letter-spacing: -0.045em;
+  background: linear-gradient(100deg, var(--text) 25%, var(--lilac) 60%, var(--peach) 95%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 .guide-head .body {
   max-width: 60ch;
 }
+.guide-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+/* A decorative server card: glass, a glowing edge, services coming up one by one. */
+.guide-server {
+  position: relative;
+  padding: 22px;
+  border-radius: 28px;
+  background:
+    linear-gradient(var(--bg-2), var(--bg-2)) padding-box,
+    linear-gradient(135deg, rgb(255 176 138 / 0.7), rgb(155 123 255 / 0.5) 50%, rgb(62 227 158 / 0.5)) border-box;
+  border: 1px solid transparent;
+  box-shadow: 0 40px 120px -40px rgb(155 123 255 / 0.6);
+  transform: rotate(-1.5deg);
+}
+.guide-server-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 16px;
+}
+.guide-server-head span:last-child {
+  margin-left: auto;
+  font: 500 0.75rem var(--font-mono);
+  color: var(--faint);
+}
+.guide-server ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.guide-server li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgb(14 10 38 / 0.6);
+  border: 1px solid var(--line);
+  animation: guide-up 0.6s var(--ease-out) both;
+  animation-delay: calc(0.3s + var(--i) * 0.25s);
+}
+.guide-server li span:last-child {
+  margin-left: auto;
+  font: 500 0.8125rem var(--font-mono);
+  color: var(--muted);
+}
+.guide-server-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--live);
+  box-shadow: 0 0 12px var(--live);
+}
+.guide-server-foot {
+  margin: 16px 0 0;
+  font-size: 0.8125rem;
+  color: var(--faint);
+}
+@keyframes guide-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .guide-server li {
+    animation: none;
+  }
+}
 .guide-facts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 1px;
-  max-width: 860px;
-  margin: 40px 0 0;
+  gap: 12px;
+  max-width: none;
+  margin: 56px 0 0;
   padding: 0;
   list-style: none;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--line);
 }
 .guide-facts li {
   display: grid;
   gap: 4px;
   padding: 20px 24px;
-  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(160deg, rgb(155 123 255 / 0.12), rgb(21 15 56 / 0.6));
+  backdrop-filter: blur(8px);
 }
 .guide-facts strong {
   font-family: var(--font-display);
@@ -3043,8 +3154,39 @@ p {
   scroll-margin-top: 96px;
 }
 @media (min-width: 860px) {
+  .guide-steps {
+    position: relative;
+  }
+  .guide-steps::before {
+    /* One line through all steps, from the first number to the last. */
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 56px;
+    bottom: 56px;
+    width: 2px;
+    border-radius: 2px;
+    background: linear-gradient(var(--peach), var(--violet) 60%, rgb(155 123 255 / 0.15));
+  }
   .guide-step {
-    grid-template-columns: 120px minmax(0, 1fr);
+    position: relative;
+    grid-template-columns: 140px minmax(0, 1fr);
+    border-top-color: transparent;
+  }
+  .guide-step::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 58px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--peach);
+    box-shadow: 0 0 14px rgb(255 176 138 / 0.6);
+  }
+  .guide-num {
+    padding-left: 32px;
   }
   .guide-num {
     position: sticky;
@@ -3128,10 +3270,19 @@ p {
   margin-bottom: 20px;
 }
 .guide-faq {
-  border-bottom: 1px dashed var(--line);
+  margin-top: 10px;
+  padding: 0 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--bg-2);
+  transition: border-color 0.2s;
+}
+.guide-faq[open],
+.guide-faq:hover {
+  border-color: var(--line-strong);
 }
 .guide-faq summary {
-  padding: 16px 0;
+  padding: 18px 0;
   font-weight: 600;
   cursor: pointer;
 }
@@ -3828,6 +3979,21 @@ p {
   height: 7px;
   border-radius: 50%;
   border: 1.5px solid var(--faint);
+}
+.rp-main li.is-done {
+  color: var(--text);
+}
+.rp-main li.is-done::before {
+  content: "✓";
+  top: 9px;
+  left: 0;
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--live);
+  font-weight: 700;
 }
 .rp-stage[data-status="done"] li::before,
 .rp-stage[data-status="now"] li::before {
@@ -4619,10 +4785,21 @@ p {
 }
 /* ── Server configurator ────────────────────────────── */
 .cfg {
-  margin: clamp(48px, 7vw, 88px) 0;
+  position: relative;
+  margin: clamp(56px, 8vw, 104px) 0;
+  padding: clamp(22px, 4vw, 44px);
+  border: 1px solid transparent;
+  border-radius: 32px;
+  background:
+    linear-gradient(160deg, rgb(29 22 80 / 0.95), rgb(14 10 38 / 0.95)) padding-box,
+    linear-gradient(135deg, rgb(255 176 138 / 0.6), rgb(155 123 255 / 0.45) 45%, rgb(255 111 168 / 0.15) 80%) border-box;
+  box-shadow: 0 50px 140px -60px rgb(155 123 255 / 0.55);
   scroll-margin-top: 96px;
 }
 .cfg-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   margin: 0 0 12px;
   font: 700 clamp(1.6rem, 3vw, 2.2rem) / 1.1 var(--font-display);
 }
@@ -4676,6 +4853,12 @@ p {
 .cfg-check input:focus-visible {
   outline: 2px solid var(--violet);
   outline-offset: 2px;
+}
+.cfg-hint {
+  margin: 12px 0 0;
+  color: var(--faint);
+  font-size: 0.8125rem;
+  line-height: 1.5;
 }
 .cfg-check {
   display: flex;

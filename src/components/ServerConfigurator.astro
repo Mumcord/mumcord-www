@@ -26,7 +26,7 @@ const files = [
 ---
 
 <section class="cfg" id="configurator" aria-labelledby="cfg-h" data-configurator data-lang={fileLang}>
-  <h2 id="cfg-h" class="cfg-title" data-reveal>{c.title}</h2>
+  <h2 id="cfg-h" class="cfg-title" data-reveal><span class="live-dot" aria-hidden="true"></span>{c.title}</h2>
   <p class="body" data-reveal set:html={md(c.intro)} />
 
   <div class="cfg-grid">
@@ -59,6 +59,18 @@ const files = [
             </label>
           ))
         }
+      </fieldset>
+      <fieldset>
+        <legend>{c.advanced}</legend>
+        <label class="cfg-field">
+          <span>{c.pluginLimit}</span>
+          <input name="pluginLimit" type="number" min="1" max="1000" value={d.pluginLimit} placeholder={String(d.pluginLimit)} inputmode="numeric" />
+        </label>
+        <label class="cfg-field">
+          <span>{c.pluginBurst}</span>
+          <input name="pluginBurst" type="number" min="1" max="1000" value={d.pluginBurst} placeholder={String(d.pluginBurst)} inputmode="numeric" />
+        </label>
+        <p class="cfg-hint">{c.pluginHint}</p>
       </fieldset>
     </form>
 
@@ -122,6 +134,8 @@ const files = [
         longText: v("longText").checked,
         relay: v("relay").checked,
         webhook: v("webhook").checked,
+        pluginLimit: Number(v("pluginLimit").value),
+        pluginBurst: Number(v("pluginBurst").value),
       };
     };
 

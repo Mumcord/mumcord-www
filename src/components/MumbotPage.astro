@@ -155,8 +155,11 @@ const bots = [
               </h3>
               <p class="rp-summary">{s.summary}</p>
               <ul>
-                {s.items.map((i) => (
-                  <li>{i}</li>
+                {s.items.map((i, j) => (
+                  <li class:list={[{ "is-done": s.done?.includes(j) }]}>
+                    {s.done?.includes(j) && <span class="sr-only">{p.status.done}: </span>}
+                    {i}
+                  </li>
                 ))}
               </ul>
             </div>

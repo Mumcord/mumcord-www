@@ -24,7 +24,14 @@ export interface ServerOptions {
   relay: boolean;
   /** Mumbot's webhook bot: alerts and CI messages into a channel. */
   webhook: boolean;
+  /** Hidden plugin-data packets per person and second (`pluginmessagelimit`, server default 4). */
+  pluginLimit: number;
+  /** How many of them may come at once (`pluginmessageburst`, server default 15). */
+  pluginBurst: number;
 }
+
+/** The Mumble server's own defaults; only other values go into the file. */
+export const PLUGIN_DEFAULTS = { limit: 4, burst: 15 };
 
 export interface Secrets {
   superuser: string;
@@ -47,6 +54,8 @@ const COMMENTS = {
     users: "höchstens so viele gleichzeitig",
     images: "Bilder im Chat bis 1 MB (Standard: 128 KB)",
     text: "längere Nachrichten (Standard: 5000 Zeichen)",
+    pluginLimit: "versteckte Pakete (Plugin-Daten) pro Person und Sekunde (Standard: 4)",
+    pluginBurst: "so viele davon kurz hintereinander (Standard: 15)",
     relay: "Relay für Mumcords direkte Verbindungen (QUIC und TLS auf 443)",
     peer: "kündigt das Relay an und vergibt Tokens; teilt sich das Netz mit dem Relay",
     peerMissing: "PEER_API_SECRET fehlt in .env",
@@ -72,6 +81,8 @@ const COMMENTS = {
     users: "at most this many at once",
     images: "images in chat up to 1 MB (default: 128 KB)",
     text: "longer messages (default: 5000 characters)",
+    pluginLimit: "hidden packets (plugin data) per person and second (default: 4)",
+    pluginBurst: "this many of them in a quick burst (default: 15)",
     relay: "relay for Mumcord's direct connections (QUIC and TLS on 443)",
     peer: "announces the relay and hands out tokens; shares the relay's network",
     peerMissing: "PEER_API_SECRET is missing in .env",
@@ -86,8 +97,8 @@ const COMMENTS = {
 } as const;
 
 export const DEFAULTS: Record<CommentLang, ServerOptions> = {
-  de: { name: "Unser Server", welcome: "Willkommen! Sag Hallo im Chat.", users: 50, password: false, bigImages: true, longText: true, relay: false, webhook: false },
-  en: { name: "Our Server", welcome: "Welcome! Say hi in the chat.", users: 50, password: false, bigImages: true, longText: true, relay: false, webhook: false },
+  de: { name: "Unser Server", welcome: "Willkommen! Sag Hallo im Chat.", users: 50, password: false, bigImages: true, longText: true, relay: false, webhook: false, pluginLimit: 4, pluginBurst: 15 },
+  en: { name: "Our Server", welcome: "Welcome! Say hi in the chat.", users: 50, password: false, bigImages: true, longText: true, relay: false, webhook: false, pluginLimit: 4, pluginBurst: 15 },
 };
 
 // A double-quoted YAML string; "$" is doubled so Compose doesn't read it as a variable.
@@ -119,6 +130,10 @@ export function buildCompose(lang: CommentLang, o: ServerOptions): string {
   ];
   if (o.bigImages) out.push(`      MUMBLE_CONFIG_IMAGE_MESSAGE_LENGTH: "1048576"   # ${c.images}`);
   if (o.longText) out.push(`      MUMBLE_CONFIG_TEXT_MESSAGE_LENGTH: "10000"   # ${c.text}`);
+  const limit = Math.max(1, Math.min(1000, Math.round(o.pluginLimit) || PLUGIN_DEFAULTS.limit));
+  const burst = Math.max(1, Math.min(1000, Math.round(o.pluginBurst) || PLUGIN_DEFAULTS.burst));
+  if (limit !== PLUGIN_DEFAULTS.limit) out.push(`      MUMBLE_CONFIG_PLUGIN_MESSAGE_LIMIT: "${limit}"   # ${c.pluginLimit}`);
+  if (burst !== PLUGIN_DEFAULTS.burst) out.push(`      MUMBLE_CONFIG_PLUGIN_MESSAGE_BURST: "${burst}"   # ${c.pluginBurst}`);
   const volumes = ["data"];
   if (o.relay) {
     out.push(

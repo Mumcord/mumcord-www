@@ -99,6 +99,8 @@ export interface BotEpic {
   version?: string;
   summary: string;
   items: string[];
+  /** Items already built on main (indexes into items), ticked off on the page. */
+  done?: number[];
 }
 
 export interface MumbotPage {
@@ -222,7 +224,7 @@ const source: Record<"de" | "en", MumbotPage> = {
         id: "epic-2",
         tag: "Epic 2",
         title: "Module, Musik und Verlauf",
-        status: "planned",
+        status: "now",
         summary: "Aus einem Bot wird ein Baukasten.",
         items: [
           "Module: per Konfiguration oder Kommandozeile wählen, welche Bots laufen, in einem Programm und einem Image",
@@ -232,6 +234,7 @@ const source: Record<"de" | "en", MumbotPage> = {
           "Bitrate für Sprache und Musik einstellbar, nie über dem Limit des Servers",
           "Peer-Modul: meldet die Nutzer des Servers bei einem mumpeer-Relay an und teilt Mumcord mit, dass es das Relay gibt",
         ],
+        done: [0, 1, 2, 3, 4, 5],
       },
       {
         id: "later",
@@ -329,7 +332,7 @@ const source: Record<"de" | "en", MumbotPage> = {
         id: "epic-2",
         tag: "Epic 2",
         title: "Modules, music and history",
-        status: "planned",
+        status: "now",
         summary: "One bot becomes a toolkit.",
         items: [
           "Modules: pick which bots run in the config or on the command line, in one program and one image",
@@ -339,6 +342,7 @@ const source: Record<"de" | "en", MumbotPage> = {
           "Adjustable bitrate for speech and music, never above the server's limit",
           "Peer module: registers the server's users with a mumpeer relay and tells Mumcord the relay exists",
         ],
+        done: [0, 1, 2, 3, 4, 5],
       },
       {
         id: "later",

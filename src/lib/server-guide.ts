@@ -43,6 +43,10 @@ export interface Configurator {
   secrets: string;
   after: string;
   notes: Record<"ports" | "portsRelay" | "relay" | "webhook" | "more", string>;
+  advanced: string;
+  pluginLimit: string;
+  pluginBurst: string;
+  pluginHint: string;
 }
 
 export interface Guide {
@@ -210,6 +214,10 @@ const source: Record<Lang, Guide> = {
     configurator: {
       title: "Konfigurator",
       intro: "Häkchen setzen, Namen eintragen, fertig: Daraus entstehen deine `docker-compose.yml` und `.env`. Alles passiert in deinem Browser, nichts wird gesendet.",
+      advanced: "Erweitert",
+      pluginLimit: "Versteckte Pakete pro Sekunde",
+      pluginBurst: "Davon kurz hintereinander",
+      pluginHint: "Plugin-Daten, über die Mumcord-Clients Bilder, Chatverlauf und Watch-Party austauschen. Was darüber hinausgeht, verwirft der Server ohne Meldung. Standard: 4 pro Sekunde, kurz bis 15. Mumcord bleibt mit 3 und 10 darunter, mehr Spielraum hilft vor allem anderen Plugins.",
       jump: "Lieber klicken? Zum Konfigurator",
       server: "Server",
       features: "Funktionen",
@@ -395,6 +403,10 @@ const source: Record<Lang, Guide> = {
     configurator: {
       title: "Configurator",
       intro: "Tick the boxes, enter a name, done: you get your `docker-compose.yml` and `.env`. Everything happens in your browser, nothing is sent anywhere.",
+      advanced: "Advanced",
+      pluginLimit: "Hidden packets per second",
+      pluginBurst: "Of those in a quick burst",
+      pluginHint: "Plugin data that Mumcord clients use for images, chat history and the watch party. The server silently drops anything above it. Default: 4 per second, briefly up to 15. Mumcord stays below with 3 and 10, more room mainly helps other plugins.",
       jump: "Rather click? To the configurator",
       server: "Server",
       features: "Features",
