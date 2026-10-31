@@ -2396,7 +2396,51 @@
           "Al primo avvio l’impronta del relay compare nel log. Il bot la annuncia, non serve condividere altro. Altro sulla pagina di <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "title": "Configuratore",
+      "intro": "Spunta le caselle, inserisci un nome e via: ottieni il tuo `docker-compose.yml` e il tuo `.env`. Tutto avviene nel tuo browser, non viene inviato nulla da nessuna parte.",
+      "jump": "Preferisci cliccare? Al configuratore",
+      "server": "Server",
+      "features": "Funzioni",
+      "name": "Nome del server",
+      "welcome": "Testo di benvenuto",
+      "users": "Al massimo contemporaneamente",
+      "options": {
+        "password": [
+          "Password del server",
+          "Entrano solo le persone che conoscono la password"
+        ],
+        "bigImages": [
+          "Immagini grandi",
+          "Immagini in chat fino a 1 MB invece di 128 KB"
+        ],
+        "longText": [
+          "Messaggi lunghi",
+          "Fino a 10.000 invece di 5000 caratteri"
+        ],
+        "relay": [
+          "Relay mumpeer",
+          "Condivisione dello schermo e immagini grandi anche dietro CGNAT, senza che nessuno veda il tuo IP"
+        ],
+        "webhook": [
+          "Webhook di Mumbot",
+          "Messaggi dal monitoraggio o dalla CI in un canale"
+        ]
+      },
+      "setup": "Cartella e configurazioni",
+      "download": "Scarica",
+      "regenerate": "Nuove password",
+      "secrets": "Il tuo browser ha appena creato le password in `.env`. Non esistono da nessun’altra parte, conservale con cura.",
+      "after": "Poi",
+      "notes": {
+        "ports": "Apri la porta 64738 per TCP e UDP.",
+        "portsRelay": "Apri anche la porta 443 per TCP e UDP.",
+        "relay": "Metti l’indirizzo del tuo server sotto `public_host` in `mumpeer.toml` e l’impronta del tuo server Mumble in `bot-peer.toml`.",
+        "webhook": "Imposta una chiave API e i canali consentiti in `bot-webhook.toml`. Poi un `curl` a `http://127.0.0.1:8080/message` pubblica nel canale.",
+        "more": "I passaggi qui sotto spiegano ogni parte nel dettaglio."
+      }
+    }
   },
   "themes": {
     "title": "Temi",

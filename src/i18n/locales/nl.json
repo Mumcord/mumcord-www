@@ -2396,7 +2396,51 @@
           "Bij de eerste start verschijnt de vingerafdruk van het relay in het log. De bot kondigt die aan, er hoeft verder niets gedeeld te worden. Meer op de pagina over <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "title": "Configurator",
+      "intro": "Vink de vakjes aan, vul een naam in en klaar: je krijgt je `docker-compose.yml` en `.env`. Alles gebeurt in je browser, er wordt niets verstuurd.",
+      "jump": "Liever klikken? Naar de configurator",
+      "server": "Server",
+      "features": "Functies",
+      "name": "Servernaam",
+      "welcome": "Welkomsttekst",
+      "users": "Maximaal tegelijk",
+      "options": {
+        "password": [
+          "Serverwachtwoord",
+          "Alleen mensen die het wachtwoord kennen komen binnen"
+        ],
+        "bigImages": [
+          "Grote afbeeldingen",
+          "Afbeeldingen in de chat tot 1 MB in plaats van 128 KB"
+        ],
+        "longText": [
+          "Lange berichten",
+          "Tot 10.000 in plaats van 5000 tekens"
+        ],
+        "relay": [
+          "mumpeer-relay",
+          "Scherm delen en grote afbeeldingen, ook achter CGNAT, zonder dat iemand je IP ziet"
+        ],
+        "webhook": [
+          "Mumbot-webhook",
+          "Berichten van monitoring of CI in een kanaal"
+        ]
+      },
+      "setup": "Map en configuraties",
+      "download": "Downloaden",
+      "regenerate": "Nieuwe wachtwoorden",
+      "secrets": "Je browser heeft zojuist de wachtwoorden in `.env` gemaakt. Ze bestaan nergens anders, bewaar ze goed.",
+      "after": "Daarna",
+      "notes": {
+        "ports": "Zet poort 64738 open voor TCP en UDP.",
+        "portsRelay": "Zet ook poort 443 open voor TCP en UDP.",
+        "relay": "Zet het adres van je server onder `public_host` in `mumpeer.toml` en de vingerafdruk van je Mumble-server in `bot-peer.toml`.",
+        "webhook": "Stel een API-sleutel en de toegestane kanalen in `bot-webhook.toml` in. Dan plaatst een `curl` naar `http://127.0.0.1:8080/message` een bericht in het kanaal.",
+        "more": "De stappen hieronder leggen elk onderdeel uitgebreid uit."
+      }
+    }
   },
   "themes": {
     "title": "Thema's",

@@ -2396,7 +2396,51 @@
           "Ved første start vises relayets fingeraftryk i loggen. Botten annoncerer det, ellers skal intet deles. Mere på siden om <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "title": "Konfigurator",
+      "intro": "Sæt kryds, skriv et navn, færdig: så har du din `docker-compose.yml` og `.env`. Alt sker i din browser, intet sendes nogen steder hen.",
+      "jump": "Vil du hellere klikke? Til konfiguratoren",
+      "server": "Server",
+      "features": "Funktioner",
+      "name": "Servernavn",
+      "welcome": "Velkomsttekst",
+      "users": "Højst på samme tid",
+      "options": {
+        "password": [
+          "Serveradgangskode",
+          "Kun folk, der kender adgangskoden, kommer ind"
+        ],
+        "bigImages": [
+          "Store billeder",
+          "Billeder i chatten op til 1 MB i stedet for 128 KB"
+        ],
+        "longText": [
+          "Lange beskeder",
+          "Op til 10.000 i stedet for 5000 tegn"
+        ],
+        "relay": [
+          "mumpeer-relay",
+          "Skærmdeling og store billeder selv bag CGNAT, uden at nogen ser din IP"
+        ],
+        "webhook": [
+          "Mumbot-webhook",
+          "Beskeder fra overvågning eller CI ind i en kanal"
+        ]
+      },
+      "setup": "Mappe og konfigurationer",
+      "download": "Download",
+      "regenerate": "Nye adgangskoder",
+      "secrets": "Din browser har lige lavet adgangskoderne i `.env`. De findes ingen andre steder, så pas godt på dem.",
+      "after": "Derefter",
+      "notes": {
+        "ports": "Åbn port 64738 for TCP og UDP.",
+        "portsRelay": "Åbn også port 443 for TCP og UDP.",
+        "relay": "Skriv din servers adresse under `public_host` i `mumpeer.toml` og din Mumble-servers fingeraftryk i `bot-peer.toml`.",
+        "webhook": "Angiv en API-nøgle og de tilladte kanaler i `bot-webhook.toml`. Derefter sender `curl` til `http://127.0.0.1:8080/message` en besked ind i kanalen.",
+        "more": "Trinnene nedenfor forklarer hver del i detaljer."
+      }
+    }
   },
   "themes": {
     "title": "Temaer",

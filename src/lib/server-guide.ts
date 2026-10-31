@@ -4,11 +4,12 @@
 import { localized } from "../i18n";
 import { bundles } from "../i18n/locales";
 import type { GuideText } from "../i18n/bundle";
+import { buildCompose, buildEnv, DEFAULTS } from "./compose";
 
 // The compose and env files carry German or English comments; the other languages use English.
 type Lang = "de" | "en";
 
-export const IMAGE = "mumblevoip/mumble-server:v1.5.735";
+export { IMAGE } from "./compose";
 export const IMAGE_DOCS = "https://github.com/mumble-voip/mumble-docker";
 export const MUMBLE_CLIENT = "https://www.mumble.info/downloads/";
 
@@ -25,6 +26,25 @@ export interface Step {
   after?: string[];
 }
 
+export interface Configurator {
+  title: string;
+  intro: string;
+  jump: string;
+  server: string;
+  features: string;
+  name: string;
+  welcome: string;
+  users: string;
+  /** Label and hint per option of ServerOptions. */
+  options: Record<"password" | "bigImages" | "longText" | "relay" | "webhook", [string, string]>;
+  setup: string;
+  download: string;
+  regenerate: string;
+  secrets: string;
+  after: string;
+  notes: Record<"ports" | "portsRelay" | "relay" | "webhook" | "more", string>;
+}
+
 export interface Guide {
   title: string;
   description: string;
@@ -38,82 +58,11 @@ export interface Guide {
   copy: string;
   copied: string;
   more: string;
+  configurator: Configurator;
 }
 
-const compose = (lang: Lang) => {
-  const c =
-    lang === "de"
-      ? {
-          head: "Mumble-Server für Mumcord und jeden anderen Mumble-Client",
-          image: "feste Version; zum Aktualisieren hier erhöhen",
-          tcp: "Verbindung und Chat",
-          udp: "Sprache",
-          data: "Kanäle, Registrierungen und Zertifikat",
-          secrets: "Passwörter kommen aus der Datei .env daneben, nie direkt hier rein.",
-          missing: "SUPERUSER_PASSWORD fehlt in .env",
-          password: "leer = jeder mit der Adresse darf rein",
-          name: "Unser Server",
-          nameNote: "Name des obersten Kanals",
-          welcome: "Willkommen! Sag Hallo im Chat.",
-          welcomeNote: "steht in Mumcord oben im Chat",
-          users: "höchstens so viele gleichzeitig",
-          images: "Bilder im Chat bis 1 MB (Standard: 128 KB)",
-          text: "längere Nachrichten (Standard: 5000 Zeichen)",
-        }
-      : {
-          head: "Mumble server for Mumcord and any other Mumble client",
-          image: "pinned version; raise it here to update",
-          tcp: "connection and chat",
-          udp: "voice",
-          data: "channels, registrations and certificate",
-          secrets: "Passwords come from the .env file next to this one, never straight in here.",
-          missing: "SUPERUSER_PASSWORD is missing in .env",
-          password: "empty = anyone with the address can join",
-          name: "Our Server",
-          nameNote: "name of the top channel",
-          welcome: "Welcome! Say hi in the chat.",
-          welcomeNote: "pinned at the top of the chat in Mumcord",
-          users: "at most this many at once",
-          images: "images in chat up to 1 MB (default: 128 KB)",
-          text: "longer messages (default: 5000 characters)",
-        };
-  return `# ${c.head}
-name: mumble
-
-services:
-  mumble-server:
-    image: ${IMAGE}   # ${c.image}
-    restart: unless-stopped
-    ports:
-      - "64738:64738/tcp"   # ${c.tcp}
-      - "64738:64738/udp"   # ${c.udp}
-    volumes:
-      - data:/data          # ${c.data}
-    environment:
-      # ${c.secrets}
-      MUMBLE_SUPERUSER_PASSWORD: \${SUPERUSER_PASSWORD:?${c.missing}}
-      MUMBLE_CONFIG_SERVER_PASSWORD: \${SERVER_PASSWORD:-}   # ${c.password}
-      MUMBLE_CONFIG_REGISTER_NAME: "${c.name}"              # ${c.nameNote}
-      MUMBLE_CONFIG_WELCOME_TEXT: "${c.welcome}"   # ${c.welcomeNote}
-      MUMBLE_CONFIG_USERS: "50"                             # ${c.users}
-      MUMBLE_CONFIG_IMAGE_MESSAGE_LENGTH: "1048576"         # ${c.images}
-      MUMBLE_CONFIG_TEXT_MESSAGE_LENGTH: "10000"            # ${c.text}
-
-volumes:
-  data:
-`;
-};
-
-const env = (lang: Lang) =>
-  lang === "de"
-    ? `# Bleibt auf dem Server. Nie in Git, Chats oder Screenshots teilen.
-SUPERUSER_PASSWORD=hier-das-zufallspasswort-einfuegen
-SERVER_PASSWORD=
-`
-    : `# Stays on the server. Never share it in Git, chats or screenshots.
-SUPERUSER_PASSWORD=paste-the-random-password-here
-SERVER_PASSWORD=
-`;
+const compose = (lang: Lang) => buildCompose(lang, DEFAULTS[lang]);
+const env = (lang: Lang) => buildEnv(lang, DEFAULTS[lang]);
 
 const source: Record<Lang, Guide> = {
   de: {
@@ -258,6 +207,50 @@ const source: Record<Lang, Guide> = {
     copy: "Kopieren",
     copied: "Kopiert",
     more: "Mehr Hilfe gibt es im Wiki und in den Issues auf GitHub.",
+    configurator: {
+      title: "Konfigurator",
+      intro: "Häkchen setzen, Namen eintragen, fertig: Daraus entstehen deine `docker-compose.yml` und `.env`. Alles passiert in deinem Browser, nichts wird gesendet.",
+      jump: "Lieber klicken? Zum Konfigurator",
+      server: "Server",
+      features: "Funktionen",
+      name: "Name des Servers",
+      welcome: "Willkommenstext",
+      users: "Höchstens gleichzeitig",
+      options: {
+        password: [
+          "Server-Passwort",
+          "Nur wer das Passwort kennt, kommt rein"
+        ],
+        bigImages: [
+          "Große Bilder",
+          "Bilder im Chat bis 1 MB statt 128 KB"
+        ],
+        longText: [
+          "Lange Nachrichten",
+          "Bis 10 000 statt 5000 Zeichen"
+        ],
+        relay: [
+          "mumpeer-Relay",
+          "Bildschirm teilen und große Bilder auch hinter CGNAT, ohne dass jemand deine IP sieht"
+        ],
+        webhook: [
+          "Mumbot-Webhook",
+          "Meldungen aus Monitoring oder CI in einen Kanal"
+        ]
+      },
+      setup: "Ordner und Konfigurationen",
+      download: "Herunterladen",
+      regenerate: "Neue Passwörter",
+      secrets: "Die Passwörter in der `.env` hat gerade dein Browser erzeugt. Sie stehen nirgends sonst, heb sie gut auf.",
+      after: "Danach",
+      notes: {
+        ports: "Öffne Port 64738 für TCP und UDP.",
+        portsRelay: "Öffne zusätzlich Port 443 für TCP und UDP.",
+        relay: "In `mumpeer.toml` bei `public_host` die Adresse deines Servers eintragen, in `bot-peer.toml` den Fingerabdruck deines Mumble-Servers.",
+        webhook: "In `bot-webhook.toml` einen API-Schlüssel und die erlaubten Kanäle festlegen. Dann schreibt etwa `curl` an `http://127.0.0.1:8080/message` in den Kanal.",
+        more: "Die Schritte unten erklären jeden Teil im Detail."
+      }
+    },
   },
   en: {
     title: "Host your own Mumble server",
@@ -399,6 +392,50 @@ const source: Record<Lang, Guide> = {
     copy: "Copy",
     copied: "Copied",
     more: "More help is in the wiki and the issues on GitHub.",
+    configurator: {
+      title: "Configurator",
+      intro: "Tick the boxes, enter a name, done: you get your `docker-compose.yml` and `.env`. Everything happens in your browser, nothing is sent anywhere.",
+      jump: "Rather click? To the configurator",
+      server: "Server",
+      features: "Features",
+      name: "Server name",
+      welcome: "Welcome text",
+      users: "At most at once",
+      options: {
+        password: [
+          "Server password",
+          "Only people who know the password get in"
+        ],
+        bigImages: [
+          "Large images",
+          "Images in chat up to 1 MB instead of 128 KB"
+        ],
+        longText: [
+          "Long messages",
+          "Up to 10,000 instead of 5000 characters"
+        ],
+        relay: [
+          "mumpeer relay",
+          "Screen sharing and large images even behind CGNAT, without anyone seeing your IP"
+        ],
+        webhook: [
+          "Mumbot webhook",
+          "Messages from monitoring or CI into a channel"
+        ]
+      },
+      setup: "Folder and configs",
+      download: "Download",
+      regenerate: "New passwords",
+      secrets: "Your browser just made the passwords in `.env`. They exist nowhere else, keep them safe.",
+      after: "Then",
+      notes: {
+        ports: "Open port 64738 for TCP and UDP.",
+        portsRelay: "Also open port 443 for TCP and UDP.",
+        relay: "Put your server's address under `public_host` in `mumpeer.toml`, and your Mumble server's fingerprint in `bot-peer.toml`.",
+        webhook: "Set an API key and the allowed channels in `bot-webhook.toml`. Then `curl` to `http://127.0.0.1:8080/message` posts into the channel.",
+        more: "The steps below explain every part in detail."
+      }
+    },
   },
 };
 

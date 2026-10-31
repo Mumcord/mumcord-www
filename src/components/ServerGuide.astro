@@ -1,5 +1,6 @@
 ---
 import CopyButton from "./CopyButton.astro";
+import ServerConfigurator from "./ServerConfigurator.astro";
 import { type Lang } from "../i18n";
 import { guides } from "../lib/server-guide";
 import { WIKI_URL, ISSUES_URL } from "../lib/release";
@@ -26,7 +27,10 @@ const g = guides[lang];
         ))
       }
     </ul>
+    <p data-reveal><a class="btn btn-small" href="#configurator">{g.configurator.jump}</a></p>
   </header>
+
+  <ServerConfigurator lang={lang} />
 
   <h2 class="sr-only">{g.stepsTitle}</h2>
   <ol class="guide-steps">

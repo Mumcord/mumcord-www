@@ -1,0 +1,154 @@
+---
+// Tick the features, get docker-compose.yml, .env and the setup commands. Runs in the browser only;
+// without JavaScript the page shows the defaults the guide below explains.
+import CopyButton from "./CopyButton.astro";
+import { type Lang } from "../i18n";
+import { guides } from "../lib/server-guide";
+import { buildCompose, buildEnv, buildSetup, DEFAULTS, type ServerOptions } from "../lib/compose";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const g = guides[lang];
+const c = g.configurator;
+// The files carry German or English comments; the other languages use English.
+const fileLang = lang === "de" ? "de" : "en";
+const d = DEFAULTS[fileLang];
+const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const md = (s: string) => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>");
+const checks = Object.keys(c.options) as (keyof typeof c.options & keyof ServerOptions)[];
+const files = [
+  { id: "setup", title: c.setup, file: "Terminal", code: buildSetup(fileLang, d) },
+  { id: "compose", title: "docker-compose.yml", file: "docker-compose.yml", code: buildCompose(fileLang, d) },
+  { id: "env", title: ".env", file: ".env", code: buildEnv(fileLang, d) },
+];
+---
+
+<section class="cfg" id="configurator" aria-labelledby="cfg-h" data-configurator data-lang={fileLang}>
+  <h2 id="cfg-h" class="cfg-title" data-reveal>{c.title}</h2>
+  <p class="body" data-reveal set:html={md(c.intro)} />
+
+  <div class="cfg-grid">
+    <form class="cfg-form" data-reveal>
+      <fieldset>
+        <legend>{c.server}</legend>
+        <label class="cfg-field">
+          <span>{c.name}</span>
+          <input name="name" type="text" maxlength="60" value={d.name} placeholder={d.name} autocomplete="off" />
+        </label>
+        <label class="cfg-field">
+          <span>{c.welcome}</span>
+          <input name="welcome" type="text" maxlength="200" value={d.welcome} autocomplete="off" />
+        </label>
+        <label class="cfg-field">
+          <span>{c.users}</span>
+          <input name="users" type="number" min="1" max="10000" value={d.users} inputmode="numeric" />
+        </label>
+      </fieldset>
+      <fieldset>
+        <legend>{c.features}</legend>
+        {
+          checks.map((k) => (
+            <label class="cfg-check">
+              <input name={k} type="checkbox" checked={d[k] === true} />
+              <span class="cfg-check-text">
+                <b>{c.options[k][0]}</b>
+                <span>{c.options[k][1]}</span>
+              </span>
+            </label>
+          ))
+        }
+      </fieldset>
+    </form>
+
+    <div class="cfg-out">
+      {
+        files.map((f, i) => (
+          <figure class="code" data-reveal>
+            <figcaption>
+              <span>
+                {i + 1}. {f.title}
+              </span>
+              <span class="cfg-actions">
+                {f.id !== "setup" && (
+                  <button type="button" class="copy-btn is-quiet" data-download={f.file}>
+                    {c.download}
+                  </button>
+                )}
+                <CopyButton label={g.copy} copied={g.copied} class="is-quiet" />
+              </span>
+            </figcaption>
+            <pre><code data-out={f.id}>{f.code}</code></pre>
+          </figure>
+        ))
+      }
+      <p class="cfg-secrets" data-secrets hidden>
+        <span set:html={md(c.secrets)} />
+        <button type="button" class="text-link" data-regenerate>{c.regenerate}</button>
+      </p>
+      <div class="cfg-notes" data-reveal>
+        <h3>{c.after}</h3>
+        <ul>
+          <li set:html={md(c.notes.ports)} />
+          <li data-note="relay" hidden set:html={md(c.notes.portsRelay)} />
+          <li data-note="relay" hidden set:html={md(c.notes.relay)} />
+          <li data-note="webhook" hidden set:html={md(c.notes.webhook)} />
+          <li set:html={md(c.notes.more)} />
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { buildCompose, buildEnv, buildSetup, randomSecret, type CommentLang, type ServerOptions, type Secrets } from "../lib/compose";
+
+  for (const root of document.querySelectorAll<HTMLElement>("[data-configurator]")) {
+    const lang = root.dataset.lang as CommentLang;
+    const form = root.querySelector("form")!;
+    const out = (id: string) => root.querySelector<HTMLElement>(`[data-out="${id}"]`)!;
+    const fresh = (): Secrets => ({ superuser: randomSecret(), server: randomSecret(16), peer: randomSecret(48) });
+    let secrets = fresh();
+
+    const read = (): ServerOptions => {
+      const v = (n: string) => (form.elements.namedItem(n) as HTMLInputElement);
+      return {
+        name: v("name").value.trim() || v("name").placeholder,
+        welcome: v("welcome").value.trim(),
+        users: Number(v("users").value),
+        password: v("password").checked,
+        bigImages: v("bigImages").checked,
+        longText: v("longText").checked,
+        relay: v("relay").checked,
+        webhook: v("webhook").checked,
+      };
+    };
+
+    const render = () => {
+      const o = read();
+      out("setup").textContent = buildSetup(lang, o);
+      out("compose").textContent = buildCompose(lang, o);
+      out("env").textContent = buildEnv(lang, o, secrets);
+      for (const n of root.querySelectorAll<HTMLElement>("[data-note]")) n.hidden = !o[n.dataset.note as "relay" | "webhook"];
+    };
+
+    form.addEventListener("input", render);
+    form.addEventListener("submit", (e) => e.preventDefault());
+    root.querySelector("[data-regenerate]")!.addEventListener("click", () => {
+      secrets = fresh();
+      render();
+    });
+    for (const b of root.querySelectorAll<HTMLButtonElement>("[data-download]"))
+      b.addEventListener("click", () => {
+        const text = b.closest("figure")!.querySelector("code")!.textContent ?? "";
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(new Blob([text], { type: "text/plain" }));
+        a.download = b.dataset.download!;
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+      });
+    root.querySelector<HTMLElement>("[data-secrets]")!.hidden = false;
+    render();
+  }
+</script>

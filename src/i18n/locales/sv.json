@@ -2396,7 +2396,51 @@
           "Vid första starten visas reläets fingeravtryck i loggen. Boten annonserar det, inget annat behöver delas. Mer på sidan om <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "title": "Konfigurator",
+      "intro": "Kryssa i rutorna, skriv ett namn, klart: du får din `docker-compose.yml` och `.env`. Allt sker i din webbläsare, inget skickas någonstans.",
+      "jump": "Klickar du hellre? Till konfiguratorn",
+      "server": "Server",
+      "features": "Funktioner",
+      "name": "Servernamn",
+      "welcome": "Välkomsttext",
+      "users": "Högst samtidigt",
+      "options": {
+        "password": [
+          "Serverlösenord",
+          "Bara de som kan lösenordet kommer in"
+        ],
+        "bigImages": [
+          "Stora bilder",
+          "Bilder i chatten upp till 1 MB i stället för 128 KB"
+        ],
+        "longText": [
+          "Långa meddelanden",
+          "Upp till 10 000 i stället för 5000 tecken"
+        ],
+        "relay": [
+          "mumpeer-relä",
+          "Skärmdelning och stora bilder även bakom CGNAT, utan att någon ser din IP"
+        ],
+        "webhook": [
+          "Mumbot-webhook",
+          "Meddelanden från övervakning eller CI till en kanal"
+        ]
+      },
+      "setup": "Mapp och konfigurationer",
+      "download": "Ladda ner",
+      "regenerate": "Nya lösenord",
+      "secrets": "Din webbläsare skapade just lösenorden i `.env`. De finns ingen annanstans, förvara dem väl.",
+      "after": "Sedan",
+      "notes": {
+        "ports": "Öppna port 64738 för TCP och UDP.",
+        "portsRelay": "Öppna också port 443 för TCP och UDP.",
+        "relay": "Ange serverns adress under `public_host` i `mumpeer.toml` och din Mumble-servers fingeravtryck i `bot-peer.toml`.",
+        "webhook": "Ange en API-nyckel och de tillåtna kanalerna i `bot-webhook.toml`. Sedan postar `curl` till `http://127.0.0.1:8080/message` i kanalen.",
+        "more": "Stegen nedan förklarar varje del i detalj."
+      }
+    }
   },
   "themes": {
     "title": "Teman",

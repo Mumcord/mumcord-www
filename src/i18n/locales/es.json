@@ -2396,7 +2396,51 @@
           "En el primer arranque, la huella del relay aparece en el log. El bot la anuncia, no hace falta compartir nada más. Más en la página de <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "title": "Configurador",
+      "intro": "Marca las casillas, escribe un nombre y listo: obtienes tu `docker-compose.yml` y tu `.env`. Todo ocurre en tu navegador, no se envía nada a ningún sitio.",
+      "jump": "¿Prefieres hacer clic? Al configurador",
+      "server": "Servidor",
+      "features": "Funciones",
+      "name": "Nombre del servidor",
+      "welcome": "Texto de bienvenida",
+      "users": "Máximo a la vez",
+      "options": {
+        "password": [
+          "Contraseña del servidor",
+          "Solo entra quien conozca la contraseña"
+        ],
+        "bigImages": [
+          "Imágenes grandes",
+          "Imágenes en el chat de hasta 1 MB en lugar de 128 KB"
+        ],
+        "longText": [
+          "Mensajes largos",
+          "Hasta 10 000 en lugar de 5000 caracteres"
+        ],
+        "relay": [
+          "Relay de mumpeer",
+          "Compartir pantalla e imágenes grandes incluso detrás de CGNAT, sin que nadie vea tu IP"
+        ],
+        "webhook": [
+          "Webhook de Mumbot",
+          "Mensajes de monitorización o CI a un canal"
+        ]
+      },
+      "setup": "Carpeta y configuraciones",
+      "download": "Descargar",
+      "regenerate": "Contraseñas nuevas",
+      "secrets": "Tu navegador acaba de crear las contraseñas en `.env`. No existen en ningún otro sitio, guárdalas bien.",
+      "after": "Después",
+      "notes": {
+        "ports": "Abre el puerto 64738 para TCP y UDP.",
+        "portsRelay": "Abre también el puerto 443 para TCP y UDP.",
+        "relay": "Pon la dirección de tu servidor en `public_host` de `mumpeer.toml` y la huella de tu servidor Mumble en `bot-peer.toml`.",
+        "webhook": "Define una clave de API y los canales permitidos en `bot-webhook.toml`. Después, un `curl` a `http://127.0.0.1:8080/message` publica en el canal.",
+        "more": "Los pasos de abajo explican cada parte en detalle."
+      }
+    }
   },
   "themes": {
     "title": "Temas",

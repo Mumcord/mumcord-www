@@ -4617,6 +4617,134 @@ p {
 .mb-release a {
   color: var(--text);
 }
+/* ── Server configurator ────────────────────────────── */
+.cfg {
+  margin: clamp(48px, 7vw, 88px) 0;
+  scroll-margin-top: 96px;
+}
+.cfg-title {
+  margin: 0 0 12px;
+  font: 700 clamp(1.6rem, 3vw, 2.2rem) / 1.1 var(--font-display);
+}
+.cfg-grid {
+  display: grid;
+  gap: 24px;
+  margin-top: 28px;
+}
+@media (min-width: 980px) {
+  .cfg-grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: start;
+  }
+  .cfg-form {
+    position: sticky;
+    top: 96px;
+  }
+}
+.cfg-form fieldset {
+  margin: 0 0 16px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-2);
+}
+.cfg-form legend {
+  padding: 0 6px;
+  font: 600 0.75rem var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--peach);
+}
+.cfg-field {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+.cfg-field input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem;
+}
+.cfg-field input:focus-visible,
+.cfg-check input:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 2px;
+}
+.cfg-check {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.cfg-check:hover {
+  background: rgb(155 123 255 / 0.08);
+}
+.cfg-check input {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  accent-color: var(--violet);
+}
+.cfg-check-text {
+  display: grid;
+  gap: 2px;
+}
+.cfg-check-text span {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.cfg-out {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+.cfg-out .code {
+  margin: 0;
+}
+.cfg-out pre {
+  max-height: 420px;
+  overflow: auto;
+}
+.cfg-actions {
+  display: flex;
+  gap: 8px;
+}
+.cfg-secrets {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.cfg-secrets .text-link {
+  margin-left: 6px;
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+.cfg-notes h3 {
+  margin: 8px 0 6px;
+  font-size: 1.05rem;
+}
+.cfg-notes ul {
+  margin: 0;
+  padding-left: 1.2em;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 /* ── Tool pages (mumpeer, mumquiz) ───────────────────── */
 .tool-hero-icon {
   display: block;
