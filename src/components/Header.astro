@@ -1,6 +1,9 @@
 ---
 import { Image } from "astro:assets";
 import icon from "../assets/mumcord-icon.png";
+import mumbotIcon from "../assets/tools/mumbot.png";
+import mumpeerIcon from "../assets/tools/mumpeer.png";
+import mumquizIcon from "../assets/tools/mumquiz.png";
 import { dicts, routes, LANGS, LANG_INFO, type Lang, type PageId } from "../i18n";
 import { WIKI_URL, REPO_URL, ISSUES_URL, getReleases } from "../lib/release";
 import { BUG_URL, IDEA_URL } from "../lib/features";
@@ -36,8 +39,6 @@ const icons: Record<string, string> = {
   issues: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18ZM12 8v4M12 16h.01",
   download: "M12 4v11M7 10l5 5 5-5M5 20h14",
   bot: "M12 3v3M8 21h8M5 8h14v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8ZM9.5 12.5h.01M14.5 12.5h.01M2 12v3M22 12v3",
-  relay: "M3 12h5M16 12h5M8 12a4 4 0 1 0 8 0 4 4 0 1 0-8 0ZM5 9l-2 3 2 3M19 9l2 3-2 3",
-  quiz: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18ZM9.5 9.5a2.5 2.5 0 1 1 3.4 2.3c-.6.3-.9.8-.9 1.4v.3M12 17h.01",
 };
 
 const product = [
@@ -56,11 +57,11 @@ const community = [
 ] as const;
 // The tools around Mumcord, each with its own page.
 const tools = [
-  { key: "botAbout", icon: "bot", href: routes.mumbot[lang], current: page === "mumbot" },
-  { key: "toolPeer", icon: "relay", href: routes.mumpeer[lang], current: page === "mumpeer" },
-  { key: "toolQuiz", icon: "quiz", href: routes.mumquiz[lang], current: page === "mumquiz" },
+  { key: "botAbout", img: mumbotIcon, href: routes.mumbot[lang], current: page === "mumbot" },
+  { key: "toolPeer", img: mumpeerIcon, href: routes.mumpeer[lang], current: page === "mumpeer" },
+  { key: "toolQuiz", img: mumquizIcon, href: routes.mumquiz[lang], current: page === "mumquiz" },
 ] as const;
-const toolsCurrent = tools.some((x) => "current" in x && x.current);
+const toolsCurrent = tools.some((x) => x.current);
 const productCurrent = product.some((p) => p.current);
 ---
 
@@ -124,8 +125,8 @@ const productCurrent = product.some((p) => p.current);
               {
                 tools.map((b) => (
                   <li>
-                    <a class="nav-card nav-card-small" href={b.href} rel={"external" in b ? "noopener" : undefined} aria-current={"current" in b && b.current ? "page" : undefined}>
-                      <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d={icons[b.icon]} /></svg>
+                    <a class="nav-card nav-card-small" href={b.href} aria-current={b.current ? "page" : undefined}>
+                      <Image class="nav-app-icon" src={b.img} alt="" width={40} height={40} />
                       <span class="nav-card-text">
                         <b>{m[b.key].title}</b>
                         <span>{m[b.key].desc}</span>
