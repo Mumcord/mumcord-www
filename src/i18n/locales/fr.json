@@ -2396,7 +2396,85 @@
           "Au premier démarrage, l’empreinte du relais s’affiche dans le log. Le bot l’annonce, rien d’autre n’a besoin d’être partagé. Plus de détails sur la page <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "title": "Configurateur",
+      "intro": "Coche les cases, saisis un nom, c’est prêt : tu obtiens ton `docker-compose.yml` et ton `.env`. Tout se passe dans ton navigateur, rien n’est envoyé nulle part.",
+      "jump": "Tu préfères cliquer ? Vers le configurateur",
+      "server": "Serveur",
+      "features": "Fonctionnalités",
+      "name": "Nom du serveur",
+      "welcome": "Texte d’accueil",
+      "users": "Maximum en même temps",
+      "options": {
+        "password": [
+          "Mot de passe du serveur",
+          "Seules les personnes qui connaissent le mot de passe entrent"
+        ],
+        "bigImages": [
+          "Grandes images",
+          "Images dans le chat jusqu’à 1 MB au lieu de 128 KB"
+        ],
+        "longText": [
+          "Longs messages",
+          "Jusqu’à 10 000 caractères au lieu de 5000"
+        ],
+        "relay": [
+          "Relais mumpeer",
+          "Partage d’écran et grandes images même derrière un CGNAT, sans que personne voie ton IP"
+        ],
+        "webhook": [
+          "Webhook Mumbot",
+          "Messages de la supervision ou de la CI dans un canal"
+        ],
+        "music": [
+          "Musique de Mumbot",
+          "Joue des MP3 dans un canal vocal via HTTP, avec une file d’attente"
+        ],
+        "history": [
+          "Historique de Mumbot",
+          "Conserve le chat du canal pour les utilisateurs de Mumcord qui étaient absents. Jamais les messages privés"
+        ]
+      },
+      "setup": "Dossier et configurations",
+      "download": "Télécharger",
+      "regenerate": "Nouveaux mots de passe",
+      "secrets": "Ton navigateur vient de créer les mots de passe dans `.env`. Ils n’existent nulle part ailleurs, garde-les bien.",
+      "after": "Ensuite",
+      "notes": {
+        "ports": "Ouvre le port 64738 en TCP et UDP.",
+        "portsRelay": "Ouvre aussi le port 443 en TCP et UDP.",
+        "relay": "Mets l’adresse de ton serveur sous `public_host` dans `mumpeer.toml`, et l’empreinte de ton serveur Mumble dans `bot.toml`.",
+        "webhook": "Définis une clé d’API et les canaux autorisés dans `bot.toml`. Ensuite, un `curl` vers `http://127.0.0.1:8080/message` publie dans le canal.",
+        "more": "Les étapes ci-dessous expliquent chaque partie en détail.",
+        "music": "Mets les MP3 dans le dossier `media` et définis une clé d’API dans `bot.toml`. Ensuite, une requête vers `http://127.0.0.1:8081` les joue dans le canal.",
+        "history": "Définis dans `bot.toml` combien de temps le bot garde le chat. Il a besoin d’un accès en lecture aux canaux."
+      },
+      "advanced": "Avancé",
+      "pluginLimit": "Paquets cachés par seconde",
+      "pluginBurst": "Dont en rafale rapide",
+      "pluginHint": "Des données de plugin que les clients Mumcord utilisent pour les images, l’historique du chat et la séance de visionnage partagée. Le serveur abandonne en silence tout ce qui dépasse la limite. Par défaut : 4 par seconde, brièvement jusqu’à 15. Mumcord reste en dessous avec 3 et 10, plus de marge aide surtout les autres plugins.",
+      "quality": {
+        "label": "Débit maximal",
+        "hint": "Le maximum qu’une personne peut envoyer. Standard suffit pour la voix, Bon pour la musique avec la qualité musicale de Mumcord, Optimal pour la hi-fi et pour écouter de la musique ensemble. Plus de débit demande plus d’upload sur le serveur.",
+        "standard": "Standard",
+        "good": "Bon",
+        "best": "Optimal"
+      },
+      "modeCommand": "Une commande",
+      "modeFiles": "Créer les fichiers toi-même",
+      "steps": {
+        "folder": "Crée un dossier",
+        "compose": "Récupère docker-compose.yml",
+        "env": "Génère les mots de passe (.env)",
+        "configs": "Récupère les configurations du bot et du relais",
+        "start": "Démarre",
+        "show": "Affiche les mots de passe et note-les"
+      },
+      "copyAll": "Copie tout d’un coup",
+      "needsMumbot": "Webhook, relais, musique et historique tournent ensemble comme un seul Mumbot avec des modules. Cela arrive avec Mumbot 0.2.0."
+    },
+    "stepsCta": "Pas à pas"
   },
   "themes": {
     "title": "Thèmes",
@@ -2504,8 +2582,8 @@
       "download": "Télécharger",
       "roadmap": "Feuille de route"
     },
-    "botsTitle": "Deux bots, un seul programme",
-    "botsBody": "Les deux vivent dans le même programme, `mumbot`, pour Linux, Windows, macOS et en image Docker.",
+    "botsTitle": "Un bot, quatre modules",
+    "botsBody": "Mumbot est un seul programme construit à partir de modules, pour Linux, Windows, macOS et en image Docker. Choisis les modules dont tu as besoin : ils tournent ensemble comme un seul bot avec une seule connexion. Le bot de test vit dans un build à part.",
     "webhook": {
       "title": "Bot webhook",
       "body": "Ton monitoring, ta CI ou ton propre script envoie une requête HTTP avec une clé API, et le bot publie le texte dans un salon Mumble.",
@@ -2517,7 +2595,7 @@
       ]
     },
     "testbot": {
-      "title": "Bot de test",
+      "title": "Bot de test (build à part)",
       "body": "Un second participant scripté pour les tests automatisés de clients Mumble. Les tests de Mumcord tournent dessus.",
       "points": [
         "Piloter chat, état, permissions et modération, et attendre des conditions",
@@ -2596,7 +2674,34 @@
     "ideaBody": "Les souhaits vont dans les issues de Mumbot sur GitHub.",
     "idea": "Proposer une idée",
     "source": "Code source sur GitHub",
-    "docs": "Docs"
+    "docs": "Docs",
+    "peer": {
+      "title": "Relais (peer)",
+      "body": "Relie ton serveur à un relais mumpeer : le bot annonce le relais à Mumcord et distribue les tokens pour les connexions directes.",
+      "points": [
+        "Partage d’écran et grandes images même derrière un CGNAT ou sans montrer ton IP",
+        "Tourne dans le réseau du relais, l’API reste interne",
+        "Seuls les utilisateurs enregistrés de ton propre serveur reçoivent des tokens"
+      ]
+    },
+    "music": {
+      "title": "Musique",
+      "body": "Joue des MP3 comme de la voix normale dans un canal via une API HTTP, avec une file d’attente.",
+      "points": [
+        "Fichiers d’un dossier, par envoi ou depuis des adresses autorisées",
+        "File d’attente, passer, volume et un canal par piste",
+        "Le bitrate suit la limite du serveur"
+      ]
+    },
+    "history": {
+      "title": "Historique",
+      "body": "Conserve le chat des canaux que tu choisis et le transmet aux utilisateurs de Mumcord qui étaient absents. Comme un client Mumcord en ligne jour et nuit.",
+      "points": [
+        "Les canaux que tu veux, de 1 à 7 jours",
+        "Jamais les messages privés",
+        "Répond à la synchronisation de l’historique de Mumcord comme un client normal"
+      ]
+    }
   },
   "tools": {
     "label": "Tools",

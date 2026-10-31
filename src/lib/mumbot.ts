@@ -4,6 +4,7 @@
 import { localized } from "../i18n";
 import { bundles } from "../i18n/locales";
 import type { Status } from "./roadmap";
+import { atLeast, MUMBOT_MODULES_FROM } from "./compose";
 
 export const MUMBOT_REPO = "Mumcord/mumbot";
 export const MUMBOT_REPO_URL = `https://github.com/${MUMBOT_REPO}`;
@@ -12,6 +13,7 @@ export const MUMBOT_ISSUES_URL = `${MUMBOT_REPO_URL}/issues`;
 export const MUMBOT_IDEA_URL = `${MUMBOT_ISSUES_URL}/new`;
 export const MUMBOT_DOCS_URL = `${MUMBOT_REPO_URL}/blob/main/docs/README.md`;
 export const MUMBOT_CLI_URL = `${MUMBOT_REPO_URL}/blob/main/docs/cli.md`;
+export const mumbotDoc = (name: string) => `${MUMBOT_REPO_URL}/blob/main/docs/${name}.md`;
 export const MUMBOT_EXAMPLES_URL = `${MUMBOT_REPO_URL}/tree/main/examples`;
 export const MUMBOT_IMAGE = "ghcr.io/mumcord/mumbot";
 
@@ -91,6 +93,17 @@ export function getMumbotRelease(): Promise<BotRelease | null> {
   return cached;
 }
 
+/** The image tag for the configurator's one bot with modules: the release, but at least 0.2.0 where modules arrive. */
+export async function getBotImageVersion(): Promise<string> {
+  const v = await getMumbotVersion();
+  return atLeast(v, MUMBOT_MODULES_FROM) ? v : MUMBOT_MODULES_FROM;
+}
+
+/** The Mumbot image tag the configurator and server guide use: the newest release, 0.1.0 before any. */
+export async function getMumbotVersion(): Promise<string> {
+  return (await getMumbotRelease())?.version ?? "0.1.0";
+}
+
 export interface BotEpic {
   id: string;
   tag: string;
@@ -99,6 +112,8 @@ export interface BotEpic {
   version?: string;
   summary: string;
   items: string[];
+  /** Items already built on main (indexes into items), ticked off on the page. */
+  done?: number[];
 }
 
 export interface MumbotPage {
@@ -110,6 +125,9 @@ export interface MumbotPage {
   botsTitle: string;
   botsBody: string;
   webhook: { title: string; body: string; points: string[] };
+  peer: { title: string; body: string; points: string[] };
+  music: { title: string; body: string; points: string[] };
+  history: { title: string; body: string; points: string[] };
   testbot: { title: string; body: string; points: string[] };
   downloadTitle: string;
   downloadBody: string;
@@ -137,6 +155,19 @@ export const MUMBOT_CODE = {
   webhook: `curl -X POST http://127.0.0.1:8080/message \\
   -H 'X-API-Key: <your key>' \\
   -d '{"channel": 1, "message": "**deploy** finished"}'`,
+  peer: `services:
+  mumbot:
+    image: ${MUMBOT_IMAGE}:0.2.0
+    command: ["run"]
+    network_mode: "service:mumpeer"
+    environment:
+      MUMBOT_MODULES: peer`,
+  music: `curl -X POST http://127.0.0.1:8081/play \\
+  -H "X-API-Key: <your key>" \\
+  -d '{"file": "jingle.mp3"}'`,
+  history: `[history]
+channels = ["*"]
+retention_days = 7`,
   testbot: `printf '%s\\n' 'join Lobby' 'say "<b>hello</b>"' \\
   'expect message --from Alice --contains hi' \\
   | mumbot --port 44738 --name Bob script`,
@@ -155,8 +186,8 @@ const source: Record<"de" | "en", MumbotPage> = {
     intro:
       "Mumbot meldet sich wie ein Mensch mit eigenem Zertifikat an. Deshalb läuft er auf jedem normalen Mumble-Server, ohne Plugin und ohne Änderung an der Serverkonfiguration. Aus der Familie von Mumcord, Open Source unter AGPL-3.0.",
     toc: { bots: "Die Bots", download: "Download", roadmap: "Roadmap" },
-    botsTitle: "Zwei Bots, ein Programm",
-    botsBody: "Beide stecken im selben Programm `mumbot`, für Linux, Windows, macOS und als Docker-Image.",
+    botsTitle: "Ein Bot, vier Module",
+    botsBody: "Mumbot ist ein Programm aus Modulen, für Linux, Windows, macOS und als Docker-Image. Wähle die Module, die du brauchst: Sie laufen zusammen als ein Bot mit einer Verbindung. Der Test-Bot steckt in einem eigenen Build.",
     webhook: {
       title: "Webhook-Bot",
       body: "Monitoring, CI oder ein eigenes Skript schickt eine HTTP-Anfrage mit API-Schlüssel, und der Bot schreibt den Text in einen Mumble-Kanal.",
@@ -167,8 +198,35 @@ const source: Record<"de" | "en", MumbotPage> = {
         "Rate-Limit und eine klare Antwort, ob die Nachricht angekommen ist",
       ],
     },
+    peer: {
+      title: "Relay (Peer)",
+      body: "Verbindet deinen Server mit einem mumpeer-Relay: Der Bot kündigt das Relay bei Mumcord an und vergibt die Tokens für direkte Verbindungen.",
+      points: [
+        "Bildschirm teilen und große Bilder auch hinter CGNAT oder ohne die eigene IP zu zeigen",
+        "Läuft im Netz des Relays, die API bleibt intern",
+        "Nur registrierte Nutzer des eigenen Servers bekommen Tokens",
+      ],
+    },
+    music: {
+      title: "Musik",
+      body: "Spielt MP3s über eine HTTP-API als normale Sprache in einen Kanal, mit Warteschlange.",
+      points: [
+        "Dateien aus einem Ordner, als Upload oder von freigegebenen Adressen",
+        "Warteschlange, Überspringen, Lautstärke und Kanal pro Titel",
+        "Bitrate passt sich dem Limit des Servers an",
+      ],
+    },
+    history: {
+      title: "Verlauf",
+      body: "Hebt den Chat der gewählten Kanäle auf und gibt ihn an Mumcord-Nutzer weiter, die weg waren. Wie ein Mumcord-Client, der rund um die Uhr online ist.",
+      points: [
+        "Kanäle frei wählbar, 1 bis 7 Tage",
+        "Private Nachrichten nie",
+        "Antwortet auf Mumcords Verlaufs-Abgleich wie ein normaler Client",
+      ],
+    },
     testbot: {
-      title: "Test-Bot",
+      title: "Test-Bot (eigener Build)",
       body: "Ein geskripteter zweiter Teilnehmer für automatische Tests von Mumble-Clients. Mumcords eigene Tests laufen damit.",
       points: [
         "Chat, Status, Rechte und Moderation steuern und auf Bedingungen warten",
@@ -222,7 +280,8 @@ const source: Record<"de" | "en", MumbotPage> = {
         id: "epic-2",
         tag: "Epic 2",
         title: "Module, Musik und Verlauf",
-        status: "planned",
+        status: "now",
+        version: "0.2.0",
         summary: "Aus einem Bot wird ein Baukasten.",
         items: [
           "Module: per Konfiguration oder Kommandozeile wählen, welche Bots laufen, in einem Programm und einem Image",
@@ -232,6 +291,7 @@ const source: Record<"de" | "en", MumbotPage> = {
           "Bitrate für Sprache und Musik einstellbar, nie über dem Limit des Servers",
           "Peer-Modul: meldet die Nutzer des Servers bei einem mumpeer-Relay an und teilt Mumcord mit, dass es das Relay gibt",
         ],
+        done: [0, 1, 2, 3, 4, 5],
       },
       {
         id: "later",
@@ -262,8 +322,8 @@ const source: Record<"de" | "en", MumbotPage> = {
     intro:
       "Mumbot logs in like a person, with its own certificate. That's why it runs on any standard Mumble server, with no plugin and no change to the server config. From the Mumcord family, open source under AGPL-3.0.",
     toc: { bots: "The bots", download: "Download", roadmap: "Roadmap" },
-    botsTitle: "Two bots, one program",
-    botsBody: "Both live in the same program, `mumbot`, for Linux, Windows, macOS and as a Docker image.",
+    botsTitle: "One bot, four modules",
+    botsBody: "Mumbot is one program built from modules, for Linux, Windows, macOS and as a Docker image. Pick the modules you need: they run together as one bot with one connection. The test bot lives in a build of its own.",
     webhook: {
       title: "Webhook bot",
       body: "Monitoring, CI or your own script sends one HTTP request with an API key, and the bot posts the text into a Mumble channel.",
@@ -274,8 +334,35 @@ const source: Record<"de" | "en", MumbotPage> = {
         "Rate limit and a clear answer whether the message arrived",
       ],
     },
+    peer: {
+      title: "Relay (peer)",
+      body: "Connects your server to a mumpeer relay: the bot announces the relay to Mumcord and hands out the tokens for direct connections.",
+      points: [
+        "Screen sharing and large images even behind CGNAT or without showing your IP",
+        "Runs in the relay's network, the API stays internal",
+        "Only registered users of your own server get tokens",
+      ],
+    },
+    music: {
+      title: "Music",
+      body: "Plays MP3s as normal voice into a channel over an HTTP API, with a queue.",
+      points: [
+        "Files from a folder, as an upload or from allowed addresses",
+        "Queue, skip, volume and a channel per track",
+        "The bitrate follows the server's limit",
+      ],
+    },
+    history: {
+      title: "History",
+      body: "Keeps the chat of the channels you choose and hands it to Mumcord users who were away. Like a Mumcord client that is online around the clock.",
+      points: [
+        "Any channels you like, 1 to 7 days",
+        "Never private messages",
+        "Answers Mumcord's history sync like a normal client",
+      ],
+    },
     testbot: {
-      title: "Test bot",
+      title: "Test bot (own build)",
       body: "A scripted second participant for automated tests of Mumble clients. Mumcord's own tests run on it.",
       points: [
         "Drive chat, state, permissions and moderation, and wait for conditions",
@@ -329,7 +416,8 @@ const source: Record<"de" | "en", MumbotPage> = {
         id: "epic-2",
         tag: "Epic 2",
         title: "Modules, music and history",
-        status: "planned",
+        status: "now",
+        version: "0.2.0",
         summary: "One bot becomes a toolkit.",
         items: [
           "Modules: pick which bots run in the config or on the command line, in one program and one image",
@@ -339,6 +427,7 @@ const source: Record<"de" | "en", MumbotPage> = {
           "Adjustable bitrate for speech and music, never above the server's limit",
           "Peer module: registers the server's users with a mumpeer relay and tells Mumcord the relay exists",
         ],
+        done: [0, 1, 2, 3, 4, 5],
       },
       {
         id: "later",

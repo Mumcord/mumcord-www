@@ -13,6 +13,16 @@
 	@trailing path_regexp trailing ^(.+)/$
 	redir @trailing {re.trailing.1} 301
 	try_files {path} {path}.html {path}/index.html
+	# The configurator's compose files: Caddy fills in name, welcome text and numbers from the query
+	# string (see src/pages/server/compose/[variant].yml.ts). Values are quoted there, never run.
+	@compose path /server/compose/*
+	header @compose Content-Type "text/plain; charset=utf-8"
+	templates @compose {
+		mime text/plain
+	}
+	# The configurator's bot.toml files: plain text, the setup fills in the keys on the server.
+	@bottoml path /server/bot/*
+	header @bottoml Content-Type "text/plain; charset=utf-8"
 
 	file_server
 

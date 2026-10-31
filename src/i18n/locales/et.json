@@ -2396,7 +2396,85 @@
           "Esimesel käivitamisel ilmub relee sõrmejälg logisse. Bot teatab selle, muud pole vaja jagada. Rohkem leiad lehelt <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "title": "Konfiguraator",
+      "intro": "Märgi ruudud, sisesta nimi ja valmis: saad oma `docker-compose.yml` ja `.env` faili. Kõik toimub sinu brauseris, midagi ei saadeta kuhugi.",
+      "jump": "Eelistad klõpsata? Konfiguraatori juurde",
+      "server": "Server",
+      "features": "Funktsioonid",
+      "name": "Serveri nimi",
+      "welcome": "Tervitustekst",
+      "users": "Korraga kuni",
+      "options": {
+        "password": [
+          "Serveri parool",
+          "Sisse pääsevad ainult need, kes parooli teavad"
+        ],
+        "bigImages": [
+          "Suured pildid",
+          "Pildid vestluses kuni 1 MB, mitte 128 KB"
+        ],
+        "longText": [
+          "Pikad sõnumid",
+          "Kuni 10 000 märki 5000 asemel"
+        ],
+        "relay": [
+          "mumpeeri relee",
+          "Ekraanijagamine ja suured pildid ka CGNAT-i taga, ilma et keegi su IP-d näeks"
+        ],
+        "webhook": [
+          "Mumboti veebikonks",
+          "Seire või CI sõnumid kanalisse"
+        ],
+        "music": [
+          "Mumboti muusika",
+          "Esitab MP3-sid häälkanalis HTTP kaudu, järjekorraga"
+        ],
+        "history": [
+          "Mumboti ajalugu",
+          "Hoiab kanali vestlust Mumcordi kasutajatele, kes olid ära. Mitte kunagi privaatsõnumeid"
+        ]
+      },
+      "setup": "Kaust ja seadistused",
+      "download": "Laadi alla",
+      "regenerate": "Uued paroolid",
+      "secrets": "Sinu brauser lõi just `.env` failis olevad paroolid. Neid pole kusagil mujal, hoia need kindlas kohas.",
+      "after": "Seejärel",
+      "notes": {
+        "ports": "Ava port 64738 TCP ja UDP jaoks.",
+        "portsRelay": "Ava ka port 443 TCP ja UDP jaoks.",
+        "relay": "Pane oma serveri aadress võtme `public_host` alla failis `mumpeer.toml` ja oma Mumble-serveri sõrmejälg faili `bot.toml`.",
+        "webhook": "Määra API võti ja lubatud kanalid failis `bot.toml`. Seejärel postitab `curl` aadressile `http://127.0.0.1:8080/message` sõnumi kanalisse.",
+        "more": "Allolevad sammud selgitavad iga osa üksikasjalikult.",
+        "music": "Pane MP3-d kausta `media` ja määra API võti failis `bot.toml`. Seejärel esitab päring aadressile `http://127.0.0.1:8081` need kanalis.",
+        "history": "Määra failis `bot.toml`, kui kaua bot vestlust hoiab. Ta vajab kanalitele lugemisõigust."
+      },
+      "advanced": "Täpsemad",
+      "pluginLimit": "Peidetud pakette sekundis",
+      "pluginBurst": "Neist kiires hoos",
+      "pluginHint": "Pluginate andmed, mida Mumcordi kliendid kasutavad piltide, vestluse ajaloo ja ühisvaatamise jaoks. Server jätab kõik piirist üle jääva vaikselt maha. Vaikimisi: 4 sekundis, korraks kuni 15. Mumcord jääb sellest allapoole väärtustega 3 ja 10, rohkem ruumi aitab peamiselt teisi plugineid.",
+      "quality": {
+        "label": "Suurim bitikiirus",
+        "hint": "Maksimum, mida inimene tohib saata. Tavaline sobib kõnele, Hea muusikale Mumcordi muusikakvaliteediga, Parim hi-fi jaoks ja koos muusika mängimiseks. Suurem bitikiirus vajab serveris rohkem üleslaadimiskiirust.",
+        "standard": "Tavaline",
+        "good": "Hea",
+        "best": "Parim"
+      },
+      "modeCommand": "Üks käsk",
+      "modeFiles": "Loo failid ise",
+      "steps": {
+        "folder": "Loo kaust",
+        "compose": "Tõmba docker-compose.yml",
+        "env": "Tee paroolid (.env)",
+        "configs": "Tõmba boti ja relee seadistused",
+        "start": "Käivita",
+        "show": "Näita paroole ja märgi need üles"
+      },
+      "copyAll": "Kopeeri kõik korraga",
+      "needsMumbot": "Veebikonks, relee, muusika ja ajalugu töötavad koos ühe Mumbotina, millel on moodulid. See tuleb Mumbot 0.2.0-ga."
+    },
+    "stepsCta": "Samm-sammult"
   },
   "themes": {
     "title": "Teemad",
@@ -2504,8 +2582,8 @@
       "download": "Allalaadimine",
       "roadmap": "Teekaart"
     },
-    "botsTitle": "Kaks botti, üks programm",
-    "botsBody": "Mõlemad on samas programmis `mumbot`, Linuxile, Windowsile, macOS-ile ja Dockeri kujutisena.",
+    "botsTitle": "Üks bot, neli moodulit",
+    "botsBody": "Mumbot on üks moodulitest ehitatud programm Linuxile, Windowsile, macOS-ile ja Dockeri kujutisena. Vali moodulid, mida vajad: need töötavad koos ühe botina ühe ühendusega. Testbot asub eraldi versioonis.",
     "webhook": {
       "title": "Veebihaagi bot",
       "body": "Monitooring, CI või sinu oma skript saadab ühe HTTP-päringu API-võtmega ja bot postitab teksti Mumble'i kanalisse.",
@@ -2517,7 +2595,7 @@
       ]
     },
     "testbot": {
-      "title": "Testbot",
+      "title": "Testbot (oma versioon)",
       "body": "Skriptitud teine osaleja Mumble'i klientide automaattestideks. Mumcordi enda testid jooksevad sellega.",
       "points": [
         "Juhi vestlust, olekut, õigusi ja modereerimist ning oota tingimuste täitumist",
@@ -2596,7 +2674,34 @@
     "ideaBody": "Soovid lähevad Mumboti issue'desse GitHubis.",
     "idea": "Paku idee",
     "source": "Lähtekood GitHubis",
-    "docs": "Juhendid"
+    "docs": "Juhendid",
+    "peer": {
+      "title": "Relee (peer)",
+      "body": "Ühendab sinu serveri mumpeeri releega: bot teatab releest Mumcordile ja jagab otseühenduste märgid.",
+      "points": [
+        "Ekraanijagamine ja suured pildid isegi CGNAT-i taga või ilma sinu IP-d näitamata",
+        "Töötab relee võrgus, API jääb sisemiseks",
+        "Märke saavad ainult sinu enda serveri registreeritud kasutajad"
+      ]
+    },
+    "music": {
+      "title": "Muusika",
+      "body": "Esitab MP3-sid tavalise häälena kanalis HTTP API kaudu, järjekorraga.",
+      "points": [
+        "Failid kaustast, üleslaadimisena või lubatud aadressidelt",
+        "Järjekord, vahelejätmine, helitugevus ja kanal iga loo jaoks",
+        "Bitikiirus järgib serveri piirangut"
+      ]
+    },
+    "history": {
+      "title": "Ajalugu",
+      "body": "Hoiab sinu valitud kanalite vestlust ja annab selle Mumcordi kasutajatele, kes olid ära. Nagu Mumcordi klient, mis on ööpäevaringi võrgus.",
+      "points": [
+        "Mis tahes kanalid, mis sulle meeldivad, 1 kuni 7 päeva",
+        "Mitte kunagi privaatsõnumeid",
+        "Vastab Mumcordi ajaloo sünkroonimisele nagu tavaline klient"
+      ]
+    }
   },
   "tools": {
     "label": "Tools",

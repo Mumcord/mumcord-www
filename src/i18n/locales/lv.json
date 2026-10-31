@@ -2396,7 +2396,85 @@
           "Pirmajā palaišanas reizē releja pirkstu nospiedums parādās žurnālā. Bots to paziņo, nekas cits nav jādala. Vairāk <a href=\"/en/mumpeer\">mumpeer</a> lapā."
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "title": "Konfigurators",
+      "intro": "Atzīmē rūtiņas, ievadi nosaukumu un gatavs: saņem savu `docker-compose.yml` un `.env`. Viss notiek tavā pārlūkā, nekas netiek nekur sūtīts.",
+      "jump": "Labāk klikšķini? Uz konfiguratoru",
+      "server": "Serveris",
+      "features": "Funkcijas",
+      "name": "Servera nosaukums",
+      "welcome": "Sveiciena teksts",
+      "users": "Vienlaikus ne vairāk kā",
+      "options": {
+        "password": [
+          "Servera parole",
+          "Iekšā tiek tikai tie, kas zina paroli"
+        ],
+        "bigImages": [
+          "Lielie attēli",
+          "Attēli čatā līdz 1 MB, nevis 128 KB"
+        ],
+        "longText": [
+          "Garas ziņas",
+          "Līdz 10 000 rakstzīmēm, nevis 5000"
+        ],
+        "relay": [
+          "mumpeer relejs",
+          "Ekrāna kopīgošana un lieli attēli pat aiz CGNAT, nevienam neredzot tavu IP"
+        ],
+        "webhook": [
+          "Mumbot webhook",
+          "Uzraudzības vai CI ziņas kanālā"
+        ],
+        "music": [
+          "Mumbot mūzika",
+          "Atskaņo MP3 balss kanālā caur HTTP, ar rindu"
+        ],
+        "history": [
+          "Mumbot vēsture",
+          "Glabā kanāla čatu Mumcord lietotājiem, kuri bija prom. Nekad privātās ziņas"
+        ]
+      },
+      "setup": "Mape un konfigurācijas",
+      "download": "Lejupielādēt",
+      "regenerate": "Jaunas paroles",
+      "secrets": "Tavs pārlūks tikko izveidoja paroles failā `.env`. Citur to nav, glabā tās droši.",
+      "after": "Pēc tam",
+      "notes": {
+        "ports": "Atver portu 64738 TCP un UDP.",
+        "portsRelay": "Atver arī portu 443 TCP un UDP.",
+        "relay": "Ieraksti sava servera adresi pie `public_host` failā `mumpeer.toml`, bet sava Mumble servera pirkstu nospiedumu failā `bot.toml`.",
+        "webhook": "Iestati API atslēgu un atļautos kanālus failā `bot.toml`. Tad `curl` uz `http://127.0.0.1:8080/message` publicē ziņu kanālā.",
+        "more": "Tālāk aprakstītie soļi detalizēti izskaidro katru daļu.",
+        "music": "Ieliec MP3 mapē `media` un iestati API atslēgu failā `bot.toml`. Tad pieprasījums uz `http://127.0.0.1:8081` tos atskaņo kanālā.",
+        "history": "Failā `bot.toml` iestati, cik ilgi bots glabā čatu. Viņam vajag lasīšanas piekļuvi kanāliem."
+      },
+      "advanced": "Papildus",
+      "pluginLimit": "Slēpto pakešu sekundē",
+      "pluginBurst": "No tām ātrā pliksnījumā",
+      "pluginHint": "Spraudņu dati, ko Mumcord klienti izmanto attēliem, čata vēsturei un kopīgai skatīšanai. Serveris klusējot atmet visu, kas pārsniedz ierobežojumu. Noklusējums: 4 sekundē, īslaicīgi līdz 15. Mumcord paliek zem tā ar 3 un 10, lielāka rezerve galvenokārt palīdz citiem spraudņiem.",
+      "quality": {
+        "label": "Augstākais bitreits",
+        "hint": "Vairāk, nekā cilvēks drīkst sūtīt. Standarta pietiek runai, Labs – mūzikai ar Mumcord mūzikas kvalitāti, Labākais – hi-fi un kopīgai mūzikas klausīšanai. Lielākam bitreitam serverī vajag lielāku augšupielādes ātrumu.",
+        "standard": "Standarta",
+        "good": "Labs",
+        "best": "Labākais"
+      },
+      "modeCommand": "Viena komanda",
+      "modeFiles": "Izveido failus pats",
+      "steps": {
+        "folder": "Izveido mapi",
+        "compose": "Lejupielādē docker-compose.yml",
+        "env": "Izveido paroles (.env)",
+        "configs": "Lejupielādē bota un releja konfigurācijas",
+        "start": "Palaid",
+        "show": "Parādi paroles un pieraksti tās"
+      },
+      "copyAll": "Nokopē visu uzreiz",
+      "needsMumbot": "Webhook, relejs, mūzika un vēsture darbojas kopā kā viens Mumbot ar moduļiem. Tas nāks līdz ar Mumbot 0.2.0."
+    },
+    "stepsCta": "Soli pa solim"
   },
   "themes": {
     "title": "Tēmas",
@@ -2504,8 +2582,8 @@
       "download": "Lejupielāde",
       "roadmap": "Ceļvedis"
     },
-    "botsTitle": "Divi boti, viena programma",
-    "botsBody": "Abi dzīvo vienā programmā, `mumbot`, Linux, Windows, macOS un kā Docker attēls.",
+    "botsTitle": "Viens bots, četri moduļi",
+    "botsBody": "Mumbot ir viena programma, kas veidota no moduļiem, Linux, Windows, macOS un kā Docker attēls. Izvēlies moduļus, kas tev vajadzīgi: tie darbojas kopā kā viens bots ar vienu savienojumu. Testa bots ir atsevišķā būvējumā.",
     "webhook": {
       "title": "Webhook bots",
       "body": "Monitorings, CI vai tavs paša skripts nosūta vienu HTTP pieprasījumu ar API atslēgu, un bots ievieto tekstu Mumble kanālā.",
@@ -2517,7 +2595,7 @@
       ]
     },
     "testbot": {
-      "title": "Testa bots",
+      "title": "Testa bots (atsevišķs būvējums)",
       "body": "Ar skriptu vadīts otrs dalībnieks Mumble klientu automātiskajiem testiem. Uz tā darbojas arī paša Mumcord testi.",
       "points": [
         "Vada tērzēšanu, statusu, atļaujas un moderēšanu un gaida nosacījumus",
@@ -2596,7 +2674,34 @@
     "ideaBody": "Vēlmes nonāk Mumbot pieteikumos GitHub.",
     "idea": "Ierosini ideju",
     "source": "Pirmkods GitHub",
-    "docs": "Dokumentācija"
+    "docs": "Dokumentācija",
+    "peer": {
+      "title": "Releis (peer)",
+      "body": "Savieno tavu serveri ar mumpeer releju: bots paziņo releju Mumcord un izdala žetonus tiešajiem savienojumiem.",
+      "points": [
+        "Ekrāna kopīgošana un lieli attēli pat aiz CGNAT vai nerādot tavu IP",
+        "Darbojas releja tīklā, API paliek iekšējs",
+        "Žetonus saņem tikai tava paša servera reģistrētie lietotāji"
+      ]
+    },
+    "music": {
+      "title": "Mūzika",
+      "body": "Atskaņo MP3 kā parastu balsi kanālā caur HTTP API, ar rindu.",
+      "points": [
+        "Faili no mapes, kā augšupielāde vai no atļautām adresēm",
+        "Rinda, izlaišana, skaļums un kanāls katram ierakstam",
+        "Bitrate seko servera ierobežojumam"
+      ]
+    },
+    "history": {
+      "title": "Vēsture",
+      "body": "Glabā tevis izvēlēto kanālu čatu un nodod to Mumcord lietotājiem, kuri bija prom. Kā Mumcord klients, kas ir tiešsaistē visu diennakti.",
+      "points": [
+        "Jebkuri kanāli, kādus vēlies, no 1 līdz 7 dienām",
+        "Nekad privātās ziņas",
+        "Atbild uz Mumcord vēstures sinhronizāciju kā parasts klients"
+      ]
+    }
   },
   "tools": {
     "label": "Tools",

@@ -4,11 +4,12 @@
 import { localized } from "../i18n";
 import { bundles } from "../i18n/locales";
 import type { GuideText } from "../i18n/bundle";
+import { buildCompose, buildEnv, DEFAULTS } from "./compose";
 
 // The compose and env files carry German or English comments; the other languages use English.
 type Lang = "de" | "en";
 
-export const IMAGE = "mumblevoip/mumble-server:v1.5.735";
+export { IMAGE } from "./compose";
 export const IMAGE_DOCS = "https://github.com/mumble-voip/mumble-docker";
 export const MUMBLE_CLIENT = "https://www.mumble.info/downloads/";
 
@@ -25,6 +26,36 @@ export interface Step {
   after?: string[];
 }
 
+export interface Configurator {
+  title: string;
+  intro: string;
+  jump: string;
+  server: string;
+  features: string;
+  name: string;
+  welcome: string;
+  users: string;
+  /** Label and hint per option of ServerOptions. */
+  options: Record<"password" | "bigImages" | "longText" | "relay" | "webhook" | "music" | "history", [string, string]>;
+  quality: { label: string; hint: string; standard: string; good: string; best: string };
+  setup: string;
+  download: string;
+  regenerate: string;
+  secrets: string;
+  after: string;
+  notes: Record<"ports" | "portsRelay" | "relay" | "webhook" | "music" | "history" | "more", string>;
+  modeCommand: string;
+  needsMumbot: string;
+  /** Titles of the one-command steps (STEP_IDS in compose.ts). */
+  steps: Record<"folder" | "compose" | "env" | "configs" | "start" | "show", string>;
+  copyAll: string;
+  modeFiles: string;
+  advanced: string;
+  pluginLimit: string;
+  pluginBurst: string;
+  pluginHint: string;
+}
+
 export interface Guide {
   title: string;
   description: string;
@@ -32,88 +63,19 @@ export interface Guide {
   intro: string;
   facts: { value: string; label: string }[];
   stepsTitle: string;
+  /** Short label of the hero button that jumps to the steps. */
+  stepsCta: string;
   steps: Step[];
   troubleTitle: string;
   trouble: { q: string; a: string }[];
   copy: string;
   copied: string;
   more: string;
+  configurator: Configurator;
 }
 
-const compose = (lang: Lang) => {
-  const c =
-    lang === "de"
-      ? {
-          head: "Mumble-Server für Mumcord und jeden anderen Mumble-Client",
-          image: "feste Version; zum Aktualisieren hier erhöhen",
-          tcp: "Verbindung und Chat",
-          udp: "Sprache",
-          data: "Kanäle, Registrierungen und Zertifikat",
-          secrets: "Passwörter kommen aus der Datei .env daneben, nie direkt hier rein.",
-          missing: "SUPERUSER_PASSWORD fehlt in .env",
-          password: "leer = jeder mit der Adresse darf rein",
-          name: "Unser Server",
-          nameNote: "Name des obersten Kanals",
-          welcome: "Willkommen! Sag Hallo im Chat.",
-          welcomeNote: "steht in Mumcord oben im Chat",
-          users: "höchstens so viele gleichzeitig",
-          images: "Bilder im Chat bis 1 MB (Standard: 128 KB)",
-          text: "längere Nachrichten (Standard: 5000 Zeichen)",
-        }
-      : {
-          head: "Mumble server for Mumcord and any other Mumble client",
-          image: "pinned version; raise it here to update",
-          tcp: "connection and chat",
-          udp: "voice",
-          data: "channels, registrations and certificate",
-          secrets: "Passwords come from the .env file next to this one, never straight in here.",
-          missing: "SUPERUSER_PASSWORD is missing in .env",
-          password: "empty = anyone with the address can join",
-          name: "Our Server",
-          nameNote: "name of the top channel",
-          welcome: "Welcome! Say hi in the chat.",
-          welcomeNote: "pinned at the top of the chat in Mumcord",
-          users: "at most this many at once",
-          images: "images in chat up to 1 MB (default: 128 KB)",
-          text: "longer messages (default: 5000 characters)",
-        };
-  return `# ${c.head}
-name: mumble
-
-services:
-  mumble-server:
-    image: ${IMAGE}   # ${c.image}
-    restart: unless-stopped
-    ports:
-      - "64738:64738/tcp"   # ${c.tcp}
-      - "64738:64738/udp"   # ${c.udp}
-    volumes:
-      - data:/data          # ${c.data}
-    environment:
-      # ${c.secrets}
-      MUMBLE_SUPERUSER_PASSWORD: \${SUPERUSER_PASSWORD:?${c.missing}}
-      MUMBLE_CONFIG_SERVER_PASSWORD: \${SERVER_PASSWORD:-}   # ${c.password}
-      MUMBLE_CONFIG_REGISTER_NAME: "${c.name}"              # ${c.nameNote}
-      MUMBLE_CONFIG_WELCOME_TEXT: "${c.welcome}"   # ${c.welcomeNote}
-      MUMBLE_CONFIG_USERS: "50"                             # ${c.users}
-      MUMBLE_CONFIG_IMAGE_MESSAGE_LENGTH: "1048576"         # ${c.images}
-      MUMBLE_CONFIG_TEXT_MESSAGE_LENGTH: "10000"            # ${c.text}
-
-volumes:
-  data:
-`;
-};
-
-const env = (lang: Lang) =>
-  lang === "de"
-    ? `# Bleibt auf dem Server. Nie in Git, Chats oder Screenshots teilen.
-SUPERUSER_PASSWORD=hier-das-zufallspasswort-einfuegen
-SERVER_PASSWORD=
-`
-    : `# Stays on the server. Never share it in Git, chats or screenshots.
-SUPERUSER_PASSWORD=paste-the-random-password-here
-SERVER_PASSWORD=
-`;
+const compose = (lang: Lang) => buildCompose(lang, DEFAULTS[lang]);
+const env = (lang: Lang) => buildEnv(lang, DEFAULTS[lang]);
 
 const source: Record<Lang, Guide> = {
   de: {
@@ -129,6 +91,7 @@ const source: Record<Lang, Guide> = {
       { value: "0 €", label: "Open Source; nur der Rechner kostet" },
     ],
     stepsTitle: "In acht Schritten, plus einem optionalen",
+    stepsCta: "Schritt für Schritt",
     steps: [
       {
         id: "rechner",
@@ -224,7 +187,7 @@ const source: Record<Lang, Guide> = {
         ],
         code: [
           { code: "echo \"PEER_API_SECRET=$(openssl rand -hex 32)\" >> .env\ncurl -fsSL -o mumpeer.toml https://raw.githubusercontent.com/Mumcord/mumbot/main/examples/peer-with-relay/mumpeer.example.toml\ncurl -fsSL -o bot.toml https://raw.githubusercontent.com/Mumcord/mumbot/main/examples/peer-with-relay/bot.example.toml" },
-          { file: "docker-compose.yml", code: "  mumpeer:\n    image: ghcr.io/mumcord/mumpeer:0.1.0\n    restart: unless-stopped\n    environment:\n      MUMPEER_API_SECRET: ${PEER_API_SECRET:?PEER_API_SECRET}\n    ports: [\"443:443/udp\", \"443:443/tcp\"]\n    volumes:\n      - ./mumpeer.toml:/config/mumpeer.toml:ro\n      - mumpeer-data:/var/lib/mumpeer\n  mumbot:\n    image: ghcr.io/mumcord/mumbot:0.1.0\n    command: [\"peer\"]\n    restart: unless-stopped\n    depends_on: [mumble-server, mumpeer]\n    network_mode: \"service:mumpeer\"\n    environment:\n      MUMBOT_CONFIG: /config/bot.toml\n      MUMBOT_PEER_API_SECRET: ${PEER_API_SECRET:?PEER_API_SECRET}\n      SERVER_PASSWORD: ${SERVER_PASSWORD:-}\n    volumes:\n      - ./bot.toml:/config/bot.toml:ro\n      - mumbot-data:/data\n    healthcheck:\n      disable: true" },
+          { file: "docker-compose.yml", code: "  mumpeer:\n    image: ghcr.io/mumcord/mumpeer:0.1.0\n    restart: unless-stopped\n    environment:\n      MUMPEER_API_SECRET: ${PEER_API_SECRET:?PEER_API_SECRET}\n    ports: [\"443:443/udp\", \"443:443/tcp\"]\n    volumes:\n      - ./mumpeer.toml:/config/mumpeer.toml:ro\n      - mumpeer-data:/var/lib/mumpeer\n  mumbot:\n    image: ghcr.io/mumcord/mumbot:0.2.0\n    command: [\"peer\"]\n    restart: unless-stopped\n    depends_on: [mumble-server, mumpeer]\n    network_mode: \"service:mumpeer\"\n    environment:\n      MUMBOT_CONFIG: /config/bot.toml\n      MUMBOT_PEER_API_SECRET: ${PEER_API_SECRET:?PEER_API_SECRET}\n      SERVER_PASSWORD: ${SERVER_PASSWORD:-}\n    volumes:\n      - ./bot.toml:/config/bot.toml:ro\n      - mumbot-data:/data\n    healthcheck:\n      disable: true" },
         ],
         after: [
           "Mit <code>docker compose up -d</code> starten und zusätzlich UDP und TCP auf Port 443 öffnen. Läuft dort schon ein Webserver, nimm in <code>mumpeer.toml</code> andere Ports. Die API bleibt zwischen Relay und Bot.",
@@ -258,6 +221,77 @@ const source: Record<Lang, Guide> = {
     copy: "Kopieren",
     copied: "Kopiert",
     more: "Mehr Hilfe gibt es im Wiki und in den Issues auf GitHub.",
+    configurator: {
+      title: "Konfigurator",
+      intro: "Häkchen setzen, Namen eintragen, fertig: Daraus entstehen deine `docker-compose.yml` und `.env`. Alles passiert in deinem Browser, nichts wird gesendet.",
+      steps: {
+        folder: "Ordner anlegen",
+        compose: "docker-compose.yml laden",
+        env: "Passwörter erzeugen (.env)",
+        configs: "Konfigurationen für Bots und Relay holen",
+        start: "Starten",
+        show: "Passwörter anzeigen und notieren",
+      },
+      copyAll: "Alles auf einmal kopieren",
+      needsMumbot: "Webhook, Relay-Bot, Musik und Verlauf laufen zusammen als ein Mumbot mit Modulen. Das kommt mit Mumbot 0.2.0.",
+      modeCommand: "Ein Befehl",
+      modeFiles: "Dateien selbst anlegen",
+      advanced: "Erweitert",
+      pluginLimit: "Versteckte Pakete pro Sekunde",
+      pluginBurst: "Davon kurz hintereinander",
+      pluginHint: "Plugin-Daten, über die Mumcord-Clients Bilder, Chatverlauf und Watch-Party austauschen. Was darüber hinausgeht, verwirft der Server ohne Meldung. Standard: 4 pro Sekunde, kurz bis 15. Mumcord bleibt mit 3 und 10 darunter, mehr Spielraum hilft vor allem anderen Plugins.",
+      jump: "Lieber klicken? Zum Konfigurator",
+      server: "Server",
+      features: "Funktionen",
+      name: "Name des Servers",
+      welcome: "Willkommenstext",
+      users: "Höchstens gleichzeitig",
+      quality: {
+        label: "Höchste Bitrate",
+        hint: "Wie viel eine Person höchstens senden darf. Standard reicht für Sprache, Gut für Musik mit Mumcords Musikqualität, Beste für Hi-Fi und gemeinsames Musizieren. Mehr Bitrate braucht mehr Upload am Server.",
+        standard: "Standard",
+        good: "Gut",
+        best: "Beste",
+      },
+      options: {
+        password: [
+          "Server-Passwort",
+          "Nur wer das Passwort kennt, kommt rein"
+        ],
+        bigImages: [
+          "Große Bilder",
+          "Bilder im Chat bis 1 MB statt 128 KB"
+        ],
+        longText: [
+          "Lange Nachrichten",
+          "Bis 10 000 statt 5000 Zeichen"
+        ],
+        relay: [
+          "mumpeer-Relay",
+          "Bildschirm teilen und große Bilder auch hinter CGNAT, ohne dass jemand deine IP sieht"
+        ],
+        webhook: [
+          "Mumbot-Webhook",
+          "Meldungen aus Monitoring oder CI in einen Kanal"
+        ],
+        music: ["Mumbot-Musik", "MP3s per HTTP in einen Sprachkanal spielen, mit Warteschlange"],
+        history: ["Mumbot-Verlauf", "Hebt Kanal-Chat für Mumcord-Nutzer auf, die weg waren. Private Nachrichten nie"]
+      },
+      setup: "Ordner und Konfigurationen",
+      download: "Herunterladen",
+      regenerate: "Neue Passwörter",
+      secrets: "Die Passwörter in der `.env` hat gerade dein Browser erzeugt. Sie stehen nirgends sonst, heb sie gut auf.",
+      after: "Danach",
+      notes: {
+        ports: "Öffne Port 64738 für TCP und UDP.",
+        portsRelay: "Öffne zusätzlich Port 443 für TCP und UDP.",
+        relay: "In `mumpeer.toml` bei `public_host` die Adresse deines Servers eintragen, in `bot.toml` den Fingerabdruck deines Mumble-Servers.",
+        webhook: "In `bot.toml` einen API-Schlüssel und die erlaubten Kanäle festlegen. Dann schreibt etwa `curl` an `http://127.0.0.1:8080/message` in den Kanal.",
+        more: "Die Schritte unten erklären jeden Teil im Detail.",
+        music: "MP3s in den Ordner `media` legen und in `bot.toml` einen API-Schlüssel festlegen. Dann spielt eine Anfrage an `http://127.0.0.1:8081` sie im Kanal.",
+        history: "In `bot.toml` festlegen, wie lange der Bot den Chat aufhebt. Er braucht Leserechte in den Kanälen."
+      }
+    },
   },
   en: {
     title: "Host your own Mumble server",
@@ -272,6 +306,7 @@ const source: Record<Lang, Guide> = {
       { value: "€0", label: "open source; you only pay for the machine" },
     ],
     stepsTitle: "In eight steps, plus an optional one",
+    stepsCta: "Step by step",
     steps: [
       {
         id: "machine",
@@ -365,7 +400,7 @@ const source: Record<Lang, Guide> = {
         ],
         code: [
           { code: "echo \"PEER_API_SECRET=$(openssl rand -hex 32)\" >> .env\ncurl -fsSL -o mumpeer.toml https://raw.githubusercontent.com/Mumcord/mumbot/main/examples/peer-with-relay/mumpeer.example.toml\ncurl -fsSL -o bot.toml https://raw.githubusercontent.com/Mumcord/mumbot/main/examples/peer-with-relay/bot.example.toml" },
-          { file: "docker-compose.yml", code: "  mumpeer:\n    image: ghcr.io/mumcord/mumpeer:0.1.0\n    restart: unless-stopped\n    environment:\n      MUMPEER_API_SECRET: ${PEER_API_SECRET:?PEER_API_SECRET}\n    ports: [\"443:443/udp\", \"443:443/tcp\"]\n    volumes:\n      - ./mumpeer.toml:/config/mumpeer.toml:ro\n      - mumpeer-data:/var/lib/mumpeer\n  mumbot:\n    image: ghcr.io/mumcord/mumbot:0.1.0\n    command: [\"peer\"]\n    restart: unless-stopped\n    depends_on: [mumble-server, mumpeer]\n    network_mode: \"service:mumpeer\"\n    environment:\n      MUMBOT_CONFIG: /config/bot.toml\n      MUMBOT_PEER_API_SECRET: ${PEER_API_SECRET:?PEER_API_SECRET}\n      SERVER_PASSWORD: ${SERVER_PASSWORD:-}\n    volumes:\n      - ./bot.toml:/config/bot.toml:ro\n      - mumbot-data:/data\n    healthcheck:\n      disable: true" },
+          { file: "docker-compose.yml", code: "  mumpeer:\n    image: ghcr.io/mumcord/mumpeer:0.1.0\n    restart: unless-stopped\n    environment:\n      MUMPEER_API_SECRET: ${PEER_API_SECRET:?PEER_API_SECRET}\n    ports: [\"443:443/udp\", \"443:443/tcp\"]\n    volumes:\n      - ./mumpeer.toml:/config/mumpeer.toml:ro\n      - mumpeer-data:/var/lib/mumpeer\n  mumbot:\n    image: ghcr.io/mumcord/mumbot:0.2.0\n    command: [\"peer\"]\n    restart: unless-stopped\n    depends_on: [mumble-server, mumpeer]\n    network_mode: \"service:mumpeer\"\n    environment:\n      MUMBOT_CONFIG: /config/bot.toml\n      MUMBOT_PEER_API_SECRET: ${PEER_API_SECRET:?PEER_API_SECRET}\n      SERVER_PASSWORD: ${SERVER_PASSWORD:-}\n    volumes:\n      - ./bot.toml:/config/bot.toml:ro\n      - mumbot-data:/data\n    healthcheck:\n      disable: true" },
         ],
         after: [
           "Start with <code>docker compose up -d</code> and open UDP and TCP on port 443 as well. If a web server already runs there, choose other ports in <code>mumpeer.toml</code>. The API stays between relay and bot.",
@@ -399,6 +434,77 @@ const source: Record<Lang, Guide> = {
     copy: "Copy",
     copied: "Copied",
     more: "More help is in the wiki and the issues on GitHub.",
+    configurator: {
+      title: "Configurator",
+      intro: "Tick the boxes, enter a name, done: you get your `docker-compose.yml` and `.env`. Everything happens in your browser, nothing is sent anywhere.",
+      steps: {
+        folder: "Create a folder",
+        compose: "Fetch docker-compose.yml",
+        env: "Make the passwords (.env)",
+        configs: "Fetch the bot and relay configs",
+        start: "Start",
+        show: "Show the passwords and note them",
+      },
+      copyAll: "Copy everything at once",
+      needsMumbot: "Webhook, relay bot, music and history run together as one Mumbot with modules. That comes with Mumbot 0.2.0.",
+      modeCommand: "One command",
+      modeFiles: "Create the files yourself",
+      advanced: "Advanced",
+      pluginLimit: "Hidden packets per second",
+      pluginBurst: "Of those in a quick burst",
+      pluginHint: "Plugin data that Mumcord clients use for images, chat history and the watch party. The server silently drops anything above it. Default: 4 per second, briefly up to 15. Mumcord stays below with 3 and 10, more room mainly helps other plugins.",
+      jump: "Rather click? To the configurator",
+      server: "Server",
+      features: "Features",
+      name: "Server name",
+      welcome: "Welcome text",
+      users: "At most at once",
+      quality: {
+        label: "Highest bitrate",
+        hint: "The most a person may send. Standard is enough for speech, Good for music with Mumcord's music quality, Best for hi-fi and playing music together. More bitrate needs more upload on the server.",
+        standard: "Standard",
+        good: "Good",
+        best: "Best",
+      },
+      options: {
+        password: [
+          "Server password",
+          "Only people who know the password get in"
+        ],
+        bigImages: [
+          "Large images",
+          "Images in chat up to 1 MB instead of 128 KB"
+        ],
+        longText: [
+          "Long messages",
+          "Up to 10,000 instead of 5000 characters"
+        ],
+        relay: [
+          "mumpeer relay",
+          "Screen sharing and large images even behind CGNAT, without anyone seeing your IP"
+        ],
+        webhook: [
+          "Mumbot webhook",
+          "Messages from monitoring or CI into a channel"
+        ],
+        music: ["Mumbot music", "Play MP3s into a voice channel over HTTP, with a queue"],
+        history: ["Mumbot history", "Keeps channel chat for Mumcord users who were away. Never private messages"]
+      },
+      setup: "Folder and configs",
+      download: "Download",
+      regenerate: "New passwords",
+      secrets: "Your browser just made the passwords in `.env`. They exist nowhere else, keep them safe.",
+      after: "Then",
+      notes: {
+        ports: "Open port 64738 for TCP and UDP.",
+        portsRelay: "Also open port 443 for TCP and UDP.",
+        relay: "Put your server's address under `public_host` in `mumpeer.toml`, and your Mumble server's fingerprint in `bot.toml`.",
+        webhook: "Set an API key and the allowed channels in `bot.toml`. Then `curl` to `http://127.0.0.1:8080/message` posts into the channel.",
+        more: "The steps below explain every part in detail.",
+        music: "Put MP3s into the `media` folder and set an API key in `bot.toml`. Then a request to `http://127.0.0.1:8081` plays them in the channel.",
+        history: "Set in `bot.toml` how long the bot keeps the chat. It needs read access to the channels."
+      }
+    },
   },
 };
 
@@ -408,10 +514,19 @@ const relink = (lang: string, list: string[]) => list.map((s) => s.replaceAll('h
 
 const mergeGuide = (lang: string, en: Guide, tr: GuideText | undefined): Guide => {
   if (!tr) return { ...en, steps: en.steps.map((s) => ({ ...s, body: relink(lang, s.body), after: s.after && relink(lang, s.after) })) };
-  const { steps: _steps, ...words } = tr;
+  const { steps: _steps, configurator: cfg, ...words } = tr;
   return {
     ...en,
     ...words,
+    // Parts of the configurator added after a translation was made come from English.
+    configurator: {
+      ...en.configurator,
+      ...cfg,
+      options: { ...en.configurator.options, ...cfg?.options },
+      quality: { ...en.configurator.quality, ...cfg?.quality },
+      notes: { ...en.configurator.notes, ...cfg?.notes },
+      steps: { ...en.configurator.steps, ...cfg?.steps },
+    },
     steps: en.steps.map((s) => {
       const ts = tr.steps.find((x) => x.id === s.id);
       const body = ts?.body ?? s.body;

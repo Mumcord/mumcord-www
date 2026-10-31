@@ -2396,7 +2396,85 @@
           "L-ewwel darba li jibda, il-marka tas-swaba' tar-relay tidher fil-log. Il-bot jannunzjaha, m'hemm bżonn naqsmu xejn aktar. Aktar fuq il-paġna ta' <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "title": "Konfiguratur",
+      "intro": "Immarka l-kaxxi, daħħal isem, lest: tikseb id-`docker-compose.yml` u l-`.env` tiegħek. Kollox jiġri fil-browser tiegħek, xejn ma jintbagħat imkien.",
+      "jump": "Aħjar tikklikkja? Lejn il-konfiguratur",
+      "server": "Server",
+      "features": "Karatteristiċi",
+      "name": "Isem is-server",
+      "welcome": "Test tat-tislim",
+      "users": "L-aktar fl-istess ħin",
+      "options": {
+        "password": [
+          "Password tas-server",
+          "Jidħlu biss in-nies li jafu l-password"
+        ],
+        "bigImages": [
+          "Immaġini kbar",
+          "Immaġini fiċ-chat sa 1 MB minflok 128 KB"
+        ],
+        "longText": [
+          "Messaġġi twal",
+          "Sa 10,000 minflok 5000 karattru"
+        ],
+        "relay": [
+          "Relay ta’ mumpeer",
+          "Qsim tal-iskrin u immaġini kbar anke wara CGNAT, mingħajr ma jaraw l-IP tiegħek"
+        ],
+        "webhook": [
+          "Webhook ta’ Mumbot",
+          "Messaġġi mill-monitoraġġ jew mis-CI f’kanal"
+        ],
+        "music": [
+          "Mużika ta’ Mumbot",
+          "Idoqq MP3s f’kanal tal-vuċi permezz ta’ HTTP, b’kju"
+        ],
+        "history": [
+          "Storja ta’ Mumbot",
+          "Iżomm iċ-chat tal-kanal għall-utenti ta’ Mumcord li kienu assenti. Qatt messaġġi privati"
+        ]
+      },
+      "setup": "Folder u konfigurazzjonijiet",
+      "download": "Niżżel",
+      "regenerate": "Passwords ġodda",
+      "secrets": "Il-browser tiegħek għadu kemm għamel il-passwords f’`.env`. Ma jeżistu imkien ieħor, żommhom sew.",
+      "after": "Imbagħad",
+      "notes": {
+        "ports": "Iftaħ il-port 64738 għal TCP u UDP.",
+        "portsRelay": "Iftaħ ukoll il-port 443 għal TCP u UDP.",
+        "relay": "Poġġi l-indirizz tas-server tiegħek taħt `public_host` f’`mumpeer.toml`, u l-marka tas-swaba’ tas-server Mumble tiegħek f’`bot.toml`.",
+        "webhook": "Issettja ċavetta API u l-kanali permessi f’`bot.toml`. Imbagħad `curl` lejn `http://127.0.0.1:8080/message` jippubblika fil-kanal.",
+        "more": "Il-passi hawn taħt jispjegaw kull parti fid-dettall.",
+        "music": "Poġġi l-MP3s fil-folder `media` u issettja ċavetta API f’`bot.toml`. Imbagħad talba lejn `http://127.0.0.1:8081` iddoqqhom fil-kanal.",
+        "history": "Issettja f’`bot.toml` kemm iżomm iċ-chat il-bot. Jeħtieġ aċċess għall-qari tal-kanali."
+      },
+      "advanced": "Avvanzat",
+      "pluginLimit": "Pakketti moħbija kull sekonda",
+      "pluginBurst": "Minn dawn f’qasta mgħaġġla",
+      "pluginHint": "Dejta tal-plugins li l-klijenti ta’ Mumcord jużaw għall-immaġini, l-istorja taċ-chat u l-watch party. Is-server jaqta’ bil-kwiet kull ma jaqbeż il-limitu. Awtomatiku: 4 kull sekonda, għal ftit sa 15. Mumcord jibqa’ taħtu b’3 u 10, aktar spazju jgħin l-aktar plugins oħra.",
+      "quality": {
+        "label": "L-ogħla bitrate",
+        "hint": "L-aktar li persuna tista’ tibgħat. L-Istandard huwa biżżejjed għad-diskors, Tajjeb għall-mużika bil-kwalità tal-mużika ta’ Mumcord, L-Aħjar għall-hi-fi u biex tindaqq il-mużika flimkien. Aktar bitrate teħtieġ aktar upload fuq is-server.",
+        "standard": "Standard",
+        "good": "Tajjeb",
+        "best": "L-Aħjar"
+      },
+      "modeCommand": "Kmand wieħed",
+      "modeFiles": "Oħloq il-fajls int",
+      "steps": {
+        "folder": "Oħloq folder",
+        "compose": "Niżżel docker-compose.yml",
+        "env": "Oħloq il-passwords (.env)",
+        "configs": "Niżżel il-konfigurazzjonijiet tal-bot u tar-relay",
+        "start": "Ibda",
+        "show": "Uri l-passwords u ikteb għalihom"
+      },
+      "copyAll": "Ikkopja kollox f’daqqa",
+      "needsMumbot": "Webhook, relay, mużika u storja jaħdmu flimkien bħala Mumbot wieħed b’moduli. Dan ġej mal-Mumbot 0.2.0."
+    },
+    "stepsCta": "Pass pass"
   },
   "themes": {
     "title": "Temi",
@@ -2504,8 +2582,8 @@
       "download": "Niżżel",
       "roadmap": "Pjan"
     },
-    "botsTitle": "Żewġ bots, programm wieħed",
-    "botsBody": "It-tnejn jgħixu fl-istess programm, `mumbot`, għal Linux, Windows, macOS u bħala Docker image.",
+    "botsTitle": "Bot wieħed, erba’ moduli",
+    "botsBody": "Mumbot huwa programm wieħed magħmul minn moduli, għal Linux, Windows, macOS u bħala Docker image. Agħżel il-moduli li għandek bżonn: jaħdmu flimkien bħala bot wieħed b’konnessjoni waħda. It-test bot jinsab f’build tiegħu.",
     "webhook": {
       "title": "Webhook bot",
       "body": "Il-monitoraġġ, is-CI jew l-iskript tiegħek jibgħat request HTTP wieħed b’API key, u l-bot ipoġġi t-test f’kanal ta’ Mumble.",
@@ -2517,7 +2595,7 @@
       ]
     },
     "testbot": {
-      "title": "Test bot",
+      "title": "Test bot (build tiegħu)",
       "body": "It-tieni parteċipant skriptjat għal testijiet awtomatiċi tal-clients ta’ Mumble. It-testijiet ta’ Mumcord stess jaħdmu fuqu.",
       "points": [
         "Ikkontrolla ċ-chat, l-istat, il-permessi u l-moderazzjoni, u stenna kundizzjonijiet",
@@ -2596,7 +2674,34 @@
     "ideaBody": "Ix-xewqat imorru fl-issues ta’ Mumbot fuq GitHub.",
     "idea": "Ipproponi idea",
     "source": "Kodiċi sors fuq GitHub",
-    "docs": "Dokumentazzjoni"
+    "docs": "Dokumentazzjoni",
+    "peer": {
+      "title": "Relay (peer)",
+      "body": "Jgħaqqad is-server tiegħek ma’ relay ta’ mumpeer: il-bot jaħtaf ir-relay lil Mumcord u jqassam it-tokens għal konnessjonijiet diretti.",
+      "points": [
+        "Qsim tal-iskrin u immaġini kbar anki wara CGNAT jew mingħajr ma turi l-IP tiegħek",
+        "Jaħdem fin-netwerk tar-relay, l-API jibqa’ intern",
+        "Tokens jieħdu biss l-utenti rreġistrati tas-server tiegħek stess"
+      ]
+    },
+    "music": {
+      "title": "Mużika",
+      "body": "Idoqq MP3s bħala vuċi normali f’kanal permezz ta’ API HTTP, b’kju.",
+      "points": [
+        "Fajls minn folder, bħala upload jew minn indirizzi permessi",
+        "Kju, taqbeż, volum u kanal għal kull track",
+        "Il-bitrate isegwi l-limitu tas-server"
+      ]
+    },
+    "history": {
+      "title": "Storja",
+      "body": "Iżomm iċ-chat tal-kanali li tagħżel u jgħaddih lill-utenti ta’ Mumcord li kienu assenti. Bħal klijent ta’ Mumcord li huwa online ġurnata sħiħa.",
+      "points": [
+        "Kwalunkwe kanali li trid, minn jum 1 sa 7 ijiem",
+        "Qatt messaġġi privati",
+        "Iwieġeb għas-sinkronizzazzjoni tal-istorja ta’ Mumcord bħal klijent normali"
+      ]
+    }
   },
   "tools": {
     "label": "Tools",

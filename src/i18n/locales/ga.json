@@ -2396,7 +2396,85 @@
           "Ar an gcéad tosú taispeántar méarlorg an athsheachadáin sa log. Fógraíonn an bota é, ní gá aon rud eile a roinnt. Tuilleadh ar leathanach <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "title": "Cumraitheoir",
+      "intro": "Cuir tic sna boscaí, cuir isteach ainm, agus tá tú réidh: gheobhaidh tú do `docker-compose.yml` agus do `.env`. Tarlaíonn gach rud i do bhrabhsálaí, ní sheoltar aon rud áit ar bith.",
+      "jump": "B’fhearr leat cliceáil? Go dtí an cumraitheoir",
+      "server": "Freastalaí",
+      "features": "Gnéithe",
+      "name": "Ainm an fhreastalaí",
+      "welcome": "Téacs fáilte",
+      "users": "Uasmhéid ag an am céanna",
+      "options": {
+        "password": [
+          "Pasfhocal an fhreastalaí",
+          "Ní thagann isteach ach daoine a bhfuil an pasfhocal acu"
+        ],
+        "bigImages": [
+          "Íomhánna móra",
+          "Íomhánna sa chaint suas le 1 MB in ionad 128 KB"
+        ],
+        "longText": [
+          "Teachtaireachtaí fada",
+          "Suas le 10,000 in ionad 5000 carachtar"
+        ],
+        "relay": [
+          "Athsheoltóir mumpeer",
+          "Comhroinnt scáileáin agus íomhánna móra fiú taobh thiar de CGNAT, gan aon duine ag féachaint ar do IP"
+        ],
+        "webhook": [
+          "Webhook Mumbot",
+          "Teachtaireachtaí ó monatóireacht nó CI isteach i gcainéal"
+        ],
+        "music": [
+          "Ceol Mumbot",
+          "Seinneann sé MP3anna i gcainéal gutha thar HTTP, le scuaine"
+        ],
+        "history": [
+          "Stair Mumbot",
+          "Coinníonn sé comhrá an chainéil d’úsáideoirí Mumcord a bhí as láthair. Teachtaireachtaí príobháideacha, ná choíche"
+        ]
+      },
+      "setup": "Fillteán agus cumraíochtaí",
+      "download": "Íoslódáil",
+      "regenerate": "Pasfhocail nua",
+      "secrets": "Chruthaigh do bhrabhsálaí na pasfhocail i `.env` díreach anois. Níl siad in áit ar bith eile, coinnigh slán iad.",
+      "after": "Ansin",
+      "notes": {
+        "ports": "Oscail port 64738 do TCP agus UDP.",
+        "portsRelay": "Oscail port 443 do TCP agus UDP freisin.",
+        "relay": "Cuir seoladh do fhreastalaí faoi `public_host` i `mumpeer.toml`, agus méarlorg do fhreastalaí Mumble i `bot.toml`.",
+        "webhook": "Socraigh eochair API agus na cainéil cheadaithe i `bot.toml`. Ansin postálann `curl` chuig `http://127.0.0.1:8080/message` isteach sa chainéal.",
+        "more": "Míníonn na céimeanna thíos gach cuid go mion.",
+        "music": "Cuir na MP3anna isteach san fhillteán `media` agus socraigh eochair API i `bot.toml`. Ansin seinneann iarratas chuig `http://127.0.0.1:8081` iad sa chainéal.",
+        "history": "Socraigh i `bot.toml` cé chomh fada a choinníonn an bot an comhrá. Teastaíonn rochtain léite air ar na cainéil."
+      },
+      "advanced": "Ardleibhéil",
+      "pluginLimit": "Paicéid fholaithe in aghaidh an tsoicind",
+      "pluginBurst": "Díobh sin i mbolgam tapa",
+      "pluginHint": "Sonraí breiseáin a úsáideann cliaint Mumcord le haghaidh íomhánna, stair an chomhrá agus an chomhfhéachana. Scriosann an freastalaí gach rud os cionn na teorann go ciúin. Réamhshocrú: 4 in aghaidh an tsoicind, suas le 15 ar feadh tamaill ghearr. Fanann Mumcord faoina bhun le 3 agus 10; cabhraíonn níos mó spáis le breiseáin eile den chuid is mó.",
+      "quality": {
+        "label": "Ráta giotán is airde",
+        "hint": "An méid is mó a fhéadfaidh duine a sheoladh. Is leor Caighdeánach don chaint, Maith don cheol le cáilíocht cheoil Mumcord, Is Fearr don hi-fi agus do cheol a sheinm le chéile. Teastaíonn níos mó uaslódála ar an bhfreastalaí le ráta giotán níos airde.",
+        "standard": "Caighdeánach",
+        "good": "Maith",
+        "best": "Is Fearr"
+      },
+      "modeCommand": "Ordú amháin",
+      "modeFiles": "Cruthaigh na comhaid tú féin",
+      "steps": {
+        "folder": "Cruthaigh fillteán",
+        "compose": "Faigh docker-compose.yml",
+        "env": "Déan na pasfhocail (.env)",
+        "configs": "Faigh cumraíochtaí an bhota agus an athsheachadáin",
+        "start": "Tosaigh",
+        "show": "Taispeáin na pasfhocail agus scríobh síos iad"
+      },
+      "copyAll": "Cóipeáil gach rud ag an am céanna",
+      "needsMumbot": "Oibríonn webhook, athsheoltóir, ceol agus stair le chéile mar Mumbot amháin le modúil. Tagann sé sin le Mumbot 0.2.0."
+    },
+    "stepsCta": "Céim ar chéim"
   },
   "themes": {
     "title": "Téamaí",
@@ -2504,8 +2582,8 @@
       "download": "Íoslódáil",
       "roadmap": "Treochlár"
     },
-    "botsTitle": "Dhá bhot, ríomhchlár amháin",
-    "botsBody": "Tá an dá cheann sa ríomhchlár céanna, `mumbot`, do Linux, Windows, macOS agus mar íomhá Docker.",
+    "botsTitle": "Bot amháin, ceithre mhodúl",
+    "botsBody": "Is ríomhchlár amháin é Mumbot atá tógtha as modúil, do Linux, Windows, macOS agus mar íomhá Docker. Roghnaigh na modúil atá uait: ritheann siad le chéile mar bot amháin le nasc amháin. Tá an bot tástála i mbuild dá chuid féin.",
     "webhook": {
       "title": "Bot crúca gréasáin",
       "body": "Seolann monatóireacht, CI nó do script féin iarratas HTTP amháin le heochair API, agus postálann an bot an téacs i gcainéal Mumble.",
@@ -2517,7 +2595,7 @@
       ]
     },
     "testbot": {
-      "title": "Bot tástála",
+      "title": "Bot tástála (build dá chuid féin)",
       "body": "Dara rannpháirtí scriptithe le haghaidh tástálacha uathoibríocha ar chliaint Mumble. Ritheann tástálacha Mumcord féin air.",
       "points": [
         "Stiúir comhrá, stádas, ceadanna agus modhnóireacht, agus fan le coinníollacha",
@@ -2596,7 +2674,34 @@
     "ideaBody": "Téann iarratais isteach i saincheisteanna Mumbot ar GitHub.",
     "idea": "Mol smaoineamh",
     "source": "Cód foinseach ar GitHub",
-    "docs": "Doiciméid"
+    "docs": "Doiciméid",
+    "peer": {
+      "title": "Athsheoltóir (peer)",
+      "body": "Nascann sé do fhreastalaí le hathsheoltóir mumpeer: fógraíonn an bot an t-athsheoltóir do Mumcord agus tugann sé amach na chomharthaí do naisc dhíreacha.",
+      "points": [
+        "Comhroinnt scáileáin agus íomhánna móra fiú taobh thiar de CGNAT nó gan do IP a thaispeáint",
+        "Ritheann sé i líonra an athsheoltóra, fanann an API inmheánach",
+        "Ní fhaigheann ach úsáideoirí cláraithe do fhreastalaí féin comharthaí"
+      ]
+    },
+    "music": {
+      "title": "Ceol",
+      "body": "Seinneann sé MP3anna mar ghuth normálta i gcainéal thar API HTTP, le scuaine.",
+      "points": [
+        "Comhaid ó fhillteán, mar uaslódáil nó ó sheoltaí ceadaithe",
+        "Scuaine, scipeáil, airde fhuaime agus cainéal in aghaidh an rian",
+        "Leanann an bitrate teorainn an fhreastalaí"
+      ]
+    },
+    "history": {
+      "title": "Stair",
+      "body": "Coinníonn sé comhrá na gcainéal a roghnaíonn tú agus tugann d’úsáideoirí Mumcord a bhí as láthair é. Cosúil le cliant Mumcord atá ar líne an t-am ar fad.",
+      "points": [
+        "Aon chainéil is mian leat, 1 go 7 lá",
+        "Teachtaireachtaí príobháideacha, ná choíche",
+        "Freagraíonn sé do shioncronú staire Mumcord cosúil le gnáthchliant"
+      ]
+    }
   },
   "tools": {
     "label": "Tools",

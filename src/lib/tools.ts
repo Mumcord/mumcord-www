@@ -25,7 +25,7 @@ export const TOOL_CODE: Record<ToolId, { file: string; code: string; terms?: str
       - ./mumpeer.toml:/config/mumpeer.toml:ro
       - mumpeer-data:/var/lib/mumpeer
   mumbot:
-    image: ghcr.io/mumcord/mumbot:0.1.0
+    image: ghcr.io/mumcord/mumbot:0.2.0
     command: ["peer"]
     restart: unless-stopped
     network_mode: "service:mumpeer"

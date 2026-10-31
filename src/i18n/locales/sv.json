@@ -2396,7 +2396,85 @@
           "Vid första starten visas reläets fingeravtryck i loggen. Boten annonserar det, inget annat behöver delas. Mer på sidan om <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "title": "Konfigurator",
+      "intro": "Kryssa i rutorna, skriv ett namn, klart: du får din `docker-compose.yml` och `.env`. Allt sker i din webbläsare, inget skickas någonstans.",
+      "jump": "Klickar du hellre? Till konfiguratorn",
+      "server": "Server",
+      "features": "Funktioner",
+      "name": "Servernamn",
+      "welcome": "Välkomsttext",
+      "users": "Högst samtidigt",
+      "options": {
+        "password": [
+          "Serverlösenord",
+          "Bara de som kan lösenordet kommer in"
+        ],
+        "bigImages": [
+          "Stora bilder",
+          "Bilder i chatten upp till 1 MB i stället för 128 KB"
+        ],
+        "longText": [
+          "Långa meddelanden",
+          "Upp till 10 000 i stället för 5000 tecken"
+        ],
+        "relay": [
+          "mumpeer-relä",
+          "Skärmdelning och stora bilder även bakom CGNAT, utan att någon ser din IP"
+        ],
+        "webhook": [
+          "Mumbot-webhook",
+          "Meddelanden från övervakning eller CI till en kanal"
+        ],
+        "music": [
+          "Mumbot-musik",
+          "Spelar MP3 i en röstkanal via HTTP, med en kö"
+        ],
+        "history": [
+          "Mumbot-historik",
+          "Sparar kanalens chatt åt Mumcord-användare som var borta. Aldrig privata meddelanden"
+        ]
+      },
+      "setup": "Mapp och konfigurationer",
+      "download": "Ladda ner",
+      "regenerate": "Nya lösenord",
+      "secrets": "Din webbläsare skapade just lösenorden i `.env`. De finns ingen annanstans, förvara dem väl.",
+      "after": "Sedan",
+      "notes": {
+        "ports": "Öppna port 64738 för TCP och UDP.",
+        "portsRelay": "Öppna också port 443 för TCP och UDP.",
+        "relay": "Ange serverns adress under `public_host` i `mumpeer.toml` och din Mumble-servers fingeravtryck i `bot.toml`.",
+        "webhook": "Ange en API-nyckel och de tillåtna kanalerna i `bot.toml`. Sedan postar `curl` till `http://127.0.0.1:8080/message` i kanalen.",
+        "more": "Stegen nedan förklarar varje del i detalj.",
+        "music": "Lägg MP3-filerna i mappen `media` och ange en API-nyckel i `bot.toml`. Sedan spelar en förfrågan till `http://127.0.0.1:8081` upp dem i kanalen.",
+        "history": "Ange i `bot.toml` hur länge boten sparar chatten. Den behöver läsbehörighet till kanalerna."
+      },
+      "advanced": "Avancerat",
+      "pluginLimit": "Dolda paket per sekund",
+      "pluginBurst": "Av dem i en snabb skur",
+      "pluginHint": "Plugin-data som Mumcord-klienter använder för bilder, chatthistorik och gemensam tittning. Servern släpper tyst allt över gränsen. Standard: 4 per sekund, kort upp till 15. Mumcord håller sig under med 3 och 10, mer utrymme hjälper mest andra plugins.",
+      "quality": {
+        "label": "Högsta bitrate",
+        "hint": "Det mesta en person får skicka. Standard räcker för tal, Bra för musik med Mumcords musikkvalitet, Bäst för hi-fi och för att spela musik tillsammans. Mer bitrate kräver mer upload på servern.",
+        "standard": "Standard",
+        "good": "Bra",
+        "best": "Bäst"
+      },
+      "modeCommand": "Ett kommando",
+      "modeFiles": "Skapa filerna själv",
+      "steps": {
+        "folder": "Skapa en mapp",
+        "compose": "Hämta docker-compose.yml",
+        "env": "Skapa lösenorden (.env)",
+        "configs": "Hämta konfigurationerna för boten och relayen",
+        "start": "Starta",
+        "show": "Visa lösenorden och anteckna dem"
+      },
+      "copyAll": "Kopiera allt på en gång",
+      "needsMumbot": "Webhook, relä, musik och historik körs tillsammans som en enda Mumbot med moduler. Det kommer med Mumbot 0.2.0."
+    },
+    "stepsCta": "Steg för steg"
   },
   "themes": {
     "title": "Teman",
@@ -2504,8 +2582,8 @@
       "download": "Ladda ner",
       "roadmap": "Roadmap"
     },
-    "botsTitle": "Två bottar, ett program",
-    "botsBody": "Båda finns i samma program, `mumbot`, för Linux, Windows, macOS och som Docker-image.",
+    "botsTitle": "En bot, fyra moduler",
+    "botsBody": "Mumbot är ett enda program byggt av moduler, för Linux, Windows, macOS och som Docker-image. Välj de moduler du behöver: de körs tillsammans som en bot med en anslutning. Testboten ligger i en egen build.",
     "webhook": {
       "title": "Webhook-bot",
       "body": "Övervakning, CI eller ditt eget skript skickar en HTTP-förfrågan med en API-nyckel, och botten skriver texten i en Mumble-kanal.",
@@ -2517,7 +2595,7 @@
       ]
     },
     "testbot": {
-      "title": "Testbot",
+      "title": "Testbot (egen build)",
       "body": "En skriptad andra deltagare för automatiska tester av Mumble-klienter. Mumcords egna tester körs med den.",
       "points": [
         "Styr chatt, status, behörigheter och moderering, och vänta på villkor",
@@ -2596,7 +2674,34 @@
     "ideaBody": "Önskemål hamnar i Mumbots issues på GitHub.",
     "idea": "Föreslå en idé",
     "source": "Källkod på GitHub",
-    "docs": "Dokumentation"
+    "docs": "Dokumentation",
+    "peer": {
+      "title": "Relä (peer)",
+      "body": "Kopplar din server till ett mumpeer-relä: boten anmäler reläet till Mumcord och delar ut tokens för direkta anslutningar.",
+      "points": [
+        "Skärmdelning och stora bilder även bakom CGNAT eller utan att visa din IP",
+        "Körs i reläets nätverk, API:et förblir internt",
+        "Bara registrerade användare på din egen server får tokens"
+      ]
+    },
+    "music": {
+      "title": "Musik",
+      "body": "Spelar MP3 som vanlig röst i en kanal via ett HTTP API, med en kö.",
+      "points": [
+        "Filer från en mapp, som uppladdning eller från tillåtna adresser",
+        "Kö, hoppa över, volym och en kanal per spår",
+        "Bitraten följer serverns gräns"
+      ]
+    },
+    "history": {
+      "title": "Historik",
+      "body": "Sparar chatten i de kanaler du väljer och ger den till Mumcord-användare som var borta. Som en Mumcord-klient som är online dygnet runt.",
+      "points": [
+        "Vilka kanaler du vill, 1 till 7 dagar",
+        "Aldrig privata meddelanden",
+        "Svarar på Mumcords historiksynkronisering som en vanlig klient"
+      ]
+    }
   },
   "tools": {
     "label": "Tools",

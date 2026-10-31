@@ -2396,7 +2396,85 @@
           "Ensimmäisellä käynnistyksellä välityspalvelimen sormenjälki näkyy lokissa. Botti ilmoittaa sen, mitään muuta ei tarvitse jakaa. Lisää <a href=\"/en/mumpeer\">mumpeer</a>-sivulla."
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "title": "Konfiguraattori",
+      "intro": "Rastita ruudut, anna nimi, valmis: saat oman `docker-compose.yml`- ja `.env`-tiedostosi. Kaikki tapahtuu selaimessasi, mitään ei lähetetä minnekään.",
+      "jump": "Klikkaisitko mieluummin? Konfiguraattoriin",
+      "server": "Palvelin",
+      "features": "Ominaisuudet",
+      "name": "Palvelimen nimi",
+      "welcome": "Tervetuloteksti",
+      "users": "Enintään yhtä aikaa",
+      "options": {
+        "password": [
+          "Palvelimen salasana",
+          "Sisään pääsevät vain ne, jotka tietävät salasanan"
+        ],
+        "bigImages": [
+          "Suuret kuvat",
+          "Kuvat chatissa jopa 1 MB eikä 128 KB"
+        ],
+        "longText": [
+          "Pitkät viestit",
+          "Jopa 10 000 merkkiä 5000:n sijaan"
+        ],
+        "relay": [
+          "mumpeer-relay",
+          "Näytönjako ja suuret kuvat jopa CGNATin takaa, ilman että kukaan näkee IP-osoitettasi"
+        ],
+        "webhook": [
+          "Mumbot-webhook",
+          "Valvonnan tai CI:n viestit kanavalle"
+        ],
+        "music": [
+          "Mumbotin musiikki",
+          "Soittaa MP3-tiedostoja äänikanavalla HTTP:n kautta, jonolla"
+        ],
+        "history": [
+          "Mumbotin historia",
+          "Säilyttää kanavan keskustelun Mumcordin käyttäjille, jotka olivat poissa. Ei koskaan yksityisviestejä"
+        ]
+      },
+      "setup": "Kansio ja asetukset",
+      "download": "Lataa",
+      "regenerate": "Uudet salasanat",
+      "secrets": "Selaimesi loi juuri salasanat tiedostoon `.env`. Niitä ei ole missään muualla, säilytä ne hyvin.",
+      "after": "Sitten",
+      "notes": {
+        "ports": "Avaa portti 64738 TCP:lle ja UDP:lle.",
+        "portsRelay": "Avaa myös portti 443 TCP:lle ja UDP:lle.",
+        "relay": "Kirjoita palvelimesi osoite kohtaan `public_host` tiedostossa `mumpeer.toml` ja Mumble-palvelimesi sormenjälki tiedostoon `bot.toml`.",
+        "webhook": "Aseta API-avain ja sallitut kanavat tiedostossa `bot.toml`. Sitten `curl` osoitteeseen `http://127.0.0.1:8080/message` lähettää viestin kanavalle.",
+        "more": "Alla olevat vaiheet selittävät jokaisen osan tarkasti.",
+        "music": "Laita MP3-tiedostot kansioon `media` ja aseta API-avain tiedostossa `bot.toml`. Sitten pyyntö osoitteeseen `http://127.0.0.1:8081` soittaa ne kanavalla.",
+        "history": "Aseta tiedostossa `bot.toml`, kuinka kauan botti säilyttää keskustelun. Se tarvitsee lukuoikeuden kanaviin."
+      },
+      "advanced": "Lisäasetukset",
+      "pluginLimit": "Piilotettuja paketteja sekunnissa",
+      "pluginBurst": "Niistä nopeassa purskeessa",
+      "pluginHint": "Lisäosien dataa, jota Mumcord-asiakkaat käyttävät kuviin, chat-historiaan ja yhteiskatseluun. Palvelin pudottaa hiljaa kaiken rajan ylittävän. Oletus: 4 sekunnissa, hetkellisesti jopa 15. Mumcord pysyy alle arvoilla 3 ja 10, lisätila auttaa lähinnä muita lisäosia.",
+      "quality": {
+        "label": "Suurin bittinopeus",
+        "hint": "Enimmäismäärä, jonka henkilö saa lähettää. Normaali riittää puheeseen, Hyvä musiikkiin Mumcordin musiikkilaadulla, Paras hi-fi-laatuun ja musiikin yhteiskuunteluun. Suurempi bittinopeus vaatii palvelimelta enemmän lähetyskaistaa.",
+        "standard": "Normaali",
+        "good": "Hyvä",
+        "best": "Paras"
+      },
+      "modeCommand": "Yksi komento",
+      "modeFiles": "Luo tiedostot itse",
+      "steps": {
+        "folder": "Luo kansio",
+        "compose": "Hae docker-compose.yml",
+        "env": "Tee salasanat (.env)",
+        "configs": "Hae botin ja releen asetukset",
+        "start": "Käynnistä",
+        "show": "Näytä salasanat ja kirjoita ne muistiin"
+      },
+      "copyAll": "Kopioi kaikki kerralla",
+      "needsMumbot": "Webhook, relay, musiikki ja historia toimivat yhdessä yhtenä Mumbotina, jossa on moduuleja. Se tulee Mumbot 0.2.0:n mukana."
+    },
+    "stepsCta": "Vaihe vaiheelta"
   },
   "themes": {
     "title": "Teemat",
@@ -2504,8 +2582,8 @@
       "download": "Lataa",
       "roadmap": "Tiekartta"
     },
-    "botsTitle": "Kaksi bottia, yksi ohjelma",
-    "botsBody": "Molemmat ovat samassa ohjelmassa, `mumbot`, Linuxille, Windowsille, macOS:lle ja Docker-imagena.",
+    "botsTitle": "Yksi botti, neljä moduulia",
+    "botsBody": "Mumbot on yksi moduuleista rakennettu ohjelma Linuxille, Windowsille, macOS:lle ja Docker-imagena. Valitse tarvitsemasi moduulit: ne toimivat yhdessä yhtenä bottina yhdellä yhteydellä. Testibotti on omassa buildissaan.",
     "webhook": {
       "title": "Webhook-botti",
       "body": "Valvonta, CI tai oma skriptisi lähettää yhden HTTP-pyynnön API-avaimella, ja botti kirjoittaa tekstin Mumble-kanavalle.",
@@ -2517,7 +2595,7 @@
       ]
     },
     "testbot": {
-      "title": "Testibotti",
+      "title": "Testibotti (oma build)",
       "body": "Skriptattu toinen osallistuja Mumble-sovellusten automaattisiin testeihin. Mumcordin omat testit pyörivät sillä.",
       "points": [
         "Ohjaa chattia, tilaa, oikeuksia ja moderointia, ja odota ehtojen täyttymistä",
@@ -2596,7 +2674,34 @@
     "ideaBody": "Toiveet kirjataan Mumbotin issueihin GitHubissa.",
     "idea": "Ehdota ideaa",
     "source": "Lähdekoodi GitHubissa",
-    "docs": "Ohjeet"
+    "docs": "Ohjeet",
+    "peer": {
+      "title": "Relay (peer)",
+      "body": "Yhdistää palvelimesi mumpeer-relayhin: botti ilmoittaa relayn Mumcordille ja jakaa tokenit suoriin yhteyksiin.",
+      "points": [
+        "Näytön jako ja suuret kuvat jopa CGNATin takana tai näyttämättä IP-osoitettasi",
+        "Toimii relayn verkossa, API pysyy sisäisenä",
+        "Tokenit saavat vain oman palvelimesi rekisteröidyt käyttäjät"
+      ]
+    },
+    "music": {
+      "title": "Musiikki",
+      "body": "Soittaa MP3-tiedostoja tavallisena puheena kanavalla HTTP API:n kautta, jonolla.",
+      "points": [
+        "Tiedostot kansiosta, latauksena tai sallituista osoitteista",
+        "Jono, ohitus, äänenvoimakkuus ja kanava kappaletta kohden",
+        "Bittinopeus noudattaa palvelimen rajaa"
+      ]
+    },
+    "history": {
+      "title": "Historia",
+      "body": "Säilyttää valitsemiesi kanavien keskustelun ja antaa sen Mumcordin käyttäjille, jotka olivat poissa. Kuin Mumcord-asiakas, joka on verkossa ympäri vuorokauden.",
+      "points": [
+        "Mitkä tahansa kanavat, 1–7 päivää",
+        "Ei koskaan yksityisviestejä",
+        "Vastaa Mumcordin historian synkronointiin kuin tavallinen asiakas"
+      ]
+    }
   },
   "tools": {
     "label": "Tools",

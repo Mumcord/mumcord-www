@@ -2996,27 +2996,166 @@ p {
 .guide {
   padding-block: clamp(56px, 9vw, 120px);
 }
+.guide-head {
+  position: relative;
+}
+.guide-head::before {
+  /* The same soft aurora as the roadmap hero. */
+  content: "";
+  position: absolute;
+  inset: -140px -10% auto;
+  height: 560px;
+  z-index: -1;
+  background:
+    radial-gradient(40% 60% at 18% 40%, rgb(155 123 255 / 0.3), transparent 70%),
+    radial-gradient(35% 55% at 78% 28%, rgb(255 111 168 / 0.2), transparent 70%),
+    radial-gradient(30% 50% at 55% 85%, rgb(62 227 158 / 0.12), transparent 70%);
+  filter: blur(20px);
+  pointer-events: none;
+}
+.guide-hero {
+  display: grid;
+  gap: 48px;
+  align-items: center;
+}
+@media (min-width: 980px) {
+  .guide-hero {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  }
+}
+.guide-title {
+  margin: 0 0 20px;
+  font: 800 clamp(2.4rem, 5.4vw, 4.6rem) / 0.98 var(--font-display);
+  /* No "Mum-ble": break only at spaces and real hyphens, with even lines. */
+  hyphens: manual;
+  text-wrap: balance;
+  letter-spacing: -0.045em;
+  background: linear-gradient(100deg, var(--text) 25%, var(--lilac) 60%, var(--peach) 95%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 .guide-head .body {
   max-width: 60ch;
+}
+.guide-title .nowrap {
+  /* "Mumble-Server" stays in one piece. */
+  white-space: nowrap;
+}
+.guide-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+.guide-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.guide-cta svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.guide-cta-ghost {
+  border: 1px solid var(--line-strong);
+  background: rgb(246 240 232 / 0.04);
+  color: var(--text);
+}
+.guide-cta-ghost:hover {
+  border-color: var(--lilac);
+  background: rgb(155 123 255 / 0.12);
+}
+/* A decorative server card: glass, a glowing edge, services coming up one by one. */
+.guide-server {
+  position: relative;
+  padding: 22px;
+  border-radius: 28px;
+  background:
+    linear-gradient(var(--bg-2), var(--bg-2)) padding-box,
+    linear-gradient(135deg, rgb(255 176 138 / 0.7), rgb(155 123 255 / 0.5) 50%, rgb(62 227 158 / 0.5)) border-box;
+  border: 1px solid transparent;
+  box-shadow: 0 40px 120px -40px rgb(155 123 255 / 0.6);
+  transform: rotate(-1.5deg);
+}
+.guide-server-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 16px;
+}
+.guide-server-head span:last-child {
+  margin-left: auto;
+  font: 500 0.75rem var(--font-mono);
+  color: var(--faint);
+}
+.guide-server ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.guide-server li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgb(14 10 38 / 0.6);
+  border: 1px solid var(--line);
+  animation: guide-up 0.6s var(--ease-out) both;
+  animation-delay: calc(0.3s + var(--i) * 0.25s);
+}
+.guide-server li span:last-child {
+  margin-left: auto;
+  font: 500 0.8125rem var(--font-mono);
+  color: var(--muted);
+}
+.guide-server-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--live);
+  box-shadow: 0 0 12px var(--live);
+}
+.guide-server-foot {
+  margin: 16px 0 0;
+  font-size: 0.8125rem;
+  color: var(--faint);
+}
+@keyframes guide-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .guide-server li {
+    animation: none;
+  }
 }
 .guide-facts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 1px;
-  max-width: 860px;
-  margin: 40px 0 0;
+  gap: 12px;
+  max-width: none;
+  margin: 56px 0 0;
   padding: 0;
   list-style: none;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--line);
 }
 .guide-facts li {
   display: grid;
   gap: 4px;
   padding: 20px 24px;
-  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(160deg, rgb(155 123 255 / 0.12), rgb(21 15 56 / 0.6));
+  backdrop-filter: blur(8px);
 }
 .guide-facts strong {
   font-family: var(--font-display);
@@ -3043,8 +3182,39 @@ p {
   scroll-margin-top: 96px;
 }
 @media (min-width: 860px) {
+  .guide-steps {
+    position: relative;
+  }
+  .guide-steps::before {
+    /* One line through all steps, from the first number to the last. */
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 56px;
+    bottom: 56px;
+    width: 2px;
+    border-radius: 2px;
+    background: linear-gradient(var(--peach), var(--violet) 60%, rgb(155 123 255 / 0.15));
+  }
   .guide-step {
-    grid-template-columns: 120px minmax(0, 1fr);
+    position: relative;
+    grid-template-columns: 140px minmax(0, 1fr);
+    border-top-color: transparent;
+  }
+  .guide-step::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 58px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--peach);
+    box-shadow: 0 0 14px rgb(255 176 138 / 0.6);
+  }
+  .guide-num {
+    padding-left: 32px;
   }
   .guide-num {
     position: sticky;
@@ -3128,10 +3298,19 @@ p {
   margin-bottom: 20px;
 }
 .guide-faq {
-  border-bottom: 1px dashed var(--line);
+  margin-top: 10px;
+  padding: 0 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--bg-2);
+  transition: border-color 0.2s;
+}
+.guide-faq[open],
+.guide-faq:hover {
+  border-color: var(--line-strong);
 }
 .guide-faq summary {
-  padding: 16px 0;
+  padding: 18px 0;
   font-weight: 600;
   cursor: pointer;
 }
@@ -3828,6 +4007,21 @@ p {
   height: 7px;
   border-radius: 50%;
   border: 1.5px solid var(--faint);
+}
+.rp-stage .rp-main li.is-done {
+  color: var(--text);
+}
+.rp-stage .rp-main li.is-done::before {
+  content: "✓";
+  top: 9px;
+  left: 0;
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--live);
+  font-weight: 700;
 }
 .rp-stage[data-status="done"] li::before,
 .rp-stage[data-status="now"] li::before {
@@ -4617,6 +4811,254 @@ p {
 .mb-release a {
   color: var(--text);
 }
+/* ── Server configurator ────────────────────────────── */
+.cfg {
+  position: relative;
+  margin: clamp(56px, 8vw, 104px) 0;
+  padding: clamp(22px, 4vw, 44px);
+  border: 1px solid transparent;
+  border-radius: 32px;
+  background:
+    linear-gradient(160deg, rgb(29 22 80 / 0.95), rgb(14 10 38 / 0.95)) padding-box,
+    linear-gradient(135deg, rgb(255 176 138 / 0.6), rgb(155 123 255 / 0.45) 45%, rgb(255 111 168 / 0.15) 80%) border-box;
+  box-shadow: 0 50px 140px -60px rgb(155 123 255 / 0.55);
+  scroll-margin-top: 96px;
+}
+.cfg-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 12px;
+  font: 700 clamp(1.6rem, 3vw, 2.2rem) / 1.1 var(--font-display);
+}
+.cfg-grid {
+  display: grid;
+  gap: 24px;
+  margin-top: 28px;
+}
+@media (min-width: 980px) {
+  .cfg-grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: start;
+  }
+  .cfg-form {
+    position: sticky;
+    top: 96px;
+  }
+}
+.cfg-form fieldset {
+  margin: 0 0 16px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-2);
+}
+.cfg-form legend {
+  padding: 0 6px;
+  font: 600 0.75rem var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--peach);
+}
+.cfg-field {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+.cfg-field input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem;
+}
+.cfg-field input:focus-visible,
+.cfg-check input:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 2px;
+}
+.cfg-seg {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  margin-top: 12px;
+  padding: 4px;
+  border: 1px solid var(--line-strong);
+  border-radius: 16px;
+  background: var(--bg);
+}
+.cfg-seg label {
+  position: relative;
+  cursor: pointer;
+}
+.cfg-seg input {
+  position: absolute;
+  opacity: 0;
+}
+.cfg-seg span {
+  display: grid;
+  gap: 2px;
+  padding: 10px 6px;
+  border-radius: 12px;
+  text-align: center;
+  transition: background 0.2s, color 0.2s;
+}
+.cfg-seg small {
+  font: 500 0.6875rem var(--font-mono);
+  color: var(--faint);
+}
+.cfg-seg input:checked + span {
+  background: linear-gradient(135deg, rgb(255 176 138 / 0.9), rgb(155 123 255 / 0.9));
+  color: #160f38;
+}
+.cfg-seg input:checked + span small {
+  color: rgb(22 15 56 / 0.75);
+}
+.cfg-seg input:focus-visible + span {
+  outline: 2px solid var(--violet);
+  outline-offset: 2px;
+}
+.cfg-mode {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+}
+.cfg-out [hidden],
+.cfg-out [data-empty="1"] {
+  display: none;
+}
+/* Syntax colours for shell, YAML and .env (src/lib/highlight.ts). */
+.hl-c {
+  color: var(--faint);
+  font-style: italic;
+}
+.hl-k {
+  color: var(--lilac);
+}
+.hl-s {
+  color: var(--live);
+}
+.hl-v {
+  color: var(--pink);
+}
+.hl-n {
+  color: var(--peach);
+}
+.hl-f {
+  color: var(--peach);
+}
+.hl-u {
+  color: #8fd3ff;
+}
+.cfg-steps {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cfg-steps li,
+.cfg-steps .code {
+  min-width: 0;
+  margin: 0;
+}
+/* Long commands and URLs wrap instead of running off the right edge; copies stay unchanged. */
+.cfg-out pre code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.cfg-step-num {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--peach), var(--violet));
+  color: #160f38;
+  font: 700 0.75rem var(--font-mono);
+}
+.cfg-copy-all {
+  margin: 0;
+}
+.cfg-hint {
+  margin: 12px 0 0;
+  color: var(--faint);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+.cfg-check {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.cfg-check:hover {
+  background: rgb(155 123 255 / 0.08);
+}
+.cfg-check input {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  accent-color: var(--violet);
+}
+.cfg-check-text {
+  display: grid;
+  gap: 2px;
+}
+.cfg-check-text span {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.cfg-out {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+.cfg-out .code {
+  margin: 0;
+}
+.cfg-out pre {
+  max-height: 420px;
+  overflow: auto;
+}
+.cfg-actions {
+  display: flex;
+  gap: 8px;
+}
+.cfg-secrets {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.cfg-secrets .text-link {
+  margin-left: 6px;
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+.cfg-notes h3 {
+  margin: 8px 0 6px;
+  font-size: 1.05rem;
+}
+.cfg-notes ul {
+  margin: 0;
+  padding-left: 1.2em;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 /* ── Tool pages (mumpeer, mumquiz) ───────────────────── */
 .tool-hero-icon {
   display: block;

@@ -2396,7 +2396,85 @@
           "Első indításkor a relé ujjlenyomata megjelenik a naplóban. A bot bejelenti, mást nem kell megosztani. Többet a <a href=\"/en/mumpeer\">mumpeer</a> oldalon."
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "title": "Konfigurátor",
+      "intro": "Pipáld ki a négyzeteket, add meg a nevet, kész: megkapod a `docker-compose.yml` és a `.env` fájlodat. Minden a böngésződben történik, semmi sem megy sehova.",
+      "jump": "Inkább kattintanál? A konfigurátorhoz",
+      "server": "Szerver",
+      "features": "Funkciók",
+      "name": "Szerver neve",
+      "welcome": "Üdvözlőszöveg",
+      "users": "Egyszerre legfeljebb",
+      "options": {
+        "password": [
+          "Szerverjelszó",
+          "Csak az léphet be, aki ismeri a jelszót"
+        ],
+        "bigImages": [
+          "Nagy képek",
+          "Képek a csevegésben legfeljebb 1 MB, 128 KB helyett"
+        ],
+        "longText": [
+          "Hosszú üzenetek",
+          "Legfeljebb 10 000 karakter 5000 helyett"
+        ],
+        "relay": [
+          "mumpeer relay",
+          "Képernyőmegosztás és nagy képek akár CGNAT mögött is, anélkül, hogy bárki látná az IP-címedet"
+        ],
+        "webhook": [
+          "Mumbot webhook",
+          "Felügyeleti vagy CI-üzenetek egy csatornába"
+        ],
+        "music": [
+          "Mumbot zene",
+          "MP3-akat játszik le egy hangcsatornában HTTP-n át, sorral"
+        ],
+        "history": [
+          "Mumbot előzmények",
+          "Megőrzi a csatorna csevegését a távol lévő Mumcord-felhasználóknak. Soha nem a privát üzeneteket"
+        ]
+      },
+      "setup": "Mappa és konfigurációk",
+      "download": "Letöltés",
+      "regenerate": "Új jelszavak",
+      "secrets": "A böngésződ éppen most készítette el a jelszavakat a `.env` fájlban. Máshol nem léteznek, őrizd meg őket.",
+      "after": "Ezután",
+      "notes": {
+        "ports": "Nyisd meg a 64738-as portot TCP-hez és UDP-hez.",
+        "portsRelay": "Nyisd meg a 443-as portot is TCP-hez és UDP-hez.",
+        "relay": "Írd a szervered címét a `public_host` kulcs alá a `mumpeer.toml` fájlban, a Mumble-szervered ujjlenyomatát pedig a `bot.toml` fájlba.",
+        "webhook": "Állíts be egy API-kulcsot és az engedélyezett csatornákat a `bot.toml` fájlban. Ezután egy `curl` a `http://127.0.0.1:8080/message` címre üzenetet küld a csatornába.",
+        "more": "Az alábbi lépések minden részt részletesen elmagyaráznak.",
+        "music": "Tedd az MP3-akat a `media` mappába, és állíts be egy API-kulcsot a `bot.toml` fájlban. Ezután egy kérés a `http://127.0.0.1:8081` címre lejátssza őket a csatornában.",
+        "history": "A `bot.toml` fájlban állítsd be, mennyi ideig őrizze a bot a csevegést. Olvasási hozzáférés kell neki a csatornákhoz."
+      },
+      "advanced": "Haladó",
+      "pluginLimit": "Rejtett csomagok másodpercenként",
+      "pluginBurst": "Ebből gyors sorozatban",
+      "pluginHint": "Bővítményadatok, amelyeket a Mumcord-kliensek képekhez, a csevegés előzményeihez és a közös nézéshez használnak. A szerver csendben eldob mindent, ami a korlát fölött van. Alapértelmezés: másodpercenként 4, rövid ideig akár 15. A Mumcord 3-mal és 10-zel marad alatta, a nagyobb keret főleg más bővítményeknek segít.",
+      "quality": {
+        "label": "Legmagasabb bitráta",
+        "hint": "A legtöbb, amit valaki küldhet. A Normál elég beszédhez, a Jó zenéhez a Mumcord zenei minőségével, a Legjobb hi-fi-hez és közös zenehallgatáshoz. Nagyobb bitrátához nagyobb feltöltési sebesség kell a szerveren.",
+        "standard": "Normál",
+        "good": "Jó",
+        "best": "Legjobb"
+      },
+      "modeCommand": "Egy parancs",
+      "modeFiles": "Fájlok saját kezűleg",
+      "steps": {
+        "folder": "Hozz létre egy mappát",
+        "compose": "Töltsd le a docker-compose.yml-t",
+        "env": "Készítsd el a jelszavakat (.env)",
+        "configs": "Töltsd le a bot és a relé konfigurációit",
+        "start": "Indítsd el",
+        "show": "Mutasd meg a jelszavakat, és jegyezd fel őket"
+      },
+      "copyAll": "Másolj ki mindent egyszerre",
+      "needsMumbot": "A webhook, a relay, a zene és az előzmények együtt futnak egyetlen, modulokból álló Mumbotként. Ez a Mumbot 0.2.0-val érkezik."
+    },
+    "stepsCta": "Lépésről lépésre"
   },
   "themes": {
     "title": "Témák",
@@ -2504,8 +2582,8 @@
       "download": "Letöltés",
       "roadmap": "Ütemterv"
     },
-    "botsTitle": "Két bot, egy program",
-    "botsBody": "Mindkettő ugyanabban a programban lakik, ez a `mumbot`, Linuxra, Windowsra és macOS-re, valamint Docker image-ként.",
+    "botsTitle": "Egy bot, négy modul",
+    "botsBody": "A Mumbot egyetlen, modulokból épülő program Linuxra, Windowsra és macOS-re, valamint Docker image-ként. Válaszd ki a szükséges modulokat: egy botként futnak együtt, egyetlen kapcsolattal. A tesztbot külön buildben él.",
     "webhook": {
       "title": "Webhook bot",
       "body": "A monitoring, a CI vagy a saját szkripted egyetlen HTTP-kérést küld egy API-kulccsal, a bot pedig beteszi a szöveget egy Mumble-csatornába.",
@@ -2517,7 +2595,7 @@
       ]
     },
     "testbot": {
-      "title": "Tesztbot",
+      "title": "Tesztbot (saját build)",
       "body": "Szkriptelt második résztvevő Mumble kliensek automatizált teszteléséhez. A Mumcord saját tesztjei is ezen futnak.",
       "points": [
         "Vezéreld a chatet, az állapotot, a jogosultságokat és a moderálást, és várj feltételekre",
@@ -2596,7 +2674,34 @@
     "ideaBody": "A kívánságok a Mumbot GitHub-issue-iba kerülnek.",
     "idea": "Ötlet beküldése",
     "source": "Forráskód a GitHubon",
-    "docs": "Dokumentáció"
+    "docs": "Dokumentáció",
+    "peer": {
+      "title": "Relay (peer)",
+      "body": "Összeköti a szervered egy mumpeer relayjel: a bot meghirdeti a relayt a Mumcordnak, és kiosztja a közvetlen kapcsolatokhoz szükséges tokeneket.",
+      "points": [
+        "Képernyőmegosztás és nagy képek akár CGNAT mögött is, vagy az IP-címed megmutatása nélkül",
+        "A relay hálózatában fut, az API belső marad",
+        "Csak a saját szervered regisztrált felhasználói kapnak tokent"
+      ]
+    },
+    "music": {
+      "title": "Zene",
+      "body": "MP3-akat játszik le normál hangként egy csatornában HTTP API-n át, sorral.",
+      "points": [
+        "Fájlok egy mappából, feltöltésként vagy engedélyezett címekről",
+        "Sor, ugrás, hangerő és csatorna zeneszámonként",
+        "A bitráta követi a szerver korlátját"
+      ]
+    },
+    "history": {
+      "title": "Előzmények",
+      "body": "Megőrzi az általad választott csatornák csevegését, és átadja a távol lévő Mumcord-felhasználóknak. Mint egy Mumcord-kliens, amely éjjel-nappal online van.",
+      "points": [
+        "Bármelyik csatorna, amelyiket szeretnél, 1–7 napig",
+        "Soha nem privát üzenetek",
+        "Úgy válaszol a Mumcord előzmény-szinkronizálására, mint egy normál kliens"
+      ]
+    }
   },
   "tools": {
     "label": "Tools",

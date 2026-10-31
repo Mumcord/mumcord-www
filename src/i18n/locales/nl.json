@@ -2396,7 +2396,85 @@
           "Bij de eerste start verschijnt de vingerafdruk van het relay in het log. De bot kondigt die aan, er hoeft verder niets gedeeld te worden. Meer op de pagina over <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "title": "Configurator",
+      "intro": "Vink de vakjes aan, vul een naam in en klaar: je krijgt je `docker-compose.yml` en `.env`. Alles gebeurt in je browser, er wordt niets verstuurd.",
+      "jump": "Liever klikken? Naar de configurator",
+      "server": "Server",
+      "features": "Functies",
+      "name": "Servernaam",
+      "welcome": "Welkomsttekst",
+      "users": "Maximaal tegelijk",
+      "options": {
+        "password": [
+          "Serverwachtwoord",
+          "Alleen mensen die het wachtwoord kennen komen binnen"
+        ],
+        "bigImages": [
+          "Grote afbeeldingen",
+          "Afbeeldingen in de chat tot 1 MB in plaats van 128 KB"
+        ],
+        "longText": [
+          "Lange berichten",
+          "Tot 10.000 in plaats van 5000 tekens"
+        ],
+        "relay": [
+          "mumpeer-relay",
+          "Scherm delen en grote afbeeldingen, ook achter CGNAT, zonder dat iemand je IP ziet"
+        ],
+        "webhook": [
+          "Mumbot-webhook",
+          "Berichten van monitoring of CI in een kanaal"
+        ],
+        "music": [
+          "Mumbot-muziek",
+          "Speelt MP3’s af in een spraakkanaal via HTTP, met een wachtrij"
+        ],
+        "history": [
+          "Mumbot-geschiedenis",
+          "Bewaart de kanaalchat voor Mumcord-gebruikers die weg waren. Nooit privéberichten"
+        ]
+      },
+      "setup": "Map en configuraties",
+      "download": "Downloaden",
+      "regenerate": "Nieuwe wachtwoorden",
+      "secrets": "Je browser heeft zojuist de wachtwoorden in `.env` gemaakt. Ze bestaan nergens anders, bewaar ze goed.",
+      "after": "Daarna",
+      "notes": {
+        "ports": "Zet poort 64738 open voor TCP en UDP.",
+        "portsRelay": "Zet ook poort 443 open voor TCP en UDP.",
+        "relay": "Zet het adres van je server onder `public_host` in `mumpeer.toml` en de vingerafdruk van je Mumble-server in `bot.toml`.",
+        "webhook": "Stel een API-sleutel en de toegestane kanalen in `bot.toml` in. Dan plaatst een `curl` naar `http://127.0.0.1:8080/message` een bericht in het kanaal.",
+        "more": "De stappen hieronder leggen elk onderdeel uitgebreid uit.",
+        "music": "Zet MP3’s in de map `media` en stel een API-sleutel in `bot.toml` in. Dan speelt een verzoek naar `http://127.0.0.1:8081` ze af in het kanaal.",
+        "history": "Stel in `bot.toml` in hoe lang de bot de chat bewaart. Hij heeft leestoegang tot de kanalen nodig."
+      },
+      "advanced": "Geavanceerd",
+      "pluginLimit": "Verborgen pakketten per seconde",
+      "pluginBurst": "Waarvan in een snelle burst",
+      "pluginHint": "Plugin-gegevens die Mumcord-clients gebruiken voor afbeeldingen, chatgeschiedenis en samen kijken. De server laat alles boven de limiet stilletjes vallen. Standaard: 4 per seconde, kort tot 15. Mumcord blijft eronder met 3 en 10, meer ruimte helpt vooral andere plugins.",
+      "quality": {
+        "label": "Hoogste bitrate",
+        "hint": "Het meeste dat iemand mag sturen. Standaard is genoeg voor spraak, Goed voor muziek met de muziekkwaliteit van Mumcord, Best voor hifi en samen muziek afspelen. Meer bitrate vraagt meer upload op de server.",
+        "standard": "Standaard",
+        "good": "Goed",
+        "best": "Best"
+      },
+      "modeCommand": "Eén opdracht",
+      "modeFiles": "Bestanden zelf maken",
+      "steps": {
+        "folder": "Maak een map",
+        "compose": "Haal docker-compose.yml op",
+        "env": "Maak de wachtwoorden (.env)",
+        "configs": "Haal de configs van de bot en de relay op",
+        "start": "Start",
+        "show": "Toon de wachtwoorden en noteer ze"
+      },
+      "copyAll": "Kopieer alles in één keer",
+      "needsMumbot": "Webhook, relay, muziek en geschiedenis draaien samen als één Mumbot met modules. Dat komt met Mumbot 0.2.0."
+    },
+    "stepsCta": "Stap voor stap"
   },
   "themes": {
     "title": "Thema's",
@@ -2504,8 +2582,8 @@
       "download": "Downloaden",
       "roadmap": "Roadmap"
     },
-    "botsTitle": "Twee bots, één programma",
-    "botsBody": "Beide zitten in hetzelfde programma, `mumbot`, voor Linux, Windows, macOS en als Docker-image.",
+    "botsTitle": "Eén bot, vier modules",
+    "botsBody": "Mumbot is één programma dat uit modules is opgebouwd, voor Linux, Windows, macOS en als Docker-image. Kies de modules die je nodig hebt: ze draaien samen als één bot met één verbinding. De testbot zit in een eigen build.",
     "webhook": {
       "title": "Webhookbot",
       "body": "Monitoring, CI of je eigen script stuurt één HTTP-verzoek met een API-sleutel, en de bot zet de tekst in een Mumble-kanaal.",
@@ -2517,7 +2595,7 @@
       ]
     },
     "testbot": {
-      "title": "Testbot",
+      "title": "Testbot (eigen build)",
       "body": "Een gescripte tweede deelnemer voor automatische tests van Mumble-clients. De eigen tests van Mumcord draaien ermee.",
       "points": [
         "Chat, status, rechten en moderatie aansturen en op voorwaarden wachten",
@@ -2596,7 +2674,34 @@
     "ideaBody": "Wensen komen terecht in de issues van Mumbot op GitHub.",
     "idea": "Idee voorstellen",
     "source": "Broncode op GitHub",
-    "docs": "Documentatie"
+    "docs": "Documentatie",
+    "peer": {
+      "title": "Relay (peer)",
+      "body": "Verbindt je server met een mumpeer-relay: de bot kondigt de relay aan bij Mumcord en deelt de tokens uit voor directe verbindingen.",
+      "points": [
+        "Scherm delen en grote afbeeldingen, zelfs achter CGNAT of zonder je IP te tonen",
+        "Draait in het netwerk van de relay, de API blijft intern",
+        "Alleen geregistreerde gebruikers van je eigen server krijgen tokens"
+      ]
+    },
+    "music": {
+      "title": "Muziek",
+      "body": "Speelt MP3’s als gewone spraak af in een kanaal via een HTTP API, met een wachtrij.",
+      "points": [
+        "Bestanden uit een map, als upload of van toegestane adressen",
+        "Wachtrij, overslaan, volume en een kanaal per nummer",
+        "De bitrate volgt de limiet van de server"
+      ]
+    },
+    "history": {
+      "title": "Geschiedenis",
+      "body": "Bewaart de chat van de kanalen die je kiest en geeft die aan Mumcord-gebruikers die weg waren. Als een Mumcord-client die dag en nacht online is.",
+      "points": [
+        "Alle kanalen die je wilt, 1 tot 7 dagen",
+        "Nooit privéberichten",
+        "Beantwoordt de geschiedenissynchronisatie van Mumcord als een gewone client"
+      ]
+    }
   },
   "tools": {
     "label": "Tools",

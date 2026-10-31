@@ -41,6 +41,12 @@ The tool pages (`/mumpeer`, `/mumquiz` and their `/en/` twins) live in `src/lib/
 repo's README; the header groups them with Mumbot under "Tools". Their latest release comes from the GitHub API.
 The server hosting guide (`/server`, `/en/server`) lives in `src/lib/server-guide.ts`; its
 compose file pins the same `mumblevoip/mumble-server` version the Mumcord tests use.
+The configurator at the top of that page builds `docker-compose.yml`, `.env` and the setup commands in the
+browser from `src/lib/compose.ts`; the guide's own snippets come from the same functions with their defaults.
+For `curl`, the build writes one compose file per feature mix to `/server/compose/<variant>.yml`
+(`src/pages/server/compose/[variant].yml.ts`); Caddy's `templates` fills in name, welcome text and
+numbers from the query string (see the `@compose` block in the Caddyfile). Test it with the Caddy image,
+not `astro preview`, which serves the template actions as they are.
 
 The themes page (`/themes`, `/en/themes`) lives in `src/lib/themes.ts`. The built-in presets carry the
 app's colours (`ui/src/theme/themeModel.ts`), their codes are built like the app's `shareCodec.ts`. The

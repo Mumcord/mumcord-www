@@ -7,7 +7,7 @@ import type { FeaturesPage } from "../lib/features";
 import type { ChangelogEntry } from "../lib/changelog";
 import type { RoadmapPage } from "../lib/roadmap";
 import type { GamesPage } from "../lib/games";
-import type { Guide } from "../lib/server-guide";
+import type { Guide, Configurator } from "../lib/server-guide";
 import type { ThemesPage } from "../lib/themes";
 import type { MumbotText } from "../lib/mumbot";
 import type { ToolPage, ToolsPage } from "../lib/tools";
@@ -42,7 +42,13 @@ export interface BlockedText {
   reason: string;
 }
 
-export interface GuideText extends Omit<Guide, "steps"> {
+export interface GuideText extends Omit<Guide, "steps" | "configurator"> {
+  configurator?: Partial<Omit<Configurator, "options" | "quality" | "notes" | "steps">> & {
+    steps?: Partial<Configurator["steps"]>;
+    options?: Partial<Configurator["options"]>;
+    quality?: Partial<Configurator["quality"]>;
+    notes?: Partial<Configurator["notes"]>;
+  };
   steps: { id: string; title: string; body: string[]; after?: string[] }[];
 }
 

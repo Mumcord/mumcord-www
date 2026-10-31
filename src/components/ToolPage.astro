@@ -4,6 +4,7 @@ import CopyButton from "./CopyButton.astro";
 import mumpeerIcon from "../assets/tools/mumpeer.png";
 import mumquizIcon from "../assets/tools/mumquiz.png";
 import PeopleList from "./PeopleList.astro";
+import { highlight, langOf } from "../lib/highlight";
 import { dicts, type Lang } from "../i18n";
 import { getRepoContributors } from "../lib/contributors";
 import { toolsPage, getToolRelease, toolRepoUrl, TOOL_CODE, TOOL_REPO, type ToolId } from "../lib/tools";
@@ -92,7 +93,7 @@ const md = (s: string) => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>");
         <span>{file}</span>
         <CopyButton label={t.copy} copied={t.copied} class="is-quiet" />
       </figcaption>
-      <pre><code>{code}</code></pre>
+      <pre><code set:html={highlight(code, langOf(file))} /></pre>
     </figure>
     <p class="rp-section-body" data-reveal set:html={md(p.startNote)} />
     {p.credit && <p class="tool-credit" data-reveal>{p.credit}</p>}

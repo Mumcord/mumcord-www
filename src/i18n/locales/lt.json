@@ -2396,7 +2396,85 @@
           "Pirmą kartą paleidus relay kontrolinis kodas (angl. fingerprint) rodomas žurnale. Botas jį paskelbia, nieko kito dalytis nereikia. Daugiau <a href=\"/en/mumpeer\">mumpeer</a> puslapyje."
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "title": "Konfigūratorius",
+      "intro": "Pažymėk langelius, įvesk pavadinimą ir viskas: gauni savo `docker-compose.yml` ir `.env`. Viskas vyksta tavo naršyklėje, niekas niekur nesiunčiama.",
+      "jump": "Verčiau spaudinėti? Į konfigūratorių",
+      "server": "Serveris",
+      "features": "Funkcijos",
+      "name": "Serverio pavadinimas",
+      "welcome": "Sveikinimo tekstas",
+      "users": "Daugiausia vienu metu",
+      "options": {
+        "password": [
+          "Serverio slaptažodis",
+          "Įeina tik tie, kurie žino slaptažodį"
+        ],
+        "bigImages": [
+          "Dideli paveikslėliai",
+          "Paveikslėliai pokalbyje iki 1 MB vietoj 128 KB"
+        ],
+        "longText": [
+          "Ilgos žinutės",
+          "Iki 10 000 vietoj 5000 simbolių"
+        ],
+        "relay": [
+          "mumpeer relay",
+          "Ekrano bendrinimas ir dideli paveikslėliai net už CGNAT, niekam nematant tavo IP"
+        ],
+        "webhook": [
+          "Mumbot webhook",
+          "Stebėsenos ar CI žinutės į kanalą"
+        ],
+        "music": [
+          "Mumbot muzika",
+          "Groja MP3 balso kanale per HTTP, su eile"
+        ],
+        "history": [
+          "Mumbot istorija",
+          "Saugo kanalo pokalbį Mumcord naudotojams, kurių nebuvo. Niekada asmeninių žinučių"
+        ]
+      },
+      "setup": "Aplankas ir konfigūracijos",
+      "download": "Atsisiųsti",
+      "regenerate": "Nauji slaptažodžiai",
+      "secrets": "Tavo naršyklė ką tik sukūrė slaptažodžius faile `.env`. Jų niekur kitur nėra, saugok juos.",
+      "after": "Tada",
+      "notes": {
+        "ports": "Atidaryk prievadą 64738 TCP ir UDP.",
+        "portsRelay": "Atidaryk ir prievadą 443 TCP ir UDP.",
+        "relay": "Įrašyk savo serverio adresą į `public_host` faile `mumpeer.toml`, o savo Mumble serverio kontrolinį kodą (fingerprint) į `bot.toml`.",
+        "webhook": "Nustatyk API raktą ir leidžiamus kanalus faile `bot.toml`. Tada `curl` į `http://127.0.0.1:8080/message` paskelbia žinutę kanale.",
+        "more": "Toliau pateikti žingsniai išsamiai paaiškina kiekvieną dalį.",
+        "music": "Įdėk MP3 į aplanką `media` ir nustatyk API raktą faile `bot.toml`. Tada užklausa į `http://127.0.0.1:8081` groja juos kanale.",
+        "history": "Faile `bot.toml` nustatyk, kiek laiko botas saugo pokalbį. Jam reikia skaitymo prieigos prie kanalų."
+      },
+      "advanced": "Papildomi nustatymai",
+      "pluginLimit": "Paslėptų paketų per sekundę",
+      "pluginBurst": "Iš jų greitu pliūpsniu",
+      "pluginHint": "Įskiepių duomenys, kuriuos Mumcord klientai naudoja paveikslėliams, pokalbio istorijai ir bendram žiūrėjimui. Serveris tyliai atmeta viską, kas viršija ribą. Numatyta: 4 per sekundę, trumpam iki 15. Mumcord lieka žemiau su 3 ir 10, didesnė riba daugiausia padeda kitiems įskiepiams.",
+      "quality": {
+        "label": "Didžiausias bitrate",
+        "hint": "Daugiausia, ką asmuo gali siųsti. Standartinis pakanka kalbai, Geras – muzikai su Mumcord muzikos kokybe, Geriausias – hi-fi ir bendram muzikos klausymui. Didesniam bitrate reikia daugiau išsiuntimo greičio serveryje.",
+        "standard": "Standartinis",
+        "good": "Geras",
+        "best": "Geriausias"
+      },
+      "modeCommand": "Viena komanda",
+      "modeFiles": "Sukurk failus pats",
+      "steps": {
+        "folder": "Sukurk aplanką",
+        "compose": "Atsisiųsk docker-compose.yml",
+        "env": "Sukurk slaptažodžius (.env)",
+        "configs": "Atsisiųsk roboto ir relay konfigūracijas",
+        "start": "Paleisk",
+        "show": "Parodyk slaptažodžius ir užsirašyk juos"
+      },
+      "copyAll": "Nukopijuok viską iš karto",
+      "needsMumbot": "Webhook, relay, muzika ir istorija veikia kartu kaip vienas Mumbot su moduliais. Tai ateis su Mumbot 0.2.0."
+    },
+    "stepsCta": "Žingsnis po žingsnio"
   },
   "themes": {
     "title": "Temos",
@@ -2504,8 +2582,8 @@
       "download": "Atsisiųsti",
       "roadmap": "Planas"
     },
-    "botsTitle": "Du botai, viena programa",
-    "botsBody": "Abu gyvena toje pačioje programoje, `mumbot`, skirtoje Linux, Windows, macOS ir kaip Docker atvaizdas.",
+    "botsTitle": "Vienas botas, keturi moduliai",
+    "botsBody": "Mumbot yra viena programa, sudaryta iš modulių, skirta Linux, Windows, macOS ir kaip Docker atvaizdas. Pasirink reikiamus modulius: jie veikia kartu kaip vienas botas su vienu ryšiu. Testavimo botas yra atskirame leidime.",
     "webhook": {
       "title": "Webhook botas",
       "body": "Stebėsenos sistema, CI ar tavo paties scenarijus siunčia vieną HTTP užklausą su API raktu, o botas paskelbia tekstą Mumble kanale.",
@@ -2517,7 +2595,7 @@
       ]
     },
     "testbot": {
-      "title": "Testavimo botas",
+      "title": "Testavimo botas (atskiras leidimas)",
       "body": "Scenarijumi valdomas antras dalyvis automatiniams Mumble klientų testams. Jį naudoja ir paties Mumcord testai.",
       "points": [
         "Valdo pokalbį, būseną, teises ir moderavimą bei laukia sąlygų",
@@ -2596,7 +2674,34 @@
     "ideaBody": "Pageidavimai keliauja į Mumbot issues GitHub.",
     "idea": "Pasiūlyk idėją",
     "source": "Kodas GitHub",
-    "docs": "Dokumentacija"
+    "docs": "Dokumentacija",
+    "peer": {
+      "title": "Relay (peer)",
+      "body": "Sujungia tavo serverį su mumpeer relay: botas paskelbia relay Mumcord ir išdalija žetonus tiesioginiams ryšiams.",
+      "points": [
+        "Ekrano bendrinimas ir dideli paveikslėliai net už CGNAT arba nerodant tavo IP",
+        "Veikia relay tinkle, API lieka vidinis",
+        "Žetonus gauna tik tavo paties serverio registruoti naudotojai"
+      ]
+    },
+    "music": {
+      "title": "Muzika",
+      "body": "Groja MP3 kaip įprastą balsą kanale per HTTP API, su eile.",
+      "points": [
+        "Failai iš aplanko, kaip įkėlimas arba iš leidžiamų adresų",
+        "Eilė, praleidimas, garsumas ir kanalas kiekvienam kūriniui",
+        "Bitrate seka serverio apribojimą"
+      ]
+    },
+    "history": {
+      "title": "Istorija",
+      "body": "Saugo tavo pasirinktų kanalų pokalbį ir perduoda jį Mumcord naudotojams, kurių nebuvo. Kaip Mumcord klientas, esantis prisijungęs visą parą.",
+      "points": [
+        "Bet kokie kanalai, kokių nori, nuo 1 iki 7 dienų",
+        "Niekada asmeninių žinučių",
+        "Atsako į Mumcord istorijos sinchronizavimą kaip įprastas klientas"
+      ]
+    }
   },
   "tools": {
     "label": "Tools",

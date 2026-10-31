@@ -169,7 +169,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         id: "epic-2",
         tag: "Epic 2",
         title: "Mehrere Server, Themes und Feinschliff",
-        status: "now",
+        status: "done",
         version: "0.4.0",
         summary: "Alles erscheint zusammen als Version 0.4.0: mehrere Server, eigene Themes, das Overlay im Spiel für Windows und die ersten direkten Verbindungen zwischen Mumcord-Nutzern. Positional Audio, Spiel-Plugins und Bilder in voller Größe bleiben dabei Beta.",
                 groups: [
@@ -328,7 +328,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Schnelleinstellungen überarbeitet",
               "Das Nutzer-Panel unten links neu gestaltet",
             ],
-            done: [4, 5, 6, 7, 8],
+            done: [4, 5, 6, 7, 8, 9],
             mockups: [
               { shot: "wizard-1-welcome-dark", issue: 159, caption: "Der neue Einrichtungsassistent" },
               { shot: "wizard-0-presets-dark", issue: 159, caption: "Voreinstellungen im Assistenten" },
@@ -718,7 +718,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         id: "epic-2",
         tag: "Epic 2",
         title: "Several servers, themes and polish",
-        status: "now",
+        status: "done",
         version: "0.4.0",
         summary: "Everything ships together as version 0.4.0: several servers, your own themes, the in-game overlay on Windows and the first direct connections between Mumcord users. Positional audio, game plugins and full-size images stay beta.",
                 groups: [
@@ -877,7 +877,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Quick settings overhauled",
               "The user panel at the bottom left redesigned",
             ],
-            done: [4, 5, 6, 7, 8],
+            done: [4, 5, 6, 7, 8, 9],
             mockups: [
               { shot: "wizard-1-welcome-dark", issue: 159, caption: "The new setup wizard" },
               { shot: "wizard-0-presets-dark", issue: 159, caption: "Presets in the wizard" },

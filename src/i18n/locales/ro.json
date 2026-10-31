@@ -2396,7 +2396,85 @@
           "La prima pornire, amprenta relay-ului apare în log. Botul o anunță, nu trebuie partajat nimic altceva. Mai multe pe pagina <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "title": "Configurator",
+      "intro": "Bifează căsuțele, scrie un nume și gata: primești `docker-compose.yml` și `.env`. Totul se întâmplă în browserul tău, nimic nu e trimis nicăieri.",
+      "jump": "Preferi să dai clic? La configurator",
+      "server": "Server",
+      "features": "Funcții",
+      "name": "Numele serverului",
+      "welcome": "Text de bun venit",
+      "users": "Cel mult simultan",
+      "options": {
+        "password": [
+          "Parola serverului",
+          "Intră doar cei care știu parola"
+        ],
+        "bigImages": [
+          "Imagini mari",
+          "Imagini în chat de până la 1 MB în loc de 128 KB"
+        ],
+        "longText": [
+          "Mesaje lungi",
+          "Până la 10.000 în loc de 5000 de caractere"
+        ],
+        "relay": [
+          "Releu mumpeer",
+          "Partajare de ecran și imagini mari chiar și în spatele CGNAT, fără ca cineva să-ți vadă IP-ul"
+        ],
+        "webhook": [
+          "Webhook Mumbot",
+          "Mesaje din monitorizare sau CI într-un canal"
+        ],
+        "music": [
+          "Muzica Mumbot",
+          "Redă MP3 într-un canal vocal prin HTTP, cu coadă"
+        ],
+        "history": [
+          "Istoricul Mumbot",
+          "Păstrează chatul canalului pentru utilizatorii Mumcord care au lipsit. Niciodată mesajele private"
+        ]
+      },
+      "setup": "Folder și configurări",
+      "download": "Descarcă",
+      "regenerate": "Parole noi",
+      "secrets": "Browserul tău tocmai a creat parolele din `.env`. Nu există nicăieri altundeva, păstrează-le bine.",
+      "after": "Apoi",
+      "notes": {
+        "ports": "Deschide portul 64738 pentru TCP și UDP.",
+        "portsRelay": "Deschide și portul 443 pentru TCP și UDP.",
+        "relay": "Pune adresa serverului tău la `public_host` în `mumpeer.toml`, iar amprenta serverului tău Mumble în `bot.toml`.",
+        "webhook": "Setează o cheie API și canalele permise în `bot.toml`. Apoi un `curl` către `http://127.0.0.1:8080/message` postează în canal.",
+        "more": "Pașii de mai jos explică fiecare parte în detaliu.",
+        "music": "Pune MP3-urile în folderul `media` și setează o cheie API în `bot.toml`. Apoi o cerere către `http://127.0.0.1:8081` le redă în canal.",
+        "history": "Setează în `bot.toml` cât timp păstrează botul chatul. Are nevoie de acces de citire la canale."
+      },
+      "advanced": "Avansat",
+      "pluginLimit": "Pachete ascunse pe secundă",
+      "pluginBurst": "Din acestea într-o rafală rapidă",
+      "pluginHint": "Date ale pluginurilor pe care clienții Mumcord le folosesc pentru imagini, istoricul chatului și vizionarea împreună. Serverul elimină în tăcere tot ce depășește limita. Implicit: 4 pe secundă, pentru scurt timp până la 15. Mumcord rămâne sub limită cu 3 și 10, mai mult spațiu ajută mai ales alte pluginuri.",
+      "quality": {
+        "label": "Bitrate maxim",
+        "hint": "Cel mai mult pe care îl poate trimite o persoană. Standard ajunge pentru voce, Bun pentru muzică cu calitatea muzicală Mumcord, Excelent pentru hi-fi și pentru a asculta muzică împreună. Mai mult bitrate cere mai mult upload pe server.",
+        "standard": "Standard",
+        "good": "Bun",
+        "best": "Excelent"
+      },
+      "modeCommand": "O singură comandă",
+      "modeFiles": "Creează fișierele singur",
+      "steps": {
+        "folder": "Creează un folder",
+        "compose": "Descarcă docker-compose.yml",
+        "env": "Generează parolele (.env)",
+        "configs": "Descarcă configurațiile botului și ale relay-ului",
+        "start": "Pornește",
+        "show": "Afișează parolele și notează-le"
+      },
+      "copyAll": "Copiază totul deodată",
+      "needsMumbot": "Webhook, releu, muzică și istoric rulează împreună ca un singur Mumbot cu module. Asta vine cu Mumbot 0.2.0."
+    },
+    "stepsCta": "Pas cu pas"
   },
   "themes": {
     "title": "Teme",
@@ -2504,8 +2582,8 @@
       "download": "Descarcă",
       "roadmap": "Roadmap"
     },
-    "botsTitle": "Doi boți, un singur program",
-    "botsBody": "Amândoi stau în același program, `mumbot`, pentru Linux, Windows, macOS și ca imagine Docker.",
+    "botsTitle": "Un bot, patru module",
+    "botsBody": "Mumbot este un singur program alcătuit din module, pentru Linux, Windows, macOS și ca imagine Docker. Alege modulele de care ai nevoie: rulează împreună ca un singur bot cu o singură conexiune. Botul de test trăiește într-un build separat.",
     "webhook": {
       "title": "Bot webhook",
       "body": "Monitorizarea, CI-ul sau propriul tău script trimite un request HTTP cu o cheie API, iar botul postează textul într-un canal Mumble.",
@@ -2517,7 +2595,7 @@
       ]
     },
     "testbot": {
-      "title": "Bot de test",
+      "title": "Bot de test (build separat)",
       "body": "Un al doilea participant scriptat pentru testarea automată a clienților Mumble. Chiar testele Mumcord rulează pe el.",
       "points": [
         "Controlează chatul, starea, permisiunile și moderarea, și așteaptă condiții",
@@ -2596,7 +2674,34 @@
     "ideaBody": "Dorințele ajung în issue-urile Mumbot de pe GitHub.",
     "idea": "Propune o idee",
     "source": "Cod sursă pe GitHub",
-    "docs": "Documentație"
+    "docs": "Documentație",
+    "peer": {
+      "title": "Releu (peer)",
+      "body": "Îți conectează serverul la un releu mumpeer: botul anunță releul la Mumcord și împarte tokenurile pentru conexiunile directe.",
+      "points": [
+        "Partajare de ecran și imagini mari chiar și în spatele CGNAT sau fără să-ți arăți IP-ul",
+        "Rulează în rețeaua releului, API-ul rămâne intern",
+        "Doar utilizatorii înregistrați ai propriului tău server primesc tokenuri"
+      ]
+    },
+    "music": {
+      "title": "Muzică",
+      "body": "Redă MP3 ca voce normală într-un canal printr-un API HTTP, cu coadă.",
+      "points": [
+        "Fișiere dintr-un folder, prin încărcare sau de la adrese permise",
+        "Coadă, sărire peste, volum și un canal pentru fiecare piesă",
+        "Bitrate-ul urmează limita serverului"
+      ]
+    },
+    "history": {
+      "title": "Istoric",
+      "body": "Păstrează chatul canalelor alese de tine și îl dă utilizatorilor Mumcord care au lipsit. Ca un client Mumcord online non-stop.",
+      "points": [
+        "Orice canale vrei, de la 1 la 7 zile",
+        "Niciodată mesajele private",
+        "Răspunde la sincronizarea istoricului din Mumcord ca un client obișnuit"
+      ]
+    }
   },
   "tools": {
     "label": "Tools",

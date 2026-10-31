@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import CopyButton from "./CopyButton.astro";
+import { atLeast } from "../lib/compose";
+import { highlight, langOf } from "../lib/highlight";
 import mumbotIcon from "../assets/tools/mumbot.png";
 import PeopleList from "./PeopleList.astro";
 import { dicts, type Lang } from "../i18n";
@@ -13,7 +15,7 @@ import {
   MUMBOT_REPO_URL,
   MUMBOT_RELEASES_URL,
   MUMBOT_IDEA_URL,
-  MUMBOT_DOCS_URL,
+  mumbotDoc,
   MUMBOT_CLI_URL,
   MUMBOT_EXAMPLES_URL,
   type BotPlatform,
@@ -27,12 +29,17 @@ const p = mumbotPage[lang];
 const release = await getMumbotRelease();
 const people = await getRepoContributors("Mumcord/mumbot");
 const version = release?.version ?? "latest";
+// A stage counts as done once the release of its version is out.
+const stages = p.epics.map((s) => (s.version && release && atLeast(release.version, s.version) ? { ...s, status: "done" as const } : s));
 const platforms: BotPlatform[] = ["linux", "linuxArm", "windows", "macos"];
 // `code` in the texts becomes <code>; everything else is escaped.
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const md = (s: string) => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>");
 const bots = [
-  { id: "webhook", ...p.webhook, code: MUMBOT_CODE.webhook, file: "Terminal", docs: MUMBOT_DOCS_URL },
+  { id: "webhook", ...p.webhook, code: MUMBOT_CODE.webhook, file: "Terminal", docs: mumbotDoc("webhook") },
+  { id: "peer", ...p.peer, code: MUMBOT_CODE.peer, file: "docker-compose.yml", docs: mumbotDoc("peer"), from: "0.2.0" },
+  { id: "music", ...p.music, code: MUMBOT_CODE.music, file: "Terminal", docs: mumbotDoc("music"), from: "0.2.0" },
+  { id: "history", ...p.history, code: MUMBOT_CODE.history, file: "bot.toml", docs: mumbotDoc("history"), from: "0.2.0" },
   { id: "testbot", ...p.testbot, code: MUMBOT_CODE.testbot, file: "Terminal", docs: MUMBOT_CLI_URL },
 ];
 ---
@@ -66,7 +73,10 @@ const bots = [
       {
         bots.map((b) => (
           <section class="mb-bot" id={b.id} aria-labelledby={`${b.id}-h`} data-reveal>
-            <h3 id={`${b.id}-h`}>{b.title}</h3>
+            <h3 id={`${b.id}-h`}>
+              {b.title}
+              {"from" in b && !(release && atLeast(release.version, b.from)) && <span class="pill">v{b.from}</span>}
+            </h3>
             <p>{b.body}</p>
             <ul>
               {b.points.map((i) => (
@@ -78,7 +88,7 @@ const bots = [
                 <span>{b.file}</span>
                 <CopyButton label={p.copy} copied={p.copied} class="is-quiet" />
               </figcaption>
-              <pre><code>{b.code}</code></pre>
+              <pre><code set:html={highlight(b.code, langOf(b.file))} /></pre>
             </figure>
             <a class="text-link" href={b.docs} rel="noopener">{p.docs} →</a>
           </section>
@@ -122,7 +132,7 @@ const bots = [
         <span>Docker</span>
         <CopyButton label={p.copy} copied={p.copied} class="is-quiet" />
       </figcaption>
-      <pre><code>{MUMBOT_CODE.docker(version)}</code></pre>
+      <pre><code set:html={highlight(MUMBOT_CODE.docker(version), "shell")} /></pre>
     </figure>
     <p class="mb-sums" data-reveal>
       <a class="text-link" href={MUMBOT_EXAMPLES_URL} rel="noopener">{p.examples} →</a>
@@ -139,7 +149,7 @@ const bots = [
     <p class="rp-section-body" data-reveal>{p.roadmapBody}</p>
     <ol class="rp-stages">
       {
-        p.epics.map((s) => (
+        stages.map((s) => (
           <li class="rp-stage" id={`mumbot-${s.id}`} data-status={s.status} data-reveal>
             <div class="rp-side">
               <p class="tl-tag">{s.tag}</p>
@@ -155,8 +165,11 @@ const bots = [
               </h3>
               <p class="rp-summary">{s.summary}</p>
               <ul>
-                {s.items.map((i) => (
-                  <li>{i}</li>
+                {s.items.map((i, j) => (
+                  <li class:list={[{ "is-done": s.done?.includes(j) }]}>
+                    {s.done?.includes(j) && <span class="sr-only">{p.status.done}: </span>}
+                    {i}
+                  </li>
                 ))}
               </ul>
             </div>

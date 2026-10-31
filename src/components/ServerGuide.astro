@@ -1,7 +1,10 @@
 ---
 import CopyButton from "./CopyButton.astro";
+import ServerConfigurator from "./ServerConfigurator.astro";
+import { highlight, langOf } from "../lib/highlight";
 import { type Lang } from "../i18n";
 import { guides } from "../lib/server-guide";
+import { DEFAULTS } from "../lib/compose";
 import { WIKI_URL, ISSUES_URL } from "../lib/release";
 
 interface Props {
@@ -9,13 +12,57 @@ interface Props {
 }
 const { lang } = Astro.props;
 const g = guides[lang];
+const demo = DEFAULTS[lang === "de" ? "de" : "en"].name;
+// The decorative server card in the hero: what the compose file starts.
+const services = [
+  { name: "mumble-server", port: "64738" },
+  { name: "mumpeer", port: "443" },
+  { name: "mumbot", port: "8080" },
+];
 ---
 
 <article class="wrap guide">
   <header class="guide-head">
-    <p class="label" data-reveal>{g.label}</p>
-    <h1 class="h2" data-reveal>{g.title}</h1>
-    <p class="body" data-reveal>{g.intro}</p>
+    <div class="guide-hero">
+      <div>
+        <p class="label" data-reveal>{g.label}</p>
+        <h1 class="guide-title" data-reveal>
+          {g.title.split(" ").map((w, i) => (
+            <>
+              {i > 0 && " "}
+              {w.includes("-") ? <span class="nowrap">{w}</span> : w}
+            </>
+          ))}
+        </h1>
+        <p class="body" data-reveal>{g.intro}</p>
+        <p class="guide-ctas" data-reveal>
+          <a class="btn btn-glow guide-cta" href="#configurator">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9m4 0h3M4 17h3m4 0h9M13 7a2 2 0 1 0 4 0a2 2 0 1 0-4 0M7 17a2 2 0 1 0 4 0a2 2 0 1 0-4 0" /></svg>
+            {g.configurator.title}
+          </a>
+          <a class="btn guide-cta-ghost" href="#steps">{g.stepsCta}</a>
+        </p>
+      </div>
+      <div class="guide-server" aria-hidden="true" data-reveal>
+        <p class="guide-server-head">
+          <span class="live-dot"></span>
+          <b>{demo}</b>
+          <span>mumble://</span>
+        </p>
+        <ul>
+          {
+            services.map((s, i) => (
+              <li style={`--i: ${i}`}>
+                <span class="guide-server-dot" />
+                <code>{s.name}</code>
+                <span>:{s.port}</span>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="guide-server-foot"><code>docker compose up -d</code></p>
+      </div>
+    </div>
     <ul class="guide-facts" data-reveal>
       {
         g.facts.map((f) => (
@@ -28,7 +75,9 @@ const g = guides[lang];
     </ul>
   </header>
 
-  <h2 class="sr-only">{g.stepsTitle}</h2>
+  <ServerConfigurator lang={lang} />
+
+  <h2 class="sr-only" id="steps">{g.stepsTitle}</h2>
   <ol class="guide-steps">
     {
       g.steps.map((s, i) => (
@@ -43,7 +92,7 @@ const g = guides[lang];
                   <span>{c.file ?? "Terminal"}</span>
                   <CopyButton label={g.copy} copied={g.copied} class="is-quiet" />
                 </figcaption>
-                <pre><code>{c.code.trimEnd()}</code></pre>
+                <pre><code set:html={highlight(c.code.trimEnd(), langOf(c.file))} /></pre>
               </figure>
             ))}
             {s.after?.map((p) => <p set:html={p} />)}
