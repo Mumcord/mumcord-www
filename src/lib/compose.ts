@@ -253,6 +253,13 @@ export function buildEnv(lang: CommentLang, o: ServerOptions, s?: Secrets): stri
 export const botModules = (o: ServerOptions) =>
   [o.webhook && "webhook", o.relay && "peer", o.history && "history", o.music && "music"].filter(Boolean) as string[];
 
+/** What the curl'ed bot.toml carries instead of API keys; the setup swaps them for fresh ones. */
+export const KEY_PLACEHOLDER = { webhook: "REPLACE-WEBHOOK-KEY", music: "REPLACE-MUSIC-KEY" };
+
+/** Id of the prebuilt bot.toml, e.g. "en-1011g": comment language, webhook/relay/history/music, quality. */
+export const botVariantId = (lang: CommentLang, o: ServerOptions) =>
+  `${lang}-${[o.webhook, o.relay, o.history, o.music].map((x) => (x ? 1 : 0)).join("")}${o.quality[0]}`;
+
 /** Music below the server's limit: the Opus bitrate the music module sends per quality step. */
 const MUSIC_BITRATE: Record<Quality, number> = { standard: 64000, good: 128000, best: 256000 };
 
@@ -340,7 +347,12 @@ export function buildCurlSteps(lang: CommentLang, o: ServerOptions, site: string
     configs: [
       ...configCommands(o),
       ...(o.music ? ["mkdir -p media"] : []),
-      ...(botModules(o).length ? ["cat > bot.toml <<EOF", buildBotToml(lang, o).trimEnd(), "EOF"] : []),
+      ...(botModules(o).length
+        ? [
+            `curl -fsSL -o bot.toml ${site.replace(/\/$/, "")}/server/bot/${botVariantId(lang, o)}.toml`,
+            ...(o.webhook || o.music ? [`sed -i ${[o.webhook && `-e "s/${KEY_PLACEHOLDER.webhook}/$(openssl rand -hex 32)/"`, o.music && `-e "s/${KEY_PLACEHOLDER.music}/$(openssl rand -hex 32)/"`].filter(Boolean).join(" ")} bot.toml`] : []),
+          ]
+        : []),
     ].join("\n"),
     start: "docker compose up -d\ndocker compose logs -f",
     show: `cat .env   # ${c.showEnv}`,

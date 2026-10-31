@@ -20,6 +20,9 @@
 	templates @compose {
 		mime text/plain
 	}
+	# The configurator's bot.toml files: plain text, the setup fills in the keys on the server.
+	@bottoml path /server/bot/*
+	header @bottoml Content-Type "text/plain; charset=utf-8"
 
 	file_server
 
