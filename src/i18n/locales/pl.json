@@ -534,20 +534,58 @@
       "commits": "commitów",
       "join": "Dołącz na GitHubie",
       "toolTitle": "Współtwórcy"
+    },
+    "spotlight5": {
+      "label": "Nowość w 0.5.0",
+      "labelSoon": "Wkrótce: 0.5.0",
+      "title": "Więcej spokoju. Więcej ciebie. Więcej dźwięku.",
+      "body": "0.5.0 przynosi Epic 3: centrum powiadomień, blokowanie, wiele tożsamości, nowe drzewo kanałów, muzykę w czacie, tryb niskiego opóźnienia do wspólnego grania i bezpośrednie połączenia przez relay.",
+      "tiles": {
+        "notifications": {
+          "title": "Wszystko w jednym miejscu",
+          "body": "Dzwonek zbiera wzmianki, odpowiedzi, prośby i zaproszenia ze wszystkich serwerów. Kto ci przeszkadza, ląduje na blokadzie, rozpoznany po certyfikacie."
+        },
+        "identities": {
+          "title": "Wiele tożsamości",
+          "body": "Prywatna, klanowa, służbowa: na każdym serwerze wybierasz, kim się łączysz."
+        },
+        "tree": {
+          "title": "Nowe drzewo kanałów",
+          "body": "Prawy klik na każdym kanale, limit użytkowników obok nazwy, czytelne ikony i menu za nazwą kanału."
+        },
+        "lowLatency": {
+          "title": "Grajcie razem",
+          "body": "Tryb niskiego opóźnienia daje około 40 zamiast 90 ms od ust do ucha, a każdy kanał pamięta własne ustawienia dźwięku."
+        },
+        "music": {
+          "title": "Muzyka w czacie",
+          "body": "Pliki audio odtwarzają się prosto w czacie, a linki do Spotify, Apple Music i innych zamieniają się w kartę muzyczną."
+        },
+        "relay": {
+          "title": "Bezpośrednie połączenia, wszędzie",
+          "body": "Udostępnianie ekranu i duże obrazy działają nawet za CGNAT, a jeśli chcesz, nikt nie zobaczy twojego adresu IP."
+        }
+      },
+      "features": "Wszystkie funkcje",
+      "changelog": "Wszystkie nowości"
+    },
+    "serverCta": {
+      "title": "Własny serwer w pięć minut",
+      "body": "Zaznacz pola, skopiuj polecenie, gotowe: konfigurator buduje twój docker-compose.yml z relay i botami.",
+      "button": "Otwórz konfigurator"
     }
   },
   "features": {
     "title": "Funkcje",
     "description": "Wszystkie funkcje Mumcorda ze zrzutami ekranu: serwery i certyfikaty, obserwowanie kanałów, czat z podglądami i @wzmiankami, push-to-talk, dźwięk i wygoda.",
     "label": "Co potrafi Mumcord",
-    "intro": "Wszystko, co potrafi Mumcord, ze zrzutem ekranu tam, gdzie jest, oraz to, co przyniesie następna wersja. Filtr pokazuje funkcje beta albo nowości z poszczególnych wersji. Czegoś brakuje albo coś nie działa? Daj znać na GitHubie.",
+    "intro": "Wszystko, co potrafi Mumcord, ze zrzutem ekranu tam, gdzie jest, oraz to, co przyniesie następna wersja. Filtr pokazuje nowości z dwóch ostatnich wersji. Czegoś brakuje albo coś nie działa? Daj znać na GitHubie.",
     "contents": "Spis treści",
     "newIn": "nowość w",
     "comingIn": "pojawi się w",
     "beta": "Beta",
     "filterLabel": "Filtr",
     "filterAll": "Wszystkie",
-    "filterBeta": "Beta",
     "filterEmpty": "Brak funkcji dla tego filtra.",
     "jump": "Przejdź do",
     "statFeatures": "funkcji",
@@ -590,13 +628,13 @@
           {
             "id": "reconnect",
             "title": "Ponowne połączenie ze wszystkim",
-            "body": "Gdy połączenie zostanie zerwane, wracasz na ten sam kanał ze stanem wyciszenia mikrofonu i dźwięku oraz obserwowanymi kanałami. Po ponownym uruchomieniu Mumcord proponuje powrót na ostatni kanał głosowy.",
+            "body": "Gdy połączenie zostanie zerwane, wracasz na ten sam kanał ze stanem wyciszenia mikrofonu i dźwięku oraz obserwowanymi kanałami. Po ponownym uruchomieniu Mumcord proponuje powrót na ostatni kanał głosowy. Gdy połączenie się nie uda, baner podaje nazwę serwera i znika po 60 sekundach albo po kliknięciu ✕; ikona serwera nadal pokazuje błąd.",
             "alt": "Baner z propozycją powrotu na ostatni kanał głosowy"
           },
           {
             "id": "several-servers",
             "title": "Kilka serwerów naraz",
-            "body": "Do 5 serwerów połączonych naraz, do ustawienia aż do 15. Mówisz na jednym, a czytasz, piszesz i dostajesz powiadomienia na wszystkich. Każdy serwer po zerwaniu sam łączy się ponownie.",
+            "body": "Do 5 serwerów połączonych naraz, do ustawienia aż do 15. Mówisz na jednym, a czytasz, piszesz i dostajesz powiadomienia na wszystkich. Każdy serwer po zerwaniu sam łączy się ponownie. „Dołącz do kanału” działa też dla znajomych na innym serwerze, a linki mumble:// do połączonego serwera przenoszą prosto tam.",
             "alt": "Pasek serwerów z kilkoma połączonymi serwerami, znakiem głośnika przy serwerze głosowym i licznikami wzmianek"
           },
           {
@@ -611,24 +649,45 @@
             "body": "Paczki dla Debiana i Ubuntu, Fedory i openSUSE, Archa (AUR: mumcord-bin) i AppImage, dla x86_64 i ARM64, także jedną linijką w terminalu. Opcjonalnie podpowiedź, gdy wyjdzie nowa wersja."
           },
           {
-            "id": "server-notices",
-            "title": "Powiadomienia dla każdego serwera",
-            "body": "Powiadomienia i prywatne wiadomości pokazują nazwę serwera, a każdy serwer można wyciszyć osobno."
+            "id": "mumble-import",
+            "title": "Import z Mumble",
+            "body": "Jeśli jest zainstalowany oficjalny klient Mumble (1.4 lub 1.5), kreator konfiguracji proponuje przejęcie ulubionych serwerów z hasłami, twojego certyfikatu jako nowej tożsamości, żebyś zachował zarejestrowaną nazwę, urządzeń audio i klawisza push-to-talk. Każdą część wybierasz w podglądzie, serwery, które już masz, są pomijane, a „Cofnij import” przywraca wszystko. Można to zrobić także później w Ustawienia → Serwery.",
+            "alt": "Krok kreatora „Import z Mumble” z polem wyboru dla każdej znalezionej części"
           },
           {
-            "id": "across-servers",
-            "title": "Dołączanie między serwerami",
-            "body": "„Dołącz do kanału” działa też dla znajomych na innym serwerze, a linki mumble:// do połączonego serwera przenoszą prosto tam."
+            "id": "identities",
+            "title": "Kilka tożsamości",
+            "body": "Ustawienia → Tożsamość zarządza kilkoma certyfikatami klienta: tworzenie, import, zmiana nazwy, eksport i kopia zapasowa. Każdy serwer używa tożsamości domyślnej albo własnej, a nagłówek czatu pokazuje, której używasz, gdy nie jest domyślna. Certyfikaty i klucze zostają w bezpiecznym magazynie systemu.",
+            "alt": "Menedżer tożsamości z kilkoma tożsamościami, ich odciskami i serwerami, które z nich korzystają"
           },
           {
-            "id": "autostart",
-            "title": "Start po zalogowaniu",
-            "body": "„Uruchamiaj Mumcorda po zalogowaniu” jest na każdym systemie."
+            "id": "server-dialog",
+            "title": "Okno serwera z kartami",
+            "body": "Dodawanie i edycja serwera są podzielone na Połączenie, Tożsamość, Hasła i Zachowanie. Błędy są nazwane tuż przy polu, „Testuj połączenie” podaje ping, wersję serwera i certyfikat bez niczego zapisywania, a zapisane hasła kanałów pokazują, do którego kanału należą, np. „Officers (Raid)”.",
+            "alt": "Okno „Dodaj serwer” z kartami Połączenie, Tożsamość, Hasła i Zachowanie"
           },
           {
-            "id": "failure-banner",
-            "title": "Banery błędów, które nie męczą",
-            "body": "Gdy połączenie się nie uda, baner podaje nazwę serwera i znika po 60 sekundach albo po kliknięciu ✕. Ikona serwera nadal pokazuje błąd."
+            "id": "server-browser",
+            "title": "Znajdź publiczne serwery",
+            "body": "Przycisk wyszukiwania na pasku serwerów otwiera listę publicznych serwerów Mumble: szukaj po nazwie, adresie lub kraju, filtruj według kraju i pingu, ukrywaj puste lub pełne serwery. „Połącz” zapisuje i dołącza jednym kliknięciem. Lista ładuje się dopiero po otwarciu, a pingowane są tylko widoczne wiersze.",
+            "alt": "Przeglądarka publicznych serwerów z wyszukiwaniem, filtrami kraju i pingu oraz listą serwerów"
+          },
+          {
+            "id": "server-info",
+            "title": "Informacje o serwerze",
+            "body": "Menu serwera pokazuje nazwę, adres, wersję, tekst powitalny, limity, dozwolone kodeki, twoje uprawnienia i ile osób używa Mumcorda, a także certyfikat TLS z odciskiem i ważnością. „Kopiuj diagnostykę” wrzuca wszystko do schowka na potrzeby zgłoszeń błędów. Działa z każdym standardowym serwerem Mumble.",
+            "alt": "Informacje o serwerze z wersją, limitami oraz odciskiem, wystawcą i ważnością certyfikatu TLS"
+          },
+          {
+            "id": "setup-again",
+            "title": "Uruchom kreator konfiguracji ponownie",
+            "body": "Ustawienia → O aplikacji przechodzi przez konfigurację jeszcze raz, by sprawdzić mikrofon, prywatność, sprawdzanie aktualizacji i tryb mówienia. Krok tożsamości jest pomijany, więc nic w twoim certyfikacie nie zmieni się przez przypadek, a zapisywane są tylko wartości, które naprawdę zmieniłeś.",
+            "alt": "Kreator konfiguracji uruchomiony ponownie z ustawień, z krokiem tożsamości oznaczonym jako pominięty"
+          },
+          {
+            "id": "windows-portable",
+            "title": "Wersja przenośna na Windowsie",
+            "body": "Oprócz instalatora jest zip, który działa bez instalacji: rozpakuj go i uruchom Mumcord.exe. Dane, ustawienia i logi zostają w folderze obok, a obsługa mumble:// i start po zalogowaniu nie są ustawiane, dopóki ich sam nie włączysz."
           }
         ]
       },
@@ -657,68 +716,67 @@
           {
             "id": "right-click",
             "title": "Prawy przycisk na osobie",
-            "body": "Zobacz profil, wycisz tylko dla siebie, ustaw głośność od 0 do 200 % albo wyślij prywatną wiadomość. Mumcord zapamiętuje to dla każdej osoby.",
-            "alt": "Menu kontekstowe osoby z suwakiem głośności"
-          },
-          {
-            "id": "person-card",
-            "title": "Dwuklik na prywatne wiadomości",
-            "body": "Kliknij dwukrotnie osobę, by otworzyć prywatny czat. Pojedyncze kliknięcie przypina jej kartę z przyciskami do prywatnej wiadomości i profilu."
+            "body": "Wyślij wiadomość, dołącz do jej kanału albo dodaj ją do znajomych prosto na górze, potem profil, wyciszenie tylko dla siebie i głośność od 0 do 200 %, zapamiętywane dla każdej osoby. Jeśli nie możesz dołączyć, widać powód. Dwuklik otwiera prywatny czat.",
+            "alt": "Menu osoby z „Wyślij wiadomość”, „Dołącz do kanału” i „Dodaj znajomego” na górze"
           },
           {
             "id": "profile",
-            "title": "Nowy profil",
-            "body": "Baner, odznaka, muzyka lub gra i wszystkie ustawienia dla tej osoby. Zmiany działają od razu z krótkim „Zapisano”. Menu pod prawym przyciskiem ma ikony i przełączniki.",
+            "title": "Profil",
+            "body": "Baner, odznaka, muzyka lub gra i komentarz z pogrubieniem, kursywą, linkami i listami. Głośność, wyciszenie i prywatna notatka o osobie są w nim zwinięte; zmiany działają od razu z krótkim „Zapisano”.",
             "alt": "Pełny profil z muzyką, ustawieniami dla tej osoby i prywatną notatką"
-          },
-          {
-            "id": "join-channel",
-            "title": "Dołącz do kanału osoby",
-            "body": "Kliknij prawym przyciskiem osobę lub znajomego: „Dołącz do ‹kanał›” przenosi cię prosto na jej kanał. Jeśli serwer na to nie pozwala, obok widać powód.",
-            "alt": "Menu osoby z „Dołącz do kanału”"
           },
           {
             "id": "member-column",
             "title": "Prawa kolumna z sekcjami",
-            "body": "„Na ‹kanał›”, „Na innych kanałach” ze wszystkimi pozostałymi na serwerze oraz „Znajomi”, każda zwijana. Mumcord pamięta, co jest otwarte. Po lewej nad drzewem kanałów jest „Przegląd serwera”.",
+            "body": "„Na ‹kanał›”, „Na innych kanałach” ze wszystkimi pozostałymi na serwerze oraz „Znajomi”, każda zwijana. Mumcord pamięta, co jest otwarte.",
             "alt": "Prawa kolumna z otwartą sekcją „Na innych kanałach”"
           },
           {
             "id": "connection-quality",
             "title": "Jakość połączenia",
-            "body": "Profil pokazuje na pierwszy rzut oka, czy połączenie jest dobre, średnie czy słabe, a po rozwinięciu ping, utratę pakietów i przepustowość. Mała ikona sygnału oznacza, kto ma w tej chwili słabe połączenie.",
+            "body": "Profil pokazuje na pierwszy rzut oka, czy połączenie jest dobre, średnie czy słabe, a po rozwinięciu ping, utratę pakietów i przepustowość. Mała ikona sygnału oznacza, kto ma w tej chwili słabe połączenie. Admini widzą też klienta i system operacyjny, np. „Mumcord 0.4.0” albo „Mumble 1.5”.",
             "alt": "Karta profilu z rozwiniętym połączeniem: ping, utrata pakietów, przepustowość, klient i system operacyjny"
           },
           {
-            "id": "listeners",
-            "title": "Słuchacze z uchem",
-            "body": "Kto tylko słucha kanału, jest na zwykłej liście z ikoną ucha, a nie w osobnej grupie."
-          },
-          {
-            "id": "client-info",
-            "title": "Klient i system dla adminów",
-            "body": "Admini widzą w profilu także, jakiego klienta i jakiego systemu operacyjnego ktoś używa, np. „Mumcord 0.4.0” albo „Mumble 1.5”."
-          },
-          {
             "id": "channel-filters",
-            "title": "Ukryj puste kanały",
-            "body": "Duże serwery nie zamrażają się już przy pierwszym wyświetleniu. Do tego przełączniki „Ukryj puste kanały” i „Mówiący na górze”."
-          },
-          {
-            "id": "profile-comment",
-            "title": "Sformatowany komentarz w profilu",
-            "body": "Komentarz w twoim profilu obsługuje pogrubienie, kursywę, linki i listy."
-          },
-          {
-            "id": "person-settings",
-            "title": "Ustawienia dla każdej osoby",
-            "body": "Głośność, wyciszenie i notatka o kimś są zwinięte w profilu tej osoby. Gdy coś się zmieni, wiersz na chwilę to pokazuje, np. „Głośność 60 %”."
+            "title": "Uporządkowana lista kanałów",
+            "body": "Przełączniki „Ukryj puste kanały” i „Mówiący na górze”, a duże serwery nie zamrażają się już przy pierwszym wyświetleniu. Kto tylko słucha kanału, jest na zwykłej liście z ikoną ucha."
           },
           {
             "id": "channel-passwords",
             "title": "Kanały z hasłem",
             "body": "Jeśli kanał wymaga hasła, Mumcord pyta cię o nie i zapamiętuje je dla każdego serwera, także po ponownym połączeniu. Kanały, do których nie możesz wejść, mają małą kłódkę.",
             "alt": "Kanał z kłódką i okno hasła do kanału"
+          },
+          {
+            "id": "channel-tree",
+            "title": "Drzewo kanałów z menu",
+            "body": "Kliknij kanał prawym przyciskiem, by dołączyć do niego lub go obserwować, ustawić jego dźwięk, skopiować link, otworzyć informacje o kanale albo przenieść tam osoby, jeśli możesz. Kanały z limitem go pokazują, np. „Raid (1/10)”, pełne są przyciemnione, a tymczasowe i połączone kanały mają ikony. Z uprawnieniem przeciągasz osoby na inny kanał. Na górze jest serwer z kropką połączenia i „N online · ping”.",
+            "alt": "Drzewo kanałów z otwartym menu kanału pod prawym przyciskiem"
+          },
+          {
+            "id": "channel-header",
+            "title": "Nazwa kanału z menu",
+            "body": "Oko przed nazwą kanału włącza lub wyłącza jego obserwowanie. Kliknięcie nazwy otwiera Obserwuj, Kopiuj link do kanału, Hasło kanału, Informacje o kanale i Wyczyść historię czatu. Informacje o kanale pokazują ścieżkę, opis, limit użytkowników, połączone kanały i twoje uprawnienia tam.",
+            "alt": "Informacje o kanale ze ścieżką, opisem, użytkownikami, limitem, połączonymi kanałami i uprawnieniami"
+          },
+          {
+            "id": "hide-members",
+            "title": "Ukryj kolumnę osób",
+            "body": "Przycisk w nagłówku czatu lub Ctrl+Shift+M ukrywa prawą kolumnę, żeby czat dostał całą szerokość. Przycisk pokazuje wtedy, ile osób jest na kanale, i zieloną kropkę, gdy ktoś mówi. W wąskim oknie kolumna wsuwa się nad czat.",
+            "alt": "Czat na pełną szerokość z ukrytą kolumną osób i przyciskiem osób w nagłówku"
+          },
+          {
+            "id": "message-privacy",
+            "title": "Kto może do ciebie pisać",
+            "body": "Ustawienia → Prywatność: prywatne wiadomości od wszystkich, tylko od znajomych albo od nikogo, także osobno dla serwera. Osoby z twojego kanału i zaakceptowane rozmowy zawsze przechodzą. Pozostałe wiadomości czekają jako prośby o wiadomość, które akceptujesz lub odrzucasz, a użytkownicy Mumcorda mogą wysłać prośbę o czat z krótką notatką. Nadawca nigdy się o tym nie dowiaduje.",
+            "alt": "Prośby o wiadomość z prośbą o czat, jej notatką i przyciskami Akceptuj i Odrzuć"
+          },
+          {
+            "id": "block-users",
+            "title": "Blokuj osoby",
+            "body": "„Zablokuj…” w menu osoby ukrywa jej prywatne wiadomości i prośby, zwija jej wiadomości na kanale i wycisza jej głos, tylko dla ciebie. Blokada podąża za certyfikatem, więc działa na wszystkich serwerach i przy nowych nazwach. Nic nie jest wysyłane do serwera ani do tej osoby, a Ustawienia → Prywatność wymieniają wszystkich zablokowanych z przyciskiem „Odblokuj”.",
+            "alt": "Potwierdzenie zablokowania osoby z listą tego, co się zmieni"
           }
         ]
       },
@@ -741,7 +799,7 @@
           {
             "id": "previews",
             "title": "Podglądy linków",
-            "body": "Linki dostają kartę z tytułem, opisem i obrazkiem. Mumcord pobiera je sam, nigdy z adresów sieci lokalnej; każdą kartę można zamknąć, a funkcję wyłączyć w kreatorze i w ustawieniach.",
+            "body": "Linki dostają kartę z tytułem, opisem i obrazkiem. Mumcord pobiera je sam, nigdy z adresów sieci lokalnej; każdą kartę można zamknąć, a funkcję wyłączyć w kreatorze i w ustawieniach. Prawy przycisk na linku daje „Kopiuj link” i „Otwórz link”.",
             "alt": "Czat z podglądem linku"
           },
           {
@@ -752,32 +810,32 @@
           },
           {
             "id": "spotify",
-            "title": "Spotify",
-            "body": "Linki do Spotify też dostają kartę z okładką, tytułem i wykonawcą; odtwarzacz pojawia się dopiero po kliknięciu.",
-            "alt": "Czat z kartą Spotify"
+            "title": "Linki do muzyki",
+            "body": "Spotify, SoundCloud i YouTube Music odtwarzają się w oficjalnym odtwarzaczu usługi, który ładuje się dopiero po kliknięciu Odtwórz. Apple Music, Tidal, Deezer, Bandcamp i inne strony z muzyką dostają taką samą kartę z okładką, tytułem i wykonawcą oraz „Otwórz w …”. Uruchomienie jednego odtwarzacza zatrzymuje drugi.",
+            "alt": "Karta muzyczna z okładką, tytułem, wykonawcą i nazwą usługi"
           },
           {
             "id": "images",
             "title": "Obrazy i GIF-y w czacie",
-            "body": "Zewnętrzne obrazy i linki do obrazów wyświetlają się prosto w wiadomości, GIF-y z Giphy i Tenor się odtwarzają i podają źródło.",
+            "body": "Zewnętrzne obrazy i linki do obrazów wyświetlają się prosto w wiadomości, GIF-y z Giphy i Tenor się odtwarzają i podają źródło. Zrzuty ekranu i skopiowane obrazy wklejasz do pola wiadomości przez Ctrl+V.",
             "alt": "Czat z obrazem i GIF-em"
           },
           {
             "id": "image-viewer",
             "title": "Przeglądarka obrazów",
-            "body": "Kliknij obraz, by zobaczyć go w dużym rozmiarze: powiększanie kółkiem lub klawiszami, przesuwanie, strzałki przez wszystkie obrazy z czatu i „Zapisz obraz”.",
+            "body": "Kliknij obraz, by zobaczyć go w dużym rozmiarze: powiększanie, przesuwanie i strzałki przez wszystkie obrazy z czatu. Pełny rozmiar ładuje się w tle z cienkim paskiem postępu. Prawy przycisk: kopiuj obraz, zapisz go w oryginale, GIF z animacją albo kopiuj jego adres.",
             "alt": "Przeglądarka obrazów z paskiem powiększania"
           },
           {
             "id": "mentions",
             "title": "@wzmianki",
-            "body": "Wpisz @, a Mumcord podpowie nicki. Wzmianki są wyróżnione, powiadamiają cię nawet na wyciszonych kanałach i mają własny dźwięk.",
+            "body": "Wpisz @, a Mumcord podpowie nicki. Wzmianki są wyróżnione, powiadamiają cię nawet na wyciszonych kanałach i mają własny dźwięk. Najedź na wzmiankę, by zobaczyć podgląd, kliknij ją, by otworzyć profil, kliknij prawym przyciskiem, by zobaczyć menu.",
             "alt": "Pole wiadomości z podpowiedzią nicku po @"
           },
           {
             "id": "code",
             "title": "Kod i formatowanie",
-            "body": "Bloki kodu z podświetlaniem składni, pasek formatowania nad polem wpisywania i skróty jak Ctrl+B, Ctrl+I czy Ctrl+E.",
+            "body": "Bloki kodu podświetlane jako język, który wpiszesz po trzech grawisach, od sql i rust po Dockerfile i zrzuty hex, z przyciskami do kopiowania lub pobierania. Pasek formatowania nad polem wpisywania i skróty jak Ctrl+B, Ctrl+I czy Ctrl+E.",
             "alt": "Czat z podświetlonym kodem i paskiem formatowania"
           },
           {
@@ -789,7 +847,7 @@
           {
             "id": "notifications",
             "title": "Powiadomienia po twojemu",
-            "body": "Nowe wiadomości jako okienko w aplikacji, powiadomienie systemowe, oba naraz albo żadne. Do tego krótkie, ciche dźwięki dla każdego zdarzenia.",
+            "body": "Nowe wiadomości jako okienko w aplikacji, powiadomienie systemowe, oba naraz albo żadne, z krótkimi, cichymi dźwiękami dla każdego zdarzenia. Powiadomienia podają nazwę serwera, a każdy serwer można wyciszyć osobno.",
             "alt": "Okienko w aplikacji dla nowej wiadomości"
           },
           {
@@ -797,11 +855,6 @@
             "title": "Sprząta po sobie",
             "body": "Podglądy i obrazy są usuwane po wybranej przez ciebie liczbie dni, a jeśli chcesz, także stara historia czatu. Historia jest tylko na twoim komputerze i można ją wyłączyć dla każdego serwera.",
             "alt": "Ustawienia, sekcja czatu i historii"
-          },
-          {
-            "id": "mention-chips",
-            "title": "Klikalne @wzmianki",
-            "body": "Podgląd po najechaniu, profil po kliknięciu, menu pod prawym przyciskiem."
           },
           {
             "id": "replies",
@@ -828,37 +881,46 @@
             "alt": "Długa wiadomość z nazwą i zdjęciem przypiętymi u góry czatu"
           },
           {
-            "id": "image-loading",
-            "title": "Obrazy ładują się w tle",
-            "body": "Cienki pasek pod obrazem pokazuje, ile pełnego rozmiaru już się załadowało. Zamknięcie przeglądarki obrazów nie przerywa ładowania; × na pasku je anuluje."
-          },
-          {
-            "id": "link-menu",
-            "title": "Kopiowanie linków",
-            "body": "Prawy przycisk na linku w czacie daje „Kopiuj link” i „Otwórz link”.",
-            "alt": "Menu kontekstowe linku z „Kopiuj link” i „Otwórz link”"
-          },
-          {
             "id": "message-cards",
             "title": "Karty wiadomości",
             "body": "Boty i ludzie publikują zwięzłe karty z tytułem, kolorem statusu, ikoną, sformatowanym tekstem, obrazem i linkiem, do buildów, alertów czy dashboardów. Oficjalne klienty Mumble widzą tę samą wiadomość jako czytelny tekst.",
             "alt": "Czat z dwiema kartami wiadomości od bota: pełna karta z ikoną, tytułem, tekstem, wykresem i linkiem, a pod nią prosta karta z tytułem i linkiem"
           },
           {
-            "id": "paste-images",
-            "title": "Wklejanie obrazów przez Ctrl+V",
-            "body": "Zrzuty ekranu, „Kopiuj obraz” z przeglądarki i pliki obrazów skopiowane w menedżerze plików trafiają przez Ctrl+V prosto do pola wiadomości jako załącznik."
+            "id": "notification-centre",
+            "title": "Centrum powiadomień",
+            "body": "Dzwonek w nagłówku czatu lub Ctrl+Shift+N zbiera wzmianki, odpowiedzi, prośby o czat i wiadomość, zaproszenia na watch party i udostępnianie ekranu oraz serwery, które przestały być osiągalne, ze wszystkich połączonych serwerów, od najnowszych. Możesz je filtrować, akceptować prośby od razu na miejscu, a kliknięcie przenosi do wiadomości. Podczas Nie przeszkadzać nadal zbiera po cichu.",
+            "alt": "Centrum powiadomień ze wzmiankami, odpowiedziami i prośbą o czat z przyciskami Akceptuj i Odrzuć"
           },
           {
-            "id": "code-blocks",
-            "title": "Bloki kodu z Kopiuj i Pobierz",
-            "body": "Wpisz język po trzech grawisach, od sql, rust i php po cmd, Dockerfile i zrzuty hex, a blok zostanie podświetlony dokładnie tak. Przyciski w rogu kopiują kod albo zapisują go jako plik.",
-            "alt": "Blok kodu SQL z etykietą języka i przyciskami Kopiuj i Pobierz w rogu"
+            "id": "pm-overview",
+            "title": "Wszystkie prywatne wiadomości w jednym miejscu",
+            "body": "Przycisk Wiadomości na górze paska serwerów pokazuje każdą rozmowę z każdego połączonego serwera, przypięte na początku, z tagiem serwera, podglądem i liczbą nieprzeczytanych. Szukaj, filtruj według nieprzeczytanych lub próśb, zacznij nową rozmowę, a z menu przypnij, wycisz lub usuń wybraną.",
+            "alt": "Przegląd prywatnych wiadomości z prośbą o czat na górze i rozmowami z kilku serwerów"
           },
           {
-            "id": "image-menu",
-            "title": "Kopiowanie i zapisywanie obrazów",
-            "body": "Prawy przycisk na obrazie w czacie albo w przeglądarce obrazów: kopiuj obraz, zapisz obraz w oryginale, GIF z animacją, kopiuj adres obrazu albo otwórz go w przeglądarce."
+            "id": "group-mentions",
+            "title": "@channel i @all",
+            "body": "@channel dociera do wszystkich na kanale, @all do wszystkich, którzy mogą go czytać, także słuchaczy. Mumcord traktuje je jak wzmiankę o tobie, inne klienty Mumble widzą po prostu te słowa. Za dużo? Wycisz je osobno dla serwera.",
+            "alt": "Czat z wyróżnioną wzmianką @channel"
+          },
+          {
+            "id": "audio-links",
+            "title": "Pliki audio na czacie",
+            "body": "Linki do plików mp3, ogg, m4a, wav, flac lub webm dostają odtwarzacz pod wiadomością z paskiem przewijania, głośnością, „Otwórz w przeglądarce” i „Zapisz”. Nic nie gra samo, plik ładuje się dopiero po kliknięciu Odtwórz, do 32 MB, a dźwięk trafia do twoich głośników, nigdy do mikrofonu.",
+            "alt": "Odtwarzacz audio pod wiadomością z przyciskiem odtwarzania, paskiem przewijania i głośnością"
+          },
+          {
+            "id": "hidden-previews",
+            "title": "Ukryte podglądy to mówią",
+            "body": "Gdy podglądy linków i osadzenia są wyłączone, cicha linia pod wiadomością podaje, co ukryto, np. obraz lub film, i prowadzi do ustawienia. Nic nie jest przy tym pobierane ze strony, do której prowadzi link.",
+            "alt": "Wiadomość z linią „Obraz ukryty, bo podglądy linków i osadzenia są wyłączone”"
+          },
+          {
+            "id": "server-links",
+            "title": "Linki do serwerów jako karty",
+            "body": "Link mumble:// na czacie pokazuje serwer, kanał, ping, osoby online i wersję, z „Dołącz”, „Dodaj do serwerów” i „Kopiuj link”. Dane pochodzą ze standardowego publicznego zapytania, nigdy z połączenia. Nazwy użytkowników i hasła w linku nigdy nie są pokazywane i są pomijane przy kopiowaniu.",
+            "alt": "Karta linku mumble:// z nazwą serwera, kanałem, pingiem, użytkownikami i przyciskiem Dołącz"
           }
         ]
       },
@@ -898,13 +960,44 @@
           },
           {
             "id": "bitrate",
-            "title": "Bitrate ręcznie",
-            "body": "Osobny suwak od 16 kbit/s aż do najwyższej wartości, na jaką pozwalają serwer i Mumble. Przy utracie pakietów Mumcord nadal sam go obniża."
+            "title": "Panel jakości głosu",
+            "body": "Kliknij prawym przyciskiem informacje o połączeniu: suwak bitrate od 16 kbit/s aż do limitu serwera z tym, co jest teraz wysyłane, jakość muzyki, szacowana przepustowość i ocena kondycji audio. Przy utracie pakietów Mumcord nadal sam obniża bitrate.",
+            "alt": "Panel jakości głosu z suwakiem bitrate, jakością muzyki i szacowaną przepustowością"
           },
           {
             "id": "realtime-audio",
             "title": "Stabilnie pod obciążeniem",
             "body": "Nagrywanie i odtwarzanie dostają priorytet czasu rzeczywistego, więc głos mniej trzeszczy i się urywa, gdy gra albo kompilacja zajmuje komputer. Informacje o połączeniu pokazują przerwy i to, czy dźwięk w czasie rzeczywistym jest włączony."
+          },
+          {
+            "id": "low-latency",
+            "title": "Tryb niskich opóźnień do grania muzyki",
+            "body": "Pakiety po 10 ms, minimalny bufor i brak redukcji echa oraz szumów zmniejszają opóźnienie z około 100 ms do około 40 ms plus sieć. Przełącza się na żywo i pokazuje szacowane opóźnienie. Wymaga więcej przepustowości; zalecane słuchawki. Działa ze standardowymi serwerami.",
+            "alt": "Ustawienia audio z włączonym trybem niskich opóźnień i rozbiciem szacowanego opóźnienia"
+          },
+          {
+            "id": "channel-audio",
+            "title": "Dźwięk dla każdego kanału",
+            "body": "„Dźwięk dla tego kanału…” ustawia jakość muzyki, tryb niskich opóźnień i limit bitrate dla jednego kanału, z presetami Głos, Muzyka i Jam. Obowiązuje po dołączeniu, a po wyjściu wracają twoje zwykłe ustawienia. Zapisane tylko na tym urządzeniu, więc działa na każdym serwerze Mumble.",
+            "alt": "„Dźwięk dla tego kanału” z presetami Głos, Muzyka i Jam"
+          },
+          {
+            "id": "device-switch",
+            "title": "Zmiana urządzeń z paska głosu",
+            "body": "Kliknij prawym przyciskiem przycisk mikrofonu lub słuchawek: wybierz urządzenie, ustaw głośność, obserwuj poziom i przełączaj redukcję szumów, wszystko bez ponownego łączenia. Po odłączeniu urządzenia Mumcord wraca do domyślnego systemowego. Na Linuksie z PipeWire pojawia się każde wejście i wyjście tak jak w ustawieniach dźwięku twojego pulpitu.",
+            "alt": "Menu mikrofonu z urządzeniami wejściowymi, suwakiem głośności i miernikiem poziomu"
+          },
+          {
+            "id": "leave-voice",
+            "title": "Opuść głos, zostań połączony",
+            "body": "Prawy przycisk na przycisku rozłączenia: „Opuść głos” kończy mówienie i słuchanie, ale zostawia czat i czytanie na głos. Są tam też rozłączenie, przeniesienie głosu na inny serwer i rozłączenie ze wszystkimi. Lewy przycisk nadal rozłącza od razu.",
+            "alt": "Menu przycisku rozłączenia z „Opuść głos”, Rozłącz i Przełącz głos"
+          },
+          {
+            "id": "user-panel",
+            "title": "Spokojny panel użytkownika",
+            "body": "Panel na dole listy kanałów ma zawsze tę samą wysokość: ty z nazwą i serwerem, jedna linia stanu, np. łączenie ponowne albo twój kanał głosowy, małe znaczki Nie przeszkadzać, trybu niskich opóźnień i połączenia oraz przyciski mikrofonu, słuchawek i rozłączenia. Lista kanałów powyżej już nie skacze.",
+            "alt": "Panel użytkownika w kilku stanach, od mówienia i wyciszenia po ponowne łączenie"
           }
         ]
       },
@@ -915,50 +1008,19 @@
           {
             "id": "positional",
             "title": "Dźwięk pozycyjny",
-            "body": "Głosy osób w tej samej grze dochodzą z ich kierunku i cichną wraz z odległością. Przez Mumble Link lub oficjalne pluginy gier Mumble; ikona „3D” pokazuje, kto wysyła pozycje.",
+            "body": "Głosy osób w tej samej grze dochodzą z ich kierunku i cichną wraz z odległością. Przez Mumble Link lub oficjalne pluginy gier Mumble, każdy z własnym przełącznikiem; ikona „3D” pokazuje, kto wysyła pozycje.",
             "alt": "Ustawienia, dźwięk pozycyjny z odległościami i pluginami gier"
-          },
-          {
-            "id": "game-plugins",
-            "title": "Oficjalne pluginy gier",
-            "body": "Pluginy Mumble dostarczają pozycje w obsługiwanych grach, każdy z własnym przełącznikiem. Ustawienia pokazują, który jest aktywny."
           },
           {
             "id": "in-game-overlay",
             "title": "Nakładka w grze",
-            "body": "Na Linuxie prosto w grze jako warstwa Vulkan, także w grach ze Steama i przez Proton, przetestowana z Tyr i Supermarket Simulator. Ustawiana dla każdej gry; gry, których anti-cheat blokuje nakładki, pozostają wykluczone. Windows dostaje ją w wersji 0.4.0.",
+            "body": "Pokazuje, kto mówi, prosto w grze. Na Linuksie jako warstwa Vulkan, także w grach ze Steama, przez Proton i w Steamie z Flatpaka, z opcją uruchamiania do skopiowania dla natywnych gier OpenGL. Na Windowsie jako przeklikiwalne okno, które niczego nie ładuje do gry, więc działa z anti-cheatem; ukrywa je tylko wyłączny tryb pełnoekranowy. Ustawiana dla każdej gry; gry, których anti-cheat blokuje nakładki, pozostają wykluczone.",
             "alt": "Ustawienia, nakładka w grze z ostrzeżeniem o anti-cheacie i wyborem dla każdej gry"
-          },
-          {
-            "id": "overlay-window",
-            "title": "Okno nakładki",
-            "body": "Na Linuxie i Windowsie przezroczyste, nieklikalne okno nad wszystkim, które pokazuje, kto mówi na twoim kanale. Na macOS nakładki nie ma. Okno nakładki znika w wersji 0.4.0.",
-            "alt": "Okno nakładki nad grą pokazujące, kto mówi"
           },
           {
             "id": "now-gaming",
             "title": "Teraz gra",
-            "body": "Jeśli chcesz, inni widzą, w co grasz, z obrazkiem ze Steama i czasem gry. „Dołącz do gry” dla gier ze Steama, które to obsługują."
-          },
-          {
-            "id": "overlay-windows",
-            "title": "Nakładka w grze na Windowsie",
-            "body": "Osobne, przeklikiwalne okno nad grą. Nic nie jest ładowane do gry, więc działa też w grach z anti-cheatem. Ukrywa je tylko wyłączny tryb pełnoekranowy."
-          },
-          {
-            "id": "overlay-opengl",
-            "title": "Gry OpenGL na Linuksie",
-            "body": "W natywnych grach z OpenGL, np. Project Hospital, Mumcord pokazuje właściwą opcję uruchamiania Steam do skopiowania, która działa także po aktualizacjach. Do tego poprawne kolory w grach HDR."
-          },
-          {
-            "id": "flatpak-steam",
-            "title": "Steam z Flatpaka i pełny ekran bez ramek",
-            "body": "Nakładka w grze także dla gier ze Steama z Flatpaka, a gry pełnoekranowe bez ramek sprawdzone na KDE i GNOME. Zamknięcie lub aktualizacja Mumcorda nie wysypuje już uruchomionej gry."
-          },
-          {
-            "id": "join-game-link",
-            "title": "„Dołącz do gry” przez Mumble Link",
-            "body": "„Dołącz do gry” także dla gier, które udostępniają adres serwera przez Mumble Link."
+            "body": "Jeśli chcesz, inni widzą, w co grasz, z obrazkiem ze Steama i czasem gry. „Dołącz do gry” dla gier ze Steama, które to obsługują, i dla gier udostępniających adres serwera przez Mumble Link."
           }
         ]
       },
@@ -997,13 +1059,13 @@
           {
             "id": "watch-party",
             "title": "Wspólne oglądanie",
-            "body": "Watch party na YouTube na kanale głosowym: wszyscy widzą ten sam film jednocześnie, każdy może pauzować i przewijać, ze wspólną playlistą.",
+            "body": "Watch party na YouTube na kanale głosowym: wszyscy widzą ten sam film jednocześnie, każdy może pauzować i przewijać, ze wspólną playlistą. Przy wyłączonych osadzeniach w ustawieniach prywatności nic nie jest ładowane z YouTube ani Twitcha.",
             "alt": "Watch party w pływającym oknie z uczestnikami, sterowaniem i następnym filmem"
           },
           {
             "id": "screen-share",
             "title": "Udostępnianie ekranu",
-            "body": "Ekran lub okno dla maksymalnie 8 widzów, w 720p przy 30 klatkach na sekundę. Na Windowsie i macOS na życzenie z dźwiękiem udostępnianej aplikacji. Uruchomisz je przyciskiem Aplikacje w czacie.",
+            "body": "Ekran lub okno dla maksymalnie 8 widzów, w 720p przy 30 klatkach na sekundę, na Windowsie i macOS na życzenie z dźwiękiem udostępnianej aplikacji. Uruchomisz je przyciskiem Aplikacje w czacie. Gdy udostępniasz, czerwony pasek pokazuje widzów i „Zakończ”, a inni widzą czerwony pierścień z „LIVE” wokół twojego zdjęcia.",
             "alt": "Udostępniony ekran w pływającym oknie z pełnym ekranem i „Przestań oglądać”"
           },
           {
@@ -1013,20 +1075,15 @@
             "alt": "Podpowiedzi u góry czatu o trwającym watch party i udostępnionym ekranie"
           },
           {
-            "id": "live",
-            "title": "Na żywo i wszyscy to widzą",
-            "body": "Gdy udostępniasz ekran, czerwony pasek nad twoim profilem to sygnalizuje, z „Zakończ” i liczbą widzów. Inni widzą czerwony pierścień z „LIVE” wokół twojego zdjęcia.",
-            "alt": "Czerwony pasek „Udostępniasz swój ekran” z liczbą widzów i „Zakończ”"
-          },
-          {
             "id": "ducking",
-            "title": "Ciszej, gdy ktoś mówi",
-            "body": "Gdy ktoś na kanale mówi, dźwięk watch party i udostępnionego ekranu cichnie, a potem wraca. Ty decydujesz, jak bardzo, albo to wyłączasz."
+            "title": "Dźwięk dla watch party i udostępniania",
+            "body": "Gdy ktoś na kanale mówi, watch party i udostępnione ekrany cichną; ty decydujesz, jak bardzo. Krótkie dźwięki, gdy ktoś zaczyna watch party, do niej dołącza albo udostępnia ekran, każdy z nich można wyłączyć."
           },
           {
-            "id": "activity-sounds",
-            "title": "Dźwięki dla watch party i udostępniania",
-            "body": "Krótki dźwięk, gdy ktoś uruchamia watch party, dołącza do niej lub ją opuszcza i gdy ktoś udostępnia ekran albo zaczyna oglądać twój. Każdy dźwięk można wyłączyć."
+            "id": "relay",
+            "title": "Przekaźnik społeczności",
+            "body": "Społeczność serwera może uruchomić przekaźnik obok serwera Mumble. Obrazy w pełnym rozmiarze i udostępnianie ekranu działają wtedy nawet bez bezpośredniego połączenia, a przy „zawsze przez przekaźnik” druga osoba nigdy nie widzi twojego adresu IP. Przekaźnik nie odczyta szyfrowanego połączenia, a głos nigdy go nie używa. Wybierasz w Ustawienia → Prywatność, także osobno dla serwera.",
+            "alt": "Ustawienia prywatności z wyborem peer-to-peer: bezpośrednio, przez przekaźnik i wyłączone"
           }
         ]
       },
@@ -1043,36 +1100,26 @@
           {
             "id": "sounds",
             "title": "Dźwięki i powiadomienia",
-            "body": "Każde zdarzenie włączasz osobno: dołączenie, wyjście, wiadomości, wzmianki.",
+            "body": "Każde zdarzenie włączasz osobno: dołączenie, wyjście, wiadomości, wzmianki oraz osobny dźwięk dla wyrzucenia lub bana.",
             "alt": "Ustawienia, sekcja dźwięków i powiadomień"
           },
           {
             "id": "languages",
-            "title": "Zmiana języka bez restartu",
-            "body": "Język zmienia się od razu. W zestawie ikona w zasobniku, start po zalogowaniu oraz pełna obsługa klawiaturą i czytnikiem ekranu.",
+            "title": "24 języki, zmiana bez restartu",
+            "body": "Wszystkie 24 oficjalne języki UE, od bułgarskiego po szwedzki, działają od razu, łącznie z menu w zasobniku. Każdy jest podany pod własną nazwą. Przetłumaczone przez zespół bez weryfikacji przez native speakerów: poprawki chętnie przyjmiemy jako zgłoszenie. W zestawie pełna obsługa klawiaturą i czytnikiem ekranu.",
             "alt": "Ustawienia, sekcja języka interfejsu"
           },
           {
             "id": "privacy",
             "title": "Bez telemetrii",
-            "body": "Twoja tożsamość jest w bezpiecznym magazynie systemu. Plik diagnostyczny nie zawiera treści czatu ani haseł i opuszcza twój komputer tylko wtedy, gdy go wyślesz."
-          },
-          {
-            "id": "eu-languages",
-            "title": "Wszystkie 24 oficjalne języki UE",
-            "body": "Od bułgarskiego po szwedzki, łącznie z menu w zasobniku. Każdy język jest podany pod własną nazwą i można go znaleźć po każdej z jego nazw. Przetłumaczone przez zespół bez weryfikacji przez native speakerów: poprawki chętnie przyjmiemy jako zgłoszenie."
-          },
-          {
-            "id": "privacy-step",
-            "title": "Prywatność w kreatorze",
-            "body": "Przy pierwszym uruchomieniu krótki krok pokazuje, z czym i kiedy łączy się Mumcord, z linkiem do pełnej polityki prywatności.",
+            "body": "Przy pierwszym uruchomieniu krótki krok pokazuje, z czym i kiedy łączy się Mumcord. Twoja tożsamość jest w bezpiecznym magazynie systemu, a plik diagnostyczny nie zawiera treści czatu ani haseł i opuszcza twój komputer tylko wtedy, gdy go wyślesz.",
             "alt": "Kreator, krok prywatności"
           },
           {
             "id": "quick-settings",
             "title": "Szybkie ustawienia pod zębatką",
-            "body": "Jedno kliknięcie w zębatkę: podglądy, motyw, nakładka, udostępnianie muzyki i gry, edycja profilu i rejestracja. Funkcje beta, takie jak dźwięk pozycyjny, mają własną zwijaną grupę.",
-            "alt": "Szybkie ustawienia z otwartą grupą Beta"
+            "body": "Jedno kliknięcie w zębatkę: po jednym wierszu na ustawienie w grupach Powiadomienia, Udostępnianie, Wygląd i Konto, z wyjaśnieniem pod małym „?”. Funkcje beta, takie jak dźwięk pozycyjny, mają własną grupę, która startuje zwinięta.",
+            "alt": "Szybkie ustawienia pogrupowane w Powiadomienia, Udostępnianie, Wygląd i Konto"
           },
           {
             "id": "settings-search",
@@ -1100,30 +1147,91 @@
           },
           {
             "id": "dropdowns",
-            "title": "Uporządkowane ustawienia",
-            "body": "Rozwijane listy w stylu motywu zamiast wyglądu z przeglądarki, a każde pole w ustawieniach równo wyrównane."
-          },
-          {
-            "id": "tooltips",
-            "title": "Podpowiedzi w stylu motywu",
-            "body": "Każda podpowiedź w stylu twojego motywu, jasnym lub ciemnym, i dostępna też z klawiatury."
+            "title": "Uporządkowane ustawienia i podpowiedzi",
+            "body": "Rozwijane listy i podpowiedzi w stylu twojego motywu zamiast wyglądu z przeglądarki, każde pole w ustawieniach równo wyrównane i każda podpowiedź dostępna też z klawiatury."
           },
           {
             "id": "packet-inspector",
             "title": "Inspektor pakietów do debugowania",
-            "body": "Ukryty dla programistów: siedem kliknięć w wersję w Ustawienia → O aplikacji go odblokowuje. W osobnym oknie pokazuje, jakie dane Mumcord są wysyłane i odbierane, z filtrami, licznikami i eksportem do JSON lub Markdown.",
+            "body": "Ukryty dla programistów: siedem kliknięć w wersję w Ustawienia → O aplikacji go odblokowuje. W osobnym oknie pokazuje, jakie dane Mumcord są wysyłane i odbierane, z filtrami, licznikami i eksportem do JSON lub Markdown. Śledzi nowe pakiety i przechwytuje tylko wtedy, gdy jest otwarty.",
             "alt": "Inspektor pakietów z filtrami, licznikami według typu i kierunku oraz jednym rozwiniętym wierszem pakietu"
           },
           {
             "id": "clear-cache",
             "title": "Czyszczenie pamięci podręcznej",
             "body": "Ustawienia → Prywatność pokazują, ile miejsca zajmują podglądy linków, obrazy i silnik przeglądarki, i czyszczą je jednym przyciskiem, także pojedynczo. Historia czatu, serwery, znajomi i notatki pozostają nietknięte."
+          },
+          {
+            "id": "dnd",
+            "title": "Nie przeszkadzać",
+            "body": "Jeden przełącznik w szybkich ustawieniach, w ustawieniach albo w menu zasobnika wycisza dźwięki powiadomień i okienka na każdym serwerze. Głos nadal działa, a liczniki nieprzeczytanych dalej liczą. Na KDE Plasma, GNOME i Windows może podążać za systemowym trybem Nie przeszkadzać.",
+            "alt": "Ustawienia dźwięków i powiadomień z „Nie przeszkadzać” i „Podążaj za systemowym Nie przeszkadzać”"
+          },
+          {
+            "id": "tray",
+            "title": "Pełne menu w zasobniku",
+            "body": "Menu w zasobniku pokazuje każdy połączony serwer z jego stanem i kanałem, wyciszenie mikrofonu i dźwięku oraz Nie przeszkadzać, przenosi głos na inny serwer lub kanał i otwiera ostatnie czaty. Ikona pokazuje mówienie, wyciszenie, nieprzeczytane wiadomości i Nie przeszkadzać. Mumcord startuje po zalogowaniu, jeśli chcesz, w każdym systemie.",
+            "alt": "Menu w zasobniku z serwerami, podmenu kanału głosowego i ostatnimi czatami"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.5.0",
+      "teaser": "Centrum powiadomień, wszystkie wiadomości prywatne w jednym miejscu, blokowanie, kilka tożsamości i import z Mumble.",
+      "summary": "Duża aktualizacja czatu i prywatności: centrum powiadomień, wszystkie wiadomości prywatne w jednym miejscu z własnymi regułami, kto może do ciebie pisać, blokowanie, kilka tożsamości i przejście z Mumble w kilka kliknięć. Do tego przekaźnik społeczności dla obrazów i udostępniania ekranu, muzyka i dźwięk na czacie, przeglądarka publicznych serwerów oraz tryb niskich opóźnień do wspólnego grania.",
+      "groups": [
+        {
+          "title": "Nowe",
+          "items": [
+            "Centrum powiadomień pod dzwonkiem w nagłówku czatu (Ctrl+Shift+N) zbiera wszystko, co wymaga twojej uwagi, ze wszystkich połączonych serwerów: wzmianki, odpowiedzi, prośby o czat i wiadomości z przyciskami Akceptuj i Odrzuć, zaproszenia do wspólnego oglądania i udostępniania ekranu oraz serwery, które przestały być osiągalne. Jedno kliknięcie przenosi do wiadomości.",
+            "Nie przeszkadzać: jeden przełącznik w szybkich ustawieniach, ustawieniach i menu zasobnika wycisza dźwięki powiadomień i wyskakujące okna na wszystkich serwerach. Głos nadal działa, a nieprzeczytane wiadomości są wciąż liczone. Jeśli chcesz, Mumcord podąża za systemowym trybem Nie przeszkadzać w KDE Plasma, GNOME i Windows.",
+            "Menu zasobnika pokazuje każdy połączony serwer z jego kanałem, a także Wycisz, Ogłusz i Nie przeszkadzać. Stamtąd przenosisz głos na inny serwer lub kanał i otwierasz ostatnie prywatne czaty. Ikona w zasobniku pokazuje, kiedy ktoś mówi, kiedy jesteś wyciszony i kiedy są nieprzeczytane wiadomości.",
+            "Wszystkie wiadomości prywatne w jednym miejscu: przycisk Wiadomości na górze paska serwerów wyświetla każdą rozmowę ze wszystkich połączonych serwerów, z wyszukiwaniem, filtrami, przypinaniem i wyciszaniem. Zastępuje listę Wiadomości bezpośrednie pod drzewem kanałów. Menu osoby zaczyna się teraz od Wyślij wiadomość, Dołącz do kanału i Dodaj znajomego.",
+            "Ty decydujesz, kto może do ciebie pisać prywatnie: wszyscy, tylko znajomi albo nikt, także osobno dla każdego serwera. Osoby z twojego kanału i zaakceptowane rozmowy zawsze się przebiją. Pozostałe czekają w sekcji Prośby o wiadomość, a użytkownicy Mumcord mogą wysłać ci prośbę o czat z krótką notatką. Mumcord filtruje po twojej stronie, więc nadawca się o tym nie dowiaduje. Zaakceptowaną rozmowę możesz później cofnąć.",
+            "Blokuj osoby: ich wiadomości prywatne i prośby znikają, ich wiadomości na kanale są zwinięte, a ich głos jest dla ciebie wyciszony. Blokada podąża za certyfikatem osoby, więc obejmuje każdy serwer, a nowa nazwa jej nie omija. Ani serwer, ani osoba nie są o tym informowane; Ustawienia → Prywatność wyświetla twoje blokady.",
+            "@channel i @all docierają do wszystkich na kanale i liczą się jak osobista wzmianka. Inne klienty Mumble widzą po prostu te słowa, a ty możesz je wyciszyć dla każdego serwera osobno.",
+            "Dźwięk i muzyka na czacie: bezpośrednie linki do plików audio, takich jak mp3, ogg, wav czy flac, dostają mały odtwarzacz. Linki do Spotify, SoundCloud i YouTube Music odtwarzają się w odtwarzaczu samej usługi po naciśnięciu Odtwórz; Apple Music, Tidal, Deezer i Bandcamp dostają kartę z linkiem. Nic nie gra samo, a przy wyłączonych podglądach linków nic nie jest ładowane.",
+            "Linki mumble:// na czacie pokazują kartę z serwerem, kanałem, pingiem i liczbą osób online, z przyciskami Dołącz i Dodaj do serwerów. Hasło w linku nigdy nie jest wyświetlane.",
+            "Kanałami łatwiej zarządzać: prawy przycisk na kanale otwiera menu z Dołącz, Śledź, Kopiuj link do kanału, Informacje o kanale i innymi. Kanały pokazują limit użytkowników, np. Raid (1/10), a pełne są przyciemnione. Z odpowiednim uprawnieniem przeciągasz osoby na inny kanał. Informacje o kanale pokazują opis, użytkowników, twoje uprawnienia i połączone kanały.",
+            "Tryb niskich opóźnień do wspólnego grania (Beta): około 40 zamiast 100 milisekund od ust do ucha, plus sieć. Przełącza się bez ponownego łączenia i działa ze standardowymi serwerami. Zalecane słuchawki.",
+            "Dźwięk dla kanału: „Dźwięk dla tego kanału…” daje kanałowi własne ustawienia, z presetami Głos, Muzyka i Jam. Obowiązują po dołączeniu, a gdy wyjdziesz, wracają twoje zwykłe ustawienia.",
+            "Szybkie menu na pasku głosu: prawy przycisk na mikrofonie lub słuchawkach otwiera urządzenia, głośność i miernik poziomu, informacje o połączeniu dotyczące jakości głosu i bitrate’u oraz przycisk rozłączenia z opcjami Opuść głos (zostajesz połączony i dalej czatujesz) lub Rozłącz ze wszystkimi serwerami.",
+            "Przeglądarka serwerów na pasku serwerów wyświetla publiczne serwery Mumble, z wyszukiwaniem i filtrami kraju i pingu. Połącz zapisuje i łączy jednym kliknięciem. Lista ładuje się dopiero po otwarciu przeglądarki.",
+            "Okno serwera jest podzielone na cztery karty i ma Testuj połączenie, które sprawdza ping, wersję serwera i certyfikat, niczego nie zapisując. Informacje o serwerze pokazują wersję, limity, twoje uprawnienia i certyfikat TLS. Zapisane hasła do kanałów pokazują, do którego kanału należą.",
+            "Kilka tożsamości: Ustawienia → Tożsamość zarządza kilkoma certyfikatami, z importem, eksportem, zmianą nazwy i domyślnym. Każdy serwer może używać własnej tożsamości. Twoja obecna staje się „Domyślną”, a wszystko łączy się jak dawniej.",
+            "Import z Mumble: jeśli zainstalowano oficjalnego klienta Mumble, kreator konfiguracji (lub Ustawienia → Serwery) przenosi ulubione serwery, zapisane hasła, twój certyfikat, urządzenia audio i klawisz push-to-talk. Nic nie jest nadpisywane, pliki Mumble są tylko odczytywane, a import można cofnąć.",
+            "Przekaźnik społeczności: obrazy w pełnym rozmiarze i udostępnianie ekranu mogą iść przez przekaźnik, który społeczność serwera uruchamia obok swojego serwera Mumble. Przekazuje on tylko szyfrowane połączenie i, jeśli chcesz, ukrywa twój adres IP przed drugą osobą. Udostępnianie ekranu działa wtedy także bez bezpośredniego połączenia. Głos nigdy nie korzysta z przekaźnika.",
+            "W systemie Windows Mumcord jest też dostępny jako przenośny plik zip: rozpakuj, uruchom, bez instalacji. Dane i ustawienia zostają w folderze obok programu.",
+            "Ukryj kolumnę członków, by czat zajął całą szerokość: przyciskiem w nagłówku czatu lub Ctrl+Shift+M. W wąskim oknie wysuwa się nad czat.",
+            "Wyrzucony lub zbanowany? Mumcord odtwarza na to dźwięk: klaps za wyrzucenie, slapstickowe kopnięcie za bana. Oba można wyłączyć."
+          ]
+        },
+        {
+          "title": "Ulepszone",
+          "items": [
+            "Panel użytkownika pod listą kanałów został przeprojektowany: w każdym stanie ma tę samą wysokość, więc lista nad nim nigdy nie skacze, pokazuje jeden czytelny wiersz stanu i ma małą strzałkę menu na każdym przycisku głosu.",
+            "Szybkie ustawienia są spokojniejsze: jeden wiersz na ustawienie w czytelnych grupach, wyjaśnienia za małym ?, a grupa Beta startuje zwinięta.",
+            "Przy wyłączonych podglądach linków nie znikają już po cichu: dyskretny wiersz pod wiadomością mówi, co ukryto, i prowadzi do ustawienia.",
+            "„Uruchom kreator konfiguracji ponownie” w Ustawienia → O programie jeszcze raz przechodzi przez mikrofon, prywatność, wskazówkę o aktualizacjach i tryb rozmowy. Twoja tożsamość pozostaje nietknięta, a zapisywane jest tylko to, co zmienisz."
+          ]
+        },
+        {
+          "title": "Naprawione",
+          "items": [
+            "Twoje własne wiadomości nigdy nie odtwarzają dźwięku wzmianki, nie pokazują powiadomienia i nie liczą się jako nieprzeczytane.",
+            "Wspólne oglądanie respektuje ustawienie „Pokazuj podglądy linków i osadzenia”: gdy jest wyłączone, nic nie jest ładowane z YouTube ani Twitcha, a wskazówka prowadzi do ustawienia.",
+            "Linux z PipeWire: listy urządzeń pokazują każde wejście i wyjście tak jak ustawienia dźwięku pulpitu, np. „System” i „Chat” w RØDECaster Pro II zamiast jednego „USB Audio”.",
+            "Okno informacji o serwerze jest teraz przetłumaczone na wszystkie 24 języki."
+          ]
+        }
+      ],
+      "known": [
+        "Instalator Windows nadal nie jest podpisany."
+      ]
+    },
     {
       "version": "0.4.4",
       "teaser": "Kopiuj i pobieraj kod, zapisuj obrazy prawym przyciskiem, czyść pamięć podręczną, stabilniejszy głos pod obciążeniem.",

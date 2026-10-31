@@ -21,6 +21,58 @@ export interface ChangelogEntry {
 const source: Record<"de" | "en", ChangelogEntry[]> = {
   de: [
     {
+      version: "0.5.0",
+      teaser: "Benachrichtigungszentrale, alle privaten Nachrichten an einem Ort, Blockieren, mehrere Identitäten und Import aus Mumble.",
+      summary: "Ein großes Update für Chat und Privatsphäre: eine Benachrichtigungszentrale, alle privaten Nachrichten an einem Ort mit deinen eigenen Regeln, wer dir schreiben darf, Blockieren, mehrere Identitäten und der Umzug aus Mumble mit wenigen Klicks. Dazu ein Community-Relay für Bilder und Bildschirm teilen, Musik und Audio im Chat, ein Browser für öffentliche Server und ein Modus mit niedriger Latenz zum gemeinsamen Musikmachen.",
+      groups: [
+        {
+          title: "Neu",
+          items: [
+            "Eine Benachrichtigungszentrale hinter der Glocke im Chat-Kopf (Strg+Umschalt+N) sammelt alles, was deine Aufmerksamkeit will, von allen verbundenen Servern: Erwähnungen, Antworten, Chat- und Nachrichtenanfragen mit Annehmen und Ablehnen, Einladungen zu Watch-Partys und Bildschirmfreigaben und Server, die nicht mehr erreichbar sind. Ein Klick springt zur Nachricht.",
+            "„Nicht stören“: Ein Schalter in den Schnelleinstellungen, den Einstellungen und im Tray-Menü schaltet Benachrichtigungstöne und -fenster auf allen Servern stumm. Sprache läuft weiter, ungelesene Nachrichten werden weiter gezählt. Auf Wunsch folgt Mumcord dem „Nicht stören“ des Systems, unter KDE Plasma, GNOME und Windows.",
+            "Das Tray-Menü zeigt jeden verbundenen Server mit Kanal, dazu Stummschalten, Taubschalten und „Nicht stören“. Von dort wechselst du mit der Sprache auf einen anderen Server oder Kanal und öffnest deine letzten privaten Chats. Das Tray-Symbol zeigt, wenn jemand spricht, du stumm bist oder Nachrichten ungelesen sind.",
+            "Alle privaten Nachrichten an einem Ort: Der Knopf „Nachrichten“ oben in der Serverleiste listet jede Unterhaltung von jedem verbundenen Server, mit Suche, Filtern, Anheften und Stummschalten. Er ersetzt die Liste „Direktnachrichten“ unter dem Kanalbaum. Das Menü einer Person beginnt jetzt mit Nachricht senden, Kanal beitreten und Freund hinzufügen.",
+            "Du bestimmst, wer dir privat schreiben darf: alle, nur Freunde oder niemand, auf Wunsch pro Server. Leute in deinem Kanal und Unterhaltungen, die du angenommen hast, kommen immer durch. Andere landen unter „Nachrichtenanfragen“, und Mumcord-Nutzer können dir eine Chatanfrage mit kurzer Notiz schicken. Mumcord filtert bei dir, der Absender erfährt davon nichts. Eine angenommene Unterhaltung kannst du später wieder zurücknehmen.",
+            "Leute blockieren: Ihre privaten Nachrichten und Anfragen verschwinden, ihre Nachrichten im Kanal werden eingeklappt, und ihre Stimme ist für dich stumm. Die Sperre hängt am Zertifikat der Person, gilt also auf jedem Server, und ein neuer Name hilft nicht. Weder Server noch Person erfahren davon; Einstellungen → Datenschutz listet alle Sperren.",
+            "@channel und @all erreichen alle in einem Kanal und zählen wie eine persönliche Erwähnung. Andere Mumble-Clients sehen einfach die Wörter, und pro Server lassen sie sich stummschalten.",
+            "Audio und Musik im Chat: Direkte Links zu Audiodateien wie mp3, ogg, wav oder flac bekommen einen kleinen Player. Links zu Spotify, SoundCloud und YouTube Music spielen im Player des Dienstes, sobald du auf Play drückst; Apple Music, Tidal, Deezer und Bandcamp bekommen eine Karte mit Link. Nichts spielt von selbst, und ohne Link-Vorschauen wird nichts geladen.",
+            "Links mit mumble:// im Chat zeigen eine Karte mit Server, Kanal, Ping und wie viele online sind, mit Beitreten und Zu Servern hinzufügen. Ein Passwort im Link wird nie angezeigt.",
+            "Kanäle besser im Griff: Ein Rechtsklick auf einen Kanal öffnet ein Menü mit Beitreten, Folgen, Kanallink kopieren, Kanalinfo und mehr. Kanäle zeigen ihr Limit, etwa Raid (1/10), volle sind abgeblendet. Mit dem passenden Recht ziehst du Leute in einen anderen Kanal. Die Kanalinfo zeigt Beschreibung, Leute, deine Rechte und verlinkte Kanäle.",
+            "Modus für niedrige Latenz zum gemeinsamen Musikmachen (Beta): etwa 40 statt 100 Millisekunden vom Mund bis zum Ohr, plus Netzwerk. Er schaltet ohne Neuverbinden um und läuft mit normalen Servern. Kopfhörer empfohlen.",
+            "Audio pro Kanal: „Audio für diesen Kanal…“ gibt einem Kanal eigene Einstellungen, mit den Vorlagen Sprache, Musik und Jam. Sie gelten, sobald du beitrittst, und beim Verlassen kommen deine normalen Einstellungen zurück.",
+            "Schnellmenüs in der Sprachleiste: Rechtsklick auf Mikrofon oder Kopfhörer für Geräte, Lautstärke und Pegelanzeige, auf die Verbindungsinfo für Sprachqualität und Bitrate, auf Auflegen für „Sprache verlassen“ (verbunden bleiben und weiter chatten) oder „Von allen Servern trennen“.",
+            "Ein Server-Browser in der Serverleiste listet öffentliche Mumble-Server, mit Suche und Filtern nach Land und Ping. „Verbinden“ speichert und verbindet mit einem Klick. Die Liste lädt nur, wenn du den Browser öffnest.",
+            "Der Server-Dialog ist in vier Tabs geordnet und hat „Verbindung testen“, das Ping, Serverversion und Zertifikat prüft, ohne etwas zu speichern. Die Server-Info zeigt Version, Grenzen, deine Rechte und das TLS-Zertifikat. Gespeicherte Kanalpasswörter zeigen, zu welchem Kanal sie gehören.",
+            "Mehrere Identitäten: Einstellungen → Identität verwaltet mehrere Zertifikate, mit Import, Export, Umbenennen und einem Standard. Jeder Server kann seine eigene Identität nutzen. Deine bisherige heißt dann „Standard“, und alles verbindet sich wie gewohnt.",
+            "Aus Mumble importieren: Ist der offizielle Mumble-Client installiert, übernimmt der Einrichtungsassistent (oder Einstellungen → Server) deine Lieblingsserver, gespeicherte Passwörter, dein Zertifikat, die Audiogeräte und die Push-to-Talk-Taste. Nichts wird überschrieben, Mumbles Dateien werden nur gelesen, und der Import lässt sich rückgängig machen.",
+            "Community-Relay: Bilder in voller Größe und Bildschirm teilen können über ein Relay laufen, das die Community eines Servers neben ihrem Mumble-Server betreibt. Es reicht nur die verschlüsselte Verbindung weiter und verbirgt auf Wunsch deine IP-Adresse vor der anderen Person. Bildschirm teilen klappt damit auch ohne direkte Verbindung. Sprache läuft nie über das Relay.",
+            "Unter Windows gibt es Mumcord auch als portables Zip: auspacken, starten, ohne Installation. Daten und Einstellungen bleiben im Ordner neben dem Programm.",
+            "Die Mitgliederspalte lässt sich ausblenden, damit der Chat die volle Breite bekommt: per Knopf im Chat-Kopf oder Strg+Umschalt+M. Im schmalen Fenster schiebt sie sich über den Chat.",
+            "Gekickt oder gebannt? Mumcord spielt dazu einen Ton: eine Ohrfeige beim Kick, einen Slapstick-Tritt beim Bann. Beide lassen sich abschalten.",
+          ],
+        },
+        {
+          title: "Verbessert",
+          items: [
+            "Das Benutzerfeld unter der Kanalliste ist neu gestaltet: Es bleibt in jedem Zustand gleich hoch, damit die Liste darüber nicht springt, zeigt eine klare Statuszeile und hat an jedem Sprach-Knopf einen kleinen Menüpfeil.",
+            "Die Schnelleinstellungen sind ruhiger: eine Zeile pro Einstellung in klaren Gruppen, Erklärungen hinter einem kleinen ?, und die Beta-Gruppe startet eingeklappt.",
+            "Sind Link-Vorschauen aus, verschwinden sie nicht mehr stillschweigend: Eine leise Zeile unter der Nachricht sagt, was ausgeblendet ist, und führt zur passenden Einstellung.",
+            "„Einrichtung erneut ausführen“ unter Einstellungen → Über geht Mikrofon, Datenschutz, Update-Hinweis und Sprechmodus noch einmal durch. Deine Identität bleibt unangetastet, und gespeichert wird nur, was du änderst.",
+          ],
+        },
+        {
+          title: "Behoben",
+          items: [
+            "Deine eigenen Nachrichten spielen nie mehr den Erwähnungston, zeigen keine Benachrichtigung und zählen nicht als ungelesen.",
+            "Die Watch-Party hält sich an „Linkvorschauen und eingebettete Videos anzeigen“: Ist es aus, wird nichts von YouTube oder Twitch geladen, und ein Hinweis führt zur Einstellung.",
+            "Linux mit PipeWire: Die Gerätelisten zeigen jeden Ein- und Ausgang wie die Toneinstellungen des Desktops, etwa „System“ und „Chat“ eines RØDECaster Pro II statt einem einzigen „USB Audio“.",
+            "Das Server-Info-Fenster ist jetzt in allen 24 Sprachen übersetzt.",
+          ],
+        },
+      ],
+      known: ["Der Windows-Installer ist weiterhin unsigniert."],
+    },
+    {
       version: "0.4.4",
       teaser: "Code kopieren und herunterladen, Bilder per Rechtsklick speichern, Cache leeren, Sprache stabiler unter Last.",
       summary: "Ein Update für den Alltag im Chat: Code-Blöcke mit Kopieren, Herunterladen und mehr Sprachen, Bilder per Rechtsklick kopieren und speichern, ein Knopf zum Cache leeren. Dazu knackt die Sprache unter Last weniger, und Kopieren und Einfügen funktionieren wieder zuverlässig.",
@@ -446,6 +498,58 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
     },
   ],
   en: [
+    {
+      version: "0.5.0",
+      teaser: "Notification centre, all private messages in one place, blocking, several identities and import from Mumble.",
+      summary: "A big update for chat and privacy: a notification centre, all private messages in one place with your own rules for who may write to you, blocking, several identities and moving over from Mumble in a few clicks. Plus a community relay for images and screen sharing, music and audio in the chat, a browser for public servers and a low-latency mode for making music together.",
+      groups: [
+        {
+          title: "New",
+          items: [
+            "A notification centre behind the bell in the chat header (Ctrl+Shift+N) gathers everything that wants your attention on all connected servers: mentions, replies, chat and message requests with Accept and Decline, invites to watch parties and screen shares, and servers that can no longer be reached. A click jumps to the message.",
+            "Do Not Disturb: one switch in quick settings, the settings and the tray menu silences notification sounds and pop-ups on all servers. Voice keeps working and unread messages keep counting. If you like, Mumcord follows the system's Do Not Disturb on KDE Plasma, GNOME and Windows.",
+            "The tray menu shows every connected server with its channel, plus Mute, Deafen and Do Not Disturb. From there you move voice to another server or channel and open your recent private chats. The tray icon shows when someone talks, when you're muted and when messages are unread.",
+            "All private messages in one place: the Messages button at the top of the server bar lists every conversation from every connected server, with search, filters, pinning and muting. It replaces the Direct messages list under the channel tree. A person's menu now starts with Send message, Join channel and Add friend.",
+            "You decide who may message you privately: everyone, friends only or nobody, per server too. People in your channel and conversations you accepted always get through. Others wait under Message requests, and Mumcord users can send you a chat request with a short note. Mumcord filters on your side, so the sender isn't told. You can take back an accepted conversation later.",
+            "Block people: their private messages and requests disappear, their channel messages are collapsed and their voice is muted for you. A block follows the person's certificate, so it covers every server and a new name doesn't get around it. Neither the server nor the person is told; Settings → Privacy lists your blocks.",
+            "@channel and @all reach everyone in a channel and count like a personal mention. Other Mumble clients just see the words, and you can mute them per server.",
+            "Audio and music in the chat: direct links to audio files such as mp3, ogg, wav or flac get a small player. Links to Spotify, SoundCloud and YouTube Music play in the service's own player once you press Play; Apple Music, Tidal, Deezer and Bandcamp get a card with a link. Nothing plays by itself, and with link previews off nothing is loaded.",
+            "mumble:// links in the chat show a card with the server, channel, ping and how many are online, with Join and Add to servers. A password in the link is never shown.",
+            "Channels are easier to handle: right-click a channel for a menu with Join, Follow, Copy channel link, Channel info and more. Channels show their user limit, like Raid (1/10), and full ones are dimmed. With the right permission you drag people into another channel. Channel info shows the description, users, your permissions and linked channels.",
+            "Low-latency mode for making music together (Beta): about 40 instead of 100 milliseconds from mouth to ear, plus the network. It switches without reconnecting and works with standard servers. Headphones recommended.",
+            "Audio per channel: “Audio for this channel…” gives a channel its own settings, with the presets Voice, Music and Jam. They apply when you join, and your normal settings come back when you leave.",
+            "Quick menus in the voice bar: right-click the microphone or headphones for devices, volume and a level meter, the connection info for voice quality and bitrate, and the hang-up button for Leave voice (stay connected and keep chatting) or Disconnect from all servers.",
+            "A server browser in the server bar lists public Mumble servers, with search and filters for country and ping. Connect saves and connects in one click. The list only loads when you open the browser.",
+            "The server dialog is sorted into four tabs and has Test connection, which checks ping, server version and certificate without saving anything. Server info shows the version, limits, your permissions and the TLS certificate. Saved channel passwords show which channel they belong to.",
+            "Several identities: Settings → Identity manages several certificates, with import, export, renaming and a default. Each server can use its own identity. Your current one becomes “Default”, and everything connects as before.",
+            "Import from Mumble: if the official Mumble client is installed, the setup wizard (or Settings → Servers) brings over your favourite servers, saved passwords, your certificate, audio devices and push-to-talk key. Nothing is overwritten, Mumble's files are only read, and the import can be undone.",
+            "Community relay: full-size images and screen sharing can go through a relay that a server's community runs next to its Mumble server. It only passes on the encrypted connection and, if you like, hides your IP address from the other person. Screen sharing then works without a direct connection too. Voice never uses the relay.",
+            "On Windows, Mumcord also comes as a portable zip: unpack, start, no installation. Data and settings stay in the folder next to the program.",
+            "Hide the member column to give the chat the full width: with a button in the chat header or Ctrl+Shift+M. In a narrow window it slides in over the chat.",
+            "Kicked or banned? Mumcord plays a sound for it: a slap for a kick, a slapstick kick for a ban. Both can be turned off.",
+          ],
+        },
+        {
+          title: "Improved",
+          items: [
+            "The user panel under the channel list is redesigned: it keeps the same height in every state so the list above never jumps, shows one clear status line and has a small menu arrow on every voice button.",
+            "Quick settings are calmer: one row per setting in clear groups, explanations behind a small ?, and the Beta group starts collapsed.",
+            "With link previews off, they no longer vanish silently: a quiet line under the message says what was hidden and leads to the setting.",
+            "“Run setup wizard again” in Settings → About goes through microphone, privacy, update hint and talk mode once more. Your identity stays untouched, and only what you change is saved.",
+          ],
+        },
+        {
+          title: "Fixed",
+          items: [
+            "Your own messages never play the mention sound, never show a notification and don't count as unread.",
+            "The watch party respects “Show link previews and embeds”: with it off, nothing is loaded from YouTube or Twitch, and a hint leads to the setting.",
+            "Linux with PipeWire: the device lists show every input and output the way the desktop's sound settings do, such as “System” and “Chat” on a RØDECaster Pro II instead of a single “USB Audio”.",
+            "The server info window is now translated into all 24 languages.",
+          ],
+        },
+      ],
+      known: ["The Windows installer is still unsigned."],
+    },
     {
       version: "0.4.4",
       teaser: "Copy and download code, save images with a right-click, clear the cache, steadier voice under load.",

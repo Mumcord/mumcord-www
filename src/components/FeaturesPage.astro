@@ -23,7 +23,6 @@ const minor = (v: string) => v.replace(/\.\d+$/, ".0");
 const versions = [...new Set(all.map((x) => x.since && minor(x.since)).filter((v): v is string => !!v))].sort((a, b) =>
   a.localeCompare(b, "en", { numeric: true }),
 );
-const hasBeta = all.some((x) => x.beta);
 const sinceLabel = (v: string) => `${released.has(v) ? f.newIn : f.comingIn} ${v}`;
 const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 const newest = versions[versions.length - 1];
@@ -64,7 +63,6 @@ for (const g of f.groups)
       <div class="fp-filter" role="group" aria-label={f.filterLabel} data-filter-bar>
         <span class="fp-row-label" aria-hidden="true">{f.filterLabel}</span>
         <button type="button" aria-pressed="true" data-filter="all">{f.filterAll}</button>
-        {hasBeta && <button type="button" aria-pressed="false" data-filter="beta">{f.filterBeta}</button>}
         {filterVersions.map((v) => <button type="button" aria-pressed="false" data-filter={`v${v}`}>{cap(sinceLabel(v))}</button>)}
       </div>
       <nav class="fp-toc" aria-label={f.contents} data-toc>
@@ -85,7 +83,7 @@ for (const g of f.groups)
           </header>
           <div class="fp-bento">
             {ordered(g.features).map((x, i) => (
-              <article class={`fp-card fp-card-${size(x, i)}`} id={x.id} data-feature data-since={x.since && minor(x.since)} data-beta={x.beta ? "" : undefined} data-reveal data-spot>
+              <article class={`fp-card fp-card-${size(x, i)}`} id={x.id} data-feature data-since={x.since && minor(x.since)} data-reveal data-spot>
                 {x.shot && (
                   <a class="fp-media" href={full.get(x.shot)} aria-label={`${f.zoom}: ${x.alt}`} data-lightbox data-caption={x.title} data-alt={x.alt}>
                     <Picture src={shot(x.shot)} formats={["avif", "webp"]} widths={[640, 1100, 1600]} sizes={size(x, i) === "lg" ? "(min-width: 960px) 760px, 92vw" : "(min-width: 960px) 560px, 92vw"} alt={x.alt ?? ""} />

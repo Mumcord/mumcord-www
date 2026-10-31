@@ -534,20 +534,58 @@
       "commits": "commituri",
       "join": "Contribuie pe GitHub",
       "toolTitle": "Contribuitori"
+    },
+    "spotlight5": {
+      "label": "Nou în 0.5.0",
+      "labelSoon": "În curând: 0.5.0",
+      "title": "Mai multă liniște. Mai mult tu. Mai mult sunet.",
+      "body": "0.5.0 aduce Epic 3: un centru de notificări, blocare, mai multe identități, un nou arbore de canale, muzică în chat, un mod cu latență mică pentru a face muzică împreună și conexiuni directe printr-un relay.",
+      "tiles": {
+        "notifications": {
+          "title": "Totul într-un singur loc",
+          "body": "Clopoțelul adună mențiunile, răspunsurile, cererile și invitațiile de pe toate serverele. Cine te deranjează este blocat, recunoscut după certificat."
+        },
+        "identities": {
+          "title": "Mai multe identități",
+          "body": "Privată, de clan, de serviciu: pentru fiecare server alegi cu care te conectezi."
+        },
+        "tree": {
+          "title": "Un nou arbore de canale",
+          "body": "Clic dreapta pe fiecare canal, limita de utilizatori lângă nume, pictograme clare și un meniu în spatele numelui canalului."
+        },
+        "lowLatency": {
+          "title": "Faceți muzică împreună",
+          "body": "Modul cu latență mică aduce circa 40 în loc de 90 ms de la gură la ureche, iar fiecare canal își ține minte setările audio."
+        },
+        "music": {
+          "title": "Muzică în chat",
+          "body": "Fișierele audio se redau direct în chat, iar linkurile către Spotify, Apple Music și altele devin un card muzical."
+        },
+        "relay": {
+          "title": "Conexiuni directe, oriunde",
+          "body": "Partajarea ecranului și imaginile mari funcționează chiar și în spatele CGNAT, iar dacă vrei, nimeni nu-ți vede adresa IP."
+        }
+      },
+      "features": "Toate funcțiile",
+      "changelog": "Toate noutățile"
+    },
+    "serverCta": {
+      "title": "Serverul tău în cinci minute",
+      "body": "Bifează căsuțele, copiază comanda, gata: configuratorul îți construiește docker-compose.yml cu relay și boți.",
+      "button": "Deschide configuratorul"
     }
   },
   "features": {
     "title": "Funcții",
     "description": "Toate funcțiile Mumcord, cu capturi de ecran: servere și certificate, urmărirea canalelor, chat cu previzualizări și @mențiuni, push-to-talk, audio și confort.",
     "label": "Ce face Mumcord",
-    "intro": "Tot ce face Mumcord, cu o imagine acolo unde există, plus ce vine în versiunea următoare. Filtrul îți arată funcțiile beta sau ce e nou în fiecare versiune. Îți lipsește ceva sau nu merge ceva? Spune-ne pe GitHub.",
+    "intro": "Tot ce face Mumcord, cu o imagine acolo unde există, plus ce vine în versiunea următoare. Filtrul îți arată ce e nou în ultimele două versiuni. Îți lipsește ceva sau nu merge ceva? Spune-ne pe GitHub.",
     "contents": "Cuprins",
     "newIn": "nou în",
     "comingIn": "vine în",
     "beta": "Beta",
     "filterLabel": "Filtru",
     "filterAll": "Toate",
-    "filterBeta": "Beta",
     "filterEmpty": "Nicio funcție pentru acest filtru.",
     "jump": "Sari la",
     "statFeatures": "funcții",
@@ -590,13 +628,13 @@
           {
             "id": "reconnect",
             "title": "Reconectare cu tot cu tot",
-            "body": "Dacă se întrerupe conexiunea, revii în același canal, cu starea mut/surd și canalele urmărite. După o repornire, Mumcord îți propune să revii în ultimul canal vocal.",
+            "body": "Dacă se întrerupe conexiunea, revii în același canal, cu starea mut/surd și canalele urmărite. După o repornire, Mumcord îți propune să revii în ultimul canal vocal. Când o conexiune eșuează, bannerul numește serverul și dispare după 60 de secunde sau cu ✕; pictograma serverului arată în continuare eșecul.",
             "alt": "Banner care propune revenirea în ultimul canal vocal"
           },
           {
             "id": "several-servers",
             "title": "Mai multe servere deodată",
-            "body": "Până la 5 servere conectate deodată, reglabil până la 15. Vorbești pe unul, iar pe toate citești, scrii și primești notificări. Fiecare server se reconectează singur după o întrerupere.",
+            "body": "Până la 5 servere conectate deodată, reglabil până la 15. Vorbești pe unul, iar pe toate citești, scrii și primești notificări. Fiecare server se reconectează singur după o întrerupere. „Intră în canal” merge și pentru prieteni de pe alt server, iar linkurile mumble:// spre un server conectat te duc direct acolo.",
             "alt": "Bara de servere cu mai multe servere conectate, un semn de difuzor la serverul vocal și numărul de mențiuni"
           },
           {
@@ -611,24 +649,45 @@
             "body": "Pachete pentru Debian și Ubuntu, Fedora și openSUSE, Arch (AUR: mumcord-bin) și AppImage, pentru x86_64 și ARM64, și dintr-o linie în terminal. Opțional un indiciu când apare o versiune nouă."
           },
           {
-            "id": "server-notices",
-            "title": "Notificări pe fiecare server",
-            "body": "Notificările și mesajele private arată numele serverului, iar notificările se pot opri separat pe fiecare server."
+            "id": "mumble-import",
+            "title": "Import din Mumble",
+            "body": "Dacă e instalat clientul Mumble oficial (1.4 sau 1.5), asistentul de configurare se oferă să preia serverele tale favorite cu parolele lor, certificatul tău ca identitate nouă, ca să-ți păstrezi numele înregistrat, dispozitivele audio și tasta push-to-talk. Alegi fiecare parte într-o previzualizare, serverele pe care le ai deja sunt sărite, iar „Anulează importul” le readuce pe toate. Și mai târziu, în Setări → Servere.",
+            "alt": "Pasul „Import din Mumble” al asistentului, cu o casetă de bifat pentru fiecare parte găsită"
           },
           {
-            "id": "across-servers",
-            "title": "Intră și pe alt server",
-            "body": "„Intră în canal” merge și pentru prieteni de pe alt server, iar linkurile mumble:// spre un server conectat te duc direct acolo."
+            "id": "identities",
+            "title": "Mai multe identități",
+            "body": "Setări → Identitate gestionează mai multe certificate de client: creare, import, redenumire, export și copie de siguranță. Fiecare server folosește identitatea implicită sau una proprie, iar antetul chatului arată care e în uz când nu e cea implicită. Certificatele și cheile rămân în spațiul de stocare securizat al sistemului.",
+            "alt": "Managerul de identități cu mai multe identități, amprentele lor și serverele care le folosesc"
           },
           {
-            "id": "autostart",
-            "title": "Pornire la conectare",
-            "body": "„Pornește Mumcord când mă conectez” există pe orice sistem."
+            "id": "server-dialog",
+            "title": "Fereastra serverului, cu file",
+            "body": "Adăugarea sau editarea unui server e împărțită în Conexiune, Identitate, Parole și Comportament. Greșelile sunt numite chiar la câmp, „Testează conexiunea” raportează pingul, versiunea serverului și certificatul fără să salveze nimic, iar parolele de canal salvate arată cărui canal îi aparțin, de exemplu „Officers (Raid)”.",
+            "alt": "Fereastra „Adaugă server” cu filele Conexiune, Identitate, Parole și Comportament"
           },
           {
-            "id": "failure-banner",
-            "title": "Bannere de eroare care nu te sâcâie",
-            "body": "Când o conexiune eșuează, bannerul numește serverul și dispare după 60 de secunde sau cu ✕. Pictograma serverului arată în continuare eșecul."
+            "id": "server-browser",
+            "title": "Găsește servere publice",
+            "body": "Butonul de căutare din bara de servere deschide lista serverelor Mumble publice: caută după nume, adresă sau țară, filtrează după țară și ping, ascunde serverele goale sau pline. „Conectează” salvează și intră dintr-un clic. Lista se încarcă doar când o deschizi, iar pingul se face doar pentru rândurile de pe ecran.",
+            "alt": "Browserul de servere publice cu căutare, filtre de țară și ping și o listă de servere"
+          },
+          {
+            "id": "server-info",
+            "title": "Informații despre server",
+            "body": "Meniul serverului arată numele, adresa, versiunea, textul de bun venit, limitele, codecurile permise, permisiunile tale și câți oameni folosesc Mumcord, plus certificatul TLS cu amprentă și valabilitate. „Copiază diagnosticul” pune totul în clipboard pentru rapoartele de erori. Merge cu orice server Mumble standard.",
+            "alt": "Informații despre server cu versiune, limite și amprenta, emitentul și valabilitatea certificatului TLS"
+          },
+          {
+            "id": "setup-again",
+            "title": "Rulează din nou asistentul de configurare",
+            "body": "Setări → Despre parcurge configurarea încă o dată, ca să revezi microfonul, confidențialitatea, verificarea de actualizări și modul de vorbire. Pasul identității e sărit, așa că nimic din certificatul tău nu se poate schimba din greșeală, și se salvează doar valorile pe care le-ai schimbat cu adevărat.",
+            "alt": "Asistentul de configurare rulat din nou din setări, cu pasul identității marcat ca sărit"
+          },
+          {
+            "id": "windows-portable",
+            "title": "Portabil pe Windows",
+            "body": "Pe lângă installer există un zip care merge fără instalare: dezarhivezi și pornești Mumcord.exe. Datele, setările și jurnalele rămân într-un folder alăturat, iar niciun handler mumble:// și nicio pornire la autentificare nu se configurează dacă nu le activezi tu."
           }
         ]
       },
@@ -657,68 +716,67 @@
           {
             "id": "right-click",
             "title": "Clic dreapta pe oameni",
-            "body": "Vezi profilul, pune pe mut doar pentru tine, setează volumul de la 0 la 200 % sau trimite un mesaj privat. Mumcord ține minte setările pentru fiecare persoană.",
-            "alt": "Meniul contextual al unei persoane, cu glisor de volum"
-          },
-          {
-            "id": "person-card",
-            "title": "Dublu clic pentru mesaje private",
-            "body": "Dublu clic pe o persoană deschide chatul privat. Un clic îi fixează cardul, cu butoane pentru mesaj privat și profil."
+            "body": "Trimite un mesaj, intră în canalul persoanei sau adaugă-l ca prieten chiar sus, apoi profil, mut doar pentru tine și volum de la 0 la 200 %, ținut minte pentru fiecare persoană. Dacă nu poți intra, se arată motivul. Un dublu clic deschide chatul privat.",
+            "alt": "Meniul unei persoane cu Trimite mesaj, Intră în canal și Adaugă prieten sus"
           },
           {
             "id": "profile",
-            "title": "Profil nou",
-            "body": "Banner, insignă, muzică sau joc și toate setările pentru persoana respectivă. Modificările se aplică imediat, cu un scurt „Salvat”. Meniul de clic dreapta are iconițe și comutatoare.",
+            "title": "Profil",
+            "body": "Banner, insignă, muzică sau joc și un comentariu cu bold, italic, linkuri și liste. Volumul, mutul și o notă privată despre persoană stau restrânse în el; modificările se aplică imediat, cu un scurt „Salvat”.",
             "alt": "Profil complet cu muzică, setări pentru persoana respectivă și o notă privată"
-          },
-          {
-            "id": "join-channel",
-            "title": "Intră în canalul cuiva",
-            "body": "Clic dreapta pe o persoană sau pe un prieten: „Intră în ‹canal›” te duce direct în canalul lor. Dacă serverul nu permite, motivul apare chiar lângă.",
-            "alt": "Meniul persoanei cu „Intră în canal”"
           },
           {
             "id": "member-column",
             "title": "Coloana din dreapta, pe secțiuni",
-            "body": "„În ‹canal›”, „În alte canale” cu toți ceilalți de pe server și „Prieteni”, fiecare restrângibilă. Mumcord ține minte ce e deschis. În stânga, „Prezentare server” stă deasupra arborelui de canale.",
+            "body": "„În ‹canal›”, „În alte canale” cu toți ceilalți de pe server și „Prieteni”, fiecare restrângibilă. Mumcord ține minte ce e deschis.",
             "alt": "Coloana din dreapta cu „În alte canale” deschisă"
           },
           {
             "id": "connection-quality",
             "title": "Calitatea conexiunii",
-            "body": "Profilul arată dintr-o privire dacă o conexiune e bună, medie sau slabă, iar extins arată pingul, pierderea de pachete și lățimea de bandă. O mică pictogramă de semnal îi marchează pe cei care au chiar acum o conexiune slabă.",
+            "body": "Profilul arată dintr-o privire dacă o conexiune e bună, medie sau slabă, iar extins arată pingul, pierderea de pachete și lățimea de bandă. O mică pictogramă de semnal îi marchează pe cei care au chiar acum o conexiune slabă. Adminii văd și clientul și sistemul de operare, de exemplu „Mumcord 0.4.0” sau „Mumble 1.5”.",
             "alt": "Card de profil cu conexiunea extinsă: ping, pierdere de pachete, lățime de bandă, client și sistem de operare"
           },
           {
-            "id": "listeners",
-            "title": "Ascultători cu ureche",
-            "body": "Cine doar ascultă un canal apare în lista normală cu o pictogramă de ureche, nu într-un grup separat."
-          },
-          {
-            "id": "client-info",
-            "title": "Client și sistem pentru admini",
-            "body": "Adminii văd în profil și ce client și ce sistem de operare folosește cineva, de exemplu „Mumcord 0.4.0” sau „Mumble 1.5”."
-          },
-          {
             "id": "channel-filters",
-            "title": "Ascunde canalele goale",
-            "body": "Serverele mari nu mai îngheață la prima afișare. În plus, comutatoarele „Ascunde canalele goale” și „Cei care vorbesc primii”."
-          },
-          {
-            "id": "profile-comment",
-            "title": "Comentariu de profil formatat",
-            "body": "Comentariul tău de profil știe bold, italic, linkuri și liste."
-          },
-          {
-            "id": "person-settings",
-            "title": "Setări pentru fiecare persoană",
-            "body": "Volumul, mutul și o notiță despre cineva stau restrânse în profilul lui. Când schimbi ceva, rândul arată asta pentru scurt timp, de exemplu „Volum 60 %”."
+            "title": "Listă de canale ordonată",
+            "body": "Comutatoare pentru „Ascunde canalele goale” și „Cei care vorbesc primii”, iar serverele mari nu mai îngheață la prima afișare. Cine doar ascultă un canal apare în lista normală cu o pictogramă de ureche."
           },
           {
             "id": "channel-passwords",
             "title": "Canale cu parolă",
             "body": "Dacă un canal are nevoie de parolă, Mumcord ți-o cere și o ține minte pentru fiecare server, și după reconectare. Canalele în care nu ai voie să intri au un mic lacăt.",
             "alt": "Canal cu lacăt și fereastra pentru parola canalului"
+          },
+          {
+            "id": "channel-tree",
+            "title": "Arbore de canale cu meniu",
+            "body": "Clic dreapta pe un canal ca să intri sau să-l urmărești, să-i setezi sunetul, să-i copiezi linkul, să deschizi informațiile canalului sau să muți oameni acolo, dacă ai voie. Canalele cu limită o arată, de exemplu „Raid (1/10)”, cele pline sunt estompate, iar canalele temporare și cele legate primesc pictograme. Cu permisiunea, tragi oameni în alt canal. Sus stă serverul, cu un punct de conexiune și „N online · ping”.",
+            "alt": "Arborele de canale cu meniul de clic dreapta al unui canal deschis"
+          },
+          {
+            "id": "channel-header",
+            "title": "Numele canalului, cu meniu",
+            "body": "Ochiul din fața numelui canalului îl urmărește sau încetează să-l mai urmărească. Un clic pe nume deschide Urmărește, Copiază linkul canalului, Parola canalului, Informații canal și Șterge istoricul chatului. Informațiile canalului arată calea, descrierea, limita de utilizatori, canalele legate și permisiunile tale acolo.",
+            "alt": "Informațiile canalului cu cale, descriere, utilizatori, limită, canale legate și permisiuni"
+          },
+          {
+            "id": "hide-members",
+            "title": "Ascunde coloana de persoane",
+            "body": "Un buton în antetul chatului, sau Ctrl+Shift+M, ascunde coloana din dreapta, ca chatul să aibă toată lățimea. Butonul arată atunci câți oameni sunt în canal și un punct verde cât timp vorbește cineva. Într-o fereastră îngustă, coloana alunecă peste chat.",
+            "alt": "Chat pe toată lățimea, cu coloana de persoane ascunsă și butonul de persoane în antet"
+          },
+          {
+            "id": "message-privacy",
+            "title": "Cine îți poate scrie",
+            "body": "Setări → Confidențialitate: mesaje private de la toți, doar de la prieteni sau de la nimeni, și pe fiecare server în parte. Oamenii din canalul tău și conversațiile pe care le-ai acceptat trec mereu. Celelalte mesaje așteaptă ca cereri de mesaj pe care le accepți sau le refuzi, iar utilizatorii Mumcord pot trimite o cerere de chat cu o notă scurtă. Expeditorul nu află niciodată.",
+            "alt": "Cereri de mesaj cu o cerere de chat, nota ei și butoanele Acceptă și Refuză"
+          },
+          {
+            "id": "block-users",
+            "title": "Blochează oameni",
+            "body": "„Blochează…” din meniul persoanei ascunde mesajele ei private și cererile, restrânge mesajele ei din canal și îi pune vocea pe mut, doar pentru tine. Blocarea urmează certificatul, deci ține pe toate serverele și la nume noi. Nu se trimite nimic serverului sau persoanei, iar Setări → Confidențialitate îi listează pe toți cei blocați, cu „Deblochează”.",
+            "alt": "Confirmarea blocării unei persoane, cu lista a ceea ce se schimbă"
           }
         ]
       },
@@ -741,7 +799,7 @@
           {
             "id": "previews",
             "title": "Previzualizări de linkuri",
-            "body": "Linkurile primesc un card cu titlu, descriere și imagine. Mumcord le preia singur, niciodată de la adrese din rețeaua locală; orice card poate fi închis, iar funcția se poate dezactiva în asistent și în setări.",
+            "body": "Linkurile primesc un card cu titlu, descriere și imagine. Mumcord le preia singur, niciodată de la adrese din rețeaua locală; orice card poate fi închis, iar funcția se poate dezactiva în asistent și în setări. Clic dreapta pe un link oferă „Copiază linkul” și „Deschide linkul”.",
             "alt": "Chat cu o previzualizare de link"
           },
           {
@@ -752,32 +810,32 @@
           },
           {
             "id": "spotify",
-            "title": "Spotify",
-            "body": "Și linkurile Spotify primesc un card, cu copertă, titlu și artist; playerul apare doar la clic.",
-            "alt": "Chat cu un card Spotify"
+            "title": "Linkuri de muzică",
+            "body": "Spotify, SoundCloud și YouTube Music rulează în playerul oficial al serviciului, care se încarcă doar când apeși Redare. Apple Music, Tidal, Deezer, Bandcamp și alte pagini de muzică primesc același card, cu copertă, titlu și artist și „Deschide în …”. Pornirea unui player îl oprește pe celălalt.",
+            "alt": "Card de muzică cu copertă, titlu, artist și numele serviciului"
           },
           {
             "id": "images",
             "title": "Imagini și GIF-uri în chat",
-            "body": "Imaginile externe și linkurile către imagini apar direct în mesaj, GIF-urile de pe Giphy și Tenor rulează și își menționează sursa.",
+            "body": "Imaginile externe și linkurile către imagini apar direct în mesaj, GIF-urile de pe Giphy și Tenor rulează și își menționează sursa. Capturile de ecran și imaginile copiate ajung în câmpul de mesaj cu Ctrl+V.",
             "alt": "Chat cu o imagine și un GIF"
           },
           {
             "id": "image-viewer",
             "title": "Vizualizator de imagini",
-            "body": "Clic pe o imagine ca s-o vezi mare: zoom cu rotița sau din taste, deplasare, săgeți pentru toate imaginile din chat și „Salvează imaginea”.",
+            "body": "Clic pe o imagine ca s-o vezi mare: zoom, deplasare și săgeți prin toate imaginile din chat. Dimensiunea completă se încarcă în fundal, cu o bară de progres subțire. Clic dreapta: copiază imaginea, salveaz-o în original, un GIF cu tot cu animație sau copiază adresa ei.",
             "alt": "Vizualizatorul de imagini cu bara de zoom"
           },
           {
             "id": "mentions",
             "title": "@mențiuni",
-            "body": "Scrii @ și Mumcord îți sugerează nume. Mențiunile sunt evidențiate, te anunță chiar și în canalele silențioase și au sunetul lor.",
+            "body": "Scrii @ și Mumcord îți sugerează nume. Mențiunile sunt evidențiate, te anunță chiar și în canalele silențioase și au sunetul lor. Treci cu mouse-ul peste o mențiune pentru o previzualizare, dă clic pentru profil, clic dreapta pentru meniu.",
             "alt": "Câmpul de mesaj cu o sugestie de nume după @"
           },
           {
             "id": "code",
             "title": "Cod și formatare",
-            "body": "Blocuri de cod cu evidențiere de sintaxă, o bară de formatare deasupra câmpului de text și scurtături precum Ctrl+B, Ctrl+I sau Ctrl+E.",
+            "body": "Blocuri de cod evidențiate ca limbajul pe care îl scrii după cele trei backtick-uri, de la sql și rust până la Dockerfile și hex dump-uri, cu butoane pentru copiere sau descărcare. O bară de formatare deasupra câmpului de text și scurtături precum Ctrl+B, Ctrl+I sau Ctrl+E.",
             "alt": "Chat cu cod evidențiat și bara de formatare"
           },
           {
@@ -789,7 +847,7 @@
           {
             "id": "notifications",
             "title": "Notificări cum vrei tu",
-            "body": "Mesajele noi ca pop-up în aplicație, notificare de sistem, ambele sau deloc. Plus sunete scurte și discrete pentru fiecare eveniment.",
+            "body": "Mesajele noi ca pop-up în aplicație, notificare de sistem, ambele sau deloc, cu sunete scurte și discrete pentru fiecare eveniment. Notificările arată numele serverului, iar fiecare server poate fi pus pe mut separat.",
             "alt": "Pop-up în aplicație pentru un mesaj nou"
           },
           {
@@ -797,11 +855,6 @@
             "title": "Face curat după el",
             "body": "Previzualizările și imaginile se șterg după un număr de zile ales de tine, iar dacă vrei, și istoricul vechi de chat. Istoricul stă doar pe computerul tău și se poate dezactiva pentru fiecare server.",
             "alt": "Setări, secțiunea chat și istoric"
-          },
-          {
-            "id": "mention-chips",
-            "title": "@mențiuni pe care poți da clic",
-            "body": "Previzualizare la hover, profil la clic, meniu la clic dreapta."
           },
           {
             "id": "replies",
@@ -828,37 +881,46 @@
             "alt": "Un mesaj lung, cu numele și poza fixate sus în chat"
           },
           {
-            "id": "image-loading",
-            "title": "Imaginile se încarcă în fundal",
-            "body": "O bară subțire sub imagine arată cât s-a încărcat din dimensiunea completă. Dacă închizi vizualizatorul, imaginea se încarcă mai departe; × de pe bară anulează."
-          },
-          {
-            "id": "link-menu",
-            "title": "Copiază linkuri",
-            "body": "Clic dreapta pe un link din chat îți oferă „Copiază linkul” și „Deschide linkul”.",
-            "alt": "Meniul de clic dreapta pe un link, cu „Copiază linkul” și „Deschide linkul”"
-          },
-          {
             "id": "message-cards",
             "title": "Carduri de mesaj",
             "body": "Boții și oamenii postează carduri compacte cu titlu, culoare de stare, pictogramă, text formatat, o imagine și un link, pentru build-uri, alerte sau dashboarduri. Clienții oficiali Mumble văd același mesaj ca text lizibil.",
             "alt": "Chat cu două carduri de mesaj de la un bot: un card complet cu pictogramă, titlu, text, un grafic și un link, iar dedesubt un card simplu cu titlu și link"
           },
           {
-            "id": "paste-images",
-            "title": "Lipește imagini cu Ctrl+V",
-            "body": "Capturile de ecran, „Copiază imaginea” din browser și fișierele imagine copiate în managerul de fișiere ajung direct în câmpul de mesaj ca atașament cu Ctrl+V."
+            "id": "notification-centre",
+            "title": "Centrul de notificări",
+            "body": "Un clopoțel în antetul chatului, sau Ctrl+Shift+N, adună mențiunile, răspunsurile, cererile de chat și de mesaj, invitațiile la watch party și la partajarea ecranului și serverele care au devenit inaccesibile, de pe toate serverele conectate, cele mai noi primele. Le filtrezi, accepți cererile chiar acolo, iar un clic te duce la mesaj. În timpul Nu deranja continuă să adune în liniște.",
+            "alt": "Centrul de notificări cu mențiuni, răspunsuri și o cerere de chat cu Acceptă și Refuză"
           },
           {
-            "id": "code-blocks",
-            "title": "Blocuri de cod cu Copiază și Descarcă",
-            "body": "Scrie limbajul după cele trei backtick-uri, de la sql, rust și php până la cmd, Dockerfile și hex dump-uri, și blocul e evidențiat exact așa. Butoanele din colț copiază codul sau îl salvează ca fișier.",
-            "alt": "Bloc de cod SQL cu eticheta limbajului și butoanele Copiază și Descarcă în colț"
+            "id": "pm-overview",
+            "title": "Toate mesajele private într-un singur loc",
+            "body": "Butonul Mesaje din capul barei de servere listează fiecare conversație de pe fiecare server conectat, cele fixate primele, cu eticheta serverului, previzualizare și numărul de necitite. Cauți, filtrezi după necitite sau cereri, începi o conversație nouă, iar din meniu fixezi, pui pe mut sau ștergi una.",
+            "alt": "Prezentarea mesajelor private cu o cerere de chat sus și conversații de pe mai multe servere"
           },
           {
-            "id": "image-menu",
-            "title": "Copiezi și salvezi imagini",
-            "body": "Clic dreapta pe o imagine din chat sau din vizualizatorul de imagini: copiază imaginea, salvează imaginea în original, un GIF cu tot cu animație, copiază adresa imaginii sau deschide-o în vizualizator."
+            "id": "group-mentions",
+            "title": "@channel și @all",
+            "body": "@channel ajunge la toți din canal, @all la toți cei care îl pot citi, inclusiv ascultătorii. Mumcord le tratează ca pe o mențiune a ta, celelalte clienturi Mumble văd doar cuvintele. Prea mult? Pune-le pe mut pentru fiecare server.",
+            "alt": "Chat cu o mențiune @channel evidențiată"
+          },
+          {
+            "id": "audio-links",
+            "title": "Fișiere audio în chat",
+            "body": "Linkurile către fișiere mp3, ogg, m4a, wav, flac sau webm primesc un player sub mesaj, cu bară de derulare, volum, „Deschide în browser” și „Salvează”. Nimic nu pornește singur, fișierul se încarcă doar când apeși Redare, până la 32 MB, iar sunetul merge la boxele tale, niciodată în microfon.",
+            "alt": "Player audio sub un mesaj, cu buton de redare, bară de derulare și volum"
+          },
+          {
+            "id": "hidden-previews",
+            "title": "Previzualizările ascunse spun asta",
+            "body": "Cu previzualizările de linkuri și embeduri dezactivate, o linie discretă sub mesaj numește ce a fost ascuns, de exemplu o imagine sau un video, și trimite la setare. Pentru asta nu se cere nimic de la site-ul din link.",
+            "alt": "Mesaj cu linia „Imagine ascunsă pentru că previzualizările de linkuri și embedurile sunt dezactivate”"
+          },
+          {
+            "id": "server-links",
+            "title": "Linkuri de server ca niște carduri",
+            "body": "Un link mumble:// din chat arată serverul, canalul, pingul, oamenii online și versiunea, cu „Intră”, „Adaugă la servere” și „Copiază linkul”. Cifrele vin din interogarea publică standard, niciodată dintr-o conexiune. Numele de utilizator și parolele dintr-un link nu se arată niciodată și sunt lăsate deoparte la copiere.",
+            "alt": "Card pentru un link mumble:// cu numele serverului, canal, ping, utilizatori și butonul Intră"
           }
         ]
       },
@@ -898,13 +960,44 @@
           },
           {
             "id": "bitrate",
-            "title": "Bitrate setat de tine",
-            "body": "Un glisor separat de la 16 kbit/s până la cea mai mare valoare permisă de server și de Mumble. La pierderi de pachete, Mumcord îl reduce în continuare singur."
+            "title": "Panoul calității vocii",
+            "body": "Clic dreapta pe informațiile conexiunii: un glisor de bitrate de la 16 kbit/s până la limita serverului, cu ce se trimite chiar acum, calitatea muzicii, lățimea de bandă estimată și nota pentru sănătatea audio. La pierderi de pachete, Mumcord reduce în continuare singur bitrate-ul.",
+            "alt": "Panoul calității vocii cu glisor de bitrate, calitatea muzicii și lățimea de bandă estimată"
           },
           {
             "id": "realtime-audio",
             "title": "Stabil sub sarcină",
             "body": "Captura și redarea primesc prioritate în timp real, așa că vocea pârâie și se întrerupe mai rar cât timp un joc sau un build ține computerul ocupat. Informațiile despre conexiune arată întreruperile și dacă sunetul în timp real e pornit."
+          },
+          {
+            "id": "low-latency",
+            "title": "Mod cu latență mică pentru făcut muzică",
+            "body": "Pachete de 10 ms, un buffer minim și fără anulare a ecoului sau suprimare a zgomotului reduc întârzierea de la cam 100 ms la cam 40 ms plus rețeaua. Se comută live și arată latența estimată. Cere mai multă lățime de bandă; se recomandă căști. Merge cu servere standard.",
+            "alt": "Setări audio cu modul cu latență mică pornit și latența estimată defalcată"
+          },
+          {
+            "id": "channel-audio",
+            "title": "Audio pentru fiecare canal",
+            "body": "„Audio pentru acest canal…” setează calitatea muzicii, modul cu latență mică și o limită de bitrate pentru un canal, cu presetările Voce, Muzică și Jam. Se aplică la intrare, iar setările tale obișnuite revin când ieși. Ținut doar pe acest dispozitiv, deci merge pe orice server Mumble.",
+            "alt": "„Audio pentru acest canal” cu presetările Voce, Muzică și Jam"
+          },
+          {
+            "id": "device-switch",
+            "title": "Schimbi dispozitivele din bara vocală",
+            "body": "Clic dreapta pe butonul de microfon sau de căști: alegi un dispozitiv, setezi volumul, urmărești nivelul și comuți suprimarea zgomotului, totul fără reconectare. Dacă un dispozitiv e scos, Mumcord revine la cel implicit al sistemului. Pe Linux cu PipeWire apar toate intrările și ieșirile, ca în setările de sunet ale desktopului tău.",
+            "alt": "Meniul microfonului cu dispozitive de intrare, glisor de volum și indicator de nivel"
+          },
+          {
+            "id": "leave-voice",
+            "title": "Ieși din voce, rămâi conectat",
+            "body": "Clic dreapta pe butonul de închidere: „Ieși din voce” oprește vorbitul și ascultatul, dar lasă chatul și citirea cu voce tare să meargă mai departe. Tot acolo: deconectare, mutarea vocii pe alt server și deconectare de la toate. Un clic stânga tot închide pe loc.",
+            "alt": "Meniul butonului de închidere cu Ieși din voce, Deconectează și Mută vocea"
+          },
+          {
+            "id": "user-panel",
+            "title": "Panou de utilizator liniștit",
+            "body": "Panoul de jos din lista de canale are mereu aceeași înălțime: tu cu nume și server, o linie de stare, de exemplu reconectare sau canalul tău vocal, chipuri mici pentru Nu deranja, modul cu latență mică și conexiune, plus butoanele de microfon, căști și închidere. Lista de canale de deasupra nu mai sare.",
+            "alt": "Panoul de utilizator în mai multe stări, de la vorbit și mut până la reconectare"
           }
         ]
       },
@@ -915,50 +1008,19 @@
           {
             "id": "positional",
             "title": "Audio pozițional",
-            "body": "Vocile celor din același joc vin din direcția lor și se aud mai încet odată cu distanța. Prin Mumble Link sau pluginurile oficiale de jocuri ale Mumble; o iconiță „3D” arată cine transmite poziții.",
+            "body": "Vocile celor din același joc vin din direcția lor și se aud mai încet odată cu distanța. Prin Mumble Link sau pluginurile oficiale de jocuri ale Mumble, fiecare cu propriul comutator; o iconiță „3D” arată cine transmite poziții.",
             "alt": "Setări, audio pozițional cu distanțe și pluginuri de jocuri"
-          },
-          {
-            "id": "game-plugins",
-            "title": "Pluginuri oficiale de jocuri",
-            "body": "Pluginurile Mumble livrează poziții pentru jocurile suportate, fiecare cu propriul comutator. Setările arată care e activ."
           },
           {
             "id": "in-game-overlay",
             "title": "Overlay în joc",
-            "body": "Pe Linux direct în joc, ca layer Vulkan, și în jocurile Steam și Proton, testat cu Tyr și Supermarket Simulator. Se setează pentru fiecare joc; jocurile al căror anti-cheat blochează overlay-urile rămân excluse. Windows îl primește odată cu 0.4.0.",
+            "body": "Arată cine vorbește chiar în joc. Pe Linux ca layer Vulkan, și în jocurile Steam, Proton și Steam din Flatpak, cu o opțiune de lansare de copiat pentru jocurile native OpenGL. Pe Windows ca fereastră prin care trec clicurile și care nu încarcă nimic în joc, așa că merge cu anti-cheat; doar ecranul complet exclusiv o ascunde. Se setează pentru fiecare joc; jocurile al căror anti-cheat blochează overlay-urile rămân excluse.",
             "alt": "Setări, overlay în joc cu avertisment anti-cheat și opțiuni pentru fiecare joc"
-          },
-          {
-            "id": "overlay-window",
-            "title": "Fereastră overlay",
-            "body": "Pe Linux și Windows, o fereastră transparentă, prin care poți da clic, deasupra a orice, care arată cine vorbește în canalul tău. Pe macOS nu există overlay. Fereastra overlay dispare odată cu 0.4.0.",
-            "alt": "Fereastra overlay peste un joc, arătând cine vorbește"
           },
           {
             "id": "now-gaming",
             "title": "Acum joacă",
-            "body": "Dacă vrei, ceilalți văd ce joci, cu imaginea din Steam și timpul de joc. „Intră în joc” pentru jocurile Steam care suportă asta."
-          },
-          {
-            "id": "overlay-windows",
-            "title": "Overlay în joc pe Windows",
-            "body": "O fereastră separată deasupra jocului, prin care trec clicurile. Nu se încarcă nimic în joc, așa că merge și în jocurile cu anti-cheat. Doar ecranul complet exclusiv îl ascunde."
-          },
-          {
-            "id": "overlay-opengl",
-            "title": "Jocuri OpenGL pe Linux",
-            "body": "Pentru jocurile native cu OpenGL, de exemplu Project Hospital, Mumcord îți arată opțiunea de lansare Steam potrivită de copiat, care rămâne valabilă și după actualizări. Și culorile din jocurile HDR sunt corecte."
-          },
-          {
-            "id": "flatpak-steam",
-            "title": "Steam din Flatpak și ecran complet fără margini",
-            "body": "Overlay-ul în joc și pentru jocurile din Steam instalat ca Flatpak, jocuri pe ecran complet fără margini verificate pe KDE și GNOME. Închiderea sau actualizarea Mumcord nu mai dă crash unui joc pornit."
-          },
-          {
-            "id": "join-game-link",
-            "title": "„Intră în joc” prin Mumble Link",
-            "body": "„Intră în joc” și pentru jocurile care își partajează adresa serverului prin Mumble Link."
+            "body": "Dacă vrei, ceilalți văd ce joci, cu imaginea din Steam și timpul de joc. „Intră în joc” pentru jocurile Steam care suportă asta și pentru jocurile care își partajează adresa serverului prin Mumble Link."
           }
         ]
       },
@@ -997,13 +1059,13 @@
           {
             "id": "watch-party",
             "title": "Vizionare împreună",
-            "body": "Un watch party pe YouTube în canalul de voce: toți văd același video deodată, oricine poate pune pauză și derula, cu un playlist comun.",
+            "body": "Un watch party pe YouTube în canalul de voce: toți văd același video deodată, oricine poate pune pauză și derula, cu un playlist comun. Cu embedurile dezactivate în setările de confidențialitate, nu se încarcă nimic de la YouTube sau Twitch.",
             "alt": "Vizionare împreună într-o fereastră plutitoare, cu participanți, comenzi și următorul video"
           },
           {
             "id": "screen-share",
             "title": "Partajarea ecranului",
-            "body": "Un ecran sau o fereastră pentru până la 8 spectatori, la 720p și 30 de cadre pe secundă. Pe Windows și macOS, dacă vrei, cu sunetul aplicației partajate. O pornești din butonul Aplicații din chat.",
+            "body": "Un ecran sau o fereastră pentru până la 8 spectatori, la 720p și 30 de cadre pe secundă, pe Windows și macOS, dacă vrei, cu sunetul aplicației partajate. O pornești din butonul Aplicații din chat. Cât partajezi, o bară roșie arată spectatorii și „Încheie”, iar ceilalți văd un inel roșu cu „LIVE” în jurul pozei tale.",
             "alt": "Un ecran partajat într-o fereastră plutitoare, cu ecran complet și „Nu mai urmări”"
           },
           {
@@ -1013,20 +1075,15 @@
             "alt": "Indicii sus în chat pentru o vizionare împreună în curs și un ecran partajat"
           },
           {
-            "id": "live",
-            "title": "Live, și toată lumea vede",
-            "body": "Cât timp îți partajezi ecranul, o bară roșie deasupra profilului tău îți arată asta, cu „Încheie” și numărul de spectatori. Ceilalți văd un inel roșu cu „LIVE” în jurul pozei tale.",
-            "alt": "Bară roșie „Îți partajezi ecranul” cu numărul de spectatori și „Încheie”"
-          },
-          {
             "id": "ducking",
-            "title": "Mai încet cât vorbește lumea",
-            "body": "Cât timp vorbește cineva în canal, sunetul watch party-ului și al ecranului partajat se reduce, apoi revine. Tu alegi cât de încet sau poți opri asta."
+            "title": "Sunet pentru watch party și partajare",
+            "body": "Cât timp vorbește cineva în canal, watch party-ul și ecranele partajate se aud mai încet; tu alegi cât de încet. Sunete scurte când cineva pornește un watch party, intră în el sau își partajează ecranul, iar fiecare poate fi oprit."
           },
           {
-            "id": "activity-sounds",
-            "title": "Sunete pentru watch party și partajare",
-            "body": "Un sunet scurt când cineva pornește un watch party, intră în el sau iese din el și când cineva își partajează ecranul sau începe să se uite la al tău. Fiecare sunet poate fi oprit."
+            "id": "relay",
+            "title": "Releu al comunității",
+            "body": "Comunitatea unui server poate rula un releu lângă serverul Mumble. Imaginile la dimensiune completă și partajarea ecranului merg atunci chiar și când nu e posibilă o conexiune directă, iar cu „mereu prin releu” cealaltă persoană nu-ți vede niciodată adresa IP. Releul nu poate citi conexiunea criptată, iar vocea nu-l folosește niciodată. Alegi în Setări → Confidențialitate, și pe fiecare server în parte.",
+            "alt": "Setările de confidențialitate cu opțiunile peer-to-peer direct, releu și oprit"
           }
         ]
       },
@@ -1043,36 +1100,26 @@
           {
             "id": "sounds",
             "title": "Sunete și notificări",
-            "body": "Fiecare eveniment se poate porni separat: intrare, ieșire, mesaje, mențiuni.",
+            "body": "Fiecare eveniment se poate porni separat: intrare, ieșire, mesaje, mențiuni și un sunet al lui pentru kick sau ban.",
             "alt": "Setări, secțiunea sunete și notificări"
           },
           {
             "id": "languages",
-            "title": "Schimbi limba fără repornire",
-            "body": "Limba se aplică imediat. Vin la pachet o iconiță în bara de sistem, pornirea la autentificare și utilizarea completă din tastatură și cu cititor de ecran.",
+            "title": "24 de limbi, schimbate fără repornire",
+            "body": "Toate cele 24 de limbi oficiale ale UE, de la bulgară la suedeză, se aplică imediat, inclusiv meniul din bara de sistem. Fiecare apare cu numele ei propriu. Traduse de echipă, fără verificare de la vorbitori nativi: corecturile sunt binevenite ca issue. Vine la pachet utilizarea completă din tastatură și cu cititor de ecran.",
             "alt": "Setări, secțiunea limba interfeței"
           },
           {
             "id": "privacy",
             "title": "Fără telemetrie",
-            "body": "Identitatea ta stă în spațiul de stocare securizat al sistemului. Fișierul de diagnostic nu conține conținut din chat sau parole și pleacă de pe computerul tău doar dacă îl trimiți tu."
-          },
-          {
-            "id": "eu-languages",
-            "title": "Toate cele 24 de limbi oficiale ale UE",
-            "body": "De la bulgară la suedeză, inclusiv meniul din bara de sistem. Fiecare limbă apare cu numele ei propriu și poate fi găsită după oricare dintre numele ei. Traduse de echipă, fără verificare de la vorbitori nativi: corecturile sunt binevenite ca issue."
-          },
-          {
-            "id": "privacy-step",
-            "title": "Confidențialitate în asistent",
-            "body": "La prima pornire, un pas scurt îți arată la ce se conectează Mumcord și când, cu un link către declarația completă de confidențialitate.",
+            "body": "La prima pornire, un pas scurt îți arată la ce se conectează Mumcord și când. Identitatea ta stă în spațiul de stocare securizat al sistemului, iar fișierul de diagnostic nu conține conținut din chat sau parole și pleacă de pe computerul tău doar dacă îl trimiți tu.",
             "alt": "Asistentul, pasul confidențialitate"
           },
           {
             "id": "quick-settings",
             "title": "Setări rapide din rotiță",
-            "body": "Un clic pe rotiță: previzualizări, temă, overlay, partajarea muzicii și a jocului, editare profil și înregistrare. Funcțiile beta, precum audio pozițional, stau într-un grup separat, restrângibil.",
-            "alt": "Setări rapide cu grupul Beta deschis"
+            "body": "Un clic pe rotiță: un rând pentru fiecare setare, în Notificări, Partajare, Aspect și Cont, cu explicația în spatele unui mic „?”. Funcțiile beta, precum audio pozițional, stau într-un grup separat, care pornește restrâns.",
+            "alt": "Setări rapide grupate în Notificări, Partajare, Aspect și Cont"
           },
           {
             "id": "settings-search",
@@ -1100,30 +1147,91 @@
           },
           {
             "id": "dropdowns",
-            "title": "Setări ordonate",
-            "body": "Liste derulante pe tema ta în loc de aspectul browserului, iar fiecare câmp din setări e aliniat frumos."
-          },
-          {
-            "id": "tooltips",
-            "title": "Tooltipuri pe tema ta",
-            "body": "Fiecare tooltip în stilul temei tale, deschisă sau întunecată, și accesibil și din tastatură."
+            "title": "Setări și tooltipuri ordonate",
+            "body": "Liste derulante și tooltipuri pe tema ta în loc de aspectul browserului, fiecare câmp din setări aliniat frumos și fiecare tooltip accesibil și din tastatură."
           },
           {
             "id": "packet-inspector",
             "title": "Inspector de pachete pentru depanare",
-            "body": "Ascuns pentru dezvoltatori: șapte clicuri pe versiunea din Setări → Despre îl deblochează. Într-o fereastră proprie arată ce date Mumcord sunt trimise și primite, cu filtre, contoare și export ca JSON sau Markdown.",
+            "body": "Ascuns pentru dezvoltatori: șapte clicuri pe versiunea din Setări → Despre îl deblochează. Într-o fereastră proprie arată ce date Mumcord sunt trimise și primite, cu filtre, contoare și export ca JSON sau Markdown. Urmărește pachetele noi și captează doar cât timp e deschis.",
             "alt": "Inspector de pachete cu filtre, contoare pe tip și direcție și un rând de pachet extins"
           },
           {
             "id": "clear-cache",
             "title": "Golește cache-ul",
             "body": "Setări → Confidențialitate arată cât spațiu ocupă previzualizările de linkuri, imaginile și motorul web și le golește dintr-un buton, și pe rând. Istoricul de chat, serverele, prietenii și notele nu sunt atinse niciodată."
+          },
+          {
+            "id": "dnd",
+            "title": "Nu deranja",
+            "body": "Un singur comutator în setările rapide, în setări sau în meniul din bara de sistem oprește sunetele și pop-upurile de notificare pe toate serverele. Vocea merge mai departe, iar contoarele de necitite continuă să numere. Pe KDE Plasma, GNOME și Windows poate urma Nu deranja din sistem.",
+            "alt": "Setările de sunete și notificări cu Nu deranja și „Urmează Nu deranja din sistem”"
+          },
+          {
+            "id": "tray",
+            "title": "Meniu complet în bara de sistem",
+            "body": "Meniul din bara de sistem arată fiecare server conectat cu starea și canalul lui, mut, surd și Nu deranja, mută vocea pe alt server sau canal și deschide chaturile recente. Pictograma arată vorbit, mut, mesaje necitite și Nu deranja. Mumcord pornește la autentificare, dacă vrei, pe orice sistem.",
+            "alt": "Meniul din bara de sistem cu servere, submeniul canalului vocal și chaturi recente"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.5.0",
+      "teaser": "Centru de notificări, toate mesajele private într-un singur loc, blocare, mai multe identități și import din Mumble.",
+      "summary": "O actualizare mare pentru chat și confidențialitate: un centru de notificări, toate mesajele private într-un singur loc, cu regulile tale despre cine îți poate scrie, blocare, mai multe identități și trecerea de la Mumble în câteva clicuri. În plus, un releu comunitar pentru imagini și partajarea ecranului, muzică și audio în chat, un browser pentru servere publice și un mod cu latență mică pentru a face muzică împreună.",
+      "groups": [
+        {
+          "title": "Nou",
+          "items": [
+            "Un centru de notificări în spatele clopoțelului din antetul chatului (Ctrl+Shift+N) adună tot ce îți cere atenția de pe toate serverele conectate: mențiuni, răspunsuri, cereri de chat și de mesaj cu Acceptă și Refuză, invitații la watch party și la partajări de ecran și servere care nu mai pot fi contactate. Un clic te duce la mesaj.",
+            "Nu deranja: un singur comutator în setările rapide, în setări și în meniul din bara de sistem oprește sunetele și ferestrele de notificare pe toate serverele. Vocea merge în continuare, iar mesajele necitite se numără în continuare. Dacă vrei, Mumcord urmează modul Nu deranja al sistemului pe KDE Plasma, GNOME și Windows.",
+            "Meniul din bara de sistem arată fiecare server conectat cu canalul lui, plus Dezactivează microfonul, Dezactivează sunetul și Nu deranja. De acolo muți vocea pe alt server sau canal și deschizi ultimele tale chaturi private. Pictograma din bara de sistem arată când vorbește cineva, când ești pe mut și când ai mesaje necitite.",
+            "Toate mesajele private într-un singur loc: butonul Mesaje din partea de sus a barei de servere listează toate conversațiile de pe toate serverele conectate, cu căutare, filtre, fixare și dezactivarea notificărilor. Înlocuiește lista Mesaje directe de sub arborele de canale. Meniul unei persoane începe acum cu Trimite mesaj, Intră pe canal și Adaugă prieten.",
+            "Tu decizi cine îți poate scrie în privat: toată lumea, doar prietenii sau nimeni, și pe fiecare server în parte. Persoanele din canalul tău și conversațiile acceptate de tine ajung mereu la tine. Ceilalți așteaptă la Cereri de mesaj, iar utilizatorii Mumcord îți pot trimite o cerere de chat cu o scurtă notă. Mumcord filtrează la tine, așa că expeditorul nu află. Poți retrage mai târziu o conversație acceptată.",
+            "Blochează persoane: mesajele private și cererile lor dispar, mesajele lor din canal sunt restrânse, iar vocea lor e pe mut pentru tine. Blocarea urmează certificatul persoanei, deci acoperă toate serverele, iar un nume nou nu o ocolește. Nici serverul, nici persoana nu află; Setări → Confidențialitate listează blocările tale.",
+            "@channel și @all ajung la toți dintr-un canal și se numără ca o mențiune personală. Alte clienți Mumble văd doar cuvintele, iar tu le poți opri pe fiecare server.",
+            "Audio și muzică în chat: linkurile directe către fișiere audio precum mp3, ogg, wav sau flac primesc un mic player. Linkurile Spotify, SoundCloud și YouTube Music se redau în playerul serviciului, după ce apeși Play; Apple Music, Tidal, Deezer și Bandcamp primesc un card cu link. Nimic nu pornește singur, iar cu previzualizările de linkuri oprite nu se încarcă nimic.",
+            "Linkurile mumble:// din chat arată un card cu serverul, canalul, ping-ul și câți sunt online, cu Intră și Adaugă la servere. O parolă din link nu este afișată niciodată.",
+            "Canalele sunt mai ușor de folosit: clic dreapta pe un canal pentru un meniu cu Intră, Urmărește, Copiază linkul canalului, Informații despre canal și altele. Canalele arată limita de utilizatori, de exemplu Raid (1/10), iar cele pline sunt estompate. Cu permisiunea potrivită, tragi oameni în alt canal. Informațiile despre canal arată descrierea, utilizatorii, permisiunile tale și canalele legate.",
+            "Mod cu latență mică pentru a face muzică împreună (Beta): cam 40 în loc de 100 de milisecunde de la gură la ureche, plus rețeaua. Se comută fără reconectare și merge cu servere obișnuite. Se recomandă căști.",
+            "Audio pe canal: „Audio pentru acest canal…” dă unui canal propriile setări, cu presetările Voce, Muzică și Jam. Se aplică la intrare, iar setările tale obișnuite revin când ieși.",
+            "Meniuri rapide în bara de voce: clic dreapta pe microfon sau pe căști pentru dispozitive, volum și un indicator de nivel, pe informațiile despre conexiune pentru calitatea vocii și bitrate, iar pe butonul de închidere pentru Părăsește vocea (rămâi conectat și continui să scrii) sau Deconectează de la toate serverele.",
+            "Un browser de servere în bara de servere listează servere Mumble publice, cu căutare și filtre după țară și ping. Conectare salvează și conectează dintr-un clic. Lista se încarcă doar când deschizi browserul.",
+            "Dialogul serverului e împărțit în patru file și are Testează conexiunea, care verifică ping-ul, versiunea serverului și certificatul fără să salveze nimic. Informațiile serverului arată versiunea, limitele, permisiunile tale și certificatul TLS. Parolele de canal salvate arată cărui canal îi aparțin.",
+            "Mai multe identități: Setări → Identitate gestionează mai multe certificate, cu import, export, redenumire și una implicită. Fiecare server poate folosi propria identitate. Cea de acum devine „Implicită”, iar totul se conectează ca înainte.",
+            "Import din Mumble: dacă e instalat clientul oficial Mumble, asistentul de configurare (sau Setări → Servere) preia serverele tale favorite, parolele salvate, certificatul, dispozitivele audio și tasta push-to-talk. Nimic nu se suprascrie, fișierele Mumble sunt doar citite, iar importul poate fi anulat.",
+            "Releu comunitar: imaginile la dimensiune completă și partajarea ecranului pot trece printr-un releu pe care comunitatea unui server îl rulează lângă serverul ei Mumble. El doar transmite mai departe conexiunea criptată și, dacă vrei, îți ascunde adresa IP față de cealaltă persoană. Partajarea ecranului merge astfel și fără conexiune directă. Vocea nu folosește niciodată releul.",
+            "Pe Windows, Mumcord vine și ca zip portabil: dezarhivezi, pornești, fără instalare. Datele și setările rămân în folderul de lângă program.",
+            "Ascunde coloana de membri ca să dai chatului toată lățimea: cu un buton în antetul chatului sau cu Ctrl+Shift+M. Într-o fereastră îngustă, coloana glisează peste chat.",
+            "Ai primit kick sau ban? Mumcord redă un sunet pentru asta: o palmă pentru kick, o lovitură de comedie slapstick pentru ban. Ambele pot fi oprite."
+          ]
+        },
+        {
+          "title": "Îmbunătățit",
+          "items": [
+            "Panoul utilizatorului de sub lista de canale a fost refăcut: are aceeași înălțime în orice stare, ca lista de deasupra să nu mai sară, arată o singură linie clară de stare și are o mică săgeată de meniu pe fiecare buton de voce.",
+            "Setările rapide sunt mai liniștite: un rând pentru fiecare setare, în grupuri clare, explicațiile ascunse în spatele unui mic ?, iar grupul Beta începe restrâns.",
+            "Când previzualizările de linkuri sunt oprite, nu mai dispar pe tăcute: o linie discretă sub mesaj spune ce a fost ascuns și duce la setare.",
+            "„Rulează din nou asistentul de configurare” din Setări → Despre parcurge încă o dată microfonul, confidențialitatea, indiciul de actualizare și modul de vorbire. Identitatea ta rămâne neatinsă, iar se salvează doar ce schimbi."
+          ]
+        },
+        {
+          "title": "Reparat",
+          "items": [
+            "Mesajele tale nu mai redau niciodată sunetul de mențiune, nu mai afișează notificări și nu se mai numără ca necitite.",
+            "Watch party respectă „Arată previzualizări de linkuri și conținut încorporat”: când e oprit, nu se încarcă nimic de la YouTube sau Twitch, iar un indiciu duce la setare.",
+            "Linux cu PipeWire: listele de dispozitive arată fiecare intrare și ieșire așa cum o fac setările de sunet ale desktopului, de exemplu „System” și „Chat” de la un RØDECaster Pro II în loc de un singur „USB Audio”.",
+            "Fereastra cu informațiile serverului este acum tradusă în toate cele 24 de limbi."
+          ]
+        }
+      ],
+      "known": [
+        "Instalatorul pentru Windows este încă nesemnat."
+      ]
+    },
     {
       "version": "0.4.4",
       "teaser": "Copiezi și descarci cod, salvezi imagini cu clic dreapta, golești cache-ul, voce mai stabilă sub sarcină.",

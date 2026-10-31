@@ -534,20 +534,58 @@
       "commits": "commit",
       "join": "Csatlakozz a GitHubon",
       "toolTitle": "Közreműködők"
+    },
+    "spotlight5": {
+      "label": "Újdonság a 0.5.0-ban",
+      "labelSoon": "Hamarosan: 0.5.0",
+      "title": "Több nyugalom. Több te. Több hang.",
+      "body": "A 0.5.0 meghozza az Epic 3-at: értesítési központot, tiltást, több identitást, új csatornafát, zenét a chatben, alacsony késleltetésű módot a közös zenéléshez és közvetlen kapcsolatokat relén keresztül.",
+      "tiles": {
+        "notifications": {
+          "title": "Minden egy helyen",
+          "body": "A harang összegyűjti az említéseket, válaszokat, kéréseket és meghívókat minden szerverről. Aki zavar, azt letiltod, és a tanúsítványáról felismerhető."
+        },
+        "identities": {
+          "title": "Több identitás",
+          "body": "Magán, klán, munka: szerverenként te döntöd el, kiként csatlakozol."
+        },
+        "tree": {
+          "title": "Új csatornafa",
+          "body": "Jobb klikk minden csatornán, a felhasználói limit a név mellett, áttekinthető ikonok és egy menü a csatorna neve mögött."
+        },
+        "lowLatency": {
+          "title": "Zenéljetek együtt",
+          "body": "Az alacsony késleltetésű mód a 90 helyett nagyjából 40 ms-ot hoz szájtól fülig, és minden csatorna megjegyzi a saját hangbeállításait."
+        },
+        "music": {
+          "title": "Zene a chatben",
+          "body": "A hangfájlok közvetlenül a chatben szólnak, a Spotify, Apple Music és más linkekből zenekártya lesz."
+        },
+        "relay": {
+          "title": "Közvetlen kapcsolat, bárhol",
+          "body": "A képernyőmegosztás és a nagy képek CGNAT mögött is működnek, és ha akarod, senki sem látja az IP-címedet."
+        }
+      },
+      "features": "Minden funkció",
+      "changelog": "Minden újdonság"
+    },
+    "serverCta": {
+      "title": "Saját szerver öt perc alatt",
+      "body": "Pipáld ki a dobozokat, másold ki a parancsot, kész: a konfigurátor felépíti a docker-compose.yml fájlodat relével és botokkal.",
+      "button": "Konfigurátor megnyitása"
     }
   },
   "features": {
     "title": "Funkciók",
     "description": "A Mumcord összes funkciója képernyőképekkel: szerverek és tanúsítványok, csatornák követése, chat előnézetekkel és @említésekkel, push-to-talk, hang és kényelem.",
     "label": "Amit a Mumcord tud",
-    "intro": "Minden, amit a Mumcord tud, képpel, ahol van, plusz ami a következő verzióval érkezik. A szűrő a béta funkciókat mutatja, vagy azt, mi melyik verzióban újdonság. Hiányzik valami, vagy valami nem működik? Szólj a GitHubon.",
+    "intro": "Minden, amit a Mumcord tud, képpel, ahol van, plusz ami a következő verzióval jön. A szűrő a két legfrissebb verzió újdonságait mutatja. Hiányzik valami, vagy elromlott valami? Írj nekünk a GitHubon.",
     "contents": "Tartalom",
     "newIn": "újdonság:",
     "comingIn": "érkezik:",
     "beta": "Béta",
     "filterLabel": "Szűrő",
     "filterAll": "Összes",
-    "filterBeta": "Béta",
     "filterEmpty": "Ehhez a szűrőhöz nincs funkció.",
     "jump": "Ugrás ide:",
     "statFeatures": "funkció",
@@ -590,13 +628,13 @@
           {
             "id": "reconnect",
             "title": "Újracsatlakozás mindennel együtt",
-            "body": "Ha megszakad a kapcsolat, ugyanabban a csatornában találod magad, a némítás/süketítés állapotával és a követett csatornákkal. Újraindítás után a Mumcord felajánlja, hogy visszalépj az utolsó hangcsatornádra.",
+            "body": "Ha megszakad a kapcsolat, ugyanabban a csatornában találod magad, a némítás/süketítés állapotával és a követett csatornákkal. Újraindítás után a Mumcord felajánlja, hogy visszalépj az utolsó hangcsatornádra. Ha egy kapcsolat nem sikerül, a szalag megnevezi a szervert, és 60 másodperc után vagy az ✕-szel eltűnik; a szerver ikonja továbbra is mutatja a hibát.",
             "alt": "Sáv, amely felajánlja a visszalépést az utolsó hangcsatornára"
           },
           {
             "id": "several-servers",
             "title": "Több szerver egyszerre",
-            "body": "Egyszerre akár 5 csatlakoztatott szerver, 15-ig állítható. Az egyiken beszélsz, és mindegyiken olvasol, írsz és értesítéseket kapsz. Minden szerver magától újracsatlakozik, ha megszakad a kapcsolat.",
+            "body": "Egyszerre akár 5 csatlakoztatott szerver, 15-ig állítható. Az egyiken beszélsz, és mindegyiken olvasol, írsz és értesítéseket kapsz. Minden szerver magától újracsatlakozik, ha megszakad a kapcsolat. A „Belépés a csatornába” egy másik szerveren lévő barátoknál is működik, a csatlakoztatott szerverre mutató mumble:// linkek pedig egyenesen oda visznek.",
             "alt": "Szerversáv több csatlakoztatott szerverrel, hangszórójellel a hangszerveren és említésszámlálókkal"
           },
           {
@@ -611,24 +649,45 @@
             "body": "Csomagok Debianhoz és Ubuntuhoz, Fedorához és openSUSE-hoz, Archhoz (AUR: mumcord-bin) és az AppImage, x86_64-re és ARM64-re, egyetlen sorral a terminálban is. Igény szerint jelzés, ha új verzió jelenik meg."
           },
           {
-            "id": "server-notices",
-            "title": "Értesítések szerverenként",
-            "body": "Az értesítések és a privát üzenetek mutatják a szerver nevét, és minden szerver külön némítható."
+            "id": "mumble-import",
+            "title": "Importálás a Mumble-ből",
+            "body": "Ha a hivatalos Mumble kliens (1.4 vagy 1.5) telepítve van, a beállítási varázsló felajánlja, hogy átveszi a kedvenc szervereidet a jelszavaikkal, a tanúsítványodat új identitásként, hogy megmaradjon a regisztrált neved, az audioeszközeidet és a push-to-talk billentyűdet. Minden részt egy előnézetben választasz ki, a már meglévő szerverek kimaradnak, az „Importálás visszavonása” pedig mindent visszacsinál. Később is, a Beállítások → Szerverek alatt.",
+            "alt": "A beállítási varázsló „Importálás a Mumble-ből” lépése, minden talált részhez egy jelölőnégyzettel"
           },
           {
-            "id": "across-servers",
-            "title": "Belépés szervereken át",
-            "body": "A „Belépés a csatornába” más szerveren lévő barátoknál is működik, a csatlakoztatott szerverre mutató mumble:// linkek pedig egyenesen oda visznek."
+            "id": "identities",
+            "title": "Több identitás",
+            "body": "A Beállítások → Identitás több kliens-tanúsítványt kezel: létrehozás, importálás, átnevezés, exportálás és mentés. Minden szerver az alapértelmezett identitást használja vagy a sajátját, és a chat fejléce megmutatja, melyik van használatban, ha nem az alapértelmezett. A tanúsítványok és kulcsok a rendszer biztonságos tárolójában maradnak.",
+            "alt": "Identitáskezelő több identitással, az ujjlenyomataikkal és az őket használó szerverekkel"
           },
           {
-            "id": "autostart",
-            "title": "Indítás bejelentkezéskor",
-            "body": "A „Mumcord indítása bejelentkezéskor” minden rendszeren megvan."
+            "id": "server-dialog",
+            "title": "Szerverablak fülekkel",
+            "body": "A szerver hozzáadása vagy szerkesztése Kapcsolat, Identitás, Jelszavak és Viselkedés fülre oszlik. A hibákat rögtön a mezőnél megnevezi, a „Kapcsolat tesztelése” mentés nélkül jelenti a pinget, a szerververziót és a tanúsítványt, a mentett csatornajelszavak pedig megmutatják, melyik csatornához tartoznak, például „Officers (Raid)”.",
+            "alt": "„Szerver hozzáadása” ablak a Kapcsolat, Identitás, Jelszavak és Viselkedés fülekkel"
           },
           {
-            "id": "failure-banner",
-            "title": "Hibasávok, amelyek nem idegesítenek",
-            "body": "Ha egy kapcsolat meghiúsul, a sáv megnevezi a szervert, és 60 másodperc után vagy ✕-szel eltűnik. A szerver ikonja továbbra is jelzi a hibát."
+            "id": "server-browser",
+            "title": "Nyilvános szerverek keresése",
+            "body": "A szerversáv keresőgombja megnyitja a nyilvános Mumble-szerverek listáját: keress név, cím vagy ország szerint, szűrj országra és pingre, rejtsd el az üres vagy teli szervereket. A „Csatlakozás” egy kattintással ment és belép. A lista csak a megnyitáskor töltődik be, és csak a képernyőn látható sorok pingelődnek.",
+            "alt": "Nyilvános szerverböngésző kereséssel, ország- és pingszűrőkkel és szerverlistával"
+          },
+          {
+            "id": "server-info",
+            "title": "Szerverinfó",
+            "body": "A szervermenü megmutatja a nevet, a címet, a verziót, az üdvözlőszöveget, a korlátokat, az engedélyezett kodekeket, a jogosultságaidat és hogy hányan használnak Mumcordot, valamint a TLS-tanúsítványt ujjlenyomattal és érvényességgel. A „Diagnosztika másolása” mindent a vágólapra tesz hibajelentésekhez. Bármilyen szabványos Mumble-szerverrel működik.",
+            "alt": "Szerverinfó verzióval, korlátokkal, valamint a TLS-tanúsítvány ujjlenyomatával, kiállítójával és érvényességével"
+          },
+          {
+            "id": "setup-again",
+            "title": "A beállítási varázsló újrafuttatása",
+            "body": "A Beállítások → Névjegy még egyszer végigviszi a beállítást, hogy átnézd a mikrofont, az adatvédelmet, a frissítésellenőrzést és a beszédmódot. Az identitás lépése kimarad, így a tanúsítványodon semmi sem változhat véletlenül, és csak azok az értékek mentődnek, amelyeket tényleg módosítottál.",
+            "alt": "A beállításokból újra futtatott varázsló, az identitás lépése kihagyottként jelölve"
+          },
+          {
+            "id": "windows-portable",
+            "title": "Hordozható Windowson",
+            "body": "A telepítő mellett van egy zip, amely telepítés nélkül fut: csomagold ki, és indítsd el a Mumcord.exe-t. Az adatok, a beállítások és a naplók egy mellette lévő mappában maradnak, és mumble:// kezelő vagy indítás bejelentkezéskor csak akkor lesz beállítva, ha te bekapcsolod."
           }
         ]
       },
@@ -657,68 +716,67 @@
           {
             "id": "right-click",
             "title": "Jobb klikk az emberekre",
-            "body": "Nézd meg a profilt, némítsd csak magadnak, állítsd a hangerőt 0 és 200 % között, vagy küldj privát üzenetet. A Mumcord személyenként megjegyzi.",
-            "alt": "Egy személy helyi menüje hangerőcsúszkával"
-          },
-          {
-            "id": "person-card",
-            "title": "Dupla kattintás a privát üzenethez",
-            "body": "Dupla kattintás egy személyre megnyitja a privát chatet. Egy kattintás kitűzi a kártyáját, gombokkal a privát üzenethez és a profilhoz."
+            "body": "Küldj üzenetet, lépj a csatornájába vagy jelöld barátnak rögtön legfelül, utána profil, némítás csak neked és hangerő 0 és 200 % között, személyenként megjegyezve. Ha nem léphetsz be, az ok látszik. A dupla kattintás megnyitja a privát chatet.",
+            "alt": "Személyi menü legfelül az Üzenet küldése, Belépés a csatornába és Barát hozzáadása elemekkel"
           },
           {
             "id": "profile",
-            "title": "Új profil",
-            "body": "Banner, jelvény, zene vagy játék, és minden beállítás az adott személyhez. A módosítások azonnal érvénybe lépnek egy rövid „Mentve” jelzéssel. A jobb klikkes menüben ikonok és kapcsolók vannak.",
+            "title": "Profil",
+            "body": "Banner, jelvény, zene vagy játék, és egy megjegyzés félkövér, dőlt, linkek és listák használatával. A hangerő, a némítás és egy privát jegyzet az adott személyről összecsukva van benne; a módosítások azonnal érvénybe lépnek egy rövid „Mentve” jelzéssel.",
             "alt": "Teljes profil zenével, az adott személy beállításaival és privát jegyzettel"
-          },
-          {
-            "id": "join-channel",
-            "title": "Belépés valaki csatornájába",
-            "body": "Jobb klikk egy személyre vagy barátra: a „Belépés ide: ‹csatorna›” egyenesen a csatornájába visz. Ha a szerver nem engedi, mellette látszik az ok.",
-            "alt": "Személymenü „Belépés a csatornába” ponttal"
           },
           {
             "id": "member-column",
             "title": "Jobb oldali oszlop szakaszokkal",
-            "body": "„Itt: ‹csatorna›”, „Más csatornákban” a szerver összes többi tagjával, és „Barátok”, mindegyik összecsukható. A Mumcord megjegyzi, mi van nyitva. Bal oldalon a „Szerveráttekintés” a csatornafa fölött található.",
+            "body": "„Itt: ‹csatorna›”, „Más csatornákban” a szerver összes többi tagjával, és „Barátok”, mindegyik összecsukható. A Mumcord megjegyzi, mi van nyitva.",
             "alt": "Jobb oldali oszlop nyitott „Más csatornákban” szakasszal"
           },
           {
             "id": "connection-quality",
             "title": "Kapcsolatminőség",
-            "body": "A profil egy pillantással mutatja, hogy a kapcsolat jó, közepes vagy gyenge, kinyitva pedig a pinget, a csomagvesztést és a sávszélességet. Egy kis jelerősség-ikon jelzi, kinek gyenge éppen a kapcsolata.",
+            "body": "A profil első pillantásra megmutatja, hogy a kapcsolat jó, közepes vagy gyenge, kinyitva pedig a pinget, a csomagvesztést és a sávszélességet. Egy kis jelikon jelzi, kinek gyenge most a kapcsolata. Az adminok a klienst és az operációs rendszert is látják, például „Mumcord 0.4.0” vagy „Mumble 1.5”.",
             "alt": "Profilkártya kinyitott kapcsolattal: ping, csomagvesztés, sávszélesség, kliens és operációs rendszer"
           },
           {
-            "id": "listeners",
-            "title": "Hallgatók füllel",
-            "body": "Aki csak hallgatja a csatornát, a sima listában jelenik meg egy fül ikonnal, nem külön csoportban."
-          },
-          {
-            "id": "client-info",
-            "title": "Kliens és rendszer adminoknak",
-            "body": "Az adminok a profilban azt is látják, ki milyen klienst és operációs rendszert használ, például „Mumcord 0.4.0” vagy „Mumble 1.5”."
-          },
-          {
             "id": "channel-filters",
-            "title": "Üres csatornák elrejtése",
-            "body": "A nagy szerverek már nem fagynak le az első megjelenítéskor. Plusz az „Üres csatornák elrejtése” és a „Beszélők elöl” kapcsoló."
-          },
-          {
-            "id": "profile-comment",
-            "title": "Formázott profilmegjegyzés",
-            "body": "A profilmegjegyzésed tud félkövért, dőltet, linkeket és listákat."
-          },
-          {
-            "id": "person-settings",
-            "title": "Beállítások személyenként",
-            "body": "A hangerő, a némítás és egy megjegyzés valakiről összecsukva van a profiljában. Ha valamit módosítasz, a sor röviden mutatja, például „Hangerő 60 %”."
+            "title": "Rendezett csatornalista",
+            "body": "Kapcsolók az „Üres csatornák elrejtése” és a „Beszélők elöl” funkcióhoz, a nagy szerverek pedig már nem fagynak le az első megjelenítéskor. Aki csak hallgat egy csatornát, a sima listában jelenik meg egy fül ikonnal."
           },
           {
             "id": "channel-passwords",
             "title": "Jelszavas csatornák",
             "body": "Ha egy csatornához jelszó kell, a Mumcord elkéri, és szerverenként megjegyzi, újracsatlakozás után is. Azoknál a csatornáknál, ahová nem léphetsz be, kis lakat látszik.",
             "alt": "Lakattal jelölt csatorna és a csatornajelszó ablaka"
+          },
+          {
+            "id": "channel-tree",
+            "title": "Csatornafa menüvel",
+            "body": "Jobb klikk egy csatornára: belépés vagy követés, hangbeállítás, link másolása, csatornainfó megnyitása, vagy emberek odaáthelyezése, ha szabad. A korláttal rendelkező csatornák mutatják, például „Raid (1/10)”, a teliek halványak, az ideiglenes és összekapcsolt csatornák ikont kapnak. Jogosultsággal embereket húzhatsz át másik csatornába. Legfelül a szerver áll kapcsolatjelző ponttal és „N online · ping” felirattal.",
+            "alt": "Csatornafa egy csatorna megnyitott jobb klikkes menüjével"
+          },
+          {
+            "id": "channel-header",
+            "title": "Csatornanév menüvel",
+            "body": "A csatornanév előtti szem követi vagy nem követi a csatornát. A névre kattintva megnyílik a Követés, Csatornalink másolása, Csatornajelszó, Csatornainfó és Chatelőzmények törlése. A csatornainfó megmutatja az útvonalat, a leírást, a felhasználói korlátot, az összekapcsolt csatornákat és a jogosultságaidat ott.",
+            "alt": "Csatornainfó útvonallal, leírással, felhasználókkal, felhasználói korláttal, összekapcsolt csatornákkal és jogosultságokkal"
+          },
+          {
+            "id": "hide-members",
+            "title": "A tagok oszlopának elrejtése",
+            "body": "A chat fejlécében lévő gomb vagy a Ctrl+Shift+M elrejti a jobb oldali oszlopot, így a chat a teljes szélességet kapja. A gomb ekkor megmutatja, hányan vannak a csatornában, és zöld pontot, amíg valaki beszél. Keskeny ablakban az oszlop becsúszik a chat fölé.",
+            "alt": "Teljes szélességű chat elrejtett tagoszloppal és a tagok gombjával a fejlécben"
+          },
+          {
+            "id": "message-privacy",
+            "title": "Ki írhat neked",
+            "body": "Beállítások → Adatvédelem: privát üzenetek mindenkitől, csak barátoktól vagy senkitől, szerverenként is. A csatornádban lévők és az általad elfogadott beszélgetések mindig átjutnak. A többi üzenet üzenetkérésként vár, amelyet elfogadsz vagy elutasítasz, a Mumcord-felhasználók pedig rövid megjegyzéssel chatkérést küldhetnek. A feladó erről sosem értesül.",
+            "alt": "Üzenetkérések egy chatkéréssel, annak megjegyzésével és az Elfogadás és Elutasítás gombokkal"
+          },
+          {
+            "id": "block-users",
+            "title": "Emberek letiltása",
+            "body": "A személyi menü „Letiltás…” pontja elrejti a privát üzeneteiket és kéréseiket, összecsukja a csatornaüzeneteiket és elnémítja a hangjukat, csak neked. A tiltás a tanúsítványt követi, így több szerveren és új neveknél is érvényes. A szervernek és a személynek semmi sem megy el, a Beállítások → Adatvédelem pedig kilistáz mindenkit, akit letiltottál, „Tiltás feloldása” gombbal.",
+            "alt": "Egy személy letiltásának megerősítése, felsorolva, mi változik"
           }
         ]
       },
@@ -741,7 +799,7 @@
           {
             "id": "previews",
             "title": "Linkelőnézetek",
-            "body": "A linkek kártyát kapnak címmel, leírással és képpel. A Mumcord maga tölti le őket, helyi hálózati címekről soha; minden kártya elrejthető, a funkció pedig kikapcsolható a varázslóban és a beállításokban.",
+            "body": "A linkek kártyát kapnak címmel, leírással és képpel. A Mumcord maga tölti le őket, helyi hálózati címekről soha; minden kártya elrejthető, a funkció pedig kikapcsolható a varázslóban és a beállításokban. Egy linkre jobbklikkelve a „Link másolása” és a „Link megnyitása” érhető el.",
             "alt": "Chat linkelőnézettel"
           },
           {
@@ -752,32 +810,32 @@
           },
           {
             "id": "spotify",
-            "title": "Spotify",
-            "body": "A Spotify-linkek is kártyát kapnak borítóval, címmel és előadóval; a lejátszó csak kattintásra jelenik meg.",
-            "alt": "Chat Spotify-kártyával"
+            "title": "Zenelinkek",
+            "body": "A Spotify, a SoundCloud és a YouTube Music a szolgáltatás hivatalos lejátszójában szól, amely csak a Lejátszás megnyomásakor töltődik be. Az Apple Music, a Tidal, a Deezer, a Bandcamp és más zenei oldalak ugyanezt a kártyát kapják borítóval, címmel és előadóval, valamint „Megnyitás itt: …” gombbal. Az egyik lejátszó indítása leállítja a másikat.",
+            "alt": "Zenekártya borítóval, címmel, előadóval és a szolgáltatás nevével"
           },
           {
             "id": "images",
             "title": "Képek és GIF-ek a chatben",
-            "body": "A külső képek és képlinkek közvetlenül az üzenetben jelennek meg, a Giphy- és Tenor-GIF-ek lejátszódnak, és feltüntetik a forrásukat.",
+            "body": "A külső képek és képlinkek közvetlenül az üzenetben jelennek meg, a Giphy- és Tenor-GIF-ek lejátszódnak, és feltüntetik a forrásukat. A képernyőképek és a másolt képek Ctrl+V-vel kerülnek az üzenetmezőbe.",
             "alt": "Chat képpel és GIF-fel"
           },
           {
             "id": "image-viewer",
             "title": "Képnézegető",
-            "body": "Kattints egy képre, hogy nagyban lásd: nagyítás görgővel vagy billentyűkkel, mozgatás, a nyílbillentyűkkel lapozás a chat összes képe között, és „Kép mentése”.",
+            "body": "Kattints egy képre, hogy nagyban lásd: nagyítás, mozgatás, és a nyilakkal végiglapozhatod a chat összes képét. A teljes méret a háttérben töltődik egy vékony folyamatjelzővel. Jobb klikkel kimásolhatod a képet, elmentheted az eredetiben, a GIF-et animációval, vagy kimásolhatod a címét.",
             "alt": "Képnézegető nagyítási eszköztárral"
           },
           {
             "id": "mentions",
             "title": "@említések",
-            "body": "Írj be egy @ jelet, és a Mumcord neveket javasol. Az említések ki vannak emelve, a csendes csatornákban is értesítenek, és saját hangjuk van.",
+            "body": "Írj be egy @ jelet, és a Mumcord neveket javasol. Az említések ki vannak emelve, a csendes csatornákban is értesítenek, és saját hangjuk van. Vidd rá az egeret egy említésre az előnézetért, kattints rá a profilért, jobb klikk a menüért.",
             "alt": "Üzenetmező névjavaslattal a @ után"
           },
           {
             "id": "code",
             "title": "Kód és formázás",
-            "body": "Kódblokkok szintaxiskiemeléssel, formázási eszköztár a beviteli mező fölött, és gyorsbillentyűk, mint a Ctrl+B, Ctrl+I vagy Ctrl+E.",
+            "body": "A kódblokkok kiemelve a három visszafelé dőlő idézőjel után írt nyelv szerint, az sql-től és rusttól a Dockerfile-ig és hex dumpokig, másoló és letöltő gombokkal. Formázási eszköztár a beviteli mező fölött és gyorsbillentyűk, mint a Ctrl+B, Ctrl+I vagy Ctrl+E.",
             "alt": "Chat kiemelt kóddal és a formázási eszköztárral"
           },
           {
@@ -789,7 +847,7 @@
           {
             "id": "notifications",
             "title": "Értesítések, ahogy neked tetszik",
-            "body": "Új üzenetek felugró ablakként az alkalmazásban, rendszerértesítésként, mindkettőként vagy sehogy. Ráadásul rövid, halk hangok eseményenként.",
+            "body": "Új üzenetek felugró ablakként az alkalmazásban, rendszerértesítésként, mindkettőként vagy sehogy, rövid, halk hangokkal eseményenként. Az értesítések tartalmazzák a szerver nevét, és minden szerver külön elnémítható.",
             "alt": "Felugró ablak az alkalmazásban egy új üzenetről"
           },
           {
@@ -797,11 +855,6 @@
             "title": "Rendet rak maga után",
             "body": "Az előnézetek és képek az általad választott számú nap után törlődnek, ha szeretnéd, a régi chatelőzmények is. Az előzmények csak a gépeden vannak, és szerverenként kikapcsolhatók.",
             "alt": "Beállítások, chat és előzmények szakasz"
-          },
-          {
-            "id": "mention-chips",
-            "title": "Kattintható @említések",
-            "body": "Előnézet ráhúzáskor, profil kattintásra, menü jobb klikkre."
           },
           {
             "id": "replies",
@@ -828,37 +881,46 @@
             "alt": "Hosszú üzenet a chat tetejére rögzített névvel és képpel"
           },
           {
-            "id": "image-loading",
-            "title": "Képek betöltése a háttérben",
-            "body": "A kép alatti vékony sáv mutatja, hol tart a teljes méret betöltése. Ha bezárod a képnézegetőt, tovább töltődik; a sáv × gombja megszakítja."
-          },
-          {
-            "id": "link-menu",
-            "title": "Linkek másolása",
-            "body": "Jobb klikk egy linkre a chatben, és ott a „Link másolása” meg a „Link megnyitása”.",
-            "alt": "Egy link helyi menüje „Link másolása” és „Link megnyitása” ponttal"
-          },
-          {
             "id": "message-cards",
             "title": "Üzenetkártyák",
             "body": "A botok és az emberek tömör kártyákat küldenek címmel, állapotszínnel, ikonnal, formázott szöveggel, képpel és linkkel, buildekhez, riasztásokhoz vagy dashboardokhoz. A hivatalos Mumble kliensek ugyanazt az üzenetet olvasható szövegként látják.",
             "alt": "Chat egy bot két üzenetkártyájával: egy teljes kártya ikonnal, címmel, szöveggel, grafikonnal és linkkel, alatta egy egyszerű kártya címmel és linkkel"
           },
           {
-            "id": "paste-images",
-            "title": "Képbeillesztés Ctrl+V-vel",
-            "body": "A képernyőképek, a böngésző „Kép másolása” funkciója és a fájlkezelőben másolt képfájlok Ctrl+V-vel egyenesen az üzenetmezőbe kerülnek mellékletként."
+            "id": "notification-centre",
+            "title": "Értesítési központ",
+            "body": "A chat fejlécében lévő harang vagy a Ctrl+Shift+N összegyűjti az említéseket, válaszokat, chat- és üzenetkéréseket, a watch partykra és képernyőmegosztásokra szóló meghívókat, valamint az elérhetetlenné vált szervereket minden csatlakoztatott szerverről, legfrissebb elöl. Szűrd őket, fogadd el a kéréseket rögtön ott, egy kattintás pedig az üzenethez ugrik. A Ne zavarjanak alatt is csendben gyűjt tovább.",
+            "alt": "Értesítési központ említésekkel, válaszokkal és egy chatkéréssel Elfogadás és Elutasítás gombbal"
           },
           {
-            "id": "code-blocks",
-            "title": "Kódblokkok Másolás és Letöltés gombbal",
-            "body": "Írd a nyelvet a három backtick után, az sql-től, a rusttól és a php-tól a cmd-ig, a Dockerfile-ig és a hexdumpokig, és a blokk pontosan úgy lesz kiemelve. A sarokban lévő gombok kimásolják a kódot, vagy fájlként mentik.",
-            "alt": "SQL-kódblokk a nyelv jelölésével és a Másolás és Letöltés gombokkal a sarkában"
+            "id": "pm-overview",
+            "title": "Minden privát üzenet egy helyen",
+            "body": "A szerversáv tetején lévő Üzenetek gomb kilistázza minden csatlakoztatott szerver minden beszélgetését, a kitűzötteket elöl, szervercímkével, előnézettel és olvasatlanok számával. Keress, szűrj olvasatlanokra vagy kérésekre, indíts új beszélgetést, és tűzz ki, némíts vagy törölj egyet a menüjéből.",
+            "alt": "Privátüzenet-áttekintés legfelül egy chatkéréssel és több szerver beszélgetéseivel"
           },
           {
-            "id": "image-menu",
-            "title": "Képek másolása és mentése",
-            "body": "Jobb klikk egy képre a chatben vagy a képnézegetőben: kép másolása, kép mentése eredeti formájában, a GIF az animációjával együtt, képcím másolása vagy megnyitás a nézegetőben."
+            "id": "group-mentions",
+            "title": "@channel és @all",
+            "body": "Az @channel mindenkit elér a csatornában, az @all mindenkit, aki olvashatja, a hallgatókat is. A Mumcord úgy kezeli őket, mint rád vonatkozó említést, a többi Mumble-kliens csak a szavakat látja. Sok? Némítsd őket szerverenként.",
+            "alt": "Chat egy kiemelt @channel említéssel"
+          },
+          {
+            "id": "audio-links",
+            "title": "Hangfájlok a chatben",
+            "body": "Az mp3, ogg, m4a, wav, flac vagy webm fájlokra mutató linkek lejátszót kapnak az üzenet alatt keresősávval, hangerővel, „Megnyitás a böngészőben” és „Mentés” gombbal. Semmi nem indul el magától, a fájl csak a Lejátszás megnyomásakor töltődik be, legfeljebb 32 MB, a hang pedig a hangszórókra megy, sosem a mikrofonodba.",
+            "alt": "Hanglejátszó egy üzenet alatt lejátszógombbal, keresősávval és hangerővel"
+          },
+          {
+            "id": "hidden-previews",
+            "title": "Az elrejtett előnézetek jelzik magukat",
+            "body": "Ha a linkelőnézetek és beágyazások ki vannak kapcsolva, egy halk sor az üzenet alatt megnevezi, mi lett elrejtve, például egy kép vagy videó, és a beállításra mutat. Ehhez semmit sem kér le a linkelt oldalról.",
+            "alt": "Üzenet az „A kép el van rejtve, mert a linkelőnézetek és beágyazások ki vannak kapcsolva” sorral"
+          },
+          {
+            "id": "server-links",
+            "title": "Szerverlinkek kártyaként",
+            "body": "A chatben lévő mumble:// link megmutatja a szervert, a csatornát, a pinget, az online embereket és a verziót, „Belépés”, „Hozzáadás a szerverekhez” és „Link másolása” gombokkal. Az adatok a szabványos nyilvános lekérdezésből jönnek, sosem kapcsolatból. A linkben lévő felhasználónevek és jelszavak sosem jelennek meg, és másoláskor kimaradnak.",
+            "alt": "Kártya egy mumble:// linkhez szervernévvel, csatornával, pinggel, felhasználókkal és a Belépés gombbal"
           }
         ]
       },
@@ -898,13 +960,44 @@
           },
           {
             "id": "bitrate",
-            "title": "Bitráta kézzel",
-            "body": "Külön csúszka 16 kbit/s-tól egészen a legmagasabb értékig, amit a szerver és a Mumble enged. Csomagvesztésnél a Mumcord továbbra is magától lejjebb veszi."
+            "title": "Hangminőség-panel",
+            "body": "Jobb klikk a kapcsolatinfóra: bitrátacsúszka 16 kbit/s-tól a szerver korlátjáig azzal, ami épp küldés alatt van, zenei minőség, becsült sávszélesség és a hang állapotának értékelése. Csomagvesztésnél a Mumcord továbbra is magától lejjebb veszi a bitrátát.",
+            "alt": "Hangminőség-panel bitrátacsúszkával, zenei minőséggel és becsült sávszélességgel"
           },
           {
             "id": "realtime-audio",
             "title": "Stabil terhelés alatt",
             "body": "A rögzítés és a lejátszás valós idejű prioritást kap, így a hang kevésbé recseg és szakad meg, miközben egy játék vagy egy build lefoglalja a gépet. A kapcsolati adatok mutatják a kieséseket, és azt, hogy be van-e kapcsolva a valós idejű hang."
+          },
+          {
+            "id": "low-latency",
+            "title": "Alacsony késleltetésű mód zenéléshez",
+            "body": "A 10 ms-os csomagok, a minimális puffer, valamint a visszhangszűrés és zajszűrés nélküli működés körülbelül 100 ms-ról körülbelül 40 ms-ra viszi le a késleltetést, plusz a hálózat. Menet közben kapcsolható, és mutatja a becsült késleltetést. Több sávszélességet igényel; fejhallgató ajánlott. Szabványos szerverekkel működik.",
+            "alt": "Hangbeállítások bekapcsolt alacsony késleltetésű móddal és a becsült késleltetés bontásával"
+          },
+          {
+            "id": "channel-audio",
+            "title": "Hang csatornánként",
+            "body": "Az „Ennek a csatornának a hangja…” beállítja a zenei minőséget, az alacsony késleltetésű módot és a bitrátakorlátot egy csatornára, Beszéd, Zene és Jam előbeállításokkal. Belépéskor érvénybe lép, kilépéskor pedig visszatérnek a megszokott beállításaid. Csak ezen az eszközön tárolódik, így bármilyen Mumble-szerveren működik.",
+            "alt": "Az „Ennek a csatornának a hangja” Beszéd, Zene és Jam előbeállításokkal"
+          },
+          {
+            "id": "device-switch",
+            "title": "Eszközváltás a hangsávból",
+            "body": "Jobb klikk a mikrofon vagy a fejhallgató gombján: válassz eszközt, állítsd a hangerőt, figyeld a szintet és kapcsold a zajszűrést, mindezt újracsatlakozás nélkül. Ha egy eszközt kihúznak, a Mumcord a rendszer alapértelmezettjére vált. Linuxon PipeWire-rel minden bemenet és kimenet úgy jelenik meg, mint az asztalod hangbeállításaiban.",
+            "alt": "Mikrofonmenü bemeneti eszközökkel, hangerőcsúszkával és szintjelzővel"
+          },
+          {
+            "id": "leave-voice",
+            "title": "Kilépés a hangból, kapcsolat marad",
+            "body": "Jobb klikk a lerakás gombon: a „Kilépés a hangból” leállítja a beszédet és a hallgatást, de a chat és a közös olvasás tovább fut. Itt van még a lecsatlakozás, a hang átvitele másik szerverre és a lecsatlakozás mindenhonnan. A bal klikk továbbra is rögtön lerak.",
+            "alt": "A lerakás gomb menüje a Kilépés a hangból, Lecsatlakozás és Hang átvitele elemekkel"
+          },
+          {
+            "id": "user-panel",
+            "title": "Nyugodt felhasználói panel",
+            "body": "A csatornalista alján lévő panel mindig ugyanolyan magas marad: te névvel és szerverrel, egy állapotsor, például újracsatlakozás vagy a hangcsatornád, kis jelzők a Ne zavarjanak, az alacsony késleltetésű mód és a kapcsolat számára, valamint a mikrofon, a fejhallgató és a lerakás gombjai. A fölötte lévő csatornalista már nem ugrál.",
+            "alt": "A felhasználói panel több állapotban, a beszédtől és némítástól az újracsatlakozásig"
           }
         ]
       },
@@ -915,50 +1008,19 @@
           {
             "id": "positional",
             "title": "Térhatású hang",
-            "body": "Az ugyanabban a játékban lévők hangja az ő irányukból szól, és a távolsággal halkul. Mumble Linken vagy a Mumble hivatalos játékpluginjain keresztül; egy „3D” ikon mutatja, ki küld pozíciót.",
+            "body": "Az ugyanabban a játékban lévők hangja az irányukból jön, és távolsággal halkul. Mumble Linken vagy a Mumble hivatalos játékbővítményein keresztül, mindegyik saját kapcsolóval; a „3D” ikon megmutatja, ki küld pozíciókat.",
             "alt": "Beállítások, térhatású hang távolságokkal és játékpluginokkal"
-          },
-          {
-            "id": "game-plugins",
-            "title": "Hivatalos játékpluginok",
-            "body": "A Mumble pluginjai szolgáltatják a pozíciókat a támogatott játékokhoz, mindegyikhez saját kapcsolóval. A beállítások mutatják, melyik aktív."
           },
           {
             "id": "in-game-overlay",
             "title": "Játékon belüli overlay",
-            "body": "Linuxon közvetlenül a játékban, Vulkan-rétegként, Steam- és Proton-játékokban is, a Tyr és a Supermarket Simulator alatt tesztelve. Játékonként állítható; azok a játékok, amelyek anti-cheatje blokkolja az overlayeket, ki vannak zárva. A Windows a 0.4.0-s verzióval kapja meg.",
+            "body": "Közvetlenül a játékban mutatja, ki beszél. Linuxon Vulkan-rétegként, Steam-, Proton- és Flatpak Steam-játékokban is, natív OpenGL-játékokhoz másolható indítási opcióval. Windowson kattintásáteresztő ablakként, amely semmit sem tölt be a játékba, így az anti-cheattel is működik; csak az exkluzív teljes képernyő rejti el. Játékonként állítható; azok a játékok, amelyeknek az anti-cheatje blokkolja az overlayeket, kizárva maradnak.",
             "alt": "Beállítások, játékon belüli overlay anti-cheat figyelmeztetéssel és játékonkénti beállításokkal"
-          },
-          {
-            "id": "overlay-window",
-            "title": "Overlay ablak",
-            "body": "Linuxon és Windowson egy átlátszó, átkattintható ablak minden más fölött, amely mutatja, ki beszél a csatornádon. macOS-en nincs overlay. Az overlay ablak a 0.4.0-s verzióval megszűnik.",
-            "alt": "Overlay ablak egy játék fölött, amely mutatja, ki beszél"
           },
           {
             "id": "now-gaming",
             "title": "Most játszik",
-            "body": "Ha szeretnéd, mások látják, mivel játszol, a Steam-képpel és a játékidővel. „Csatlakozás a játékhoz” az ezt támogató Steam-játékoknál."
-          },
-          {
-            "id": "overlay-windows",
-            "title": "Játékon belüli overlay Windowson",
-            "body": "Külön, kattintásokat átengedő ablak a játék fölött. Semmit nem tölt be a játékba, így anti-cheates játékokban is megy. Csak a kizárólagos teljes képernyő rejti el."
-          },
-          {
-            "id": "overlay-opengl",
-            "title": "OpenGL-játékok Linuxon",
-            "body": "Natív OpenGL-játékoknál, mint a Project Hospital, a Mumcord megmutatja a megfelelő Steam-indítási opciót másoláshoz, és ez frissítések után is működik. A HDR-játékok színei is helyesek."
-          },
-          {
-            "id": "flatpak-steam",
-            "title": "Flatpak Steam és keret nélküli teljes képernyő",
-            "body": "A játékon belüli overlay a Flatpakként telepített Steam játékaihoz is, a keret nélküli teljes képernyős játékok KDE-n és GNOME-on ellenőrizve. A Mumcord bezárása vagy frissítése már nem dönti össze a futó játékot."
-          },
-          {
-            "id": "join-game-link",
-            "title": "„Csatlakozás a játékhoz” Mumble Linken át",
-            "body": "„Csatlakozás a játékhoz” azoknál a játékoknál is, amelyek a Mumble Linken át osztják meg a szervercímüket."
+            "body": "Ha szeretnéd, mások látják, mivel játszol, a Steam-képpel és a játékidővel. „Csatlakozás a játékhoz” a Steam-játékokhoz, amelyek támogatják, és a Mumble Linken át megosztott szervercímű játékokhoz."
           }
         ]
       },
@@ -997,13 +1059,13 @@
           {
             "id": "watch-party",
             "title": "Közös nézés",
-            "body": "YouTube watch party a hangcsatornán: mindenki egyszerre látja ugyanazt a videót, bárki szüneteltethet és tekerhet, közös lejátszási listával.",
+            "body": "YouTube watch party a hangcsatornán: mindenki egyszerre látja ugyanazt a videót, bárki szüneteltethet és tekerhet, közös lejátszási listával. Ha az adatvédelmi beállításokban a beágyazások ki vannak kapcsolva, a YouTube-ról vagy a Twitchről semmi nem töltődik be.",
             "alt": "Közös nézés lebegő ablakban a résztvevőkkel, vezérlőkkel és a következő videóval"
           },
           {
             "id": "screen-share",
             "title": "Képernyőmegosztás",
-            "body": "Egy képernyő vagy ablak legfeljebb 8 nézőnek, 720p-ben, másodpercenként 30 képkockával. Windowson és macOS-en, ha szeretnéd, a megosztott app hangjával. A chat Appok gombjával indítod.",
+            "body": "Egy képernyő vagy ablak legfeljebb 8 nézőnek, 720p-ben, másodpercenként 30 képkockával, Windowson és macOS-en, ha szeretnéd, a megosztott app hangjával. A chat Appok gombjával indítod. Amíg megosztasz, egy piros sáv mutatja a nézőket és a „Vége” gombot, mások pedig piros „LIVE” gyűrűt látnak a képed körül.",
             "alt": "Megosztott képernyő lebegő ablakban teljes képernyővel és „Nézés befejezése” gombbal"
           },
           {
@@ -1013,20 +1075,15 @@
             "alt": "Jelzések a chat tetején egy futó közös nézésről és egy megosztott képernyőről"
           },
           {
-            "id": "live",
-            "title": "Élőben, és mindenki látja",
-            "body": "Amíg megosztod a képernyődet, egy piros sáv jelzi a profilod fölött, „Befejezés” gombbal és a nézők számával. A többiek piros gyűrűt látnak „LIVE” felirattal a profilképed körül.",
-            "alt": "Piros „Megosztod a képernyődet” sáv a nézők számával és „Befejezés” gombbal"
-          },
-          {
             "id": "ducking",
-            "title": "Halkabban, amíg beszélnek",
-            "body": "Amíg valaki beszél a csatornán, a közös nézés és a megosztott képernyő hangja elhalkul, utána pedig visszajön. Te állítod be, mennyire halkuljon, vagy ki is kapcsolhatod."
+            "title": "Hang watch partykhoz és megosztáshoz",
+            "body": "Amíg valaki beszél a csatornán, a watch party és a megosztott képernyők hangja elhalkul; te állítod be, mennyire. Rövid hangok, amikor valaki watch partyt indít vagy belép, vagy megosztja a képernyőjét, mindegyik kikapcsolható."
           },
           {
-            "id": "activity-sounds",
-            "title": "Hangok a közös nézéshez és a megosztáshoz",
-            "body": "Rövid hang, amikor valaki elindít egy közös nézést, csatlakozik hozzá vagy kilép belőle, és amikor valaki megosztja a képernyőjét, vagy elkezdi nézni a tiédet. Mindegyik hang kikapcsolható."
+            "id": "relay",
+            "title": "Közösségi relé",
+            "body": "Egy szerver közössége a Mumble-szervere mellett relét üzemeltethet. A teljes méretű képek és a képernyőmegosztás ekkor akkor is működnek, ha közvetlen kapcsolat nem lehetséges, és az „mindig relé” opcióval a másik fél sosem látja az IP-címedet. A relé nem tudja olvasni a titkosított kapcsolatot, a hang pedig sosem használja. A Beállítások → Adatvédelem alatt döntesz, szerverenként is.",
+            "alt": "Adatvédelmi beállítások a peer-to-peer közvetlen, relé és kikapcsolt választásaival"
           }
         ]
       },
@@ -1043,36 +1100,26 @@
           {
             "id": "sounds",
             "title": "Hangok és értesítések",
-            "body": "Minden esemény külön kapcsolható: belépés, kilépés, üzenetek, említések.",
+            "body": "Minden esemény külön kapcsolható: belépés, kilépés, üzenetek, említések, és saját hang a kirúgáshoz vagy kitiltáshoz.",
             "alt": "Beállítások, hangok és értesítések szakasz"
           },
           {
             "id": "languages",
-            "title": "Nyelvváltás újraindítás nélkül",
-            "body": "A nyelv azonnal érvénybe lép. Tálcaikon, indítás bejelentkezéskor, valamint teljes billentyűzetes és képernyőolvasós használat is jár hozzá.",
+            "title": "24 nyelv, újraindítás nélkül váltható",
+            "body": "Mind a 24 hivatalos EU-s nyelv, a bolgártól a svédig, azonnal érvénybe lép, a tálcamenüt is beleértve. Mindegyik a saját nevén szerepel. A csapat fordította anyanyelvi lektorálás nélkül: a javításokat issue-ként szívesen fogadjuk. Teljes billentyűzetes és képernyőolvasós használat is jár hozzá.",
             "alt": "Beállítások, felület nyelve szakasz"
           },
           {
             "id": "privacy",
             "title": "Nincs telemetria",
-            "body": "Az identitásod a rendszer biztonságos tárolójában van. A diagnosztikai fájl nem tartalmaz chattartalmat vagy jelszót, és csak akkor hagyja el a gépedet, ha te magad küldöd el."
-          },
-          {
-            "id": "eu-languages",
-            "title": "Mind a 24 hivatalos uniós nyelv",
-            "body": "A bolgártól a svédig, a tálcamenüt is beleértve. Minden nyelv a saját nevén szerepel, és bármelyik nevén megtalálható. A csapat fordította, anyanyelvi ellenőrzés nélkül: a javításokat szívesen fogadjuk issue-ként."
-          },
-          {
-            "id": "privacy-step",
-            "title": "Adatvédelem a varázslóban",
-            "body": "Első indításkor egy rövid lépés mutatja, mihez és mikor csatlakozik a Mumcord, a teljes adatvédelmi nyilatkozatra mutató linkkel.",
-            "alt": "Varázsló, adatvédelem lépés"
+            "body": "Az első indításkor egy rövid lépés megmutatja, mihez és mikor csatlakozik a Mumcord. Az identitásod a rendszer biztonságos tárolójában van, a diagnosztikai fájl nem tartalmaz chattartalmat vagy jelszót, és csak akkor hagyja el a gépedet, ha te magad küldöd el.",
+            "alt": "Varázsló, adatvédelmi lépés"
           },
           {
             "id": "quick-settings",
             "title": "Gyorsbeállítások a fogaskeréken",
-            "body": "Egy kattintás a fogaskerékre: előnézetek, téma, overlay, zene és játék megosztása, profil szerkesztése és regisztráció. A béta funkciók, például a térhatású hang, saját összecsukható csoportban vannak.",
-            "alt": "Gyorsbeállítások nyitott Béta csoporttal"
+            "body": "Egy kattintás a fogaskerékre: beállításonként egy sor az Értesítések, Megosztás, Megjelenés és Fiók alatt, a magyarázat egy kis „?” mögött. A béta funkciók, például a térhatású hang, saját csoportban vannak, amely összecsukva indul.",
+            "alt": "Gyorsbeállítások Értesítések, Megosztás, Megjelenés és Fiók csoportokba rendezve"
           },
           {
             "id": "settings-search",
@@ -1100,30 +1147,91 @@
           },
           {
             "id": "dropdowns",
-            "title": "Rendezett beállítások",
-            "body": "Témához illő legördülő menük a böngésző kinézete helyett, és a beállítások minden mezője szépen igazítva."
-          },
-          {
-            "id": "tooltips",
-            "title": "Témához illő elemleírások",
-            "body": "Minden elemleírás a témád kinézetében, világosan vagy sötéten, és billentyűzettel is elérhető."
+            "title": "Rendezett beállítások és tippek",
+            "body": "A legördülő menük és a tippek a témád kinézetében a böngészőé helyett, a beállításokban minden mező szépen igazítva, és minden tipp billentyűzettel is elérhető."
           },
           {
             "id": "packet-inspector",
             "title": "Csomagvizsgáló hibakereséshez",
-            "body": "Fejlesztőknek elrejtve: hét kattintás a verzióra a Beállítások → Névjegy alatt feloldja. Saját ablakban mutatja, milyen Mumcord-adatok mennek ki és jönnek be, szűrőkkel, számlálókkal és JSON- vagy Markdown-exporttal.",
+            "body": "Fejlesztőknek elrejtve: hét kattintás a verzióra a Beállítások → Névjegy alatt feloldja. Saját ablakban megmutatja, milyen Mumcord-adatok mennek ki és jönnek be, szűrőkkel, számlálókkal és exporttal JSON-ba vagy Markdownba. Követi az új csomagokat, és csak nyitott állapotban rögzít.",
             "alt": "Csomagvizsgáló szűrőkkel, típus és irány szerinti számlálókkal és egy kinyitott csomagsorral"
           },
           {
             "id": "clear-cache",
             "title": "Gyorsítótár ürítése",
             "body": "A Beállítások → Adatvédelem megmutatja, mennyi helyet foglalnak a linkelőnézetek, a képek és a webmotor, és egy gombnyomással kiüríti őket, egyenként is. A chatelőzményekhez, szerverekhez, barátokhoz és jegyzetekhez soha nem nyúl."
+          },
+          {
+            "id": "dnd",
+            "title": "Ne zavarjanak",
+            "body": "Egyetlen kapcsoló a gyorsbeállításokban, a beállításokban vagy a tálcamenüben elnémítja az értesítési hangokat és a felugró ablakokat minden szerveren. A hang tovább működik, az olvasatlanok száma pedig tovább számol. KDE Plasmán, GNOME-on és Windowson követheti a rendszer Ne zavarjanak módját.",
+            "alt": "Hangok és értesítések beállításai a Ne zavarjanak és a „Rendszer Ne zavarjanak módjának követése” opcióval"
+          },
+          {
+            "id": "tray",
+            "title": "Teljes tálcamenü",
+            "body": "A tálcamenü megmutatja minden csatlakoztatott szervert az állapotával és csatornájával, a némítást, a süketítést és a Ne zavarjanak módot, átviszi a hangot másik szerverre vagy csatornára, és megnyitja a legutóbbi chateket. Az ikon jelzi a beszédet, a némítást, az olvasatlan üzeneteket és a Ne zavarjanak módot. A Mumcord, ha szeretnéd, bejelentkezéskor indul, minden rendszeren.",
+            "alt": "Tálcamenü szerverekkel, a hangcsatorna almenüjével és legutóbbi chatekkel"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.5.0",
+      "teaser": "Értesítési központ, minden privát üzenet egy helyen, letiltás, több identitás és importálás a Mumble-ből.",
+      "summary": "Nagy frissítés a chathez és az adatvédelemhez: értesítési központ, minden privát üzenet egy helyen, saját szabályokkal arra, hogy ki írhat neked, letiltás, több identitás, és az átállás a Mumble-ről néhány kattintással. Emellett közösségi relé a képekhez és a képernyőmegosztáshoz, zene és hang a chatben, böngésző a nyilvános szerverekhez és egy kis késleltetésű mód a közös zenélésre.",
+      "groups": [
+        {
+          "title": "Új",
+          "items": [
+            "A chat fejlécében lévő harang mögötti értesítési központ (Ctrl+Shift+N) összegyűjt mindent, ami a figyelmedet kéri, az összes csatlakoztatott szerverről: megemlítéseket, válaszokat, chat- és üzenetkéréseket Elfogadás és Elutasítás gombbal, meghívókat közös nézésre és képernyőmegosztásra, valamint a már elérhetetlen szervereket. Egy kattintás az üzenethez ugrik.",
+            "Ne zavarjanak: egyetlen kapcsoló a gyorsbeállításokban, a beállításokban és a tálcamenüben elnémítja az értesítési hangokat és felugró ablakokat az összes szerveren. A hang továbbra is működik, az olvasatlan üzeneteket pedig tovább számolja. Ha szeretnéd, a Mumcord követi a rendszer Ne zavarjanak módját KDE Plasmán, GNOME-on és Windowson.",
+            "A tálcamenü minden csatlakoztatott szervert megmutat a csatornájával, mellette Némítás, Süketítés és Ne zavarjanak. Innen átviheted a hangodat másik szerverre vagy csatornára, és megnyithatod a legutóbbi privát chatjeidet. A tálcaikon jelzi, ha valaki beszél, ha némítva vagy, és ha olvasatlan üzenetek vannak.",
+            "Minden privát üzenet egy helyen: a szerversáv tetején lévő Üzenetek gomb minden csatlakoztatott szerver minden beszélgetését listázza, kereséssel, szűrőkkel, kitűzéssel és némítással. Ez váltja a csatornafa alatti Közvetlen üzenetek listát. Egy személy menüje mostantól az Üzenet küldése, Csatlakozás a csatornához és Barát hozzáadása pontokkal kezdődik.",
+            "Te döntöd el, ki írhat neked privátban: mindenki, csak a barátok vagy senki, kívánság szerint szerverenként is. A csatornádban lévők és az elfogadott beszélgetések mindig átjutnak. A többiek az Üzenetkérések alatt várnak, a Mumcord-felhasználók pedig rövid megjegyzéssel chatkérést küldhetnek neked. A Mumcord a te oldaladon szűr, a feladó nem értesül róla. Az elfogadott beszélgetést később visszavonhatod.",
+            "Személyek letiltása: a privát üzeneteik és kéréseik eltűnnek, a csatornaüzeneteik összecsukódnak, a hangjuk pedig némítva van számodra. A letiltás a személy tanúsítványához kötődik, így minden szerveren érvényes, és egy új név sem segít a kijátszásában. Sem a szerver, sem a személy nem tud róla; a Beállítások → Adatvédelem listázza a letiltásaidat.",
+            "Az @channel és az @all a csatorna mindenkit eléri, és személyes megemlítésnek számít. A többi Mumble-kliens egyszerűen csak a szavakat látja, szerverenként pedig elnémíthatod őket.",
+            "Hang és zene a chatben: az olyan hangfájlokra mutató közvetlen linkek, mint az mp3, ogg, wav vagy flac, kis lejátszót kapnak. A Spotify, SoundCloud és YouTube Music linkek a szolgáltatás saját lejátszójában szólnak, amint a Lejátszásra nyomsz; az Apple Music, Tidal, Deezer és Bandcamp kártyát kap linkkel. Semmi nem indul el magától, és kikapcsolt linkelőnézetnél semmi nem töltődik be.",
+            "A chatben lévő mumble:// linkek kártyát mutatnak a szerverrel, csatornával, pinggel és az online emberek számával, Csatlakozás és Hozzáadás a szerverekhez gombbal. A linkben lévő jelszó soha nem jelenik meg.",
+            "A csatornák könnyebben kezelhetők: egy csatorna jobb klikkje menüt nyit Csatlakozás, Követés, Csatornalink másolása, Csatornainfó és további pontokkal. A csatornák mutatják a felhasználói korlátjukat, például Raid (1/10), a teltek pedig halványak. A megfelelő joggal embereket húzhatsz át másik csatornába. A csatornainfó megmutatja a leírást, a felhasználókat, a jogaidat és a kapcsolt csatornákat.",
+            "Kis késleltetésű mód a közös zenélésre (Béta): kb. 40 helyett 100 ezredmásodperc a szájtól a fülig, a hálózaton felül. Újracsatlakozás nélkül kapcsol át, és szabványos szerverekkel működik. Fejhallgató ajánlott.",
+            "Hang csatornánként: az „Audio ehhez a csatornához…” a csatornának saját beállításokat ad, Beszéd, Zene és Jam előbeállításokkal. Csatlakozáskor lépnek érvénybe, kilépéskor pedig visszajönnek a megszokott beállításaid.",
+            "Gyorsmenük a hangsávban: jobb klikk a mikrofonra vagy a fejhallgatóra az eszközökért, a hangerőért és a szintjelzőért, a kapcsolati infóra a hangminőségért és a bitrátáért, a letevés gombra pedig a Hang elhagyása (csatlakozva maradsz, és tovább chatelhetsz) vagy a Leválasztás az összes szerverről.",
+            "A szerversávban lévő szerverböngésző a nyilvános Mumble-szervereket listázza, kereséssel, valamint ország és ping szerinti szűrőkkel. A Csatlakozás egy kattintással ment és csatlakozik. A lista csak akkor töltődik be, amikor megnyitod a böngészőt.",
+            "A szerverpárbeszédablak négy fülre van rendezve, és van benne Kapcsolat tesztelése, amely a pinget, a szerververziót és a tanúsítványt ellenőrzi, bármit elmentése nélkül. A szerverinfó megmutatja a verziót, a korlátokat, a jogaidat és a TLS-tanúsítványt. A mentett csatornajelszavak megmutatják, melyik csatornához tartoznak.",
+            "Több identitás: a Beállítások → Identitás több tanúsítványt kezel, importtal, exporttal, átnevezéssel és alapértelmezettel. Minden szerver használhat saját identitást. A mostani identitásod „Alapértelmezett” lesz, és minden úgy csatlakozik, mint eddig.",
+            "Importálás a Mumble-ből: ha telepítve van a hivatalos Mumble-kliens, a beállítási varázsló (vagy a Beállítások → Szerverek) átveszi a kedvenc szervereidet, a mentett jelszavakat, a tanúsítványodat, a hangeszközöket és a push-to-talk gombot. Semmi nem íródik felül, a Mumble fájljait csak olvassa, és az importálás visszavonható.",
+            "Közösségi relé: a teljes méretű képek és a képernyőmegosztás egy olyan reléen mehetnek át, amelyet a szerver közössége a Mumble-szervere mellett üzemeltet. Csak a titkosított kapcsolatot továbbítja, és ha szeretnéd, elrejti az IP-címedet a másik személy elől. A képernyőmegosztás így közvetlen kapcsolat nélkül is működik. A hang soha nem megy át a reléen.",
+            "Windowson a Mumcord hordozható zipként is elérhető: kicsomagolod, elindítod, telepítés nélkül. Az adatok és a beállítások a program melletti mappában maradnak.",
+            "Rejtsd el a tagok oszlopát, hogy a chat megkapja a teljes szélességet: a chat fejlécében lévő gombbal vagy a Ctrl+Shift+M-mel. Keskeny ablakban a chat fölé csúszik.",
+            "Kirúgtak vagy kitiltottak? A Mumcord hangot játszik rá: pofont kirúgásnál, slapstick rúgást kitiltásnál. Mindkettő kikapcsolható."
+          ]
+        },
+        {
+          "title": "Továbbfejlesztve",
+          "items": [
+            "A csatornalista alatti felhasználói panel újra lett tervezve: minden állapotban ugyanolyan magas marad, hogy a fölötte lévő lista ne ugráljon, egy tiszta állapotsort mutat, és minden hangoldali gombon van egy kis menünyíl.",
+            "A gyorsbeállítások nyugodtabbak: beállításonként egy sor áttekinthető csoportokban, a magyarázatok egy kis ? mögött, a Béta csoport pedig összecsukva indul.",
+            "Kikapcsolt linkelőnézetnél már nem tűnnek el szó nélkül: az üzenet alatti halk sor megmondja, mi lett elrejtve, és a beállításhoz vezet.",
+            "A Beállítások → Névjegy alatti „Beállítási varázsló újrafuttatása” még egyszer végigvezet a mikrofonon, az adatvédelmen, a frissítési értesítésen és a beszédmódon. Az identitásod érintetlen marad, és csak az mentődik, amit megváltoztatsz."
+          ]
+        },
+        {
+          "title": "Javítva",
+          "items": [
+            "A saját üzeneteid soha nem játsszák le a megemlítés hangját, nem mutatnak értesítést, és nem számítanak olvasatlannak.",
+            "A közös nézés tiszteletben tartja a „Linkelőnézetek és beágyazások megjelenítése” beállítást: kikapcsolva semmi nem töltődik be a YouTube-ról vagy a Twitchről, és egy tipp a beállításhoz vezet.",
+            "Linux PipeWire-rel: az eszközlisták minden bemenetet és kimenetet úgy mutatnak, mint az asztal hangbeállításai, például egy RØDECaster Pro II „System” és „Chat” eszközét egyetlen „USB Audio” helyett.",
+            "A szerverinfó ablak mostantól mind a 24 nyelven le van fordítva."
+          ]
+        }
+      ],
+      "known": [
+        "A Windows-telepítő még nincs aláírva."
+      ]
+    },
     {
       "version": "0.4.4",
       "teaser": "Kód másolása és letöltése, képek mentése jobb klikkel, gyorsítótár ürítése, stabilabb hang terhelés alatt.",

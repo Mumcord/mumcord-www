@@ -26,33 +26,23 @@ const noisy = wavePath({ seed: 7, width: 600, height: 80, points: 220, noise: 0.
 const clean = wavePath({ seed: 7, width: 600, height: 80, points: 220, noise: 0.04, speech: 0.9 });
 const fingerprint = "4F:9A:C1:07:3B:E2:58:D0:1A:7C:96:E4:2F:B3:0D:61";
 const [showcase, rest] = [t.features.items.slice(0, 3), t.features.items.slice(3)];
-const sp = t.spotlight;
-const spotlightOut = (await getReleases()).some((r) => r.version === "0.4.0");
+const sp = t.spotlight5;
+const spotlightOut = (await getReleases()).some((r) => r.version === "0.5.0");
+// The 0.5.0 tiles: small drawn demos, no screenshots; names stay the same in every language.
+// Each links to its card on the features page, whose ids are German on the German page.
+const s5tiles = [
+  { id: "notifications", anchor: ["benachrichtigungszentrale", "notification-centre"] },
+  { id: "identities", anchor: ["identitaeten", "identities"] },
+  { id: "tree", anchor: ["kanalbaum", "channel-tree"] },
+  { id: "lowLatency", anchor: ["niedrige-latenz", "low-latency"] },
+  { id: "music", anchor: ["spotify", "spotify"] },
+  { id: "relay", anchor: ["relay", "relay"] },
+] as const;
+const s5href = (x: (typeof s5tiles)[number]) => `${routes.features[lang]}#${x.anchor[lang === "de" ? 0 : 1]}`;
 // The timeline takes each epic's status from the roadmap; an epic is done once its release is out.
 const released = new Set((await getReleases()).map((r) => r.version));
 const epicStatus = roadmapPage.en.epics.map((e) => (e.version && released.has(e.version) ? "done" : e.status));
 const doneCount = epicStatus.filter((x) => x === "done").length;
-// Demo data for the 0.4.0 tiles; names stay the same in every language.
-const servers = [
-  { tag: "TF", hue: "var(--peach)", talking: true },
-  { tag: "RN", hue: "var(--pink)", unread: 3 },
-  { tag: "LP", hue: "var(--violet)", unread: 12 },
-  { tag: "EU", hue: "var(--live)" },
-  { tag: "+", hue: "transparent" },
-];
-const toasts = [
-  { server: "Raid Night", channel: "#raid", who: "Priya", text: "@Maya in 5?" },
-  { server: "LAN Party", channel: "#lobby", who: "Jonas", text: "Pizza ist da 🍕" },
-];
-const themes = [
-  "linear-gradient(135deg, #1d1650, #ff6fa8 60%, #ffb08a)",
-  "linear-gradient(135deg, #0f2a2a, #3ee39e 60%, #c9ffe9)",
-  "linear-gradient(135deg, #1a1a1a, #6b8cff 60%, #d6e0ff)",
-  "linear-gradient(135deg, #2b1608, #ff9f43 60%, #ffe0b8)",
-  "linear-gradient(135deg, #f6f0e8, #9b7bff 60%, #2a1f5c)",
-  "linear-gradient(135deg, #10202f, #4fc3f7 60%, #e1f5fe)",
-];
-const party = ["Maya", "Priya", "Jonas"];
 const tt = t.themesTour;
 const tourColors = tour.map((x) => allThemes.find((th) => th.id === x.theme)?.[x.mode]);
 ---
@@ -145,8 +135,8 @@ const tourColors = tour.map((x) => allThemes.find((th) => th.id === x.theme)?.[x
   </div>
 </section>
 
-<!-- Spotlight: what 0.4.0 brings -->
-<section class="section spotlight" id="neu" aria-labelledby="spotlight-title">
+<!-- Spotlight: what 0.5.0 brings -->
+<section class="section spotlight s5" id="neu" aria-labelledby="spotlight-title">
   <div class="spotlight-glow" aria-hidden="true"></div>
   <div class="wrap">
     <div class="section-head spotlight-head">
@@ -155,92 +145,92 @@ const tourColors = tour.map((x) => allThemes.find((th) => th.id === x.theme)?.[x
       <p class="body" data-reveal>{sp.body}</p>
     </div>
 
-    <div class="sp-bento">
-      <a class="sp-tile sp-servers" href={routes.features[lang]} data-reveal data-spot>
-        <div class="sp-servers-demo" aria-hidden="true">
-          <ul class="sp-rail">
-            {
-              servers.map((x) => (
-                <li class:list={[{ "is-talking": x.talking, "is-add": x.tag === "+" }]} style={`--c: ${x.hue}`}>
-                  {x.tag}
-                  {x.unread && <b>{x.unread}</b>}
-                </li>
-              ))
-            }
-          </ul>
-          <div class="sp-toasts">
-            <p class="sp-voice-here"><span class="live-dot"></span>Tiffoyn · #gaming · {sp.servers.talking}</p>
-            {
-              toasts.map((x) => (
-                <p class="sp-toast">
-                  <span class="sp-toast-head">{x.server} · {x.channel}</span>
-                  <span><strong>{x.who}</strong> {x.text}</span>
-                </p>
-              ))
-            }
-          </div>
+    <div class="s5-bento">
+      <a class="s5-tile s5-notifications" href={s5href(s5tiles[0])} data-reveal data-spot>
+        <div class="s5-demo" aria-hidden="true">
+                <div class="d5-bell"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15ZM10 20a2 2 0 0 0 4 0" /></svg><b>3</b></div>
+                <ul class="d5-notes">
+                  <li><i style="--c: var(--pink)" /><span><b>Priya</b> @Maya</span><em>Raid Night</em></li>
+                  <li><i style="--c: var(--violet)" /><span><b>Jonas</b> ↩ 20:00?</span><em>LAN Party</em></li>
+                  <li><i style="--c: var(--live)" /><span><b>Leo</b> → #lobby</span><em>Night Owls</em></li>
+                </ul>
         </div>
-        <div class="sp-text">
-          <h3>{sp.servers.title}</h3>
-          <p>{sp.servers.body}</p>
+        <div class="s5-text">
+          <h3>{sp.tiles.notifications.title}</h3>
+          <p>{sp.tiles.notifications.body}</p>
         </div>
       </a>
-
-      <div class="sp-tile sp-themes" data-reveal data-spot>
-        <div class="sp-swatches" aria-hidden="true">
-          {themes.map((bg) => <span style={`--g: ${bg}`} />)}
+      <a class="s5-tile s5-identities" href={s5href(s5tiles[1])} data-reveal data-spot>
+        <div class="s5-demo" aria-hidden="true">
+                <ul class="d5-ids">
+                  <li><i style="--c: var(--peach)">M</i>Maya</li>
+                  <li class="is-on"><i style="--c: var(--violet)">M</i>Maya [RN]</li>
+                  <li><i style="--c: var(--live)">M</i>m.koch</li>
+                </ul>
         </div>
-        <p class="sp-mode" aria-hidden="true"><span>{sp.themes.light}</span><span class="is-on">{sp.themes.dark}</span></p>
-        <div class="sp-text">
-          <h3>{sp.themes.title}</h3>
-          <p>{sp.themes.body}</p>
-        </div>
-      </div>
-
-      <a class="sp-tile sp-win" href={routes.games[lang]} data-reveal data-spot>
-        <div class="sp-game" aria-hidden="true">
-          <ul class="sp-ov">
-            {party.map((n, i) => <li class:list={[{ "is-talking": i === 0 }]}>{n}</li>)}
-          </ul>
-        </div>
-        <div class="sp-text">
-          <h3>{sp.overlay.title}</h3>
-          <p>{sp.overlay.body}</p>
-          <span class="sp-more">{sp.games} →</span>
+        <div class="s5-text">
+          <h3>{sp.tiles.identities.title}</h3>
+          <p>{sp.tiles.identities.body}</p>
         </div>
       </a>
-
-      <div class="sp-tile sp-together" data-reveal data-spot>
-        <div class="sp-widget" aria-hidden="true">
-          <p class="sp-widget-bar">
-            <span>{sp.together.party}</span>
-            <span class="sp-avatars">{party.map((n) => <i>{n[0]}</i>)}</span>
-            <span class="sp-widget-btns"><i></i><i></i></span>
-          </p>
-          <div class="sp-video"><span class="sp-play"></span><span class="sp-progress"></span></div>
-          <p class="sp-next">{sp.together.next}: Lofi Beats · 24/7</p>
+      <a class="s5-tile s5-tree" href={s5href(s5tiles[2])} data-reveal data-spot>
+        <div class="s5-demo" aria-hidden="true">
+                <ul class="d5-tree">
+                  <li><span>🔊 Lobby</span><em>4</em></li>
+                  <li class="is-full"><span>🔊 Officers</span><em>🔒 5/5</em></li>
+                  <li class="is-on"><span>🔊 Raid</span><em>1/10</em></li>
+                </ul>
+                <ul class="d5-menu"><li>↪ Join</li><li>☆ Follow</li><li>ⓘ Info</li></ul>
         </div>
-        <div class="sp-text">
-          <p class="sp-pills"><span class="pill pill-beta">{sp.beta}</span></p>
-          <h3>{sp.together.title}</h3>
-          <p>{sp.together.body}</p>
+        <div class="s5-text">
+          <h3>{sp.tiles.tree.title}</h3>
+          <p>{sp.tiles.tree.body}</p>
         </div>
-      </div>
-
-      <div class="sp-tile sp-replies" data-reveal data-spot>
-        <div class="sp-chat" aria-hidden="true">
-          <p class="sp-msg"><i style="--c: var(--pink)">P</i><span><strong>Priya</strong>{sp.replies.quote}</span></p>
-          <p class="sp-msg sp-reply"><i style="--c: var(--peach)">M</i><span><em>↪ Priya: {sp.replies.quote}</em><strong>Maya</strong>{sp.replies.reply}</span></p>
+      </a>
+      <a class="s5-tile s5-lowLatency" href={s5href(s5tiles[3])} data-reveal data-spot>
+        <div class="s5-demo" aria-hidden="true">
+                <p class="d5-ms"><b>40</b><span>ms</span><s>90 ms</s></p>
+                <div class="d5-wave">{Array.from({ length: 24 }, (_, i) => <i style={`--h: ${30 + ((i * 37) % 60)}%`} />)}</div>
         </div>
-        <div class="sp-text">
-          <h3>{sp.replies.title}</h3>
-          <p>{sp.replies.body}</p>
+        <div class="s5-text">
+          <h3>{sp.tiles.lowLatency.title}</h3>
+          <p>{sp.tiles.lowLatency.body}</p>
         </div>
-      </div>
+      </a>
+      <a class="s5-tile s5-music" href={s5href(s5tiles[4])} data-reveal data-spot>
+        <div class="s5-demo" aria-hidden="true">
+                <div class="d5-music">
+                  <div class="d5-cover" />
+                  <div class="d5-track"><b>Midnight Signals</b><span>Lumen Park</span><div class="d5-bar"><i /></div></div>
+                  <span class="d5-play">▶</span>
+                </div>
+        </div>
+        <div class="s5-text">
+          <h3>{sp.tiles.music.title}</h3>
+          <p>{sp.tiles.music.body}</p>
+        </div>
+      </a>
+      <a class="s5-tile s5-relay" href={s5href(s5tiles[5])} data-reveal data-spot>
+        <div class="s5-demo" aria-hidden="true">
+                <svg class="d5-relay" viewBox="0 0 320 120" aria-hidden="true">
+                  <path class="d5-direct" d="M60 92 H260" />
+                  <path class="d5-arc" d="M60 92 C60 30 110 24 160 24 C210 24 260 30 260 92" />
+                  <circle cx="60" cy="92" r="16" fill="var(--peach)" />
+                  <circle cx="260" cy="92" r="16" fill="var(--violet)" />
+                  <circle cx="160" cy="24" r="20" fill="#f6f0e8" />
+                  <rect x="151" y="21" width="18" height="13" rx="3" fill="#1d0f5c" />
+                  <path d="M155 21 v-4 a5 5 0 0 1 10 0 v4" fill="none" stroke="#1d0f5c" stroke-width="3" />
+                </svg>
+                <span class="d5-pill">IP hidden</span>
+        </div>
+        <div class="s5-text">
+          <h3>{sp.tiles.relay.title}</h3>
+          <p>{sp.tiles.relay.body}</p>
+        </div>
+      </a>
     </div>
-
-    <p class="sp-actions" data-reveal>
-      <a class="btn btn-small btn-glow" href={routes.features[lang]}>{t.features.all}</a>
+    <p class="s5-more" data-reveal>
+      <a class="btn btn-small" href={routes.features[lang]}>{sp.features}</a>
       <a class="text-link" href={routes.changelog[lang]}>{sp.changelog} →</a>
     </p>
   </div>
@@ -396,6 +386,16 @@ const tourColors = tour.map((x) => allThemes.find((th) => th.id === x.theme)?.[x
         }
       </dl>
     </div>
+    <a class="server-cta" href={`${routes.server[lang]}#configurator`} data-reveal>
+      <span class="server-cta-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M4 7h9m4 0h3M4 17h3m4 0h9M13 7a2 2 0 1 0 4 0a2 2 0 1 0-4 0M7 17a2 2 0 1 0 4 0a2 2 0 1 0-4 0" /></svg>
+      </span>
+      <span class="server-cta-text">
+        <b>{t.serverCta.title}</b>
+        <span>{t.serverCta.body}</span>
+      </span>
+      <span class="btn btn-small">{t.serverCta.button} →</span>
+    </a>
   </div>
 </section>
 

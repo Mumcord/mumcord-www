@@ -80,6 +80,23 @@ export const de = {
     keyLabel: "Leertaste",
     note: "Nur eine Animation. Die Seite nutzt dein Mikrofon nicht.",
   },
+  spotlight5: {
+    label: "Neu in 0.5.0",
+    labelSoon: "Bald: 0.5.0",
+    title: "Mehr Ruhe. Mehr du. Mehr Klang.",
+    body: "0.5.0 bringt Epic 3: eine Benachrichtigungszentrale, Blockieren, mehrere Identitäten, einen neuen Kanalbaum, Musik im Chat, einen Low-Latency-Modus zum Musizieren und direkte Verbindungen über ein Relay.",
+    tiles: {
+      notifications: { title: "Alles an einem Ort", body: "Die Glocke sammelt Erwähnungen, Antworten, Anfragen und Einladungen von allen Servern. Wer nervt, wird blockiert, erkannt am Zertifikat." },
+      identities: { title: "Mehrere Identitäten", body: "Privat, Clan, Arbeit: Pro Server wählst du, als wer du dich verbindest." },
+      tree: { title: "Ein neuer Kanalbaum", body: "Rechtsklick auf jeden Kanal, Nutzerlimit am Namen, klare Symbole und ein Menü hinter dem Kanalnamen." },
+      lowLatency: { title: "Zusammen Musik machen", body: "Der Low-Latency-Modus bringt rund 40 statt 90 ms vom Mund zum Ohr, Audio pro Kanal merkt sich jeder Kanal selbst." },
+      music: { title: "Musik im Chat", body: "Audiodateien spielen direkt im Chat, Links zu Spotify, Apple Music und Co. werden zur Musikkarte." },
+      relay: { title: "Direkte Verbindungen, überall", body: "Bildschirm teilen und große Bilder klappen auch hinter CGNAT, und auf Wunsch sieht niemand deine IP-Adresse." },
+    },
+    features: "Alle Funktionen",
+    changelog: "Alle Neuerungen",
+  },
+  serverCta: { title: "Dein eigener Server in fünf Minuten", body: "Häkchen setzen, Befehl kopieren, fertig: Der Konfigurator baut dir die docker-compose.yml mit Relay und Bots.", button: "Zum Konfigurator" },
   spotlight: {
     label: "Neu in 0.4.0",
     labelSoon: "Bald: 0.4.0",
