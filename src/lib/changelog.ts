@@ -50,6 +50,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "Die Mitgliederspalte lässt sich ausblenden, damit der Chat die volle Breite bekommt: per Knopf im Chat-Kopf oder Strg+Umschalt+M. Im schmalen Fenster schiebt sie sich über den Chat.",
             "Gekickt oder gebannt? Mumcord spielt dazu einen Ton: eine Ohrfeige beim Kick, einen Slapstick-Tritt beim Bann. Beide lassen sich abschalten.",
             "Die Server-Info zeigt, ob der Server ein Relay oder einen Mumbot ankündigt, und warnt, wenn sich das Relay geändert hat.",
+            "Flüstern und Rufen: Sprich mit ausgewählten Leuten oder mit allen in einem Kanal, ohne dorthin zu wechseln, mit eigener Taste pro Ziel und einem Banner über dem Chat, das zeigt, mit wem du sprichst.",
           ],
         },
         {
@@ -531,6 +532,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "Hide the member column to give the chat the full width: with a button in the chat header or Ctrl+Shift+M. In a narrow window it slides in over the chat.",
             "Kicked or banned? Mumcord plays a sound for it: a slap for a kick, a slapstick kick for a ban. Both can be turned off.",
             "Server info shows whether the server announces a relay or a Mumbot, and warns when the relay has changed.",
+            "Whisper and shout: talk to chosen people or to everyone in a channel without moving there, with a hold-to-talk key per target and a banner above the chat that shows who you are talking to.",
           ],
         },
         {

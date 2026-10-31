@@ -581,6 +581,14 @@ const source: Record<"de" | "en", FeaturesPage> = {
             since: "0.5.0",
           },
           {
+            id: "fluestern",
+            title: "Flüstern und Rufen",
+            body: "Sprich mit ausgewählten Leuten oder mit allen in einem Kanal, auf Wunsch samt Unterkanälen, verknüpften Kanälen oder nur einer Gruppe, ohne dorthin zu wechseln. Ziele legst du in den Einstellungen an oder mit „Flüstern zu…“ im Menü einer Person oder eines Kanals, jedes mit eigener Taste zum Halten. Ein Banner über dem Chat zeigt, mit wem du gerade sprichst.",
+            shot: "whisper-live-dark",
+            alt: "Banner über dem Chat beim Flüstern in einen Kanal",
+            since: "0.5.0",
+          },
+          {
             id: "benutzerleiste",
             title: "Ruhige Benutzerleiste",
             body: "Die Leiste unten an der Kanalliste behält immer dieselbe Höhe: du mit Name und Server, eine Statuszeile wie Neuverbinden oder dein Sprachkanal, kleine Chips für „Nicht stören“, niedrige Latenz und die Verbindung, dazu Mikrofon, Kopfhörer und Auflegen. Die Kanalliste darüber springt nicht mehr.",
@@ -1334,6 +1342,14 @@ const source: Record<"de" | "en", FeaturesPage> = {
             body: "Right-click the hang-up button: “Leave voice” stops talking and listening but keeps chat and read-along running. Also there: disconnect, switch voice to another server and disconnect from all. A left-click still hangs up at once.",
             shot: "disconnect-menu-dark",
             alt: "Hang-up button menu with Leave voice, Disconnect and Switch voice",
+            since: "0.5.0",
+          },
+          {
+            id: "whisper",
+            title: "Whisper and shout",
+            body: "Talk to chosen people, or to everyone in a channel, optionally with its sub-channels, linked channels or only one group, without moving there. Set targets up in the settings or with “Whisper to…” in the menu of a person or a channel, each with its own hold-to-talk key. A banner above the chat shows who you are talking to.",
+            shot: "whisper-live-dark",
+            alt: "A banner above the chat while whispering to a channel",
             since: "0.5.0",
           },
           {

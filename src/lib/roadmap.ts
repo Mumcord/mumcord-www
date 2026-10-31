@@ -297,7 +297,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Audiodateien im Chat mit eigenem Player: abspielen, spulen und Lautstärke direkt in der Nachricht",
               "Links zu Spotify, Apple Music, Tidal und anderen Musikdiensten werden zur Musikkarte, die erst nach einem Klick über den offiziellen Player des Dienstes spielt",
             ],
-            done: [1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+            done: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
             mockups: [
               { shot: "epic3-64-hotkeys-settings-dark", issue: 64, caption: "Globale Tastenkürzel in den Einstellungen" },
               { shot: "epic3-65-tray-menu-and-icon-states-dark", issue: 65, caption: "Volles Tray-Menü und Symbolzustände" },
@@ -846,7 +846,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Audio files in the chat with a player of their own: play, seek and set the volume right in the message",
               "Links to Spotify, Apple Music, Tidal and other music services become a music card that plays through the service's official player, only after a click",
             ],
-            done: [1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+            done: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
             mockups: [
               { shot: "epic3-64-hotkeys-settings-dark", issue: 64, caption: "Global shortcuts in the settings" },
               { shot: "epic3-65-tray-menu-and-icon-states-dark", issue: 65, caption: "Full tray menu and icon states" },
