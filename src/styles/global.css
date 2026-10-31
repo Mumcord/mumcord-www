@@ -3969,7 +3969,8 @@ p {
 .rm-track ol {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  /* One column per epic; --n comes from the page. */
+  grid-template-columns: repeat(var(--n, 6), minmax(0, 1fr));
   gap: 8px;
   margin: 0;
   padding: 0;
@@ -3980,16 +3981,16 @@ p {
   content: "";
   position: absolute;
   top: calc(var(--node) / 2 - 1px);
-  left: calc(100% / 12);
+  left: calc(100% / (2 * var(--n, 6)));
   height: 2px;
   border-radius: 2px;
 }
 .rm-track ol::before {
-  right: calc(100% / 12);
+  right: calc(100% / (2 * var(--n, 6)));
   background: var(--line-strong);
 }
 .rm-track ol::after {
-  width: calc((100% - 100% / 6) * var(--progress-f, 0.5));
+  width: calc((100% - 100% / var(--n, 6)) * var(--progress-f, 0.5));
   background: linear-gradient(90deg, var(--lilac), var(--violet) 60%, var(--peach));
   box-shadow: 0 0 18px rgb(212 171 255 / 0.6);
 }
@@ -4084,18 +4085,18 @@ p {
   }
   .rm-track ol::before,
   .rm-track ol::after {
-    top: calc(100% / 12);
+    top: calc(100% / (2 * var(--n, 6)));
     left: calc(var(--node) / 2 - 1px);
     width: 2px;
     height: auto;
   }
   .rm-track ol::before {
-    bottom: calc(100% / 12);
+    bottom: calc(100% / (2 * var(--n, 6)));
     right: auto;
   }
   .rm-track ol::after {
     width: 2px;
-    height: calc((100% - 100% / 6) * var(--progress-f, 0.5));
+    height: calc((100% - 100% / var(--n, 6)) * var(--progress-f, 0.5));
     background: linear-gradient(180deg, var(--lilac), var(--violet) 60%, var(--peach));
   }
   .rm-track a {
