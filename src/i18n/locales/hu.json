@@ -2582,8 +2582,8 @@
       "download": "Letöltés",
       "roadmap": "Ütemterv"
     },
-    "botsTitle": "Két bot, egy program",
-    "botsBody": "Mindkettő ugyanabban a programban lakik, ez a `mumbot`, Linuxra, Windowsra és macOS-re, valamint Docker image-ként.",
+    "botsTitle": "Egy bot, négy modul",
+    "botsBody": "A Mumbot egyetlen, modulokból épülő program Linuxra, Windowsra és macOS-re, valamint Docker image-ként. Válaszd ki a szükséges modulokat: egy botként futnak együtt, egyetlen kapcsolattal. A tesztbot külön buildben él.",
     "webhook": {
       "title": "Webhook bot",
       "body": "A monitoring, a CI vagy a saját szkripted egyetlen HTTP-kérést küld egy API-kulccsal, a bot pedig beteszi a szöveget egy Mumble-csatornába.",
@@ -2595,7 +2595,7 @@
       ]
     },
     "testbot": {
-      "title": "Tesztbot",
+      "title": "Tesztbot (saját build)",
       "body": "Szkriptelt második résztvevő Mumble kliensek automatizált teszteléséhez. A Mumcord saját tesztjei is ezen futnak.",
       "points": [
         "Vezéreld a chatet, az állapotot, a jogosultságokat és a moderálást, és várj feltételekre",
@@ -2674,7 +2674,34 @@
     "ideaBody": "A kívánságok a Mumbot GitHub-issue-iba kerülnek.",
     "idea": "Ötlet beküldése",
     "source": "Forráskód a GitHubon",
-    "docs": "Dokumentáció"
+    "docs": "Dokumentáció",
+    "peer": {
+      "title": "Relay (peer)",
+      "body": "Összeköti a szervered egy mumpeer relayjel: a bot meghirdeti a relayt a Mumcordnak, és kiosztja a közvetlen kapcsolatokhoz szükséges tokeneket.",
+      "points": [
+        "Képernyőmegosztás és nagy képek akár CGNAT mögött is, vagy az IP-címed megmutatása nélkül",
+        "A relay hálózatában fut, az API belső marad",
+        "Csak a saját szervered regisztrált felhasználói kapnak tokent"
+      ]
+    },
+    "music": {
+      "title": "Zene",
+      "body": "MP3-akat játszik le normál hangként egy csatornában HTTP API-n át, sorral.",
+      "points": [
+        "Fájlok egy mappából, feltöltésként vagy engedélyezett címekről",
+        "Sor, ugrás, hangerő és csatorna zeneszámonként",
+        "A bitráta követi a szerver korlátját"
+      ]
+    },
+    "history": {
+      "title": "Előzmények",
+      "body": "Megőrzi az általad választott csatornák csevegését, és átadja a távol lévő Mumcord-felhasználóknak. Mint egy Mumcord-kliens, amely éjjel-nappal online van.",
+      "points": [
+        "Bármelyik csatorna, amelyiket szeretnél, 1–7 napig",
+        "Soha nem privát üzenetek",
+        "Úgy válaszol a Mumcord előzmény-szinkronizálására, mint egy normál kliens"
+      ]
+    }
   },
   "tools": {
     "label": "Tools",
