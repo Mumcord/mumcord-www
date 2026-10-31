@@ -23,6 +23,8 @@ export interface StageGroup {
   /** Shown as a pill; left out when the whole epic ships as one version. */
   version?: string;
   items: string[];
+  /** Items already built on main (indexes into items), ticked off on the page. */
+  done?: number[];
   /** Design sketches from the issues, by file name in src/assets/mockups (without .png). */
   mockups?: Mockup[];
 }
@@ -273,9 +275,9 @@ const source: Record<"de" | "en", RoadmapPage> = {
         id: "epic-3",
         tag: "Epic 3",
         title: "Komfort",
-        status: "planned",
+        status: "now",
         version: "0.5.0",
-        summary: "Feinschliff für Vielnutzer: mehr Ruhe mit Blockieren, Nachrichtenfilter und Benachrichtigungszentrale, mehrere Identitäten, Server-Info, ein neues Design für Assistent, Einstellungen und Watch-Party, ein Low-Latency-Modus zum Musizieren und ein optionales Relay für direkte Verbindungen.",
+        summary: "Feinschliff für Vielnutzer: mehr Ruhe mit Blockieren, Nachrichtenfilter und Benachrichtigungszentrale, mehrere Identitäten, Server-Info, ein neues Design für Assistent, Einstellungen, Watch-Party und Kanalbaum, Audio pro Kanal, ein Low-Latency-Modus zum Musizieren, Updates in der App und ein optionales Relay für direkte Verbindungen.",
         groups: [
           {
             title: "Komfort im Alltag",
@@ -290,7 +292,10 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Mikrofon und Kopfhörer per Rechtsklick auf Stumm und Taub wechseln, mit Lautstärke und Pegelanzeige",
               "Rechtsklick auf Auflegen: nur die Sprache verlassen und weiter mitlesen, einen Server trennen oder alle",
               "Den Einrichtungsassistenten erneut starten, ohne die Identität anzufassen",
+              "mumble://-Links im Chat erscheinen als Karte für Server oder Kanal, ein Klick verbindet",
+              "Eigene Töne, wenn du gekickt oder gebannt wirst",
             ],
+            done: [1, 4, 5, 6, 7, 8, 10, 11],
             mockups: [
               { shot: "epic3-64-hotkeys-settings-dark", issue: 64, caption: "Globale Tastenkürzel in den Einstellungen" },
               { shot: "epic3-65-tray-menu-and-icon-states-dark", issue: 65, caption: "Volles Tray-Menü und Symbolzustände" },
@@ -302,6 +307,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               { shot: "io-devices-dark", issue: 153, caption: "Geräte wechseln an Stumm und Taub" },
               { shot: "disconnect-menu-dark", issue: 154, caption: "Menü am Auflegen-Knopf" },
               { shot: "epic3-rerun-wizard-dark", issue: 149, caption: "Einrichtungsassistent erneut starten" },
+              { shot: "mumble-link-card-dark", issue: 175, caption: "Ein mumble://-Link als Karte" },
             ],
           },
           {
@@ -312,7 +318,11 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Watch-Party und Bildschirm teilen bekommen eine eigene Kino-Ansicht mit Zeitleiste, Lautstärke, Playlist und wer gerade zuschaut",
               "Video oder geteilten Bildschirm in ein eigenes Fenster lösen, etwa auf den zweiten Monitor oder über ein Spiel, auf Wunsch immer im Vordergrund",
               "Die Mitgliederspalte rechts einklappen, ganz oder zu einer schmalen Leiste mit Profilbildern, damit der Chat mehr Platz hat",
+              "Die Übersicht der privaten Nachrichten neu gestaltet",
+              "Ein Menü hinter dem Kanalnamen mit allen Aktionen und einer Kanal-Info",
+              "Server- und Kanalbaum neu gestaltet: Rechtsklick-Menü an jedem Kanal, Nutzerlimit am Namen und klare Status-Symbole",
             ],
+            done: [4, 5],
             mockups: [
               { shot: "wizard-1-welcome-dark", issue: 159, caption: "Der neue Einrichtungsassistent" },
               { shot: "wizard-0-presets-dark", issue: 159, caption: "Voreinstellungen im Assistenten" },
@@ -322,6 +332,9 @@ const source: Record<"de" | "en", RoadmapPage> = {
               { shot: "screen-share-viewer-dark", issue: 163, caption: "Einen geteilten Bildschirm ansehen" },
               { shot: "pop-out-dark", issue: 164, caption: "Video im eigenen Fenster" },
               { shot: "layout-b-dark", issue: 165, caption: "Mitgliederspalte als schmale Leiste" },
+              { shot: "pm-dark", issue: 173, caption: "Die neue Übersicht der privaten Nachrichten" },
+              { shot: "channel-menu-dark", issue: 170, caption: "Das Menü hinter dem Kanalnamen" },
+              { shot: "tree-dark", issue: 172, caption: "Der neue Server- und Kanalbaum" },
             ],
           },
           {
@@ -332,6 +345,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Eine Benachrichtigungszentrale an der Glocke sammelt Erwähnungen, Antworten, Anfragen und Einladungen von allen Servern, bei „Bitte nicht stören“ auch alles, was sonst aufpoppen würde",
               "Watch-Partys laden nichts von YouTube oder Twitch, solange eingebettete Inhalte ausgeschaltet sind",
             ],
+            done: [1, 3],
             mockups: [
               { shot: "block-menu-dark", issue: 140, caption: "Eine Person blockieren" },
               { shot: "pm-chat-request-dark", issue: 141, caption: "Nachrichtenanfrage einer fremden Person" },
@@ -345,7 +359,9 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Ein aufgeräumter Dialog für Server hinzufügen und bearbeiten, mit Identität und „Verbindung testen“",
               "Server-Info: Version, Limits, Zertifikat und deine Rechte auf einen Blick, ganz ohne Änderung am Server",
               "Gespeicherte Kanal-Passwörter zeigen, zu welchem Kanal sie gehören, und lassen sich benennen",
+              "Die Server-Info zeigt, ob ein Mumbot oder ein mumpeer-Relay angekündigt ist",
             ],
+            done: [0, 1, 2, 3],
             mockups: [
               { shot: "epic3-ids-dark", issue: 148, caption: "Mehrere Identitäten verwalten" },
               { shot: "server-dialog-dark", issue: 151, caption: "Neuer Dialog für Server" },
@@ -357,10 +373,14 @@ const source: Record<"de" | "en", RoadmapPage> = {
             items: [
               "Rechtsklick auf die Verbindungsinfo: Bitrate, Musikqualität und Low-Latency-Modus direkt im Gespräch einstellen",
               "Low-Latency-Modus, um gemeinsam Musik zu machen: rund 40 statt 90 ms vom Mund zum Ohr, auch auf normalen Mumble-Servern",
+              "Audio pro Kanal: Musikqualität, Low-Latency-Modus und Bitrate merkt sich jeder Kanal selbst",
+              "Hochwertige Rauschunterdrückung mit dem RNNoise-Modell von 2024, als Beta",
             ],
+            done: [0, 1],
             mockups: [
               { shot: "connection-quick-panel-dark", issue: 155, caption: "Sprachqualität direkt an der Verbindungsinfo" },
               { shot: "low-latency-dark", issue: 156, caption: "Low-Latency-Modus" },
+              { shot: "channel-audio-dark", issue: 171, caption: "Audio-Einstellungen pro Kanal" },
             ],
           },
           {
@@ -375,6 +395,18 @@ const source: Record<"de" | "en", RoadmapPage> = {
               { shot: "epic3-62-relay-setting-and-connection-info-dark", issue: 62, caption: "Relay-Einstellung und Verbindungsinfo" },
             ],
           },
+          {
+            title: "Updates und Installation",
+            items: [
+              "Updates direkt in der App: prüfen, herunterladen, Signatur prüfen und neu starten",
+              "Signierte Windows-Builds, Installer und App",
+              "Unter Windows eine portable Mumcord.exe neben dem Installer",
+            ],
+            done: [2],
+            mockups: [
+              { shot: "update-available-dark", issue: 168, caption: "Ein Update ist da" },
+            ],
+          },
         ],
       },
       {
@@ -382,8 +414,8 @@ const source: Record<"de" | "en", RoadmapPage> = {
         tag: "Epic 4",
         title: "Admin",
         status: "later",
-        summary: "Damit Mumcord den offiziellen Client ganz ersetzen kann.",
-        items: ["Rechte (ACLs) bearbeiten", "Bannen", "Kanäle anlegen, verschieben und verwalten"],
+        summary: "Damit Mumcord den offiziellen Client ganz ersetzen kann, dazu Mumcord als App fürs Handy.",
+        items: ["Rechte (ACLs) bearbeiten", "Bannen", "Kanäle anlegen, verschieben und verwalten", "Android- und iOS-App: als APK zum Herunterladen und über TestFlight, die App Stores kommen später"],
       },
       {
         id: "epic-5",
@@ -626,9 +658,9 @@ const source: Record<"de" | "en", RoadmapPage> = {
         id: "epic-3",
         tag: "Epic 3",
         title: "Comfort",
-        status: "planned",
+        status: "now",
         version: "0.5.0",
-        summary: "Polish for heavy users: more peace with blocking, a message filter and a notification centre, several identities, server info, a fresh design for the wizard, settings and watch party, a low-latency mode for making music and an optional relay for direct connections.",
+        summary: "Polish for heavy users: more peace with blocking, a message filter and a notification centre, several identities, server info, a fresh design for the wizard, settings, watch party and channel tree, audio per channel, a low-latency mode for making music, updates in the app and an optional relay for direct connections.",
         groups: [
           {
             title: "Everyday comfort",
@@ -643,7 +675,10 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Switch microphone and headphones with a right-click on mute and deafen, with volume and a level meter",
               "Right-click hang up: leave voice and keep reading, disconnect one server or all of them",
               "Run the setup wizard again without touching your identity",
+              "mumble:// links in the chat show as a card for the server or channel, one click connects",
+              "Sounds of their own when you are kicked or banned",
             ],
+            done: [1, 4, 5, 6, 7, 8, 10, 11],
             mockups: [
               { shot: "epic3-64-hotkeys-settings-dark", issue: 64, caption: "Global shortcuts in the settings" },
               { shot: "epic3-65-tray-menu-and-icon-states-dark", issue: 65, caption: "Full tray menu and icon states" },
@@ -655,6 +690,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               { shot: "io-devices-dark", issue: 153, caption: "Switching devices from mute and deafen" },
               { shot: "disconnect-menu-dark", issue: 154, caption: "The hang-up button menu" },
               { shot: "epic3-rerun-wizard-dark", issue: 149, caption: "Running the setup wizard again" },
+              { shot: "mumble-link-card-dark", issue: 175, caption: "A mumble:// link as a card" },
             ],
           },
           {
@@ -665,7 +701,11 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Watch party and screen sharing get a cinema-like view of their own with a timeline, volume, playlist and who is watching",
               "Pop a video or a shared screen out into its own window, onto a second monitor or over a game, always on top if you like",
               "Collapse the member column on the right, fully or to a slim rail of avatars, so the chat gets more room",
+              "The private messages overview redesigned",
+              "A menu behind the channel name with every action and a channel info",
+              "The server and channel tree redesigned: a right-click menu on every channel, the user limit next to the name and clear status icons",
             ],
+            done: [4, 5],
             mockups: [
               { shot: "wizard-1-welcome-dark", issue: 159, caption: "The new setup wizard" },
               { shot: "wizard-0-presets-dark", issue: 159, caption: "Presets in the wizard" },
@@ -675,6 +715,9 @@ const source: Record<"de" | "en", RoadmapPage> = {
               { shot: "screen-share-viewer-dark", issue: 163, caption: "Watching a shared screen" },
               { shot: "pop-out-dark", issue: 164, caption: "A video in its own window" },
               { shot: "layout-b-dark", issue: 165, caption: "The member column as a slim rail" },
+              { shot: "pm-dark", issue: 173, caption: "The new private messages overview" },
+              { shot: "channel-menu-dark", issue: 170, caption: "The menu behind the channel name" },
+              { shot: "tree-dark", issue: 172, caption: "The redesigned server and channel tree" },
             ],
           },
           {
@@ -685,6 +728,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "A notification centre behind a bell collects mentions, replies, requests and invites from every server, and during Do Not Disturb everything that would otherwise pop up",
               "Watch parties load nothing from YouTube or Twitch while embedded content is off",
             ],
+            done: [1, 3],
             mockups: [
               { shot: "block-menu-dark", issue: 140, caption: "Blocking a person" },
               { shot: "pm-chat-request-dark", issue: 141, caption: "A message request from a stranger" },
@@ -698,7 +742,9 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "A tidy dialog for adding and editing servers, with identity and “Test connection”",
               "Server info: version, limits, certificate and your permissions at a glance, without any server change",
               "Saved channel passwords show which channel they belong to and can be named",
+              "Server info shows whether a Mumbot or a mumpeer relay is announced",
             ],
+            done: [0, 1, 2, 3],
             mockups: [
               { shot: "epic3-ids-dark", issue: 148, caption: "Managing several identities" },
               { shot: "server-dialog-dark", issue: 151, caption: "The new server dialog" },
@@ -710,10 +756,14 @@ const source: Record<"de" | "en", RoadmapPage> = {
             items: [
               "Right-click the connection info: set bitrate, music quality and low-latency mode right in the conversation",
               "Low-latency mode for making music together: about 40 instead of 90 ms mouth to ear, on standard Mumble servers too",
+              "Audio per channel: every channel remembers its own music quality, low-latency mode and bitrate",
+              "High-quality noise suppression with the 2024 RNNoise model, as a beta",
             ],
+            done: [0, 1],
             mockups: [
               { shot: "connection-quick-panel-dark", issue: 155, caption: "Voice quality right at the connection info" },
               { shot: "low-latency-dark", issue: 156, caption: "Low-latency mode" },
+              { shot: "channel-audio-dark", issue: 171, caption: "Audio settings per channel" },
             ],
           },
           {
@@ -728,6 +778,18 @@ const source: Record<"de" | "en", RoadmapPage> = {
               { shot: "epic3-62-relay-setting-and-connection-info-dark", issue: 62, caption: "Relay setting and connection info" },
             ],
           },
+          {
+            title: "Updates and installation",
+            items: [
+              "Updates right in the app: check, download, verify the signature and restart",
+              "Signed Windows builds, installer and app",
+              "On Windows a portable Mumcord.exe next to the installer",
+            ],
+            done: [2],
+            mockups: [
+              { shot: "update-available-dark", issue: 168, caption: "An update is ready" },
+            ],
+          },
         ],
       },
       {
@@ -735,8 +797,8 @@ const source: Record<"de" | "en", RoadmapPage> = {
         tag: "Epic 4",
         title: "Admin",
         status: "later",
-        summary: "So Mumcord can fully replace the official client.",
-        items: ["Edit permissions (ACLs)", "Bans", "Create, move and manage channels"],
+        summary: "So Mumcord can fully replace the official client, plus Mumcord as an app for your phone.",
+        items: ["Edit permissions (ACLs)", "Bans", "Create, move and manage channels", "Android and iOS app: as an APK to download and through TestFlight, the app stores come later"],
       },
       {
         id: "epic-5",

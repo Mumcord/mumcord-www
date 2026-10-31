@@ -4243,6 +4243,23 @@ p {
   border: 1.5px solid var(--faint);
 }
 
+.rm-list li.is-done {
+  color: var(--text);
+}
+.rm-list li.is-done::before {
+  /* A tick instead of the open dot: built on main, ships with the epic's version. */
+  content: "✓";
+  top: 7px;
+  left: 0;
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--live);
+  font-weight: 700;
+}
+
 /* Done: compact cards, the full lists fold away. */
 .rm-done {
   display: grid;
