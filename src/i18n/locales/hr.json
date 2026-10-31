@@ -530,9 +530,10 @@
     "contributors": {
       "label": "07 — Iza svega",
       "title": "Ljudi koji grade Mumcord.",
-      "body": "Svi koji su pridonijeli kodom Mumcordu, Mumbotu ili ovoj web-stranici. Popis dolazi svjež s GitHuba pri svakom buildu.",
+      "body": "Svi koji su pridonijeli kodom Mumcordu, Mumbot, mumpeer, mumquizu ili ovoj web-stranici. Popis dolazi svjež s GitHuba pri svakom buildu.",
       "commits": "commitova",
-      "join": "Pridruži se na GitHubu"
+      "join": "Pridruži se na GitHubu",
+      "toolTitle": "Suradnici"
     }
   },
   "features": {
@@ -2387,12 +2388,12 @@
         "title": "Neobavezno: relay za izravne veze",
         "body": [
           "Da dijeljenje zaslona i slike u punoj veličini rade i kad se dvoje ljudi ne mogu dosegnuti izravno, ili da nitko ne vidi tuđu IP adresu, možeš uz poslužitelj pokrenuti relay <a href=\"/en/mumpeer\">mumpeer</a>. Sadržaj ostaje šifriran s kraja na kraj.",
-          "Dobro je znati: mumpeer je već izašao. Relay bot <code>mumbot peer</code> i podrška za relay u Mumcordu još se grade, do tada relay ostaje neiskorišten.",
-          "U mapi poslužitelja stvori tajnu i konfiguraciju, a adresu svog poslužitelja upiši pod <code>public_host</code> u <code>mumpeer.toml</code>. Zatim dodaj dolje navedene servise u <code>docker-compose.yml</code> pod <code>services:</code>, a <code>mumpeer-data:</code> pod <code>volumes:</code>."
+          "Mumcord koristi relay od verzije 0.5.0. Ostalo radi relay bot <code>mumbot peer</code>: objavljuje relay i dijeli tokene.",
+          "U mapi poslužitelja upiši zajedničku tajnu u <code>.env</code> i preuzmi dvije primjer-konfiguracije. Adresu svog poslužitelja upiši pod <code>public_host</code> u <code>mumpeer.toml</code>, a otisak svog Mumble poslužitelja u <code>bot.toml</code>. Zatim dodaj dolje navedene servise u <code>docker-compose.yml</code> pod <code>services:</code>, a <code>mumpeer-data:</code> i <code>mumbot-data:</code> pod <code>volumes:</code>."
         ],
         "after": [
-          "Pokreni s <code>docker compose up -d</code> i otvori i UDP i TCP na portu 443. Ako ondje već radi web poslužitelj, odaberi druge portove u <code>mumpeer.toml</code>. Ne otvaraj port API-ja.",
-          "Pri prvom pokretanju otisak relaya prikazuje se u logu. Bot će ga objaviti, ništa drugo ne treba dijeliti. Više na stranici <a href=\"/en/mumpeer\">mumpeer</a>."
+          "Pokreni s <code>docker compose up -d</code> i otvori i UDP i TCP na portu 443. Ako ondje već radi web poslužitelj, odaberi druge portove u <code>mumpeer.toml</code>. API ostaje između relaya i bota.",
+          "Pri prvom pokretanju otisak relaya prikazuje se u logu. Bot ga objavljuje, ništa drugo ne treba dijeliti. Više na stranici <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
     ]
@@ -2642,8 +2643,8 @@
           "Nikad se ne bilježe: pune IP adrese, puni hashevi certifikata, tokeni i sadržaj paketa"
         ],
         "startTitle": "Pokreni ga s Dockerom",
-        "startBody": "Stvori tajnu za API (`openssl rand -hex 32 > api_secret`), spremi primjer konfiguracije `mumpeer.example.toml` kao `mumpeer.toml` i u njoj postavi `public_host`. Zatim pokreni relay i bota zajedno:",
-        "startNote": "Pri prvom pokretanju otisak relaya prikazuje se u logu. Bot ga objavljuje, ništa drugo ne treba dijeliti. Otvori UDP i TCP na portu 443, ne port API-ja. Relay bot `mumbot peer` i podrška za relay u Mumcordu još se grade."
+        "startBody": "Stavi dugu nasumičnu tajnu u `.env` kao `PEER_API_SECRET` (na primjer iz `openssl rand -hex 32`). Iz Mumbotova primjera relaya spremi `mumpeer.example.toml` kao `mumpeer.toml` i u njemu postavi `public_host`, te `bot.example.toml` kao `bot.toml`. Zatim pokreni relay i bota zajedno:",
+        "startNote": "Pri prvom pokretanju otisak relaya prikazuje se u logu. Bot ga objavljuje Mumcordu, ništa drugo ne treba dijeliti. Otvori UDP i TCP na portu 443, API ostaje između relaya i bota. Mumcord koristi relay od verzije 0.5.0."
       },
       "mumquiz": {
         "title": "mumquiz",

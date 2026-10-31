@@ -357,9 +357,10 @@ export const de = {
   contributors: {
     label: "07 — Dahinter",
     title: "Die Leute, die an Mumcord bauen.",
-    body: "Alle, die Code zu Mumcord, Mumbot oder dieser Website beigetragen haben. Die Liste kommt bei jedem Build frisch von GitHub.",
+    body: "Alle, die Code zu Mumcord, Mumbot, mumpeer, mumquiz oder dieser Website beigetragen haben. Die Liste kommt bei jedem Build frisch von GitHub.",
     commits: "Commits",
     join: "Mitmachen auf GitHub",
+    toolTitle: "Mitwirkende",
   },
 };
 

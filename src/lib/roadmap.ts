@@ -371,7 +371,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Gespeicherte Kanal-Passwörter zeigen, zu welchem Kanal sie gehören, und lassen sich benennen",
               "Die Server-Info zeigt, ob ein Mumbot oder ein mumpeer-Relay angekündigt ist",
             ],
-            done: [0, 1, 2, 3],
+            done: [0, 1, 2, 3, 4],
             mockups: [
               { shot: "epic3-ids-dark", issue: 148, caption: "Mehrere Identitäten verwalten" },
               { shot: "server-dialog-dark", issue: 151, caption: "Neuer Dialog für Server" },
@@ -401,6 +401,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Optional: Eine Community kann das Relay zusammen mit Mumbot betreiben. Ohne Relay funktioniert alles wie bisher",
               "Einstellbar: Relay aus, nur wenn direkt nicht klappt, oder immer, damit deine IP-Adresse verborgen bleibt",
             ],
+            done: [0, 1, 2, 3],
             mockups: [
               { shot: "epic3-62-relay-setting-and-connection-info-dark", issue: 62, caption: "Relay-Einstellung und Verbindungsinfo" },
             ],
@@ -919,7 +920,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Saved channel passwords show which channel they belong to and can be named",
               "Server info shows whether a Mumbot or a mumpeer relay is announced",
             ],
-            done: [0, 1, 2, 3],
+            done: [0, 1, 2, 3, 4],
             mockups: [
               { shot: "epic3-ids-dark", issue: 148, caption: "Managing several identities" },
               { shot: "server-dialog-dark", issue: 151, caption: "The new server dialog" },
@@ -949,6 +950,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Optional: a community can run the relay together with Mumbot. Without a relay everything works as before",
               "Your choice: relay off, only when a direct connection fails, or always, so your IP address stays hidden",
             ],
+            done: [0, 1, 2, 3],
             mockups: [
               { shot: "epic3-62-relay-setting-and-connection-info-dark", issue: 62, caption: "Relay setting and connection info" },
             ],

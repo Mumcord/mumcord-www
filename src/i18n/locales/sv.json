@@ -530,9 +530,10 @@
     "contributors": {
       "label": "07 — Bakom",
       "title": "Människorna som bygger Mumcord.",
-      "body": "Alla som har bidragit med kod till Mumcord, Mumbot eller den här webbplatsen. Listan hämtas färsk från GitHub vid varje bygge.",
+      "body": "Alla som har bidragit med kod till Mumcord, Mumbot, mumpeer, mumquiz eller den här webbplatsen. Listan hämtas färsk från GitHub vid varje bygge.",
       "commits": "commits",
-      "join": "Bidra på GitHub"
+      "join": "Bidra på GitHub",
+      "toolTitle": "Bidragsgivare"
     }
   },
   "features": {
@@ -2387,12 +2388,12 @@
         "title": "Valfritt: ett relä för direktanslutningar",
         "body": [
           "För att skärmdelning och bilder i full storlek ska fungera även när två personer inte kan nå varandra direkt, eller så att ingen ser den andres IP-adress, kan du köra <a href=\"/en/mumpeer\">mumpeer</a>-reläet bredvid servern. Innehållet förblir krypterat från ände till ände.",
-          "Bra att veta: mumpeer är redan ute. Relä-boten <code>mumbot peer</code> och relästödet i Mumcord byggs fortfarande, tills dess förblir reläet oanvänt.",
-          "Skapa en hemlighet och konfigurationen i serverns mapp och skriv din servers adress under <code>public_host</code> i <code>mumpeer.toml</code>. Lägg sedan till tjänsterna nedan i <code>docker-compose.yml</code> under <code>services:</code>, och <code>mumpeer-data:</code> under <code>volumes:</code>."
+          "Mumcord använder reläet från version 0.5.0. Relä-boten <code>mumbot peer</code> sköter resten: den annonserar reläet och delar ut tokens.",
+          "Skriv i serverns mapp en delad hemlighet i <code>.env</code> och hämta de två exempelkonfigurationerna. Skriv din servers adress under <code>public_host</code> i <code>mumpeer.toml</code> och din Mumble-servers fingeravtryck i <code>bot.toml</code>. Lägg sedan till tjänsterna nedan i <code>docker-compose.yml</code> under <code>services:</code>, och <code>mumpeer-data:</code> och <code>mumbot-data:</code> under <code>volumes:</code>."
         ],
         "after": [
-          "Starta med <code>docker compose up -d</code> och öppna även UDP och TCP på port 443. Om en webbserver redan körs där, välj andra portar i <code>mumpeer.toml</code>. Öppna inte API-porten.",
-          "Vid första starten visas reläets fingeravtryck i loggen. Boten kommer att annonsera det, inget annat behöver delas. Mer på sidan om <a href=\"/en/mumpeer\">mumpeer</a>."
+          "Starta med <code>docker compose up -d</code> och öppna även UDP och TCP på port 443. Om en webbserver redan körs där, välj andra portar i <code>mumpeer.toml</code>. API:et stannar mellan reläet och boten.",
+          "Vid första starten visas reläets fingeravtryck i loggen. Boten annonserar det, inget annat behöver delas. Mer på sidan om <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
     ]
@@ -2642,8 +2643,8 @@
           "Loggas aldrig: fullständiga IP-adresser, fullständiga certifikat-hashar, tokens och paketinnehåll"
         ],
         "startTitle": "Kör det med Docker",
-        "startBody": "Skapa en hemlighet för API:et (`openssl rand -hex 32 > api_secret`), spara exempelkonfigurationen `mumpeer.example.toml` som `mumpeer.toml` och ange `public_host` i den. Starta sedan relä och bot tillsammans:",
-        "startNote": "Vid första starten visas reläets fingeravtryck i loggen. Boten annonserar det, inget annat behöver delas. Öppna UDP och TCP på port 443, inte API-porten. Relä-boten `mumbot peer` och relästödet i Mumcord byggs fortfarande."
+        "startBody": "Lägg en lång slumpmässig hemlighet i `.env` som `PEER_API_SECRET` (till exempel från `openssl rand -hex 32`). Spara `mumpeer.example.toml` från Mumbots reläexempel som `mumpeer.toml` och ange `public_host` i den, och `bot.example.toml` som `bot.toml`. Starta sedan relä och bot tillsammans:",
+        "startNote": "Vid första starten visas reläets fingeravtryck i loggen. Boten annonserar det till Mumcord, inget annat behöver delas. Öppna UDP och TCP på port 443, API:et stannar mellan reläet och boten. Mumcord använder reläet från version 0.5.0."
       },
       "mumquiz": {
         "title": "mumquiz",

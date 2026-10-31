@@ -530,9 +530,10 @@
     "contributors": {
       "label": "07 — Wara dan",
       "title": "In-nies li qed jibnu Mumcord.",
-      "body": "Kull min ikkontribwixxa kodiċi lil Mumcord, Mumbot jew lil dan is-sit. Il-lista tasal friska minn GitHub ma’ kull build.",
+      "body": "Kull min ikkontribwixxa kodiċi lil Mumcord, Mumbot, mumpeer, mumquiz jew lil dan is-sit. Il-lista tasal friska minn GitHub ma’ kull build.",
       "commits": "commits",
-      "join": "Ikkontribwixxi fuq GitHub"
+      "join": "Ikkontribwixxi fuq GitHub",
+      "toolTitle": "Kontributuri"
     }
   },
   "features": {
@@ -2387,12 +2388,12 @@
         "title": "Fakultattiv: relay għal konnessjonijiet diretti",
         "body": [
           "Biex il-qsim tal-iskrin u l-immaġini bid-daqs sħiħ jaħdmu wkoll meta żewġ persuni ma jistgħux jilħqu lil xulxin direttament, jew biex ħadd ma jara l-IP tal-ieħor, tista' tħaddem ir-relay <a href=\"/en/mumpeer\">mumpeer</a> maġenb is-server. Il-kontenut jibqa' kriptat minn tarf sa tarf.",
-          "Tajjeb li tkun taf: mumpeer diġà ħareġ. Il-bot tar-relay <code>mumbot peer</code> u l-appoġġ tar-relay fil-Mumcord għadhom qed jinbnew, sa dakinhar ir-relay jibqa' mhux użat.",
-          "Fil-folder tas-server, oħloq sigriet u l-konfigurazzjoni, u poġġi l-indirizz tas-server tiegħek taħt <code>public_host</code> f'<code>mumpeer.toml</code>. Imbagħad żid is-servizzi t'hawn taħt ma' <code>docker-compose.yml</code> taħt <code>services:</code>, u <code>mumpeer-data:</code> taħt <code>volumes:</code>."
+          "Mumcord juża r-relay mill-verżjoni 0.5.0. Il-bot tar-relay <code>mumbot peer</code> jagħmel il-bqija: jannunzja r-relay u jqassam it-tokens.",
+          "Fil-folder tas-server, ikteb sigriet kondiviż f'<code>.env</code> u ġib iż-żewġ konfigurazzjonijiet ta' eżempju. Poġġi l-indirizz tas-server tiegħek taħt <code>public_host</code> f'<code>mumpeer.toml</code>, u l-marka tas-swaba' tas-server Mumble tiegħek f'<code>bot.toml</code>. Imbagħad żid is-servizzi t'hawn taħt ma' <code>docker-compose.yml</code> taħt <code>services:</code>, u <code>mumpeer-data:</code> u <code>mumbot-data:</code> taħt <code>volumes:</code>."
         ],
         "after": [
-          "Ibda b'<code>docker compose up -d</code> u iftaħ UDP u TCP fuq il-port 443 ukoll. Jekk web server diġà jaħdem hemm, agħżel portijiet oħra f'<code>mumpeer.toml</code>. Tiftaħx il-port tal-API.",
-          "L-ewwel darba li jibda, il-marka tas-swaba' tar-relay tidher fil-log. Il-bot se jannunzjaha, m'hemm bżonn naqsmu xejn aktar. Aktar fuq il-paġna ta' <a href=\"/en/mumpeer\">mumpeer</a>."
+          "Ibda b'<code>docker compose up -d</code> u iftaħ UDP u TCP fuq il-port 443 ukoll. Jekk web server diġà jaħdem hemm, agħżel portijiet oħra f'<code>mumpeer.toml</code>. L-API jibqa' bejn ir-relay u l-bot.",
+          "L-ewwel darba li jibda, il-marka tas-swaba' tar-relay tidher fil-log. Il-bot jannunzjaha, m'hemm bżonn naqsmu xejn aktar. Aktar fuq il-paġna ta' <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
     ]
@@ -2642,8 +2643,8 @@
           "Qatt ma jiġu rreġistrati: indirizzi IP sħaħ, hashes sħaħ taċ-ċertifikati, tokens u kontenut tal-pakketti"
         ],
         "startTitle": "Mexxih b'Docker",
-        "startBody": "Oħloq sigriet għall-API (`openssl rand -hex 32 > api_secret`), issejvja l-konfigurazzjoni eżempju `mumpeer.example.toml` bħala `mumpeer.toml` u ssettja `public_host` fiha. Imbagħad ibda r-relay u l-bot flimkien:",
-        "startNote": "L-ewwel darba li jibda, il-marka tas-swaba' tar-relay tidher fil-log. Il-bot jannunzjaha, m'hemm bżonn naqsmu xejn aktar. Iftaħ UDP u TCP fuq il-port 443, mhux il-port tal-API. Il-bot tar-relay `mumbot peer` u l-appoġġ tar-relay fil-Mumcord għadhom qed jinbnew."
+        "startBody": "Poġġi sigriet twil każwali ġewwa `.env` bħala `PEER_API_SECRET` (per eżempju minn `openssl rand -hex 32`). Mill-eżempju tar-relay ta' Mumbot, issejvja `mumpeer.example.toml` bħala `mumpeer.toml` u ssettja `public_host` fih, u `bot.example.toml` bħala `bot.toml`. Imbagħad ibda r-relay u l-bot flimkien:",
+        "startNote": "L-ewwel darba li jibda, il-marka tas-swaba' tar-relay tidher fil-log. Il-bot jannunzjaha lil Mumcord, m'hemm bżonn naqsmu xejn aktar. Iftaħ UDP u TCP fuq il-port 443, l-API jibqa' bejn ir-relay u l-bot. Mumcord juża r-relay mill-verżjoni 0.5.0."
       },
       "mumquiz": {
         "title": "mumquiz",

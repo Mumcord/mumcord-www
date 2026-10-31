@@ -530,9 +530,10 @@
     "contributors": {
       "label": "07 — Detrás",
       "title": "Las personas que construyen Mumcord.",
-      "body": "Todas las personas que han aportado código a Mumcord, Mumbot o esta web. La lista llega fresca de GitHub en cada compilación.",
+      "body": "Todas las personas que han aportado código a Mumcord, Mumbot, mumpeer, mumquiz o esta web. La lista llega fresca de GitHub en cada compilación.",
       "commits": "commits",
-      "join": "Colabora en GitHub"
+      "join": "Colabora en GitHub",
+      "toolTitle": "Colaboradores"
     }
   },
   "features": {
@@ -2387,12 +2388,12 @@
         "title": "Opcional: un relay para conexiones directas",
         "body": [
           "Para que compartir pantalla y las imágenes a tamaño completo también funcionen cuando dos personas no pueden alcanzarse directamente, o para que nadie vea la IP del otro, puedes ejecutar el relay <a href=\"/en/mumpeer\">mumpeer</a> junto al servidor. El contenido sigue cifrado de extremo a extremo.",
-          "Conviene saber: mumpeer ya ha salido. El bot de relay <code>mumbot peer</code> y la compatibilidad con relay en Mumcord aún están en construcción; hasta entonces el relay queda sin usar.",
-          "En la carpeta del servidor, crea un secreto y la configuración, y pon la dirección de tu servidor en <code>public_host</code> dentro de <code>mumpeer.toml</code>. Luego añade los servicios de abajo a <code>docker-compose.yml</code> bajo <code>services:</code>, y <code>mumpeer-data:</code> bajo <code>volumes:</code>."
+          "Mumcord usa el relay desde la versión 0.5.0. El bot de relay <code>mumbot peer</code> hace el resto: anuncia el relay y reparte los tokens.",
+          "En la carpeta del servidor, escribe un secreto compartido en <code>.env</code> y descarga las dos configuraciones de ejemplo. Pon la dirección de tu servidor en <code>public_host</code> dentro de <code>mumpeer.toml</code>, y la huella de tu servidor Mumble en <code>bot.toml</code>. Luego añade los servicios de abajo a <code>docker-compose.yml</code> bajo <code>services:</code>, y <code>mumpeer-data:</code> y <code>mumbot-data:</code> bajo <code>volumes:</code>."
         ],
         "after": [
-          "Inicia con <code>docker compose up -d</code> y abre también UDP y TCP en el puerto 443. Si ahí ya funciona un servidor web, elige otros puertos en <code>mumpeer.toml</code>. No abras el puerto de la API.",
-          "En el primer arranque, la huella del relay aparece en el log. El bot la anunciará, no hace falta compartir nada más. Más en la página de <a href=\"/en/mumpeer\">mumpeer</a>."
+          "Inicia con <code>docker compose up -d</code> y abre también UDP y TCP en el puerto 443. Si ahí ya funciona un servidor web, elige otros puertos en <code>mumpeer.toml</code>. La API queda entre el relay y el bot.",
+          "En el primer arranque, la huella del relay aparece en el log. El bot la anuncia, no hace falta compartir nada más. Más en la página de <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
     ]
@@ -2642,8 +2643,8 @@
           "Nunca se registran: direcciones IP completas, hashes completos de certificados, tokens ni contenido de paquetes"
         ],
         "startTitle": "Ejecútalo con Docker",
-        "startBody": "Crea un secreto para la API (`openssl rand -hex 32 > api_secret`), guarda la configuración de ejemplo `mumpeer.example.toml` como `mumpeer.toml` y define en ella `public_host`. Después inicia el relay y el bot juntos:",
-        "startNote": "En el primer arranque, la huella del relay aparece en el log. El bot la anuncia, no hace falta compartir nada más. Abre UDP y TCP en el puerto 443, no el puerto de la API. El bot de relay `mumbot peer` y la compatibilidad con relay en Mumcord aún están en construcción."
+        "startBody": "Pon un secreto largo y aleatorio en `.env` como `PEER_API_SECRET` (por ejemplo, de `openssl rand -hex 32`). Del ejemplo de relay de Mumbot guarda `mumpeer.example.toml` como `mumpeer.toml` y define en él `public_host`, y `bot.example.toml` como `bot.toml`. Después inicia el relay y el bot juntos:",
+        "startNote": "En el primer arranque, la huella del relay aparece en el log. El bot la anuncia a Mumcord, no hace falta compartir nada más. Abre UDP y TCP en el puerto 443, la API queda entre el relay y el bot. Mumcord usa el relay desde la versión 0.5.0."
       },
       "mumquiz": {
         "title": "mumquiz",

@@ -530,9 +530,10 @@
     "contributors": {
       "label": "07 — A háttérben",
       "title": "Akik a Mumcordot építik.",
-      "body": "Mindenki, aki kóddal járult hozzá a Mumcordhoz, a Mumbothoz vagy ehhez a weboldalhoz. A lista minden buildnél frissen érkezik a GitHubról.",
+      "body": "Mindenki, aki kóddal járult hozzá a Mumcordhoz, a Mumbot, mumpeer, mumquizhoz vagy ehhez a weboldalhoz. A lista minden buildnél frissen érkezik a GitHubról.",
       "commits": "commit",
-      "join": "Csatlakozz a GitHubon"
+      "join": "Csatlakozz a GitHubon",
+      "toolTitle": "Közreműködők"
     }
   },
   "features": {
@@ -2387,12 +2388,12 @@
         "title": "Opcionális: relé közvetlen kapcsolatokhoz",
         "body": [
           "Hogy a képernyőmegosztás és a teljes méretű képek akkor is működjenek, ha két ember nem éri el egymást közvetlenül, vagy hogy senki ne lássa a másik IP-jét, futtathatod a <a href=\"/en/mumpeer\">mumpeer</a> relét a szerver mellett. A tartalom végpontok között titkosított marad.",
-          "Jó tudni: a mumpeer már megjelent. A <code>mumbot peer</code> relébot és a relétámogatás a Mumcordban még készül, addig a relé használaton kívül marad.",
-          "A szerver mappájában hozz létre egy titkot és a konfigurációt, és írd a szervered címét a <code>mumpeer.toml</code> fájl <code>public_host</code> mezőjébe. Utána add hozzá az alábbi szolgáltatásokat a <code>docker-compose.yml</code> fájlhoz a <code>services:</code> alatt, a <code>mumpeer-data:</code> sort pedig a <code>volumes:</code> alá."
+          "A Mumcord a 0.5.0 verziótól használja a relét. A többit a <code>mumbot peer</code> relébot intézi: bejelenti a relét és kiosztja a tokeneket.",
+          "A szerver mappájában írj egy közös titkot a <code>.env</code> fájlba, és töltsd le a két példakonfigurációt. Írd a szervered címét a <code>mumpeer.toml</code> fájl <code>public_host</code> mezőjébe, a Mumble-szervered ujjlenyomatát pedig a <code>bot.toml</code> fájlba. Utána add hozzá az alábbi szolgáltatásokat a <code>docker-compose.yml</code> fájlhoz a <code>services:</code> alatt, a <code>mumpeer-data:</code> és a <code>mumbot-data:</code> sort pedig a <code>volumes:</code> alá."
         ],
         "after": [
-          "Indítsd a <code>docker compose up -d</code> paranccsal, és nyisd meg az UDP-t és a TCP-t is a 443-as porton. Ha ott már fut egy webszerver, válassz más portokat a <code>mumpeer.toml</code> fájlban. Az API portját ne nyisd meg.",
-          "Első indításkor a relé ujjlenyomata megjelenik a naplóban. A bot be fogja jelenteni, mást nem kell megosztani. Többet a <a href=\"/en/mumpeer\">mumpeer</a> oldalon."
+          "Indítsd a <code>docker compose up -d</code> paranccsal, és nyisd meg az UDP-t és a TCP-t is a 443-as porton. Ha ott már fut egy webszerver, válassz más portokat a <code>mumpeer.toml</code> fájlban. Az API a relé és a bot között marad.",
+          "Első indításkor a relé ujjlenyomata megjelenik a naplóban. A bot bejelenti, mást nem kell megosztani. Többet a <a href=\"/en/mumpeer\">mumpeer</a> oldalon."
         ]
       }
     ]
@@ -2642,8 +2643,8 @@
           "Soha nem naplózza: teljes IP-címeket, teljes tanúsítványhasheket, tokeneket és csomagtartalmat"
         ],
         "startTitle": "Futtasd Dockerrel",
-        "startBody": "Hozz létre egy titkot az API-hoz (`openssl rand -hex 32 > api_secret`), mentsd a `mumpeer.example.toml` példakonfigurációt `mumpeer.toml` néven, és állítsd be benne a `public_host` értékét. Utána indítsd el együtt a relét és a botot:",
-        "startNote": "Első indításkor a relé ujjlenyomata megjelenik a naplóban. A bot bejelenti, mást nem kell megosztani. Nyisd meg az UDP-t és a TCP-t a 443-as porton, az API portját ne. A `mumbot peer` relébot és a relétámogatás a Mumcordban még készül."
+        "startBody": "Írj egy hosszú, véletlen titkot a `.env` fájlba `PEER_API_SECRET` néven (például az `openssl rand -hex 32` kimenetéből). A Mumbot relépéldájából mentsd a `mumpeer.example.toml` fájlt `mumpeer.toml` néven, és állítsd be benne a `public_host` értékét, a `bot.example.toml` fájlt pedig `bot.toml` néven. Utána indítsd el együtt a relét és a botot:",
+        "startNote": "Első indításkor a relé ujjlenyomata megjelenik a naplóban. A bot bejelenti a Mumcordnak, mást nem kell megosztani. Nyisd meg az UDP-t és a TCP-t a 443-as porton, az API a relé és a bot között marad. A Mumcord a 0.5.0 verziótól használja a relét."
       },
       "mumquiz": {
         "title": "mumquiz",

@@ -530,9 +530,10 @@
     "contributors": {
       "label": "07 — Tekijät",
       "title": "Ihmiset, jotka rakentavat Mumcordia.",
-      "body": "Kaikki, jotka ovat tuoneet koodia Mumcordiin, Mumbotiin tai tähän sivustoon. Lista haetaan GitHubista tuoreena joka käännöksessä.",
+      "body": "Kaikki, jotka ovat tuoneet koodia Mumcordiin, Mumbot, mumpeer, mumquiziin tai tähän sivustoon. Lista haetaan GitHubista tuoreena joka käännöksessä.",
       "commits": "committia",
-      "join": "Osallistu GitHubissa"
+      "join": "Osallistu GitHubissa",
+      "toolTitle": "Osallistujat"
     }
   },
   "features": {
@@ -2387,11 +2388,11 @@
         "title": "Valinnainen: välityspalvelin suorille yhteyksille",
         "body": [
           "Jotta näytönjako ja täysikokoiset kuvat toimivat myös silloin, kun kaksi ihmistä ei tavoita toisiaan suoraan, tai jotta kukaan ei näe toisen IP-osoitetta, voit ajaa <a href=\"/en/mumpeer\">mumpeer</a>-välityspalvelinta palvelimen rinnalla. Sisältö pysyy päästä päähän salattuna.",
-          "Hyvä tietää: mumpeer on jo ulkona. Välitysbotti <code>mumbot peer</code> ja välitystuki Mumcordissa ovat vielä rakenteilla, siihen asti välityspalvelin jää käyttämättä.",
-          "Luo palvelimen kansioon salaisuus ja asetukset, ja kirjoita palvelimesi osoite kohtaan <code>public_host</code> tiedostossa <code>mumpeer.toml</code>. Lisää sitten alla olevat palvelut tiedostoon <code>docker-compose.yml</code> kohdan <code>services:</code> alle ja <code>mumpeer-data:</code> kohdan <code>volumes:</code> alle."
+          "Mumcord käyttää välityspalvelinta versiosta 0.5.0 alkaen. Välitysbotti <code>mumbot peer</code> hoitaa loput: se ilmoittaa välityspalvelimen ja jakaa tokenit.",
+          "Kirjoita palvelimen kansiossa jaettu salaisuus tiedostoon <code>.env</code> ja hae kaksi esimerkkiasetustiedostoa. Kirjoita palvelimesi osoite kohtaan <code>public_host</code> tiedostossa <code>mumpeer.toml</code> ja Mumble-palvelimesi sormenjälki tiedostoon <code>bot.toml</code>. Lisää sitten alla olevat palvelut tiedostoon <code>docker-compose.yml</code> kohdan <code>services:</code> alle sekä <code>mumpeer-data:</code> ja <code>mumbot-data:</code> kohdan <code>volumes:</code> alle."
         ],
         "after": [
-          "Käynnistä komennolla <code>docker compose up -d</code> ja avaa myös UDP ja TCP portissa 443. Jos siellä pyörii jo verkkopalvelin, valitse <code>mumpeer.toml</code>-tiedostossa muut portit. Älä avaa API-porttia.",
+          "Käynnistä komennolla <code>docker compose up -d</code> ja avaa myös UDP ja TCP portissa 443. Jos siellä pyörii jo verkkopalvelin, valitse <code>mumpeer.toml</code>-tiedostossa muut portit. API pysyy välityspalvelimen ja botin välillä.",
           "Ensimmäisellä käynnistyksellä välityspalvelimen sormenjälki näkyy lokissa. Botti ilmoittaa sen, mitään muuta ei tarvitse jakaa. Lisää <a href=\"/en/mumpeer\">mumpeer</a>-sivulla."
         ]
       }
@@ -2642,8 +2643,8 @@
           "Ei koskaan kirjata: täydet IP-osoitteet, täydet varmenteiden tiivisteet, tokenit ja pakettien sisältö"
         ],
         "startTitle": "Aja se Dockerilla",
-        "startBody": "Luo API:lle salaisuus (`openssl rand -hex 32 > api_secret`), tallenna esimerkkiasetukset `mumpeer.example.toml` nimellä `mumpeer.toml` ja aseta siihen `public_host`. Käynnistä sitten välityspalvelin ja botti yhdessä:",
-        "startNote": "Ensimmäisellä käynnistyksellä välityspalvelimen sormenjälki näkyy lokissa. Botti ilmoittaa sen, mitään muuta ei tarvitse jakaa. Avaa UDP ja TCP portissa 443, älä API-porttia. Välitysbotti `mumbot peer` ja välitystuki Mumcordissa ovat vielä rakenteilla."
+        "startBody": "Laita pitkä satunnainen salaisuus tiedostoon `.env` nimellä `PEER_API_SECRET` (esimerkiksi komennolla `openssl rand -hex 32`). Tallenna Mumbotin välitysesimerkistä `mumpeer.example.toml` nimellä `mumpeer.toml` ja aseta siihen `public_host`, sekä `bot.example.toml` nimellä `bot.toml`. Käynnistä sitten välityspalvelin ja botti yhdessä:",
+        "startNote": "Ensimmäisellä käynnistyksellä välityspalvelimen sormenjälki näkyy lokissa. Botti ilmoittaa sen Mumcordille, mitään muuta ei tarvitse jakaa. Avaa UDP ja TCP portissa 443, API pysyy välityspalvelimen ja botin välillä. Mumcord käyttää välityspalvelinta versiosta 0.5.0 alkaen."
       },
       "mumquiz": {
         "title": "mumquiz",

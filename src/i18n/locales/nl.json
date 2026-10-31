@@ -530,9 +530,10 @@
     "contributors": {
       "label": "07 — Erachter",
       "title": "De mensen die Mumcord bouwen.",
-      "body": "Iedereen die code heeft bijgedragen aan Mumcord, Mumbot of deze website. De lijst komt bij elke build vers van GitHub.",
+      "body": "Iedereen die code heeft bijgedragen aan Mumcord, Mumbot, mumpeer, mumquiz of deze website. De lijst komt bij elke build vers van GitHub.",
       "commits": "commits",
-      "join": "Doe mee op GitHub"
+      "join": "Doe mee op GitHub",
+      "toolTitle": "Bijdragers"
     }
   },
   "features": {
@@ -2387,11 +2388,11 @@
         "title": "Optioneel: een relay voor directe verbindingen",
         "body": [
           "Zodat schermdelen en afbeeldingen op volledige grootte ook werken als twee mensen elkaar niet direct kunnen bereiken, of zodat niemand het IP-adres van de ander ziet, kun je het <a href=\"/en/mumpeer\">mumpeer</a>-relay naast de server draaien. De inhoud blijft end-to-end versleuteld.",
-          "Goed om te weten: mumpeer is al uit. De relaybot <code>mumbot peer</code> en relay-ondersteuning in Mumcord worden nog gebouwd, tot die tijd blijft het relay ongebruikt.",
-          "Maak in de map van de server een geheim en de config, en zet het adres van je server bij <code>public_host</code> in <code>mumpeer.toml</code>. Voeg dan de onderstaande services toe aan <code>docker-compose.yml</code> onder <code>services:</code>, en <code>mumpeer-data:</code> onder <code>volumes:</code>."
+          "Mumcord gebruikt het relay vanaf versie 0.5.0. De relaybot <code>mumbot peer</code> doet de rest: hij kondigt het relay aan en deelt de tokens uit.",
+          "Schrijf in de map van de server een gedeeld geheim in <code>.env</code> en haal de twee voorbeeldconfigs op. Zet het adres van je server bij <code>public_host</code> in <code>mumpeer.toml</code>, en de vingerafdruk van je Mumble-server in <code>bot.toml</code>. Voeg dan de onderstaande services toe aan <code>docker-compose.yml</code> onder <code>services:</code>, en <code>mumpeer-data:</code> en <code>mumbot-data:</code> onder <code>volumes:</code>."
         ],
         "after": [
-          "Start met <code>docker compose up -d</code> en open ook UDP en TCP op poort 443. Draait daar al een webserver, kies dan andere poorten in <code>mumpeer.toml</code>. Open de API-poort niet.",
+          "Start met <code>docker compose up -d</code> en open ook UDP en TCP op poort 443. Draait daar al een webserver, kies dan andere poorten in <code>mumpeer.toml</code>. De API blijft tussen relay en bot.",
           "Bij de eerste start verschijnt de vingerafdruk van het relay in het log. De bot kondigt die aan, er hoeft verder niets gedeeld te worden. Meer op de pagina over <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
@@ -2642,8 +2643,8 @@
           "Nooit gelogd: volledige IP-adressen, volledige certificaat-hashes, tokens en pakketinhoud"
         ],
         "startTitle": "Draai het met Docker",
-        "startBody": "Maak een geheim voor de API (`openssl rand -hex 32 > api_secret`), sla de voorbeeldconfig `mumpeer.example.toml` op als `mumpeer.toml` en stel daarin `public_host` in. Start dan relay en bot samen:",
-        "startNote": "Bij de eerste start verschijnt de vingerafdruk van het relay in het log. De bot kondigt die aan, er hoeft verder niets gedeeld te worden. Open UDP en TCP op poort 443, niet de API-poort. De relaybot `mumbot peer` en relay-ondersteuning in Mumcord worden nog gebouwd."
+        "startBody": "Zet een lang willekeurig geheim in `.env` als `PEER_API_SECRET` (bijvoorbeeld uit `openssl rand -hex 32`). Sla uit het relayvoorbeeld van Mumbot `mumpeer.example.toml` op als `mumpeer.toml` en stel daarin `public_host` in, en `bot.example.toml` als `bot.toml`. Start dan relay en bot samen:",
+        "startNote": "Bij de eerste start verschijnt de vingerafdruk van het relay in het log. De bot kondigt die aan bij Mumcord, er hoeft verder niets gedeeld te worden. Open UDP en TCP op poort 443, de API blijft tussen relay en bot. Mumcord gebruikt het relay vanaf versie 0.5.0."
       },
       "mumquiz": {
         "title": "mumquiz",

@@ -530,9 +530,10 @@
     "contributors": {
       "label": "07 — Aizkulisēs",
       "title": "Cilvēki, kas veido Mumcord.",
-      "body": "Visi, kas devuši kodu Mumcord, Mumbot vai šai vietnei. Saraksts katrā būvējumā nāk svaigs no GitHub.",
+      "body": "Visi, kas devuši kodu Mumcord, Mumbot, mumpeer, mumquiz vai šai vietnei. Saraksts katrā būvējumā nāk svaigs no GitHub.",
       "commits": "commiti",
-      "join": "Piedalies GitHub"
+      "join": "Piedalies GitHub",
+      "toolTitle": "Līdzdalībnieki"
     }
   },
   "features": {
@@ -2387,12 +2388,12 @@
         "title": "Neobligāti: relejs tiešajiem savienojumiem",
         "body": [
           "Lai ekrāna koplietošana un pilna izmēra attēli darbotos arī tad, kad divi cilvēki nevar sasniegt viens otru tieši, vai lai neviens neredzētu otra IP adresi, blakus serverim vari palaist releju <a href=\"/en/mumpeer\">mumpeer</a>. Saturs paliek šifrēts no gala līdz galam.",
-          "Der zināt: mumpeer jau ir izlaists. Releja bots <code>mumbot peer</code> un releja atbalsts Mumcord vēl tiek veidoti, līdz tam relejs paliek neizmantots.",
-          "Servera mapē izveido noslēpumu un konfigurāciju, un savu servera adresi ieraksti pie <code>public_host</code> failā <code>mumpeer.toml</code>. Pēc tam pievieno tālāk redzamos servisus failam <code>docker-compose.yml</code> zem <code>services:</code>, bet <code>mumpeer-data:</code> zem <code>volumes:</code>."
+          "Mumcord izmanto releju no versijas 0.5.0. Pārējo paveic releja bots <code>mumbot peer</code>: tas paziņo releju un izdala tokenus.",
+          "Servera mapē ieraksti kopīgu noslēpumu failā <code>.env</code> un lejupielādē abas piemēra konfigurācijas. Savu servera adresi ieraksti pie <code>public_host</code> failā <code>mumpeer.toml</code>, bet sava Mumble servera pirkstu nospiedumu failā <code>bot.toml</code>. Pēc tam pievieno tālāk redzamos servisus failam <code>docker-compose.yml</code> zem <code>services:</code>, bet <code>mumpeer-data:</code> un <code>mumbot-data:</code> zem <code>volumes:</code>."
         ],
         "after": [
-          "Palaid ar <code>docker compose up -d</code> un atver arī UDP un TCP 443. portā. Ja tur jau darbojas tīmekļa serveris, izvēlies citus portus failā <code>mumpeer.toml</code>. Neatver API portu.",
-          "Pirmajā palaišanas reizē releja pirkstu nospiedums parādās žurnālā. Bots to paziņos, nekas cits nav jādala. Vairāk <a href=\"/en/mumpeer\">mumpeer</a> lapā."
+          "Palaid ar <code>docker compose up -d</code> un atver arī UDP un TCP 443. portā. Ja tur jau darbojas tīmekļa serveris, izvēlies citus portus failā <code>mumpeer.toml</code>. API paliek starp releju un botu.",
+          "Pirmajā palaišanas reizē releja pirkstu nospiedums parādās žurnālā. Bots to paziņo, nekas cits nav jādala. Vairāk <a href=\"/en/mumpeer\">mumpeer</a> lapā."
         ]
       }
     ]
@@ -2642,8 +2643,8 @@
           "Nekad netiek žurnalizēts: pilnas IP adreses, pilni sertifikātu jaucējkodi, žetoni un pakešu saturs"
         ],
         "startTitle": "Palaid ar Docker",
-        "startBody": "Izveido noslēpumu API (`openssl rand -hex 32 > api_secret`), saglabā piemēra konfigurāciju `mumpeer.example.toml` kā `mumpeer.toml` un iestati tajā `public_host`. Pēc tam palaid releju un botu kopā:",
-        "startNote": "Pirmajā palaišanas reizē releja pirkstu nospiedums parādās žurnālā. Bots to paziņo, nekas cits nav jādala. Atver UDP un TCP 443. portā, nevis API portu. Releja bots `mumbot peer` un releja atbalsts Mumcord vēl tiek veidoti."
+        "startBody": "Ieraksti garu nejaušu noslēpumu failā `.env` kā `PEER_API_SECRET` (piemēram, no `openssl rand -hex 32`). No Mumbot releja piemēra saglabā `mumpeer.example.toml` kā `mumpeer.toml` un iestati tajā `public_host`, bet `bot.example.toml` kā `bot.toml`. Pēc tam palaid releju un botu kopā:",
+        "startNote": "Pirmajā palaišanas reizē releja pirkstu nospiedums parādās žurnālā. Bots to paziņo Mumcord, nekas cits nav jādala. Atver UDP un TCP 443. portā, API paliek starp releju un botu. Mumcord izmanto releju no versijas 0.5.0."
       },
       "mumquiz": {
         "title": "mumquiz",

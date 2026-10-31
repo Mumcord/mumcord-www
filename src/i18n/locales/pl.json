@@ -530,9 +530,10 @@
     "contributors": {
       "label": "07 — Kto za tym stoi",
       "title": "Ludzie, którzy budują Mumcord.",
-      "body": "Wszyscy, którzy wnieśli kod do Mumcorda, Mumbota lub tej strony. Lista przy każdym buildzie przychodzi świeża z GitHuba.",
+      "body": "Wszyscy, którzy wnieśli kod do Mumcorda, Mumbot, mumpeer, mumquiza lub tej strony. Lista przy każdym buildzie przychodzi świeża z GitHuba.",
       "commits": "commitów",
-      "join": "Dołącz na GitHubie"
+      "join": "Dołącz na GitHubie",
+      "toolTitle": "Współtwórcy"
     }
   },
   "features": {
@@ -2387,12 +2388,12 @@
         "title": "Opcjonalnie: relay dla bezpośrednich połączeń",
         "body": [
           "Żeby udostępnianie ekranu i obrazy w pełnym rozmiarze działały też wtedy, gdy dwie osoby nie mogą się połączyć bezpośrednio, albo żeby nikt nie widział cudzego IP, możesz uruchomić obok serwera relay <a href=\"/en/mumpeer\">mumpeer</a>. Treść pozostaje szyfrowana end-to-end.",
-          "Warto wiedzieć: mumpeer już wyszedł. Bot relay <code>mumbot peer</code> i obsługa relaya w Mumcordzie są jeszcze w budowie, do tego czasu relay pozostaje nieużywany.",
-          "W folderze serwera utwórz sekret i konfigurację, a adres swojego serwera wpisz w <code>public_host</code> w <code>mumpeer.toml</code>. Potem dodaj poniższe usługi do <code>docker-compose.yml</code> pod <code>services:</code>, a <code>mumpeer-data:</code> pod <code>volumes:</code>."
+          "Mumcord używa relaya od wersji 0.5.0. Resztę robi bot relay <code>mumbot peer</code>: ogłasza relay i rozdaje tokeny.",
+          "W folderze serwera wpisz wspólny sekret do <code>.env</code> i pobierz dwie przykładowe konfiguracje. Adres swojego serwera wpisz w <code>public_host</code> w <code>mumpeer.toml</code>, a odcisk swojego serwera Mumble w <code>bot.toml</code>. Potem dodaj poniższe usługi do <code>docker-compose.yml</code> pod <code>services:</code>, a <code>mumpeer-data:</code> i <code>mumbot-data:</code> pod <code>volumes:</code>."
         ],
         "after": [
-          "Uruchom przez <code>docker compose up -d</code> i otwórz też UDP i TCP na porcie 443. Jeśli działa tam już serwer WWW, wybierz inne porty w <code>mumpeer.toml</code>. Nie otwieraj portu API.",
-          "Przy pierwszym uruchomieniu odcisk relaya pojawia się w logu. Bot go ogłosi, nic więcej nie trzeba udostępniać. Więcej na stronie <a href=\"/en/mumpeer\">mumpeer</a>."
+          "Uruchom przez <code>docker compose up -d</code> i otwórz też UDP i TCP na porcie 443. Jeśli działa tam już serwer WWW, wybierz inne porty w <code>mumpeer.toml</code>. API zostaje między relayem a botem.",
+          "Przy pierwszym uruchomieniu odcisk relaya pojawia się w logu. Bot go ogłasza, nic więcej nie trzeba udostępniać. Więcej na stronie <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
     ]
@@ -2642,8 +2643,8 @@
           "Nigdy nie są logowane: pełne adresy IP, pełne skróty certyfikatów, tokeny ani zawartość pakietów"
         ],
         "startTitle": "Uruchom go w Dockerze",
-        "startBody": "Utwórz sekret dla API (`openssl rand -hex 32 > api_secret`), zapisz przykładową konfigurację `mumpeer.example.toml` jako `mumpeer.toml` i ustaw w niej `public_host`. Potem uruchom relay i bota razem:",
-        "startNote": "Przy pierwszym uruchomieniu odcisk relaya pojawia się w logu. Bot go ogłasza, nic więcej nie trzeba udostępniać. Otwórz UDP i TCP na porcie 443, nie port API. Bot relay `mumbot peer` i obsługa relaya w Mumcordzie są jeszcze w budowie."
+        "startBody": "Wpisz długi losowy sekret do `.env` jako `PEER_API_SECRET` (na przykład z `openssl rand -hex 32`). Z przykładu relaya Mumbota zapisz `mumpeer.example.toml` jako `mumpeer.toml` i ustaw w nim `public_host`, a `bot.example.toml` jako `bot.toml`. Potem uruchom relay i bota razem:",
+        "startNote": "Przy pierwszym uruchomieniu odcisk relaya pojawia się w logu. Bot ogłasza go Mumcordowi, nic więcej nie trzeba udostępniać. Otwórz UDP i TCP na porcie 443, API zostaje między relayem a botem. Mumcord używa relaya od wersji 0.5.0."
       },
       "mumquiz": {
         "title": "mumquiz",

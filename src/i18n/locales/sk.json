@@ -530,9 +530,10 @@
     "contributors": {
       "label": "07 — Kto za tým stojí",
       "title": "Ľudia, ktorí tvoria Mumcord.",
-      "body": "Všetci, ktorí prispeli kódom do Mumcordu, Mumbotu alebo tohto webu. Zoznam sa pri každom zostavení načíta čerstvo z GitHubu.",
+      "body": "Všetci, ktorí prispeli kódom do Mumcordu, Mumbot, mumpeer, mumquizu alebo tohto webu. Zoznam sa pri každom zostavení načíta čerstvo z GitHubu.",
       "commits": "commitov",
-      "join": "Zapoj sa na GitHube"
+      "join": "Zapoj sa na GitHube",
+      "toolTitle": "Prispievatelia"
     }
   },
   "features": {
@@ -2387,11 +2388,11 @@
         "title": "Voliteľné: relay pre priame spojenia",
         "body": [
           "Aby zdieľanie obrazovky a obrázky v plnej veľkosti fungovali aj vtedy, keď sa dvaja ľudia nedokážu spojiť priamo, alebo aby nikto nevidel IP adresu toho druhého, môžeš vedľa servera prevádzkovať relay <a href=\"/en/mumpeer\">mumpeer</a>. Obsah ostáva šifrovaný end-to-end.",
-          "Dobré vedieť: mumpeer už vyšiel. Relay bot <code>mumbot peer</code> a podpora relay v Mumcorde sa ešte stavajú, dovtedy ostáva relay nevyužité.",
-          "V priečinku servera vytvor tajný kľúč a konfiguráciu a do <code>public_host</code> v <code>mumpeer.toml</code> zadaj adresu svojho servera. Potom pridaj nižšie uvedené služby do <code>docker-compose.yml</code> pod <code>services:</code> a <code>mumpeer-data:</code> pod <code>volumes:</code>."
+          "Mumcord používa relay od verzie 0.5.0. Zvyšok obstará relay bot <code>mumbot peer</code>: oznámi relay a rozdáva tokeny.",
+          "V priečinku servera zapíš do <code>.env</code> zdieľaný tajný kľúč a stiahni obe ukážkové konfigurácie. Do <code>public_host</code> v <code>mumpeer.toml</code> zadaj adresu svojho servera a do <code>bot.toml</code> odtlačok svojho servera Mumble. Potom pridaj nižšie uvedené služby do <code>docker-compose.yml</code> pod <code>services:</code> a <code>mumpeer-data:</code> a <code>mumbot-data:</code> pod <code>volumes:</code>."
         ],
         "after": [
-          "Spusti pomocou <code>docker compose up -d</code> a otvor aj UDP a TCP na porte 443. Ak tam už beží webový server, zvoľ v <code>mumpeer.toml</code> iné porty. Port API neotváraj.",
+          "Spusti pomocou <code>docker compose up -d</code> a otvor aj UDP a TCP na porte 443. Ak tam už beží webový server, zvoľ v <code>mumpeer.toml</code> iné porty. API zostáva medzi relay a botom.",
           "Pri prvom štarte sa v logu zobrazí odtlačok relay. Bot ho oznámi, nič ďalšie sa zdieľať nemusí. Viac na stránke <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
@@ -2642,8 +2643,8 @@
           "Nikdy sa nelogujú: celé IP adresy, celé hashe certifikátov, tokeny a obsah paketov"
         ],
         "startTitle": "Spusti ho v Dockeri",
-        "startBody": "Vytvor tajný kľúč pre API (`openssl rand -hex 32 > api_secret`), ulož ukážkovú konfiguráciu `mumpeer.example.toml` ako `mumpeer.toml` a nastav v nej `public_host`. Potom spusti relay a bota spolu:",
-        "startNote": "Pri prvom štarte sa v logu zobrazí odtlačok relay. Bot ho oznámi, nič ďalšie sa zdieľať nemusí. Otvor UDP a TCP na porte 443, nie port API. Relay bot `mumbot peer` a podpora relay v Mumcorde sa ešte stavajú."
+        "startBody": "Vlož do `.env` dlhý náhodný tajný kľúč ako `PEER_API_SECRET` (napríklad z `openssl rand -hex 32`). Z ukážky relay v Mumbote ulož `mumpeer.example.toml` ako `mumpeer.toml` a nastav v ňom `public_host` a `bot.example.toml` ako `bot.toml`. Potom spusti relay a bota spolu:",
+        "startNote": "Pri prvom štarte sa v logu zobrazí odtlačok relay. Bot ho oznámi Mumcordu, nič ďalšie sa zdieľať nemusí. Otvor UDP a TCP na porte 443, API zostáva medzi relay a botom. Mumcord používa relay od verzie 0.5.0."
       },
       "mumquiz": {
         "title": "mumquiz",

@@ -530,9 +530,10 @@
     "contributors": {
       "label": "07 — Bag det hele",
       "title": "Folkene, der bygger Mumcord.",
-      "body": "Alle, der har bidraget med kode til Mumcord, Mumbot eller dette website. Listen hentes frisk fra GitHub ved hvert build.",
+      "body": "Alle, der har bidraget med kode til Mumcord, Mumbot, mumpeer, mumquiz eller dette website. Listen hentes frisk fra GitHub ved hvert build.",
       "commits": "commits",
-      "join": "Bidrag på GitHub"
+      "join": "Bidrag på GitHub",
+      "toolTitle": "Bidragydere"
     }
   },
   "features": {
@@ -2387,11 +2388,11 @@
         "title": "Valgfrit: et relay til direkte forbindelser",
         "body": [
           "Så skærmdeling og billeder i fuld størrelse også virker, når to personer ikke kan nå hinanden direkte, eller så ingen ser den andens IP-adresse, kan du køre <a href=\"/en/mumpeer\">mumpeer</a>-relayet ved siden af serveren. Indholdet forbliver ende-til-ende-krypteret.",
-          "Godt at vide: mumpeer er allerede udkommet. Relay-botten <code>mumbot peer</code> og relay-understøttelsen i Mumcord er stadig under udvikling, indtil da forbliver relayet ubrugt.",
-          "Opret en hemmelighed og konfigurationen i serverens mappe, og skriv din servers adresse under <code>public_host</code> i <code>mumpeer.toml</code>. Tilføj derefter tjenesterne nedenfor i <code>docker-compose.yml</code> under <code>services:</code> og <code>mumpeer-data:</code> under <code>volumes:</code>."
+          "Mumcord bruger relayet fra version 0.5.0. Relay-botten <code>mumbot peer</code> klarer resten: den annoncerer relayet og uddeler tokens.",
+          "Skriv i serverens mappe en delt hemmelighed i <code>.env</code> og hent de to eksempelkonfigurationer. Sæt din servers adresse under <code>public_host</code> i <code>mumpeer.toml</code> og din Mumble-servers fingeraftryk i <code>bot.toml</code>. Tilføj derefter tjenesterne nedenfor i <code>docker-compose.yml</code> under <code>services:</code> og <code>mumpeer-data:</code> og <code>mumbot-data:</code> under <code>volumes:</code>."
         ],
         "after": [
-          "Start med <code>docker compose up -d</code> og åbn også UDP og TCP på port 443. Kører der allerede en webserver dér, så vælg andre porte i <code>mumpeer.toml</code>. Åbn ikke API-porten.",
+          "Start med <code>docker compose up -d</code> og åbn også UDP og TCP på port 443. Kører der allerede en webserver dér, så vælg andre porte i <code>mumpeer.toml</code>. API'et forbliver mellem relay og bot.",
           "Ved første start vises relayets fingeraftryk i loggen. Botten annoncerer det, ellers skal intet deles. Mere på siden om <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
@@ -2642,8 +2643,8 @@
           "Logges aldrig: fulde IP-adresser, fulde certifikat-hashes, tokens og pakkeindhold"
         ],
         "startTitle": "Kør det med Docker",
-        "startBody": "Opret en hemmelighed til API'et (`openssl rand -hex 32 > api_secret`), gem eksempelkonfigurationen `mumpeer.example.toml` som `mumpeer.toml` og sæt `public_host` i den. Start derefter relay og bot sammen:",
-        "startNote": "Ved første start vises relayets fingeraftryk i loggen. Botten annoncerer det, ellers skal intet deles. Åbn UDP og TCP på port 443, ikke API-porten. Relay-botten `mumbot peer` og relay-understøttelsen i Mumcord er stadig under udvikling."
+        "startBody": "Læg en lang tilfældig hemmelighed i `.env` som `PEER_API_SECRET` (for eksempel fra `openssl rand -hex 32`). Gem `mumpeer.example.toml` fra Mumbots relay-eksempel som `mumpeer.toml` og sæt `public_host` i den, og `bot.example.toml` som `bot.toml`. Start derefter relay og bot sammen:",
+        "startNote": "Ved første start vises relayets fingeraftryk i loggen. Botten annoncerer det til Mumcord, ellers skal intet deles. Åbn UDP og TCP på port 443, API'et forbliver mellem relay og bot. Mumcord bruger relayet fra version 0.5.0."
       },
       "mumquiz": {
         "title": "mumquiz",

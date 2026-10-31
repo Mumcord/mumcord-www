@@ -530,9 +530,10 @@
     "contributors": {
       "label": "07 — În spate",
       "title": "Oamenii care construiesc Mumcord.",
-      "body": "Toți cei care au contribuit cu cod la Mumcord, Mumbot sau acest site. Lista vine proaspătă de pe GitHub la fiecare build.",
+      "body": "Toți cei care au contribuit cu cod la Mumcord, Mumbot, mumpeer, mumquiz sau acest site. Lista vine proaspătă de pe GitHub la fiecare build.",
       "commits": "commituri",
-      "join": "Contribuie pe GitHub"
+      "join": "Contribuie pe GitHub",
+      "toolTitle": "Contribuitori"
     }
   },
   "features": {
@@ -2387,12 +2388,12 @@
         "title": "Opțional: un relay pentru conexiuni directe",
         "body": [
           "Ca partajarea ecranului și imaginile la dimensiune completă să meargă și când două persoane nu se pot ajunge direct, sau ca nimeni să nu vadă IP-ul celuilalt, poți rula relay-ul <a href=\"/en/mumpeer\">mumpeer</a> lângă server. Conținutul rămâne criptat end-to-end.",
-          "Bine de știut: mumpeer a apărut deja. Botul de relay <code>mumbot peer</code> și suportul pentru relay în Mumcord sunt încă în construcție, până atunci relay-ul rămâne nefolosit.",
-          "În folderul serverului creează un secret și configurația, și pune adresa serverului tău la <code>public_host</code> în <code>mumpeer.toml</code>. Apoi adaugă serviciile de mai jos în <code>docker-compose.yml</code> sub <code>services:</code>, iar <code>mumpeer-data:</code> sub <code>volumes:</code>."
+          "Mumcord folosește relay-ul de la versiunea 0.5.0. Botul de relay <code>mumbot peer</code> face restul: anunță relay-ul și împarte tokenurile.",
+          "În folderul serverului scrie un secret comun în <code>.env</code> și descarcă cele două configurații-exemplu. Pune adresa serverului tău la <code>public_host</code> în <code>mumpeer.toml</code>, iar amprenta serverului tău Mumble în <code>bot.toml</code>. Apoi adaugă serviciile de mai jos în <code>docker-compose.yml</code> sub <code>services:</code>, iar <code>mumpeer-data:</code> și <code>mumbot-data:</code> sub <code>volumes:</code>."
         ],
         "after": [
-          "Pornește cu <code>docker compose up -d</code> și deschide și UDP, și TCP pe portul 443. Dacă acolo rulează deja un server web, alege alte porturi în <code>mumpeer.toml</code>. Nu deschide portul API.",
-          "La prima pornire, amprenta relay-ului apare în log. Botul o va anunța, nu trebuie partajat nimic altceva. Mai multe pe pagina <a href=\"/en/mumpeer\">mumpeer</a>."
+          "Pornește cu <code>docker compose up -d</code> și deschide și UDP, și TCP pe portul 443. Dacă acolo rulează deja un server web, alege alte porturi în <code>mumpeer.toml</code>. API-ul rămâne între relay și bot.",
+          "La prima pornire, amprenta relay-ului apare în log. Botul o anunță, nu trebuie partajat nimic altceva. Mai multe pe pagina <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
     ]
@@ -2642,8 +2643,8 @@
           "Nu se înregistrează niciodată: adresele IP complete, hash-urile complete ale certificatelor, token-urile și conținutul pachetelor"
         ],
         "startTitle": "Rulează-l cu Docker",
-        "startBody": "Creează un secret pentru API (`openssl rand -hex 32 > api_secret`), salvează configurația-exemplu `mumpeer.example.toml` ca `mumpeer.toml` și setează în ea `public_host`. Apoi pornește relay-ul și botul împreună:",
-        "startNote": "La prima pornire, amprenta relay-ului apare în log. Botul o anunță, nu trebuie partajat nimic altceva. Deschide UDP și TCP pe portul 443, nu portul API. Botul de relay `mumbot peer` și suportul pentru relay în Mumcord sunt încă în construcție."
+        "startBody": "Pune un secret lung și aleatoriu în `.env` ca `PEER_API_SECRET` (de exemplu din `openssl rand -hex 32`). Din exemplul de relay al Mumbot salvează `mumpeer.example.toml` ca `mumpeer.toml` și setează în el `public_host`, iar `bot.example.toml` ca `bot.toml`. Apoi pornește relay-ul și botul împreună:",
+        "startNote": "La prima pornire, amprenta relay-ului apare în log. Botul o anunță către Mumcord, nu trebuie partajat nimic altceva. Deschide UDP și TCP pe portul 443, API-ul rămâne între relay și bot. Mumcord folosește relay-ul de la versiunea 0.5.0."
       },
       "mumquiz": {
         "title": "mumquiz",

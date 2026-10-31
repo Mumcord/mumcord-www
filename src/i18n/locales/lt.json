@@ -530,9 +530,10 @@
     "contributors": {
       "label": "07 — Už to",
       "title": "Žmonės, kurie kuria Mumcord.",
-      "body": "Visi, kurie prisidėjo kodu prie Mumcord, Mumbot ar šios svetainės. Sąrašas su kiekvienu build’u ateina šviežias iš GitHub.",
+      "body": "Visi, kurie prisidėjo kodu prie Mumcord, Mumbot, mumpeer, mumquiz ar šios svetainės. Sąrašas su kiekvienu build’u ateina šviežias iš GitHub.",
       "commits": "commit’ų",
-      "join": "Prisidėk GitHub’e"
+      "join": "Prisidėk GitHub’e",
+      "toolTitle": "Prisidėję"
     }
   },
   "features": {
@@ -2387,12 +2388,12 @@
         "title": "Neprivaloma: relay tiesioginiams ryšiams",
         "body": [
           "Kad ekrano bendrinimas ir viso dydžio paveikslėliai veiktų ir tada, kai du žmonės negali tiesiogiai pasiekti vienas kito, arba kad niekas nematytų kito IP adreso, gali šalia serverio paleisti relay <a href=\"/en/mumpeer\">mumpeer</a>. Turinys lieka užšifruotas nuo galo iki galo.",
-          "Verta žinoti: mumpeer jau išleistas. Relay botas <code>mumbot peer</code> ir relay palaikymas Mumcord dar kuriami, iki tol relay lieka nenaudojamas.",
-          "Serverio aplanke sukurk paslaptį ir konfigūraciją, o savo serverio adresą įrašyk į <code>public_host</code> faile <code>mumpeer.toml</code>. Tada pridėk žemiau pateiktas paslaugas į <code>docker-compose.yml</code> po <code>services:</code>, o <code>mumpeer-data:</code> po <code>volumes:</code>."
+          "Mumcord naudoja relay nuo 0.5.0 versijos. Likusį darbą atlieka relay botas <code>mumbot peer</code>: jis paskelbia relay ir išdalija žetonus.",
+          "Serverio aplanke įrašyk bendrą paslaptį į <code>.env</code> ir parsisiųsk abi pavyzdines konfigūracijas. Savo serverio adresą įrašyk į <code>public_host</code> faile <code>mumpeer.toml</code>, o savo Mumble serverio kontrolinį kodą – į <code>bot.toml</code>. Tada pridėk žemiau pateiktas paslaugas į <code>docker-compose.yml</code> po <code>services:</code>, o <code>mumpeer-data:</code> ir <code>mumbot-data:</code> po <code>volumes:</code>."
         ],
         "after": [
-          "Paleisk su <code>docker compose up -d</code> ir atverk ir UDP, ir TCP 443 prievade. Jei ten jau veikia žiniatinklio serveris, pasirink kitus prievadus faile <code>mumpeer.toml</code>. Neatverk API prievado.",
-          "Pirmą kartą paleidus relay kontrolinis kodas (angl. fingerprint) rodomas žurnale. Botas jį paskelbs, nieko kito dalytis nereikia. Daugiau <a href=\"/en/mumpeer\">mumpeer</a> puslapyje."
+          "Paleisk su <code>docker compose up -d</code> ir atverk ir UDP, ir TCP 443 prievade. Jei ten jau veikia žiniatinklio serveris, pasirink kitus prievadus faile <code>mumpeer.toml</code>. API lieka tarp relay ir boto.",
+          "Pirmą kartą paleidus relay kontrolinis kodas (angl. fingerprint) rodomas žurnale. Botas jį paskelbia, nieko kito dalytis nereikia. Daugiau <a href=\"/en/mumpeer\">mumpeer</a> puslapyje."
         ]
       }
     ]
@@ -2642,8 +2643,8 @@
           "Niekada nežurnalizuojama: pilni IP adresai, pilnos sertifikatų maišos, žetonai ir paketų turinys"
         ],
         "startTitle": "Paleisk su Docker",
-        "startBody": "Sukurk API paslaptį (`openssl rand -hex 32 > api_secret`), išsaugok pavyzdinę konfigūraciją `mumpeer.example.toml` kaip `mumpeer.toml` ir joje nustatyk `public_host`. Tada paleisk relay ir botą kartu:",
-        "startNote": "Pirmą kartą paleidus relay kontrolinis kodas (angl. fingerprint) rodomas žurnale. Botas jį paskelbia, nieko kito dalytis nereikia. Atverk UDP ir TCP 443 prievade, o ne API prievadą. Relay botas `mumbot peer` ir relay palaikymas Mumcord dar kuriami."
+        "startBody": "Įrašyk ilgą atsitiktinę paslaptį į `.env` kaip `PEER_API_SECRET` (pavyzdžiui, iš `openssl rand -hex 32`). Iš Mumbot relay pavyzdžio išsaugok `mumpeer.example.toml` kaip `mumpeer.toml` ir joje nustatyk `public_host`, o `bot.example.toml` – kaip `bot.toml`. Tada paleisk relay ir botą kartu:",
+        "startNote": "Pirmą kartą paleidus relay kontrolinis kodas (angl. fingerprint) rodomas žurnale. Botas jį paskelbia Mumcord, nieko kito dalytis nereikia. Atverk UDP ir TCP 443 prievade, API lieka tarp relay ir boto. Mumcord naudoja relay nuo 0.5.0 versijos."
       },
       "mumquiz": {
         "title": "mumquiz",
