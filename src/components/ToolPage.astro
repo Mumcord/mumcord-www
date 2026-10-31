@@ -1,5 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import CopyButton from "./CopyButton.astro";
+import mumpeerIcon from "../assets/tools/mumpeer.png";
+import mumquizIcon from "../assets/tools/mumquiz.png";
 import type { Lang } from "../i18n";
 import { toolsPage, getToolRelease, toolRepoUrl, TOOL_CODE, type ToolId } from "../lib/tools";
 
@@ -13,6 +16,7 @@ const p = t.pages[tool];
 const { file, code, terms } = TOOL_CODE[tool];
 const release = await getToolRelease(tool);
 const repo = toolRepoUrl(tool);
+const icon = { mumpeer: mumpeerIcon, mumquiz: mumquizIcon }[tool];
 // `code` in the texts becomes <code>; everything else is escaped.
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const md = (s: string) => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>");
@@ -20,6 +24,7 @@ const md = (s: string) => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>");
 
 <article class="wrap mumbot-page">
   <header class="rp-head mb-head">
+    <Image class="tool-hero-icon" src={icon} alt="" width={96} height={96} loading="eager" data-reveal />
     <p class="label" data-reveal>{t.label}</p>
     <h1 class="h2" data-reveal>{p.title}</h1>
     <p class="body" data-reveal>{p.lead}</p>

@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import CopyButton from "./CopyButton.astro";
+import mumbotIcon from "../assets/tools/mumbot.png";
 import type { Lang } from "../i18n";
 import { formatSize } from "../lib/release";
 import {
@@ -34,6 +36,7 @@ const bots = [
 
 <article class="wrap mumbot-page">
   <header class="rp-head mb-head">
+    <Image class="tool-hero-icon" src={mumbotIcon} alt="" width={96} height={96} loading="eager" data-reveal />
     <p class="label" data-reveal>{p.label}</p>
     <h1 class="h2" data-reveal>{p.title}</h1>
     <p class="body" data-reveal>{p.intro}</p>
