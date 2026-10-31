@@ -186,11 +186,14 @@ const progress = Math.max(0, Math.min(1, reached / Math.max(1, r.epics.length - 
                   <section class="rm-card rm-tile" data-spot style={`--i: ${i}`}>
                     <h4>
                       <span>{g.title}</span>
-                      <span class="rm-count">{g.items.length}</span>
+                      <span class="rm-count">{g.done ? `${g.done.length}/${g.items.length}` : g.items.length}</span>
                     </h4>
                     <ul class="rm-list">
-                      {g.items.map((x) => (
-                        <li>{x}</li>
+                      {g.items.map((x, j) => (
+                        <li class:list={[{ "is-done": g.done?.includes(j) }]}>
+                          {g.done?.includes(j) && <span class="sr-only">{r.status.done}: </span>}
+                          {x}
+                        </li>
                       ))}
                     </ul>
                   </section>
@@ -262,8 +265,11 @@ const progress = Math.max(0, Math.min(1, reached / Math.max(1, r.epics.length - 
                 <div class="rm-group">
                   <h4>{g.title}</h4>
                   <ul class="rm-list">
-                    {g.items.map((i) => (
-                      <li>{i}</li>
+                    {g.items.map((x, j) => (
+                      <li class:list={[{ "is-done": g.done?.includes(j) }]}>
+                        {g.done?.includes(j) && <span class="sr-only">{r.status.done}: </span>}
+                        {x}
+                      </li>
                     ))}
                   </ul>
                 </div>
