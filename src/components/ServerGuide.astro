@@ -26,7 +26,14 @@ const services = [
     <div class="guide-hero">
       <div>
         <p class="label" data-reveal>{g.label}</p>
-        <h1 class="guide-title" data-reveal>{g.title}</h1>
+        <h1 class="guide-title" data-reveal>
+          {g.title.split(" ").map((w, i) => (
+            <>
+              {i > 0 && " "}
+              {w.includes("-") ? <span class="nowrap">{w}</span> : w}
+            </>
+          ))}
+        </h1>
         <p class="body" data-reveal>{g.intro}</p>
         <p class="guide-ctas" data-reveal>
           <a class="btn btn-glow guide-cta" href="#configurator">

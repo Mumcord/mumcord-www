@@ -328,7 +328,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Schnelleinstellungen überarbeitet",
               "Das Nutzer-Panel unten links neu gestaltet",
             ],
-            done: [4, 5, 6, 7, 8],
+            done: [4, 5, 6, 7, 8, 9],
             mockups: [
               { shot: "wizard-1-welcome-dark", issue: 159, caption: "Der neue Einrichtungsassistent" },
               { shot: "wizard-0-presets-dark", issue: 159, caption: "Voreinstellungen im Assistenten" },
@@ -877,7 +877,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Quick settings overhauled",
               "The user panel at the bottom left redesigned",
             ],
-            done: [4, 5, 6, 7, 8],
+            done: [4, 5, 6, 7, 8, 9],
             mockups: [
               { shot: "wizard-1-welcome-dark", issue: 159, caption: "The new setup wizard" },
               { shot: "wizard-0-presets-dark", issue: 159, caption: "Presets in the wizard" },

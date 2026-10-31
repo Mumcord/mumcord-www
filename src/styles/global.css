@@ -2995,7 +2995,6 @@ p {
 /* ── Server guide ────────────────────────────────────── */
 .guide {
   padding-block: clamp(56px, 9vw, 120px);
-  overflow-x: clip;
 }
 .guide-head {
   position: relative;
@@ -3026,7 +3025,10 @@ p {
 }
 .guide-title {
   margin: 0 0 20px;
-  font: 800 clamp(2.6rem, 6.5vw, 5.2rem) / 0.95 var(--font-display);
+  font: 800 clamp(2.4rem, 5.4vw, 4.6rem) / 0.98 var(--font-display);
+  /* No "Mum-ble": break only at spaces and real hyphens, with even lines. */
+  hyphens: manual;
+  text-wrap: balance;
   letter-spacing: -0.045em;
   background: linear-gradient(100deg, var(--text) 25%, var(--lilac) 60%, var(--peach) 95%);
   -webkit-background-clip: text;
@@ -3035,6 +3037,10 @@ p {
 }
 .guide-head .body {
   max-width: 60ch;
+}
+.guide-title .nowrap {
+  /* "Mumble-Server" stays in one piece. */
+  white-space: nowrap;
 }
 .guide-ctas {
   display: flex;
