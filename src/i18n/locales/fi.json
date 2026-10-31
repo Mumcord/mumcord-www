@@ -88,6 +88,15 @@
       "botIssues": {
         "title": "Issuet",
         "desc": "Ideat ja bugit Mumbotille"
+      },
+      "tools": "Tools",
+      "toolPeer": {
+        "title": "mumpeer",
+        "desc": "Välityspalvelin suorille yhteyksille"
+      },
+      "toolQuiz": {
+        "title": "mumquiz",
+        "desc": "Tietovisabotti palvelimellesi"
       }
     },
     "hero": {
@@ -2265,7 +2274,7 @@
         "label": "avointa lähdekoodia; maksat vain koneesta"
       }
     ],
-    "stepsTitle": "Kahdeksassa vaiheessa",
+    "stepsTitle": "Kahdeksassa vaiheessa, plus yksi valinnainen",
     "troubleTitle": "Ylläpito ja ongelmat",
     "trouble": [
       {
@@ -2371,6 +2380,19 @@
           "1. Yhdistä käyttäjänimellä <code>SuperUser</code> ja tiedoston <code>.env</code> salasanalla.",
           "2. Klikkaa ylintä kanavaa hiiren oikealla → <strong>Lisää</strong>, jokaista haluamaasi kanavaa varten.",
           "3. Jottei SuperUseria tarvita joka kerta: yhdistä Mumcordilla omalla nimelläsi ja klikkaa nimeäsi vasemmassa alakulmassa → <strong>Rekisteröidy tälle palvelimelle</strong>. Sitten SuperUserina ylin kanava → <strong>Muokkaa</strong> → <strong>Ryhmät</strong> → lisää nimesi <code>admin</code>-ryhmään."
+        ]
+      },
+      {
+        "id": "relay",
+        "title": "Valinnainen: välityspalvelin suorille yhteyksille",
+        "body": [
+          "Jotta näytönjako ja täysikokoiset kuvat toimivat myös silloin, kun kaksi ihmistä ei tavoita toisiaan suoraan, tai jotta kukaan ei näe toisen IP-osoitetta, voit ajaa <a href=\"/en/mumpeer\">mumpeer</a>-välityspalvelinta palvelimen rinnalla. Sisältö pysyy päästä päähän salattuna.",
+          "Hyvä tietää: mumpeer on jo ulkona. Välitysbotti <code>mumbot peer</code> ja välitystuki Mumcordissa ovat vielä rakenteilla, siihen asti välityspalvelin jää käyttämättä.",
+          "Luo palvelimen kansioon salaisuus ja asetukset, ja kirjoita palvelimesi osoite kohtaan <code>public_host</code> tiedostossa <code>mumpeer.toml</code>. Lisää sitten alla olevat palvelut tiedostoon <code>docker-compose.yml</code> kohdan <code>services:</code> alle ja <code>mumpeer-data:</code> kohdan <code>volumes:</code> alle."
+        ],
+        "after": [
+          "Käynnistä komennolla <code>docker compose up -d</code> ja avaa myös UDP ja TCP portissa 443. Jos siellä pyörii jo verkkopalvelin, valitse <code>mumpeer.toml</code>-tiedostossa muut portit. Älä avaa API-porttia.",
+          "Ensimmäisellä käynnistyksellä välityspalvelimen sormenjälki näkyy lokissa. Botti ilmoittaa sen, mitään muuta ei tarvitse jakaa. Lisää <a href=\"/en/mumpeer\">mumpeer</a>-sivulla."
         ]
       }
     ]
@@ -2574,5 +2596,92 @@
     "idea": "Ehdota ideaa",
     "source": "Lähdekoodi GitHubissa",
     "docs": "Ohjeet"
+  },
+  "tools": {
+    "label": "Tools",
+    "release": "Uusin versio",
+    "noRelease": "Ei vielä julkaisua",
+    "copy": "Kopioi",
+    "copied": "Kopioitu",
+    "source": "Lähdekoodi",
+    "issues": "Ideat ja viat",
+    "readme": "Koko opas README-tiedostossa",
+    "pages": {
+      "mumpeer": {
+        "title": "mumpeer",
+        "description": "mumpeer on pieni välityspalvelin Mumcordin suorille yhteyksille: kun kaksi ihmistä ei tavoita toisiaan suoraan tai haluaa piilottaa IP-osoitteensa.",
+        "lead": "Pieni välityspalvelin Mumcordin käyttäjien välisille suorille yhteyksille, esimerkiksi näytön jakamiseen tai täysikokoisiin kuviin. Kun kaksi ihmistä ei tavoita toisiaan suoraan, CGNAT:n tai tiukkojen palomuurien takana tai verkoissa ilman UDP:tä, tai ei halua näyttää IP-osoitettaan, molemmat yhdistävät sen sijaan välityspalvelimeen. Se vain välittää salatut paketit eteenpäin, kuten TURN-palvelin.",
+        "features": [
+          {
+            "title": "Mumble-palvelimesi rinnalla",
+            "body": "Yhteisö ajaa mumpeeria Mumble-palvelimensa rinnalla yhdessä välitysbotin `mumbot peer` kanssa. Botti ilmoittaa välityspalvelimesta ja jakaa lyhytikäisiä tokeneita. Mumble-palvelin pysyy muuttamattomana."
+          },
+          {
+            "title": "Vain varmennetut käyttäjät",
+            "body": "Token toimii vain täsmälleen kahdelle varmenteelle, kerran kummallakin puolella ja oletuksena 120 sekuntia. Välityspalvelin ei koskaan välitä muualle eikä avaa itse yhteyksiä, joten se ei ole avoin välityspalvelin."
+          },
+          {
+            "title": "Päästä päähän salattu",
+            "body": "Välityspalvelimen läpi kulkee erillinen salattu yhteys kahden käyttäjän välillä, sidottuna heidän Mumble-varmenteisiinsa. Välityspalvelin ei voi lukea eikä muuttaa sitä."
+          },
+          {
+            "title": "Lähes minkä tahansa palomuurin läpi",
+            "body": "QUIC UDP:n yli tai, missä UDP on estetty, TLS TCP:n yli. Molemmat portissa 443 ja TLS 1.3:lla."
+          },
+          {
+            "title": "Täysin valinnainen",
+            "body": "Mumcord toimii myös ilman bottia ja välityspalvelinta. Mumcordissa valitset itse: välitys pois, vain kun suora yhteys epäonnistuu, tai aina."
+          }
+        ],
+        "listTitle": "Mitä ylläpitäjä voi nähdä",
+        "list": [
+          "Istunnon molempien käyttäjien IP-osoitteet",
+          "Mitkä kaksi varmennetta puhuvat keskenään",
+          "Kuinka paljon dataa kulkee ja milloin",
+          "Ei sisältöä: se on salattu päästä päähän. Mumcord kertoo tämän sinulle ennen kuin käytät välityspalvelinta",
+          "Ei koskaan kirjata: täydet IP-osoitteet, täydet varmenteiden tiivisteet, tokenit ja pakettien sisältö"
+        ],
+        "startTitle": "Aja se Dockerilla",
+        "startBody": "Luo API:lle salaisuus (`openssl rand -hex 32 > api_secret`), tallenna esimerkkiasetukset `mumpeer.example.toml` nimellä `mumpeer.toml` ja aseta siihen `public_host`. Käynnistä sitten välityspalvelin ja botti yhdessä:",
+        "startNote": "Ensimmäisellä käynnistyksellä välityspalvelimen sormenjälki näkyy lokissa. Botti ilmoittaa sen, mitään muuta ei tarvitse jakaa. Avaa UDP ja TCP portissa 443, älä API-porttia. Välitysbotti `mumbot peer` ja välitystuki Mumcordissa ovat vielä rakenteilla."
+      },
+      "mumquiz": {
+        "title": "mumquiz",
+        "description": "mumquiz on tietovisabotti Mumble-palvelimille: se esittää kysymyksiä, lukee vastaukset chatista, antaa vihjeitä ja jakaa pisteitä.",
+        "lead": "Tietovisabotti Mumble-palvelimille: se esittää kysymyksiä, lukee vastaukset chatista, antaa vihjeitä, jakaa pisteitä ja muistaa voitot. Se kirjautuu sisään kuin ihminen, omalla varmenteellaan. Siksi se toimii millä tahansa tavallisella Mumble-palvelimella ilman lisäosaa ja ilman asetusmuutoksia.",
+        "features": [
+          {
+            "title": "Peli",
+            "body": "Heti kun kanavalla on tarpeeksi ihmisiä, se alkaa. Hetken kuluttua tulee vihje muutamalla kirjaimella, viiden vihjeen jälkeen vastaus. Voittaja on se, joka saavuttaa kierroksen pistemäärän ensimmäisenä."
+          },
+          {
+            "title": "Antelias vastauksissa",
+            "body": "Isot ja pienet kirjaimet, välimerkit ja kirjoitusasut kuten ae ja ä tai ss ja ß lasketaan samoiksi."
+          },
+          {
+            "title": "Kaunis Mumcordissa",
+            "body": "Mumcordissa pelin viestit näkyvät viestikortteina, viralliselle Mumble-asiakkaalle tavallisena chat-tekstinä."
+          },
+          {
+            "title": "Omat kysymyksesi",
+            "body": "Kysymykset ovat yksinkertaisessa TOML-tiedostossa. Skripti voi halutessasi tuoda alkuperäisen botin kysymykset."
+          }
+        ],
+        "listTitle": "Komennot chatissa",
+        "list": [
+          "Ohje, yksityisesti sinulle",
+          "Tämän kierroksen viisikko",
+          "Kaikkien aikojen viisikko",
+          "Ruoki bottia, tai se nääntyy nälkään",
+          "Lataa kysymykset uudelleen (pelinjohtajat)",
+          "Siirry toiselle kanavalle (pelinjohtajat)",
+          "Lisää tai poista pelinjohtaja"
+        ],
+        "startTitle": "Rakenna ja aja itse",
+        "startBody": "Rustilla botin rakennat näin:",
+        "startNote": "Liity sitten kanavalle ”Quiz” ja kirjoita `!help`. Peli alkaa heti, kun paikalla on kaksi ihmistä.",
+        "credit": "Peli ja sen viestit tulevat projektista zorgch/irc-quizbot (GPL-3.0), siirrettynä Rustille ja Mumblen protokollalle, samalla protokollakerroksella kuin Mumcord."
+      }
+    }
   }
 }

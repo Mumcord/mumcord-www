@@ -88,6 +88,15 @@
       "botIssues": {
         "title": "Issues",
         "desc": "Idėjos ir klaidos, susijusios su Mumbot"
+      },
+      "tools": "Tools",
+      "toolPeer": {
+        "title": "mumpeer",
+        "desc": "Relay tiesioginiams ryšiams"
+      },
+      "toolQuiz": {
+        "title": "mumquiz",
+        "desc": "Viktorinos botas tavo serveriui"
       }
     },
     "hero": {
@@ -2265,7 +2274,7 @@
         "label": "atvirasis kodas; moki tik už kompiuterį"
       }
     ],
-    "stepsTitle": "Per aštuonis žingsnius",
+    "stepsTitle": "Aštuoniais žingsniais, plius vienas neprivalomas",
     "troubleTitle": "Priežiūra ir problemos",
     "trouble": [
       {
@@ -2371,6 +2380,19 @@
           "1. Prisijunk su naudotojo vardu <code>SuperUser</code> ir slaptažodžiu iš <code>.env</code>.",
           "2. Dešiniuoju spustelėk viršutinį kanalą → <strong>Pridėti</strong>, kiekvienam norimam kanalui.",
           "3. Kad nereikėtų kaskart naudoti SuperUser: prisijunk su Mumcord savo vardu ir apačioje kairėje spustelėk savo vardą → <strong>Registruotis šiame serveryje</strong>. Tada kaip SuperUser: viršutinis kanalas → <strong>Redaguoti</strong> → <strong>Grupės</strong> → pridėk savo vardą į grupę <code>admin</code>."
+        ]
+      },
+      {
+        "id": "relay",
+        "title": "Neprivaloma: relay tiesioginiams ryšiams",
+        "body": [
+          "Kad ekrano bendrinimas ir viso dydžio paveikslėliai veiktų ir tada, kai du žmonės negali tiesiogiai pasiekti vienas kito, arba kad niekas nematytų kito IP adreso, gali šalia serverio paleisti relay <a href=\"/en/mumpeer\">mumpeer</a>. Turinys lieka užšifruotas nuo galo iki galo.",
+          "Verta žinoti: mumpeer jau išleistas. Relay botas <code>mumbot peer</code> ir relay palaikymas Mumcord dar kuriami, iki tol relay lieka nenaudojamas.",
+          "Serverio aplanke sukurk paslaptį ir konfigūraciją, o savo serverio adresą įrašyk į <code>public_host</code> faile <code>mumpeer.toml</code>. Tada pridėk žemiau pateiktas paslaugas į <code>docker-compose.yml</code> po <code>services:</code>, o <code>mumpeer-data:</code> po <code>volumes:</code>."
+        ],
+        "after": [
+          "Paleisk su <code>docker compose up -d</code> ir atverk ir UDP, ir TCP 443 prievade. Jei ten jau veikia žiniatinklio serveris, pasirink kitus prievadus faile <code>mumpeer.toml</code>. Neatverk API prievado.",
+          "Pirmą kartą paleidus relay kontrolinis kodas (angl. fingerprint) rodomas žurnale. Botas jį paskelbs, nieko kito dalytis nereikia. Daugiau <a href=\"/en/mumpeer\">mumpeer</a> puslapyje."
         ]
       }
     ]
@@ -2574,5 +2596,92 @@
     "idea": "Pasiūlyk idėją",
     "source": "Kodas GitHub",
     "docs": "Dokumentacija"
+  },
+  "tools": {
+    "label": "Tools",
+    "release": "Naujausia versija",
+    "noRelease": "Leidimo dar nėra",
+    "copy": "Kopijuoti",
+    "copied": "Nukopijuota",
+    "source": "Šaltinio kodas",
+    "issues": "Idėjos ir klaidos",
+    "readme": "Visas vadovas README faile",
+    "pages": {
+      "mumpeer": {
+        "title": "mumpeer",
+        "description": "mumpeer yra nedidelis perdavimo serveris (relay) tiesioginiams Mumcord ryšiams: kai du žmonės negali tiesiogiai pasiekti vienas kito arba nori paslėpti savo IP adresą.",
+        "lead": "Nedidelis perdavimo serveris (relay) tiesioginiams Mumcord ryšiams tarp naudotojų, pavyzdžiui, ekrano bendrinimui ar viso dydžio paveikslėliams. Kai du žmonės negali tiesiogiai pasiekti vienas kito, esant CGNAT, griežtoms užkardoms ar tinkluose be UDP, arba nenori rodyti savo IP adreso, abu jungiasi prie relay. Jis tik perduoda užšifruotus paketus, kaip TURN serveris.",
+        "features": [
+          {
+            "title": "Šalia tavo Mumble serverio",
+            "body": "Bendruomenė paleidžia mumpeer šalia savo Mumble serverio kartu su relay botu `mumbot peer`. Botas paskelbia relay ir išdalija trumpai galiojančius žetonus. Mumble serveris lieka nepakeistas."
+          },
+          {
+            "title": "Tik patikrinti naudotojai",
+            "body": "Žetonas galioja tik tiksliai dviem sertifikatams, po vieną kartą kiekvienoje pusėje ir pagal numatytuosius nustatymus 120 sekundžių. Relay niekada neperduoda niekur kitur ir pats niekada neatidaro ryšių, todėl tai nėra atviras tarpinis serveris."
+          },
+          {
+            "title": "Šifruota nuo galo iki galo",
+            "body": "Tai, kas eina per relay, yra atskiras užšifruotas ryšys tarp dviejų naudotojų, susietas su jų Mumble sertifikatais. Relay negali jo nei skaityti, nei keisti."
+          },
+          {
+            "title": "Per beveik bet kokią užkardą",
+            "body": "QUIC per UDP arba, kur UDP užblokuotas, TLS per TCP. Abu 443 prievade ir su TLS 1.3."
+          },
+          {
+            "title": "Visiškai neprivaloma",
+            "body": "Mumcord veikia ir be boto bei relay. Mumcord pasirenki pats: relay išjungtas, tik kai tiesioginis ryšys nepavyksta, arba visada."
+          }
+        ],
+        "listTitle": "Ką operatorius gali matyti",
+        "list": [
+          "Abiejų sesijos naudotojų IP adresus",
+          "Kurie du sertifikatai kalbasi tarpusavyje",
+          "Kiek duomenų teka ir kada",
+          "Ne turinio: jis užšifruotas nuo galo iki galo. Mumcord tau tai pasako prieš naudojant relay",
+          "Niekada nežurnalizuojama: pilni IP adresai, pilnos sertifikatų maišos, žetonai ir paketų turinys"
+        ],
+        "startTitle": "Paleisk su Docker",
+        "startBody": "Sukurk API paslaptį (`openssl rand -hex 32 > api_secret`), išsaugok pavyzdinę konfigūraciją `mumpeer.example.toml` kaip `mumpeer.toml` ir joje nustatyk `public_host`. Tada paleisk relay ir botą kartu:",
+        "startNote": "Pirmą kartą paleidus relay kontrolinis kodas (angl. fingerprint) rodomas žurnale. Botas jį paskelbia, nieko kito dalytis nereikia. Atverk UDP ir TCP 443 prievade, o ne API prievadą. Relay botas `mumbot peer` ir relay palaikymas Mumcord dar kuriami."
+      },
+      "mumquiz": {
+        "title": "mumquiz",
+        "description": "mumquiz yra viktorinos botas Mumble serveriams: uždavinėja klausimus, skaito atsakymus pokalbyje, duoda užuominų ir skiria taškus.",
+        "lead": "Viktorinos botas Mumble serveriams: uždavinėja klausimus, skaito atsakymus pokalbyje, duoda užuominų, skiria taškus ir prisimena pergales. Jis prisijungia kaip žmogus, su savo sertifikatu. Todėl veikia bet kuriame standartiniame Mumble serveryje, be įskiepio ir be konfigūracijos pakeitimų.",
+        "features": [
+          {
+            "title": "Žaidimas",
+            "body": "Kai tik kanale yra pakankamai žmonių, jis prasideda. Po kurio laiko ateina užuomina su keliomis raidėmis, po penkių užuominų atsakymas. Laimi tas, kuris pirmas pasiekia raundo rezultatą."
+          },
+          {
+            "title": "Dosnus atsakymams",
+            "body": "Didžiosios ir mažosios raidės, skyryba ir rašymo būdai, tokie kaip ae ir ä ar ss ir ß, laikomi tuo pačiu."
+          },
+          {
+            "title": "Gražus Mumcord",
+            "body": "Mumcord žaidimo pranešimai rodomi kaip pranešimų kortelės, oficialiame Mumble kliente kaip paprastas pokalbio tekstas."
+          },
+          {
+            "title": "Tavo paties klausimai",
+            "body": "Klausimai laikomi paprastame TOML faile. Skriptas gali perkelti originalaus boto klausimus, jei nori."
+          }
+        ],
+        "listTitle": "Komandos pokalbyje",
+        "list": [
+          "Pagalba, privačiai tau",
+          "Šio raundo penketukas",
+          "Visų laikų penketukas",
+          "Pamaitink botą, kitaip jis išalks",
+          "Perkrauti klausimus (žaidimo vedėjai)",
+          "Persikelti į kitą kanalą (žaidimo vedėjai)",
+          "Pridėti arba pašalinti žaidimo vedėją"
+        ],
+        "startTitle": "Sukompiliuok ir paleisk pats",
+        "startBody": "Su Rust botą sukompiliuoji taip:",
+        "startNote": "Tada prisijunk prie kanalo „Quiz“ ir įrašyk `!help`. Žaidimas prasideda, kai ten yra du žmonės.",
+        "credit": "Žaidimas ir jo pranešimai kilę iš zorgch/irc-quizbot (GPL-3.0), perkelti į Rust ir Mumble protokolą, su tuo pačiu protokolo sluoksniu kaip Mumcord."
+      }
+    }
   }
 }

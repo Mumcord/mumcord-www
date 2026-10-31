@@ -88,6 +88,15 @@
       "botIssues": {
         "title": "Issues",
         "desc": "Idéer og fejl til Mumbot"
+      },
+      "tools": "Tools",
+      "toolPeer": {
+        "title": "mumpeer",
+        "desc": "Relay til direkte forbindelser"
+      },
+      "toolQuiz": {
+        "title": "mumquiz",
+        "desc": "Quizbot til din server"
       }
     },
     "hero": {
@@ -2265,7 +2274,7 @@
         "label": "open source; du betaler kun for maskinen"
       }
     ],
-    "stepsTitle": "I otte trin",
+    "stepsTitle": "I otte trin, plus et valgfrit",
     "troubleTitle": "Vedligehold og problemer",
     "trouble": [
       {
@@ -2371,6 +2380,19 @@
           "1. Forbind med brugernavnet <code>SuperUser</code> og adgangskoden fra <code>.env</code>.",
           "2. Højreklik på den øverste kanal → <strong>Tilføj</strong>, for hver kanal du vil have.",
           "3. Så du ikke behøver SuperUser hver gang: forbind med Mumcord under dit eget navn, og klik på dit navn nederst til venstre → <strong>Registrér på denne server</strong>. Derefter, som SuperUser, øverste kanal → <strong>Redigér</strong> → <strong>Grupper</strong> → tilføj dit navn til gruppen <code>admin</code>."
+        ]
+      },
+      {
+        "id": "relay",
+        "title": "Valgfrit: et relay til direkte forbindelser",
+        "body": [
+          "Så skærmdeling og billeder i fuld størrelse også virker, når to personer ikke kan nå hinanden direkte, eller så ingen ser den andens IP-adresse, kan du køre <a href=\"/en/mumpeer\">mumpeer</a>-relayet ved siden af serveren. Indholdet forbliver ende-til-ende-krypteret.",
+          "Godt at vide: mumpeer er allerede udkommet. Relay-botten <code>mumbot peer</code> og relay-understøttelsen i Mumcord er stadig under udvikling, indtil da forbliver relayet ubrugt.",
+          "Opret en hemmelighed og konfigurationen i serverens mappe, og skriv din servers adresse under <code>public_host</code> i <code>mumpeer.toml</code>. Tilføj derefter tjenesterne nedenfor i <code>docker-compose.yml</code> under <code>services:</code> og <code>mumpeer-data:</code> under <code>volumes:</code>."
+        ],
+        "after": [
+          "Start med <code>docker compose up -d</code> og åbn også UDP og TCP på port 443. Kører der allerede en webserver dér, så vælg andre porte i <code>mumpeer.toml</code>. Åbn ikke API-porten.",
+          "Ved første start vises relayets fingeraftryk i loggen. Botten annoncerer det, ellers skal intet deles. Mere på siden om <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
     ]
@@ -2574,5 +2596,92 @@
     "idea": "Foreslå en idé",
     "source": "Kildekode på GitHub",
     "docs": "Dokumentation"
+  },
+  "tools": {
+    "label": "Tools",
+    "release": "Seneste version",
+    "noRelease": "Ingen udgivelse endnu",
+    "copy": "Kopiér",
+    "copied": "Kopieret",
+    "source": "Kildekode",
+    "issues": "Idéer og fejl",
+    "readme": "Hele guiden i README",
+    "pages": {
+      "mumpeer": {
+        "title": "mumpeer",
+        "description": "mumpeer er et lille relay til Mumcords direkte forbindelser: til når to personer ikke kan nå hinanden direkte eller vil skjule deres IP-adresse.",
+        "lead": "Et lille relay til Mumcords direkte forbindelser mellem brugere, for eksempel til skærmdeling eller billeder i fuld størrelse. Når to personer ikke kan nå hinanden direkte, bag CGNAT, strenge firewalls eller i netværk uden UDP, eller ikke vil vise deres IP-adresse, forbinder begge i stedet til relayet. Det sender kun de krypterede pakker videre, ligesom en TURN-server.",
+        "features": [
+          {
+            "title": "Ved siden af din Mumble-server",
+            "body": "Et fællesskab kører mumpeer ved siden af sin Mumble-server, sammen med relay-botten `mumbot peer`. Botten annoncerer relayet og deler kortlivede tokens ud. Mumble-serveren forbliver uændret."
+          },
+          {
+            "title": "Kun verificerede brugere",
+            "body": "Et token virker kun for præcis to certifikater, én gang pr. side og som standard i 120 sekunder. Relayet videresender aldrig andre steder hen og åbner aldrig selv forbindelser, så det er ikke en åben proxy."
+          },
+          {
+            "title": "Ende-til-ende-krypteret",
+            "body": "Det, der går gennem relayet, er en separat krypteret forbindelse mellem de to brugere, bundet til deres Mumble-certifikater. Relayet kan hverken læse eller ændre den."
+          },
+          {
+            "title": "Gennem næsten enhver firewall",
+            "body": "QUIC over UDP eller, hvor UDP er blokeret, TLS over TCP. Begge på port 443 og med TLS 1.3."
+          },
+          {
+            "title": "Helt valgfrit",
+            "body": "Mumcord virker også uden bot og relay. I Mumcord vælger du selv: relay slået fra, kun når en direkte forbindelse mislykkes, eller altid."
+          }
+        ],
+        "listTitle": "Hvad operatøren kan se",
+        "list": [
+          "IP-adresserne på begge brugere i en session",
+          "Hvilke to certifikater der taler med hinanden",
+          "Hvor meget data der flyder, og hvornår",
+          "Ikke indholdet: det er krypteret ende til ende. Mumcord fortæller dig det, før du bruger et relay",
+          "Logges aldrig: fulde IP-adresser, fulde certifikat-hashes, tokens og pakkeindhold"
+        ],
+        "startTitle": "Kør det med Docker",
+        "startBody": "Opret en hemmelighed til API'et (`openssl rand -hex 32 > api_secret`), gem eksempelkonfigurationen `mumpeer.example.toml` som `mumpeer.toml` og sæt `public_host` i den. Start derefter relay og bot sammen:",
+        "startNote": "Ved første start vises relayets fingeraftryk i loggen. Botten annoncerer det, ellers skal intet deles. Åbn UDP og TCP på port 443, ikke API-porten. Relay-botten `mumbot peer` og relay-understøttelsen i Mumcord er stadig under udvikling."
+      },
+      "mumquiz": {
+        "title": "mumquiz",
+        "description": "mumquiz er en quizbot til Mumble-servere: den stiller spørgsmål, læser svarene i chatten, giver hints og uddeler point.",
+        "lead": "En quizbot til Mumble-servere: den stiller spørgsmål, læser svarene i chatten, giver hints, uddeler point og husker sejrene. Den logger ind som et menneske, med sit eget certifikat. Derfor kører den på enhver almindelig Mumble-server, uden plugin og uden ændringer i konfigurationen.",
+        "features": [
+          {
+            "title": "Spillet",
+            "body": "Så snart der er nok mennesker i kanalen, går det i gang. Efter et stykke tid kommer et hint med nogle få bogstaver, efter fem hints svaret. Den, der først når rundens pointgrænse, vinder."
+          },
+          {
+            "title": "Generøs med svar",
+            "body": "Store og små bogstaver, tegnsætning og stavemåder som ae og ä eller ss og ß tæller som det samme."
+          },
+          {
+            "title": "Pæn i Mumcord",
+            "body": "I Mumcord vises spilbeskederne som beskedkort, i den officielle Mumble-klient som almindelig chattekst."
+          },
+          {
+            "title": "Dine egne spørgsmål",
+            "body": "Spørgsmålene ligger i en simpel TOML-fil. Et script kan hente den oprindelige bots spørgsmål over, hvis du vil."
+          }
+        ],
+        "listTitle": "Kommandoer i chatten",
+        "list": [
+          "Hjælpen, privat til dig",
+          "Top fem i denne runde",
+          "Top fem nogensinde",
+          "Fodr botten, ellers bliver den sulten",
+          "Genindlæs spørgsmålene (spilledere)",
+          "Skift til en anden kanal (spilledere)",
+          "Tilføj eller fjern en spilleder"
+        ],
+        "startTitle": "Byg og kør det selv",
+        "startBody": "Med Rust bygger du botten sådan her:",
+        "startNote": "Gå derefter ind i kanalen „Quiz“ og skriv `!help`. Spillet starter, så snart to personer er der.",
+        "credit": "Spillet og dets beskeder stammer fra zorgch/irc-quizbot (GPL-3.0), porteret til Rust og til Mumble-protokollen, med det samme protokollag som Mumcord."
+      }
+    }
   }
 }

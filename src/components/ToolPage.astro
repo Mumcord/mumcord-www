@@ -1,0 +1,100 @@
+---
+import CopyButton from "./CopyButton.astro";
+import type { Lang } from "../i18n";
+import { toolsPage, getToolRelease, toolRepoUrl, TOOL_CODE, type ToolId } from "../lib/tools";
+
+interface Props {
+  lang: Lang;
+  tool: ToolId;
+}
+const { lang, tool } = Astro.props;
+const t = toolsPage[lang];
+const p = t.pages[tool];
+const { file, code, terms } = TOOL_CODE[tool];
+const release = await getToolRelease(tool);
+const repo = toolRepoUrl(tool);
+// `code` in the texts becomes <code>; everything else is escaped.
+const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const md = (s: string) => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>");
+---
+
+<article class="wrap mumbot-page">
+  <header class="rp-head mb-head">
+    <p class="label" data-reveal>{t.label}</p>
+    <h1 class="h2" data-reveal>{p.title}</h1>
+    <p class="body" data-reveal>{p.lead}</p>
+    <p class="mb-release" data-reveal>
+      {
+        release ? (
+          <>
+            <span class="live-dot" aria-hidden="true" />
+            <a href={release.url} rel="noopener">
+              {t.release}: v{release.version}
+            </a>
+          </>
+        ) : (
+          <span>{t.noRelease}</span>
+        )
+      }
+    </p>
+  </header>
+
+  <section class="rp-section" aria-label={p.title}>
+    <div class="tool-features">
+      {
+        p.features.map((f) => (
+          <section class="mb-bot" data-reveal>
+            <h3>{f.title}</h3>
+            <p set:html={md(f.body)} />
+          </section>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="rp-section" aria-labelledby="tool-list-h">
+    <h2 id="tool-list-h" data-reveal>{p.listTitle}</h2>
+    {
+      terms ? (
+        <dl class="tool-terms" data-reveal>
+          {p.list.map((x, i) => (
+            <div>
+              <dt>
+                <code>{terms[i]}</code>
+              </dt>
+              <dd>{x}</dd>
+            </div>
+          ))}
+        </dl>
+      ) : (
+        <ul class="tool-list" data-reveal>
+          {p.list.map((x) => (
+            <li>{x}</li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+
+  <section class="rp-section" id="start" aria-labelledby="tool-start-h">
+    <h2 id="tool-start-h" data-reveal>{p.startTitle}</h2>
+    <p class="rp-section-body" data-reveal set:html={md(p.startBody)} />
+    <figure class="code" data-reveal>
+      <figcaption>
+        <span>{file}</span>
+        <CopyButton label={t.copy} copied={t.copied} class="is-quiet" />
+      </figcaption>
+      <pre><code>{code}</code></pre>
+    </figure>
+    <p class="rp-section-body" data-reveal set:html={md(p.startNote)} />
+    {p.credit && <p class="tool-credit" data-reveal>{p.credit}</p>}
+  </section>
+
+  <section class="fp-ask" data-reveal>
+    <p class="fp-actions">
+      <a class="btn btn-small" href={repo} rel="noopener">{t.source}</a>
+      <a class="text-link" href={`${repo}#readme`} rel="noopener">{t.readme} →</a>
+      <a class="text-link" href={`${repo}/issues`} rel="noopener">{t.issues} →</a>
+    </p>
+  </section>
+</article>

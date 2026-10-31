@@ -128,7 +128,7 @@ const source: Record<Lang, Guide> = {
       { value: "1 Kern", label: "und 512 MB RAM reichen für Dutzende Leute" },
       { value: "0 €", label: "Open Source; nur der Rechner kostet" },
     ],
-    stepsTitle: "In acht Schritten",
+    stepsTitle: "In acht Schritten, plus einem optionalen",
     steps: [
       {
         id: "rechner",
@@ -214,6 +214,23 @@ const source: Record<Lang, Guide> = {
           "3. Damit du nicht jedes Mal SuperUser brauchst: Verbinde dich mit Mumcord unter deinem Namen und klicke unten links auf deinen Namen → <strong>Auf diesem Server registrieren</strong>. Danach als SuperUser im obersten Kanal → <strong>Bearbeiten</strong> → <strong>Gruppen</strong> → Gruppe <code>admin</code> deinen Namen hinzufügen.",
         ],
       },
+      {
+        id: "relay",
+        title: "Optional: ein Relay für direkte Verbindungen",
+        body: [
+          "Damit Bildschirm teilen und Bilder in voller Größe auch klappen, wenn sich zwei Leute nicht direkt erreichen, oder damit niemand die IP-Adresse des anderen sieht, kannst du neben dem Server das Relay <a href=\"/mumpeer\">mumpeer</a> betreiben. Der Inhalt bleibt Ende-zu-Ende verschlüsselt.",
+          "Gut zu wissen: mumpeer gibt es schon. Der Relay-Bot <code>mumbot peer</code> und die Relay-Unterstützung in Mumcord sind aber noch in Arbeit, bis dahin bleibt das Relay ungenutzt.",
+          "Im Ordner des Servers ein Secret und die Konfiguration anlegen und in <code>mumpeer.toml</code> bei <code>public_host</code> die Adresse deines Servers eintragen. Dann die Dienste unten in der <code>docker-compose.yml</code> unter <code>services:</code> ergänzen und <code>mumpeer-data:</code> unter <code>volumes:</code>.",
+        ],
+        code: [
+          { code: "openssl rand -hex 32 > api_secret && chmod 600 api_secret\ncurl -fsSL -o mumpeer.toml https://raw.githubusercontent.com/Mumcord/mumpeer/main/mumpeer.example.toml" },
+          { file: "docker-compose.yml", code: "  mumpeer:\n    image: ghcr.io/mumcord/mumpeer:latest\n    restart: unless-stopped\n    ports: [\"443:443/udp\", \"443:443/tcp\"]\n    volumes:\n      - ./mumpeer.toml:/config/mumpeer.toml:ro\n      - ./api_secret:/run/secrets/mumpeer_api_secret:ro\n      - mumpeer-data:/var/lib/mumpeer\n  # Relay-Bot: einkommentieren, sobald mumbot peer erschienen ist\n  # mumbot:\n  #   image: ghcr.io/mumcord/mumbot:latest\n  #   network_mode: \"service:mumpeer\"\n  #   command: [\"peer\", \"--config\", \"/config/bot.toml\"]" },
+        ],
+        after: [
+          "Mit <code>docker compose up -d</code> starten und zusätzlich UDP und TCP auf Port 443 öffnen. Läuft dort schon ein Webserver, nimm in <code>mumpeer.toml</code> andere Ports. Den API-Port nicht öffnen.",
+          "Beim ersten Start steht der Fingerabdruck des Relays im Log. Der Bot kündigt ihn später an, sonst muss nichts geteilt werden. Mehr dazu auf der Seite zu <a href=\"/mumpeer\">mumpeer</a>.",
+        ],
+      },
     ],
     troubleTitle: "Pflege und Probleme",
     trouble: [
@@ -254,7 +271,7 @@ const source: Record<Lang, Guide> = {
       { value: "1 core", label: "and 512 MB RAM handle dozens of people" },
       { value: "€0", label: "open source; you only pay for the machine" },
     ],
-    stepsTitle: "In eight steps",
+    stepsTitle: "In eight steps, plus an optional one",
     steps: [
       {
         id: "machine",
@@ -338,6 +355,23 @@ const source: Record<Lang, Guide> = {
           "3. So you don't need SuperUser every time: connect with Mumcord under your own name and click your name at the bottom left → <strong>Register on this server</strong>. Then, as SuperUser, top channel → <strong>Edit</strong> → <strong>Groups</strong> → add your name to the <code>admin</code> group.",
         ],
       },
+      {
+        id: "relay",
+        title: "Optional: a relay for direct connections",
+        body: [
+          "So screen sharing and full-size images also work when two people cannot reach each other directly, or so nobody sees the other's IP address, you can run the <a href=\"/en/mumpeer\">mumpeer</a> relay next to the server. The content stays end-to-end encrypted.",
+          "Good to know: mumpeer is out already. The relay bot <code>mumbot peer</code> and relay support in Mumcord are still being built, until then the relay stays unused.",
+          "In the server's folder, create a secret and the config, and put your server's address under <code>public_host</code> in <code>mumpeer.toml</code>. Then add the services below to <code>docker-compose.yml</code> under <code>services:</code>, and <code>mumpeer-data:</code> under <code>volumes:</code>.",
+        ],
+        code: [
+          { code: "openssl rand -hex 32 > api_secret && chmod 600 api_secret\ncurl -fsSL -o mumpeer.toml https://raw.githubusercontent.com/Mumcord/mumpeer/main/mumpeer.example.toml" },
+          { file: "docker-compose.yml", code: "  mumpeer:\n    image: ghcr.io/mumcord/mumpeer:latest\n    restart: unless-stopped\n    ports: [\"443:443/udp\", \"443:443/tcp\"]\n    volumes:\n      - ./mumpeer.toml:/config/mumpeer.toml:ro\n      - ./api_secret:/run/secrets/mumpeer_api_secret:ro\n      - mumpeer-data:/var/lib/mumpeer\n  # Relay bot: uncomment once mumbot peer is out\n  # mumbot:\n  #   image: ghcr.io/mumcord/mumbot:latest\n  #   network_mode: \"service:mumpeer\"\n  #   command: [\"peer\", \"--config\", \"/config/bot.toml\"]" },
+        ],
+        after: [
+          "Start with <code>docker compose up -d</code> and open UDP and TCP on port 443 as well. If a web server already runs there, choose other ports in <code>mumpeer.toml</code>. Don't open the API port.",
+          "On first start the relay's fingerprint shows in the log. The bot will announce it, nothing else needs to be shared. More on the <a href=\"/en/mumpeer\">mumpeer</a> page.",
+        ],
+      },
     ],
     troubleTitle: "Upkeep and problems",
     trouble: [
@@ -369,8 +403,8 @@ const source: Record<Lang, Guide> = {
 };
 
 // Words from the translation; the code snippets always come from English.
-// Links to the English home page in the English text point to the reader's own language instead.
-const relink = (lang: string, list: string[]) => list.map((s) => s.replaceAll('href="/en#', `href="/${lang}#`));
+// Links to English pages in the English text point to the reader's own language instead.
+const relink = (lang: string, list: string[]) => list.map((s) => s.replaceAll('href="/en#', `href="/${lang}#`).replaceAll('href="/en/', `href="/${lang}/`));
 
 const mergeGuide = (lang: string, en: Guide, tr: GuideText | undefined): Guide => {
   if (!tr) return { ...en, steps: en.steps.map((s) => ({ ...s, body: relink(lang, s.body), after: s.after && relink(lang, s.after) })) };

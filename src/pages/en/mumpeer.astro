@@ -1,0 +1,13 @@
+---
+import Base from "../../layouts/Base.astro";
+import ToolPage from "../../components/ToolPage.astro";
+import { toolsPage } from "../../lib/tools";
+import { pageJsonLd } from "../../lib/jsonld";
+
+const t = toolsPage.en;
+const p = t.pages.mumpeer;
+---
+
+<Base lang="en" page="mumpeer" title={`${p.title} — ${t.label}`} description={p.description} jsonLd={pageJsonLd("en", Astro.site!, "mumpeer", p.title)}>
+  <ToolPage lang="en" tool="mumpeer" />
+</Base>

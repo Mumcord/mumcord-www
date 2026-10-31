@@ -88,6 +88,15 @@
       "botIssues": {
         "title": "Issue-k",
         "desc": "Ötletek és hibák a Mumbothoz"
+      },
+      "tools": "Tools",
+      "toolPeer": {
+        "title": "mumpeer",
+        "desc": "Relé közvetlen kapcsolatokhoz"
+      },
+      "toolQuiz": {
+        "title": "mumquiz",
+        "desc": "Kvízbot a szerveredhez"
       }
     },
     "hero": {
@@ -2265,7 +2274,7 @@
         "label": "nyílt forráskód; csak a gépért fizetsz"
       }
     ],
-    "stepsTitle": "Nyolc lépésben",
+    "stepsTitle": "Nyolc lépésben, plusz egy opcionális",
     "troubleTitle": "Karbantartás és problémák",
     "trouble": [
       {
@@ -2371,6 +2380,19 @@
           "1. Csatlakozz a <code>SuperUser</code> felhasználónévvel és a <code>.env</code> fájlban lévő jelszóval.",
           "2. Jobb klikk a legfelső csatornára → <strong>Hozzáadás</strong>, minden kívánt csatornához.",
           "3. Hogy ne kelljen mindig SuperUserként belépned: csatlakozz a Mumcorddal a saját neveden, és kattints a nevedre bal alul → <strong>Regisztráció ezen a szerveren</strong>. Ezután SuperUserként: legfelső csatorna → <strong>Szerkesztés</strong> → <strong>Csoportok</strong> → add hozzá a nevedet az <code>admin</code> csoporthoz."
+        ]
+      },
+      {
+        "id": "relay",
+        "title": "Opcionális: relé közvetlen kapcsolatokhoz",
+        "body": [
+          "Hogy a képernyőmegosztás és a teljes méretű képek akkor is működjenek, ha két ember nem éri el egymást közvetlenül, vagy hogy senki ne lássa a másik IP-jét, futtathatod a <a href=\"/en/mumpeer\">mumpeer</a> relét a szerver mellett. A tartalom végpontok között titkosított marad.",
+          "Jó tudni: a mumpeer már megjelent. A <code>mumbot peer</code> relébot és a relétámogatás a Mumcordban még készül, addig a relé használaton kívül marad.",
+          "A szerver mappájában hozz létre egy titkot és a konfigurációt, és írd a szervered címét a <code>mumpeer.toml</code> fájl <code>public_host</code> mezőjébe. Utána add hozzá az alábbi szolgáltatásokat a <code>docker-compose.yml</code> fájlhoz a <code>services:</code> alatt, a <code>mumpeer-data:</code> sort pedig a <code>volumes:</code> alá."
+        ],
+        "after": [
+          "Indítsd a <code>docker compose up -d</code> paranccsal, és nyisd meg az UDP-t és a TCP-t is a 443-as porton. Ha ott már fut egy webszerver, válassz más portokat a <code>mumpeer.toml</code> fájlban. Az API portját ne nyisd meg.",
+          "Első indításkor a relé ujjlenyomata megjelenik a naplóban. A bot be fogja jelenteni, mást nem kell megosztani. Többet a <a href=\"/en/mumpeer\">mumpeer</a> oldalon."
         ]
       }
     ]
@@ -2574,5 +2596,92 @@
     "idea": "Ötlet beküldése",
     "source": "Forráskód a GitHubon",
     "docs": "Dokumentáció"
+  },
+  "tools": {
+    "label": "Tools",
+    "release": "Legújabb verzió",
+    "noRelease": "Még nincs kiadás",
+    "copy": "Másolás",
+    "copied": "Másolva",
+    "source": "Forráskód",
+    "issues": "Ötletek és hibák",
+    "readme": "A teljes útmutató a README-ben",
+    "pages": {
+      "mumpeer": {
+        "title": "mumpeer",
+        "description": "A mumpeer egy kis relé a Mumcord közvetlen kapcsolataihoz: arra az esetre, ha két ember nem éri el egymást közvetlenül, vagy el akarja rejteni az IP-címét.",
+        "lead": "Egy kis relé a Mumcord felhasználók közötti közvetlen kapcsolataihoz, például képernyőmegosztáshoz vagy teljes méretű képekhez. Ha két ember nem éri el egymást közvetlenül, CGNAT, szigorú tűzfalak mögött vagy UDP nélküli hálózatokban, vagy nem akarja megmutatni az IP-címét, mindketten a relére csatlakoznak. Az csak a titkosított csomagokat továbbítja, mint egy TURN-szerver.",
+        "features": [
+          {
+            "title": "A Mumble-szervered mellett",
+            "body": "Egy közösség a Mumble-szervere mellett futtatja a mumpeert, a `mumbot peer` relébottal együtt. A bot bejelenti a relét, és rövid életű tokeneket oszt ki. A Mumble-szerver módosítatlan marad."
+          },
+          {
+            "title": "Csak ellenőrzött felhasználók",
+            "body": "Egy token pontosan két tanúsítványra érvényes, oldalanként egyszer és alapértelmezés szerint 120 másodpercig. A relé soha nem továbbít máshová, és soha nem nyit magától kapcsolatot, így nem nyílt proxy."
+          },
+          {
+            "title": "Végpontok közötti titkosítás",
+            "body": "Ami a relén átmegy, az a két felhasználó közötti különálló titkosított kapcsolat, a Mumble-tanúsítványaikhoz kötve. A relé sem olvasni, sem módosítani nem tudja."
+          },
+          {
+            "title": "Szinte bármilyen tűzfalon át",
+            "body": "QUIC UDP felett, vagy ahol az UDP tiltott, TLS TCP felett. Mindkettő a 443-as porton és TLS 1.3-mal."
+          },
+          {
+            "title": "Teljesen opcionális",
+            "body": "A Mumcord bot és relé nélkül is működik. A Mumcordban te döntesz: relé kikapcsolva, csak ha a közvetlen kapcsolat nem sikerül, vagy mindig."
+          }
+        ],
+        "listTitle": "Amit az üzemeltető láthat",
+        "list": [
+          "A munkamenet mindkét felhasználójának IP-címét",
+          "Melyik két tanúsítvány beszél egymással",
+          "Mennyi adat folyik és mikor",
+          "A tartalmat nem: az végpontok között titkosított. A Mumcord ezt elmondja neked, mielőtt relét használnál",
+          "Soha nem naplózza: teljes IP-címeket, teljes tanúsítványhasheket, tokeneket és csomagtartalmat"
+        ],
+        "startTitle": "Futtasd Dockerrel",
+        "startBody": "Hozz létre egy titkot az API-hoz (`openssl rand -hex 32 > api_secret`), mentsd a `mumpeer.example.toml` példakonfigurációt `mumpeer.toml` néven, és állítsd be benne a `public_host` értékét. Utána indítsd el együtt a relét és a botot:",
+        "startNote": "Első indításkor a relé ujjlenyomata megjelenik a naplóban. A bot bejelenti, mást nem kell megosztani. Nyisd meg az UDP-t és a TCP-t a 443-as porton, az API portját ne. A `mumbot peer` relébot és a relétámogatás a Mumcordban még készül."
+      },
+      "mumquiz": {
+        "title": "mumquiz",
+        "description": "A mumquiz egy kvízbot Mumble-szerverekhez: kérdéseket tesz fel, olvassa a válaszokat a chatben, tippeket ad és pontokat oszt.",
+        "lead": "Kvízbot Mumble-szerverekhez: kérdéseket tesz fel, olvassa a válaszokat a chatben, tippeket ad, pontokat oszt, és megjegyzi a győzelmeket. Úgy jelentkezik be, mint egy ember, saját tanúsítvánnyal. Ezért bármely szabványos Mumble-szerveren fut, plugin nélkül és a konfiguráció módosítása nélkül.",
+        "features": [
+          {
+            "title": "A játék",
+            "body": "Amint elég ember van a csatornán, elindul. Egy idő után jön egy tipp néhány betűvel, öt tipp után a válasz. Az nyer, aki először eléri a forduló pontszámát."
+          },
+          {
+            "title": "Nagyvonalú a válaszokkal",
+            "body": "A kis- és nagybetűk, az írásjelek és az olyan írásmódok, mint az ae és ä vagy az ss és ß, egynek számítanak."
+          },
+          {
+            "title": "Szép a Mumcordban",
+            "body": "A Mumcordban a játék üzenetei üzenetkártyaként jelennek meg, a hivatalos Mumble-kliensben egyszerű chatszövegként."
+          },
+          {
+            "title": "Saját kérdéseid",
+            "body": "A kérdések egy egyszerű TOML-fájlban élnek. Egy szkript kívánságra átviszi az eredeti bot kérdéseit."
+          }
+        ],
+        "listTitle": "Parancsok a chatben",
+        "list": [
+          "A súgó, privátban neked",
+          "Ennek a fordulónak az első öt helyezettje",
+          "Minden idők első öt helyezettje",
+          "Etesd a botot, különben éhes lesz",
+          "A kérdések újratöltése (játékmesterek)",
+          "Átlépés egy másik csatornára (játékmesterek)",
+          "Játékmester hozzáadása vagy eltávolítása"
+        ],
+        "startTitle": "Építsd és futtasd magad",
+        "startBody": "Rusttal így építed meg a botot:",
+        "startNote": "Utána lépj be a „Quiz” csatornára, és írd be: `!help`. A játék akkor indul, amikor ketten vagytok ott.",
+        "credit": "A játék és üzenetei a zorgch/irc-quizbot (GPL-3.0) projektből származnak, Rustra és a Mumble protokollra portolva, a Mumcorddal azonos protokollréteggel."
+      }
+    }
   }
 }

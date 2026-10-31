@@ -88,6 +88,15 @@
       "botIssues": {
         "title": "Pieteikumi",
         "desc": "Idejas un kļūdas saistībā ar Mumbot"
+      },
+      "tools": "Tools",
+      "toolPeer": {
+        "title": "mumpeer",
+        "desc": "Relejs tiešajiem savienojumiem"
+      },
+      "toolQuiz": {
+        "title": "mumquiz",
+        "desc": "Viktorīnas bots tavam serverim"
       }
     },
     "hero": {
@@ -2265,7 +2274,7 @@
         "label": "atvērtais kods; maksā tikai par mašīnu"
       }
     ],
-    "stepsTitle": "Astoņos soļos",
+    "stepsTitle": "Astoņos soļos, plus viens neobligāts",
     "troubleTitle": "Uzturēšana un problēmas",
     "trouble": [
       {
@@ -2371,6 +2380,19 @@
           "1. Pieslēdzies ar lietotājvārdu <code>SuperUser</code> un paroli no <code>.env</code>.",
           "2. Labais klikšķis uz augšējā kanāla → <strong>Pievienot</strong>, katram kanālam, ko vēlies.",
           "3. Lai katru reizi nevajadzētu SuperUser: pieslēdzies ar Mumcord ar savu vārdu un noklikšķini uz sava vārda apakšā kreisajā pusē → <strong>Reģistrēties šajā serverī</strong>. Tad kā SuperUser: augšējais kanāls → <strong>Rediģēt</strong> → <strong>Grupas</strong> → pievieno savu vārdu grupai <code>admin</code>."
+        ]
+      },
+      {
+        "id": "relay",
+        "title": "Neobligāti: relejs tiešajiem savienojumiem",
+        "body": [
+          "Lai ekrāna koplietošana un pilna izmēra attēli darbotos arī tad, kad divi cilvēki nevar sasniegt viens otru tieši, vai lai neviens neredzētu otra IP adresi, blakus serverim vari palaist releju <a href=\"/en/mumpeer\">mumpeer</a>. Saturs paliek šifrēts no gala līdz galam.",
+          "Der zināt: mumpeer jau ir izlaists. Releja bots <code>mumbot peer</code> un releja atbalsts Mumcord vēl tiek veidoti, līdz tam relejs paliek neizmantots.",
+          "Servera mapē izveido noslēpumu un konfigurāciju, un savu servera adresi ieraksti pie <code>public_host</code> failā <code>mumpeer.toml</code>. Pēc tam pievieno tālāk redzamos servisus failam <code>docker-compose.yml</code> zem <code>services:</code>, bet <code>mumpeer-data:</code> zem <code>volumes:</code>."
+        ],
+        "after": [
+          "Palaid ar <code>docker compose up -d</code> un atver arī UDP un TCP 443. portā. Ja tur jau darbojas tīmekļa serveris, izvēlies citus portus failā <code>mumpeer.toml</code>. Neatver API portu.",
+          "Pirmajā palaišanas reizē releja pirkstu nospiedums parādās žurnālā. Bots to paziņos, nekas cits nav jādala. Vairāk <a href=\"/en/mumpeer\">mumpeer</a> lapā."
         ]
       }
     ]
@@ -2574,5 +2596,92 @@
     "idea": "Ierosini ideju",
     "source": "Pirmkods GitHub",
     "docs": "Dokumentācija"
+  },
+  "tools": {
+    "label": "Tools",
+    "release": "Jaunākā versija",
+    "noRelease": "Izlaides vēl nav",
+    "copy": "Kopēt",
+    "copied": "Nokopēts",
+    "source": "Pirmkods",
+    "issues": "Idejas un kļūdas",
+    "readme": "Pilna rokasgrāmata README failā",
+    "pages": {
+      "mumpeer": {
+        "title": "mumpeer",
+        "description": "mumpeer ir neliels relejs (relay) Mumcord tiešajiem savienojumiem: kad divi cilvēki nevar sasniegt viens otru tieši vai vēlas slēpt savu IP adresi.",
+        "lead": "Neliels relejs Mumcord tiešajiem savienojumiem starp lietotājiem, piemēram, ekrāna koplietošanai vai pilna izmēra attēliem. Kad divi cilvēki nevar sasniegt viens otru tieši, aiz CGNAT, stingrām ugunsmūriem vai tīklos bez UDP, vai nevēlas rādīt savu IP adresi, abi tā vietā savienojas ar releju. Tas tikai pārsūta šifrētās paketes, kā TURN serveris.",
+        "features": [
+          {
+            "title": "Blakus tavam Mumble serverim",
+            "body": "Kopiena palaiž mumpeer blakus savam Mumble serverim kopā ar releja botu `mumbot peer`. Bots paziņo par releju un izdala īslaicīgus žetonus. Mumble serveris paliek nemainīts."
+          },
+          {
+            "title": "Tikai pārbaudīti lietotāji",
+            "body": "Žetons derīgs tikai tieši diviem sertifikātiem, vienu reizi katrā pusē un pēc noklusējuma 120 sekundes. Relejs nekad nepārsūta nekur citur un nekad pats neatver savienojumus, tāpēc tas nav atvērts starpniekserveris."
+          },
+          {
+            "title": "Šifrēts no gala līdz galam",
+            "body": "Tas, kas iet caur releju, ir atsevišķs šifrēts savienojums starp abiem lietotājiem, piesaistīts viņu Mumble sertifikātiem. Relejs to nevar ne lasīt, ne mainīt."
+          },
+          {
+            "title": "Cauri gandrīz jebkuram ugunsmūrim",
+            "body": "QUIC pār UDP vai, kur UDP ir bloķēts, TLS pār TCP. Abi 443. portā un ar TLS 1.3."
+          },
+          {
+            "title": "Pilnīgi neobligāts",
+            "body": "Mumcord darbojas arī bez bota un releja. Mumcord tu izvēlies pats: relejs izslēgts, tikai kad tiešais savienojums neizdodas, vai vienmēr."
+          }
+        ],
+        "listTitle": "Ko operators var redzēt",
+        "list": [
+          "Abu sesijas lietotāju IP adreses",
+          "Kuri divi sertifikāti sarunājas savā starpā",
+          "Cik daudz datu plūst un kad",
+          "Ne saturu: tas ir šifrēts no gala līdz galam. Mumcord tev to pasaka, pirms lieto releju",
+          "Nekad netiek žurnalizēts: pilnas IP adreses, pilni sertifikātu jaucējkodi, žetoni un pakešu saturs"
+        ],
+        "startTitle": "Palaid ar Docker",
+        "startBody": "Izveido noslēpumu API (`openssl rand -hex 32 > api_secret`), saglabā piemēra konfigurāciju `mumpeer.example.toml` kā `mumpeer.toml` un iestati tajā `public_host`. Pēc tam palaid releju un botu kopā:",
+        "startNote": "Pirmajā palaišanas reizē releja pirkstu nospiedums parādās žurnālā. Bots to paziņo, nekas cits nav jādala. Atver UDP un TCP 443. portā, nevis API portu. Releja bots `mumbot peer` un releja atbalsts Mumcord vēl tiek veidoti."
+      },
+      "mumquiz": {
+        "title": "mumquiz",
+        "description": "mumquiz ir viktorīnas bots Mumble serveriem: uzdod jautājumus, lasa atbildes tērzēšanā, sniedz mājienus un piešķir punktus.",
+        "lead": "Viktorīnas bots Mumble serveriem: uzdod jautājumus, lasa atbildes tērzēšanā, sniedz mājienus, piešķir punktus un atceras uzvaras. Tas pieslēdzas kā cilvēks, ar savu sertifikātu. Tāpēc darbojas jebkurā standarta Mumble serverī, bez spraudņa un bez konfigurācijas izmaiņām.",
+        "features": [
+          {
+            "title": "Spēle",
+            "body": "Tiklīdz kanālā ir pietiekami daudz cilvēku, tā sākas. Pēc kāda laika nāk mājiens ar dažiem burtiem, pēc pieciem mājieniem atbilde. Uzvar tas, kurš pirmais sasniedz raunda rezultātu."
+          },
+          {
+            "title": "Devīgs pret atbildēm",
+            "body": "Lielie un mazie burti, pieturzīmes un pierakstu varianti, piemēram, ae un ä vai ss un ß, tiek skaitīti kā viens un tas pats."
+          },
+          {
+            "title": "Skaists Mumcord",
+            "body": "Mumcord spēles ziņas tiek rādītas kā ziņu kartītes, oficiālajā Mumble klientā kā vienkāršs tērzēšanas teksts."
+          },
+          {
+            "title": "Tavi paša jautājumi",
+            "body": "Jautājumi atrodas vienkāršā TOML failā. Skripts var pārnest oriģinālā bota jautājumus, ja vēlies."
+          }
+        ],
+        "listTitle": "Komandas tērzēšanā",
+        "list": [
+          "Palīdzība, privāti tev",
+          "Šī raunda piecnieks",
+          "Visu laiku piecnieks",
+          "Pabaro botu, citādi tas paliks izsalcis",
+          "Pārlādēt jautājumus (spēles vadītāji)",
+          "Pāriet uz citu kanālu (spēles vadītāji)",
+          "Pievienot vai noņemt spēles vadītāju"
+        ],
+        "startTitle": "Uzbūvē un palaid pats",
+        "startBody": "Ar Rust botu uzbūvē šādi:",
+        "startNote": "Tad pievienojies kanālam „Quiz“ un ieraksti `!help`. Spēle sākas, tiklīdz tur ir divi cilvēki.",
+        "credit": "Spēle un tās ziņas nāk no zorgch/irc-quizbot (GPL-3.0), pārnestas uz Rust un Mumble protokolu, ar to pašu protokola slāni kā Mumcord."
+      }
+    }
   }
 }

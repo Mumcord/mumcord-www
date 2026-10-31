@@ -88,6 +88,15 @@
       "botIssues": {
         "title": "Issues",
         "desc": "Ideat u bugs għal Mumbot"
+      },
+      "tools": "Tools",
+      "toolPeer": {
+        "title": "mumpeer",
+        "desc": "Relay għal konnessjonijiet diretti"
+      },
+      "toolQuiz": {
+        "title": "mumquiz",
+        "desc": "Bot tal-kwiżż għas-server tiegħek"
       }
     },
     "hero": {
@@ -2265,7 +2274,7 @@
         "label": "open source; tħallas biss għall-magna"
       }
     ],
-    "stepsTitle": "Fi tmien passi",
+    "stepsTitle": "Fi tmien passi, flimkien ma' wieħed fakultattiv",
     "troubleTitle": "Manutenzjoni u problemi",
     "trouble": [
       {
@@ -2371,6 +2380,19 @@
           "1. Ikkonnettja bl-username <code>SuperUser</code> u l-password minn <code>.env</code>.",
           "2. Right-click fuq il-kanal ta’ fuq nett → <strong>Żid</strong>, għal kull kanal li trid.",
           "3. Biex ma jkollokx bżonn SuperUser kull darba: ikkonnettja ma’ Mumcord b’ismek u ikklikkja ismek isfel fuq ix-xellug → <strong>Irreġistra fuq dan is-server</strong>. Imbagħad, bħala SuperUser, il-kanal ta’ fuq nett → <strong>Editja</strong> → <strong>Gruppi</strong> → żid ismek mal-grupp <code>admin</code>."
+        ]
+      },
+      {
+        "id": "relay",
+        "title": "Fakultattiv: relay għal konnessjonijiet diretti",
+        "body": [
+          "Biex il-qsim tal-iskrin u l-immaġini bid-daqs sħiħ jaħdmu wkoll meta żewġ persuni ma jistgħux jilħqu lil xulxin direttament, jew biex ħadd ma jara l-IP tal-ieħor, tista' tħaddem ir-relay <a href=\"/en/mumpeer\">mumpeer</a> maġenb is-server. Il-kontenut jibqa' kriptat minn tarf sa tarf.",
+          "Tajjeb li tkun taf: mumpeer diġà ħareġ. Il-bot tar-relay <code>mumbot peer</code> u l-appoġġ tar-relay fil-Mumcord għadhom qed jinbnew, sa dakinhar ir-relay jibqa' mhux użat.",
+          "Fil-folder tas-server, oħloq sigriet u l-konfigurazzjoni, u poġġi l-indirizz tas-server tiegħek taħt <code>public_host</code> f'<code>mumpeer.toml</code>. Imbagħad żid is-servizzi t'hawn taħt ma' <code>docker-compose.yml</code> taħt <code>services:</code>, u <code>mumpeer-data:</code> taħt <code>volumes:</code>."
+        ],
+        "after": [
+          "Ibda b'<code>docker compose up -d</code> u iftaħ UDP u TCP fuq il-port 443 ukoll. Jekk web server diġà jaħdem hemm, agħżel portijiet oħra f'<code>mumpeer.toml</code>. Tiftaħx il-port tal-API.",
+          "L-ewwel darba li jibda, il-marka tas-swaba' tar-relay tidher fil-log. Il-bot se jannunzjaha, m'hemm bżonn naqsmu xejn aktar. Aktar fuq il-paġna ta' <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
     ]
@@ -2574,5 +2596,92 @@
     "idea": "Ipproponi idea",
     "source": "Kodiċi sors fuq GitHub",
     "docs": "Dokumentazzjoni"
+  },
+  "tools": {
+    "label": "Tools",
+    "release": "L-aħħar verżjoni",
+    "noRelease": "Għad m'hemm l-ebda ħruġ",
+    "copy": "Ikkopja",
+    "copied": "Ikkopjat",
+    "source": "Kodiċi sors",
+    "issues": "Ideat u bugs",
+    "readme": "Il-gwida sħiħa fil-README",
+    "pages": {
+      "mumpeer": {
+        "title": "mumpeer",
+        "description": "mumpeer huwa relay żgħir għall-konnessjonijiet diretti ta' Mumcord: għal meta żewġ persuni ma jistgħux jilħqu lil xulxin direttament jew jixtiequ jaħbu l-indirizz IP tagħhom.",
+        "lead": "Relay żgħir għall-konnessjonijiet diretti ta' Mumcord bejn l-utenti, pereżempju għall-qsim tal-iskrin jew għal immaġini bid-daqs sħiħ. Meta żewġ persuni ma jistgħux jilħqu lil xulxin direttament, wara CGNAT, firewalls stretti jew f'netwerks mingħajr UDP, jew ma jridux juru l-indirizz IP tagħhom, it-tnejn jikkonnettjaw mar-relay minflok. Dan jgħaddi biss il-pakketti kriptati, bħal server TURN.",
+        "features": [
+          {
+            "title": "Maġenb is-server Mumble tiegħek",
+            "body": "Komunità tħaddem mumpeer maġenb is-server Mumble tagħha, flimkien mal-bot tar-relay `mumbot peer`. Il-bot jannunzja r-relay u jqassam tokens ta' ħajja qasira. Is-server Mumble jibqa' mhux mibdul."
+          },
+          {
+            "title": "Utenti vverifikati biss",
+            "body": "Token jaħdem biss għal eżattament żewġ ċertifikati, darba għal kull naħa u għal 120 sekonda b'mod awtomatiku. Ir-relay qatt ma jgħaddi lil xi mkien ieħor u qatt ma jiftaħ konnessjonijiet waħdu, allura mhuwiex proxy miftuħ."
+          },
+          {
+            "title": "Kriptat minn tarf sa tarf",
+            "body": "Dak li jgħaddi mir-relay huwa konnessjoni kriptata separata bejn iż-żewġ utenti, marbuta maċ-ċertifikati Mumble tagħhom. Ir-relay la jista' jaqrah u lanqas jbiddlu."
+          },
+          {
+            "title": "Minn kważi kull firewall",
+            "body": "QUIC fuq UDP jew, fejn l-UDP hu mblukkat, TLS fuq TCP. It-tnejn fuq il-port 443 u b'TLS 1.3."
+          },
+          {
+            "title": "Għażla sħiħa",
+            "body": "Mumcord jaħdem ukoll mingħajr bot u relay. Fil-Mumcord int tagħżel: relay mitfi, biss meta konnessjoni diretta tfalli, jew dejjem."
+          }
+        ],
+        "listTitle": "Dak li l-operatur jista' jara",
+        "list": [
+          "L-indirizzi IP taż-żewġ utenti ta' sessjoni",
+          "Liema żewġ ċertifikati qed jitkellmu ma' xulxin",
+          "Kemm qed jiġri data u meta",
+          "Mhux il-kontenut: huwa kriptat minn tarf sa tarf. Mumcord jgħidlek dan qabel ma tuża relay",
+          "Qatt ma jiġu rreġistrati: indirizzi IP sħaħ, hashes sħaħ taċ-ċertifikati, tokens u kontenut tal-pakketti"
+        ],
+        "startTitle": "Mexxih b'Docker",
+        "startBody": "Oħloq sigriet għall-API (`openssl rand -hex 32 > api_secret`), issejvja l-konfigurazzjoni eżempju `mumpeer.example.toml` bħala `mumpeer.toml` u ssettja `public_host` fiha. Imbagħad ibda r-relay u l-bot flimkien:",
+        "startNote": "L-ewwel darba li jibda, il-marka tas-swaba' tar-relay tidher fil-log. Il-bot jannunzjaha, m'hemm bżonn naqsmu xejn aktar. Iftaħ UDP u TCP fuq il-port 443, mhux il-port tal-API. Il-bot tar-relay `mumbot peer` u l-appoġġ tar-relay fil-Mumcord għadhom qed jinbnew."
+      },
+      "mumquiz": {
+        "title": "mumquiz",
+        "description": "mumquiz huwa bot tal-kwiżż għal servers Mumble: jistaqsi mistoqsijiet, jaqra t-tweġibiet fiċ-chat, jagħti ħjiel u jagħti punti.",
+        "lead": "Bot tal-kwiżż għal servers Mumble: jistaqsi mistoqsijiet, jaqra t-tweġibiet fiċ-chat, jagħti ħjiel, jagħti punti u jiftakar rebħiet. Jidħol bħal persuna, b'ċertifikat tiegħu stess. Għalhekk jaħdem fuq kull server Mumble standard, mingħajr plugin u mingħajr bidla fil-konfigurazzjoni.",
+        "features": [
+          {
+            "title": "Il-logħba",
+            "body": "Hekk kif ikun hemm biżżejjed nies fil-kanal, tibda. Wara ftit żmien jiġi ħjiel b'ftit ittri, wara ħames ħjiel it-tweġiba. Jirbaħ min l-ewwel jilħaq l-iskor tat-tond."
+          },
+          {
+            "title": "Ġeneruż bit-tweġibiet",
+            "body": "Ittri kbar u żgħar, tippunteġġjatura u kitbiet bħal ae u ä jew ss u ß jingħaddu bħala l-istess."
+          },
+          {
+            "title": "Sabiħ fil-Mumcord",
+            "body": "Fil-Mumcord il-messaġġi tal-logħba jidhru bħala kards tal-messaġġi, fil-klijent uffiċjali ta' Mumble bħala test tas-sempliċi chat."
+          },
+          {
+            "title": "Il-mistoqsijiet tiegħek stess",
+            "body": "Il-mistoqsijiet jgħixu f'fajl TOML sempliċi. Skript jista' jġib il-mistoqsijiet tal-bot oriġinali, jekk trid."
+          }
+        ],
+        "listTitle": "Kmandi fiċ-chat",
+        "list": [
+          "Il-għajnuna, privatament lilek",
+          "L-ewwel ħamsa ta' dan it-tond",
+          "L-ewwel ħamsa tal-ħin kollu",
+          "Għalf il-bot, jew jingħata l-ġuħ",
+          "Erġa' tlaħħaq il-mistoqsijiet (il-mastri tal-logħba)",
+          "Mur f'kanal ieħor (il-mastri tal-logħba)",
+          "Żid jew neħħi master tal-logħba"
+        ],
+        "startTitle": "Ibnih u mexxih int stess",
+        "startBody": "B'Rust tibni l-bot hekk:",
+        "startNote": "Imbagħad idħol fil-kanal “Quiz” u ikteb `!help`. Il-logħba tibda hekk kif ikun hemm tnejn.",
+        "credit": "Il-logħba u l-messaġġi tagħha ġejjin minn zorgch/irc-quizbot (GPL-3.0), ittrasportati għal Rust u għall-protokoll ta' Mumble, bl-istess saff tal-protokoll bħal Mumcord."
+      }
+    }
   }
 }

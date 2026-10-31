@@ -88,6 +88,15 @@
       "botIssues": {
         "title": "Issues",
         "desc": "Ideas y errores para Mumbot"
+      },
+      "tools": "Tools",
+      "toolPeer": {
+        "title": "mumpeer",
+        "desc": "Relay para conexiones directas"
+      },
+      "toolQuiz": {
+        "title": "mumquiz",
+        "desc": "Bot de preguntas para tu servidor"
       }
     },
     "hero": {
@@ -2265,7 +2274,7 @@
         "label": "código abierto; solo pagas la máquina"
       }
     ],
-    "stepsTitle": "En ocho pasos",
+    "stepsTitle": "En ocho pasos, más uno opcional",
     "troubleTitle": "Mantenimiento y problemas",
     "trouble": [
       {
@@ -2371,6 +2380,19 @@
           "1. Conéctate con el nombre de usuario <code>SuperUser</code> y la contraseña de <code>.env</code>.",
           "2. Clic derecho en el canal superior → <strong>Añadir</strong>, para cada canal que quieras.",
           "3. Para no necesitar SuperUser cada vez: conéctate con Mumcord con tu propio nombre y haz clic en tu nombre abajo a la izquierda → <strong>Registrarse en este servidor</strong>. Después, como SuperUser, canal superior → <strong>Editar</strong> → <strong>Grupos</strong> → añade tu nombre al grupo <code>admin</code>."
+        ]
+      },
+      {
+        "id": "relay",
+        "title": "Opcional: un relay para conexiones directas",
+        "body": [
+          "Para que compartir pantalla y las imágenes a tamaño completo también funcionen cuando dos personas no pueden alcanzarse directamente, o para que nadie vea la IP del otro, puedes ejecutar el relay <a href=\"/en/mumpeer\">mumpeer</a> junto al servidor. El contenido sigue cifrado de extremo a extremo.",
+          "Conviene saber: mumpeer ya ha salido. El bot de relay <code>mumbot peer</code> y la compatibilidad con relay en Mumcord aún están en construcción; hasta entonces el relay queda sin usar.",
+          "En la carpeta del servidor, crea un secreto y la configuración, y pon la dirección de tu servidor en <code>public_host</code> dentro de <code>mumpeer.toml</code>. Luego añade los servicios de abajo a <code>docker-compose.yml</code> bajo <code>services:</code>, y <code>mumpeer-data:</code> bajo <code>volumes:</code>."
+        ],
+        "after": [
+          "Inicia con <code>docker compose up -d</code> y abre también UDP y TCP en el puerto 443. Si ahí ya funciona un servidor web, elige otros puertos en <code>mumpeer.toml</code>. No abras el puerto de la API.",
+          "En el primer arranque, la huella del relay aparece en el log. El bot la anunciará, no hace falta compartir nada más. Más en la página de <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
     ]
@@ -2574,5 +2596,92 @@
     "idea": "Proponer una idea",
     "source": "Código en GitHub",
     "docs": "Documentación"
+  },
+  "tools": {
+    "label": "Tools",
+    "release": "Última versión",
+    "noRelease": "Aún no hay ninguna versión",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "source": "Código fuente",
+    "issues": "Ideas y errores",
+    "readme": "Guía completa en el README",
+    "pages": {
+      "mumpeer": {
+        "title": "mumpeer",
+        "description": "mumpeer es un pequeño relay para las conexiones directas de Mumcord: para cuando dos personas no pueden alcanzarse directamente o quieren ocultar su dirección IP.",
+        "lead": "Un pequeño relay para las conexiones directas de Mumcord entre usuarios, por ejemplo para compartir pantalla o enviar imágenes a tamaño completo. Cuando dos personas no pueden alcanzarse directamente, detrás de CGNAT, cortafuegos estrictos o en redes sin UDP, o no quieren mostrar su dirección IP, ambas se conectan al relay. Este solo reenvía los paquetes cifrados, como un servidor TURN.",
+        "features": [
+          {
+            "title": "Junto a tu servidor Mumble",
+            "body": "Una comunidad ejecuta mumpeer junto a su servidor Mumble, con el bot de relay `mumbot peer`. El bot anuncia el relay y reparte tokens de corta duración. El servidor Mumble queda sin modificar."
+          },
+          {
+            "title": "Solo usuarios verificados",
+            "body": "Un token solo sirve para exactamente dos certificados, una vez por cada lado y durante 120 segundos por defecto. El relay nunca reenvía a ningún otro sitio y nunca abre conexiones por sí mismo, así que no es un proxy abierto."
+          },
+          {
+            "title": "Cifrado de extremo a extremo",
+            "body": "Lo que pasa por el relay es una conexión cifrada aparte entre los dos usuarios, fijada a sus certificados de Mumble. El relay no puede ni leerla ni modificarla."
+          },
+          {
+            "title": "Por casi cualquier cortafuegos",
+            "body": "QUIC sobre UDP o, donde UDP está bloqueado, TLS sobre TCP. Ambos en el puerto 443 y con TLS 1.3."
+          },
+          {
+            "title": "Totalmente opcional",
+            "body": "Mumcord funciona también sin bot ni relay. En Mumcord eliges tú: relay desactivado, solo cuando falla una conexión directa, o siempre."
+          }
+        ],
+        "listTitle": "Lo que puede ver el operador",
+        "list": [
+          "Las direcciones IP de los dos usuarios de una sesión",
+          "Qué dos certificados hablan entre sí",
+          "Cuántos datos fluyen y cuándo",
+          "No el contenido: está cifrado de extremo a extremo. Mumcord te lo dice antes de que uses un relay",
+          "Nunca se registran: direcciones IP completas, hashes completos de certificados, tokens ni contenido de paquetes"
+        ],
+        "startTitle": "Ejecútalo con Docker",
+        "startBody": "Crea un secreto para la API (`openssl rand -hex 32 > api_secret`), guarda la configuración de ejemplo `mumpeer.example.toml` como `mumpeer.toml` y define en ella `public_host`. Después inicia el relay y el bot juntos:",
+        "startNote": "En el primer arranque, la huella del relay aparece en el log. El bot la anuncia, no hace falta compartir nada más. Abre UDP y TCP en el puerto 443, no el puerto de la API. El bot de relay `mumbot peer` y la compatibilidad con relay en Mumcord aún están en construcción."
+      },
+      "mumquiz": {
+        "title": "mumquiz",
+        "description": "mumquiz es un bot de preguntas para servidores Mumble: hace preguntas, lee las respuestas en el chat, da pistas y reparte puntos.",
+        "lead": "Un bot de preguntas para servidores Mumble: hace preguntas, lee las respuestas en el chat, da pistas, reparte puntos y recuerda las victorias. Se conecta como una persona, con su propio certificado. Por eso funciona en cualquier servidor Mumble estándar, sin plugin y sin cambiar la configuración.",
+        "features": [
+          {
+            "title": "El juego",
+            "body": "En cuanto hay suficiente gente en el canal, empieza. Pasado un rato llega una pista con unas pocas letras, tras cinco pistas la respuesta. Gana quien primero alcance la puntuación de la ronda."
+          },
+          {
+            "title": "Generoso con las respuestas",
+            "body": "Mayúsculas y minúsculas, signos de puntuación y grafías como ae y ä o ss y ß cuentan como lo mismo."
+          },
+          {
+            "title": "Bonito en Mumcord",
+            "body": "En Mumcord los mensajes del juego se muestran como tarjetas de mensaje, en el cliente oficial de Mumble como texto de chat normal."
+          },
+          {
+            "title": "Tus propias preguntas",
+            "body": "Las preguntas viven en un sencillo archivo TOML. Un script puede traer las preguntas del bot original, si quieres."
+          }
+        ],
+        "listTitle": "Comandos en el chat",
+        "list": [
+          "La ayuda, en privado para ti",
+          "Los cinco mejores de esta ronda",
+          "Los cinco mejores de todos los tiempos",
+          "Dale de comer al bot, o le entrará hambre",
+          "Recargar las preguntas (maestros de juego)",
+          "Pasar a otro canal (maestros de juego)",
+          "Añadir o quitar un maestro de juego"
+        ],
+        "startTitle": "Compílalo y ejecútalo tú mismo",
+        "startBody": "Con Rust compilas el bot así:",
+        "startNote": "Luego entra en el canal «Quiz» y escribe `!help`. El juego empieza en cuanto hay dos personas.",
+        "credit": "El juego y sus mensajes proceden de zorgch/irc-quizbot (GPL-3.0), portados a Rust y al protocolo de Mumble, con la misma capa de protocolo que Mumcord."
+      }
+    }
   }
 }
