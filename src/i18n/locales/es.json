@@ -2426,6 +2426,14 @@
         "webhook": [
           "Webhook de Mumbot",
           "Mensajes de monitorización o CI a un canal"
+        ],
+        "music": [
+          "Música de Mumbot",
+          "Reproduce MP3 en un canal de voz por HTTP, con cola"
+        ],
+        "history": [
+          "Historial de Mumbot",
+          "Guarda el chat del canal para usuarios de Mumcord que estaban ausentes. Nunca mensajes privados"
         ]
       },
       "setup": "Carpeta y configuraciones",
@@ -2438,13 +2446,23 @@
         "portsRelay": "Abre también el puerto 443 para TCP y UDP.",
         "relay": "Pon la dirección de tu servidor en `public_host` de `mumpeer.toml` y la huella de tu servidor Mumble en `bot-peer.toml`.",
         "webhook": "Define una clave de API y los canales permitidos en `bot-webhook.toml`. Después, un `curl` a `http://127.0.0.1:8080/message` publica en el canal.",
-        "more": "Los pasos de abajo explican cada parte en detalle."
+        "more": "Los pasos de abajo explican cada parte en detalle.",
+        "music": "Pon los MP3 en la carpeta `media` y define una clave de API en `bot-music.toml`. Después, una petición a `http://127.0.0.1:8081` los reproduce en el canal.",
+        "history": "Define en `bot-history.toml` cuánto tiempo guarda el bot el chat. Necesita acceso de lectura a los canales."
       },
       "advanced": "Avanzado",
       "pluginLimit": "Paquetes ocultos por segundo",
       "pluginBurst": "De ellos en una ráfaga rápida",
-      "pluginHint": "Datos de plugins que los clientes de Mumcord usan para imágenes, historial del chat y la sesión de cine compartido. El servidor descarta en silencio todo lo que supere el límite. Por defecto: 4 por segundo, brevemente hasta 15. Mumcord se queda por debajo con 3 y 10; más margen ayuda sobre todo a otros plugins."
-    }
+      "pluginHint": "Datos de plugins que los clientes de Mumcord usan para imágenes, historial del chat y la sesión de cine compartido. El servidor descarta en silencio todo lo que supere el límite. Por defecto: 4 por segundo, brevemente hasta 15. Mumcord se queda por debajo con 3 y 10; más margen ayuda sobre todo a otros plugins.",
+      "quality": {
+        "label": "Bitrate máximo",
+        "hint": "Lo máximo que puede enviar una persona. Estándar basta para voz, Bueno para música con la calidad de música de Mumcord, Óptimo para hi-fi y para escuchar música juntos. Más bitrate necesita más subida en el servidor.",
+        "standard": "Estándar",
+        "good": "Bueno",
+        "best": "Óptimo"
+      }
+    },
+    "stepsCta": "Paso a paso"
   },
   "themes": {
     "title": "Temas",

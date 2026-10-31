@@ -3042,6 +3042,28 @@ p {
   gap: 12px;
   margin-top: 28px;
 }
+.guide-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.guide-cta svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.guide-cta-ghost {
+  border: 1px solid var(--line-strong);
+  background: rgb(246 240 232 / 0.04);
+  color: var(--text);
+}
+.guide-cta-ghost:hover {
+  border-color: var(--lilac);
+  background: rgb(155 123 255 / 0.12);
+}
 /* A decorative server card: glass, a glowing edge, services coming up one by one. */
 .guide-server {
   position: relative;
@@ -4851,6 +4873,47 @@ p {
 }
 .cfg-field input:focus-visible,
 .cfg-check input:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 2px;
+}
+.cfg-seg {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  margin-top: 12px;
+  padding: 4px;
+  border: 1px solid var(--line-strong);
+  border-radius: 16px;
+  background: var(--bg);
+}
+.cfg-seg label {
+  position: relative;
+  cursor: pointer;
+}
+.cfg-seg input {
+  position: absolute;
+  opacity: 0;
+}
+.cfg-seg span {
+  display: grid;
+  gap: 2px;
+  padding: 10px 6px;
+  border-radius: 12px;
+  text-align: center;
+  transition: background 0.2s, color 0.2s;
+}
+.cfg-seg small {
+  font: 500 0.6875rem var(--font-mono);
+  color: var(--faint);
+}
+.cfg-seg input:checked + span {
+  background: linear-gradient(135deg, rgb(255 176 138 / 0.9), rgb(155 123 255 / 0.9));
+  color: #160f38;
+}
+.cfg-seg input:checked + span small {
+  color: rgb(22 15 56 / 0.75);
+}
+.cfg-seg input:focus-visible + span {
   outline: 2px solid var(--violet);
   outline-offset: 2px;
 }

@@ -7,7 +7,13 @@ export type CommentLang = "de" | "en";
 
 export const IMAGE = "mumblevoip/mumble-server:v1.5.735";
 export const MUMPEER_IMAGE = "ghcr.io/mumcord/mumpeer:0.1.0";
-export const MUMBOT_IMAGE = "ghcr.io/mumcord/mumbot:0.1.0";
+export const MUMBOT_IMAGE = "ghcr.io/mumcord/mumbot";
+/** The Mumbot release that brings the music and history bots. */
+export const MUMBOT_MODULES_FROM = "0.2.0";
+
+/** Most a person may send, in bit/s: Mumble's own default, room for music, and the hi-fi value of Mumble's sample config. */
+export const BANDWIDTH = { standard: 72000, good: 192000, best: 558000 } as const;
+export type Quality = keyof typeof BANDWIDTH;
 const EXAMPLES = "https://raw.githubusercontent.com/Mumcord/mumbot/main/examples";
 
 export interface ServerOptions {
@@ -28,6 +34,14 @@ export interface ServerOptions {
   pluginLimit: number;
   /** How many of them may come at once (`pluginmessageburst`, server default 15). */
   pluginBurst: number;
+  /** The most a person may send (`bandwidth`). */
+  quality: Quality;
+  /** Mumbot's music bot: plays MP3s into a voice channel over HTTP (from 0.2.0). */
+  music: boolean;
+  /** Mumbot's history bot: keeps channel chat for Mumcord users who were away (from 0.2.0). */
+  history: boolean;
+  /** The Mumbot image tag every bot service uses. */
+  mumbotVersion: string;
 }
 
 /** The Mumble server's own defaults; only other values go into the file. */
@@ -56,6 +70,9 @@ const COMMENTS = {
     text: "längere Nachrichten (Standard: 5000 Zeichen)",
     pluginLimit: "versteckte Pakete (Plugin-Daten) pro Person und Sekunde (Standard: 4)",
     pluginBurst: "so viele davon kurz hintereinander (Standard: 15)",
+    bandwidth: "höchste Bitrate pro Person in bit/s (72000 Sprache, 192000 Musik, 558000 Hi-Fi)",
+    music: "Musik-Bot: spielt MP3s aus ./media über HTTP im Sprachkanal",
+    history: "Verlaufs-Bot: hebt Kanal-Chat für Mumcord-Nutzer auf, die weg waren",
     relay: "Relay für Mumcords direkte Verbindungen (QUIC und TLS auf 443)",
     peer: "kündigt das Relay an und vergibt Tokens; teilt sich das Netz mit dem Relay",
     peerMissing: "PEER_API_SECRET fehlt in .env",
@@ -66,6 +83,7 @@ const COMMENTS = {
     envServer: "hier-das-server-passwort-einfuegen",
     envPeer: "hier-ein-langes-zufallsgeheimnis-einfuegen",
     put: "docker-compose.yml und .env aus 2. und 3. hier ablegen",
+    showEnv: "die Passwörter: einmal notieren",
   },
   en: {
     head: "Mumble server for Mumcord and any other Mumble client",
@@ -83,6 +101,9 @@ const COMMENTS = {
     text: "longer messages (default: 5000 characters)",
     pluginLimit: "hidden packets (plugin data) per person and second (default: 4)",
     pluginBurst: "this many of them in a quick burst (default: 15)",
+    bandwidth: "most bit/s a person may send (72000 speech, 192000 music, 558000 hi-fi)",
+    music: "music bot: plays MP3s from ./media into a voice channel over HTTP",
+    history: "history bot: keeps channel chat for Mumcord users who were away",
     relay: "relay for Mumcord's direct connections (QUIC and TLS on 443)",
     peer: "announces the relay and hands out tokens; shares the relay's network",
     peerMissing: "PEER_API_SECRET is missing in .env",
@@ -93,20 +114,36 @@ const COMMENTS = {
     envServer: "paste-the-server-password-here",
     envPeer: "paste-a-long-random-secret-here",
     put: "put docker-compose.yml and .env from 2. and 3. in here",
+    showEnv: "your passwords: note them once",
   },
 } as const;
 
 export const DEFAULTS: Record<CommentLang, ServerOptions> = {
-  de: { name: "Unser Server", welcome: "Willkommen! Sag Hallo im Chat.", users: 50, password: false, bigImages: true, longText: true, relay: false, webhook: false, pluginLimit: 4, pluginBurst: 15 },
-  en: { name: "Our Server", welcome: "Welcome! Say hi in the chat.", users: 50, password: false, bigImages: true, longText: true, relay: false, webhook: false, pluginLimit: 4, pluginBurst: 15 },
+  de: { name: "Unser Server", welcome: "Willkommen! Sag Hallo im Chat.", users: 50, password: false, bigImages: true, longText: true, relay: false, webhook: false, pluginLimit: 4, pluginBurst: 15, quality: "standard", music: false, history: false, mumbotVersion: "0.1.0" },
+  en: { name: "Our Server", welcome: "Welcome! Say hi in the chat.", users: 50, password: false, bigImages: true, longText: true, relay: false, webhook: false, pluginLimit: 4, pluginBurst: 15, quality: "standard", music: false, history: false, mumbotVersion: "0.1.0" },
+};
+
+/** Whether version a is at least b (plain x.y.z). */
+export const atLeast = (a: string, b: string) => {
+  const [x, y] = [a, b].map((v) => v.split(".").map(Number));
+  for (let i = 0; i < 3; i++) if ((x[i] ?? 0) !== (y[i] ?? 0)) return (x[i] ?? 0) > (y[i] ?? 0);
+  return true;
 };
 
 // A double-quoted YAML string; "$" is doubled so Compose doesn't read it as a variable.
 const yaml = (s: string) => JSON.stringify(s).replaceAll("$", "$$$$");
 
-export function buildCompose(lang: CommentLang, o: ServerOptions): string {
+/**
+ * The compose file. With `template`, name, welcome text, user limit and the hidden-packet limits are
+ * Caddy template actions that read the query string, so one static file per feature mix serves
+ * every `curl` from the configurator (see `src/pages/server/compose/[variant].ts` and the Caddyfile).
+ */
+export function buildCompose(lang: CommentLang, o: ServerOptions, template = false): string {
   const c = COMMENTS[lang];
   const users = Math.max(1, Math.min(10000, Math.round(o.users) || 50));
+  // Query values: JSON-quoted (a valid double-quoted YAML string), "$" doubled for Compose; numbers through atoi and clamped.
+  const q = (key: string, fallback: string) => `{{ $.Req.URL.Query.Get "${key}" | default ${JSON.stringify(fallback)} | toJson | replace "$" "$$" }}`;
+  const n = (key: string, fallback: number, max: number) => `"{{ $.Req.URL.Query.Get "${key}" | default "${fallback}" | atoi | max 1 | min ${max} }}"`;
   const out = [
     `# ${c.head}`,
     "name: mumble",
@@ -124,16 +161,23 @@ export function buildCompose(lang: CommentLang, o: ServerOptions): string {
     `      # ${c.secrets}`,
     `      MUMBLE_SUPERUSER_PASSWORD: \${SUPERUSER_PASSWORD:?${c.missing}}`,
     `      MUMBLE_CONFIG_SERVER_PASSWORD: \${SERVER_PASSWORD:-}   # ${c.password}`,
-    `      MUMBLE_CONFIG_REGISTER_NAME: ${yaml(o.name)}   # ${c.nameNote}`,
-    `      MUMBLE_CONFIG_WELCOME_TEXT: ${yaml(o.welcome)}   # ${c.welcomeNote}`,
-    `      MUMBLE_CONFIG_USERS: "${users}"   # ${c.users}`,
+    `      MUMBLE_CONFIG_REGISTER_NAME: ${template ? q("name", o.name) : yaml(o.name)}   # ${c.nameNote}`,
+    `      MUMBLE_CONFIG_WELCOME_TEXT: ${template ? q("welcome", o.welcome) : yaml(o.welcome)}   # ${c.welcomeNote}`,
+    `      MUMBLE_CONFIG_USERS: ${template ? n("users", 50, 10000) : `"${users}"`}   # ${c.users}`,
+    `      MUMBLE_CONFIG_BANDWIDTH: "${BANDWIDTH[o.quality] ?? BANDWIDTH.standard}"   # ${c.bandwidth}`,
   ];
   if (o.bigImages) out.push(`      MUMBLE_CONFIG_IMAGE_MESSAGE_LENGTH: "1048576"   # ${c.images}`);
   if (o.longText) out.push(`      MUMBLE_CONFIG_TEXT_MESSAGE_LENGTH: "10000"   # ${c.text}`);
   const limit = Math.max(1, Math.min(1000, Math.round(o.pluginLimit) || PLUGIN_DEFAULTS.limit));
   const burst = Math.max(1, Math.min(1000, Math.round(o.pluginBurst) || PLUGIN_DEFAULTS.burst));
-  if (limit !== PLUGIN_DEFAULTS.limit) out.push(`      MUMBLE_CONFIG_PLUGIN_MESSAGE_LIMIT: "${limit}"   # ${c.pluginLimit}`);
-  if (burst !== PLUGIN_DEFAULTS.burst) out.push(`      MUMBLE_CONFIG_PLUGIN_MESSAGE_BURST: "${burst}"   # ${c.pluginBurst}`);
+  if (template) {
+    // Only written when the URL carries them; "{{-" eats the line break before, so nothing is left otherwise.
+    out[out.length - 1] += `{{- with .Req.URL.Query.Get "pl" }}\n      MUMBLE_CONFIG_PLUGIN_MESSAGE_LIMIT: ${n("pl", PLUGIN_DEFAULTS.limit, 1000)}   # ${c.pluginLimit}{{ end }}`;
+    out[out.length - 1] += `{{- with .Req.URL.Query.Get "pb" }}\n      MUMBLE_CONFIG_PLUGIN_MESSAGE_BURST: ${n("pb", PLUGIN_DEFAULTS.burst, 1000)}   # ${c.pluginBurst}{{ end }}`;
+  } else {
+    if (limit !== PLUGIN_DEFAULTS.limit) out.push(`      MUMBLE_CONFIG_PLUGIN_MESSAGE_LIMIT: "${limit}"   # ${c.pluginLimit}`);
+    if (burst !== PLUGIN_DEFAULTS.burst) out.push(`      MUMBLE_CONFIG_PLUGIN_MESSAGE_BURST: "${burst}"   # ${c.pluginBurst}`);
+  }
   const volumes = ["data"];
   if (o.relay) {
     out.push(
@@ -151,7 +195,7 @@ export function buildCompose(lang: CommentLang, o: ServerOptions): string {
       "",
       `  # ${c.peer}`,
       "  mumbot-peer:",
-      `    image: ${MUMBOT_IMAGE}`,
+      `    image: ${MUMBOT_IMAGE}:${o.mumbotVersion}`,
       '    command: ["peer"]',
       "    restart: unless-stopped",
       "    depends_on: [mumble-server, mumpeer]",
@@ -173,7 +217,7 @@ export function buildCompose(lang: CommentLang, o: ServerOptions): string {
       "",
       `  # ${c.webhook}`,
       "  mumbot-webhook:",
-      `    image: ${MUMBOT_IMAGE}`,
+      `    image: ${MUMBOT_IMAGE}:${o.mumbotVersion}`,
       '    command: ["webhook"]',
       "    restart: unless-stopped",
       "    depends_on: [mumble-server]",
@@ -188,6 +232,31 @@ export function buildCompose(lang: CommentLang, o: ServerOptions): string {
     );
     volumes.push("mumbot-webhook-data");
   }
+  for (const [on, name, port] of [
+    [o.music, "music", "8081"],
+    [o.history, "history", ""],
+  ] as const) {
+    if (!on) continue;
+    out.push(
+      "",
+      `  # ${c[name]}`,
+      `  mumbot-${name}:`,
+      `    image: ${MUMBOT_IMAGE}:${o.mumbotVersion}`,
+      `    command: ["${name}"]`,
+      "    restart: unless-stopped",
+      "    depends_on: [mumble-server]",
+      "    environment:",
+      "      MUMBOT_CONFIG: /config/bot.toml",
+      "      SERVER_PASSWORD: ${SERVER_PASSWORD:-}",
+      ...(port ? ["    ports:", `      - "127.0.0.1:${port}:${port}"   # ${c.webhookPort}`] : []),
+      "    volumes:",
+      `      - ./bot-${name}.toml:/config/bot.toml:ro`,
+      ...(name === "music" ? ["      - ./media:/media:ro"] : []),
+      `      - mumbot-${name}-data:/data`,
+      ...(name === "history" ? ["    healthcheck:", "      disable: true"] : []),
+    );
+    volumes.push(`mumbot-${name}-data`);
+  }
   out.push("", "volumes:", ...volumes.map((v) => `  ${v}:`), "");
   return out.join("\n");
 }
@@ -199,6 +268,44 @@ export function buildEnv(lang: CommentLang, o: ServerOptions, s?: Secrets): stri
   return out.join("\n") + "\n";
 }
 
+/** The switches that pick one of the prebuilt compose files, in the order of the variant id. */
+export const FLAGS = ["password", "bigImages", "longText", "relay", "webhook", "music", "history"] as const;
+const QUALITIES = Object.keys(BANDWIDTH) as Quality[];
+
+/** Id of the prebuilt file for these options, e.g. "en-0110100s": comment language, switches, quality. */
+export const variantId = (lang: CommentLang, o: ServerOptions) => `${lang}-${FLAGS.map((f) => (o[f] ? 1 : 0)).join("")}${o.quality[0]}`;
+
+/** Every variant, with its options; the free-text parts come from the URL. */
+export function allVariants(mumbotVersion: string): { id: string; lang: CommentLang; options: ServerOptions }[] {
+  const out = [];
+  for (const lang of ["de", "en"] as const)
+    for (let bits = 0; bits < 1 << FLAGS.length; bits++)
+      for (const quality of QUALITIES) {
+        const options = { ...DEFAULTS[lang], quality, mumbotVersion };
+        FLAGS.forEach((f, i) => (options[f] = Boolean(bits & (1 << (FLAGS.length - 1 - i)))));
+        out.push({ id: variantId(lang, options), lang, options });
+      }
+  return out;
+}
+
+/**
+ * One paste for the server: the compose file by curl (name and numbers in the URL), a fresh .env made
+ * with openssl right there, the bot configs, the start. Passwords never travel through a URL or a browser.
+ */
+export function buildCurlSetup(lang: CommentLang, o: ServerOptions, site: string): string {
+  const c = COMMENTS[lang];
+  const query = new URLSearchParams({ name: o.name, welcome: o.welcome, users: String(Math.round(o.users) || 50) });
+  if (o.pluginLimit !== PLUGIN_DEFAULTS.limit) query.set("pl", String(Math.round(o.pluginLimit)));
+  if (o.pluginBurst !== PLUGIN_DEFAULTS.burst) query.set("pb", String(Math.round(o.pluginBurst)));
+  const url = `${site.replace(/\/$/, "")}/server/compose/${variantId(lang, o)}.yml?${query}`;
+  const env = [`# ${c.env}`, "SUPERUSER_PASSWORD=$(openssl rand -hex 16)", `SERVER_PASSWORD=${o.password ? "$(openssl rand -hex 8)" : ""}`];
+  if (o.relay) env.push("PEER_API_SECRET=$(openssl rand -hex 32)");
+  const out = ["mkdir -p mumble && cd mumble", `curl -fsSL -o docker-compose.yml '${url.replaceAll("'", "%27")}'`, "cat > .env <<EOF", ...env, "EOF", "chmod 600 .env"];
+  out.push(...buildSetup(lang, o).split("\n").slice(2));
+  out.splice(out.length - 2, 0, `cat .env   # ${c.showEnv}`);
+  return out.join("\n");
+}
+
 /** Commands for the server's folder: the bot and relay configs, then the start. */
 export function buildSetup(lang: CommentLang, o: ServerOptions): string {
   const out = ["mkdir -p mumble && cd mumble", `# ${COMMENTS[lang].put}`];
@@ -208,6 +315,8 @@ export function buildSetup(lang: CommentLang, o: ServerOptions): string {
       `curl -fsSL -o bot-peer.toml ${EXAMPLES}/peer-with-relay/bot.example.toml`,
     );
   if (o.webhook) out.push(`curl -fsSL -o bot-webhook.toml ${EXAMPLES}/webhook-with-server/bot.example.toml`);
+  if (o.music) out.push("mkdir -p media", `curl -fsSL -o bot-music.toml ${EXAMPLES}/music/bot.example.toml`);
+  if (o.history) out.push(`curl -fsSL -o bot-history.toml ${EXAMPLES}/history/bot.example.toml`);
   out.push("docker compose up -d", "docker compose logs -f");
   return out.join("\n");
 }

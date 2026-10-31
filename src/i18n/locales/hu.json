@@ -2426,6 +2426,14 @@
         "webhook": [
           "Mumbot webhook",
           "Felügyeleti vagy CI-üzenetek egy csatornába"
+        ],
+        "music": [
+          "Mumbot zene",
+          "MP3-akat játszik le egy hangcsatornában HTTP-n át, sorral"
+        ],
+        "history": [
+          "Mumbot előzmények",
+          "Megőrzi a csatorna csevegését a távol lévő Mumcord-felhasználóknak. Soha nem a privát üzeneteket"
         ]
       },
       "setup": "Mappa és konfigurációk",
@@ -2438,13 +2446,23 @@
         "portsRelay": "Nyisd meg a 443-as portot is TCP-hez és UDP-hez.",
         "relay": "Írd a szervered címét a `public_host` kulcs alá a `mumpeer.toml` fájlban, a Mumble-szervered ujjlenyomatát pedig a `bot-peer.toml` fájlba.",
         "webhook": "Állíts be egy API-kulcsot és az engedélyezett csatornákat a `bot-webhook.toml` fájlban. Ezután egy `curl` a `http://127.0.0.1:8080/message` címre üzenetet küld a csatornába.",
-        "more": "Az alábbi lépések minden részt részletesen elmagyaráznak."
+        "more": "Az alábbi lépések minden részt részletesen elmagyaráznak.",
+        "music": "Tedd az MP3-akat a `media` mappába, és állíts be egy API-kulcsot a `bot-music.toml` fájlban. Ezután egy kérés a `http://127.0.0.1:8081` címre lejátssza őket a csatornában.",
+        "history": "A `bot-history.toml` fájlban állítsd be, mennyi ideig őrizze a bot a csevegést. Olvasási hozzáférés kell neki a csatornákhoz."
       },
       "advanced": "Haladó",
       "pluginLimit": "Rejtett csomagok másodpercenként",
       "pluginBurst": "Ebből gyors sorozatban",
-      "pluginHint": "Bővítményadatok, amelyeket a Mumcord-kliensek képekhez, a csevegés előzményeihez és a közös nézéshez használnak. A szerver csendben eldob mindent, ami a korlát fölött van. Alapértelmezés: másodpercenként 4, rövid ideig akár 15. A Mumcord 3-mal és 10-zel marad alatta, a nagyobb keret főleg más bővítményeknek segít."
-    }
+      "pluginHint": "Bővítményadatok, amelyeket a Mumcord-kliensek képekhez, a csevegés előzményeihez és a közös nézéshez használnak. A szerver csendben eldob mindent, ami a korlát fölött van. Alapértelmezés: másodpercenként 4, rövid ideig akár 15. A Mumcord 3-mal és 10-zel marad alatta, a nagyobb keret főleg más bővítményeknek segít.",
+      "quality": {
+        "label": "Legmagasabb bitráta",
+        "hint": "A legtöbb, amit valaki küldhet. A Normál elég beszédhez, a Jó zenéhez a Mumcord zenei minőségével, a Legjobb hi-fi-hez és közös zenehallgatáshoz. Nagyobb bitrátához nagyobb feltöltési sebesség kell a szerveren.",
+        "standard": "Normál",
+        "good": "Jó",
+        "best": "Legjobb"
+      }
+    },
+    "stepsCta": "Lépésről lépésre"
   },
   "themes": {
     "title": "Témák",

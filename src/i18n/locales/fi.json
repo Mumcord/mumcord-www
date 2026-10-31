@@ -2426,6 +2426,14 @@
         "webhook": [
           "Mumbot-webhook",
           "Valvonnan tai CI:n viestit kanavalle"
+        ],
+        "music": [
+          "Mumbotin musiikki",
+          "Soittaa MP3-tiedostoja äänikanavalla HTTP:n kautta, jonolla"
+        ],
+        "history": [
+          "Mumbotin historia",
+          "Säilyttää kanavan keskustelun Mumcordin käyttäjille, jotka olivat poissa. Ei koskaan yksityisviestejä"
         ]
       },
       "setup": "Kansio ja asetukset",
@@ -2438,13 +2446,23 @@
         "portsRelay": "Avaa myös portti 443 TCP:lle ja UDP:lle.",
         "relay": "Kirjoita palvelimesi osoite kohtaan `public_host` tiedostossa `mumpeer.toml` ja Mumble-palvelimesi sormenjälki tiedostoon `bot-peer.toml`.",
         "webhook": "Aseta API-avain ja sallitut kanavat tiedostossa `bot-webhook.toml`. Sitten `curl` osoitteeseen `http://127.0.0.1:8080/message` lähettää viestin kanavalle.",
-        "more": "Alla olevat vaiheet selittävät jokaisen osan tarkasti."
+        "more": "Alla olevat vaiheet selittävät jokaisen osan tarkasti.",
+        "music": "Laita MP3-tiedostot kansioon `media` ja aseta API-avain tiedostossa `bot-music.toml`. Sitten pyyntö osoitteeseen `http://127.0.0.1:8081` soittaa ne kanavalla.",
+        "history": "Aseta tiedostossa `bot-history.toml`, kuinka kauan botti säilyttää keskustelun. Se tarvitsee lukuoikeuden kanaviin."
       },
       "advanced": "Lisäasetukset",
       "pluginLimit": "Piilotettuja paketteja sekunnissa",
       "pluginBurst": "Niistä nopeassa purskeessa",
-      "pluginHint": "Lisäosien dataa, jota Mumcord-asiakkaat käyttävät kuviin, chat-historiaan ja yhteiskatseluun. Palvelin pudottaa hiljaa kaiken rajan ylittävän. Oletus: 4 sekunnissa, hetkellisesti jopa 15. Mumcord pysyy alle arvoilla 3 ja 10, lisätila auttaa lähinnä muita lisäosia."
-    }
+      "pluginHint": "Lisäosien dataa, jota Mumcord-asiakkaat käyttävät kuviin, chat-historiaan ja yhteiskatseluun. Palvelin pudottaa hiljaa kaiken rajan ylittävän. Oletus: 4 sekunnissa, hetkellisesti jopa 15. Mumcord pysyy alle arvoilla 3 ja 10, lisätila auttaa lähinnä muita lisäosia.",
+      "quality": {
+        "label": "Suurin bittinopeus",
+        "hint": "Enimmäismäärä, jonka henkilö saa lähettää. Normaali riittää puheeseen, Hyvä musiikkiin Mumcordin musiikkilaadulla, Paras hi-fi-laatuun ja musiikin yhteiskuunteluun. Suurempi bittinopeus vaatii palvelimelta enemmän lähetyskaistaa.",
+        "standard": "Normaali",
+        "good": "Hyvä",
+        "best": "Paras"
+      }
+    },
+    "stepsCta": "Vaihe vaiheelta"
   },
   "themes": {
     "title": "Teemat",

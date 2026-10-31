@@ -2426,6 +2426,14 @@
         "webhook": [
           "Webhook Mumbot",
           "Mesaje din monitorizare sau CI într-un canal"
+        ],
+        "music": [
+          "Muzica Mumbot",
+          "Redă MP3 într-un canal vocal prin HTTP, cu coadă"
+        ],
+        "history": [
+          "Istoricul Mumbot",
+          "Păstrează chatul canalului pentru utilizatorii Mumcord care au lipsit. Niciodată mesajele private"
         ]
       },
       "setup": "Folder și configurări",
@@ -2438,13 +2446,23 @@
         "portsRelay": "Deschide și portul 443 pentru TCP și UDP.",
         "relay": "Pune adresa serverului tău la `public_host` în `mumpeer.toml`, iar amprenta serverului tău Mumble în `bot-peer.toml`.",
         "webhook": "Setează o cheie API și canalele permise în `bot-webhook.toml`. Apoi un `curl` către `http://127.0.0.1:8080/message` postează în canal.",
-        "more": "Pașii de mai jos explică fiecare parte în detaliu."
+        "more": "Pașii de mai jos explică fiecare parte în detaliu.",
+        "music": "Pune MP3-urile în folderul `media` și setează o cheie API în `bot-music.toml`. Apoi o cerere către `http://127.0.0.1:8081` le redă în canal.",
+        "history": "Setează în `bot-history.toml` cât timp păstrează botul chatul. Are nevoie de acces de citire la canale."
       },
       "advanced": "Avansat",
       "pluginLimit": "Pachete ascunse pe secundă",
       "pluginBurst": "Din acestea într-o rafală rapidă",
-      "pluginHint": "Date ale pluginurilor pe care clienții Mumcord le folosesc pentru imagini, istoricul chatului și vizionarea împreună. Serverul elimină în tăcere tot ce depășește limita. Implicit: 4 pe secundă, pentru scurt timp până la 15. Mumcord rămâne sub limită cu 3 și 10, mai mult spațiu ajută mai ales alte pluginuri."
-    }
+      "pluginHint": "Date ale pluginurilor pe care clienții Mumcord le folosesc pentru imagini, istoricul chatului și vizionarea împreună. Serverul elimină în tăcere tot ce depășește limita. Implicit: 4 pe secundă, pentru scurt timp până la 15. Mumcord rămâne sub limită cu 3 și 10, mai mult spațiu ajută mai ales alte pluginuri.",
+      "quality": {
+        "label": "Bitrate maxim",
+        "hint": "Cel mai mult pe care îl poate trimite o persoană. Standard ajunge pentru voce, Bun pentru muzică cu calitatea muzicală Mumcord, Excelent pentru hi-fi și pentru a asculta muzică împreună. Mai mult bitrate cere mai mult upload pe server.",
+        "standard": "Standard",
+        "good": "Bun",
+        "best": "Excelent"
+      }
+    },
+    "stepsCta": "Pas cu pas"
   },
   "themes": {
     "title": "Teme",

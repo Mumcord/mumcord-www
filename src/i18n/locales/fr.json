@@ -2426,6 +2426,14 @@
         "webhook": [
           "Webhook Mumbot",
           "Messages de la supervision ou de la CI dans un canal"
+        ],
+        "music": [
+          "Musique de Mumbot",
+          "Joue des MP3 dans un canal vocal via HTTP, avec une file d’attente"
+        ],
+        "history": [
+          "Historique de Mumbot",
+          "Conserve le chat du canal pour les utilisateurs de Mumcord qui étaient absents. Jamais les messages privés"
         ]
       },
       "setup": "Dossier et configurations",
@@ -2438,13 +2446,23 @@
         "portsRelay": "Ouvre aussi le port 443 en TCP et UDP.",
         "relay": "Mets l’adresse de ton serveur sous `public_host` dans `mumpeer.toml`, et l’empreinte de ton serveur Mumble dans `bot-peer.toml`.",
         "webhook": "Définis une clé d’API et les canaux autorisés dans `bot-webhook.toml`. Ensuite, un `curl` vers `http://127.0.0.1:8080/message` publie dans le canal.",
-        "more": "Les étapes ci-dessous expliquent chaque partie en détail."
+        "more": "Les étapes ci-dessous expliquent chaque partie en détail.",
+        "music": "Mets les MP3 dans le dossier `media` et définis une clé d’API dans `bot-music.toml`. Ensuite, une requête vers `http://127.0.0.1:8081` les joue dans le canal.",
+        "history": "Définis dans `bot-history.toml` combien de temps le bot garde le chat. Il a besoin d’un accès en lecture aux canaux."
       },
       "advanced": "Avancé",
       "pluginLimit": "Paquets cachés par seconde",
       "pluginBurst": "Dont en rafale rapide",
-      "pluginHint": "Des données de plugin que les clients Mumcord utilisent pour les images, l’historique du chat et la séance de visionnage partagée. Le serveur abandonne en silence tout ce qui dépasse la limite. Par défaut : 4 par seconde, brièvement jusqu’à 15. Mumcord reste en dessous avec 3 et 10, plus de marge aide surtout les autres plugins."
-    }
+      "pluginHint": "Des données de plugin que les clients Mumcord utilisent pour les images, l’historique du chat et la séance de visionnage partagée. Le serveur abandonne en silence tout ce qui dépasse la limite. Par défaut : 4 par seconde, brièvement jusqu’à 15. Mumcord reste en dessous avec 3 et 10, plus de marge aide surtout les autres plugins.",
+      "quality": {
+        "label": "Débit maximal",
+        "hint": "Le maximum qu’une personne peut envoyer. Standard suffit pour la voix, Bon pour la musique avec la qualité musicale de Mumcord, Optimal pour la hi-fi et pour écouter de la musique ensemble. Plus de débit demande plus d’upload sur le serveur.",
+        "standard": "Standard",
+        "good": "Bon",
+        "best": "Optimal"
+      }
+    },
+    "stepsCta": "Pas à pas"
   },
   "themes": {
     "title": "Thèmes",

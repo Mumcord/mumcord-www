@@ -2426,6 +2426,14 @@
         "webhook": [
           "Webhook za Mumbot",
           "Sporočila iz nadzora ali CI v kanal"
+        ],
+        "music": [
+          "Glasba Mumbota",
+          "Predvaja MP3 v glasovnem kanalu prek HTTP, z vrsto"
+        ],
+        "history": [
+          "Zgodovina Mumbota",
+          "Hrani klepet kanala za uporabnike Mumcorda, ki so bili odsotni. Nikoli zasebnih sporočil"
         ]
       },
       "setup": "Mapa in konfiguracije",
@@ -2438,13 +2446,23 @@
         "portsRelay": "Odpri tudi vrata 443 za TCP in UDP.",
         "relay": "Naslov svojega strežnika vpiši pod `public_host` v `mumpeer.toml`, prstni odtis svojega strežnika Mumble pa v `bot-peer.toml`.",
         "webhook": "V `bot-webhook.toml` nastavi ključ API in dovoljene kanale. Nato `curl` na `http://127.0.0.1:8080/message` objavi sporočilo v kanal.",
-        "more": "Spodnji koraki podrobno razložijo vsak del."
+        "more": "Spodnji koraki podrobno razložijo vsak del.",
+        "music": "Daj MP3 v mapo `media` in nastavi ključ API v `bot-music.toml`. Nato jih zahteva na `http://127.0.0.1:8081` predvaja v kanalu.",
+        "history": "V `bot-history.toml` nastavi, kako dolgo bot hrani klepet. Potrebuje bralni dostop do kanalov."
       },
       "advanced": "Napredno",
       "pluginLimit": "Skriti paketi na sekundo",
       "pluginBurst": "Od tega v hitrem naletu",
-      "pluginHint": "Podatki vtičnikov, ki jih odjemalci Mumcord uporabljajo za slike, zgodovino klepeta in skupno gledanje. Strežnik tiho zavrže vse nad omejitvijo. Privzeto: 4 na sekundo, kratkotrajno do 15. Mumcord ostane pod njo s 3 in 10, več prostora pomaga predvsem drugim vtičnikom."
-    }
+      "pluginHint": "Podatki vtičnikov, ki jih odjemalci Mumcord uporabljajo za slike, zgodovino klepeta in skupno gledanje. Strežnik tiho zavrže vse nad omejitvijo. Privzeto: 4 na sekundo, kratkotrajno do 15. Mumcord ostane pod njo s 3 in 10, več prostora pomaga predvsem drugim vtičnikom.",
+      "quality": {
+        "label": "Najvišja bitna hitrost",
+        "hint": "Največ, kar sme oseba pošiljati. Standardna zadošča za govor, Dobra za glasbo s Mumcordovo kakovostjo glasbe, Najboljša za hi-fi in skupno predvajanje glasbe. Višja bitna hitrost zahteva več uploada na strežniku.",
+        "standard": "Standardna",
+        "good": "Dobra",
+        "best": "Najboljša"
+      }
+    },
+    "stepsCta": "Korak za korakom"
   },
   "themes": {
     "title": "Teme",

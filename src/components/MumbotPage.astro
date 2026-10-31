@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import CopyButton from "./CopyButton.astro";
+import { atLeast } from "../lib/compose";
 import mumbotIcon from "../assets/tools/mumbot.png";
 import PeopleList from "./PeopleList.astro";
 import { dicts, type Lang } from "../i18n";
@@ -27,6 +28,8 @@ const p = mumbotPage[lang];
 const release = await getMumbotRelease();
 const people = await getRepoContributors("Mumcord/mumbot");
 const version = release?.version ?? "latest";
+// A stage counts as done once the release of its version is out.
+const stages = p.epics.map((s) => (s.version && release && atLeast(release.version, s.version) ? { ...s, status: "done" as const } : s));
 const platforms: BotPlatform[] = ["linux", "linuxArm", "windows", "macos"];
 // `code` in the texts becomes <code>; everything else is escaped.
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -139,7 +142,7 @@ const bots = [
     <p class="rp-section-body" data-reveal>{p.roadmapBody}</p>
     <ol class="rp-stages">
       {
-        p.epics.map((s) => (
+        stages.map((s) => (
           <li class="rp-stage" id={`mumbot-${s.id}`} data-status={s.status} data-reveal>
             <div class="rp-side">
               <p class="tl-tag">{s.tag}</p>

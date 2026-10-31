@@ -91,6 +91,11 @@ export function getMumbotRelease(): Promise<BotRelease | null> {
   return cached;
 }
 
+/** The Mumbot image tag the configurator and server guide use: the newest release, 0.1.0 before any. */
+export async function getMumbotVersion(): Promise<string> {
+  return (await getMumbotRelease())?.version ?? "0.1.0";
+}
+
 export interface BotEpic {
   id: string;
   tag: string;
@@ -225,6 +230,7 @@ const source: Record<"de" | "en", MumbotPage> = {
         tag: "Epic 2",
         title: "Module, Musik und Verlauf",
         status: "now",
+        version: "0.2.0",
         summary: "Aus einem Bot wird ein Baukasten.",
         items: [
           "Module: per Konfiguration oder Kommandozeile wählen, welche Bots laufen, in einem Programm und einem Image",
@@ -333,6 +339,7 @@ const source: Record<"de" | "en", MumbotPage> = {
         tag: "Epic 2",
         title: "Modules, music and history",
         status: "now",
+        version: "0.2.0",
         summary: "One bot becomes a toolkit.",
         items: [
           "Modules: pick which bots run in the config or on the command line, in one program and one image",

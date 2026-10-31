@@ -2426,6 +2426,14 @@
         "webhook": [
           "Mumbot-webhook",
           "Beskeder fra overvågning eller CI ind i en kanal"
+        ],
+        "music": [
+          "Mumbot-musik",
+          "Afspiller MP3-filer i en stemmekanal via HTTP, med en kø"
+        ],
+        "history": [
+          "Mumbot-historik",
+          "Gemmer kanalens chat til Mumcord-brugere, der var væk. Aldrig private beskeder"
         ]
       },
       "setup": "Mappe og konfigurationer",
@@ -2438,13 +2446,23 @@
         "portsRelay": "Åbn også port 443 for TCP og UDP.",
         "relay": "Skriv din servers adresse under `public_host` i `mumpeer.toml` og din Mumble-servers fingeraftryk i `bot-peer.toml`.",
         "webhook": "Angiv en API-nøgle og de tilladte kanaler i `bot-webhook.toml`. Derefter sender `curl` til `http://127.0.0.1:8080/message` en besked ind i kanalen.",
-        "more": "Trinnene nedenfor forklarer hver del i detaljer."
+        "more": "Trinnene nedenfor forklarer hver del i detaljer.",
+        "music": "Læg MP3-filer i mappen `media`, og angiv en API-nøgle i `bot-music.toml`. Derefter afspiller en forespørgsel til `http://127.0.0.1:8081` dem i kanalen.",
+        "history": "Angiv i `bot-history.toml`, hvor længe botten gemmer chatten. Den skal have læseadgang til kanalerne."
       },
       "advanced": "Avanceret",
       "pluginLimit": "Skjulte pakker pr. sekund",
       "pluginBurst": "Heraf i et hurtigt udbrud",
-      "pluginHint": "Plugin-data, som Mumcord-klienter bruger til billeder, chathistorik og fælles visning. Serveren dropper stiltiende alt over grænsen. Standard: 4 pr. sekund, kortvarigt op til 15. Mumcord holder sig under med 3 og 10, mere plads hjælper mest andre plugins."
-    }
+      "pluginHint": "Plugin-data, som Mumcord-klienter bruger til billeder, chathistorik og fælles visning. Serveren dropper stiltiende alt over grænsen. Standard: 4 pr. sekund, kortvarigt op til 15. Mumcord holder sig under med 3 og 10, mere plads hjælper mest andre plugins.",
+      "quality": {
+        "label": "Højeste bitrate",
+        "hint": "Det højeste, en person må sende. Standard er nok til tale, God til musik med Mumcords musikkvalitet, Bedst til hi-fi og til at spille musik sammen. Mere bitrate kræver mere upload på serveren.",
+        "standard": "Standard",
+        "good": "God",
+        "best": "Bedst"
+      }
+    },
+    "stepsCta": "Trin for trin"
   },
   "themes": {
     "title": "Temaer",

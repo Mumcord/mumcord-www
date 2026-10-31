@@ -2426,6 +2426,14 @@
         "webhook": [
           "Mumbot webhook",
           "Poruke iz nadzora ili CI-ja u kanal"
+        ],
+        "music": [
+          "Mumbotova glazba",
+          "Pušta MP3 u glasovnom kanalu preko HTTP-a, s redom čekanja"
+        ],
+        "history": [
+          "Mumbotova povijest",
+          "Čuva chat kanala za korisnike Mumcorda koji su bili odsutni. Nikada privatne poruke"
         ]
       },
       "setup": "Mapa i konfiguracije",
@@ -2438,13 +2446,23 @@
         "portsRelay": "Otvori i port 443 za TCP i UDP.",
         "relay": "Adresu svog poslužitelja upiši pod `public_host` u `mumpeer.toml`, a otisak svog Mumble poslužitelja u `bot-peer.toml`.",
         "webhook": "Postavi API ključ i dopuštene kanale u `bot-webhook.toml`. Zatim `curl` na `http://127.0.0.1:8080/message` objavljuje u kanal.",
-        "more": "Koraci u nastavku detaljno objašnjavaju svaki dio."
+        "more": "Koraci u nastavku detaljno objašnjavaju svaki dio.",
+        "music": "Stavi MP3 datoteke u mapu `media` i postavi API ključ u `bot-music.toml`. Zatim ih zahtjev na `http://127.0.0.1:8081` pušta u kanalu.",
+        "history": "Postavi u `bot-history.toml` koliko dugo bot čuva chat. Treba mu pristup za čitanje kanalima."
       },
       "advanced": "Napredno",
       "pluginLimit": "Skriveni paketi u sekundi",
       "pluginBurst": "Od toga u brzom naletu",
-      "pluginHint": "Podaci dodataka koje klijenti Mumcorda koriste za slike, povijest chata i zajedničko gledanje. Poslužitelj šutke odbacuje sve iznad ograničenja. Zadano: 4 u sekundi, nakratko do 15. Mumcord ostaje ispod s 3 i 10, više prostora uglavnom pomaže drugim dodacima."
-    }
+      "pluginHint": "Podaci dodataka koje klijenti Mumcorda koriste za slike, povijest chata i zajedničko gledanje. Poslužitelj šutke odbacuje sve iznad ograničenja. Zadano: 4 u sekundi, nakratko do 15. Mumcord ostaje ispod s 3 i 10, više prostora uglavnom pomaže drugim dodacima.",
+      "quality": {
+        "label": "Najveći bitrate",
+        "hint": "Najviše što osoba smije slati. Standardno je dovoljno za govor, Dobro za glazbu s Mumcordovom kvalitetom glazbe, Najbolje za hi-fi i zajedničko puštanje glazbe. Veći bitrate traži više uploada na poslužitelju.",
+        "standard": "Standardno",
+        "good": "Dobro",
+        "best": "Najbolje"
+      }
+    },
+    "stepsCta": "Korak po korak"
   },
   "themes": {
     "title": "Teme",

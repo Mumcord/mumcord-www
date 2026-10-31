@@ -4,7 +4,8 @@
 import CopyButton from "./CopyButton.astro";
 import { type Lang } from "../i18n";
 import { guides } from "../lib/server-guide";
-import { buildCompose, buildEnv, buildSetup, DEFAULTS, type ServerOptions } from "../lib/compose";
+import { buildCompose, buildEnv, buildCurlSetup, DEFAULTS, BANDWIDTH, MUMBOT_MODULES_FROM, atLeast, type ServerOptions, type Quality } from "../lib/compose";
+import { getMumbotVersion } from "../lib/mumbot";
 
 interface Props {
   lang: Lang;
@@ -14,18 +15,23 @@ const g = guides[lang];
 const c = g.configurator;
 // The files carry German or English comments; the other languages use English.
 const fileLang = lang === "de" ? "de" : "en";
-const d = DEFAULTS[fileLang];
+const mumbotVersion = await getMumbotVersion();
+const d = { ...DEFAULTS[fileLang], mumbotVersion };
+const site = Astro.site!.origin;
+// Music and history bots only once the Mumbot release that has them is out.
+const modules = atLeast(mumbotVersion, MUMBOT_MODULES_FROM);
+const qualities = Object.keys(BANDWIDTH) as Quality[];
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const md = (s: string) => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>");
-const checks = Object.keys(c.options) as (keyof typeof c.options & keyof ServerOptions)[];
+const checks = (Object.keys(c.options) as (keyof typeof c.options & keyof ServerOptions)[]).filter((k) => modules || (k !== "music" && k !== "history"));
 const files = [
-  { id: "setup", title: c.setup, file: "Terminal", code: buildSetup(fileLang, d) },
+  { id: "setup", title: c.setup, file: "Terminal", code: buildCurlSetup(fileLang, d, site) },
   { id: "compose", title: "docker-compose.yml", file: "docker-compose.yml", code: buildCompose(fileLang, d) },
   { id: "env", title: ".env", file: ".env", code: buildEnv(fileLang, d) },
 ];
 ---
 
-<section class="cfg" id="configurator" aria-labelledby="cfg-h" data-configurator data-lang={fileLang}>
+<section class="cfg" id="configurator" aria-labelledby="cfg-h" data-configurator data-lang={fileLang} data-site={site} data-mumbot={mumbotVersion}>
   <h2 id="cfg-h" class="cfg-title" data-reveal><span class="live-dot" aria-hidden="true"></span>{c.title}</h2>
   <p class="body" data-reveal set:html={md(c.intro)} />
 
@@ -59,6 +65,23 @@ const files = [
             </label>
           ))
         }
+      </fieldset>
+      <fieldset>
+        <legend>{c.quality.label}</legend>
+        <div class="cfg-seg" role="radiogroup" aria-label={c.quality.label}>
+          {
+            qualities.map((k) => (
+              <label>
+                <input type="radio" name="quality" value={k} checked={d.quality === k} />
+                <span>
+                  <b>{c.quality[k]}</b>
+                  <small>{BANDWIDTH[k] / 1000} kbit/s</small>
+                </span>
+              </label>
+            ))
+          }
+        </div>
+        <p class="cfg-hint">{c.quality.hint}</p>
       </fieldset>
       <fieldset>
         <legend>{c.advanced}</legend>
@@ -106,6 +129,8 @@ const files = [
           <li data-note="relay" hidden set:html={md(c.notes.portsRelay)} />
           <li data-note="relay" hidden set:html={md(c.notes.relay)} />
           <li data-note="webhook" hidden set:html={md(c.notes.webhook)} />
+          <li data-note="music" hidden set:html={md(c.notes.music)} />
+          <li data-note="history" hidden set:html={md(c.notes.history)} />
           <li set:html={md(c.notes.more)} />
         </ul>
       </div>
@@ -114,7 +139,7 @@ const files = [
 </section>
 
 <script>
-  import { buildCompose, buildEnv, buildSetup, randomSecret, type CommentLang, type ServerOptions, type Secrets } from "../lib/compose";
+  import { buildCompose, buildEnv, buildCurlSetup, randomSecret, type CommentLang, type ServerOptions, type Secrets, type Quality } from "../lib/compose";
 
   for (const root of document.querySelectorAll<HTMLElement>("[data-configurator]")) {
     const lang = root.dataset.lang as CommentLang;
@@ -124,7 +149,9 @@ const files = [
     let secrets = fresh();
 
     const read = (): ServerOptions => {
-      const v = (n: string) => (form.elements.namedItem(n) as HTMLInputElement);
+      const v = (n: string) => form.elements.namedItem(n) as HTMLInputElement;
+      // Music and history are only in the form once their Mumbot release is out.
+      const maybe = (n: string) => (form.elements.namedItem(n) as HTMLInputElement | null)?.checked ?? false;
       return {
         name: v("name").value.trim() || v("name").placeholder,
         welcome: v("welcome").value.trim(),
@@ -134,6 +161,10 @@ const files = [
         longText: v("longText").checked,
         relay: v("relay").checked,
         webhook: v("webhook").checked,
+        music: maybe("music"),
+        history: maybe("history"),
+        quality: ((form.elements.namedItem("quality") as RadioNodeList).value || "standard") as Quality,
+        mumbotVersion: root.dataset.mumbot!,
         pluginLimit: Number(v("pluginLimit").value),
         pluginBurst: Number(v("pluginBurst").value),
       };
@@ -141,10 +172,10 @@ const files = [
 
     const render = () => {
       const o = read();
-      out("setup").textContent = buildSetup(lang, o);
+      out("setup").textContent = buildCurlSetup(lang, o, root.dataset.site!);
       out("compose").textContent = buildCompose(lang, o);
       out("env").textContent = buildEnv(lang, o, secrets);
-      for (const n of root.querySelectorAll<HTMLElement>("[data-note]")) n.hidden = !o[n.dataset.note as "relay" | "webhook"];
+      for (const n of root.querySelectorAll<HTMLElement>("[data-note]")) n.hidden = !o[n.dataset.note as "relay" | "webhook" | "music" | "history"];
     };
 
     form.addEventListener("input", render);

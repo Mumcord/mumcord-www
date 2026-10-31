@@ -2426,6 +2426,14 @@
         "webhook": [
           "Mumboti veebikonks",
           "Seire või CI sõnumid kanalisse"
+        ],
+        "music": [
+          "Mumboti muusika",
+          "Esitab MP3-sid häälkanalis HTTP kaudu, järjekorraga"
+        ],
+        "history": [
+          "Mumboti ajalugu",
+          "Hoiab kanali vestlust Mumcordi kasutajatele, kes olid ära. Mitte kunagi privaatsõnumeid"
         ]
       },
       "setup": "Kaust ja seadistused",
@@ -2438,13 +2446,23 @@
         "portsRelay": "Ava ka port 443 TCP ja UDP jaoks.",
         "relay": "Pane oma serveri aadress võtme `public_host` alla failis `mumpeer.toml` ja oma Mumble-serveri sõrmejälg faili `bot-peer.toml`.",
         "webhook": "Määra API võti ja lubatud kanalid failis `bot-webhook.toml`. Seejärel postitab `curl` aadressile `http://127.0.0.1:8080/message` sõnumi kanalisse.",
-        "more": "Allolevad sammud selgitavad iga osa üksikasjalikult."
+        "more": "Allolevad sammud selgitavad iga osa üksikasjalikult.",
+        "music": "Pane MP3-d kausta `media` ja määra API võti failis `bot-music.toml`. Seejärel esitab päring aadressile `http://127.0.0.1:8081` need kanalis.",
+        "history": "Määra failis `bot-history.toml`, kui kaua bot vestlust hoiab. Ta vajab kanalitele lugemisõigust."
       },
       "advanced": "Täpsemad",
       "pluginLimit": "Peidetud pakette sekundis",
       "pluginBurst": "Neist kiires hoos",
-      "pluginHint": "Pluginate andmed, mida Mumcordi kliendid kasutavad piltide, vestluse ajaloo ja ühisvaatamise jaoks. Server jätab kõik piirist üle jääva vaikselt maha. Vaikimisi: 4 sekundis, korraks kuni 15. Mumcord jääb sellest allapoole väärtustega 3 ja 10, rohkem ruumi aitab peamiselt teisi plugineid."
-    }
+      "pluginHint": "Pluginate andmed, mida Mumcordi kliendid kasutavad piltide, vestluse ajaloo ja ühisvaatamise jaoks. Server jätab kõik piirist üle jääva vaikselt maha. Vaikimisi: 4 sekundis, korraks kuni 15. Mumcord jääb sellest allapoole väärtustega 3 ja 10, rohkem ruumi aitab peamiselt teisi plugineid.",
+      "quality": {
+        "label": "Suurim bitikiirus",
+        "hint": "Maksimum, mida inimene tohib saata. Tavaline sobib kõnele, Hea muusikale Mumcordi muusikakvaliteediga, Parim hi-fi jaoks ja koos muusika mängimiseks. Suurem bitikiirus vajab serveris rohkem üleslaadimiskiirust.",
+        "standard": "Tavaline",
+        "good": "Hea",
+        "best": "Parim"
+      }
+    },
+    "stepsCta": "Samm-sammult"
   },
   "themes": {
     "title": "Teemad",

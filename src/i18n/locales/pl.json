@@ -2426,6 +2426,14 @@
         "webhook": [
           "Webhook Mumbota",
           "Wiadomości z monitoringu lub CI na kanał"
+        ],
+        "music": [
+          "Muzyka Mumbota",
+          "Odtwarza MP3 na kanale głosowym przez HTTP, z kolejką"
+        ],
+        "history": [
+          "Historia Mumbota",
+          "Zachowuje czat kanału dla użytkowników Mumcorda, którzy byli nieobecni. Nigdy prywatnych wiadomości"
         ]
       },
       "setup": "Folder i konfiguracje",
@@ -2438,13 +2446,23 @@
         "portsRelay": "Otwórz też port 443 dla TCP i UDP.",
         "relay": "Wpisz adres swojego serwera w `public_host` w `mumpeer.toml`, a odcisk palca swojego serwera Mumble w `bot-peer.toml`.",
         "webhook": "Ustaw klucz API i dozwolone kanały w `bot-webhook.toml`. Potem `curl` na `http://127.0.0.1:8080/message` publikuje wiadomość na kanale.",
-        "more": "Kroki poniżej szczegółowo wyjaśniają każdą część."
+        "more": "Kroki poniżej szczegółowo wyjaśniają każdą część.",
+        "music": "Wrzuć MP3 do folderu `media` i ustaw klucz API w `bot-music.toml`. Potem żądanie na `http://127.0.0.1:8081` odtwarza je na kanale.",
+        "history": "Ustaw w `bot-history.toml`, jak długo bot przechowuje czat. Potrzebuje dostępu do odczytu kanałów."
       },
       "advanced": "Zaawansowane",
       "pluginLimit": "Ukryte pakiety na sekundę",
       "pluginBurst": "Z tego w szybkiej serii",
-      "pluginHint": "Dane wtyczek, których klienty Mumcorda używają do obrazów, historii czatu i wspólnego oglądania. Serwer po cichu odrzuca wszystko powyżej limitu. Domyślnie: 4 na sekundę, krótko do 15. Mumcord pozostaje poniżej z wartościami 3 i 10, większy zapas pomaga głównie innym wtyczkom."
-    }
+      "pluginHint": "Dane wtyczek, których klienty Mumcorda używają do obrazów, historii czatu i wspólnego oglądania. Serwer po cichu odrzuca wszystko powyżej limitu. Domyślnie: 4 na sekundę, krótko do 15. Mumcord pozostaje poniżej z wartościami 3 i 10, większy zapas pomaga głównie innym wtyczkom.",
+      "quality": {
+        "label": "Najwyższy bitrate",
+        "hint": "Najwięcej, co osoba może wysyłać. Standardowa wystarcza do mowy, Dobra do muzyki z jakością muzyki Mumcorda, Najlepsza do hi-fi i wspólnego słuchania muzyki. Wyższy bitrate wymaga większego uploadu na serwerze.",
+        "standard": "Standardowa",
+        "good": "Dobra",
+        "best": "Najlepsza"
+      }
+    },
+    "stepsCta": "Krok po kroku"
   },
   "themes": {
     "title": "Motywy",

@@ -2426,6 +2426,14 @@
         "webhook": [
           "Webhook Mumbotu",
           "Zprávy z monitoringu nebo CI do kanálu"
+        ],
+        "music": [
+          "Hudba Mumbotu",
+          "Přehrává MP3 do hlasového kanálu přes HTTP, s frontou"
+        ],
+        "history": [
+          "Historie Mumbotu",
+          "Uchovává chat kanálu pro uživatele Mumcordu, kteří byli pryč. Nikdy soukromé zprávy"
         ]
       },
       "setup": "Složka a konfigurace",
@@ -2438,13 +2446,23 @@
         "portsRelay": "Otevři také port 443 pro TCP a UDP.",
         "relay": "Adresu svého serveru napiš do `public_host` v `mumpeer.toml` a otisk svého serveru Mumble do `bot-peer.toml`.",
         "webhook": "V `bot-webhook.toml` nastav klíč API a povolené kanály. Pak `curl` na `http://127.0.0.1:8080/message` zapíše zprávu do kanálu.",
-        "more": "Kroky níže vysvětlují každou část podrobně."
+        "more": "Kroky níže vysvětlují každou část podrobně.",
+        "music": "Dej MP3 do složky `media` a nastav klíč API v `bot-music.toml`. Pak je požadavek na `http://127.0.0.1:8081` přehraje v kanálu.",
+        "history": "V `bot-history.toml` nastav, jak dlouho bot chat uchovává. Potřebuje přístup ke čtení kanálů."
       },
       "advanced": "Pokročilé",
       "pluginLimit": "Skryté pakety za sekundu",
       "pluginBurst": "Z toho v rychlé dávce",
-      "pluginHint": "Data pluginů, která klienti Mumcordu používají pro obrázky, historii chatu a společné sledování. Server vše nad limitem tiše zahodí. Výchozí hodnota: 4 za sekundu, krátce až 15. Mumcord zůstává pod ním s 3 a 10, větší rezerva pomáhá hlavně jiným pluginům."
-    }
+      "pluginHint": "Data pluginů, která klienti Mumcordu používají pro obrázky, historii chatu a společné sledování. Server vše nad limitem tiše zahodí. Výchozí hodnota: 4 za sekundu, krátce až 15. Mumcord zůstává pod ním s 3 a 10, větší rezerva pomáhá hlavně jiným pluginům.",
+      "quality": {
+        "label": "Nejvyšší bitrate",
+        "hint": "Nejvíc, co smí člověk odesílat. Standardní stačí na řeč, Dobrá na hudbu s hudební kvalitou Mumcordu, Nejlepší na hi-fi a společné poslouchání hudby. Vyšší bitrate potřebuje větší upload na serveru.",
+        "standard": "Standardní",
+        "good": "Dobrá",
+        "best": "Nejlepší"
+      }
+    },
+    "stepsCta": "Krok za krokem"
   },
   "themes": {
     "title": "Motivy",

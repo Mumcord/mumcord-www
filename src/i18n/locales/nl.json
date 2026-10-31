@@ -2426,6 +2426,14 @@
         "webhook": [
           "Mumbot-webhook",
           "Berichten van monitoring of CI in een kanaal"
+        ],
+        "music": [
+          "Mumbot-muziek",
+          "Speelt MP3’s af in een spraakkanaal via HTTP, met een wachtrij"
+        ],
+        "history": [
+          "Mumbot-geschiedenis",
+          "Bewaart de kanaalchat voor Mumcord-gebruikers die weg waren. Nooit privéberichten"
         ]
       },
       "setup": "Map en configuraties",
@@ -2438,13 +2446,23 @@
         "portsRelay": "Zet ook poort 443 open voor TCP en UDP.",
         "relay": "Zet het adres van je server onder `public_host` in `mumpeer.toml` en de vingerafdruk van je Mumble-server in `bot-peer.toml`.",
         "webhook": "Stel een API-sleutel en de toegestane kanalen in `bot-webhook.toml` in. Dan plaatst een `curl` naar `http://127.0.0.1:8080/message` een bericht in het kanaal.",
-        "more": "De stappen hieronder leggen elk onderdeel uitgebreid uit."
+        "more": "De stappen hieronder leggen elk onderdeel uitgebreid uit.",
+        "music": "Zet MP3’s in de map `media` en stel een API-sleutel in `bot-music.toml` in. Dan speelt een verzoek naar `http://127.0.0.1:8081` ze af in het kanaal.",
+        "history": "Stel in `bot-history.toml` in hoe lang de bot de chat bewaart. Hij heeft leestoegang tot de kanalen nodig."
       },
       "advanced": "Geavanceerd",
       "pluginLimit": "Verborgen pakketten per seconde",
       "pluginBurst": "Waarvan in een snelle burst",
-      "pluginHint": "Plugin-gegevens die Mumcord-clients gebruiken voor afbeeldingen, chatgeschiedenis en samen kijken. De server laat alles boven de limiet stilletjes vallen. Standaard: 4 per seconde, kort tot 15. Mumcord blijft eronder met 3 en 10, meer ruimte helpt vooral andere plugins."
-    }
+      "pluginHint": "Plugin-gegevens die Mumcord-clients gebruiken voor afbeeldingen, chatgeschiedenis en samen kijken. De server laat alles boven de limiet stilletjes vallen. Standaard: 4 per seconde, kort tot 15. Mumcord blijft eronder met 3 en 10, meer ruimte helpt vooral andere plugins.",
+      "quality": {
+        "label": "Hoogste bitrate",
+        "hint": "Het meeste dat iemand mag sturen. Standaard is genoeg voor spraak, Goed voor muziek met de muziekkwaliteit van Mumcord, Best voor hifi en samen muziek afspelen. Meer bitrate vraagt meer upload op de server.",
+        "standard": "Standaard",
+        "good": "Goed",
+        "best": "Best"
+      }
+    },
+    "stepsCta": "Stap voor stap"
   },
   "themes": {
     "title": "Thema's",

@@ -36,13 +36,14 @@ export interface Configurator {
   welcome: string;
   users: string;
   /** Label and hint per option of ServerOptions. */
-  options: Record<"password" | "bigImages" | "longText" | "relay" | "webhook", [string, string]>;
+  options: Record<"password" | "bigImages" | "longText" | "relay" | "webhook" | "music" | "history", [string, string]>;
+  quality: { label: string; hint: string; standard: string; good: string; best: string };
   setup: string;
   download: string;
   regenerate: string;
   secrets: string;
   after: string;
-  notes: Record<"ports" | "portsRelay" | "relay" | "webhook" | "more", string>;
+  notes: Record<"ports" | "portsRelay" | "relay" | "webhook" | "music" | "history" | "more", string>;
   advanced: string;
   pluginLimit: string;
   pluginBurst: string;
@@ -56,6 +57,8 @@ export interface Guide {
   intro: string;
   facts: { value: string; label: string }[];
   stepsTitle: string;
+  /** Short label of the hero button that jumps to the steps. */
+  stepsCta: string;
   steps: Step[];
   troubleTitle: string;
   trouble: { q: string; a: string }[];
@@ -82,6 +85,7 @@ const source: Record<Lang, Guide> = {
       { value: "0 €", label: "Open Source; nur der Rechner kostet" },
     ],
     stepsTitle: "In acht Schritten, plus einem optionalen",
+    stepsCta: "Schritt für Schritt",
     steps: [
       {
         id: "rechner",
@@ -224,6 +228,13 @@ const source: Record<Lang, Guide> = {
       name: "Name des Servers",
       welcome: "Willkommenstext",
       users: "Höchstens gleichzeitig",
+      quality: {
+        label: "Höchste Bitrate",
+        hint: "Wie viel eine Person höchstens senden darf. Standard reicht für Sprache, Gut für Musik mit Mumcords Musikqualität, Beste für Hi-Fi und gemeinsames Musizieren. Mehr Bitrate braucht mehr Upload am Server.",
+        standard: "Standard",
+        good: "Gut",
+        best: "Beste",
+      },
       options: {
         password: [
           "Server-Passwort",
@@ -244,7 +255,9 @@ const source: Record<Lang, Guide> = {
         webhook: [
           "Mumbot-Webhook",
           "Meldungen aus Monitoring oder CI in einen Kanal"
-        ]
+        ],
+        music: ["Mumbot-Musik", "MP3s per HTTP in einen Sprachkanal spielen, mit Warteschlange"],
+        history: ["Mumbot-Verlauf", "Hebt Kanal-Chat für Mumcord-Nutzer auf, die weg waren. Private Nachrichten nie"]
       },
       setup: "Ordner und Konfigurationen",
       download: "Herunterladen",
@@ -256,7 +269,9 @@ const source: Record<Lang, Guide> = {
         portsRelay: "Öffne zusätzlich Port 443 für TCP und UDP.",
         relay: "In `mumpeer.toml` bei `public_host` die Adresse deines Servers eintragen, in `bot-peer.toml` den Fingerabdruck deines Mumble-Servers.",
         webhook: "In `bot-webhook.toml` einen API-Schlüssel und die erlaubten Kanäle festlegen. Dann schreibt etwa `curl` an `http://127.0.0.1:8080/message` in den Kanal.",
-        more: "Die Schritte unten erklären jeden Teil im Detail."
+        more: "Die Schritte unten erklären jeden Teil im Detail.",
+        music: "MP3s in den Ordner `media` legen und in `bot-music.toml` einen API-Schlüssel festlegen. Dann spielt eine Anfrage an `http://127.0.0.1:8081` sie im Kanal.",
+        history: "In `bot-history.toml` festlegen, wie lange der Bot den Chat aufhebt. Er braucht Leserechte in den Kanälen."
       }
     },
   },
@@ -273,6 +288,7 @@ const source: Record<Lang, Guide> = {
       { value: "€0", label: "open source; you only pay for the machine" },
     ],
     stepsTitle: "In eight steps, plus an optional one",
+    stepsCta: "Step by step",
     steps: [
       {
         id: "machine",
@@ -413,6 +429,13 @@ const source: Record<Lang, Guide> = {
       name: "Server name",
       welcome: "Welcome text",
       users: "At most at once",
+      quality: {
+        label: "Highest bitrate",
+        hint: "The most a person may send. Standard is enough for speech, Good for music with Mumcord's music quality, Best for hi-fi and playing music together. More bitrate needs more upload on the server.",
+        standard: "Standard",
+        good: "Good",
+        best: "Best",
+      },
       options: {
         password: [
           "Server password",
@@ -433,7 +456,9 @@ const source: Record<Lang, Guide> = {
         webhook: [
           "Mumbot webhook",
           "Messages from monitoring or CI into a channel"
-        ]
+        ],
+        music: ["Mumbot music", "Play MP3s into a voice channel over HTTP, with a queue"],
+        history: ["Mumbot history", "Keeps channel chat for Mumcord users who were away. Never private messages"]
       },
       setup: "Folder and configs",
       download: "Download",
@@ -445,7 +470,9 @@ const source: Record<Lang, Guide> = {
         portsRelay: "Also open port 443 for TCP and UDP.",
         relay: "Put your server's address under `public_host` in `mumpeer.toml`, and your Mumble server's fingerprint in `bot-peer.toml`.",
         webhook: "Set an API key and the allowed channels in `bot-webhook.toml`. Then `curl` to `http://127.0.0.1:8080/message` posts into the channel.",
-        more: "The steps below explain every part in detail."
+        more: "The steps below explain every part in detail.",
+        music: "Put MP3s into the `media` folder and set an API key in `bot-music.toml`. Then a request to `http://127.0.0.1:8081` plays them in the channel.",
+        history: "Set in `bot-history.toml` how long the bot keeps the chat. It needs read access to the channels."
       }
     },
   },
@@ -457,10 +484,18 @@ const relink = (lang: string, list: string[]) => list.map((s) => s.replaceAll('h
 
 const mergeGuide = (lang: string, en: Guide, tr: GuideText | undefined): Guide => {
   if (!tr) return { ...en, steps: en.steps.map((s) => ({ ...s, body: relink(lang, s.body), after: s.after && relink(lang, s.after) })) };
-  const { steps: _steps, ...words } = tr;
+  const { steps: _steps, configurator: cfg, ...words } = tr;
   return {
     ...en,
     ...words,
+    // Parts of the configurator added after a translation was made come from English.
+    configurator: {
+      ...en.configurator,
+      ...cfg,
+      options: { ...en.configurator.options, ...cfg?.options },
+      quality: { ...en.configurator.quality, ...cfg?.quality },
+      notes: { ...en.configurator.notes, ...cfg?.notes },
+    },
     steps: en.steps.map((s) => {
       const ts = tr.steps.find((x) => x.id === s.id);
       const body = ts?.body ?? s.body;
