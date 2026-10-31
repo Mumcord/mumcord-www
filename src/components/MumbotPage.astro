@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import CopyButton from "./CopyButton.astro";
 import { atLeast } from "../lib/compose";
+import { highlight } from "../lib/highlight";
 import mumbotIcon from "../assets/tools/mumbot.png";
 import PeopleList from "./PeopleList.astro";
 import { dicts, type Lang } from "../i18n";
@@ -81,7 +82,7 @@ const bots = [
                 <span>{b.file}</span>
                 <CopyButton label={p.copy} copied={p.copied} class="is-quiet" />
               </figcaption>
-              <pre><code>{b.code}</code></pre>
+              <pre><code set:html={highlight(b.code, "shell")} /></pre>
             </figure>
             <a class="text-link" href={b.docs} rel="noopener">{p.docs} →</a>
           </section>
@@ -125,7 +126,7 @@ const bots = [
         <span>Docker</span>
         <CopyButton label={p.copy} copied={p.copied} class="is-quiet" />
       </figcaption>
-      <pre><code>{MUMBOT_CODE.docker(version)}</code></pre>
+      <pre><code set:html={highlight(MUMBOT_CODE.docker(version), "shell")} /></pre>
     </figure>
     <p class="mb-sums" data-reveal>
       <a class="text-link" href={MUMBOT_EXAMPLES_URL} rel="noopener">{p.examples} →</a>

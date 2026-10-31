@@ -51,6 +51,8 @@ export interface Secrets {
   superuser: string;
   server: string;
   peer: string;
+  webhookKey: string;
+  musicKey: string;
 }
 
 const COMMENTS = {
@@ -77,12 +79,15 @@ const COMMENTS = {
     peer: "kündigt das Relay an und vergibt Tokens; teilt sich das Netz mit dem Relay",
     peerMissing: "PEER_API_SECRET fehlt in .env",
     webhook: "Webhook-Bot: schreibt Meldungen von außen in einen Kanal",
+    bot: "Mumbot, ein Bot mit diesen Modulen",
+    botToml: "Mumbot: ein Bot, Module:",
+    botPin: "SHA-256 des Server-Zertifikats; ohne startet das Peer-Modul nicht",
     webhookPort: "nur von diesem Rechner aus erreichbar",
     env: "Bleibt auf dem Server. Nie in Git, Chats oder Screenshots teilen.",
     envSuper: "hier-das-zufallspasswort-einfuegen",
     envServer: "hier-das-server-passwort-einfuegen",
     envPeer: "hier-ein-langes-zufallsgeheimnis-einfuegen",
-    put: "docker-compose.yml und .env aus 2. und 3. hier ablegen",
+    put: "docker-compose.yml, .env und bot.toml von unten hier ablegen",
     showEnv: "die Passwörter: einmal notieren",
   },
   en: {
@@ -108,12 +113,15 @@ const COMMENTS = {
     peer: "announces the relay and hands out tokens; shares the relay's network",
     peerMissing: "PEER_API_SECRET is missing in .env",
     webhook: "webhook bot: posts messages from outside into a channel",
+    bot: "Mumbot, one bot with these modules",
+    botToml: "Mumbot: one bot, modules:",
+    botPin: "SHA-256 of the server certificate; the peer module won't start without it",
     webhookPort: "reachable from this machine only",
     env: "Stays on the server. Never share it in Git, chats or screenshots.",
     envSuper: "paste-the-random-password-here",
     envServer: "paste-the-server-password-here",
     envPeer: "paste-a-long-random-secret-here",
-    put: "put docker-compose.yml and .env from 2. and 3. in here",
+    put: "put docker-compose.yml, .env and bot.toml from below in here",
     showEnv: "your passwords: note them once",
   },
 } as const;
@@ -179,6 +187,9 @@ export function buildCompose(lang: CommentLang, o: ServerOptions, template = fal
     if (burst !== PLUGIN_DEFAULTS.burst) out.push(`      MUMBLE_CONFIG_PLUGIN_MESSAGE_BURST: "${burst}"   # ${c.pluginBurst}`);
   }
   const volumes = ["data"];
+  const modules = botModules(o);
+  // HTTP ports of the bot; with the relay the bot lives in mumpeer's network, so mumpeer publishes them.
+  const httpPorts = [...(o.webhook ? ["8080"] : []), ...(o.music ? ["8081"] : [])].map((p) => `      - "127.0.0.1:${p}:${p}"   # ${c.webhookPort}`);
   if (o.relay) {
     out.push(
       "",
@@ -188,74 +199,44 @@ export function buildCompose(lang: CommentLang, o: ServerOptions, template = fal
       "    restart: unless-stopped",
       "    environment:",
       `      MUMPEER_API_SECRET: \${PEER_API_SECRET:?${c.peerMissing}}`,
-      '    ports: ["443:443/udp", "443:443/tcp"]',
+      "    ports:",
+      '      - "443:443/udp"',
+      '      - "443:443/tcp"',
+      ...httpPorts,
       "    volumes:",
       "      - ./mumpeer.toml:/config/mumpeer.toml:ro",
       "      - mumpeer-data:/var/lib/mumpeer",
-      "",
-      `  # ${c.peer}`,
-      "  mumbot-peer:",
-      `    image: ${MUMBOT_IMAGE}:${o.mumbotVersion}`,
-      '    command: ["peer"]',
-      "    restart: unless-stopped",
-      "    depends_on: [mumble-server, mumpeer]",
-      '    network_mode: "service:mumpeer"',
-      "    environment:",
-      "      MUMBOT_CONFIG: /config/bot.toml",
-      `      MUMBOT_PEER_API_SECRET: \${PEER_API_SECRET:?${c.peerMissing}}`,
-      "      SERVER_PASSWORD: ${SERVER_PASSWORD:-}",
-      "    volumes:",
-      "      - ./bot-peer.toml:/config/bot.toml:ro",
-      "      - mumbot-peer-data:/data",
-      "    healthcheck:",
-      "      disable: true",
     );
-    volumes.push("mumpeer-data", "mumbot-peer-data");
+    volumes.push("mumpeer-data");
   }
-  if (o.webhook) {
+  if (modules.length) {
     out.push(
       "",
-      `  # ${c.webhook}`,
-      "  mumbot-webhook:",
+      `  # ${c.bot}: ${modules.join(", ")}`,
+      "  mumbot:",
       `    image: ${MUMBOT_IMAGE}:${o.mumbotVersion}`,
-      '    command: ["webhook"]',
+      '    command: ["run"]',
       "    restart: unless-stopped",
-      "    depends_on: [mumble-server]",
+      `    depends_on: [mumble-server${o.relay ? ", mumpeer" : ""}]`,
+      ...(o.relay ? ['    network_mode: "service:mumpeer"'] : []),
       "    environment:",
       "      MUMBOT_CONFIG: /config/bot.toml",
+      `      MUMBOT_MODULES: ${modules.join(",")}`,
       "      SERVER_PASSWORD: ${SERVER_PASSWORD:-}",
-      "    ports:",
-      `      - "127.0.0.1:8080:8080"   # ${c.webhookPort}`,
+      ...(o.relay ? [`      MUMBOT_PEER_API_SECRET: \${PEER_API_SECRET:?${c.peerMissing}}`] : []),
+      ...(!o.relay && httpPorts.length ? ["    ports:", ...httpPorts] : []),
       "    volumes:",
-      "      - ./bot-webhook.toml:/config/bot.toml:ro",
-      "      - mumbot-webhook-data:/data",
+      "      - ./bot.toml:/config/bot.toml:ro",
+      ...(o.music ? ["      - ./media:/media:ro"] : []),
+      "      - mumbot-data:/data",
+      // The image checks the webhook module's /health; the music module answers on its own port.
+      ...(o.webhook
+        ? []
+        : o.music
+          ? ["    healthcheck:", `      test: ["CMD-SHELL", "wget -q -O - http://127.0.0.1:8081/health | grep -q '\\"connected\\":true'"]`]
+          : ["    healthcheck:", "      disable: true"]),
     );
-    volumes.push("mumbot-webhook-data");
-  }
-  for (const [on, name, port] of [
-    [o.music, "music", "8081"],
-    [o.history, "history", ""],
-  ] as const) {
-    if (!on) continue;
-    out.push(
-      "",
-      `  # ${c[name]}`,
-      `  mumbot-${name}:`,
-      `    image: ${MUMBOT_IMAGE}:${o.mumbotVersion}`,
-      `    command: ["${name}"]`,
-      "    restart: unless-stopped",
-      "    depends_on: [mumble-server]",
-      "    environment:",
-      "      MUMBOT_CONFIG: /config/bot.toml",
-      "      SERVER_PASSWORD: ${SERVER_PASSWORD:-}",
-      ...(port ? ["    ports:", `      - "127.0.0.1:${port}:${port}"   # ${c.webhookPort}`] : []),
-      "    volumes:",
-      `      - ./bot-${name}.toml:/config/bot.toml:ro`,
-      ...(name === "music" ? ["      - ./media:/media:ro"] : []),
-      `      - mumbot-${name}-data:/data`,
-      ...(name === "history" ? ["    healthcheck:", "      disable: true"] : []),
-    );
-    volumes.push(`mumbot-${name}-data`);
+    volumes.push("mumbot-data");
   }
   out.push("", "volumes:", ...volumes.map((v) => `  ${v}:`), "");
   return out.join("\n");
@@ -265,6 +246,53 @@ export function buildEnv(lang: CommentLang, o: ServerOptions, s?: Secrets): stri
   const c = COMMENTS[lang];
   const out = [`# ${c.env}`, `SUPERUSER_PASSWORD=${s?.superuser ?? c.envSuper}`, `SERVER_PASSWORD=${o.password ? (s?.server ?? c.envServer) : ""}`];
   if (o.relay) out.push(`PEER_API_SECRET=${s?.peer ?? c.envPeer}`);
+  return out.join("\n") + "\n";
+}
+
+/** The Mumbot modules these options need, in Mumbot's own order. */
+export const botModules = (o: ServerOptions) =>
+  [o.webhook && "webhook", o.relay && "peer", o.history && "history", o.music && "music"].filter(Boolean) as string[];
+
+/** Music below the server's limit: the Opus bitrate the music module sends per quality step. */
+const MUSIC_BITRATE: Record<Quality, number> = { standard: 64000, good: 128000, best: 256000 };
+
+/**
+ * One bot.toml for every chosen module, after mumbot's examples (webhook-with-server, peer-with-relay,
+ * music, history). Keys are filled in by the browser, or left as "$(openssl …)" for the shell.
+ */
+export function buildBotToml(lang: CommentLang, o: ServerOptions, keys?: { webhook: string; music: string }): string {
+  const c = COMMENTS[lang];
+  const key = (k?: string) => k ?? "$(openssl rand -hex 32)";
+  const out = [
+    `# ${c.botToml} ${botModules(o).join(", ")}`,
+    "# https://github.com/Mumcord/mumbot/blob/main/docs/configuration.md",
+    "[server]",
+    'host = "mumble-server"',
+    "port = 64738",
+    'name = "Mumbot"',
+    'channel = "Root"',
+  ];
+  if (o.relay) out.push(`# ${c.botPin}`, 'server_cert_sha256 = "REPLACE-WITH-THE-SERVER-CERTIFICATE-SHA256"');
+  if (o.webhook)
+    out.push("", "[http]", 'listen = "0.0.0.0:8080"', "rate_limit_per_minute = 20", "delivery_timeout_secs = 3", "", "[[keys]]", `key = "${key(keys?.webhook)}"`, 'label = "webhook"', 'channels = ["Root"]');
+  if (o.relay) out.push("", "[peer]", 'api_url = "http://127.0.0.1:7480"');
+  if (o.history)
+    out.push("", "[history]", 'channels = ["*"]', "retention_days = 7", "max_messages_per_channel = 5000", 'database = "/data/history.sqlite3"');
+  if (o.music)
+    out.push(
+      "",
+      "[music]",
+      'listen = "0.0.0.0:8081"',
+      'channel = "Root"',
+      'media_dir = "/media"',
+      "volume = 60",
+      `bitrate = ${MUSIC_BITRATE[o.quality] ?? MUSIC_BITRATE.standard}`,
+      "",
+      "[[music.keys]]",
+      `key = "${key(keys?.music)}"`,
+      'label = "jukebox"',
+      'channels = ["Root"]',
+    );
   return out.join("\n") + "\n";
 }
 
@@ -288,11 +316,16 @@ export function allVariants(mumbotVersion: string): { id: string; lang: CommentL
   return out;
 }
 
+/** The steps of the one-command setup, in order; `configs` is empty when no bot or relay needs one. */
+export const STEP_IDS = ["folder", "compose", "env", "configs", "start", "show"] as const;
+export type StepId = (typeof STEP_IDS)[number];
+
 /**
- * One paste for the server: the compose file by curl (name and numbers in the URL), a fresh .env made
- * with openssl right there, the bot configs, the start. Passwords never travel through a URL or a browser.
+ * The setup for the server, step by step: the compose file by curl (name and numbers in the URL), a
+ * fresh .env made with openssl right there, the bot configs, the start. Passwords never travel through
+ * a URL or a browser.
  */
-export function buildCurlSetup(lang: CommentLang, o: ServerOptions, site: string): string {
+export function buildCurlSteps(lang: CommentLang, o: ServerOptions, site: string): Record<StepId, string> {
   const c = COMMENTS[lang];
   const query = new URLSearchParams({ name: o.name, welcome: o.welcome, users: String(Math.round(o.users) || 50) });
   if (o.pluginLimit !== PLUGIN_DEFAULTS.limit) query.set("pl", String(Math.round(o.pluginLimit)));
@@ -300,25 +333,33 @@ export function buildCurlSetup(lang: CommentLang, o: ServerOptions, site: string
   const url = `${site.replace(/\/$/, "")}/server/compose/${variantId(lang, o)}.yml?${query}`;
   const env = [`# ${c.env}`, "SUPERUSER_PASSWORD=$(openssl rand -hex 16)", `SERVER_PASSWORD=${o.password ? "$(openssl rand -hex 8)" : ""}`];
   if (o.relay) env.push("PEER_API_SECRET=$(openssl rand -hex 32)");
-  const out = ["mkdir -p mumble && cd mumble", `curl -fsSL -o docker-compose.yml '${url.replaceAll("'", "%27")}'`, "cat > .env <<EOF", ...env, "EOF", "chmod 600 .env"];
-  out.push(...buildSetup(lang, o).split("\n").slice(2));
-  out.splice(out.length - 2, 0, `cat .env   # ${c.showEnv}`);
-  return out.join("\n");
+  return {
+    folder: "mkdir -p mumble && cd mumble",
+    compose: `curl -fsSL -o docker-compose.yml '${url.replaceAll("'", "%27")}'`,
+    env: ["cat > .env <<EOF", ...env, "EOF", "chmod 600 .env"].join("\n"),
+    configs: [
+      ...configCommands(o),
+      ...(o.music ? ["mkdir -p media"] : []),
+      ...(botModules(o).length ? ["cat > bot.toml <<EOF", buildBotToml(lang, o).trimEnd(), "EOF"] : []),
+    ].join("\n"),
+    start: "docker compose up -d\ndocker compose logs -f",
+    show: `cat .env   # ${c.showEnv}`,
+  };
+}
+
+/** All steps as one script, for "copy everything". */
+export const buildCurlSetup = (lang: CommentLang, o: ServerOptions, site: string) =>
+  STEP_IDS.map((id) => buildCurlSteps(lang, o, site)[id])
+    .filter(Boolean)
+    .join("\n");
+
+function configCommands(o: ServerOptions): string[] {
+  return o.relay ? [`curl -fsSL -o mumpeer.toml ${EXAMPLES}/peer-with-relay/mumpeer.example.toml`] : [];
 }
 
 /** Commands for the server's folder: the bot and relay configs, then the start. */
 export function buildSetup(lang: CommentLang, o: ServerOptions): string {
-  const out = ["mkdir -p mumble && cd mumble", `# ${COMMENTS[lang].put}`];
-  if (o.relay)
-    out.push(
-      `curl -fsSL -o mumpeer.toml ${EXAMPLES}/peer-with-relay/mumpeer.example.toml`,
-      `curl -fsSL -o bot-peer.toml ${EXAMPLES}/peer-with-relay/bot.example.toml`,
-    );
-  if (o.webhook) out.push(`curl -fsSL -o bot-webhook.toml ${EXAMPLES}/webhook-with-server/bot.example.toml`);
-  if (o.music) out.push("mkdir -p media", `curl -fsSL -o bot-music.toml ${EXAMPLES}/music/bot.example.toml`);
-  if (o.history) out.push(`curl -fsSL -o bot-history.toml ${EXAMPLES}/history/bot.example.toml`);
-  out.push("docker compose up -d", "docker compose logs -f");
-  return out.join("\n");
+  return ["mkdir -p mumble && cd mumble", `# ${COMMENTS[lang].put}`, ...configCommands(o), ...(o.music ? ["mkdir -p media"] : []), "docker compose up -d", "docker compose logs -f"].join("\n");
 }
 
 /** A random password from the browser's crypto; 64 shell-safe characters, so every byte maps evenly. */

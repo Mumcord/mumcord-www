@@ -4,8 +4,9 @@
 import CopyButton from "./CopyButton.astro";
 import { type Lang } from "../i18n";
 import { guides } from "../lib/server-guide";
-import { buildCompose, buildEnv, buildCurlSetup, DEFAULTS, BANDWIDTH, MUMBOT_MODULES_FROM, atLeast, type ServerOptions, type Quality } from "../lib/compose";
-import { getMumbotVersion } from "../lib/mumbot";
+import { buildCompose, buildEnv, buildBotToml, botModules, buildCurlSetup, buildCurlSteps, buildSetup, STEP_IDS, DEFAULTS, BANDWIDTH, MUMBOT_MODULES_FROM, atLeast, type ServerOptions, type Quality } from "../lib/compose";
+import { getMumbotVersion, getBotImageVersion } from "../lib/mumbot";
+import { highlight, langOf } from "../lib/highlight";
 
 interface Props {
   lang: Lang;
@@ -15,19 +16,23 @@ const g = guides[lang];
 const c = g.configurator;
 // The files carry German or English comments; the other languages use English.
 const fileLang = lang === "de" ? "de" : "en";
-const mumbotVersion = await getMumbotVersion();
+const released = await getMumbotVersion();
+const mumbotVersion = await getBotImageVersion();
 const d = { ...DEFAULTS[fileLang], mumbotVersion };
 const site = Astro.site!.origin;
-// Music and history bots only once the Mumbot release that has them is out.
-const modules = atLeast(mumbotVersion, MUMBOT_MODULES_FROM);
+// All bots run as one Mumbot with modules, which comes with 0.2.0; until it is out, say so.
+const modulesOut = atLeast(released, MUMBOT_MODULES_FROM);
 const qualities = Object.keys(BANDWIDTH) as Quality[];
+const steps = buildCurlSteps(fileLang, d, site);
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const md = (s: string) => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>");
-const checks = (Object.keys(c.options) as (keyof typeof c.options & keyof ServerOptions)[]).filter((k) => modules || (k !== "music" && k !== "history"));
+const checks = Object.keys(c.options) as (keyof typeof c.options & keyof ServerOptions)[];
+// Two ways to the same server: one command that does everything, or the files to create by hand.
 const files = [
-  { id: "setup", title: c.setup, file: "Terminal", code: buildCurlSetup(fileLang, d, site) },
-  { id: "compose", title: "docker-compose.yml", file: "docker-compose.yml", code: buildCompose(fileLang, d) },
-  { id: "env", title: ".env", file: ".env", code: buildEnv(fileLang, d) },
+  { id: "setup", mode: "files", title: `1. ${c.setup}`, file: "Terminal", code: buildSetup(fileLang, d) },
+  { id: "compose", mode: "files", title: "2. docker-compose.yml", file: "docker-compose.yml", code: buildCompose(fileLang, d) },
+  { id: "env", mode: "files", title: "3. .env", file: ".env", code: buildEnv(fileLang, d) },
+  { id: "bot", mode: "files", title: "4. bot.toml", file: "bot.toml", code: buildBotToml(fileLang, d) },
 ];
 ---
 
@@ -65,6 +70,7 @@ const files = [
             </label>
           ))
         }
+        {!modulesOut && <p class="cfg-hint">{c.needsMumbot}</p>}
       </fieldset>
       <fieldset>
         <legend>{c.quality.label}</legend>
@@ -98,15 +104,43 @@ const files = [
     </form>
 
     <div class="cfg-out">
+      <div class="cfg-seg cfg-mode" role="radiogroup" aria-label={c.title}>
+        <label>
+          <input type="radio" name="mode" value="command" checked />
+          <span><b>{c.modeCommand}</b></span>
+        </label>
+        <label>
+          <input type="radio" name="mode" value="files" />
+          <span><b>{c.modeFiles}</b></span>
+        </label>
+      </div>
+      <ol class="cfg-steps" data-mode="command">
+        {
+          STEP_IDS.map((id, i) => (
+            <li data-step={id} hidden={!steps[id]}>
+              <figure class="code">
+                <figcaption>
+                  <span>
+                    <b class="cfg-step-num">{i + 1}</b> {c.steps[id]}
+                  </span>
+                  <CopyButton label={g.copy} copied={g.copied} class="is-quiet" />
+                </figcaption>
+                <pre><code data-out={`step-${id}`} set:html={highlight(steps[id], "shell")} /></pre>
+              </figure>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="cfg-copy-all" data-mode="command">
+        <CopyButton text={buildCurlSetup(fileLang, d, site)} label={c.copyAll} copied={g.copied} />
+      </p>
       {
-        files.map((f, i) => (
-          <figure class="code" data-reveal>
+        files.map((f) => (
+          <figure class="code" data-mode={f.mode} hidden>
             <figcaption>
-              <span>
-                {i + 1}. {f.title}
-              </span>
+              <span>{f.title}</span>
               <span class="cfg-actions">
-                {f.id !== "setup" && (
+                {f.mode === "files" && f.id !== "setup" && (
                   <button type="button" class="copy-btn is-quiet" data-download={f.file}>
                     {c.download}
                   </button>
@@ -114,11 +148,11 @@ const files = [
                 <CopyButton label={g.copy} copied={g.copied} class="is-quiet" />
               </span>
             </figcaption>
-            <pre><code data-out={f.id}>{f.code}</code></pre>
+            <pre><code data-out={f.id} data-lang={langOf(f.file)} set:html={highlight(f.code, langOf(f.file))} /></pre>
           </figure>
         ))
       }
-      <p class="cfg-secrets" data-secrets hidden>
+      <p class="cfg-secrets" data-mode="files" hidden>
         <span set:html={md(c.secrets)} />
         <button type="button" class="text-link" data-regenerate>{c.regenerate}</button>
       </p>
@@ -139,13 +173,14 @@ const files = [
 </section>
 
 <script>
-  import { buildCompose, buildEnv, buildCurlSetup, randomSecret, type CommentLang, type ServerOptions, type Secrets, type Quality } from "../lib/compose";
+  import { highlight, type CodeLang } from "../lib/highlight";
+  import { buildCompose, buildEnv, buildBotToml, botModules, buildCurlSetup, buildCurlSteps, buildSetup, STEP_IDS, randomSecret, type CommentLang, type ServerOptions, type Secrets, type Quality } from "../lib/compose";
 
   for (const root of document.querySelectorAll<HTMLElement>("[data-configurator]")) {
     const lang = root.dataset.lang as CommentLang;
     const form = root.querySelector("form")!;
     const out = (id: string) => root.querySelector<HTMLElement>(`[data-out="${id}"]`)!;
-    const fresh = (): Secrets => ({ superuser: randomSecret(), server: randomSecret(16), peer: randomSecret(48) });
+    const fresh = (): Secrets => ({ superuser: randomSecret(), server: randomSecret(16), peer: randomSecret(48), webhookKey: randomSecret(48), musicKey: randomSecret(48) });
     let secrets = fresh();
 
     const read = (): ServerOptions => {
@@ -172,9 +207,19 @@ const files = [
 
     const render = () => {
       const o = read();
-      out("setup").textContent = buildCurlSetup(lang, o, root.dataset.site!);
-      out("compose").textContent = buildCompose(lang, o);
-      out("env").textContent = buildEnv(lang, o, secrets);
+      const site = root.dataset.site!;
+      const steps = buildCurlSteps(lang, o, site);
+      for (const id of STEP_IDS) {
+        out(`step-${id}`).innerHTML = highlight(steps[id], "shell");
+        root.querySelector<HTMLElement>(`[data-step="${id}"]`)!.hidden = !steps[id];
+      }
+      root.querySelector<HTMLElement>(".cfg-copy-all [data-copy]")!.dataset.copy = buildCurlSetup(lang, o, site);
+      const put = (id: string, code: string) => (out(id).innerHTML = highlight(code, out(id).dataset.lang as CodeLang));
+      put("setup", buildSetup(lang, o));
+      put("compose", buildCompose(lang, o));
+      put("env", buildEnv(lang, o, secrets));
+      put("bot", buildBotToml(lang, o, { webhook: secrets.webhookKey, music: secrets.musicKey }));
+      out("bot").closest("figure")!.dataset.empty = botModules(o).length ? "" : "1";
       for (const n of root.querySelectorAll<HTMLElement>("[data-note]")) n.hidden = !o[n.dataset.note as "relay" | "webhook" | "music" | "history"];
     };
 
@@ -188,12 +233,17 @@ const files = [
       b.addEventListener("click", () => {
         const text = b.closest("figure")!.querySelector("code")!.textContent ?? "";
         const a = document.createElement("a");
-        a.href = URL.createObjectURL(new Blob([text], { type: "text/plain" }));
+        // octet-stream, so the browser keeps the name instead of adding ".txt".
+        a.href = URL.createObjectURL(new Blob([text], { type: "application/octet-stream" }));
         a.download = b.dataset.download!;
         a.click();
         setTimeout(() => URL.revokeObjectURL(a.href), 1000);
       });
-    root.querySelector<HTMLElement>("[data-secrets]")!.hidden = false;
+    // Show either the one command or the files to create by hand.
+    for (const r of root.querySelectorAll<HTMLInputElement>('input[name="mode"]'))
+      r.addEventListener("change", () => {
+        for (const el of root.querySelectorAll<HTMLElement>("[data-mode]")) el.hidden = el.dataset.mode !== r.value;
+      });
     render();
   }
 </script>

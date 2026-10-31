@@ -2444,11 +2444,11 @@
       "notes": {
         "ports": "Öppna port 64738 för TCP och UDP.",
         "portsRelay": "Öppna också port 443 för TCP och UDP.",
-        "relay": "Ange serverns adress under `public_host` i `mumpeer.toml` och din Mumble-servers fingeravtryck i `bot-peer.toml`.",
-        "webhook": "Ange en API-nyckel och de tillåtna kanalerna i `bot-webhook.toml`. Sedan postar `curl` till `http://127.0.0.1:8080/message` i kanalen.",
+        "relay": "Ange serverns adress under `public_host` i `mumpeer.toml` och din Mumble-servers fingeravtryck i `bot.toml`.",
+        "webhook": "Ange en API-nyckel och de tillåtna kanalerna i `bot.toml`. Sedan postar `curl` till `http://127.0.0.1:8080/message` i kanalen.",
         "more": "Stegen nedan förklarar varje del i detalj.",
-        "music": "Lägg MP3-filerna i mappen `media` och ange en API-nyckel i `bot-music.toml`. Sedan spelar en förfrågan till `http://127.0.0.1:8081` upp dem i kanalen.",
-        "history": "Ange i `bot-history.toml` hur länge boten sparar chatten. Den behöver läsbehörighet till kanalerna."
+        "music": "Lägg MP3-filerna i mappen `media` och ange en API-nyckel i `bot.toml`. Sedan spelar en förfrågan till `http://127.0.0.1:8081` upp dem i kanalen.",
+        "history": "Ange i `bot.toml` hur länge boten sparar chatten. Den behöver läsbehörighet till kanalerna."
       },
       "advanced": "Avancerat",
       "pluginLimit": "Dolda paket per sekund",
@@ -2460,7 +2460,19 @@
         "standard": "Standard",
         "good": "Bra",
         "best": "Bäst"
-      }
+      },
+      "modeCommand": "Ett kommando",
+      "modeFiles": "Skapa filerna själv",
+      "steps": {
+        "folder": "Skapa en mapp",
+        "compose": "Hämta docker-compose.yml",
+        "env": "Skapa lösenorden (.env)",
+        "configs": "Hämta konfigurationerna för boten och relayen",
+        "start": "Starta",
+        "show": "Visa lösenorden och anteckna dem"
+      },
+      "copyAll": "Kopiera allt på en gång",
+      "needsMumbot": "Webhook, relä, musik och historik körs tillsammans som en enda Mumbot med moduler. Det kommer med Mumbot 0.2.0."
     },
     "stepsCta": "Steg för steg"
   },

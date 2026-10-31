@@ -44,6 +44,12 @@ export interface Configurator {
   secrets: string;
   after: string;
   notes: Record<"ports" | "portsRelay" | "relay" | "webhook" | "music" | "history" | "more", string>;
+  modeCommand: string;
+  needsMumbot: string;
+  /** Titles of the one-command steps (STEP_IDS in compose.ts). */
+  steps: Record<"folder" | "compose" | "env" | "configs" | "start" | "show", string>;
+  copyAll: string;
+  modeFiles: string;
   advanced: string;
   pluginLimit: string;
   pluginBurst: string;
@@ -218,6 +224,18 @@ const source: Record<Lang, Guide> = {
     configurator: {
       title: "Konfigurator",
       intro: "Häkchen setzen, Namen eintragen, fertig: Daraus entstehen deine `docker-compose.yml` und `.env`. Alles passiert in deinem Browser, nichts wird gesendet.",
+      steps: {
+        folder: "Ordner anlegen",
+        compose: "docker-compose.yml laden",
+        env: "Passwörter erzeugen (.env)",
+        configs: "Konfigurationen für Bots und Relay holen",
+        start: "Starten",
+        show: "Passwörter anzeigen und notieren",
+      },
+      copyAll: "Alles auf einmal kopieren",
+      needsMumbot: "Webhook, Relay-Bot, Musik und Verlauf laufen zusammen als ein Mumbot mit Modulen. Das kommt mit Mumbot 0.2.0.",
+      modeCommand: "Ein Befehl",
+      modeFiles: "Dateien selbst anlegen",
       advanced: "Erweitert",
       pluginLimit: "Versteckte Pakete pro Sekunde",
       pluginBurst: "Davon kurz hintereinander",
@@ -267,11 +285,11 @@ const source: Record<Lang, Guide> = {
       notes: {
         ports: "Öffne Port 64738 für TCP und UDP.",
         portsRelay: "Öffne zusätzlich Port 443 für TCP und UDP.",
-        relay: "In `mumpeer.toml` bei `public_host` die Adresse deines Servers eintragen, in `bot-peer.toml` den Fingerabdruck deines Mumble-Servers.",
-        webhook: "In `bot-webhook.toml` einen API-Schlüssel und die erlaubten Kanäle festlegen. Dann schreibt etwa `curl` an `http://127.0.0.1:8080/message` in den Kanal.",
+        relay: "In `mumpeer.toml` bei `public_host` die Adresse deines Servers eintragen, in `bot.toml` den Fingerabdruck deines Mumble-Servers.",
+        webhook: "In `bot.toml` einen API-Schlüssel und die erlaubten Kanäle festlegen. Dann schreibt etwa `curl` an `http://127.0.0.1:8080/message` in den Kanal.",
         more: "Die Schritte unten erklären jeden Teil im Detail.",
-        music: "MP3s in den Ordner `media` legen und in `bot-music.toml` einen API-Schlüssel festlegen. Dann spielt eine Anfrage an `http://127.0.0.1:8081` sie im Kanal.",
-        history: "In `bot-history.toml` festlegen, wie lange der Bot den Chat aufhebt. Er braucht Leserechte in den Kanälen."
+        music: "MP3s in den Ordner `media` legen und in `bot.toml` einen API-Schlüssel festlegen. Dann spielt eine Anfrage an `http://127.0.0.1:8081` sie im Kanal.",
+        history: "In `bot.toml` festlegen, wie lange der Bot den Chat aufhebt. Er braucht Leserechte in den Kanälen."
       }
     },
   },
@@ -419,6 +437,18 @@ const source: Record<Lang, Guide> = {
     configurator: {
       title: "Configurator",
       intro: "Tick the boxes, enter a name, done: you get your `docker-compose.yml` and `.env`. Everything happens in your browser, nothing is sent anywhere.",
+      steps: {
+        folder: "Create a folder",
+        compose: "Fetch docker-compose.yml",
+        env: "Make the passwords (.env)",
+        configs: "Fetch the bot and relay configs",
+        start: "Start",
+        show: "Show the passwords and note them",
+      },
+      copyAll: "Copy everything at once",
+      needsMumbot: "Webhook, relay bot, music and history run together as one Mumbot with modules. That comes with Mumbot 0.2.0.",
+      modeCommand: "One command",
+      modeFiles: "Create the files yourself",
       advanced: "Advanced",
       pluginLimit: "Hidden packets per second",
       pluginBurst: "Of those in a quick burst",
@@ -468,11 +498,11 @@ const source: Record<Lang, Guide> = {
       notes: {
         ports: "Open port 64738 for TCP and UDP.",
         portsRelay: "Also open port 443 for TCP and UDP.",
-        relay: "Put your server's address under `public_host` in `mumpeer.toml`, and your Mumble server's fingerprint in `bot-peer.toml`.",
-        webhook: "Set an API key and the allowed channels in `bot-webhook.toml`. Then `curl` to `http://127.0.0.1:8080/message` posts into the channel.",
+        relay: "Put your server's address under `public_host` in `mumpeer.toml`, and your Mumble server's fingerprint in `bot.toml`.",
+        webhook: "Set an API key and the allowed channels in `bot.toml`. Then `curl` to `http://127.0.0.1:8080/message` posts into the channel.",
         more: "The steps below explain every part in detail.",
-        music: "Put MP3s into the `media` folder and set an API key in `bot-music.toml`. Then a request to `http://127.0.0.1:8081` plays them in the channel.",
-        history: "Set in `bot-history.toml` how long the bot keeps the chat. It needs read access to the channels."
+        music: "Put MP3s into the `media` folder and set an API key in `bot.toml`. Then a request to `http://127.0.0.1:8081` plays them in the channel.",
+        history: "Set in `bot.toml` how long the bot keeps the chat. It needs read access to the channels."
       }
     },
   },
@@ -495,6 +525,7 @@ const mergeGuide = (lang: string, en: Guide, tr: GuideText | undefined): Guide =
       options: { ...en.configurator.options, ...cfg?.options },
       quality: { ...en.configurator.quality, ...cfg?.quality },
       notes: { ...en.configurator.notes, ...cfg?.notes },
+      steps: { ...en.configurator.steps, ...cfg?.steps },
     },
     steps: en.steps.map((s) => {
       const ts = tr.steps.find((x) => x.id === s.id);

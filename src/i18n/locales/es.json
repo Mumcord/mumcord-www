@@ -2444,11 +2444,11 @@
       "notes": {
         "ports": "Abre el puerto 64738 para TCP y UDP.",
         "portsRelay": "Abre también el puerto 443 para TCP y UDP.",
-        "relay": "Pon la dirección de tu servidor en `public_host` de `mumpeer.toml` y la huella de tu servidor Mumble en `bot-peer.toml`.",
-        "webhook": "Define una clave de API y los canales permitidos en `bot-webhook.toml`. Después, un `curl` a `http://127.0.0.1:8080/message` publica en el canal.",
+        "relay": "Pon la dirección de tu servidor en `public_host` de `mumpeer.toml` y la huella de tu servidor Mumble en `bot.toml`.",
+        "webhook": "Define una clave de API y los canales permitidos en `bot.toml`. Después, un `curl` a `http://127.0.0.1:8080/message` publica en el canal.",
         "more": "Los pasos de abajo explican cada parte en detalle.",
-        "music": "Pon los MP3 en la carpeta `media` y define una clave de API en `bot-music.toml`. Después, una petición a `http://127.0.0.1:8081` los reproduce en el canal.",
-        "history": "Define en `bot-history.toml` cuánto tiempo guarda el bot el chat. Necesita acceso de lectura a los canales."
+        "music": "Pon los MP3 en la carpeta `media` y define una clave de API en `bot.toml`. Después, una petición a `http://127.0.0.1:8081` los reproduce en el canal.",
+        "history": "Define en `bot.toml` cuánto tiempo guarda el bot el chat. Necesita acceso de lectura a los canales."
       },
       "advanced": "Avanzado",
       "pluginLimit": "Paquetes ocultos por segundo",
@@ -2460,7 +2460,19 @@
         "standard": "Estándar",
         "good": "Bueno",
         "best": "Óptimo"
-      }
+      },
+      "modeCommand": "Un comando",
+      "modeFiles": "Crea los archivos tú mismo",
+      "steps": {
+        "folder": "Crea una carpeta",
+        "compose": "Descarga docker-compose.yml",
+        "env": "Genera las contraseñas (.env)",
+        "configs": "Descarga las configuraciones del bot y del relay",
+        "start": "Inicia",
+        "show": "Muestra las contraseñas y anótalas"
+      },
+      "copyAll": "Copia todo de una vez",
+      "needsMumbot": "Webhook, relay, música e historial funcionan juntos como un único Mumbot con módulos. Eso llega con Mumbot 0.2.0."
     },
     "stepsCta": "Paso a paso"
   },

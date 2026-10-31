@@ -4002,10 +4002,10 @@ p {
   border-radius: 50%;
   border: 1.5px solid var(--faint);
 }
-.rp-main li.is-done {
+.rp-stage .rp-main li.is-done {
   color: var(--text);
 }
-.rp-main li.is-done::before {
+.rp-stage .rp-main li.is-done::before {
   content: "✓";
   top: 9px;
   left: 0;
@@ -4916,6 +4916,61 @@ p {
 .cfg-seg input:focus-visible + span {
   outline: 2px solid var(--violet);
   outline-offset: 2px;
+}
+.cfg-mode {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+}
+.cfg-out [hidden],
+.cfg-out [data-empty="1"] {
+  display: none;
+}
+/* Syntax colours for shell, YAML and .env (src/lib/highlight.ts). */
+.hl-c {
+  color: var(--faint);
+  font-style: italic;
+}
+.hl-k {
+  color: var(--lilac);
+}
+.hl-s {
+  color: var(--live);
+}
+.hl-v {
+  color: var(--pink);
+}
+.hl-n {
+  color: var(--peach);
+}
+.hl-f {
+  color: var(--peach);
+}
+.hl-u {
+  color: #8fd3ff;
+}
+.cfg-steps {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cfg-steps .code {
+  margin: 0;
+}
+.cfg-step-num {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--peach), var(--violet));
+  color: #160f38;
+  font: 700 0.75rem var(--font-mono);
+}
+.cfg-copy-all {
+  margin: 0;
 }
 .cfg-hint {
   margin: 12px 0 0;

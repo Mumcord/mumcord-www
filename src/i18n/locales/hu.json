@@ -2444,11 +2444,11 @@
       "notes": {
         "ports": "Nyisd meg a 64738-as portot TCP-hez és UDP-hez.",
         "portsRelay": "Nyisd meg a 443-as portot is TCP-hez és UDP-hez.",
-        "relay": "Írd a szervered címét a `public_host` kulcs alá a `mumpeer.toml` fájlban, a Mumble-szervered ujjlenyomatát pedig a `bot-peer.toml` fájlba.",
-        "webhook": "Állíts be egy API-kulcsot és az engedélyezett csatornákat a `bot-webhook.toml` fájlban. Ezután egy `curl` a `http://127.0.0.1:8080/message` címre üzenetet küld a csatornába.",
+        "relay": "Írd a szervered címét a `public_host` kulcs alá a `mumpeer.toml` fájlban, a Mumble-szervered ujjlenyomatát pedig a `bot.toml` fájlba.",
+        "webhook": "Állíts be egy API-kulcsot és az engedélyezett csatornákat a `bot.toml` fájlban. Ezután egy `curl` a `http://127.0.0.1:8080/message` címre üzenetet küld a csatornába.",
         "more": "Az alábbi lépések minden részt részletesen elmagyaráznak.",
-        "music": "Tedd az MP3-akat a `media` mappába, és állíts be egy API-kulcsot a `bot-music.toml` fájlban. Ezután egy kérés a `http://127.0.0.1:8081` címre lejátssza őket a csatornában.",
-        "history": "A `bot-history.toml` fájlban állítsd be, mennyi ideig őrizze a bot a csevegést. Olvasási hozzáférés kell neki a csatornákhoz."
+        "music": "Tedd az MP3-akat a `media` mappába, és állíts be egy API-kulcsot a `bot.toml` fájlban. Ezután egy kérés a `http://127.0.0.1:8081` címre lejátssza őket a csatornában.",
+        "history": "A `bot.toml` fájlban állítsd be, mennyi ideig őrizze a bot a csevegést. Olvasási hozzáférés kell neki a csatornákhoz."
       },
       "advanced": "Haladó",
       "pluginLimit": "Rejtett csomagok másodpercenként",
@@ -2460,7 +2460,19 @@
         "standard": "Normál",
         "good": "Jó",
         "best": "Legjobb"
-      }
+      },
+      "modeCommand": "Egy parancs",
+      "modeFiles": "Fájlok saját kezűleg",
+      "steps": {
+        "folder": "Hozz létre egy mappát",
+        "compose": "Töltsd le a docker-compose.yml-t",
+        "env": "Készítsd el a jelszavakat (.env)",
+        "configs": "Töltsd le a bot és a relé konfigurációit",
+        "start": "Indítsd el",
+        "show": "Mutasd meg a jelszavakat, és jegyezd fel őket"
+      },
+      "copyAll": "Másolj ki mindent egyszerre",
+      "needsMumbot": "A webhook, a relay, a zene és az előzmények együtt futnak egyetlen, modulokból álló Mumbotként. Ez a Mumbot 0.2.0-val érkezik."
     },
     "stepsCta": "Lépésről lépésre"
   },

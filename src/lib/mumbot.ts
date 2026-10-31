@@ -4,6 +4,7 @@
 import { localized } from "../i18n";
 import { bundles } from "../i18n/locales";
 import type { Status } from "./roadmap";
+import { atLeast, MUMBOT_MODULES_FROM } from "./compose";
 
 export const MUMBOT_REPO = "Mumcord/mumbot";
 export const MUMBOT_REPO_URL = `https://github.com/${MUMBOT_REPO}`;
@@ -89,6 +90,12 @@ async function load(): Promise<BotRelease | null> {
 export function getMumbotRelease(): Promise<BotRelease | null> {
   cached ??= load();
   return cached;
+}
+
+/** The image tag for the configurator's one bot with modules: the release, but at least 0.2.0 where modules arrive. */
+export async function getBotImageVersion(): Promise<string> {
+  const v = await getMumbotVersion();
+  return atLeast(v, MUMBOT_MODULES_FROM) ? v : MUMBOT_MODULES_FROM;
 }
 
 /** The Mumbot image tag the configurator and server guide use: the newest release, 0.1.0 before any. */

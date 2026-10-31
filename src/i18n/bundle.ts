@@ -43,7 +43,8 @@ export interface BlockedText {
 }
 
 export interface GuideText extends Omit<Guide, "steps" | "configurator"> {
-  configurator?: Partial<Omit<Configurator, "options" | "quality" | "notes">> & {
+  configurator?: Partial<Omit<Configurator, "options" | "quality" | "notes" | "steps">> & {
+    steps?: Partial<Configurator["steps"]>;
     options?: Partial<Configurator["options"]>;
     quality?: Partial<Configurator["quality"]>;
     notes?: Partial<Configurator["notes"]>;

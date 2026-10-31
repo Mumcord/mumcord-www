@@ -1,6 +1,7 @@
 ---
 import CopyButton from "./CopyButton.astro";
 import ServerConfigurator from "./ServerConfigurator.astro";
+import { highlight, langOf } from "../lib/highlight";
 import { type Lang } from "../i18n";
 import { guides } from "../lib/server-guide";
 import { DEFAULTS } from "../lib/compose";
@@ -84,7 +85,7 @@ const services = [
                   <span>{c.file ?? "Terminal"}</span>
                   <CopyButton label={g.copy} copied={g.copied} class="is-quiet" />
                 </figcaption>
-                <pre><code>{c.code.trimEnd()}</code></pre>
+                <pre><code set:html={highlight(c.code.trimEnd(), langOf(c.file))} /></pre>
               </figure>
             ))}
             {s.after?.map((p) => <p set:html={p} />)}

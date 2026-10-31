@@ -2444,11 +2444,11 @@
       "notes": {
         "ports": "Ouvre le port 64738 en TCP et UDP.",
         "portsRelay": "Ouvre aussi le port 443 en TCP et UDP.",
-        "relay": "Mets l’adresse de ton serveur sous `public_host` dans `mumpeer.toml`, et l’empreinte de ton serveur Mumble dans `bot-peer.toml`.",
-        "webhook": "Définis une clé d’API et les canaux autorisés dans `bot-webhook.toml`. Ensuite, un `curl` vers `http://127.0.0.1:8080/message` publie dans le canal.",
+        "relay": "Mets l’adresse de ton serveur sous `public_host` dans `mumpeer.toml`, et l’empreinte de ton serveur Mumble dans `bot.toml`.",
+        "webhook": "Définis une clé d’API et les canaux autorisés dans `bot.toml`. Ensuite, un `curl` vers `http://127.0.0.1:8080/message` publie dans le canal.",
         "more": "Les étapes ci-dessous expliquent chaque partie en détail.",
-        "music": "Mets les MP3 dans le dossier `media` et définis une clé d’API dans `bot-music.toml`. Ensuite, une requête vers `http://127.0.0.1:8081` les joue dans le canal.",
-        "history": "Définis dans `bot-history.toml` combien de temps le bot garde le chat. Il a besoin d’un accès en lecture aux canaux."
+        "music": "Mets les MP3 dans le dossier `media` et définis une clé d’API dans `bot.toml`. Ensuite, une requête vers `http://127.0.0.1:8081` les joue dans le canal.",
+        "history": "Définis dans `bot.toml` combien de temps le bot garde le chat. Il a besoin d’un accès en lecture aux canaux."
       },
       "advanced": "Avancé",
       "pluginLimit": "Paquets cachés par seconde",
@@ -2460,7 +2460,19 @@
         "standard": "Standard",
         "good": "Bon",
         "best": "Optimal"
-      }
+      },
+      "modeCommand": "Une commande",
+      "modeFiles": "Créer les fichiers toi-même",
+      "steps": {
+        "folder": "Crée un dossier",
+        "compose": "Récupère docker-compose.yml",
+        "env": "Génère les mots de passe (.env)",
+        "configs": "Récupère les configurations du bot et du relais",
+        "start": "Démarre",
+        "show": "Affiche les mots de passe et note-les"
+      },
+      "copyAll": "Copie tout d’un coup",
+      "needsMumbot": "Webhook, relais, musique et historique tournent ensemble comme un seul Mumbot avec des modules. Cela arrive avec Mumbot 0.2.0."
     },
     "stepsCta": "Pas à pas"
   },
