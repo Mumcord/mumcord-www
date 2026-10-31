@@ -355,15 +355,20 @@
         {
           "tag": "Epic 4",
           "title": "Haldus",
-          "body": "ACL-id, keelud, kanalite haldus. Ning Mumcord rakendusena Androidile ja iOS-ile."
+          "body": "Õigused (ACL-id) ja grupid, kanalite haldus, väljaviskamised ja keelud, keelunimekiri, registreeritud kasutajad ja modereerimine, nähtav ainult seal, kus server selle annab."
         },
         {
           "tag": "Epic 5",
-          "title": "Levitamine",
-          "body": "Allkirjastatud paigaldajad, automaatne uuendamine, vabatahtlikud krahhiaruanded, paketihoidlates avaldamine."
+          "title": "Mumcord sinu telefonis",
+          "body": "Rakendus Androidile ja iOS-ile: serverid, kanalid, push-to-talk, vestlus ja lukustuskuva juhtnupud. Esmalt APK-na ja TestFlighti kaudu."
         },
         {
           "tag": "Epic 6",
+          "title": "Levitamine",
+          "body": "Allkirjastatud installerid, automaatne uuendamine, ainult nõusolekul kokkuvarisemisaruanded, pakettide loendid, Flathub ja rakenduste poed."
+        },
+        {
+          "tag": "Epic Future",
           "title": "GIF-otsing",
           "body": "GIF-ide otsing ilma rakendusse API-võtit lisamata, mida igaüks saaks välja võtta. Kuidas täpselt, on veel otsustamata."
         }
@@ -1747,7 +1752,9 @@
               "Paremklõps kõne lõpetamise nupul: lahku häälkanalist ja loe edasi, katkesta ühendus ühe serveriga või kõigiga",
               "Seadistusviisardi uuesti käivitamine ilma su identiteeti puutumata",
               "Vestluses olevad mumble:// lingid kuvatakse serveri või kanali kaardina, üks klõps ühendab",
-              "Oma helid, kui sind visatakse välja või keelustatakse"
+              "Oma helid, kui sind visatakse välja või keelustatakse",
+              "Helifailid vestluses oma pleieriga: mängi, keri ja seadista helitugevust otse sõnumis",
+              "Lingid Spotifyle, Apple Musicule, Tidalile ja teistele muusikateenustele muutuvad muusikakaardiks, mis mängib teenuse ametliku pleieri kaudu alles pärast klõpsu"
             ],
             "mockups": [
               "Globaalsed otseteed seadetes",
@@ -1760,7 +1767,9 @@
               "Seadmete vahetamine vaigistusnuppudelt",
               "Kõne lõpetamise nupu menüü",
               "Seadistusviisardi uuesti käivitamine",
-              "mumble:// link kaardina"
+              "mumble:// link kaardina",
+              "Heli link pleieriga vestluses",
+              "Muusikakaart vestluses"
             ]
           },
           {
@@ -1773,7 +1782,9 @@
               "Volti parem veerg täiesti kokku või kitsaks avataride ribaks, et vestlusel oleks rohkem ruumi",
               "Privaatsõnumite ülevaade on uuendatud",
               "Kanali nime taga olev menüü kõigi toimingute ja kanali infoga",
-              "Serveri ja kanalite puu on uuendatud: paremklõpsumenüü igal kanalil, kasutajate piir nime kõrval ja selged olekuikoonid"
+              "Serveri ja kanalite puu on uuendatud: paremklõpsumenüü igal kanalil, kasutajate piir nime kõrval ja selged olekuikoonid",
+              "Kiirseaded uuendatud",
+              "Vasakul all olev kasutajapaneel on ümber disainitud"
             ],
             "mockups": [
               "Uus seadistusviisard",
@@ -1786,7 +1797,9 @@
               "Parem veerg kitsa ribana",
               "Uus privaatsõnumite ülevaade",
               "Kanali nime taga olev menüü",
-              "Uuendatud serveri ja kanalite puu"
+              "Uuendatud serveri ja kanalite puu",
+              "Uuendatud kiirseaded",
+              "Uus kasutajapaneel"
             ]
           },
           {
@@ -1795,12 +1808,14 @@
               "Inimeste blokeerimine: nendelt enam ei tule sõnumeid, häält ega kutseid, tuvastatud sertifikaadi, mitte nime järgi",
               "Privaatsõnumid ainult sõpradelt, kõigilt või mitte kelleltki, ka serveri kaupa. Võõrad satuvad sõnumitaotluste alla",
               "Kellukese taga olev teavituskeskus kogub kõigist serveritest mainimised, vastused, taotlused ja kutsed ning režiimis „Mitte segada“ kõik, mis muidu hüppaks esile",
-              "Watch party ei laadi YouTube’ist ega Twitchist midagi, kui manustatud sisu on välja lülitatud"
+              "Watch party ei laadi YouTube’ist ega Twitchist midagi, kui manustatud sisu on välja lülitatud",
+              "Vihje vestluses, kui linkide eelvaated ja manustatud sisu on välja lülitatud, selle asemel et vaikides näidata ainult linki"
             ],
             "mockups": [
               "Inimese blokeerimine",
               "Sõnumitaotlus võõralt",
-              "Teavituskeskus"
+              "Teavituskeskus",
+              "Vihje, kui eelvaated on välja lülitatud"
             ]
           },
           {
@@ -1848,7 +1863,6 @@
             "title": "Uuendused ja paigaldus",
             "items": [
               "Uuendused otse rakenduses: kontrolli, laadi alla, kontrolli allkirja ja taaskäivita",
-              "Allkirjastatud Windowsi versioonid, paigaldaja ja rakendus",
               "Windowsis kaasaskantav Mumcord.exe paigaldaja kõrval"
             ],
             "mockups": [
@@ -1860,29 +1874,117 @@
       {
         "id": "epic-4",
         "title": "Haldus",
-        "summary": "Et Mumcord saaks ametliku kliendi täielikult asendada, ning Mumcord rakendusena sinu telefonile.",
-        "items": [
-          "Õiguste muutmine (ACL-id)",
-          "Keelud",
-          "Kanalite loomine, teisaldamine ja haldamine",
-          "Androidi ja iOS-i rakendus: APK-na allalaadimiseks ja TestFlighti kaudu, rakenduste poed tulevad hiljem"
+        "summary": "Et Mumcord saaks ametliku kliendi täielikult asendada: kanalite, õiguste, keeldude ja inimeste haldus, ainult tavaliste Mumble’i sõnumitega ja ilma serverit muutmata.",
+        "groups": [
+          {
+            "title": "Haldus seal, kuhu sa juba vaatad",
+            "items": [
+              "Halduse toimingud ilmuvad ainult seal, kus server need annab. Ilma õigusteta ei näe sa neist midagi",
+              "Kõik kanalite ja inimeste paremklõpsumenüüdes ning serverimenüüs, eraldi haldusrežiimi pole",
+              "Privaatne logi sinu arvutis: keda sa eelmisel nädalal keelustasid ja miks"
+            ],
+            "mockups": [
+              "Halduse toimingud paremklõpsumenüüs"
+            ]
+          },
+          {
+            "title": "Kanalid ja õigused",
+            "items": [
+              "Kanalite loomine, ümbernimetamine, kirjeldamine, teisaldamine, ümberjärjestamine ja kustutamine, sh ajutised kanalid, kasutajapiirangud ja lingid",
+              "Kanali paroolide määramine, muutmine ja eemaldamine, samamoodi nagu ametlikus kliendis",
+              "Õiguste (ACL-ide) ja gruppide redaktor, mida saavad lugeda ka mittespetsialistid: mis pärandub, milline reegel võidab ja lõpuks kes mida teha tohib",
+              "Serveri teave adminnidele ja tervitusteksti muutmine, niivõrd kui protokoll lubab"
+            ],
+            "mockups": [
+              "Kanali muutmine",
+              "Kanali õigused"
+            ]
+          },
+          {
+            "title": "Inimesed ja keelud",
+            "items": [
+              "Inimeste serverist eemaldamine põhjusega ning soovi korral keelustamine valitud ajaks, sertifikaadi, IP-aadressi või mõlema järgi",
+              "Keelunimekirja vaatamine, otsimine ja muutmine, sh nende inimeste keelud, kes pole võrgus",
+              "Inimeste kiire teisaldamine: üks inimene enda juurde või kõik kanalis olijad teise kanalisse",
+              "Registreeritud kasutajate haldus: millal viimati nähti, ümbernimetamine, registreerimise tühistamine ja võrgus olevate inimeste registreerimine",
+              "Kellegi mikrofoni või heli vaigistamine kõigi jaoks, prioriteetseks kõnelejaks tegemine ning soovimatu kommentaari või avatari lähtestamine"
+            ],
+            "mockups": [
+              "Kellegi keelustamine",
+              "Registreeritud kasutajad"
+            ]
+          },
+          {
+            "title": "Windows",
+            "items": [
+              "Allkirjastatud Windowsi versioonid, paigaldaja ja rakendus"
+            ]
+          }
         ]
       },
       {
         "id": "epic-5",
+        "title": "Mumcord sinu telefonis",
+        "summary": "Mumcord rakendusena Androidile ja iOS-ile, ühilduv tavaliste Mumble’i serveritega nagu arvutiski. Esmalt APK-na allalaadimiseks ja TestFlighti kaudu, rakenduste poed tulevad hiljem.",
+        "groups": [
+          {
+            "title": "Alus ja levitamine",
+            "items": [
+              "Androidi ja iOS-i rakendus olemasoleva Rusti mootori peal, ehitatud CI-s",
+              "Allkirjastatud APK GitHubi releases’is ja iOS TestFlighti kaudu, rakenduste poode veel pole",
+              "Selgelt kirja pandud: milliseid arvutifunktsioone esimene versioon välja jätab ja miks"
+            ]
+          },
+          {
+            "title": "Serverid, kanalid ja identiteet",
+            "items": [
+              "Serverite leidmine, lisamine ja ühendumine, navigatsiooniga, mis töötab ühe pöidlaga",
+              "Uue identiteedi loomine või arvutist enda oma turvaline kaasatoomine, et su nimi, sõbrad ja õigused säiliksid",
+              "Kanalid ja inimesed selgelt väikesel ekraanil, sama teabega nagu arvutis"
+            ],
+            "mockups": [
+              "Serverite loend, kanalipuu ja push-to-talk telefonis"
+            ]
+          },
+          {
+            "title": "Rääkimine ja vestlus",
+            "items": [
+              "Suur push-to-talk-nupp, töökindel hääleaktiveerimine ja heli seal, kus ootad: kõrvakaiuti, kõlar või Bluetooth",
+              "Hääl jätkub väljalülitatud ekraaniga, rääkimine, vaigistamine, kõrvaklappide vaigistamine ja lahkumine lukustuskuval",
+              "Kanali vestlus ja privaatsõnumid, mugavad telefonis",
+              "Teavitused mainimiste, sõnumite ja taotluste kohta, ilma ühegi push-serverita"
+            ],
+            "mockups": [
+              "Vestlus, lukustuskuva ja seaded telefonis"
+            ]
+          },
+          {
+            "title": "Igapäev telefonis",
+            "items": [
+              "Lühikesed selged seaded ainult sellega, mis telefonis mõtet on",
+              "Püsib ühenduses ka võrgu vahetumisel ja säästab akut ning mobiilset andmesidet",
+              "Täielikult kasutatav TalkBacki, VoiceOveri ja suure süsteemitekstiga"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "epic-6",
         "title": "Levitamine",
         "summary": "Paigalda ilma hoiatusteta ja ole alati ajakohane.",
         "items": [
           "Allkirjastatud paigaldajad, ilma SmartScreeni või Gatekeeperi hoiatuseta: väljalasketöövoos Windowsi ja macOS-i jaoks juba ette valmistatud, aktiivne, kui sertifikaadid on paigas",
           "Automaatsed uuendused",
           "Krahhiaruanded, ainult sinu nõusolekul",
-          "Paketihoidlad ja poed"
+          "Paketihoidlad ja poed",
+          "Mumcord Flathubis, igale Linuxi distributsioonile otse tarkvarakeskusest",
+          "Telefonirakendus Google Plays, App Store’is ja F-Droidis"
         ]
       },
       {
-        "id": "epic-6",
-        "title": "GIF-otsing",
-        "summary": "Otsing, mitte ainult lemmikud.",
+        "id": "epic-future",
+        "title": "Ideid hilisemaks",
+        "summary": "Ideed, millel pole planeeritud eepost, näiteks GIF-otsing.",
         "items": [
           "GIF-otsing ilma rakendusse API-võtit lisamata, mida igaüks saaks välja võtta",
           "Võimalused on väike vahendusteenus või sinu enda võti; otsustatakse hiljem"

@@ -355,15 +355,20 @@
         {
           "tag": "Epic 4",
           "title": "Administración",
-          "body": "ACL, baneos, gestión de canales. Y además Mumcord como app para Android e iOS."
+          "body": "Permisos (ACL) y grupos, gestión de canales, expulsiones y baneos, la lista de baneos, usuarios registrados y moderación, visibles solo donde el servidor lo concede."
         },
         {
           "tag": "Epic 5",
-          "title": "Distribución",
-          "body": "Instaladores firmados, actualización automática, informes de fallos opcionales, presencia en repositorios de paquetes."
+          "title": "Mumcord en tu móvil",
+          "body": "Una app para Android e iOS: servidores, canales, pulsar para hablar, chat y controles en la pantalla de bloqueo. Primero como APK y a través de TestFlight."
         },
         {
           "tag": "Epic 6",
+          "title": "Distribución",
+          "body": "Instaladores firmados, actualización automática, informes de fallos opcionales, listados en paquetes, Flathub y las tiendas de apps."
+        },
+        {
+          "tag": "Epic Future",
           "title": "Búsqueda de GIF",
           "body": "Buscar GIF sin incluir en la app una clave de API que cualquiera podría extraer. Cómo hacerlo exactamente está aún por decidir."
         }
@@ -1747,7 +1752,9 @@
               "Clic derecho en colgar: sal de la voz y sigue leyendo, desconecta un servidor o todos",
               "Volver a ejecutar el asistente de configuración sin tocar tu identidad",
               "Los enlaces mumble:// del chat se muestran como una tarjeta del servidor o del canal, con un clic te conectas",
-              "Sonidos propios cuando te expulsan o te banean"
+              "Sonidos propios cuando te expulsan o te banean",
+              "Archivos de audio en el chat con su propio reproductor: reproduce, avanza y ajusta el volumen directamente en el mensaje",
+              "Los enlaces a Spotify, Apple Music, Tidal y otros servicios de música se convierten en una tarjeta de música que suena con el reproductor oficial del servicio, solo tras un clic"
             ],
             "mockups": [
               "Atajos globales en los ajustes",
@@ -1760,7 +1767,9 @@
               "Cambiar de dispositivo desde silenciar y ensordecer",
               "El menú del botón de colgar",
               "Volver a ejecutar el asistente de configuración",
-              "Un enlace mumble:// como tarjeta"
+              "Un enlace mumble:// como tarjeta",
+              "Un enlace de audio con reproductor en el chat",
+              "Una tarjeta de música en el chat"
             ]
           },
           {
@@ -1773,7 +1782,9 @@
               "Pliega la columna derecha por completo o a una franja estrecha de avatares, para que el chat tenga más espacio",
               "La vista general de mensajes privados, rediseñada",
               "Un menú tras el nombre del canal con todas las acciones y la información del canal",
-              "El árbol de servidor y canales, rediseñado: un menú de clic derecho en cada canal, el límite de usuarios junto al nombre e iconos de estado claros"
+              "El árbol de servidor y canales, rediseñado: un menú de clic derecho en cada canal, el límite de usuarios junto al nombre e iconos de estado claros",
+              "Ajustes rápidos renovados",
+              "Panel de usuario rediseñado abajo a la izquierda"
             ],
             "mockups": [
               "El nuevo asistente de configuración",
@@ -1786,7 +1797,9 @@
               "La columna derecha como franja estrecha",
               "La nueva vista general de mensajes privados",
               "El menú tras el nombre del canal",
-              "El árbol de servidor y canales rediseñado"
+              "El árbol de servidor y canales rediseñado",
+              "Los ajustes rápidos renovados",
+              "El nuevo panel de usuario"
             ]
           },
           {
@@ -1795,12 +1808,14 @@
               "Bloquea a personas: se acabaron sus mensajes, su voz y sus invitaciones, reconocidas por su certificado en lugar de por su nombre",
               "Mensajes privados solo de amigos, de todos o de nadie, también por servidor. Los desconocidos acaban en las solicitudes de mensaje",
               "Un centro de notificaciones tras una campana reúne menciones, respuestas, solicitudes e invitaciones de todos los servidores y, durante No molestar, todo lo que de otro modo aparecería",
-              "Las watch parties no cargan nada de YouTube ni de Twitch mientras el contenido incrustado esté desactivado"
+              "Las watch parties no cargan nada de YouTube ni de Twitch mientras el contenido incrustado esté desactivado",
+              "Una pista en el chat cuando las vistas previas de enlaces y el contenido incrustado están desactivados, en lugar de mostrar en silencio solo el enlace"
             ],
             "mockups": [
               "Bloquear a una persona",
               "Una solicitud de mensaje de un desconocido",
-              "Centro de notificaciones"
+              "Centro de notificaciones",
+              "Una pista cuando las vistas previas están desactivadas"
             ]
           },
           {
@@ -1848,7 +1863,6 @@
             "title": "Actualizaciones e instalación",
             "items": [
               "Actualizaciones en la propia app: comprobar, descargar, verificar la firma y reiniciar",
-              "Compilaciones firmadas de Windows, instalador y app",
               "En Windows, un Mumcord.exe portátil junto al instalador"
             ],
             "mockups": [
@@ -1860,29 +1874,117 @@
       {
         "id": "epic-4",
         "title": "Administración",
-        "summary": "Para que Mumcord pueda sustituir por completo al cliente oficial, y además Mumcord como app para tu móvil.",
-        "items": [
-          "Editar permisos (ACL)",
-          "Baneos",
-          "Crear, mover y gestionar canales",
-          "App para Android e iOS: como APK para descargar y a través de TestFlight, las tiendas de apps llegarán más tarde"
+        "summary": "Para que Mumcord pueda sustituir por completo al cliente oficial: gestionar canales, permisos, baneos y personas, solo con mensajes estándar de Mumble y sin cambios en el servidor.",
+        "groups": [
+          {
+            "title": "Administración donde ya miras",
+            "items": [
+              "Las acciones de administración solo aparecen donde el servidor las concede. Sin permisos no ves nada de esto",
+              "Todo en los menús de clic derecho de canales y personas y en el menú del servidor, sin un modo de administración aparte",
+              "Un registro privado en tu ordenador: a quién baneaste la semana pasada y por qué"
+            ],
+            "mockups": [
+              "Acciones de administración en el menú de clic derecho"
+            ]
+          },
+          {
+            "title": "Canales y permisos",
+            "items": [
+              "Crear, renombrar, describir, mover, reordenar y borrar canales, incluidos canales temporales, límites de usuarios y enlaces",
+              "Poner, cambiar y quitar contraseñas de canal, igual que en el cliente oficial",
+              "Un editor de permisos (ACL) y grupos que también entienden quienes no son expertos: qué se hereda, qué regla gana y, al final, quién puede hacer qué",
+              "Información del servidor para administradores y edición del texto de bienvenida, hasta donde permita el protocolo"
+            ],
+            "mockups": [
+              "Editar un canal",
+              "Los permisos de un canal"
+            ]
+          },
+          {
+            "title": "Personas y baneos",
+            "items": [
+              "Expulsar a personas del servidor con un motivo y, si quieres, banearlas durante el tiempo que elijas, por certificado, dirección IP o ambos",
+              "Ver, buscar y editar la lista de baneos, incluidos los baneos de personas que no están conectadas",
+              "Mover a la gente rápido: una persona hacia ti, o a todos los de un canal a otro",
+              "Gestionar usuarios registrados: cuándo se vieron por última vez, renombrar, anular el registro y registrar a personas que están conectadas",
+              "Silenciar el micrófono o el sonido de alguien para todos, darle voz prioritaria y restablecer un comentario o avatar no deseado"
+            ],
+            "mockups": [
+              "Banear a alguien",
+              "Usuarios registrados"
+            ]
+          },
+          {
+            "title": "Windows",
+            "items": [
+              "Compilaciones firmadas de Windows, instalador y app"
+            ]
+          }
         ]
       },
       {
         "id": "epic-5",
+        "title": "Mumcord en tu móvil",
+        "summary": "Mumcord como app para Android e iOS, compatible con los servidores Mumble estándar igual que en el escritorio. Primero como APK para descargar y a través de TestFlight, las tiendas de apps llegarán más tarde.",
+        "groups": [
+          {
+            "title": "Base y distribución",
+            "items": [
+              "App para Android e iOS sobre el motor Rust existente, compilada en CI",
+              "Un APK firmado en las releases de GitHub e iOS a través de TestFlight, todavía sin tiendas de apps",
+              "Escrito con claridad: qué funciones del escritorio deja fuera la primera versión y por qué"
+            ]
+          },
+          {
+            "title": "Servidores, canales e identidad",
+            "items": [
+              "Buscar, añadir y conectarte a servidores, con una navegación que funciona con un solo pulgar",
+              "Crear una identidad nueva o traer la del escritorio de forma segura, para que se queden tu nombre, tus amigos y tus permisos",
+              "Canales y personas bien organizados en una pantalla pequeña, con la misma información que en el escritorio"
+            ],
+            "mockups": [
+              "Lista de servidores, árbol de canales y pulsar para hablar en el móvil"
+            ]
+          },
+          {
+            "title": "Hablar y chatear",
+            "items": [
+              "Un botón grande de pulsar para hablar, activación por voz fiable y sonido donde lo esperas: auricular, altavoz o Bluetooth",
+              "La voz sigue con la pantalla apagada, con hablar, silenciar, ensordecer y salir en la pantalla de bloqueo",
+              "Chat del canal y mensajes privados, cómodos en el móvil",
+              "Notificaciones de menciones, mensajes y solicitudes, sin ningún servidor push"
+            ],
+            "mockups": [
+              "Chat, pantalla de bloqueo y ajustes en el móvil"
+            ]
+          },
+          {
+            "title": "El día a día en el móvil",
+            "items": [
+              "Ajustes cortos y claros, solo con lo que tiene sentido en un móvil",
+              "Se mantiene conectado con los cambios de red y cuida la batería y los datos móviles",
+              "Totalmente utilizable con TalkBack, VoiceOver y texto grande del sistema"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "epic-6",
         "title": "Distribución",
         "summary": "Instala sin avisos y mantente siempre al día.",
         "items": [
           "Instaladores firmados, sin avisos de SmartScreen ni Gatekeeper: ya preparado en el flujo de publicación para Windows y macOS, se activará en cuanto estén listos los certificados",
           "Actualizaciones automáticas",
           "Informes de fallos, solo si das tu consentimiento",
-          "Repositorios de paquetes y tiendas"
+          "Repositorios de paquetes y tiendas",
+          "Mumcord en Flathub, para cualquier distribución de Linux desde el centro de software",
+          "La app para móvil en Google Play, la App Store y F-Droid"
         ]
       },
       {
-        "id": "epic-6",
-        "title": "Búsqueda de GIF",
-        "summary": "Buscar en lugar de tener solo favoritos.",
+        "id": "epic-future",
+        "title": "Ideas para más adelante",
+        "summary": "Ideas sin un epic planificado, como la búsqueda de GIF.",
         "items": [
           "Búsqueda de GIF sin incluir en la app una clave de API que cualquiera podría extraer",
           "Las opciones son un pequeño servicio intermediario o tu propia clave; se decidirá más adelante"

@@ -355,15 +355,20 @@
         {
           "tag": "Epic 4",
           "title": "Beheer",
-          "body": "ACL’s, bans, kanaalbeheer. Plus Mumcord als app voor Android en iOS."
+          "body": "Rechten (ACL's) en groepen, kanaalbeheer, kicks en bans, de banlijst, geregistreerde gebruikers en moderatie, alleen zichtbaar waar de server het toestaat."
         },
         {
           "tag": "Epic 5",
-          "title": "Distributie",
-          "body": "Ondertekende installers, automatische updates, crashrapporten op aanvraag (opt-in), vermeldingen in pakketbronnen."
+          "title": "Mumcord op je telefoon",
+          "body": "Een app voor Android en iOS: servers, kanalen, push-to-talk, chat en bediening op het vergrendelscherm. Eerst als APK en via TestFlight."
         },
         {
           "tag": "Epic 6",
+          "title": "Distributie",
+          "body": "Ondertekende installers, automatische updates, crashrapporten alleen met jouw toestemming, vermeldingen in pakketbronnen, Flathub en de appstores."
+        },
+        {
+          "tag": "Epic Future",
           "title": "GIF's zoeken",
           "body": "GIF's zoeken zonder een API-sleutel in de app mee te leveren die iedereen eruit kan halen. Hoe precies, moet nog worden besloten."
         }
@@ -1747,7 +1752,9 @@
               "Rechtsklik op ophangen: spraak verlaten en verder meelezen, één server of alle servers verbreken",
               "De installatiewizard opnieuw doorlopen zonder aan je identiteit te komen",
               "mumble://-links in de chat verschijnen als kaart voor de server of het kanaal, met één klik verbind je",
-              "Eigen geluiden wanneer je wordt gekickt of gebanned"
+              "Eigen geluiden wanneer je wordt gekickt of gebanned",
+              "Audiobestanden in de chat met een eigen speler: afspelen, spoelen en het volume instellen direct in het bericht",
+              "Links naar Spotify, Apple Music, Tidal en andere muziekdiensten worden een muziekkaart die afspeelt via de officiële speler van de dienst, pas na een klik"
             ],
             "mockups": [
               "Globale sneltoetsen in de instellingen",
@@ -1760,7 +1767,9 @@
               "Apparaten wisselen via dempen en doof",
               "Het menu van de ophangknop",
               "De installatiewizard opnieuw doorlopen",
-              "Een mumble://-link als kaart"
+              "Een mumble://-link als kaart",
+              "Een audiolink met speler in de chat",
+              "Een muziekkaart in de chat"
             ]
           },
           {
@@ -1773,7 +1782,9 @@
               "Klap de rechterkolom helemaal in of tot een smalle strook avatars, zodat de chat meer ruimte krijgt",
               "Het overzicht van privéberichten opnieuw ontworpen",
               "Een menu achter de kanaalnaam met elke actie en kanaalinfo",
-              "De server- en kanaalboom opnieuw ontworpen: een rechtsklikmenu op elk kanaal, de gebruikerslimiet naast de naam en duidelijke statuspictogrammen"
+              "De server- en kanaalboom opnieuw ontworpen: een rechtsklikmenu op elk kanaal, de gebruikerslimiet naast de naam en duidelijke statuspictogrammen",
+              "Snelle instellingen vernieuwd",
+              "Het gebruikerspaneel linksonder opnieuw ontworpen"
             ],
             "mockups": [
               "De nieuwe installatiewizard",
@@ -1786,7 +1797,9 @@
               "De rechterkolom als smalle strook",
               "Het nieuwe overzicht van privéberichten",
               "Het menu achter de kanaalnaam",
-              "De opnieuw ontworpen server- en kanaalboom"
+              "De opnieuw ontworpen server- en kanaalboom",
+              "De vernieuwde snelle instellingen",
+              "Het nieuwe gebruikerspaneel"
             ]
           },
           {
@@ -1795,12 +1808,14 @@
               "Mensen blokkeren: geen berichten, spraak of uitnodigingen meer van hen, herkend aan hun certificaat in plaats van hun naam",
               "Privéberichten alleen van vrienden, van iedereen of van niemand, ook per server. Onbekenden komen terecht bij de berichtverzoeken",
               "Een meldingencentrum achter een belletje verzamelt vermeldingen, reacties, verzoeken en uitnodigingen van alle servers, en tijdens Niet storen alles wat anders zou opduiken",
-              "Watchparty’s laden niets van YouTube of Twitch zolang ingesloten inhoud uit staat"
+              "Watchparty’s laden niets van YouTube of Twitch zolang ingesloten inhoud uit staat",
+              "Een hint in de chat wanneer linkvoorbeelden en ingesloten inhoud uit staan, in plaats van stilletjes alleen de link te tonen"
             ],
             "mockups": [
               "Iemand blokkeren",
               "Een berichtverzoek van een onbekende",
-              "Meldingencentrum"
+              "Meldingencentrum",
+              "Een hint wanneer voorbeelden uit staan"
             ]
           },
           {
@@ -1848,7 +1863,6 @@
             "title": "Updates en installatie",
             "items": [
               "Updates direct in de app: controleren, downloaden, de handtekening verifiëren en herstarten",
-              "Ondertekende Windows-builds, installer en app",
               "Op Windows een draagbare Mumcord.exe naast de installer"
             ],
             "mockups": [
@@ -1860,29 +1874,117 @@
       {
         "id": "epic-4",
         "title": "Beheer",
-        "summary": "Zodat Mumcord de officiële client volledig kan vervangen, plus Mumcord als app voor je telefoon.",
-        "items": [
-          "Rechten bewerken (ACL's)",
-          "Bans",
-          "Kanalen aanmaken, verplaatsen en beheren",
-          "Android- en iOS-app: als APK om te downloaden en via TestFlight, de appstores komen later"
+        "summary": "Zodat Mumcord de officiële client volledig kan vervangen: kanalen, rechten, bans en mensen beheren, met alleen standaard Mumble-berichten en zonder iets aan de server te veranderen.",
+        "groups": [
+          {
+            "title": "Beheer waar je al kijkt",
+            "items": [
+              "Beheeracties verschijnen alleen waar de server ze toestaat. Zonder rechten zie je er niets van",
+              "Alles in de rechtermuisknopmenu’s van kanalen en mensen en in het servermenu, geen aparte beheermodus",
+              "Een privélogboek op je computer: wie heb je vorige week gebanned en waarom"
+            ],
+            "mockups": [
+              "Beheeracties in het rechtermuisknopmenu"
+            ]
+          },
+          {
+            "title": "Kanalen en rechten",
+            "items": [
+              "Kanalen aanmaken, hernoemen, beschrijven, verplaatsen, herordenen en verwijderen, inclusief tijdelijke kanalen, gebruikerslimieten en koppelingen",
+              "Kanaalwachtwoorden instellen, wijzigen en verwijderen, op dezelfde manier als in de officiële client",
+              "Een editor voor rechten (ACL's) en groepen die ook niet-experts kunnen lezen: wat wordt geërfd, welke regel wint en uiteindelijk wie wat mag",
+              "Serverinfo voor beheerders en het welkomstbericht bewerken, voor zover het protocol dat toestaat"
+            ],
+            "mockups": [
+              "Een kanaal bewerken",
+              "De rechten van een kanaal"
+            ]
+          },
+          {
+            "title": "Mensen en bans",
+            "items": [
+              "Mensen van de server verwijderen met een reden, en ze op wens voor een gekozen tijd bannen, op certificaat, IP-adres of beide",
+              "De banlijst bekijken, doorzoeken en bewerken, inclusief bans voor mensen die niet online zijn",
+              "Mensen snel verplaatsen: één persoon naar jou, of iedereen in een kanaal naar een ander",
+              "Geregistreerde gebruikers beheren: wanneer ze voor het laatst gezien zijn, hernoemen, registratie opheffen en mensen registreren die online zijn",
+              "Iemand voor iedereen dempen of doof maken, tot prioriteitsspreker maken en een ongewenste opmerking of avatar resetten"
+            ],
+            "mockups": [
+              "Iemand bannen",
+              "Geregistreerde gebruikers"
+            ]
+          },
+          {
+            "title": "Windows",
+            "items": [
+              "Ondertekende Windows-builds, installer en app"
+            ]
+          }
         ]
       },
       {
         "id": "epic-5",
+        "title": "Mumcord op je telefoon",
+        "summary": "Mumcord als app voor Android en iOS, compatibel met standaard Mumble-servers zoals op de desktop. Eerst als APK om te downloaden en via TestFlight, de appstores komen later.",
+        "groups": [
+          {
+            "title": "Basis en distributie",
+            "items": [
+              "Android- en iOS-app bovenop de bestaande Rust-engine, gebouwd in CI",
+              "Een ondertekende APK in de GitHub-releases en iOS via TestFlight, nog geen appstores",
+              "Duidelijk opgeschreven: welke desktopfuncties de eerste versie weglaat en waarom"
+            ]
+          },
+          {
+            "title": "Servers, kanalen en identiteit",
+            "items": [
+              "Servers vinden, toevoegen en verbinden, met een navigatie die met één duim werkt",
+              "Een nieuwe identiteit maken of die van je desktop veilig overzetten, zodat je naam, vrienden en rechten blijven",
+              "Kanalen en mensen overzichtelijk op een klein scherm, met dezelfde informatie als op de desktop"
+            ],
+            "mockups": [
+              "Serverlijst, kanaalboom en push-to-talk op de telefoon"
+            ]
+          },
+          {
+            "title": "Praten en chatten",
+            "items": [
+              "Een grote push-to-talk-knop, betrouwbare spraakactivering en geluid waar je het verwacht: oorluidspreker, luidspreker of Bluetooth",
+              "De spraak blijft draaien met het scherm uit, met praten, dempen, doof maken en verlaten op het vergrendelscherm",
+              "Kanaalchat en privéberichten, prettig op de telefoon",
+              "Meldingen voor vermeldingen, berichten en verzoeken, zonder push-server"
+            ],
+            "mockups": [
+              "Chat, vergrendelscherm en instellingen op de telefoon"
+            ]
+          },
+          {
+            "title": "Elke dag op de telefoon",
+            "items": [
+              "Korte, duidelijke instellingen met alleen wat op een telefoon zinvol is",
+              "Blijft verbonden bij netwerkwisselingen en gaat zuinig om met accu en mobiele data",
+              "Volledig bruikbaar met TalkBack, VoiceOver en grote systeemtekst"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "epic-6",
         "title": "Distributie",
         "summary": "Installeren zonder waarschuwingen en altijd up-to-date.",
         "items": [
           "Ondertekende installers, geen waarschuwing van SmartScreen of Gatekeeper: al voorbereid in de releaseworkflow voor Windows en macOS, actief zodra de certificaten geregeld zijn",
           "Automatische updates",
           "Crashrapporten, alleen als je ermee instemt",
-          "Pakketbronnen en stores"
+          "Pakketbronnen en stores",
+          "Mumcord op Flathub, voor elke Linux-distributie rechtstreeks vanuit het softwarecentrum",
+          "De telefoonapp in Google Play, de App Store en F-Droid"
         ]
       },
       {
-        "id": "epic-6",
-        "title": "GIF's zoeken",
-        "summary": "Zoeken in plaats van alleen favorieten.",
+        "id": "epic-future",
+        "title": "Ideeën voor later",
+        "summary": "Ideeën zonder geplande epic, zoals GIF's zoeken.",
         "items": [
           "GIF's zoeken zonder een API-sleutel in de app mee te leveren die iedereen eruit kan halen",
           "Opties zijn een kleine relaydienst of je eigen sleutel; wordt later besloten"

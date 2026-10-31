@@ -355,15 +355,20 @@
         {
           "tag": "Epic 4",
           "title": "Správa",
-          "body": "ACL, bany, správa kanálů. A k tomu Mumcord jako aplikace pro Android a iOS."
+          "body": "Oprávnění (ACL) a skupiny, správa kanálů, vyhazování a bany, seznam banů, registrovaní uživatelé a moderování, viditelné jen tam, kde to server povolí."
         },
         {
           "tag": "Epic 5",
-          "title": "Distribuce",
-          "body": "Podepsané instalátory, automatické aktualizace, volitelná hlášení pádů, zápisy v repozitářích balíčků."
+          "title": "Mumcord v telefonu",
+          "body": "Aplikace pro Android a iOS: servery, kanály, push-to-talk, chat a ovládání z zamčené obrazovky. Nejdřív jako APK a přes TestFlight."
         },
         {
           "tag": "Epic 6",
+          "title": "Distribuce",
+          "body": "Podepsané instalátory, automatické aktualizace, hlášení o pádech jen se souhlasem, výpisy v balíčcích, Flathub a obchody s aplikacemi."
+        },
+        {
+          "tag": "Epic Future",
           "title": "Hledání GIFů",
           "body": "Hledání GIFů bez API klíče přibaleného v aplikaci, který by mohl kdokoli vytáhnout. Jak přesně, se teprve rozhodne."
         }
@@ -1747,7 +1752,9 @@
               "Pravé tlačítko na zavěšení: opusť hlas a čti dál, odpoj jeden server nebo všechny",
               "Opětovné spuštění průvodce nastavením bez zásahu do tvé identity",
               "Odkazy mumble:// se v chatu zobrazí jako karta serveru nebo kanálu, jedním kliknutím se připojíš",
-              "Vlastní zvuky, když tě někdo vyhodí nebo zabanuje"
+              "Vlastní zvuky, když tě někdo vyhodí nebo zabanuje",
+              "Zvukové soubory v chatu s vlastním přehrávačem: přehrávání, přetáčení a hlasitost přímo ve zprávě",
+              "Odkazy na Spotify, Apple Music, Tidal a další hudební služby se změní na hudební kartu, která hraje přes oficiální přehrávač služby, až po kliknutí"
             ],
             "mockups": [
               "Globální klávesové zkratky v nastavení",
@@ -1760,7 +1767,9 @@
               "Přepínání zařízení ze ztlumení mikrofonu a zvuku",
               "Menu tlačítka pro zavěšení",
               "Opětovné spuštění průvodce nastavením",
-              "Odkaz mumble:// jako karta"
+              "Odkaz mumble:// jako karta",
+              "Odkaz na zvuk s přehrávačem v chatu",
+              "Hudební karta v chatu"
             ]
           },
           {
@@ -1773,7 +1782,9 @@
               "Sbal pravý sloupec úplně nebo na úzký pruh avatarů, ať má chat víc místa",
               "Přepracovaný přehled soukromých zpráv",
               "Menu za názvem kanálu se všemi akcemi a informacemi o kanálu",
-              "Přepracovaný strom serveru a kanálů: nabídka pravého tlačítka u každého kanálu, limit uživatelů vedle názvu a přehledné ikony stavu"
+              "Přepracovaný strom serveru a kanálů: nabídka pravého tlačítka u každého kanálu, limit uživatelů vedle názvu a přehledné ikony stavu",
+              "Přepracované rychlé nastavení",
+              "Přepracovaný uživatelský panel vlevo dole"
             ],
             "mockups": [
               "Nový průvodce nastavením",
@@ -1786,7 +1797,9 @@
               "Pravý sloupec jako úzký pruh",
               "Nový přehled soukromých zpráv",
               "Menu za názvem kanálu",
-              "Přepracovaný strom serveru a kanálů"
+              "Přepracovaný strom serveru a kanálů",
+              "Přepracované rychlé nastavení",
+              "Nový uživatelský panel"
             ]
           },
           {
@@ -1795,12 +1808,14 @@
               "Blokování lidí: už od nich žádné zprávy, hlas ani pozvánky, rozpoznaní podle certifikátu místo jména",
               "Soukromé zprávy jen od přátel, od všech nebo od nikoho, i pro každý server zvlášť. Cizí lidé skončí v žádostech o zprávu",
               "Centrum upozornění za zvonečkem sbírá zmínky, odpovědi, žádosti a pozvánky ze všech serverů a během režimu Nerušit i všechno, co by jinak vyskočilo",
-              "Watch party nenačítá nic z YouTube ani Twitche, dokud je vložený obsah vypnutý"
+              "Watch party nenačítá nic z YouTube ani Twitche, dokud je vložený obsah vypnutý",
+              "Nápověda v chatu, když jsou náhledy odkazů a vložený obsah vypnuté, místo aby se potichu zobrazil jen odkaz"
             ],
             "mockups": [
               "Blokování člověka",
               "Žádost o zprávu od cizího člověka",
-              "Centrum upozornění"
+              "Centrum upozornění",
+              "Nápověda při vypnutých náhledech"
             ]
           },
           {
@@ -1848,7 +1863,6 @@
             "title": "Aktualizace a instalace",
             "items": [
               "Aktualizace přímo v aplikaci: kontrola, stažení, ověření podpisu a restart",
-              "Podepsané buildy pro Windows, instalátor i aplikace",
               "Ve Windows přenosný Mumcord.exe vedle instalátoru"
             ],
             "mockups": [
@@ -1860,29 +1874,117 @@
       {
         "id": "epic-4",
         "title": "Správa",
-        "summary": "Aby Mumcord mohl plně nahradit oficiálního klienta, a k tomu Mumcord jako aplikace do telefonu.",
-        "items": [
-          "Úprava oprávnění (ACL)",
-          "Bany",
-          "Vytváření, přesouvání a správa kanálů",
-          "Aplikace pro Android a iOS: jako APK ke stažení a přes TestFlight, obchody s aplikacemi přijdou později"
+        "summary": "Aby Mumcord mohl plně nahradit oficiálního klienta: správa kanálů, oprávnění, banů a lidí, jen pomocí standardních zpráv Mumble a bez změny na serveru.",
+        "groups": [
+          {
+            "title": "Správa tam, kam se už díváš",
+            "items": [
+              "Správcovské akce se zobrazí jen tam, kde je server povolí. Bez práv nevidíš nic z toho",
+              "Všechno v nabídce pravého tlačítka u kanálů a lidí a v nabídce serveru, žádný zvláštní režim správce",
+              "Soukromý záznam na tvém počítači: koho jsi minulý týden zabanoval a proč"
+            ],
+            "mockups": [
+              "Správcovské akce v nabídce pravého tlačítka"
+            ]
+          },
+          {
+            "title": "Kanály a oprávnění",
+            "items": [
+              "Vytváření, přejmenování, popis, přesouvání, řazení a mazání kanálů, včetně dočasných kanálů, limitů uživatelů a odkazů",
+              "Nastavení, změna a odebrání hesel kanálů, stejně jako v oficiálním klientovi",
+              "Editor oprávnění (ACL) a skupin, který pochopí i neodborníci: co se dědí, které pravidlo vyhrává a nakonec kdo co smí",
+              "Informace o serveru pro správce a úprava uvítacího textu, pokud to protokol dovolí"
+            ],
+            "mockups": [
+              "Úprava kanálu",
+              "Oprávnění kanálu"
+            ]
+          },
+          {
+            "title": "Lidé a bany",
+            "items": [
+              "Vyhození lidí ze serveru s důvodem a podle přání ban na zvolenou dobu, podle certifikátu, IP adresy nebo obojího",
+              "Zobrazení, hledání a úprava seznamu banů, včetně banů lidí, kteří nejsou online",
+              "Rychlé přesouvání lidí: jedna osoba k tobě nebo všichni z kanálu do jiného",
+              "Správa registrovaných uživatelů: kdy byli naposledy vidět, přejmenování, zrušení registrace a registrace lidí, kteří jsou online",
+              "Ztlumení mikrofonu nebo zvuku někoho pro všechny, nastavení prioritního mluvčího a vynulování nechtěného komentáře nebo avataru"
+            ],
+            "mockups": [
+              "Zabanování někoho",
+              "Registrovaní uživatelé"
+            ]
+          },
+          {
+            "title": "Windows",
+            "items": [
+              "Podepsané buildy pro Windows, instalátor i aplikace"
+            ]
+          }
         ]
       },
       {
         "id": "epic-5",
+        "title": "Mumcord v telefonu",
+        "summary": "Mumcord jako aplikace pro Android a iOS, kompatibilní se standardními servery Mumble stejně jako na počítači. Nejdřív jako APK ke stažení a přes TestFlight, obchody s aplikacemi přijdou později.",
+        "groups": [
+          {
+            "title": "Základ a distribuce",
+            "items": [
+              "Aplikace pro Android a iOS nad stávajícím enginem v Rustu, sestavovaná v CI",
+              "Podepsaný APK v GitHub releases a iOS přes TestFlight, zatím bez obchodů s aplikacemi",
+              "Jasně zapsáno: které funkce z počítače první verze vynechává a proč"
+            ]
+          },
+          {
+            "title": "Servery, kanály a identita",
+            "items": [
+              "Hledání, přidávání a připojení k serverům, s navigací ovladatelnou jedním palcem",
+              "Vytvoření nové identity nebo bezpečné převzetí té z počítače, aby ti zůstalo jméno, přátelé i oprávnění",
+              "Kanály a lidé přehledně na malé obrazovce, se stejnými informacemi jako na počítači"
+            ],
+            "mockups": [
+              "Seznam serverů, strom kanálů a push-to-talk v telefonu"
+            ]
+          },
+          {
+            "title": "Mluvení a psaní",
+            "items": [
+              "Velké tlačítko push-to-talk, spolehlivá aktivace hlasem a zvuk tam, kde ho čekáš: sluchátko, reproduktor nebo Bluetooth",
+              "Hlas běží dál i při vypnuté obrazovce, s mluvením, ztlumením, ztlumením zvuku a odchodem na zamčené obrazovce",
+              "Chat kanálu a soukromé zprávy, pohodlné v telefonu",
+              "Upozornění na zmínky, zprávy a žádosti, bez jakéhokoli push serveru"
+            ],
+            "mockups": [
+              "Chat, zamčená obrazovka a nastavení v telefonu"
+            ]
+          },
+          {
+            "title": "Každodenní používání v telefonu",
+            "items": [
+              "Stručné, jasné nastavení jen s tím, co dává smysl v telefonu",
+              "Zůstává připojený při změnách sítě a šetří baterii i mobilní data",
+              "Plně použitelné s TalkBack, VoiceOver a velkým systémovým písmem"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "epic-6",
         "title": "Distribuce",
         "summary": "Instalace bez varování a vždy aktuální.",
         "items": [
           "Podepsané instalátory, žádné varování SmartScreen ani Gatekeeper: už připravené v release workflow pro Windows a macOS, aktivní, jakmile budou certifikáty nastavené",
           "Automatické aktualizace",
           "Hlášení pádů, jen pokud souhlasíš",
-          "Repozitáře balíčků a obchody s aplikacemi"
+          "Repozitáře balíčků a obchody s aplikacemi",
+          "Mumcord na Flathubu, pro každou linuxovou distribuci přímo ze softwarového centra",
+          "Aplikace pro telefon v Google Play, App Store a F-Droid"
         ]
       },
       {
-        "id": "epic-6",
-        "title": "Hledání GIFů",
-        "summary": "Hledání místo pouhých oblíbených.",
+        "id": "epic-future",
+        "title": "Nápady na později",
+        "summary": "Nápady bez plánovaného epiku, například hledání GIFů.",
         "items": [
           "Hledání GIFů bez API klíče přibaleného v aplikaci, který by mohl kdokoli vytáhnout",
           "Možnosti jsou malá přeposílací služba nebo vlastní klíč; rozhodne se později"
