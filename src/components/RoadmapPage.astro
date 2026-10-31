@@ -27,8 +27,11 @@ const full = new Map<string, string>();
 for (const s of next)
   for (const m of (s.groups ?? []).flatMap((g) => g.mockups ?? []))
     full.set(m.shot, (await getImage({ src: mockup(m.shot), format: "webp", width: 2400, quality: 82 })).src);
-// Epic Future has no number; it gets the infinity sign.
-const num = (s: Stage) => s.id.replace(/\D/g, "").padStart(2, "0").replace("00", "∞");
+// "epic-4" → "04", "epic-3.1" → "3.1"; Epic Future has no number and gets the infinity sign.
+const num = (s: Stage) => {
+  const n = s.id.replace("epic-", "");
+  return n === "future" ? "∞" : n.includes(".") ? n : n.padStart(2, "0");
+};
 const count = (s: Stage) => (s.items?.length ?? 0) + (s.groups ?? []).reduce((n, g) => n + g.items.length, 0);
 // The line runs from the first node to the last and fills up to the next target (or the last done epic).
 const reached = target ? r.epics.indexOf(target) : done.length - 1;
@@ -60,7 +63,7 @@ const progress = Math.max(0, Math.min(1, reached / Math.max(1, r.epics.length - 
       }
     </dl>
 
-    <nav class="rm-track" aria-label={r.title} style={`--progress-f: ${progress}`} data-reveal>
+    <nav class="rm-track" aria-label={r.title} style={`--progress-f: ${progress}; --n: ${r.epics.length}`} data-reveal>
       <ol>
         {
           r.epics.map((s) => (

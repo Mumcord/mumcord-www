@@ -354,7 +354,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Watch-Partys laden nichts von YouTube oder Twitch, solange eingebettete Inhalte ausgeschaltet sind",
               "Ein Hinweis im Chat, wenn Link-Vorschauen und eingebettete Inhalte ausgeschaltet sind, statt kommentarlos nur den Link zu zeigen",
             ],
-            done: [1, 2, 3],
+            done: [1, 2, 3, 4],
             mockups: [
               { shot: "block-menu-dark", issue: 140, caption: "Eine Person blockieren" },
               { shot: "pm-chat-request-dark", issue: 141, caption: "Nachrichtenanfrage einer fremden Person" },
@@ -414,6 +414,69 @@ const source: Record<"de" | "en", RoadmapPage> = {
             done: [1],
             mockups: [
               { shot: "update-available-dark", issue: 168, caption: "Ein Update ist da" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "epic-3.1",
+        tag: "Epic 3.1",
+        title: "Plugins",
+        status: "planned",
+        version: "0.6.0",
+        summary: "Mumcord lässt sich mit kleinen, sicheren Plugins erweitern: aus einem offiziellen Verzeichnis in den Einstellungen installiert, ohne Änderung am Server und ohne Backend von Mumcord. Das erste Plugin sind die Echolings.",
+        groups: [
+          {
+            title: "Plugins in Mumcord",
+            items: [
+              "Ein Bereich „Plugins“ in den Einstellungen: stöbern, installieren, ein- und ausschalten, einstellen, aktualisieren und entfernen, ohne Konten und Bewertungen",
+              "Vor der Installation in klaren Worten sehen, was ein Plugin darf, optionale Teile ablehnen und es später ändern",
+              "Plugins zeigen Oberfläche nur an festen Stellen und nie als eigenes HTML. Mumcord zeichnet sie in deinem Theme und barrierefrei",
+              "Ein Server kann über Mumbot empfehlen, welche Plugins seine Community nutzt. Mumcord zeigt das ruhig in der Benachrichtigungszentrale",
+            ],
+            mockups: [
+              { shot: "plugins-installed-dark", issue: 277, caption: "Installierte Plugins in den Einstellungen" },
+              { shot: "plugins-prompt-dark", issue: 275, caption: "Was ein Plugin darf, vor der Installation" },
+              { shot: "plugins-server-suggestion-dark", issue: 283, caption: "Ein Server empfiehlt ein Plugin" },
+            ],
+          },
+          {
+            title: "Sicher und ohne Backend",
+            items: [
+              "Plugins laufen abgeschottet in einer Sandbox, ohne Zugriff auf Netz, Dateien, Mikrofon oder dein Zertifikat",
+              "Nur signierte, geprüfte Pakete. Inoffizielle Plugins sind deutlich gekennzeichnet",
+              "Updates ohne Überraschungen, nie heimlich mehr Rechte, und ein schädliches Plugin lässt sich schnell für alle abschalten",
+              "Ein offizielles Plugin-Verzeichnis auf GitHub, öffentlich nachvollziehbar und ohne Server von Mumcord",
+              "Weitere Verzeichnisse von Communities per URL hinzufügen, klar als nicht geprüft markiert",
+            ],
+            mockups: [
+              { shot: "plugins-unofficial-dark", issue: 276, caption: "Ein inoffizielles Plugin" },
+              { shot: "plugins-updates-dark", issue: 278, caption: "Updates für Plugins" },
+            ],
+          },
+          {
+            title: "Für Entwickler",
+            items: [
+              "Ein kleines, strenges Manifest und klare Versionsregeln",
+              "Eine Schnittstelle für Ereignisse, Speicher, Timer, Benachrichtigungen und das Theme, jede hinter einer Erlaubnis",
+              "Plugins sprechen über Mumble-Plugin-Daten mit demselben Plugin bei anderen Mumcord-Nutzern",
+              "Vorlage, Kommandozeilen-Tool, SDK und eine Test-Umgebung: ein Plugin an einem Nachmittag",
+              "Die Website listet die Plugins aus dem offiziellen Verzeichnis",
+            ],
+          },
+          {
+            title: "Die ersten Plugins",
+            items: [
+              "Umfragen als erstes Test-Plugin: Frage stellen, abstimmen und das Ergebnis live sehen, im Kanal oder in privaten Nachrichten",
+              "Würfeln als zweites Test-Plugin: /roll im Chat mit gängiger Würfelnotation, eine animierte Würfelkarte und Würfe, die alle nachprüfen können",
+              "Echolings: ein kleines Wesen aus Klang, das in Mumcord lebt, mit dir und deinen Freunden wächst und im Sprachkanal neben dir auftaucht. Ganz ohne Drängeln, Strafen oder Verkaufen",
+              "Gebaut nur auf der öffentlichen Plugin-Schnittstelle, als Beweis, dass sie reicht, und als Beispiel in der Doku",
+            ],
+            mockups: [
+              { shot: "plugin-poll-dark", issue: 284, caption: "Eine Umfrage im Chat" },
+              { shot: "plugin-dice-dark", issue: 285, caption: "Ein Wurf im Chat" },
+              { shot: "echolings-dark", issue: 264, caption: "Ein Echoling zu Hause" },
+              { shot: "plugins-slot-dark", issue: 279, caption: "Ein Plugin an seinem Platz in Mumcord" },
             ],
           },
         ],
@@ -839,7 +902,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Watch parties load nothing from YouTube or Twitch while embedded content is off",
               "A hint in the chat when link previews and embeds are off, instead of silently showing only the link",
             ],
-            done: [1, 2, 3],
+            done: [1, 2, 3, 4],
             mockups: [
               { shot: "block-menu-dark", issue: 140, caption: "Blocking a person" },
               { shot: "pm-chat-request-dark", issue: 141, caption: "A message request from a stranger" },
@@ -899,6 +962,69 @@ const source: Record<"de" | "en", RoadmapPage> = {
             done: [1],
             mockups: [
               { shot: "update-available-dark", issue: 168, caption: "An update is ready" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "epic-3.1",
+        tag: "Epic 3.1",
+        title: "Plugins",
+        status: "planned",
+        version: "0.6.0",
+        summary: "Mumcord can be extended with small, safe plugins: installed from an official repository in Settings, with no change to the server and no Mumcord backend. The first plugin is Echolings.",
+        groups: [
+          {
+            title: "Plugins in Mumcord",
+            items: [
+              "A Plugins section in Settings: browse, install, turn on and off, configure, update and remove, without accounts or ratings",
+              "See in plain words what a plugin may do before installing it, say no to optional parts and change your mind later",
+              "Plugins show UI only in fixed places and never as their own HTML. Mumcord draws it in your theme and accessibly",
+              "A server can recommend through Mumbot which plugins its community uses. Mumcord shows it calmly in the notification centre",
+            ],
+            mockups: [
+              { shot: "plugins-installed-dark", issue: 277, caption: "Installed plugins in Settings" },
+              { shot: "plugins-prompt-dark", issue: 275, caption: "What a plugin may do, before installing" },
+              { shot: "plugins-server-suggestion-dark", issue: 283, caption: "A server recommends a plugin" },
+            ],
+          },
+          {
+            title: "Safe and without a backend",
+            items: [
+              "Plugins run sealed off in a sandbox, without access to the network, files, the microphone or your certificate",
+              "Only signed, verified packages. Unofficial plugins are clearly marked",
+              "Updates without surprises, never silently more permissions, and a harmful plugin can be switched off for everyone quickly",
+              "An official plugin repository on GitHub, open to review and without any Mumcord server",
+              "Add more repositories from communities by URL, clearly marked as not reviewed",
+            ],
+            mockups: [
+              { shot: "plugins-unofficial-dark", issue: 276, caption: "An unofficial plugin" },
+              { shot: "plugins-updates-dark", issue: 278, caption: "Plugin updates" },
+            ],
+          },
+          {
+            title: "For developers",
+            items: [
+              "A small, strict manifest and clear version rules",
+              "An interface for events, storage, timers, notifications and the theme, each behind a permission",
+              "Plugins talk to the same plugin on other Mumcord clients through Mumble plugin data",
+              "A template, a command-line tool, an SDK and a test host: a plugin in an afternoon",
+              "The website lists the plugins from the official repository",
+            ],
+          },
+          {
+            title: "The first plugins",
+            items: [
+              "Polls as the first test plugin: ask a question, vote and watch the result live, in a channel or in private messages",
+              "Dice as the second test plugin: /roll in the chat with standard dice notation, an animated dice card and rolls everyone can check",
+              "Echolings: a small creature made of sound that lives in Mumcord, grows with you and your friends and shows up beside you in voice. Never nagging, punishing or selling",
+              "Built only on the public plugin interface, as proof that it is enough and as the example in the docs",
+            ],
+            mockups: [
+              { shot: "plugin-poll-dark", issue: 284, caption: "A poll in the chat" },
+              { shot: "plugin-dice-dark", issue: 285, caption: "A roll in the chat" },
+              { shot: "echolings-dark", issue: 264, caption: "An Echoling at home" },
+              { shot: "plugins-slot-dark", issue: 279, caption: "A plugin in its place in Mumcord" },
             ],
           },
         ],
