@@ -3,8 +3,10 @@ import { Image } from "astro:assets";
 import CopyButton from "./CopyButton.astro";
 import mumpeerIcon from "../assets/tools/mumpeer.png";
 import mumquizIcon from "../assets/tools/mumquiz.png";
-import type { Lang } from "../i18n";
-import { toolsPage, getToolRelease, toolRepoUrl, TOOL_CODE, type ToolId } from "../lib/tools";
+import PeopleList from "./PeopleList.astro";
+import { dicts, type Lang } from "../i18n";
+import { getRepoContributors } from "../lib/contributors";
+import { toolsPage, getToolRelease, toolRepoUrl, TOOL_CODE, TOOL_REPO, type ToolId } from "../lib/tools";
 
 interface Props {
   lang: Lang;
@@ -16,6 +18,7 @@ const p = t.pages[tool];
 const { file, code, terms } = TOOL_CODE[tool];
 const release = await getToolRelease(tool);
 const repo = toolRepoUrl(tool);
+const people = await getRepoContributors(TOOL_REPO[tool]);
 const icon = { mumpeer: mumpeerIcon, mumquiz: mumquizIcon }[tool];
 // `code` in the texts becomes <code>; everything else is escaped.
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -94,6 +97,15 @@ const md = (s: string) => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>");
     <p class="rp-section-body" data-reveal set:html={md(p.startNote)} />
     {p.credit && <p class="tool-credit" data-reveal>{p.credit}</p>}
   </section>
+
+  {
+    people.length > 0 && (
+      <section class="rp-section" id="contributors" aria-labelledby="tool-people-h">
+        <h2 id="tool-people-h" data-reveal>{dicts[lang].contributors.toolTitle}</h2>
+        <PeopleList lang={lang} people={people} />
+      </section>
+    )
+  }
 
   <section class="fp-ask" data-reveal>
     <p class="fp-actions">

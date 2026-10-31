@@ -530,9 +530,10 @@
     "contributors": {
       "label": "07 — Πίσω από αυτό",
       "title": "Οι άνθρωποι που φτιάχνουν το Mumcord.",
-      "body": "Όλοι όσοι συνεισέφεραν κώδικα στο Mumcord, στο Mumbot ή σε αυτόν τον ιστότοπο. Η λίστα έρχεται φρέσκια από το GitHub σε κάθε build.",
+      "body": "Όλοι όσοι συνεισέφεραν κώδικα στο Mumcord, στο Mumbot, mumpeer, mumquiz ή σε αυτόν τον ιστότοπο. Η λίστα έρχεται φρέσκια από το GitHub σε κάθε build.",
       "commits": "commits",
-      "join": "Συμμετοχή στο GitHub"
+      "join": "Συμμετοχή στο GitHub",
+      "toolTitle": "Συντελεστές"
     }
   },
   "features": {
@@ -2387,12 +2388,12 @@
         "title": "Προαιρετικό: ένα relay για άμεσες συνδέσεις",
         "body": [
           "Για να δουλεύουν η κοινή χρήση οθόνης και οι εικόνες πλήρους μεγέθους και όταν δύο άτομα δεν μπορούν να βρεθούν απευθείας, ή για να μη βλέπει κανείς την IP του άλλου, μπορείς να τρέξεις το relay <a href=\"/en/mumpeer\">mumpeer</a> δίπλα στον server. Το περιεχόμενο μένει κρυπτογραφημένο από άκρο σε άκρο.",
-          "Καλό είναι να ξέρεις: το mumpeer έχει ήδη κυκλοφορήσει. Το bot relay <code>mumbot peer</code> και η υποστήριξη relay στο Mumcord είναι ακόμη υπό κατασκευή, μέχρι τότε το relay μένει αχρησιμοποίητο.",
-          "Στον φάκελο του server δημιούργησε ένα μυστικό και τις ρυθμίσεις, και βάλε τη διεύθυνση του server σου στο <code>public_host</code> του <code>mumpeer.toml</code>. Μετά πρόσθεσε τις παρακάτω υπηρεσίες στο <code>docker-compose.yml</code> κάτω από το <code>services:</code> και το <code>mumpeer-data:</code> κάτω από το <code>volumes:</code>."
+          "Το Mumcord χρησιμοποιεί το relay από την έκδοση 0.5.0. Το bot relay <code>mumbot peer</code> κάνει τα υπόλοιπα: ανακοινώνει το relay και μοιράζει τα tokens.",
+          "Στον φάκελο του server γράψε ένα κοινό μυστικό στο <code>.env</code> και κατέβασε τις δύο ρυθμίσεις-παραδείγματα. Βάλε τη διεύθυνση του server σου στο <code>public_host</code> του <code>mumpeer.toml</code> και το δακτυλικό αποτύπωμα του server Mumble σου στο <code>bot.toml</code>. Μετά πρόσθεσε τις παρακάτω υπηρεσίες στο <code>docker-compose.yml</code> κάτω από το <code>services:</code> και τα <code>mumpeer-data:</code> και <code>mumbot-data:</code> κάτω από το <code>volumes:</code>."
         ],
         "after": [
-          "Ξεκίνα με <code>docker compose up -d</code> και άνοιξε επίσης UDP και TCP στη θύρα 443. Αν εκεί τρέχει ήδη web server, διάλεξε άλλες θύρες στο <code>mumpeer.toml</code>. Μην ανοίξεις τη θύρα του API.",
-          "Στην πρώτη εκκίνηση το δακτυλικό αποτύπωμα του relay εμφανίζεται στο log. Το bot θα το ανακοινώνει, τίποτε άλλο δεν χρειάζεται να μοιραστεί. Περισσότερα στη σελίδα του <a href=\"/en/mumpeer\">mumpeer</a>."
+          "Ξεκίνα με <code>docker compose up -d</code> και άνοιξε επίσης UDP και TCP στη θύρα 443. Αν εκεί τρέχει ήδη web server, διάλεξε άλλες θύρες στο <code>mumpeer.toml</code>. Το API μένει ανάμεσα στο relay και το bot.",
+          "Στην πρώτη εκκίνηση το δακτυλικό αποτύπωμα του relay εμφανίζεται στο log. Το bot το ανακοινώνει, τίποτε άλλο δεν χρειάζεται να μοιραστεί. Περισσότερα στη σελίδα του <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
     ]
@@ -2642,8 +2643,8 @@
           "Δεν καταγράφονται ποτέ: πλήρεις διευθύνσεις IP, πλήρη hash πιστοποιητικών, tokens και περιεχόμενο πακέτων"
         ],
         "startTitle": "Τρέξ' το με Docker",
-        "startBody": "Δημιούργησε ένα μυστικό για το API (`openssl rand -hex 32 > api_secret`), αποθήκευσε το παράδειγμα ρυθμίσεων `mumpeer.example.toml` ως `mumpeer.toml` και όρισε σε αυτό το `public_host`. Μετά ξεκίνα μαζί το relay και το bot:",
-        "startNote": "Στην πρώτη εκκίνηση το δακτυλικό αποτύπωμα του relay εμφανίζεται στο log. Το bot το ανακοινώνει, τίποτε άλλο δεν χρειάζεται να μοιραστεί. Άνοιξε UDP και TCP στη θύρα 443, όχι τη θύρα του API. Το bot relay `mumbot peer` και η υποστήριξη relay στο Mumcord είναι ακόμη υπό κατασκευή."
+        "startBody": "Βάλε ένα μεγάλο τυχαίο μυστικό στο `.env` ως `PEER_API_SECRET` (για παράδειγμα από το `openssl rand -hex 32`). Από το παράδειγμα relay του Mumbot αποθήκευσε το `mumpeer.example.toml` ως `mumpeer.toml` και όρισε σε αυτό το `public_host`, και το `bot.example.toml` ως `bot.toml`. Μετά ξεκίνα μαζί το relay και το bot:",
+        "startNote": "Στην πρώτη εκκίνηση το δακτυλικό αποτύπωμα του relay εμφανίζεται στο log. Το bot το ανακοινώνει στο Mumcord, τίποτε άλλο δεν χρειάζεται να μοιραστεί. Άνοιξε UDP και TCP στη θύρα 443, το API μένει ανάμεσα στο relay και το bot. Το Mumcord χρησιμοποιεί το relay από την έκδοση 0.5.0."
       },
       "mumquiz": {
         "title": "mumquiz",

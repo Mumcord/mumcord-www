@@ -16,20 +16,30 @@ export const TOOL_CODE: Record<ToolId, { file: string; code: string; terms?: str
     file: "docker-compose.yml",
     code: `services:
   mumpeer:
-    image: ghcr.io/mumcord/mumpeer:latest
+    image: ghcr.io/mumcord/mumpeer:0.1.0
     restart: unless-stopped
+    environment:
+      MUMPEER_API_SECRET: \${PEER_API_SECRET:?set PEER_API_SECRET in .env}
     ports: ["443:443/udp", "443:443/tcp"]
     volumes:
       - ./mumpeer.toml:/config/mumpeer.toml:ro
-      - ./api_secret:/run/secrets/mumpeer_api_secret:ro
       - mumpeer-data:/var/lib/mumpeer
-  # Relay bot: uncomment once mumbot peer is out
-  # mumbot:
-  #   image: ghcr.io/mumcord/mumbot:latest
-  #   network_mode: "service:mumpeer"
-  #   command: ["peer", "--config", "/config/bot.toml"]
+  mumbot:
+    image: ghcr.io/mumcord/mumbot:0.1.0
+    command: ["peer"]
+    restart: unless-stopped
+    network_mode: "service:mumpeer"
+    environment:
+      MUMBOT_CONFIG: /config/bot.toml
+      MUMBOT_PEER_API_SECRET: \${PEER_API_SECRET:?set PEER_API_SECRET in .env}
+    volumes:
+      - ./bot.toml:/config/bot.toml:ro
+      - mumbot-data:/data
+    healthcheck:
+      disable: true
 volumes:
-  mumpeer-data:`,
+  mumpeer-data:
+  mumbot-data:`,
   },
   mumquiz: {
     file: "Terminal",
@@ -99,8 +109,8 @@ const source: Record<"de" | "en", ToolsPage> = {
           "Nie protokolliert werden volle IP-Adressen, volle Zertifikat-Hashes, Tokens und Paketinhalte",
         ],
         startTitle: "Starten mit Docker",
-        startBody: "Ein Secret für die API anlegen (`openssl rand -hex 32 > api_secret`), die Beispiel-Konfiguration `mumpeer.example.toml` als `mumpeer.toml` speichern und darin `public_host` setzen. Dann Relay und Bot zusammen starten:",
-        startNote: "Beim ersten Start steht der Fingerabdruck des Relays im Log. Der Bot kündigt ihn an, sonst muss nichts geteilt werden. Öffne UDP und TCP auf Port 443, den API-Port nicht. Der Relay-Bot `mumbot peer` und die Relay-Unterstützung in Mumcord sind noch in Arbeit.",
+        startBody: "Ein langes, zufälliges Secret als `PEER_API_SECRET` in die `.env` schreiben (etwa aus `openssl rand -hex 32`). Aus Mumbots Relay-Beispiel `mumpeer.example.toml` als `mumpeer.toml` speichern und darin `public_host` setzen, dazu `bot.example.toml` als `bot.toml`. Dann Relay und Bot zusammen starten:",
+        startNote: "Beim ersten Start steht der Fingerabdruck des Relays im Log. Der Bot kündigt ihn Mumcord an, sonst muss nichts geteilt werden. Öffne UDP und TCP auf Port 443, die API bleibt zwischen Relay und Bot. Mumcord nutzt das Relay ab Version 0.5.0.",
       },
       mumquiz: {
         title: "mumquiz",
@@ -159,8 +169,8 @@ const source: Record<"de" | "en", ToolsPage> = {
           "Never logged: full IP addresses, full certificate hashes, tokens and packet contents",
         ],
         startTitle: "Run it with Docker",
-        startBody: "Create a secret for the API (`openssl rand -hex 32 > api_secret`), save the example config `mumpeer.example.toml` as `mumpeer.toml` and set `public_host` in it. Then start relay and bot together:",
-        startNote: "On first start the relay's fingerprint shows in the log. The bot announces it, nothing else needs to be shared. Open UDP and TCP on port 443, not the API port. The relay bot `mumbot peer` and relay support in Mumcord are still being built.",
+        startBody: "Put a long random secret into `.env` as `PEER_API_SECRET` (for example from `openssl rand -hex 32`). From Mumbot's relay example, save `mumpeer.example.toml` as `mumpeer.toml` and set `public_host` in it, and `bot.example.toml` as `bot.toml`. Then start relay and bot together:",
+        startNote: "On first start the relay's fingerprint shows in the log. The bot announces it to Mumcord, nothing else needs to be shared. Open UDP and TCP on port 443, the API stays between relay and bot. Mumcord uses the relay from version 0.5.0.",
       },
       mumquiz: {
         title: "mumquiz",

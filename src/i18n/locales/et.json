@@ -530,9 +530,10 @@
     "contributors": {
       "label": "07 — Selle taga",
       "title": "Inimesed, kes Mumcordi ehitavad.",
-      "body": "Kõik, kes on panustanud koodi Mumcordi, Mumboti või sellesse veebilehte. Nimekiri tuleb iga ehitusega värskelt GitHubist.",
+      "body": "Kõik, kes on panustanud koodi Mumcordi, Mumbot, mumpeer, mumquizi või sellesse veebilehte. Nimekiri tuleb iga ehitusega värskelt GitHubist.",
       "commits": "kommitit",
-      "join": "Löö kaasa GitHubis"
+      "join": "Löö kaasa GitHubis",
+      "toolTitle": "Kaastöölised"
     }
   },
   "features": {
@@ -2387,11 +2388,11 @@
         "title": "Valikuline: releeserver otseühendustele",
         "body": [
           "Et ekraanijagamine ja täismõõdus pildid töötaksid ka siis, kui kaks inimest ei saa üksteiseni otse, või et keegi ei näeks teise IP-aadressi, võid serveri kõrval käitada releed <a href=\"/en/mumpeer\">mumpeer</a>. Sisu jääb otspunktkrüptituks.",
-          "Hea teada: mumpeer on juba väljas. Releebot <code>mumbot peer</code> ja releetugi Mumcordis on alles ehitamisel, seni jääb relee kasutamata.",
-          "Loo serveri kausta saladus ja konfiguratsioon ning pane oma serveri aadress failis <code>mumpeer.toml</code> väljale <code>public_host</code>. Seejärel lisa allolevad teenused faili <code>docker-compose.yml</code> alla <code>services:</code> ja <code>mumpeer-data:</code> alla <code>volumes:</code>."
+          "Mumcord kasutab releed alates versioonist 0.5.0. Ülejäänu teeb releebot <code>mumbot peer</code>: ta teatab relee ja jagab välja tokenid.",
+          "Kirjuta serveri kaustas ühine saladus faili <code>.env</code> ja too kaks näidiskonfiguratsiooni. Pane oma serveri aadress failis <code>mumpeer.toml</code> väljale <code>public_host</code> ja oma Mumble'i serveri sõrmejälg faili <code>bot.toml</code>. Seejärel lisa allolevad teenused faili <code>docker-compose.yml</code> alla <code>services:</code> ning <code>mumpeer-data:</code> ja <code>mumbot-data:</code> alla <code>volumes:</code>."
         ],
         "after": [
-          "Käivita käsuga <code>docker compose up -d</code> ning ava ka UDP ja TCP pordis 443. Kui seal töötab juba veebiserver, vali failis <code>mumpeer.toml</code> teised pordid. Ära ava API porti.",
+          "Käivita käsuga <code>docker compose up -d</code> ning ava ka UDP ja TCP pordis 443. Kui seal töötab juba veebiserver, vali failis <code>mumpeer.toml</code> teised pordid. API jääb relee ja boti vahele.",
           "Esimesel käivitamisel ilmub relee sõrmejälg logisse. Bot teatab selle, muud pole vaja jagada. Rohkem leiad lehelt <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
@@ -2642,8 +2643,8 @@
           "Kunagi ei logita: täielikke IP-aadresse, täielikke sertifikaadiräsisid, tokeneid ega pakettide sisu"
         ],
         "startTitle": "Käivita see Dockeriga",
-        "startBody": "Loo API jaoks saladus (`openssl rand -hex 32 > api_secret`), salvesta näidiskonfiguratsioon `mumpeer.example.toml` nimega `mumpeer.toml` ja määra selles `public_host`. Seejärel käivita relee ja bot koos:",
-        "startNote": "Esimesel käivitamisel ilmub relee sõrmejälg logisse. Bot teatab selle, muud pole vaja jagada. Ava UDP ja TCP pordis 443, mitte API porti. Releebot `mumbot peer` ja releetugi Mumcordis on alles ehitamisel."
+        "startBody": "Pane `.env` faili pikk juhuslik saladus nimega `PEER_API_SECRET` (näiteks käsust `openssl rand -hex 32`). Salvesta Mumboti releenäitest `mumpeer.example.toml` nimega `mumpeer.toml` ja määra selles `public_host`, ning `bot.example.toml` nimega `bot.toml`. Seejärel käivita relee ja bot koos:",
+        "startNote": "Esimesel käivitamisel ilmub relee sõrmejälg logisse. Bot teatab selle Mumcordile, muud pole vaja jagada. Ava UDP ja TCP pordis 443, API jääb relee ja boti vahele. Mumcord kasutab releed alates versioonist 0.5.0."
       },
       "mumquiz": {
         "title": "mumquiz",

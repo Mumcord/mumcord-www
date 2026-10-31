@@ -358,8 +358,9 @@ export const en: Dict = {
   contributors: {
     label: "07 — Behind it",
     title: "The people building Mumcord.",
-    body: "Everyone who contributed code to Mumcord, Mumbot or this website. The list comes fresh from GitHub with every build.",
+    body: "Everyone who contributed code to Mumcord, Mumbot, mumpeer, mumquiz or this website. The list comes fresh from GitHub with every build.",
     commits: "commits",
     join: "Contribute on GitHub",
+    toolTitle: "Contributors",
   },
 };

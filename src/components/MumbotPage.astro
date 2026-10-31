@@ -2,7 +2,9 @@
 import { Image } from "astro:assets";
 import CopyButton from "./CopyButton.astro";
 import mumbotIcon from "../assets/tools/mumbot.png";
-import type { Lang } from "../i18n";
+import PeopleList from "./PeopleList.astro";
+import { dicts, type Lang } from "../i18n";
+import { getRepoContributors } from "../lib/contributors";
 import { formatSize } from "../lib/release";
 import {
   mumbotPage,
@@ -23,6 +25,7 @@ interface Props {
 const { lang } = Astro.props;
 const p = mumbotPage[lang];
 const release = await getMumbotRelease();
+const people = await getRepoContributors("Mumcord/mumbot");
 const version = release?.version ?? "latest";
 const platforms: BotPlatform[] = ["linux", "linuxArm", "windows", "macos"];
 // `code` in the texts becomes <code>; everything else is escaped.
@@ -163,6 +166,15 @@ const bots = [
     </ol>
   </section>
 
+
+  {
+    people.length > 0 && (
+      <section class="rp-section" id="contributors" aria-labelledby="tool-people-h">
+        <h2 id="tool-people-h" data-reveal>{dicts[lang].contributors.toolTitle}</h2>
+        <PeopleList lang={lang} people={people} />
+      </section>
+    )
+  }
 
   <section class="fp-ask" aria-labelledby="mb-ask-h" data-reveal>
     <h2 id="mb-ask-h">{p.ideaTitle}</h2>

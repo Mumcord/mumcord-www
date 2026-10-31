@@ -530,9 +530,10 @@
     "contributors": {
       "label": "07 — Taobh thiar de",
       "title": "Na daoine atá ag tógáil Mumcord.",
-      "body": "Gach duine a chuir cód le Mumcord, Mumbot nó leis an suíomh seo. Tagann an liosta úr ó GitHub le gach tógáil.",
+      "body": "Gach duine a chuir cód le Mumcord, Mumbot, mumpeer, mumquiz nó leis an suíomh seo. Tagann an liosta úr ó GitHub le gach tógáil.",
       "commits": "tiomantais",
-      "join": "Glac páirt ar GitHub"
+      "join": "Glac páirt ar GitHub",
+      "toolTitle": "Rannpháirtithe"
     }
   },
   "features": {
@@ -2387,12 +2388,12 @@
         "title": "Roghnach: athsheachadán do naisc dhíreacha",
         "body": [
           "Chun go n-oibreoidh comhroinnt scáileáin agus íomhánna lánmhéide fiú nuair nach féidir le beirt teacht ar a chéile go díreach, nó chun nach bhfeicfidh aon duine IP an duine eile, is féidir leat an t-athsheachadán <a href=\"/en/mumpeer\">mumpeer</a> a rith taobh leis an bhfreastalaí. Fanann an t-ábhar criptithe ó cheann go ceann.",
-          "Is maith an rud a fhios: tá mumpeer amuigh cheana. Tá an bota athsheachadáin <code>mumbot peer</code> agus tacaíocht athsheachadáin i Mumcord fós á dtógáil, go dtí sin fanann an t-athsheachadán gan úsáid.",
-          "I bhfillteán an fhreastalaí, cruthaigh rún agus an chumraíocht, agus cuir seoladh do fhreastalaí faoi <code>public_host</code> i <code>mumpeer.toml</code>. Ansin cuir na seirbhísí thíos le <code>docker-compose.yml</code> faoi <code>services:</code>, agus <code>mumpeer-data:</code> faoi <code>volumes:</code>."
+          "Úsáideann Mumcord an t-athsheachadán ó leagan 0.5.0. Déanann an bota athsheachadáin <code>mumbot peer</code> an chuid eile: fógraíonn sé an t-athsheachadán agus dáileann sé na tokens.",
+          "I bhfillteán an fhreastalaí, scríobh rún comhroinnte in <code>.env</code> agus faigh an dá chumraíocht shamplach. Cuir seoladh do fhreastalaí faoi <code>public_host</code> i <code>mumpeer.toml</code>, agus méarlorg do fhreastalaí Mumble i <code>bot.toml</code>. Ansin cuir na seirbhísí thíos le <code>docker-compose.yml</code> faoi <code>services:</code>, agus <code>mumpeer-data:</code> agus <code>mumbot-data:</code> faoi <code>volumes:</code>."
         ],
         "after": [
-          "Tosaigh le <code>docker compose up -d</code> agus oscail UDP agus TCP ar phort 443 freisin. Má ritheann freastalaí gréasáin ansin cheana, roghnaigh calafoirt eile i <code>mumpeer.toml</code>. Ná hoscail port an API.",
-          "Ar an gcéad tosú taispeántar méarlorg an athsheachadáin sa log. Fógróidh an bota é, ní gá aon rud eile a roinnt. Tuilleadh ar leathanach <a href=\"/en/mumpeer\">mumpeer</a>."
+          "Tosaigh le <code>docker compose up -d</code> agus oscail UDP agus TCP ar phort 443 freisin. Má ritheann freastalaí gréasáin ansin cheana, roghnaigh calafoirt eile i <code>mumpeer.toml</code>. Fanann an API idir an t-athsheachadán agus an bota.",
+          "Ar an gcéad tosú taispeántar méarlorg an athsheachadáin sa log. Fógraíonn an bota é, ní gá aon rud eile a roinnt. Tuilleadh ar leathanach <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
     ]
@@ -2642,8 +2643,8 @@
           "Ní logáiltear riamh: seoltaí IP iomlána, hais iomlána teastas, comharthaí agus ábhar paicéad"
         ],
         "startTitle": "Rith é le Docker",
-        "startBody": "Cruthaigh rún don API (`openssl rand -hex 32 > api_secret`), sábháil an cumraíocht shamplach `mumpeer.example.toml` mar `mumpeer.toml` agus socraigh `public_host` inti. Ansin tosaigh an t-athsheachadán agus an bota le chéile:",
-        "startNote": "Ar an gcéad tosú taispeántar méarlorg an athsheachadáin sa log. Fógraíonn an bota é, ní gá aon rud eile a roinnt. Oscail UDP agus TCP ar phort 443, ní port an API. Tá an bota athsheachadáin `mumbot peer` agus tacaíocht athsheachadáin i Mumcord fós á dtógáil."
+        "startBody": "Cuir rún fada randamach in `.env` mar `PEER_API_SECRET` (mar shampla ó `openssl rand -hex 32`). Ó shampla athsheachadáin Mumbot, sábháil `mumpeer.example.toml` mar `mumpeer.toml` agus socraigh `public_host` ann, agus `bot.example.toml` mar `bot.toml`. Ansin tosaigh an t-athsheachadán agus an bota le chéile:",
+        "startNote": "Ar an gcéad tosú taispeántar méarlorg an athsheachadáin sa log. Fógraíonn an bota é do Mumcord, ní gá aon rud eile a roinnt. Oscail UDP agus TCP ar phort 443, fanann an API idir an t-athsheachadán agus an bota. Úsáideann Mumcord an t-athsheachadán ó leagan 0.5.0."
       },
       "mumquiz": {
         "title": "mumquiz",

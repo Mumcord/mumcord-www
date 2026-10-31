@@ -530,9 +530,10 @@
     "contributors": {
       "label": "07 — V ozadju",
       "title": "Ljudje, ki gradijo Mumcord.",
-      "body": "Vsi, ki so prispevali kodo za Mumcord, Mumbot ali to spletno stran. Seznam pride ob vsaki gradnji svež z GitHuba.",
+      "body": "Vsi, ki so prispevali kodo za Mumcord, Mumbot, mumpeer, mumquiz ali to spletno stran. Seznam pride ob vsaki gradnji svež z GitHuba.",
       "commits": "commitov",
-      "join": "Pridruži se na GitHubu"
+      "join": "Pridruži se na GitHubu",
+      "toolTitle": "Sodelujoči"
     }
   },
   "features": {
@@ -2387,12 +2388,12 @@
         "title": "Neobvezno: relay za neposredne povezave",
         "body": [
           "Da bi deljenje zaslona in slike v polni velikosti delovali tudi, ko se dva človeka ne moreta doseči neposredno, ali da nihče ne bi videl tujega IP, lahko ob strežniku zaženeš relay <a href=\"/en/mumpeer\">mumpeer</a>. Vsebina ostane šifrirana od konca do konca.",
-          "Dobro je vedeti: mumpeer je že izšel. Relay bot <code>mumbot peer</code> in podpora relayu v Mumcordu se še gradita, do takrat relay ostane neuporabljen.",
-          "V mapi strežnika ustvari skrivnost in konfiguracijo, naslov svojega strežnika pa vpiši pod <code>public_host</code> v <code>mumpeer.toml</code>. Nato dodaj spodnje storitve v <code>docker-compose.yml</code> pod <code>services:</code>, <code>mumpeer-data:</code> pa pod <code>volumes:</code>."
+          "Mumcord uporablja relay od različice 0.5.0. Ostalo opravi relay bot <code>mumbot peer</code>: objavi relay in razdeli žetone.",
+          "V mapi strežnika vpiši skupno skrivnost v <code>.env</code> in prenesi obe vzorčni konfiguraciji. Naslov svojega strežnika vpiši pod <code>public_host</code> v <code>mumpeer.toml</code>, prstni odtis svojega strežnika Mumble pa v <code>bot.toml</code>. Nato dodaj spodnje storitve v <code>docker-compose.yml</code> pod <code>services:</code>, <code>mumpeer-data:</code> in <code>mumbot-data:</code> pa pod <code>volumes:</code>."
         ],
         "after": [
-          "Zaženi z <code>docker compose up -d</code> in odpri tudi UDP in TCP na vratih 443. Če tam že teče spletni strežnik, izberi druga vrata v <code>mumpeer.toml</code>. Vrat API ne odpiraj.",
-          "Ob prvem zagonu se prstni odtis relaya prikaže v dnevniku. Bot ga bo objavil, nič drugega ni treba deliti. Več na strani <a href=\"/en/mumpeer\">mumpeer</a>."
+          "Zaženi z <code>docker compose up -d</code> in odpri tudi UDP in TCP na vratih 443. Če tam že teče spletni strežnik, izberi druga vrata v <code>mumpeer.toml</code>. API ostane med relayem in botom.",
+          "Ob prvem zagonu se prstni odtis relaya prikaže v dnevniku. Bot ga objavi, nič drugega ni treba deliti. Več na strani <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
     ]
@@ -2642,8 +2643,8 @@
           "Nikoli se ne beležijo: polni naslovi IP, polne zgoščene vrednosti certifikatov, žetoni in vsebina paketov"
         ],
         "startTitle": "Zaženi ga z Dockerjem",
-        "startBody": "Ustvari skrivnost za API (`openssl rand -hex 32 > api_secret`), shrani vzorčno konfiguracijo `mumpeer.example.toml` kot `mumpeer.toml` in v njej nastavi `public_host`. Nato zaženi relay in bota skupaj:",
-        "startNote": "Ob prvem zagonu se prstni odtis relaya prikaže v dnevniku. Bot ga objavi, nič drugega ni treba deliti. Odpri UDP in TCP na vratih 443, ne vrat API. Relay bot `mumbot peer` in podpora relayu v Mumcordu se še gradita."
+        "startBody": "Dolgo naključno skrivnost vpiši v `.env` kot `PEER_API_SECRET` (na primer iz `openssl rand -hex 32`). Iz Mumbotovega primera relaya shrani `mumpeer.example.toml` kot `mumpeer.toml` in v njem nastavi `public_host`, `bot.example.toml` pa kot `bot.toml`. Nato zaženi relay in bota skupaj:",
+        "startNote": "Ob prvem zagonu se prstni odtis relaya prikaže v dnevniku. Bot ga objavi Mumcordu, nič drugega ni treba deliti. Odpri UDP in TCP na vratih 443, API ostane med relayem in botom. Mumcord uporablja relay od različice 0.5.0."
       },
       "mumquiz": {
         "title": "mumquiz",
