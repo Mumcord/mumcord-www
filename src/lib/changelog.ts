@@ -49,6 +49,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "Unter Windows gibt es Mumcord auch als portables Zip: auspacken, starten, ohne Installation. Daten und Einstellungen bleiben im Ordner neben dem Programm.",
             "Die Mitgliederspalte lässt sich ausblenden, damit der Chat die volle Breite bekommt: per Knopf im Chat-Kopf oder Strg+Umschalt+M. Im schmalen Fenster schiebt sie sich über den Chat.",
             "Gekickt oder gebannt? Mumcord spielt dazu einen Ton: eine Ohrfeige beim Kick, einen Slapstick-Tritt beim Bann. Beide lassen sich abschalten.",
+            "Die Server-Info zeigt, ob der Server ein Relay oder einen Mumbot ankündigt, und warnt, wenn sich das Relay geändert hat.",
           ],
         },
         {
@@ -58,6 +59,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "Die Schnelleinstellungen sind ruhiger: eine Zeile pro Einstellung in klaren Gruppen, Erklärungen hinter einem kleinen ?, und die Beta-Gruppe startet eingeklappt.",
             "Sind Link-Vorschauen aus, verschwinden sie nicht mehr stillschweigend: Eine leise Zeile unter der Nachricht sagt, was ausgeblendet ist, und führt zur passenden Einstellung.",
             "„Einrichtung erneut ausführen“ unter Einstellungen → Über geht Mikrofon, Datenschutz, Update-Hinweis und Sprechmodus noch einmal durch. Deine Identität bleibt unangetastet, und gespeichert wird nur, was du änderst.",
+            "Der Paketinspektor folgt neuen Paketen, hält an, wenn du nach oben scrollst, und zeichnet nur auf, solange er offen ist.",
           ],
         },
         {
@@ -67,6 +69,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "Die Watch-Party hält sich an „Linkvorschauen und eingebettete Videos anzeigen“: Ist es aus, wird nichts von YouTube oder Twitch geladen, und ein Hinweis führt zur Einstellung.",
             "Linux mit PipeWire: Die Gerätelisten zeigen jeden Ein- und Ausgang wie die Toneinstellungen des Desktops, etwa „System“ und „Chat“ eines RØDECaster Pro II statt einem einzigen „USB Audio“.",
             "Das Server-Info-Fenster ist jetzt in allen 24 Sprachen übersetzt.",
+            "Eigene Nachrichten lösen keinen Erwähnungston und keine Benachrichtigung mehr aus und zählen nicht mehr als ungelesen.",
           ],
         },
       ],
@@ -527,6 +530,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "On Windows, Mumcord also comes as a portable zip: unpack, start, no installation. Data and settings stay in the folder next to the program.",
             "Hide the member column to give the chat the full width: with a button in the chat header or Ctrl+Shift+M. In a narrow window it slides in over the chat.",
             "Kicked or banned? Mumcord plays a sound for it: a slap for a kick, a slapstick kick for a ban. Both can be turned off.",
+            "Server info shows whether the server announces a relay or a Mumbot, and warns when the relay has changed.",
           ],
         },
         {
@@ -536,6 +540,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "Quick settings are calmer: one row per setting in clear groups, explanations behind a small ?, and the Beta group starts collapsed.",
             "With link previews off, they no longer vanish silently: a quiet line under the message says what was hidden and leads to the setting.",
             "“Run setup wizard again” in Settings → About goes through microphone, privacy, update hint and talk mode once more. Your identity stays untouched, and only what you change is saved.",
+            "The packet inspector follows new packets, pauses when you scroll up, and only records while it is open.",
           ],
         },
         {
@@ -545,6 +550,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "The watch party respects “Show link previews and embeds”: with it off, nothing is loaded from YouTube or Twitch, and a hint leads to the setting.",
             "Linux with PipeWire: the device lists show every input and output the way the desktop's sound settings do, such as “System” and “Chat” on a RØDECaster Pro II instead of a single “USB Audio”.",
             "The server info window is now translated into all 24 languages.",
+            "Your own messages no longer play the mention sound or show a notification, and no longer count as unread.",
           ],
         },
       ],
