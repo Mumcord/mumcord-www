@@ -4955,8 +4955,15 @@ p {
   padding: 0;
   list-style: none;
 }
+.cfg-steps li,
 .cfg-steps .code {
+  min-width: 0;
   margin: 0;
+}
+/* Long commands and URLs wrap instead of running off the right edge; copies stay unchanged. */
+.cfg-out pre code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 .cfg-step-num {
   display: inline-grid;
