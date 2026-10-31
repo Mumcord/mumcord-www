@@ -88,6 +88,15 @@
       "botIssues": {
         "title": "Issue-uri",
         "desc": "Idei și buguri pentru Mumbot"
+      },
+      "tools": "Tools",
+      "toolPeer": {
+        "title": "mumpeer",
+        "desc": "Relay pentru conexiuni directe"
+      },
+      "toolQuiz": {
+        "title": "mumquiz",
+        "desc": "Bot de quiz pentru serverul tău"
       }
     },
     "hero": {
@@ -2265,7 +2274,7 @@
         "label": "open source; plătești doar mașina"
       }
     ],
-    "stepsTitle": "În opt pași",
+    "stepsTitle": "În opt pași, plus unul opțional",
     "troubleTitle": "Întreținere și probleme",
     "trouble": [
       {
@@ -2371,6 +2380,19 @@
           "1. Conectează-te cu numele de utilizator <code>SuperUser</code> și parola din <code>.env</code>.",
           "2. Clic dreapta pe canalul de sus → <strong>Adaugă</strong>, pentru fiecare canal dorit.",
           "3. Ca să nu ai nevoie de SuperUser de fiecare dată: conectează-te cu Mumcord sub propriul nume și dă clic pe numele tău din stânga jos → <strong>Înregistrează-te pe acest server</strong>. Apoi, ca SuperUser, canalul de sus → <strong>Editează</strong> → <strong>Grupuri</strong> → adaugă-ți numele în grupul <code>admin</code>."
+        ]
+      },
+      {
+        "id": "relay",
+        "title": "Opțional: un relay pentru conexiuni directe",
+        "body": [
+          "Ca partajarea ecranului și imaginile la dimensiune completă să meargă și când două persoane nu se pot ajunge direct, sau ca nimeni să nu vadă IP-ul celuilalt, poți rula relay-ul <a href=\"/en/mumpeer\">mumpeer</a> lângă server. Conținutul rămâne criptat end-to-end.",
+          "Bine de știut: mumpeer a apărut deja. Botul de relay <code>mumbot peer</code> și suportul pentru relay în Mumcord sunt încă în construcție, până atunci relay-ul rămâne nefolosit.",
+          "În folderul serverului creează un secret și configurația, și pune adresa serverului tău la <code>public_host</code> în <code>mumpeer.toml</code>. Apoi adaugă serviciile de mai jos în <code>docker-compose.yml</code> sub <code>services:</code>, iar <code>mumpeer-data:</code> sub <code>volumes:</code>."
+        ],
+        "after": [
+          "Pornește cu <code>docker compose up -d</code> și deschide și UDP, și TCP pe portul 443. Dacă acolo rulează deja un server web, alege alte porturi în <code>mumpeer.toml</code>. Nu deschide portul API.",
+          "La prima pornire, amprenta relay-ului apare în log. Botul o va anunța, nu trebuie partajat nimic altceva. Mai multe pe pagina <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
     ]
@@ -2574,5 +2596,92 @@
     "idea": "Propune o idee",
     "source": "Cod sursă pe GitHub",
     "docs": "Documentație"
+  },
+  "tools": {
+    "label": "Tools",
+    "release": "Cea mai recentă versiune",
+    "noRelease": "Încă nicio lansare",
+    "copy": "Copiază",
+    "copied": "Copiat",
+    "source": "Cod sursă",
+    "issues": "Idei și erori",
+    "readme": "Ghidul complet în README",
+    "pages": {
+      "mumpeer": {
+        "title": "mumpeer",
+        "description": "mumpeer este un mic relay pentru conexiunile directe ale Mumcord: pentru când două persoane nu se pot ajunge direct sau vor să-și ascundă adresa IP.",
+        "lead": "Un mic relay pentru conexiunile directe ale Mumcord între utilizatori, de exemplu pentru partajarea ecranului sau imagini la dimensiune completă. Când două persoane nu se pot ajunge direct, în spatele unui CGNAT, al unor firewall-uri stricte sau în rețele fără UDP, ori nu vor să-și arate adresa IP, ambele se conectează în schimb la relay. Acesta doar transmite pachetele criptate, ca un server TURN.",
+        "features": [
+          {
+            "title": "Lângă serverul tău Mumble",
+            "body": "O comunitate rulează mumpeer lângă serverul ei Mumble, împreună cu botul de relay `mumbot peer`. Botul anunță relay-ul și împarte token-uri de scurtă durată. Serverul Mumble rămâne nemodificat."
+          },
+          {
+            "title": "Doar utilizatori verificați",
+            "body": "Un token funcționează doar pentru exact două certificate, o dată pe fiecare parte și implicit 120 de secunde. Relay-ul nu retransmite niciodată în altă parte și nu deschide niciodată conexiuni de la sine, deci nu este un proxy deschis."
+          },
+          {
+            "title": "Criptat end-to-end",
+            "body": "Ceea ce trece prin relay este o conexiune criptată separată între cei doi utilizatori, legată de certificatele lor Mumble. Relay-ul nu o poate nici citi, nici schimba."
+          },
+          {
+            "title": "Prin aproape orice firewall",
+            "body": "QUIC peste UDP sau, unde UDP este blocat, TLS peste TCP. Ambele pe portul 443 și cu TLS 1.3."
+          },
+          {
+            "title": "Complet opțional",
+            "body": "Mumcord funcționează și fără bot și relay. În Mumcord alegi tu: relay oprit, doar când o conexiune directă eșuează, sau mereu."
+          }
+        ],
+        "listTitle": "Ce poate vedea operatorul",
+        "list": [
+          "Adresele IP ale ambilor utilizatori ai unei sesiuni",
+          "Ce două certificate vorbesc între ele",
+          "Câte date circulă și când",
+          "Nu conținutul: este criptat end-to-end. Mumcord îți spune asta înainte să folosești un relay",
+          "Nu se înregistrează niciodată: adresele IP complete, hash-urile complete ale certificatelor, token-urile și conținutul pachetelor"
+        ],
+        "startTitle": "Rulează-l cu Docker",
+        "startBody": "Creează un secret pentru API (`openssl rand -hex 32 > api_secret`), salvează configurația-exemplu `mumpeer.example.toml` ca `mumpeer.toml` și setează în ea `public_host`. Apoi pornește relay-ul și botul împreună:",
+        "startNote": "La prima pornire, amprenta relay-ului apare în log. Botul o anunță, nu trebuie partajat nimic altceva. Deschide UDP și TCP pe portul 443, nu portul API. Botul de relay `mumbot peer` și suportul pentru relay în Mumcord sunt încă în construcție."
+      },
+      "mumquiz": {
+        "title": "mumquiz",
+        "description": "mumquiz este un bot de quiz pentru servere Mumble: pune întrebări, citește răspunsurile din chat, dă indicii și acordă puncte.",
+        "lead": "Un bot de quiz pentru servere Mumble: pune întrebări, citește răspunsurile din chat, dă indicii, acordă puncte și ține minte victoriile. Se conectează ca un om, cu propriul certificat. De aceea merge pe orice server Mumble standard, fără plugin și fără nicio schimbare de configurație.",
+        "features": [
+          {
+            "title": "Jocul",
+            "body": "De îndată ce sunt destui oameni pe canal, începe. După un timp vine un indiciu cu câteva litere, după cinci indicii răspunsul. Câștigă cine atinge primul scorul rundei."
+          },
+          {
+            "title": "Generos cu răspunsurile",
+            "body": "Majusculele și minusculele, punctuația și scrierile precum ae și ä sau ss și ß se socotesc la fel."
+          },
+          {
+            "title": "Frumos în Mumcord",
+            "body": "În Mumcord mesajele jocului apar ca cartonașe de mesaj, în clientul oficial Mumble ca simplu text de chat."
+          },
+          {
+            "title": "Întrebările tale",
+            "body": "Întrebările stau într-un simplu fișier TOML. Un script poate prelua întrebările botului original, dacă vrei."
+          }
+        ],
+        "listTitle": "Comenzi în chat",
+        "list": [
+          "Ajutorul, privat pentru tine",
+          "Top cinci al acestei runde",
+          "Top cinci din toate timpurile",
+          "Hrănește botul, altfel i se face foame",
+          "Reîncarcă întrebările (maeștrii jocului)",
+          "Treci pe alt canal (maeștrii jocului)",
+          "Adaugă sau elimină un maestru al jocului"
+        ],
+        "startTitle": "Compilează-l și rulează-l singur",
+        "startBody": "Cu Rust compilezi botul așa:",
+        "startNote": "Apoi intră pe canalul „Quiz” și scrie `!help`. Jocul începe de îndată ce sunt acolo două persoane.",
+        "credit": "Jocul și mesajele lui vin de la zorgch/irc-quizbot (GPL-3.0), portate în Rust și pe protocolul Mumble, cu același strat de protocol ca Mumcord."
+      }
+    }
   }
 }

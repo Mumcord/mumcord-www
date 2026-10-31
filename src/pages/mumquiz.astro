@@ -1,0 +1,13 @@
+---
+import Base from "../layouts/Base.astro";
+import ToolPage from "../components/ToolPage.astro";
+import { toolsPage } from "../lib/tools";
+import { pageJsonLd } from "../lib/jsonld";
+
+const t = toolsPage.de;
+const p = t.pages.mumquiz;
+---
+
+<Base lang="de" page="mumquiz" title={`${p.title} — ${t.label}`} description={p.description} jsonLd={pageJsonLd("de", Astro.site!, "mumquiz", p.title)}>
+  <ToolPage lang="de" tool="mumquiz" />
+</Base>

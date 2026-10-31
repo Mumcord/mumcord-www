@@ -42,6 +42,9 @@ export const en: Dict = {
     botDownload: { title: "Download", desc: "Linux, Windows, macOS and Docker" },
     botRoadmap: { title: "Roadmap", desc: "What's done and what's next" },
     botSource: { title: "Source code", desc: "Open source under AGPL-3.0" },
+    tools: "Tools",
+    toolPeer: { title: "mumpeer", desc: "Relay for direct connections" },
+    toolQuiz: { title: "mumquiz", desc: "Quiz bot for your server" },
     botIssues: { title: "Issues", desc: "Ideas and bugs for Mumbot" },
   },
   hero: {

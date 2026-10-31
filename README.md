@@ -37,6 +37,8 @@ through `src/pages/[lang]/`. Those files hold only words; screenshots, versions,
 code come from English (merged by id in each `src/lib/*.ts`), and anything a translation lacks falls
 back to English. Legal pages stay German and English only. When English text changes, update the
 JSON files too, or the old translation keeps showing for that string.
+The tool pages (`/mumpeer`, `/mumquiz` and their `/en/` twins) live in `src/lib/tools.ts` and follow each
+repo's README; the header groups them with Mumbot under "Tools". Their latest release comes from the GitHub API.
 The server hosting guide (`/server`, `/en/server`) lives in `src/lib/server-guide.ts`; its
 compose file pins the same `mumblevoip/mumble-server` version the Mumcord tests use.
 

@@ -40,6 +40,9 @@ export const de = {
     botDownload: { title: "Download", desc: "Linux, Windows, macOS und Docker" },
     botRoadmap: { title: "Roadmap", desc: "Was fertig ist und was kommt" },
     botSource: { title: "Quellcode", desc: "Open Source unter AGPL-3.0" },
+    tools: "Tools",
+    toolPeer: { title: "mumpeer", desc: "Relay für direkte Verbindungen" },
+    toolQuiz: { title: "mumquiz", desc: "Quiz-Bot für deinen Server" },
     botIssues: { title: "Issues", desc: "Ideen und Fehler zu Mumbot" },
   },
   hero: {

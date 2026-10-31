@@ -88,6 +88,15 @@
       "botIssues": {
         "title": "Issue'd",
         "desc": "Mumboti ideed ja vead"
+      },
+      "tools": "Tools",
+      "toolPeer": {
+        "title": "mumpeer",
+        "desc": "Releeserver otseühendustele"
+      },
+      "toolQuiz": {
+        "title": "mumquiz",
+        "desc": "Viktoriinibot sinu serverile"
       }
     },
     "hero": {
@@ -2265,7 +2274,7 @@
         "label": "avatud lähtekood; maksad ainult masina eest"
       }
     ],
-    "stepsTitle": "Kaheksa sammuga",
+    "stepsTitle": "Kaheksa sammuga, pluss üks valikuline",
     "troubleTitle": "Hooldus ja probleemid",
     "trouble": [
       {
@@ -2371,6 +2380,19 @@
           "1. Ühendu kasutajanimega <code>SuperUser</code> ja failis <code>.env</code> oleva parooliga.",
           "2. Paremklõps ülemisel kanalil → <strong>Lisa</strong>, iga soovitud kanali jaoks.",
           "3. Et sul poleks iga kord SuperUserit vaja: ühendu Mumcordiga oma nime all ja klõpsa all vasakul oma nimel → <strong>Registreeru selles serveris</strong>. Seejärel SuperUserina ülemine kanal → <strong>Muuda</strong> → <strong>Grupid</strong> → lisa oma nimi gruppi <code>admin</code>."
+        ]
+      },
+      {
+        "id": "relay",
+        "title": "Valikuline: releeserver otseühendustele",
+        "body": [
+          "Et ekraanijagamine ja täismõõdus pildid töötaksid ka siis, kui kaks inimest ei saa üksteiseni otse, või et keegi ei näeks teise IP-aadressi, võid serveri kõrval käitada releed <a href=\"/en/mumpeer\">mumpeer</a>. Sisu jääb otspunktkrüptituks.",
+          "Hea teada: mumpeer on juba väljas. Releebot <code>mumbot peer</code> ja releetugi Mumcordis on alles ehitamisel, seni jääb relee kasutamata.",
+          "Loo serveri kausta saladus ja konfiguratsioon ning pane oma serveri aadress failis <code>mumpeer.toml</code> väljale <code>public_host</code>. Seejärel lisa allolevad teenused faili <code>docker-compose.yml</code> alla <code>services:</code> ja <code>mumpeer-data:</code> alla <code>volumes:</code>."
+        ],
+        "after": [
+          "Käivita käsuga <code>docker compose up -d</code> ning ava ka UDP ja TCP pordis 443. Kui seal töötab juba veebiserver, vali failis <code>mumpeer.toml</code> teised pordid. Ära ava API porti.",
+          "Esimesel käivitamisel ilmub relee sõrmejälg logisse. Bot teatab selle, muud pole vaja jagada. Rohkem leiad lehelt <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
     ]
@@ -2574,5 +2596,92 @@
     "idea": "Paku idee",
     "source": "Lähtekood GitHubis",
     "docs": "Juhendid"
+  },
+  "tools": {
+    "label": "Tools",
+    "release": "Uusim versioon",
+    "noRelease": "Väljalaset veel pole",
+    "copy": "Kopeeri",
+    "copied": "Kopeeritud",
+    "source": "Lähtekood",
+    "issues": "Ideed ja vead",
+    "readme": "Täielik juhend README-s",
+    "pages": {
+      "mumpeer": {
+        "title": "mumpeer",
+        "description": "mumpeer on väike releeserver Mumcordi otseühenduste jaoks: kui kaks inimest ei saa üksteiseni otse või tahavad oma IP-aadressi peita.",
+        "lead": "Väike releeserver Mumcordi otseühenduste jaoks kasutajate vahel, näiteks ekraanijagamiseks või täismõõdus piltide jaoks. Kui kaks inimest ei saa üksteiseni otse, CGNAT-i, range tulemüüri taga või UDP-ta võrkudes, või ei taha oma IP-aadressi näidata, ühenduvad mõlemad hoopis releega. See annab edasi vaid krüpteeritud pakette, nagu TURN-server.",
+        "features": [
+          {
+            "title": "Sinu Mumble-serveri kõrval",
+            "body": "Kogukond käitab mumpeeri oma Mumble-serveri kõrval, koos releebotiga `mumbot peer`. Bot teatab releest ja jagab lühiealisi tokeneid. Mumble-server jääb muutmata."
+          },
+          {
+            "title": "Ainult kinnitatud kasutajad",
+            "body": "Token kehtib ainult täpselt kahe sertifikaadi jaoks, üks kord kummalgi poolel ja vaikimisi 120 sekundit. Relee ei edasta kunagi mujale ega ava ise ühtegi ühendust, seega pole see avatud proksi."
+          },
+          {
+            "title": "Otspunktkrüptitud",
+            "body": "Releest läbi käib kahe kasutaja vaheline eraldi krüpteeritud ühendus, mis on seotud nende Mumble'i sertifikaatidega. Relee ei saa seda ei lugeda ega muuta."
+          },
+          {
+            "title": "Läbi peaaegu iga tulemüüri",
+            "body": "QUIC üle UDP või, kus UDP on blokeeritud, TLS üle TCP. Mõlemad pordis 443 ja TLS 1.3-ga."
+          },
+          {
+            "title": "Täiesti valikuline",
+            "body": "Mumcord töötab ka ilma boti ja releeta. Mumcordis valid sina: relee välja, ainult kui otseühendus ebaõnnestub, või alati."
+          }
+        ],
+        "listTitle": "Mida operaator näha võib",
+        "list": [
+          "Seansi mõlema kasutaja IP-aadresse",
+          "Millised kaks sertifikaati omavahel räägivad",
+          "Kui palju andmeid liigub ja millal",
+          "Mitte sisu: see on otspunktkrüptitud. Mumcord ütleb seda sulle enne, kui releed kasutad",
+          "Kunagi ei logita: täielikke IP-aadresse, täielikke sertifikaadiräsisid, tokeneid ega pakettide sisu"
+        ],
+        "startTitle": "Käivita see Dockeriga",
+        "startBody": "Loo API jaoks saladus (`openssl rand -hex 32 > api_secret`), salvesta näidiskonfiguratsioon `mumpeer.example.toml` nimega `mumpeer.toml` ja määra selles `public_host`. Seejärel käivita relee ja bot koos:",
+        "startNote": "Esimesel käivitamisel ilmub relee sõrmejälg logisse. Bot teatab selle, muud pole vaja jagada. Ava UDP ja TCP pordis 443, mitte API porti. Releebot `mumbot peer` ja releetugi Mumcordis on alles ehitamisel."
+      },
+      "mumquiz": {
+        "title": "mumquiz",
+        "description": "mumquiz on viktoriinibot Mumble-serveritele: esitab küsimusi, loeb vastuseid vestluses, annab vihjeid ja jagab punkte.",
+        "lead": "Viktoriinibot Mumble-serveritele: esitab küsimusi, loeb vastuseid vestluses, annab vihjeid, jagab punkte ja jätab võidud meelde. See logib sisse nagu inimene, oma sertifikaadiga. Seetõttu töötab see igal tavalisel Mumble-serveril, ilma pluginata ja ilma seadistust muutmata.",
+        "features": [
+          {
+            "title": "Mäng",
+            "body": "Niipea kui kanalis on piisavalt inimesi, algab mäng. Mõne aja pärast tuleb vihje paari tähega, viie vihje järel vastus. Võidab see, kes jõuab esimesena vooru punktisummani."
+          },
+          {
+            "title": "Vastustega helde",
+            "body": "Suur- ja väiketähed, kirjavahemärgid ning kirjapildid nagu ae ja ä või ss ja ß loetakse samaks."
+          },
+          {
+            "title": "Kena Mumcordis",
+            "body": "Mumcordis kuvatakse mängusõnumid sõnumikaartidena, ametlikus Mumble'i kliendis lihtsa vestlusetekstina."
+          },
+          {
+            "title": "Sinu enda küsimused",
+            "body": "Küsimused asuvad lihtsas TOML-failis. Skript võib soovi korral tuua üle algse boti küsimused."
+          }
+        ],
+        "listTitle": "Käsud vestluses",
+        "list": [
+          "Abi, privaatselt sulle",
+          "Selle vooru viisik",
+          "Kõigi aegade viisik",
+          "Toida botti, muidu jääb ta näljaseks",
+          "Laadi küsimused uuesti (mängujuhid)",
+          "Liigu teise kanalisse (mängujuhid)",
+          "Lisa või eemalda mängujuht"
+        ],
+        "startTitle": "Ehita ja käita ise",
+        "startBody": "Rustiga ehitad boti nii:",
+        "startNote": "Siis liitu kanaliga „Quiz“ ja kirjuta `!help`. Mäng algab niipea, kui seal on kaks inimest.",
+        "credit": "Mäng ja selle sõnumid pärinevad projektist zorgch/irc-quizbot (GPL-3.0), porditud Rustile ja Mumble'i protokollile, samasuguse protokollikihiga nagu Mumcord."
+      }
+    }
   }
 }

@@ -10,6 +10,7 @@ import type { GamesPage } from "../lib/games";
 import type { Guide } from "../lib/server-guide";
 import type { ThemesPage } from "../lib/themes";
 import type { MumbotText } from "../lib/mumbot";
+import type { ToolPage, ToolsPage } from "../lib/tools";
 
 export interface FeaturesText extends Omit<FeaturesPage, "groups"> {
   groups: {
@@ -57,6 +58,12 @@ export interface LocaleBundle {
   themes?: ThemesText;
   /** Missing in translations made before the Mumbot page; English fills in. */
   mumbot?: MumbotText;
+  /** Missing in translations made before the mumpeer and mumquiz pages; English fills in. */
+  tools?: ToolsText;
+}
+
+export interface ToolsText extends Partial<Omit<ToolsPage, "pages">> {
+  pages?: { mumpeer?: Partial<ToolPage>; mumquiz?: Partial<ToolPage> };
 }
 
 export interface ThemesText extends Omit<ThemesPage, "groups"> {

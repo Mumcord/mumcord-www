@@ -88,6 +88,15 @@
       "botIssues": {
         "title": "Issues",
         "desc": "Nápady a chyby pre Mumbot"
+      },
+      "tools": "Tools",
+      "toolPeer": {
+        "title": "mumpeer",
+        "desc": "Relay pre priame spojenia"
+      },
+      "toolQuiz": {
+        "title": "mumquiz",
+        "desc": "Kvízový bot pre tvoj server"
       }
     },
     "hero": {
@@ -2265,7 +2274,7 @@
         "label": "open source; platíš len za stroj"
       }
     ],
-    "stepsTitle": "V ôsmich krokoch",
+    "stepsTitle": "V ôsmich krokoch a jednom voliteľnom",
     "troubleTitle": "Údržba a problémy",
     "trouble": [
       {
@@ -2371,6 +2380,19 @@
           "1. Pripoj sa s používateľským menom <code>SuperUser</code> a heslom z <code>.env</code>.",
           "2. Pravý klik na najvyšší kanál → <strong>Pridať</strong>, pre každý kanál, ktorý chceš.",
           "3. Aby si nepotreboval zakaždým SuperUser: pripoj sa cez Mumcord pod vlastným menom a klikni na svoje meno vľavo dole → <strong>Zaregistrovať sa na tomto serveri</strong>. Potom ako SuperUser: najvyšší kanál → <strong>Upraviť</strong> → <strong>Skupiny</strong> → pridaj svoje meno do skupiny <code>admin</code>."
+        ]
+      },
+      {
+        "id": "relay",
+        "title": "Voliteľné: relay pre priame spojenia",
+        "body": [
+          "Aby zdieľanie obrazovky a obrázky v plnej veľkosti fungovali aj vtedy, keď sa dvaja ľudia nedokážu spojiť priamo, alebo aby nikto nevidel IP adresu toho druhého, môžeš vedľa servera prevádzkovať relay <a href=\"/en/mumpeer\">mumpeer</a>. Obsah ostáva šifrovaný end-to-end.",
+          "Dobré vedieť: mumpeer už vyšiel. Relay bot <code>mumbot peer</code> a podpora relay v Mumcorde sa ešte stavajú, dovtedy ostáva relay nevyužité.",
+          "V priečinku servera vytvor tajný kľúč a konfiguráciu a do <code>public_host</code> v <code>mumpeer.toml</code> zadaj adresu svojho servera. Potom pridaj nižšie uvedené služby do <code>docker-compose.yml</code> pod <code>services:</code> a <code>mumpeer-data:</code> pod <code>volumes:</code>."
+        ],
+        "after": [
+          "Spusti pomocou <code>docker compose up -d</code> a otvor aj UDP a TCP na porte 443. Ak tam už beží webový server, zvoľ v <code>mumpeer.toml</code> iné porty. Port API neotváraj.",
+          "Pri prvom štarte sa v logu zobrazí odtlačok relay. Bot ho oznámi, nič ďalšie sa zdieľať nemusí. Viac na stránke <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
     ]
@@ -2574,5 +2596,92 @@
     "idea": "Navrhnúť nápad",
     "source": "Zdrojový kód na GitHube",
     "docs": "Dokumentácia"
+  },
+  "tools": {
+    "label": "Tools",
+    "release": "Najnovšia verzia",
+    "noRelease": "Zatiaľ žiadne vydanie",
+    "copy": "Kopírovať",
+    "copied": "Skopírované",
+    "source": "Zdrojový kód",
+    "issues": "Nápady a chyby",
+    "readme": "Celý návod v README",
+    "pages": {
+      "mumpeer": {
+        "title": "mumpeer",
+        "description": "mumpeer je malý relay pre priame spojenia Mumcordu: pre prípad, keď sa dvaja ľudia nedokážu spojiť priamo alebo chcú skryť svoju IP adresu.",
+        "lead": "Malý relay pre priame spojenia Mumcordu medzi používateľmi, napríklad na zdieľanie obrazovky alebo obrázky v plnej veľkosti. Keď sa dvaja ľudia nedokážu spojiť priamo, za CGNAT, prísnymi firewallmi alebo v sieťach bez UDP, alebo nechcú ukázať svoju IP adresu, pripoja sa obaja namiesto toho k relay. To len odovzdáva šifrované pakety, ako server TURN.",
+        "features": [
+          {
+            "title": "Vedľa tvojho servera Mumble",
+            "body": "Komunita prevádzkuje mumpeer vedľa svojho servera Mumble, spolu s relay botom `mumbot peer`. Bot relay oznamuje a rozdáva krátkodobé tokeny. Server Mumble ostáva nezmenený."
+          },
+          {
+            "title": "Len overení používatelia",
+            "body": "Token platí len pre presne dva certifikáty, raz na každej strane a predvolene 120 sekúnd. Relay nikdy nič nepreposiela inam a nikdy samo neotvára spojenia, takže nie je otvoreným proxy."
+          },
+          {
+            "title": "Šifrované end-to-end",
+            "body": "To, čo prechádza cez relay, je samostatné šifrované spojenie medzi dvoma používateľmi, viazané na ich certifikáty Mumble. Relay ho nemôže ani čítať, ani meniť."
+          },
+          {
+            "title": "Cez takmer každý firewall",
+            "body": "QUIC cez UDP alebo, kde je UDP blokované, TLS cez TCP. Oboje na porte 443 a s TLS 1.3."
+          },
+          {
+            "title": "Úplne voliteľné",
+            "body": "Mumcord funguje aj bez bota a relay. V Mumcorde si vyberáš: relay vypnuté, len keď priame spojenie zlyhá, alebo vždy."
+          }
+        ],
+        "listTitle": "Čo môže prevádzkovateľ vidieť",
+        "list": [
+          "IP adresy oboch používateľov relácie",
+          "Ktoré dva certifikáty spolu komunikujú",
+          "Koľko dát tečie a kedy",
+          "Nie obsah: ten je šifrovaný end-to-end. Mumcord ti to povie skôr, než relay použiješ",
+          "Nikdy sa nelogujú: celé IP adresy, celé hashe certifikátov, tokeny a obsah paketov"
+        ],
+        "startTitle": "Spusti ho v Dockeri",
+        "startBody": "Vytvor tajný kľúč pre API (`openssl rand -hex 32 > api_secret`), ulož ukážkovú konfiguráciu `mumpeer.example.toml` ako `mumpeer.toml` a nastav v nej `public_host`. Potom spusti relay a bota spolu:",
+        "startNote": "Pri prvom štarte sa v logu zobrazí odtlačok relay. Bot ho oznámi, nič ďalšie sa zdieľať nemusí. Otvor UDP a TCP na porte 443, nie port API. Relay bot `mumbot peer` a podpora relay v Mumcorde sa ešte stavajú."
+      },
+      "mumquiz": {
+        "title": "mumquiz",
+        "description": "mumquiz je kvízový bot pre servery Mumble: kladie otázky, číta odpovede v chate, dáva nápovedy a udeľuje body.",
+        "lead": "Kvízový bot pre servery Mumble: kladie otázky, číta odpovede v chate, dáva nápovedy, udeľuje body a pamätá si výhry. Prihlasuje sa ako človek, s vlastným certifikátom. Preto beží na každom štandardnom serveri Mumble, bez pluginu a bez zmeny konfigurácie.",
+        "features": [
+          {
+            "title": "Hra",
+            "body": "Hneď ako je v kanáli dosť ľudí, začne sa. Po chvíli príde nápoveda s niekoľkými písmenami, po piatich nápovedách odpoveď. Vyhráva ten, kto prvý dosiahne skóre kola."
+          },
+          {
+            "title": "Štedrý k odpovediam",
+            "body": "Veľké a malé písmená, interpunkcia a zápisy ako ae a ä alebo ss a ß sa počítajú ako to isté."
+          },
+          {
+            "title": "Pekný v Mumcorde",
+            "body": "V Mumcorde sa správy hry zobrazujú ako karty správ, v oficiálnom klientovi Mumble ako obyčajný text chatu."
+          },
+          {
+            "title": "Tvoje vlastné otázky",
+            "body": "Otázky žijú v jednoduchom súbore TOML. Skript vie prevziať otázky pôvodného bota, ak chceš."
+          }
+        ],
+        "listTitle": "Príkazy v chate",
+        "list": [
+          "Pomoc, súkromne len pre teba",
+          "Top päťka tohto kola",
+          "Top päťka všetkých čias",
+          "Nakŕm bota, inak vyhladne",
+          "Znova načítať otázky (herní majstri)",
+          "Prejsť do iného kanála (herní majstri)",
+          "Pridať alebo odobrať herného majstra"
+        ],
+        "startTitle": "Postav a spusti ho sám",
+        "startBody": "S Rustom bota postavíš takto:",
+        "startNote": "Potom vstúp do kanála „Quiz“ a napíš `!help`. Hra sa začne, hneď ako tam budú dvaja ľudia.",
+        "credit": "Hra a jej správy pochádzajú z projektu zorgch/irc-quizbot (GPL-3.0), prenesené do Rustu a na protokol Mumble, s rovnakou protokolovou vrstvou ako Mumcord."
+      }
+    }
   }
 }

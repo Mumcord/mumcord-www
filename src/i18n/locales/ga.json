@@ -88,6 +88,15 @@
       "botIssues": {
         "title": "Saincheisteanna",
         "desc": "Smaointe agus fabhtanna do Mumbot"
+      },
+      "tools": "Tools",
+      "toolPeer": {
+        "title": "mumpeer",
+        "desc": "Athsheachadán do naisc dhíreacha"
+      },
+      "toolQuiz": {
+        "title": "mumquiz",
+        "desc": "Bota ceistiúcháin do d'fhreastalaí"
       }
     },
     "hero": {
@@ -2265,7 +2274,7 @@
         "label": "foinse oscailte; ní íocann tú ach as an meaisín"
       }
     ],
-    "stepsTitle": "In ocht gcéim",
+    "stepsTitle": "In ocht gcéim, móide ceann roghnach",
     "troubleTitle": "Cothabháil agus fadhbanna",
     "trouble": [
       {
@@ -2371,6 +2380,19 @@
           "1. Nasc leis an ainm úsáideora <code>SuperUser</code> agus an pasfhocal ó <code>.env</code>.",
           "2. Deaschliceáil ar an gcainéal is airde → <strong>Cuir leis</strong>, do gach cainéal atá uait.",
           "3. Ionas nach dteastóidh SuperUser gach uair: nasc le Mumcord faoi d’ainm féin agus cliceáil d’ainm thíos ar chlé → <strong>Cláraigh ar an bhfreastalaí seo</strong>. Ansin, mar SuperUser, an cainéal is airde → <strong>Cuir in eagar</strong> → <strong>Grúpaí</strong> → cuir d’ainm leis an ngrúpa <code>admin</code>."
+        ]
+      },
+      {
+        "id": "relay",
+        "title": "Roghnach: athsheachadán do naisc dhíreacha",
+        "body": [
+          "Chun go n-oibreoidh comhroinnt scáileáin agus íomhánna lánmhéide fiú nuair nach féidir le beirt teacht ar a chéile go díreach, nó chun nach bhfeicfidh aon duine IP an duine eile, is féidir leat an t-athsheachadán <a href=\"/en/mumpeer\">mumpeer</a> a rith taobh leis an bhfreastalaí. Fanann an t-ábhar criptithe ó cheann go ceann.",
+          "Is maith an rud a fhios: tá mumpeer amuigh cheana. Tá an bota athsheachadáin <code>mumbot peer</code> agus tacaíocht athsheachadáin i Mumcord fós á dtógáil, go dtí sin fanann an t-athsheachadán gan úsáid.",
+          "I bhfillteán an fhreastalaí, cruthaigh rún agus an chumraíocht, agus cuir seoladh do fhreastalaí faoi <code>public_host</code> i <code>mumpeer.toml</code>. Ansin cuir na seirbhísí thíos le <code>docker-compose.yml</code> faoi <code>services:</code>, agus <code>mumpeer-data:</code> faoi <code>volumes:</code>."
+        ],
+        "after": [
+          "Tosaigh le <code>docker compose up -d</code> agus oscail UDP agus TCP ar phort 443 freisin. Má ritheann freastalaí gréasáin ansin cheana, roghnaigh calafoirt eile i <code>mumpeer.toml</code>. Ná hoscail port an API.",
+          "Ar an gcéad tosú taispeántar méarlorg an athsheachadáin sa log. Fógróidh an bota é, ní gá aon rud eile a roinnt. Tuilleadh ar leathanach <a href=\"/en/mumpeer\">mumpeer</a>."
         ]
       }
     ]
@@ -2574,5 +2596,92 @@
     "idea": "Mol smaoineamh",
     "source": "Cód foinseach ar GitHub",
     "docs": "Doiciméid"
+  },
+  "tools": {
+    "label": "Tools",
+    "release": "An leagan is déanaí",
+    "noRelease": "Níl scaoileadh ar bith ann fós",
+    "copy": "Cóipeáil",
+    "copied": "Cóipeáilte",
+    "source": "Cód foinse",
+    "issues": "Smaointe agus fabhtanna",
+    "readme": "An treoir iomlán sa README",
+    "pages": {
+      "mumpeer": {
+        "title": "mumpeer",
+        "description": "Is athsheachadán beag é mumpeer do naisc dhíreacha Mumcord: do nuair nach féidir le beirt teacht ar a chéile go díreach nó nuair a theastaíonn uathu a seoladh IP a cheilt.",
+        "lead": "Athsheachadán beag do naisc dhíreacha Mumcord idir úsáideoirí, mar shampla le haghaidh comhroinnt scáileáin nó íomhánna lánmhéide. Nuair nach féidir le beirt teacht ar a chéile go díreach, taobh thiar de CGNAT, ballaí dóiteáin docha nó i líonraí gan UDP, nó nuair nach dteastaíonn uathu a seoladh IP a thaispeáint, ceanglaíonn an bheirt acu leis an athsheachadán ina ionad. Ní dhéanann sé ach na paicéid chriptithe a chur ar aghaidh, cosúil le freastalaí TURN.",
+        "features": [
+          {
+            "title": "Taobh le do fhreastalaí Mumble",
+            "body": "Ritheann pobal mumpeer taobh lena bhfreastalaí Mumble, in éineacht leis an mbota athsheachadáin `mumbot peer`. Fógraíonn an bota an t-athsheachadán agus tugann sé comharthaí gearrshaolacha amach. Fanann an freastalaí Mumble gan athrú."
+          },
+          {
+            "title": "Úsáideoirí fíoraithe amháin",
+            "body": "Oibríonn comhartha do dhá theastas go beacht amháin, uair amháin ar gach taobh agus ar feadh 120 soicind de réir réamhshocraithe. Ní chuireann an t-athsheachadán ar aghaidh in áit ar bith eile riamh agus ní osclaíonn sé naisc ann féin riamh, mar sin ní seachfhreastalaí oscailte é."
+          },
+          {
+            "title": "Criptithe ó cheann go ceann",
+            "body": "Is nasc criptithe ar leith idir an bheirt úsáideoirí an rud a théann tríd an athsheachadán, ceangailte lena dteastais Mumble. Ní féidir leis an athsheachadán é a léamh ná a athrú."
+          },
+          {
+            "title": "Trí bhalla dóiteáin ar bith beagnach",
+            "body": "QUIC thar UDP nó, nuair atá UDP blocáilte, TLS thar TCP. An dá cheann ar phort 443 agus le TLS 1.3."
+          },
+          {
+            "title": "Roghnach go hiomlán",
+            "body": "Oibríonn Mumcord gan bota ná athsheachadán freisin. I Mumcord roghnaíonn tú féin: athsheachadán as, nuair a theipeann ar nasc díreach amháin, nó i gcónaí."
+          }
+        ],
+        "listTitle": "Cad a fheiceann an t-oibreoir",
+        "list": [
+          "Seoltaí IP an dá úsáideoir i seisiún",
+          "Cén dá theastas atá ag labhairt lena chéile",
+          "Cé mhéad sonraí atá ag sreabhadh agus cathain",
+          "Ní an t-ábhar: tá sé criptithe ó cheann go ceann. Insíonn Mumcord duit é sula n-úsáideann tú athsheachadán",
+          "Ní logáiltear riamh: seoltaí IP iomlána, hais iomlána teastas, comharthaí agus ábhar paicéad"
+        ],
+        "startTitle": "Rith é le Docker",
+        "startBody": "Cruthaigh rún don API (`openssl rand -hex 32 > api_secret`), sábháil an cumraíocht shamplach `mumpeer.example.toml` mar `mumpeer.toml` agus socraigh `public_host` inti. Ansin tosaigh an t-athsheachadán agus an bota le chéile:",
+        "startNote": "Ar an gcéad tosú taispeántar méarlorg an athsheachadáin sa log. Fógraíonn an bota é, ní gá aon rud eile a roinnt. Oscail UDP agus TCP ar phort 443, ní port an API. Tá an bota athsheachadáin `mumbot peer` agus tacaíocht athsheachadáin i Mumcord fós á dtógáil."
+      },
+      "mumquiz": {
+        "title": "mumquiz",
+        "description": "Is bota ceistiúcháin é mumquiz do fhreastalaithe Mumble: cuireann sé ceisteanna, léann sé na freagraí sa chomhrá, tugann leideanna agus bronnann pointí.",
+        "lead": "Bota ceistiúcháin do fhreastalaithe Mumble: cuireann sé ceisteanna, léann sé na freagraí sa chomhrá, tugann leideanna, bronnann pointí agus cuimhníonn ar na buanna. Logálann sé isteach cosúil le duine, lena theastas féin. Sin an fáth a ritheann sé ar aon ghnáthfhreastalaí Mumble, gan breiseán agus gan athrú cumraíochta.",
+        "features": [
+          {
+            "title": "An cluiche",
+            "body": "Chomh luath agus atá go leor daoine sa chainéal, tosaíonn sé. Tar éis tamaill tagann leid le cúpla litir, tar éis cúig leid an freagra. Buann an té a shroicheann scór an bhabhta ar dtús."
+          },
+          {
+            "title": "Flaithiúil le freagraí",
+            "body": "Is ionann cás uachtair agus íochtair, poncaíocht agus litriú mar ae agus ä nó ss agus ß."
+          },
+          {
+            "title": "Álainn i Mumcord",
+            "body": "I Mumcord taispeántar teachtaireachtaí an chluiche mar chártaí teachtaireachta, sa chliant oifigiúil Mumble mar ghnáththéacs comhrá."
+          },
+          {
+            "title": "Do cheisteanna féin",
+            "body": "Maireann na ceisteanna i gcomhad simplí TOML. Féadann script ceisteanna an bhoit bhunaidh a thabhairt anall, más maith leat."
+          }
+        ],
+        "listTitle": "Orduithe sa chomhrá",
+        "list": [
+          "An chabhair, go príobháideach duit",
+          "Barr a cúig an bhabhta seo",
+          "Barr a cúig riamh",
+          "Beathaigh an bota, nó beidh ocras air",
+          "Athluchtaigh na ceisteanna (máistrí cluiche)",
+          "Bog go cainéal eile (máistrí cluiche)",
+          "Cuir máistir cluiche leis nó bain é"
+        ],
+        "startTitle": "Tóg agus rith féin é",
+        "startBody": "Le Rust tógann tú an bota mar seo:",
+        "startNote": "Ansin téigh isteach sa chainéal “Quiz” agus clóscríobh `!help`. Tosaíonn an cluiche chomh luath agus atá beirt ann.",
+        "credit": "Tagann an cluiche agus a theachtaireachtaí ó zorgch/irc-quizbot (GPL-3.0), portáilte go Rust agus go prótacal Mumble, leis an gcisil phrótacail chéanna le Mumcord."
+      }
+    }
   }
 }
