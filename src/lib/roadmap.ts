@@ -169,7 +169,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         id: "epic-2",
         tag: "Epic 2",
         title: "Mehrere Server, Themes und Feinschliff",
-        status: "now",
+        status: "done",
         version: "0.4.0",
         summary: "Alles erscheint zusammen als Version 0.4.0: mehrere Server, eigene Themes, das Overlay im Spiel für Windows und die ersten direkten Verbindungen zwischen Mumcord-Nutzern. Positional Audio, Spiel-Plugins und Bilder in voller Größe bleiben dabei Beta.",
                 groups: [
@@ -718,7 +718,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         id: "epic-2",
         tag: "Epic 2",
         title: "Several servers, themes and polish",
-        status: "now",
+        status: "done",
         version: "0.4.0",
         summary: "Everything ships together as version 0.4.0: several servers, your own themes, the in-game overlay on Windows and the first direct connections between Mumcord users. Positional audio, game plugins and full-size images stay beta.",
                 groups: [
