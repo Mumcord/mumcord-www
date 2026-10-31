@@ -8,8 +8,8 @@ import { MUMBOT_REPO } from "./mumbot";
 const REPOS = [REPO, MUMBOT_REPO, "Mumcord/mumpeer", "Mumcord/mumquiz", "Mumcord/mumcord-www"];
 
 export interface Contributor {
+  /** Only the GitHub username is shown, never a real name. */
   login: string;
-  name: string;
   url: string;
   avatar: string;
   commits: number;
@@ -29,20 +29,8 @@ const headers: Record<string, string> = {
 };
 if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
 
-// One request per repo and per person, however many pages ask.
+// One request per repo, however many pages ask.
 const repoCache = new Map<string, Promise<Contributor[]>>();
-const nameCache = new Map<string, Promise<string>>();
-
-function displayName(login: string): Promise<string> {
-  if (!nameCache.has(login))
-    nameCache.set(
-      login,
-      fetch(`https://api.github.com/users/${login}`, { headers })
-        .then(async (res) => (res.ok ? ((await res.json()) as { name: string | null }).name || login : login))
-        .catch(() => login),
-    );
-  return nameCache.get(login)!;
-}
 
 async function loadRepo(repo: string): Promise<Contributor[]> {
   try {
@@ -52,15 +40,7 @@ async function loadRepo(repo: string): Promise<Contributor[]> {
       return [];
     }
     const people = ((await res.json()) as GhContributor[]).filter((c) => c.type === "User"); // no dependabot and friends
-    return Promise.all(
-      people.map(async (c) => ({
-        login: c.login,
-        name: await displayName(c.login),
-        url: c.html_url,
-        avatar: `${c.avatar_url}&s=128`,
-        commits: c.contributions,
-      })),
-    );
+    return people.map((c) => ({ login: c.login, url: c.html_url, avatar: `${c.avatar_url}&s=128`, commits: c.contributions }));
   } catch (err) {
     console.warn(`[contributors] could not reach GitHub for ${repo}; leaving it out`, err);
     return [];

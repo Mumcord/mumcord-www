@@ -1,5 +1,5 @@
 ---
-// Contributor cards with avatar, name, @login and commits; used on the home page and the tool pages.
+// Contributor cards with avatar, @username and commits (no real names); used on the home page and the tool pages.
 import { Image } from "astro:assets";
 import { dicts, type Lang } from "../i18n";
 import type { Contributor } from "../lib/contributors";
@@ -19,12 +19,8 @@ const nf = new Intl.NumberFormat(lang);
       <li data-reveal>
         <a href={p.url} rel="noopener">
           <Image src={p.avatar} alt="" width={64} height={64} loading="lazy" />
-          <span class="people-name">{p.name}</span>
-          <span class="people-meta">
-            @{p.login}
-            {" · "}
-            <span>{`${nf.format(p.commits)} ${t.commits}`}</span>
-          </span>
+          <span class="people-name">@{p.login}</span>
+          <span class="people-meta">{`${nf.format(p.commits)} ${t.commits}`}</span>
         </a>
       </li>
     ))
