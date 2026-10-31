@@ -355,15 +355,20 @@
         {
           "tag": "Epic 4",
           "title": "Admin",
-          "body": "ACL:er, avstängningar, kanalhantering. Plus Mumcord som app för Android och iOS."
+          "body": "Behörigheter (ACL:er) och grupper, kanalhantering, kickar och avstängningar, listan över avstängda, registrerade användare och moderering, synligt bara där servern ger det."
         },
         {
           "tag": "Epic 5",
-          "title": "Distribution",
-          "body": "Signerade installationsprogram, automatisk uppdatering, frivilliga kraschrapporter, paketlistningar."
+          "title": "Mumcord i din telefon",
+          "body": "En app för Android och iOS: servrar, kanaler, push-to-talk, chatt och kontroller på låsskärmen. Först som APK och via TestFlight."
         },
         {
           "tag": "Epic 6",
+          "title": "Distribution",
+          "body": "Signerade installationsprogram, automatisk uppdatering, kraschrapporter bara om du går med på det, paketlistningar, Flathub och appbutikerna."
+        },
+        {
+          "tag": "Epic Future",
           "title": "GIF-sökning",
           "body": "Sök efter GIF:ar utan att skeppa en API-nyckel i appen som vem som helst kan plocka ut. Exakt hur är ännu inte bestämt."
         }
@@ -1747,7 +1752,9 @@
               "Högerklicka på lägg på: lämna rösten och fortsätt läsa, koppla från en server eller alla",
               "Kör installationsguiden igen utan att röra din identitet",
               "mumble://-länkar i chatten visas som ett kort för servern eller kanalen, ett klick ansluter",
-              "Egna ljud när du blir kickad eller bannad"
+              "Egna ljud när du blir kickad eller bannad",
+              "Ljudfiler i chatten med en egen spelare: spela upp, spola och ställ in volymen direkt i meddelandet",
+              "Länkar till Spotify, Apple Music, Tidal och andra musiktjänster blir ett musikkort som spelas via tjänstens officiella spelare, först efter ett klick"
             ],
             "mockups": [
               "Globala kortkommandon i inställningarna",
@@ -1760,7 +1767,9 @@
               "Byt enheter från mikrofon- och ljudavstängning",
               "Menyn för lägg på-knappen",
               "Kör installationsguiden igen",
-              "En mumble://-länk som kort"
+              "En mumble://-länk som kort",
+              "En ljudlänk med spelare i chatten",
+              "Ett musikkort i chatten"
             ]
           },
           {
@@ -1773,7 +1782,9 @@
               "Fäll ihop högerkolumnen helt eller till en smal list med avatarer, så att chatten får mer plats",
               "Översikten över privata meddelanden är omgjord",
               "En meny bakom kanalnamnet med alla åtgärder och kanalinfo",
-              "Server- och kanalträdet är omgjort: en högerklicksmeny på varje kanal, användargränsen bredvid namnet och tydliga statusikoner"
+              "Server- och kanalträdet är omgjort: en högerklicksmeny på varje kanal, användargränsen bredvid namnet och tydliga statusikoner",
+              "Snabbinställningarna har setts över",
+              "Användarpanelen nere till vänster har formgetts om"
             ],
             "mockups": [
               "Den nya installationsguiden",
@@ -1786,7 +1797,9 @@
               "Högerkolumnen som en smal list",
               "Den nya översikten över privata meddelanden",
               "Menyn bakom kanalnamnet",
-              "Det omgjorda server- och kanalträdet"
+              "Det omgjorda server- och kanalträdet",
+              "De översedda snabbinställningarna",
+              "Den nya användarpanelen"
             ]
           },
           {
@@ -1795,12 +1808,14 @@
               "Blockera personer: inga fler meddelanden, röst eller inbjudningar från dem, igenkända via certifikatet i stället för namnet",
               "Privata meddelanden bara från vänner, från alla eller från ingen, även per server. Främlingar hamnar bland meddelandeförfrågningarna",
               "Ett aviseringscenter bakom en klocka samlar omnämnanden, svar, förfrågningar och inbjudningar från alla servrar, och under Stör ej allt som annars skulle poppa upp",
-              "Watch-partyn laddar inget från YouTube eller Twitch så länge inbäddat innehåll är avstängt"
+              "Watch-partyn laddar inget från YouTube eller Twitch så länge inbäddat innehåll är avstängt",
+              "Ett tips i chatten när länkförhandsvisningar och inbäddat innehåll är avstängda, i stället för att tyst visa bara länken"
             ],
             "mockups": [
               "Blockera en person",
               "En meddelandeförfrågan från en främling",
-              "Aviseringscenter"
+              "Aviseringscenter",
+              "Ett tips när förhandsvisningar är avstängda"
             ]
           },
           {
@@ -1848,7 +1863,6 @@
             "title": "Uppdateringar och installation",
             "items": [
               "Uppdateringar direkt i appen: sök, ladda ner, verifiera signaturen och starta om",
-              "Signerade Windows-byggen, installationsprogram och app",
               "På Windows en portabel Mumcord.exe bredvid installationsprogrammet"
             ],
             "mockups": [
@@ -1860,29 +1874,117 @@
       {
         "id": "epic-4",
         "title": "Admin",
-        "summary": "Så att Mumcord helt kan ersätta den officiella klienten, plus Mumcord som app för din telefon.",
-        "items": [
-          "Redigera behörigheter (ACL:er)",
-          "Avstängningar",
-          "Skapa, flytta och hantera kanaler",
-          "Android- och iOS-app: som APK att ladda ner och via TestFlight, appbutikerna kommer senare"
+        "summary": "Så att Mumcord helt kan ersätta den officiella klienten: hantera kanaler, behörigheter, avstängningar och personer, med enbart vanliga Mumble-meddelanden och utan ändringar på servern.",
+        "groups": [
+          {
+            "title": "Admin där du redan tittar",
+            "items": [
+              "Adminåtgärder visas bara där servern ger dem. Utan rättigheter ser du inget av det",
+              "Allt finns i högerklicksmenyerna för kanaler och personer och i servermenyn, inget separat adminläge",
+              "En privat logg på din dator: vem du stängde av förra veckan och varför"
+            ],
+            "mockups": [
+              "Adminåtgärder i högerklicksmenyn"
+            ]
+          },
+          {
+            "title": "Kanaler och behörigheter",
+            "items": [
+              "Skapa, byt namn på, beskriv, flytta, ordna om och ta bort kanaler, inklusive tillfälliga kanaler, användargränser och länkar",
+              "Sätta, ändra och ta bort kanallösenord, på samma sätt som i den officiella klienten",
+              "En redigerare för behörigheter (ACL:er) och grupper som även icke-experter kan läsa: vad som ärvs, vilken regel som vinner och till sist vem som får göra vad",
+              "Serverinfo för admins och redigering av välkomsttexten, så långt protokollet tillåter"
+            ],
+            "mockups": [
+              "Redigera en kanal",
+              "En kanals behörigheter"
+            ]
+          },
+          {
+            "title": "Personer och avstängningar",
+            "items": [
+              "Ta bort personer från servern med en anledning, och stäng av dem under vald tid om du vill, via certifikat, IP-adress eller båda",
+              "Se, sök i och redigera listan över avstängningar, även för personer som inte är online",
+              "Flytta folk snabbt: en person till dig, eller alla i en kanal till en annan",
+              "Hantera registrerade användare: när de senast sågs, byta namn, avregistrera och registrera personer som är online",
+              "Tysta eller döva någon för alla, göra personen till prioriterad talare och återställa en oönskad kommentar eller avatar"
+            ],
+            "mockups": [
+              "Stänga av någon",
+              "Registrerade användare"
+            ]
+          },
+          {
+            "title": "Windows",
+            "items": [
+              "Signerade Windows-byggen, installationsprogram och app"
+            ]
+          }
         ]
       },
       {
         "id": "epic-5",
+        "title": "Mumcord i din telefon",
+        "summary": "Mumcord som app för Android och iOS, kompatibel med vanliga Mumble-servrar som på datorn. Först som APK att ladda ner och via TestFlight, appbutikerna kommer senare.",
+        "groups": [
+          {
+            "title": "Grund och distribution",
+            "items": [
+              "Android- och iOS-app ovanpå den befintliga Rust-motorn, byggd i CI",
+              "En signerad APK i GitHub-releaserna och iOS via TestFlight, inga appbutiker ännu",
+              "Tydligt nedskrivet: vilka datorfunktioner den första versionen lämnar utanför och varför"
+            ]
+          },
+          {
+            "title": "Servrar, kanaler och identitet",
+            "items": [
+              "Hitta, lägga till och ansluta till servrar, med en navigering som fungerar med en tumme",
+              "Skapa en ny identitet eller för över din från datorn på ett säkert sätt, så att ditt namn, dina vänner och dina behörigheter finns kvar",
+              "Kanaler och personer tydligt upplagda på en liten skärm, med samma information som på datorn"
+            ],
+            "mockups": [
+              "Serverlista, kanalträd och push-to-talk i telefonen"
+            ]
+          },
+          {
+            "title": "Prata och chatta",
+            "items": [
+              "En stor push-to-talk-knapp, pålitlig röstaktivering och ljud där du väntar dig det: hörsnäcka, högtalare eller Bluetooth",
+              "Rösten fortsätter med skärmen av, med prata, tysta, döva och lämna på låsskärmen",
+              "Kanalchatt och privata meddelanden, sköna att använda i telefonen",
+              "Aviseringar för omnämnanden, meddelanden och förfrågningar, utan någon push-server"
+            ],
+            "mockups": [
+              "Chatt, låsskärm och inställningar i telefonen"
+            ]
+          },
+          {
+            "title": "Vardagen i telefonen",
+            "items": [
+              "Korta, tydliga inställningar med bara det som är vettigt i en telefon",
+              "Håller anslutningen vid nätverksbyten och är snäll mot batteriet och mobildatan",
+              "Fullt användbart med TalkBack, VoiceOver och stor systemtext"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "epic-6",
         "title": "Distribution",
         "summary": "Installera utan varningar och alltid uppdaterat.",
         "items": [
           "Signerade installationsprogram, ingen varning från SmartScreen eller Gatekeeper: redan förberett i release-flödet för Windows och macOS, aktivt så snart certifikaten är på plats",
           "Automatiska uppdateringar",
           "Kraschrapporter, bara om du godkänner",
-          "Paketförråd och appbutiker"
+          "Paketförråd och appbutiker",
+          "Mumcord på Flathub, för alla Linux-distributioner direkt från programcentret",
+          "Telefonappen i Google Play, App Store och F-Droid"
         ]
       },
       {
-        "id": "epic-6",
-        "title": "GIF-sökning",
-        "summary": "Sök i stället för bara favoriter.",
+        "id": "epic-future",
+        "title": "Idéer för senare",
+        "summary": "Idéer utan planerad epic, som GIF-sökning.",
         "items": [
           "GIF-sökning utan att skeppa en API-nyckel i appen som vem som helst kan plocka ut",
           "Alternativen är en liten relätjänst eller din egen nyckel; bestäms senare"

@@ -294,8 +294,10 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Den Einrichtungsassistenten erneut starten, ohne die Identität anzufassen",
               "mumble://-Links im Chat erscheinen als Karte für Server oder Kanal, ein Klick verbindet",
               "Eigene Töne, wenn du gekickt oder gebannt wirst",
+              "Audiodateien im Chat mit eigenem Player: abspielen, spulen und Lautstärke direkt in der Nachricht",
+              "Links zu Spotify, Apple Music, Tidal und anderen Musikdiensten werden zur Musikkarte, die erst nach einem Klick über den offiziellen Player des Dienstes spielt",
             ],
-            done: [1, 4, 5, 6, 7, 8, 10, 11],
+            done: [1, 2, 4, 5, 6, 7, 8, 9, 10, 11],
             mockups: [
               { shot: "epic3-64-hotkeys-settings-dark", issue: 64, caption: "Globale Tastenkürzel in den Einstellungen" },
               { shot: "epic3-65-tray-menu-and-icon-states-dark", issue: 65, caption: "Volles Tray-Menü und Symbolzustände" },
@@ -308,6 +310,8 @@ const source: Record<"de" | "en", RoadmapPage> = {
               { shot: "disconnect-menu-dark", issue: 154, caption: "Menü am Auflegen-Knopf" },
               { shot: "epic3-rerun-wizard-dark", issue: 149, caption: "Einrichtungsassistent erneut starten" },
               { shot: "mumble-link-card-dark", issue: 175, caption: "Ein mumble://-Link als Karte" },
+              { shot: "audio-embed-dark", issue: 260, caption: "Ein Audio-Link mit Player im Chat" },
+              { shot: "music-embed-dark", issue: 262, caption: "Eine Musikkarte im Chat" },
             ],
           },
           {
@@ -321,8 +325,10 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Die Übersicht der privaten Nachrichten neu gestaltet",
               "Ein Menü hinter dem Kanalnamen mit allen Aktionen und einer Kanal-Info",
               "Server- und Kanalbaum neu gestaltet: Rechtsklick-Menü an jedem Kanal, Nutzerlimit am Namen und klare Status-Symbole",
+              "Schnelleinstellungen überarbeitet",
+              "Das Nutzer-Panel unten links neu gestaltet",
             ],
-            done: [4, 5],
+            done: [4, 5, 6, 7],
             mockups: [
               { shot: "wizard-1-welcome-dark", issue: 159, caption: "Der neue Einrichtungsassistent" },
               { shot: "wizard-0-presets-dark", issue: 159, caption: "Voreinstellungen im Assistenten" },
@@ -335,6 +341,8 @@ const source: Record<"de" | "en", RoadmapPage> = {
               { shot: "pm-dark", issue: 173, caption: "Die neue Übersicht der privaten Nachrichten" },
               { shot: "channel-menu-dark", issue: 170, caption: "Das Menü hinter dem Kanalnamen" },
               { shot: "tree-dark", issue: 172, caption: "Der neue Server- und Kanalbaum" },
+              { shot: "quick-settings-dark", issue: 234, caption: "Die überarbeiteten Schnelleinstellungen" },
+              { shot: "user-panel-dark", issue: 246, caption: "Das neue Nutzer-Panel" },
             ],
           },
           {
@@ -344,12 +352,14 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Private Nachrichten nur von Freunden, von allen oder von niemandem, auch pro Server. Fremde landen bei den Nachrichtenanfragen",
               "Eine Benachrichtigungszentrale an der Glocke sammelt Erwähnungen, Antworten, Anfragen und Einladungen von allen Servern, bei „Bitte nicht stören“ auch alles, was sonst aufpoppen würde",
               "Watch-Partys laden nichts von YouTube oder Twitch, solange eingebettete Inhalte ausgeschaltet sind",
+              "Ein Hinweis im Chat, wenn Link-Vorschauen und eingebettete Inhalte ausgeschaltet sind, statt kommentarlos nur den Link zu zeigen",
             ],
-            done: [1, 3],
+            done: [1, 2, 3],
             mockups: [
               { shot: "block-menu-dark", issue: 140, caption: "Eine Person blockieren" },
               { shot: "pm-chat-request-dark", issue: 141, caption: "Nachrichtenanfrage einer fremden Person" },
               { shot: "notification-centre-dark", issue: 143, caption: "Benachrichtigungszentrale" },
+              { shot: "embed-hint-dark", issue: 261, caption: "Hinweis bei ausgeschalteten Vorschauen" },
             ],
           },
           {
@@ -376,7 +386,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Audio pro Kanal: Musikqualität, Low-Latency-Modus und Bitrate merkt sich jeder Kanal selbst",
               "Hochwertige Rauschunterdrückung mit dem RNNoise-Modell von 2024, als Beta",
             ],
-            done: [0, 1],
+            done: [0, 1, 2],
             mockups: [
               { shot: "connection-quick-panel-dark", issue: 155, caption: "Sprachqualität direkt an der Verbindungsinfo" },
               { shot: "low-latency-dark", issue: 156, caption: "Low-Latency-Modus" },
@@ -399,10 +409,9 @@ const source: Record<"de" | "en", RoadmapPage> = {
             title: "Updates und Installation",
             items: [
               "Updates direkt in der App: prüfen, herunterladen, Signatur prüfen und neu starten",
-              "Signierte Windows-Builds, Installer und App",
               "Unter Windows eine portable Mumcord.exe neben dem Installer",
             ],
-            done: [2],
+            done: [1],
             mockups: [
               { shot: "update-available-dark", issue: 168, caption: "Ein Update ist da" },
             ],
@@ -413,13 +422,104 @@ const source: Record<"de" | "en", RoadmapPage> = {
         id: "epic-4",
         tag: "Epic 4",
         title: "Admin",
-        status: "later",
-        summary: "Damit Mumcord den offiziellen Client ganz ersetzen kann, dazu Mumcord als App fürs Handy.",
-        items: ["Rechte (ACLs) bearbeiten", "Bannen", "Kanäle anlegen, verschieben und verwalten", "Android- und iOS-App: als APK zum Herunterladen und über TestFlight, die App Stores kommen später"],
+        status: "planned",
+        summary: "Damit Mumcord den offiziellen Client ganz ersetzen kann: Kanäle, Rechte, Banns und Personen verwalten, nur mit normalen Mumble-Nachrichten und ohne Änderung am Server.",
+        groups: [
+          {
+            title: "Admin, wo du ohnehin suchst",
+            items: [
+              "Admin-Aktionen erscheinen nur, wo der Server sie dir erlaubt. Ohne Rechte siehst du nichts davon",
+              "Alles im Rechtsklick-Menü von Kanälen und Personen und im Server-Menü, ohne eigenen Admin-Modus",
+              "Ein privates Protokoll auf deinem Rechner: wen hast du letzte Woche gebannt und warum",
+            ],
+            mockups: [
+              { shot: "admin-menus-dark", issue: 249, caption: "Admin-Aktionen im Rechtsklick-Menü" },
+            ],
+          },
+          {
+            title: "Kanäle und Rechte",
+            items: [
+              "Kanäle anlegen, umbenennen, beschreiben, verschieben, sortieren und löschen, auch temporäre Kanäle, Nutzerlimits und Verknüpfungen",
+              "Kanal-Passwörter setzen, ändern und entfernen, so wie im offiziellen Client",
+              "Ein Editor für Rechte (ACLs) und Gruppen, den auch Nicht-Profis lesen können: was vererbt wird, welche Regel gewinnt und wer am Ende was darf",
+              "Server-Infos für Admins und die Willkommensnachricht bearbeiten, soweit das Protokoll es erlaubt",
+            ],
+            mockups: [
+              { shot: "admin-channel-edit-dark", issue: 250, caption: "Einen Kanal bearbeiten" },
+              { shot: "admin-acl-rules-dark", issue: 252, caption: "Die Rechte eines Kanals" },
+            ],
+          },
+          {
+            title: "Personen und Banns",
+            items: [
+              "Personen vom Server werfen, mit Grund, und auf Wunsch für eine Zeit bannen, nach Zertifikat, IP-Adresse oder beidem",
+              "Die Bannliste ansehen, durchsuchen und bearbeiten, auch Banns für Leute, die gerade nicht online sind",
+              "Leute schnell verschieben: eine Person zu dir oder alle aus einem Kanal in einen anderen",
+              "Registrierte Nutzer verwalten: wann sie zuletzt da waren, umbenennen, abmelden und Leute registrieren, die online sind",
+              "Für alle stumm oder taub schalten, Vorrang beim Sprechen geben und unerwünschte Kommentare oder Profilbilder zurücksetzen",
+            ],
+            mockups: [
+              { shot: "admin-ban-dialog-dark", issue: 253, caption: "Jemanden bannen" },
+              { shot: "admin-registered-users-dark", issue: 256, caption: "Registrierte Nutzer" },
+            ],
+          },
+          {
+            title: "Windows",
+            items: ["Signierte Windows-Builds, Installer und App"],
+          },
+        ],
       },
       {
         id: "epic-5",
         tag: "Epic 5",
+        title: "Mumcord fürs Handy",
+        status: "planned",
+        summary: "Mumcord als App für Android und iOS, kompatibel mit normalen Mumble-Servern wie am Desktop. Zuerst als APK zum Herunterladen und über TestFlight, die App Stores kommen später.",
+        groups: [
+          {
+            title: "Grundlage und Verteilung",
+            items: [
+              "Android- und iOS-App auf Basis der vorhandenen Rust-Engine, gebaut in der CI",
+              "Signierte APK in den GitHub-Releases und iOS über TestFlight, noch ohne App Stores",
+              "Klar beschrieben, welche Desktop-Funktionen in der ersten Version fehlen und warum",
+            ],
+          },
+          {
+            title: "Server, Kanäle und Identität",
+            items: [
+              "Server finden, hinzufügen und verbinden, mit einer Navigation für eine Hand",
+              "Eine neue Identität anlegen oder die vom Desktop sicher aufs Handy holen, damit Name, Freunde und Rechte bleiben",
+              "Kanäle und Personen übersichtlich auf dem kleinen Bildschirm, mit denselben Infos wie am Desktop",
+            ],
+            mockups: [
+              { shot: "mobile-servers-voice-dark", issue: 228, caption: "Serverliste, Kanalbaum und Push-to-Talk am Handy" },
+            ],
+          },
+          {
+            title: "Sprechen und Chatten",
+            items: [
+              "Ein großer Push-to-Talk-Knopf, zuverlässige Sprachaktivierung und Ton dort, wo du ihn erwartest: Hörmuschel, Lautsprecher oder Bluetooth",
+              "Sprache läuft weiter bei ausgeschaltetem Bildschirm, mit Sprechen, Stumm, Taub und Auflegen auf dem Sperrbildschirm",
+              "Kanal-Chat und private Nachrichten bequem am Handy",
+              "Benachrichtigungen für Erwähnungen, Nachrichten und Anfragen, ganz ohne Push-Server",
+            ],
+            mockups: [
+              { shot: "mobile-chat-lock-dark", issue: 228, caption: "Chat, Sperrbildschirm und Einstellungen am Handy" },
+            ],
+          },
+          {
+            title: "Alltag am Handy",
+            items: [
+              "Kurze, klare Einstellungen mit nur dem, was am Handy Sinn ergibt",
+              "Bleibt verbunden bei Netzwechseln und geht sparsam mit Akku und mobilen Daten um",
+              "Voll bedienbar mit TalkBack, VoiceOver und großer Systemschrift",
+            ],
+          },
+        ],
+      },
+      {
+        id: "epic-6",
+        tag: "Epic 6",
         title: "Auslieferung",
         status: "later",
         summary: "Installieren ohne Warnungen und immer aktuell.",
@@ -428,14 +528,16 @@ const source: Record<"de" | "en", RoadmapPage> = {
           "Automatische Updates",
           "Absturzberichte, nur wenn du zustimmst",
           "Paketquellen und Stores",
+          "Mumcord auf Flathub, für jede Linux-Distribution aus dem Software-Center",
+          "Die Handy-App in Google Play, im App Store und bei F-Droid",
         ],
       },
       {
-        id: "epic-6",
-        tag: "Epic 6",
-        title: "GIF-Suche",
+        id: "epic-future",
+        tag: "Epic Future",
+        title: "Ideen für später",
         status: "later",
-        summary: "Suchen statt nur Favoriten.",
+        summary: "Ideen ohne festes Epic, zum Beispiel die Suche nach GIFs.",
         items: [
           "GIF-Suche, ohne einen API-Schlüssel in die App zu packen, den jemand auslesen könnte",
           "Möglich wäre ein kleiner Vermittlungsdienst oder ein eigener Schlüssel; entschieden wird später",
@@ -677,8 +779,10 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Run the setup wizard again without touching your identity",
               "mumble:// links in the chat show as a card for the server or channel, one click connects",
               "Sounds of their own when you are kicked or banned",
+              "Audio files in the chat with a player of their own: play, seek and set the volume right in the message",
+              "Links to Spotify, Apple Music, Tidal and other music services become a music card that plays through the service's official player, only after a click",
             ],
-            done: [1, 4, 5, 6, 7, 8, 10, 11],
+            done: [1, 2, 4, 5, 6, 7, 8, 9, 10, 11],
             mockups: [
               { shot: "epic3-64-hotkeys-settings-dark", issue: 64, caption: "Global shortcuts in the settings" },
               { shot: "epic3-65-tray-menu-and-icon-states-dark", issue: 65, caption: "Full tray menu and icon states" },
@@ -691,6 +795,8 @@ const source: Record<"de" | "en", RoadmapPage> = {
               { shot: "disconnect-menu-dark", issue: 154, caption: "The hang-up button menu" },
               { shot: "epic3-rerun-wizard-dark", issue: 149, caption: "Running the setup wizard again" },
               { shot: "mumble-link-card-dark", issue: 175, caption: "A mumble:// link as a card" },
+              { shot: "audio-embed-dark", issue: 260, caption: "An audio link with a player in the chat" },
+              { shot: "music-embed-dark", issue: 262, caption: "A music card in the chat" },
             ],
           },
           {
@@ -704,8 +810,10 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "The private messages overview redesigned",
               "A menu behind the channel name with every action and a channel info",
               "The server and channel tree redesigned: a right-click menu on every channel, the user limit next to the name and clear status icons",
+              "Quick settings overhauled",
+              "The user panel at the bottom left redesigned",
             ],
-            done: [4, 5],
+            done: [4, 5, 6, 7],
             mockups: [
               { shot: "wizard-1-welcome-dark", issue: 159, caption: "The new setup wizard" },
               { shot: "wizard-0-presets-dark", issue: 159, caption: "Presets in the wizard" },
@@ -718,6 +826,8 @@ const source: Record<"de" | "en", RoadmapPage> = {
               { shot: "pm-dark", issue: 173, caption: "The new private messages overview" },
               { shot: "channel-menu-dark", issue: 170, caption: "The menu behind the channel name" },
               { shot: "tree-dark", issue: 172, caption: "The redesigned server and channel tree" },
+              { shot: "quick-settings-dark", issue: 234, caption: "The overhauled quick settings" },
+              { shot: "user-panel-dark", issue: 246, caption: "The new user panel" },
             ],
           },
           {
@@ -727,12 +837,14 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Private messages from friends only, from everyone or from nobody, per server too. Strangers end up in message requests",
               "A notification centre behind a bell collects mentions, replies, requests and invites from every server, and during Do Not Disturb everything that would otherwise pop up",
               "Watch parties load nothing from YouTube or Twitch while embedded content is off",
+              "A hint in the chat when link previews and embeds are off, instead of silently showing only the link",
             ],
-            done: [1, 3],
+            done: [1, 2, 3],
             mockups: [
               { shot: "block-menu-dark", issue: 140, caption: "Blocking a person" },
               { shot: "pm-chat-request-dark", issue: 141, caption: "A message request from a stranger" },
               { shot: "notification-centre-dark", issue: 143, caption: "Notification centre" },
+              { shot: "embed-hint-dark", issue: 261, caption: "A hint when previews are off" },
             ],
           },
           {
@@ -759,7 +871,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Audio per channel: every channel remembers its own music quality, low-latency mode and bitrate",
               "High-quality noise suppression with the 2024 RNNoise model, as a beta",
             ],
-            done: [0, 1],
+            done: [0, 1, 2],
             mockups: [
               { shot: "connection-quick-panel-dark", issue: 155, caption: "Voice quality right at the connection info" },
               { shot: "low-latency-dark", issue: 156, caption: "Low-latency mode" },
@@ -782,10 +894,9 @@ const source: Record<"de" | "en", RoadmapPage> = {
             title: "Updates and installation",
             items: [
               "Updates right in the app: check, download, verify the signature and restart",
-              "Signed Windows builds, installer and app",
               "On Windows a portable Mumcord.exe next to the installer",
             ],
-            done: [2],
+            done: [1],
             mockups: [
               { shot: "update-available-dark", issue: 168, caption: "An update is ready" },
             ],
@@ -796,13 +907,104 @@ const source: Record<"de" | "en", RoadmapPage> = {
         id: "epic-4",
         tag: "Epic 4",
         title: "Admin",
-        status: "later",
-        summary: "So Mumcord can fully replace the official client, plus Mumcord as an app for your phone.",
-        items: ["Edit permissions (ACLs)", "Bans", "Create, move and manage channels", "Android and iOS app: as an APK to download and through TestFlight, the app stores come later"],
+        status: "planned",
+        summary: "So Mumcord can fully replace the official client: manage channels, permissions, bans and people, with standard Mumble messages only and no change to the server.",
+        groups: [
+          {
+            title: "Admin where you already look",
+            items: [
+              "Admin actions only appear where the server grants them. Without rights you see none of it",
+              "Everything in the right-click menus of channels and people and in the server menu, no separate admin mode",
+              "A private log on your computer: who did you ban last week and why",
+            ],
+            mockups: [
+              { shot: "admin-menus-dark", issue: 249, caption: "Admin actions in the right-click menu" },
+            ],
+          },
+          {
+            title: "Channels and permissions",
+            items: [
+              "Create, rename, describe, move, reorder and delete channels, including temporary channels, user limits and links",
+              "Set, change and remove channel passwords, the same way as in the official client",
+              "An editor for permissions (ACLs) and groups that non-experts can read: what is inherited, which rule wins and in the end who can do what",
+              "Server information for admins and editing the welcome text, as far as the protocol allows",
+            ],
+            mockups: [
+              { shot: "admin-channel-edit-dark", issue: 250, caption: "Editing a channel" },
+              { shot: "admin-acl-rules-dark", issue: 252, caption: "A channel's permissions" },
+            ],
+          },
+          {
+            title: "People and bans",
+            items: [
+              "Remove people from the server with a reason, and ban them for a chosen time if you like, by certificate, IP address or both",
+              "See, search and edit the ban list, including bans for people who are not online",
+              "Move people quickly: one person to you, or everyone in a channel to another one",
+              "Manage registered users: when they were last seen, rename, unregister, and register people who are online",
+              "Mute or deafen someone for everyone, make them priority speaker, and reset an unwanted comment or avatar",
+            ],
+            mockups: [
+              { shot: "admin-ban-dialog-dark", issue: 253, caption: "Banning someone" },
+              { shot: "admin-registered-users-dark", issue: 256, caption: "Registered users" },
+            ],
+          },
+          {
+            title: "Windows",
+            items: ["Signed Windows builds, installer and app"],
+          },
+        ],
       },
       {
         id: "epic-5",
         tag: "Epic 5",
+        title: "Mumcord on your phone",
+        status: "planned",
+        summary: "Mumcord as an app for Android and iOS, compatible with standard Mumble servers like on the desktop. First as an APK to download and through TestFlight, the app stores come later.",
+        groups: [
+          {
+            title: "Foundation and distribution",
+            items: [
+              "Android and iOS app on top of the existing Rust engine, built in CI",
+              "A signed APK in the GitHub releases and iOS through TestFlight, no app stores yet",
+              "Written down clearly: which desktop features the first version leaves out and why",
+            ],
+          },
+          {
+            title: "Servers, channels and identity",
+            items: [
+              "Find, add and connect to servers, with a navigation that works with one thumb",
+              "Create a new identity or bring your desktop one over safely, so your name, friends and permissions stay",
+              "Channels and people clearly laid out on a small screen, with the same information as on the desktop",
+            ],
+            mockups: [
+              { shot: "mobile-servers-voice-dark", issue: 228, caption: "Server list, channel tree and push-to-talk on the phone" },
+            ],
+          },
+          {
+            title: "Talking and chatting",
+            items: [
+              "A big push-to-talk button, reliable voice activity and sound where you expect it: earpiece, speaker or Bluetooth",
+              "Voice keeps running with the screen off, with talk, mute, deafen and leave on the lock screen",
+              "Channel chat and private messages, comfortable on the phone",
+              "Notifications for mentions, messages and requests, without any push server",
+            ],
+            mockups: [
+              { shot: "mobile-chat-lock-dark", issue: 228, caption: "Chat, lock screen and settings on the phone" },
+            ],
+          },
+          {
+            title: "Everyday on the phone",
+            items: [
+              "Short, clear settings with only what makes sense on a phone",
+              "Stays connected through network changes and is careful with battery and mobile data",
+              "Fully usable with TalkBack, VoiceOver and large system text",
+            ],
+          },
+        ],
+      },
+      {
+        id: "epic-6",
+        tag: "Epic 6",
         title: "Distribution",
         status: "later",
         summary: "Install without warnings and always up to date.",
@@ -811,14 +1013,16 @@ const source: Record<"de" | "en", RoadmapPage> = {
           "Automatic updates",
           "Crash reports, only if you agree",
           "Package repositories and stores",
+          "Mumcord on Flathub, for every Linux distribution from the software centre",
+          "The phone app in Google Play, the App Store and F-Droid",
         ],
       },
       {
-        id: "epic-6",
-        tag: "Epic 6",
-        title: "GIF search",
+        id: "epic-future",
+        tag: "Epic Future",
+        title: "Ideas for later",
         status: "later",
-        summary: "Search instead of favorites only.",
+        summary: "Ideas without a planned epic, such as GIF search.",
         items: [
           "GIF search without shipping an API key in the app that anyone could extract",
           "Options are a small relay service or your own key; to be decided later",

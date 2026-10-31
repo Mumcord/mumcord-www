@@ -355,15 +355,20 @@
         {
           "tag": "Epic 4",
           "title": "Administracija",
-          "body": "ACL-ji, bani, upravljanje kanalov. Poleg tega Mumcord kot aplikacija za Android in iOS."
+          "body": "Dovoljenja (ACL-ji) in skupine, upravljanje kanalov, odstranitve in prepovedi, seznam prepovedi, registrirani uporabniki in moderiranje, vidno samo tam, kjer strežnik to dovoli."
         },
         {
           "tag": "Epic 5",
-          "title": "Distribucija",
-          "body": "Podpisani namestitveni programi, samodejne posodobitve, poročila o sesutjih po izbiri, vpisi v repozitorije paketov."
+          "title": "Mumcord na tvojem telefonu",
+          "body": "Aplikacija za Android in iOS: strežniki, kanali, pritisni-in-govori, klepet in upravljanje z zaklenjenega zaslona. Najprej kot APK in prek TestFlighta."
         },
         {
           "tag": "Epic 6",
+          "title": "Distribucija",
+          "body": "Podpisani namestitveni programi, samodejno posodabljanje, poročila o sesutjih samo z tvojim soglasjem, vnosi v paketih, Flathub in trgovine z aplikacijami."
+        },
+        {
+          "tag": "Epic Future",
           "title": "Iskanje GIF-ov",
           "body": "Iskanje GIF-ov, ne da bi v aplikaciji pošiljali ključ API, ki bi ga lahko kdorkoli izvlekel. Kako točno, še ni odločeno."
         }
@@ -1747,7 +1752,9 @@
               "Desni klik na prekinitev: zapusti glasovni kanal in beri naprej, prekini povezavo z enim strežnikom ali z vsemi",
               "Ponoven zagon čarovnika za nastavitev, ne da bi se dotaknil tvoje identitete",
               "Povezave mumble:// v klepetu se prikažejo kot kartica strežnika ali kanala, en klik te poveže",
-              "Lastni zvoki, ko te nekdo vrže ven ali prepove"
+              "Lastni zvoki, ko te nekdo vrže ven ali prepove",
+              "Zvočne datoteke v klepetu z lastnim predvajalnikom: predvajaj, previjaj in nastavi glasnost kar v sporočilu",
+              "Povezave do Spotify, Apple Music, Tidal in drugih glasbenih storitev postanejo glasbena kartica, ki igra prek uradnega predvajalnika storitve, šele po kliku"
             ],
             "mockups": [
               "Globalne bližnjice v nastavitvah",
@@ -1760,7 +1767,9 @@
               "Menjava naprav prek utišanja mikrofona in zvoka",
               "Meni gumba za prekinitev",
               "Ponoven zagon čarovnika za nastavitev",
-              "Povezava mumble:// kot kartica"
+              "Povezava mumble:// kot kartica",
+              "Zvočna povezava s predvajalnikom v klepetu",
+              "Glasbena kartica v klepetu"
             ]
           },
           {
@@ -1773,7 +1782,9 @@
               "Zloži desni stolpec povsem ali v ozek trak avatarjev, da ima klepet več prostora",
               "Prenovljen pregled zasebnih sporočil",
               "Meni za imenom kanala z vsemi dejanji in podatki o kanalu",
-              "Prenovljeno drevo strežnika in kanalov: meni z desnim klikom na vsakem kanalu, omejitev uporabnikov ob imenu in jasne ikone stanja"
+              "Prenovljeno drevo strežnika in kanalov: meni z desnim klikom na vsakem kanalu, omejitev uporabnikov ob imenu in jasne ikone stanja",
+              "Prenovljene hitre nastavitve",
+              "Prenovljena uporabniška plošča spodaj levo"
             ],
             "mockups": [
               "Novi čarovnik za nastavitev",
@@ -1786,7 +1797,9 @@
               "Desni stolpec kot ozek trak",
               "Nov pregled zasebnih sporočil",
               "Meni za imenom kanala",
-              "Prenovljeno drevo strežnika in kanalov"
+              "Prenovljeno drevo strežnika in kanalov",
+              "Prenovljene hitre nastavitve",
+              "Nova uporabniška plošča"
             ]
           },
           {
@@ -1795,12 +1808,14 @@
               "Blokiranje oseb: nič več sporočil, glasu ali povabil od njih, prepoznanih po certifikatu namesto po imenu",
               "Zasebna sporočila samo od prijateljev, od vseh ali od nikogar, tudi za vsak strežnik posebej. Neznanci pristanejo med prošnjami za sporočila",
               "Središče za obvestila za zvončkom zbira omembe, odgovore, prošnje in povabila z vseh strežnikov, med Ne moti pa tudi vse, kar bi sicer skočilo na zaslon",
-              "Skupno gledanje ne naloži ničesar z YouTuba ali Twitcha, dokler je vdelana vsebina izklopljena"
+              "Skupno gledanje ne naloži ničesar z YouTuba ali Twitcha, dokler je vdelana vsebina izklopljena",
+              "Namig v klepetu, ko so predogledi povezav in vdelana vsebina izklopljeni, namesto da se tiho prikaže samo povezava"
             ],
             "mockups": [
               "Blokiranje osebe",
               "Prošnja za sporočilo od neznanca",
-              "Središče za obvestila"
+              "Središče za obvestila",
+              "Namig, ko so predogledi izklopljeni"
             ]
           },
           {
@@ -1848,7 +1863,6 @@
             "title": "Posodobitve in namestitev",
             "items": [
               "Posodobitve kar v aplikaciji: preveri, prenesi, preveri podpis in znova zaženi",
-              "Podpisane različice za Windows, namestitveni program in aplikacija",
               "V sistemu Windows prenosni Mumcord.exe ob namestitvenem programu"
             ],
             "mockups": [
@@ -1860,29 +1874,117 @@
       {
         "id": "epic-4",
         "title": "Administracija",
-        "summary": "Da lahko Mumcord v celoti nadomesti uradnega odjemalca, poleg tega pa Mumcord kot aplikacija za tvoj telefon.",
-        "items": [
-          "Urejanje dovoljenj (ACL-ji)",
-          "Prepovedi",
-          "Ustvarjanje, premikanje in upravljanje kanalov",
-          "Aplikacija za Android in iOS: kot APK za prenos in prek TestFlighta, trgovini z aplikacijami prideta pozneje"
+        "summary": "Da lahko Mumcord v celoti nadomesti uradnega odjemalca: upravljanje kanalov, dovoljenj, prepovedi in ljudi, samo s standardnimi sporočili Mumbla in brez sprememb na strežniku.",
+        "groups": [
+          {
+            "title": "Administracija tam, kamor že gledaš",
+            "items": [
+              "Skrbniška dejanja se prikažejo samo tam, kjer jih strežnik dovoli. Brez pravic ne vidiš nič od tega",
+              "Vse v menijih desnega klika za kanale in ljudi ter v meniju strežnika, brez ločenega skrbniškega načina",
+              "Zasebni dnevnik na tvojem računalniku: koga si prejšnji teden prepovedal in zakaj"
+            ],
+            "mockups": [
+              "Skrbniška dejanja v meniju desnega klika"
+            ]
+          },
+          {
+            "title": "Kanali in dovoljenja",
+            "items": [
+              "Ustvarjanje, preimenovanje, opisovanje, premikanje, preurejanje in brisanje kanalov, vključno z začasnimi kanali, omejitvami uporabnikov in povezavami",
+              "Nastavljanje, spreminjanje in odstranjevanje gesel kanalov, enako kot v uradnem odjemalcu",
+              "Urejevalnik dovoljenj (ACL-jev) in skupin, ki ga razumejo tudi neizkušeni: kaj se podeduje, katero pravilo zmaga in na koncu, kdo sme kaj",
+              "Podatki o strežniku za skrbnike in urejanje pozdravnega besedila, kolikor dovoljuje protokol"
+            ],
+            "mockups": [
+              "Urejanje kanala",
+              "Dovoljenja kanala"
+            ]
+          },
+          {
+            "title": "Ljudje in prepovedi",
+            "items": [
+              "Odstranjevanje ljudi s strežnika z razlogom in po želji prepoved za izbrani čas, po certifikatu, naslovu IP ali obojem",
+              "Ogled, iskanje in urejanje seznama prepovedi, vključno s prepovedmi za ljudi, ki niso na spletu",
+              "Hitro premikanje ljudi: ena oseba k tebi ali vsi iz kanala v drug kanal",
+              "Upravljanje registriranih uporabnikov: kdaj so bili nazadnje videni, preimenovanje, odjava registracije in registriranje ljudi, ki so na spletu",
+              "Utišanje mikrofona ali zvoka nekoga za vse, nastavitev za prednostnega govorca in ponastavitev neželenega komentarja ali avatarja"
+            ],
+            "mockups": [
+              "Prepoved za nekoga",
+              "Registrirani uporabniki"
+            ]
+          },
+          {
+            "title": "Windows",
+            "items": [
+              "Podpisane različice za Windows, namestitveni program in aplikacija"
+            ]
+          }
         ]
       },
       {
         "id": "epic-5",
+        "title": "Mumcord na tvojem telefonu",
+        "summary": "Mumcord kot aplikacija za Android in iOS, združljiva s standardnimi strežniki Mumble kot na namizju. Najprej kot APK za prenos in prek TestFlighta, trgovini z aplikacijami prideta pozneje.",
+        "groups": [
+          {
+            "title": "Osnova in distribucija",
+            "items": [
+              "Aplikacija za Android in iOS na obstoječem pogonu v Rustu, zgrajena v CI",
+              "Podpisan APK v izdajah na GitHubu in iOS prek TestFlighta, zaenkrat brez trgovin z aplikacijami",
+              "Jasno zapisano: katerih namiznih funkcij prva različica nima in zakaj"
+            ]
+          },
+          {
+            "title": "Strežniki, kanali in identiteta",
+            "items": [
+              "Iskanje, dodajanje in povezovanje s strežniki, z navigacijo, ki deluje z enim palcem",
+              "Ustvarjanje nove identitete ali varen prenos tiste z namizja, da ti ostanejo ime, prijatelji in dovoljenja",
+              "Kanali in ljudje pregledno razporejeni na majhnem zaslonu, z enakimi podatki kot na namizju"
+            ],
+            "mockups": [
+              "Seznam strežnikov, drevo kanalov in pritisni-in-govori na telefonu"
+            ]
+          },
+          {
+            "title": "Govorjenje in klepet",
+            "items": [
+              "Velik gumb pritisni-in-govori, zanesljiva aktivacija z glasom in zvok tam, kjer ga pričakuješ: slušalka, zvočnik ali Bluetooth",
+              "Glas teče naprej z ugasnjenim zaslonom, z govorjenjem, utišanjem, oglušitvijo in izhodom na zaklenjenem zaslonu",
+              "Klepet kanala in zasebna sporočila, udobna na telefonu",
+              "Obvestila o omembah, sporočilih in zahtevah, brez kakršnega koli strežnika push"
+            ],
+            "mockups": [
+              "Klepet, zaklenjeni zaslon in nastavitve na telefonu"
+            ]
+          },
+          {
+            "title": "Vsak dan na telefonu",
+            "items": [
+              "Kratke, jasne nastavitve samo s tistim, kar ima smisel na telefonu",
+              "Ostane povezan ob menjavah omrežja in varčuje z baterijo in mobilnimi podatki",
+              "Popolnoma uporabno s TalkBackom, VoiceOverjem in velikim sistemskim besedilom"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "epic-6",
         "title": "Distribucija",
         "summary": "Namestitev brez opozoril in vedno posodobljeno.",
         "items": [
           "Podpisani namestitveni programi, brez opozoril SmartScreen ali Gatekeeper: že pripravljeno v postopku izdaje za Windows in macOS, aktivno, ko bodo certifikati urejeni",
           "Samodejne posodobitve",
           "Poročila o sesutjih, samo če se strinjaš",
-          "Repozitoriji paketov in trgovine"
+          "Repozitoriji paketov in trgovine",
+          "Mumcord na Flathubu, za vsako distribucijo Linuxa neposredno iz programskega središča",
+          "Aplikacija za telefon v Google Playu, App Storeu in F-Droidu"
         ]
       },
       {
-        "id": "epic-6",
-        "title": "Iskanje GIF-ov",
-        "summary": "Iskanje namesto samo priljubljenih.",
+        "id": "epic-future",
+        "title": "Ideje za pozneje",
+        "summary": "Ideje brez načrtovanega epica, kot je iskanje GIF-ov.",
         "items": [
           "Iskanje GIF-ov, ne da bi v aplikaciji pošiljali ključ API, ki bi ga lahko kdorkoli izvlekel",
           "Možnosti sta majhna posredniška storitev ali tvoj lasten ključ; odločitev pride pozneje"

@@ -355,15 +355,20 @@
         {
           "tag": "Epic 4",
           "title": "Administration",
-          "body": "ACL'er, bans, kanaladministration. Plus Mumcord som app til Android og iOS."
+          "body": "Tilladelser (ACL'er) og grupper, kanaladministration, kicks og bans, banlisten, registrerede brugere og moderation, kun synligt, hvor serveren giver det."
         },
         {
           "tag": "Epic 5",
-          "title": "Distribution",
-          "body": "Signerede installationsprogrammer, automatisk opdatering, frivillige nedbrudsrapporter, optagelse i pakkekataloger."
+          "title": "Mumcord på din telefon",
+          "body": "En app til Android og iOS: servere, kanaler, push-to-talk, chat og styring fra låseskærmen. Først som APK og via TestFlight."
         },
         {
           "tag": "Epic 6",
+          "title": "Distribution",
+          "body": "Signerede installationsprogrammer, automatisk opdatering, frivillige nedbrudsrapporter, pakkelister, Flathub og appbutikkerne."
+        },
+        {
+          "tag": "Epic Future",
           "title": "GIF-søgning",
           "body": "Søg efter GIF'er uden at lægge en API-nøgle i appen, som enhver kunne trække ud. Præcis hvordan er endnu ikke besluttet."
         }
@@ -1747,7 +1752,9 @@
               "Højreklik på læg på: forlad talekanalen og læs videre, afbryd én server eller dem alle",
               "Kør opsætningsguiden igen uden at røre din identitet",
               "mumble://-links i chatten vises som et kort for serveren eller kanalen, ét klik forbinder",
-              "Egne lyde, når du bliver kicket eller banned"
+              "Egne lyde, når du bliver kicket eller banned",
+              "Lydfiler i chatten med deres egen afspiller: afspil, spol og indstil lydstyrken lige i beskeden",
+              "Links til Spotify, Apple Music, Tidal og andre musiktjenester bliver til et musikkort, der afspiller via tjenestens officielle afspiller, først efter et klik"
             ],
             "mockups": [
               "Globale genveje i indstillingerne",
@@ -1760,7 +1767,9 @@
               "Skift enheder fra mute og deafen",
               "Menuen på læg på-knappen",
               "Kør opsætningsguiden igen",
-              "Et mumble://-link som kort"
+              "Et mumble://-link som kort",
+              "Et lydlink med en afspiller i chatten",
+              "Et musikkort i chatten"
             ]
           },
           {
@@ -1773,7 +1782,9 @@
               "Klap højre kolonne helt sammen eller ned til en smal stribe avatarer, så chatten får mere plads",
               "Oversigten over private beskeder er redesignet",
               "En menu bag kanalnavnet med alle handlinger og kanalinfo",
-              "Server- og kanaltræet er redesignet: en højreklik-menu på hver kanal, brugergrænsen ved siden af navnet og tydelige statusikoner"
+              "Server- og kanaltræet er redesignet: en højreklik-menu på hver kanal, brugergrænsen ved siden af navnet og tydelige statusikoner",
+              "Hurtigindstillingerne er skærpet op",
+              "Brugerpanelet nederst til venstre er redesignet"
             ],
             "mockups": [
               "Den nye opsætningsguide",
@@ -1786,7 +1797,9 @@
               "Højre kolonne som en smal stribe",
               "Den nye oversigt over private beskeder",
               "Menuen bag kanalnavnet",
-              "Det redesignede server- og kanaltræ"
+              "Det redesignede server- og kanaltræ",
+              "De gennemarbejdede hurtigindstillinger",
+              "Det nye brugerpanel"
             ]
           },
           {
@@ -1795,12 +1808,14 @@
               "Bloker folk: ingen beskeder, stemme eller invitationer fra dem længere, genkendt via deres certifikat i stedet for deres navn",
               "Private beskeder kun fra venner, fra alle eller fra ingen, også per server. Fremmede havner i beskedanmodninger",
               "Et notifikationscenter bag en klokke samler omtaler, svar, anmodninger og invitationer fra alle servere, og under Forstyr ikke alt det, der ellers ville poppe op",
-              "Watch-partyer indlæser intet fra YouTube eller Twitch, så længe indlejret indhold er slået fra"
+              "Watch-partyer indlæser intet fra YouTube eller Twitch, så længe indlejret indhold er slået fra",
+              "Et hint i chatten, når linkforhåndsvisninger og indlejret indhold er slået fra, i stedet for stiltiende kun at vise linket"
             ],
             "mockups": [
               "Bloker en person",
               "En beskedanmodning fra en fremmed",
-              "Notifikationscenter"
+              "Notifikationscenter",
+              "Et hint, når forhåndsvisninger er slået fra"
             ]
           },
           {
@@ -1848,7 +1863,6 @@
             "title": "Opdateringer og installation",
             "items": [
               "Opdateringer direkte i appen: tjek, download, bekræft signaturen og genstart",
-              "Signerede Windows-builds, installer og app",
               "På Windows en bærbar Mumcord.exe ved siden af installeren"
             ],
             "mockups": [
@@ -1860,29 +1874,117 @@
       {
         "id": "epic-4",
         "title": "Administration",
-        "summary": "Så Mumcord helt kan erstatte den officielle klient, plus Mumcord som app til din telefon.",
-        "items": [
-          "Redigér tilladelser (ACL'er)",
-          "Bans",
-          "Opret, flyt og administrér kanaler",
-          "Android- og iOS-app: som APK til download og via TestFlight, appbutikkerne kommer senere"
+        "summary": "Så Mumcord helt kan erstatte den officielle klient: administrér kanaler, tilladelser, bans og folk, kun med standardbeskeder i Mumble og uden ændringer på serveren.",
+        "groups": [
+          {
+            "title": "Administration der, hvor du allerede kigger",
+            "items": [
+              "Admin-handlinger vises kun, hvor serveren giver dem. Uden rettigheder ser du intet af det",
+              "Alt ligger i højreklikmenuerne for kanaler og personer og i servermenuen, ingen separat admin-tilstand",
+              "En privat log på din computer: hvem bannede du i sidste uge, og hvorfor"
+            ],
+            "mockups": [
+              "Admin-handlinger i højreklikmenuen"
+            ]
+          },
+          {
+            "title": "Kanaler og tilladelser",
+            "items": [
+              "Opret, omdøb, beskriv, flyt, omsortér og slet kanaler, også midlertidige kanaler, brugergrænser og links",
+              "Sæt, ændr og fjern kanaladgangskoder, på samme måde som i den officielle klient",
+              "En editor til tilladelser (ACL'er) og grupper, som også ikke-eksperter kan læse: hvad der nedarves, hvilken regel der vinder, og hvem der i sidste ende må hvad",
+              "Serverinfo til admins og redigering af velkomsttekst, så vidt protokollen tillader det"
+            ],
+            "mockups": [
+              "Redigering af en kanal",
+              "En kanals tilladelser"
+            ]
+          },
+          {
+            "title": "Folk og bans",
+            "items": [
+              "Fjern folk fra serveren med en begrundelse, og ban dem om ønsket i et valgt tidsrum, via certifikat, IP-adresse eller begge dele",
+              "Se, søg i og redigér banlisten, også bans for folk, der ikke er online",
+              "Flyt folk hurtigt: én person over til dig, eller alle i en kanal over i en anden",
+              "Administrér registrerede brugere: hvornår de sidst blev set, omdøb, afregistrér, og registrér folk, der er online",
+              "Slå mikrofon eller lyd fra for en person for alle, gør dem til prioriteret taler, og nulstil en uønsket kommentar eller avatar"
+            ],
+            "mockups": [
+              "Ban en person",
+              "Registrerede brugere"
+            ]
+          },
+          {
+            "title": "Windows",
+            "items": [
+              "Signerede Windows-builds, installer og app"
+            ]
+          }
         ]
       },
       {
         "id": "epic-5",
+        "title": "Mumcord på din telefon",
+        "summary": "Mumcord som app til Android og iOS, kompatibel med almindelige Mumble-servere ligesom på computeren. Først som APK til download og via TestFlight, appbutikkerne kommer senere.",
+        "groups": [
+          {
+            "title": "Grundlag og distribution",
+            "items": [
+              "Android- og iOS-app oven på den eksisterende Rust-motor, bygget i CI",
+              "En signeret APK i GitHub-releases og iOS via TestFlight, endnu ingen appbutikker",
+              "Skrevet tydeligt ned: hvilke computerfunktioner den første version udelader, og hvorfor"
+            ]
+          },
+          {
+            "title": "Servere, kanaler og identitet",
+            "items": [
+              "Find, tilføj og forbind til servere, med en navigation, der virker med én tommelfinger",
+              "Opret en ny identitet eller tag din fra computeren trygt med over, så dit navn, dine venner og dine tilladelser bliver",
+              "Kanaler og folk overskueligt på en lille skærm, med de samme oplysninger som på computeren"
+            ],
+            "mockups": [
+              "Serverliste, kanaltræ og push-to-talk på telefonen"
+            ]
+          },
+          {
+            "title": "Tale og chat",
+            "items": [
+              "En stor push-to-talk-knap, pålidelig stemmeaktivering og lyd, hvor du forventer det: ørehøjttaler, højttaler eller Bluetooth",
+              "Stemmen kører videre med slukket skærm, med tal, mute, deafen og forlad på låseskærmen",
+              "Kanalchat og private beskeder, behagelige at bruge på telefonen",
+              "Notifikationer om omtaler, beskeder og anmodninger, helt uden push-server"
+            ],
+            "mockups": [
+              "Chat, låseskærm og indstillinger på telefonen"
+            ]
+          },
+          {
+            "title": "Hverdag på telefonen",
+            "items": [
+              "Korte, klare indstillinger med kun det, der giver mening på en telefon",
+              "Holder forbindelsen ved netværksskift og er nænsom ved batteri og mobildata",
+              "Fuldt anvendelig med TalkBack, VoiceOver og stor systemtekst"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "epic-6",
         "title": "Distribution",
         "summary": "Installér uden advarsler, og vær altid opdateret.",
         "items": [
           "Signerede installationsprogrammer, ingen advarsel fra SmartScreen eller Gatekeeper: allerede forberedt i udgivelsesworkflowet til Windows og macOS, aktivt, så snart certifikaterne er på plads",
           "Automatiske opdateringer",
           "Nedbrudsrapporter, kun hvis du siger ja",
-          "Pakkearkiver og butikker"
+          "Pakkearkiver og butikker",
+          "Mumcord på Flathub, til alle Linux-distributioner direkte fra softwarecentret",
+          "Telefon-appen i Google Play, App Store og F-Droid"
         ]
       },
       {
-        "id": "epic-6",
-        "title": "GIF-søgning",
-        "summary": "Søgning i stedet for kun favoritter.",
+        "id": "epic-future",
+        "title": "Ideer til senere",
+        "summary": "Ideer uden en planlagt epic, f.eks. GIF-søgning.",
         "items": [
           "GIF-søgning uden at lægge en API-nøgle i appen, som enhver kunne trække ud",
           "Mulighederne er en lille relætjeneste eller din egen nøgle; besluttes senere"

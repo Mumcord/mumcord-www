@@ -355,15 +355,20 @@
         {
           "tag": "Epic 4",
           "title": "Ylläpito",
-          "body": "ACL:t, porttikiellot, kanavien hallinta. Lisäksi Mumcord sovelluksena Androidille ja iOS:lle."
+          "body": "Käyttöoikeudet (ACL) ja ryhmät, kanavien hallinta, potkut ja porttikiellot, porttikieltolista, rekisteröidyt käyttäjät ja moderointi, näkyvillä vain siellä, missä palvelin antaa luvan."
         },
         {
           "tag": "Epic 5",
-          "title": "Jakelu",
-          "body": "Allekirjoitetut asennusohjelmat, automaattiset päivitykset, vapaaehtoiset kaatumisraportit, pakettilistaukset."
+          "title": "Mumcord puhelimessasi",
+          "body": "Sovellus Androidille ja iOS:lle: palvelimet, kanavat, push-to-talk, chat ja lukitusnäytön hallinta. Ensin APK-tiedostona ja TestFlightin kautta."
         },
         {
           "tag": "Epic 6",
+          "title": "Jakelu",
+          "body": "Allekirjoitetut asennusohjelmat, automaattinen päivitys, vain suostumuksella lähetettävät kaatumisraportit, pakettiluettelot, Flathub ja sovelluskaupat."
+        },
+        {
+          "tag": "Epic Future",
           "title": "GIF-haku",
           "body": "GIF-haku ilman, että sovelluksen mukana toimitetaan API-avain, jonka kuka tahansa voisi kaivaa esiin. Tarkka toteutus on vielä päättämättä."
         }
@@ -1747,7 +1752,9 @@
               "Oikea klikkaus lopetuspainikkeeseen: poistu puheesta ja jatka lukemista, katkaise yhteys yhteen palvelimeen tai kaikkiin",
               "Ohjatun käyttöönoton uudelleenajo koskematta identiteettiisi",
               "Keskustelun mumble://-linkit näkyvät palvelimen tai kanavan korttina, yksi napsautus yhdistää",
-              "Omat äänet, kun sinut potkitaan tai asetetaan porttikieltoon"
+              "Omat äänet, kun sinut potkitaan tai asetetaan porttikieltoon",
+              "Äänitiedostot chatissa omalla soittimellaan: toista, kelaa ja säädä äänenvoimakkuutta suoraan viestissä",
+              "Spotify-, Apple Music-, Tidal- ja muiden musiikkipalvelujen linkeistä tulee musiikkikortti, joka soi palvelun virallisen soittimen kautta vasta napsautuksen jälkeen"
             ],
             "mockups": [
               "Globaalit pikanäppäimet asetuksissa",
@@ -1760,7 +1767,9 @@
               "Laitteiden vaihto mykistys- ja kuuroutuspainikkeista",
               "Lopetuspainikkeen valikko",
               "Ohjatun käyttöönoton uudelleenajo",
-              "mumble://-linkki korttina"
+              "mumble://-linkki korttina",
+              "Äänilinkki soittimella chatissa",
+              "Musiikkikortti chatissa"
             ]
           },
           {
@@ -1773,7 +1782,9 @@
               "Taita oikea sarake kokonaan kokoon tai kapeaksi avatarpalkiksi, niin chatille jää enemmän tilaa",
               "Yksityisviestien yleiskatsaus uudistettu",
               "Kanavan nimen takana oleva valikko, jossa on kaikki toiminnot ja kanavan tiedot",
-              "Palvelin- ja kanavapuu uudistettu: hiiren oikean painikkeen valikko jokaisella kanavalla, käyttäjäraja nimen vieressä ja selkeät tilakuvakkeet"
+              "Palvelin- ja kanavapuu uudistettu: hiiren oikean painikkeen valikko jokaisella kanavalla, käyttäjäraja nimen vieressä ja selkeät tilakuvakkeet",
+              "Pika-asetukset uudistettu",
+              "Vasemman alakulman käyttäjäpaneeli uusittu"
             ],
             "mockups": [
               "Uusi ohjattu käyttöönotto",
@@ -1786,7 +1797,9 @@
               "Oikea sarake kapeana palkkina",
               "Uusi yksityisviestien yleiskatsaus",
               "Kanavan nimen takana oleva valikko",
-              "Uudistettu palvelin- ja kanavapuu"
+              "Uudistettu palvelin- ja kanavapuu",
+              "Uudistetut pika-asetukset",
+              "Uusi käyttäjäpaneeli"
             ]
           },
           {
@@ -1795,12 +1808,14 @@
               "Estä ihmisiä: ei enää viestejä, puheääntä tai kutsuja heiltä, tunnistetaan varmenteesta eikä nimestä",
               "Yksityisviestit vain kavereilta, kaikilta tai ei keneltäkään, myös palvelinkohtaisesti. Tuntemattomat päätyvät viestipyyntöihin",
               "Kellon takana oleva ilmoituskeskus kokoaa maininnat, vastaukset, pyynnöt ja kutsut kaikilta palvelimilta, ja ”Älä häiritse” -tilan aikana kaiken, mikä muuten ponnahtaisi esiin",
-              "Watch partyt eivät lataa mitään YouTubesta tai Twitchistä, kun upotettu sisältö on pois päältä"
+              "Watch partyt eivät lataa mitään YouTubesta tai Twitchistä, kun upotettu sisältö on pois päältä",
+              "Vihje chatissa, kun linkkien esikatselut ja upotettu sisältö ovat pois päältä, sen sijaan että vain linkki näytettäisiin hiljaa"
             ],
             "mockups": [
               "Ihmisen estäminen",
               "Viestipyyntö tuntemattomalta",
-              "Ilmoituskeskus"
+              "Ilmoituskeskus",
+              "Vihje, kun esikatselut ovat pois päältä"
             ]
           },
           {
@@ -1848,7 +1863,6 @@
             "title": "Päivitykset ja asennus",
             "items": [
               "Päivitykset suoraan sovelluksessa: tarkista, lataa, vahvista allekirjoitus ja käynnistä uudelleen",
-              "Allekirjoitetut Windows-versiot, asennusohjelma ja sovellus",
               "Windowsissa kannettava Mumcord.exe asennusohjelman rinnalla"
             ],
             "mockups": [
@@ -1860,29 +1874,117 @@
       {
         "id": "epic-4",
         "title": "Ylläpito",
-        "summary": "Jotta Mumcord voi korvata virallisen sovelluksen kokonaan, ja lisäksi Mumcord sovelluksena puhelimeesi.",
-        "items": [
-          "Käyttöoikeuksien (ACL) muokkaus",
-          "Porttikiellot",
-          "Kanavien luonti, siirto ja hallinta",
-          "Android- ja iOS-sovellus: APK-tiedostona ladattavaksi ja TestFlightin kautta, sovelluskaupat tulevat myöhemmin"
+        "summary": "Jotta Mumcord voi korvata virallisen sovelluksen kokonaan: kanavien, käyttöoikeuksien, porttikieltojen ja ihmisten hallinta pelkillä Mumblen vakioviesteillä ja ilman muutoksia palvelimeen.",
+        "groups": [
+          {
+            "title": "Ylläpito siellä, minne jo katsot",
+            "items": [
+              "Ylläpitotoiminnot näkyvät vain siellä, missä palvelin antaa ne. Ilman oikeuksia et näe niistä mitään",
+              "Kaikki kanavien ja ihmisten hiiren oikean painikkeen valikoissa ja palvelinvalikossa, ei erillistä ylläpitotilaa",
+              "Yksityinen loki tietokoneellasi: kenet asetit porttikieltoon viime viikolla ja miksi"
+            ],
+            "mockups": [
+              "Ylläpitotoiminnot hiiren oikean painikkeen valikossa"
+            ]
+          },
+          {
+            "title": "Kanavat ja käyttöoikeudet",
+            "items": [
+              "Kanavien luonti, nimeäminen uudelleen, kuvaus, siirto, järjestäminen ja poisto, myös tilapäiset kanavat, käyttäjärajat ja linkit",
+              "Kanavasalasanojen asettaminen, vaihtaminen ja poisto, samalla tavalla kuin virallisessa sovelluksessa",
+              "Käyttöoikeuksien (ACL) ja ryhmien muokkain, jota myös ei-asiantuntijat osaavat lukea: mikä periytyy, mikä sääntö voittaa ja lopulta kuka saa tehdä mitä",
+              "Palvelimen tiedot ylläpitäjille ja tervetuloviestin muokkaus, niin pitkälle kuin protokolla sallii"
+            ],
+            "mockups": [
+              "Kanavan muokkaus",
+              "Kanavan käyttöoikeudet"
+            ]
+          },
+          {
+            "title": "Ihmiset ja porttikiellot",
+            "items": [
+              "Ihmisten poistaminen palvelimelta syyn kanssa ja halutessasi porttikielto valituksi ajaksi sertifikaatin, IP-osoitteen tai molempien perusteella",
+              "Porttikieltolistan katselu, haku ja muokkaus, myös niiden ihmisten porttikiellot, jotka eivät ole verkossa",
+              "Ihmisten nopea siirtäminen: yksi ihminen luoksesi tai kaikki kanavassa olevat toiseen kanavaan",
+              "Rekisteröityjen käyttäjien hallinta: milloin nähty viimeksi, nimeäminen uudelleen, rekisteröinnin poisto ja verkossa olevien ihmisten rekisteröinti",
+              "Jonkun mikrofonin tai äänen mykistys kaikilta, prioriteettipuhujaksi asettaminen ja ei-toivotun kommentin tai avatarin nollaus"
+            ],
+            "mockups": [
+              "Porttikiellon antaminen jollekulle",
+              "Rekisteröidyt käyttäjät"
+            ]
+          },
+          {
+            "title": "Windows",
+            "items": [
+              "Allekirjoitetut Windows-versiot, asennusohjelma ja sovellus"
+            ]
+          }
         ]
       },
       {
         "id": "epic-5",
+        "title": "Mumcord puhelimessasi",
+        "summary": "Mumcord Android- ja iOS-sovelluksena, yhteensopiva tavallisten Mumble-palvelimien kanssa kuten työpöydällä. Ensin APK-tiedostona ladattavaksi ja TestFlightin kautta, sovelluskaupat tulevat myöhemmin.",
+        "groups": [
+          {
+            "title": "Perusta ja jakelu",
+            "items": [
+              "Android- ja iOS-sovellus nykyisen Rust-moottorin päällä, koottu CI:ssä",
+              "Allekirjoitettu APK GitHubin julkaisuissa ja iOS TestFlightin kautta, ei vielä sovelluskauppoja",
+              "Selkeästi kirjattuna: mitkä työpöydän ominaisuudet ensimmäinen versio jättää pois ja miksi"
+            ]
+          },
+          {
+            "title": "Palvelimet, kanavat ja identiteetti",
+            "items": [
+              "Palvelimien etsintä, lisäys ja yhdistäminen, navigoinnilla joka toimii yhdellä peukalolla",
+              "Uuden identiteetin luonti tai työpöydän identiteetin turvallinen tuonti, jotta nimesi, ystäväsi ja käyttöoikeutesi säilyvät",
+              "Kanavat ja ihmiset selkeästi pienellä näytöllä, samoilla tiedoilla kuin työpöydällä"
+            ],
+            "mockups": [
+              "Palvelinluettelo, kanavapuu ja push-to-talk puhelimessa"
+            ]
+          },
+          {
+            "title": "Puhuminen ja chat",
+            "items": [
+              "Iso push-to-talk-painike, luotettava äänen aktivointi ja ääni siellä missä odotat: kuulokekaiutin, kaiutin tai Bluetooth",
+              "Ääni jatkuu näyttö sammutettuna, ja puhuminen, mykistys, kuulon mykistys ja poistuminen onnistuvat lukitusnäytöltä",
+              "Kanavan chat ja yksityisviestit, miellyttävät puhelimella",
+              "Ilmoitukset maininnoista, viesteistä ja pyynnöistä ilman push-palvelinta"
+            ],
+            "mockups": [
+              "Chat, lukitusnäyttö ja asetukset puhelimessa"
+            ]
+          },
+          {
+            "title": "Arki puhelimessa",
+            "items": [
+              "Lyhyet, selkeät asetukset, vain puhelimessa järkevät",
+              "Pysyy yhteydessä verkonvaihdoissa ja säästää akkua ja mobiilidataa",
+              "Täysin käytettävissä TalkBackin, VoiceOverin ja suuren järjestelmätekstin kanssa"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "epic-6",
         "title": "Jakelu",
         "summary": "Asennus ilman varoituksia ja aina ajan tasalla.",
         "items": [
           "Allekirjoitetut asennusohjelmat, ei SmartScreen- tai Gatekeeper-varoitusta: jo valmisteltu Windowsin ja macOS:n julkaisuprosessiin, käytössä, kun varmenteet on hankittu",
           "Automaattiset päivitykset",
           "Kaatumisraportit, vain jos suostut",
-          "Pakettivarastot ja sovelluskaupat"
+          "Pakettivarastot ja sovelluskaupat",
+          "Mumcord Flathubissa, jokaiselle Linux-jakelulle suoraan ohjelmistokeskuksesta",
+          "Puhelinsovellus Google Playssa, App Storessa ja F-Droidissa"
         ]
       },
       {
-        "id": "epic-6",
-        "title": "GIF-haku",
-        "summary": "Hakua pelkkien suosikkien sijaan.",
+        "id": "epic-future",
+        "title": "Ideoita myöhemmäksi",
+        "summary": "Ideoita ilman suunniteltua epicia, kuten GIF-haku.",
         "items": [
           "GIF-haku ilman, että sovelluksen mukana toimitetaan API-avain, jonka kuka tahansa voisi kaivaa esiin",
           "Vaihtoehtoina pieni välityspalvelu tai oma avain; päätetään myöhemmin"

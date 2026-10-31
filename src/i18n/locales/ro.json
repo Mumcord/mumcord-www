@@ -355,15 +355,20 @@
         {
           "tag": "Epic 4",
           "title": "Administrare",
-          "body": "ACL-uri, ban-uri, administrarea canalelor. Plus Mumcord ca aplicație pentru Android și iOS."
+          "body": "Permisiuni (ACL-uri) și grupuri, gestionarea canalelor, scoateri și banuri, lista de banuri, utilizatori înregistrați și moderare, vizibile doar acolo unde le acordă serverul."
         },
         {
           "tag": "Epic 5",
-          "title": "Distribuție",
-          "body": "Instalatoare semnate, actualizare automată, rapoarte de crash opționale, listări în depozite de pachete."
+          "title": "Mumcord pe telefonul tău",
+          "body": "O aplicație pentru Android și iOS: servere, canale, push-to-talk, chat și comenzi pe ecranul de blocare. Mai întâi ca APK și prin TestFlight."
         },
         {
           "tag": "Epic 6",
+          "title": "Distribuție",
+          "body": "Instalatoare semnate, actualizare automată, rapoarte de eroare doar cu acordul tău, listări în pachete, Flathub și magazinele de aplicații."
+        },
+        {
+          "tag": "Epic Future",
           "title": "Căutare de GIF-uri",
           "body": "Caută GIF-uri fără ca aplicația să conțină o cheie API pe care oricine ar putea-o extrage. Cum anume, rămâne de decis."
         }
@@ -1747,7 +1752,9 @@
               "Clic dreapta pe închide: ieși din voce și citește mai departe, deconectează-te de la un server sau de la toate",
               "Pornește din nou asistentul de configurare fără să-ți atingi identitatea",
               "Linkurile mumble:// din chat apar ca un card pentru server sau canal, un clic te conectează",
-              "Sunete proprii când ești dat afară sau banat"
+              "Sunete proprii când ești dat afară sau banat",
+              "Fișiere audio în chat cu un player propriu: redă, derulează și reglează volumul direct în mesaj",
+              "Linkurile către Spotify, Apple Music, Tidal și alte servicii de muzică devin un card muzical care redă prin playerul oficial al serviciului, doar după un clic"
             ],
             "mockups": [
               "Scurtături globale în setări",
@@ -1760,7 +1767,9 @@
               "Schimbarea dispozitivelor din mut și surd",
               "Meniul butonului de închidere",
               "Pornirea din nou a asistentului de configurare",
-              "Un link mumble:// ca card"
+              "Un link mumble:// ca card",
+              "Un link audio cu player în chat",
+              "Un card muzical în chat"
             ]
           },
           {
@@ -1773,7 +1782,9 @@
               "Restrânge coloana din dreapta complet sau la o bandă îngustă de avatare, ca chatul să aibă mai mult loc",
               "Prezentarea generală a mesajelor private, reproiectată",
               "Un meniu în spatele numelui canalului cu fiecare acțiune și informații despre canal",
-              "Arborele de servere și canale reproiectat: un meniu cu clic dreapta pe fiecare canal, limita de utilizatori lângă nume și pictograme de stare clare"
+              "Arborele de servere și canale reproiectat: un meniu cu clic dreapta pe fiecare canal, limita de utilizatori lângă nume și pictograme de stare clare",
+              "Setări rapide reînnoite",
+              "Panoul utilizatorului din stânga jos redesenat"
             ],
             "mockups": [
               "Noul asistent de configurare",
@@ -1786,7 +1797,9 @@
               "Coloana din dreapta ca bandă îngustă",
               "Noua prezentare generală a mesajelor private",
               "Meniul din spatele numelui canalului",
-              "Arborele de servere și canale reproiectat"
+              "Arborele de servere și canale reproiectat",
+              "Setările rapide reînnoite",
+              "Noul panou al utilizatorului"
             ]
           },
           {
@@ -1795,12 +1808,14 @@
               "Blochează oameni: gata cu mesajele, vocea și invitațiile de la ei, recunoscuți după certificat, nu după nume",
               "Mesaje private doar de la prieteni, de la toată lumea sau de la nimeni, și per server. Străinii ajung la cererile de mesaj",
               "Un centru de notificări în spatele unui clopoțel adună mențiunile, răspunsurile, cererile și invitațiile de pe toate serverele, iar în timpul Nu deranja tot ce altfel ar apărea ca pop-up",
-              "Watch party-urile nu încarcă nimic de pe YouTube sau Twitch cât timp conținutul încorporat este oprit"
+              "Watch party-urile nu încarcă nimic de pe YouTube sau Twitch cât timp conținutul încorporat este oprit",
+              "Un indiciu în chat când previzualizările linkurilor și conținutul încorporat sunt dezactivate, în loc să se afișeze pe tăcute doar linkul"
             ],
             "mockups": [
               "Blocarea unei persoane",
               "O cerere de mesaj de la un străin",
-              "Centrul de notificări"
+              "Centrul de notificări",
+              "Un indiciu când previzualizările sunt dezactivate"
             ]
           },
           {
@@ -1848,7 +1863,6 @@
             "title": "Actualizări și instalare",
             "items": [
               "Actualizări chiar în aplicație: verifică, descarcă, verifică semnătura și repornește",
-              "Versiuni Windows semnate, installer și aplicație",
               "Pe Windows, un Mumcord.exe portabil lângă installer"
             ],
             "mockups": [
@@ -1860,29 +1874,117 @@
       {
         "id": "epic-4",
         "title": "Administrare",
-        "summary": "Ca Mumcord să poată înlocui complet clientul oficial, plus Mumcord ca aplicație pentru telefonul tău.",
-        "items": [
-          "Editarea permisiunilor (ACL-uri)",
-          "Banuri",
-          "Crearea, mutarea și gestionarea canalelor",
-          "Aplicație pentru Android și iOS: ca APK de descărcat și prin TestFlight, magazinele de aplicații vin mai târziu"
+        "summary": "Ca Mumcord să poată înlocui complet clientul oficial: gestionează canale, permisiuni, banuri și oameni, doar cu mesaje Mumble standard și fără nicio modificare pe server.",
+        "groups": [
+          {
+            "title": "Administrare acolo unde te uiți deja",
+            "items": [
+              "Acțiunile de admin apar doar acolo unde serverul le acordă. Fără drepturi nu vezi nimic din ele",
+              "Totul în meniurile cu clic dreapta ale canalelor și ale oamenilor și în meniul serverului, fără un mod de admin separat",
+              "Un jurnal privat pe computerul tău: pe cine ai banat săptămâna trecută și de ce"
+            ],
+            "mockups": [
+              "Acțiuni de admin în meniul cu clic dreapta"
+            ]
+          },
+          {
+            "title": "Canale și permisiuni",
+            "items": [
+              "Creează, redenumește, descrie, mută, reordonează și șterge canale, inclusiv canale temporare, limite de utilizatori și linkuri",
+              "Setează, schimbă și elimină parolele canalelor, la fel ca în clientul oficial",
+              "Un editor de permisiuni (ACL-uri) și grupuri pe care îl pot citi și cei care nu sunt experți: ce se moștenește, ce regulă câștigă și, în final, cine ce poate face",
+              "Informații despre server pentru admini și editarea textului de bun venit, în măsura în care permite protocolul"
+            ],
+            "mockups": [
+              "Editarea unui canal",
+              "Permisiunile unui canal"
+            ]
+          },
+          {
+            "title": "Oameni și banuri",
+            "items": [
+              "Scoate oameni de pe server cu un motiv și, dacă vrei, banează-i pentru un timp ales, după certificat, adresă IP sau ambele",
+              "Vezi, caută și editează lista de banuri, inclusiv banuri pentru oameni care nu sunt online",
+              "Mută oamenii rapid: o persoană la tine sau toți dintr-un canal în altul",
+              "Gestionează utilizatorii înregistrați: când au fost văzuți ultima dată, redenumire, anularea înregistrării și înregistrarea oamenilor care sunt online",
+              "Oprește microfonul sau sunetul cuiva pentru toți, fă-l vorbitor prioritar și resetează un comentariu sau un avatar nedorit"
+            ],
+            "mockups": [
+              "Banarea cuiva",
+              "Utilizatori înregistrați"
+            ]
+          },
+          {
+            "title": "Windows",
+            "items": [
+              "Versiuni Windows semnate, installer și aplicație"
+            ]
+          }
         ]
       },
       {
         "id": "epic-5",
+        "title": "Mumcord pe telefonul tău",
+        "summary": "Mumcord ca aplicație pentru Android și iOS, compatibilă cu serverele Mumble standard ca pe desktop. Mai întâi ca APK de descărcat și prin TestFlight, magazinele de aplicații vin mai târziu.",
+        "groups": [
+          {
+            "title": "Fundație și distribuție",
+            "items": [
+              "Aplicație pentru Android și iOS peste motorul Rust existent, construită în CI",
+              "Un APK semnat în release-urile GitHub și iOS prin TestFlight, încă fără magazine de aplicații",
+              "Scris clar: ce funcții de desktop lasă deoparte prima versiune și de ce"
+            ]
+          },
+          {
+            "title": "Servere, canale și identitate",
+            "items": [
+              "Găsește, adaugă și conectează-te la servere, cu o navigare care merge cu un singur deget mare",
+              "Creează o identitate nouă sau adu-o în siguranță pe cea de pe desktop, ca să-ți rămână numele, prietenii și permisiunile",
+              "Canale și oameni așezate clar pe un ecran mic, cu aceleași informații ca pe desktop"
+            ],
+            "mockups": [
+              "Lista de servere, arborele de canale și push-to-talk pe telefon"
+            ]
+          },
+          {
+            "title": "Vorbit și chat",
+            "items": [
+              "Un buton mare de push-to-talk, activare vocală fiabilă și sunet unde te aștepți: cască de convorbire, difuzor sau Bluetooth",
+              "Vocea merge mai departe cu ecranul stins, cu vorbit, mute, deafen și ieșire pe ecranul de blocare",
+              "Chat de canal și mesaje private, comode pe telefon",
+              "Notificări pentru mențiuni, mesaje și cereri, fără niciun server push"
+            ],
+            "mockups": [
+              "Chat, ecran de blocare și setări pe telefon"
+            ]
+          },
+          {
+            "title": "Zi de zi pe telefon",
+            "items": [
+              "Setări scurte și clare, doar cu ce are sens pe un telefon",
+              "Rămâne conectat la schimbările de rețea și are grijă de baterie și de datele mobile",
+              "Complet utilizabil cu TalkBack, VoiceOver și text mare de sistem"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "epic-6",
         "title": "Distribuție",
         "summary": "Instalare fără avertismente și mereu la zi.",
         "items": [
           "Instalatoare semnate, fără avertismente SmartScreen sau Gatekeeper: deja pregătite în workflow-ul de release pentru Windows și macOS, active imediat ce certificatele sunt configurate",
           "Actualizări automate",
           "Rapoarte de crash, doar dacă ești de acord",
-          "Depozite de pachete și magazine de aplicații"
+          "Depozite de pachete și magazine de aplicații",
+          "Mumcord pe Flathub, pentru orice distribuție Linux direct din centrul de software",
+          "Aplicația pentru telefon în Google Play, App Store și F-Droid"
         ]
       },
       {
-        "id": "epic-6",
-        "title": "Căutare de GIF-uri",
-        "summary": "Căutare, nu doar favorite.",
+        "id": "epic-future",
+        "title": "Idei pentru mai târziu",
+        "summary": "Idei fără un epic planificat, cum ar fi căutarea de GIF-uri.",
         "items": [
           "Căutare de GIF-uri fără ca aplicația să conțină o cheie API pe care oricine ar putea-o extrage",
           "Variantele sunt un mic serviciu releu sau propria ta cheie; se decide mai târziu"

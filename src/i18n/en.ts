@@ -240,9 +240,10 @@ export const en: Dict = {
       { tag: "Epic 1", title: "The everyday client", body: "Since 0.1.0 the everyday client: wizard, servers, channels, voice, chat and following. 0.2.0 brought more chat: link previews, YouTube, Twitch and Spotify cards, images with an image viewer, @mentions, GIF favorites and code highlighting. 0.3.0 completes Epic 1: positional audio (beta), an in-game overlay on Linux and a window overlay on Windows, “Now gaming”, shared chat history between Mumcord users, friends, “Join channel”, full-size images and all 24 official EU languages." },
       { tag: "Epic 2", title: "Several servers, themes and polish", body: "With 0.4.0: up to five servers at once, talk on one and read along on all. Your own themes, shareable in the chat, per server too. Plus the in-game overlay on Windows, other people's connection quality, Linux packages with a one-line install and, as beta, YouTube watch party and screen sharing." },
       { tag: "Epic 3", title: "Comfort", body: "Global hotkeys, full tray menu, import from the official client, whisper, server browser, Do Not Disturb, @all and @channel, blocking, private messages from friends only, a notification centre, several identities, server info, a fresh design for the wizard, settings, watch party and channel tree, audio per channel, a low-latency mode for making music, updates in the app, plus an optional relay for direct connections." },
-      { tag: "Epic 4", title: "Admin", body: "ACLs, bans, channel management. Plus Mumcord as an app for Android and iOS." },
-      { tag: "Epic 5", title: "Distribution", body: "Signed installers, auto-update, opt-in crash reports, package listings." },
-      { tag: "Epic 6", title: "GIF search", body: "Search for GIFs without shipping an API key in the app that anyone could extract. How exactly is still to be decided." },
+      { tag: "Epic 4", title: "Admin", body: "Permissions (ACLs) and groups, channel management, kicks and bans, the ban list, registered users and moderation, visible only where the server grants it." },
+      { tag: "Epic 5", title: "Mumcord on your phone", body: "An app for Android and iOS: servers, channels, push-to-talk, chat and lock-screen controls. First as an APK and through TestFlight." },
+      { tag: "Epic 6", title: "Distribution", body: "Signed installers, auto-update, opt-in crash reports, package listings, Flathub and the app stores." },
+      { tag: "Epic Future", title: "GIF search", body: "Search for GIFs without shipping an API key in the app that anyone could extract. How exactly is still to be decided." },
     ],
   },
   download: {

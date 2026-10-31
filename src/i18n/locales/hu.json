@@ -355,15 +355,20 @@
         {
           "tag": "Epic 4",
           "title": "Adminisztráció",
-          "body": "ACL-ek, kitiltások, csatornakezelés. Plusz a Mumcord app Androidra és iOS-re."
+          "body": "Jogosultságok (ACL-ek) és csoportok, csatornakezelés, kirúgások és kitiltások, a kitiltási lista, regisztrált felhasználók és moderálás, csak ott látható, ahol a szerver engedi."
         },
         {
           "tag": "Epic 5",
-          "title": "Terjesztés",
-          "body": "Aláírt telepítők, automatikus frissítés, önkéntes összeomlási jelentések, csomagtárolós megjelenés."
+          "title": "A Mumcord a telefonodon",
+          "body": "Egy app Androidra és iOS-re: szerverek, csatornák, push-to-talk, csevegés és vezérlők a zárolt képernyőn. Először APK-ként és a TestFlighton át."
         },
         {
           "tag": "Epic 6",
+          "title": "Terjesztés",
+          "body": "Aláírt telepítők, automatikus frissítés, csak beleegyezéssel küldött összeomlási jelentések, csomaglistázások, Flathub és az appboltok."
+        },
+        {
+          "tag": "Epic Future",
           "title": "GIF-keresés",
           "body": "GIF-keresés úgy, hogy ne kelljen az alkalmazásba olyan API-kulcsot tenni, amit bárki kinyerhet. A pontos megoldás még nem dőlt el."
         }
@@ -1747,7 +1752,9 @@
               "Jobb klikk a hívás bontására: kilépsz a hangból, és tovább olvasol, vagy lecsatlakozol egy szerverről vagy mindről",
               "A beállítási varázsló újrafuttatása az identitásod érintése nélkül",
               "A chatben a mumble:// linkek a szerver vagy a csatorna kártyájaként jelennek meg, egy kattintással csatlakozol",
-              "Saját hangok, amikor kirúgnak vagy kitiltanak"
+              "Saját hangok, amikor kirúgnak vagy kitiltanak",
+              "Hangfájlok a csevegésben saját lejátszóval: lejátszás, tekerés és hangerő-állítás közvetlenül az üzenetben",
+              "A Spotify, Apple Music, Tidal és más zeneszolgáltatások linkjei zenekártyává válnak, amely a szolgáltatás hivatalos lejátszóján szól, csak kattintás után"
             ],
             "mockups": [
               "Globális gyorsbillentyűk a beállításokban",
@@ -1760,7 +1767,9 @@
               "Eszközváltás a némítás és a süketítés gombról",
               "A hívásbontás gomb menüje",
               "A beállítási varázsló újrafuttatása",
-              "Egy mumble:// link kártyaként"
+              "Egy mumble:// link kártyaként",
+              "Hanglink lejátszóval a csevegésben",
+              "Zenekártya a csevegésben"
             ]
           },
           {
@@ -1773,7 +1782,9 @@
               "Csukd össze a jobb oldali oszlopot teljesen vagy egy keskeny avatarsávvá, hogy a chatnek több hely jusson",
               "Az újratervezett privát üzenetek áttekintése",
               "A csatorna neve mögötti menü minden művelettel és csatornainfóval",
-              "Az újratervezett szerver- és csatornafa: jobb gombos menü minden csatornán, a felhasználói limit a név mellett és egyértelmű állapotikonok"
+              "Az újratervezett szerver- és csatornafa: jobb gombos menü minden csatornán, a felhasználói limit a név mellett és egyértelmű állapotikonok",
+              "Megújult gyorsbeállítások",
+              "Újratervezett felhasználói panel bal alul"
             ],
             "mockups": [
               "Az új beállítási varázsló",
@@ -1786,7 +1797,9 @@
               "A jobb oldali oszlop keskeny sávként",
               "Az új privát üzenetek áttekintése",
               "A csatorna neve mögötti menü",
-              "Az újratervezett szerver- és csatornafa"
+              "Az újratervezett szerver- és csatornafa",
+              "A megújult gyorsbeállítások",
+              "Az új felhasználói panel"
             ]
           },
           {
@@ -1795,12 +1808,14 @@
               "Emberek letiltása: tőlük többé nem jön üzenet, hang vagy meghívó, és a felismerés a tanúsítványuk alapján történik, nem a nevük alapján",
               "Privát üzenetek csak barátoktól, mindenkitől vagy senkitől, szerverenként is. Az ismeretlenek az üzenetkérések közé kerülnek",
               "Egy csengő mögötti értesítési központ összegyűjti az említéseket, válaszokat, kéréseket és meghívókat minden szerverről, a „Ne zavarjanak” alatt pedig mindent, ami egyébként felugrana",
-              "A watch partyk semmit sem töltenek be a YouTube-ról vagy a Twitchről, amíg a beágyazott tartalom ki van kapcsolva"
+              "A watch partyk semmit sem töltenek be a YouTube-ról vagy a Twitchről, amíg a beágyazott tartalom ki van kapcsolva",
+              "Egy tipp a csevegésben, amikor a linkelőnézetek és a beágyazott tartalom ki van kapcsolva, ahelyett hogy csendben csak a link jelenne meg"
             ],
             "mockups": [
               "Egy ember letiltása",
               "Üzenetkérés egy ismeretlentől",
-              "Értesítési központ"
+              "Értesítési központ",
+              "Tipp kikapcsolt előnézeteknél"
             ]
           },
           {
@@ -1848,7 +1863,6 @@
             "title": "Frissítések és telepítés",
             "items": [
               "Frissítések közvetlenül az appban: ellenőrzés, letöltés, az aláírás ellenőrzése és újraindítás",
-              "Aláírt Windows-buildek, telepítő és app",
               "Windowson hordozható Mumcord.exe a telepítő mellett"
             ],
             "mockups": [
@@ -1860,29 +1874,117 @@
       {
         "id": "epic-4",
         "title": "Adminisztráció",
-        "summary": "Hogy a Mumcord teljesen kiválthassa a hivatalos klienst, plusz a Mumcord app a telefonodra.",
-        "items": [
-          "Jogosultságok szerkesztése (ACL-ek)",
-          "Kitiltások",
-          "Csatornák létrehozása, áthelyezése és kezelése",
-          "Android- és iOS-app: APK-ként letölthetően és a TestFlighton át, az appboltok később jönnek"
+        "summary": "Hogy a Mumcord teljesen kiválthassa a hivatalos klienst: csatornák, jogosultságok, kitiltások és emberek kezelése, csak szabványos Mumble-üzenetekkel és a szerver módosítása nélkül.",
+        "groups": [
+          {
+            "title": "Adminisztráció ott, ahova már amúgy is nézel",
+            "items": [
+              "Az admin műveletek csak ott jelennek meg, ahol a szerver engedi őket. Jogok nélkül semmit sem látsz belőlük",
+              "Minden a csatornák és emberek jobb gombos menüjében és a szervermenüben, külön admin mód nélkül",
+              "Privát napló a gépeden: kit tiltottál ki a múlt héten és miért"
+            ],
+            "mockups": [
+              "Admin műveletek a jobb gombos menüben"
+            ]
+          },
+          {
+            "title": "Csatornák és jogosultságok",
+            "items": [
+              "Csatornák létrehozása, átnevezése, leírása, áthelyezése, átrendezése és törlése, beleértve az ideiglenes csatornákat, a felhasználói korlátokat és a linkeket",
+              "Csatornajelszavak beállítása, módosítása és eltávolítása, ugyanúgy, mint a hivatalos kliensben",
+              "Jogosultságok (ACL-ek) és csoportok szerkesztője, amit a nem szakértők is megértenek: mi öröklődik, melyik szabály nyer, és végül ki mit tehet",
+              "Szerverinfó adminoknak és az üdvözlőszöveg szerkesztése, amennyire a protokoll engedi"
+            ],
+            "mockups": [
+              "Csatorna szerkesztése",
+              "Egy csatorna jogosultságai"
+            ]
+          },
+          {
+            "title": "Emberek és kitiltások",
+            "items": [
+              "Emberek eltávolítása a szerverről indoklással, és ha akarod, kitiltásuk a választott időre, tanúsítvány, IP-cím vagy mindkettő alapján",
+              "A kitiltási lista megtekintése, keresése és szerkesztése, a nem online lévő emberek kitiltásait is beleértve",
+              "Emberek gyors áthelyezése: egy ember hozzád, vagy mindenki egy csatornából egy másikba",
+              "Regisztrált felhasználók kezelése: mikor voltak utoljára láthatók, átnevezés, regisztráció törlése, és az online lévők regisztrálása",
+              "Valaki mikrofonjának vagy hangjának némítása mindenki számára, elsőbbségi beszélővé tétele, és nem kívánt komment vagy avatar visszaállítása"
+            ],
+            "mockups": [
+              "Valaki kitiltása",
+              "Regisztrált felhasználók"
+            ]
+          },
+          {
+            "title": "Windows",
+            "items": [
+              "Aláírt Windows-buildek, telepítő és app"
+            ]
+          }
         ]
       },
       {
         "id": "epic-5",
+        "title": "Mumcord a telefonodon",
+        "summary": "A Mumcord Android- és iOS-appként, a szabványos Mumble-szerverekkel kompatibilisen, mint az asztali gépen. Először letölthető APK-ként és a TestFlighton át, az appboltok később jönnek.",
+        "groups": [
+          {
+            "title": "Alap és terjesztés",
+            "items": [
+              "Android- és iOS-app a meglévő Rust-motorra építve, CI-ben fordítva",
+              "Aláírt APK a GitHub-kiadásokban és iOS a TestFlighton át, appboltok még nincsenek",
+              "Világosan leírva: az asztali gép mely funkcióit hagyja ki az első verzió, és miért"
+            ]
+          },
+          {
+            "title": "Szerverek, csatornák és identitás",
+            "items": [
+              "Szerverek keresése, hozzáadása és csatlakozás hozzájuk, egy hüvelykujjal is használható navigációval",
+              "Új identitás létrehozása vagy az asztali gépen lévő biztonságos átvitele, hogy megmaradjon a neved, a barátaid és a jogosultságaid",
+              "Csatornák és emberek áttekinthetően elrendezve a kis képernyőn, ugyanazokkal az információkkal, mint az asztali gépen"
+            ],
+            "mockups": [
+              "Szerverlista, csatornafa és push-to-talk a telefonon"
+            ]
+          },
+          {
+            "title": "Beszélgetés és csevegés",
+            "items": [
+              "Nagy push-to-talk gomb, megbízható hangaktiválás és hang ott, ahol várod: hallgató, hangszóró vagy Bluetooth",
+              "A hang kikapcsolt képernyővel is megy tovább, a beszéd, némítás, süketítés és kilépés a zárolt képernyőn is elérhető",
+              "Csatornacsevegés és privát üzenetek, kényelmesen a telefonon",
+              "Értesítések említésekről, üzenetekről és kérésekről, push-szerver nélkül"
+            ],
+            "mockups": [
+              "Csevegés, zárolt képernyő és beállítások a telefonon"
+            ]
+          },
+          {
+            "title": "Mindennapok a telefonon",
+            "items": [
+              "Rövid, világos beállítások, csak azzal, aminek értelme van egy telefonon",
+              "Hálózatváltáskor is kapcsolatban marad, és kíméli az akkumulátort és a mobiladatot",
+              "Teljes mértékben használható TalkBackkel, VoiceOverrel és nagy rendszerszöveggel"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "epic-6",
         "title": "Terjesztés",
         "summary": "Telepítés figyelmeztetések nélkül, és mindig naprakészen.",
         "items": [
           "Aláírt telepítők, SmartScreen- vagy Gatekeeper-figyelmeztetés nélkül: a kiadási folyamatban már elő van készítve Windowsra és macOS-re, és aktív lesz, amint a tanúsítványok készen állnak",
           "Automatikus frissítések",
           "Összeomlási jelentések, csak ha beleegyezel",
-          "Csomagtárolók és áruházak"
+          "Csomagtárolók és áruházak",
+          "A Mumcord a Flathubon, minden Linux-disztribúcióhoz közvetlenül a szoftverközpontból",
+          "A telefonos app a Google Playen, az App Storeon és az F-Droidon"
         ]
       },
       {
-        "id": "epic-6",
-        "title": "GIF-keresés",
-        "summary": "Keresés a puszta kedvencek helyett.",
+        "id": "epic-future",
+        "title": "Ötletek későbbre",
+        "summary": "Ötletek tervezett epic nélkül, például a GIF-keresés.",
         "items": [
           "GIF-keresés úgy, hogy ne kelljen az alkalmazásba olyan API-kulcsot tenni, amit bárki kinyerhet",
           "A lehetőségek: egy kis közvetítőszolgáltatás vagy saját kulcs; később dől el"

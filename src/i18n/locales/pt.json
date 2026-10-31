@@ -355,15 +355,20 @@
         {
           "tag": "Epic 4",
           "title": "Administração",
-          "body": "ACLs, bans, gestão de canais. E ainda o Mumcord como app para Android e iOS."
+          "body": "Permissões (ACLs) e grupos, gestão de canais, expulsões e banimentos, a lista de banimentos, utilizadores registados e moderação, visíveis só onde o servidor os concede."
         },
         {
           "tag": "Epic 5",
-          "title": "Distribuição",
-          "body": "Instaladores assinados, atualização automática, relatórios de falhas opcionais, presença em repositórios de pacotes."
+          "title": "O Mumcord no teu telemóvel",
+          "body": "Uma app para Android e iOS: servidores, canais, push-to-talk, chat e controlos no ecrã de bloqueio. Primeiro como APK e através do TestFlight."
         },
         {
           "tag": "Epic 6",
+          "title": "Distribuição",
+          "body": "Instaladores assinados, atualização automática, relatórios de falhas só se concordares, listagens em pacotes, Flathub e as lojas de apps."
+        },
+        {
+          "tag": "Epic Future",
           "title": "Pesquisa de GIFs",
           "body": "Pesquisar GIFs sem incluir na app uma chave de API que qualquer pessoa possa extrair. Como exatamente ainda está por decidir."
         }
@@ -1747,7 +1752,9 @@
               "Clique direito em desligar: sai da voz e continua a ler, desliga-te de um servidor ou de todos",
               "Voltar a correr o assistente de configuração sem mexer na tua identidade",
               "Os links mumble:// no chat aparecem como um cartão do servidor ou do canal, um clique liga-te",
-              "Sons próprios quando és expulso ou banido"
+              "Sons próprios quando és expulso ou banido",
+              "Ficheiros de áudio no chat com um leitor próprio: reproduz, avança e ajusta o volume diretamente na mensagem",
+              "Os links para Spotify, Apple Music, Tidal e outros serviços de música tornam-se um cartão de música que toca através do leitor oficial do serviço, só depois de um clique"
             ],
             "mockups": [
               "Atalhos globais nas definições",
@@ -1760,7 +1767,9 @@
               "Trocar dispositivos a partir de silenciar microfone e som",
               "O menu do botão desligar",
               "Voltar a correr o assistente de configuração",
-              "Um link mumble:// como cartão"
+              "Um link mumble:// como cartão",
+              "Um link de áudio com leitor no chat",
+              "Um cartão de música no chat"
             ]
           },
           {
@@ -1773,7 +1782,9 @@
               "Recolhe a coluna direita por completo ou para uma faixa estreita de avatares, para o chat ter mais espaço",
               "A vista geral das mensagens privadas redesenhada",
               "Um menu atrás do nome do canal com todas as ações e informações do canal",
-              "A árvore de servidor e canais redesenhada: um menu de clique direito em cada canal, o limite de utilizadores ao lado do nome e ícones de estado claros"
+              "A árvore de servidor e canais redesenhada: um menu de clique direito em cada canal, o limite de utilizadores ao lado do nome e ícones de estado claros",
+              "Definições rápidas renovadas",
+              "Painel de utilizador em baixo à esquerda redesenhado"
             ],
             "mockups": [
               "O novo assistente de configuração",
@@ -1786,7 +1797,9 @@
               "A coluna direita como faixa estreita",
               "A nova vista geral das mensagens privadas",
               "O menu atrás do nome do canal",
-              "A árvore de servidor e canais redesenhada"
+              "A árvore de servidor e canais redesenhada",
+              "As definições rápidas renovadas",
+              "O novo painel de utilizador"
             ]
           },
           {
@@ -1795,12 +1808,14 @@
               "Bloquear pessoas: acabaram-se as mensagens, a voz e os convites delas, reconhecidas pelo certificado em vez do nome",
               "Mensagens privadas só de amigos, de toda a gente ou de ninguém, também por servidor. Os desconhecidos vão parar aos pedidos de mensagem",
               "Um centro de notificações atrás de um sino reúne menções, respostas, pedidos e convites de todos os servidores e, durante o Não incomodar, tudo o que de outra forma apareceria em pop-up",
-              "As watch parties não carregam nada do YouTube nem do Twitch enquanto o conteúdo incorporado estiver desligado"
+              "As watch parties não carregam nada do YouTube nem do Twitch enquanto o conteúdo incorporado estiver desligado",
+              "Uma dica no chat quando as pré-visualizações de links e o conteúdo incorporado estão desativados, em vez de mostrar em silêncio só o link"
             ],
             "mockups": [
               "Bloquear uma pessoa",
               "Um pedido de mensagem de um desconhecido",
-              "Centro de notificações"
+              "Centro de notificações",
+              "Uma dica quando as pré-visualizações estão desativadas"
             ]
           },
           {
@@ -1848,7 +1863,6 @@
             "title": "Atualizações e instalação",
             "items": [
               "Atualizações diretamente na app: verificar, descarregar, validar a assinatura e reiniciar",
-              "Compilações assinadas para Windows, instalador e app",
               "No Windows, um Mumcord.exe portátil junto ao instalador"
             ],
             "mockups": [
@@ -1860,29 +1874,117 @@
       {
         "id": "epic-4",
         "title": "Administração",
-        "summary": "Para que o Mumcord possa substituir por completo o cliente oficial, e ainda o Mumcord como app para o teu telemóvel.",
-        "items": [
-          "Editar permissões (ACLs)",
-          "Banimentos",
-          "Criar, mover e gerir canais",
-          "App para Android e iOS: como APK para descarregar e através do TestFlight, as lojas de apps chegam mais tarde"
+        "summary": "Para que o Mumcord possa substituir por completo o cliente oficial: gerir canais, permissões, banimentos e pessoas, só com mensagens Mumble padrão e sem alterar o servidor.",
+        "groups": [
+          {
+            "title": "Administração onde já estás a olhar",
+            "items": [
+              "As ações de administração só aparecem onde o servidor as concede. Sem direitos não vês nada disto",
+              "Tudo nos menus de clique direito de canais e pessoas e no menu do servidor, sem um modo de admin separado",
+              "Um registo privado no teu computador: quem baniste na semana passada e porquê"
+            ],
+            "mockups": [
+              "Ações de administração no menu de clique direito"
+            ]
+          },
+          {
+            "title": "Canais e permissões",
+            "items": [
+              "Criar, mudar o nome, descrever, mover, reordenar e eliminar canais, incluindo canais temporários, limites de utilizadores e ligações",
+              "Definir, alterar e remover palavras-passe de canais, tal como no cliente oficial",
+              "Um editor de permissões (ACLs) e grupos que também quem não é especialista consegue ler: o que é herdado, que regra ganha e, no fim, quem pode fazer o quê",
+              "Informações do servidor para admins e edição do texto de boas-vindas, na medida em que o protocolo o permita"
+            ],
+            "mockups": [
+              "Editar um canal",
+              "As permissões de um canal"
+            ]
+          },
+          {
+            "title": "Pessoas e banimentos",
+            "items": [
+              "Expulsar pessoas do servidor com um motivo e, se quiseres, banir por um tempo à escolha, por certificado, endereço IP ou ambos",
+              "Ver, pesquisar e editar a lista de banimentos, incluindo banimentos de pessoas que não estão online",
+              "Mover pessoas depressa: uma pessoa para ti, ou todos os de um canal para outro",
+              "Gerir utilizadores registados: quando foram vistos pela última vez, mudar o nome, anular o registo e registar pessoas que estão online",
+              "Silenciar o microfone ou o som de alguém para todos, torná-lo orador prioritário e repor um comentário ou avatar indesejado"
+            ],
+            "mockups": [
+              "Banir alguém",
+              "Utilizadores registados"
+            ]
+          },
+          {
+            "title": "Windows",
+            "items": [
+              "Compilações assinadas para Windows, instalador e app"
+            ]
+          }
         ]
       },
       {
         "id": "epic-5",
+        "title": "O Mumcord no teu telemóvel",
+        "summary": "O Mumcord como app para Android e iOS, compatível com servidores Mumble padrão como no desktop. Primeiro como APK para descarregar e através do TestFlight, as lojas de apps chegam mais tarde.",
+        "groups": [
+          {
+            "title": "Base e distribuição",
+            "items": [
+              "App para Android e iOS sobre o motor Rust existente, compilada em CI",
+              "Um APK assinado nas releases do GitHub e iOS através do TestFlight, ainda sem lojas de apps",
+              "Escrito com clareza: que funcionalidades do desktop a primeira versão deixa de fora e porquê"
+            ]
+          },
+          {
+            "title": "Servidores, canais e identidade",
+            "items": [
+              "Encontrar, adicionar e ligar a servidores, com uma navegação que funciona com um só polegar",
+              "Criar uma identidade nova ou trazer a do desktop em segurança, para ficares com o teu nome, amigos e permissões",
+              "Canais e pessoas bem organizados num ecrã pequeno, com a mesma informação que no desktop"
+            ],
+            "mockups": [
+              "Lista de servidores, árvore de canais e push-to-talk no telemóvel"
+            ]
+          },
+          {
+            "title": "Falar e conversar",
+            "items": [
+              "Um botão grande de push-to-talk, ativação por voz fiável e som onde esperas: auricular, altifalante ou Bluetooth",
+              "A voz continua com o ecrã desligado, com falar, silenciar, ensurdecer e sair no ecrã de bloqueio",
+              "Chat do canal e mensagens privadas, confortáveis no telemóvel",
+              "Notificações de menções, mensagens e pedidos, sem qualquer servidor push"
+            ],
+            "mockups": [
+              "Chat, ecrã de bloqueio e definições no telemóvel"
+            ]
+          },
+          {
+            "title": "O dia a dia no telemóvel",
+            "items": [
+              "Definições curtas e claras, só com o que faz sentido num telemóvel",
+              "Mantém-se ligado nas mudanças de rede e poupa a bateria e os dados móveis",
+              "Totalmente utilizável com TalkBack, VoiceOver e texto grande do sistema"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "epic-6",
         "title": "Distribuição",
         "summary": "Instalar sem avisos e sempre atualizado.",
         "items": [
           "Instaladores assinados, sem aviso do SmartScreen nem do Gatekeeper: já preparado no workflow de lançamento para Windows e macOS, ativo assim que os certificados estiverem configurados",
           "Atualizações automáticas",
           "Relatórios de falhas, só se concordares",
-          "Repositórios de pacotes e lojas"
+          "Repositórios de pacotes e lojas",
+          "O Mumcord no Flathub, para qualquer distribuição Linux diretamente a partir do centro de software",
+          "A app do telemóvel no Google Play, na App Store e no F-Droid"
         ]
       },
       {
-        "id": "epic-6",
-        "title": "Pesquisa de GIFs",
-        "summary": "Pesquisar, em vez de só favoritos.",
+        "id": "epic-future",
+        "title": "Ideias para mais tarde",
+        "summary": "Ideias sem um epic planeado, como a pesquisa de GIFs.",
         "items": [
           "Pesquisa de GIFs sem incluir na app uma chave de API que qualquer pessoa possa extrair",
           "As opções são um pequeno serviço intermediário ou a tua própria chave; a decidir mais tarde"
