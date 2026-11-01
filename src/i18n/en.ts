@@ -82,6 +82,23 @@ export const en: Dict = {
     keyLabel: "Space",
     note: "Just an animation. This page never touches your microphone.",
   },
+  spotlight5: {
+    label: "New in 0.5.0",
+    labelSoon: "Coming: 0.5.0",
+    title: "More calm. More you. More sound.",
+    body: "0.5.0 brings Epic 3: a notification centre, blocking, several identities, a new channel tree, music in the chat, a low-latency mode for making music and direct connections through a relay.",
+    tiles: {
+      notifications: { title: "Everything in one place", body: "The bell collects mentions, replies, requests and invites from every server. Whoever bothers you gets blocked, recognised by their certificate." },
+      identities: { title: "Several identities", body: "Private, clan, work: per server you choose who you connect as." },
+      tree: { title: "A new channel tree", body: "Right-click on every channel, the user limit next to the name, clear icons and a menu behind the channel name." },
+      lowLatency: { title: "Make music together", body: "Low-latency mode brings about 40 instead of 90 ms mouth to ear, and every channel remembers its own audio settings." },
+      music: { title: "Music in the chat", body: "Audio files play right in the chat, links to Spotify, Apple Music and more become a music card." },
+      relay: { title: "Direct connections, anywhere", body: "Screen sharing and large images work even behind CGNAT, and if you like nobody sees your IP address." },
+    },
+    features: "All features",
+    changelog: "Everything new",
+  },
+  serverCta: { title: "Your own server in five minutes", body: "Tick the boxes, copy the command, done: the configurator builds your docker-compose.yml with relay and bots.", button: "Open the configurator" },
   spotlight: {
     label: "New in 0.4.0",
     labelSoon: "Soon: 0.4.0",

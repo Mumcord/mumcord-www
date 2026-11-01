@@ -534,20 +534,58 @@
       "commits": "committia",
       "join": "Osallistu GitHubissa",
       "toolTitle": "Osallistujat"
+    },
+    "spotlight5": {
+      "label": "Uutta versiossa 0.5.0",
+      "labelSoon": "Tulossa: 0.5.0",
+      "title": "Enemmän rauhaa. Enemmän sinua. Enemmän ääntä.",
+      "body": "0.5.0 tuo Epic 3:n: ilmoituskeskuksen, estot, useita identiteettejä, uuden kanavapuun, musiikkia chattiin, matalan viiveen tilan yhdessä soittamiseen ja suorat yhteydet releen kautta.",
+      "tiles": {
+        "notifications": {
+          "title": "Kaikki yhdessä paikassa",
+          "body": "Kello kerää maininnat, vastaukset, pyynnöt ja kutsut kaikilta palvelimilta. Kuka tahansa häiritsijä estetään, ja hänet tunnistetaan varmenteesta."
+        },
+        "identities": {
+          "title": "Useita identiteettejä",
+          "body": "Yksityinen, kilta, työ: valitset palvelinkohtaisesti, kenenä yhdistät."
+        },
+        "tree": {
+          "title": "Uusi kanavapuu",
+          "body": "Oikea hiiren painike jokaisella kanavalla, käyttäjäraja nimen vieressä, selkeät kuvakkeet ja valikko kanavan nimen takana."
+        },
+        "lowLatency": {
+          "title": "Soittakaa yhdessä",
+          "body": "Matalan viiveen tila tuo noin 40 ms 90:n sijaan suusta korvaan, ja jokainen kanava muistaa omat ääniasetuksensa."
+        },
+        "music": {
+          "title": "Musiikkia chatissa",
+          "body": "Äänitiedostot soivat suoraan chatissa, ja linkeistä Spotifyhin, Apple Musiciin ja muualle tulee musiikkikortti."
+        },
+        "relay": {
+          "title": "Suorat yhteydet kaikkialla",
+          "body": "Ruudunjako ja isot kuvat toimivat CGNATin takanakin, ja halutessasi kukaan ei näe IP-osoitettasi."
+        }
+      },
+      "features": "Kaikki ominaisuudet",
+      "changelog": "Kaikki uutta"
+    },
+    "serverCta": {
+      "title": "Oma palvelin viidessä minuutissa",
+      "body": "Rastita ruudut, kopioi komento, valmis: konfiguraattori rakentaa docker-compose.yml:n releellä ja boteilla.",
+      "button": "Avaa konfiguraattori"
     }
   },
   "features": {
     "title": "Ominaisuudet",
     "description": "Kaikki Mumcordin ominaisuudet kuvakaappausten kera: palvelimet ja varmenteet, kanavien seuraaminen, chat esikatseluineen ja @mainintoineen, push-to-talk, ääni ja mukavuus.",
     "label": "Mitä Mumcord osaa",
-    "intro": "Kaikki, mitä Mumcord osaa, kuvan kera aina kun sellainen on, sekä mitä seuraava versio tuo. Suodattimella näet beta-ominaisuudet tai mitä uutta kussakin versiossa on. Puuttuuko jotain tai onko jokin rikki? Kerro meille GitHubissa.",
+    "intro": "Kaikki, mitä Mumcord osaa, kuvan kera aina kun sellainen on, sekä mitä seuraava versio tuo. Suodattimella näet kahden viimeisimmän version uudet asiat. Puuttuuko jotain tai onko jokin rikki? Kerro meille GitHubissa.",
     "contents": "Sisältö",
     "newIn": "uutta versiossa",
     "comingIn": "tulossa versiossa",
     "beta": "Beta",
     "filterLabel": "Suodatin",
     "filterAll": "Kaikki",
-    "filterBeta": "Beta",
     "filterEmpty": "Tällä suodattimella ei löydy ominaisuuksia.",
     "jump": "Siirry",
     "statFeatures": "ominaisuutta",
@@ -590,13 +628,13 @@
           {
             "id": "reconnect",
             "title": "Uudelleenyhdistys kaikkineen",
-            "body": "Jos yhteys katkeaa, palaat samalle kanavalle mykistys- ja kuuroutustilasi sekä seuratut kanavasi tallessa. Uudelleenkäynnistyksen jälkeen Mumcord tarjoaa paluuta viimeisimmälle puhekanavallesi.",
+            "body": "Jos yhteys katkeaa, palaat samalle kanavalle mykistys- ja kuuroutustilasi sekä seuratut kanavasi tallessa. Uudelleenkäynnistyksen jälkeen Mumcord tarjoaa paluuta viimeisimmälle puhekanavallesi. Kun yhteys epäonnistuu, banneri nimeää palvelimen ja poistuu 60 sekunnin kuluttua tai ✕:llä; palvelimen kuvake näyttää virheen edelleen.",
             "alt": "Banneri, joka tarjoaa paluuta viimeisimmälle puhekanavalle"
           },
           {
             "id": "several-servers",
             "title": "Useita palvelimia kerralla",
-            "body": "Jopa 5 palvelinta yhdistettynä kerralla, säädettävissä aina 15:een asti. Puhut yhdellä ja luet, kirjoitat ja saat ilmoitukset kaikilta. Jokainen palvelin yhdistyy uudelleen omillaan katkoksen jälkeen.",
+            "body": "Jopa 5 palvelinta yhdistettynä kerralla, säädettävissä aina 15:een asti. Puhut yhdellä ja luet, kirjoitat ja saat ilmoitukset kaikilta. Jokainen palvelin yhdistyy uudelleen omillaan katkoksen jälkeen. ”Liity kanavalle” toimii myös toisella palvelimella oleville kavereille, ja mumble:// -linkit yhdistettyyn palvelimeen hyppäävät suoraan sinne.",
             "alt": "Palvelinpalkki, jossa useita yhdistettyjä palvelimia, kaiutinmerkki puhepalvelimen kohdalla ja mainintojen määrät"
           },
           {
@@ -611,24 +649,51 @@
             "body": "Paketit Debianille ja Ubuntulle, Fedoralle ja openSUSElle, Archille (AUR: mumcord-bin) ja AppImage, x86_64:lle ja ARM64:lle, myös yhdellä rivillä päätteessä. Halutessasi vihje, kun uusi versio on julkaistu."
           },
           {
-            "id": "server-notices",
-            "title": "Ilmoitukset palvelinkohtaisesti",
-            "body": "Ilmoitukset ja yksityisviestit näyttävät palvelimen nimen, ja jokaisen palvelimen voi mykistää erikseen."
+            "id": "mumble-import",
+            "title": "Tuo Mumblesta",
+            "body": "Jos virallinen Mumble-asiakasohjelma (1.4 tai 1.5) on asennettu, käyttöönottoavustaja tarjoutuu ottamaan käyttöön suosikkipalvelimesi salasanoineen, varmenteesi uutena identiteettinä, jotta rekisteröity nimesi säilyy, äänilaitteesi ja push-to-talk-näppäimesi. Valitset jokaisen osan esikatselussa, jo olemassa olevat palvelimet ohitetaan, ja ”Kumoa tuonti” peruu kaiken. Myöhemminkin kohdassa Asetukset → Palvelimet.",
+            "alt": "Käyttöönottoavustajan vaihe ”Tuo Mumblesta” ja valintaruutu jokaiselle löydetylle osalle"
           },
           {
-            "id": "across-servers",
-            "title": "Liity palvelimesta toiseen",
-            "body": "”Liity kanavalle” toimii myös toisella palvelimella oleville kavereille, ja mumble:// linkit yhdistettyyn palvelimeen hyppäävät suoraan sinne."
+            "id": "identities",
+            "title": "Useita identiteettejä",
+            "body": "Asetukset → Identiteetti hallitsee useita asiakasvarmenteita: luo, tuo, nimeä uudelleen, vie ja varmuuskopioi. Jokainen palvelin käyttää oletusidentiteettiä tai omaansa, ja chatin otsikko näyttää, mikä on käytössä, kun se ei ole oletus. Varmenteet ja avaimet pysyvät järjestelmän suojatussa tallennustilassa.",
+            "alt": "Identiteettienhallinta useine identiteetteineen, niiden sormenjälkineen ja niitä käyttävine palvelimineen"
           },
           {
-            "id": "autostart",
-            "title": "Käynnistys kirjautuessa",
-            "body": "”Käynnistä Mumcord, kun kirjaudun sisään” löytyy kaikista järjestelmistä."
+            "id": "server-dialog",
+            "title": "Palvelinikkuna välilehdillä",
+            "body": "Palvelimen lisääminen tai muokkaus on jaettu välilehtiin Yhteys, Identiteetti, Salasanat ja Toiminta. Virheet nimetään suoraan kentässä, ”Testaa yhteys” kertoo pingin, palvelimen version ja varmenteen tallentamatta mitään, ja tallennetut kanavasalasanat näyttävät, mille kanavalle ne kuuluvat, esimerkiksi ”Upseerit (Raid)”.",
+            "alt": "”Lisää palvelin” -ikkuna välilehdillä Yhteys, Identiteetti, Salasanat ja Toiminta"
           },
           {
-            "id": "failure-banner",
-            "title": "Virhebannerit, jotka eivät nalkuta",
-            "body": "Kun yhteys epäonnistuu, banneri kertoo palvelimen nimen ja katoaa 60 sekunnin kuluttua tai ✕:llä. Palvelimen kuvake näyttää virheen edelleen."
+            "id": "server-browser",
+            "title": "Löydä julkisia palvelimia",
+            "body": "Palvelinpalkin hakupainike avaa julkisten Mumble-palvelimien luettelon: hae nimellä, osoitteella tai maalla, suodata maan ja pingin mukaan, piilota tyhjät tai täydet palvelimet. ”Yhdistä” tallentaa ja liittyy yhdellä klikkauksella. Luettelo ladataan vasta, kun avaat sen, ja vain ruudulla näkyvät rivit pingataan.",
+            "alt": "Julkisten palvelinten selain hakuineen, maa- ja pingsuodattimineen sekä palvelinluetteloineen"
+          },
+          {
+            "id": "server-info",
+            "title": "Palvelimen tiedot",
+            "body": "Palvelinvalikko näyttää nimen, osoitteen, version, tervetuloviestin, rajat, sallitut koodekit, oikeutesi ja sen, kuinka moni käyttää Mumcordia, sekä TLS-varmenteen sormenjälkineen ja voimassaoloaikoineen. ”Kopioi diagnostiikka” laittaa kaiken leikepöydälle virheraportteja varten. Toimii kaikkien tavallisten Mumble-palvelimien kanssa.",
+            "alt": "Palvelimen tiedot versioineen, rajoineen sekä TLS-varmenteen sormenjälkineen, myöntäjineen ja voimassaoloaikoineen"
+          },
+          {
+            "id": "setup-again",
+            "title": "Käynnistä käyttöönottoavustaja uudelleen",
+            "body": "Asetukset → Tietoja käy käyttöönoton läpi vielä kerran, jotta voit tarkistaa mikrofonin, yksityisyyden, päivitystarkistuksen ja puhetavan. Identiteettivaihe ohitetaan, joten varmenteellesi ei voi vahingossa tapahtua mitään, ja vain todella muuttamasi arvot tallennetaan.",
+            "alt": "Asetuksista uudelleen käynnistetty käyttöönottoavustaja, jossa identiteettivaihe on merkitty ohitetuksi"
+          },
+          {
+            "id": "windows-portable",
+            "title": "Kannettava versio Windowsille",
+            "body": "Asennusohjelman lisäksi on zip, joka toimii ilman asennusta: pura se ja käynnistä Mumcord.exe. Tiedot, asetukset ja lokit pysyvät sen vieressä olevassa kansiossa, eikä mumble://-käsittelijää tai käynnistystä kirjautuessa määritetä, ellet kytke sitä itse päälle."
+          },
+          {
+            "id": "updater",
+            "title": "Päivitykset sovelluksessa",
+            "body": "Mumcord tarkistaa uuden version käynnistyksessä ja 12 tunnin välein, näyttää, mikä on muuttunut omaan versioosi verrattuna, ja asentaa sen yhdellä napsautuksella. Jokainen lataus tarkistetaan Mumcordin allekirjoitusta ja julkaisun tarkistussummia vasten ennen asennusta; voit ohittaa version tai pyytää muistutuksen myöhemmin.",
+            "alt": "Ikkuna „Päivitys saatavilla” ja muutokset omaan versioosi verrattuna"
           }
         ]
       },
@@ -657,68 +722,67 @@
           {
             "id": "right-click",
             "title": "Klikkaa ihmisiä hiiren oikealla",
-            "body": "Katso profiili, mykistä vain itseltäsi, säädä äänenvoimakkuus 0–200 % tai lähetä yksityisviesti. Mumcord muistaa sen henkilökohtaisesti.",
-            "alt": "Henkilön pikavalikko äänenvoimakkuuden liukusäätimellä"
-          },
-          {
-            "id": "person-card",
-            "title": "Tuplaklikkaus yksityisviestiin",
-            "body": "Tuplaklikkaa henkilöä, niin yksityinen chat aukeaa. Klikkaus kiinnittää hänen korttinsa, jossa on painikkeet yksityisviestille ja profiilille."
+            "body": "Lähetä viesti, liity hänen kanavalleen tai lisää kaveriksi aivan ylhäältä, sitten profiili, mykistys vain itseltäsi ja äänenvoimakkuus 0–200 %, muistettuna henkilökohtaisesti. Jos et saa liittyä, syy näytetään. Kaksoisklikkaus avaa yksityischatin.",
+            "alt": "Henkilön valikko, jonka ylimpinä ovat Lähetä viesti, Liity kanavalle ja Lisää kaveriksi"
           },
           {
             "id": "profile",
-            "title": "Uusi profiili",
-            "body": "Banneri, merkki, musiikki tai peli ja kaikki kyseisen henkilön asetukset. Muutokset tulevat voimaan heti lyhyen ”Tallennettu”-ilmoituksen kera. Oikean painikkeen valikossa on kuvakkeet ja kytkimet.",
+            "title": "Profiili",
+            "body": "Banneri, merkki, musiikki tai peli ja kommentti lihavoinnilla, kursiivilla, linkeillä ja listoilla. Äänenvoimakkuus, mykistys ja yksityinen muistiinpano kyseisestä henkilöstä ovat siinä kokoontaitettuina; muutokset tulevat voimaan heti lyhyen ”Tallennettu”-ilmoituksen kera.",
             "alt": "Koko profiili musiikin, henkilökohtaisten asetusten ja yksityisen muistiinpanon kera"
-          },
-          {
-            "id": "join-channel",
-            "title": "Liity henkilön kanavalle",
-            "body": "Klikkaa henkilöä tai kaveria hiiren oikealla: ”Liity ‹kanava›” vie sinut suoraan hänen kanavalleen. Jos palvelin ei salli sitä, syy näytetään vieressä.",
-            "alt": "Henkilövalikko, jossa ”Liity kanavalle”"
           },
           {
             "id": "member-column",
             "title": "Oikea sarake osioineen",
-            "body": "”Kanavalla ‹kanava›”, ”Muilla kanavilla” kaikkine muine palvelimella olijoineen sekä ”Kaverit”, jokainen kokoontaitettava. Mumcord muistaa, mitkä ovat auki. Vasemmalla ”Palvelimen yleiskatsaus” on kanavapuun yläpuolella.",
+            "body": "”Kanavalla ‹kanava›”, ”Muilla kanavilla” kaikkine muine palvelimella olijoineen sekä ”Kaverit”, jokainen kokoontaitettava. Mumcord muistaa, mitkä ovat auki.",
             "alt": "Oikea sarake, ”Muilla kanavilla” auki"
           },
           {
             "id": "connection-quality",
             "title": "Yhteyden laatu",
-            "body": "Profiilista näkee yhdellä silmäyksellä, onko yhteys hyvä, kohtalainen vai heikko, ja avattuna se näyttää pingin, pakettihävikin ja kaistanleveyden. Pieni signaalikuvake merkitsee, kenellä on juuri nyt heikko yhteys.",
+            "body": "Profiilista näkee yhdellä silmäyksellä, onko yhteys hyvä, kohtalainen vai heikko, ja avattuna se näyttää pingin, pakettihävikin ja kaistanleveyden. Pieni signaalikuvake merkitsee, kenellä on juuri nyt heikko yhteys. Ylläpitäjät näkevät myös asiakasohjelman ja käyttöjärjestelmän, esimerkiksi ”Mumcord 0.4.0” tai ”Mumble 1.5”.",
             "alt": "Profiilikortti, jossa yhteys avattuna: ping, pakettihävikki, kaistanleveys, asiakasohjelma ja käyttöjärjestelmä"
           },
           {
-            "id": "listeners",
-            "title": "Kuuntelijat korvalla",
-            "body": "Kanavaa pelkästään kuuntelevat näkyvät tavallisessa listassa korvakuvakkeen kanssa eivätkä omassa ryhmässään."
-          },
-          {
-            "id": "client-info",
-            "title": "Asiakasohjelma ja järjestelmä ylläpitäjille",
-            "body": "Ylläpitäjät näkevät profiilissa lisäksi, mitä asiakasohjelmaa ja käyttöjärjestelmää joku käyttää, esimerkiksi ”Mumcord 0.4.0” tai ”Mumble 1.5”."
-          },
-          {
             "id": "channel-filters",
-            "title": "Piilota tyhjät kanavat",
-            "body": "Isot palvelimet eivät enää jäädy, kun ne näytetään ensimmäistä kertaa. Lisäksi kytkimet ”Piilota tyhjät kanavat” ja ”Puhujat ensin”."
-          },
-          {
-            "id": "profile-comment",
-            "title": "Muotoiltu profiilikommentti",
-            "body": "Profiilikommentissasi voi käyttää lihavointia, kursiivia, linkkejä ja listoja."
-          },
-          {
-            "id": "person-settings",
-            "title": "Asetukset henkilöittäin",
-            "body": "Äänenvoimakkuus, mykistys ja muistiinpano jostakusta ovat kokoon taitettuina hänen profiilissaan. Kun jotain muutetaan, rivi näyttää sen hetken, esimerkiksi ”Äänenvoimakkuus 60 %”."
+            "title": "Siisti kanavaluettelo",
+            "body": "Kytkimet ”Piilota tyhjät kanavat” ja ”Puhujat ensin”, eivätkä isot palvelimet enää jäädy, kun ne näytetään ensimmäistä kertaa. Ihmiset, jotka vain kuuntelevat kanavaa, näkyvät tavallisessa luettelossa korvakuvakkeen kera."
           },
           {
             "id": "channel-passwords",
             "title": "Salasanalla suojatut kanavat",
             "body": "Jos kanava vaatii salasanan, Mumcord kysyy sitä ja muistaa sen palvelinkohtaisesti, myös uudelleenyhdistämisen jälkeen. Kanavissa, joille et saa mennä, näkyy pieni lukko.",
             "alt": "Kanava, jossa lukko, ja kanavan salasanaikkuna"
+          },
+          {
+            "id": "channel-tree",
+            "title": "Kanavapuu valikolla",
+            "body": "Klikkaa kanavaa hiiren oikealla liittyäksesi siihen tai seurataksesi sitä, säätääksesi sen äänen, kopioidaksesi sen linkin, avataksesi kanavan tiedot tai siirtääksesi ihmisiä sinne, jos saat. Kanavat, joilla on raja, näyttävät sen, esimerkiksi ”Raid (1/10)”, täydet himmennetään, ja tilapäisillä ja linkitetyillä kanavilla on kuvakkeet. Oikeudella vedät ihmisiä toiselle kanavalle. Ylhäällä on palvelin yhteyspisteineen ja tekstillä ”N paikalla · ping”.",
+            "alt": "Kanavapuu, jossa kanavan hiiren oikean painikkeen valikko auki"
+          },
+          {
+            "id": "channel-header",
+            "title": "Kanavan nimi valikolla",
+            "body": "Silmä kanavan nimen edessä seuraa kanavaa tai lopettaa seurannan. Klikkaus nimeen avaa Seuraa, Kopioi kanavan linkki, Kanavan salasana, Kanavan tiedot ja Tyhjennä chat-historia. Kanavan tiedot näyttävät polun, kuvauksen, käyttäjärajan, linkitetyt kanavat ja oikeutesi siellä.",
+            "alt": "Kanavan tiedot polkuineen, kuvauksineen, käyttäjineen, käyttäjärajoineen, linkitettyine kanavineen ja oikeuksineen"
+          },
+          {
+            "id": "hide-members",
+            "title": "Piilota jäsensarake",
+            "body": "Painike chatin otsikossa tai Ctrl+Shift+M piilottaa oikean sarakkeen, jolloin chat saa koko leveyden. Painike näyttää silloin, kuinka monta ihmistä kanavalla on, ja vihreän pisteen, kun joku puhuu. Kapeassa ikkunassa sarake liukuu chatin päälle.",
+            "alt": "Chat koko leveydellä, jäsensarake piilotettuna ja jäsenpainike otsikossa"
+          },
+          {
+            "id": "message-privacy",
+            "title": "Kuka saa lähettää sinulle viestejä",
+            "body": "Asetukset → Yksityisyys: yksityisviestit kaikilta, vain kavereilta tai ei keneltäkään, myös palvelinkohtaisesti. Kanavasi ihmiset ja hyväksymäsi keskustelut pääsevät aina läpi. Muut viestit odottavat viestipyyntöinä, jotka hyväksyt tai hylkäät, ja Mumcordin käyttäjät voivat lähettää chat-pyynnön lyhyen viestin kera. Lähettäjälle ei kerrota koskaan.",
+            "alt": "Viestipyynnöt chat-pyynnön, sen viestin sekä Hyväksy- ja Hylkää-painikkeiden kera"
+          },
+          {
+            "id": "block-users",
+            "title": "Estä ihmisiä",
+            "body": "”Estä…” henkilön valikossa piilottaa heidän yksityisviestinsä ja pyyntönsä, tiivistää heidän kanavaviestinsä ja mykistää heidän äänensä, vain sinulta. Esto seuraa varmennetta, joten se pätee palvelimien välillä ja uusilla nimillä. Palvelimelle tai henkilölle ei lähetetä mitään, ja Asetukset → Yksityisyys listaa kaikki estämäsi ”Poista esto” -painikkeella.",
+            "alt": "Henkilön eston vahvistus, joka luettelee, mitä muuttuu"
           }
         ]
       },
@@ -741,7 +805,7 @@
           {
             "id": "previews",
             "title": "Linkkien esikatselut",
-            "body": "Linkit saavat kortin, jossa on otsikko, kuvaus ja kuva. Mumcord hakee ne itse, ei koskaan paikallisen verkon osoitteista; jokaisen kortin voi sulkea, ja ominaisuuden voi kytkeä pois ohjatussa käyttöönotossa ja asetuksissa.",
+            "body": "Linkit saavat kortin, jossa on otsikko, kuvaus ja kuva. Mumcord hakee ne itse, ei koskaan paikallisen verkon osoitteista; jokaisen kortin voi sulkea, ja ominaisuuden voi kytkeä pois ohjatussa käyttöönotossa ja asetuksissa. Linkin klikkaus hiiren oikealla tarjoaa ”Kopioi linkki” ja ”Avaa linkki”.",
             "alt": "Chat linkin esikatselun kera"
           },
           {
@@ -752,32 +816,32 @@
           },
           {
             "id": "spotify",
-            "title": "Spotify",
-            "body": "Myös Spotify-linkit saavat kortin, jossa on kansikuva, nimi ja artisti; soitin tulee vasta klikkauksesta.",
-            "alt": "Chat Spotify-kortin kera"
+            "title": "Musiikkilinkit",
+            "body": "Spotify, SoundCloud ja YouTube Music soivat palvelun virallisessa soittimessa, joka ladataan vasta, kun painat Toista. Apple Music, Tidal, Deezer, Bandcamp ja muut musiikkisivut saavat saman kortin kansikuvan, nimen ja artistin sekä tekstin ”Avaa palvelussa …” kera. Yhden soittimen käynnistäminen pysäyttää toisen.",
+            "alt": "Musiikkikortti kansikuvan, nimen, artistin ja palvelun nimen kera"
           },
           {
             "id": "images",
             "title": "Kuvat ja GIFit chatissa",
-            "body": "Ulkoiset kuvat ja kuvalinkit näkyvät suoraan viestissä, Giphyn ja Tenorin GIFit toistuvat ja kertovat lähteensä.",
+            "body": "Ulkoiset kuvat ja kuvalinkit näkyvät suoraan viestissä, Giphyn ja Tenorin GIFit toistuvat ja kertovat lähteensä. Kuvakaappaukset ja kopioidut kuvat menevät viestikenttään Ctrl+V:llä.",
             "alt": "Chat kuvan ja GIFin kera"
           },
           {
             "id": "image-viewer",
             "title": "Kuvankatseluohjelma",
-            "body": "Klikkaa kuvaa nähdäksesi sen isona: zoomaa rullalla tai näppäimillä, panoroi, selaa nuolinäppäimillä kaikkia chatin kuvia ja ”Tallenna kuva”.",
+            "body": "Klikkaa kuvaa nähdäksesi sen isona: zoomaa, panoroi ja selaa nuolinäppäimillä kaikkia chatin kuvia. Täysi koko latautuu taustalla ohuen edistymispalkin kera. Klikkaa hiiren oikealla kopioidaksesi kuvan, tallentaaksesi sen alkuperäisenä, GIFin animaatioineen tai kopioidaksesi sen osoitteen.",
             "alt": "Kuvankatseluohjelma zoomauspalkin kera"
           },
           {
             "id": "mentions",
             "title": "@maininnat",
-            "body": "Kirjoita @, niin Mumcord ehdottaa nimiä. Maininnat korostetaan, niistä tulee ilmoitus hiljaisillakin kanavilla, ja niillä on oma äänensä.",
+            "body": "Kirjoita @, niin Mumcord ehdottaa nimiä. Maininnat korostetaan, niistä tulee ilmoitus hiljaisillakin kanavilla, ja niillä on oma äänensä. Vie hiiri maininnan päälle nähdäksesi esikatselun, klikkaa profiilia varten, klikkaa hiiren oikealla valikkoa varten.",
             "alt": "Viestikenttä nimiehdotuksella @-merkin jälkeen"
           },
           {
             "id": "code",
             "title": "Koodi ja muotoilu",
-            "body": "Koodilohkot syntaksikorostuksella, muotoilupalkki kirjoituskentän yläpuolella ja pikanäppäimet kuten Ctrl+B, Ctrl+I tai Ctrl+E.",
+            "body": "Koodilohkot korostetaan sillä kielellä, jonka kirjoitat kolmen gravis-merkin perään, sql:stä ja rustista Dockerfileen ja heksadumppeihin, painikkeilla kopioimiseen tai lataamiseen. Muotoilupalkki kirjoituskentän yläpuolella ja pikanäppäimet kuten Ctrl+B, Ctrl+I tai Ctrl+E.",
             "alt": "Chat korostetun koodin ja muotoilupalkin kera"
           },
           {
@@ -789,7 +853,7 @@
           {
             "id": "notifications",
             "title": "Ilmoitukset omalla tavallasi",
-            "body": "Uudet viestit ponnahdusikkunana sovelluksessa, järjestelmäilmoituksena, molempina tai ei ollenkaan. Lisäksi lyhyet, hillityt äänet tapahtumakohtaisesti.",
+            "body": "Uudet viestit ponnahdusikkunana sovelluksessa, järjestelmäilmoituksena, molempina tai ei ollenkaan, lyhyin ja hillityin äänin tapahtumakohtaisesti. Ilmoituksissa näkyy palvelimen nimi, ja jokaisen palvelimen voi mykistää erikseen.",
             "alt": "Sovelluksen ponnahdusikkuna uudesta viestistä"
           },
           {
@@ -797,11 +861,6 @@
             "title": "Siivoaa jälkensä",
             "body": "Esikatselut ja kuvat poistetaan, kun valitsemasi määrä päiviä on kulunut, halutessasi myös vanha chat-historia. Historia säilyy vain omalla koneellasi, ja sen voi kytkeä pois palvelinkohtaisesti.",
             "alt": "Asetukset, chat ja historia -osio"
-          },
-          {
-            "id": "mention-chips",
-            "title": "Klikattavat @maininnat",
-            "body": "Esikatselu, kun viet hiiren päälle, profiili klikkauksesta, valikko oikealla painikkeella."
           },
           {
             "id": "replies",
@@ -828,37 +887,46 @@
             "alt": "Pitkä viesti, jonka nimi ja kuva pysyvät kiinnitettyinä chatin yläreunassa"
           },
           {
-            "id": "image-loading",
-            "title": "Kuvat latautuvat taustalla",
-            "body": "Ohut palkki kuvan alla näyttää, kuinka pitkällä täysikokoisen kuvan lataus on. Kun suljet kuvakatselimen, lataus jatkuu; palkin × peruu sen."
-          },
-          {
-            "id": "link-menu",
-            "title": "Linkkien kopiointi",
-            "body": "Kun klikkaat chatin linkkiä hiiren oikealla, saat vaihtoehdot ”Kopioi linkki” ja ”Avaa linkki”.",
-            "alt": "Linkin pikavalikko, jossa ”Kopioi linkki” ja ”Avaa linkki”"
-          },
-          {
             "id": "message-cards",
             "title": "Viestikortit",
             "body": "Botit ja ihmiset lähettävät tiiviitä kortteja, joissa on otsikko, tilaväri, kuvake, muotoiltua tekstiä, kuva ja linkki, esimerkiksi buildeista, hälytyksistä tai hallintapaneeleista. Viralliset Mumble-sovellukset näkevät saman viestin luettavana tekstinä.",
             "alt": "Chat, jossa on kaksi botin viestikorttia: täysi kortti kuvakkeen, otsikon, tekstin, kaavion ja linkin kera, ja sen alla yksinkertainen kortti otsikolla ja linkillä"
           },
           {
-            "id": "paste-images",
-            "title": "Liitä kuvia Ctrl+V:llä",
-            "body": "Kuvakaappaukset, selaimen ”Kopioi kuva” ja tiedostonhallinnassa kopioidut kuvatiedostot menevät Ctrl+V:llä suoraan viestikenttään liitteeksi."
+            "id": "notification-centre",
+            "title": "Ilmoituskeskus",
+            "body": "Kello chatin otsikossa tai Ctrl+Shift+N kokoaa maininnat, vastaukset, chat- ja viestipyynnöt, kutsut watch partyihin ja näytönjakoihin sekä palvelimet, jotka eivät enää tavoitettavissa, kaikilta yhdistetyiltä palvelimilta, uusimmat ensin. Suodata niitä, hyväksy pyynnöt suoraan siinä, ja klikkaus vie viestiin. Älä häiritse -tilassa se jatkaa keräämistä hiljaa.",
+            "alt": "Ilmoituskeskus maininnoin, vastauksin ja chat-pyynnöllä, jossa Hyväksy ja Hylkää"
           },
           {
-            "id": "code-blocks",
-            "title": "Koodilohkot, joissa Kopioi ja Lataa",
-            "body": "Kirjoita kieli kolmen backtick-merkin perään, sql:stä, rustista ja php:stä cmd:hen, Dockerfileen ja heksadumppeihin, niin lohko korostetaan juuri sellaisena. Kulman painikkeet kopioivat koodin tai tallentavat sen tiedostoksi.",
-            "alt": "SQL-koodilohko, jonka kulmassa on kielimerkintä sekä Kopioi- ja Lataa-painikkeet"
+            "id": "pm-overview",
+            "title": "Kaikki yksityisviestit yhdessä paikassa",
+            "body": "Palvelinpalkin yläosan Viestit-painike listaa kaikki keskustelut kaikilta yhdistetyiltä palvelimilta, kiinnitetyt ensin, palvelintunnisteen, esikatselun ja lukemattomien määrän kera. Hae, suodata lukemattomien tai pyyntöjen mukaan, aloita uusi keskustelu sekä kiinnitä, mykistä tai poista yksi sen valikosta.",
+            "alt": "Yksityisviestien yleiskatsaus, jossa ylhäällä chat-pyyntö ja keskusteluja useilta palvelimilta"
           },
           {
-            "id": "image-menu",
-            "title": "Kuvien kopiointi ja tallennus",
-            "body": "Klikkaa kuvaa hiiren oikealla chatissa tai kuvankatseluohjelmassa: kopioi kuva, tallenna kuva alkuperäisenä, GIF animaatioineen, kopioi kuvan osoite tai avaa se katseluohjelmassa."
+            "id": "group-mentions",
+            "title": "@channel ja @all",
+            "body": "@channel tavoittaa kaikki kanavalla, @all kaikki, jotka voivat lukea sen, kuuntelijat mukaan lukien. Mumcord käsittelee ne kuin maininnan sinusta, muut Mumble-asiakasohjelmat näkevät vain sanat. Liikaa? Mykistä ne palvelinkohtaisesti.",
+            "alt": "Chat korostetulla @channel-maininnalla"
+          },
+          {
+            "id": "audio-links",
+            "title": "Äänitiedostot chatissa",
+            "body": "Linkit mp3-, ogg-, m4a-, wav-, flac- tai webm-tiedostoihin saavat viestin alle soittimen, jossa on hakupalkki, äänenvoimakkuus sekä ”Avaa selaimessa” ja ”Tallenna”. Mikään ei toistu itsestään, tiedosto ladataan vasta, kun painat Toista, enintään 32 Mt, ja ääni menee kaiuttimiisi, ei koskaan mikrofoniisi.",
+            "alt": "Äänisoitin viestin alla toistopainikkeen, hakupalkin ja äänenvoimakkuuden kera"
+          },
+          {
+            "id": "hidden-previews",
+            "title": "Piilotetut esikatselut kertovat siitä",
+            "body": "Kun linkkien esikatselut ja upotukset on kytketty pois, hillitty rivi viestin alla nimeää, mitä piilotettiin, esimerkiksi kuvan tai videon, ja linkittää asetukseen. Linkitetyltä sivustolta ei pyydetä sitä varten mitään.",
+            "alt": "Viesti, jossa rivi ”Kuva piilotettu, koska linkkien esikatselut ja upotukset ovat pois päältä”"
+          },
+          {
+            "id": "server-links",
+            "title": "Palvelinlinkit korteiksi",
+            "body": "mumble://-linkki chatissa näyttää palvelimen, kanavan, pingin, paikalla olevat ihmiset ja version, painikkeilla ”Liity”, ”Lisää palvelimiin” ja ”Kopioi linkki”. Luvut tulevat tavallisesta julkisesta kyselystä, eivät koskaan yhteydestä. Linkin käyttäjänimiä ja salasanoja ei koskaan näytetä, ja ne jätetään pois kopioitaessa.",
+            "alt": "mumble://-linkin kortti palvelimen nimen, kanavan, pingin, käyttäjien ja Liity-painikkeen kera"
           }
         ]
       },
@@ -885,6 +953,12 @@
             "alt": "Ohjattu käyttöönotto, mikrofonivaihe tasotestin kera"
           },
           {
+            "id": "noise-levels",
+            "title": "Kohinanpoisto neljällä tasolla",
+            "body": "Asetukset → Ääni tarjoaa tasot Kevyt tasaiselle kohinalle pienimmällä suoritinkuormalla, Normaali oletuksena, Edistynyt (tekoäly) vuoden 2024 RNNoise-mallilla betana, joka poistaa enemmän kohinaa suuremmalla CPU-kuormalla, sekä Pois. Jokaisen tason vieressä oleva „?” kertoo, mitä se maksaa. Kaikki toimii omalla tietokoneellasi.",
+            "alt": "Ääniasetukset ja kohinanpoiston neljä tasoa"
+          },
+          {
             "id": "music",
             "title": "Musiikkilaatu",
             "body": "Yksi kytkin nostaa bittinopeuden palvelimen rajaan asti, enintään 510 kbit/s:iin, virittää enkooderin musiikille ja kytkee kohinanpoiston ja automaattisen vahvistuksen pois.",
@@ -898,13 +972,50 @@
           },
           {
             "id": "bitrate",
-            "title": "Bittinopeus käsin",
-            "body": "Oma liukusäädin 16 kbit/s:sta aina suurimpaan arvoon, jonka palvelin ja Mumble sallivat. Pakettihävikin sattuessa Mumcord laskee sitä silti itse."
+            "title": "Äänenlaatupaneeli",
+            "body": "Klikkaa yhteystietoja hiiren oikealla: bittinopeuden liukusäädin 16 kbit/s:sta palvelimen rajaan asti sen kera, mitä juuri nyt lähetetään, musiikin laatu, arvioitu kaistanleveys ja äänen terveysarvio. Pakettihävikin sattuessa Mumcord laskee bittinopeutta silti itse.",
+            "alt": "Äänenlaatupaneeli bittinopeuden liukusäätimen, musiikin laadun ja arvioidun kaistanleveyden kera"
           },
           {
             "id": "realtime-audio",
             "title": "Vakaa kuormituksessa",
             "body": "Äänen tallennus ja toisto saavat reaaliaikaisen prioriteetin, joten puheääni rätisee ja katkeilee vähemmän, kun peli tai buildi pitää koneen kiireisenä. Yhteyden tiedot näyttävät katkokset ja sen, onko reaaliaikainen ääni päällä."
+          },
+          {
+            "id": "low-latency",
+            "title": "Matalan viiveen tila musiikin tekoon",
+            "body": "10 ms:n paketit, minimaalinen puskuri sekä ei kaiunpoistoa eikä kohinanvaimennusta laskevat viiveen noin 100 ms:stä noin 40 ms:iin plus verkko. Se vaihtuu livenä ja näyttää arvioidun viiveen. Tarvitsee enemmän kaistaa; kuulokkeita suositellaan. Toimii tavallisten palvelimien kanssa.",
+            "alt": "Ääniasetukset matalan viiveen tila päällä ja arvioitu viive eriteltynä"
+          },
+          {
+            "id": "channel-audio",
+            "title": "Ääni kanavakohtaisesti",
+            "body": "”Ääni tälle kanavalle…” asettaa yhden kanavan musiikin laadun, matalan viiveen tilan ja bittinopeuden katon esiasetuksilla Puhe, Musiikki ja Jam. Se tulee voimaan liittyessäsi, ja tavalliset asetuksesi palaavat, kun lähdet. Tallennetaan vain tälle laitteelle, joten toimii millä tahansa Mumble-palvelimella.",
+            "alt": "”Ääni tälle kanavalle” esiasetuksilla Puhe, Musiikki ja Jam"
+          },
+          {
+            "id": "device-switch",
+            "title": "Vaihda laitetta puhepalkista",
+            "body": "Klikkaa mikrofoni- tai kuulokepainiketta hiiren oikealla: valitse laite, säädä äänenvoimakkuus, seuraa tasoa ja kytke kohinanvaimennus, kaikki ilman uudelleenyhdistämistä. Jos laite irrotetaan, Mumcord palaa järjestelmän oletukseen. Linuxissa PipeWirellä jokainen tulo ja lähtö näkyy kuten työpöytäsi ääniasetuksissa.",
+            "alt": "Mikrofonivalikko tulolaitteineen, äänenvoimakkuuden liukusäätimineen ja tasomittareineen"
+          },
+          {
+            "id": "leave-voice",
+            "title": "Poistu puheesta, pysy yhdistettynä",
+            "body": "Klikkaa lopetuspainiketta hiiren oikealla: ”Poistu puheesta” lopettaa puhumisen ja kuuntelun mutta pitää chatin ja mukana lukemisen käynnissä. Siellä myös: katkaise yhteys, siirrä puhe toiselle palvelimelle ja katkaise yhteys kaikkiin. Vasen klikkaus lopettaa edelleen heti.",
+            "alt": "Lopetuspainikkeen valikko: Poistu puheesta, Katkaise yhteys ja Vaihda puhe"
+          },
+          {
+            "id": "whisper",
+            "title": "Kuiskaus ja huuto",
+            "body": "Puhu valituille ihmisille tai kaikille kanavalla, halutessasi alikanavineen, linkitettyine kanavineen tai vain yhdelle ryhmälle, siirtymättä sinne. Kohteet määritetään asetuksissa tai valinnalla ”Kuiskaa…” henkilön tai kanavan valikossa, kullekin oma pidä-painettuna-puhu-näppäin. Chatin yläpuolella oleva palkki näyttää, kenelle puhut.",
+            "alt": "Chatin yläpuolella oleva palkki kuiskattaessa kanavalle"
+          },
+          {
+            "id": "user-panel",
+            "title": "Rauhallinen käyttäjäpaneeli",
+            "body": "Kanavaluettelon alla oleva paneeli pysyy aina saman korkuisena: sinä nimen ja palvelimen kera, yksi tilarivi, kuten yhdistetään uudelleen tai puhekanavasi, pienet merkit Älä häiritse -tilalle, matalan viiveen tilalle ja yhteydelle sekä mikrofoni-, kuuloke- ja lopetuspainikkeet. Yläpuolella oleva kanavaluettelo ei enää hypi.",
+            "alt": "Käyttäjäpaneeli eri tiloissa, puhumisesta ja mykistyksestä uudelleenyhdistämiseen"
           }
         ]
       },
@@ -915,50 +1026,19 @@
           {
             "id": "positional",
             "title": "Sijaintiääni",
-            "body": "Samassa pelissä olevien äänet kuuluvat heidän suunnastaan ja hiljenevät etäisyyden kasvaessa. Mumble Linkin tai Mumblen virallisten pelilisäosien kautta; ”3D”-kuvake näyttää, kuka lähettää sijaintia.",
+            "body": "Samassa pelissä olevien äänet kuuluvat heidän suunnastaan ja hiljenevät etäisyyden kasvaessa. Mumble Linkin tai Mumblen virallisten pelilisäosien kautta, kullakin oma kytkin; ”3D”-kuvake näyttää, kuka lähettää sijaintia.",
             "alt": "Asetukset, sijaintiääni etäisyyksineen ja pelilisäosineen"
-          },
-          {
-            "id": "game-plugins",
-            "title": "Viralliset pelilisäosat",
-            "body": "Mumblen lisäosat toimittavat sijainnit tuetuista peleistä, kullakin oma kytkimensä. Asetuksista näet, mikä on käytössä."
           },
           {
             "id": "in-game-overlay",
             "title": "Pelinsisäinen overlay",
-            "body": "Linuxissa suoraan pelin sisällä Vulkan-kerroksena, myös Steam- ja Proton-peleissä, testattu Tyrillä ja Supermarket Simulatorilla. Asetetaan pelikohtaisesti; pelit, joiden huijauksenesto estää overlayt, jäävät pois. Windows saa sen versiossa 0.4.0.",
+            "body": "Näyttää, kuka puhuu, suoraan pelissä. Linuxissa Vulkan-kerroksena, myös Steam-, Proton- ja Flatpak-Steam-peleissä, kopioitavalla käynnistysvalinnalla natiiveille OpenGL-peleille. Windowsissa klikkausten läpi päästävänä ikkunana, joka ei lataa mitään peliin, joten se toimii huijauksenestojen kanssa; vain yksinomainen kokoruutu piilottaa sen. Asetetaan pelikohtaisesti; pelit, joiden huijauksenesto estää overlayt, jäävät pois.",
             "alt": "Asetukset, pelinsisäinen overlay huijauksenestovaroituksen ja pelikohtaisten valintojen kera"
-          },
-          {
-            "id": "overlay-window",
-            "title": "Overlay-ikkuna",
-            "body": "Linuxissa ja Windowsissa läpinäkyvä, läpiklikattava ikkuna kaiken päällä, joka näyttää, kuka kanavallasi puhuu. macOS:llä overlayta ei ole. Overlay-ikkuna poistuu versiossa 0.4.0.",
-            "alt": "Overlay-ikkuna pelin päällä näyttää, kuka puhuu"
           },
           {
             "id": "now-gaming",
             "title": "Nyt pelaamassa",
-            "body": "Halutessasi muut näkevät, mitä pelaat, Steam-kuvan ja peliajan kera. ”Liity peliin” Steam-peleissä, jotka tukevat sitä."
-          },
-          {
-            "id": "overlay-windows",
-            "title": "Pelinsisäinen overlay Windowsissa",
-            "body": "Oma, klikkaukset läpi päästävä ikkuna pelin päällä. Peliin ei ladata mitään, joten se toimii myös huijauksenestoa käyttävissä peleissä. Vain eksklusiivinen koko näyttö piilottaa sen."
-          },
-          {
-            "id": "overlay-opengl",
-            "title": "OpenGL-pelit Linuxissa",
-            "body": "Natiiveissa OpenGL-peleissä, kuten Project Hospitalissa, Mumcord näyttää kopioitavan Steam-käynnistysvalinnan, joka toimii myös päivitysten jälkeen. Myös HDR-pelien värit ovat oikein."
-          },
-          {
-            "id": "flatpak-steam",
-            "title": "Flatpak-Steam ja reunaton koko näyttö",
-            "body": "Pelinsisäinen overlay myös Flatpakina asennetun Steamin peleissä, reunattomat koko näytön pelit tarkistettu KDE:ssä ja GNOMEssa. Mumcordin sulkeminen tai päivittäminen ei enää kaada käynnissä olevaa peliä."
-          },
-          {
-            "id": "join-game-link",
-            "title": "”Liity peliin” Mumble Linkin kautta",
-            "body": "”Liity peliin” myös peleissä, jotka jakavat palvelimensa osoitteen Mumble Linkin kautta."
+            "body": "Halutessasi muut näkevät, mitä pelaat, Steam-kuvan ja peliajan kera. ”Liity peliin” Steam-peleissä, jotka tukevat sitä, ja peleissä, jotka jakavat palvelinosoitteensa Mumble Linkin kautta."
           }
         ]
       },
@@ -997,13 +1077,13 @@
           {
             "id": "watch-party",
             "title": "Yhdessä katsominen",
-            "body": "YouTube-watch party puhekanavalla: kaikki näkevät saman videon yhtä aikaa, kuka tahansa voi tauottaa ja kelata, ja mukana on yhteinen soittolista.",
+            "body": "YouTube-watch party puhekanavalla: kaikki näkevät saman videon yhtä aikaa, kuka tahansa voi tauottaa ja kelata, ja mukana on yhteinen soittolista. Kun upotukset on kytketty pois yksityisyysasetuksissa, mitään ei ladata YouTubesta tai Twitchistä.",
             "alt": "Watch party kelluvassa ikkunassa osallistujien, säätimien ja seuraavan videon kera"
           },
           {
             "id": "screen-share",
             "title": "Näytön jakaminen",
-            "body": "Näyttö tai ikkuna jopa 8 katsojalle, 720p:nä ja 30 kuvaa sekunnissa. Windowsissa ja macOS:ssä halutessasi jaetun sovelluksen äänen kanssa. Käynnistät sen chatin Sovellukset-painikkeesta.",
+            "body": "Näyttö tai ikkuna jopa 8 katsojalle, 720p:nä ja 30 kuvaa sekunnissa, Windowsissa ja macOS:ssä halutessasi jaetun sovelluksen äänen kanssa. Käynnistät sen chatin Sovellukset-painikkeesta. Jakamisen aikana punainen palkki näyttää katsojat ja ”Lopeta”, ja muut näkevät kuvasi ympärillä punaisen ”LIVE”-renkaan.",
             "alt": "Jaettu näyttö kelluvassa ikkunassa, jossa koko näytön tila ja ”Lopeta katselu”"
           },
           {
@@ -1013,20 +1093,15 @@
             "alt": "Vihjeet chatin yläreunassa käynnissä olevasta watch partysta ja jaetusta näytöstä"
           },
           {
-            "id": "live",
-            "title": "Livenä, ja kaikki näkevät sen",
-            "body": "Kun jaat näyttöäsi, profiilisi yläpuolella oleva punainen palkki kertoo sen, ja siinä näkyvät ”Lopeta” ja katsojien määrä. Muut näkevät kuvasi ympärillä punaisen renkaan, jossa lukee ”LIVE”.",
-            "alt": "Punainen palkki ”Jaat näyttöäsi”, jossa katsojien määrä ja ”Lopeta”"
-          },
-          {
             "id": "ducking",
-            "title": "Hiljempaa, kun joku puhuu",
-            "body": "Kun joku kanavalla puhuu, watch partyn ja jaetun näytön ääni hiljenee ja palaa sen jälkeen ennalleen. Sinä päätät, kuinka paljon, tai kytket sen pois."
+            "title": "Ääni watch partyille ja jakamiselle",
+            "body": "Kun joku kanavalla puhuu, watch partyn ja jaettujen näyttöjen ääni hiljenee; sinä päätät, kuinka paljon. Lyhyet äänet, kun joku aloittaa watch partyn tai liittyy siihen tai jakaa näyttönsä, ja jokaisen voi kytkeä pois."
           },
           {
-            "id": "activity-sounds",
-            "title": "Äänet watch partyille ja jakamiselle",
-            "body": "Lyhyt ääni, kun joku aloittaa watch partyn, liittyy siihen tai poistuu siitä ja kun joku jakaa näyttönsä tai alkaa katsoa sinun näyttöäsi. Jokaisen äänen voi kytkeä pois."
+            "id": "relay",
+            "title": "Yhteisön välityspalvelin",
+            "body": "Palvelimen yhteisö voi ajaa välityspalvelinta Mumble-palvelimensa rinnalla. Täysikokoiset kuvat ja näytönjako toimivat silloin silloinkin, kun suora yhteys ei ole mahdollinen, ja valinnalla ”aina välityspalvelimen kautta” toinen henkilö ei koskaan näe IP-osoitettasi. Välityspalvelin ei voi lukea salattua yhteyttä, eikä puhe koskaan kulje sen kautta. Valitset kohdassa Asetukset → Yksityisyys, myös palvelinkohtaisesti.",
+            "alt": "Yksityisyysasetukset vertaisyhteyden valinnoilla suora, välityspalvelin ja pois"
           }
         ]
       },
@@ -1043,36 +1118,26 @@
           {
             "id": "sounds",
             "title": "Äänet ja ilmoitukset",
-            "body": "Jokaisen tapahtuman voi kytkeä erikseen: liittyminen, poistuminen, viestit, maininnat.",
+            "body": "Jokaisen tapahtuman voi kytkeä erikseen: liittyminen, poistuminen, viestit, maininnat sekä oma äänensä potkuille tai porttikielloille.",
             "alt": "Asetukset, äänet ja ilmoitukset -osio"
           },
           {
             "id": "languages",
-            "title": "Vaihda kieltä ilman uudelleenkäynnistystä",
-            "body": "Kieli vaihtuu heti. Mukana tulevat ilmoitusalueen kuvake, käynnistys kirjautuessa sekä täysi näppäimistö- ja ruudunlukijatuki.",
+            "title": "24 kieltä, vaihdettavissa ilman uudelleenkäynnistystä",
+            "body": "Kaikki 24 EU:n virallista kieltä, bulgariasta ruotsiin, tulevat voimaan heti, ilmoitusalueen valikko mukaan lukien. Jokainen on listattu omalla nimellään. Tiimin kääntämä ilman äidinkielisten tarkistusta: korjaukset ovat tervetulleita issueina. Täysi näppäimistö- ja ruudunlukijatuki tulee mukana.",
             "alt": "Asetukset, käyttöliittymän kieli -osio"
           },
           {
             "id": "privacy",
             "title": "Ei telemetriaa",
-            "body": "Identiteettisi säilytetään järjestelmän suojatussa tallennustilassa. Diagnostiikkatiedosto ei sisällä chatin sisältöä eikä salasanoja, ja se lähtee koneeltasi vain, jos lähetät sen itse."
-          },
-          {
-            "id": "eu-languages",
-            "title": "Kaikki 24 EU:n virallista kieltä",
-            "body": "Bulgariasta ruotsiin, ilmoitusalueen valikko mukaan lukien. Jokainen kieli on listattu omalla nimellään, ja sen löytää millä tahansa nimellään. Tiimin kääntämä ilman äidinkielisten tarkistusta: korjaukset ovat tervetulleita issueina."
-          },
-          {
-            "id": "privacy-step",
-            "title": "Tietosuoja ohjatussa käyttöönotossa",
-            "body": "Ensimmäisellä käynnistyksellä lyhyt vaihe näyttää, mihin Mumcord yhdistää ja milloin, sekä linkin koko tietosuojaselosteeseen.",
-            "alt": "Ohjattu käyttöönotto, tietosuojavaihe"
+            "body": "Ensimmäisellä käynnistyksellä lyhyt vaihe näyttää, mihin Mumcord ottaa yhteyttä ja milloin. Identiteettisi säilytetään järjestelmän suojatussa tallennustilassa, ja diagnostiikkatiedosto ei sisällä chatin sisältöä eikä salasanoja, ja se lähtee koneeltasi vain, jos lähetät sen itse.",
+            "alt": "Käyttöönottoavustaja, yksityisyysvaihe"
           },
           {
             "id": "quick-settings",
             "title": "Pika-asetukset rattaasta",
-            "body": "Yksi klikkaus rattaaseen: esikatselut, teema, overlay, musiikin ja pelin jakaminen, profiilin muokkaus ja rekisteröityminen. Beta-ominaisuudet, kuten sijaintiääni, ovat omassa kokoontaitettavassa ryhmässään.",
-            "alt": "Pika-asetukset, Beta-ryhmä auki"
+            "body": "Yksi klikkaus rattaaseen: yksi rivi asetusta kohden kohdissa Ilmoitukset, Jakaminen, Ulkoasu ja Tili, selitys pienen ”?”:n takana. Beta-ominaisuudet, kuten sijaintiääni, ovat omassa ryhmässään, joka on aluksi taitettuna.",
+            "alt": "Pika-asetukset ryhmiteltyinä: Ilmoitukset, Jakaminen, Ulkoasu ja Tili"
           },
           {
             "id": "settings-search",
@@ -1100,30 +1165,98 @@
           },
           {
             "id": "dropdowns",
-            "title": "Siistit asetukset",
-            "body": "Teeman mukaiset pudotusvalikot selaimen ulkoasun sijaan, ja kaikki asetusten kentät siististi linjassa."
-          },
-          {
-            "id": "tooltips",
-            "title": "Teeman mukaiset työkaluvihjeet",
-            "body": "Jokainen työkaluvihje teemasi tyylillä, vaaleana tai tummana, ja käytettävissä myös näppäimistöllä."
+            "title": "Siistit asetukset ja työkaluvihjeet",
+            "body": "Pudotusvalikot ja työkaluvihjeet teemasi ulkoasulla selaimen sijaan, kaikki asetusten kentät siististi linjassa, ja jokainen työkaluvihje on tavoitettavissa myös näppäimistöllä."
           },
           {
             "id": "packet-inspector",
             "title": "Pakettitarkastin vianetsintään",
-            "body": "Piilotettu kehittäjille: seitsemän klikkausta versionumeroon kohdassa Asetukset → Tietoja avaa sen. Omassa ikkunassaan se näyttää, mitä Mumcord-dataa lähetetään ja vastaanotetaan, suodattimien, laskurien sekä JSON- tai Markdown-viennin kera.",
+            "body": "Piilotettu kehittäjille: seitsemän klikkausta versionumeroon kohdassa Asetukset → Tietoja avaa sen. Omassa ikkunassaan se näyttää, mitä Mumcord-dataa lähetetään ja vastaanotetaan, suodattimien, laskurien sekä JSON- tai Markdown-viennin kera. Se seuraa uusia paketteja ja tallentaa vain, kun se on auki.",
             "alt": "Pakettitarkastin suodattimineen, laskureineen tyypin ja suunnan mukaan sekä yksi pakettirivi avattuna"
           },
           {
             "id": "clear-cache",
             "title": "Välimuistin tyhjennys",
             "body": "Asetukset → Yksityisyys näyttää, paljonko tilaa linkkien esikatselut, kuvat ja selainmoottori vievät, ja tyhjentää ne napin painalluksella, myös yksitellen. Chat-historiaan, palvelimiin, kavereihin ja muistiinpanoihin ei kosketa."
+          },
+          {
+            "id": "dnd",
+            "title": "Älä häiritse",
+            "body": "Yksi kytkin pika-asetuksissa, asetuksissa tai ilmoitusalueen valikossa mykistää ilmoitusäänet ja ponnahdusikkunat kaikilla palvelimilla. Puhe toimii edelleen ja lukemattomien laskurit laskevat edelleen. KDE Plasmassa, GNOMEssa ja Windowsissa se voi seurata järjestelmän Älä häiritse -tilaa.",
+            "alt": "Äänet ja ilmoitukset -asetukset: Älä häiritse ja ”Seuraa järjestelmän Älä häiritse -tilaa”"
+          },
+          {
+            "id": "tray",
+            "title": "Täydellinen ilmoitusalueen valikko",
+            "body": "Ilmoitusalueen valikko näyttää jokaisen yhdistetyn palvelimen tilan ja kanavan kera, mikrofonin mykistyksen, kuuloketten mykistyksen ja Älä häiritse -tilan, siirtää puheen toiselle palvelimelle tai kanavalle ja avaa viimeisimmät chatit. Kuvake näyttää puhumisen, mykistyksen, lukemattomat viestit ja Älä häiritse -tilan. Mumcord käynnistyy halutessasi kirjautuessa, kaikissa järjestelmissä.",
+            "alt": "Ilmoitusalueen valikko palvelimineen, puhekanavan alavalikkoineen ja viimeisimpine chatteineen"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.5.0",
+      "teaser": "Ilmoituskeskus, kaikki yksityisviestit yhdessä paikassa, estäminen, useita identiteettejä ja tuonti Mumblesta.",
+      "summary": "Iso päivitys chattiin ja yksityisyyteen: ilmoituskeskus, kaikki yksityisviestit yhdessä paikassa omilla säännöillä siitä, kuka saa kirjoittaa sinulle, estäminen, useita identiteettejä ja siirtyminen Mumblesta muutamalla klikkauksella. Lisäksi yhteisön välitin kuville ja ruudunjaolle, musiikki ja ääni chatissa, selain julkisille palvelimille ja pienen viiveen tila yhteissoittoon.",
+      "groups": [
+        {
+          "title": "Uutta",
+          "items": [
+            "Chatin otsikkorivin kellon takana oleva ilmoituskeskus (Ctrl+Shift+N) kokoaa kaiken, mikä kaipaa huomiotasi, kaikilta yhdistetyiltä palvelimilta: maininnat, vastaukset, chatti- ja viestipyynnöt Hyväksy- ja Hylkää-painikkeilla, kutsut yhteiskatseluihin ja ruudunjakoihin sekä palvelimet, joihin ei enää saa yhteyttä. Yksi klikkaus vie viestiin.",
+            "Älä häiritse: yksi kytkin pika-asetuksissa, asetuksissa ja ilmaisinalueen valikossa mykistää ilmoitusäänet ja ponnahdusikkunat kaikilla palvelimilla. Puhe toimii edelleen, ja lukemattomat viestit lasketaan edelleen. Halutessasi Mumcord seuraa järjestelmän Älä häiritse -tilaa KDE Plasmassa, GNOMEssa ja Windowsissa.",
+            "Ilmaisinalueen valikko näyttää jokaisen yhdistetyn palvelimen kanavineen sekä Mykistä, Kuurouta ja Älä häiritse. Sieltä siirrät puheen toiselle palvelimelle tai kanavalle ja avaat viimeisimmät yksityiskeskustelusi. Ilmaisinalueen kuvake näyttää, kun joku puhuu, kun olet mykistetty ja kun viestejä on lukematta.",
+            "Kaikki yksityisviestit yhdessä paikassa: palvelinpalkin ylälaidan Viestit-painike listaa jokaisen keskustelun jokaiselta yhdistetyltä palvelimelta haulla, suodattimilla, kiinnityksellä ja mykistyksellä. Se korvaa kanavapuun alla olleen Yksityisviestit-listan. Henkilön valikko alkaa nyt kohdilla Lähetä viesti, Liity kanavalle ja Lisää kaveriksi.",
+            "Päätät itse, kuka saa kirjoittaa sinulle yksityisesti: kaikki, vain kaverit tai ei kukaan, halutessasi palvelinkohtaisesti. Kanavallasi olevat ihmiset ja hyväksymäsi keskustelut pääsevät aina läpi. Muut odottavat kohdassa Viestipyynnöt, ja Mumcordin käyttäjät voivat lähettää sinulle chattipyynnön lyhyen viestin kera. Mumcord suodattaa omalla puolellasi, joten lähettäjä ei saa tietää siitä. Hyväksytyn keskustelun voit perua myöhemmin.",
+            "Estä ihmisiä: heidän yksityisviestinsä ja pyyntönsä häviävät, heidän kanavaviestinsä piilotetaan ja heidän äänensä on sinulle mykistetty. Esto seuraa henkilön varmennetta, joten se pätee kaikilla palvelimilla, eikä uusi nimi auta kiertämään sitä. Sen enempää palvelin kuin henkilökään ei saa tietää asiasta; Asetukset → Yksityisyys listaa estosi.",
+            "@channel ja @all tavoittavat kaikki kanavalla ja lasketaan henkilökohtaisen maininnan tavoin. Muut Mumble-asiakkaat näkevät vain sanat, ja voit mykistää ne palvelinkohtaisesti.",
+            "Ääni ja musiikki chatissa: suorat linkit äänitiedostoihin, kuten mp3, ogg, wav tai flac, saavat pienen soittimen. Spotify-, SoundCloud- ja YouTube Music -linkit soivat palvelun omassa soittimessa, kun painat Toista; Apple Music, Tidal, Deezer ja Bandcamp saavat kortin linkin kera. Mikään ei soi itsestään, eikä mitään ladata, kun linkkien esikatselu on pois päältä.",
+            "mumble://-linkit chatissa näyttävät kortin, jossa on palvelin, kanava, vasteaika ja paikalla olevien määrä, sekä Liity ja Lisää palvelimiin. Linkissä olevaa salasanaa ei näytetä koskaan.",
+            "Kanavia on helpompi hallita: kanavan oikea klikkaus avaa valikon, jossa on Liity, Seuraa, Kopioi kanavan linkki, Kanavan tiedot ja muuta. Kanavat näyttävät käyttäjärajansa, esimerkiksi Raid (1/10), ja täydet himmennetään. Sopivalla oikeudella voit vetää ihmisiä toiselle kanavalle. Kanavan tiedoissa näkyvät kuvaus, käyttäjät, omat oikeutesi ja linkitetyt kanavat.",
+            "Pienen viiveen tila yhteissoittoon (beta): noin 40 millisekuntia 100:n sijaan suusta korvaan, verkko lisäksi. Se vaihtuu ilman uudelleenyhdistämistä ja toimii tavallisten palvelimien kanssa. Kuulokkeet suositeltavia.",
+            "Ääni kanavakohtaisesti: ”Ääni tälle kanavalle…” antaa kanavalle omat asetukset esiasetuksilla Puhe, Musiikki ja Jam. Ne otetaan käyttöön, kun liityt kanavalle, ja kun poistut, tavalliset asetuksesi palaavat.",
+            "Pikavalikot puhepalkissa: napsauta mikrofonia tai kuulokkeita hiiren oikealla saadaksesi laitteet, äänenvoimakkuuden ja tasomittarin, yhteystiedot puheen laadusta ja bittinopeudesta sekä puhelimen luuri -painikkeesta Poistu puheesta (pysyt yhdistettynä ja voit jatkaa chattailua) tai Katkaise yhteys kaikkiin palvelimiin.",
+            "Palvelinpalkin palvelinselain listaa julkiset Mumble-palvelimet haulla sekä maa- ja vasteaikasuodattimilla. Yhdistä tallentaa ja yhdistää yhdellä klikkauksella. Lista ladataan vain, kun avaat selaimen.",
+            "Palvelinikkuna on jaettu neljään välilehteen, ja siinä on Testaa yhteys, joka tarkistaa vasteajan, palvelimen version ja varmenteen tallentamatta mitään. Palvelimen tiedot näyttävät version, rajat, omat oikeutesi ja TLS-varmenteen. Tallennetuista kanavasalasanoista näkyy, mihin kanavaan ne kuuluvat.",
+            "Useita identiteettejä: Asetukset → Identiteetti hallitsee useita varmenteita tuonnilla, viennillä, uudelleennimeämisellä ja oletuksella. Jokainen palvelin voi käyttää omaa identiteettiään. Nykyinen identiteettisi nimetään ”Oletukseksi”, ja kaikki yhdistyy kuten ennenkin.",
+            "Tuonti Mumblesta: jos virallinen Mumble-asiakas on asennettu, käyttöönottoavustaja (tai Asetukset → Palvelimet) tuo suosikkipalvelimesi, tallennetut salasanat, varmenteesi, äänilaitteet ja puhepainikkeen. Mitään ei ylikirjoiteta, Mumblen tiedostoja vain luetaan, ja tuonnin voi perua.",
+            "Yhteisön välitin: täysikokoiset kuvat ja ruudunjako voivat kulkea välittimen kautta, jota palvelimen yhteisö ylläpitää Mumble-palvelimensa rinnalla. Se välittää vain salatun yhteyden ja halutessasi piilottaa IP-osoitteesi toiselta osapuolelta. Ruudunjako toimii silloin myös ilman suoraa yhteyttä. Puhe ei kulje koskaan välittimen kautta.",
+            "Windowsissa Mumcord tulee myös kannettavana zip-pakettina: pura, käynnistä, ei asennusta. Tiedot ja asetukset pysyvät ohjelman vieressä olevassa kansiossa.",
+            "Piilota jäsensarake, niin chatti saa koko leveyden: painikkeella chatin otsikkorivillä tai näppäimillä Ctrl+Shift+M. Kapeassa ikkunassa sarake liukuu chatin päälle.",
+            "Potkittu tai porttikiellossa? Mumcord soittaa siitä äänen: läimäys potkusta, slapstick-potku porttikiellosta. Molemmat voi kytkeä pois.",
+            "Palvelimen tiedot näyttävät, ilmoittaako palvelin välittimestä tai Mumbotista, ja varoittavat, kun välitin on vaihtunut.",
+            "Kuiskaus ja huuto: puhu valituille ihmisille tai kaikille kanavalla siirtymättä sinne, kullekin kohteelle oma pidä-painettuna-puhu-näppäin ja chatin yläpuolella palkki, joka näyttää, kenelle puhut.",
+            "Päivitykset sovelluksessa: Mumcord tarkistaa uudet versiot, näyttää, mikä on muuttunut, ja asentaa ne yhdellä napsautuksella. Jokainen lataus tarkistetaan allekirjoitusta ja tarkistussummia vasten.",
+            "Kohinanpoisto neljällä tasolla: Kevyt, Normaali, Edistynyt (tekoäly, beta, vuoden 2024 RNNoise-mallilla) ja Pois, jokainen selitettynä „?”-merkillä."
+          ]
+        },
+        {
+          "title": "Parannettu",
+          "items": [
+            "Kanavalistan alla oleva käyttäjäpaneeli on suunniteltu uudelleen: se pysyy samankorkuisena kaikissa tiloissa, jotta ylläoleva lista ei hyppää, näyttää yhden selkeän tilarivin ja jokaisessa puhepainikkeessa on pieni valikkonuoli.",
+            "Pika-asetukset ovat rauhallisemmat: yksi rivi asetusta kohden selkeissä ryhmissä, selitykset pienen ?-merkin takana ja beta-ryhmä alkaa suljettuna.",
+            "Kun linkkien esikatselu on pois päältä, ne eivät enää katoa hiljaa: viestin alla oleva hillitty rivi kertoo, mitä piilotettiin, ja vie asetukseen.",
+            "”Suorita käyttöönottoavustaja uudelleen” kohdassa Asetukset → Tietoja käy läpi mikrofonin, yksityisyyden, päivitysvihjeen ja puhetilan vielä kerran. Identiteettiäsi ei kosketa, ja vain muuttamasi tallennetaan.",
+            "Pakettitarkastelu seuraa uusia paketteja, pysähtyy, kun vierität ylös, ja tallentaa vain ollessaan auki.",
+            "Palvelin- ja kanavapuu on oletuksena neljänneksen leveämpi, joten pidemmätkin kanavien nimet mahtuvat. Itse asettamasi leveydet säilyvät."
+          ]
+        },
+        {
+          "title": "Korjattu",
+          "items": [
+            "Omat viestisi eivät koskaan soita mainintaääntä, eivät näytä ilmoitusta eivätkä lasketa lukemattomiksi.",
+            "Yhteiskatselu noudattaa asetusta ”Näytä linkkien esikatselut ja upotukset”: kun se on pois päältä, YouTubesta tai Twitchistä ei ladata mitään, ja vihje vie asetukseen.",
+            "Linux ja PipeWire: laiteluettelot näyttävät jokaisen tulon ja lähdön samoin kuin työpöydän ääniasetukset, esimerkiksi RØDECaster Pro II:n ”System” ja ”Chat” yhden ”USB Audion” sijaan.",
+            "Palvelimen tiedot -ikkuna on nyt käännetty kaikille 24 kielelle.",
+            "Omat viestisi eivät enää soita mainintaääntä eivätkä näytä ilmoitusta, eikä niitä enää lasketa lukemattomiksi."
+          ]
+        }
+      ],
+      "known": [
+        "Windowsin asennusohjelma on yhä allekirjoittamaton."
+      ]
+    },
     {
       "version": "0.4.4",
       "teaser": "Kopioi ja lataa koodia, tallenna kuvia hiiren oikealla, tyhjennä välimuisti, vakaampi puheääni kuormituksessa.",
@@ -2448,7 +2581,8 @@
         "webhook": "Aseta API-avain ja sallitut kanavat tiedostossa `bot.toml`. Sitten `curl` osoitteeseen `http://127.0.0.1:8080/message` lähettää viestin kanavalle.",
         "more": "Alla olevat vaiheet selittävät jokaisen osan tarkasti.",
         "music": "Laita MP3-tiedostot kansioon `media` ja aseta API-avain tiedostossa `bot.toml`. Sitten pyyntö osoitteeseen `http://127.0.0.1:8081` soittaa ne kanavalla.",
-        "history": "Aseta tiedostossa `bot.toml`, kuinka kauan botti säilyttää keskustelun. Se tarvitsee lukuoikeuden kanaviin."
+        "history": "Aseta tiedostossa `bot.toml`, kuinka kauan botti säilyttää keskustelun. Se tarvitsee lukuoikeuden kanaviin.",
+        "relayRegistered": "Valinnalla ”Vain rekisteröidyt käyttäjät” vain palvelimelle rekisteröityneet saavat relay-tokenit (napsauta omaa nimeäsi hiiren kakkospainikkeella → Rekisteröi)."
       },
       "advanced": "Lisäasetukset",
       "pluginLimit": "Piilotettuja paketteja sekunnissa",
@@ -2472,7 +2606,12 @@
         "show": "Näytä salasanat ja kirjoita ne muistiin"
       },
       "copyAll": "Kopioi kaikki kerralla",
-      "needsMumbot": "Webhook, relay, musiikki ja historia toimivat yhdessä yhtenä Mumbotina, jossa on moduuleja. Se tulee Mumbot 0.2.0:n mukana."
+      "needsMumbot": "Webhook, relay, musiikki ja historia toimivat yhdessä yhtenä Mumbotina, jossa on moduuleja. Se tulee Mumbot 0.2.0:n mukana.",
+      "relayAccess": {
+        "label": "Relay kenelle",
+        "registered": "Vain rekisteröidyt käyttäjät",
+        "all": "Kaikki, myös vieraat"
+      }
     },
     "stepsCta": "Vaihe vaiheelta"
   },
@@ -2654,6 +2793,17 @@
           "Viestikortit: webhook lähettää hälytyksiä otsikolla, tilavärillä, kaaviolla ja linkillä, ja Mumcord näyttää ne korttina",
           "Säädettävä bittinopeus puheelle ja musiikille, ei koskaan palvelimen rajan yli",
           "Peer-moduuli: rekisteröi palvelimen käyttäjät mumpeer-välityspalvelimelle ja kertoo Mumcordille, että välityspalvelin on olemassa"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Turvallisempi relay",
+        "summary": "Relayn tietoturvatarkastuksen jälkeen: kuka saa tokeneita, kuinka pitkäksi aikaa ja kuinka monta.",
+        "items": [
+          "Relay-tokenit vain rekisteröityneille käyttäjille, halutessasi myös vieraille",
+          "Palvelimelta poistuminen päättää relay-pääsyn, mutta vasta viimeisen istunnon mukana",
+          "Varmennekohtaiset rajat token-pyynnöille ja avoimille yhteyksille",
+          "Turvallisempi konfiguraatio: ei pelkkää HTTP:tä toisella koneella olevaan relayhin, salaisuudet tarkistetaan tiukasti"
         ]
       },
       {

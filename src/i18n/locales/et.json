@@ -534,20 +534,58 @@
       "commits": "kommitit",
       "join": "Löö kaasa GitHubis",
       "toolTitle": "Kaastöölised"
+    },
+    "spotlight5": {
+      "label": "Uus versioonis 0.5.0",
+      "labelSoon": "Tulekul: 0.5.0",
+      "title": "Rohkem rahu. Rohkem sind. Rohkem heli.",
+      "body": "0.5.0 toob Epic 3: teavituskeskuse, blokeerimise, mitu identiteeti, uue kanalipuu, muusika vestluses, madala latentsusega režiimi koos musitseerimiseks ja otseühendused releeserveri kaudu.",
+      "tiles": {
+        "notifications": {
+          "title": "Kõik ühes kohas",
+          "body": "Kelluke koondab mainimised, vastused, taotlused ja kutsed igast serverist. Kes sind tüütab, saab blokeeritud, ära tuntud tema sertifikaadi järgi."
+        },
+        "identities": {
+          "title": "Mitu identiteeti",
+          "body": "Privaatne, klannile, tööks: iga serveri jaoks valid, kellena ühendad."
+        },
+        "tree": {
+          "title": "Uus kanalipuu",
+          "body": "Paremklõps igal kanalil, kasutajate limiit nime kõrval, selged ikoonid ja menüü kanali nime taga."
+        },
+        "lowLatency": {
+          "title": "Musitseerige koos",
+          "body": "Madala latentsusega režiim annab umbes 40 asemel 90 ms suust kõrvani ning iga kanal jätab meelde oma heliseaded."
+        },
+        "music": {
+          "title": "Muusika vestluses",
+          "body": "Helifailid mängivad otse vestluses ning lingid Spotifyle, Apple Musicule ja muule muutuvad muusikakaardiks."
+        },
+        "relay": {
+          "title": "Otseühendused igal pool",
+          "body": "Ekraanijagamine ja suured pildid töötavad ka CGNAT-i taga ning soovi korral ei näe keegi sinu IP-aadressi."
+        }
+      },
+      "features": "Kõik funktsioonid",
+      "changelog": "Kõik uuendused"
+    },
+    "serverCta": {
+      "title": "Oma server viie minutiga",
+      "body": "Märgi kastid, kopeeri käsk, valmis: seadistaja koostab sinu docker-compose.yml-i koos releeserveri ja botidega.",
+      "button": "Ava seadistaja"
     }
   },
   "features": {
     "title": "Funktsioonid",
     "description": "Kõik Mumcordi funktsioonid koos ekraanipiltidega: serverid ja sertifikaadid, kanalite jälgimine, vestlus eelvaadete ja @mainimistega, push-to-talk, heli ja mugavus.",
     "label": "Mida Mumcord teeb",
-    "intro": "Kõik, mida Mumcord teeb, koos pildiga, kus see olemas on, ning see, mis tuleb järgmise versiooniga. Filter näitab beetafunktsioone või seda, mis millises versioonis uut on. Midagi on puudu või katki? Anna meile GitHubis teada.",
+    "intro": "Kõik, mida Mumcord teeb, koos pildiga, kus see olemas on, ning see, mis tuleb järgmise versiooniga. Filter näitab kahe viimase versiooni uuendusi. Midagi on puudu või katki? Anna meile GitHubis teada.",
     "contents": "Sisukord",
     "newIn": "uus versioonis",
     "comingIn": "tuleb versioonis",
     "beta": "Beeta",
     "filterLabel": "Filter",
     "filterAll": "Kõik",
-    "filterBeta": "Beeta",
     "filterEmpty": "Selle filtriga funktsioone pole.",
     "jump": "Hüppa",
     "statFeatures": "funktsiooni",
@@ -590,13 +628,13 @@
           {
             "id": "reconnect",
             "title": "Uuesti ühendumine koos kõigega",
-            "body": "Kui ühendus katkeb, oled tagasi samas kanalis, koos oma mikrofoni ja heli vaigistuse ning jälgitavate kanalitega. Pärast taaskäivitust pakub Mumcord naasmist viimasesse häälkanalisse.",
+            "body": "Kui ühendus katkeb, oled tagasi samas kanalis, koos oma mikrofoni ja heli vaigistuse ning jälgitavate kanalitega. Pärast taaskäivitust pakub Mumcord naasmist viimasesse häälkanalisse. Kui ühendus ebaõnnestub, nimetab riba serveri ja kaob 60 sekundi pärast või ✕-ga; serveri ikoon näitab tõrget edasi.",
             "alt": "Riba, mis pakub naasmist viimasesse häälkanalisse"
           },
           {
             "id": "several-servers",
             "title": "Mitu serverit korraga",
-            "body": "Kuni 5 serverit korraga ühendatud, seadistatav kuni 15-ni. Räägid ühes ning loed, kirjutad ja saad teavitusi kõigist. Iga server ühendub katkestuse järel ise uuesti.",
+            "body": "Kuni 5 serverit korraga ühendatud, seadistatav kuni 15-ni. Räägid ühes ning loed, kirjutad ja saad teavitusi kõigist. Iga server ühendub katkestuse järel ise uuesti. „Liitu kanaliga“ töötab ka teisel serveril olevate sõprade puhul ning mumble:// lingid ühendatud serverisse viivad otse sinna.",
             "alt": "Serveririba mitme ühendatud serveriga, kõlarimärgiga häälserveri juures ja mainimiste loenduritega"
           },
           {
@@ -611,24 +649,51 @@
             "body": "Paketid Debianile ja Ubuntule, Fedorale ja openSUSE-le, Archile (AUR: mumcord-bin) ja AppImage, x86_64 ja ARM64 jaoks, ka ühe reaga terminalis. Soovi korral teade, kui uus versioon ilmub."
           },
           {
-            "id": "server-notices",
-            "title": "Teavitused serveri kaupa",
-            "body": "Teavitused ja privaatsõnumid näitavad serveri nime ning iga serveri saab eraldi vaigistada."
+            "id": "mumble-import",
+            "title": "Impordi Mumble'ist",
+            "body": "Kui ametlik Mumble'i klient (1.4 või 1.5) on installitud, pakub seadistusviisard üle võtta sinu lemmikserverid koos paroolidega, sinu sertifikaadi uue identiteedina, et säilitaksid oma registreeritud nime, sinu helisead ja sinu push-to-talk klahvi. Iga osa valid eelvaates, serverid, mis sul juba on, jäetakse vahele, ja „Võta import tagasi“ võtab kõik tagasi. Hiljem ka jaotises Seaded → Serverid.",
+            "alt": "Seadistusviisardi samm „Impordi Mumble'ist“ märkeruuduga iga leitud osa jaoks"
           },
           {
-            "id": "across-servers",
-            "title": "Liitu üle serverite",
-            "body": "„Liitu kanaliga“ töötab ka teises serveris olevate sõprade puhul ning mumble:// lingid ühendatud serverisse viivad otse sinna."
+            "id": "identities",
+            "title": "Mitu identiteeti",
+            "body": "Seaded → Identiteet haldab mitut kliendisertifikaati: loo, impordi, nimeta ümber, ekspordi ja tee varukoopia. Iga server kasutab vaikeidentiteeti või oma identiteeti ning vestluse päis näitab, millist kasutatakse, kui see pole vaikeidentiteet. Sertifikaadid ja võtmed jäävad süsteemi turvalisse hoidlasse.",
+            "alt": "Identiteedihaldur mitme identiteedi, nende sõrmejälgede ja neid kasutavate serveritega"
           },
           {
-            "id": "autostart",
-            "title": "Käivitus sisselogimisel",
-            "body": "„Käivita Mumcord sisselogimisel“ on olemas igas süsteemis."
+            "id": "server-dialog",
+            "title": "Serveridialoog sakkidega",
+            "body": "Serveri lisamine või muutmine on jagatud sakkideks Ühendus, Identiteet, Paroolid ja Käitumine. Vigadest antakse teada otse väljal, „Testi ühendust“ teatab pingi, serveri versiooni ja sertifikaadi midagi salvestamata ning salvestatud kanaliparoolid näitavad, millisele kanalile need kuuluvad, näiteks „Ohvitserid (Raid)“.",
+            "alt": "Dialoog „Lisa server“ sakkidega Ühendus, Identiteet, Paroolid ja Käitumine"
           },
           {
-            "id": "failure-banner",
-            "title": "Veabännerid, mis ei tüüta",
-            "body": "Kui ühendus ebaõnnestub, nimetab bänner serveri ja kaob 60 sekundi pärast või ✕-ga. Serveri ikoon näitab tõrget edasi."
+            "id": "server-browser",
+            "title": "Leia avalikke servereid",
+            "body": "Serveririba otsingunupp avab avalike Mumble'i serverite loendi: otsi nime, aadressi või riigi järgi, filtreeri riigi ja pingi järgi, peida tühjad või täis serverid. „Ühendu“ salvestab ja liitub ühe klõpsuga. Loend laaditakse alles avamisel ja pingitakse ainult ekraanil olevaid ridu.",
+            "alt": "Avalike serverite brauser otsingu, riigi- ja pingifiltrite ning serverite loendiga"
+          },
+          {
+            "id": "server-info",
+            "title": "Serveri teave",
+            "body": "Serverimenüü näitab nime, aadressi, versiooni, tervitusteksti, piiranguid, lubatud koodekeid, sinu õigusi ja seda, kui paljud Mumcordi kasutavad, ning TLS-sertifikaati koos sõrmejälje ja kehtivusega. „Kopeeri diagnostika“ paneb kõik lõikelauale veaaruannete jaoks. Töötab iga standardse Mumble'i serveriga.",
+            "alt": "Serveri teave versiooni, piirangute ning TLS-sertifikaadi sõrmejälje, väljastaja ja kehtivusega"
+          },
+          {
+            "id": "setup-again",
+            "title": "Käivita seadistusviisard uuesti",
+            "body": "Seaded → Teave läbib seadistuse veel kord, et üle vaadata mikrofon, privaatsus, uuenduste kontroll ja rääkimisviis. Identiteedi samm jäetakse vahele, nii et sinu sertifikaadiga ei saa kogemata midagi juhtuda, ja salvestatakse ainult väärtused, mida sa tegelikult muutsid.",
+            "alt": "Seadetest uuesti käivitatud seadistusviisard, kus identiteedi samm on märgitud vahelejäetuks"
+          },
+          {
+            "id": "windows-portable",
+            "title": "Kaasaskantav Windowsis",
+            "body": "Lisaks installerile on zip, mis töötab ilma installimata: paki lahti ja käivita Mumcord.exe. Andmed, seaded ja logid jäävad selle kõrval olevasse kausta ning mumble:// käsitlejat ega käivitust sisselogimisel ei seadistata, kui sa seda ise sisse ei lülita."
+          },
+          {
+            "id": "updater",
+            "title": "Uuendused rakenduses",
+            "body": "Mumcord kontrollib uut versiooni käivitamisel ja iga 12 tunni järel, näitab, mis on sinu versiooniga võrreldes muutunud, ja paigaldab selle ühe klõpsuga. Iga allalaadimist kontrollitakse enne paigaldamist Mumcordi allkirja ja väljalaske kontrollsummade vastu; versiooni võid vahele jätta või lasta endale hiljem meelde tuletada.",
+            "alt": "Dialoog „Saadaval on uuendus” sinu versioonist alates tehtud muudatustega"
           }
         ]
       },
@@ -657,68 +722,67 @@
           {
             "id": "right-click",
             "title": "Paremklõps inimestel",
-            "body": "Vaata profiili, vaigista ainult enda jaoks, sea helitugevus 0 kuni 200 % või saada privaatsõnum. Mumcord jätab selle iga inimese kohta meelde.",
-            "alt": "Inimese kontekstimenüü helitugevuse liuguriga"
-          },
-          {
-            "id": "person-card",
-            "title": "Topeltklõps privaatsõnumiks",
-            "body": "Topeltklõpsa inimesel, et avada privaatvestlus. Klõps kinnitab tema kaardi, millel on nupud privaatsõnumi ja profiili jaoks."
+            "body": "Saada sõnum, liitu nende kanaliga või lisa sõbraks otse ülal, seejärel profiil, vaigista ainult enda jaoks ja helitugevus 0 kuni 200 %, iga inimese kohta meelde jäetud. Kui sa ei tohi liituda, näidatakse põhjus. Topeltklõps avab privaatvestluse.",
+            "alt": "Inimese menüü, kus ülal on Saada sõnum, Liitu kanaliga ja Lisa sõbraks"
           },
           {
             "id": "profile",
-            "title": "Uus profiil",
-            "body": "Bänner, märk, muusika või mäng ja kõik selle inimese seaded. Muudatused rakenduvad kohe lühikese teatega „Salvestatud“. Paremklõpsu menüüs on ikoonid ja lülitid.",
+            "title": "Profiil",
+            "body": "Bänner, märk, muusika või mäng ja kommentaar rasvase, kursiivi, linkide ja loenditega. Helitugevus, vaigistus ja privaatne märge selle inimese kohta on selles kokku volditud; muudatused rakenduvad kohe lühikese teatega „Salvestatud“.",
             "alt": "Täielik profiil muusika, selle inimese seadete ja privaatse märkmega"
-          },
-          {
-            "id": "join-channel",
-            "title": "Liitu inimese kanaliga",
-            "body": "Paremklõps inimesel või sõbral: „Liitu kanaliga ‹kanal›“ viib sind otse tema kanalisse. Kui server seda ei luba, näidatakse põhjust kõrval.",
-            "alt": "Inimese menüü valikuga „Liitu kanaliga“"
           },
           {
             "id": "member-column",
             "title": "Parem veerg jaotistega",
-            "body": "„Kanalis ‹kanal›“, „Teistes kanalites“ kõigi teistega serveris ja „Sõbrad“, igaüks kokkuvolditav. Mumcord jätab meelde, mis on lahti. Vasakul asub „Serveri ülevaade“ kanalipuu kohal.",
+            "body": "„Kanalis ‹kanal›“, „Teistes kanalites“ kõigi teistega serveris ja „Sõbrad“, igaüks kokkuvolditav. Mumcord jätab meelde, mis on lahti.",
             "alt": "Parem veerg, kus „Teistes kanalites“ on lahti"
           },
           {
             "id": "connection-quality",
             "title": "Ühenduse kvaliteet",
-            "body": "Profiil näitab ühe pilguga, kas ühendus on hea, keskmine või nõrk, ja lahti klapituna pingi, pakettide kadu ja ribalaiust. Väike signaaliikoon märgib, kellel on praegu nõrk ühendus.",
+            "body": "Profiil näitab ühe pilguga, kas ühendus on hea, keskmine või nõrk, ja lahti klapituna pingi, pakettide kadu ja ribalaiust. Väike signaaliikoon märgib, kellel on praegu nõrk ühendus. Adminid näevad ka klienti ja operatsioonisüsteemi, näiteks „Mumcord 0.4.0“ või „Mumble 1.5“.",
             "alt": "Profiilikaart lahti klapitud ühendusega: ping, pakettide kadu, ribalaius, klient ja operatsioonisüsteem"
           },
           {
-            "id": "listeners",
-            "title": "Kuulajad kõrvaga",
-            "body": "Kes kanalit ainult kuulab, on tavalises nimekirjas kõrvaikooniga, mitte omaette grupis."
-          },
-          {
-            "id": "client-info",
-            "title": "Klient ja süsteem adminidele",
-            "body": "Adminid näevad profiilis lisaks, millist klienti ja operatsioonisüsteemi keegi kasutab, näiteks „Mumcord 0.4.0“ või „Mumble 1.5“."
-          },
-          {
             "id": "channel-filters",
-            "title": "Peida tühjad kanalid",
-            "body": "Suured serverid ei hangu enam esmakordsel kuvamisel. Lisaks lülitid „Peida tühjad kanalid“ ja „Rääkijad ees“."
-          },
-          {
-            "id": "profile-comment",
-            "title": "Vormindatud profiili kommentaar",
-            "body": "Sinu profiili kommentaar oskab paksu ja kaldkirja, linke ja loendeid."
-          },
-          {
-            "id": "person-settings",
-            "title": "Seaded inimese kaupa",
-            "body": "Helitugevus, vaigistus ja märkus kellegi kohta on kokkupanduna tema profiilis. Kui midagi muudetakse, näitab rida seda korraks, näiteks „Helitugevus 60 %“."
+            "title": "Korras kanaliloend",
+            "body": "Lülitid „Peida tühjad kanalid“ ja „Rääkijad ees“ ning suured serverid ei hangu enam esmakordsel kuvamisel. Inimesed, kes kanalit ainult kuulavad, ilmuvad tavalisse loendisse kõrva ikooniga."
           },
           {
             "id": "channel-passwords",
             "title": "Parooliga kanalid",
             "body": "Kui kanal vajab parooli, küsib Mumcord seda ja jätab selle serveri kaupa meelde, ka pärast uuesti ühendumist. Kanalitel, kuhu sul pole lubatud minna, on väike lukk.",
             "alt": "Lukuga kanal ja kanali parooli aken"
+          },
+          {
+            "id": "channel-tree",
+            "title": "Kanalipuu menüüga",
+            "body": "Paremklõpsa kanalil, et sellega liituda või seda jälgida, määrata selle heli, kopeerida selle link, avada kanali teave või viia sinna inimesi, kui tohid. Piiranguga kanalid näitavad seda, näiteks „Raid (1/10)“, täis kanalid on tuhmid ning ajutistel ja lingitud kanalitel on ikoonid. Õiguse korral lohistad inimesi teise kanalisse. Ülal on server ühenduspunkti ja tekstiga „N võrgus · ping“.",
+            "alt": "Kanalipuu, kus on avatud kanali paremklõpsumenüü"
+          },
+          {
+            "id": "channel-header",
+            "title": "Kanali nimi menüüga",
+            "body": "Silm kanali nime ees jälgib kanalit või lõpetab jälgimise. Klõps nimel avab Jälgi, Kopeeri kanali link, Kanali parool, Kanali teave ja Tühjenda vestlusajalugu. Kanali teave näitab teed, kirjeldust, kasutajate piirangut, lingitud kanaleid ja sinu õigusi seal.",
+            "alt": "Kanali teave tee, kirjelduse, kasutajate, kasutajate piirangu, lingitud kanalite ja õigustega"
+          },
+          {
+            "id": "hide-members",
+            "title": "Peida liikmete veerg",
+            "body": "Nupp vestluse päises või Ctrl+Shift+M peidab parema veeru, et vestlus saaks kogu laiuse. Nupp näitab siis, kui palju inimesi kanalis on, ja rohelist punkti, kui keegi räägib. Kitsas aknas libiseb veerg vestluse peale.",
+            "alt": "Vestlus täislaiuses peidetud liikmete veeru ja päises oleva liikmete nupuga"
+          },
+          {
+            "id": "message-privacy",
+            "title": "Kes tohib sulle kirjutada",
+            "body": "Seaded → Privaatsus: privaatsõnumid kõigilt, ainult sõpradelt või mitte kelleltki, ka serveri kaupa. Sinu kanali inimesed ja vestlused, mille oled vastu võtnud, jõuavad alati kohale. Muud sõnumid ootavad sõnumitaotlustena, mille aktsepteerid või lükkad tagasi, ja Mumcordi kasutajad saavad saata vestlustaotluse lühikese märkusega. Saatjale ei öelda seda kunagi.",
+            "alt": "Sõnumitaotlused koos vestlustaotluse, selle märkuse ning nuppudega Aktsepteeri ja Lükka tagasi"
+          },
+          {
+            "id": "block-users",
+            "title": "Blokeeri inimesi",
+            "body": "„Blokeeri…“ inimese menüüs peidab nende privaatsõnumid ja taotlused, voldib kokku nende kanalisõnumid ja vaigistab nende hääle, ainult sinu jaoks. Blokeering järgib sertifikaati, nii et see kehtib serverite vahel ja uute nimede korral. Serverile ega inimesele ei saadeta midagi ning Seaded → Privaatsus loetleb kõik blokeeritud koos nupuga „Eemalda blokeering“.",
+            "alt": "Inimese blokeerimise kinnitus, mis loetleb, mis muutub"
           }
         ]
       },
@@ -741,7 +805,7 @@
           {
             "id": "previews",
             "title": "Linkide eelvaated",
-            "body": "Lingid saavad kaardi pealkirja, kirjelduse ja pildiga. Mumcord laadib need ise, mitte kunagi kohtvõrgu aadressidelt; iga kaardi saab sulgeda ja funktsiooni saab viisardis ning seadetes välja lülitada.",
+            "body": "Lingid saavad kaardi pealkirja, kirjelduse ja pildiga. Mumcord laadib need ise, mitte kunagi kohtvõrgu aadressidelt; iga kaardi saab sulgeda ja funktsiooni saab viisardis ning seadetes välja lülitada. Lingil paremklõpsamine pakub „Kopeeri link“ ja „Ava link“.",
             "alt": "Vestlus lingi eelvaatega"
           },
           {
@@ -752,32 +816,32 @@
           },
           {
             "id": "spotify",
-            "title": "Spotify",
-            "body": "Ka Spotify lingid saavad kaardi koos kaanepildi, pealkirja ja esitajaga; mängija tuleb alles klõpsuga.",
-            "alt": "Vestlus Spotify kaardiga"
+            "title": "Muusikalingid",
+            "body": "Spotify, SoundCloud ja YouTube Music mängivad teenuse ametlikus mängijas, mis laaditakse alles Esita vajutamisel. Apple Music, Tidal, Deezer, Bandcamp ja muud muusikalehed saavad sama kaardi kaanepildi, pealkirja ja esitajaga ning tekstiga „Ava rakenduses …“. Ühe mängija käivitamine peatab teise.",
+            "alt": "Muusikakaart kaanepildi, pealkirja, esitaja ja teenuse nimega"
           },
           {
             "id": "images",
             "title": "Pildid ja GIF-id vestluses",
-            "body": "Välised pildid ja pildilingid kuvatakse otse sõnumis, Giphy ja Tenori GIF-id mängivad ja viitavad oma allikale.",
+            "body": "Välised pildid ja pildilingid kuvatakse otse sõnumis, Giphy ja Tenori GIF-id mängivad ja viitavad oma allikale. Ekraanitõmmised ja kopeeritud pildid lähevad sõnumi sisestusväljale Ctrl+V-ga.",
             "alt": "Vestlus pildi ja GIF-iga"
           },
           {
             "id": "image-viewer",
             "title": "Pildivaatur",
-            "body": "Klõpsa pildil, et seda suurelt näha: suumi ratta või klahvidega, liiguta pilti, sirvi nooleklahvidega kõiki vestluse pilte ja „Salvesta pilt“.",
+            "body": "Klõpsa pildil, et seda suurelt näha: suumi, liiguta pilti ja sirvi nooleklahvidega kõiki vestluse pilte. Täissuurus laaditakse taustal õhukese edenemisribaga. Paremklõps: kopeeri pilt, salvesta see originaalina, GIF koos animatsiooniga või kopeeri selle aadress.",
             "alt": "Pildivaatur suumi tööriistaribaga"
           },
           {
             "id": "mentions",
             "title": "@mainimised",
-            "body": "Kirjuta @ ja Mumcord pakub nimesid. Mainimised on esile tõstetud, teavitavad sind ka vaiksetes kanalites ja neil on oma heli.",
+            "body": "Kirjuta @ ja Mumcord pakub nimesid. Mainimised on esile tõstetud, teavitavad sind ka vaiksetes kanalites ja neil on oma heli. Hõlju mainimise kohal eelvaate nägemiseks, klõpsa profiili jaoks, paremklõpsa menüü jaoks.",
             "alt": "Sõnumi sisestusväli nimesoovitusega pärast @-i"
           },
           {
             "id": "code",
             "title": "Kood ja vormindus",
-            "body": "Koodiplokid süntaksi esiletõstuga, vormindusriba sisestusvälja kohal ja otseteed nagu Ctrl+B, Ctrl+I või Ctrl+E.",
+            "body": "Koodiplokid tõstetakse esile selle keelena, mille kirjutad kolme tagurpidi ülakoma järele, alates sql-ist ja rustist kuni Dockerfile'i ja hex-väljavõteteni, koos nuppudega nende kopeerimiseks või allalaadimiseks. Vormindusriba sisestusvälja kohal ja otseteed nagu Ctrl+B, Ctrl+I või Ctrl+E.",
             "alt": "Vestlus esiletõstetud koodi ja vormindusribaga"
           },
           {
@@ -789,7 +853,7 @@
           {
             "id": "notifications",
             "title": "Teavitused nii, nagu sulle meeldib",
-            "body": "Uued sõnumid hüpikteatena rakenduses, süsteemiteavitusena, mõlemana või üldse mitte. Lisaks lühikesed, vaiksed helid iga sündmuse jaoks.",
+            "body": "Uued sõnumid hüpikteatena rakenduses, süsteemiteavitusena, mõlemana või üldse mitte, koos lühikeste vaiksete helidega iga sündmuse jaoks. Teavitused kannavad serveri nime ja iga serveri saab eraldi vaigistada.",
             "alt": "Rakendusesisene hüpikteade uue sõnumi kohta"
           },
           {
@@ -797,11 +861,6 @@
             "title": "Koristab enda järelt",
             "body": "Eelvaated ja pildid kustutatakse sinu valitud päevade arvu järel, soovi korral ka vana vestlusajalugu. Ajalugu asub ainult sinu arvutis ja selle saab iga serveri jaoks eraldi välja lülitada.",
             "alt": "Seaded, vestluse ja ajaloo jaotis"
-          },
-          {
-            "id": "mention-chips",
-            "title": "Klõpsatavad @mainimised",
-            "body": "Hiirega üle liikudes eelvaade, klõpsuga profiil, paremklõpsuga menüü."
           },
           {
             "id": "replies",
@@ -828,37 +887,46 @@
             "alt": "Pikk sõnum, mille nimi ja pilt on vestluse ülaossa kinnitatud"
           },
           {
-            "id": "image-loading",
-            "title": "Pildid laadivad taustal",
-            "body": "Õhuke riba pildi all näitab, kui kaugel täissuuruse laadimine on. Pildivaaturi sulgemisel laadimine jätkub; riba × katkestab selle."
-          },
-          {
-            "id": "link-menu",
-            "title": "Linkide kopeerimine",
-            "body": "Paremklõps vestluses lingil pakub valikuid „Kopeeri link“ ja „Ava link“.",
-            "alt": "Lingi paremklõpsumenüü valikutega „Kopeeri link“ ja „Ava link“"
-          },
-          {
             "id": "message-cards",
             "title": "Sõnumikaardid",
             "body": "Botid ja inimesed postitavad kompaktseid kaarte pealkirja, olekuvärvi, ikooni, vormindatud teksti, pildi ja lingiga, näiteks buildide, hoiatuste või juhtpaneelide jaoks. Ametlikud Mumble'i kliendid näevad sama sõnumit loetava tekstina.",
             "alt": "Vestlus kahe boti sõnumikaardiga: täielik kaart ikooni, pealkirja, teksti, graafiku ja lingiga ning selle all lihtne kaart pealkirja ja lingiga"
           },
           {
-            "id": "paste-images",
-            "title": "Piltide kleepimine Ctrl+V-ga",
-            "body": "Ekraanipildid, „Kopeeri pilt“ brauserist ja failihalduris kopeeritud pildifailid jõuavad Ctrl+V-ga otse sisestusvälja manusena."
+            "id": "notification-centre",
+            "title": "Teavituskeskus",
+            "body": "Kell vestluse päises või Ctrl+Shift+N koondab mainimised, vastused, vestlus- ja sõnumitaotlused, kutsed watch party’dele ja ekraanijagamistele ning serverid, mis muutusid kättesaamatuks, kõigist ühendatud serveritest, uuemad ees. Filtreeri neid, võta taotlused vastu otse seal ja klõps viib sõnumi juurde. Režiimis Ära sega koondab see edasi vaikselt.",
+            "alt": "Teavituskeskus mainimiste, vastuste ja vestlustaotlusega, millel on Aktsepteeri ja Lükka tagasi"
           },
           {
-            "id": "code-blocks",
-            "title": "Koodiplokid nuppudega Kopeeri ja Laadi alla",
-            "body": "Kirjuta keel kolme tagurpidi ülakoma järele, alates sql-ist, rustist ja php-st kuni cmd, Dockerfile'i ja hex-väljavõteteni, ja plokk tõstetakse esile täpselt selle keelena. Nurgas olevad nupud kopeerivad koodi või salvestavad selle failina.",
-            "alt": "SQL-koodiplokk keelesildi ning nurgas olevate nuppudega Kopeeri ja Laadi alla"
+            "id": "pm-overview",
+            "title": "Kõik privaatsõnumid ühes kohas",
+            "body": "Nupp Sõnumid serveririba ülaosas loetleb kõik vestlused kõigist ühendatud serveritest, kinnitatud ees, serverisildi, eelvaate ja lugemata loendiga. Otsi, filtreeri lugemata või taotluste järgi, alusta uut vestlust ning kinnita, vaigista või kustuta üks selle menüüst.",
+            "alt": "Privaatsõnumite ülevaade, kus ülal on vestlustaotlus ja vestlused mitmest serverist"
           },
           {
-            "id": "image-menu",
-            "title": "Piltide kopeerimine ja salvestamine",
-            "body": "Paremklõps pildil vestluses või pildivaaturis: kopeeri pilt, salvesta pilt originaalina, GIF koos animatsiooniga, kopeeri pildi aadress või ava see vaaturis."
+            "id": "group-mentions",
+            "title": "@channel ja @all",
+            "body": "@channel jõuab kõigini kanalis, @all kõigini, kes seda lugeda saavad, kuulajad kaasa arvatud. Mumcord käsitleb neid kui sinu mainimist, teised Mumble'i kliendid näevad ainult sõnu. Liiga palju? Vaigista need serveri kaupa.",
+            "alt": "Vestlus esiletõstetud @channel mainimisega"
+          },
+          {
+            "id": "audio-links",
+            "title": "Helifailid vestluses",
+            "body": "Lingid mp3-, ogg-, m4a-, wav-, flac- või webm-failidele saavad sõnumi alla mängija otsinguriba, helitugevuse ning nuppudega „Ava brauseris“ ja „Salvesta“. Midagi ei hakka ise mängima, fail laaditakse alles Esita vajutamisel, kuni 32 MB, ja heli läheb sinu kõlaritesse, mitte kunagi mikrofoni.",
+            "alt": "Heliesitaja sõnumi all esitusnupu, otsinguriba ja helitugevusega"
+          },
+          {
+            "id": "hidden-previews",
+            "title": "Peidetud eelvaated annavad sellest teada",
+            "body": "Kui linkide eelvaated ja manustatud sisu on välja lülitatud, nimetab sõnumi all vaikne rida, mis peideti, näiteks pilt või video, ja viitab seadele. Selleks ei küsita lingitud saidilt midagi.",
+            "alt": "Sõnum reaga „Pilt peidetud, sest linkide eelvaated ja manustatud sisu on välja lülitatud“"
+          },
+          {
+            "id": "server-links",
+            "title": "Serverilingid kaartidena",
+            "body": "mumble:// link vestluses näitab serverit, kanalit, pingi, võrgus olevaid inimesi ja versiooni, nuppudega „Liitu“, „Lisa serveritesse“ ja „Kopeeri link“. Numbrid tulevad standardsest avalikust päringust, mitte kunagi ühendusest. Kasutajanimesid ja paroole lingis ei näidata kunagi ja kopeerimisel need jäetakse välja.",
+            "alt": "mumble:// lingi kaart serveri nime, kanali, pingi, kasutajate ja nupuga Liitu"
           }
         ]
       },
@@ -885,6 +953,12 @@
             "alt": "Seadistusviisard, mikrofoni samm tasemetestiga"
           },
           {
+            "id": "noise-levels",
+            "title": "Mürasummutus nelja tasemega",
+            "body": "Seaded → Hääl pakub Kerget püsiva müra jaoks väikseima protsessorikoormusega, Tavalist vaikimisi, Täpsemat (AI) 2024. aasta RNNoise’i mudeliga beetana, mis eemaldab rohkem müra suurema CPU hinnaga, ja Väljas. „?” iga taseme kõrval ütleb, mis see maksab. Kõik töötab sinu arvutis.",
+            "alt": "Hääleseaded mürasummutuse nelja tasemega"
+          },
+          {
             "id": "music",
             "title": "Muusikakvaliteet",
             "body": "Üks lüliti tõstab bitikiiruse serveri piirini, kõige rohkem 510 kbit/s, häälestab kodeerija muusika jaoks ning lülitab välja mürasummutuse ja automaatse võimenduse.",
@@ -898,13 +972,50 @@
           },
           {
             "id": "bitrate",
-            "title": "Bitikiirus käsitsi",
-            "body": "Eraldi liugur alates 16 kbit/s kuni kõrgeima väärtuseni, mida server ja Mumble lubavad. Pakettide kao korral keerab Mumcord selle ikka ise madalamaks."
+            "title": "Hääle kvaliteedi paneel",
+            "body": "Paremklõps ühenduse teabel: bitikiiruse liugur alates 16 kbit/s kuni serveri piiranguni koos sellega, mida praegu saadetakse, muusika kvaliteet, hinnanguline ribalaius ja heli tervise hinnang. Pakettide kao korral keerab Mumcord bitikiirust ikka ise madalamaks.",
+            "alt": "Hääle kvaliteedi paneel bitikiiruse liuguri, muusika kvaliteedi ja hinnangulise ribalaiusega"
           },
           {
             "id": "realtime-audio",
             "title": "Stabiilne koormuse all",
             "body": "Salvestamine ja taasesitus saavad reaalajaprioriteedi, nii et hääl praksub ja katkeb vähem, kui mäng või build arvutit hõivab. Ühenduse teave näitab katkestusi ja seda, kas reaalajaheli on sees."
+          },
+          {
+            "id": "low-latency",
+            "title": "Väikese viivitusega režiim muusika tegemiseks",
+            "body": "10 ms paketid, minimaalne puhver ning ilma kajasummutuse ja müra vaigistuseta langeb viivitus umbes 100 ms-lt umbes 40 ms-ni pluss võrk. See lülitub otse ja näitab hinnangulist viivitust. Vajab rohkem ribalaiust; soovitatav on kasutada kõrvaklappe. Töötab standardsete serveritega.",
+            "alt": "Heliseaded sisselülitatud väikese viivitusega režiimi ja lahtikirjutatud hinnangulise viivitusega"
+          },
+          {
+            "id": "channel-audio",
+            "title": "Heli kanali kaupa",
+            "body": "„Heli sellele kanalile…“ määrab ühe kanali muusika kvaliteedi, väikese viivitusega režiimi ja bitikiiruse lae, eelseadetega Hääl, Muusika ja Jam. See rakendub liitumisel ja sinu tavaseaded naasevad lahkumisel. Hoitakse ainult selles seadmes, nii et töötab igal Mumble'i serveril.",
+            "alt": "„Heli sellele kanalile“ eelseadetega Hääl, Muusika ja Jam"
+          },
+          {
+            "id": "device-switch",
+            "title": "Vaheta seadmeid häälteribalt",
+            "body": "Paremklõpsa mikrofoni- või kõrvaklappide nuppu: vali seade, sea helitugevus, jälgi taset ja lülita müra vaigistus, kõik ilma uuesti ühendumata. Kui seade eemaldatakse, naaseb Mumcord süsteemi vaikeseadme juurde. Linuxis PipeWire’iga ilmub iga sisend ja väljund nagu sinu töölaua heliseadetes.",
+            "alt": "Mikrofonimenüü sisendseadmete, helitugevuse liuguri ja tasemenäiduga"
+          },
+          {
+            "id": "leave-voice",
+            "title": "Lahku häälest, jää ühendatuks",
+            "body": "Paremklõpsa lõpetamisnuppu: „Lahku häälest“ lõpetab rääkimise ja kuulamise, kuid hoiab vestluse ja kaasalugemise töös. Seal on ka: katkesta ühendus, vii hääl teisele serverile ja katkesta ühendus kõigiga. Vasakklõps lõpetab ikka kohe.",
+            "alt": "Lõpetamisnupu menüü valikutega Lahku häälest, Katkesta ühendus ja Vaheta häält"
+          },
+          {
+            "id": "whisper",
+            "title": "Sosistamine ja hõikamine",
+            "body": "Räägi valitud inimestega või kõigiga kanalis, soovi korral koos selle alamkanalite, lingitud kanalite või ainult ühe grupiga, seal viibimata. Sihtmärgid seadistad seadetes või valikuga „Sosista…“ inimese või kanali menüüs, igaühel oma hoia-all-rääkimise klahv. Vestluse kohal olev riba näitab, kellega räägid.",
+            "alt": "Vestluse kohal olev riba kanalisse sosistades"
+          },
+          {
+            "id": "user-panel",
+            "title": "Rahulik kasutajapaneel",
+            "body": "Kanaliloendi all olev paneel on alati sama kõrgusega: sina koos nime ja serveriga, üks olekurida, näiteks uuesti ühendumine või sinu häälkanal, väikesed märgid režiimile Ära sega, väikese viivitusega režiimile ja ühendusele ning mikrofoni-, kõrvaklappide- ja lõpetamisnupud. Ülal olev kanaliloend ei hüppa enam.",
+            "alt": "Kasutajapaneel mitmes olekus, alates rääkimisest ja vaigistusest kuni uuesti ühendumiseni"
           }
         ]
       },
@@ -915,50 +1026,19 @@
           {
             "id": "positional",
             "title": "Ruumiline heli",
-            "body": "Samas mängus olevate inimeste hääled tulevad nende suunast ja vaibuvad kaugusega. Mumble Linki või Mumble'i ametlike mängupluginate kaudu; „3D“ ikoon näitab, kes asukohti saadab.",
+            "body": "Samas mängus olevate inimeste hääled tulevad nende suunast ja vaibuvad kaugusega. Mumble Linki või Mumble'i ametlike mängupluginate kaudu, igaühel oma lüliti; „3D“ ikoon näitab, kes asukohti saadab.",
             "alt": "Seaded, ruumiline heli kauguste ja mängupluginatega"
-          },
-          {
-            "id": "game-plugins",
-            "title": "Ametlikud mängupluginad",
-            "body": "Mumble'i pluginad edastavad toetatud mängude asukohad, igaühel oma lüliti. Seaded näitavad, milline on aktiivne."
           },
           {
             "id": "in-game-overlay",
             "title": "Mängusisene ülekate",
-            "body": "Linuxis otse mängu sees Vulkani kihina, ka Steami ja Protoni mängudes, testitud mängudega Tyr ja Supermarket Simulator. Seatav iga mängu kohta; mängud, mille petuvastus ülekatteid blokeerib, jäävad välja. Windows saab selle versiooniga 0.4.0.",
+            "body": "Näitab otse mängus, kes räägib. Linuxis Vulkani kihina, ka Steami, Protoni ja Flatpaki Steami mängudes, natiivsete OpenGL-mängude jaoks kopeeritava käivitusvalikuga. Windowsis klõpsudest läbipaistva aknana, mis ei laadi mängu midagi, nii et see töötab petuvastusega; peidab selle ainult eksklusiivne täisekraan. Seatav iga mängu kohta; mängud, mille petuvastus ülekatteid blokeerib, jäävad välja.",
             "alt": "Seaded, mängusisene ülekate petuvastuse hoiatuse ja mängupõhiste valikutega"
-          },
-          {
-            "id": "overlay-window",
-            "title": "Ülekatteaken",
-            "body": "Linuxis ja Windowsis läbipaistev, läbiklõpsatav aken kõige peal, mis näitab, kes sinu kanalis räägib. macOS-is ülekatet pole. Ülekatteaken kaob versiooniga 0.4.0.",
-            "alt": "Ülekatteaken mängu kohal, mis näitab, kes räägib"
           },
           {
             "id": "now-gaming",
             "title": "Praegu mängib",
-            "body": "Soovi korral näevad teised, mida sa mängid, koos Steami pildi ja mänguajaga. „Liitu mänguga“ Steami mängudes, mis seda toetavad."
-          },
-          {
-            "id": "overlay-windows",
-            "title": "Mängusisene ülekate Windowsis",
-            "body": "Eraldi aken mängu kohal, millest klõpsud lähevad läbi. Mängu ei laadita midagi, seega töötab see ka petuvastusega mängudes. Ainult eksklusiivne täisekraan peidab selle."
-          },
-          {
-            "id": "overlay-opengl",
-            "title": "OpenGL-mängud Linuxis",
-            "body": "OpenGL-i kasutavate Linuxi omamängude, näiteks Project Hospitali jaoks näitab Mumcord õiget Steami käivitusvalikut kopeerimiseks ja see kehtib ka pärast uuendusi. Ka HDR-mängude värvid on õiged."
-          },
-          {
-            "id": "flatpak-steam",
-            "title": "Flatpaki Steam ja ääristeta täisekraan",
-            "body": "Mängusisene ülekate ka Flatpakina paigaldatud Steami mängudes, ääristeta täisekraanil mängud KDE-s ja GNOME-is kontrollitud. Mumcordi sulgemine või uuendamine ei lase enam käimasoleval mängul kokku joosta."
-          },
-          {
-            "id": "join-game-link",
-            "title": "„Liitu mänguga“ Mumble Linki kaudu",
-            "body": "„Liitu mänguga“ ka mängudes, mis jagavad oma serveri aadressi Mumble Linki kaudu."
+            "body": "Soovi korral näevad teised, mida sa mängid, koos Steami pildi ja mänguajaga. „Liitu mänguga“ Steami mängudes, mis seda toetavad, ja mängudes, mis jagavad oma serveri aadressi Mumble Lingi kaudu."
           }
         ]
       },
@@ -997,13 +1077,13 @@
           {
             "id": "watch-party",
             "title": "Koos vaatamine",
-            "body": "YouTube’i watch party häälkanalis: kõik näevad sama videot korraga, igaüks saab peatada ja kerida, ühise esitusloendiga.",
+            "body": "YouTube’i watch party häälkanalis: kõik näevad sama videot korraga, igaüks saab peatada ja kerida, ühise esitusloendiga. Kui manustatud sisu on privaatsusseadetes välja lülitatud, ei laadita YouTube'ist ega Twitchist midagi.",
             "alt": "Watch party ujuvas aknas osalejate, juhtnuppude ja järgmise videoga"
           },
           {
             "id": "screen-share",
             "title": "Ekraani jagamine",
-            "body": "Ekraan või aken kuni 8 vaatajale, 720p ja 30 kaadrit sekundis. Windowsis ja macOS-is soovi korral jagatud rakenduse heliga. Käivitad selle vestluse Rakendused-nupust.",
+            "body": "Ekraan või aken kuni 8 vaatajale, 720p ja 30 kaadrit sekundis, Windowsis ja macOS-is soovi korral jagatud rakenduse heliga. Käivitad selle vestluse Rakendused-nupust. Jagamise ajal näitab punane riba vaatajaid ja nuppu „Lõpeta“ ning teised näevad sinu pildi ümber punast „LIVE“ rõngast.",
             "alt": "Jagatud ekraan ujuvas aknas täisekraani ja valikuga „Lõpeta vaatamine“"
           },
           {
@@ -1013,20 +1093,15 @@
             "alt": "Vihjed vestluse ülaosas käimasoleva watch party ja jagatud ekraani kohta"
           },
           {
-            "id": "live",
-            "title": "Otse eetris ja kõik näevad seda",
-            "body": "Kui jagad ekraani, annab sellest märku punane riba sinu profiili kohal, millel on „Lõpeta“ ja vaatajate arv. Teised näevad sinu pildi ümber punast rõngast kirjaga „LIVE“.",
-            "alt": "Punane riba „Sa jagad oma ekraani“ vaatajate arvu ja nupuga „Lõpeta“"
-          },
-          {
             "id": "ducking",
-            "title": "Vaiksemaks, kui räägitakse",
-            "body": "Kui keegi kanalis räägib, jääb watch party ja jagatud ekraani heli vaiksemaks ning tuleb pärast tagasi. Sina otsustad, kui palju, või lülitad selle välja."
+            "title": "Heli watch party’dele ja jagamisele",
+            "body": "Kui keegi kanalis räägib, jääb watch party ja jagatud ekraanide heli vaiksemaks; sina otsustad, kui palju. Lühikesed helid, kui keegi alustab watch party’t, liitub sellega või jagab oma ekraani, ja igaüht neist saab välja lülitada."
           },
           {
-            "id": "activity-sounds",
-            "title": "Helid watch party’de ja jagamise jaoks",
-            "body": "Lühike heli, kui keegi alustab watch party’t, liitub sellega või lahkub sellest ja kui keegi jagab oma ekraani või hakkab sinu oma vaatama. Iga heli saab välja lülitada."
+            "id": "relay",
+            "title": "Kogukonna relee",
+            "body": "Serveri kogukond saab oma Mumble'i serveri kõrval käitada releed. Täissuuruses pildid ja ekraanijagamine töötavad siis ka siis, kui otseühendus pole võimalik, ja valikuga „alati relee kaudu“ ei näe teine inimene kunagi sinu IP-aadressi. Relee ei saa krüptitud ühendust lugeda ja hääl ei kasuta seda kunagi. Valid jaotises Seaded → Privaatsus, ka serveri kaupa.",
+            "alt": "Privaatsusseaded otse-, relee- ja väljalülitatud peer-to-peer valikutega"
           }
         ]
       },
@@ -1043,36 +1118,26 @@
           {
             "id": "sounds",
             "title": "Helid ja teavitused",
-            "body": "Iga sündmust saab eraldi lülitada: liitumine, lahkumine, sõnumid, mainimised.",
+            "body": "Iga sündmust saab eraldi lülitada: liitumine, lahkumine, sõnumid, mainimised ning oma heli väljaviskamise või keelustamise jaoks.",
             "alt": "Seaded, helide ja teavituste jaotis"
           },
           {
             "id": "languages",
-            "title": "Vaheta keelt ilma taaskäivituseta",
-            "body": "Keel rakendub kohe. Kaasas on salveikoon, käivitus sisselogimisel ning täielik klaviatuuri ja ekraanilugeja tugi.",
+            "title": "24 keelt, vahetatavad ilma taaskäivituseta",
+            "body": "Kõik 24 ELi ametlikku keelt, bulgaaria keelest rootsi keeleni, rakenduvad kohe, salvemenüü kaasa arvatud. Iga keel on loetletud oma nimega. Tõlkinud meeskond ilma emakeelsete kõnelejate ülevaatuseta: parandused on issue'na teretulnud. Täielik klaviatuuri ja ekraanilugeja tugi on kaasas.",
             "alt": "Seaded, liidese keele jaotis"
           },
           {
             "id": "privacy",
             "title": "Ilma telemeetriata",
-            "body": "Sinu identiteet asub süsteemi turvalises hoidlas. Diagnostikafail ei sisalda vestluste sisu ega paroole ja lahkub sinu arvutist ainult siis, kui sa selle ise saadad."
-          },
-          {
-            "id": "eu-languages",
-            "title": "Kõik 24 ELi ametlikku keelt",
-            "body": "Bulgaaria keelest rootsi keeleni, salvemenüü kaasa arvatud. Iga keel on loetletud oma nimega ja selle leiab ükskõik millise oma nime järgi. Tõlkinud meeskond ilma emakeelsete kõnelejate ülevaatuseta: parandused on issue'na teretulnud."
-          },
-          {
-            "id": "privacy-step",
-            "title": "Privaatsus viisardis",
-            "body": "Esimesel käivitusel näitab lühike samm, millega ja millal Mumcord ühendub, koos lingiga täielikule privaatsusteatele.",
+            "body": "Esimesel käivitusel näitab lühike samm, millega Mumcord ühendub ja millal. Sinu identiteet asub süsteemi turvalises hoidlas ning diagnostikafail ei sisalda vestluste sisu ega paroole ja lahkub sinu arvutist ainult siis, kui sa selle ise saadad.",
             "alt": "Viisard, privaatsuse samm"
           },
           {
             "id": "quick-settings",
             "title": "Kiirseaded hammasratta all",
-            "body": "Üks klõps hammasrattal: eelvaated, teema, ülekate, muusika ja mängu jagamine, profiili muutmine ja registreerimine. Beetafunktsioonid, nagu ruumiline heli, on omaette kokkuvolditavas grupis.",
-            "alt": "Kiirseaded, kus beetagrupp on lahti"
+            "body": "Üks klõps hammasrattal: üks rida iga seade kohta jaotistes Teavitused, Jagamine, Välimus ja Konto, selgitus väikese „?“ taga. Beetafunktsioonid, nagu ruumiline heli, on omaette grupis, mis algab kokkuvolditult.",
+            "alt": "Kiirseaded gruppidena Teavitused, Jagamine, Välimus ja Konto"
           },
           {
             "id": "settings-search",
@@ -1100,30 +1165,98 @@
           },
           {
             "id": "dropdowns",
-            "title": "Korras seaded",
-            "body": "Teemaga sobivad rippmenüüd brauseri välimuse asemel ja kõik seadete väljad kenasti joondatud."
-          },
-          {
-            "id": "tooltips",
-            "title": "Teemaga kohtspikrid",
-            "body": "Iga kohtspikker sinu teema välimusega, hele või tume, ja kättesaadav ka klaviatuuriga."
+            "title": "Korras seaded ja kohtspikrid",
+            "body": "Rippmenüüd ja kohtspikrid sinu teema välimusega brauseri omade asemel, kõik seadete sisestusväljad kenasti joondatud ja iga kohtspikker kättesaadav ka klaviatuuriga."
           },
           {
             "id": "packet-inspector",
             "title": "Paketiinspektor silumiseks",
-            "body": "Arendajate jaoks peidetud: seitse klõpsu versioonil jaotises Seaded → Teave avavad selle. Eraldi aknas näitab see, milliseid Mumcordi andmeid saadetakse ja vastu võetakse, koos filtrite, loendurite ja ekspordiga JSON-i või Markdowni vormingus.",
+            "body": "Arendajate jaoks peidetud: seitse klõpsu versioonil jaotises Seaded → Teave avavad selle. Eraldi aknas näitab see, milliseid Mumcordi andmeid saadetakse ja vastu võetakse, koos filtrite, loendurite ja ekspordiga JSON-i või Markdowni vormingus. See jälgib uusi pakette ja jäädvustab ainult siis, kui see on avatud.",
             "alt": "Paketiinspektor filtrite, tüübi ja suuna kaupa loendurite ning ühe lahtivolditud paketireaga"
           },
           {
             "id": "clear-cache",
             "title": "Vahemälu tühjendamine",
             "body": "Seaded → Privaatsus näitab, kui palju ruumi linkide eelvaated, pildid ja veebimootor võtavad, ning tühjendab need ühe nupuvajutusega, ka ükshaaval. Vestlusajalugu, servereid, sõpru ja märkmeid ei puudutata kunagi."
+          },
+          {
+            "id": "dnd",
+            "title": "Ära sega",
+            "body": "Üks lüliti kiirseadetes, seadetes või salvemenüüs vaigistab teavitusheli ja hüpikteated kõigil serveritel. Hääl töötab edasi ja lugemata loendurid loevad edasi. KDE Plasmas, GNOME'is ja Windowsis võib see järgida süsteemi režiimi Ära sega.",
+            "alt": "Helide ja teavituste seaded valikutega Ära sega ja „Järgi süsteemi režiimi Ära sega“"
+          },
+          {
+            "id": "tray",
+            "title": "Täielik salvemenüü",
+            "body": "Salvemenüü näitab iga ühendatud serverit koos oleku ja kanaliga, mikrofoni vaigistust, kõrvaklappide vaigistust ja režiimi Ära sega, viib hääle teisele serverile või kanalisse ja avab hiljutised vestlused. Ikoon näitab rääkimist, vaigistust, lugemata sõnumeid ja režiimi Ära sega. Mumcord käivitub soovi korral sisselogimisel, igas süsteemis.",
+            "alt": "Salvemenüü serverite, häälkanali alammenüü ja hiljutiste vestlustega"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.5.0",
+      "teaser": "Teavituskeskus, kõik privaatsõnumid ühes kohas, blokeerimine, mitu identiteeti ja import Mumble'ist.",
+      "summary": "Suur uuendus vestluse ja privaatsuse jaoks: teavituskeskus, kõik privaatsõnumid ühes kohas koos oma reeglitega, kes sulle kirjutada tohib, blokeerimine, mitu identiteeti ja Mumble'ist üleminek paari klõpsuga. Lisaks kogukonna relee piltidele ja ekraanijagamisele, muusika ja heli vestluses, avalike serverite brauser ning väikese viivitusega režiim koos muusika tegemiseks.",
+      "groups": [
+        {
+          "title": "Uus",
+          "items": [
+            "Vestluse päises oleva kellukese taga olev teavituskeskus koondab kõik, mis sinu tähelepanu vajab, kõigist ühendatud serveritest: mainimised, vastused, vestlus- ja sõnumitaotlused nuppudega Nõustu ja Keeldu, kutsed ühisele vaatamisele ja ekraanijagamisele ning serverid, mis pole enam kättesaadavad. Klõps viib sõnumini.",
+            "Ära sega: üks lüliti kiirseadetes, seadetes ja salveribamenüüs vaigistab teavitusheli ja hüpikaknad kõigis serverites. Hääl töötab edasi ja lugemata sõnumeid loetakse edasi. Soovi korral järgib Mumcord süsteemi režiimi Ära sega KDE Plasmas, GNOME'is ja Windowsis.",
+            "Salveribamenüü näitab iga ühendatud serverit koos selle kanaliga, lisaks Vaigista mikrofon, Vaigista heli ja Ära sega. Sealt viid hääle teise serverisse või kanalisse ja avad hiljutised privaatvestlused. Salveriba ikoon näitab, kui keegi räägib, kui oled vaigistatud ja kui on lugemata sõnumeid.",
+            "Kõik privaatsõnumid ühes kohas: nupp Sõnumid serveririba ülaosas loetleb iga vestluse igast ühendatud serverist, koos otsingu, filtrite, kinnitamise ja vaigistamisega. See asendab kanalipuu all olevat loendit Otsesõnumid. Inimese menüü algab nüüd valikutega Saada sõnum, Liitu kanaliga ja Lisa sõbraks.",
+            "Sina otsustad, kes sulle privaatselt kirjutada tohib: kõik, ainult sõbrad või mitte keegi, ka serveri kaupa. Sinu kanalis olevad inimesed ja vestlused, mille oled vastu võtnud, pääsevad alati läbi. Teised ootavad jaotises Sõnumitaotlused ning Mumcordi kasutajad saavad sulle saata vestlustaotluse lühikese märkusega. Mumcord filtreerib sinu poolel, nii et saatjat ei teavitata. Vastu võetud vestluse võid hiljem tagasi võtta.",
+            "Blokeeri inimesi: nende privaatsõnumid ja taotlused kaovad, nende kanalisõnumid ahendatakse ja nende hääl vaigistatakse sinu jaoks. Blokeering järgib inimese sertifikaati, nii et see kehtib igas serveris ja uus nimi seda ei kaasa. Ei server ega inimene saa sellest teada; Seaded → Privaatsus näitab sinu blokeeringuid.",
+            "@channel ja @all jõuavad kõigini kanalis ja loevad nagu isiklik mainimine. Teised Mumble'i kliendid näevad lihtsalt sõnu ning sa saad need serveri kaupa vaigistada.",
+            "Heli ja muusika vestluses: otselingid helifailidele nagu mp3, ogg, wav või flac saavad väikese mängija. Lingid Spotifysse, SoundCloudi ja YouTube Musicusse mängivad teenuse enda mängijas, kui vajutad Esita; Apple Music, Tidal, Deezer ja Bandcamp saavad lingiga kaardi. Miski ei hakka ise mängima ja kui linkide eelvaated on välja lülitatud, ei laadita midagi.",
+            "mumble:// lingid vestluses näitavad kaarti serveri, kanali, pingi ja sellega, kui palju inimesi on võrgus, koos nuppudega Liitu ja Lisa serveritesse. Lingis olevat parooli ei näidata kunagi.",
+            "Kanaleid on lihtsam kasutada: paremklõps kanalil avab menüü valikutega Liitu, Jälgi, Kopeeri kanali link, Kanali teave ja muu. Kanalid näitavad oma kasutajate piiri, näiteks Raid (1/10), ja täis kanalid on tuhmid. Vajaliku õiguse korral lohistad inimesi teise kanalisse. Kanali teave näitab kirjeldust, kasutajaid, sinu õigusi ja seotud kanaleid.",
+            "Väikese viivitusega režiim koos muusika tegemiseks (Beeta): umbes 40 100 millisekundi asemel suust kõrvani, pluss võrk. See lülitub ümber ilma uuesti ühendumata ja töötab tavaliste serveritega. Soovitame kõrvaklappe.",
+            "Heli kanali kaupa: „Heli selle kanali jaoks…“ annab kanalile oma seaded eelseadetega Hääl, Muusika ja Jam. Need kehtivad liitumisel ja sinu tavaseaded naasevad lahkumisel.",
+            "Kiirmenüüd häälribal: paremklõps mikrofonil või kõrvaklappidel avab seadmed, helitugevuse ja tasememõõdiku, ühenduse teabe hääle kvaliteedi ja bitikiirusega ning lõpetamisnupu valikutega Lahku häälest (jääd ühendatuks ja vestled edasi) või Katkesta ühendus kõigi serveritega.",
+            "Serveribrauser serveririba küljes loetleb avalikke Mumble'i servereid, koos otsingu ning riigi ja pingi filtritega. Ühenda salvestab ja ühendab ühe klõpsuga. Loend laaditakse alles siis, kui brauseri avad.",
+            "Serveridialoog on jagatud nelja vahekaardi vahel ja sisaldab nuppu Testi ühendust, mis kontrollib pingi, serveri versiooni ja sertifikaadi, midagi salvestamata. Serveri teave näitab versiooni, piiranguid, sinu õigusi ja TLS-sertifikaati. Salvestatud kanaliparoolid näitavad, millisele kanalile nad kuuluvad.",
+            "Mitu identiteeti: Seaded → Identiteet haldab mitut sertifikaati, koos impordi, ekspordi, ümbernimetamise ja vaikeidentiteediga. Iga server võib kasutada oma identiteeti. Sinu praegusest saab „Vaikimisi“ ja kõik ühendub nagu enne.",
+            "Import Mumble'ist: kui ametlik Mumble'i klient on paigaldatud, toob seadistusviisard (või Seaded → Serverid) üle sinu lemmikserverid, salvestatud paroolid, sertifikaadi, heliseadmed ja push-to-talk-klahvi. Midagi ei kirjutata üle, Mumble'i faile ainult loetakse ja impordi saab tagasi võtta.",
+            "Kogukonna relee: täismõõdus pilte ja ekraanijagamist saab suunata läbi relee, mida serveri kogukond oma Mumble'i serveri kõrval haldab. See edastab ainult krüpteeritud ühendust ja soovi korral peidab sinu IP-aadressi teise inimese eest. Ekraanijagamine töötab siis ka ilma otseühenduseta. Hääl ei kasuta releed kunagi.",
+            "Windowsis tuleb Mumcord ka kaasaskantava zipina: paki lahti, käivita, paigaldust pole vaja. Andmed ja seaded jäävad programmi kõrval olevasse kausta.",
+            "Peida liikmete veerg, et vestlus saaks kogu laiuse: nupuga vestluse päises või Ctrl+Shift+M. Kitsas aknas libiseb see vestluse kohale.",
+            "Välja visatud või bannitud? Mumcord mängib selle jaoks heli: kõrvakiil väljaviskamise ja slapstick-löök bani puhul. Mõlemad saab välja lülitada.",
+            "Serveri teave näitab, kas server teatab releest või Mumbotist, ja hoiatab, kui relee on muutunud.",
+            "Sosistamine ja hõikamine: räägi valitud inimestega või kõigiga kanalis, sinna minemata, igale sihtmärgile oma hoia-all-rääkimise klahv ja vestluse kohal riba, mis näitab, kellega räägid.",
+            "Uuendused rakenduses: Mumcord kontrollib uusi versioone, näitab, mis on muutunud, ja paigaldab need ühe klõpsuga. Iga allalaadimist kontrollitakse selle allkirja ja kontrollsummade vastu.",
+            "Mürasummutus nelja tasemega: Kerge, Tavaline, Täpsem (AI, beeta, 2024. aasta RNNoise’i mudeliga) ja Väljas, igaüht selgitab „?”."
+          ]
+        },
+        {
+          "title": "Täiustatud",
+          "items": [
+            "Kanaliloendi all olev kasutajapaneel on ümber kujundatud: see jääb igas olekus sama kõrgeks, nii et ülal olev loend ei hüppa kunagi, näitab ühte selget olekurida ja iga häälenupu küljes on väike menüünool.",
+            "Kiirseaded on rahulikumad: üks rida seade kohta selgetes rühmades, selgitused väikese ? taga ja rühm Beeta algab ahendatuna.",
+            "Kui linkide eelvaated on välja lülitatud, ei kao need enam vaikselt: vaikne rida sõnumi all ütleb, mis peideti, ja viib seadeni.",
+            "„Käivita seadistusviisard uuesti“ jaotises Seaded → Teave käib veel kord läbi mikrofoni, privaatsuse, uuenduse vihje ja rääkimisrežiimi. Sinu identiteeti ei puudutata ja salvestatakse ainult see, mida muudad.",
+            "Pakettide inspektor jälgib uusi pakette, peatub, kui kerid üles, ja salvestab ainult siis, kui see on avatud.",
+            "Serveri- ja kanalipuu on vaikimisi veerandi võrra laiem, nii et pikemad kanalinimed mahuvad ära. Laiused, mille ise määrad, jäävad alles."
+          ]
+        },
+        {
+          "title": "Parandatud",
+          "items": [
+            "Sinu enda sõnumid ei mängi kunagi mainimisheli, ei näita kunagi teavitust ega lähe lugemata sõnumite hulka.",
+            "Ühine vaatamine arvestab valikut „Näita linkide eelvaateid ja manuseid“: kui see on väljas, ei laadita YouTube'ist ega Twitchist midagi ja vihje viib seadeni.",
+            "Linux koos PipeWire'iga: seadmeloendid näitavad iga sisendit ja väljundit samamoodi nagu töölaua heliseaded, näiteks „System“ ja „Chat“ RØDECaster Pro II puhul ühe „USB Audio“ asemel.",
+            "Serveri teabe aken on nüüd tõlgitud kõigisse 24 keelde.",
+            "Sinu enda sõnumid ei mängi enam mainimisheli, ei näita teavitust ega lähe enam lugemata sõnumite hulka."
+          ]
+        }
+      ],
+      "known": [
+        "Windowsi paigaldaja on endiselt allkirjastamata."
+      ]
+    },
     {
       "version": "0.4.4",
       "teaser": "Koodi kopeerimine ja allalaadimine, piltide salvestamine paremklõpsuga, vahemälu tühjendamine, stabiilsem hääl koormuse all.",
@@ -2448,7 +2581,8 @@
         "webhook": "Määra API võti ja lubatud kanalid failis `bot.toml`. Seejärel postitab `curl` aadressile `http://127.0.0.1:8080/message` sõnumi kanalisse.",
         "more": "Allolevad sammud selgitavad iga osa üksikasjalikult.",
         "music": "Pane MP3-d kausta `media` ja määra API võti failis `bot.toml`. Seejärel esitab päring aadressile `http://127.0.0.1:8081` need kanalis.",
-        "history": "Määra failis `bot.toml`, kui kaua bot vestlust hoiab. Ta vajab kanalitele lugemisõigust."
+        "history": "Määra failis `bot.toml`, kui kaua bot vestlust hoiab. Ta vajab kanalitele lugemisõigust.",
+        "relayRegistered": "Valikuga „Ainult registreeritud kasutajad“ saavad releetokenid ainult serveris registreeritud inimesed (tee oma nimel paremklõps → Registreeri)."
       },
       "advanced": "Täpsemad",
       "pluginLimit": "Peidetud pakette sekundis",
@@ -2472,7 +2606,12 @@
         "show": "Näita paroole ja märgi need üles"
       },
       "copyAll": "Kopeeri kõik korraga",
-      "needsMumbot": "Veebikonks, relee, muusika ja ajalugu töötavad koos ühe Mumbotina, millel on moodulid. See tuleb Mumbot 0.2.0-ga."
+      "needsMumbot": "Veebikonks, relee, muusika ja ajalugu töötavad koos ühe Mumbotina, millel on moodulid. See tuleb Mumbot 0.2.0-ga.",
+      "relayAccess": {
+        "label": "Relee jaoks",
+        "registered": "Ainult registreeritud kasutajad",
+        "all": "Kõik, ka külalised"
+      }
     },
     "stepsCta": "Samm-sammult"
   },
@@ -2654,6 +2793,17 @@
           "Sõnumikaardid: veebihaak saadab hoiatusi pealkirja, olekuvärvi, graafiku ja lingiga, mida Mumcord näitab kaardina",
           "Reguleeritav bitikiirus kõnele ja muusikale, mitte kunagi üle serveri piiri",
           "Peer-moodul: registreerib serveri kasutajad mumpeeri vahendusserveris ja annab Mumcordile teada, et vahendusserver on olemas"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Turvalisem relee",
+        "summary": "Pärast releed puudutavat turvaülevaatust: kes saab märke, kui kauaks ja mitu.",
+        "items": [
+          "Relee märgid ainult registreeritud kasutajatele, soovi korral ka külalistele",
+          "Serverist lahkumine lõpetab releele juurdepääsu, kuid alles viimase seansiga",
+          "Sertifikaadipõhised piirangud märgitaotlustele ja avatud ühendustele",
+          "Turvalisem seadistus: ei mingit lihtsat HTTP-d teisel masinal asuva releeni, saladusi kontrollitakse rangelt"
         ]
       },
       {

@@ -297,7 +297,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Audiodateien im Chat mit eigenem Player: abspielen, spulen und Lautstärke direkt in der Nachricht",
               "Links zu Spotify, Apple Music, Tidal und anderen Musikdiensten werden zur Musikkarte, die erst nach einem Klick über den offiziellen Player des Dienstes spielt",
             ],
-            done: [1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+            done: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
             mockups: [
               { shot: "epic3-64-hotkeys-settings-dark", issue: 64, caption: "Globale Tastenkürzel in den Einstellungen" },
               { shot: "epic3-65-tray-menu-and-icon-states-dark", issue: 65, caption: "Volles Tray-Menü und Symbolzustände" },
@@ -386,7 +386,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Audio pro Kanal: Musikqualität, Low-Latency-Modus und Bitrate merkt sich jeder Kanal selbst",
               "Hochwertige Rauschunterdrückung mit dem RNNoise-Modell von 2024, als Beta",
             ],
-            done: [0, 1, 2],
+            done: [0, 1, 2, 3],
             mockups: [
               { shot: "connection-quick-panel-dark", issue: 155, caption: "Sprachqualität direkt an der Verbindungsinfo" },
               { shot: "low-latency-dark", issue: 156, caption: "Low-Latency-Modus" },
@@ -412,7 +412,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Updates direkt in der App: prüfen, herunterladen, Signatur prüfen und neu starten",
               "Unter Windows eine portable Mumcord.exe neben dem Installer",
             ],
-            done: [1],
+            done: [0, 1],
             mockups: [
               { shot: "update-available-dark", issue: 168, caption: "Ein Update ist da" },
             ],
@@ -846,7 +846,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Audio files in the chat with a player of their own: play, seek and set the volume right in the message",
               "Links to Spotify, Apple Music, Tidal and other music services become a music card that plays through the service's official player, only after a click",
             ],
-            done: [1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+            done: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
             mockups: [
               { shot: "epic3-64-hotkeys-settings-dark", issue: 64, caption: "Global shortcuts in the settings" },
               { shot: "epic3-65-tray-menu-and-icon-states-dark", issue: 65, caption: "Full tray menu and icon states" },
@@ -935,7 +935,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Audio per channel: every channel remembers its own music quality, low-latency mode and bitrate",
               "High-quality noise suppression with the 2024 RNNoise model, as a beta",
             ],
-            done: [0, 1, 2],
+            done: [0, 1, 2, 3],
             mockups: [
               { shot: "connection-quick-panel-dark", issue: 155, caption: "Voice quality right at the connection info" },
               { shot: "low-latency-dark", issue: 156, caption: "Low-latency mode" },
@@ -961,7 +961,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Updates right in the app: check, download, verify the signature and restart",
               "On Windows a portable Mumcord.exe next to the installer",
             ],
-            done: [1],
+            done: [0, 1],
             mockups: [
               { shot: "update-available-dark", issue: 168, caption: "An update is ready" },
             ],

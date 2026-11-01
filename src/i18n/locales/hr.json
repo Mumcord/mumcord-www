@@ -534,20 +534,58 @@
       "commits": "commitova",
       "join": "Pridruži se na GitHubu",
       "toolTitle": "Suradnici"
+    },
+    "spotlight5": {
+      "label": "Novo u 0.5.0",
+      "labelSoon": "Uskoro: 0.5.0",
+      "title": "Više mira. Više tebe. Više zvuka.",
+      "body": "0.5.0 donosi Epic 3: centar obavijesti, blokiranje, više identiteta, novo stablo kanala, glazbu u chatu, način niske latencije za zajedničko muziciranje i izravne veze preko releja.",
+      "tiles": {
+        "notifications": {
+          "title": "Sve na jednom mjestu",
+          "body": "Zvonce skuplja spominjanja, odgovore, zahtjeve i pozive sa svih poslužitelja. Tko te smeta, bit će blokiran, a prepoznaje se po svojem certifikatu."
+        },
+        "identities": {
+          "title": "Više identiteta",
+          "body": "Privatni, klanski, poslovni: za svaki poslužitelj biraš kao tko se spajaš."
+        },
+        "tree": {
+          "title": "Novo stablo kanala",
+          "body": "Desni klik na svaki kanal, ograničenje korisnika uz naziv, jasne ikone i izbornik iza naziva kanala."
+        },
+        "lowLatency": {
+          "title": "Muzicirajte zajedno",
+          "body": "Način niske latencije donosi oko 40 umjesto 90 ms od usta do uha, a svaki kanal pamti vlastite postavke zvuka."
+        },
+        "music": {
+          "title": "Glazba u chatu",
+          "body": "Audio datoteke sviraju izravno u chatu, a poveznice na Spotify, Apple Music i druge pretvaraju se u glazbenu karticu."
+        },
+        "relay": {
+          "title": "Izravne veze, svugdje",
+          "body": "Dijeljenje zaslona i velike slike rade čak i iza CGNAT-a, a ako želiš, nitko ne vidi tvoju IP adresu."
+        }
+      },
+      "features": "Sve značajke",
+      "changelog": "Sve novosti"
+    },
+    "serverCta": {
+      "title": "Vlastiti poslužitelj za pet minuta",
+      "body": "Označi kućice, kopiraj naredbu, gotovo: konfigurator gradi tvoj docker-compose.yml s relejem i botovima.",
+      "button": "Otvori konfigurator"
     }
   },
   "features": {
     "title": "Značajke",
     "description": "Sve značajke Mumcorda sa snimkama zaslona: poslužitelji i certifikati, praćenje kanala, chat s pretpregledima i @spominjanjima, push-to-talk, zvuk i udobnost.",
     "label": "Što Mumcord radi",
-    "intro": "Sve što Mumcord radi, sa slikom gdje postoji, plus ono što stiže sa sljedećom verzijom. Filtar prikazuje beta značajke ili što je novo u kojoj verziji. Nešto nedostaje ili ne radi? Javi nam na GitHubu.",
+    "intro": "Sve što Mumcord radi, sa slikom gdje je ima, plus ono što dolazi sa sljedećom verzijom. Filtar pokazuje što je novo u dvije najnovije verzije. Nešto nedostaje ili ne radi? Javi nam na GitHubu.",
     "contents": "Sadržaj",
     "newIn": "novo u",
     "comingIn": "stiže u",
     "beta": "Beta",
     "filterLabel": "Filtar",
     "filterAll": "Sve",
-    "filterBeta": "Beta",
     "filterEmpty": "Nema značajki za ovaj filtar.",
     "jump": "Skoči na",
     "statFeatures": "značajki",
@@ -590,13 +628,13 @@
           {
             "id": "reconnect",
             "title": "Ponovno spajanje sa svime",
-            "body": "Ako veza pukne, vraćaš se u isti kanal sa stanjem utišanosti mikrofona i zvuka te praćenim kanalima. Nakon ponovnog pokretanja Mumcord nudi povratak u tvoj zadnji glasovni kanal.",
+            "body": "Ako veza pukne, vraćaš se u isti kanal sa stanjem utišanosti mikrofona i zvuka te praćenim kanalima. Nakon ponovnog pokretanja Mumcord nudi povratak u tvoj zadnji glasovni kanal. Kad veza ne uspije, banner navodi poslužitelj i nestaje nakon 60 sekundi ili s ✕; ikona poslužitelja i dalje prikazuje grešku.",
             "alt": "Traka koja nudi povratak u zadnji glasovni kanal"
           },
           {
             "id": "several-servers",
             "title": "Više poslužitelja odjednom",
-            "body": "Do 5 poslužitelja spojenih odjednom, podesivo do 15. Pričaš na jednom, a čitaš, pišeš i primaš obavijesti na svima. Svaki se poslužitelj nakon prekida sam ponovno spaja.",
+            "body": "Do 5 poslužitelja spojenih odjednom, podesivo do 15. Pričaš na jednom, a čitaš, pišeš i primaš obavijesti na svima. Svaki se poslužitelj nakon prekida sam ponovno spaja. „Uđi u kanal” radi i za prijatelje na drugom poslužitelju, a mumble:// poveznice na spojeni poslužitelj vode ravno tamo.",
             "alt": "Traka poslužitelja s nekoliko spojenih poslužitelja, oznakom zvučnika na glasovnom poslužitelju i brojem spominjanja"
           },
           {
@@ -611,24 +649,51 @@
             "body": "Paketi za Debian i Ubuntu, Fedoru i openSUSE, Arch (AUR: mumcord-bin) i AppImage, za x86_64 i ARM64, i jednim retkom u terminalu. Po želji obavijest kad izađe nova verzija."
           },
           {
-            "id": "server-notices",
-            "title": "Obavijesti po poslužitelju",
-            "body": "Obavijesti i privatne poruke nose ime poslužitelja, a svaki poslužitelj možeš zasebno utišati."
+            "id": "mumble-import",
+            "title": "Uvoz iz Mumblea",
+            "body": "Ako je službeni Mumble klijent (1.4 ili 1.5) instaliran, čarobnjak za postavljanje nudi preuzimanje tvojih omiljenih poslužitelja s lozinkama, tvog certifikata kao novog identiteta kako bi zadržao registrirano ime, tvojih audio uređaja i tipke push-to-talk. Svaki dio biraš u pretpregledu, poslužitelji koje već imaš preskaču se, a „Poništi uvoz” sve vraća. Može i poslije, u Postavke → Poslužitelji.",
+            "alt": "Korak čarobnjaka „Uvoz iz Mumblea” s kvačicom za svaki pronađeni dio"
           },
           {
-            "id": "across-servers",
-            "title": "Ulazak preko poslužitelja",
-            "body": "„Uđi u kanal” radi i za prijatelje na drugom poslužitelju, a mumble:// poveznice na spojeni poslužitelj vode ravno tamo."
+            "id": "identities",
+            "title": "Više identiteta",
+            "body": "Postavke → Identitet upravlja s više klijentskih certifikata: stvaranje, uvoz, preimenovanje, izvoz i sigurnosna kopija. Svaki poslužitelj koristi zadani identitet ili svoj, a zaglavlje chata pokazuje koji se koristi kad nije zadani. Certifikati i ključevi ostaju u sigurnoj pohrani sustava.",
+            "alt": "Upravitelj identiteta s više identiteta, njihovim otiscima i poslužiteljima koji ih koriste"
           },
           {
-            "id": "autostart",
-            "title": "Pokretanje pri prijavi",
-            "body": "„Pokreni Mumcord pri prijavi” postoji na svakom sustavu."
+            "id": "server-dialog",
+            "title": "Dijalog poslužitelja s karticama",
+            "body": "Dodavanje ili uređivanje poslužitelja podijeljeno je na Veza, Identitet, Lozinke i Ponašanje. Pogreške su imenovane izravno na polju, „Testiraj vezu” javlja ping, verziju poslužitelja i certifikat bez ičeg spremanja, a spremljene lozinke kanala pokazuju kojem kanalu pripadaju, npr. „Officers (Raid)”.",
+            "alt": "Dijalog „Dodaj poslužitelj” s karticama Veza, Identitet, Lozinke i Ponašanje"
           },
           {
-            "id": "failure-banner",
-            "title": "Trake s greškom koje ne gnjave",
-            "body": "Kad spajanje ne uspije, traka navodi poslužitelj i nestaje nakon 60 sekundi ili s ✕. Ikona poslužitelja i dalje prikazuje neuspjeh."
+            "id": "server-browser",
+            "title": "Pronađi javne poslužitelje",
+            "body": "Gumb za pretragu u traci poslužitelja otvara popis javnih Mumble poslužitelja: traži po imenu, adresi ili zemlji, filtriraj po zemlji i pingu, sakrij prazne ili pune poslužitelje. „Spoji” sprema i ulazi jednim klikom. Popis se učitava tek kad ga otvoriš, a ping se mjeri samo za retke na zaslonu.",
+            "alt": "Preglednik javnih poslužitelja s pretragom, filtrima zemlje i pinga te popisom poslužitelja"
+          },
+          {
+            "id": "server-info",
+            "title": "Informacije o poslužitelju",
+            "body": "Izbornik poslužitelja pokazuje ime, adresu, verziju, poruku dobrodošlice, ograničenja, dopuštene kodeke, tvoja dopuštenja i koliko ljudi koristi Mumcord, uz TLS certifikat s otiskom i valjanošću. „Kopiraj dijagnostiku” sve stavlja u međuspremnik za prijave grešaka. Radi s bilo kojim standardnim Mumble poslužiteljem.",
+            "alt": "Informacije o poslužitelju s verzijom, ograničenjima te otiskom, izdavateljem i valjanošću TLS certifikata"
+          },
+          {
+            "id": "setup-again",
+            "title": "Ponovno pokreni čarobnjak",
+            "body": "Postavke → O aplikaciji još jednom prolazi kroz postavljanje radi pregleda mikrofona, privatnosti, provjere ažuriranja i načina govora. Korak identiteta se preskače, pa se ništa u tvom certifikatu ne može slučajno promijeniti, a spremaju se samo vrijednosti koje si stvarno promijenio.",
+            "alt": "Čarobnjak pokrenut ponovno iz postavki, s korakom identiteta označenim kao preskočen"
+          },
+          {
+            "id": "windows-portable",
+            "title": "Prijenosno na Windowsima",
+            "body": "Uz instalacijski program postoji zip koji radi bez instalacije: raspakiraj ga i pokreni Mumcord.exe. Podaci, postavke i zapisnici ostaju u mapi pokraj njega, a mumble:// rukovatelj i pokretanje pri prijavi ne postavljaju se ako ih sam ne uključiš."
+          },
+          {
+            "id": "updater",
+            "title": "Ažuriranja u aplikaciji",
+            "body": "Mumcord provjerava ima li nove verzije pri pokretanju i svakih 12 sati, pokazuje što se promijenilo od tvoje verzije i instalira je jednim klikom. Svako preuzimanje provjerava se prema potpisu Mumcorda i kontrolnim zbrojevima izdanja prije instalacije; verziju možeš preskočiti ili zatražiti podsjetnik kasnije.",
+            "alt": "Dijalog „Dostupno ažuriranje” s promjenama od tvoje verzije"
           }
         ]
       },
@@ -657,68 +722,67 @@
           {
             "id": "right-click",
             "title": "Desni klik na ljude",
-            "body": "Pogledaj profil, utišaj samo za sebe, postavi glasnoću od 0 do 200 % ili pošalji privatnu poruku. Mumcord to pamti za svaku osobu.",
-            "alt": "Kontekstni izbornik osobe s klizačem glasnoće"
-          },
-          {
-            "id": "person-card",
-            "title": "Dvoklik za privatne poruke",
-            "body": "Dvaput klikni na osobu i otvara se privatni chat. Jedan klik prikvači njezinu karticu, s gumbima za privatnu poruku i profil."
+            "body": "Pošalji poruku, uđi u njihov kanal ili dodaj osobu među prijatelje odmah na vrhu, zatim profil, utišavanje samo za sebe i glasnoća od 0 do 200 %, zapamćena za svaku osobu. Ako ne smiješ ući, prikazuje se razlog. Dvoklik otvara privatni chat.",
+            "alt": "Izbornik osobe s Pošalji poruku, Uđi u kanal i Dodaj prijatelja na vrhu"
           },
           {
             "id": "profile",
-            "title": "Novi profil",
-            "body": "Banner, značka, glazba ili igra i sve postavke za tu osobu. Promjene vrijede odmah, uz kratko „Spremljeno”. Izbornik desnog klika ima ikone i prekidače.",
+            "title": "Profil",
+            "body": "Banner, značka, glazba ili igra i komentar s podebljanim, kurzivom, poveznicama i popisima. Glasnoća, utišavanje i privatna bilješka o toj osobi stoje sklopljeni u njemu; promjene vrijede odmah, uz kratko „Spremljeno”.",
             "alt": "Puni profil s glazbom, postavkama za tu osobu i privatnom bilješkom"
-          },
-          {
-            "id": "join-channel",
-            "title": "Uđi u kanal neke osobe",
-            "body": "Desni klik na osobu ili prijatelja: „Uđi u ‹kanal›” vodi te ravno u njihov kanal. Ako poslužitelj to ne dopušta, razlog se prikazuje pokraj.",
-            "alt": "Izbornik osobe s „Uđi u kanal”"
           },
           {
             "id": "member-column",
             "title": "Desni stupac s odjeljcima",
-            "body": "„U ‹kanal›”, „U drugim kanalima” sa svima ostalima na poslužitelju i „Prijatelji”, svaki se može sklopiti. Mumcord pamti što je otvoreno. Lijevo, „Pregled poslužitelja” stoji iznad stabla kanala.",
+            "body": "„U ‹kanal›”, „U drugim kanalima” sa svima ostalima na poslužitelju i „Prijatelji”, svaki se može sklopiti. Mumcord pamti što je otvoreno.",
             "alt": "Desni stupac s otvorenim „U drugim kanalima”"
           },
           {
             "id": "connection-quality",
             "title": "Kvaliteta veze",
-            "body": "Profil na prvi pogled pokazuje je li veza dobra, srednja ili slaba, a proširen prikazuje ping, gubitak paketa i propusnost. Mala ikona signala označava tko trenutno ima slabu vezu.",
+            "body": "Profil na prvi pogled pokazuje je li veza dobra, srednja ili slaba, a raširen prikazuje ping, gubitak paketa i propusnost. Mala ikona signala označava koga trenutno muči slaba veza. Admini vide i klijent te operacijski sustav, npr. „Mumcord 0.4.0” ili „Mumble 1.5”.",
             "alt": "Kartica profila s proširenom vezom: ping, gubitak paketa, propusnost, klijent i operacijski sustav"
           },
           {
-            "id": "listeners",
-            "title": "Slušatelji s uhom",
-            "body": "Tko kanal samo sluša, stoji na običnom popisu s ikonom uha umjesto u zasebnoj grupi."
-          },
-          {
-            "id": "client-info",
-            "title": "Klijent i sustav za admine",
-            "body": "Admini u profilu vide još i koji klijent i operacijski sustav netko koristi, npr. „Mumcord 0.4.0” ili „Mumble 1.5”."
-          },
-          {
             "id": "channel-filters",
-            "title": "Sakrij prazne kanale",
-            "body": "Veliki poslužitelji više se ne zamrzavaju pri prvom prikazu. Uz to prekidači „Sakrij prazne kanale” i „Oni koji pričaju prvi”."
-          },
-          {
-            "id": "profile-comment",
-            "title": "Formatirani komentar u profilu",
-            "body": "Komentar u profilu podržava podebljani tekst, kurziv, poveznice i popise."
-          },
-          {
-            "id": "person-settings",
-            "title": "Postavke za svaku osobu",
-            "body": "Glasnoća, utišavanje i bilješka o nekome stoje sklopljeni u njegovu profilu. Kad nešto promijeniš, redak to nakratko pokaže, npr. „Glasnoća 60 %”."
+            "title": "Uredan popis kanala",
+            "body": "Prekidači „Sakrij prazne kanale” i „Oni koji pričaju prvi”, a veliki poslužitelji se više ne zamrzavaju pri prvom prikazu. Tko kanal samo sluša, stoji na običnom popisu s ikonom uha."
           },
           {
             "id": "channel-passwords",
             "title": "Kanali s lozinkom",
             "body": "Ako kanal traži lozinku, Mumcord je zatraži i zapamti za svaki poslužitelj, i nakon ponovnog spajanja. Kanali u koje ne smiješ ući imaju mali lokot.",
             "alt": "Kanal s lokotom i prozor za lozinku kanala"
+          },
+          {
+            "id": "channel-tree",
+            "title": "Stablo kanala s izbornikom",
+            "body": "Desni klik na kanal za ulazak ili praćenje, postavljanje zvuka, kopiranje poveznice, otvaranje informacija o kanalu ili premještanje ljudi tamo, ako smiješ. Kanali s ograničenjem to pokazuju, npr. „Raid (1/10)”, puni su zatamnjeni, a privremeni i povezani kanali imaju ikone. S dopuštenjem povlačiš ljude u drugi kanal. Na vrhu je poslužitelj s točkom veze i „N na mreži · ping”.",
+            "alt": "Stablo kanala s otvorenim izbornikom desnog klika za kanal"
+          },
+          {
+            "id": "channel-header",
+            "title": "Ime kanala s izbornikom",
+            "body": "Oko ispred imena kanala prati ga ili prestaje pratiti. Klik na ime otvara Prati, Kopiraj poveznicu kanala, Lozinka kanala, Informacije o kanalu i Očisti povijest chata. Informacije o kanalu pokazuju put, opis, ograničenje broja korisnika, povezane kanale i tvoja dopuštenja tamo.",
+            "alt": "Informacije o kanalu s putem, opisom, korisnicima, ograničenjem, povezanim kanalima i dopuštenjima"
+          },
+          {
+            "id": "hide-members",
+            "title": "Sakrij stupac članova",
+            "body": "Gumb u zaglavlju chata ili Ctrl+Shift+M skriva desni stupac pa chat dobiva punu širinu. Gumb tada pokazuje koliko je ljudi u kanalu i zelenu točku dok netko govori. U uskom prozoru stupac se uvlači preko chata.",
+            "alt": "Chat u punoj širini sa skrivenim stupcem članova i gumbom članova u zaglavlju"
+          },
+          {
+            "id": "message-privacy",
+            "title": "Tko ti smije pisati",
+            "body": "Postavke → Privatnost: privatne poruke od svih, samo od prijatelja ili ni od koga, i po poslužitelju. Ljudi u tvom kanalu i razgovori koje si prihvatio uvijek prolaze. Ostale poruke čekaju kao zahtjevi za poruke koje prihvaćaš ili odbijaš, a Mumcord korisnici mogu poslati zahtjev za chat s kratkom bilješkom. Pošiljatelj to nikad ne saznaje.",
+            "alt": "Zahtjevi za poruke sa zahtjevom za chat, njegovom bilješkom i gumbima Prihvati i Odbij"
+          },
+          {
+            "id": "block-users",
+            "title": "Blokiraj ljude",
+            "body": "„Blokiraj…” u izborniku osobe skriva njihove privatne poruke i zahtjeve, sklapa njihove poruke u kanalima i utišava njihov glas, samo za tebe. Blokada prati certifikat pa vrijedi na svim poslužiteljima i uz nova imena. Ništa se ne šalje poslužitelju ni osobi, a Postavke → Privatnost popisuju sve koje si blokirao s „Odblokiraj”.",
+            "alt": "Potvrda blokiranja osobe koja navodi što se mijenja"
           }
         ]
       },
@@ -741,7 +805,7 @@
           {
             "id": "previews",
             "title": "Pretpregledi poveznica",
-            "body": "Poveznice dobivaju karticu s naslovom, opisom i slikom. Mumcord ih dohvaća sam, nikad s adresa lokalne mreže; svaka se kartica može odbaciti, a značajka se može isključiti u čarobnjaku i u postavkama.",
+            "body": "Poveznice dobivaju karticu s naslovom, opisom i slikom. Mumcord ih dohvaća sam, nikad s adresa lokalne mreže; svaka se kartica može odbaciti, a značajka se može isključiti u čarobnjaku i u postavkama. Desni klik na poveznicu nudi „Kopiraj poveznicu” i „Otvori poveznicu”.",
             "alt": "Chat s pretpregledom poveznice"
           },
           {
@@ -752,32 +816,32 @@
           },
           {
             "id": "spotify",
-            "title": "Spotify",
-            "body": "I Spotify poveznice dobivaju karticu, s omotom, naslovom i izvođačem; player dolazi tek na klik.",
-            "alt": "Chat sa Spotify karticom"
+            "title": "Glazbene poveznice",
+            "body": "Spotify, SoundCloud i YouTube Music reproduciraju se u službenom playeru servisa, koji se učitava tek kad pritisneš Play. Apple Music, Tidal, Deezer, Bandcamp i druge glazbene stranice dobivaju istu karticu s omotom, naslovom i izvođačem te „Otvori u …”. Pokretanje jednog playera zaustavlja drugi.",
+            "alt": "Glazbena kartica s omotom, naslovom, izvođačem i imenom servisa"
           },
           {
             "id": "images",
             "title": "Slike i GIF-ovi u chatu",
-            "body": "Vanjske slike i poveznice na slike prikazuju se izravno u poruci, Giphy i Tenor GIF-ovi se reproduciraju i navode izvor.",
+            "body": "Vanjske slike i poveznice na slike prikazuju se izravno u poruci, Giphy i Tenor GIF-ovi se reproduciraju i navode izvor. Snimke zaslona i kopirane slike idu u polje za poruku s Ctrl+V.",
             "alt": "Chat sa slikom i GIF-om"
           },
           {
             "id": "image-viewer",
             "title": "Preglednik slika",
-            "body": "Klikni na sliku da je vidiš u velikom: zumiranje kotačićem ili tipkama, pomicanje, strelicama kroz sve slike iz chata i „Spremi sliku”.",
+            "body": "Klikni na sliku da je vidiš veliku: zumiraj, pomiči i strelicama prolazi kroz sve slike chata. Puna veličina učitava se u pozadini uz tanku traku napretka. Desnim klikom kopiraš sliku, spremaš je u izvorniku, GIF s animacijom ili kopiraš njezinu adresu.",
             "alt": "Preglednik slika s alatnom trakom za zumiranje"
           },
           {
             "id": "mentions",
             "title": "@spominjanja",
-            "body": "Upiši @ i Mumcord predlaže imena. Spominjanja su istaknuta, obavještavaju te čak i u tihim kanalima i imaju vlastiti zvuk.",
+            "body": "Upiši @ i Mumcord predlaže imena. Spominjanja su istaknuta, obavještavaju te čak i u tihim kanalima i imaju vlastiti zvuk. Zadrži pokazivač na spominjanju za pretpregled, klikni za profil, desni klik za izbornik.",
             "alt": "Unos poruke s prijedlogom imena nakon @"
           },
           {
             "id": "code",
             "title": "Kod i oblikovanje",
-            "body": "Blokovi koda s isticanjem sintakse, alatna traka za oblikovanje iznad unosa i prečaci poput Ctrl+B, Ctrl+I ili Ctrl+E.",
+            "body": "Blokovi koda istaknuti prema jeziku koji napišeš iza tri obrnuta navodnika, od sql-a i rusta do Dockerfilea i hex ispisa, s gumbima za kopiranje ili preuzimanje. Alatna traka za oblikovanje iznad unosa i prečaci poput Ctrl+B, Ctrl+I ili Ctrl+E.",
             "alt": "Chat s istaknutim kodom i alatnom trakom za oblikovanje"
           },
           {
@@ -789,7 +853,7 @@
           {
             "id": "notifications",
             "title": "Obavijesti po tvom",
-            "body": "Nove poruke kao skočni prozor u aplikaciji, obavijest sustava, oboje ili ništa. Uz to kratki, tihi zvukovi za svaki događaj.",
+            "body": "Nove poruke kao skočni prozor u aplikaciji, obavijest sustava, oboje ili ništa, uz kratke, tihe zvukove za svaki događaj. Obavijesti nose ime poslužitelja, a svaki se poslužitelj može utišati zasebno.",
             "alt": "Skočni prozor u aplikaciji za novu poruku"
           },
           {
@@ -797,11 +861,6 @@
             "title": "Sam za sobom pospremi",
             "body": "Pretpregledi i slike brišu se nakon broja dana koji odabereš, a ako želiš, i stara povijest chata. Povijest se čuva samo na tvom računalu i može se isključiti za svaki poslužitelj.",
             "alt": "Postavke, odjeljak chata i povijesti"
-          },
-          {
-            "id": "mention-chips",
-            "title": "Klikabilna @spominjanja",
-            "body": "Pretpregled kad prijeđeš mišem, profil na klik, izbornik na desni klik."
           },
           {
             "id": "replies",
@@ -828,37 +887,46 @@
             "alt": "Duga poruka s imenom i slikom prikvačenima na vrhu chata"
           },
           {
-            "id": "image-loading",
-            "title": "Slike se učitavaju u pozadini",
-            "body": "Tanka traka ispod slike pokazuje dokle je stiglo učitavanje pune veličine. Kad zatvoriš preglednik slika, učitavanje se nastavlja; × na traci ga prekida."
-          },
-          {
-            "id": "link-menu",
-            "title": "Kopiranje poveznica",
-            "body": "Desni klik na poveznicu u chatu nudi „Kopiraj poveznicu” i „Otvori poveznicu”.",
-            "alt": "Kontekstni izbornik poveznice s „Kopiraj poveznicu” i „Otvori poveznicu”"
-          },
-          {
             "id": "message-cards",
             "title": "Kartice poruka",
             "body": "Botovi i ljudi objavljuju kompaktne kartice s naslovom, bojom statusa, ikonom, formatiranim tekstom, slikom i poveznicom, za buildove, upozorenja ili dashboarde. Službeni Mumble klijenti vide istu poruku kao čitljiv tekst.",
             "alt": "Chat s dvije kartice poruka od bota: potpuna kartica s ikonom, naslovom, tekstom, grafom i poveznicom, a ispod nje jednostavna kartica s naslovom i poveznicom"
           },
           {
-            "id": "paste-images",
-            "title": "Lijepljenje slika s Ctrl+V",
-            "body": "Snimke zaslona, „Kopiraj sliku” iz preglednika i slikovne datoteke kopirane u upravitelju datoteka s Ctrl+V idu ravno u polje za poruku kao privitak."
+            "id": "notification-centre",
+            "title": "Centar obavijesti",
+            "body": "Zvonce u zaglavlju chata ili Ctrl+Shift+N skuplja spominjanja, odgovore, zahtjeve za chat i poruke, pozivnice na watch partyje i dijeljenja zaslona te poslužitelje koji su postali nedostupni, sa svih spojenih poslužitelja, najnovije prve. Filtriraj ih, prihvaćaj zahtjeve odmah tamo, a klik vodi do poruke. Tijekom Ne uznemiravaj nastavlja skupljati u tišini.",
+            "alt": "Centar obavijesti sa spominjanjima, odgovorima i zahtjevom za chat s Prihvati i Odbij"
           },
           {
-            "id": "code-blocks",
-            "title": "Blokovi koda s Kopiraj i Preuzmi",
-            "body": "Napiši jezik nakon tri backticka, od sql, rust i php do cmd, Dockerfile i hex dumpova, i blok se ističe upravo tako. Gumbi u kutu kopiraju kod ili ga spremaju kao datoteku.",
-            "alt": "SQL blok koda s oznakom jezika i gumbima Kopiraj i Preuzmi u kutu"
+            "id": "pm-overview",
+            "title": "Sve privatne poruke na jednom mjestu",
+            "body": "Gumb Poruke na vrhu trake poslužitelja popisuje svaki razgovor sa svakog spojenog poslužitelja, prikvačene prve, s oznakom poslužitelja, pretpregledom i brojem nepročitanih. Pretraži, filtriraj po nepročitanima ili zahtjevima, započni novi razgovor te prikvači, utišaj ili izbriši razgovor iz njegova izbornika.",
+            "alt": "Pregled privatnih poruka sa zahtjevom za chat na vrhu i razgovorima s više poslužitelja"
           },
           {
-            "id": "image-menu",
-            "title": "Kopiranje i spremanje slika",
-            "body": "Desni klik na sliku u chatu ili u pregledniku slika: kopiraj sliku, spremi sliku u izvorniku, GIF s animacijom, kopiraj adresu slike ili je otvori u pregledniku."
+            "id": "group-mentions",
+            "title": "@channel i @all",
+            "body": "@channel stiže do svih u kanalu, @all do svih koji ga mogu čitati, uključujući slušatelje. Mumcord ih tretira kao spominjanje tebe, drugi Mumble klijenti vide samo riječi. Previše? Utišaj ih po poslužitelju.",
+            "alt": "Chat s istaknutim spominjanjem @channel"
+          },
+          {
+            "id": "audio-links",
+            "title": "Audio datoteke u chatu",
+            "body": "Poveznice na mp3, ogg, m4a, wav, flac ili webm datoteke dobivaju player ispod poruke s trakom premotavanja, glasnoćom, „Otvori u pregledniku” i „Spremi”. Ništa se ne pokreće samo, datoteka se učitava tek kad pritisneš Play, do 32 MB, a zvuk ide na tvoje zvučnike, nikad u mikrofon.",
+            "alt": "Audio player ispod poruke s gumbom za reprodukciju, trakom premotavanja i glasnoćom"
+          },
+          {
+            "id": "hidden-previews",
+            "title": "Skriveni pretpregledi to kažu",
+            "body": "Kad su pretpregledi poveznica i ugrađeni sadržaji isključeni, tihi redak ispod poruke navodi što je skriveno, npr. sliku ili video, i vodi do postavke. Zbog toga se ništa ne traži od povezane stranice.",
+            "alt": "Poruka s retkom „Slika skrivena jer su pretpregledi poveznica i ugrađeni sadržaji isključeni”"
+          },
+          {
+            "id": "server-links",
+            "title": "Poveznice na poslužitelje kao kartice",
+            "body": "mumble:// poveznica u chatu prikazuje poslužitelj, kanal, ping, ljude na mreži i verziju, s „Pridruži se”, „Dodaj u poslužitelje” i „Kopiraj poveznicu”. Podaci dolaze iz standardnog javnog upita, nikad iz veze. Korisnička imena i lozinke u poveznici nikad se ne prikazuju i izostavljaju se pri kopiranju.",
+            "alt": "Kartica za mumble:// poveznicu s imenom poslužitelja, kanalom, pingom, korisnicima i gumbom Pridruži se"
           }
         ]
       },
@@ -885,6 +953,12 @@
             "alt": "Čarobnjak za postavljanje, korak mikrofona s testom razine"
           },
           {
+            "id": "noise-levels",
+            "title": "Suzbijanje šuma u četiri razine",
+            "body": "Postavke → Glas nude Lagano za ravnomjeran šum s najmanje CPU-a, Standardno kao zadano, Napredno (AI) s RNNoise modelom iz 2024. kao betu koji uklanja više šuma za više CPU-a i Isključeno. „?” pokraj svake razine kaže što košta. Sve radi na tvom računalu.",
+            "alt": "Postavke glasa s četiri razine suzbijanja šuma"
+          },
+          {
             "id": "music",
             "title": "Kvaliteta glazbe",
             "body": "Jedan prekidač podiže brzinu prijenosa do ograničenja poslužitelja, najviše 510 kbit/s, prilagođava enkoder glazbi i isključuje suzbijanje šuma i automatsko pojačanje.",
@@ -898,13 +972,50 @@
           },
           {
             "id": "bitrate",
-            "title": "Bitrate ručno",
-            "body": "Zaseban klizač od 16 kbit/s do najviše vrijednosti koju dopuštaju poslužitelj i Mumble. Kod gubitka paketa Mumcord ga i dalje sam smanjuje."
+            "title": "Ploča kvalitete glasa",
+            "body": "Desni klik na informacije o vezi: klizač bitratea od 16 kbit/s do ograničenja poslužitelja s onim što se trenutno šalje, kvaliteta glazbe, procijenjena propusnost i ocjena zdravlja zvuka. Kod gubitka paketa Mumcord ipak sam smanjuje bitrate.",
+            "alt": "Ploča kvalitete glasa s klizačem bitratea, kvalitetom glazbe i procijenjenom propusnošću"
           },
           {
             "id": "realtime-audio",
             "title": "Stabilno pod opterećenjem",
             "body": "Snimanje i reprodukcija dobivaju prioritet u stvarnom vremenu, pa glas manje pucketa i prekida se dok igra ili build drži računalo zauzetim. Podaci o vezi pokazuju prekide i je li zvuk u stvarnom vremenu uključen."
+          },
+          {
+            "id": "low-latency",
+            "title": "Način niske latencije za sviranje",
+            "body": "Paketi od 10 ms, minimalni međuspremnik te bez poništavanja jeke i suzbijanja šuma spuštaju kašnjenje sa oko 100 ms na oko 40 ms plus mreža. Uključuje se uživo i prikazuje procijenjenu latenciju. Treba više propusnosti; preporučuju se slušalice. Radi sa standardnim poslužiteljima.",
+            "alt": "Audio postavke s uključenim načinom niske latencije i procijenjenom latencijom po dijelovima"
+          },
+          {
+            "id": "channel-audio",
+            "title": "Zvuk po kanalu",
+            "body": "„Zvuk za ovaj kanal…” postavlja kvalitetu glazbe, način niske latencije i ograničenje bitratea za jedan kanal, s predlošcima Glas, Glazba i Jam. Primjenjuje se kad uđeš, a pri izlasku vraćaju se tvoje uobičajene postavke. Čuva se samo na ovom uređaju pa radi na bilo kojem Mumble poslužitelju.",
+            "alt": "„Zvuk za ovaj kanal” s predlošcima Glas, Glazba i Jam"
+          },
+          {
+            "id": "device-switch",
+            "title": "Mijenjaj uređaje iz glasovne trake",
+            "body": "Desni klik na gumb mikrofona ili slušalica: odaberi uređaj, postavi glasnoću, prati razinu i uključi suzbijanje šuma, sve bez ponovnog spajanja. Ako se uređaj odspoji, Mumcord prelazi na zadani sustavski. Na Linuxu s PipeWireom svaki se ulaz i izlaz prikazuje kao u zvučnim postavkama tvog desktopa.",
+            "alt": "Izbornik mikrofona s ulaznim uređajima, klizačem glasnoće i mjeračem razine"
+          },
+          {
+            "id": "leave-voice",
+            "title": "Napusti glas, ostani spojen",
+            "body": "Desni klik na gumb za prekid: „Napusti glas” prestaje govoriti i slušati, ali chat i čitanje ostaju aktivni. Tu su i odspajanje, prebacivanje glasa na drugi poslužitelj i odspajanje sa svih. Lijevi klik i dalje prekida odmah.",
+            "alt": "Izbornik gumba za prekid s Napusti glas, Odspoji i Prebaci glas"
+          },
+          {
+            "id": "whisper",
+            "title": "Šaputanje i vikanje",
+            "body": "Govori s odabranim ljudima ili sa svima u kanalu, po želji s njegovim potkanalima, povezanim kanalima ili samo jednom grupom, bez prelaska tamo. Ciljevi se postavljaju u postavkama ili sa „Šapni…” u izborniku osobe ili kanala, svaki sa svojom tipkom za govor dok je držiš. Traka iznad chata pokazuje s kim govoriš.",
+            "alt": "Traka iznad chata tijekom šaputanja kanalu"
+          },
+          {
+            "id": "user-panel",
+            "title": "Mirna korisnička ploča",
+            "body": "Ploča na dnu popisa kanala uvijek zadržava istu visinu: ti s imenom i poslužiteljem, jedan redak statusa poput ponovnog spajanja ili tvog glasovnog kanala, male oznake za Ne uznemiravaj, način niske latencije i vezu te gumbi mikrofona, slušalica i prekida. Popis kanala iznad više ne poskakuje.",
+            "alt": "Korisnička ploča u raznim stanjima, od govora i utišanosti do ponovnog spajanja"
           }
         ]
       },
@@ -915,50 +1026,19 @@
           {
             "id": "positional",
             "title": "Pozicijski zvuk",
-            "body": "Glasovi ljudi u istoj igri dolaze iz njihovog smjera i postaju tiši s udaljenošću. Preko Mumble Linka ili službenih Mumble dodataka za igre; ikona „3D” pokazuje tko šalje pozicije.",
+            "body": "Glasovi ljudi u istoj igri dolaze iz njihova smjera i tiši su s udaljenošću. Preko Mumble Linka ili službenih Mumbleovih dodataka za igre, svaki s vlastitim prekidačem; ikona „3D” pokazuje tko šalje položaje.",
             "alt": "Postavke, pozicijski zvuk s udaljenostima i dodacima za igre"
-          },
-          {
-            "id": "game-plugins",
-            "title": "Službeni dodaci za igre",
-            "body": "Mumbleovi dodaci isporučuju pozicije za podržane igre, svaki s vlastitim prekidačem. Postavke pokazuju koji je aktivan."
           },
           {
             "id": "in-game-overlay",
             "title": "Overlay u igri",
-            "body": "Na Linuxu izravno u igri kao Vulkan sloj, i u Steam i Proton igrama, testirano s Tyr i Supermarket Simulator. Postavlja se po igri; igre čiji anti-cheat blokira overlaye ostaju isključene. Windowsi ga dobivaju s 0.4.0.",
+            "body": "Pokazuje tko govori izravno u igri. Na Linuxu kao Vulkan sloj, i u Steam, Proton i Flatpak Steam igrama, s opcijom pokretanja za kopiranje za izvorne OpenGL igre. Na Windowsima kao prozor kroz koji klikovi prolaze i koji ništa ne učitava u igru, pa radi s anti-cheatom; skriva ga samo ekskluzivni cijeli zaslon. Postavlja se po igri; igre čiji anti-cheat blokira overlaye ostaju isključene.",
             "alt": "Postavke, overlay u igri s upozorenjem o anti-cheatu i izborom po igri"
-          },
-          {
-            "id": "overlay-window",
-            "title": "Overlay prozor",
-            "body": "Na Linuxu i Windowsima proziran prozor iznad svega kroz koji se može klikati, a pokazuje tko govori u tvom kanalu. Na macOS-u overlaya nema. Overlay prozor odlazi s 0.4.0.",
-            "alt": "Overlay prozor iznad igre koji pokazuje tko govori"
           },
           {
             "id": "now-gaming",
             "title": "Sad igra",
-            "body": "Ako želiš, drugi vide što igraš, sa Steam slikom i vremenom igranja. „Pridruži se igri” za Steam igre koje to podržavaju."
-          },
-          {
-            "id": "overlay-windows",
-            "title": "Overlay u igri na Windowsima",
-            "body": "Zaseban prozor iznad igre kroz koji prolaze klikovi. U igru ništa ne učitava, pa radi i u igrama s anti-cheatom. Skriva ga samo ekskluzivni puni zaslon."
-          },
-          {
-            "id": "overlay-opengl",
-            "title": "OpenGL igre na Linuxu",
-            "body": "Za izvorne OpenGL igre poput Project Hospital Mumcord prikazuje pravu Steam opciju pokretanja za kopiranje, koja radi i nakon ažuriranja. I boje u HDR igrama su ispravne."
-          },
-          {
-            "id": "flatpak-steam",
-            "title": "Flatpak Steam i cijeli zaslon bez obruba",
-            "body": "Overlay u igri i za igre iz Steama kao Flatpaka, igre u cijelom zaslonu bez obruba provjerene na KDE-u i GNOME-u. Zatvaranje ili ažuriranje Mumcorda više ne ruši pokrenutu igru."
-          },
-          {
-            "id": "join-game-link",
-            "title": "„Pridruži se igri” preko Mumble Linka",
-            "body": "„Pridruži se igri” i za igre koje dijele adresu svog poslužitelja preko Mumble Linka."
+            "body": "Ako želiš, drugi vide što igraš, sa Steam slikom i vremenom igranja. „Pridruži se igri” za Steam igre koje to podržavaju i za igre koje dijele adresu svog poslužitelja preko Mumble Linka."
           }
         ]
       },
@@ -997,13 +1077,13 @@
           {
             "id": "watch-party",
             "title": "Zajedničko gledanje",
-            "body": "YouTube watch party u glasovnom kanalu: svi istovremeno vide isti video, svatko može pauzirati i premotavati, sa zajedničkom playlistom.",
+            "body": "YouTube watch party u glasovnom kanalu: svi istovremeno vide isti video, svatko može pauzirati i premotavati, sa zajedničkom playlistom. Kad su ugrađeni sadržaji isključeni u postavkama privatnosti, s YouTubea ili Twitcha ne učitava se ništa.",
             "alt": "Zajedničko gledanje u plutajućem prozoru sa sudionicima, kontrolama i sljedećim videom"
           },
           {
             "id": "screen-share",
             "title": "Dijeljenje zaslona",
-            "body": "Zaslon ili prozor za do 8 gledatelja, u 720p pri 30 sličica u sekundi. Na Windowsima i macOS-u po želji sa zvukom dijeljene aplikacije. Pokrećeš ga gumbom Aplikacije u chatu.",
+            "body": "Zaslon ili prozor za do 8 gledatelja, u 720p pri 30 sličica u sekundi, na Windowsima i macOS-u po želji sa zvukom dijeljene aplikacije. Pokrećeš ga gumbom Aplikacije u chatu. Dok dijeliš, crvena traka pokazuje gledatelje i „Završi”, a drugi vide crveni „LIVE” prsten oko tvoje slike.",
             "alt": "Dijeljeni zaslon u plutajućem prozoru s cijelim zaslonom i „Prestani gledati”"
           },
           {
@@ -1013,20 +1093,15 @@
             "alt": "Napomene na vrhu chata za zajedničko gledanje u tijeku i dijeljeni zaslon"
           },
           {
-            "id": "live",
-            "title": "Uživo, i svi to vide",
-            "body": "Dok dijeliš zaslon, to ti javlja crvena traka iznad tvog profila, s „Završi” i brojem gledatelja. Drugi oko tvoje slike vide crveni prsten s „LIVE”.",
-            "alt": "Crvena traka „Dijeliš svoj zaslon” s brojem gledatelja i „Završi”"
-          },
-          {
             "id": "ducking",
-            "title": "Tiše dok netko govori",
-            "body": "Dok netko u kanalu govori, zvuk zajedničkog gledanja i dijeljenog zaslona se utišava, a poslije se vraća. Ti biraš koliko tiho ili to isključiš."
+            "title": "Zvuk za watch partyje i dijeljenje",
+            "body": "Dok netko u kanalu govori, watch party i dijeljeni zasloni postaju tiši; ti biraš koliko. Kratki zvukovi kad netko započne ili uđe u watch party ili dijeli zaslon, svaki se može isključiti."
           },
           {
-            "id": "activity-sounds",
-            "title": "Zvukovi za zajedničko gledanje i dijeljenje",
-            "body": "Kratak zvuk kad netko pokrene zajedničko gledanje, pridruži mu se ili ga napusti i kad netko dijeli zaslon ili počne gledati tvoj. Svaki se zvuk može isključiti."
+            "id": "relay",
+            "title": "Relay zajednice",
+            "body": "Zajednica poslužitelja može uz svoj Mumble poslužitelj pokrenuti relay. Slike pune veličine i dijeljenje zaslona tada rade i kad izravna veza nije moguća, a uz „uvijek relay” druga osoba nikad ne vidi tvoju IP adresu. Relay ne može čitati šifriranu vezu, a glas ga nikad ne koristi. Biraš u Postavke → Privatnost, i po poslužitelju.",
+            "alt": "Postavke privatnosti s peer-to-peer izborima izravno, relay i isključeno"
           }
         ]
       },
@@ -1043,36 +1118,26 @@
           {
             "id": "sounds",
             "title": "Zvukovi i obavijesti",
-            "body": "Svaki se događaj može uključiti zasebno: ulazak, izlazak, poruke, spominjanja.",
+            "body": "Svaki se događaj može uključiti zasebno: ulazak, izlazak, poruke, spominjanja i vlastiti zvuk za izbacivanje ili baniranje.",
             "alt": "Postavke, odjeljak zvukova i obavijesti"
           },
           {
             "id": "languages",
-            "title": "Promijeni jezik bez ponovnog pokretanja",
-            "body": "Jezik se primjenjuje odmah. Uz to dolaze ikona u traci sustava, pokretanje pri prijavi i potpuno korištenje tipkovnicom i čitačem zaslona.",
+            "title": "24 jezika, promjena bez ponovnog pokretanja",
+            "body": "Svih 24 službenih jezika EU-a, od bugarskog do švedskog, primjenjuju se odmah, uključujući izbornik u traci sustava. Svaki je naveden pod svojim imenom. Prevela ih je ekipa bez provjere izvornih govornika: ispravke su dobrodošle kao issue. Uz to dolazi potpuno korištenje tipkovnicom i čitačem zaslona.",
             "alt": "Postavke, odjeljak jezika sučelja"
           },
           {
             "id": "privacy",
             "title": "Bez telemetrije",
-            "body": "Tvoj identitet čuva se u sigurnoj pohrani sustava. Dijagnostička datoteka ne sadrži sadržaj chata ni lozinke i napušta tvoje računalo samo ako je sam pošalješ."
-          },
-          {
-            "id": "eu-languages",
-            "title": "Sva 24 službena jezika EU-a",
-            "body": "Od bugarskog do švedskog, uključujući izbornik u traci sustava. Svaki je jezik naveden pod svojim imenom i može se pronaći po bilo kojem od svojih imena. Preveo tim bez provjere izvornih govornika: ispravci su dobrodošli kao issue."
-          },
-          {
-            "id": "privacy-step",
-            "title": "Privatnost u čarobnjaku",
-            "body": "Pri prvom pokretanju kratki korak pokazuje s čime se Mumcord spaja i kada, s poveznicom na punu izjavu o privatnosti.",
+            "body": "Pri prvom pokretanju kratak korak pokazuje na što se Mumcord spaja i kada. Tvoj identitet čuva se u sigurnoj pohrani sustava, a dijagnostička datoteka ne sadrži sadržaj chata ni lozinke i napušta tvoje računalo samo ako je sam pošalješ.",
             "alt": "Čarobnjak, korak privatnosti"
           },
           {
             "id": "quick-settings",
             "title": "Brze postavke na zupčaniku",
-            "body": "Jedan klik na zupčanik: pretpregledi, tema, overlay, dijeljenje glazbe i igre, uređivanje profila i registracija. Beta značajke poput pozicijskog zvuka nalaze se u vlastitoj sklopivoj grupi.",
-            "alt": "Brze postavke s otvorenom grupom Beta"
+            "body": "Jedan klik na zupčanik: po jedan redak za svaku postavku pod Obavijesti, Dijeljenje, Izgled i Račun, s objašnjenjem iza malog „?”. Beta značajke poput pozicijskog zvuka nalaze se u vlastitoj grupi koja počinje sklopljena.",
+            "alt": "Brze postavke grupirane u Obavijesti, Dijeljenje, Izgled i Račun"
           },
           {
             "id": "settings-search",
@@ -1100,30 +1165,98 @@
           },
           {
             "id": "dropdowns",
-            "title": "Uredne postavke",
-            "body": "Padajući izbornici u stilu teme umjesto izgleda preglednika i sva polja u postavkama uredno poravnana."
-          },
-          {
-            "id": "tooltips",
-            "title": "Opisi alata u stilu teme",
-            "body": "Svaki opis alata u izgledu tvoje teme, svijetle ili tamne, a do njega dolaziš i tipkovnicom."
+            "title": "Uredne postavke i opisi",
+            "body": "Padajući izbornici i opisi u izgledu tvoje teme umjesto preglednikova, svaki unos u postavkama uredno poravnat, a svakom opisu može se pristupiti i tipkovnicom."
           },
           {
             "id": "packet-inspector",
             "title": "Inspektor paketa za otklanjanje grešaka",
-            "body": "Skriveno za programere: sedam klikova na verziju u Postavke → O aplikaciji otključava ga. U vlastitom prozoru prikazuje koji se Mumcord podaci šalju i primaju, s filtrima, brojačima i izvozom kao JSON ili Markdown.",
+            "body": "Skriveno za programere: sedam klikova na verziju u Postavke → O aplikaciji otključava ga. U zasebnom prozoru pokazuje koji se Mumcord podaci šalju i primaju, s filtrima, brojačima i izvozom u JSON ili Markdown. Prati nove pakete i snima samo dok je otvoren.",
             "alt": "Inspektor paketa s filtrima, brojačima po vrsti i smjeru i jednim proširenim retkom paketa"
           },
           {
             "id": "clear-cache",
             "title": "Brisanje predmemorije",
             "body": "Postavke → Privatnost pokazuju koliko prostora zauzimaju pretpregledi poveznica, slike i web-mehanizam te ih brišu jednim klikom, i pojedinačno. Povijest chata, poslužitelji, prijatelji i bilješke nikad se ne diraju."
+          },
+          {
+            "id": "dnd",
+            "title": "Ne uznemiravaj",
+            "body": "Jedan prekidač u brzim postavkama, postavkama ili izborniku u traci sustava utišava zvukove obavijesti i skočne prozore na svim poslužiteljima. Glas i dalje radi, a brojevi nepročitanih i dalje rastu. Na KDE Plasmi, GNOME-u i Windowsima može pratiti Ne uznemiravaj sustava.",
+            "alt": "Postavke zvukova i obavijesti s Ne uznemiravaj i „Prati Ne uznemiravaj sustava”"
+          },
+          {
+            "id": "tray",
+            "title": "Potpun izbornik u traci sustava",
+            "body": "Izbornik u traci sustava prikazuje svaki spojeni poslužitelj sa stanjem i kanalom, utišavanje mikrofona, utišavanje zvuka i Ne uznemiravaj, prebacuje glas na drugi poslužitelj ili kanal i otvara nedavne chatove. Ikona pokazuje govor, utišanost, nepročitane poruke i Ne uznemiravaj. Mumcord se po želji pokreće pri prijavi, na svakom sustavu.",
+            "alt": "Izbornik u traci sustava s poslužiteljima, podizbornikom glasovnog kanala i nedavnim chatovima"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.5.0",
+      "teaser": "Centar obavijesti, sve privatne poruke na jednom mjestu, blokiranje, više identiteta i uvoz iz Mumblea.",
+      "summary": "Veliko ažuriranje za chat i privatnost: centar obavijesti, sve privatne poruke na jednom mjestu s tvojim pravilima o tome tko ti smije pisati, blokiranje, više identiteta i prelazak s Mumblea u nekoliko klikova. Uz to relej zajednice za slike i dijeljenje zaslona, glazba i zvuk u chatu, preglednik javnih poslužitelja i način s niskom latencijom za zajedničko muziciranje.",
+      "groups": [
+        {
+          "title": "Novo",
+          "items": [
+            "Centar obavijesti iza zvonca u zaglavlju chata (Ctrl+Shift+N) skuplja sve što traži tvoju pozornost sa svih povezanih poslužitelja: spominjanja, odgovore, zahtjeve za chat i poruke s Prihvati i Odbij, pozivnice na zajedničko gledanje i dijeljenje zaslona te poslužitelje koji više nisu dostupni. Klik vodi do poruke.",
+            "Ne smetaj: jedan prekidač u brzim postavkama, postavkama i izborniku sistemske trake utišava zvukove i skočne obavijesti na svim poslužiteljima. Glas i dalje radi, a nepročitane poruke i dalje se broje. Ako želiš, Mumcord prati sistemski način Ne smetaj na KDE Plasmi, GNOME-u i Windowsima.",
+            "Izbornik sistemske trake prikazuje svaki povezani poslužitelj s njegovim kanalom, uz Utišaj, Ogluši i Ne smetaj. Odande premještaš glas na drugi poslužitelj ili kanal i otvaraš nedavne privatne chatove. Ikona u traci pokazuje kad netko govori, kad si utišan i kad ima nepročitanih poruka.",
+            "Sve privatne poruke na jednom mjestu: gumb Poruke na vrhu trake poslužitelja prikazuje svaki razgovor sa svakog povezanog poslužitelja, uz pretraživanje, filtre, prikvačivanje i utišavanje. Zamjenjuje popis Izravne poruke ispod stabla kanala. Izbornik osobe sada počinje s Pošalji poruku, Pridruži se kanalu i Dodaj prijatelja.",
+            "Ti odlučuješ tko ti smije pisati privatno: svi, samo prijatelji ili nitko, po želji za svaki poslužitelj posebno. Osobe iz tvog kanala i razgovori koje si prihvatio/prihvatila uvijek prolaze. Ostali čekaju u Zahtjevima za poruke, a korisnici Mumcorda mogu ti poslati zahtjev za chat s kratkom bilješkom. Mumcord filtrira na tvojoj strani pa pošiljatelj ne sazna ništa. Prihvaćeni razgovor kasnije možeš povući.",
+            "Blokiraj osobe: njihove privatne poruke i zahtjevi nestaju, njihove poruke u kanalu se sažimaju, a njihov glas je za tebe utišan. Blokada prati certifikat osobe, pa vrijedi na svakom poslužitelju i novo ime ne pomaže. Ni poslužitelj ni osoba ne saznaju za to; Postavke → Privatnost prikazuju tvoje blokade.",
+            "@channel i @all dopiru do svih u kanalu i računaju se kao osobno spominjanje. Drugi Mumble klijenti vide samo riječi, a možeš ih utišati po poslužitelju.",
+            "Zvuk i glazba u chatu: izravne poveznice na audio datoteke poput mp3, ogg, wav ili flac dobivaju mali player. Poveznice na Spotify, SoundCloud i YouTube Music sviraju u playeru same usluge kad pritisneš Play; Apple Music, Tidal, Deezer i Bandcamp dobivaju karticu s poveznicom. Ništa se ne pokreće samo, a kad su pregledi poveznica isključeni, ništa se ne učitava.",
+            "mumble:// poveznice u chatu prikazuju karticu s poslužiteljem, kanalom, pingom i brojem online korisnika, uz Pridruži se i Dodaj u poslužitelje. Lozinka u poveznici nikad se ne prikazuje.",
+            "Kanalima je lakše upravljati: desni klik na kanal otvara izbornik s Pridruži se, Prati, Kopiraj poveznicu kanala, Informacije o kanalu i više. Kanali prikazuju ograničenje broja korisnika, primjerice Raid (1/10), a puni su zatamnjeni. S odgovarajućim dopuštenjem povlačiš osobe u drugi kanal. Informacije o kanalu prikazuju opis, korisnike, tvoja dopuštenja i povezane kanale.",
+            "Način s niskom latencijom za zajedničko muziciranje (Beta): oko 40 umjesto 100 milisekundi od usta do uha, uz mrežu. Uključuje se bez ponovnog povezivanja i radi sa standardnim poslužiteljima. Preporučuju se slušalice.",
+            "Zvuk po kanalu: „Zvuk za ovaj kanal…” daje kanalu vlastite postavke, uz predloške Govor, Glazba i Jam. Vrijede kad se pridružiš, a pri izlasku vraćaju se tvoje uobičajene postavke.",
+            "Brzi izbornici u glasovnoj traci: desni klik na mikrofon ili slušalice za uređaje, glasnoću i mjerač razine, na informacije o vezi za kvalitetu glasa i bitrate te na gumb za prekid za Napusti glas (ostaješ povezan i nastavljaš chatati) ili Prekini vezu sa svim poslužiteljima.",
+            "Preglednik poslužitelja u traci poslužitelja prikazuje javne Mumble poslužitelje, uz pretraživanje i filtre po državi i pingu. Poveži se sprema i povezuje jednim klikom. Popis se učitava tek kad otvoriš preglednik.",
+            "Dijalog poslužitelja podijeljen je na četiri kartice i ima Testiraj vezu, koja provjerava ping, verziju poslužitelja i certifikat bez spremanja ičega. Informacije o poslužitelju prikazuju verziju, ograničenja, tvoja dopuštenja i TLS certifikat. Spremljene lozinke kanala pokazuju kojem kanalu pripadaju.",
+            "Više identiteta: Postavke → Identitet upravlja s više certifikata, uz uvoz, izvoz, preimenovanje i zadani identitet. Svaki poslužitelj može koristiti vlastiti identitet. Tvoj dosadašnji postaje „Zadani”, a sve se povezuje kao prije.",
+            "Uvoz iz Mumblea: ako je instaliran službeni Mumble klijent, čarobnjak za postavljanje (ili Postavke → Poslužitelji) preuzima tvoje omiljene poslužitelje, spremljene lozinke, tvoj certifikat, audio uređaje i tipku za push-to-talk. Ništa se ne prepisuje, Mumbleove datoteke samo se čitaju, a uvoz se može poništiti.",
+            "Relej zajednice: slike u punoj veličini i dijeljenje zaslona mogu ići preko releja koji zajednica poslužitelja pokreće uz svoj Mumble poslužitelj. Prosljeđuje samo šifriranu vezu i, ako želiš, skriva tvoju IP adresu od druge osobe. Dijeljenje zaslona tada radi i bez izravne veze. Glas nikad ne ide preko releja.",
+            "Na Windowsima Mumcord dolazi i kao prijenosni zip: raspakiraj, pokreni, bez instalacije. Podaci i postavke ostaju u mapi pored programa.",
+            "Sakrij stupac s članovima da chat dobije punu širinu: gumbom u zaglavlju chata ili s Ctrl+Shift+M. U uskom prozoru klizi preko chata.",
+            "Izbačen ili banan? Mumcord za to pušta zvuk: pljusku za izbacivanje, slapstick udarac za ban. Oba se mogu isključiti.",
+            "Informacije o poslužitelju pokazuju objavljuje li poslužitelj relej ili Mumbota i upozoravaju kad se relej promijenio.",
+            "Šaputanje i vikanje: govori s odabranim ljudima ili sa svima u kanalu bez prelaska tamo, s tipkom za govor dok je držiš za svaki cilj i trakom iznad chata koja pokazuje s kim govoriš.",
+            "Ažuriranja u aplikaciji: Mumcord provjerava nove verzije, pokazuje što se promijenilo i instalira ih jednim klikom. Svako preuzimanje provjerava se prema potpisu i kontrolnim zbrojevima.",
+            "Suzbijanje šuma u četiri razine: Lagano, Standardno, Napredno (AI, beta, s RNNoise modelom iz 2024.) i Isključeno, svaka objašnjena s „?”."
+          ]
+        },
+        {
+          "title": "Poboljšano",
+          "items": [
+            "Korisnička ploča ispod popisa kanala je preoblikovana: u svakom stanju ostaje iste visine pa popis iznad nikad ne skače, prikazuje jedan jasan redak statusa i ima mali strelicu izbornika na svakom glasovnom gumbu.",
+            "Brze postavke su mirnije: jedan redak po postavci u jasnim skupinama, objašnjenja iza malog ? i skupina Beta počinje sklopljena.",
+            "Kad su pregledi poveznica isključeni, više ne nestaju nečujno: tihi redak ispod poruke kaže što je skriveno i vodi do postavke.",
+            "„Ponovno pokreni čarobnjak za postavljanje” u Postavke → O programu još jednom prolazi mikrofon, privatnost, obavijest o ažuriranju i način govora. Tvoj identitet ostaje netaknut, a sprema se samo ono što promijeniš.",
+            "Inspektor paketa prati nove pakete, pauzira se kad skrolaš prema gore i snima samo dok je otvoren.",
+            "Stablo poslužitelja i kanala zadano je šire za četvrtinu, pa stanu i dulji nazivi kanala. Širine koje sam postaviš ostaju."
+          ]
+        },
+        {
+          "title": "Popravljeno",
+          "items": [
+            "Tvoje vlastite poruke nikad ne sviraju zvuk spominjanja, ne prikazuju obavijest i ne računaju se kao nepročitane.",
+            "Zajedničko gledanje poštuje „Prikaži preglede poveznica i ugrađene sadržaje”: kad je isključeno, ništa se ne učitava s YouTubea ili Twitcha, a napomena vodi do postavke.",
+            "Linux s PipeWireom: popisi uređaja prikazuju svaki ulaz i izlaz kao zvučne postavke radne površine, primjerice „System” i „Chat” na RØDECaster Pro II umjesto jednog „USB Audio”.",
+            "Prozor s informacijama o poslužitelju sada je preveden na svih 24 jezika.",
+            "Tvoje vlastite poruke više ne sviraju zvuk spominjanja, ne prikazuju obavijest i više se ne računaju kao nepročitane."
+          ]
+        }
+      ],
+      "known": [
+        "Windows instalacijski program još nije potpisan."
+      ]
+    },
     {
       "version": "0.4.4",
       "teaser": "Kopiranje i preuzimanje koda, spremanje slika desnim klikom, brisanje predmemorije, stabilniji glas pod opterećenjem.",
@@ -2448,7 +2581,8 @@
         "webhook": "Postavi API ključ i dopuštene kanale u `bot.toml`. Zatim `curl` na `http://127.0.0.1:8080/message` objavljuje u kanal.",
         "more": "Koraci u nastavku detaljno objašnjavaju svaki dio.",
         "music": "Stavi MP3 datoteke u mapu `media` i postavi API ključ u `bot.toml`. Zatim ih zahtjev na `http://127.0.0.1:8081` pušta u kanalu.",
-        "history": "Postavi u `bot.toml` koliko dugo bot čuva chat. Treba mu pristup za čitanje kanalima."
+        "history": "Postavi u `bot.toml` koliko dugo bot čuva chat. Treba mu pristup za čitanje kanalima.",
+        "relayRegistered": "S opcijom „Samo registrirani korisnici” relay tokene dobivaju samo osobe registrirane na poslužitelju (desni klik na vlastito ime → Registriraj)."
       },
       "advanced": "Napredno",
       "pluginLimit": "Skriveni paketi u sekundi",
@@ -2472,7 +2606,12 @@
         "show": "Prikaži lozinke i zapiši ih"
       },
       "copyAll": "Kopiraj sve odjednom",
-      "needsMumbot": "Webhook, relay, glazba i povijest rade zajedno kao jedan Mumbot s modulima. To stiže s Mumbotom 0.2.0."
+      "needsMumbot": "Webhook, relay, glazba i povijest rade zajedno kao jedan Mumbot s modulima. To stiže s Mumbotom 0.2.0.",
+      "relayAccess": {
+        "label": "Relay za",
+        "registered": "Samo registrirani korisnici",
+        "all": "Svi, i gosti"
+      }
     },
     "stepsCta": "Korak po korak"
   },
@@ -2654,6 +2793,17 @@
           "Kartice poruka: webhook šalje upozorenja s naslovom, bojom statusa, grafom i poveznicom, koja Mumcord prikazuje kao karticu",
           "Podesiv bitrate za govor i glazbu, nikad iznad ograničenja poslužitelja",
           "Peer modul: registrira korisnike poslužitelja kod mumpeer relaya i javlja Mumcordu da relay postoji"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Sigurniji relay",
+        "summary": "Nakon sigurnosnog pregleda relaya: tko dobiva tokene, na koliko dugo i koliko ih.",
+        "items": [
+          "Relay tokeni samo za registrirane korisnike, a po želji i za goste",
+          "Napuštanje poslužitelja prekida pristup relayu, ali tek s posljednjom sesijom",
+          "Ograničenja po certifikatu za zahtjeve za tokene i otvorene veze",
+          "Sigurnija konfiguracija: bez običnog HTTP-a prema relayu na drugom računalu, tajne se strogo provjeravaju"
         ]
       },
       {

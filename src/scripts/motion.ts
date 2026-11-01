@@ -290,10 +290,7 @@ if (filterBar) {
   const apply = (filter: string) => {
     for (const b of buttons) b.setAttribute("aria-pressed", String(b.dataset.filter === filter));
     for (const el of features) {
-      const match =
-        filter === "all" ||
-        (filter === "beta" && el.hasAttribute("data-beta")) ||
-        (filter.startsWith("v") && el.dataset.since === filter.slice(1));
+      const match = filter === "all" || (filter.startsWith("v") && el.dataset.since === filter.slice(1));
       el.hidden = !match;
       // Filtered rows must show at once, not wait for the scroll reveal.
       if (match) el.classList.add("is-in");

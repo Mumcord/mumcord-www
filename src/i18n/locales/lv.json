@@ -534,20 +534,58 @@
       "commits": "commiti",
       "join": "Piedalies GitHub",
       "toolTitle": "Līdzdalībnieki"
+    },
+    "spotlight5": {
+      "label": "Jaunums versijā 0.5.0",
+      "labelSoon": "Drīzumā: 0.5.0",
+      "title": "Vairāk miera. Vairāk tevis. Vairāk skaņas.",
+      "body": "0.5.0 atnes Epic 3: paziņojumu centru, bloķēšanu, vairākas identitātes, jaunu kanālu koku, mūziku čatā, zemas aiztures režīmu kopīgai muzicēšanai un tiešus savienojumus caur relay.",
+      "tiles": {
+        "notifications": {
+          "title": "Viss vienuviet",
+          "body": "Zvaniņš savāc pieminējumus, atbildes, pieprasījumus un ielūgumus no visiem serveriem. Kas tev traucē, tiek bloķēts, atpazīts pēc sertifikāta."
+        },
+        "identities": {
+          "title": "Vairākas identitātes",
+          "body": "Privātā, klana, darba: katram serverim pats izvēlies, kā pieslēgties."
+        },
+        "tree": {
+          "title": "Jauns kanālu koks",
+          "body": "Labais klikšķis uz katra kanāla, lietotāju ierobežojums līdzās nosaukumam, skaidras ikonas un izvēlne aiz kanāla nosaukuma."
+        },
+        "lowLatency": {
+          "title": "Muzicējiet kopā",
+          "body": "Zemas aiztures režīms dod apmēram 40 nevis 90 ms no mutes līdz ausij, un katrs kanāls atceras savus audio iestatījumus."
+        },
+        "music": {
+          "title": "Mūzika čatā",
+          "body": "Audio faili atskan tieši čatā, bet saites uz Spotify, Apple Music un citām kļūst par mūzikas kartīti."
+        },
+        "relay": {
+          "title": "Tiešie savienojumi visur",
+          "body": "Ekrāna koplietošana un lieli attēli strādā pat aiz CGNAT, un, ja vēlies, neviens neredz tavu IP adresi."
+        }
+      },
+      "features": "Visas funkcijas",
+      "changelog": "Viss jaunais"
+    },
+    "serverCta": {
+      "title": "Savs serveris piecās minūtēs",
+      "body": "Atķeksē, nokopē komandu, gatavs: konfigurators uzbūvē tavu docker-compose.yml ar relay un botiem.",
+      "button": "Atvērt konfiguratoru"
     }
   },
   "features": {
     "title": "Funkcijas",
     "description": "Visas Mumcord funkcijas ar ekrānuzņēmumiem: serveri un sertifikāti, sekošana kanāliem, tērzēšana ar priekšskatījumiem un @pieminējumiem, push-to-talk, skaņa un ērtības.",
     "label": "Ko Mumcord prot",
-    "intro": "Viss, ko Mumcord prot, ar attēlu, kur tāds ir, plus tas, kas nāks nākamajā versijā. Filtrs rāda beta funkcijas vai to, kas jauns kurā versijā. Kaut kā trūkst vai kaut kas nestrādā? Pastāsti mums GitHub.",
+    "intro": "Viss, ko Mumcord prot, ar attēlu, kur tāds ir, plus tas, kas nāks nākamajā versijā. Filtrs rāda, kas jauns divās jaunākajās versijās. Kaut kā trūkst vai kaut kas nestrādā? Pastāsti mums GitHub.",
     "contents": "Saturs",
     "newIn": "jaunums versijā",
     "comingIn": "nāks versijā",
     "beta": "Beta",
     "filterLabel": "Filtrs",
     "filterAll": "Visas",
-    "filterBeta": "Beta",
     "filterEmpty": "Šim filtram nav funkciju.",
     "jump": "Pāriet uz",
     "statFeatures": "funkcijas",
@@ -590,13 +628,13 @@
           {
             "id": "reconnect",
             "title": "Atkārtota pieslēgšanās ar visu",
-            "body": "Ja savienojums pārtrūkst, tu atgriezies tajā pašā kanālā ar savu mikrofona un skaņas izslēgšanas stāvokli un kanāliem, kuriem seko. Pēc restarta Mumcord piedāvā atgriezties pēdējā balss kanālā.",
+            "body": "Ja savienojums pārtrūkst, tu atgriezies tajā pašā kanālā ar savu izslēgtā mikrofona/skaņas stāvokli un sekotajiem kanāliem. Pēc restartēšanas Mumcord piedāvā atkal pievienoties tavam pēdējam balss kanālam. Ja savienojums neizdodas, reklāmkarogs min serveri un pazūd pēc 60 sekundēm vai ar ✕; servera ikona turpina rādīt kļūmi.",
             "alt": "Josla ar piedāvājumu atgriezties pēdējā balss kanālā"
           },
           {
             "id": "several-servers",
             "title": "Vairāki serveri vienlaikus",
-            "body": "Līdz 5 serveriem pieslēgti vienlaikus, iestatāms līdz 15. Tu runā vienā un lasi, raksti un saņem paziņojumus visos. Katrs serveris pēc pārtraukuma pats pieslēdzas no jauna.",
+            "body": "Līdz 5 serveriem vienlaikus, pielāgojams līdz 15. Vienā tu runā, visos lasi, raksti un saņem paziņojumus. Katrs serveris pēc pārtraukuma pievienojas pats. “Pievienoties kanālam” darbojas arī draugiem citā serverī, un mumble:// saites uz pievienotu serveri aizved tieši turp.",
             "alt": "Serveru josla ar vairākiem pieslēgtiem serveriem, skaļruņa zīmi pie balss servera un pieminējumu skaitu"
           },
           {
@@ -611,24 +649,51 @@
             "body": "Pakotnes Debian un Ubuntu, Fedora un openSUSE, Arch (AUR: mumcord-bin) un AppImage, x86_64 un ARM64, arī ar vienu rindu terminālī. Pēc izvēles norāde, kad iznākusi jauna versija."
           },
           {
-            "id": "server-notices",
-            "title": "Paziņojumi katram serverim",
-            "body": "Paziņojumos un privātajās ziņās redzams servera nosaukums, un katru serveri var apklusināt atsevišķi."
+            "id": "mumble-import",
+            "title": "Imports no Mumble",
+            "body": "Ja ir uzstādīts oficiālais Mumble klients (1.4 vai 1.5), iestatīšanas vednis piedāvā pārņemt tavus iecienītos serverus ar parolēm, tavu sertifikātu kā jaunu identitāti, lai saglabātu reģistrēto vārdu, tavas audio ierīces un push-to-talk taustiņu. Katru daļu izvēlies priekšskatījumā, serveri, kas tev jau ir, tiek izlaisti, un “Atsaukt importu” visu atgriež. Vēlāk arī sadaļā Iestatījumi → Serveri.",
+            "alt": "Iestatīšanas vedņa solis “Imports no Mumble” ar izvēles rūtiņu katrai atrastajai daļai"
           },
           {
-            "id": "across-servers",
-            "title": "Pievienošanās pāri serveriem",
-            "body": "“Pievienoties kanālam” darbojas arī draugiem citā serverī, un mumble:// saites uz pieslēgtu serveri aizved tieši turp."
+            "id": "identities",
+            "title": "Vairākas identitātes",
+            "body": "Iestatījumi → Identitāte pārvalda vairākus klienta sertifikātus: izveidot, importēt, pārdēvēt, eksportēt un dublēt. Katrs serveris izmanto noklusējuma identitāti vai savu, un tērzēšanas galvene parāda, kura tiek lietota, ja tā nav noklusējuma. Sertifikāti un atslēgas paliek sistēmas drošajā krātuvē.",
+            "alt": "Identitāšu pārvaldnieks ar vairākām identitātēm, to pirkstu nospiedumiem un serveriem, kas tās izmanto"
           },
           {
-            "id": "autostart",
-            "title": "Palaišana, piesakoties sistēmā",
-            "body": "“Palaist Mumcord, kad piesakos” ir pieejams uz katras sistēmas."
+            "id": "server-dialog",
+            "title": "Servera dialogs ar cilnēm",
+            "body": "Servera pievienošana vai rediģēšana ir sadalīta cilnēs Savienojums, Identitāte, Paroles un Uzvedība. Kļūdas tiek nosauktas tieši pie lauka, “Pārbaudīt savienojumu” ziņo par pingu, servera versiju un sertifikātu, neko nesaglabājot, un saglabātās kanālu paroles rāda, kuram kanālam tās pieder, piemēram, “Officers (Raid)”.",
+            "alt": "Dialogs “Pievienot serveri” ar cilnēm Savienojums, Identitāte, Paroles un Uzvedība"
           },
           {
-            "id": "failure-banner",
-            "title": "Kļūdu joslas, kas neuzbāžas",
-            "body": "Ja savienojums neizdodas, josla nosauc serveri un pazūd pēc 60 sekundēm vai ar ✕. Servera ikona kļūmi rāda arī turpmāk."
+            "id": "server-browser",
+            "title": "Atrodi publiskos serverus",
+            "body": "Meklēšanas poga serveru joslā atver publisko Mumble serveru sarakstu: meklē pēc nosaukuma, adreses vai valsts, filtrē pēc valsts un ping, paslēp tukšus vai pilnus serverus. “Pievienoties” saglabā un pievieno ar vienu klikšķi. Saraksts ielādējas tikai tad, kad to atver, un tiek pingoti tikai ekrānā redzamie ieraksti.",
+            "alt": "Publisko serveru pārlūks ar meklēšanu, valsts un ping filtriem un serveru sarakstu"
+          },
+          {
+            "id": "server-info",
+            "title": "Servera informācija",
+            "body": "Servera izvēlne rāda nosaukumu, adresi, versiju, sveiciena tekstu, ierobežojumus, atļautos kodekus, tavas atļaujas un to, cik cilvēku lieto Mumcord, plus TLS sertifikātu ar pirkstu nospiedumu un derīgumu. “Kopēt diagnostiku” visu ieliek starpliktuvē kļūdu ziņojumiem. Darbojas ar jebkuru standarta Mumble serveri.",
+            "alt": "Servera informācija ar versiju, ierobežojumiem un TLS sertifikāta pirkstu nospiedumu, izdevēju un derīgumu"
+          },
+          {
+            "id": "setup-again",
+            "title": "Palaid iestatīšanas vedni vēlreiz",
+            "body": "Iestatījumi → Par lietotni vēlreiz izved cauri iestatīšanai, lai pārskatītu mikrofonu, privātumu, atjauninājumu pārbaudi un runas režīmu. Identitātes solis tiek izlaists, tāpēc ar tavu sertifikātu nejauši nekas nevar mainīties, un tiek saglabātas tikai vērtības, kuras tu patiešām mainīji.",
+            "alt": "Iestatīšanas vednis, palaists vēlreiz no iestatījumiem, ar identitātes soli, atzīmētu kā izlaistu"
+          },
+          {
+            "id": "windows-portable",
+            "title": "Pārnēsājams uz Windows",
+            "body": "Līdzās instalētājam ir zip, kas darbojas bez instalēšanas: izpako un palaid Mumcord.exe. Dati, iestatījumi un žurnāli paliek mapē blakus, un mumble:// apstrādātājs vai palaišana pēc pieteikšanās netiek iestatīta, ja pats to neieslēdz."
+          },
+          {
+            "id": "updater",
+            "title": "Atjauninājumi lietotnē",
+            "body": "Mumcord startējot un ik pēc 12 stundām pārbauda, vai ir jauna versija, parāda, kas mainījies kopš tavas versijas, un uzstāda to ar vienu klikšķi. Katrs lejupielādētais fails pirms uzstādīšanas tiek pārbaudīts pēc Mumcord paraksta un izdevuma kontrolsummām; versiju vari izlaist vai ļaut sev atgādināt vēlāk.",
+            "alt": "Dialogs „Pieejams atjauninājums” ar izmaiņām kopš tavas versijas"
           }
         ]
       },
@@ -657,68 +722,67 @@
           {
             "id": "right-click",
             "title": "Labais klikšķis uz cilvēkiem",
-            "body": "Apskati profilu, apklusini tikai sev, iestati skaļumu no 0 līdz 200 % vai nosūti privātu ziņu. Mumcord to atceras katram cilvēkam.",
-            "alt": "Cilvēka konteksta izvēlne ar skaļuma slīdni"
-          },
-          {
-            "id": "person-card",
-            "title": "Dubultklikšķis privātām ziņām",
-            "body": "Dubultklikšķis uz cilvēka atver privāto tērzēšanu. Klikšķis piesprauž viņa kartīti ar pogām privātajai ziņai un profilam."
+            "body": "Nosūti ziņu, pievienojies viņu kanālam vai pievieno kā draugu, tieši augšā; tad profils, apklusināšana tikai sev un skaļums no 0 līdz 200 %, atcerēts katram cilvēkam. Ja drīksti pievienoties, tiek parādīts iemesls. Dubultklikšķis atver privāto tērzēšanu.",
+            "alt": "Cilvēka izvēlne ar Nosūtīt ziņu, Pievienoties kanālam un Pievienot draugu augšā"
           },
           {
             "id": "profile",
-            "title": "Jauns profils",
-            "body": "Baneris, nozīmīte, mūzika vai spēle un visi iestatījumi šim cilvēkam. Izmaiņas stājas spēkā uzreiz ar īsu “Saglabāts”. Labā klikšķa izvēlnē ir ikonas un slēdži.",
+            "title": "Profils",
+            "body": "Baneris, nozīmīte, mūzika vai spēle un komentārs ar treknrakstu, slīprakstu, saitēm un sarakstiem. Skaļums, apklusināšana un privāta piezīme par šo cilvēku ir tajā sakļauti; izmaiņas stājas spēkā uzreiz ar īsu “Saglabāts”.",
             "alt": "Pilns profils ar mūziku, iestatījumiem šim cilvēkam un privātu piezīmi"
-          },
-          {
-            "id": "join-channel",
-            "title": "Pievienojies cilvēka kanālam",
-            "body": "Labais klikšķis uz cilvēka vai drauga: “Pievienoties ‹kanāls›” aizved tevi tieši uz viņa kanālu. Ja serveris to neatļauj, iemesls ir redzams blakus.",
-            "alt": "Cilvēka izvēlne ar “Pievienoties kanālam”"
           },
           {
             "id": "member-column",
             "title": "Labā kolonna ar sadaļām",
-            "body": "“Kanālā ‹kanāls›”, “Citos kanālos” ar visiem pārējiem serverī un “Draugi”, katra sakļaujama. Mumcord atceras, kas ir atvērts. Kreisajā pusē virs kanālu koka ir “Servera pārskats”.",
+            "body": "“Kanālā ‹kanāls›”, “Citos kanālos” ar visiem pārējiem serverī un “Draugi”, katrs sakļaujams. Mumcord atceras, kas ir atvērts.",
             "alt": "Labā kolonna ar atvērtu sadaļu “Citos kanālos”"
           },
           {
             "id": "connection-quality",
             "title": "Savienojuma kvalitāte",
-            "body": "Profilā vienā mirklī redzams, vai savienojums ir labs, vidējs vai vājš, un izvērstā veidā – pings, pakešu zudums un joslas platums. Neliela signāla ikona iezīmē, kam šobrīd ir vājš savienojums.",
+            "body": "Profils vienā mirklī rāda, vai savienojums ir labs, vidējs vai vājš, un izvērsts rāda pingu, pakešu zudumu un joslas platumu. Neliela signāla ikona atzīmē, kuram pašlaik ir vājš savienojums. Administratori redz arī klientu un operētājsistēmu, piemēram, “Mumcord 0.4.0” vai “Mumble 1.5”.",
             "alt": "Profila kartīte ar izvērstu savienojumu: pings, pakešu zudums, joslas platums, klients un operētājsistēma"
           },
           {
-            "id": "listeners",
-            "title": "Klausītāji ar ausi",
-            "body": "Tie, kas kanālu tikai klausās, ir parastajā sarakstā ar auss ikonu, nevis atsevišķā grupā."
-          },
-          {
-            "id": "client-info",
-            "title": "Klients un sistēma administratoriem",
-            "body": "Administratori profilā redz arī, kādu klientu un operētājsistēmu kāds lieto, piemēram, “Mumcord 0.4.0” vai “Mumble 1.5”."
-          },
-          {
             "id": "channel-filters",
-            "title": "Slēpt tukšos kanālus",
-            "body": "Lieli serveri vairs nesastingst, kad tos parāda pirmo reizi. Plus slēdži “Slēpt tukšos kanālus” un “Runātāji pirmie”."
-          },
-          {
-            "id": "profile-comment",
-            "title": "Formatēts profila komentārs",
-            "body": "Tavs profila komentārs prot treknrakstu, slīprakstu, saites un sarakstus."
-          },
-          {
-            "id": "person-settings",
-            "title": "Iestatījumi katram cilvēkam",
-            "body": "Skaļums, apklusināšana un piezīme par kādu ir sakļauti viņa profilā. Kad kaut kas tiek mainīts, rinda to īsi parāda, piemēram, “Skaļums 60 %”."
+            "title": "Sakopts kanālu saraksts",
+            "body": "Slēdži “Slēpt tukšos kanālus” un “Runātāji pirmie”, un lieli serveri vairs nesastingst, kad tos parāda pirmo reizi. Tie, kas kanālu tikai klausās, ir parastajā sarakstā ar auss ikonu."
           },
           {
             "id": "channel-passwords",
             "title": "Kanāli ar paroli",
             "body": "Ja kanālam vajag paroli, Mumcord to pajautā un atceras katram serverim, arī pēc atkārtotas pieslēgšanās. Kanāliem, kuros tev nav atļauts ieiet, redzama maza slēdzene.",
             "alt": "Kanāls ar slēdzeni un kanāla paroles logs"
+          },
+          {
+            "id": "channel-tree",
+            "title": "Kanālu koks ar izvēlni",
+            "body": "Ar labo klikšķi uz kanāla pievienojies tam vai seko, iestati tā skaņu, kopē saiti, atver kanāla informāciju vai pārvieto cilvēkus turp, ja drīksti. Kanāli ar ierobežojumu to rāda, piemēram, “Raid (1/10)”, pilnie ir aptumšoti, un pagaidu un saistītie kanāli saņem ikonas. Ar atļauju cilvēkus velc uz citu kanālu. Augšā ir serveris ar savienojuma punktu un “N tiešsaistē · ping”.",
+            "alt": "Kanālu koks ar atvērtu kanāla labā klikšķa izvēlni"
+          },
+          {
+            "id": "channel-header",
+            "title": "Kanāla nosaukums ar izvēlni",
+            "body": "Acs pirms kanāla nosaukuma kanālam seko vai beidz sekot. Klikšķis uz nosaukuma atver Sekot, Kopēt kanāla saiti, Kanāla parole, Kanāla informācija un Notīrīt tērzēšanas vēsturi. Kanāla informācija rāda ceļu, aprakstu, lietotāju ierobežojumu, saistītos kanālus un tavas atļaujas tur.",
+            "alt": "Kanāla informācija ar ceļu, aprakstu, lietotājiem, lietotāju ierobežojumu, saistītajiem kanāliem un atļaujām"
+          },
+          {
+            "id": "hide-members",
+            "title": "Paslēp dalībnieku kolonnu",
+            "body": "Poga tērzēšanas galvenē vai Ctrl+Shift+M paslēpj labo kolonnu, lai tērzēšana aizņem visu platumu. Poga tad rāda, cik cilvēku ir kanālā, un zaļu punktu, kamēr kāds runā. Šaurā logā kolonna iesprūk virs tērzēšanas.",
+            "alt": "Tērzēšana pilnā platumā ar paslēptu dalībnieku kolonnu un dalībnieku pogu galvenē"
+          },
+          {
+            "id": "message-privacy",
+            "title": "Kas drīkst tev rakstīt",
+            "body": "Iestatījumi → Privātums: privātās ziņas no visiem, tikai no draugiem vai no neviena, arī katram serverim atsevišķi. Cilvēki tavā kanālā un sarunas, ko esi pieņēmis, vienmēr tiek cauri. Pārējās ziņas gaida kā ziņu pieprasījumi, ko pieņem vai noraidi, un Mumcord lietotāji var nosūtīt tērzēšanas pieprasījumu ar īsu piezīmi. Sūtītājs par to nekad netiek informēts.",
+            "alt": "Ziņu pieprasījumi ar tērzēšanas pieprasījumu, tā piezīmi un pogām Pieņemt un Noraidīt"
+          },
+          {
+            "id": "block-users",
+            "title": "Bloķē cilvēkus",
+            "body": "“Bloķēt…” cilvēka izvēlnē paslēpj viņu privātās ziņas un pieprasījumus, sakļauj viņu kanāla ziņas un apklusina viņu balsi, tikai tev. Bloķēšana seko sertifikātam, tāpēc tā darbojas dažādos serveros un ar jauniem vārdiem. Serverim vai cilvēkam netiek sūtīts nekas, un Iestatījumi → Privātums uzskaita visus, ko esi bloķējis, ar “Atbloķēt”.",
+            "alt": "Apstiprinājums cilvēka bloķēšanai, kas uzskaita, kas mainās"
           }
         ]
       },
@@ -741,7 +805,7 @@
           {
             "id": "previews",
             "title": "Saišu priekšskatījumi",
-            "body": "Saites iegūst kartīti ar virsrakstu, aprakstu un attēlu. Mumcord tās ielādē pats, nekad no lokālā tīkla adresēm; katru kartīti var aizvērt, un funkciju var izslēgt vednī un iestatījumos.",
+            "body": "Saitēm parādās kartīte ar nosaukumu, aprakstu un attēlu. Mumcord tās ielādē pats, nekad no vietējā tīkla adresēm; katru kartīti var aizvērt, un funkciju var izslēgt vednī un iestatījumos. Labais klikšķis uz saites piedāvā “Kopēt saiti” un “Atvērt saiti”.",
             "alt": "Tērzēšana ar saites priekšskatījumu"
           },
           {
@@ -752,32 +816,32 @@
           },
           {
             "id": "spotify",
-            "title": "Spotify",
-            "body": "Arī Spotify saites iegūst kartīti ar vāciņu, nosaukumu un izpildītāju; atskaņotājs parādās tikai pēc klikšķa.",
-            "alt": "Tērzēšana ar Spotify kartīti"
+            "title": "Mūzikas saites",
+            "body": "Spotify, SoundCloud un YouTube Music atskaņojas pakalpojuma oficiālajā atskaņotājā, kas ielādējas tikai tad, kad nospied Atskaņot. Apple Music, Tidal, Deezer, Bandcamp un citas mūzikas lapas saņem to pašu kartīti ar vāku, nosaukumu un izpildītāju un “Atvērt vietnē …”. Viena atskaņotāja palaišana aptur otru.",
+            "alt": "Mūzikas kartīte ar vāku, nosaukumu, izpildītāju un pakalpojuma nosaukumu"
           },
           {
             "id": "images",
             "title": "Attēli un GIF tērzēšanā",
-            "body": "Ārēji attēli un attēlu saites tiek rādīti tieši ziņā, Giphy un Tenor GIF tiek atskaņoti un norāda savu avotu.",
+            "body": "Ārējie attēli un attēlu saites parādās tieši ziņā, Giphy un Tenor GIF atskaņojas un norāda avotu. Ekrānuzņēmumus un nokopētus attēlus ieliec ziņas ievades laukā ar Ctrl+V.",
             "alt": "Tērzēšana ar attēlu un GIF"
           },
           {
             "id": "image-viewer",
             "title": "Attēlu skatītājs",
-            "body": "Noklikšķini uz attēla, lai redzētu to lielu: tuvini ar ritenīti vai taustiņiem, pārvieto, ar bultiņām pārlapo visus tērzēšanas attēlus un “Saglabāt attēlu”.",
+            "body": "Noklikšķini uz attēla, lai redzētu to lielu: tuvini, velc un ar bultiņu taustiņiem ej cauri visiem tērzēšanas attēliem. Pilnais izmērs ielādējas fonā ar šauru progresa joslu. Ar labo klikšķi nokopē attēlu, saglabā oriģinālā, GIF ar animāciju vai nokopē tā adresi.",
             "alt": "Attēlu skatītājs ar tālummaiņas rīkjoslu"
           },
           {
             "id": "mentions",
             "title": "@pieminējumi",
-            "body": "Ieraksti @, un Mumcord iesaka vārdus. Pieminējumi ir izcelti, paziņo tev pat klusos kanālos un tiem ir sava skaņa.",
+            "body": "Ieraksti @, un Mumcord iesaka vārdus. Pieminējumi ir izcelti, paziņo tev pat klusos kanālos un tiem ir sava skaņa. Uzvirzi kursoru uz pieminējumu priekšskatījumam, noklikšķini profilam, ar labo klikšķi atver izvēlni.",
             "alt": "Ziņas ievade ar vārda ieteikumu pēc @"
           },
           {
             "id": "code",
             "title": "Kods un formatēšana",
-            "body": "Koda bloki ar sintakses izcelšanu, formatēšanas rīkjosla virs ievades un īsinājumtaustiņi, piemēram, Ctrl+B, Ctrl+I vai Ctrl+E.",
+            "body": "Koda bloki tiek iekrāsoti kā valoda, ko raksti pēc trim atpakaļatzīmēm, no sql un rust līdz Dockerfile un hex izdrukām, ar pogām kopēšanai vai lejupielādei. Formatēšanas rīkjosla virs ievades un īsceļi kā Ctrl+B, Ctrl+I vai Ctrl+E.",
             "alt": "Tērzēšana ar izceltu kodu un formatēšanas rīkjoslu"
           },
           {
@@ -789,7 +853,7 @@
           {
             "id": "notifications",
             "title": "Paziņojumi, kā tev patīk",
-            "body": "Jaunas ziņas kā uznirstošais logs lietotnē, sistēmas paziņojums, abi vai nekas. Plus īsas, klusas skaņas katram notikumam.",
+            "body": "Jaunas ziņas kā uznirstošais logs lietotnē, sistēmas paziņojums, abi vai nekas, ar īsām, klusām skaņām katram notikumam. Paziņojumos ir servera nosaukums, un katru serveri var apklusināt atsevišķi.",
             "alt": "Uznirstošais logs lietotnē par jaunu ziņu"
           },
           {
@@ -797,11 +861,6 @@
             "title": "Uzkopj pats pēc sevis",
             "body": "Priekšskatījumi un attēli tiek dzēsti pēc tevis izvēlēta dienu skaita, ja vēlies, arī vecā tērzēšanas vēsture. Vēsture glabājas tikai tavā datorā, un to var izslēgt katram serverim atsevišķi.",
             "alt": "Iestatījumi, tērzēšanas un vēstures sadaļa"
-          },
-          {
-            "id": "mention-chips",
-            "title": "Klikšķināmi @pieminējumi",
-            "body": "Priekšskatījums, uzvirzot kursoru, profils pēc klikšķa, izvēlne ar labo klikšķi."
           },
           {
             "id": "replies",
@@ -828,37 +887,46 @@
             "alt": "Gara ziņa ar vārdu un attēlu, kas piesprausti tērzēšanas augšā"
           },
           {
-            "id": "image-loading",
-            "title": "Attēli ielādējas fonā",
-            "body": "Plāna josla zem attēla rāda, cik tālu ielādējies pilnais izmērs. Aizverot attēlu skatītāju, ielāde turpinās; × uz joslas to atceļ."
-          },
-          {
-            "id": "link-menu",
-            "title": "Saišu kopēšana",
-            "body": "Ar labo klikšķi uz saites tērzēšanā tiek piedāvāts “Kopēt saiti” un “Atvērt saiti”.",
-            "alt": "Saites konteksta izvēlne ar “Kopēt saiti” un “Atvērt saiti”"
-          },
-          {
             "id": "message-cards",
             "title": "Ziņu kartītes",
             "body": "Boti un cilvēki publicē kompaktas kartītes ar virsrakstu, statusa krāsu, ikonu, formatētu tekstu, attēlu un saiti, piemērotas būvējumiem, brīdinājumiem vai informācijas paneļiem. Oficiālie Mumble klienti to pašu ziņu redz kā lasāmu tekstu.",
             "alt": "Tērzēšana ar divām bota ziņu kartītēm: pilna kartīte ar ikonu, virsrakstu, tekstu, grafiku un saiti, un zem tās vienkārša kartīte ar virsrakstu un saiti"
           },
           {
-            "id": "paste-images",
-            "title": "Attēlu ielīmēšana ar Ctrl+V",
-            "body": "Ekrānuzņēmumi, “Kopēt attēlu” no pārlūka un failu pārvaldniekā nokopēti attēlu faili ar Ctrl+V nonāk tieši ziņas ievadē kā pielikums."
+            "id": "notification-centre",
+            "title": "Paziņojumu centrs",
+            "body": "Zvaniņš tērzēšanas galvenē vai Ctrl+Shift+N apkopo pieminējumus, atbildes, tērzēšanas un ziņu pieprasījumus, ielūgumus uz watch party un ekrāna kopīgošanu un serverus, kas kļuva nepieejami, no visiem pievienotajiem serveriem, jaunākie pirmie. Filtrē tos, pieņem pieprasījumus turpat, un klikšķis aizved uz ziņu. Režīmā Netraucēt tas turpina klusi krāt.",
+            "alt": "Paziņojumu centrs ar pieminējumiem, atbildēm un tērzēšanas pieprasījumu ar Pieņemt un Noraidīt"
           },
           {
-            "id": "code-blocks",
-            "title": "Koda bloki ar kopēšanu un lejupielādi",
-            "body": "Uzraksti valodu pēc trim backtick zīmēm, no sql, rust un php līdz cmd, Dockerfile un heksadecimālajām izdrukām, un bloks tiek izcelts tieši tā. Pogas stūrī nokopē kodu vai saglabā to kā failu.",
-            "alt": "SQL koda bloks ar valodas etiķeti un kopēšanas un lejupielādes pogām stūrī"
+            "id": "pm-overview",
+            "title": "Visas privātās ziņas vienuviet",
+            "body": "Poga Ziņas serveru joslas augšā uzskaita katru sarunu no katra pievienotā servera, piespraustās pirmās, ar servera birku, priekšskatījumu un nelasīto skaitu. Meklē, filtrē pēc nelasītajiem vai pieprasījumiem, sāc jaunu sarunu un piespraud, apklusini vai dzēs kādu no tās izvēlnes.",
+            "alt": "Privāto ziņu pārskats ar tērzēšanas pieprasījumu augšā un sarunām no vairākiem serveriem"
           },
           {
-            "id": "image-menu",
-            "title": "Attēlu kopēšana un saglabāšana",
-            "body": "Labais klikšķis uz attēla tērzēšanā vai attēlu skatītājā: kopēt attēlu, saglabāt attēlu oriģinālā, GIF ar animāciju, kopēt attēla adresi vai atvērt to skatītājā."
+            "id": "group-mentions",
+            "title": "@channel un @all",
+            "body": "@channel sasniedz visus kanālā, @all visus, kas to var lasīt, arī klausītājus. Mumcord tos uzskata par tavu pieminējumu, citi Mumble klienti redz tikai vārdus. Par daudz? Apklusini tos katram serverim.",
+            "alt": "Tērzēšana ar izceltu @channel pieminējumu"
+          },
+          {
+            "id": "audio-links",
+            "title": "Audio faili tērzēšanā",
+            "body": "Saites uz mp3, ogg, m4a, wav, flac vai webm failiem saņem atskaņotāju zem ziņas ar tīšanas joslu, skaļumu, “Atvērt pārlūkā” un “Saglabāt”. Nekas neatskaņojas pats, fails ielādējas tikai tad, kad nospied Atskaņot, līdz 32 MB, un skaņa iet uz taviem skaļruņiem, nekad uz mikrofonu.",
+            "alt": "Audio atskaņotājs zem ziņas ar atskaņošanas pogu, tīšanas joslu un skaļumu"
+          },
+          {
+            "id": "hidden-previews",
+            "title": "Paslēptie priekšskatījumi to saka",
+            "body": "Ja saišu priekšskatījumi un iegultie ir izslēgti, kluss teksts zem ziņas nosauc, kas tika paslēpts, piemēram, attēls vai video, un saista uz iestatījumu. Tā dēļ no saistītās vietnes netiek pieprasīts nekas.",
+            "alt": "Ziņa ar rindu “Attēls paslēpts, jo saišu priekšskatījumi un iegultie ir izslēgti”"
+          },
+          {
+            "id": "server-links",
+            "title": "Servera saites kā kartītes",
+            "body": "mumble:// saite tērzēšanā rāda serveri, kanālu, pingu, cilvēkus tiešsaistē un versiju, ar “Pievienoties”, “Pievienot serveriem” un “Kopēt saiti”. Skaitļi nāk no standarta publiskā vaicājuma, nekad no savienojuma. Lietotājvārdi un paroles saitē nekad netiek rādīti un kopējot tiek izlaisti.",
+            "alt": "Kartīte mumble:// saitei ar servera nosaukumu, kanālu, pingu, lietotājiem un pogu Pievienoties"
           }
         ]
       },
@@ -885,6 +953,12 @@
             "alt": "Iestatīšanas vednis, mikrofona solis ar līmeņa testu"
           },
           {
+            "id": "noise-levels",
+            "title": "Trokšņu slāpēšana četros līmeņos",
+            "body": "Iestatījumi → Balss piedāvā Vieglu pastāvīgam troksnim ar vismazāko CPU slodzi, Standarta kā noklusējumu, Uzlabotu (AI) ar 2024. gada RNNoise modeli kā beta, kas noņem vairāk trokšņa par lielāku CPU slodzi, un Izslēgts. „?” blakus katram līmenim pasaka, ko tas maksā. Viss darbojas tavā datorā.",
+            "alt": "Balss iestatījumi ar četriem trokšņu slāpēšanas līmeņiem"
+          },
+          {
             "id": "music",
             "title": "Mūzikas kvalitāte",
             "body": "Viens slēdzis paaugstina bitu pārraides ātrumu līdz servera limitam, maksimāli 510 kbit/s, noregulē kodētāju mūzikai un izslēdz trokšņu slāpēšanu un automātisko skaļuma regulēšanu.",
@@ -898,13 +972,50 @@
           },
           {
             "id": "bitrate",
-            "title": "Bitu pārraides ātrums ar roku",
-            "body": "Atsevišķs slīdnis no 16 kbit/s līdz augstākajai vērtībai, ko atļauj serveris un Mumble. Pakešu zuduma gadījumā Mumcord to joprojām pats samazina."
+            "title": "Balss kvalitātes panelis",
+            "body": "Ar labo klikšķi uz savienojuma informācijas: bitu pārraides ātruma slīdnis no 16 kbit/s līdz servera ierobežojumam ar to, kas tagad tiek sūtīts, mūzikas kvalitāte, aptuvenais joslas platums un audio veselības novērtējums. Pakešu zuduma gadījumā Mumcord bitu pārraides ātrumu joprojām pats samazina.",
+            "alt": "Balss kvalitātes panelis ar bitu pārraides ātruma slīdni, mūzikas kvalitāti un aptuveno joslas platumu"
           },
           {
             "id": "realtime-audio",
             "title": "Stabili slodzes laikā",
             "body": "Ierakstīšana un atskaņošana saņem reāllaika prioritāti, tāpēc balss mazāk sprakšķ un pārtrūkst, kamēr spēle vai būvējums noslogo datoru. Savienojuma informācija rāda pārtraukumus un to, vai reāllaika skaņa ir ieslēgta."
+          },
+          {
+            "id": "low-latency",
+            "title": "Zemas latences režīms mūzicēšanai",
+            "body": "10 ms paketes, minimāls buferis un bez atbalss slāpēšanas vai trokšņu slāpēšanas samazina aizkavi no apmēram 100 ms līdz apmēram 40 ms plus tīkls. Tas pārslēdzas tūlīt un rāda aptuveno latenci. Vajag lielāku joslas platumu; ieteicamas austiņas. Darbojas ar standarta serveriem.",
+            "alt": "Audio iestatījumi ar ieslēgtu zemas latences režīmu un aptuveno latenci pa daļām"
+          },
+          {
+            "id": "channel-audio",
+            "title": "Audio katram kanālam",
+            "body": "“Audio šim kanālam…” iestata mūzikas kvalitāti, zemas latences režīmu un bitu pārraides ātruma ierobežojumu vienam kanālam, ar sagatavēm Balss, Mūzika un Jam. Tas stājas spēkā, kad pievienojies, un parastie iestatījumi atgriežas, kad aizej. Glabājas tikai šajā ierīcē, tāpēc darbojas jebkurā Mumble serverī.",
+            "alt": "“Audio šim kanālam” ar sagatavēm Balss, Mūzika un Jam"
+          },
+          {
+            "id": "device-switch",
+            "title": "Maini ierīces no balss joslas",
+            "body": "Ar labo klikšķi uz mikrofona vai austiņu pogas: izvēlies ierīci, iestati skaļumu, skaties līmeni un pārslēdz trokšņu slāpēšanu, viss bez atkārtotas pievienošanās. Ja ierīci atvieno, Mumcord atgriežas pie sistēmas noklusējuma. Linux ar PipeWire katra ieeja un izeja parādās tā, kā darbvirsmas skaņas iestatījumos.",
+            "alt": "Mikrofona izvēlne ar ievades ierīcēm, skaļuma slīdni un līmeņa mērītāju"
+          },
+          {
+            "id": "leave-voice",
+            "title": "Pamet balsi, paliec savienots",
+            "body": "Ar labo klikšķi uz nolikšanas pogas: “Pamest balsi” beidz runāt un klausīties, bet tērzēšana un lasīšana turpinās. Tur arī: atvienoties, pārslēgt balsi uz citu serveri un atvienoties no visiem. Kreisais klikšķis joprojām uzreiz noliek klausuli.",
+            "alt": "Nolikšanas pogas izvēlne ar Pamest balsi, Atvienoties un Pārslēgt balsi"
+          },
+          {
+            "id": "whisper",
+            "title": "Čukstēšana un kliegšana",
+            "body": "Runā ar izvēlētiem cilvēkiem vai ar visiem kanālā, pēc izvēles kopā ar tā apakškanāliem, saistītajiem kanāliem vai tikai vienu grupu, tur nepārvietojoties. Mērķus iestata iestatījumos vai ar “Čukstēt…” cilvēka vai kanāla izvēlnē, katram ar savu turēšanas runas taustiņu. Josla virs tērzēšanas rāda, ar ko runā.",
+            "alt": "Josla virs tērzēšanas, čukstot kanālam"
+          },
+          {
+            "id": "user-panel",
+            "title": "Mierīgs lietotāja panelis",
+            "body": "Panelis kanālu saraksta apakšā vienmēr saglabā to pašu augstumu: tu ar vārdu un serveri, viena statusa rinda, piemēram, atkārtota savienošanās vai tavs balss kanāls, mazi žetoni režīmam Netraucēt, zemas latences režīmam un savienojumam, un mikrofona, austiņu un nolikšanas pogas. Kanālu saraksts virs tā vairs nelēkā.",
+            "alt": "Lietotāja panelis vairākos stāvokļos, no runāšanas un apklusināšanas līdz atkārtotai savienošanai"
           }
         ]
       },
@@ -915,50 +1026,19 @@
           {
             "id": "positional",
             "title": "Telpiskā skaņa",
-            "body": "To cilvēku balsis, kuri ir tajā pašā spēlē, skan no viņu virziena un attālumā kļūst klusākas. Caur Mumble Link vai oficiālajiem Mumble spēļu spraudņiem; “3D” ikona rāda, kurš sūta pozīcijas.",
+            "body": "Tās pašas spēles cilvēku balsis nāk no viņu virziena un kļūst klusākas līdz ar attālumu. Ar Mumble Link vai Mumble oficiālajiem spēļu spraudņiem, katram sava slēdža; “3D” ikona rāda, kas sūta pozīcijas.",
             "alt": "Iestatījumi, telpiskā skaņa ar attālumiem un spēļu spraudņiem"
-          },
-          {
-            "id": "game-plugins",
-            "title": "Oficiālie spēļu spraudņi",
-            "body": "Mumble spraudņi nodrošina pozīcijas atbalstītajām spēlēm, katram savs slēdzis. Iestatījumos redzams, kurš ir aktīvs."
           },
           {
             "id": "in-game-overlay",
             "title": "Spēles pārklājums",
-            "body": "Uz Linux tieši spēlē kā Vulkan slānis, arī Steam un Proton spēlēs, testēts ar Tyr un Supermarket Simulator. Iestatāms katrai spēlei; spēles, kuru pretkrāpšanas sistēma bloķē pārklājumus, paliek izslēgtas. Windows to saņem ar 0.4.0.",
+            "body": "Rāda, kas runā, tieši spēlē. Uz Linux kā Vulkan slānis, arī Steam, Proton un Flatpak Steam spēlēs, ar palaišanas opciju kopēšanai vietējām OpenGL spēlēm. Uz Windows kā klikšķus caurlaidīgs logs, kas spēlē neko neielādē, tāpēc darbojas ar pretkrāpšanu; to paslēpj tikai ekskluzīvs pilnekrāns. Iestatāms katrai spēlei; spēles, kuru pretkrāpšana bloķē pārklājumus, paliek izslēgtas.",
             "alt": "Iestatījumi, spēles pārklājums ar pretkrāpšanas brīdinājumu un izvēli katrai spēlei"
-          },
-          {
-            "id": "overlay-window",
-            "title": "Pārklājuma logs",
-            "body": "Uz Linux un Windows caurspīdīgs, cauri klikšķināms logs virs visa, kas rāda, kurš runā tavā kanālā. Uz macOS pārklājuma nav. Pārklājuma logs ar 0.4.0 pazūd.",
-            "alt": "Pārklājuma logs virs spēles, kas rāda, kurš runā"
           },
           {
             "id": "now-gaming",
             "title": "Tagad spēlē",
-            "body": "Ja vēlies, citi redz, ko tu spēlē, ar Steam attēlu un spēles laiku. “Pievienoties spēlei” Steam spēlēm, kas to atbalsta."
-          },
-          {
-            "id": "overlay-windows",
-            "title": "Spēles pārklājums uz Windows",
-            "body": "Atsevišķs, klikšķus caurlaidīgs logs virs spēles. Spēlē nekas netiek ielādēts, tāpēc tas darbojas arī spēlēs ar pretkrāpšanu. To paslēpj tikai ekskluzīvs pilnekrāns."
-          },
-          {
-            "id": "overlay-opengl",
-            "title": "OpenGL spēles uz Linux",
-            "body": "Linux spēlēm ar OpenGL, piemēram, Project Hospital, Mumcord parāda pareizo Steam palaišanas opciju kopēšanai, un tā darbojas arī pēc atjauninājumiem. Arī krāsas HDR spēlēs ir pareizas."
-          },
-          {
-            "id": "flatpak-steam",
-            "title": "Flatpak Steam un bezrāmju pilnekrāns",
-            "body": "Spēles pārklājums arī spēlēm no Steam kā Flatpak, bezrāmju pilnekrāna spēles pārbaudītas uz KDE un GNOME. Mumcord aizvēršana vai atjaunināšana vairs neizraisa avāriju spēlē, kas darbojas."
-          },
-          {
-            "id": "join-game-link",
-            "title": "“Pievienoties spēlei” caur Mumble Link",
-            "body": "“Pievienoties spēlei” arī spēlēm, kas caur Mumble Link kopīgo sava servera adresi."
+            "body": "Ja vēlies, citi redz, ko tu spēlē, ar Steam attēlu un spēles laiku. “Pievienoties spēlei” Steam spēlēm, kas to atbalsta, un spēlēm, kas dalās ar servera adresi caur Mumble Link."
           }
         ]
       },
@@ -997,13 +1077,13 @@
           {
             "id": "watch-party",
             "title": "Skatīšanās kopā",
-            "body": "YouTube watch party balss kanālā: visi vienlaikus redz to pašu video, ikviens var pauzēt un tīt, ar kopīgu atskaņošanas sarakstu.",
+            "body": "YouTube watch party balss kanālā: visi vienlaikus redz to pašu video, ikviens var pauzēt un tīt, ar kopīgu atskaņošanas sarakstu. Ja iegultie ir izslēgti privātuma iestatījumos, no YouTube vai Twitch netiek ielādēts nekas.",
             "alt": "Watch party peldošā logā ar dalībniekiem, vadīklām un nākamo video"
           },
           {
             "id": "screen-share",
             "title": "Ekrāna kopīgošana",
-            "body": "Ekrāns vai logs līdz 8 skatītājiem, 720p ar 30 kadriem sekundē. Uz Windows un macOS, ja gribi, ar kopīgotās lietotnes skaņu. To palaid ar Lietotņu pogu tērzēšanā.",
+            "body": "Ekrāns vai logs līdz 8 skatītājiem, 720p ar 30 kadriem sekundē, uz Windows un macOS, ja gribi, ar kopīgotās lietotnes skaņu. To palaid ar Lietotņu pogu tērzēšanā. Kamēr kopīgo, sarkana josla rāda skatītājus un “Beigt”, un citi redz sarkanu “LIVE” riņķi ap tavu attēlu.",
             "alt": "Kopīgots ekrāns peldošā logā ar pilnekrāna režīmu un “Beigt skatīties”"
           },
           {
@@ -1013,20 +1093,15 @@
             "alt": "Norādes tērzēšanas augšā par notiekošu watch party un kopīgotu ekrānu"
           },
           {
-            "id": "live",
-            "title": "Tiešraidē, un visi to redz",
-            "body": "Kamēr kopīgo ekrānu, sarkana josla virs tava profila to parāda, ar “Beigt” un skatītāju skaitu. Citi redz sarkanu apli ar “LIVE” ap tavu attēlu.",
-            "alt": "Sarkana josla “Tu kopīgo savu ekrānu” ar skatītāju skaitu un “Beigt”"
-          },
-          {
             "id": "ducking",
-            "title": "Klusāk, kamēr kāds runā",
-            "body": "Kamēr kāds kanālā runā, watch party un kopīgotā ekrāna skaņa kļūst klusāka un pēc tam atgriežas. Tu iestati, cik klusu, vai izslēdz to."
+            "title": "Skaņa watch party un kopīgošanai",
+            "body": "Kamēr kāds kanālā runā, watch party un kopīgotie ekrāni kļūst klusāki; cik klusāki, iestati pats. Īsas skaņas, kad kāds sāk vai pievienojas watch party vai kopīgo ekrānu, katru var izslēgt."
           },
           {
-            "id": "activity-sounds",
-            "title": "Skaņas watch party un kopīgošanai",
-            "body": "Īsa skaņa, kad kāds sāk watch party, pievienojas tai vai to pamet un kad kāds kopīgo savu ekrānu vai sāk skatīties tavējo. Katru skaņu var izslēgt."
+            "id": "relay",
+            "title": "Kopienas relejs",
+            "body": "Servera kopiena blakus Mumble serverim var darbināt releju. Pilna izmēra attēli un ekrāna kopīgošana tad darbojas pat tad, ja tiešs savienojums nav iespējams, un ar “vienmēr relejs” otrs cilvēks nekad neredz tavu IP adresi. Relejs nevar nolasīt šifrēto savienojumu, un balss to nekad neizmanto. Izvēlies sadaļā Iestatījumi → Privātums, arī katram serverim.",
+            "alt": "Privātuma iestatījumi ar peer-to-peer izvēlēm tiešs, relejs un izslēgts"
           }
         ]
       },
@@ -1043,36 +1118,26 @@
           {
             "id": "sounds",
             "title": "Skaņas un paziņojumi",
-            "body": "Katru notikumu var ieslēgt atsevišķi: pievienošanos, aiziešanu, ziņas, pieminējumus.",
+            "body": "Katru notikumu var ieslēgt atsevišķi: pievienošanos, aiziešanu, ziņas, pieminējumus un savu skaņu izmešanai vai izraidīšanai.",
             "alt": "Iestatījumi, skaņu un paziņojumu sadaļa"
           },
           {
             "id": "languages",
-            "title": "Maini valodu bez restarta",
-            "body": "Valoda stājas spēkā uzreiz. Komplektā arī teknes ikona, startēšana pie pieteikšanās un pilna lietošana ar tastatūru un ekrāna lasītāju.",
+            "title": "24 valodas, maināmas bez restartēšanas",
+            "body": "Visas 24 ES oficiālās valodas, no bulgāru līdz zviedru, stājas spēkā uzreiz, ieskaitot paplātes izvēlni. Katra norādīta ar savu nosaukumu. Komanda tulkojusi bez dzimtās valodas runātāju pārbaudes: labojumi ir laipni gaidīti kā issue. Pilna tastatūras un ekrāna lasītāja lietošana ir iekļauta.",
             "alt": "Iestatījumi, saskarnes valodas sadaļa"
           },
           {
             "id": "privacy",
             "title": "Bez telemetrijas",
-            "body": "Tava identitāte glabājas sistēmas drošajā krātuvē. Diagnostikas fails nesatur tērzēšanas saturu vai paroles un pamet tavu datoru tikai tad, ja tu to nosūti pats."
-          },
-          {
-            "id": "eu-languages",
-            "title": "Visas 24 oficiālās ES valodas",
-            "body": "No bulgāru līdz zviedru, ieskaitot teknes izvēlni. Katra valoda ir norādīta savā nosaukumā un atrodama pēc jebkura no saviem nosaukumiem. Tulkojusi komanda bez dzimtās valodas runātāju pārbaudes: labojumi ir laipni gaidīti kā pieteikums (issue)."
-          },
-          {
-            "id": "privacy-step",
-            "title": "Privātums vednī",
-            "body": "Pirmajā startā īss solis parāda, ar ko un kad Mumcord savienojas, ar saiti uz pilno privātuma paziņojumu.",
+            "body": "Pirmajā palaišanā īss solis parāda, ar ko un kad Mumcord savienojas. Tava identitāte glabājas sistēmas drošajā krātuvē, un diagnostikas fails nesatur tērzēšanas saturu vai paroles un pamet tavu datoru tikai tad, ja tu to nosūti pats.",
             "alt": "Vednis, privātuma solis"
           },
           {
             "id": "quick-settings",
             "title": "Ātrie iestatījumi zem zobrata",
-            "body": "Viens klikšķis uz zobrata: priekšskatījumi, tēma, pārklājums, mūzikas un spēles kopīgošana, profila rediģēšana un reģistrēšanās. Beta funkcijas, piemēram, telpiskā skaņa, ir savā sakļaujamā grupā.",
-            "alt": "Ātrie iestatījumi ar atvērtu Beta grupu"
+            "body": "Viens klikšķis uz zobrata: viena rinda katram iestatījumam sadaļās Paziņojumi, Kopīgošana, Izskats un Konts, ar skaidrojumu aiz mazas “?”. Beta funkcijas, piemēram, pozicionālais audio, atrodas savā grupā, kas sākumā ir sakļauta.",
+            "alt": "Ātrie iestatījumi, sagrupēti sadaļās Paziņojumi, Kopīgošana, Izskats un Konts"
           },
           {
             "id": "settings-search",
@@ -1100,30 +1165,98 @@
           },
           {
             "id": "dropdowns",
-            "title": "Sakārtoti iestatījumi",
-            "body": "Tēmai atbilstošas nolaižamās izvēlnes pārlūka izskata vietā, un visi iestatījumu lauki glīti izlīdzināti."
-          },
-          {
-            "id": "tooltips",
-            "title": "Rīka padomi tavā tēmā",
-            "body": "Katrs rīka padoms tavas tēmas izskatā, gaišs vai tumšs, un pieejams arī ar tastatūru."
+            "title": "Sakopti iestatījumi un rīka padomi",
+            "body": "Nolaižamās izvēlnes un rīka padomi tava motīva izskatā, nevis pārlūka, katrs ievades lauks iestatījumos glīti izlīdzināts, un katram rīka padomam var piekļūt arī ar tastatūru."
           },
           {
             "id": "packet-inspector",
             "title": "Pakešu inspektors atkļūdošanai",
-            "body": "Slēpts izstrādātājiem: septiņi klikšķi uz versijas sadaļā Iestatījumi → Par lietotni to atbloķē. Atsevišķā logā tas rāda, kādi Mumcord dati tiek nosūtīti un saņemti, ar filtriem, skaitītājiem un eksportu JSON vai Markdown formātā.",
+            "body": "Slēpts izstrādātājiem: septiņi klikšķi uz versijas sadaļā Iestatījumi → Par lietotni to atbloķē. Atsevišķā logā tas rāda, kādi Mumcord dati tiek nosūtīti un saņemti, ar filtriem, skaitītājiem un eksportu JSON vai Markdown formātā. Tas seko jaunām paketēm un ieraksta tikai tad, kad ir atvērts.",
             "alt": "Pakešu inspektors ar filtriem, skaitītājiem pēc veida un virziena un vienu izvērstu paketes rindu"
           },
           {
             "id": "clear-cache",
             "title": "Kešatmiņas iztīrīšana",
             "body": "Iestatījumi → Privātums rāda, cik daudz vietas aizņem saišu priekšskatījumi, attēli un tīmekļa dzinējs, un iztīra tos ar vienu pogas spiedienu, arī pa vienam. Tērzēšanas vēsture, serveri, draugi un piezīmes netiek aiztikti."
+          },
+          {
+            "id": "dnd",
+            "title": "Netraucēt",
+            "body": "Viens slēdzis ātrajos iestatījumos, iestatījumos vai paplātes izvēlnē apklusina paziņojumu skaņas un uznirstošos logus visos serveros. Balss turpina darboties, un nelasīto skaitītāji turpina skaitīt. Uz KDE Plasma, GNOME un Windows tas var sekot sistēmas režīmam Netraucēt.",
+            "alt": "Skaņu un paziņojumu iestatījumi ar Netraucēt un “Sekot sistēmas režīmam Netraucēt”"
+          },
+          {
+            "id": "tray",
+            "title": "Pilnīga paplātes izvēlne",
+            "body": "Paplātes izvēlne rāda katru pievienoto serveri ar tā stāvokli un kanālu, izslēdz mikrofonu un skaņu, ieslēdz Netraucēt, pārslēdz balsi uz citu serveri vai kanālu un atver nesenās tērzēšanas. Ikona rāda runāšanu, izslēgtu mikrofonu, nelasītas ziņas un Netraucēt. Mumcord palaižas pēc pieteikšanās, ja vēlies, uz jebkuras sistēmas.",
+            "alt": "Paplātes izvēlne ar serveriem, balss kanāla apakšizvēlni un nesenajām tērzēšanām"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.5.0",
+      "teaser": "Paziņojumu centrs, visas privātās ziņas vienuviet, bloķēšana, vairākas identitātes un imports no Mumble.",
+      "summary": "Liels atjauninājums tērzēšanai un privātumam: paziņojumu centrs, visas privātās ziņas vienuviet ar taviem noteikumiem, kas drīkst tev rakstīt, bloķēšana, vairākas identitātes un pāreja no Mumble dažos klikšķos. Turklāt kopienas relejs attēliem un ekrāna kopīgošanai, mūzika un audio tērzēšanā, publisko serveru pārlūks un mazas aiztures režīms kopīgai muzicēšanai.",
+      "groups": [
+        {
+          "title": "Jaunumi",
+          "items": [
+            "Paziņojumu centrs aiz zvaniņa tērzēšanas galvenē (Ctrl+Shift+N) apkopo visu, kam vajadzīga tava uzmanība, visos pieslēgtajos serveros: pieminēšanas, atbildes, tērzēšanas un ziņu pieprasījumus ar pogām Pieņemt un Noraidīt, uzaicinājumus uz kopīgu skatīšanos un ekrāna kopīgošanu, kā arī serverus, kas vairs nav sasniedzami. Ar klikšķi tiec pie ziņas.",
+            "Netraucēt: viens slēdzis ātrajos iestatījumos, iestatījumos un paplātes izvēlnē izslēdz paziņojumu skaņas un uznirstošos logus visos serveros. Balss turpina darboties, un nelasītās ziņas joprojām tiek skaitītas. Ja vēlies, Mumcord seko sistēmas režīmam „Netraucēt” KDE Plasma, GNOME un Windows vidē.",
+            "Paplātes izvēlne rāda katru pieslēgto serveri ar tā kanālu, kā arī Izslēgt mikrofonu, Izslēgt skaņu un Netraucēt. No turienes balsi pārvieto uz citu serveri vai kanālu un atver pēdējās privātās sarunas. Paplātes ikona parāda, kad kāds runā, kad esi izslēgts un kad ir nelasītas ziņas.",
+            "Visas privātās ziņas vienuviet: poga Ziņas servera joslas augšā rāda katru sarunu no visiem pieslēgtajiem serveriem, ar meklēšanu, filtriem, piespraušanu un izslēgšanu. Tā aizstāj sarakstu Tiešās ziņas zem kanālu koka. Personas izvēlne tagad sākas ar Sūtīt ziņu, Pievienoties kanālam un Pievienot draugu.",
+            "Tu pats izlem, kas drīkst tev rakstīt privāti: visi, tikai draugi vai neviens, arī katram serverim atsevišķi. Cilvēki tavā kanālā un pieņemtās sarunas vienmēr tiek cauri. Pārējie gaida sadaļā Ziņu pieprasījumi, un Mumcord lietotāji var nosūtīt tērzēšanas pieprasījumu ar īsu piezīmi. Mumcord filtrē tavā pusē, tāpēc sūtītājs to nezina. Pieņemtu sarunu vēlāk vari atsaukt.",
+            "Bloķē cilvēkus: viņu privātās ziņas un pieprasījumi pazūd, viņu kanāla ziņas tiek sakļautas, un viņu balss tev tiek izslēgta. Bloķēšana seko cilvēka sertifikātam, tāpēc attiecas uz visiem serveriem, un jauns vārds to neapiet. Ne serveris, ne cilvēks par to netiek informēts; Iestatījumi → Privātums rāda tavus bloķējumus.",
+            "@channel un @all sasniedz visus kanālā un skaitās kā personiska pieminēšana. Citi Mumble klienti redz tikai vārdus, un tu vari tos izslēgt katram serverim atsevišķi.",
+            "Audio un mūzika tērzēšanā: tiešas saites uz audio failiem, piemēram, mp3, ogg, wav vai flac, saņem nelielu atskaņotāju. Saites uz Spotify, SoundCloud un YouTube Music tiek atskaņotas paša pakalpojuma atskaņotājā, kad nospied Atskaņot; Apple Music, Tidal, Deezer un Bandcamp saņem karti ar saiti. Nekas netiek atskaņots pats no sevis, un, ja saišu priekšskatījumi ir izslēgti, nekas netiek ielādēts.",
+            "mumble:// saites tērzēšanā rāda karti ar serveri, kanālu, ping un to, cik cilvēku ir tiešsaistē, ar pogām Pievienoties un Pievienot serveriem. Parole saitē nekad netiek rādīta.",
+            "Kanālus ir vieglāk apstrādāt: ar labo klikšķi uz kanāla atveras izvēlne ar Pievienoties, Sekot, Kopēt kanāla saiti, Kanāla informācija un citu. Kanāli rāda savu lietotāju limitu, piemēram, Raid (1/10), un pilnie ir aptumšoti. Ar nepieciešamo atļauju cilvēkus vari ievilkt citā kanālā. Kanāla informācija rāda aprakstu, lietotājus, tavas atļaujas un saistītos kanālus.",
+            "Mazas aiztures režīms kopīgai muzicēšanai (Beta): apmēram 40 nevis 100 milisekundes no mutes līdz ausij, plus tīkls. Tas pārslēdzas bez atkārtotas pieslēgšanās un darbojas ar standarta serveriem. Ieteicamas austiņas.",
+            "Audio katram kanālam: “Šī kanāla audio…” dod kanālam savus iestatījumus ar sagatavēm Balss, Mūzika un Džems. Tie tiek piemēroti, kad pievienojies, un, kad aizej, atgriežas tavi parastie iestatījumi.",
+            "Ātrās izvēlnes balss joslā: ar labo klikšķi uz mikrofona vai austiņām atveras ierīces, skaļums un līmeņa mērītājs, savienojuma informācija par balss kvalitāti un bitu pārraides ātrumu, un nolikšanas poga piedāvā Pamest balsi (paliec pieslēgts un tērzē tālāk) vai Atvienoties no visiem serveriem.",
+            "Serveru pārlūks servera joslā rāda publiskos Mumble serverus, ar meklēšanu un filtriem pēc valsts un ping. Pieslēgties saglabā un pieslēdzas ar vienu klikšķi. Saraksts tiek ielādēts tikai tad, kad atver pārlūku.",
+            "Servera dialogs ir sadalīts četrās cilnēs un satur Pārbaudīt savienojumu, kas pārbauda ping, servera versiju un sertifikātu, neko nesaglabājot. Servera informācija rāda versiju, ierobežojumus, tavas atļaujas un TLS sertifikātu. Saglabātās kanālu paroles parāda, kuram kanālam tās pieder.",
+            "Vairākas identitātes: Iestatījumi → Identitāte pārvalda vairākus sertifikātus, ar importu, eksportu, pārdēvēšanu un noklusējumu. Katrs serveris var izmantot savu identitāti. Tava pašreizējā kļūst par “Noklusējumu”, un viss pieslēdzas kā agrāk.",
+            "Imports no Mumble: ja ir instalēts oficiālais Mumble klients, iestatīšanas vednis (vai Iestatījumi → Serveri) pārnes tavus izlases serverus, saglabātās paroles, sertifikātu, audio ierīces un push-to-talk taustiņu. Nekas netiek pārrakstīts, Mumble faili tiek tikai lasīti, un importu var atcelt.",
+            "Kopienas relejs: pilna izmēra attēli un ekrāna kopīgošana var iet caur releju, ko servera kopiena darbina līdzās savam Mumble serverim. Tas tikai pārsūta šifrēto savienojumu un, ja vēlies, slēpj tavu IP adresi no otra cilvēka. Tad ekrāna kopīgošana darbojas arī bez tiešā savienojuma. Balss nekad neizmanto releju.",
+            "Windows sistēmā Mumcord ir pieejams arī kā portatīvs zip: izpako, palaid, bez instalēšanas. Dati un iestatījumi paliek mapē līdzās programmai.",
+            "Paslēp dalībnieku kolonnu, lai tērzēšana aizņemtu visu platumu: ar pogu tērzēšanas galvenē vai Ctrl+Shift+M. Šaurā logā tā izslīd virs tērzēšanas.",
+            "Izmests vai nobloķēts? Mumcord tam atskaņo skaņu: pļauku par izmešanu, burlesku spērienu par bloķēšanu. Abus var izslēgt.",
+            "Servera informācija rāda, vai serveris paziņo par releju vai Mumbotu, un brīdina, kad relejs ir mainījies.",
+            "Čukstēšana un kliegšana: runā ar izvēlētiem cilvēkiem vai ar visiem kanālā, tur nepārvietojoties, ar turēšanas runas taustiņu katram mērķim un joslu virs tērzēšanas, kas rāda, ar ko runā.",
+            "Atjauninājumi lietotnē: Mumcord pārbauda jaunas versijas, parāda, kas mainījies, un uzstāda tās ar vienu klikšķi. Katrs lejupielādētais fails tiek pārbaudīts pēc sava paraksta un kontrolsummām.",
+            "Trokšņu slāpēšana četros līmeņos: Viegls, Standarta, Uzlabots (AI, beta, ar 2024. gada RNNoise modeli) un Izslēgts, katrs izskaidrots ar „?”."
+          ]
+        },
+        {
+          "title": "Uzlabojumi",
+          "items": [
+            "Lietotāja panelis zem kanālu saraksta ir pārveidots: tas visos stāvokļos saglabā to pašu augstumu, tāpēc saraksts virs tā nekad nelēkā, rāda vienu skaidru statusa rindu un katrai balss pogai ir neliela izvēlnes bultiņa.",
+            "Ātrie iestatījumi ir mierīgāki: viena rinda katram iestatījumam skaidrās grupās, paskaidrojumi aiz neliela ?, un grupa Beta sākumā ir sakļauta.",
+            "Ja saišu priekšskatījumi ir izslēgti, tie vairs nepazūd klusām: neuzkrītoša rindiņa zem ziņas pasaka, kas tika paslēpts, un ved uz iestatījumu.",
+            "“Palaist iestatīšanas vedni vēlreiz” sadaļā Iestatījumi → Par vēlreiz izvada cauri mikrofonam, privātumam, atjauninājumu norādei un runas režīmam. Tava identitāte paliek neskarta, un tiek saglabāts tikai tas, ko mainīsi.",
+            "Pakešu inspektors seko jaunajām paketēm, apstājas, kad ritini uz augšu, un ieraksta tikai tad, kad ir atvērts.",
+            "Serveru un kanālu koks pēc noklusējuma ir par ceturtdaļu platāks, tāpēc ietilpst garāki kanālu nosaukumi. Platumi, ko iestatī pats, paliek."
+          ]
+        },
+        {
+          "title": "Labots",
+          "items": [
+            "Tavas paša ziņas nekad neatskaņo pieminēšanas skaņu, nerāda paziņojumu un netiek skaitītas kā nelasītas.",
+            "Kopīgā skatīšanās ievēro iestatījumu “Rādīt saišu priekšskatījumus un iegultos elementus”: kad tas ir izslēgts, no YouTube vai Twitch netiek ielādēts nekas, un norāde ved uz iestatījumu.",
+            "Linux ar PipeWire: ierīču saraksti rāda katru ievadi un izvadi tā, kā darbvirsmas skaņas iestatījumi, piemēram, “System” un “Chat” RØDECaster Pro II vietā, nevis vienu “USB Audio”.",
+            "Servera informācijas logs tagad ir tulkots visās 24 valodās.",
+            "Tavas paša ziņas vairs neatskaņo pieminēšanas skaņu, nerāda paziņojumu un vairs netiek skaitītas kā nelasītas."
+          ]
+        }
+      ],
+      "known": [
+        "Windows instalētājs joprojām nav parakstīts."
+      ]
+    },
     {
       "version": "0.4.4",
       "teaser": "Kopē un lejupielādē kodu, saglabā attēlus ar labo klikšķi, iztīri kešatmiņu, stabilāka balss slodzes laikā.",
@@ -2448,7 +2581,8 @@
         "webhook": "Iestati API atslēgu un atļautos kanālus failā `bot.toml`. Tad `curl` uz `http://127.0.0.1:8080/message` publicē ziņu kanālā.",
         "more": "Tālāk aprakstītie soļi detalizēti izskaidro katru daļu.",
         "music": "Ieliec MP3 mapē `media` un iestati API atslēgu failā `bot.toml`. Tad pieprasījums uz `http://127.0.0.1:8081` tos atskaņo kanālā.",
-        "history": "Failā `bot.toml` iestati, cik ilgi bots glabā čatu. Viņam vajag lasīšanas piekļuvi kanāliem."
+        "history": "Failā `bot.toml` iestati, cik ilgi bots glabā čatu. Viņam vajag lasīšanas piekļuvi kanāliem.",
+        "relayRegistered": "Ar iestatījumu „Tikai reģistrēti lietotāji“ releja žetonus saņem tikai serverī reģistrēti cilvēki (noklikšķini ar peles labo pogu uz sava vārda → Reģistrēt)."
       },
       "advanced": "Papildus",
       "pluginLimit": "Slēpto pakešu sekundē",
@@ -2472,7 +2606,12 @@
         "show": "Parādi paroles un pieraksti tās"
       },
       "copyAll": "Nokopē visu uzreiz",
-      "needsMumbot": "Webhook, relejs, mūzika un vēsture darbojas kopā kā viens Mumbot ar moduļiem. Tas nāks līdz ar Mumbot 0.2.0."
+      "needsMumbot": "Webhook, relejs, mūzika un vēsture darbojas kopā kā viens Mumbot ar moduļiem. Tas nāks līdz ar Mumbot 0.2.0.",
+      "relayAccess": {
+        "label": "Relejs priekš",
+        "registered": "Tikai reģistrēti lietotāji",
+        "all": "Visi, arī viesi"
+      }
     },
     "stepsCta": "Soli pa solim"
   },
@@ -2654,6 +2793,17 @@
           "Ziņu kartītes: webhook sūta brīdinājumus ar virsrakstu, statusa krāsu, grafiku un saiti, ko Mumcord rāda kā kartīti",
           "Regulējams bitu pārraides ātrums runai un mūzikai, nekad virs servera robežas",
           "Peer modulis: reģistrē servera lietotājus mumpeer starpserverī un paziņo Mumcord, ka starpserveris pastāv"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Drošāks releis",
+        "summary": "Pēc releja drošības pārbaudes: kas saņem žetonus, uz cik ilgu laiku un cik daudz.",
+        "items": [
+          "Releja žetoni tikai reģistrētiem lietotājiem, ja vēlies, arī viesiem",
+          "Servera pamešana beidz piekļuvi relejam, bet tikai līdz ar pēdējo sesiju",
+          "Ierobežojumi katram sertifikātam žetonu pieprasījumiem un atvērtiem savienojumiem",
+          "Drošāka konfigurācija: nekāda vienkārša HTTP uz releju citā datorā, noslēpumi tiek pārbaudīti stingri"
         ]
       },
       {

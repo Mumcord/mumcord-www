@@ -534,20 +534,58 @@
       "commits": "commits",
       "join": "Bidra på GitHub",
       "toolTitle": "Bidragsgivare"
+    },
+    "spotlight5": {
+      "label": "Nytt i 0.5.0",
+      "labelSoon": "På väg: 0.5.0",
+      "title": "Mer lugn. Mer du. Mer ljud.",
+      "body": "0.5.0 ger dig Epic 3: ett aviseringscenter, blockering, flera identiteter, ett nytt kanalträd, musik i chatten, ett läge med låg latens för att spela musik ihop och direktanslutningar via ett relä.",
+      "tiles": {
+        "notifications": {
+          "title": "Allt på ett ställe",
+          "body": "Klockan samlar omnämnanden, svar, förfrågningar och inbjudningar från alla servrar. Den som stör dig blockeras och känns igen på sitt certifikat."
+        },
+        "identities": {
+          "title": "Flera identiteter",
+          "body": "Privat, klan, jobb: per server väljer du vem du ansluter som."
+        },
+        "tree": {
+          "title": "Ett nytt kanalträd",
+          "body": "Högerklick på varje kanal, användargränsen intill namnet, tydliga ikoner och en meny bakom kanalnamnet."
+        },
+        "lowLatency": {
+          "title": "Spela musik ihop",
+          "body": "Läget med låg latens ger ungefär 40 i stället för 90 ms från mun till öra, och varje kanal minns sina egna ljudinställningar."
+        },
+        "music": {
+          "title": "Musik i chatten",
+          "body": "Ljudfiler spelas direkt i chatten, och länkar till Spotify, Apple Music och fler blir ett musikkort."
+        },
+        "relay": {
+          "title": "Direktanslutningar, överallt",
+          "body": "Skärmdelning och stora bilder fungerar även bakom CGNAT, och om du vill ser ingen din IP-adress."
+        }
+      },
+      "features": "Alla funktioner",
+      "changelog": "Alla nyheter"
+    },
+    "serverCta": {
+      "title": "Din egen server på fem minuter",
+      "body": "Kryssa i rutorna, kopiera kommandot, klart: konfiguratorn bygger din docker-compose.yml med relä och botar.",
+      "button": "Öppna konfiguratorn"
     }
   },
   "features": {
     "title": "Funktioner",
     "description": "Alla Mumcord-funktioner med skärmbilder: servrar och certifikat, följa kanaler, chatt med förhandsvisningar och @omnämnanden, push-to-talk, ljud och bekvämlighet.",
     "label": "Vad Mumcord kan",
-    "intro": "Allt Mumcord gör, med en bild där det finns en, plus det som kommer i nästa version. Filtret visar betafunktioner eller vad som är nytt i vilken version. Saknar du något eller är något trasigt? Berätta på GitHub.",
+    "intro": "Allt Mumcord kan, med en bild där det finns en, plus vad som kommer med nästa version. Filtret visar vad som är nytt i de två senaste versionerna. Saknar du något eller fungerar något inte? Berätta på GitHub.",
     "contents": "Innehåll",
     "newIn": "nytt i",
     "comingIn": "kommer i",
     "beta": "Beta",
     "filterLabel": "Filter",
     "filterAll": "Alla",
-    "filterBeta": "Beta",
     "filterEmpty": "Inga funktioner för det här filtret.",
     "jump": "Hoppa till",
     "statFeatures": "funktioner",
@@ -590,13 +628,13 @@
           {
             "id": "reconnect",
             "title": "Återanslut med allt på plats",
-            "body": "Om anslutningen bryts är du tillbaka i samma kanal med din mikrofon- och ljudavstängning och dina följda kanaler. Efter en omstart erbjuder Mumcord att gå tillbaka till din senaste röstkanal.",
+            "body": "Om anslutningen bryts är du tillbaka i samma kanal med din mikrofon- och ljudavstängning och dina följda kanaler. Efter en omstart erbjuder Mumcord att gå tillbaka till din senaste röstkanal. När en anslutning misslyckas namnger bannern servern och försvinner efter 60 sekunder eller med ✕; serverikonen fortsätter att visa felet.",
             "alt": "Banner som erbjuder att gå tillbaka till den senaste röstkanalen"
           },
           {
             "id": "several-servers",
             "title": "Flera servrar samtidigt",
-            "body": "Upp till 5 servrar anslutna samtidigt, går att ställa in upp till 15. Du pratar på en och läser, skriver och får aviseringar på alla. Varje server återansluter på egen hand efter ett avbrott.",
+            "body": "Upp till 5 servrar anslutna samtidigt, går att ställa in upp till 15. Du pratar på en och läser, skriver och får aviseringar på alla. Varje server återansluter på egen hand efter ett avbrott. ”Gå med i kanal” funkar även för vänner på en annan server, och mumble:// länkar till en ansluten server hoppar direkt dit.",
             "alt": "Serverfält med flera anslutna servrar, en högtalarmarkering på röstservern och antal omnämnanden"
           },
           {
@@ -611,24 +649,51 @@
             "body": "Paket för Debian och Ubuntu, Fedora och openSUSE, Arch (AUR: mumcord-bin) och AppImage, för x86_64 och ARM64, även med en rad i terminalen. Valfritt ett tips när en ny version finns."
           },
           {
-            "id": "server-notices",
-            "title": "Aviseringar per server",
-            "body": "Aviseringar och privata meddelanden visar servernamnet, och varje server kan tystas för sig."
+            "id": "mumble-import",
+            "title": "Importera från Mumble",
+            "body": "Om den officiella Mumble-klienten (1.4 eller 1.5) är installerad erbjuder installationsguiden att ta över dina favoritservrar med lösenord, ditt certifikat som en ny identitet så att du behåller ditt registrerade namn, dina ljudenheter och din push-to-talk-tangent. Du väljer varje del i en förhandsvisning, servrar du redan har hoppas över, och ”Ångra import” tar tillbaka allt. Senare också under Inställningar → Servrar.",
+            "alt": "Guidens steg ”Importera från Mumble” med en kryssruta för varje del som hittats"
           },
           {
-            "id": "across-servers",
-            "title": "Gå med över servergränser",
-            "body": "”Gå med i kanal” funkar även för vänner på en annan server, och mumble:// länkar till en ansluten server hoppar direkt dit."
+            "id": "identities",
+            "title": "Flera identiteter",
+            "body": "Inställningar → Identitet hanterar flera klientcertifikat: skapa, importera, byt namn, exportera och säkerhetskopiera. Varje server använder standardidentiteten eller en egen, och chattrubriken visar vilken som används när det inte är standardidentiteten. Certifikat och nycklar stannar i systemets säkra lagring.",
+            "alt": "Identitetshanteraren med flera identiteter, deras fingeravtryck och de servrar som använder dem"
           },
           {
-            "id": "autostart",
-            "title": "Starta vid inloggning",
-            "body": "”Starta Mumcord när jag loggar in” finns på alla system."
+            "id": "server-dialog",
+            "title": "Serverdialog med flikar",
+            "body": "Att lägga till eller ändra en server är uppdelat i Anslutning, Identitet, Lösenord och Beteende. Fel pekas ut direkt vid fältet, ”Testa anslutningen” rapporterar ping, serverversion och certifikat utan att spara något, och sparade kanallösenord visar vilken kanal de hör till, till exempel ”Officers (Raid)”.",
+            "alt": "Dialogen ”Lägg till server” med flikarna Anslutning, Identitet, Lösenord och Beteende"
           },
           {
-            "id": "failure-banner",
-            "title": "Felbanners som inte tjatar",
-            "body": "När en anslutning misslyckas namnger bannern servern och försvinner efter 60 sekunder eller med ✕. Serverikonen fortsätter att visa felet."
+            "id": "server-browser",
+            "title": "Hitta publika servrar",
+            "body": "Sökknappen i serverfältet öppnar listan över publika Mumble-servrar: sök på namn, adress eller land, filtrera på land och ping, dölj tomma eller fulla servrar. ”Anslut” sparar och går med med ett klick. Listan laddas först när du öppnar den, och bara raderna på skärmen pingas.",
+            "alt": "Publik serverbläddrare med sökning, land- och pingfilter och en lista med servrar"
+          },
+          {
+            "id": "server-info",
+            "title": "Serverinfo",
+            "body": "Servermenyn visar namn, adress, version, välkomsttext, gränser, tillåtna codecs, dina behörigheter och hur många som använder Mumcord, plus TLS-certifikatet med fingeravtryck och giltighet. ”Kopiera diagnostik” lägger allt i urklipp för felrapporter. Funkar med alla vanliga Mumble-servrar.",
+            "alt": "Serverinfo med version, gränser och TLS-certifikatets fingeravtryck, utfärdare och giltighet"
+          },
+          {
+            "id": "setup-again",
+            "title": "Kör installationsguiden igen",
+            "body": "Inställningar → Om går igenom installationen en gång till så att du kan se över mikrofon, integritet, uppdateringskontroll och pratläge. Identitetssteget hoppas över, så inget om ditt certifikat kan ändras av misstag, och bara värden du faktiskt ändrat sparas.",
+            "alt": "Installationsguiden körd igen från inställningarna, med identitetssteget markerat som överhoppat"
+          },
+          {
+            "id": "windows-portable",
+            "title": "Portabel på Windows",
+            "body": "Förutom installationsprogrammet finns en zip som körs utan installation: packa upp den och starta Mumcord.exe. Data, inställningar och loggar ligger kvar i en mapp bredvid, och ingen mumble://-hanterare eller start vid inloggning ställs in om du inte slår på det."
+          },
+          {
+            "id": "updater",
+            "title": "Uppdateringar i appen",
+            "body": "Mumcord söker efter en ny version vid start och var 12:e timme, visar vad som har ändrats sedan din version och installerar den med ett klick. Varje nedladdning kontrolleras mot Mumcords signatur och utgåvans kontrollsummor innan den installeras; du kan hoppa över en version eller bli påmind senare.",
+            "alt": "Dialogrutan „Uppdatering tillgänglig” med ändringarna sedan din version"
           }
         ]
       },
@@ -657,68 +722,67 @@
           {
             "id": "right-click",
             "title": "Högerklicka på folk",
-            "body": "Se profilen, tysta bara för dig, ställ in volymen från 0 till 200 % eller skicka ett privat meddelande. Mumcord kommer ihåg det per person.",
-            "alt": "En persons snabbmeny med volymreglage"
-          },
-          {
-            "id": "person-card",
-            "title": "Dubbelklicka för privata meddelanden",
-            "body": "Dubbelklicka på en person för att öppna den privata chatten. Ett klick fäster personens kort, med knappar för privat meddelande och profil."
+            "body": "Skicka ett meddelande, gå med i deras kanal eller lägg till som vän högst upp, sedan profil, tysta bara för dig och volym från 0 till 200 %, ihågkommet per person. Om du inte får gå med visas orsaken. Ett dubbelklick öppnar den privata chatten.",
+            "alt": "Personmeny med Skicka meddelande, Gå med i kanal och Lägg till vän överst"
           },
           {
             "id": "profile",
-            "title": "Ny profil",
-            "body": "Banner, märke, musik eller spel och alla inställningar för den personen. Ändringar gäller direkt med ett kort ”Sparat”. Högerklicksmenyn har ikoner och reglage.",
+            "title": "Profil",
+            "body": "Banner, märke, musik eller spel och en kommentar med fetstil, kursiv, länkar och listor. Volym, tystning och en privat anteckning om personen ligger hopfällda i den; ändringar gäller direkt med ett kort ”Sparat”.",
             "alt": "Fullständig profil med musik, inställningar för den personen och en privat anteckning"
-          },
-          {
-            "id": "join-channel",
-            "title": "Gå med i en persons kanal",
-            "body": "Högerklicka på en person eller en vän: ”Gå med i ‹kanal›” tar dig direkt till deras kanal. Om servern inte tillåter det visas orsaken bredvid.",
-            "alt": "Personmeny med ”Gå med i kanal”"
           },
           {
             "id": "member-column",
             "title": "Högerkolumn med sektioner",
-            "body": "”I ‹kanal›”, ”I andra kanaler” med alla andra på servern, och ”Vänner”, var och en hopfällbar. Mumcord kommer ihåg vad som är öppet. Till vänster ligger ”Serveröversikt” ovanför kanalträdet.",
+            "body": "”I ‹kanal›”, ”I andra kanaler” med alla andra på servern, och ”Vänner”, var och en hopfällbar. Mumcord kommer ihåg vad som är öppet.",
             "alt": "Högerkolumn med ”I andra kanaler” öppen"
           },
           {
             "id": "connection-quality",
             "title": "Anslutningskvalitet",
-            "body": "En profil visar i en snabb blick om anslutningen är bra, okej eller svag, och utfälld visar den ping, paketförlust och bandbredd. En liten signalikon markerar vem som har svag anslutning just nu.",
+            "body": "En profil visar i en snabb blick om anslutningen är bra, okej eller svag, och utfälld visar den ping, paketförlust och bandbredd. En liten signalikon markerar vem som har svag anslutning just nu. Admins ser dessutom klient och operativsystem, till exempel ”Mumcord 0.4.0” eller ”Mumble 1.5”.",
             "alt": "Profilkort med anslutningen utfälld: ping, paketförlust, bandbredd, klient och operativsystem"
           },
           {
-            "id": "listeners",
-            "title": "Lyssnare med ett öra",
-            "body": "Den som bara lyssnar på en kanal syns i den vanliga listan med en öron-ikon i stället för i en egen grupp."
-          },
-          {
-            "id": "client-info",
-            "title": "Klient och system för admins",
-            "body": "Admins ser dessutom i en profil vilken klient och vilket operativsystem någon använder, till exempel ”Mumcord 0.4.0” eller ”Mumble 1.5”."
-          },
-          {
             "id": "channel-filters",
-            "title": "Dölj tomma kanaler",
-            "body": "Stora servrar fryser inte längre när de visas första gången. Plus reglagen ”Dölj tomma kanaler” och ”Talande först”."
-          },
-          {
-            "id": "profile-comment",
-            "title": "Formaterad profilkommentar",
-            "body": "Din profilkommentar klarar fetstil, kursiv, länkar och listor."
-          },
-          {
-            "id": "person-settings",
-            "title": "Inställningar per person",
-            "body": "Volym, tystning och en anteckning om någon ligger hopfällda i personens profil. När något ändras visar raden det en kort stund, till exempel ”Volym 60 %”."
+            "title": "Städad kanallista",
+            "body": "Reglage för ”Dölj tomma kanaler” och ”Talande först”, och stora servrar fryser inte längre när de visas första gången. Den som bara lyssnar på en kanal syns i den vanliga listan med en öron-ikon."
           },
           {
             "id": "channel-passwords",
             "title": "Kanaler med lösenord",
             "body": "Om en kanal kräver lösenord frågar Mumcord efter det och kommer ihåg det per server, även efter en återanslutning. Kanaler du inte får gå in i visar ett litet lås.",
             "alt": "Kanal med ett lås och fönstret för kanallösenordet"
+          },
+          {
+            "id": "channel-tree",
+            "title": "Kanalträd med meny",
+            "body": "Högerklicka på en kanal för att gå med i eller följa den, ställa in dess ljud, kopiera dess länk, öppna kanalinfo eller flytta dit folk om du får. Kanaler med gräns visar den, till exempel ”Raid (1/10)”, fulla är nedtonade, och tillfälliga och länkade kanaler får ikoner. Med behörighet drar du folk till en annan kanal. Överst ligger servern med en anslutningsprick och ”N online · ping”.",
+            "alt": "Kanalträd med en kanals högerklicksmeny öppen"
+          },
+          {
+            "id": "channel-header",
+            "title": "Kanalnamn med meny",
+            "body": "Ögat framför kanalnamnet följer eller slutar följa kanalen. Ett klick på namnet öppnar Följ, Kopiera kanallänk, Kanallösenord, Kanalinfo och Rensa chatthistorik. Kanalinfo visar sökväg, beskrivning, användargräns, länkade kanaler och dina behörigheter där.",
+            "alt": "Kanalinfo med sökväg, beskrivning, användare, användargräns, länkade kanaler och behörigheter"
+          },
+          {
+            "id": "hide-members",
+            "title": "Dölj medlemskolumnen",
+            "body": "En knapp i chattrubriken, eller Ctrl+Shift+M, döljer högerkolumnen så att chatten får hela bredden. Knappen visar då hur många som är i kanalen och en grön prick medan någon pratar. I ett smalt fönster glider kolumnen in över chatten.",
+            "alt": "Chatt i full bredd med medlemskolumnen dold och medlemsknappen i rubriken"
+          },
+          {
+            "id": "message-privacy",
+            "title": "Vem som får skriva till dig",
+            "body": "Inställningar → Integritet: privata meddelanden från alla, bara vänner eller ingen, även per server. Personer i din kanal och konversationer du accepterat kommer alltid fram. Andra meddelanden väntar som meddelandeförfrågningar som du accepterar eller avslår, och Mumcord-användare kan skicka en chattförfrågan med en kort notering. Avsändaren får aldrig veta något.",
+            "alt": "Meddelandeförfrågningar med en chattförfrågan, dess notering och knapparna Acceptera och Avslå"
+          },
+          {
+            "id": "block-users",
+            "title": "Blockera folk",
+            "body": "”Blockera …” i personmenyn döljer personens privata meddelanden och förfrågningar, fäller ihop deras kanalmeddelanden och tystar deras röst, bara för dig. Blockeringen följer certifikatet, så den gäller över servrar och nya namn. Inget skickas till servern eller personen, och Inställningar → Integritet listar alla du blockerat med ”Avblockera”.",
+            "alt": "Bekräftelse för att blockera en person som listar vad som ändras"
           }
         ]
       },
@@ -741,7 +805,7 @@
           {
             "id": "previews",
             "title": "Länkförhandsvisningar",
-            "body": "Länkar får ett kort med titel, beskrivning och bild. Mumcord hämtar dem själv, aldrig från adresser i det lokala nätverket; varje kort kan stängas, och funktionen kan stängas av i guiden och i inställningarna.",
+            "body": "Länkar får ett kort med titel, beskrivning och bild. Mumcord hämtar dem själv, aldrig från adresser i det lokala nätverket; varje kort kan stängas, och funktionen kan stängas av i guiden och i inställningarna. Högerklick på en länk ger ”Kopiera länk” och ”Öppna länk”.",
             "alt": "Chatt med en länkförhandsvisning"
           },
           {
@@ -752,32 +816,32 @@
           },
           {
             "id": "spotify",
-            "title": "Spotify",
-            "body": "Spotify-länkar får också ett kort, med omslag, titel och artist; spelaren kommer först när du klickar.",
-            "alt": "Chatt med ett Spotify-kort"
+            "title": "Musiklänkar",
+            "body": "Spotify, SoundCloud och YouTube Music spelas i tjänstens officiella spelare, som först laddas när du trycker på Spela. Apple Music, Tidal, Deezer, Bandcamp och andra musiksidor får samma kort med omslag, titel och artist och ”Öppna i …”. Startar du en spelare stoppas den andra.",
+            "alt": "Musikkort med omslag, titel, artist och tjänstens namn"
           },
           {
             "id": "images",
             "title": "Bilder och GIF:ar i chatten",
-            "body": "Externa bilder och bildlänkar visas direkt i meddelandet, GIF:ar från Giphy och Tenor spelas upp och anger sin källa.",
+            "body": "Externa bilder och bildlänkar visas direkt i meddelandet, GIF:ar från Giphy och Tenor spelas upp och anger sin källa. Skärmbilder och kopierade bilder lägger du i meddelandefältet med Ctrl+V.",
             "alt": "Chatt med en bild och en GIF"
           },
           {
             "id": "image-viewer",
             "title": "Bildvisare",
-            "body": "Klicka på en bild för att se den stort: zooma med scrollhjulet eller tangenterna, panorera, bläddra med piltangenterna genom alla bilder i chatten och ”Spara bild”.",
+            "body": "Klicka på en bild för att se den stort: zooma, panorera och bläddra med piltangenterna genom alla bilder i chatten. Full storlek laddas i bakgrunden med en smal förloppsindikator. Högerklicka för att kopiera bilden, spara den i original, en GIF med sin animation, eller kopiera dess adress.",
             "alt": "Bildvisare med zoomverktygsfält"
           },
           {
             "id": "mentions",
             "title": "@omnämnanden",
-            "body": "Skriv @ så föreslår Mumcord namn. Omnämnanden markeras, aviserar dig även i tysta kanaler och har ett eget ljud.",
+            "body": "Skriv @ så föreslår Mumcord namn. Omnämnanden markeras, aviserar dig även i tysta kanaler och har ett eget ljud. Hovra över ett omnämnande för en förhandsvisning, klicka för profilen, högerklicka för menyn.",
             "alt": "Meddelandefält med ett namnförslag efter @"
           },
           {
             "id": "code",
             "title": "Kod och formatering",
-            "body": "Kodblock med syntaxmarkering, ett formateringsverktygsfält ovanför inmatningen och kortkommandon som Ctrl+B, Ctrl+I eller Ctrl+E.",
+            "body": "Kodblock markeras som det språk du skriver efter de tre backticksen, från sql och rust till Dockerfile och hexdumpar, med knappar för att kopiera eller ladda ner dem. Ett formateringsverktygsfält ovanför inmatningen och kortkommandon som Ctrl+B, Ctrl+I eller Ctrl+E.",
             "alt": "Chatt med markerad kod och formateringsverktygsfältet"
           },
           {
@@ -789,7 +853,7 @@
           {
             "id": "notifications",
             "title": "Aviseringar som du vill ha dem",
-            "body": "Nya meddelanden som en popup i appen, en systemavisering, båda eller ingen. Plus korta, diskreta ljud för varje händelse.",
+            "body": "Nya meddelanden som en popup i appen, en systemavisering, båda eller ingen, med korta, diskreta ljud för varje händelse. Aviseringar visar servernamnet, och varje server kan tystas för sig.",
             "alt": "Popup i appen för ett nytt meddelande"
           },
           {
@@ -797,11 +861,6 @@
             "title": "Städar efter sig",
             "body": "Förhandsvisningar och bilder raderas efter ett antal dagar som du väljer, gammal chatthistorik också om du vill. Historiken finns bara på din dator och kan stängas av per server.",
             "alt": "Inställningar, sektionen chatt och historik"
-          },
-          {
-            "id": "mention-chips",
-            "title": "Klickbara @omnämnanden",
-            "body": "Förhandsvisning när du hovrar, profil när du klickar, meny när du högerklickar."
           },
           {
             "id": "replies",
@@ -828,37 +887,46 @@
             "alt": "Ett långt meddelande med namn och bild fästa högst upp i chatten"
           },
           {
-            "id": "image-loading",
-            "title": "Bilder laddas i bakgrunden",
-            "body": "En tunn förloppsindikator under bilden visar hur långt full storlek har kommit. Stänger du bildvisaren laddas den vidare; krysset på indikatorn avbryter."
-          },
-          {
-            "id": "link-menu",
-            "title": "Kopiera länkar",
-            "body": "Högerklickar du på en länk i chatten får du ”Kopiera länk” och ”Öppna länk”.",
-            "alt": "Högerklicksmeny på en länk med ”Kopiera länk” och ”Öppna länk”"
-          },
-          {
             "id": "message-cards",
             "title": "Meddelandekort",
             "body": "Bottar och personer postar kompakta kort med rubrik, statusfärg, ikon, formaterad text, en bild och en länk, för byggen, larm eller dashboards. Officiella Mumble-klienter ser samma meddelande som läsbar text.",
             "alt": "Chatt med två meddelandekort från en bot: ett fullständigt kort med ikon, rubrik, text, ett diagram och en länk, och under det ett enkelt kort med rubrik och länk"
           },
           {
-            "id": "paste-images",
-            "title": "Klistra in bilder med Ctrl+V",
-            "body": "Skärmbilder, ”Kopiera bild” från webbläsaren och bildfiler som kopierats i filhanteraren hamnar direkt i meddelandefältet som en bilaga med Ctrl+V."
+            "id": "notification-centre",
+            "title": "Aviseringscenter",
+            "body": "En klocka i chattrubriken, eller Ctrl+Shift+N, samlar omnämnanden, svar, chatt- och meddelandeförfrågningar, inbjudningar till watch-partyn och skärmdelningar och servrar som blivit onåbara, från alla anslutna servrar, de nyaste först. Filtrera dem, acceptera förfrågningar direkt där, och ett klick tar dig till meddelandet. Under Stör ej fortsätter det samla i tysthet.",
+            "alt": "Aviseringscenter med omnämnanden, svar och en chattförfrågan med Acceptera och Avslå"
           },
           {
-            "id": "code-blocks",
-            "title": "Kodblock med Kopiera och Ladda ner",
-            "body": "Skriv språket efter de tre backticksen, från sql, rust och php till cmd, Dockerfile och hexdumpar, så markeras blocket som just det språket. Knapparna i hörnet kopierar koden eller sparar den som fil.",
-            "alt": "SQL-kodblock med språketiketten och knapparna Kopiera och Ladda ner i hörnet"
+            "id": "pm-overview",
+            "title": "Alla privata meddelanden på ett ställe",
+            "body": "Knappen Meddelanden överst i serverfältet listar varje konversation från alla anslutna servrar, fästa först, med servertagg, förhandsvisning och antal olästa. Sök, filtrera på olästa eller förfrågningar, starta en ny konversation, och fäst, tysta eller radera en från dess meny.",
+            "alt": "Översikt över privata meddelanden med en chattförfrågan överst och konversationer från flera servrar"
           },
           {
-            "id": "image-menu",
-            "title": "Kopiera och spara bilder",
-            "body": "Högerklicka på en bild i chatten eller i bildvisaren: kopiera bild, spara bild i original, en GIF med sin animation, kopiera bildadress eller öppna den i bildvisaren."
+            "id": "group-mentions",
+            "title": "@channel och @all",
+            "body": "@channel når alla i kanalen, @all alla som kan läsa den, lyssnare inräknade. Mumcord behandlar dem som ett omnämnande av dig, andra Mumble-klienter ser bara orden. För mycket? Tysta dem per server.",
+            "alt": "Chatt med ett markerat @channel-omnämnande"
+          },
+          {
+            "id": "audio-links",
+            "title": "Ljudfiler i chatten",
+            "body": "Länkar till mp3-, ogg-, m4a-, wav-, flac- eller webm-filer får en spelare under meddelandet med sökfält, volym, ”Öppna i webbläsaren” och ”Spara”. Inget spelas av sig självt, filen laddas först när du trycker på Spela, upp till 32 MB, och ljudet går till dina högtalare, aldrig in i din mikrofon.",
+            "alt": "Ljudspelare under ett meddelande med uppspelningsknapp, sökfält och volym"
+          },
+          {
+            "id": "hidden-previews",
+            "title": "Dolda förhandsvisningar säger till",
+            "body": "När länkförhandsvisningar och inbäddningar är avstängda namnger en diskret rad under meddelandet vad som dolts, till exempel en bild eller en video, och länkar till inställningen. Inget begärs från den länkade sidan för det.",
+            "alt": "Meddelande med raden ”Bild dold eftersom länkförhandsvisningar och inbäddningar är av”"
+          },
+          {
+            "id": "server-links",
+            "title": "Serverlänkar som kort",
+            "body": "En mumble://-länk i chatten visar server, kanal, ping, personer online och version, med ”Gå med”, ”Lägg till i servrar” och ”Kopiera länk”. Uppgifterna kommer från den vanliga publika förfrågan, aldrig från en anslutning. Användarnamn och lösenord i en länk visas aldrig och utelämnas vid kopiering.",
+            "alt": "Kort för en mumble://-länk med servernamn, kanal, ping, användare och knappen Gå med"
           }
         ]
       },
@@ -885,6 +953,12 @@
             "alt": "Installationsguiden, mikrofonsteget med nivåtest"
           },
           {
+            "id": "noise-levels",
+            "title": "Brusreducering i fyra nivåer",
+            "body": "Inställningar → Röst erbjuder Lätt för jämnt brus med lägst CPU-last, Standard som förval, Avancerad (AI) med 2024 års RNNoise-modell som beta, som tar bort mer brus mot mer CPU, och Av. Ett „?” vid varje nivå säger vad den kostar. Allt körs på din dator.",
+            "alt": "Röstinställningar med de fyra nivåerna av brusreducering"
+          },
+          {
             "id": "music",
             "title": "Musikkvalitet",
             "body": "Ett reglage höjer bithastigheten upp till serverns gräns, högst 510 kbit/s, anpassar kodaren för musik och stänger av brusreducering och automatisk förstärkning.",
@@ -898,13 +972,50 @@
           },
           {
             "id": "bitrate",
-            "title": "Bithastighet för hand",
-            "body": "Ett eget reglage från 16 kbit/s upp till det högsta värde servern och Mumble tillåter. Vid paketförlust sänker Mumcord den ändå av sig själv."
+            "title": "Panel för röstkvalitet",
+            "body": "Högerklicka på anslutningsinfon: ett bithastighetsreglage från 16 kbit/s upp till serverns gräns med det som skickas just nu, musikkvalitet, den uppskattade bandbredden och betyget för ljudhälsan. Vid paketförlust sänker Mumcord ändå bithastigheten av sig själv.",
+            "alt": "Panel för röstkvalitet med bithastighetsreglage, musikkvalitet och uppskattad bandbredd"
           },
           {
             "id": "realtime-audio",
             "title": "Stabil under belastning",
             "body": "Inspelning och uppspelning får realtidsprioritet, så rösten knastrar och får färre avbrott medan ett spel eller ett bygge håller datorn sysselsatt. Anslutningsinformationen visar avbrott och om realtidsljud är på."
+          },
+          {
+            "id": "low-latency",
+            "title": "Låglatensläge för att spela musik",
+            "body": "10 ms-paket, en minimal buffert och ingen ekoborttagning eller brusreducering sänker fördröjningen från ungefär 100 ms till ungefär 40 ms plus nätverket. Det slås på och av direkt och visar den uppskattade latensen. Kräver mer bandbredd; hörlurar rekommenderas. Funkar med vanliga servrar.",
+            "alt": "Ljudinställningar med låglatensläget på och den uppskattade latensen uppdelad"
+          },
+          {
+            "id": "channel-audio",
+            "title": "Ljud per kanal",
+            "body": "”Ljud för den här kanalen …” ställer in musikkvalitet, låglatensläge och ett tak för bithastigheten för en kanal, med förinställningarna Röst, Musik och Jam. Det gäller när du går med, och dina vanliga inställningar kommer tillbaka när du lämnar. Sparas bara på den här enheten, så det funkar på alla Mumble-servrar.",
+            "alt": "”Ljud för den här kanalen” med förinställningarna Röst, Musik och Jam"
+          },
+          {
+            "id": "device-switch",
+            "title": "Byt enheter från röstfältet",
+            "body": "Högerklicka på mikrofon- eller hörlursknappen: välj en enhet, ställ in volymen, följ nivån och slå brusreducering på eller av, allt utan att ansluta om. Om en enhet dras ur faller Mumcord tillbaka på systemets standard. På Linux med PipeWire syns varje in- och utgång som i skrivbordets ljudinställningar.",
+            "alt": "Mikrofonmeny med ingångsenheter, volymreglage och nivåmätare"
+          },
+          {
+            "id": "leave-voice",
+            "title": "Lämna rösten, behåll anslutningen",
+            "body": "Högerklicka på lägg-på-knappen: ”Lämna rösten” slutar prata och lyssna men låter chatten och uppläsningen fortsätta. Där finns också koppla från, flytta rösten till en annan server och koppla från alla. Ett vänsterklick lägger fortfarande på direkt.",
+            "alt": "Meny för lägg-på-knappen med Lämna rösten, Koppla från och Byt röst"
+          },
+          {
+            "id": "whisper",
+            "title": "Viska och ropa",
+            "body": "Prata med utvalda personer eller med alla i en kanal, om du vill med dess underkanaler, länkade kanaler eller bara en grupp, utan att flytta dit. Mål ställs in i inställningarna eller med ”Viska till…” i menyn för en person eller en kanal, vart och ett med sin egen håll-för-att-prata-tangent. En banderoll ovanför chatten visar vem du pratar med.",
+            "alt": "En banderoll ovanför chatten när man viskar till en kanal"
+          },
+          {
+            "id": "user-panel",
+            "title": "Lugn användarpanel",
+            "body": "Panelen längst ner i kanallistan har alltid samma höjd: du med namn och server, en statusrad som till exempel ansluter igen eller din röstkanal, små chips för Stör ej, låglatensläge och anslutningen, samt knapparna för mikrofon, hörlurar och lägg på. Kanallistan ovanför hoppar inte längre.",
+            "alt": "Användarpanelen i flera lägen, från pratande och tystad till återanslutning"
           }
         ]
       },
@@ -915,50 +1026,19 @@
           {
             "id": "positional",
             "title": "Positionsljud",
-            "body": "Röster från personer i samma spel kommer från deras håll och blir tystare ju längre bort de är. Via Mumble Link eller Mumbles officiella spelplugins; en ”3D”-ikon visar vem som skickar positioner.",
+            "body": "Röster från personer i samma spel kommer från deras håll och blir tystare ju längre bort de är. Via Mumble Link eller Mumbles officiella spelplugins, var och en med sitt eget reglage; en ”3D”-ikon visar vem som skickar positioner.",
             "alt": "Inställningar, positionsljud med avstånd och spelplugins"
-          },
-          {
-            "id": "game-plugins",
-            "title": "Officiella spelplugins",
-            "body": "Mumbles plugins levererar positioner för spel som stöds, var och en med sitt eget reglage. Inställningarna visar vilket som är aktivt."
           },
           {
             "id": "in-game-overlay",
             "title": "Overlay i spelet",
-            "body": "På Linux direkt i spelet som ett Vulkan-lager, även i Steam- och Proton-spel, testat med Tyr och Supermarket Simulator. Ställs in per spel; spel vars anti-cheat blockerar overlays förblir undantagna. Windows får den med 0.4.0.",
+            "body": "Visar vem som pratar mitt i spelet. På Linux som ett Vulkan-lager, även i Steam-, Proton- och Flatpak-Steam-spel, med ett startalternativ att kopiera för inbyggda OpenGL-spel. På Windows som ett klickgenomsläppligt fönster som inte laddar in något i spelet, så det funkar med anti-cheat; bara exklusiv helskärm döljer det. Ställs in per spel; spel vars anti-cheat blockerar overlays förblir undantagna.",
             "alt": "Inställningar, overlay i spelet med anti-cheat-varning och val per spel"
-          },
-          {
-            "id": "overlay-window",
-            "title": "Overlay-fönster",
-            "body": "På Linux och Windows ett genomskinligt fönster som släpper igenom klick, ovanpå allt annat, och visar vem som pratar i din kanal. På macOS finns ingen overlay. Overlay-fönstret försvinner med 0.4.0.",
-            "alt": "Overlay-fönster över ett spel som visar vem som pratar"
           },
           {
             "id": "now-gaming",
             "title": "Spelar nu",
-            "body": "Om du vill ser andra vad du spelar, med Steam-bilden och speltiden. ”Gå med i spel” för Steam-spel som stöder det."
-          },
-          {
-            "id": "overlay-windows",
-            "title": "Overlay i spelet på Windows",
-            "body": "Ett eget, klickgenomsläppligt fönster över spelet. Inget laddas in i spelet, så den funkar även i spel med anti-cheat. Bara exklusiv helskärm döljer den."
-          },
-          {
-            "id": "overlay-opengl",
-            "title": "OpenGL-spel på Linux",
-            "body": "För inbyggda OpenGL-spel som Project Hospital visar Mumcord rätt startalternativ för Steam att kopiera, och det fortsätter gälla efter uppdateringar. Färgerna i HDR-spel blir också rätt."
-          },
-          {
-            "id": "flatpak-steam",
-            "title": "Flatpak-Steam och kantlös helskärm",
-            "body": "Overlayen i spelet även för spel från Steam som Flatpak, spel i kantlös helskärm kontrollerade på KDE och GNOME. Att stänga eller uppdatera Mumcord kraschar inte längre ett spel som körs."
-          },
-          {
-            "id": "join-game-link",
-            "title": "”Gå med i spel” via Mumble Link",
-            "body": "”Gå med i spel” även för spel som delar sin serveradress via Mumble Link."
+            "body": "Om du vill ser andra vad du spelar, med Steam-bilden och speltiden. ”Gå med i spel” för Steam-spel som stöder det och för spel som delar sin serveradress via Mumble Link."
           }
         ]
       },
@@ -997,13 +1077,13 @@
           {
             "id": "watch-party",
             "title": "Titta tillsammans",
-            "body": "En YouTube-watch-party i röstkanalen: alla ser samma video samtidigt, alla kan pausa och spola, med en gemensam spellista.",
+            "body": "En YouTube-watch-party i röstkanalen: alla ser samma video samtidigt, alla kan pausa och spola, med en gemensam spellista. Med inbäddningar avstängda i integritetsinställningarna laddas inget från YouTube eller Twitch.",
             "alt": "Watch-party i ett flytande fönster med deltagare, kontroller och nästa video"
           },
           {
             "id": "screen-share",
             "title": "Skärmdelning",
-            "body": "En skärm eller ett fönster för upp till 8 tittare, i 720p och 30 bilder per sekund. På Windows och macOS med ljudet från den delade appen om du vill. Du startar den från Appar-knappen i chatten.",
+            "body": "En skärm eller ett fönster för upp till 8 tittare, i 720p och 30 bilder per sekund, på Windows och macOS med ljudet från den delade appen om du vill. Du startar den från Appar-knappen i chatten. Medan du delar visar en röd list tittarna och ”Avsluta”, och andra ser en röd ring med ”LIVE” runt din bild.",
             "alt": "En delad skärm i ett flytande fönster med helskärm och ”Sluta titta”"
           },
           {
@@ -1013,20 +1093,15 @@
             "alt": "Notiser högst upp i chatten för en pågående watch-party och en delad skärm"
           },
           {
-            "id": "live",
-            "title": "Live, och alla ser det",
-            "body": "När du delar skärmen visar en röd list ovanför din profil det, med ”Avsluta” och antalet tittare. Andra ser en röd ring med ”LIVE” runt din bild.",
-            "alt": "Röd list ”Du delar din skärm” med antalet tittare och ”Avsluta”"
-          },
-          {
             "id": "ducking",
-            "title": "Tystare när någon pratar",
-            "body": "Medan någon i kanalen pratar sänks ljudet från watch-partyn och den delade skärmen och kommer sedan tillbaka. Du väljer hur mycket, eller stänger av det."
+            "title": "Ljud för watch-partyn och delning",
+            "body": "Medan någon i kanalen pratar blir watch-partyn och delade skärmar tystare; du väljer hur mycket. Korta ljud när någon startar eller går med i en watch-party eller delar sin skärm, och varje ljud kan stängas av."
           },
           {
-            "id": "activity-sounds",
-            "title": "Ljud för watch-partyn och delning",
-            "body": "Ett kort ljud när någon startar, går med i eller lämnar en watch-party och när någon delar sin skärm eller börjar titta på din. Varje ljud kan stängas av."
+            "id": "relay",
+            "title": "Community-relay",
+            "body": "En servers community kan köra ett relay vid sidan av sin Mumble-server. Bilder i full storlek och skärmdelning funkar då även när ingen direkt anslutning är möjlig, och med ”alltid via relay” ser den andra personen aldrig din IP-adress. Relayet kan inte läsa den krypterade anslutningen, och rösten använder det aldrig. Du väljer under Inställningar → Integritet, även per server.",
+            "alt": "Integritetsinställningar med peer-to-peer-valen direkt, relay och av"
           }
         ]
       },
@@ -1043,36 +1118,26 @@
           {
             "id": "sounds",
             "title": "Ljud och aviseringar",
-            "body": "Varje händelse kan slås på för sig: ansluta, lämna, meddelanden, omnämnanden.",
+            "body": "Varje händelse kan slås på för sig: ansluta, lämna, meddelanden, omnämnanden och ett eget ljud för att bli utsparkad eller bannad.",
             "alt": "Inställningar, sektionen ljud och aviseringar"
           },
           {
             "id": "languages",
-            "title": "Byt språk utan omstart",
-            "body": "Språket gäller direkt. En ikon i systemfältet, start vid inloggning och full användning med tangentbord och skärmläsare ingår.",
+            "title": "24 språk, byts utan omstart",
+            "body": "Alla 24 officiella EU-språk, från bulgariska till svenska, gäller direkt, systemfältsmenyn inräknad. Varje språk listas med sitt eget namn. Översatt av teamet utan granskning av modersmålstalare: rättelser tas gärna emot som ett issue. Full användning med tangentbord och skärmläsare ingår.",
             "alt": "Inställningar, sektionen gränssnittsspråk"
           },
           {
             "id": "privacy",
             "title": "Ingen telemetri",
-            "body": "Din identitet ligger i systemets säkra lagring. Diagnostikfilen innehåller inget chattinnehåll eller lösenord och lämnar bara din dator om du själv skickar den."
-          },
-          {
-            "id": "eu-languages",
-            "title": "Alla 24 officiella EU-språk",
-            "body": "Från bulgariska till svenska, menyn i systemfältet inräknad. Varje språk listas med sitt eget namn och kan hittas via vilket av sina namn som helst. Översatt av teamet utan granskning av modersmålstalare: rättelser tas gärna emot som ett issue."
-          },
-          {
-            "id": "privacy-step",
-            "title": "Integritet i guiden",
-            "body": "Vid första starten visar ett kort steg vad Mumcord ansluter till och när, med en länk till den fullständiga integritetspolicyn.",
+            "body": "Vid första starten visar ett kort steg vad Mumcord ansluter till och när. Din identitet ligger i systemets säkra lagring, och diagnostikfilen innehåller inget chattinnehåll eller lösenord och lämnar bara din dator om du själv skickar den.",
             "alt": "Guiden, steget integritet"
           },
           {
             "id": "quick-settings",
             "title": "Snabbinställningar under kugghjulet",
-            "body": "Ett klick på kugghjulet: förhandsvisningar, tema, overlay, dela musik och spel, redigera profil och registrera. Betafunktioner som positionsljud ligger i en egen hopfällbar grupp.",
-            "alt": "Snabbinställningar med Beta-gruppen öppen"
+            "body": "Ett klick på kugghjulet: en rad per inställning under Aviseringar, Delning, Utseende och Konto, med förklaringen bakom ett litet ”?”. Betafunktioner som positionsljud ligger i en egen grupp som börjar hopfälld.",
+            "alt": "Snabbinställningar grupperade i Aviseringar, Delning, Utseende och Konto"
           },
           {
             "id": "settings-search",
@@ -1100,30 +1165,98 @@
           },
           {
             "id": "dropdowns",
-            "title": "Städade inställningar",
-            "body": "Rullgardinsmenyer i temat i stället för webbläsarens utseende, och varje fält i inställningarna snyggt justerat."
-          },
-          {
-            "id": "tooltips",
-            "title": "Verktygstips i ditt tema",
-            "body": "Varje verktygstips i ditt temas utseende, ljust eller mörkt, och går även att nå med tangentbordet."
+            "title": "Städade inställningar och verktygstips",
+            "body": "Rullgardinsmenyer och verktygstips i temats utseende i stället för webbläsarens, varje fält i inställningarna snyggt justerat, och varje verktygstips går även att nå med tangentbordet."
           },
           {
             "id": "packet-inspector",
             "title": "Paketinspektör för felsökning",
-            "body": "Dold för utvecklare: sju klick på versionen under Inställningar → Om låser upp den. I ett eget fönster visar den vilken Mumcord-data som skickas och tas emot, med filter, räknare och export som JSON eller Markdown.",
+            "body": "Dold för utvecklare: sju klick på versionen under Inställningar → Om låser upp den. I ett eget fönster visar den vilken Mumcord-data som skickas och tas emot, med filter, räknare och export som JSON eller Markdown. Den följer nya paket och fångar bara medan den är öppen.",
             "alt": "Paketinspektör med filter, räknare per typ och riktning och en expanderad paketrad"
           },
           {
             "id": "clear-cache",
             "title": "Rensa cachen",
             "body": "Inställningar → Integritet visar hur mycket plats länkförhandsvisningar, bilder och webbmotorn tar, och rensar dem med ett knapptryck, även en i taget. Chatthistorik, servrar, vänner och anteckningar rörs aldrig."
+          },
+          {
+            "id": "dnd",
+            "title": "Stör ej",
+            "body": "Ett reglage i snabbinställningarna, inställningarna eller systemfältsmenyn tystar aviseringsljud och popup-fönster på alla servrar. Rösten fungerar som vanligt och antalet olästa räknas fortfarande. På KDE Plasma, GNOME och Windows kan det följa systemets Stör ej.",
+            "alt": "Inställningar för ljud och aviseringar med Stör ej och ”Följ systemets Stör ej”"
+          },
+          {
+            "id": "tray",
+            "title": "Komplett systemfältsmeny",
+            "body": "Systemfältsmenyn visar varje ansluten server med dess läge och kanal, Mikrofon av, Ljud av och Stör ej, flyttar rösten till en annan server eller kanal och öppnar senaste chattar. Ikonen visar pratande, tystad, olästa meddelanden och Stör ej. Mumcord startar vid inloggning om du vill, på alla system.",
+            "alt": "Systemfältsmeny med servrar, röstkanalens undermeny och senaste chattar"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.5.0",
+      "teaser": "Notiscentral, alla privata meddelanden på ett ställe, blockering, flera identiteter och import från Mumble.",
+      "summary": "En stor uppdatering för chatt och integritet: en notiscentral, alla privata meddelanden på ett ställe med dina egna regler för vem som får skriva till dig, blockering, flera identiteter och flytten från Mumble med några klick. Dessutom ett community-relay för bilder och skärmdelning, musik och ljud i chatten, en webbläsare för publika servrar och ett läge med låg latens för att spela musik tillsammans.",
+      "groups": [
+        {
+          "title": "Nytt",
+          "items": [
+            "En notiscentral bakom klockan i chattens sidhuvud (Ctrl+Shift+N) samlar allt som vill ha din uppmärksamhet från alla anslutna servrar: omnämnanden, svar, chatt- och meddelandeförfrågningar med Godkänn och Avvisa, inbjudningar till watch parties och skärmdelningar samt servrar som inte längre går att nå. Ett klick tar dig till meddelandet.",
+            "Stör ej: en enda omkopplare i snabbinställningarna, inställningarna och systemfältsmenyn tystar notisljud och popup-fönster på alla servrar. Rösten fungerar som vanligt och olästa meddelanden räknas fortfarande. Om du vill följer Mumcord systemets Stör ej i KDE Plasma, GNOME och Windows.",
+            "Systemfältsmenyn visar varje ansluten server med sin kanal, plus Mikrofon av, Ljud av och Stör ej. Därifrån flyttar du rösten till en annan server eller kanal och öppnar dina senaste privata chattar. Systemfältsikonen visar när någon pratar, när du är tystad och när det finns olästa meddelanden.",
+            "Alla privata meddelanden på ett ställe: knappen Meddelanden högst upp i serverlisten visar alla konversationer från alla anslutna servrar, med sökning, filter, fästning och tystning. Den ersätter listan Direktmeddelanden under kanalträdet. En persons meny börjar nu med Skicka meddelande, Gå med i kanal och Lägg till vän.",
+            "Du bestämmer vem som får skriva privat till dig: alla, bara vänner eller ingen, även per server. Personer i din kanal och konversationer du har godkänt kommer alltid fram. Övriga väntar under Meddelandeförfrågningar, och Mumcord-användare kan skicka en chattförfrågan till dig med en kort anteckning. Mumcord filtrerar hos dig, så avsändaren får inget veta. En godkänd konversation kan du ta tillbaka senare.",
+            "Blockera personer: deras privata meddelanden och förfrågningar försvinner, deras kanalmeddelanden fälls ihop och deras röst är tystad för dig. Blockeringen följer personens certifikat, så den gäller på varje server och ett nytt namn hjälper inte. Varken servern eller personen får veta något; Inställningar → Integritet visar dina blockeringar.",
+            "@channel och @all når alla i en kanal och räknas som ett personligt omnämnande. Andra Mumble-klienter ser bara orden, och du kan tysta dem per server.",
+            "Ljud och musik i chatten: direkta länkar till ljudfiler som mp3, ogg, wav eller flac får en liten spelare. Länkar till Spotify, SoundCloud och YouTube Music spelas i tjänstens egen spelare när du trycker på Play; Apple Music, Tidal, Deezer och Bandcamp får ett kort med en länk. Inget spelas av sig självt, och med länkförhandsvisningar avstängda laddas ingenting.",
+            "mumble://-länkar i chatten visar ett kort med server, kanal, ping och hur många som är online, med Gå med och Lägg till i servrar. Ett lösenord i länken visas aldrig.",
+            "Kanaler är enklare att hantera: högerklicka på en kanal för en meny med Gå med, Följ, Kopiera kanallänk, Kanalinfo och mer. Kanaler visar sin användargräns, som Raid (1/10), och fulla kanaler är nedtonade. Med rätt behörighet drar du personer till en annan kanal. Kanalinfo visar beskrivning, användare, dina behörigheter och länkade kanaler.",
+            "Läge med låg latens för att spela musik tillsammans (Beta): ungefär 40 i stället för 100 millisekunder från mun till öra, plus nätverket. Det växlar utan att ansluta på nytt och fungerar med vanliga servrar. Hörlurar rekommenderas.",
+            "Ljud per kanal: ”Ljud för den här kanalen …” ger en kanal egna inställningar, med förinställningarna Röst, Musik och Jam. De gäller när du går med, och dina vanliga inställningar kommer tillbaka när du lämnar.",
+            "Snabbmenyer i röstfältet: högerklicka på mikrofonen eller hörlurarna för enheter, volym och nivåmätare, på anslutningsinfon för röstkvalitet och bitrate, och på lägg-på-knappen för Lämna röst (förbli ansluten och fortsätt chatta) eller Koppla från alla servrar.",
+            "En serverbläddrare i serverlisten visar publika Mumble-servrar, med sökning och filter för land och ping. Anslut sparar och ansluter med ett klick. Listan laddas först när du öppnar bläddraren.",
+            "Serverdialogen är sorterad i fyra flikar och har Testa anslutning, som kontrollerar ping, serverversion och certifikat utan att spara något. Serverinfo visar version, gränser, dina behörigheter och TLS-certifikatet. Sparade kanallösenord visar vilken kanal de hör till.",
+            "Flera identiteter: Inställningar → Identitet hanterar flera certifikat, med import, export, namnbyte och en standard. Varje server kan använda sin egen identitet. Din nuvarande blir ”Standard”, och allt ansluter som förut.",
+            "Import från Mumble: om den officiella Mumble-klienten är installerad tar installationsguiden (eller Inställningar → Servrar) över dina favoritservrar, sparade lösenord, ditt certifikat, ljudenheterna och push-to-talk-tangenten. Inget skrivs över, Mumbles filer läses bara, och importen går att ångra.",
+            "Community-relay: bilder i full storlek och skärmdelning kan gå via ett relay som en servers community driver vid sidan av sin Mumble-server. Det för bara vidare den krypterade anslutningen och döljer, om du vill, din IP-adress för den andra personen. Skärmdelning fungerar då även utan direktanslutning. Rösten använder aldrig relayet.",
+            "På Windows finns Mumcord också som portabel zip: packa upp, starta, ingen installation. Data och inställningar stannar i mappen bredvid programmet.",
+            "Dölj medlemskolumnen så att chatten får hela bredden: med en knapp i chattens sidhuvud eller Ctrl+Shift+M. I ett smalt fönster glider den in över chatten.",
+            "Kickad eller bannad? Mumcord spelar ett ljud för det: en örfil vid kick, ett slapstick-spark vid ban. Båda kan stängas av.",
+            "Serverinfo visar om servern annonserar ett relay eller en Mumbot och varnar när relayet har ändrats.",
+            "Viska och ropa: prata med utvalda personer eller med alla i en kanal utan att flytta dit, med en håll-för-att-prata-tangent per mål och en banderoll ovanför chatten som visar vem du pratar med.",
+            "Uppdateringar i appen: Mumcord söker efter nya versioner, visar vad som har ändrats och installerar dem med ett klick. Varje nedladdning kontrolleras mot sin signatur och sina kontrollsummor.",
+            "Brusreducering i fyra nivåer: Lätt, Standard, Avancerad (AI, beta, med 2024 års RNNoise-modell) och Av, var och en förklarad med ett „?”."
+          ]
+        },
+        {
+          "title": "Förbättrat",
+          "items": [
+            "Användarpanelen under kanallistan har gjorts om: den behåller samma höjd i alla lägen så att listan ovanför aldrig hoppar, visar en tydlig statusrad och har en liten menypil på varje röstknapp.",
+            "Snabbinställningarna är lugnare: en rad per inställning i tydliga grupper, förklaringar bakom ett litet ?, och Beta-gruppen startar ihopfälld.",
+            "När länkförhandsvisningar är avstängda försvinner de inte längre tyst: en diskret rad under meddelandet säger vad som doldes och leder till inställningen.",
+            "”Kör installationsguiden igen” under Inställningar → Om går igenom mikrofon, integritet, uppdateringstips och talsätt ännu en gång. Din identitet förblir orörd, och bara det du ändrar sparas.",
+            "Paketinspektören följer nya paket, pausar när du scrollar uppåt och spelar bara in medan den är öppen.",
+            "Server- och kanalträdet är som standard en fjärdedel bredare, så längre kanalnamn ryms. Bredder du själv ställt in finns kvar."
+          ]
+        },
+        {
+          "title": "Fixat",
+          "items": [
+            "Dina egna meddelanden spelar aldrig omnämnandeljudet, visar ingen notis och räknas inte som olästa.",
+            "Watch party följer ”Visa länkförhandsvisningar och inbäddningar”: när det är av laddas inget från YouTube eller Twitch, och ett tips leder till inställningen.",
+            "Linux med PipeWire: enhetslistorna visar varje ingång och utgång på samma sätt som skrivbordets ljudinställningar, till exempel ”System” och ”Chat” på en RØDECaster Pro II i stället för ett enda ”USB Audio”.",
+            "Serverinfofönstret är nu översatt till alla 24 språk.",
+            "Dina egna meddelanden spelar inte längre omnämnandeljudet, visar ingen notis och räknas inte längre som olästa."
+          ]
+        }
+      ],
+      "known": [
+        "Installationsprogrammet för Windows är fortfarande osignerat."
+      ]
+    },
     {
       "version": "0.4.4",
       "teaser": "Kopiera och ladda ner kod, spara bilder med högerklick, rensa cachen, stabilare röst under belastning.",
@@ -2448,7 +2581,8 @@
         "webhook": "Ange en API-nyckel och de tillåtna kanalerna i `bot.toml`. Sedan postar `curl` till `http://127.0.0.1:8080/message` i kanalen.",
         "more": "Stegen nedan förklarar varje del i detalj.",
         "music": "Lägg MP3-filerna i mappen `media` och ange en API-nyckel i `bot.toml`. Sedan spelar en förfrågan till `http://127.0.0.1:8081` upp dem i kanalen.",
-        "history": "Ange i `bot.toml` hur länge boten sparar chatten. Den behöver läsbehörighet till kanalerna."
+        "history": "Ange i `bot.toml` hur länge boten sparar chatten. Den behöver läsbehörighet till kanalerna.",
+        "relayRegistered": "Med ”Endast registrerade användare” får bara personer som är registrerade på servern relätokens (högerklicka på ditt eget namn → Registrera)."
       },
       "advanced": "Avancerat",
       "pluginLimit": "Dolda paket per sekund",
@@ -2472,7 +2606,12 @@
         "show": "Visa lösenorden och anteckna dem"
       },
       "copyAll": "Kopiera allt på en gång",
-      "needsMumbot": "Webhook, relä, musik och historik körs tillsammans som en enda Mumbot med moduler. Det kommer med Mumbot 0.2.0."
+      "needsMumbot": "Webhook, relä, musik och historik körs tillsammans som en enda Mumbot med moduler. Det kommer med Mumbot 0.2.0.",
+      "relayAccess": {
+        "label": "Relä för",
+        "registered": "Endast registrerade användare",
+        "all": "Alla, även gäster"
+      }
     },
     "stepsCta": "Steg för steg"
   },
@@ -2654,6 +2793,17 @@
           "Meddelandekort: webhooken skickar larm med rubrik, statusfärg, diagram och länk som Mumcord visar som ett kort",
           "Justerbar bithastighet för tal och musik, aldrig över serverns gräns",
           "Peer-modul: registrerar serverns användare hos ett mumpeer-relä och talar om för Mumcord att reläet finns"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Ett säkrare relä",
+        "summary": "Efter en säkerhetsgranskning av reläet: vem som får tokens, hur länge och hur många.",
+        "items": [
+          "Relä-tokens bara för registrerade användare, för gäster också om du vill",
+          "Att lämna servern avslutar reläåtkomsten, men först med den sista sessionen",
+          "Gränser per certifikat för token-förfrågningar och öppna anslutningar",
+          "Säkrare konfiguration: inget vanligt HTTP till ett relä på en annan maskin, hemligheter kontrolleras strikt"
         ]
       },
       {

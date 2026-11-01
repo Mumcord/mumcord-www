@@ -534,20 +534,58 @@
       "commits": "commit’ų",
       "join": "Prisidėk GitHub’e",
       "toolTitle": "Prisidėję"
+    },
+    "spotlight5": {
+      "label": "Nauja versijoje 0.5.0",
+      "labelSoon": "Netrukus: 0.5.0",
+      "title": "Daugiau ramybės. Daugiau tavęs. Daugiau garso.",
+      "body": "0.5.0 atneša Epic 3: pranešimų centrą, blokavimą, kelias tapatybes, naują kanalų medį, muziką pokalbyje, mažos delsos režimą bendram muzikavimui ir tiesioginius ryšius per relay.",
+      "tiles": {
+        "notifications": {
+          "title": "Viskas vienoje vietoje",
+          "body": "Varpelis surenka paminėjimus, atsakymus, prašymus ir kvietimus iš visų serverių. Kas tau trukdo, tas blokuojamas, atpažįstamas pagal sertifikatą."
+        },
+        "identities": {
+          "title": "Kelios tapatybės",
+          "body": "Asmeninė, klano, darbo: kiekvienam serveriui pats pasirenki, kas prisijungi."
+        },
+        "tree": {
+          "title": "Naujas kanalų medis",
+          "body": "Dešinysis spustelėjimas ant kiekvieno kanalo, vartotojų riba prie pavadinimo, aiškios piktogramos ir meniu už kanalo pavadinimo."
+        },
+        "lowLatency": {
+          "title": "Muzikuokite kartu",
+          "body": "Mažos delsos režimas duoda apie 40 vietoj 90 ms nuo burnos iki ausies, o kiekvienas kanalas prisimena savo garso nustatymus."
+        },
+        "music": {
+          "title": "Muzika pokalbyje",
+          "body": "Garso failai groja tiesiai pokalbyje, o nuorodos į Spotify, Apple Music ir kt. tampa muzikos kortele."
+        },
+        "relay": {
+          "title": "Tiesioginiai ryšiai bet kur",
+          "body": "Ekrano bendrinimas ir dideli vaizdai veikia net už CGNAT, o jei nori, niekas nemato tavo IP adreso."
+        }
+      },
+      "features": "Visos funkcijos",
+      "changelog": "Visos naujienos"
+    },
+    "serverCta": {
+      "title": "Savas serveris per penkias minutes",
+      "body": "Pažymėk langelius, nukopijuok komandą, viskas: konfigūratorius sukuria tavo docker-compose.yml su relay ir botais.",
+      "button": "Atidaryti konfigūratorių"
     }
   },
   "features": {
     "title": "Funkcijos",
     "description": "Visos Mumcord funkcijos su ekrano kopijomis: serveriai ir sertifikatai, kanalų sekimas, pokalbis su peržiūromis ir @paminėjimais, „spausk ir kalbėk“, garsas ir patogumas.",
     "label": "Ką moka Mumcord",
-    "intro": "Viskas, ką moka Mumcord, su paveikslėliu, jei jis yra, ir kas ateis su kita versija. Filtras rodo beta funkcijas arba kas nauja kurioje versijoje. Ko nors trūksta ar kažkas neveikia? Parašyk mums GitHub.",
+    "intro": "Viskas, ką moka Mumcord, su paveikslėliu, jei jis yra, ir kas ateis su kita versija. Filtras rodo, kas nauja dviejose naujausiose versijose. Ko nors trūksta ar kažkas neveikia? Parašyk mums GitHub.",
     "contents": "Turinys",
     "newIn": "nauja versijoje",
     "comingIn": "bus versijoje",
     "beta": "Beta",
     "filterLabel": "Filtras",
     "filterAll": "Visos",
-    "filterBeta": "Beta",
     "filterEmpty": "Pagal šį filtrą funkcijų nėra.",
     "jump": "Pereiti į",
     "statFeatures": "funkcijos",
@@ -590,13 +628,13 @@
           {
             "id": "reconnect",
             "title": "Prisijungimas iš naujo su viskuo",
-            "body": "Nutrūkus ryšiui grįžti į tą patį kanalą su savo mikrofono ir garso išjungimo būsena bei sekamais kanalais. Po paleidimo iš naujo Mumcord pasiūlo grįžti į paskutinį balso kanalą.",
+            "body": "Jei ryšys nutrūksta, grįžti į tą patį kanalą su savo nutildymo ir ausinių išjungimo būsena bei sekamais kanalais. Po paleidimo iš naujo Mumcord pasiūlo vėl prisijungti prie tavo paskutinio balso kanalo. Kai prisijungti nepavyksta, juostelė nurodo serverį ir dingsta po 60 sekundžių arba paspaudus ✕; serverio piktograma ir toliau rodo gedimą.",
             "alt": "Juosta su pasiūlymu grįžti į paskutinį balso kanalą"
           },
           {
             "id": "several-servers",
             "title": "Keli serveriai vienu metu",
-            "body": "Iki 5 serverių prijungta vienu metu, galima nustatyti iki 15. Kalbi viename, o skaitai, rašai ir gauni pranešimus visuose. Kiekvienas serveris po atsijungimo pats prisijungia iš naujo.",
+            "body": "Iki 5 serverių vienu metu, galima padidinti iki 15. Viename kalbi, o visuose skaitai, rašai ir gauni pranešimus. Kiekvienas serveris po nutrūkimo prisijungia pats. „Prisijungti prie kanalo“ veikia ir draugams kitame serveryje, o mumble:// nuorodos į prijungtą serverį nukelia tiesiai ten.",
             "alt": "Serverių juosta su keliais prijungtais serveriais, garsiakalbio žyma prie balso serverio ir paminėjimų skaičiais"
           },
           {
@@ -611,24 +649,51 @@
             "body": "Paketai Debian ir Ubuntu, Fedora ir openSUSE, Arch (AUR: mumcord-bin) ir AppImage, x86_64 ir ARM64, taip pat viena eilute terminale. Pasirinktinai priminimas, kai išeina nauja versija."
           },
           {
-            "id": "server-notices",
-            "title": "Pranešimai kiekvienam serveriui",
-            "body": "Pranešimuose ir asmeninėse žinutėse rodomas serverio pavadinimas, o kiekvieną serverį galima nutildyti atskirai."
+            "id": "mumble-import",
+            "title": "Importas iš Mumble",
+            "body": "Jei įdiegtas oficialus Mumble klientas (1.4 ar 1.5), sąrankos vedlys pasiūlo perimti tavo mėgstamus serverius su slaptažodžiais, tavo sertifikatą kaip naują tapatybę, kad išliktų užregistruotas vardas, tavo garso įrenginius ir kalbėjimo mygtuką (push-to-talk). Kiekvieną dalį pasirenki peržiūroje, jau turimi serveriai praleidžiami, o „Atšaukti importą“ viską grąžina. Vėliau taip pat skiltyje Nustatymai → Serveriai.",
+            "alt": "Sąrankos vedlio žingsnis „Importas iš Mumble“ su žymimuoju langeliu kiekvienai rastai daliai"
           },
           {
-            "id": "across-servers",
-            "title": "Prisijungimas tarp serverių",
-            "body": "„Prisijungti prie kanalo“ veikia ir draugams kitame serveryje, o mumble:// nuorodos į prijungtą serverį nuveda tiesiai ten."
+            "id": "identities",
+            "title": "Kelios tapatybės",
+            "body": "Nustatymai → Tapatybė tvarko kelis kliento sertifikatus: kurti, importuoti, pervadinti, eksportuoti ir kurti atsargines kopijas. Kiekvienas serveris naudoja numatytąją tapatybę arba savo, o pokalbio antraštė parodo, kuri naudojama, jei ji ne numatytoji. Sertifikatai ir raktai lieka sistemos saugioje saugykloje.",
+            "alt": "Tapatybių tvarkyklė su keliomis tapatybėmis, jų kontroliniais kodais ir jas naudojančiais serveriais"
           },
           {
-            "id": "autostart",
-            "title": "Paleidimas prisijungus",
-            "body": "„Paleisti Mumcord prisijungus“ yra kiekvienoje sistemoje."
+            "id": "server-dialog",
+            "title": "Serverio dialogas su kortelėmis",
+            "body": "Serverio pridėjimas ar redagavimas suskirstytas į Ryšys, Tapatybė, Slaptažodžiai ir Elgsena. Klaidos įvardijamos prie pat lauko, „Išbandyti ryšį“ praneša ping, serverio versiją ir sertifikatą nieko neišsaugodamas, o išsaugoti kanalų slaptažodžiai rodo, kuriam kanalui priklauso, pavyzdžiui, „Officers (Raid)“.",
+            "alt": "Dialogas „Pridėti serverį“ su kortelėmis Ryšys, Tapatybė, Slaptažodžiai ir Elgsena"
           },
           {
-            "id": "failure-banner",
-            "title": "Klaidų juostos, kurios neerzina",
-            "body": "Kai ryšys nepavyksta, juostoje nurodomas serveris, ir ji dingsta po 60 sekundžių arba paspaudus ✕. Serverio piktograma toliau rodo nesėkmę."
+            "id": "server-browser",
+            "title": "Rask viešus serverius",
+            "body": "Paieškos mygtukas serverių juostoje atidaro viešų Mumble serverių sąrašą: ieškok pagal pavadinimą, adresą ar šalį, filtruok pagal šalį ir ping, slėpk tuščius ar pilnus serverius. „Prisijungti“ išsaugo ir prisijungia vienu spustelėjimu. Sąrašas įkeliamas tik jį atidarius, ir pinguojamos tik ekrane matomos eilutės.",
+            "alt": "Viešų serverių naršyklė su paieška, šalies ir ping filtrais bei serverių sąrašu"
+          },
+          {
+            "id": "server-info",
+            "title": "Serverio informacija",
+            "body": "Serverio meniu rodo pavadinimą, adresą, versiją, sveikinimo tekstą, apribojimus, leidžiamus kodekus, tavo teises ir kiek žmonių naudoja Mumcord, taip pat TLS sertifikatą su kontroliniu kodu ir galiojimu. „Kopijuoti diagnostiką“ viską įdeda į iškarpinę klaidų pranešimams. Veikia su bet kuriuo standartiniu Mumble serveriu.",
+            "alt": "Serverio informacija su versija, apribojimais ir TLS sertifikato kontroliniu kodu, išdavėju ir galiojimu"
+          },
+          {
+            "id": "setup-again",
+            "title": "Paleisk sąrankos vedlį dar kartą",
+            "body": "Nustatymai → Apie dar kartą perveda per sąranką, kad galėtum peržiūrėti mikrofoną, privatumą, atnaujinimų patikrą ir kalbėjimo režimą. Tapatybės žingsnis praleidžiamas, todėl su tavo sertifikatu nieko netyčia negali nutikti, ir išsaugomos tik tikrai pakeistos vertės.",
+            "alt": "Iš nustatymų vėl paleistas sąrankos vedlys su tapatybės žingsniu, pažymėtu kaip praleistu"
+          },
+          {
+            "id": "windows-portable",
+            "title": "Nešiojama versija Windows sistemoje",
+            "body": "Be diegimo programos yra zip, kuris veikia be diegimo: išpakuok ir paleisk Mumcord.exe. Duomenys, nustatymai ir žurnalai lieka šalia esančiame aplanke, o mumble:// tvarkyklė ar paleidimas prisijungus nenustatomi, nebent pats juos įjungi."
+          },
+          {
+            "id": "updater",
+            "title": "Atnaujinimai programoje",
+            "body": "Mumcord paleidžiant ir kas 12 valandų tikrina, ar yra nauja versija, parodo, kas pasikeitė nuo tavo versijos, ir įdiegia ją vienu spustelėjimu. Kiekvienas atsisiuntimas prieš diegiant tikrinamas pagal Mumcord parašą ir leidimo kontrolines sumas; versiją gali praleisti arba paprašyti priminti vėliau.",
+            "alt": "Langas „Yra atnaujinimas” su pakeitimais nuo tavo versijos"
           }
         ]
       },
@@ -657,68 +722,67 @@
           {
             "id": "right-click",
             "title": "Dešinysis spustelėjimas ant žmonių",
-            "body": "Peržiūrėk profilį, nutildyk tik sau, nustatyk garsumą nuo 0 iki 200 % arba siųsk asmeninę žinutę. Mumcord tai įsimena kiekvienam žmogui.",
-            "alt": "Žmogaus kontekstinis meniu su garsumo slankikliu"
-          },
-          {
-            "id": "person-card",
-            "title": "Dvigubas spustelėjimas – asmeninės žinutės",
-            "body": "Dukart spustelėk žmogų, kad atidarytum asmeninį pokalbį. Vienas spustelėjimas prisega jo kortelę su asmeninės žinutės ir profilio mygtukais."
+            "body": "Siųsk žinutę, prisijunk prie jų kanalo ar pridėk draugu pačiame viršuje, toliau profilis, nutildymas tik sau ir garsumas nuo 0 iki 200 %, įsimenamas kiekvienam žmogui. Jei negali prisijungti, parodoma priežastis. Dukart spustelėjus atidaromas asmeninis pokalbis.",
+            "alt": "Žmogaus meniu, viršuje Siųsti žinutę, Prisijungti prie kanalo ir Pridėti draugą"
           },
           {
             "id": "profile",
-            "title": "Naujas profilis",
-            "body": "Reklamjuostė, ženklelis, muzika ar žaidimas ir visi to žmogaus nustatymai. Pakeitimai įsigalioja iš karto su trumpu „Išsaugota“. Dešiniojo spustelėjimo meniu turi piktogramas ir jungiklius.",
+            "title": "Profilis",
+            "body": "Reklamjuostė, ženklelis, muzika ar žaidimas ir komentaras su paryškinimu, pasvirimu, nuorodomis ir sąrašais. Garsumas, nutildymas ir asmeninė pastaba apie tą žmogų yra jame suskleisti; pakeitimai įsigalioja iš karto su trumpu „Išsaugota“.",
             "alt": "Visas profilis su muzika, to žmogaus nustatymais ir asmenine pastaba"
-          },
-          {
-            "id": "join-channel",
-            "title": "Prisijunk prie žmogaus kanalo",
-            "body": "Dešiniuoju spustelėk žmogų ar draugą: „Prisijungti prie ‹kanalo›“ nukelia tiesiai į jo kanalą. Jei serveris to neleidžia, šalia parodoma priežastis.",
-            "alt": "Žmogaus meniu su „Prisijungti prie kanalo“"
           },
           {
             "id": "member-column",
             "title": "Dešinysis stulpelis su skiltimis",
-            "body": "„‹Kanale›“, „Kituose kanaluose“ su visais kitais serverio žmonėmis ir „Draugai“ – kiekvieną galima suskleisti. Mumcord įsimena, kas atidaryta. Kairėje virš kanalų medžio yra „Serverio apžvalga“.",
+            "body": "„Kanale ‹kanalas›“, „Kituose kanaluose“ su visais kitais serveryje ir „Draugai“, kiekvienas suskleidžiamas. Mumcord įsimena, kas atidaryta.",
             "alt": "Dešinysis stulpelis su atidaryta skiltimi „Kituose kanaluose“"
           },
           {
             "id": "connection-quality",
             "title": "Ryšio kokybė",
-            "body": "Profilis iš pirmo žvilgsnio parodo, ar ryšys geras, vidutinis ar silpnas, o išskleidus – pingą, paketų praradimą ir pralaidumą. Maža signalo piktograma pažymi, kieno ryšys šiuo metu silpnas.",
+            "body": "Profilis iš karto parodo, ar ryšys geras, vidutinis ar silpnas, o išskleistas rodo ping, paketų praradimą ir pralaidumą. Maža signalo piktograma pažymi, kam dabar silpnas ryšys. Administratoriai mato ir klientą bei operacinę sistemą, pavyzdžiui, „Mumcord 0.4.0“ ar „Mumble 1.5“.",
             "alt": "Profilio kortelė su išskleistu ryšiu: pingas, paketų praradimas, pralaidumas, klientas ir operacinė sistema"
           },
           {
-            "id": "listeners",
-            "title": "Klausytojai su ausimi",
-            "body": "Tie, kurie kanalo tik klausosi, rodomi įprastame sąraše su ausies piktograma, o ne atskiroje grupėje."
-          },
-          {
-            "id": "client-info",
-            "title": "Klientas ir sistema administratoriams",
-            "body": "Administratoriai profilyje dar mato, kokį klientą ir operacinę sistemą kas nors naudoja, pavyzdžiui, „Mumcord 0.4.0“ arba „Mumble 1.5“."
-          },
-          {
             "id": "channel-filters",
-            "title": "Slėpti tuščius kanalus",
-            "body": "Dideli serveriai nebeužstringa pirmą kartą rodomi. Be to, jungikliai „Slėpti tuščius kanalus“ ir „Kalbantys pirmiau“."
-          },
-          {
-            "id": "profile-comment",
-            "title": "Formatuotas profilio komentaras",
-            "body": "Tavo profilio komentare gali būti paryškinimas, kursyvas, nuorodos ir sąrašai."
-          },
-          {
-            "id": "person-settings",
-            "title": "Nustatymai kiekvienam žmogui",
-            "body": "Garsumas, nutildymas ir pastaba apie žmogų suskleisti jo profilyje. Ką nors pakeitus, eilutė trumpam tai parodo, pavyzdžiui, „Garsumas 60 %“."
+            "title": "Tvarkingas kanalų sąrašas",
+            "body": "Jungikliai „Slėpti tuščius kanalus“ ir „Kalbantys pirmiau“, o dideli serveriai nebeužstringa pirmą kartą rodomi. Tie, kurie kanalo tik klausosi, rodomi įprastame sąraše su ausies piktograma."
           },
           {
             "id": "channel-passwords",
             "title": "Kanalai su slaptažodžiu",
             "body": "Jei kanalui reikia slaptažodžio, Mumcord jo paklausia ir įsimena kiekvienam serveriui, net ir prisijungus iš naujo. Kanalai, į kuriuos tau negalima įeiti, rodomi su maža spynele.",
             "alt": "Kanalas su spynele ir kanalo slaptažodžio langas"
+          },
+          {
+            "id": "channel-tree",
+            "title": "Kanalų medis su meniu",
+            "body": "Dešiniuoju spustelėjimu ant kanalo prisijunk prie jo ar sek jį, nustatyk jo garsą, nukopijuok nuorodą, atidaryk kanalo informaciją ar perkelk ten žmones, jei galima. Kanalai su apribojimu jį rodo, pavyzdžiui, „Raid (1/10)“, pilni yra pritemdyti, o laikini ir susieti kanalai gauna piktogramas. Jei turi teisę, žmones tempi į kitą kanalą. Viršuje – serveris su ryšio tašku ir „N prisijungę · ping“.",
+            "alt": "Kanalų medis su atidarytu kanalo dešiniojo spustelėjimo meniu"
+          },
+          {
+            "id": "channel-header",
+            "title": "Kanalo pavadinimas su meniu",
+            "body": "Akis prieš kanalo pavadinimą kanalą seka arba nustoja sekti. Spustelėjus pavadinimą atsidaro Sekti, Kopijuoti kanalo nuorodą, Kanalo slaptažodis, Kanalo informacija ir Išvalyti pokalbio istoriją. Kanalo informacija rodo kelią, aprašymą, vartotojų limitą, susietus kanalus ir tavo teises ten.",
+            "alt": "Kanalo informacija su keliu, aprašymu, vartotojais, vartotojų limitu, susietais kanalais ir teisėmis"
+          },
+          {
+            "id": "hide-members",
+            "title": "Slėpk narių stulpelį",
+            "body": "Mygtukas pokalbio antraštėje arba Ctrl+Shift+M paslepia dešinįjį stulpelį, ir pokalbis gauna visą plotį. Tada mygtukas rodo, kiek žmonių yra kanale, ir žalią tašką, kol kas nors kalba. Siauruose languose stulpelis užslenka ant pokalbio.",
+            "alt": "Pokalbis per visą plotį su paslėptu narių stulpeliu ir narių mygtuku antraštėje"
+          },
+          {
+            "id": "message-privacy",
+            "title": "Kas gali tau rašyti",
+            "body": "Nustatymai → Privatumas: asmeninės žinutės iš visų, tik iš draugų arba iš nieko, taip pat kiekvienam serveriui atskirai. Žmonės tavo kanale ir pokalbiai, kuriuos priėmei, visada praeina. Kitos žinutės laukia kaip žinučių užklausos, kurias priimi arba atmeti, o Mumcord naudotojai gali siųsti pokalbio užklausą su trumpa pastaba. Siuntėjui apie tai niekada nepranešama.",
+            "alt": "Žinučių užklausos su pokalbio užklausa, jos pastaba ir mygtukais Priimti ir Atmesti"
+          },
+          {
+            "id": "block-users",
+            "title": "Blokuok žmones",
+            "body": "„Blokuoti…“ žmogaus meniu paslepia jų asmenines žinutes ir užklausas, suskleidžia jų žinutes kanale ir nutildo jų balsą, tik tau. Blokavimas seka sertifikatą, todėl galioja skirtinguose serveriuose ir su naujais vardais. Serveriui ar žmogui nieko nesiunčiama, o Nustatymai → Privatumas išvardija visus, kuriuos užblokavai, su „Atblokuoti“.",
+            "alt": "Žmogaus blokavimo patvirtinimas, išvardijantis, kas pasikeis"
           }
         ]
       },
@@ -741,7 +805,7 @@
           {
             "id": "previews",
             "title": "Nuorodų peržiūros",
-            "body": "Nuorodos gauna kortelę su pavadinimu, aprašymu ir paveikslėliu. Mumcord jas parsisiunčia pats, niekada iš vietinio tinklo adresų; kiekvieną kortelę galima paslėpti, o funkciją išjungti vedlyje ir nustatymuose.",
+            "body": "Nuorodos gauna kortelę su pavadinimu, aprašymu ir paveikslėliu. Mumcord jas parsisiunčia pats, niekada iš vietinio tinklo adresų; kiekvieną kortelę galima uždaryti, o funkciją galima išjungti vedlyje ir nustatymuose. Dešiniuoju spustelėjimu ant nuorodos siūloma „Kopijuoti nuorodą“ ir „Atidaryti nuorodą“.",
             "alt": "Pokalbis su nuorodos peržiūra"
           },
           {
@@ -752,32 +816,32 @@
           },
           {
             "id": "spotify",
-            "title": "Spotify",
-            "body": "Spotify nuorodos taip pat gauna kortelę su viršeliu, pavadinimu ir atlikėju; grotuvas atsiranda tik spustelėjus.",
-            "alt": "Pokalbis su Spotify kortele"
+            "title": "Muzikos nuorodos",
+            "body": "Spotify, SoundCloud ir YouTube Music groja oficialiame paslaugos grotuve, kuris įkeliamas tik paspaudus Groti. Apple Music, Tidal, Deezer, Bandcamp ir kiti muzikos puslapiai gauna tokią pat kortelę su viršeliu, pavadinimu ir atlikėju bei „Atidaryti …“. Paleidus vieną grotuvą, kitas sustoja.",
+            "alt": "Muzikos kortelė su viršeliu, pavadinimu, atlikėju ir paslaugos pavadinimu"
           },
           {
             "id": "images",
             "title": "Paveikslėliai ir GIF pokalbyje",
-            "body": "Išoriniai paveikslėliai ir paveikslėlių nuorodos rodomi tiesiai žinutėje, Giphy ir Tenor GIF groja ir nurodo savo šaltinį.",
+            "body": "Išoriniai paveikslėliai ir paveikslėlių nuorodos rodomi tiesiai žinutėje, Giphy ir Tenor GIF groja ir nurodo savo šaltinį. Ekrano nuotraukas ir nukopijuotus paveikslėlius įdėk į žinutės įvedimo lauką su Ctrl+V.",
             "alt": "Pokalbis su paveikslėliu ir GIF"
           },
           {
             "id": "image-viewer",
             "title": "Paveikslėlių peržiūra",
-            "body": "Spustelėk paveikslėlį, kad pamatytum jį didelį: priartink ratuku ar klavišais, stumdyk, rodyklėmis vartyk visus pokalbio paveikslėlius ir „Išsaugok paveikslėlį“.",
+            "body": "Spustelėk paveikslėlį, kad pamatytum jį didelį: artink, tempk ir rodyklių klavišais eik per visus pokalbio paveikslėlius. Pilnas dydis įkeliamas fone su siaura eigos juosta. Dešiniuoju spustelėjimu nukopijuok paveikslėlį, išsaugok originalą, GIF su animacija arba nukopijuok jo adresą.",
             "alt": "Paveikslėlių peržiūra su priartinimo juosta"
           },
           {
             "id": "mentions",
             "title": "@paminėjimai",
-            "body": "Įvesk @ ir Mumcord pasiūlys vardus. Paminėjimai paryškinami, praneša tau net tyliuose kanaluose ir turi savo garsą.",
+            "body": "Įrašyk @, ir Mumcord pasiūlo vardus. Paminėjimai paryškinami, praneša tau net tyliuose kanaluose ir turi savo garsą. Užvedus pelę ant paminėjimo – peržiūra, spustelėjus – profilis, dešiniuoju spustelėjimu – meniu.",
             "alt": "Žinutės laukas su vardo pasiūlymu po @"
           },
           {
             "id": "code",
             "title": "Kodas ir formatavimas",
-            "body": "Kodo blokai su sintaksės paryškinimu, formatavimo juosta virš įvesties lauko ir spartieji klavišai, pvz., Ctrl+B, Ctrl+I ar Ctrl+E.",
+            "body": "Kodo blokai paryškinami kaip kalba, kurią parašai po trijų atvirkštinių apostrofų, nuo sql ir rust iki Dockerfile ir hex iškrovų, su mygtukais nukopijuoti ar atsisiųsti. Formatavimo įrankių juosta virš įvedimo ir sparčiųjų klavišų, kaip Ctrl+B, Ctrl+I ar Ctrl+E.",
             "alt": "Pokalbis su paryškintu kodu ir formatavimo juosta"
           },
           {
@@ -789,7 +853,7 @@
           {
             "id": "notifications",
             "title": "Pranešimai – kaip tau patinka",
-            "body": "Naujos žinutės kaip iššokantis langelis programoje, sistemos pranešimas, abu arba nieko. Ir trumpi, tylūs garsai kiekvienam įvykiui.",
+            "body": "Naujos žinutės kaip iššokantis langelis programoje, sistemos pranešimas, abu arba nieko, su trumpais, tyliais garsais kiekvienam įvykiui. Pranešimuose yra serverio pavadinimas, o kiekvieną serverį galima nutildyti atskirai.",
             "alt": "Iššokantis langelis programoje apie naują žinutę"
           },
           {
@@ -797,11 +861,6 @@
             "title": "Susitvarko pats",
             "body": "Peržiūros ir paveikslėliai ištrinami po tavo pasirinkto dienų skaičiaus, jei nori – ir sena pokalbių istorija. Istorija saugoma tik tavo kompiuteryje ir gali būti išjungta kiekvienam serveriui.",
             "alt": "Nustatymai, pokalbio ir istorijos skiltis"
-          },
-          {
-            "id": "mention-chips",
-            "title": "Spustelimi @paminėjimai",
-            "body": "Užvedus pelę – peržiūra, spustelėjus – profilis, dešiniuoju spustelėjimu – meniu."
           },
           {
             "id": "replies",
@@ -828,37 +887,46 @@
             "alt": "Ilga žinutė su vardu ir nuotrauka, prisegtais pokalbio viršuje"
           },
           {
-            "id": "image-loading",
-            "title": "Paveikslėliai kraunasi fone",
-            "body": "Plona juosta po paveikslėliu rodo, kiek jau įkelta viso dydžio vaizdo. Uždarius vaizdų peržiūrą, jis toliau kraunasi; × ant juostos tai atšaukia."
-          },
-          {
-            "id": "link-menu",
-            "title": "Kopijuok nuorodas",
-            "body": "Dešiniuoju spustelėjus nuorodą pokalbyje, siūloma „Kopijuoti nuorodą“ ir „Atidaryti nuorodą“.",
-            "alt": "Nuorodos kontekstinis meniu su „Kopijuoti nuorodą“ ir „Atidaryti nuorodą“"
-          },
-          {
             "id": "message-cards",
             "title": "Žinučių kortelės",
             "body": "Botai ir žmonės skelbia kompaktiškas korteles su pavadinimu, būsenos spalva, piktograma, formatuotu tekstu, paveikslėliu ir nuoroda, skirtas kompiliavimo rezultatams, įspėjimams ar suvestinėms. Oficialūs Mumble klientai tą pačią žinutę mato kaip skaitomą tekstą.",
             "alt": "Pokalbis su dviem boto žinučių kortelėmis: pilna kortelė su piktograma, pavadinimu, tekstu, grafiku ir nuoroda, o po ja paprasta kortelė su pavadinimu ir nuoroda"
           },
           {
-            "id": "paste-images",
-            "title": "Paveikslėlių įklijavimas su Ctrl+V",
-            "body": "Ekrano kopijos, „Kopijuoti paveikslėlį“ iš naršyklės ir failų tvarkytuvėje nukopijuoti paveikslėlių failai su Ctrl+V iškart patenka į žinutės įvesties lauką kaip priedas."
+            "id": "notification-centre",
+            "title": "Pranešimų centras",
+            "body": "Varpelis pokalbio antraštėje arba Ctrl+Shift+N surenka paminėjimus, atsakymus, pokalbių ir žinučių užklausas, kvietimus į watch party ir ekrano bendrinimą bei serverius, kurie tapo nepasiekiami, iš visų prijungtų serverių, naujausi pirmiau. Filtruok juos, priimk užklausas čia pat, o spustelėjimas nukelia prie žinutės. Veikiant Netrukdyti jis toliau tyliai kaupia.",
+            "alt": "Pranešimų centras su paminėjimais, atsakymais ir pokalbio užklausa su Priimti ir Atmesti"
           },
           {
-            "id": "code-blocks",
-            "title": "Kodo blokai su kopijavimu ir atsisiuntimu",
-            "body": "Po trijų atvirkštinių kabučių parašyk kalbą, nuo sql, rust ir php iki cmd, Dockerfile ir šešioliktainių išrašų, ir blokas bus paryškintas būtent taip. Kampe esantys mygtukai nukopijuoja kodą arba išsaugo jį kaip failą.",
-            "alt": "SQL kodo blokas su kalbos žyma ir kopijavimo bei atsisiuntimo mygtukais kampe"
+            "id": "pm-overview",
+            "title": "Visos asmeninės žinutės vienoje vietoje",
+            "body": "Mygtukas Žinutės serverių juostos viršuje išvardija kiekvieną pokalbį iš kiekvieno prijungto serverio, prisegtus pirmiau, su serverio žyma, peržiūra ir neperskaitytų skaičiumi. Ieškok, filtruok pagal neperskaitytus ar užklausas, pradėk naują pokalbį, o jo meniu prisek, nutildyk ar ištrink.",
+            "alt": "Asmeninių žinučių apžvalga su pokalbio užklausa viršuje ir pokalbiais iš kelių serverių"
           },
           {
-            "id": "image-menu",
-            "title": "Kopijuok ir išsaugok paveikslėlius",
-            "body": "Dešiniuoju spustelėk paveikslėlį pokalbyje arba paveikslėlių peržiūroje: kopijuoti paveikslėlį, išsaugoti paveikslėlį kaip originalą, GIF – su animacija, kopijuoti paveikslėlio adresą arba atidaryti peržiūroje."
+            "id": "group-mentions",
+            "title": "@channel ir @all",
+            "body": "@channel pasiekia visus kanale, @all – visus, kas gali jį skaityti, įskaitant klausytojus. Mumcord juos laiko tavo paminėjimu, kiti Mumble klientai mato tik žodžius. Per daug? Nutildyk juos kiekvienam serveriui.",
+            "alt": "Pokalbis su paryškintu @channel paminėjimu"
+          },
+          {
+            "id": "audio-links",
+            "title": "Garso failai pokalbyje",
+            "body": "Nuorodos į mp3, ogg, m4a, wav, flac ar webm failus gauna grotuvą po žinute su prasukimo juosta, garsumu, „Atidaryti naršyklėje“ ir „Išsaugoti“. Nieko negroja savaime, failas įkeliamas tik paspaudus Groti, iki 32 MB, o garsas eina į tavo garsiakalbius, niekada į mikrofoną.",
+            "alt": "Garso grotuvas po žinute su grojimo mygtuku, prasukimo juosta ir garsumu"
+          },
+          {
+            "id": "hidden-previews",
+            "title": "Paslėptos peržiūros tai pasako",
+            "body": "Kai nuorodų peržiūros ir įterpiniai išjungti, tyli eilutė po žinute įvardija, kas paslėpta, pavyzdžiui, paveikslėlis ar vaizdo įrašas, ir veda į nustatymą. Dėl to iš susietos svetainės nieko neprašoma.",
+            "alt": "Žinutė su eilute „Paveikslėlis paslėptas, nes nuorodų peržiūros ir įterpiniai išjungti“"
+          },
+          {
+            "id": "server-links",
+            "title": "Serverių nuorodos kaip kortelės",
+            "body": "mumble:// nuoroda pokalbyje rodo serverį, kanalą, ping, prisijungusius žmones ir versiją, su „Prisijungti“, „Pridėti prie serverių“ ir „Kopijuoti nuorodą“. Skaičiai gaunami iš standartinės viešos užklausos, niekada per ryšį. Vartotojo vardai ir slaptažodžiai nuorodoje niekada nerodomi ir kopijuojant praleidžiami.",
+            "alt": "mumble:// nuorodos kortelė su serverio pavadinimu, kanalu, ping, vartotojais ir mygtuku Prisijungti"
           }
         ]
       },
@@ -885,6 +953,12 @@
             "alt": "Sąrankos vedlys, mikrofono žingsnis su lygio testu"
           },
           {
+            "id": "noise-levels",
+            "title": "Triukšmo slopinimas keturiais lygiais",
+            "body": "Nustatymai → Balsas siūlo Lengvą nuolatiniam triukšmui su mažiausia CPU apkrova, Standartinį kaip numatytąjį, Išplėstinį (DI) su 2024 m. RNNoise modeliu kaip beta, kuris pašalina daugiau triukšmo už didesnę CPU apkrovą, ir Išjungta. „?” šalia kiekvieno lygio pasako, kiek jis kainuoja. Viskas veikia tavo kompiuteryje.",
+            "alt": "Balso nustatymai su keturiais triukšmo slopinimo lygiais"
+          },
+          {
             "id": "music",
             "title": "Muzikos kokybė",
             "body": "Vienas jungiklis pakelia bitų spartą iki serverio ribos, daugiausia 510 kbit/s, pritaiko koduotuvą muzikai ir išjungia triukšmo slopinimą bei automatinį stiprinimą.",
@@ -898,13 +972,50 @@
           },
           {
             "id": "bitrate",
-            "title": "Bitų sparta rankiniu būdu",
-            "body": "Atskiras slankiklis nuo 16 kbit/s iki didžiausios vertės, kurią leidžia serveris ir Mumble. Praradus paketų, Mumcord vis tiek pats ją sumažina."
+            "title": "Balso kokybės skydelis",
+            "body": "Dešiniuoju spustelėjimu ant ryšio informacijos: bitų spartos slankiklis nuo 16 kbit/s iki serverio ribos su tuo, kas siunčiama dabar, muzikos kokybė, numatomas pralaidumas ir garso būklės įvertinimas. Praradus paketų, Mumcord bitų spartą vis tiek pats sumažina.",
+            "alt": "Balso kokybės skydelis su bitų spartos slankikliu, muzikos kokybe ir numatomu pralaidumu"
           },
           {
             "id": "realtime-audio",
             "title": "Stabilu esant apkrovai",
             "body": "Įrašymas ir atkūrimas gauna realaus laiko prioritetą, todėl balsas mažiau traška ir rečiau nutrūksta, kol žaidimas ar kompiliavimas apkrauna kompiuterį. Ryšio informacija rodo nutrūkimus ir ar įjungtas realaus laiko garsas."
+          },
+          {
+            "id": "low-latency",
+            "title": "Mažos delsos režimas muzikavimui",
+            "body": "10 ms paketai, minimalus buferis ir jokio aido ar triukšmo slopinimo sumažina delsą nuo maždaug 100 ms iki maždaug 40 ms plius tinklas. Jungiasi iš karto ir rodo numatomą delsą. Reikia daugiau pralaidumo; rekomenduojamos ausinės. Veikia su standartiniais serveriais.",
+            "alt": "Garso nustatymai su įjungtu mažos delsos režimu ir išskaidyta numatoma delsa"
+          },
+          {
+            "id": "channel-audio",
+            "title": "Garsas kiekvienam kanalui",
+            "body": "„Šio kanalo garsas…“ nustato muzikos kokybę, mažos delsos režimą ir bitų spartos ribą vienam kanalui, su šablonais Balsas, Muzika ir Jam. Įsigalioja prisijungus, o išėjus grįžta tavo įprasti nustatymai. Saugoma tik šiame įrenginyje, todėl veikia bet kuriame Mumble serveryje.",
+            "alt": "„Šio kanalo garsas“ su šablonais Balsas, Muzika ir Jam"
+          },
+          {
+            "id": "device-switch",
+            "title": "Keisk įrenginius iš balso juostos",
+            "body": "Dešiniuoju spustelėjimu ant mikrofono ar ausinių mygtuko: pasirink įrenginį, nustatyk garsumą, stebėk lygį ir perjunk triukšmo slopinimą, viskas be pakartotinio prisijungimo. Jei įrenginys atjungiamas, Mumcord grįžta prie sistemos numatytojo. Linux sistemoje su PipeWire kiekvienas įvestis ir išvestis rodoma taip, kaip darbalaukio garso nustatymuose.",
+            "alt": "Mikrofono meniu su įvesties įrenginiais, garsumo slankikliu ir lygio matuokliu"
+          },
+          {
+            "id": "leave-voice",
+            "title": "Palik balsą, likęs prisijungęs",
+            "body": "Dešiniuoju spustelėjimu ant padėjimo mygtuko: „Palikti balsą“ nustoja kalbėti ir klausytis, bet pokalbis ir skaitymas tęsiasi. Ten pat: atsijungti, perjungti balsą į kitą serverį ir atsijungti nuo visų. Kairysis spustelėjimas vis dar padeda ragelį iš karto.",
+            "alt": "Padėjimo mygtuko meniu su Palikti balsą, Atsijungti ir Perjungti balsą"
+          },
+          {
+            "id": "whisper",
+            "title": "Šnabždėjimas ir šaukimas",
+            "body": "Kalbėk su pasirinktais žmonėmis arba su visais kanale, jei nori, kartu su jo pakanaliais, susietais kanalais ar tik viena grupe, ten nesikeldamas. Tikslai nustatomi nustatymuose arba pasirinkus „Šnabždėti…“ žmogaus ar kanalo meniu, kiekvienam skirtas savas laikomas kalbėjimo klavišas. Juosta virš pokalbio rodo, su kuo kalbi.",
+            "alt": "Juosta virš pokalbio šnabždant kanalui"
+          },
+          {
+            "id": "user-panel",
+            "title": "Ramus naudotojo skydelis",
+            "body": "Skydelis kanalų sąrašo apačioje visada išlaiko tą patį aukštį: tu su vardu ir serveriu, viena būsenos eilutė, pavyzdžiui, jungiamasi iš naujo ar tavo balso kanalas, maži žetonai Netrukdyti, mažos delsos režimui ir ryšiui, bei mikrofono, ausinių ir padėjimo mygtukai. Kanalų sąrašas virš jo nebešokinėja.",
+            "alt": "Naudotojo skydelis keliose būsenose, nuo kalbėjimo ir nutildymo iki pakartotinio prisijungimo"
           }
         ]
       },
@@ -915,50 +1026,19 @@
           {
             "id": "positional",
             "title": "Erdvinis garsas",
-            "body": "To paties žaidimo žaidėjų balsai sklinda iš jų pusės ir silpnėja didėjant atstumui. Per Mumble Link arba oficialius Mumble žaidimų papildinius; „3D“ piktograma rodo, kas siunčia pozicijas.",
+            "body": "Tame pačiame žaidime esančių žmonių balsai sklinda iš jų krypties ir tyliau girdimi toliau. Per Mumble Link arba oficialius Mumble žaidimų papildinius, kiekvienas su savo jungikliu; „3D“ piktograma rodo, kas siunčia pozicijas.",
             "alt": "Nustatymai, erdvinis garsas su atstumais ir žaidimų papildiniais"
-          },
-          {
-            "id": "game-plugins",
-            "title": "Oficialūs žaidimų papildiniai",
-            "body": "Mumble papildiniai perduoda pozicijas palaikomuose žaidimuose, kiekvienas su savo jungikliu. Nustatymuose matyti, kuris aktyvus."
           },
           {
             "id": "in-game-overlay",
             "title": "Perdanga žaidime",
-            "body": "Linux sistemoje – tiesiai žaidime kaip Vulkan sluoksnis, taip pat Steam ir Proton žaidimuose, išbandyta su Tyr ir Supermarket Simulator. Nustatoma kiekvienam žaidimui; žaidimai, kurių apsauga nuo sukčiavimo blokuoja perdangas, lieka išimti. Windows ją gauna su 0.4.0.",
+            "body": "Rodo, kas kalba, tiesiai žaidime. Linux sistemoje kaip Vulkan sluoksnis, taip pat Steam, Proton ir Flatpak Steam žaidimuose, su paleidimo parinktimi nukopijuoti vietiniams OpenGL žaidimams. Windows sistemoje kaip paspaudimus praleidžiantis langas, kuris į žaidimą nieko neįkelia, todėl veikia su apsauga nuo sukčiavimo; jį paslepia tik išskirtinis viso ekrano režimas. Nustatoma kiekvienam žaidimui; žaidimai, kurių apsauga nuo sukčiavimo blokuoja perdangas, lieka išskirti.",
             "alt": "Nustatymai, perdanga žaidime su įspėjimu apie apsaugą nuo sukčiavimo ir pasirinkimais kiekvienam žaidimui"
-          },
-          {
-            "id": "overlay-window",
-            "title": "Perdangos langas",
-            "body": "Linux ir Windows sistemose – permatomas, spustelėjimus praleidžiantis langas virš visko, rodantis, kas kalba tavo kanale. macOS perdangos nėra. Su 0.4.0 perdangos langas dingsta.",
-            "alt": "Perdangos langas virš žaidimo, rodantis, kas kalba"
           },
           {
             "id": "now-gaming",
             "title": "Dabar žaidžia",
-            "body": "Jei nori, kiti mato, ką žaidi, su Steam paveikslėliu ir žaidimo laiku. „Prisijungti prie žaidimo“ – Steam žaidimams, kurie tai palaiko."
-          },
-          {
-            "id": "overlay-windows",
-            "title": "Perdanga žaidime Windows sistemoje",
-            "body": "Atskiras, paspaudimus praleidžiantis langas virš žaidimo. Į žaidimą nieko neįkeliama, todėl ji veikia ir žaidimuose su apsauga nuo sukčiavimo. Ją paslepia tik išskirtinis viso ekrano režimas."
-          },
-          {
-            "id": "overlay-opengl",
-            "title": "OpenGL žaidimai Linux sistemoje",
-            "body": "Vietiniams OpenGL žaidimams, pavyzdžiui, Project Hospital, Mumcord parodo tinkamą Steam paleidimo parinktį nukopijuoti, ir ji veikia ir po atnaujinimų. HDR žaidimuose spalvos irgi teisingos."
-          },
-          {
-            "id": "flatpak-steam",
-            "title": "Flatpak Steam ir viso ekrano režimas be rėmelių",
-            "body": "Perdanga žaidime ir žaidimams iš Steam kaip Flatpak, žaidimai be rėmelių per visą ekraną patikrinti KDE ir GNOME aplinkose. Uždarius ar atnaujinus Mumcord, veikiantis žaidimas nebeužlūžta."
-          },
-          {
-            "id": "join-game-link",
-            "title": "„Prisijungti prie žaidimo“ per Mumble Link",
-            "body": "„Prisijungti prie žaidimo“ ir žaidimams, kurie per Mumble Link perduoda savo serverio adresą."
+            "body": "Jei nori, kiti mato, ką žaidi, su Steam paveikslėliu ir žaidimo laiku. „Prisijungti prie žaidimo“ Steam žaidimams, kurie tai palaiko, ir žaidimams, kurie dalijasi serverio adresu per Mumble Link."
           }
         ]
       },
@@ -997,13 +1077,13 @@
           {
             "id": "watch-party",
             "title": "Žiūrėjimas kartu",
-            "body": "YouTube watch party balso kanale: visi tuo pat metu mato tą patį vaizdo įrašą, bet kas gali pristabdyti ir prasukti, su bendru grojaraščiu.",
+            "body": "YouTube watch party balso kanale: visi tuo pat metu mato tą patį vaizdo įrašą, bet kas gali pristabdyti ir prasukti, su bendru grojaraščiu. Kai privatumo nustatymuose įterpiniai išjungti, iš YouTube ar Twitch nieko neįkeliama.",
             "alt": "Žiūrėjimas kartu slankiajame lange su dalyviais, valdikliais ir kitu vaizdo įrašu"
           },
           {
             "id": "screen-share",
             "title": "Ekrano bendrinimas",
-            "body": "Ekranas arba langas iki 8 žiūrovų, 720p, 30 kadrų per sekundę. Windows ir macOS sistemose, jei nori, su bendrinamos programos garsu. Jį paleidi Programų mygtuku pokalbyje.",
+            "body": "Ekranas arba langas iki 8 žiūrovų, 720p, 30 kadrų per sekundę, Windows ir macOS sistemose, jei nori, su bendrinamos programos garsu. Jį paleidi Programų mygtuku pokalbyje. Kol bendrini, raudona juosta rodo žiūrovus ir „Baigti“, o kiti mato raudoną „LIVE“ žiedą aplink tavo paveikslėlį.",
             "alt": "Bendrinamas ekranas slankiajame lange su viso ekrano režimu ir „Nebežiūrėti“"
           },
           {
@@ -1013,20 +1093,15 @@
             "alt": "Užuominos pokalbio viršuje apie vykstantį žiūrėjimą kartu ir bendrinamą ekraną"
           },
           {
-            "id": "live",
-            "title": "Tiesiogiai, ir visi tai mato",
-            "body": "Kai bendrini ekraną, apie tai praneša raudona juosta virš tavo profilio, su „Baigti“ ir žiūrovų skaičiumi. Kiti mato raudoną žiedą su „LIVE“ aplink tavo nuotrauką.",
-            "alt": "Raudona juosta „Tu bendrini ekraną“ su žiūrovų skaičiumi ir „Baigti“"
-          },
-          {
             "id": "ducking",
-            "title": "Tyliau, kai kalbama",
-            "body": "Kai kas nors kanale kalba, žiūrėjimo kartu ir bendrinamo ekrano garsas patyla, o paskui vėl sugrįžta. Tu nustatai, kiek tyliau, arba tai išjungi."
+            "title": "Garsas watch party ir bendrinimui",
+            "body": "Kol kanale kas nors kalba, watch party ir bendrinami ekranai pritylsta; kiek, nustatai pats. Trumpi garsai, kai kas nors pradeda ar prisijungia prie watch party arba bendrina ekraną, kiekvieną galima išjungti."
           },
           {
-            "id": "activity-sounds",
-            "title": "Garsai žiūrėjimui kartu ir bendrinimui",
-            "body": "Trumpas garsas, kai kas nors pradeda žiūrėjimą kartu, prie jo prisijungia ar jį palieka ir kai kas nors bendrina savo ekraną arba pradeda žiūrėti tavąjį. Kiekvieną garsą galima išjungti."
+            "id": "relay",
+            "title": "Bendruomenės relė",
+            "body": "Serverio bendruomenė gali paleisti relę šalia Mumble serverio. Pilno dydžio paveikslėliai ir ekrano bendrinimas tada veikia net kai tiesioginio ryšio neįmanoma užmegzti, o su „visada relė“ kitas žmogus niekada nemato tavo IP adreso. Relė negali perskaityti šifruoto ryšio, o balsas jos niekada nenaudoja. Renkiesi skiltyje Nustatymai → Privatumas, taip pat kiekvienam serveriui.",
+            "alt": "Privatumo nustatymai su peer-to-peer pasirinkimais tiesiogiai, relė ir išjungta"
           }
         ]
       },
@@ -1043,36 +1118,26 @@
           {
             "id": "sounds",
             "title": "Garsai ir pranešimai",
-            "body": "Kiekvieną įvykį galima įjungti atskirai: prisijungimą, išėjimą, žinutes, paminėjimus.",
+            "body": "Kiekvieną įvykį galima įjungti atskirai: prisijungimą, išėjimą, žinutes, paminėjimus ir savo garsą pašalinimui ar uždraudimui.",
             "alt": "Nustatymai, garsų ir pranešimų skiltis"
           },
           {
             "id": "languages",
-            "title": "Keisk kalbą be paleidimo iš naujo",
-            "body": "Kalba įsigalioja iš karto. Kartu – dėklo piktograma, paleidimas prisijungus ir pilnas valdymas klaviatūra bei ekrano skaitytuvu.",
+            "title": "24 kalbos, keičiamos be paleidimo iš naujo",
+            "body": "Visos 24 oficialios ES kalbos, nuo bulgarų iki švedų, įsigalioja iš karto, įskaitant dėklo meniu. Kiekviena pateikta savo pavadinimu. Komandos išversta be gimtakalbių patikros: pataisymai laukiami kaip issue. Pilnas naudojimas klaviatūra ir ekrano skaitytuvu įeina.",
             "alt": "Nustatymai, sąsajos kalbos skiltis"
           },
           {
             "id": "privacy",
             "title": "Jokios telemetrijos",
-            "body": "Tavo tapatybė saugoma sistemos saugioje saugykloje. Diagnostikos faile nėra pokalbių turinio ar slaptažodžių, ir jis palieka tavo kompiuterį tik tada, kai pats jį išsiunti."
-          },
-          {
-            "id": "eu-languages",
-            "title": "Visos 24 oficialiosios ES kalbos",
-            "body": "Nuo bulgarų iki švedų, įskaitant dėklo meniu. Kiekviena kalba nurodyta savo pavadinimu ir randama pagal bet kurį jos pavadinimą. Išversta komandos, be gimtakalbių peržiūros: pataisymai laukiami kaip issue."
-          },
-          {
-            "id": "privacy-step",
-            "title": "Privatumas vedlyje",
-            "body": "Pirmą kartą paleidus trumpas žingsnis parodo, prie ko ir kada jungiasi Mumcord, su nuoroda į visą privatumo pareiškimą.",
+            "body": "Pirmą kartą paleidus trumpas žingsnis parodo, prie ko ir kada jungiasi Mumcord. Tavo tapatybė saugoma sistemos saugioje saugykloje, o diagnostikos faile nėra pokalbių turinio ar slaptažodžių, ir jis palieka tavo kompiuterį tik tada, kai pats jį išsiunti.",
             "alt": "Vedlys, privatumo žingsnis"
           },
           {
             "id": "quick-settings",
             "title": "Greitieji nustatymai po krumpliaračiu",
-            "body": "Vienas spustelėjimas ant krumpliaračio: peržiūros, tema, perdanga, dalijimasis muzika ir žaidimu, profilio redagavimas ir registracija. Beta funkcijos, pvz., erdvinis garsas, yra atskiroje suskleidžiamoje grupėje.",
-            "alt": "Greitieji nustatymai su atidaryta Beta grupe"
+            "body": "Vienas spustelėjimas ant krumpliaračio: viena eilutė kiekvienam nustatymui skiltyse Pranešimai, Bendrinimas, Išvaizda ir Paskyra, o paaiškinimas už mažo „?“. Beta funkcijos, pavyzdžiui, pozicinis garsas, yra savo grupėje, kuri iš pradžių suskleista.",
+            "alt": "Greitieji nustatymai, sugrupuoti į Pranešimai, Bendrinimas, Išvaizda ir Paskyra"
           },
           {
             "id": "settings-search",
@@ -1100,30 +1165,98 @@
           },
           {
             "id": "dropdowns",
-            "title": "Tvarkingi nustatymai",
-            "body": "Temą atitinkantys išskleidžiamieji sąrašai vietoj naršyklės išvaizdos, o visi nustatymų laukai tvarkingai sulygiuoti."
-          },
-          {
-            "id": "tooltips",
-            "title": "Paaiškinimai tavo temoje",
-            "body": "Kiekvienas iškylantysis paaiškinimas tavo temos stiliumi, šviesus ar tamsus, be to, pasiekiamas ir klaviatūra."
+            "title": "Tvarkingi nustatymai ir patarimai",
+            "body": "Išskleidžiami sąrašai ir patarimai tavo temos išvaizda, o ne naršyklės, kiekvienas nustatymų įvedimo laukas tvarkingai išlygiuotas, o prie kiekvieno patarimo galima prieiti ir klaviatūra."
           },
           {
             "id": "packet-inspector",
             "title": "Paketų inspektorius derinimui",
-            "body": "Paslėptas kūrėjams: septyni spustelėjimai ant versijos skiltyje Nustatymai → Apie jį atrakina. Atskirame lange jis rodo, kokie Mumcord duomenys siunčiami ir gaunami, su filtrais, skaitikliais ir eksportu į JSON ar Markdown.",
+            "body": "Paslėptas kūrėjams: septyni spustelėjimai ant versijos skiltyje Nustatymai → Apie jį atrakina. Atskirame lange jis rodo, kokie Mumcord duomenys siunčiami ir gaunami, su filtrais, skaitikliais ir eksportu į JSON ar Markdown. Jis seka naujus paketus ir fiksuoja tik tada, kai atidarytas.",
             "alt": "Paketų inspektorius su filtrais, skaitikliais pagal tipą ir kryptį bei viena išskleista paketo eilute"
           },
           {
             "id": "clear-cache",
             "title": "Išvalyk podėlį",
             "body": "Nustatymai → Privatumas rodo, kiek vietos užima nuorodų peržiūros, paveikslėliai ir naršyklės variklis, ir vienu mygtuko paspaudimu juos išvalo, taip pat po vieną. Pokalbių istorija, serveriai, draugai ir užrašai lieka nepaliesti."
+          },
+          {
+            "id": "dnd",
+            "title": "Netrukdyti",
+            "body": "Vienas jungiklis greitosiose nustatymuose, nustatymuose ar dėklo meniu nutildo pranešimų garsus ir iššokančius langelius visuose serveriuose. Balsas toliau veikia, o neperskaitytų skaičiai toliau skaičiuojami. KDE Plasma, GNOME ir Windows jis gali sekti sistemos režimą Netrukdyti.",
+            "alt": "Garsų ir pranešimų nustatymai su Netrukdyti ir „Sekti sistemos režimą Netrukdyti“"
+          },
+          {
+            "id": "tray",
+            "title": "Pilnas dėklo meniu",
+            "body": "Dėklo meniu rodo kiekvieną prijungtą serverį su jo būsena ir kanalu, nutildymą, ausinių išjungimą ir Netrukdyti, perkelia balsą į kitą serverį ar kanalą ir atidaro naujausius pokalbius. Piktograma rodo kalbėjimą, nutildymą, neperskaitytas žinutes ir Netrukdyti. Mumcord paleidžiamas prisijungus, jei nori, bet kurioje sistemoje.",
+            "alt": "Dėklo meniu su serveriais, balso kanalo submeniu ir naujausiais pokalbiais"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.5.0",
+      "teaser": "Pranešimų centras, visi privatūs pranešimai vienoje vietoje, blokavimas, kelios tapatybės ir importas iš Mumble.",
+      "summary": "Didelis atnaujinimas pokalbiams ir privatumui: pranešimų centras, visi privatūs pranešimai vienoje vietoje su tavo paties taisyklėmis, kas gali tau rašyti, blokavimas, kelios tapatybės ir perėjimas iš Mumble per kelis paspaudimus. Be to, bendruomenės relė paveikslėliams ir ekrano transliacijai, muzika ir garsas pokalbyje, viešųjų serverių naršyklė ir mažos delsos režimas bendram muzikavimui.",
+      "groups": [
+        {
+          "title": "Nauja",
+          "items": [
+            "Pranešimų centras už varpelio pokalbio antraštėje (Ctrl+Shift+N) surenka viską, kas nori tavo dėmesio, visuose prisijungtuose serveriuose: paminėjimus, atsakymus, pokalbių ir žinučių užklausas su mygtukais Priimti ir Atmesti, kvietimus į bendrą žiūrėjimą ir ekrano transliacijas bei serverius, kurių nebepavyksta pasiekti. Paspaudus nušoki prie žinutės.",
+            "Netrukdyti: vienas jungiklis sparčiuosiuose nustatymuose, nustatymuose ir dėklo meniu nutildo pranešimų garsus ir iššokančius langus visuose serveriuose. Balsas veikia toliau, o neskaitytos žinutės vis dar skaičiuojamos. Jei nori, Mumcord seka sistemos režimą „Netrukdyti“ KDE Plasma, GNOME ir Windows aplinkoje.",
+            "Dėklo meniu rodo kiekvieną prisijungtą serverį su jo kanalu, taip pat Nutildyti, Išjungti garsą ir Netrukdyti. Iš ten perkeli balsą į kitą serverį ar kanalą ir atidarai paskutinius privačius pokalbius. Dėklo piktograma parodo, kai kas nors kalba, kai esi nutildytas ir kai yra neskaitytų žinučių.",
+            "Visi privatūs pranešimai vienoje vietoje: mygtukas Pranešimai serverių juostos viršuje rodo kiekvieną pokalbį iš visų prisijungtų serverių, su paieška, filtrais, prisegimu ir nutildymu. Jis pakeičia sąrašą Tiesioginės žinutės po kanalų medžiu. Žmogaus meniu dabar prasideda nuo Siųsti žinutę, Prisijungti prie kanalo ir Pridėti draugą.",
+            "Tu pats nusprendi, kas gali tau rašyti privačiai: visi, tik draugai arba niekas, taip pat kiekvienam serveriui atskirai. Tavo kanalo žmonės ir priimti pokalbiai visada prasiskverbia. Kiti laukia skiltyje Žinučių užklausos, o Mumcord naudotojai gali atsiųsti pokalbio užklausą su trumpa pastaba. Mumcord filtruoja tavo pusėje, todėl siuntėjas to nesužino. Priimtą pokalbį vėliau gali atsiimti.",
+            "Blokuok žmones: jų privačios žinutės ir užklausos dingsta, jų kanalo žinutės suskleidžiamos, o jų balsas tau nutildomas. Blokavimas seka žmogaus sertifikatą, todėl galioja visuose serveriuose ir naujas vardas jo neapeina. Nei serveris, nei žmogus apie tai nesužino; Nustatymai → Privatumas rodo tavo blokavimus.",
+            "@channel ir @all pasiekia visus kanale ir skaičiuojasi kaip asmeninis paminėjimas. Kiti Mumble klientai tiesiog mato žodžius, o tu gali juos nutildyti kiekvienam serveriui atskirai.",
+            "Garsas ir muzika pokalbyje: tiesioginės nuorodos į garso failus, pvz., mp3, ogg, wav ar flac, gauna mažą grotuvą. Nuorodos į Spotify, SoundCloud ir YouTube Music groja paties serviso grotuve, kai paspaudi Groti; Apple Music, Tidal, Deezer ir Bandcamp rodomos kaip kortelė su nuoroda. Niekas negroja pats, o išjungus nuorodų peržiūras nieko neįkeliama.",
+            "mumble:// nuorodos pokalbyje rodo kortelę su serveriu, kanalu, ping ir kiek žmonių prisijungę, su mygtukais Prisijungti ir Pridėti prie serverių. Nuorodoje esantis slaptažodis niekada nerodomas.",
+            "Kanalus tvarkyti lengviau: dešiniuoju paspaudimu ant kanalo atsidaro meniu su Prisijungti, Sekti, Kopijuoti kanalo nuorodą, Kanalo informacija ir kt. Kanalai rodo savo naudotojų limitą, pvz., Raid (1/10), o pilni pritemdomi. Turėdamas reikiamą teisę, žmones gali nutempti į kitą kanalą. Kanalo informacija rodo aprašymą, naudotojus, tavo teises ir susietus kanalus.",
+            "Mažos delsos režimas bendram muzikavimui (Beta): apie 40 vietoje 100 milisekundžių nuo burnos iki ausies, plius tinklas. Jis persijungia neprisijungiant iš naujo ir veikia su standartiniais serveriais. Rekomenduojamos ausinės.",
+            "Garsas kiekvienam kanalui: „Šio kanalo garsas…“ suteikia kanalui savo nustatymus su šablonais Balsas, Muzika ir Džemas. Jie pritaikomi, kai prisijungi, o išėjus grįžta įprasti nustatymai.",
+            "Greiti meniu balso juostoje: dešiniuoju paspaudimu ant mikrofono ar ausinių atsidaro įrenginiai, garsumas ir lygio matuoklis, ryšio informacija apie balso kokybę ir bitų spartą, o padėjimo ragelio mygtukas siūlo Palikti balsą (liekama prisijungus ir toliau galima rašyti) arba Atsijungti nuo visų serverių.",
+            "Serverių naršyklė serverių juostoje rodo viešus Mumble serverius, su paieška ir šalies bei ping filtrais. Prisijungti išsaugo ir prisijungia vienu paspaudimu. Sąrašas įkeliamas tik atidarius naršyklę.",
+            "Serverio dialogas suskirstytas į keturis skirtukus ir turi Tikrinti ryšį, kuris patikrina ping, serverio versiją ir sertifikatą nieko neišsaugodamas. Serverio informacija rodo versiją, limitus, tavo teises ir TLS sertifikatą. Išsaugoti kanalų slaptažodžiai rodo, kuriam kanalui priklauso.",
+            "Kelios tapatybės: Nustatymai → Tapatybė leidžia tvarkyti kelis sertifikatus, su importu, eksportu, pervadinimu ir numatytuoju. Kiekvienas serveris gali naudoti savo tapatybę. Dabartinė tampa „Numatytąja“, o viskas jungiasi kaip anksčiau.",
+            "Importas iš Mumble: jei įdiegtas oficialus Mumble klientas, sąrankos vedlys (arba Nustatymai → Serveriai) perkelia tavo mėgstamus serverius, išsaugotus slaptažodžius, sertifikatą, garso įrenginius ir push-to-talk klavišą. Nieko neperrašoma, Mumble failai tik skaitomi, o importą galima atšaukti.",
+            "Bendruomenės relė: viso dydžio paveikslėliai ir ekrano transliacija gali eiti per relę, kurią serverio bendruomenė paleidžia šalia savo Mumble serverio. Ji tik perduoda užšifruotą ryšį ir, jei nori, paslepia tavo IP adresą nuo kito žmogaus. Tada ekrano transliacija veikia ir be tiesioginio ryšio. Balsas relės niekada nenaudoja.",
+            "„Windows“ sistemoje Mumcord pateikiamas ir kaip nešiojamas zip: išpakuok, paleisk, diegti nereikia. Duomenys ir nustatymai lieka aplanke šalia programos.",
+            "Paslėpk narių stulpelį, kad pokalbis užimtų visą plotį: mygtuku pokalbio antraštėje arba Ctrl+Shift+M. Siaurame lange jis išslenka virš pokalbio.",
+            "Išmestas ar užblokuotas? Mumcord tam groja garsą: pliaukštelėjimą už išmetimą, šlapstiko spyrį už blokavimą. Abu galima išjungti.",
+            "Serverio informacija parodo, ar serveris skelbia relę ar Mumbotą, ir įspėja, kai relė pasikeitė.",
+            "Šnabždėjimas ir šaukimas: kalbėk su pasirinktais žmonėmis arba su visais kanale ten nesikeldamas, su laikomu kalbėjimo klavišu kiekvienam tikslui ir juosta virš pokalbio, kuri rodo, su kuo kalbi.",
+            "Atnaujinimai programoje: Mumcord tikrina naujas versijas, parodo, kas pasikeitė, ir įdiegia jas vienu spustelėjimu. Kiekvienas atsisiuntimas tikrinamas pagal jo parašą ir kontrolines sumas.",
+            "Triukšmo slopinimas keturiais lygiais: Lengvas, Standartinis, Išplėstinis (DI, beta, su 2024 m. RNNoise modeliu) ir Išjungta, kiekvienas paaiškintas „?”."
+          ]
+        },
+        {
+          "title": "Patobulinta",
+          "items": [
+            "Naudotojo skydelis po kanalų sąrašu perdarytas: kiekvienoje būsenoje išlaiko tą patį aukštį, todėl sąrašas virš jo niekada nešokinėja, rodo vieną aiškią būsenos eilutę ir turi mažą meniu rodyklę ant kiekvieno balso mygtuko.",
+            "Spartieji nustatymai ramesni: viena eilutė kiekvienam nustatymui aiškiose grupėse, paaiškinimai už mažo ?, o grupė Beta pradžioje suskleista.",
+            "Kai nuorodų peržiūros išjungtos, jos nebedingsta tyliai: ramus tekstas po žinute pasako, kas buvo paslėpta, ir nuveda į nustatymą.",
+            "„Paleisti sąrankos vedlį iš naujo“ skiltyje Nustatymai → Apie dar kartą pereina mikrofoną, privatumą, atnaujinimų užuominą ir kalbėjimo režimą. Tavo tapatybė lieka nepaliesta, o išsaugoma tik tai, ką pakeiti.",
+            "Paketų tikrintuvas seka naujus paketus, sustoja, kai pasirieti aukštyn, ir įrašo tik tada, kai yra atidarytas.",
+            "Serverių ir kanalų medis pagal numatytuosius nustatymus yra ketvirtadaliu platesnis, todėl telpa ilgesni kanalų pavadinimai. Pačių nustatyti pločiai išlieka."
+          ]
+        },
+        {
+          "title": "Ištaisyta",
+          "items": [
+            "Tavo paties žinutės niekada negroja paminėjimo garso, nerodo pranešimo ir neskaičiuojamos kaip neskaitytos.",
+            "Bendras žiūrėjimas gerbia nustatymą „Rodyti nuorodų peržiūras ir įterpinius“: kai jis išjungtas, nieko neįkeliama iš YouTube ar Twitch, o užuomina nuveda į nustatymą.",
+            "Linux su PipeWire: įrenginių sąrašai rodo kiekvieną įvestį ir išvestį taip, kaip darbalaukio garso nustatymai, pvz., „System“ ir „Chat“ RØDECaster Pro II vietoje vieno „USB Audio“.",
+            "Serverio informacijos langas dabar išverstas į visas 24 kalbas.",
+            "Tavo paties žinutės nebegroja paminėjimo garso, neberodo pranešimo ir nebeskaičiuojamos kaip neskaitytos."
+          ]
+        }
+      ],
+      "known": [
+        "Windows diegimo programa vis dar nepasirašyta."
+      ]
+    },
     {
       "version": "0.4.4",
       "teaser": "Kopijuok ir atsisiųsk kodą, išsaugok paveikslėlius dešiniuoju spustelėjimu, išvalyk podėlį, stabilesnis balsas esant apkrovai.",
@@ -2448,7 +2581,8 @@
         "webhook": "Nustatyk API raktą ir leidžiamus kanalus faile `bot.toml`. Tada `curl` į `http://127.0.0.1:8080/message` paskelbia žinutę kanale.",
         "more": "Toliau pateikti žingsniai išsamiai paaiškina kiekvieną dalį.",
         "music": "Įdėk MP3 į aplanką `media` ir nustatyk API raktą faile `bot.toml`. Tada užklausa į `http://127.0.0.1:8081` groja juos kanale.",
-        "history": "Faile `bot.toml` nustatyk, kiek laiko botas saugo pokalbį. Jam reikia skaitymo prieigos prie kanalų."
+        "history": "Faile `bot.toml` nustatyk, kiek laiko botas saugo pokalbį. Jam reikia skaitymo prieigos prie kanalų.",
+        "relayRegistered": "Pasirinkus „Tik registruoti naudotojai“, relay žetonus gauna tik serveryje užsiregistravę žmonės (dešiniuoju pelės klavišu spustelėk savo vardą → Registruoti)."
       },
       "advanced": "Papildomi nustatymai",
       "pluginLimit": "Paslėptų paketų per sekundę",
@@ -2472,7 +2606,12 @@
         "show": "Parodyk slaptažodžius ir užsirašyk juos"
       },
       "copyAll": "Nukopijuok viską iš karto",
-      "needsMumbot": "Webhook, relay, muzika ir istorija veikia kartu kaip vienas Mumbot su moduliais. Tai ateis su Mumbot 0.2.0."
+      "needsMumbot": "Webhook, relay, muzika ir istorija veikia kartu kaip vienas Mumbot su moduliais. Tai ateis su Mumbot 0.2.0.",
+      "relayAccess": {
+        "label": "Relay skirtas",
+        "registered": "Tik registruoti naudotojai",
+        "all": "Visi, įskaitant svečius"
+      }
     },
     "stepsCta": "Žingsnis po žingsnio"
   },
@@ -2654,6 +2793,17 @@
           "Žinučių kortelės: webhook siunčia įspėjimus su pavadinimu, būsenos spalva, grafiku ir nuoroda, kuriuos Mumcord rodo kaip kortelę",
           "Reguliuojama bitų sparta kalbai ir muzikai, niekada ne didesnė už serverio ribą",
           "Peer modulis: užregistruoja serverio naudotojus mumpeer tarpiniame serveryje ir praneša Mumcord, kad jis yra"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Saugesnis relay",
+        "summary": "Po relay saugumo peržiūros: kas gauna žetonus, kiek laiko ir kiek.",
+        "items": [
+          "Relay žetonai tik registruotiems naudotojams, jei nori, ir svečiams",
+          "Išėjimas iš serverio nutraukia prieigą prie relay, bet tik su paskutine sesija",
+          "Apribojimai pagal sertifikatą žetonų užklausoms ir atviriems ryšiams",
+          "Saugesnė konfigūracija: jokio paprasto HTTP į relay kitame kompiuteryje, paslaptys tikrinamos griežtai"
         ]
       },
       {

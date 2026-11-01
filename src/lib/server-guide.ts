@@ -43,9 +43,10 @@ export interface Configurator {
   regenerate: string;
   secrets: string;
   after: string;
-  notes: Record<"ports" | "portsRelay" | "relay" | "webhook" | "music" | "history" | "more", string>;
+  notes: Record<"ports" | "portsRelay" | "relay" | "relayRegistered" | "webhook" | "music" | "history" | "more", string>;
   modeCommand: string;
   needsMumbot: string;
+  relayAccess: { label: string; registered: string; all: string };
   /** Titles of the one-command steps (STEP_IDS in compose.ts). */
   steps: Record<"folder" | "compose" | "env" | "configs" | "start" | "show", string>;
   copyAll: string;
@@ -233,6 +234,7 @@ const source: Record<Lang, Guide> = {
         show: "Passwörter anzeigen und notieren",
       },
       copyAll: "Alles auf einmal kopieren",
+      relayAccess: { label: "Relay für", registered: "Nur registrierte Nutzer", all: "Alle, auch Gäste" },
       needsMumbot: "Webhook, Relay-Bot, Musik und Verlauf laufen zusammen als ein Mumbot mit Modulen. Das kommt mit Mumbot 0.2.0.",
       modeCommand: "Ein Befehl",
       modeFiles: "Dateien selbst anlegen",
@@ -289,7 +291,8 @@ const source: Record<Lang, Guide> = {
         webhook: "In `bot.toml` einen API-Schlüssel und die erlaubten Kanäle festlegen. Dann schreibt etwa `curl` an `http://127.0.0.1:8080/message` in den Kanal.",
         more: "Die Schritte unten erklären jeden Teil im Detail.",
         music: "MP3s in den Ordner `media` legen und in `bot.toml` einen API-Schlüssel festlegen. Dann spielt eine Anfrage an `http://127.0.0.1:8081` sie im Kanal.",
-        history: "In `bot.toml` festlegen, wie lange der Bot den Chat aufhebt. Er braucht Leserechte in den Kanälen."
+        history: "In `bot.toml` festlegen, wie lange der Bot den Chat aufhebt. Er braucht Leserechte in den Kanälen.",
+        relayRegistered: "Mit „Nur registrierte Nutzer“ bekommen nur Leute Relay-Tokens, die auf dem Server registriert sind (Rechtsklick auf den eigenen Namen → Registrieren)."
       }
     },
   },
@@ -446,6 +449,7 @@ const source: Record<Lang, Guide> = {
         show: "Show the passwords and note them",
       },
       copyAll: "Copy everything at once",
+      relayAccess: { label: "Relay for", registered: "Registered users only", all: "Everyone, guests too" },
       needsMumbot: "Webhook, relay bot, music and history run together as one Mumbot with modules. That comes with Mumbot 0.2.0.",
       modeCommand: "One command",
       modeFiles: "Create the files yourself",
@@ -502,7 +506,8 @@ const source: Record<Lang, Guide> = {
         webhook: "Set an API key and the allowed channels in `bot.toml`. Then `curl` to `http://127.0.0.1:8080/message` posts into the channel.",
         more: "The steps below explain every part in detail.",
         music: "Put MP3s into the `media` folder and set an API key in `bot.toml`. Then a request to `http://127.0.0.1:8081` plays them in the channel.",
-        history: "Set in `bot.toml` how long the bot keeps the chat. It needs read access to the channels."
+        history: "Set in `bot.toml` how long the bot keeps the chat. It needs read access to the channels.",
+        relayRegistered: "With “Registered users only” only people registered on the server get relay tokens (right-click your own name → Register)."
       }
     },
   },
@@ -526,6 +531,7 @@ const mergeGuide = (lang: string, en: Guide, tr: GuideText | undefined): Guide =
       quality: { ...en.configurator.quality, ...cfg?.quality },
       notes: { ...en.configurator.notes, ...cfg?.notes },
       steps: { ...en.configurator.steps, ...cfg?.steps },
+      relayAccess: { ...en.configurator.relayAccess, ...cfg?.relayAccess },
     },
     steps: en.steps.map((s) => {
       const ts = tr.steps.find((x) => x.id === s.id);

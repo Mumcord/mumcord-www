@@ -534,20 +534,58 @@
       "commits": "commitov",
       "join": "Zapoj sa na GitHube",
       "toolTitle": "Prispievatelia"
+    },
+    "spotlight5": {
+      "label": "Novinky vo verzii 0.5.0",
+      "labelSoon": "Už čoskoro: 0.5.0",
+      "title": "Viac pokoja. Viac teba. Viac zvuku.",
+      "body": "0.5.0 prináša Epic 3: centrum oznámení, blokovanie, viac identít, nový strom kanálov, hudbu v chate, režim s nízkou latenciou na spoločné hranie hudby a priame spojenia cez relay.",
+      "tiles": {
+        "notifications": {
+          "title": "Všetko na jednom mieste",
+          "body": "Zvonček zbiera zmienky, odpovede, žiadosti a pozvánky zo všetkých serverov. Kto ťa obťažuje, dostane blok, spoznáme ho podľa certifikátu."
+        },
+        "identities": {
+          "title": "Viac identít",
+          "body": "Súkromná, klanová, pracovná: na každom serveri si vyberieš, pod čím sa pripojíš."
+        },
+        "tree": {
+          "title": "Nový strom kanálov",
+          "body": "Pravé tlačidlo na každom kanáli, limit používateľov vedľa názvu, prehľadné ikony a ponuka za názvom kanála."
+        },
+        "lowLatency": {
+          "title": "Hrajte hudbu spolu",
+          "body": "Režim s nízkou latenciou dáva asi 40 namiesto 90 ms od úst k uchu a každý kanál si pamätá vlastné nastavenia zvuku."
+        },
+        "music": {
+          "title": "Hudba v chate",
+          "body": "Zvukové súbory sa prehrajú priamo v chate a odkazy na Spotify, Apple Music a ďalšie sa zmenia na hudobnú kartu."
+        },
+        "relay": {
+          "title": "Priame spojenia kdekoľvek",
+          "body": "Zdieľanie obrazovky a veľké obrázky fungujú aj za CGNAT a ak chceš, nikto neuvidí tvoju IP adresu."
+        }
+      },
+      "features": "Všetky funkcie",
+      "changelog": "Všetky novinky"
+    },
+    "serverCta": {
+      "title": "Vlastný server za päť minút",
+      "body": "Zaškrtni políčka, skopíruj príkaz, hotovo: konfigurátor zostaví tvoj docker-compose.yml s relay a botmi.",
+      "button": "Otvoriť konfigurátor"
     }
   },
   "features": {
     "title": "Funkcie",
     "description": "Všetky funkcie Mumcordu so snímkami obrazovky: servery a certifikáty, sledovanie kanálov, chat s náhľadmi a @zmienkami, push-to-talk, zvuk a pohodlie.",
     "label": "Čo Mumcord dokáže",
-    "intro": "Všetko, čo Mumcord dokáže, s obrázkom tam, kde nejaký je, plus to, čo príde s ďalšou verziou. Filter ukáže beta funkcie alebo čo je nové v ktorej verzii. Niečo ti chýba alebo niečo nefunguje? Napíš nám na GitHub.",
+    "intro": "Všetko, čo Mumcord dokáže, s obrázkom tam, kde nejaký je, plus to, čo príde s ďalšou verziou. Filter ukáže, čo je nové v dvoch posledných verziách. Niečo ti chýba alebo niečo nefunguje? Napíš nám na GitHub.",
     "contents": "Obsah",
     "newIn": "nové v",
     "comingIn": "príde v",
     "beta": "Beta",
     "filterLabel": "Filter",
     "filterAll": "Všetko",
-    "filterBeta": "Beta",
     "filterEmpty": "Pre tento filter nie sú žiadne funkcie.",
     "jump": "Prejsť na",
     "statFeatures": "funkcií",
@@ -590,13 +628,13 @@
           {
             "id": "reconnect",
             "title": "Opätovné pripojenie so všetkým",
-            "body": "Keď spojenie vypadne, si späť v tom istom kanáli so stavom stlmenia mikrofónu a zvuku aj so sledovanými kanálmi. Po reštarte Mumcord ponúkne návrat do tvojho posledného hlasového kanála.",
+            "body": "Keď spojenie vypadne, si späť v tom istom kanáli so stavom stlmenia mikrofónu a zvuku aj so sledovanými kanálmi. Po reštarte Mumcord ponúkne návrat do tvojho posledného hlasového kanála. Ak pripojenie zlyhá, banner uvedie server a zmizne po 60 sekundách alebo cez ✕; ikona servera zlyhanie naďalej ukazuje.",
             "alt": "Banner s ponukou návratu do posledného hlasového kanála"
           },
           {
             "id": "several-servers",
             "title": "Viac serverov naraz",
-            "body": "Až 5 serverov pripojených naraz, nastaviteľné až do 15. Hovoríš na jednom, čítaš, píšeš a dostávaš upozornenia na všetkých. Každý server sa po výpadku sám znova pripojí.",
+            "body": "Až 5 serverov pripojených naraz, nastaviteľné až do 15. Hovoríš na jednom, čítaš, píšeš a dostávaš upozornenia na všetkých. Každý server sa po výpadku sám znova pripojí. „Pripojiť sa do kanála“ funguje aj pri priateľoch na inom serveri a mumble:// odkazy na pripojený server ťa zavedú rovno tam.",
             "alt": "Lišta serverov s niekoľkými pripojenými servermi, značkou reproduktora pri hlasovom serveri a počtami zmienok"
           },
           {
@@ -611,24 +649,51 @@
             "body": "Balíky pre Debian a Ubuntu, Fedoru a openSUSE, Arch (AUR: mumcord-bin) a AppImage, pre x86_64 aj ARM64, aj jedným riadkom v termináli. Voliteľne upozornenie, keď vyjde nová verzia."
           },
           {
-            "id": "server-notices",
-            "title": "Upozornenia podľa servera",
-            "body": "Upozornenia a súkromné správy nesú názov servera a každý server môžeš stlmiť zvlášť."
+            "id": "mumble-import",
+            "title": "Import z Mumble",
+            "body": "Ak je nainštalovaný oficiálny klient Mumble (1.4 alebo 1.5), sprievodca nastavením ponúkne prevziať tvoje obľúbené servery aj s heslami, tvoj certifikát ako novú identitu, aby si si ponechal registrované meno, tvoje zvukové zariadenia a kláves push-to-talk. Každú časť vyberieš v náhľade, servery, ktoré už máš, sa preskočia a „Vrátiť import“ všetko vezme späť. Neskôr aj v Nastavenia → Servery.",
+            "alt": "Krok sprievodcu „Import z Mumble“ so začiarkávacím políčkom pri každej nájdenej časti"
           },
           {
-            "id": "across-servers",
-            "title": "Pripájanie naprieč servermi",
-            "body": "„Pripojiť sa do kanála“ funguje aj pri priateľoch na inom serveri a mumble:// odkazy na pripojený server ťa zavedú rovno tam."
+            "id": "identities",
+            "title": "Viac identít",
+            "body": "Nastavenia → Identita spravuje viac klientskych certifikátov: vytvoriť, importovať, premenovať, exportovať a zálohovať. Každý server používa predvolenú identitu alebo vlastnú a hlavička chatu ukáže, ktorá sa používa, ak nie je predvolená. Certifikáty a kľúče zostávajú v zabezpečenom úložisku systému.",
+            "alt": "Správca identít s niekoľkými identitami, ich odtlačkami a servermi, ktoré ich používajú"
           },
           {
-            "id": "autostart",
-            "title": "Spustenie po prihlásení",
-            "body": "„Spustiť Mumcord po prihlásení“ nájdeš na každom systéme."
+            "id": "server-dialog",
+            "title": "Dialóg servera s kartami",
+            "body": "Pridanie alebo úprava servera je rozdelená na Pripojenie, Identita, Heslá a Správanie. Chyby sa pomenujú priamo pri poli, „Otestovať pripojenie“ ohlási ping, verziu servera a certifikát bez ukladania a uložené heslá kanálov ukážu, ku ktorému kanálu patria, napríklad „Officers (Raid)“.",
+            "alt": "Dialóg „Pridať server“ s kartami Pripojenie, Identita, Heslá a Správanie"
           },
           {
-            "id": "failure-banner",
-            "title": "Chybové bannery, ktoré neotravujú",
-            "body": "Keď pripojenie zlyhá, banner uvedie server a zmizne po 60 sekundách alebo cez ✕. Ikona servera zlyhanie naďalej ukazuje."
+            "id": "server-browser",
+            "title": "Nájdi verejné servery",
+            "body": "Tlačidlo hľadania na lište serverov otvorí zoznam verejných serverov Mumble: hľadaj podľa názvu, adresy alebo krajiny, filtruj podľa krajiny a pingu, skry prázdne alebo plné servery. „Pripojiť“ uloží a pripojí jedným klikom. Zoznam sa načíta, až keď ho otvoríš, a ping sa meria len pri riadkoch na obrazovke.",
+            "alt": "Prehliadač verejných serverov s vyhľadávaním, filtrami krajiny a pingu a zoznamom serverov"
+          },
+          {
+            "id": "server-info",
+            "title": "Info o serveri",
+            "body": "Menu servera ukáže názov, adresu, verziu, uvítací text, limity, povolené kodeky, tvoje oprávnenia a koľko ľudí používa Mumcord, plus certifikát TLS s odtlačkom a platnosťou. „Kopírovať diagnostiku“ dá všetko do schránky pre hlásenia chýb. Funguje s každým štandardným serverom Mumble.",
+            "alt": "Info o serveri s verziou, limitmi a odtlačkom, vydavateľom a platnosťou certifikátu TLS"
+          },
+          {
+            "id": "setup-again",
+            "title": "Spusti sprievodcu znova",
+            "body": "Nastavenia → O aplikácii prejde nastavením ešte raz, aby si skontroloval mikrofón, súkromie, kontrolu aktualizácií a režim hovorenia. Krok identity sa preskočí, takže sa s tvojím certifikátom nič nezmení náhodou, a uložia sa len hodnoty, ktoré si naozaj zmenil.",
+            "alt": "Sprievodca spustený znova z nastavení, krok identity je označený ako preskočený"
+          },
+          {
+            "id": "windows-portable",
+            "title": "Prenosná verzia pre Windows",
+            "body": "Okrem inštalátora je tu zip, ktorý beží bez inštalácie: rozbaľ ho a spusti Mumcord.exe. Dáta, nastavenia a logy zostávajú v priečinku vedľa neho a handler mumble:// ani spustenie po prihlásení sa nenastavia, kým ich nezapneš."
+          },
+          {
+            "id": "updater",
+            "title": "Aktualizácie v aplikácii",
+            "body": "Mumcord pri štarte a každých 12 hodín skontroluje novú verziu, ukáže, čo sa od tvojej verzie zmenilo, a nainštaluje ju jedným kliknutím. Každé stiahnutie sa pred inštaláciou overí podľa podpisu Mumcordu a kontrolných súčtov vydania; verziu môžeš preskočiť alebo si dať pripomenúť neskôr.",
+            "alt": "Dialóg „Je dostupná aktualizácia“ so zmenami od tvojej verzie"
           }
         ]
       },
@@ -657,68 +722,67 @@
           {
             "id": "right-click",
             "title": "Pravý klik na ľudí",
-            "body": "Pozri si profil, stlm niekoho len pre seba, nastav hlasitosť od 0 do 200 % alebo pošli súkromnú správu. Mumcord si to pamätá pre každého zvlášť.",
-            "alt": "Kontextové menu osoby s posuvníkom hlasitosti"
-          },
-          {
-            "id": "person-card",
-            "title": "Dvojklik pre súkromné správy",
-            "body": "Dvojklikom na osobu otvoríš súkromný chat. Klik pripne jej kartu s tlačidlami pre súkromnú správu a profil."
+            "body": "Hneď hore pošli správu, pripoj sa do ich kanála alebo ich pridaj medzi priateľov, potom profil, stlmenie len pre seba a hlasitosť od 0 do 200 %, zapamätané pre každého zvlášť. Ak sa nesmieš pripojiť, zobrazí sa dôvod. Dvojklik otvorí súkromný chat.",
+            "alt": "Menu osoby s Poslať správu, Pripojiť sa do kanála a Pridať priateľa hore"
           },
           {
             "id": "profile",
-            "title": "Nový profil",
-            "body": "Banner, odznak, hudba alebo hra a všetky nastavenia pre danú osobu. Zmeny platia okamžite s krátkym „Uložené“. Menu pravého tlačidla má ikony a prepínače.",
+            "title": "Profil",
+            "body": "Banner, odznak, hudba alebo hra a komentár s tučným písmom, kurzívou, odkazmi a zoznamami. Hlasitosť, stlmenie a súkromná poznámka k danej osobe sú v ňom zbalené; zmeny platia okamžite s krátkym „Uložené“.",
             "alt": "Celý profil s hudbou, nastaveniami pre danú osobu a súkromnou poznámkou"
-          },
-          {
-            "id": "join-channel",
-            "title": "Pripoj sa do kanála niekoho iného",
-            "body": "Pravý klik na osobu alebo priateľa: „Pripojiť sa do ‹kanál›“ ťa prenesie priamo do jeho kanála. Ak to server nepovoľuje, dôvod sa zobrazí hneď vedľa.",
-            "alt": "Menu osoby s „Pripojiť sa do kanála“"
           },
           {
             "id": "member-column",
             "title": "Pravý stĺpec so sekciami",
-            "body": "„V ‹kanál›“, „V iných kanáloch“ so všetkými ostatnými na serveri a „Priatelia“, každá sa dá zbaliť. Mumcord si pamätá, čo je otvorené. Vľavo je nad stromom kanálov „Prehľad servera“.",
+            "body": "„V ‹kanál›“, „V iných kanáloch“ so všetkými ostatnými na serveri a „Priatelia“, každá sa dá zbaliť. Mumcord si pamätá, čo je otvorené.",
             "alt": "Pravý stĺpec s otvorenou sekciou „V iných kanáloch“"
           },
           {
             "id": "connection-quality",
             "title": "Kvalita pripojenia",
-            "body": "Profil na prvý pohľad ukáže, či je pripojenie dobré, priemerné alebo slabé, a po rozbalení ping, stratu paketov a šírku pásma. Malá ikona signálu označí, kto má práve slabé pripojenie.",
+            "body": "Profil na prvý pohľad ukáže, či je pripojenie dobré, priemerné alebo slabé, a po rozbalení ping, stratu paketov a šírku pásma. Malá ikona signálu označí, kto má práve slabé pripojenie. Admini navyše vidia klienta a operačný systém, napríklad „Mumcord 0.4.0“ alebo „Mumble 1.5“.",
             "alt": "Karta profilu s rozbaleným pripojením: ping, strata paketov, šírka pásma, klient a operačný systém"
           },
           {
-            "id": "listeners",
-            "title": "Poslucháči s uchom",
-            "body": "Kto kanál iba počúva, je v normálnom zozname s ikonou ucha, nie vo vlastnej skupine."
-          },
-          {
-            "id": "client-info",
-            "title": "Klient a systém pre adminov",
-            "body": "Admini v profile navyše vidia, aký klient a operačný systém niekto používa, napríklad „Mumcord 0.4.0“ alebo „Mumble 1.5“."
-          },
-          {
             "id": "channel-filters",
-            "title": "Skryť prázdne kanály",
-            "body": "Veľké servery už nezamrznú pri prvom zobrazení. K tomu prepínače „Skryť prázdne kanály“ a „Hovoriaci navrchu“."
-          },
-          {
-            "id": "profile-comment",
-            "title": "Formátovaný komentár v profile",
-            "body": "Komentár v profile zvládne tučné písmo, kurzívu, odkazy a zoznamy."
-          },
-          {
-            "id": "person-settings",
-            "title": "Nastavenia pre každú osobu",
-            "body": "Hlasitosť, stlmenie a poznámka k danej osobe sú zbalené v jej profile. Keď niečo zmeníš, riadok to nakrátko ukáže, napríklad „Hlasitosť 60 %“."
+            "title": "Uprataný zoznam kanálov",
+            "body": "Prepínače „Skryť prázdne kanály“ a „Hovoriaci navrchu“ a veľké servery už nezamrznú pri prvom zobrazení. Kto kanál iba počúva, je v normálnom zozname s ikonou ucha."
           },
           {
             "id": "channel-passwords",
             "title": "Kanály s heslom",
             "body": "Ak kanál vyžaduje heslo, Mumcord sa naň opýta a zapamätá si ho pre každý server, aj po opätovnom pripojení. Kanály, kam nesmieš, majú malý zámok.",
             "alt": "Kanál so zámkom a okno pre heslo kanála"
+          },
+          {
+            "id": "channel-tree",
+            "title": "Strom kanálov s menu",
+            "body": "Pravý klik na kanál: pripojiť sa alebo ho sledovať, nastaviť jeho zvuk, skopírovať odkaz, otvoriť info o kanáli alebo, ak smieš, presunúť tam ľudí. Kanály s limitom ho ukážu, napríklad „Raid (1/10)“, plné sú stlmené a dočasné a prepojené kanály majú ikony. S oprávnením presúvaš ľudí do iného kanála ťahaním. Navrchu je server s bodkou pripojenia a „N online · ping“.",
+            "alt": "Strom kanálov s otvoreným menu pravého tlačidla pri kanáli"
+          },
+          {
+            "id": "channel-header",
+            "title": "Názov kanála s menu",
+            "body": "Oko pred názvom kanála ho začne alebo prestane sledovať. Klik na názov otvorí Sledovať, Kopírovať odkaz na kanál, Heslo kanála, Info o kanáli a Vymazať históriu chatu. Info o kanáli ukáže cestu, popis, limit používateľov, prepojené kanály a tvoje oprávnenia v ňom.",
+            "alt": "Info o kanáli s cestou, popisom, používateľmi, limitom používateľov, prepojenými kanálmi a oprávneniami"
+          },
+          {
+            "id": "hide-members",
+            "title": "Skry stĺpec členov",
+            "body": "Tlačidlo v hlavičke chatu alebo Ctrl+Shift+M skryje pravý stĺpec, takže chat dostane celú šírku. Tlačidlo potom ukazuje, koľko ľudí je v kanáli, a zelenú bodku, keď niekto hovorí. V úzkom okne sa stĺpec vysunie nad chat.",
+            "alt": "Chat v plnej šírke so skrytým stĺpcom členov a tlačidlom členov v hlavičke"
+          },
+          {
+            "id": "message-privacy",
+            "title": "Kto ti smie písať",
+            "body": "Nastavenia → Súkromie: súkromné správy od všetkých, len od priateľov alebo od nikoho, aj pre každý server zvlášť. Ľudia z tvojho kanála a konverzácie, ktoré si prijal, sa dostanú vždy. Ostatné správy čakajú ako žiadosti o správu, ktoré prijmeš alebo odmietneš, a používatelia Mumcordu môžu poslať žiadosť o chat s krátkou poznámkou. Odosielateľ sa to nikdy nedozvie.",
+            "alt": "Žiadosti o správu so žiadosťou o chat, jej poznámkou a tlačidlami Prijať a Odmietnuť"
+          },
+          {
+            "id": "block-users",
+            "title": "Blokovanie ľudí",
+            "body": "„Blokovať…“ v menu osoby skryje jej súkromné správy a žiadosti, zbalí jej správy v kanáli a stlmí jej hlas, len pre teba. Blokovanie sleduje certifikát, takže platí naprieč servermi aj pre nové mená. Serveru ani osobe sa nič neposiela a Nastavenia → Súkromie vypíše všetkých, ktorých si zablokoval, s „Odblokovať“.",
+            "alt": "Potvrdenie blokovania osoby so zoznamom toho, čo sa zmení"
           }
         ]
       },
@@ -741,7 +805,7 @@
           {
             "id": "previews",
             "title": "Náhľady odkazov",
-            "body": "Odkazy dostanú kartu s názvom, popisom a obrázkom. Mumcord ich načítava sám, nikdy z adries lokálnej siete; každú kartu môžeš zavrieť a funkciu vypnúť v sprievodcovi aj v nastaveniach.",
+            "body": "Odkazy dostanú kartu s názvom, popisom a obrázkom. Mumcord ich načítava sám, nikdy z adries lokálnej siete; každú kartu môžeš zavrieť a funkciu vypnúť v sprievodcovi aj v nastaveniach. Pravý klik na odkaz ponúkne „Kopírovať odkaz“ a „Otvoriť odkaz“.",
             "alt": "Chat s náhľadom odkazu"
           },
           {
@@ -752,32 +816,32 @@
           },
           {
             "id": "spotify",
-            "title": "Spotify",
-            "body": "Aj odkazy na Spotify dostanú kartu s obalom, názvom a interpretom; prehrávač sa objaví až po kliknutí.",
-            "alt": "Chat s kartou Spotify"
+            "title": "Hudobné odkazy",
+            "body": "Spotify, SoundCloud a YouTube Music sa prehrávajú v oficiálnom prehrávači služby, ktorý sa načíta, až keď stlačíš Prehrať. Apple Music, Tidal, Deezer, Bandcamp a ďalšie hudobné stránky dostanú rovnakú kartu s obalom, názvom a interpretom a „Otvoriť v …“. Spustenie jedného prehrávača zastaví druhý.",
+            "alt": "Hudobná karta s obalom, názvom, interpretom a názvom služby"
           },
           {
             "id": "images",
             "title": "Obrázky a GIFy v chate",
-            "body": "Externé obrázky a odkazy na obrázky sa zobrazia priamo v správe, GIFy z Giphy a Tenoru sa prehrávajú a uvádzajú svoj zdroj.",
+            "body": "Externé obrázky a odkazy na obrázky sa zobrazia priamo v správe, GIFy z Giphy a Tenoru sa prehrávajú a uvádzajú svoj zdroj. Snímky obrazovky a skopírované obrázky vložíš do poľa správy cez Ctrl+V.",
             "alt": "Chat s obrázkom a GIFom"
           },
           {
             "id": "image-viewer",
             "title": "Prehliadač obrázkov",
-            "body": "Klikni na obrázok a uvidíš ho vo veľkom: zoom kolieskom alebo klávesmi, posúvanie, šípkami cez všetky obrázky v chate a „Uložiť obrázok“.",
+            "body": "Klikni na obrázok a uvidíš ho vo veľkom: zoom, posúvanie a šípkami cez všetky obrázky v chate. Plná veľkosť sa načítava na pozadí s tenkým ukazovateľom priebehu. Pravý klik: kopírovať obrázok, uložiť ho v origináli, GIF aj s animáciou, alebo kopírovať jeho adresu.",
             "alt": "Prehliadač obrázkov s panelom zoomu"
           },
           {
             "id": "mentions",
             "title": "@zmienky",
-            "body": "Napíš @ a Mumcord ti navrhne mená. Zmienky sú zvýraznené, upozornia ťa aj v stíšených kanáloch a majú vlastný zvuk.",
+            "body": "Napíš @ a Mumcord ti navrhne mená. Zmienky sú zvýraznené, upozornia ťa aj v stíšených kanáloch a majú vlastný zvuk. Prejdi myšou na zmienku pre náhľad, klikni na ňu pre profil, pravým klikom otvoríš menu.",
             "alt": "Pole správy s návrhom mena po @"
           },
           {
             "id": "code",
             "title": "Kód a formátovanie",
-            "body": "Bloky kódu so zvýrazňovaním syntaxe, panel formátovania nad poľom správy a skratky ako Ctrl+B, Ctrl+I alebo Ctrl+E.",
+            "body": "Bloky kódu sa zvýraznia podľa jazyka, ktorý napíšeš za tri spätné apostrofy, od sql a rust po Dockerfile a hex dumpy, s tlačidlami na kopírovanie alebo stiahnutie. Panel formátovania nad poľom správy a skratky ako Ctrl+B, Ctrl+I alebo Ctrl+E.",
             "alt": "Chat so zvýrazneným kódom a panelom formátovania"
           },
           {
@@ -789,7 +853,7 @@
           {
             "id": "notifications",
             "title": "Upozornenia podľa teba",
-            "body": "Nové správy ako vyskakovacie okno v aplikácii, systémové upozornenie, oboje alebo nič. K tomu krátke, tiché zvuky pre každú udalosť.",
+            "body": "Nové správy ako vyskakovacie okno v aplikácii, systémové upozornenie, oboje alebo nič, s krátkymi, tichými zvukmi pre každú udalosť. Upozornenia nesú názov servera a každý server môžeš stlmiť zvlášť.",
             "alt": "Vyskakovacie okno v aplikácii pre novú správu"
           },
           {
@@ -797,11 +861,6 @@
             "title": "Upratuje po sebe",
             "body": "Náhľady a obrázky sa vymažú po počte dní, ktorý si zvolíš, ak chceš, tak aj stará história chatu. História je len na tvojom počítači a dá sa vypnúť pre každý server zvlášť.",
             "alt": "Nastavenia, sekcia chat a história"
-          },
-          {
-            "id": "mention-chips",
-            "title": "Klikateľné @zmienky",
-            "body": "Náhľad pri prejdení myšou, profil po kliknutí, menu po pravom kliku."
           },
           {
             "id": "replies",
@@ -828,37 +887,46 @@
             "alt": "Dlhá správa s menom a obrázkom pripnutými hore v chate"
           },
           {
-            "id": "image-loading",
-            "title": "Obrázky sa načítavajú na pozadí",
-            "body": "Tenký ukazovateľ pod obrázkom ukazuje, ako ďaleko je načítanie plnej veľkosti. Keď zavrieš prehliadač obrázkov, načítava sa ďalej; × na ukazovateli ho zruší."
-          },
-          {
-            "id": "link-menu",
-            "title": "Kopírovanie odkazov",
-            "body": "Pravý klik na odkaz v chate ponúkne „Kopírovať odkaz“ a „Otvoriť odkaz“.",
-            "alt": "Kontextové menu odkazu s „Kopírovať odkaz“ a „Otvoriť odkaz“"
-          },
-          {
             "id": "message-cards",
             "title": "Karty správ",
             "body": "Boti aj ľudia posielajú kompaktné karty s nadpisom, stavovou farbou, ikonou, formátovaným textom, obrázkom a odkazom, pre buildy, upozornenia alebo dashboardy. Oficiálne klienty Mumble vidia tú istú správu ako čitateľný text.",
             "alt": "Chat s dvoma kartami správ od bota: plná karta s ikonou, nadpisom, textom, grafom a odkazom a pod ňou jednoduchá karta s nadpisom a odkazom"
           },
           {
-            "id": "paste-images",
-            "title": "Vkladanie obrázkov cez Ctrl+V",
-            "body": "Snímky obrazovky, „Kopírovať obrázok“ z prehliadača a obrázkové súbory skopírované v správcovi súborov sa cez Ctrl+V dostanú rovno do poľa správy ako príloha."
+            "id": "notification-centre",
+            "title": "Centrum upozornení",
+            "body": "Zvonček v hlavičke chatu alebo Ctrl+Shift+N zbiera zmienky, odpovede, chat a žiadosti o správu, pozvánky na watch party a zdieľanie obrazovky a servery, ktoré sa stali nedostupnými, zo všetkých pripojených serverov, najnovšie navrchu. Filtruj ich, prijmi žiadosti rovno tam a klik ťa zavedie k správe. Počas režimu Nerušiť zbiera ďalej v tichosti.",
+            "alt": "Centrum upozornení so zmienkami, odpoveďami a žiadosťou o chat s tlačidlami Prijať a Odmietnuť"
           },
           {
-            "id": "code-blocks",
-            "title": "Bloky kódu s Kopírovať a Stiahnuť",
-            "body": "Napíš jazyk za tri spätné apostrofy, od sql, rust a php po cmd, Dockerfile a hex dumpy, a blok sa zvýrazní presne ako tento jazyk. Tlačidlá v rohu skopírujú kód alebo ho uložia ako súbor.",
-            "alt": "Blok kódu SQL s označením jazyka a tlačidlami Kopírovať a Stiahnuť v rohu"
+            "id": "pm-overview",
+            "title": "Všetky súkromné správy na jednom mieste",
+            "body": "Tlačidlo Správy navrchu lišty serverov vypíše každú konverzáciu zo všetkých pripojených serverov, pripnuté navrchu, so značkou servera, náhľadom a počtom neprečítaných. Hľadaj, filtruj podľa neprečítaných alebo žiadostí, začni novú konverzáciu a pripni, stlm alebo zmaž ju z jej menu.",
+            "alt": "Prehľad súkromných správ so žiadosťou o chat navrchu a konverzáciami z niekoľkých serverov"
           },
           {
-            "id": "image-menu",
-            "title": "Kopírovanie a ukladanie obrázkov",
-            "body": "Pravý klik na obrázok v chate alebo v prehliadači obrázkov: kopírovať obrázok, uložiť obrázok v origináli, GIF aj s animáciou, kopírovať adresu obrázka alebo ho otvoriť v prehliadači."
+            "id": "group-mentions",
+            "title": "@channel a @all",
+            "body": "@channel osloví všetkých v kanáli, @all všetkých, ktorí ho môžu čítať, vrátane poslucháčov. Mumcord ich berie ako zmienku o tebe, iní klienti Mumble vidia len slová. Je toho veľa? Stlm ich pre každý server.",
+            "alt": "Chat so zvýraznenou zmienkou @channel"
+          },
+          {
+            "id": "audio-links",
+            "title": "Zvukové súbory v chate",
+            "body": "Odkazy na súbory mp3, ogg, m4a, wav, flac alebo webm dostanú pod správou prehrávač s posuvníkom, hlasitosťou, „Otvoriť v prehliadači“ a „Uložiť“. Nič sa nespustí samo, súbor sa načíta, až keď stlačíš Prehrať, do 32 MB, a zvuk ide do tvojich reproduktorov, nikdy do mikrofónu.",
+            "alt": "Zvukový prehrávač pod správou s tlačidlom prehrávania, posuvníkom a hlasitosťou"
+          },
+          {
+            "id": "hidden-previews",
+            "title": "Skryté náhľady to povedia",
+            "body": "Keď sú náhľady odkazov a vložený obsah vypnuté, tichý riadok pod správou pomenuje, čo sa skrylo, napríklad obrázok alebo video, a odkáže na nastavenie. Kvôli tomu sa z odkazovanej stránky nič nevyžaduje.",
+            "alt": "Správa s riadkom „Obrázok skrytý, lebo náhľady odkazov a vložený obsah sú vypnuté“"
+          },
+          {
+            "id": "server-links",
+            "title": "Odkazy na servery ako karty",
+            "body": "Odkaz mumble:// v chate ukáže server, kanál, ping, ľudí online a verziu, s „Pripojiť sa“, „Pridať k serverom“ a „Kopírovať odkaz“. Údaje pochádzajú zo štandardného verejného dotazu, nikdy z pripojenia. Mená a heslá v odkaze sa nikdy nezobrazia a pri kopírovaní sa vynechajú.",
+            "alt": "Karta odkazu mumble:// s názvom servera, kanálom, pingom, používateľmi a tlačidlom Pripojiť sa"
           }
         ]
       },
@@ -885,6 +953,12 @@
             "alt": "Sprievodca nastavením, krok mikrofónu s testom úrovne"
           },
           {
+            "id": "noise-levels",
+            "title": "Potlačenie šumu na štyri úrovne",
+            "body": "Nastavenia → Hlas ponúkajú Ľahké pre stály šum s najnižšou záťažou CPU, Štandardné ako predvolené, Pokročilé (AI) s modelom RNNoise z roku 2024 ako betu, ktorá odstráni viac šumu za viac CPU, a Vypnuté. Otáznik „?” pri každej úrovni hovorí, čo stojí. Všetko beží na tvojom počítači.",
+            "alt": "Nastavenia hlasu so štyrmi úrovňami potlačenia šumu"
+          },
+          {
             "id": "music",
             "title": "Kvalita hudby",
             "body": "Jeden prepínač zvýši bitrate až po limit servera, najviac 510 kbit/s, naladí enkóder na hudbu a vypne potlačenie šumu aj automatické zosilnenie.",
@@ -898,13 +972,50 @@
           },
           {
             "id": "bitrate",
-            "title": "Bitrate ručne",
-            "body": "Vlastný posuvník od 16 kbit/s až po najvyššiu hodnotu, ktorú dovolí server a Mumble. Pri strate paketov ho Mumcord aj tak sám zníži."
+            "title": "Panel kvality hlasu",
+            "body": "Pravý klik na info o pripojení: posuvník bitrate od 16 kbit/s až po limit servera s tým, čo sa práve odosiela, kvalita hudby, odhadovaná šírka pásma a hodnotenie zdravia zvuku. Pri strate paketov ho Mumcord aj tak sám zníži.",
+            "alt": "Panel kvality hlasu s posuvníkom bitrate, kvalitou hudby a odhadovanou šírkou pásma"
           },
           {
             "id": "realtime-audio",
             "title": "Stabilne pri záťaži",
             "body": "Záznam a prehrávanie dostanú prioritu v reálnom čase, takže hlas menej praská a vypadáva, kým hra alebo build vyťažuje počítač. Informácie o pripojení ukazujú výpadky a to, či je zapnutý zvuk v reálnom čase."
+          },
+          {
+            "id": "low-latency",
+            "title": "Režim nízkej latencie na hranie hudby",
+            "body": "Pakety po 10 ms, minimálny buffer a žiadne potlačenie ozveny ani šumu znížia oneskorenie zo zhruba 100 ms na zhruba 40 ms plus sieť. Prepína sa za chodu a ukazuje odhadovanú latenciu. Chce viac šírky pásma; odporúčame slúchadlá. Funguje so štandardnými servermi.",
+            "alt": "Nastavenia zvuku so zapnutým režimom nízkej latencie a rozpísanou odhadovanou latenciou"
+          },
+          {
+            "id": "channel-audio",
+            "title": "Zvuk pre každý kanál",
+            "body": "„Zvuk pre tento kanál…“ nastaví kvalitu hudby, režim nízkej latencie a strop bitrate pre jeden kanál, s predvoľbami Hlas, Hudba a Jam. Platí po pripojení a po odchode sa vrátia tvoje bežné nastavenia. Uložené len v tomto zariadení, takže funguje na každom serveri Mumble.",
+            "alt": "„Zvuk pre tento kanál“ s predvoľbami Hlas, Hudba a Jam"
+          },
+          {
+            "id": "device-switch",
+            "title": "Zmena zariadení z hlasovej lišty",
+            "body": "Pravý klik na tlačidlo mikrofónu alebo slúchadiel: vyber zariadenie, nastav hlasitosť, sleduj úroveň a prepni potlačenie šumu, všetko bez opätovného pripojenia. Ak zariadenie odpojíš, Mumcord sa vráti na predvolené v systéme. Na Linuxe s PipeWire sa zobrazí každý vstup a výstup ako v nastaveniach zvuku tvojej plochy.",
+            "alt": "Menu mikrofónu so vstupnými zariadeniami, posuvníkom hlasitosti a ukazovateľom úrovne"
+          },
+          {
+            "id": "leave-voice",
+            "title": "Opusti hlas, zostaň pripojený",
+            "body": "Pravý klik na tlačidlo zavesenia: „Opustiť hlas“ prestane hovoriť a počúvať, ale chat a čítanie nahlas bežia ďalej. Tam nájdeš aj odpojenie, prepnutie hlasu na iný server a odpojenie od všetkých. Ľavý klik stále zavesí hneď.",
+            "alt": "Menu tlačidla zavesenia s Opustiť hlas, Odpojiť a Prepnúť hlas"
+          },
+          {
+            "id": "whisper",
+            "title": "Šepot a výkrik",
+            "body": "Hovor s vybranými ľuďmi alebo so všetkými v kanáli, voliteľne aj s jeho podkanálmi, prepojenými kanálmi alebo len s jednou skupinou, bez presunu tam. Ciele nastavíš v nastaveniach alebo cez „Šepnúť…“ v ponuke človeka či kanála, každý s vlastnou klávesou na hovorenie pri podržaní. Lišta nad chatom ukazuje, s kým hovoríš.",
+            "alt": "Lišta nad chatom pri šepkaní do kanála"
+          },
+          {
+            "id": "user-panel",
+            "title": "Pokojný panel používateľa",
+            "body": "Panel dole pod zoznamom kanálov má vždy rovnakú výšku: ty s menom a serverom, jeden stavový riadok, napríklad opätovné pripájanie alebo tvoj hlasový kanál, malé čipy pre Nerušiť, režim nízkej latencie a pripojenie a tlačidlá mikrofónu, slúchadiel a zavesenia. Zoznam kanálov nad ním už neskáče.",
+            "alt": "Panel používateľa v rôznych stavoch, od hovorenia a stlmenia po opätovné pripájanie"
           }
         ]
       },
@@ -915,50 +1026,19 @@
           {
             "id": "positional",
             "title": "Priestorový zvuk",
-            "body": "Hlasy ľudí v tej istej hre prichádzajú z ich smeru a so vzdialenosťou slabnú. Cez Mumble Link alebo oficiálne herné pluginy Mumble; ikona „3D“ ukazuje, kto posiela polohu.",
+            "body": "Hlasy ľudí v tej istej hre prichádzajú z ich smeru a so vzdialenosťou slabnú. Cez Mumble Link alebo oficiálne herné pluginy Mumble, každý s vlastným prepínačom; ikona „3D“ ukazuje, kto posiela polohu.",
             "alt": "Nastavenia, priestorový zvuk so vzdialenosťami a hernými pluginmi"
-          },
-          {
-            "id": "game-plugins",
-            "title": "Oficiálne herné pluginy",
-            "body": "Pluginy Mumble dodávajú polohy pre podporované hry, každý s vlastným prepínačom. V nastaveniach vidíš, ktorý je aktívny."
           },
           {
             "id": "in-game-overlay",
             "title": "Herný overlay",
-            "body": "Na Linuxe priamo v hre ako vrstva Vulkan, aj v hrách zo Steamu a cez Proton, testované s Tyr a Supermarket Simulator. Nastavuje sa pre každú hru; hry, ktorých anti-cheat blokuje overlaye, zostávajú vynechané. Windows ho dostane s 0.4.0.",
+            "body": "Ukáže, kto hovorí, priamo v hre. Na Linuxe ako vrstva Vulkan, aj v hrách zo Steamu, Protonu a Flatpak Steamu, s voľbou spustenia na skopírovanie pre natívne hry OpenGL. Na Windows ako okno, ktorým prejdú kliknutia a ktoré do hry nič nenačítava, takže funguje s anti-cheatom; skryje ho len exkluzívna celá obrazovka. Nastavuje sa pre každú hru; hry, ktorých anti-cheat blokuje overlaye, zostávajú vynechané.",
             "alt": "Nastavenia, herný overlay s varovaním o anti-cheate a voľbami pre jednotlivé hry"
-          },
-          {
-            "id": "overlay-window",
-            "title": "Overlay okno",
-            "body": "Na Linuxe a Windows priehľadné okno nad všetkým, cez ktoré sa dá klikať a ktoré ukazuje, kto v tvojom kanáli hovorí. Na macOS overlay nie je. S 0.4.0 overlay okno zmizne.",
-            "alt": "Overlay okno nad hrou ukazuje, kto hovorí"
           },
           {
             "id": "now-gaming",
             "title": "Práve hrá",
-            "body": "Ak chceš, ostatní uvidia, čo hráš, s obrázkom zo Steamu a časom hrania. „Pripojiť sa do hry“ pri hrách zo Steamu, ktoré to podporujú."
-          },
-          {
-            "id": "overlay-windows",
-            "title": "Herný overlay na Windows",
-            "body": "Samostatné okno nad hrou, ktorým prejdú kliknutia. Do hry nič nenačítava, takže funguje aj v hrách s anti-cheatom. Skryje ho len exkluzívna celá obrazovka."
-          },
-          {
-            "id": "overlay-opengl",
-            "title": "OpenGL hry na Linuxe",
-            "body": "Pri natívnych OpenGL hrách, napríklad Project Hospital, ukáže Mumcord správnu spúšťaciu voľbu pre Steam na skopírovanie, ktorá funguje aj po aktualizáciách. Farby v HDR hrách sú tiež správne."
-          },
-          {
-            "id": "flatpak-steam",
-            "title": "Steam vo Flatpaku a celá obrazovka bez okrajov",
-            "body": "Herný overlay aj pre hry zo Steamu vo Flatpaku, hry na celú obrazovku bez okrajov preverené na KDE a GNOME. Zatvorenie alebo aktualizácia Mumcordu už nezhodí bežiacu hru."
-          },
-          {
-            "id": "join-game-link",
-            "title": "„Pripojiť sa do hry“ cez Mumble Link",
-            "body": "„Pripojiť sa do hry“ aj pri hrách, ktoré cez Mumble Link zdieľajú adresu svojho servera."
+            "body": "Ak chceš, ostatní uvidia, čo hráš, s obrázkom zo Steamu a časom hrania. „Pripojiť sa do hry“ pri hrách zo Steamu, ktoré to podporujú, a pri hrách, ktoré cez Mumble Link zdieľajú adresu svojho servera."
           }
         ]
       },
@@ -997,13 +1077,13 @@
           {
             "id": "watch-party",
             "title": "Spoločné pozeranie",
-            "body": "Watch party na YouTube v hlasovom kanáli: všetci vidia to isté video naraz, každý môže pozastaviť a pretáčať, so spoločným playlistom.",
+            "body": "Watch party na YouTube v hlasovom kanáli: všetci vidia to isté video naraz, každý môže pozastaviť a pretáčať, so spoločným playlistom. Keď sú vložené prehrávače v nastaveniach súkromia vypnuté, z YouTube ani Twitchu sa nič nenačíta.",
             "alt": "Watch party v plávajúcom okne s účastníkmi, ovládaním a ďalším videom"
           },
           {
             "id": "screen-share",
             "title": "Zdieľanie obrazovky",
-            "body": "Obrazovka alebo okno až pre 8 divákov, v 720p pri 30 snímkach za sekundu. Na Windows a macOS, ak chceš, so zvukom zdieľanej aplikácie. Spustíš ho tlačidlom Aplikácie v chate.",
+            "body": "Obrazovka alebo okno až pre 8 divákov, v 720p pri 30 snímkach za sekundu, na Windows a macOS, ak chceš, so zvukom zdieľanej aplikácie. Spustíš ho tlačidlom Aplikácie v chate. Kým zdieľaš, červený pruh ukazuje divákov a „Ukončiť“ a ostatní vidia okolo tvojho obrázka červený krúžok s „LIVE“.",
             "alt": "Zdieľaná obrazovka v plávajúcom okne s celou obrazovkou a „Prestať pozerať“"
           },
           {
@@ -1013,20 +1093,15 @@
             "alt": "Upozornenia hore v chate na bežiacu watch party a zdieľanú obrazovku"
           },
           {
-            "id": "live",
-            "title": "Naživo, a všetci to vidia",
-            "body": "Keď zdieľaš obrazovku, dá ti to vedieť červený pruh nad tvojím profilom, s „Ukončiť“ a počtom divákov. Ostatní vidia okolo tvojho obrázka červený krúžok s „LIVE“.",
-            "alt": "Červený pruh „Zdieľaš obrazovku“ s počtom divákov a „Ukončiť“"
-          },
-          {
             "id": "ducking",
-            "title": "Tichšie, keď sa hovorí",
-            "body": "Keď niekto v kanáli hovorí, zvuk watch party a zdieľanej obrazovky sa stíši a potom sa zase vráti. Nastavíš si, ako veľmi, alebo to vypneš."
+            "title": "Zvuk pre watch party a zdieľanie",
+            "body": "Keď niekto v kanáli hovorí, watch party a zdieľané obrazovky sa stíšia; nastavíš si, ako veľmi. Krátke zvuky, keď niekto spustí watch party, pripojí sa k nej alebo začne zdieľať obrazovku; každý sa dá vypnúť."
           },
           {
-            "id": "activity-sounds",
-            "title": "Zvuky pre watch party a zdieľanie",
-            "body": "Krátky zvuk, keď niekto spustí watch party, pripojí sa k nej alebo ju opustí a keď niekto zdieľa obrazovku alebo začne pozerať tú tvoju. Každý zvuk sa dá vypnúť."
+            "id": "relay",
+            "title": "Komunitný relay",
+            "body": "Komunita servera môže popri serveri Mumble prevádzkovať relay. Obrázky v plnej veľkosti a zdieľanie obrazovky potom fungujú, aj keď priame spojenie nie je možné, a s „vždy cez relay“ druhá osoba nikdy nevidí tvoju IP adresu. Relay nevie čítať šifrované spojenie a hlas ho nikdy nepoužíva. Vyberáš v Nastavenia → Súkromie, aj pre každý server zvlášť.",
+            "alt": "Nastavenia súkromia s voľbami peer-to-peer: priamo, relay a vypnuté"
           }
         ]
       },
@@ -1043,36 +1118,26 @@
           {
             "id": "sounds",
             "title": "Zvuky a upozornenia",
-            "body": "Každú udalosť môžeš zapnúť zvlášť: pripojenie, odchod, správy, zmienky.",
+            "body": "Každú udalosť môžeš zapnúť zvlášť: pripojenie, odchod, správy, zmienky a vlastný zvuk pre vyhodenie alebo ban.",
             "alt": "Nastavenia, sekcia zvukov a upozornení"
           },
           {
             "id": "languages",
-            "title": "Zmena jazyka bez reštartu",
-            "body": "Jazyk sa uplatní okamžite. K tomu ikona v systémovej lište, spustenie po prihlásení a plné ovládanie klávesnicou aj čítačkou obrazovky.",
+            "title": "24 jazykov, prepínanie bez reštartu",
+            "body": "Všetkých 24 úradných jazykov EÚ, od bulharčiny po švédčinu, sa uplatní okamžite, vrátane menu v systémovej lište. Každý jazyk je uvedený pod vlastným menom. Preložené tímom bez kontroly rodenými hovorcami: opravy sú vítané ako issue. Plné ovládanie klávesnicou aj čítačkou obrazovky je samozrejmosť.",
             "alt": "Nastavenia, sekcia jazyka rozhrania"
           },
           {
             "id": "privacy",
             "title": "Bez telemetrie",
-            "body": "Tvoja identita je uložená v zabezpečenom úložisku systému. Diagnostický súbor neobsahuje obsah chatu ani heslá a tvoj počítač opustí, len ak ho pošleš sám."
-          },
-          {
-            "id": "eu-languages",
-            "title": "Všetkých 24 úradných jazykov EÚ",
-            "body": "Od bulharčiny po švédčinu, vrátane menu v systémovej lište. Každý jazyk je uvedený pod vlastným menom a nájdeš ho podľa ktoréhokoľvek z jeho názvov. Preložené tímom bez kontroly rodenými hovorcami: opravy sú vítané ako issue."
-          },
-          {
-            "id": "privacy-step",
-            "title": "Súkromie v sprievodcovi",
-            "body": "Pri prvom spustení krátky krok ukáže, kam sa Mumcord pripája a kedy, s odkazom na celé vyhlásenie o ochrane súkromia.",
+            "body": "Pri prvom spustení krátky krok ukáže, kam sa Mumcord pripája a kedy. Tvoja identita je uložená v zabezpečenom úložisku systému a diagnostický súbor neobsahuje obsah chatu ani heslá a tvoj počítač opustí, len ak ho pošleš sám.",
             "alt": "Sprievodca, krok súkromia"
           },
           {
             "id": "quick-settings",
             "title": "Rýchle nastavenia pod ozubeným kolieskom",
-            "body": "Jeden klik na ozubené koliesko: náhľady, téma, overlay, zdieľanie hudby a hry, úprava profilu a registrácia. Beta funkcie ako priestorový zvuk majú vlastnú skupinu, ktorá sa dá zbaliť.",
-            "alt": "Rýchle nastavenia s otvorenou skupinou Beta"
+            "body": "Jeden klik na ozubené koliesko: jeden riadok pre každé nastavenie v skupinách Upozornenia, Zdieľanie, Vzhľad a Účet, s vysvetlením za malým „?“. Beta funkcie ako priestorový zvuk majú vlastnú skupinu, ktorá je na začiatku zbalená.",
+            "alt": "Rýchle nastavenia v skupinách Upozornenia, Zdieľanie, Vzhľad a Účet"
           },
           {
             "id": "settings-search",
@@ -1100,30 +1165,98 @@
           },
           {
             "id": "dropdowns",
-            "title": "Uprataté nastavenia",
-            "body": "Rozbaľovacie zoznamy v štýle témy namiesto vzhľadu prehliadača a každé pole v nastaveniach pekne zarovnané."
-          },
-          {
-            "id": "tooltips",
-            "title": "Bublinové nápovedy v štýle témy",
-            "body": "Každá nápoveda vo vzhľade tvojej témy, svetlej alebo tmavej, a dostupná aj z klávesnice."
+            "title": "Uprataté nastavenia a bublinové nápovedy",
+            "body": "Rozbaľovacie zoznamy a bublinové nápovedy vo vzhľade tvojej témy namiesto vzhľadu prehliadača, každé pole v nastaveniach pekne zarovnané a každá nápoveda dostupná aj z klávesnice."
           },
           {
             "id": "packet-inspector",
             "title": "Inšpektor paketov na ladenie",
-            "body": "Skrytý pre vývojárov: sedem kliknutí na verziu v Nastavenia → O aplikácii ho odomkne. Vo vlastnom okne ukazuje, aké dáta Mumcordu sa odosielajú a prijímajú, s filtrami, počítadlami a exportom ako JSON alebo Markdown.",
+            "body": "Skrytý pre vývojárov: sedem kliknutí na verziu v Nastavenia → O aplikácii ho odomkne. Vo vlastnom okne ukazuje, aké dáta Mumcordu sa odosielajú a prijímajú, s filtrami, počítadlami a exportom ako JSON alebo Markdown. Sleduje nové pakety a zachytáva len dovtedy, kým je otvorený.",
             "alt": "Inšpektor paketov s filtrami, počítadlami podľa typu a smeru a jedným rozbaleným riadkom paketu"
           },
           {
             "id": "clear-cache",
             "title": "Vymazanie vyrovnávacej pamäte",
             "body": "Nastavenia → Súkromie ukazuje, koľko miesta zaberajú náhľady odkazov, obrázky a webové jadro, a jedným tlačidlom ich vymaže, aj po jednom. História chatu, servery, priatelia a poznámky zostanú vždy nedotknuté."
+          },
+          {
+            "id": "dnd",
+            "title": "Nerušiť",
+            "body": "Jeden prepínač v rýchlych nastaveniach, v nastaveniach alebo v menu v systémovej lište stlmí zvuky upozornení a vyskakovacie okná na každom serveri. Hlas ďalej funguje a počty neprečítaných sa ďalej počítajú. Na KDE Plasma, GNOME a Windows môže sledovať režim Nerušiť v systéme.",
+            "alt": "Nastavenia zvukov a upozornení s Nerušiť a „Sledovať Nerušiť v systéme“"
+          },
+          {
+            "id": "tray",
+            "title": "Úplné menu v systémovej lište",
+            "body": "Menu v systémovej lište ukazuje každý pripojený server s jeho stavom a kanálom, Stlmiť, Vypnúť zvuk a Nerušiť, presúva hlas na iný server alebo kanál a otvára nedávne chaty. Ikona ukazuje hovorenie, stlmenie, neprečítané správy a Nerušiť. Mumcord sa spustí po prihlásení, ak chceš, na každom systéme.",
+            "alt": "Menu v systémovej lište so servermi, podmenu hlasového kanála a nedávnymi chatmi"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.5.0",
+      "teaser": "Centrum oznámení, všetky súkromné správy na jednom mieste, blokovanie, viac identít a import z Mumble.",
+      "summary": "Veľká aktualizácia pre chat a súkromie: centrum oznámení, všetky súkromné správy na jednom mieste s vlastnými pravidlami, kto ti môže písať, blokovanie, viac identít a prechod z Mumble na pár kliknutí. K tomu komunitný relay pre obrázky a zdieľanie obrazovky, hudba a zvuk v chate, prehliadač verejných serverov a režim s nízkou latenciou na spoločné muzicírovanie.",
+      "groups": [
+        {
+          "title": "Nové",
+          "items": [
+            "Centrum oznámení za zvončekom v hlavičke chatu (Ctrl+Shift+N) zhromažďuje všetko, čo chce tvoju pozornosť, zo všetkých pripojených serverov: zmienky, odpovede, žiadosti o chat a správu s tlačidlami Prijať a Odmietnuť, pozvánky na watch party a zdieľanie obrazovky a servery, ktoré už nie sú dostupné. Kliknutím preskočíš na správu.",
+            "Nerušiť: jeden prepínač v rýchlych nastaveniach, v nastaveniach a v ponuke v oznamovacej oblasti stlmí zvuky oznámení a vyskakovacie okná na všetkých serveroch. Hlas funguje ďalej a neprečítané správy sa ďalej počítajú. Ak chceš, Mumcord sleduje režim Nerušiť v systéme na KDE Plasma, GNOME a Windows.",
+            "Ponuka v oznamovacej oblasti ukazuje každý pripojený server s jeho kanálom, plus Stlmiť, Vypnúť zvuk a Nerušiť. Odtiaľ presunieš hlas na iný server alebo kanál a otvoríš svoje posledné súkromné chaty. Ikona v oznamovacej oblasti ukazuje, keď niekto hovorí, keď si stlmený a keď máš neprečítané správy.",
+            "Všetky súkromné správy na jednom mieste: tlačidlo Správy v hornej časti panela serverov zobrazuje všetky konverzácie zo všetkých pripojených serverov, s vyhľadávaním, filtrami, pripnutím a stlmením. Nahrádza zoznam Priame správy pod stromom kanálov. Ponuka osoby teraz začína položkami Poslať správu, Pripojiť sa ku kanálu a Pridať priateľa.",
+            "Ty rozhoduješ, kto ti môže písať súkromne: všetci, iba priatelia alebo nikto, aj pre jednotlivé servery. Ľudia z tvojho kanála a konverzácie, ktoré si prijal, sa vždy dostanú cez. Ostatní čakajú v Žiadostiach o správu a používatelia Mumcordu ti môžu poslať žiadosť o chat s krátkou poznámkou. Mumcord filtruje u teba, takže odosielateľ sa to nedozvie. Prijatú konverzáciu môžeš neskôr vziať späť.",
+            "Blokuj ľudí: ich súkromné správy a žiadosti zmiznú, ich správy v kanáli sa zbalia a ich hlas je pre teba stlmený. Blokovanie sleduje certifikát osoby, takže platí na každom serveri a nové meno ho neobíde. Server ani osoba sa to nedozvedia; Nastavenia → Súkromie zobrazuje zoznam tvojich blokovaní.",
+            "@channel a @all oslovia všetkých v kanáli a počítajú sa ako osobná zmienka. Iní klienti Mumble vidia iba slová a môžeš ich stlmiť pre jednotlivé servery.",
+            "Zvuk a hudba v chate: priame odkazy na zvukové súbory ako mp3, ogg, wav alebo flac dostanú malý prehrávač. Odkazy na Spotify, SoundCloud a YouTube Music sa po stlačení Play prehrajú v prehrávači samotnej služby; Apple Music, Tidal, Deezer a Bandcamp dostanú kartu s odkazom. Nič sa neprehráva samo a pri vypnutých náhľadoch odkazov sa nenačíta nič.",
+            "Odkazy mumble:// v chate zobrazia kartu so serverom, kanálom, pingom a počtom ľudí online, s tlačidlami Pripojiť sa a Pridať do serverov. Heslo v odkaze sa nikdy nezobrazí.",
+            "S kanálmi sa pracuje ľahšie: pravý klik na kanál otvorí ponuku s položkami Pripojiť sa, Sledovať, Kopírovať odkaz na kanál, Informácie o kanáli a ďalšími. Kanály ukazujú limit používateľov, napríklad Raid (1/10), a plné sú stlmené. S príslušným oprávnením presúvaš ľudí do iného kanála ťahaním. Informácie o kanáli ukazujú popis, používateľov, tvoje oprávnenia a prepojené kanály.",
+            "Režim s nízkou latenciou na spoločné muzicírovanie (Beta): asi 40 namiesto 100 milisekúnd od úst k uchu, plus sieť. Prepína sa bez opätovného pripojenia a funguje s bežnými servermi. Odporúčame slúchadlá.",
+            "Zvuk pre jednotlivé kanály: „Zvuk pre tento kanál…“ dá kanálu vlastné nastavenia s predvoľbami Hlas, Hudba a Jam. Uplatnia sa po pripojení a po odchode sa vrátia tvoje bežné nastavenia.",
+            "Rýchle ponuky v hlasovom paneli: pravý klik na mikrofón alebo slúchadlá ukáže zariadenia, hlasitosť a indikátor úrovne, na informácie o pripojení kvalitu hlasu a bitrate a na tlačidlo zavesenia Opustiť hlas (zostaneš pripojený a môžeš ďalej chatovať) alebo Odpojiť od všetkých serverov.",
+            "Prehliadač serverov v paneli serverov zobrazuje verejné servery Mumble, s vyhľadávaním a filtrami podľa krajiny a pingu. Pripojiť uloží a pripojí jedným kliknutím. Zoznam sa načíta, až keď otvoríš prehliadač.",
+            "Dialóg servera je rozdelený do štyroch kariet a má Otestovať pripojenie, ktoré skontroluje ping, verziu servera a certifikát bez toho, aby niečo uložilo. Informácie o serveri ukazujú verziu, limity, tvoje oprávnenia a certifikát TLS. Uložené heslá kanálov ukazujú, ku ktorému kanálu patria.",
+            "Viac identít: Nastavenia → Identita spravuje viac certifikátov, s importom, exportom, premenovaním a predvolenou identitou. Každý server môže používať vlastnú identitu. Tvoja súčasná sa stane „Predvolenou“ a všetko sa pripája ako predtým.",
+            "Import z Mumble: ak je nainštalovaný oficiálny klient Mumble, sprievodca nastavením (alebo Nastavenia → Servery) prevezme tvoje obľúbené servery, uložené heslá, certifikát, zvukové zariadenia a klávesu push-to-talk. Nič sa neprepíše, súbory Mumble sa iba čítajú a import sa dá vrátiť späť.",
+            "Komunitný relay: obrázky v plnej veľkosti a zdieľanie obrazovky môžu ísť cez relay, ktorý komunita servera prevádzkuje popri svojom serveri Mumble. Iba preposiela šifrované spojenie a podľa želania skryje tvoju IP adresu pred druhou osobou. Zdieľanie obrazovky tak funguje aj bez priameho spojenia. Hlas relay nikdy nepoužíva.",
+            "Na Windows je Mumcord aj ako prenosný zip: rozbaliť, spustiť, bez inštalácie. Údaje a nastavenia zostávajú v priečinku vedľa programu.",
+            "Skry stĺpec členov, aby mal chat celú šírku: tlačidlom v hlavičke chatu alebo Ctrl+Shift+M. V úzkom okne sa vysunie nad chat.",
+            "Vyhodený alebo zabanovaný? Mumcord na to prehrá zvuk: fackanie pri vyhodení, slapstickový kopanec pri bane. Oba sa dajú vypnúť.",
+            "Informácie o serveri ukazujú, či server oznamuje relay alebo Mumbota, a upozornia, keď sa relay zmenil.",
+            "Šepot a výkrik: hovor s vybranými ľuďmi alebo so všetkými v kanáli bez presunu tam, s klávesou na hovorenie pri podržaní pre každý cieľ a lištou nad chatom, ktorá ukazuje, s kým hovoríš.",
+            "Aktualizácie v aplikácii: Mumcord kontroluje nové verzie, ukáže, čo sa zmenilo, a nainštaluje ich jedným kliknutím. Každé stiahnutie sa overí podľa podpisu a kontrolných súčtov.",
+            "Potlačenie šumu na štyri úrovne: Ľahké, Štandardné, Pokročilé (AI, beta, s modelom RNNoise z roku 2024) a Vypnuté, každá vysvetlená pomocou „?“."
+          ]
+        },
+        {
+          "title": "Vylepšené",
+          "items": [
+            "Panel používateľa pod zoznamom kanálov je prepracovaný: v každom stave má rovnakú výšku, aby zoznam nad ním neskákal, ukazuje jeden prehľadný riadok stavu a na každom hlasovom tlačidle má malú šípku ponuky.",
+            "Rýchle nastavenia sú pokojnejšie: jeden riadok na nastavenie v prehľadných skupinách, vysvetlenia za malým ? a skupina Beta sa začína zbalená.",
+            "Keď sú náhľady odkazov vypnuté, už nemizne bez slova: tichý riadok pod správou povie, čo sa skrylo, a vedie k nastaveniu.",
+            "„Spustiť sprievodcu nastavením znova“ v Nastavenia → O aplikácii prejde ešte raz mikrofón, súkromie, upozornenie na aktualizácie a režim hovorenia. Tvoja identita zostane nedotknutá a uloží sa iba to, čo zmeníš.",
+            "Inšpektor paketov sleduje nové pakety, pozastaví sa, keď posunieš nahor, a zaznamenáva len vtedy, keď je otvorený.",
+            "Strom serverov a kanálov je predvolene o štvrtinu širší, takže sa zmestia aj dlhšie názvy kanálov. Šírky, ktoré si nastavíš sám, zostanú."
+          ]
+        },
+        {
+          "title": "Opravené",
+          "items": [
+            "Tvoje vlastné správy už nikdy neprehrajú zvuk zmienky, nezobrazia oznámenie a nepočítajú sa ako neprečítané.",
+            "Watch party rešpektuje „Zobrazovať náhľady odkazov a vložený obsah“: keď je vypnuté, nenačíta sa nič z YouTube ani Twitch a upozornenie vedie k nastaveniu.",
+            "Linux s PipeWire: zoznamy zariadení ukazujú každý vstup a výstup tak, ako zvukové nastavenia pracovného prostredia, napríklad „System“ a „Chat“ na RØDECaster Pro II namiesto jediného „USB Audio“.",
+            "Okno s informáciami o serveri je teraz preložené do všetkých 24 jazykov.",
+            "Tvoje vlastné správy už neprehrajú zvuk zmienky, nezobrazia oznámenie a už sa nepočítajú ako neprečítané."
+          ]
+        }
+      ],
+      "known": [
+        "Inštalátor pre Windows je stále nepodpísaný."
+      ]
+    },
     {
       "version": "0.4.4",
       "teaser": "Kopírovanie a sťahovanie kódu, ukladanie obrázkov pravým klikom, vymazanie vyrovnávacej pamäte, stabilnejší hlas pri záťaži.",
@@ -2448,7 +2581,8 @@
         "webhook": "V `bot.toml` nastav kľúč API a povolené kanály. Potom `curl` na `http://127.0.0.1:8080/message` odošle správu do kanála.",
         "more": "Kroky nižšie podrobne vysvetľujú každú časť.",
         "music": "Daj MP3 do priečinka `media` a nastav kľúč API v `bot.toml`. Potom ich požiadavka na `http://127.0.0.1:8081` prehrá v kanáli.",
-        "history": "V `bot.toml` nastav, ako dlho bot uchováva chat. Potrebuje prístup na čítanie ku kanálom."
+        "history": "V `bot.toml` nastav, ako dlho bot uchováva chat. Potrebuje prístup na čítanie ku kanálom.",
+        "relayRegistered": "S voľbou „Iba registrovaní používatelia“ dostávajú tokeny relay iba ľudia registrovaní na serveri (klikni pravým tlačidlom na svoje meno → Registrovať)."
       },
       "advanced": "Pokročilé",
       "pluginLimit": "Skryté pakety za sekundu",
@@ -2472,7 +2606,12 @@
         "show": "Zobraziť heslá a poznačiť si ich"
       },
       "copyAll": "Skopírovať všetko naraz",
-      "needsMumbot": "Webhook, relay, hudba a história bežia spoločne ako jeden Mumbot s modulmi. To príde s Mumbotom 0.2.0."
+      "needsMumbot": "Webhook, relay, hudba a história bežia spoločne ako jeden Mumbot s modulmi. To príde s Mumbotom 0.2.0.",
+      "relayAccess": {
+        "label": "Relay pre",
+        "registered": "Iba registrovaní používatelia",
+        "all": "Všetci, aj hostia"
+      }
     },
     "stepsCta": "Krok za krokom"
   },
@@ -2654,6 +2793,17 @@
           "Karty správ: webhook posiela upozornenia s nadpisom, stavovou farbou, grafom a odkazom, ktoré Mumcord zobrazí ako kartu",
           "Nastaviteľný bitrate pre reč a hudbu, nikdy nad limit servera",
           "Peer modul: registruje používateľov servera v mumpeer relayi a dá Mumcordu vedieť, že relay existuje"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Bezpečnejší relay",
+        "summary": "Po bezpečnostnej kontrole relay: kto dostane tokeny, na ako dlho a koľko.",
+        "items": [
+          "Tokeny relay iba pre registrovaných používateľov, ak chceš, aj pre hostí",
+          "Opustením servera sa prístup k relay skončí, ale až s poslednou reláciou",
+          "Limity pre každý certifikát na žiadosti o tokeny a otvorené spojenia",
+          "Bezpečnejšia konfigurácia: žiadne čisté HTTP k relay na inom stroji, tajomstvá sa kontrolujú prísne"
         ]
       },
       {

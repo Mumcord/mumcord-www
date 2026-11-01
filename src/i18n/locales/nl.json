@@ -534,20 +534,58 @@
       "commits": "commits",
       "join": "Doe mee op GitHub",
       "toolTitle": "Bijdragers"
+    },
+    "spotlight5": {
+      "label": "Nieuw in 0.5.0",
+      "labelSoon": "Binnenkort: 0.5.0",
+      "title": "Meer rust. Meer jij. Meer geluid.",
+      "body": "0.5.0 brengt Epic 3: een meldingencentrum, blokkeren, meerdere identiteiten, een nieuwe kanalenboom, muziek in de chat, een lage-latentiemodus om samen muziek te maken en directe verbindingen via een relay.",
+      "tiles": {
+        "notifications": {
+          "title": "Alles op één plek",
+          "body": "De bel verzamelt vermeldingen, antwoorden, verzoeken en uitnodigingen van al je servers. Wie je lastigvalt, wordt geblokkeerd, herkend aan zijn certificaat."
+        },
+        "identities": {
+          "title": "Meerdere identiteiten",
+          "body": "Privé, clan, werk: per server kies je als wie je verbindt."
+        },
+        "tree": {
+          "title": "Een nieuwe kanalenboom",
+          "body": "Rechtsklikken op elk kanaal, de gebruikerslimiet naast de naam, duidelijke iconen en een menu achter de kanaalnaam."
+        },
+        "lowLatency": {
+          "title": "Maak samen muziek",
+          "body": "De lage-latentiemodus levert ongeveer 40 in plaats van 90 ms van mond tot oor, en elk kanaal onthoudt zijn eigen audio-instellingen."
+        },
+        "music": {
+          "title": "Muziek in de chat",
+          "body": "Audiobestanden spelen direct in de chat, en links naar Spotify, Apple Music en meer worden een muziekkaart."
+        },
+        "relay": {
+          "title": "Directe verbindingen, overal",
+          "body": "Scherm delen en grote afbeeldingen werken zelfs achter CGNAT, en als je wilt ziet niemand je IP-adres."
+        }
+      },
+      "features": "Alle functies",
+      "changelog": "Alles wat nieuw is"
+    },
+    "serverCta": {
+      "title": "Je eigen server in vijf minuten",
+      "body": "Vink de vakjes aan, kopieer de opdracht, klaar: de configurator bouwt je docker-compose.yml met relay en bots.",
+      "button": "Open de configurator"
     }
   },
   "features": {
     "title": "Functies",
     "description": "Alle functies van Mumcord met screenshots: servers en certificaten, kanalen volgen, chat met voorbeelden en @vermeldingen, push-to-talk, audio en comfort.",
     "label": "Wat Mumcord doet",
-    "intro": "Alles wat Mumcord doet, met een afbeelding waar die er is, plus wat er met de volgende versie komt. Het filter toont bètafuncties of wat er in welke versie nieuw is. Mis je iets of werkt iets niet? Laat het ons weten op GitHub.",
+    "intro": "Alles wat Mumcord doet, met een afbeelding waar die er is, plus wat er met de volgende versie komt. Het filter toont wat er nieuw is in de twee nieuwste versies. Mis je iets of werkt iets niet? Laat het ons weten op GitHub.",
     "contents": "Inhoud",
     "newIn": "nieuw in",
     "comingIn": "komt in",
     "beta": "Bèta",
     "filterLabel": "Filter",
     "filterAll": "Alle",
-    "filterBeta": "Bèta",
     "filterEmpty": "Geen functies voor dit filter.",
     "jump": "Ga naar",
     "statFeatures": "functies",
@@ -590,13 +628,13 @@
           {
             "id": "reconnect",
             "title": "Opnieuw verbinden met alles erop en eraan",
-            "body": "Valt de verbinding weg, dan zit je weer in hetzelfde kanaal, met je demp- en doofstatus en je gevolgde kanalen. Na een herstart biedt Mumcord aan om terug te gaan naar je laatste spraakkanaal.",
+            "body": "Valt de verbinding weg, dan zit je weer in hetzelfde kanaal met je demp-/doofstand en de gevolgde kanalen. Na een herstart biedt Mumcord aan om weer in je laatste spraakkanaal te komen. Mislukt een verbinding, dan noemt de banner de server en verdwijnt hij na 60 seconden of met ✕; het servericoon blijft de fout tonen.",
             "alt": "Banner die aanbiedt terug te gaan naar het laatste spraakkanaal"
           },
           {
             "id": "several-servers",
             "title": "Meerdere servers tegelijk",
-            "body": "Tot 5 servers tegelijk verbonden, instelbaar tot 15. Je praat op één en leest, schrijft en krijgt meldingen op allemaal. Elke server maakt na een onderbreking zelf opnieuw verbinding.",
+            "body": "Tot 5 servers tegelijk verbonden, instelbaar tot 15. Op één praat je, op alle lees, schrijf en krijg je meldingen. Elke server verbindt na een storing zelf opnieuw. „Kanaal betreden” werkt ook voor vrienden op een andere server, en mumble://-links naar een verbonden server gaan er direct heen.",
             "alt": "Serverbalk met meerdere verbonden servers, een luidsprekermarkering bij de spraakserver en tellers voor vermeldingen"
           },
           {
@@ -611,24 +649,51 @@
             "body": "Pakketten voor Debian en Ubuntu, Fedora en openSUSE, Arch (AUR: mumcord-bin) en de AppImage, voor x86_64 en ARM64, ook met één regel in de terminal. Optioneel een hint als er een nieuwe versie is."
           },
           {
-            "id": "server-notices",
-            "title": "Meldingen per server",
-            "body": "Meldingen en privéberichten tonen de servernaam, en elke server kun je apart dempen."
+            "id": "mumble-import",
+            "title": "Importeren uit Mumble",
+            "body": "Is de officiële Mumble-client (1.4 of 1.5) geïnstalleerd, dan biedt de installatiewizard aan om je favoriete servers met wachtwoorden over te nemen, je certificaat als nieuwe identiteit zodat je geregistreerde naam behouden blijft, je audioapparaten en je push-to-talk-toets. In een voorbeeld kies je elk onderdeel, servers die je al hebt worden overgeslagen en met „Import ongedaan maken” draai je alles terug. Ook later, onder Instellingen → Servers.",
+            "alt": "Wizardstap „Importeren uit Mumble” met een selectievakje voor elk gevonden onderdeel"
           },
           {
-            "id": "across-servers",
-            "title": "Binnengaan over servers heen",
-            "body": "„Kanaal binnengaan” werkt ook bij vrienden op een andere server, en mumble:// links naar een verbonden server springen er meteen heen."
+            "id": "identities",
+            "title": "Meerdere identiteiten",
+            "body": "Instellingen → Identiteit beheert meerdere clientcertificaten: aanmaken, importeren, hernoemen, exporteren en back-uppen. Elke server gebruikt de standaardidentiteit of een eigen, en de chatkop toont welke er in gebruik is als dat niet de standaard is. Certificaten en sleutels blijven in de beveiligde opslag van het systeem.",
+            "alt": "Identiteitenbeheer met meerdere identiteiten, hun vingerafdrukken en de servers die ze gebruiken"
           },
           {
-            "id": "autostart",
-            "title": "Starten bij inloggen",
-            "body": "„Mumcord starten als ik inlog” is er op elk systeem."
+            "id": "server-dialog",
+            "title": "Serverdialoog met tabbladen",
+            "body": "Een server toevoegen of bewerken is opgedeeld in Verbinding, Identiteit, Wachtwoorden en Gedrag. Fouten worden direct bij het veld genoemd, „Verbinding testen” meldt ping, serverversie en certificaat zonder iets op te slaan, en opgeslagen kanaalwachtwoorden tonen bij welk kanaal ze horen, zoals „Officers (Raid)”.",
+            "alt": "Dialoog „Server toevoegen” met de tabbladen Verbinding, Identiteit, Wachtwoorden en Gedrag"
           },
           {
-            "id": "failure-banner",
-            "title": "Foutbanners die niet zeuren",
-            "body": "Als een verbinding mislukt, noemt de banner de server en verdwijnt hij na 60 seconden of met ✕. Het servericoon blijft de fout tonen."
+            "id": "server-browser",
+            "title": "Openbare servers vinden",
+            "body": "De zoekknop in de serverbalk opent de lijst met openbare Mumble-servers: zoek op naam, adres of land, filter op land en ping, verberg lege of volle servers. „Verbinden” slaat op en betreedt in één klik. De lijst laadt pas als je hem opent, en alleen de rijen in beeld worden gepingd.",
+            "alt": "Browser voor openbare servers met zoeken, land- en pingfilters en een lijst met servers"
+          },
+          {
+            "id": "server-info",
+            "title": "Serverinfo",
+            "body": "Het servermenu toont naam, adres, versie, welkomsttekst, limieten, toegestane codecs, je rechten en hoeveel mensen Mumcord gebruiken, plus het TLS-certificaat met vingerafdruk en geldigheid. „Diagnose kopiëren” zet alles op het klembord voor bugmeldingen. Werkt met elke standaard Mumble-server.",
+            "alt": "Serverinfo met versie, limieten en vingerafdruk, uitgever en geldigheid van het TLS-certificaat"
+          },
+          {
+            "id": "setup-again",
+            "title": "De installatiewizard opnieuw doorlopen",
+            "body": "Instellingen → Over doorloopt de installatie nog eens om microfoon, privacy, updatecontrole en spreekmodus na te lopen. De identiteitsstap wordt overgeslagen, dus aan je certificaat kan niet per ongeluk iets veranderen, en alleen waarden die je echt hebt gewijzigd worden opgeslagen.",
+            "alt": "Installatiewizard opnieuw gestart vanuit de instellingen, met de identiteitsstap als overgeslagen gemarkeerd"
+          },
+          {
+            "id": "windows-portable",
+            "title": "Draagbaar op Windows",
+            "body": "Naast het installatieprogramma is er een zipbestand dat zonder installatie draait: uitpakken en Mumcord.exe starten. Gegevens, instellingen en logs blijven in een map ernaast, en er wordt geen mumble://-handler of start bij inloggen ingesteld tenzij je dat aanzet."
+          },
+          {
+            "id": "updater",
+            "title": "Updates in de app",
+            "body": "Mumcord zoekt bij het starten en elke 12 uur naar een nieuwe versie, laat zien wat er sinds jouw versie is veranderd en installeert hem met één klik. Elke download wordt voor de installatie gecontroleerd op de handtekening van Mumcord en de checksums van de release; je kunt een versie overslaan of later herinnerd worden.",
+            "alt": "Het dialoogvenster „Update beschikbaar” met de wijzigingen sinds jouw versie"
           }
         ]
       },
@@ -657,68 +722,67 @@
           {
             "id": "right-click",
             "title": "Rechtsklik op mensen",
-            "body": "Bekijk het profiel, demp alleen voor jezelf, stel het volume in van 0 tot 200 % of stuur een privébericht. Mumcord onthoudt het per persoon.",
-            "alt": "Contextmenu van een persoon met volumeschuif"
-          },
-          {
-            "id": "person-card",
-            "title": "Dubbelklik voor privéberichten",
-            "body": "Dubbelklik op iemand om de privéchat te openen. Een klik zet diens kaart vast, met knoppen voor privébericht en profiel."
+            "body": "Stuur een bericht, betreed hun kanaal of voeg ze toe als vriend, direct bovenaan; daarna profiel, alleen voor jezelf dempen en volume van 0 tot 200 %, per persoon onthouden. Mag je niet binnenkomen, dan wordt de reden getoond. Een dubbelklik opent de privéchat.",
+            "alt": "Persoonsmenu met Bericht sturen, Kanaal betreden en Vriend toevoegen bovenaan"
           },
           {
             "id": "profile",
-            "title": "Nieuw profiel",
-            "body": "Banner, badge, muziek of game en alle instellingen voor die persoon. Wijzigingen gelden meteen, met een kort „Opgeslagen”. Het rechtsklikmenu heeft pictogrammen en schakelaars.",
+            "title": "Profiel",
+            "body": "Banner, badge, muziek of game en een opmerking met vet, cursief, links en lijsten. Volume, dempen en een privénotitie voor die persoon staan ingeklapt erin; wijzigingen gelden meteen, met een kort „Opgeslagen”.",
             "alt": "Volledig profiel met muziek, instellingen voor die persoon en een privénotitie"
-          },
-          {
-            "id": "join-channel",
-            "title": "Het kanaal van iemand binnengaan",
-            "body": "Rechtsklik op iemand of een vriend: „‹kanaal› binnengaan” brengt je direct naar diens kanaal. Staat de server het niet toe, dan zie je de reden ernaast.",
-            "alt": "Persoonsmenu met „Kanaal binnengaan”"
           },
           {
             "id": "member-column",
             "title": "Rechterkolom met secties",
-            "body": "„In ‹kanaal›”, „In andere kanalen” met iedereen anders op de server, en „Vrienden”, elk inklapbaar. Mumcord onthoudt wat er openstaat. Links staat „Serveroverzicht” boven de kanalenboom.",
+            "body": "„In ‹kanaal›”, „In andere kanalen” met alle anderen op de server, en „Vrienden”, elk inklapbaar. Mumcord onthoudt wat open is.",
             "alt": "Rechterkolom met „In andere kanalen” uitgeklapt"
           },
           {
             "id": "connection-quality",
             "title": "Verbindingskwaliteit",
-            "body": "Een profiel laat in één oogopslag zien of de verbinding goed, matig of zwak is, en uitgeklapt zie je ping, pakketverlies en bandbreedte. Een klein signaalicoon laat zien wie op dit moment een zwakke verbinding heeft.",
+            "body": "Een profiel toont in één oogopslag of de verbinding goed, redelijk of zwak is, en uitgeklapt zie je ping, pakketverlies en bandbreedte. Een klein signaalpictogram markeert wie nu een zwakke verbinding heeft. Beheerders zien ook de client en het besturingssysteem, zoals „Mumcord 0.4.0” of „Mumble 1.5”.",
             "alt": "Profielkaart met de verbinding uitgeklapt: ping, pakketverlies, bandbreedte, client en besturingssysteem"
           },
           {
-            "id": "listeners",
-            "title": "Luisteraars met een oor",
-            "body": "Wie alleen meeluistert in een kanaal, staat met een oor-icoon in de gewone lijst in plaats van in een eigen groep."
-          },
-          {
-            "id": "client-info",
-            "title": "Client en systeem voor admins",
-            "body": "Admins zien in een profiel ook welke client en welk besturingssysteem iemand gebruikt, zoals „Mumcord 0.4.0” of „Mumble 1.5”."
-          },
-          {
             "id": "channel-filters",
-            "title": "Lege kanalen verbergen",
-            "body": "Grote servers bevriezen niet meer als ze voor het eerst verschijnen. Plus de schakelaars „Lege kanalen verbergen” en „Pratende mensen eerst”."
-          },
-          {
-            "id": "profile-comment",
-            "title": "Opgemaakt profielcommentaar",
-            "body": "Je profielcommentaar kan vet, cursief, links en lijsten aan."
-          },
-          {
-            "id": "person-settings",
-            "title": "Instellingen per persoon",
-            "body": "Volume, dempen en een notitie over iemand staan ingeklapt in diens profiel. Wordt er iets gewijzigd, dan laat de regel dat kort zien, zoals „Volume 60 %”."
+            "title": "Opgeruimde kanaallijst",
+            "body": "Schakelaars voor „Lege kanalen verbergen” en „Pratende mensen eerst”, en grote servers bevriezen niet meer als ze voor het eerst verschijnen. Wie alleen meeluistert in een kanaal, staat met een oor-icoon in de gewone lijst."
           },
           {
             "id": "channel-passwords",
             "title": "Kanalen met een wachtwoord",
             "body": "Vraagt een kanaal om een wachtwoord, dan vraagt Mumcord je erom en onthoudt het per server, ook na opnieuw verbinden. Kanalen waar je niet in mag, tonen een klein slotje.",
             "alt": "Kanaal met een slotje en het venster voor het kanaalwachtwoord"
+          },
+          {
+            "id": "channel-tree",
+            "title": "Kanaalboom met een menu",
+            "body": "Rechtsklik op een kanaal om het te betreden of te volgen, het geluid in te stellen, de link te kopiëren, kanaalinfo te openen of mensen erheen te verplaatsen als je dat mag. Kanalen met een limiet tonen die, zoals „Raid (1/10)”, volle kanalen zijn gedimd, en tijdelijke en gekoppelde kanalen krijgen pictogrammen. Met de juiste rechten sleep je mensen naar een ander kanaal. Bovenaan staat de server met een verbindingspunt en „N online · ping”.",
+            "alt": "Kanaalboom met het rechtsklikmenu van een kanaal geopend"
+          },
+          {
+            "id": "channel-header",
+            "title": "Kanaalnaam met een menu",
+            "body": "Het oog voor de kanaalnaam volgt het kanaal of stopt met volgen. Een klik op de naam opent Volgen, Kanaallink kopiëren, Kanaalwachtwoord, Kanaalinfo en Chatgeschiedenis wissen. Kanaalinfo toont pad, beschrijving, gebruikerslimiet, gekoppelde kanalen en je rechten daar.",
+            "alt": "Kanaalinfo met pad, beschrijving, gebruikers, gebruikerslimiet, gekoppelde kanalen en rechten"
+          },
+          {
+            "id": "hide-members",
+            "title": "De ledenkolom verbergen",
+            "body": "Een knop in de chatkop, of Ctrl+Shift+M, verbergt de rechterkolom zodat de chat de volle breedte krijgt. De knop toont dan hoeveel mensen er in het kanaal zijn en een groene stip terwijl iemand praat. In een smal venster schuift de kolom over de chat heen.",
+            "alt": "Chat op volle breedte met verborgen ledenkolom en de ledenknop in de kop"
+          },
+          {
+            "id": "message-privacy",
+            "title": "Wie mag je berichten sturen",
+            "body": "Instellingen → Privacy: privéberichten van iedereen, alleen vrienden of niemand, ook per server. Mensen in je kanaal en gesprekken die je hebt geaccepteerd komen altijd door. Andere berichten wachten als berichtverzoeken die je accepteert of weigert, en Mumcord-gebruikers kunnen een chatverzoek met een korte notitie sturen. De afzender hoort het nooit.",
+            "alt": "Berichtverzoeken met een chatverzoek, de notitie en de knoppen Accepteren en Weigeren"
+          },
+          {
+            "id": "block-users",
+            "title": "Mensen blokkeren",
+            "body": "„Blokkeren…” in het persoonsmenu verbergt hun privéberichten en verzoeken, klapt hun kanaalberichten in en dempt hun stem, alleen voor jou. De blokkade volgt het certificaat, dus ze geldt op alle servers en bij nieuwe namen. Er wordt niets naar de server of de persoon gestuurd, en Instellingen → Privacy toont iedereen die je blokkeerde met „Deblokkeren”.",
+            "alt": "Bevestiging voor het blokkeren van een persoon, met wat er verandert"
           }
         ]
       },
@@ -741,7 +805,7 @@
           {
             "id": "previews",
             "title": "Linkvoorbeelden",
-            "body": "Links krijgen een kaart met titel, beschrijving en afbeelding. Mumcord haalt ze zelf op, nooit van adressen in het lokale netwerk; elke kaart kun je wegklikken, en de functie is uit te zetten in de wizard en in de instellingen.",
+            "body": "Links krijgen een kaart met titel, beschrijving en afbeelding. Mumcord haalt ze zelf op, nooit van lokale netwerkadressen; elke kaart kan worden gesloten, en de functie kan in de wizard en in de instellingen worden uitgezet. Rechtsklik op een link biedt „Link kopiëren” en „Link openen”.",
             "alt": "Chat met een linkvoorbeeld"
           },
           {
@@ -752,32 +816,32 @@
           },
           {
             "id": "spotify",
-            "title": "Spotify",
-            "body": "Ook Spotify-links krijgen een kaart, met hoes, titel en artiest; de speler komt pas na een klik.",
-            "alt": "Chat met een Spotify-kaart"
+            "title": "Muzieklinks",
+            "body": "Spotify, SoundCloud en YouTube Music spelen in de officiële speler van de dienst, die pas laadt als je op Afspelen drukt. Apple Music, Tidal, Deezer, Bandcamp en andere muziekpagina’s krijgen dezelfde kaart met hoes, titel en artiest en „Openen in …”. Een speler starten stopt de andere.",
+            "alt": "Muziekkaart met hoes, titel, artiest en de naam van de dienst"
           },
           {
             "id": "images",
             "title": "Afbeeldingen en GIF's in de chat",
-            "body": "Externe afbeeldingen en afbeeldingslinks verschijnen direct in het bericht, GIF's van Giphy en Tenor spelen af en vermelden hun bron.",
+            "body": "Externe afbeeldingen en afbeeldingslinks verschijnen direct in het bericht, Giphy- en Tenor-gifs spelen af en noemen hun bron. Screenshots en gekopieerde afbeeldingen plaats je met Ctrl+V in het berichtveld.",
             "alt": "Chat met een afbeelding en een GIF"
           },
           {
             "id": "image-viewer",
             "title": "Afbeeldingsviewer",
-            "body": "Klik op een afbeelding om hem groot te zien: zoomen met het scrollwiel of toetsen, verschuiven, met de pijltjestoetsen door alle afbeeldingen van de chat en „Afbeelding opslaan”.",
+            "body": "Klik op een afbeelding om hem groot te zien: zoomen, slepen en met de pijltoetsen door alle afbeeldingen van de chat. Het volledige formaat laadt op de achtergrond met een smalle voortgangsbalk. Rechtsklik om de afbeelding te kopiëren, in het origineel op te slaan, een gif met animatie, of het adres te kopiëren.",
             "alt": "Afbeeldingsviewer met zoombalk"
           },
           {
             "id": "mentions",
             "title": "@vermeldingen",
-            "body": "Typ @ en Mumcord stelt namen voor. Vermeldingen worden gemarkeerd, geven je ook in stille kanalen een melding en hebben een eigen geluid.",
+            "body": "Typ @ en Mumcord stelt namen voor. Vermeldingen zijn gemarkeerd, melden je zelfs in stille kanalen en hebben een eigen geluid. Houd de muis boven een vermelding voor een voorbeeld, klik voor het profiel, rechtsklik voor het menu.",
             "alt": "Invoerveld met een naamsuggestie na @"
           },
           {
             "id": "code",
             "title": "Code en opmaak",
-            "body": "Codeblokken met syntaxmarkering, een opmaakbalk boven het invoerveld en sneltoetsen zoals Ctrl+B, Ctrl+I of Ctrl+E.",
+            "body": "Codeblokken worden gemarkeerd als de taal die je na de drie backticks schrijft, van sql en rust tot Dockerfile en hexdumps, met knoppen om ze te kopiëren of te downloaden. Een opmaakbalk boven het invoerveld en sneltoetsen als Ctrl+B, Ctrl+I of Ctrl+E.",
             "alt": "Chat met gemarkeerde code en de opmaakbalk"
           },
           {
@@ -789,7 +853,7 @@
           {
             "id": "notifications",
             "title": "Meldingen zoals jij wilt",
-            "body": "Nieuwe berichten als pop-up in de app, als systeemmelding, allebei of geen van beide. Plus korte, zachte geluiden per gebeurtenis.",
+            "body": "Nieuwe berichten als pop-up in de app, als systeemmelding, allebei of geen van beide, met korte, zachte geluiden per gebeurtenis. Meldingen bevatten de servernaam, en elke server kan los worden gedempt.",
             "alt": "Pop-up in de app voor een nieuw bericht"
           },
           {
@@ -797,11 +861,6 @@
             "title": "Ruimt zelf op",
             "body": "Voorbeelden en afbeeldingen worden verwijderd na een aantal dagen dat jij kiest, oude chatgeschiedenis ook als je wilt. De geschiedenis staat alleen op je eigen computer en is per server uit te zetten.",
             "alt": "Instellingen, sectie chat en geschiedenis"
-          },
-          {
-            "id": "mention-chips",
-            "title": "Klikbare @vermeldingen",
-            "body": "Voorbeeld bij hoveren, profiel bij klikken, menu bij rechtsklikken."
           },
           {
             "id": "replies",
@@ -828,37 +887,46 @@
             "alt": "Een lang bericht met naam en foto vastgezet bovenaan de chat"
           },
           {
-            "id": "image-loading",
-            "title": "Afbeeldingen laden op de achtergrond",
-            "body": "Een dunne balk onder de afbeelding laat zien hoe ver de volle grootte al is. Sluit je de afbeeldingsviewer, dan laadt de afbeelding gewoon verder; het × op de balk breekt het af."
-          },
-          {
-            "id": "link-menu",
-            "title": "Links kopiëren",
-            "body": "Rechtsklik op een link in de chat en je krijgt „Link kopiëren” en „Link openen”.",
-            "alt": "Rechtsklikmenu op een link met „Link kopiëren” en „Link openen”"
-          },
-          {
             "id": "message-cards",
             "title": "Berichtkaarten",
             "body": "Bots en mensen plaatsen compacte kaarten met een titel, statuskleur, icoon, opgemaakte tekst, een afbeelding en een link, voor builds, meldingen of dashboards. Officiële Mumble-clients zien hetzelfde bericht als leesbare tekst.",
             "alt": "Chat met twee berichtkaarten van een bot: een volledige kaart met icoon, titel, tekst, een grafiek en een link, en daaronder een eenvoudige kaart met titel en link"
           },
           {
-            "id": "paste-images",
-            "title": "Afbeeldingen plakken met Ctrl+V",
-            "body": "Screenshots, „Afbeelding kopiëren” uit de browser en in de bestandsbeheerder gekopieerde afbeeldingsbestanden gaan met Ctrl+V direct als bijlage in het invoerveld."
+            "id": "notification-centre",
+            "title": "Meldingencentrum",
+            "body": "Een bel in de chatkop, of Ctrl+Shift+N, verzamelt vermeldingen, antwoorden, chat- en berichtverzoeken, uitnodigingen voor watchparty’s en schermdelingen, en servers die onbereikbaar werden, van elke verbonden server, nieuwste eerst. Filter ze, accepteer verzoeken meteen, en een klik springt naar het bericht. Tijdens Niet storen blijft het stil verzamelen.",
+            "alt": "Meldingencentrum met vermeldingen, antwoorden en een chatverzoek met Accepteren en Weigeren"
           },
           {
-            "id": "code-blocks",
-            "title": "Codeblokken met kopiëren en downloaden",
-            "body": "Schrijf de taal na de drie backticks, van sql, rust en php tot cmd, Dockerfile en hexdumps, en het blok wordt precies zo gemarkeerd. Knoppen in de hoek kopiëren de code of slaan hem op als bestand.",
-            "alt": "SQL-codeblok met het taallabel en de knoppen om te kopiëren en te downloaden in de hoek"
+            "id": "pm-overview",
+            "title": "Alle privéberichten op één plek",
+            "body": "De knop Berichten bovenaan de serverbalk toont elk gesprek van elke verbonden server, vastgezette eerst, met servertag, voorbeeld en aantal ongelezen. Zoek, filter op ongelezen of verzoeken, begin een nieuw gesprek, en zet er een vast, demp of verwijder het via het menu.",
+            "alt": "Overzicht van privéberichten met een chatverzoek bovenaan en gesprekken van meerdere servers"
           },
           {
-            "id": "image-menu",
-            "title": "Afbeeldingen kopiëren en opslaan",
-            "body": "Rechtsklik op een afbeelding in de chat of de afbeeldingsviewer: afbeelding kopiëren, afbeelding opslaan in het origineel, een GIF met zijn animatie, afbeeldingsadres kopiëren of openen in de viewer."
+            "id": "group-mentions",
+            "title": "@channel en @all",
+            "body": "@channel bereikt iedereen in het kanaal, @all iedereen die het kan lezen, inclusief luisteraars. Mumcord behandelt ze als een vermelding van jou, andere Mumble-clients zien gewoon de woorden. Te veel? Demp ze per server.",
+            "alt": "Chat met een gemarkeerde @channel-vermelding"
+          },
+          {
+            "id": "audio-links",
+            "title": "Audiobestanden in de chat",
+            "body": "Links naar mp3-, ogg-, m4a-, wav-, flac- of webm-bestanden krijgen een speler onder het bericht met zoekbalk, volume, „Openen in browser” en „Opslaan”. Niets speelt vanzelf af, het bestand laadt pas als je op Afspelen drukt, tot 32 MB, en het geluid gaat naar je luidsprekers, nooit in je microfoon.",
+            "alt": "Audiospeler onder een bericht met afspeelknop, zoekbalk en volume"
+          },
+          {
+            "id": "hidden-previews",
+            "title": "Verborgen voorbeelden zeggen het",
+            "body": "Zijn linkvoorbeelden en insluitingen uitgezet, dan noemt een stille regel onder het bericht wat verborgen werd, zoals een afbeelding of een video, met een link naar de instelling. Daarvoor wordt niets bij de gelinkte site opgevraagd.",
+            "alt": "Bericht met de regel „Afbeelding verborgen omdat linkvoorbeelden en insluitingen uit staan”"
+          },
+          {
+            "id": "server-links",
+            "title": "Serverlinks als kaarten",
+            "body": "Een mumble://-link in de chat toont server, kanaal, ping, mensen online en versie, met „Betreden”, „Aan servers toevoegen” en „Link kopiëren”. De cijfers komen uit de standaard openbare query, nooit uit een verbinding. Gebruikersnamen en wachtwoorden in een link worden nooit getoond en bij het kopiëren weggelaten.",
+            "alt": "Kaart voor een mumble://-link met servernaam, kanaal, ping, gebruikers en de knop Betreden"
           }
         ]
       },
@@ -885,6 +953,12 @@
             "alt": "Installatiewizard, stap microfoon met niveautest"
           },
           {
+            "id": "noise-levels",
+            "title": "Ruisonderdrukking in vier niveaus",
+            "body": "Instellingen → Stem biedt Licht voor gestaag geruis met het laagste CPU-gebruik, Standaard als standaardkeuze, Geavanceerd (AI) met het RNNoise-model uit 2024 als bèta, dat meer ruis verwijdert voor meer CPU, en Uit. Een „?” naast elk niveau zegt wat het kost. Alles draait op je computer.",
+            "alt": "Stem-instellingen met de vier niveaus van ruisonderdrukking"
+          },
+          {
             "id": "music",
             "title": "Muziekkwaliteit",
             "body": "Eén schakelaar verhoogt de bitrate tot de limiet van de server, maximaal 510 kbit/s, stemt de encoder af op muziek en zet ruisonderdrukking en automatische versterking uit.",
@@ -898,13 +972,50 @@
           },
           {
             "id": "bitrate",
-            "title": "Bitrate met de hand",
-            "body": "Een eigen schuifregelaar van 16 kbit/s tot de hoogste waarde die de server en Mumble toestaan. Bij pakketverlies regelt Mumcord hem nog steeds zelf omlaag."
+            "title": "Paneel voor spraakkwaliteit",
+            "body": "Rechtsklik op de verbindingsinfo: een bitrateschuif van 16 kbit/s tot de limiet van de server met wat er nu wordt verstuurd, muziekkwaliteit, de geschatte bandbreedte en de audiogezondheid. Bij pakketverlies regelt Mumcord de bitrate nog steeds zelf omlaag.",
+            "alt": "Paneel voor spraakkwaliteit met bitrateschuif, muziekkwaliteit en geschatte bandbreedte"
           },
           {
             "id": "realtime-audio",
             "title": "Stabiel onder belasting",
             "body": "Opname en weergave krijgen realtime prioriteit, zodat spraak minder kraakt en wegvalt terwijl een game of een build de computer bezighoudt. De verbindingsinfo toont uitval en of realtime audio aanstaat."
+          },
+          {
+            "id": "low-latency",
+            "title": "Lage-latentiemodus voor muziek maken",
+            "body": "Pakketten van 10 ms, een minimale buffer en geen echo-onderdrukking of ruisonderdrukking brengen de vertraging terug van ongeveer 100 ms naar ongeveer 40 ms plus het netwerk. Het schakelt live en toont de geschatte latentie. Vraagt meer bandbreedte; een koptelefoon wordt aangeraden. Werkt met standaardservers.",
+            "alt": "Audio-instellingen met lage-latentiemodus aan en de geschatte latentie uitgesplitst"
+          },
+          {
+            "id": "channel-audio",
+            "title": "Audio per kanaal",
+            "body": "„Audio voor dit kanaal…” stelt muziekkwaliteit, lage-latentiemodus en een bitrateplafond in voor één kanaal, met de voorinstellingen Spraak, Muziek en Jam. Het geldt zodra je binnenkomt, en je gewone instellingen komen terug als je vertrekt. Alleen op dit apparaat bewaard, dus het werkt op elke Mumble-server.",
+            "alt": "„Audio voor dit kanaal” met de voorinstellingen Spraak, Muziek en Jam"
+          },
+          {
+            "id": "device-switch",
+            "title": "Apparaten wisselen vanuit de spraakbalk",
+            "body": "Rechtsklik op de microfoon- of koptelefoonknop: kies een apparaat, stel het volume in, kijk naar het niveau en schakel ruisonderdrukking, allemaal zonder opnieuw te verbinden. Wordt een apparaat losgekoppeld, dan valt Mumcord terug op de systeemstandaard. Op Linux met PipeWire verschijnt elke ingang en uitgang zoals in de geluidsinstellingen van je desktop.",
+            "alt": "Microfoonmenu met invoerapparaten, volumeschuif en niveaumeter"
+          },
+          {
+            "id": "leave-voice",
+            "title": "Spraak verlaten, verbonden blijven",
+            "body": "Rechtsklik op de ophangknop: „Spraak verlaten” stopt met praten en luisteren, maar laat chat en meelezen doorlopen. Ook daar: verbinding verbreken, spraak naar een andere server verplaatsen en alles verbreken. Een linkerklik hangt nog steeds meteen op.",
+            "alt": "Menu van de ophangknop met Spraak verlaten, Verbinding verbreken en Spraak verplaatsen"
+          },
+          {
+            "id": "whisper",
+            "title": "Fluisteren en roepen",
+            "body": "Praat met gekozen mensen of met iedereen in een kanaal, desgewenst met de subkanalen, gekoppelde kanalen of slechts één groep, zonder erheen te gaan. Doelen stel je in bij de instellingen of met „Fluisteren naar…” in het menu van een persoon of kanaal, elk met een eigen indrukken-om-te-praten-toets. Een banner boven de chat toont met wie je praat.",
+            "alt": "Een banner boven de chat tijdens fluisteren naar een kanaal"
+          },
+          {
+            "id": "user-panel",
+            "title": "Rustig gebruikerspaneel",
+            "body": "Het paneel onderaan de kanaallijst houdt altijd dezelfde hoogte: jij met naam en server, één statusregel zoals opnieuw verbinden of je spraakkanaal, kleine chips voor Niet storen, lage-latentiemodus en de verbinding, en de knoppen voor microfoon, koptelefoon en ophangen. De kanaallijst erboven springt niet meer.",
+            "alt": "Het gebruikerspaneel in meerdere toestanden, van pratend en gedempt tot opnieuw verbinden"
           }
         ]
       },
@@ -915,50 +1026,19 @@
           {
             "id": "positional",
             "title": "Positionele audio",
-            "body": "Stemmen van mensen in dezelfde game komen uit hun richting en worden zachter op afstand. Via Mumble Link of de officiële gameplugins van Mumble; een „3D”-pictogram laat zien wie posities doorstuurt.",
+            "body": "Stemmen van mensen in dezelfde game komen uit hun richting en worden zachter met afstand. Via Mumble Link of de officiële gameplug-ins van Mumble, elk met een eigen schakelaar; een „3D”-pictogram toont wie posities verstuurt.",
             "alt": "Instellingen, positionele audio met afstanden en gameplugins"
-          },
-          {
-            "id": "game-plugins",
-            "title": "Officiële gameplugins",
-            "body": "De plugins van Mumble leveren posities voor ondersteunde games, elk met een eigen schakelaar. In de instellingen zie je welke actief is."
           },
           {
             "id": "in-game-overlay",
             "title": "In-game overlay",
-            "body": "Op Linux direct in de game als Vulkan-layer, ook in Steam- en Proton-games, getest met Tyr en Supermarket Simulator. Per game in te stellen; games waarvan de anti-cheat overlays blokkeert, blijven uitgesloten. Windows krijgt hem met versie 0.4.0.",
+            "body": "Toont wie er praat, direct in de game. Op Linux als Vulkan-laag, ook in Steam-, Proton- en Flatpak-Steam-games, met een startoptie om te kopiëren voor native OpenGL-games. Op Windows als doorklikbaar venster dat niets in de game laadt, dus het werkt met anti-cheat; alleen exclusief volledig scherm verbergt het. Per game in te stellen; games waarvan de anti-cheat overlays blokkeert, blijven uitgesloten.",
             "alt": "Instellingen, in-game overlay met anti-cheatwaarschuwing en keuzes per game"
-          },
-          {
-            "id": "overlay-window",
-            "title": "Overlayvenster",
-            "body": "Op Linux en Windows een transparant venster dat bovenop alles ligt, klikken doorlaat en laat zien wie er in je kanaal praat. Op macOS is er geen overlay. Het overlayvenster verdwijnt met versie 0.4.0.",
-            "alt": "Overlayvenster boven een game dat laat zien wie er praat"
           },
           {
             "id": "now-gaming",
             "title": "Nu aan het gamen",
-            "body": "Als je wilt, zien anderen wat je speelt, met de Steam-afbeelding en speeltijd. „Game joinen” voor Steam-games die dat ondersteunen."
-          },
-          {
-            "id": "overlay-windows",
-            "title": "In-game overlay op Windows",
-            "body": "Een apart, doorklikbaar venster boven de game. Er wordt niets in de game geladen, dus het werkt ook in games met anti-cheat. Alleen exclusief volledig scherm verbergt het."
-          },
-          {
-            "id": "overlay-opengl",
-            "title": "OpenGL-games op Linux",
-            "body": "Voor native OpenGL-games zoals Project Hospital toont Mumcord de juiste Steam-startoptie om te kopiëren, en die blijft werken na updates. Ook de kleuren in HDR-games kloppen."
-          },
-          {
-            "id": "flatpak-steam",
-            "title": "Flatpak-Steam en randloos fullscreen",
-            "body": "De in-game overlay ook voor games uit Steam als Flatpak, en randloze fullscreen-games getest op KDE en GNOME. Mumcord sluiten of bijwerken laat een lopende game niet meer crashen."
-          },
-          {
-            "id": "join-game-link",
-            "title": "„Game joinen” via Mumble Link",
-            "body": "„Game joinen” ook voor games die hun serveradres via Mumble Link delen."
+            "body": "Als je wilt, zien anderen wat je speelt, met het Steam-plaatje en de speeltijd. „Game betreden” voor Steam-games die dat ondersteunen en voor games die hun serveradres via Mumble Link delen."
           }
         ]
       },
@@ -997,13 +1077,13 @@
           {
             "id": "watch-party",
             "title": "Samen kijken",
-            "body": "Een YouTube-watchparty in het spraakkanaal: iedereen ziet tegelijk dezelfde video, iedereen kan pauzeren en spoelen, met een gedeelde playlist.",
+            "body": "Een YouTube-watchparty in het spraakkanaal: iedereen ziet tegelijk dezelfde video, iedereen kan pauzeren en spoelen, met een gedeelde playlist. Staan insluitingen uit in de privacyinstellingen, dan wordt er niets van YouTube of Twitch geladen.",
             "alt": "Watchparty in een zwevend venster met deelnemers, bediening en de volgende video"
           },
           {
             "id": "screen-share",
             "title": "Scherm delen",
-            "body": "Een scherm of venster voor maximaal 8 kijkers, in 720p met 30 beelden per seconde. Op Windows en macOS desgewenst met het geluid van de gedeelde app. Je start het via de Apps-knop in de chat.",
+            "body": "Een scherm of venster voor maximaal 8 kijkers, in 720p met 30 beelden per seconde, op Windows en macOS desgewenst met het geluid van de gedeelde app. Je start het via de Apps-knop in de chat. Terwijl je deelt, toont een rode balk de kijkers en „Stoppen”, en anderen zien een rode „LIVE”-ring om je afbeelding.",
             "alt": "Een gedeeld scherm in een zwevend venster met volledig scherm en „Stoppen met kijken”"
           },
           {
@@ -1013,20 +1093,15 @@
             "alt": "Meldingen boven in de chat voor een lopende watchparty en een gedeeld scherm"
           },
           {
-            "id": "live",
-            "title": "Live, en iedereen ziet het",
-            "body": "Terwijl je je scherm deelt, laat een rode balk boven je profiel dat zien, met „Beëindigen” en het aantal kijkers. Anderen zien een rode ring met „LIVE” rond je foto.",
-            "alt": "Rode balk „Je deelt je scherm” met het aantal kijkers en „Beëindigen”"
-          },
-          {
             "id": "ducking",
-            "title": "Zachter als er gepraat wordt",
-            "body": "Terwijl iemand in het kanaal praat, wordt het geluid van de watchparty en het gedeelde scherm zachter en daarna weer normaal. Jij bepaalt hoeveel zachter, of je zet het uit."
+            "title": "Geluid voor watchparty’s en delen",
+            "body": "Terwijl iemand in het kanaal praat, worden de watchparty en gedeelde schermen zachter; hoe zacht bepaal je zelf. Korte geluiden als iemand een watchparty start of betreedt of zijn scherm deelt, elk apart uit te zetten."
           },
           {
-            "id": "activity-sounds",
-            "title": "Geluiden voor watchparty’s en delen",
-            "body": "Een kort geluid als iemand een watchparty start, erbij komt of weggaat en als iemand zijn scherm deelt of naar het jouwe begint te kijken. Elk geluid kun je uitzetten."
+            "id": "relay",
+            "title": "Community-relay",
+            "body": "De community van een server kan naast de Mumble-server een relay draaien. Afbeeldingen op volle grootte en scherm delen werken dan ook als er geen directe verbinding mogelijk is, en met „altijd relay” ziet de ander nooit je IP-adres. De relay kan de versleutelde verbinding niet lezen, en spraak gebruikt hem nooit. Je kiest onder Instellingen → Privacy, ook per server.",
+            "alt": "Privacy-instellingen met de peer-to-peer-keuzes direct, relay en uit"
           }
         ]
       },
@@ -1043,36 +1118,26 @@
           {
             "id": "sounds",
             "title": "Geluiden en meldingen",
-            "body": "Elke gebeurtenis is apart in te stellen: binnenkomen, vertrekken, berichten, vermeldingen.",
+            "body": "Elke gebeurtenis is apart in te stellen: binnenkomen, vertrekken, berichten, vermeldingen, en een eigen geluid voor gekickt of verbannen worden.",
             "alt": "Instellingen, sectie geluiden en meldingen"
           },
           {
             "id": "languages",
-            "title": "Van taal wisselen zonder herstart",
-            "body": "De taal geldt meteen. Een traypictogram, starten bij inloggen en volledige bediening met toetsenbord en schermlezer horen erbij.",
+            "title": "24 talen, zonder herstart te wisselen",
+            "body": "Alle 24 officiële talen van de EU, van Bulgaars tot Zweeds, gelden meteen, het traymenu inbegrepen. Elke taal staat onder haar eigen naam. Vertaald door het team zonder controle door moedertaalsprekers: correcties zijn welkom als issue. Volledig toetsenbord- en schermlezergebruik zit erbij.",
             "alt": "Instellingen, sectie interfacetaal"
           },
           {
             "id": "privacy",
             "title": "Geen telemetrie",
-            "body": "Je identiteit staat in de beveiligde opslag van het systeem. Het diagnosebestand bevat geen chatinhoud of wachtwoorden en verlaat je computer alleen als je het zelf verstuurt."
-          },
-          {
-            "id": "eu-languages",
-            "title": "Alle 24 officiële EU-talen",
-            "body": "Van Bulgaars tot Zweeds, het traymenu inbegrepen. Elke taal staat er onder de eigen naam en is te vinden via al haar namen. Vertaald door het team zonder controle door moedertaalsprekers: correcties zijn welkom als issue."
-          },
-          {
-            "id": "privacy-step",
-            "title": "Privacy in de wizard",
-            "body": "Bij de eerste start laat een korte stap zien waarmee Mumcord verbinding maakt en wanneer, met een link naar de volledige privacyverklaring.",
-            "alt": "Wizard, stap privacy"
+            "body": "Bij de eerste start laat een korte stap zien waarmee Mumcord verbinding maakt en wanneer. Je identiteit staat in de beveiligde opslag van het systeem, en het diagnosebestand bevat geen chatinhoud of wachtwoorden en verlaat je computer alleen als je het zelf verstuurt.",
+            "alt": "Wizard, privacystap"
           },
           {
             "id": "quick-settings",
             "title": "Snelle instellingen onder het tandwiel",
-            "body": "Eén klik op het tandwiel: voorbeelden, thema, overlay, muziek en game delen, profiel bewerken en registreren. Bètafuncties zoals positionele audio staan in een eigen inklapbare groep.",
-            "alt": "Snelle instellingen met de groep Bèta uitgeklapt"
+            "body": "Eén klik op het tandwiel: één rij per instelling onder Meldingen, Delen, Uiterlijk en Account, met de uitleg achter een klein „?”. Bètafuncties zoals positionele audio staan in een eigen groep die ingeklapt begint.",
+            "alt": "Snelle instellingen gegroepeerd in Meldingen, Delen, Uiterlijk en Account"
           },
           {
             "id": "settings-search",
@@ -1100,30 +1165,98 @@
           },
           {
             "id": "dropdowns",
-            "title": "Opgeruimde instellingen",
-            "body": "Dropdowns in je thema in plaats van de browserlook, en elk invoerveld in de instellingen netjes uitgelijnd."
-          },
-          {
-            "id": "tooltips",
-            "title": "Tooltips in je thema",
-            "body": "Elke tooltip in de stijl van je thema, licht of donker, en ook met het toetsenbord te bereiken."
+            "title": "Nette instellingen en tooltips",
+            "body": "Dropdowns en tooltips in de look van je thema in plaats van die van de browser, elk invoerveld in de instellingen netjes uitgelijnd, en elke tooltip ook met het toetsenbord bereikbaar."
           },
           {
             "id": "packet-inspector",
             "title": "Pakketinspector voor debuggen",
-            "body": "Verborgen voor ontwikkelaars: zeven klikken op de versie onder Instellingen → Over ontgrendelen hem. In een eigen venster toont hij welke Mumcord-gegevens worden verstuurd en ontvangen, met filters, tellers en export als JSON of Markdown.",
+            "body": "Verborgen voor ontwikkelaars: zeven klikken op de versie onder Instellingen → Over ontgrendelen hem. In een eigen venster toont hij welke Mumcord-gegevens worden verstuurd en ontvangen, met filters, tellers en export als JSON of Markdown. Hij volgt nieuwe pakketten en legt alleen vast terwijl hij open is.",
             "alt": "Pakketinspector met filters, tellers per type en richting en één uitgeklapte pakketregel"
           },
           {
             "id": "clear-cache",
             "title": "De cache wissen",
             "body": "Instellingen → Privacy laat zien hoeveel ruimte linkvoorbeelden, afbeeldingen en de webengine innemen, en wist ze met één druk op de knop, ook een voor een. Chatgeschiedenis, servers, vrienden en notities blijven onaangeroerd."
+          },
+          {
+            "id": "dnd",
+            "title": "Niet storen",
+            "body": "Eén schakelaar in de snelle instellingen, de instellingen of het traymenu dempt meldingsgeluiden en pop-ups op elke server. Spraak blijft werken en ongelezen tellers blijven tellen. Op KDE Plasma, GNOME en Windows kan het het Niet-storen van het systeem volgen.",
+            "alt": "Instellingen voor geluiden en meldingen met Niet storen en „Niet storen van het systeem volgen”"
+          },
+          {
+            "id": "tray",
+            "title": "Compleet traymenu",
+            "body": "Het traymenu toont elke verbonden server met status en kanaal, dempen, doofzetten en Niet storen, verplaatst spraak naar een andere server of een ander kanaal en opent recente chats. Het pictogram toont praten, gedempt, ongelezen berichten en Niet storen. Mumcord start desgewenst bij het inloggen, op elk systeem.",
+            "alt": "Traymenu met servers, het submenu van het spraakkanaal en recente chats"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.5.0",
+      "teaser": "Meldingencentrum, alle privéberichten op één plek, blokkeren, meerdere identiteiten en import uit Mumble.",
+      "summary": "Een grote update voor chat en privacy: een meldingencentrum, alle privéberichten op één plek met je eigen regels voor wie je mag schrijven, blokkeren, meerdere identiteiten en overstappen van Mumble in een paar klikken. Plus een communityrelay voor afbeeldingen en scherm delen, muziek en audio in de chat, een browser voor openbare servers en een lage-latentiemodus om samen muziek te maken.",
+      "groups": [
+        {
+          "title": "Nieuw",
+          "items": [
+            "Een meldingencentrum achter de bel in de chatkop (Ctrl+Shift+N) verzamelt alles wat je aandacht wil op alle verbonden servers: vermeldingen, antwoorden, chat- en berichtverzoeken met Accepteren en Weigeren, uitnodigingen voor watchparty's en schermdelen, en servers die niet meer bereikbaar zijn. Met een klik spring je naar het bericht.",
+            "Niet storen: één schakelaar in de snelle instellingen, de instellingen en het traymenu dempt meldingsgeluiden en pop-ups op alle servers. Spraak blijft werken en ongelezen berichten blijven meetellen. Als je wilt, volgt Mumcord de systeemstand Niet storen op KDE Plasma, GNOME en Windows.",
+            "Het traymenu toont elke verbonden server met zijn kanaal, plus Dempen, Doofzetten en Niet storen. Vanaf daar verplaats je spraak naar een andere server of een ander kanaal en open je je recente privéchats. Het trayicoon laat zien wanneer iemand praat, wanneer je gedempt bent en wanneer er ongelezen berichten zijn.",
+            "Alle privéberichten op één plek: de knop Berichten bovenaan de serverbalk toont elk gesprek van elke verbonden server, met zoeken, filters, vastpinnen en dempen. Hij vervangt de lijst Directe berichten onder de kanaalboom. Het menu van een persoon begint nu met Bericht sturen, Kanaal betreden en Vriend toevoegen.",
+            "Jij bepaalt wie je privé mag berichten: iedereen, alleen vrienden of niemand, ook per server. Mensen in je kanaal en gesprekken die je hebt geaccepteerd komen altijd door. De rest wacht onder Berichtverzoeken, en Mumcord-gebruikers kunnen je een chatverzoek met een korte notitie sturen. Mumcord filtert aan jouw kant, dus de afzender krijgt hier niets van te horen. Een geaccepteerd gesprek kun je later weer intrekken.",
+            "Blokkeer mensen: hun privéberichten en verzoeken verdwijnen, hun kanaalberichten worden ingeklapt en hun spraak wordt voor jou gedempt. Een blokkade volgt het certificaat van de persoon, dus ze geldt op elke server en een nieuwe naam helpt niet. Noch de server noch de persoon krijgt het te horen; Instellingen → Privacy toont je blokkades.",
+            "@channel en @all bereiken iedereen in een kanaal en tellen als een persoonlijke vermelding. Andere Mumble-clients zien gewoon de woorden, en je kunt ze per server dempen.",
+            "Audio en muziek in de chat: directe links naar audiobestanden zoals mp3, ogg, wav of flac krijgen een kleine speler. Links naar Spotify, SoundCloud en YouTube Music spelen af in de eigen speler van de dienst zodra je op Afspelen drukt; Apple Music, Tidal, Deezer en Bandcamp krijgen een kaart met een link. Niets speelt vanzelf, en met linkvoorbeelden uit wordt niets geladen.",
+            "mumble://-links in de chat tonen een kaart met de server, het kanaal, de ping en hoeveel mensen online zijn, met Deelnemen en Aan servers toevoegen. Een wachtwoord in de link wordt nooit getoond.",
+            "Kanalen zijn makkelijker te beheren: klik met rechts op een kanaal voor een menu met Deelnemen, Volgen, Kanaallink kopiëren, Kanaalinfo en meer. Kanalen tonen hun gebruikerslimiet, zoals Raid (1/10), en volle kanalen zijn gedimd. Met de juiste rechten sleep je mensen naar een ander kanaal. Kanaalinfo toont de beschrijving, gebruikers, je rechten en gekoppelde kanalen.",
+            "Lage-latentiemodus om samen muziek te maken (Beta): ongeveer 40 in plaats van 100 milliseconden van mond tot oor, plus het netwerk. Hij schakelt om zonder opnieuw te verbinden en werkt met standaardservers. Een koptelefoon wordt aangeraden.",
+            "Audio per kanaal: „Audio voor dit kanaal…” geeft een kanaal eigen instellingen, met de presets Spraak, Muziek en Jam. Ze gelden zodra je het kanaal betreedt, en je normale instellingen komen terug als je weggaat.",
+            "Snelmenu's in de spraakbalk: klik met rechts op de microfoon of koptelefoon voor apparaten, volume en een niveaumeter, de verbindingsinfo voor spraakkwaliteit en bitrate, en de ophangknop voor Spraak verlaten (verbonden blijven en verder chatten) of Verbinding met alle servers verbreken.",
+            "Een serverbrowser in de serverbalk toont openbare Mumble-servers, met zoeken en filters voor land en ping. Verbinden slaat op en verbindt in één klik. De lijst wordt pas geladen als je de browser opent.",
+            "Het serverdialoog is verdeeld over vier tabbladen en heeft Verbinding testen, dat ping, serverversie en certificaat controleert zonder iets op te slaan. Serverinfo toont de versie, limieten, je rechten en het TLS-certificaat. Opgeslagen kanaalwachtwoorden tonen bij welk kanaal ze horen.",
+            "Meerdere identiteiten: Instellingen → Identiteit beheert meerdere certificaten, met importeren, exporteren, hernoemen en een standaard. Elke server kan een eigen identiteit gebruiken. Je huidige wordt „Standaard”, en alles verbindt zoals voorheen.",
+            "Importeren uit Mumble: als de officiële Mumble-client is geïnstalleerd, haalt de installatiewizard (of Instellingen → Servers) je favoriete servers, opgeslagen wachtwoorden, je certificaat, audioapparaten en push-to-talk-toets over. Er wordt niets overschreven, de bestanden van Mumble worden alleen gelezen en de import kan ongedaan worden gemaakt.",
+            "Communityrelay: afbeeldingen op volledige grootte en scherm delen kunnen via een relay lopen die de community van een server naast haar Mumble-server draait. Hij geeft alleen de versleutelde verbinding door en verbergt, als je wilt, je IP-adres voor de ander. Scherm delen werkt dan ook zonder directe verbinding. Spraak gebruikt de relay nooit.",
+            "Op Windows is Mumcord er ook als draagbare zip: uitpakken, starten, geen installatie. Gegevens en instellingen blijven in de map naast het programma.",
+            "Verberg de ledenkolom om de chat de volle breedte te geven: met een knop in de chatkop of Ctrl+Shift+M. In een smal venster schuift hij over de chat heen.",
+            "Gekickt of verbannen? Mumcord speelt daar een geluid voor af: een klap voor een kick, een slapstick-trap voor een ban. Beide kunnen worden uitgezet.",
+            "Serverinfo toont of de server een relay of een Mumbot aankondigt en waarschuwt wanneer het relay is veranderd.",
+            "Fluisteren en roepen: praat met gekozen mensen of met iedereen in een kanaal zonder erheen te gaan, met een indrukken-om-te-praten-toets per doel en een banner boven de chat die toont met wie je praat.",
+            "Updates in de app: Mumcord zoekt naar nieuwe versies, laat zien wat er is veranderd en installeert ze met één klik. Elke download wordt gecontroleerd op zijn handtekening en checksums.",
+            "Ruisonderdrukking in vier niveaus: Licht, Standaard, Geavanceerd (AI, bèta, met het RNNoise-model uit 2024) en Uit, elk uitgelegd met een „?”."
+          ]
+        },
+        {
+          "title": "Verbeterd",
+          "items": [
+            "Het gebruikerspaneel onder de kanaallijst is opnieuw ontworpen: het houdt in elke status dezelfde hoogte, zodat de lijst erboven nooit verspringt, toont één duidelijke statusregel en heeft een klein menupijltje op elke spraakknop.",
+            "De snelle instellingen zijn rustiger: één rij per instelling in duidelijke groepen, uitleg achter een klein ?, en de groep Beta begint ingeklapt.",
+            "Met linkvoorbeelden uit verdwijnen ze niet meer stilletjes: een rustige regel onder het bericht zegt wat er is verborgen en leidt naar de instelling.",
+            "„Installatiewizard opnieuw uitvoeren” in Instellingen → Over loopt microfoon, privacy, updatetip en praatmodus nog eens door. Je identiteit blijft ongemoeid en alleen wat je wijzigt wordt opgeslagen.",
+            "De pakketinspecteur volgt nieuwe pakketten, pauzeert als je omhoog scrolt en neemt alleen op terwijl hij open is.",
+            "De server- en kanaalboom is standaard een kwart breder, zodat langere kanaalnamen passen. Breedtes die je zelf instelt blijven behouden."
+          ]
+        },
+        {
+          "title": "Opgelost",
+          "items": [
+            "Je eigen berichten spelen nooit het vermeldingsgeluid af, tonen nooit een melding en tellen niet als ongelezen.",
+            "De watchparty respecteert „Linkvoorbeelden en insluitingen tonen”: als die uit staat, wordt er niets van YouTube of Twitch geladen en wijst een hint naar de instelling.",
+            "Linux met PipeWire: de apparaatlijsten tonen elke ingang en uitgang zoals de geluidsinstellingen van de desktop, zoals „System” en „Chat” op een RØDECaster Pro II in plaats van één „USB Audio”.",
+            "Het venster met serverinfo is nu vertaald in alle 24 talen.",
+            "Je eigen berichten spelen niet langer het vermeldingsgeluid af, tonen geen melding meer en tellen niet meer als ongelezen."
+          ]
+        }
+      ],
+      "known": [
+        "De Windows-installer is nog niet ondertekend."
+      ]
+    },
     {
       "version": "0.4.4",
       "teaser": "Code kopiëren en downloaden, afbeeldingen opslaan met een rechtsklik, de cache wissen, stabielere spraak onder belasting.",
@@ -2448,7 +2581,8 @@
         "webhook": "Stel een API-sleutel en de toegestane kanalen in `bot.toml` in. Dan plaatst een `curl` naar `http://127.0.0.1:8080/message` een bericht in het kanaal.",
         "more": "De stappen hieronder leggen elk onderdeel uitgebreid uit.",
         "music": "Zet MP3’s in de map `media` en stel een API-sleutel in `bot.toml` in. Dan speelt een verzoek naar `http://127.0.0.1:8081` ze af in het kanaal.",
-        "history": "Stel in `bot.toml` in hoe lang de bot de chat bewaart. Hij heeft leestoegang tot de kanalen nodig."
+        "history": "Stel in `bot.toml` in hoe lang de bot de chat bewaart. Hij heeft leestoegang tot de kanalen nodig.",
+        "relayRegistered": "Met “Alleen geregistreerde gebruikers” krijgen alleen mensen die op de server geregistreerd zijn relay-tokens (klik met rechts op je eigen naam → Registreren)."
       },
       "advanced": "Geavanceerd",
       "pluginLimit": "Verborgen pakketten per seconde",
@@ -2472,7 +2606,12 @@
         "show": "Toon de wachtwoorden en noteer ze"
       },
       "copyAll": "Kopieer alles in één keer",
-      "needsMumbot": "Webhook, relay, muziek en geschiedenis draaien samen als één Mumbot met modules. Dat komt met Mumbot 0.2.0."
+      "needsMumbot": "Webhook, relay, muziek en geschiedenis draaien samen als één Mumbot met modules. Dat komt met Mumbot 0.2.0.",
+      "relayAccess": {
+        "label": "Relay voor",
+        "registered": "Alleen geregistreerde gebruikers",
+        "all": "Iedereen, ook gasten"
+      }
     },
     "stepsCta": "Stap voor stap"
   },
@@ -2654,6 +2793,17 @@
           "Berichtkaarten: de webhook stuurt meldingen met een titel, statuskleur, grafiek en link, die Mumcord als kaart toont",
           "Instelbare bitrate voor spraak en muziek, nooit boven de limiet van de server",
           "Peermodule: meldt de gebruikers van de server aan bij een mumpeer-relay en laat Mumcord weten dat de relay er is"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Een veiligere relay",
+        "summary": "Na een beveiligingsreview van de relay: wie tokens krijgt, voor hoe lang en hoeveel.",
+        "items": [
+          "Relay-tokens alleen voor geregistreerde gebruikers, desgewenst ook voor gasten",
+          "Het verlaten van de server beëindigt de relaytoegang, maar pas met de laatste sessie",
+          "Limieten per certificaat voor tokenaanvragen en open verbindingen",
+          "Veiligere configuratie: geen gewone HTTP naar een relay op een andere machine, geheimen worden strikt gecontroleerd"
         ]
       },
       {
