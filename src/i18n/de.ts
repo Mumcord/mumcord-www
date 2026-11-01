@@ -239,7 +239,7 @@ export const de = {
       { src: "notification-toast", caption: "Ein kleines Pop-up meldet neue Nachrichten aus anderen Kanälen." },
       { src: "chat-compact", caption: "Kompaktes Chat-Layout: Zeit, Name und Nachricht in einer Zeile." },
       { src: "channel-avatar-stack", caption: "Volle Kanäle zeigen einen Avatar-Stapel statt einer langen Liste." },
-      { src: "person-menu", caption: "Rechtsklick: stummschalten, Lautstärke, private Nachricht." },
+      { src: "person-menu-dark", caption: "Rechtsklick: stummschalten, Lautstärke, private Nachricht." },
       { src: "search", caption: "Strg+K durchsucht Kanäle und Leute." },
       { src: "banner-rejoin", caption: "Nach dem Neustart zurück in den letzten Sprachkanal." },
       { src: "dialog-certificate-trust", caption: "Vertrauen beim ersten Kontakt, mit Fingerabdruck." },
