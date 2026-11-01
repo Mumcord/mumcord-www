@@ -282,11 +282,11 @@
       "title": "Okno, które wydaje się znajome.",
       "items": [
         {
-          "src": "wizard-1-identity",
+          "src": "wizard-identity-dark",
           "caption": "Konfiguracja w około minutę: tożsamość, mikrofon, tryb mówienia."
         },
         {
-          "src": "wizard-4-talk-mode",
+          "src": "wizard-voice-dark",
           "caption": "Aktywacja głosem lub push-to-talk, linki mumble:// i start po zalogowaniu."
         },
         {
@@ -306,7 +306,7 @@
           "caption": "Zatłoczone kanały pokazują stos awatarów zamiast długiej listy."
         },
         {
-          "src": "person-menu",
+          "src": "person-menu-dark",
           "caption": "Prawy przycisk: wycisz, głośność, prywatna wiadomość."
         },
         {
@@ -609,9 +609,9 @@
         "features": [
           {
             "id": "setup",
-            "title": "Konfiguracja w minutę",
-            "body": "Przy pierwszym uruchomieniu Mumcord pyta tylko o trzy rzeczy: twoją nazwę i tożsamość, mikrofon z testem poziomu oraz sposób mówienia. Istniejące tożsamości Mumble możesz zaimportować jako PKCS#12.",
-            "alt": "Kreator konfiguracji, krok tożsamości"
+            "title": "Skonfiguruj po swojemu",
+            "body": "Przy pierwszym uruchomieniu kreator przeprowadza cię przez tożsamość, głos i tryb mówienia. Styl konfiguracji, taki jak zrównoważony, wszystko włączone albo maksymalna prywatność, ustawia od razu pozostałe wybory, a Własny pozwala przejść przez każdy z nich. Istniejące tożsamości Mumble możesz zaimportować jako PKCS#12.",
+            "alt": "Kreator konfiguracji, krok stylu konfiguracji z czterema gotowymi zestawami"
           },
           {
             "id": "servers",
@@ -681,7 +681,7 @@
           {
             "id": "setup-again",
             "title": "Uruchom kreator konfiguracji ponownie",
-            "body": "Ustawienia → O aplikacji przechodzi przez konfigurację jeszcze raz, by sprawdzić mikrofon, prywatność, sprawdzanie aktualizacji i tryb mówienia. Krok tożsamości jest pomijany, więc nic w twoim certyfikacie nie zmieni się przez przypadek, a zapisywane są tylko wartości, które naprawdę zmieniłeś.",
+            "body": "Ustawienia → O aplikacji uruchamia kreator konfiguracji jeszcze raz, byś mógł przejrzeć swoje wybory. Krok tożsamości jest pomijany, więc nic w twoim certyfikacie nie zmieni się przez przypadek, a zapisywane są tylko wartości, które faktycznie zmieniłeś.",
             "alt": "Kreator konfiguracji uruchomiony ponownie z ustawień, z krokiem tożsamości oznaczonym jako pominięty"
           },
           {
@@ -938,7 +938,13 @@
             "id": "push-to-talk",
             "title": "Push-to-talk wszędzie",
             "body": "Klawisze i przyciski myszy, nawet z grą na pierwszym planie. Na Waylandzie przez portal skrótów albo w trybie zgodności.",
-            "alt": "Kreator konfiguracji, krok trybu mówienia"
+            "alt": "Kreator konfiguracji, krok głosu z mikrofonem, głośnikami i trybem mówienia"
+          },
+          {
+            "id": "hotkeys",
+            "title": "Globalne skróty klawiszowe",
+            "body": "Oprócz push-to-talk klawisze do wyciszenia, ogłuszenia, Nie przeszkadzać, dołączania do głosu i wychodzenia z niego, przełączania serwera lub kanału, kolumny osób i szybkich ustawień. Domyślnie nic nie jest przypisane, a zajęty klawisz pokazuje konflikt i przenosi się jednym kliknięciem. Działają w tle, na Waylandzie po jednorazowym pytaniu pulpitu.",
+            "alt": "Ustawienia skrótów klawiszowych z polem klawisza dla każdej akcji"
           },
           {
             "id": "threshold",
@@ -950,7 +956,7 @@
             "id": "sound",
             "title": "Czysty dźwięk od razu",
             "body": "Tłumienie szumów z AI, usuwanie echa i automatyczne wzmocnienie są włączone. Zmieniaj urządzenia bez ponownego łączenia, testuj mikrofon własnym głosem.",
-            "alt": "Kreator konfiguracji, krok mikrofonu z testem poziomu"
+            "alt": "Ustawienia, Głos i dźwięk z redukcją szumu, usuwaniem echa i automatyczną głośnością"
           },
           {
             "id": "noise-levels",
@@ -1077,14 +1083,14 @@
           {
             "id": "watch-party",
             "title": "Wspólne oglądanie",
-            "body": "Watch party na YouTube na kanale głosowym: wszyscy widzą ten sam film jednocześnie, każdy może pauzować i przewijać, ze wspólną playlistą. Przy wyłączonych osadzeniach w ustawieniach prywatności nic nie jest ładowane z YouTube ani Twitcha.",
-            "alt": "Watch party w pływającym oknie z uczestnikami, sterowaniem i następnym filmem"
+            "body": "Watch party na YouTube na kanale głosowym: wszyscy widzą ten sam film jednocześnie, każdy może pauzować i przewijać, ze wspólną playlistą. Otwiera się jako widok kinowy z czatem pod spodem i pokazuje, kto jest zsynchronizowany, a kto został w tyle; gdy go opuścisz, mały odtwarzacz zostaje u góry czatu. Przy wyłączonych osadzeniach w ustawieniach prywatności nic nie jest ładowane z YouTube ani Twitcha.",
+            "alt": "Widok kinowy wspólnego oglądania z odtwarzaczem, czatem pod spodem i listą oglądających"
           },
           {
             "id": "screen-share",
             "title": "Udostępnianie ekranu",
-            "body": "Ekran lub okno dla maksymalnie 8 widzów, w 720p przy 30 klatkach na sekundę, na Windowsie i macOS na życzenie z dźwiękiem udostępnianej aplikacji. Uruchomisz je przyciskiem Aplikacje w czacie. Gdy udostępniasz, czerwony pasek pokazuje widzów i „Zakończ”, a inni widzą czerwony pierścień z „LIVE” wokół twojego zdjęcia.",
-            "alt": "Udostępniony ekran w pływającym oknie z pełnym ekranem i „Przestań oglądać”"
+            "body": "Ekran lub okno dla maksymalnie 8 widzów, w 720p przy 30 klatkach na sekundę, na Windowsie i macOS na życzenie z dźwiękiem udostępnianej aplikacji. Uruchomisz je przyciskiem Aplikacje w czacie. Widzowie oglądają w głównej kolumnie z rozdzielczością, liczbą klatek i szczegółami strumienia; ty dostajesz u góry czatu pasek sterowania z pauzą, dźwiękiem, widzami i zakończeniem.",
+            "alt": "Udostępniony ekran w głównej kolumnie ze szczegółami strumienia i listą widzów"
           },
           {
             "id": "floating-widgets",
@@ -1131,7 +1137,7 @@
             "id": "privacy",
             "title": "Bez telemetrii",
             "body": "Przy pierwszym uruchomieniu krótki krok pokazuje, z czym i kiedy łączy się Mumcord. Twoja tożsamość jest w bezpiecznym magazynie systemu, a plik diagnostyczny nie zawiera treści czatu ani haseł i opuszcza twój komputer tylko wtedy, gdy go wyślesz.",
-            "alt": "Kreator, krok prywatności"
+            "alt": "Kreator konfiguracji, krok połączeń i treści"
           },
           {
             "id": "quick-settings",
@@ -1141,8 +1147,8 @@
           },
           {
             "id": "settings-search",
-            "title": "Ustawienia z wyszukiwaniem",
-            "body": "Znajduje sekcje i pojedyncze ustawienia, przenosi do nich i je wyróżnia. Pasek boczny zostaje na miejscu podczas przewijania.",
+            "title": "Ustawienia uporządkowane i z wyszukiwarką",
+            "body": "Dziesięć grup z kartami sekcji. Wyszukiwarka znajduje ustawienia po nazwie, opisie lub synonimie, przenosi do nich i je podświetla. Znaczniki oznaczają, co jest w wersji Beta, zmienione lub zalecane, a Resetuj sekcję przywraca sekcji wartości domyślne.",
             "alt": "Wyszukiwanie w ustawieniach z wynikami dla „nakładka”"
           },
           {
@@ -1228,7 +1234,11 @@
             "Informacje o serwerze pokazują, czy serwer ogłasza przekaźnik lub Mumbota, i ostrzegają, gdy przekaźnik się zmienił.",
             "Szept i wołanie: rozmawiaj z wybranymi osobami albo ze wszystkimi na kanale bez przechodzenia tam, z klawiszem mówienia po przytrzymaniu dla każdego celu i banerem nad czatem, który pokazuje, z kim rozmawiasz.",
             "Aktualizacje w aplikacji: Mumcord sprawdza nowe wersje, pokazuje, co się zmieniło, i instaluje je jednym kliknięciem. Każde pobranie jest sprawdzane z podpisem i sumami kontrolnymi.",
-            "Tłumienie szumów na czterech poziomach: Lekki, Standardowy, Zaawansowany (AI, beta, z modelem RNNoise z 2024 roku) i Wyłączony, każdy wyjaśniony przez „?”."
+            "Tłumienie szumów na czterech poziomach: Lekki, Standardowy, Zaawansowany (AI, beta, z modelem RNNoise z 2024 roku) i Wyłączony, każdy wyjaśniony przez „?”.",
+            "Globalne skróty klawiszowe w Ustawienia → Skróty klawiszowe: oprócz push-to-talk klawisze do wyciszenia, ogłuszenia, Nie przeszkadzać, dołączania do głosu i wychodzenia z niego, przełączania serwera lub kanału, kolumny osób, szybkich ustawień i otwierania Mumcorda. Domyślnie nic nie jest przypisane, a zajęty klawisz można przenieść jednym kliknięciem.",
+            "Wspólne oglądanie otwiera widok kinowy: odtwarzacz z czatem kanału pod spodem, elementy sterowania na obrazie i panel pokazujący, kto jest zsynchronizowany, buforuje albo został w tyle. Gdy go opuścisz, mały odtwarzacz zostaje u góry czatu.",
+            "Udostępnianie ekranu przeniosło się do głównej kolumny, z rozdzielczością, liczbą klatek i oknem Szczegóły strumienia. Kto udostępnia, dostaje u góry czatu pasek sterowania z pauzą, dźwiękiem, zmianą okna, widzami i zakończeniem.",
+            "„Cofnij zgodę na czat…” w menu osoby i w przeglądzie wiadomości prywatnych: potem ta osoba potrzebuje nowej prośby o wiadomość, zanim jej wiadomości znów do ciebie dotrą."
           ]
         },
         {
@@ -1237,9 +1247,13 @@
             "Panel użytkownika pod listą kanałów został przeprojektowany: w każdym stanie ma tę samą wysokość, więc lista nad nim nigdy nie skacze, pokazuje jeden czytelny wiersz stanu i ma małą strzałkę menu na każdym przycisku głosu.",
             "Szybkie ustawienia są spokojniejsze: jeden wiersz na ustawienie w czytelnych grupach, wyjaśnienia za małym ?, a grupa Beta startuje zwinięta.",
             "Przy wyłączonych podglądach linków nie znikają już po cichu: dyskretny wiersz pod wiadomością mówi, co ukryto, i prowadzi do ustawienia.",
-            "„Uruchom kreator konfiguracji ponownie” w Ustawienia → O programie jeszcze raz przechodzi przez mikrofon, prywatność, wskazówkę o aktualizacjach i tryb rozmowy. Twoja tożsamość pozostaje nietknięta, a zapisywane jest tylko to, co zmienisz.",
+            "„Uruchom kreator konfiguracji ponownie” w Ustawienia → O aplikacji przechodzi przez konfigurację jeszcze raz. Twoja tożsamość pozostaje nietknięta, a zapisywane jest tylko to, co zmienisz.",
             "Inspektor pakietów śledzi nowe pakiety, wstrzymuje się, gdy przewiniesz w górę, i nagrywa tylko wtedy, gdy jest otwarty.",
-            "Drzewo serwerów i kanałów jest domyślnie o jedną czwartą szersze, więc mieszczą się dłuższe nazwy kanałów. Szerokości ustawione przez ciebie zostają."
+            "Drzewo serwerów i kanałów jest domyślnie o jedną czwartą szersze, więc mieszczą się dłuższe nazwy kanałów. Szerokości ustawione przez ciebie zostają.",
+            "Ustawienia i kreator konfiguracji zostały przeprojektowane: dziesięć grup z kartami sekcji, wyszukiwarka znajdująca też opisy i synonimy, znaczniki Beta, Zmienione i Zalecane oraz Resetuj sekcję. Kreator oferuje style konfiguracji, które od razu ustawiają rozsądne wybory, a język wybierasz z listy z wyszukiwarką.",
+            "Nagłówek kanału jest porządniejszy: oko przed nazwą kanału pokazuje i przełącza, czy go obserwujesz, a nazwa otwiera menu z pozycjami Kopiuj link do kanału, Hasło kanału…, Informacje o kanale i Wyczyść historię czatu….",
+            "Menu osoby zaczyna się od pozycji Wyślij wiadomość, Dołącz do ‹channel› i Dodaj do znajomych; Dołącz podaje powód, gdy kanał jest pełny albo zablokowany.",
+            "Nowe logo Mumcord: M utworzone przez dwie osoby, jedną w czapce z daszkiem i jedną w czapce beanie."
           ]
         },
         {
@@ -1249,7 +1263,9 @@
             "Wspólne oglądanie respektuje ustawienie „Pokazuj podglądy linków i osadzenia”: gdy jest wyłączone, nic nie jest ładowane z YouTube ani Twitcha, a wskazówka prowadzi do ustawienia.",
             "Linux z PipeWire: listy urządzeń pokazują każde wejście i wyjście tak jak ustawienia dźwięku pulpitu, np. „System” i „Chat” w RØDECaster Pro II zamiast jednego „USB Audio”.",
             "Okno informacji o serwerze jest teraz przetłumaczone na wszystkie 24 języki.",
-            "Twoje własne wiadomości nie odtwarzają już dźwięku wzmianki, nie pokazują powiadomienia i nie liczą się już jako nieprzeczytane."
+            "Okno hasła kanału nie wyskakuje już w kółko, gdy ktoś inny jest na chronionym kanale. Pojawia się tylko wtedy, gdy sam próbujesz dołączyć.",
+            "Przy włączonym Nie przeszkadzać w pulpicie podpowiedź w panelu użytkownika jest teraz ukryta za małym ? zamiast długiej dodatkowej linii.",
+            "Wiersz szacowanej przepustowości w panelu jakości głosu nie zachodzi już na swoją wartość w długich językach."
           ]
         }
       ],

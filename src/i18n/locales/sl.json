@@ -282,11 +282,11 @@
       "title": "Okno, ki se zdi domače.",
       "items": [
         {
-          "src": "wizard-1-identity",
+          "src": "wizard-identity-dark",
           "caption": "Nastavljeno v približno minuti: identiteta, mikrofon, način govorjenja."
         },
         {
-          "src": "wizard-4-talk-mode",
+          "src": "wizard-voice-dark",
           "caption": "Glasovna aktivacija ali pritisni-in-govori, povezave mumble:// in zagon ob prijavi."
         },
         {
@@ -306,7 +306,7 @@
           "caption": "Polni kanali pokažejo kup avatarjev namesto dolgega seznama."
         },
         {
-          "src": "person-menu",
+          "src": "person-menu-dark",
           "caption": "Desni klik: utišaj, glasnost, zasebno sporočilo."
         },
         {
@@ -609,9 +609,9 @@
         "features": [
           {
             "id": "setup",
-            "title": "Nastavljeno v minuti",
-            "body": "Ob prvem zagonu Mumcord vpraša le za tri stvari: tvoje ime in identiteto, mikrofon s preizkusom ravni in kako želiš govoriti. Obstoječe identitete Mumble lahko uvoziš kot PKCS#12.",
-            "alt": "Čarovnik za nastavitev, korak identitete"
+            "title": "Nastavi po svoje",
+            "body": "Ob prvem zagonu te čarovnik vodi skozi identiteto, glas in način govorjenja. Slog nastavitve, na primer uravnotežen, vse vklopljeno ali največja zasebnost, naenkrat izpolni preostale izbire, Po meri pa gre skozi vsako posebej. Obstoječe identitete Mumble lahko uvoziš kot PKCS#12.",
+            "alt": "Čarovnik za nastavitev, korak sloga nastavitve s štirimi prednastavitvami"
           },
           {
             "id": "servers",
@@ -681,7 +681,7 @@
           {
             "id": "setup-again",
             "title": "Čarovnika za nastavitev zaženi znova",
-            "body": "Nastavitve → O aplikaciji še enkrat predela nastavitev, da pregledaš mikrofon, zasebnost, preverjanje posodobitev in način govorjenja. Korak z identiteto se preskoči, tako da se s tvojim certifikatom po nesreči nič ne spremeni, shranijo pa se samo vrednosti, ki si jih res spremenil.",
+            "body": "Nastavitve → O aplikaciji še enkrat zažene čarovnika za nastavitev, da pregledaš svoje izbire. Korak identitete je preskočen, zato se nič v tvojem certifikatu ne more spremeniti po nesreči, shranijo pa se le vrednosti, ki si jih res spremenil.",
             "alt": "Čarovnik, ponovno zagnan iz nastavitev, s korakom identitete, označenim kot preskočen"
           },
           {
@@ -938,7 +938,13 @@
             "id": "push-to-talk",
             "title": "Pritisni-in-govori povsod",
             "body": "Tipke in miškini gumbi, tudi ko je v ospredju igra. Na Waylandu prek portala za bližnjice ali v združljivostnem načinu.",
-            "alt": "Čarovnik za nastavitev, korak načina govorjenja"
+            "alt": "Čarovnik za nastavitev, korak glasu z mikrofonom, zvočniki in načinom govorjenja"
+          },
+          {
+            "id": "hotkeys",
+            "title": "Globalne bližnjice",
+            "body": "Poleg pritisni-in-govori tipke za utišanje, oglušitev, Ne moti, pridružitev glasu in izhod iz njega, preklop strežnika ali kanala, stolpec članov in hitre nastavitve. Privzeto ni nič dodeljeno, že zasedena tipka pa pokaže spor in se premakne z enim klikom. Delujejo v ozadju, na Waylandu, ko namizje enkrat vpraša.",
+            "alt": "Nastavitve bližnjic s poljem za tipko pri vsakem dejanju"
           },
           {
             "id": "threshold",
@@ -950,7 +956,7 @@
             "id": "sound",
             "title": "Čist zvok takoj",
             "body": "Dušenje šuma z umetno inteligenco, odpravljanje odmeva in samodejno ojačanje so vklopljeni. Zamenjaj naprave brez ponovne povezave, preizkusi mikrofon s svojim glasom.",
-            "alt": "Čarovnik za nastavitev, korak mikrofona s preizkusom ravni"
+            "alt": "Nastavitve, Glas in zvok z zmanjševanjem šuma, odpravljanjem odmeva in samodejno glasnostjo"
           },
           {
             "id": "noise-levels",
@@ -1077,14 +1083,14 @@
           {
             "id": "watch-party",
             "title": "Skupno gledanje",
-            "body": "Watch party na YouTubu v glasovnem kanalu: vsi hkrati vidijo isti video, vsak lahko ustavi in previja, s skupnim seznamom predvajanja. Ko so vdelave v nastavitvah zasebnosti izklopljene, se od YouTuba ali Twitcha ne naloži nič.",
-            "alt": "Skupno gledanje v plavajočem oknu z udeleženci, kontrolniki in naslednjim videom"
+            "body": "Watch party na YouTubu v glasovnem kanalu: vsi hkrati vidijo isti video, vsak lahko ustavi in previja, s skupnim seznamom predvajanja. Odpre se kot kinopogled s klepetom spodaj in kaže, kdo je usklajen ali zaostaja; ko ga zapustiš, ostane zgoraj v klepetu majhen predvajalnik. Ko so vdelave v nastavitvah zasebnosti izklopljene, se od YouTuba ali Twitcha ne naloži nič.",
+            "alt": "Kinopogled skupnega gledanja s predvajalnikom, klepetom spodaj in seznamom gledalcev"
           },
           {
             "id": "screen-share",
             "title": "Deljenje zaslona",
-            "body": "Zaslon ali okno za do 8 gledalcev, v 720p pri 30 sličicah na sekundo, na Windows in macOS po želji z zvokom deljene aplikacije. Zaženeš ga z gumbom Aplikacije v klepetu. Medtem ko deliš, rdeča vrstica kaže gledalce in »Končaj«, drugi pa okoli tvoje slike vidijo rdeč obroč z »LIVE«.",
-            "alt": "Deljeni zaslon v plavajočem oknu s celozaslonskim načinom in »Nehaj gledati«"
+            "body": "Zaslon ali okno za do 8 gledalcev, v 720p pri 30 sličicah na sekundo, na Windows in macOS po želji z zvokom deljene aplikacije. Zaženeš ga z gumbom Aplikacije v klepetu. Gledalci gledajo v glavnem stolpcu z ločljivostjo, hitrostjo sličic in podrobnostmi pretoka; ti dobiš zgoraj v klepetu krmilno vrstico s premorom, zvokom, gledalci in ustavitvijo.",
+            "alt": "Deljen zaslon v glavnem stolpcu s podrobnostmi pretoka in seznamom gledalcev"
           },
           {
             "id": "floating-widgets",
@@ -1131,7 +1137,7 @@
             "id": "privacy",
             "title": "Brez telemetrije",
             "body": "Ob prvem zagonu kratek korak pokaže, s čim se Mumcord povezuje in kdaj. Tvoja identiteta je shranjena v varni shrambi sistema, diagnostična datoteka pa ne vsebuje vsebine klepeta ali gesel in zapusti tvoj računalnik le, če jo pošlješ sam.",
-            "alt": "Čarovnik, korak zasebnosti"
+            "alt": "Čarovnik za nastavitev, korak povezav in vsebine"
           },
           {
             "id": "quick-settings",
@@ -1141,8 +1147,8 @@
           },
           {
             "id": "settings-search",
-            "title": "Nastavitve z iskanjem",
-            "body": "Najde razdelke in posamezne nastavitve, skoči tja in jih poudari. Stranska vrstica ostane na mestu, medtem ko se pomikaš.",
+            "title": "Nastavitve, urejene in z iskanjem",
+            "body": "Deset skupin s karticami razdelkov. Iskanje najde nastavitve po imenu, opisu ali sopomenki, skoči nanje in jih označi. Značke označujejo, kaj je Beta, spremenjeno ali priporočeno, Ponastavi razdelek pa vrne razdelek na privzete vrednosti.",
             "alt": "Iskanje v nastavitvah z rezultati za »overlay«"
           },
           {
@@ -1228,7 +1234,11 @@
             "Podatki o strežniku pokažejo, ali strežnik oglašuje relay ali Mumbota, in opozorijo, ko se je relay spremenil.",
             "Šepetanje in vpitje: govori z izbranimi ljudmi ali z vsemi v kanalu brez prehoda tja, s tipko za govor, dokler jo držiš, za vsak cilj in pasom nad klepetom, ki prikazuje, s kom govoriš.",
             "Posodobitve v aplikaciji: Mumcord preverja nove različice, pokaže, kaj se je spremenilo, in jih namesti z enim klikom. Vsak prenos se preveri z njegovim podpisom in nadzornimi vsotami.",
-            "Dušenje šuma na štirih ravneh: Lahko, Standardno, Napredno (AI, beta, z modelom RNNoise iz leta 2024) in Izklopljeno, vsaka razložena z „?“."
+            "Dušenje šuma na štirih ravneh: Lahko, Standardno, Napredno (AI, beta, z modelom RNNoise iz leta 2024) in Izklopljeno, vsaka razložena z „?“.",
+            "Globalne bližnjice v Nastavitve → Bližnjice: poleg pritisni-in-govori tipke za utišanje, oglušitev, Ne moti, pridružitev glasu in izhod iz njega, preklop strežnika ali kanala, stolpec članov, hitre nastavitve in odpiranje Mumcorda. Privzeto ni nič dodeljeno, že zasedeno tipko pa lahko premakneš z enim klikom.",
+            "Skupno gledanje odpre kinopogled: predvajalnik s klepetom kanala spodaj, kontrolniki na sliki in plošča, ki kaže, kdo je usklajen, nalaga ali zaostaja. Ko ga zapustiš, ostane zgoraj v klepetu majhen predvajalnik.",
+            "Deljenje zaslona se je preselilo v glavni stolpec, z ločljivostjo, hitrostjo sličic in oknom Podrobnosti pretoka. Kdor deli, dobi zgoraj v klepetu krmilno vrstico s premorom, zvokom, zamenjavo okna, gledalci in ustavitvijo.",
+            "»Prekliči privolitev za klepet …« v meniju osebe in v pregledu zasebnih sporočil: potem ta oseba potrebuje novo prošnjo za sporočilo, preden njena sporočila spet prispejo do tebe."
           ]
         },
         {
@@ -1237,9 +1247,13 @@
             "Uporabniška plošča pod seznamom kanalov je preoblikovana: v vsakem stanju ima enako višino, da seznam nad njo ne poskakuje, pokaže eno jasno vrstico stanja in ima na vsakem glasovnem gumbu majhno puščico menija.",
             "Hitre nastavitve so mirnejše: ena vrstica na nastavitev v jasnih skupinah, razlage za majhnim ? in skupina Beta se začne zložena.",
             "Pri izklopljenih predogledih povezav ti ne izginejo več brez besed: tiha vrstica pod sporočilom pove, kaj je skrito, in vodi do nastavitve.",
-            "»Znova zaženi čarovnika za nastavitev« v Nastavitve → O aplikaciji še enkrat preide mikrofon, zasebnost, namig o posodobitvah in način govorjenja. Tvoja identiteta ostane nedotaknjena, shrani pa se le tisto, kar spremeniš.",
+            "»Znova zaženi čarovnika za nastavitev« v Nastavitve → O aplikaciji še enkrat predela nastavitev. Tvoja identiteta ostane nedotaknjena, shrani pa se le tisto, kar spremeniš.",
             "Pregledovalnik paketov sledi novim paketom, se začasno ustavi, ko se pomakneš navzgor, in snema le, dokler je odprt.",
-            "Drevo strežnikov in kanalov je privzeto za četrtino širše, tako da se prilegajo daljša imena kanalov. Širine, ki jih nastaviš sam, ostanejo."
+            "Drevo strežnikov in kanalov je privzeto za četrtino širše, tako da se prilegajo daljša imena kanalov. Širine, ki jih nastaviš sam, ostanejo.",
+            "Nastavitve in čarovnik za nastavitev sta prenovljena: deset skupin s karticami razdelkov, iskanje, ki najde tudi opise in sopomenke, značke za Beta, Spremenjeno in Priporočeno ter Ponastavi razdelek. Čarovnik ponuja sloge nastavitve, ki naenkrat izpolnijo smiselne izbire, jezik pa izbereš s seznama z iskanjem.",
+            "Glava kanala je bolj urejena: oko pred imenom kanala kaže in preklaplja, ali mu slediš, ime pa odpre meni s Kopiraj povezavo kanala, Geslo kanala …, Informacije o kanalu in Počisti zgodovino klepeta ….",
+            "Meni osebe se začne s Pošlji sporočilo, Pridruži se ‹channel› in Dodaj prijatelja; Pridruži se pove razlog, kadar je kanal poln ali zaklenjen.",
+            "Nov logotip Mumcord: M, ki ga tvorita dve osebi, ena s kapo s ščitnikom in ena z brezrobo kapo."
           ]
         },
         {
@@ -1249,7 +1263,9 @@
             "Watch party upošteva »Prikaži predoglede povezav in vdelane vsebine«: ko je izklopljeno, se z YouTuba ali Twitcha ne naloži nič, namig pa vodi do nastavitve.",
             "Linux s PipeWire: seznami naprav prikažejo vsak vhod in izhod tako kot zvočne nastavitve namizja, na primer »System« in »Chat« na RØDECaster Pro II namesto enega samega »USB Audio«.",
             "Okno s podatki o strežniku je zdaj prevedeno v vseh 24 jezikov.",
-            "Tvoja lastna sporočila ne predvajajo več zvoka omembe, ne prikažejo obvestila in se ne štejejo več kot neprebrana."
+            "Pogovorno okno z geslom kanala se ne prikazuje več znova in znova, medtem ko je nekdo drug v zaščitenem kanalu. Prikaže se le, ko se poskusiš pridružiti sam.",
+            "Ko je vklopljen Ne moti namizja, je namig v uporabniški plošči zdaj za majhnim ? namesto dolge dodatne vrstice.",
+            "Vrstica ocenjene pasovne širine v plošči kakovosti glasu v dolgih jezikih ne trči več v svojo vrednost."
           ]
         }
       ],

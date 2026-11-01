@@ -282,11 +282,11 @@
       "title": "Prozor koji djeluje poznato.",
       "items": [
         {
-          "src": "wizard-1-identity",
+          "src": "wizard-identity-dark",
           "caption": "Postavljeno za otprilike minutu: identitet, mikrofon, način govora."
         },
         {
-          "src": "wizard-4-talk-mode",
+          "src": "wizard-voice-dark",
           "caption": "Glasovna aktivacija ili push-to-talk, mumble:// poveznice i pokretanje pri prijavi."
         },
         {
@@ -306,7 +306,7 @@
           "caption": "Puni kanali prikazuju hrpu avatara umjesto dugog popisa."
         },
         {
-          "src": "person-menu",
+          "src": "person-menu-dark",
           "caption": "Desni klik: utišaj, glasnoća, privatna poruka."
         },
         {
@@ -609,9 +609,9 @@
         "features": [
           {
             "id": "setup",
-            "title": "Postavljeno za minutu",
-            "body": "Pri prvom pokretanju Mumcord pita samo tri stvari: tvoje ime i identitet, mikrofon s testom razine i kako želiš govoriti. Postojeći Mumble identiteti mogu se uvesti kao PKCS#12.",
-            "alt": "Čarobnjak za postavljanje, korak identiteta"
+            "title": "Postavi na svoj način",
+            "body": "Pri prvom pokretanju čarobnjak te vodi kroz identitet, glas i način govora. Stil postavljanja poput uravnoteženog, sve uključeno ili maksimalne privatnosti odjednom popunjava preostale izbore, a Prilagođeno prolazi kroz svaki od njih. Postojeći Mumble identiteti mogu se uvesti kao PKCS#12.",
+            "alt": "Čarobnjak za postavljanje, korak stila postavljanja s četiri predloška"
           },
           {
             "id": "servers",
@@ -681,7 +681,7 @@
           {
             "id": "setup-again",
             "title": "Ponovno pokreni čarobnjak",
-            "body": "Postavke → O aplikaciji još jednom prolazi kroz postavljanje radi pregleda mikrofona, privatnosti, provjere ažuriranja i načina govora. Korak identiteta se preskače, pa se ništa u tvom certifikatu ne može slučajno promijeniti, a spremaju se samo vrijednosti koje si stvarno promijenio.",
+            "body": "Postavke → O programu ponovno pokreće čarobnjak za postavljanje kako bi pregledao svoje izbore. Korak identiteta se preskače, pa se ništa u vezi s tvojim certifikatom ne može promijeniti slučajno, a spremaju se samo vrijednosti koje si stvarno promijenio.",
             "alt": "Čarobnjak pokrenut ponovno iz postavki, s korakom identiteta označenim kao preskočen"
           },
           {
@@ -938,7 +938,13 @@
             "id": "push-to-talk",
             "title": "Push-to-talk posvuda",
             "body": "Tipke i tipke miša, čak i s igrom u prvom planu. Na Waylandu preko portala za prečace ili u načinu kompatibilnosti.",
-            "alt": "Čarobnjak za postavljanje, korak načina govora"
+            "alt": "Čarobnjak za postavljanje, glasovni korak s mikrofonom, zvučnicima i načinom govora"
+          },
+          {
+            "id": "hotkeys",
+            "title": "Globalni prečaci",
+            "body": "Uz push-to-talk, tipke za isključivanje mikrofona, isključivanje zvuka, Ne smetaj, ulazak u glas i izlazak iz njega, promjenu poslužitelja ili kanala, stupac članova i brze postavke. Prema zadanim postavkama ništa nije postavljeno, a već zauzeta tipka pokazuje sukob i premješta se jednim klikom. Rade u pozadini, na Waylandu nakon što radna površina jednom upita.",
+            "alt": "Postavke prečaca s poljem za tipku za svaku radnju"
           },
           {
             "id": "threshold",
@@ -950,7 +956,7 @@
             "id": "sound",
             "title": "Čist zvuk odmah",
             "body": "AI suzbijanje šuma, poništavanje jeke i automatsko pojačanje su uključeni. Mijenjaj uređaje bez ponovnog spajanja, testiraj mikrofon vlastitim glasom.",
-            "alt": "Čarobnjak za postavljanje, korak mikrofona s testom razine"
+            "alt": "Postavke, Glas i zvuk s potiskivanjem šuma, poništavanjem jeke i automatskom glasnoćom"
           },
           {
             "id": "noise-levels",
@@ -1077,14 +1083,14 @@
           {
             "id": "watch-party",
             "title": "Zajedničko gledanje",
-            "body": "YouTube watch party u glasovnom kanalu: svi istovremeno vide isti video, svatko može pauzirati i premotavati, sa zajedničkom playlistom. Kad su ugrađeni sadržaji isključeni u postavkama privatnosti, s YouTubea ili Twitcha ne učitava se ništa.",
-            "alt": "Zajedničko gledanje u plutajućem prozoru sa sudionicima, kontrolama i sljedećim videom"
+            "body": "YouTube watch party u glasovnom kanalu: svi istovremeno vide isti video, svatko može pauzirati i premotavati, sa zajedničkom playlistom. Otvara se kao kino prikaz s chatom ispod i pokazuje tko je sinkroniziran ili kasni; napustiš li ga, mini player ostaje na vrhu chata. Kad su ugrađeni sadržaji isključeni u postavkama privatnosti, s YouTubea ili Twitcha ne učitava se ništa.",
+            "alt": "Kino prikaz zajedničkog gledanja s playerom, chatom ispod i popisom tko gleda"
           },
           {
             "id": "screen-share",
             "title": "Dijeljenje zaslona",
-            "body": "Zaslon ili prozor za do 8 gledatelja, u 720p pri 30 sličica u sekundi, na Windowsima i macOS-u po želji sa zvukom dijeljene aplikacije. Pokrećeš ga gumbom Aplikacije u chatu. Dok dijeliš, crvena traka pokazuje gledatelje i „Završi”, a drugi vide crveni „LIVE” prsten oko tvoje slike.",
-            "alt": "Dijeljeni zaslon u plutajućem prozoru s cijelim zaslonom i „Prestani gledati”"
+            "body": "Zaslon ili prozor za do 8 gledatelja, u 720p i 30 sličica u sekundi, na Windowsima i macOS-u po želji sa zvukom dijeljene aplikacije. Pokrećeš ga gumbom Aplikacije u chatu. Gledatelji gledaju u glavnom stupcu s razlučivosti, brzinom sličica i detaljima strujanja; ti na vrhu chata imaš traku za upravljanje s pauzom, zvukom, gledateljima i zaustavljanjem.",
+            "alt": "Dijeljeni zaslon u glavnom stupcu s detaljima strujanja i popisom gledatelja"
           },
           {
             "id": "floating-widgets",
@@ -1131,7 +1137,7 @@
             "id": "privacy",
             "title": "Bez telemetrije",
             "body": "Pri prvom pokretanju kratak korak pokazuje na što se Mumcord spaja i kada. Tvoj identitet čuva se u sigurnoj pohrani sustava, a dijagnostička datoteka ne sadrži sadržaj chata ni lozinke i napušta tvoje računalo samo ako je sam pošalješ.",
-            "alt": "Čarobnjak, korak privatnosti"
+            "alt": "Čarobnjak za postavljanje, korak veza i sadržaja"
           },
           {
             "id": "quick-settings",
@@ -1141,8 +1147,8 @@
           },
           {
             "id": "settings-search",
-            "title": "Postavke s pretraživanjem",
-            "body": "Pronalazi odjeljke i pojedinačne postavke, skače do njih i ističe ih. Bočna traka ostaje na mjestu dok se pomičeš.",
+            "title": "Postavke, razvrstane i pretražive",
+            "body": "Deset skupina s karticama odjeljaka. Pretraživanje pronalazi postavke po nazivu, opisu ili sinonimu, skače do njih i ističe ih. Oznake pokazuju što je Beta, promijenjeno ili preporučeno, a Vrati odjeljak na zadano vraća odjeljak na zadane vrijednosti.",
             "alt": "Pretraživanje postavki s rezultatima za „overlay”"
           },
           {
@@ -1228,7 +1234,11 @@
             "Informacije o poslužitelju pokazuju objavljuje li poslužitelj relej ili Mumbota i upozoravaju kad se relej promijenio.",
             "Šaputanje i vikanje: govori s odabranim ljudima ili sa svima u kanalu bez prelaska tamo, s tipkom za govor dok je držiš za svaki cilj i trakom iznad chata koja pokazuje s kim govoriš.",
             "Ažuriranja u aplikaciji: Mumcord provjerava nove verzije, pokazuje što se promijenilo i instalira ih jednim klikom. Svako preuzimanje provjerava se prema potpisu i kontrolnim zbrojevima.",
-            "Suzbijanje šuma u četiri razine: Lagano, Standardno, Napredno (AI, beta, s RNNoise modelom iz 2024.) i Isključeno, svaka objašnjena s „?”."
+            "Suzbijanje šuma u četiri razine: Lagano, Standardno, Napredno (AI, beta, s RNNoise modelom iz 2024.) i Isključeno, svaka objašnjena s „?”.",
+            "Globalni prečaci u Postavke → Prečaci: uz push-to-talk, tipke za isključivanje mikrofona, isključivanje zvuka, Ne smetaj, ulazak u glas i izlazak iz njega, promjenu poslužitelja ili kanala, stupac članova, brze postavke i otvaranje Mumcorda. Prema zadanim postavkama ništa nije postavljeno, a već zauzetu tipku moguće je premjestiti jednim klikom.",
+            "Zajedničko gledanje otvara kino prikaz: player s chatom kanala ispod, kontrole na slici i ploča koja pokazuje tko je sinkroniziran, učitava se ili kasni. Napustiš li ga, mini player ostaje na vrhu chata.",
+            "Dijeljenje zaslona preselilo se u glavni stupac, s razlučivosti, brzinom sličica i skočnim prozorom Detalji strujanja. Tko dijeli, na vrhu chata dobiva traku za upravljanje s pauzom, zvukom, promjenom prozora, gledateljima i zaustavljanjem.",
+            "„Opozovi pristanak za chat…” u izborniku osobe i u pregledu privatnih poruka: nakon toga ta osoba treba novi zahtjev za poruku prije nego što njezine poruke ponovno stignu do tebe."
           ]
         },
         {
@@ -1237,9 +1247,13 @@
             "Korisnička ploča ispod popisa kanala je preoblikovana: u svakom stanju ostaje iste visine pa popis iznad nikad ne skače, prikazuje jedan jasan redak statusa i ima mali strelicu izbornika na svakom glasovnom gumbu.",
             "Brze postavke su mirnije: jedan redak po postavci u jasnim skupinama, objašnjenja iza malog ? i skupina Beta počinje sklopljena.",
             "Kad su pregledi poveznica isključeni, više ne nestaju nečujno: tihi redak ispod poruke kaže što je skriveno i vodi do postavke.",
-            "„Ponovno pokreni čarobnjak za postavljanje” u Postavke → O programu još jednom prolazi mikrofon, privatnost, obavijest o ažuriranju i način govora. Tvoj identitet ostaje netaknut, a sprema se samo ono što promijeniš.",
+            "„Ponovno pokreni čarobnjak za postavljanje” u Postavke → O programu još jednom prolazi kroz postavljanje. Tvoj identitet ostaje netaknut, a sprema se samo ono što promijeniš.",
             "Inspektor paketa prati nove pakete, pauzira se kad skrolaš prema gore i snima samo dok je otvoren.",
-            "Stablo poslužitelja i kanala zadano je šire za četvrtinu, pa stanu i dulji nazivi kanala. Širine koje sam postaviš ostaju."
+            "Stablo poslužitelja i kanala zadano je šire za četvrtinu, pa stanu i dulji nazivi kanala. Širine koje sam postaviš ostaju.",
+            "Postavke i čarobnjak za postavljanje preoblikovani su: deset skupina s karticama odjeljaka, pretraživanje koje pronalazi i opise te sinonime, oznake Beta, Promijenjeno i Preporučeno te Vrati odjeljak na zadano. Čarobnjak nudi stilove postavljanja koji odjednom popunjavaju razumne izbore, a jezik se bira s pretraživog popisa.",
+            "Zaglavlje kanala je urednije: oko ispred naziva kanala pokazuje i prebacuje pratiš li ga, a naziv otvara izbornik s Kopiraj poveznicu kanala, Lozinka kanala…, Informacije o kanalu i Očisti povijest chata….",
+            "Izbornik osobe počinje s Pošalji poruku, Pridruži se ‹kanal› i Dodaj prijatelja; Pridruži se kaže zašto, kad je kanal pun ili zaključan.",
+            "Novi Mumcord logo: M koji tvore dvije osobe, jedna s kapom, a druga s beanieom."
           ]
         },
         {
@@ -1249,7 +1263,9 @@
             "Zajedničko gledanje poštuje „Prikaži preglede poveznica i ugrađene sadržaje”: kad je isključeno, ništa se ne učitava s YouTubea ili Twitcha, a napomena vodi do postavke.",
             "Linux s PipeWireom: popisi uređaja prikazuju svaki ulaz i izlaz kao zvučne postavke radne površine, primjerice „System” i „Chat” na RØDECaster Pro II umjesto jednog „USB Audio”.",
             "Prozor s informacijama o poslužitelju sada je preveden na svih 24 jezika.",
-            "Tvoje vlastite poruke više ne sviraju zvuk spominjanja, ne prikazuju obavijest i više se ne računaju kao nepročitane."
+            "Dijalog za lozinku kanala više se ne pojavljuje uvijek iznova dok je netko drugi u zaštićenom kanalu. Pojavljuje se samo kad se pokušaš pridružiti sam.",
+            "Kad je uključen Ne smetaj radne površine, savjet u korisničkoj ploči sada je iza malog ? umjesto dugog dodatnog retka.",
+            "Redak procijenjene propusnosti u ploči kvalitete glasa više ne ulazi u svoju vrijednost u dugim jezicima."
           ]
         }
       ],

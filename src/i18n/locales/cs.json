@@ -282,11 +282,11 @@
       "title": "Okno, které působí povědomě.",
       "items": [
         {
-          "src": "wizard-1-identity",
+          "src": "wizard-identity-dark",
           "caption": "Nastavení zhruba za minutu: identita, mikrofon, režim mluvení."
         },
         {
-          "src": "wizard-4-talk-mode",
+          "src": "wizard-voice-dark",
           "caption": "Hlasová aktivace nebo push-to-talk, odkazy mumble:// a spuštění po přihlášení."
         },
         {
@@ -306,7 +306,7 @@
           "caption": "Plné kanály ukazují balíček avatarů místo dlouhého seznamu."
         },
         {
-          "src": "person-menu",
+          "src": "person-menu-dark",
           "caption": "Pravé tlačítko: ztlumit, hlasitost, soukromá zpráva."
         },
         {
@@ -609,9 +609,9 @@
         "features": [
           {
             "id": "setup",
-            "title": "Nastavení za minutu",
-            "body": "Při prvním spuštění se Mumcord ptá jen na tři věci: tvoje jméno a identitu, mikrofon s testem úrovně a jak chceš mluvit. Stávající identity z Mumble lze importovat jako PKCS#12.",
-            "alt": "Průvodce nastavením, krok identity"
+            "title": "Nastav si to po svém",
+            "body": "Při prvním spuštění tě průvodce provede identitou, hlasem a režimem mluvení. Styl nastavení, například vyvážený, vše zapnuto nebo maximální soukromí, doplní zbývající volby najednou a Vlastní projde každou z nich. Stávající identity z Mumble lze importovat jako PKCS#12.",
+            "alt": "Průvodce nastavením, krok se stylem nastavení se čtyřmi předvolbami"
           },
           {
             "id": "servers",
@@ -681,7 +681,7 @@
           {
             "id": "setup-again",
             "title": "Průvodce nastavením znovu",
-            "body": "Nastavení → O aplikaci znovu projde nastavení: mikrofon, soukromí, upozornění na aktualizace a režim mluvení. Krok identity se přeskočí, takže se s tvým certifikátem nic nestane omylem, a uloží se jen hodnoty, které jsi opravdu změnil.",
+            "body": "Nastavení → O aplikaci spustí průvodce nastavením ještě jednou, abys zkontroloval své volby. Krok s identitou se přeskočí, takže se nic kolem certifikátu nemůže změnit omylem, a uloží se jen hodnoty, které jsi opravdu změnil.",
             "alt": "Průvodce nastavením spuštěný znovu z nastavení, s přeskočeným krokem identity"
           },
           {
@@ -938,7 +938,13 @@
             "id": "push-to-talk",
             "title": "Push-to-talk všude",
             "body": "Klávesy i tlačítka myši, i když je v popředí hra. Na Waylandu přes portál zkratek nebo v režimu kompatibility.",
-            "alt": "Průvodce nastavením, krok režimu mluvení"
+            "alt": "Průvodce nastavením, krok s hlasem, mikrofonem, reproduktory a režimem mluvení"
+          },
+          {
+            "id": "hotkeys",
+            "title": "Globální klávesové zkratky",
+            "body": "Kromě push-to-talk také klávesy pro ztlumení, vypnutí zvuku, Nerušit, připojení k hlasu a odpojení, přepnutí serveru nebo kanálu, sloupec členů a rychlá nastavení. Ve výchozím stavu není nic nastaveno a už obsazená klávesa ukáže konflikt a přesune se jedním kliknutím. Fungují na pozadí, na Wayland poté, co se desktop jednou zeptá.",
+            "alt": "Nastavení klávesových zkratek s polem pro klávesu u každé akce"
           },
           {
             "id": "threshold",
@@ -950,7 +956,7 @@
             "id": "sound",
             "title": "Čistý zvuk hned po spuštění",
             "body": "Potlačení šumu pomocí AI, potlačení ozvěny a automatické zesílení jsou zapnuté. Přepínej zařízení bez nového připojení, otestuj mikrofon vlastním hlasem.",
-            "alt": "Průvodce nastavením, krok mikrofonu s testem úrovně"
+            "alt": "Nastavení, Hlas a zvuk s potlačením šumu, potlačením ozvěny a automatickou hlasitostí"
           },
           {
             "id": "noise-levels",
@@ -1077,14 +1083,14 @@
           {
             "id": "watch-party",
             "title": "Společné sledování",
-            "body": "Watch party na YouTube v hlasovém kanálu: všichni vidí stejné video naráz, každý může pozastavit a přetáčet, se společným playlistem. Při vypnutých vložených obsazích v nastavení soukromí se z YouTube ani Twitche nenačte nic.",
-            "alt": "Watch party v plovoucím okně s účastníky, ovládáním a dalším videem"
+            "body": "Watch party na YouTube v hlasovém kanálu: všichni vidí stejné video naráz, každý může pozastavit a přetáčet, se společným playlistem. Otevře se jako kino s chatem pod ním a ukáže, kdo je synchronizovaný a kdo zaostává; když ho opustíš, nahoře v chatu zůstane minipřehrávač. Při vypnutých vložených obsazích v nastavení soukromí se z YouTube ani Twitch nic nenačítá.",
+            "alt": "Kino Společné sledování s přehrávačem, chatem pod ním a seznamem diváků"
           },
           {
             "id": "screen-share",
             "title": "Sdílení obrazovky",
-            "body": "Obrazovka nebo okno až pro 8 diváků, v 720p při 30 snímcích za sekundu, na Windows a macOS klidně se zvukem sdílené aplikace. Spustíš ho tlačítkem Aplikace v chatu. Když sdílíš, červený pruh ukazuje diváky a „Ukončit“ a ostatní vidí kolem tvého obrázku červený kroužek „LIVE“.",
-            "alt": "Sdílená obrazovka v plovoucím okně s celou obrazovkou a „Přestat sledovat“"
+            "body": "Obrazovka nebo okno až pro 8 diváků, v 720p a 30 snímcích za sekundu, na Windows a macOS případně se zvukem sdílené aplikace. Spustíš to tlačítkem Aplikace v chatu. Diváci sledují v hlavním sloupci s rozlišením, snímkovou frekvencí a podrobnostmi o streamu; ty dostaneš nahoře v chatu ovládací lištu s pozastavením, zvukem, diváky a ukončením.",
+            "alt": "Sdílená obrazovka v hlavním sloupci s podrobnostmi o streamu a seznamem diváků"
           },
           {
             "id": "floating-widgets",
@@ -1131,7 +1137,7 @@
             "id": "privacy",
             "title": "Bez telemetrie",
             "body": "Při prvním spuštění krátký krok ukáže, k čemu se Mumcord připojuje a kdy. Tvoje identita je uložená v zabezpečeném úložišti systému a diagnostický soubor neobsahuje žádný obsah chatu ani hesla a tvůj počítač opustí, jen když ho sám pošleš.",
-            "alt": "Průvodce, krok soukromí"
+            "alt": "Průvodce nastavením, krok s připojeními a obsahem"
           },
           {
             "id": "quick-settings",
@@ -1141,8 +1147,8 @@
           },
           {
             "id": "settings-search",
-            "title": "Nastavení s hledáním",
-            "body": "Najde sekce i jednotlivá nastavení, skočí na ně a zvýrazní je. Postranní panel zůstává na místě, zatímco scrolluješ.",
+            "title": "Nastavení, přehledně a s hledáním",
+            "body": "Deset skupin s kartami sekcí. Hledání najde nastavení podle názvu, popisu nebo synonyma, skočí na ně a zvýrazní je. Štítky označují, co je Beta, změněné nebo doporučené, a Obnovit sekci vrátí sekci k výchozím hodnotám.",
             "alt": "Hledání v nastavení s výsledky pro „overlay“"
           },
           {
@@ -1228,7 +1234,11 @@
             "Informace o serveru ukazují, zda server oznamuje relay nebo Mumbota, a upozorní, když se relay změnil.",
             "Šeptání a volání: mluv s vybranými lidmi nebo se všemi v kanálu, aniž bys tam přecházel, s klávesou pro mluvení při podržení pro každý cíl a lištou nad chatem, která ukazuje, s kým mluvíš.",
             "Aktualizace v aplikaci: Mumcord kontroluje nové verze, ukáže, co se změnilo, a nainstaluje je jedním kliknutím. Každé stažení se ověří podle podpisu a kontrolních součtů.",
-            "Potlačení šumu na čtyři úrovně: Lehké, Standardní, Pokročilé (AI, beta, s modelem RNNoise z roku 2024) a Vypnuto, každá vysvětlená pomocí „?“."
+            "Potlačení šumu na čtyři úrovně: Lehké, Standardní, Pokročilé (AI, beta, s modelem RNNoise z roku 2024) a Vypnuto, každá vysvětlená pomocí „?“.",
+            "Globální klávesové zkratky v Nastavení → Klávesové zkratky: kromě push-to-talk také klávesy pro ztlumení, vypnutí zvuku, Nerušit, připojení k hlasu a odpojení, přepnutí serveru nebo kanálu, sloupec členů, rychlá nastavení a otevření Mumcordu. Ve výchozím stavu není nic nastaveno a už obsazenou klávesu lze přesunout jedním kliknutím.",
+            "Společné sledování se otevře jako kino: přehrávač s chatem kanálu pod ním, ovládání na obraze a panel, který ukazuje, kdo je synchronizovaný, načítá nebo zaostává. Když ho opustíš, nahoře v chatu zůstane minipřehrávač.",
+            "Sdílení obrazovky se přesunulo do hlavního sloupce, s rozlišením, snímkovou frekvencí a vyskakovacím oknem Podrobnosti o streamu. Kdo sdílí, dostane nahoře v chatu ovládací lištu s pozastavením, zvukem, změnou okna, diváky a ukončením.",
+            "„Odvolat souhlas s chatem…“ v nabídce osoby a v přehledu soukromých zpráv: poté potřebuje daná osoba novou žádost o zprávu, než se její zprávy znovu dostanou k tobě."
           ]
         },
         {
@@ -1237,9 +1247,13 @@
             "Uživatelský panel pod seznamem kanálů je přepracovaný: v každém stavu má stejnou výšku, takže seznam nad ním nikdy neskáče, ukazuje jeden jasný stavový řádek a každé hlasové tlačítko má malou šipku nabídky.",
             "Rychlé nastavení je klidnější: jeden řádek na nastavení v přehledných skupinách, vysvětlení za malým ? a skupina Beta začíná sbalená.",
             "Při vypnutých náhledech odkazů už nemizí potichu: tichý řádek pod zprávou říká, co bylo skryto, a vede k nastavení.",
-            "„Spustit průvodce nastavením znovu“ v Nastavení → O aplikaci znovu projde mikrofon, soukromí, upozornění na aktualizace a režim mluvení. Tvá identita zůstane nedotčená a uloží se jen to, co změníš.",
+            "„Spustit průvodce nastavením znovu“ v Nastavení → O aplikaci znovu projde nastavení. Tvoje identita zůstane nedotčená a uloží se jen to, co změníš.",
             "Inspektor paketů sleduje nové pakety, zastaví se, když odroluješ nahoru, a zaznamenává jen tehdy, když je otevřený.",
-            "Strom serverů a kanálů je ve výchozím stavu o čtvrtinu širší, takže se vejdou i delší názvy kanálů. Šířky, které si nastavíš sám, zůstanou."
+            "Strom serverů a kanálů je ve výchozím stavu o čtvrtinu širší, takže se vejdou i delší názvy kanálů. Šířky, které si nastavíš sám, zůstanou.",
+            "Nastavení a průvodce nastavením jsou přepracované: deset skupin s kartami sekcí, hledání, které najde i popisy a synonyma, štítky Beta, Změněno a Doporučeno a Obnovit sekci. Průvodce nabízí styly nastavení, které najednou doplní rozumné volby, a jazyk se vybírá z prohledávatelného seznamu.",
+            "Záhlaví kanálu je přehlednější: oko před názvem kanálu ukazuje a přepíná, jestli ho sleduješ, a název otevře nabídku s Kopírovat odkaz na kanál, Heslo kanálu…, Informace o kanálu a Vymazat historii chatu….",
+            "Nabídka osoby začíná položkami Poslat zprávu, Připojit se k ‹kanál› a Přidat přítele; Připojit se řekne proč, když je kanál plný nebo zamčený.",
+            "Nové logo Mumcordu: M tvořené dvěma lidmi, jedním v čepici a druhým v kulichu."
           ]
         },
         {
@@ -1249,7 +1263,9 @@
             "Společné sledování respektuje „Zobrazovat náhledy a vložený obsah odkazů“: při vypnutí se z YouTube ani Twitche nenačte nic a nápověda vede k nastavení.",
             "Linux s PipeWire: seznamy zařízení ukazují každý vstup a výstup tak, jak je vidíš v nastavení zvuku na ploše, třeba „System“ a „Chat“ na RØDECaster Pro II místo jediného „USB Audio“.",
             "Okno s informacemi o serveru je teď přeložené do všech 24 jazyků.",
-            "Tvé vlastní zprávy už nepřehrávají zvuk zmínky ani nezobrazují oznámení a nepočítají se jako nepřečtené."
+            "Dialog s heslem kanálu už nevyskakuje pořád dokola, když je někdo jiný v chráněném kanálu. Zobrazí se jen tehdy, když se sám pokusíš připojit.",
+            "Při zapnutém Nerušit na desktopu je nápověda v uživatelském panelu nově za malým ? místo dlouhého řádku navíc.",
+            "Řádek s odhadovanou šířkou pásma v panelu kvality hlasu už v dlouhých jazycích nesplývá se svou hodnotou."
           ]
         }
       ],

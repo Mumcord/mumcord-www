@@ -282,11 +282,11 @@
       "title": "Egy ablak, ami ismerős.",
       "items": [
         {
-          "src": "wizard-1-identity",
+          "src": "wizard-identity-dark",
           "caption": "Nagyjából egy perc alatt beállítva: identitás, mikrofon, beszédmód."
         },
         {
-          "src": "wizard-4-talk-mode",
+          "src": "wizard-voice-dark",
           "caption": "Hangaktiválás vagy push-to-talk, mumble:// linkek és indítás bejelentkezéskor."
         },
         {
@@ -306,7 +306,7 @@
           "caption": "A zsúfolt csatornák hosszú lista helyett avatarköteget mutatnak."
         },
         {
-          "src": "person-menu",
+          "src": "person-menu-dark",
           "caption": "Jobb klikk: némítás, hangerő, privát üzenet."
         },
         {
@@ -609,9 +609,9 @@
         "features": [
           {
             "id": "setup",
-            "title": "Egy perc alatt beállítva",
-            "body": "Első indításkor a Mumcord csak három dolgot kérdez: a neved és identitásod, a mikrofont szintteszttel, és hogy hogyan szeretnél beszélni. A meglévő Mumble-identitások PKCS#12-ként importálhatók.",
-            "alt": "Beállítási varázsló, identitás lépés"
+            "title": "Állítsd be a saját módodon",
+            "body": "Az első indításkor egy varázsló végigvezet az identitáson, a hangon és a beszédmódon. Egy beállítási stílus, például kiegyensúlyozott, minden bekapcsolva vagy maximális adatvédelem, egyszerre kitölti a többi választást, az Egyéni pedig egyesével végigmegy rajtuk. A meglévő Mumble-identitások PKCS#12-ként importálhatók.",
+            "alt": "Beállítási varázsló, a beállítási stílus lépése négy előbeállítással"
           },
           {
             "id": "servers",
@@ -681,7 +681,7 @@
           {
             "id": "setup-again",
             "title": "A beállítási varázsló újrafuttatása",
-            "body": "A Beállítások → Névjegy még egyszer végigviszi a beállítást, hogy átnézd a mikrofont, az adatvédelmet, a frissítésellenőrzést és a beszédmódot. Az identitás lépése kimarad, így a tanúsítványodon semmi sem változhat véletlenül, és csak azok az értékek mentődnek, amelyeket tényleg módosítottál.",
+            "body": "A Beállítások → Névjegy még egyszer futtatja a beállítási varázslót, hogy átnézhesd a választásaidat. Az identitás lépése kimarad, így a tanúsítványoddal véletlenül sem történhet semmi, és csak az általad ténylegesen módosított értékek mentődnek.",
             "alt": "A beállításokból újra futtatott varázsló, az identitás lépése kihagyottként jelölve"
           },
           {
@@ -938,7 +938,13 @@
             "id": "push-to-talk",
             "title": "Push-to-talk mindenhol",
             "body": "Billentyűk és egérgombok, akkor is, ha egy játék van előtérben. Waylanden a gyorsbillentyű-portálon keresztül, vagy kompatibilitási módban.",
-            "alt": "Beállítási varázsló, beszédmód lépés"
+            "alt": "Beállítási varázsló, a hang lépése mikrofonnal, hangszórókkal és beszédmóddal"
+          },
+          {
+            "id": "hotkeys",
+            "title": "Globális gyorsbillentyűk",
+            "body": "A push-to-talk mellett billentyűk a némításhoz, a süketítéshez, a Ne zavarjanak módhoz, a hanghoz való csatlakozáshoz és kilépéshez, a szerver vagy csatorna váltásához, a tagoszlophoz és a gyorsbeállításokhoz. Alapból semmi sincs kiosztva, és egy már foglalt billentyű megmutatja az ütközést, és egy kattintással áthelyezhető. A háttérben is működnek, Waylanden miután az asztal egyszer rákérdezett.",
+            "alt": "Gyorsbillentyű-beállítások, minden művelethez egy billentyűmezővel"
           },
           {
             "id": "threshold",
@@ -950,7 +956,7 @@
             "id": "sound",
             "title": "Tiszta hang, beállítás nélkül",
             "body": "Az MI-alapú zajszűrés, a visszhangszűrés és az automatikus erősítés be van kapcsolva. Eszközváltás újracsatlakozás nélkül, mikrofonteszt a saját hangoddal.",
-            "alt": "Beállítási varázsló, mikrofon lépés szintteszttel"
+            "alt": "Beállítások, Hang és audió zajszűréssel, visszhangszűréssel és automatikus hangerővel"
           },
           {
             "id": "noise-levels",
@@ -1077,14 +1083,14 @@
           {
             "id": "watch-party",
             "title": "Közös nézés",
-            "body": "YouTube watch party a hangcsatornán: mindenki egyszerre látja ugyanazt a videót, bárki szüneteltethet és tekerhet, közös lejátszási listával. Ha az adatvédelmi beállításokban a beágyazások ki vannak kapcsolva, a YouTube-ról vagy a Twitchről semmi nem töltődik be.",
-            "alt": "Közös nézés lebegő ablakban a résztvevőkkel, vezérlőkkel és a következő videóval"
+            "body": "YouTube watch party a hangcsatornán: mindenki egyszerre látja ugyanazt a videót, bárki szüneteltethet és tekerhet, közös lejátszási listával. Mozinézetként nyílik meg, alatta a chattel, és megmutatja, ki van szinkronban vagy le van maradva; ha kilépsz belőle, egy minilejátszó marad a chat tetején. Ha az adatvédelmi beállításokban a beágyazások ki vannak kapcsolva, a YouTube-ról vagy a Twitchről semmi sem töltődik be.",
+            "alt": "A Közös nézés mozinézete a lejátszóval, alatta a chattel és azzal, hogy kik nézik"
           },
           {
             "id": "screen-share",
             "title": "Képernyőmegosztás",
-            "body": "Egy képernyő vagy ablak legfeljebb 8 nézőnek, 720p-ben, másodpercenként 30 képkockával, Windowson és macOS-en, ha szeretnéd, a megosztott app hangjával. A chat Appok gombjával indítod. Amíg megosztasz, egy piros sáv mutatja a nézőket és a „Vége” gombot, mások pedig piros „LIVE” gyűrűt látnak a képed körül.",
-            "alt": "Megosztott képernyő lebegő ablakban teljes képernyővel és „Nézés befejezése” gombbal"
+            "body": "Egy képernyő vagy ablak legfeljebb 8 nézőnek, 720p-ben és másodpercenként 30 képkockával, Windowson és macOS-en kívánság szerint a megosztott alkalmazás hangjával. A chat Alkalmazások gombjáról indítod. A nézők a fő oszlopban nézik a felbontással, a képkockasebességgel és az adatfolyam részleteivel; neked a chat tetején van egy vezérlősáv szünettel, hanggal, nézőkkel és leállítással.",
+            "alt": "Megosztott képernyő a fő oszlopban az adatfolyam részleteivel és a nézők listájával"
           },
           {
             "id": "floating-widgets",
@@ -1131,7 +1137,7 @@
             "id": "privacy",
             "title": "Nincs telemetria",
             "body": "Az első indításkor egy rövid lépés megmutatja, mihez és mikor csatlakozik a Mumcord. Az identitásod a rendszer biztonságos tárolójában van, a diagnosztikai fájl nem tartalmaz chattartalmat vagy jelszót, és csak akkor hagyja el a gépedet, ha te magad küldöd el.",
-            "alt": "Varázsló, adatvédelmi lépés"
+            "alt": "Beállítási varázsló, a kapcsolatok és a tartalom lépése"
           },
           {
             "id": "quick-settings",
@@ -1141,8 +1147,8 @@
           },
           {
             "id": "settings-search",
-            "title": "Beállítások kereséssel",
-            "body": "Megtalálja a szakaszokat és az egyes beállításokat, odaugrik és kiemeli őket. Az oldalsáv görgetés közben a helyén marad.",
+            "title": "Beállítások, rendezve és kereshetően",
+            "body": "Tíz csoport szakaszkártyákkal. A keresés név, leírás vagy szinonima alapján találja meg a beállításokat, odaugrik és kiemeli őket. A jelvények megmutatják, mi Béta, módosított vagy ajánlott, a Szakasz visszaállítása pedig alapértékekre állítja vissza a szakaszt.",
             "alt": "Beállításkeresés az „overlay” találataival"
           },
           {
@@ -1228,7 +1234,11 @@
             "A szerverinfó megmutatja, hogy a szerver hirdet-e relét vagy Mumbotot, és figyelmeztet, ha a relé megváltozott.",
             "Suttogás és kiáltás: beszélj kiválasztott emberekkel vagy egy csatorna mindenkijével anélkül, hogy odalépnél, célonként egy nyomva tartásos beszédgombbal és a chat feletti sávval, amely mutatja, kivel beszélsz.",
             "Frissítések az alkalmazásban: a Mumcord ellenőrzi az új verziókat, megmutatja, mi változott, és egy kattintással telepíti őket. Minden letöltést az aláírása és az ellenőrző összegei alapján ellenőriz.",
-            "Zajszűrés négy szinten: Könnyű, Normál, Haladó (MI, béta, a 2024-es RNNoise modellel) és Ki, mindegyiket egy „?” magyarázza."
+            "Zajszűrés négy szinten: Könnyű, Normál, Haladó (MI, béta, a 2024-es RNNoise modellel) és Ki, mindegyiket egy „?” magyarázza.",
+            "Globális gyorsbillentyűk a Beállítások → Gyorsbillentyűk alatt: a push-to-talk mellett billentyűk a némításhoz, a süketítéshez, a Ne zavarjanak módhoz, a hanghoz való csatlakozáshoz és kilépéshez, a szerver vagy csatorna váltásához, a tagoszlophoz, a gyorsbeállításokhoz és a Mumcord megnyitásához. Alapból semmi sincs kiosztva, és egy már foglalt billentyű egy kattintással áthelyezhető.",
+            "A Közös nézés mozinézetet nyit: a lejátszó alatta a csatorna chatjével, a képen vezérlők és egy panel, amely megmutatja, ki van szinkronban, puffereli vagy le van maradva. Ha kilépsz belőle, egy minilejátszó marad a chat tetején.",
+            "A képernyőmegosztás átkerült a fő oszlopba, felbontással, képkockasebességgel és Adatfolyam részletei felugró ablakkal. Aki megoszt, a chat tetején vezérlősávot kap szünettel, hanggal, ablakváltással, nézőkkel és leállítással.",
+            "„Chat-hozzájárulás visszavonása…” a személy menüjében és a privát üzenetek áttekintésében: ezután annak a személynek új üzenetkérésre van szüksége, mielőtt az üzenetei újra eljutnak hozzád."
           ]
         },
         {
@@ -1237,9 +1247,13 @@
             "A csatornalista alatti felhasználói panel újra lett tervezve: minden állapotban ugyanolyan magas marad, hogy a fölötte lévő lista ne ugráljon, egy tiszta állapotsort mutat, és minden hangoldali gombon van egy kis menünyíl.",
             "A gyorsbeállítások nyugodtabbak: beállításonként egy sor áttekinthető csoportokban, a magyarázatok egy kis ? mögött, a Béta csoport pedig összecsukva indul.",
             "Kikapcsolt linkelőnézetnél már nem tűnnek el szó nélkül: az üzenet alatti halk sor megmondja, mi lett elrejtve, és a beállításhoz vezet.",
-            "A Beállítások → Névjegy alatti „Beállítási varázsló újrafuttatása” még egyszer végigvezet a mikrofonon, az adatvédelmen, a frissítési értesítésen és a beszédmódon. Az identitásod érintetlen marad, és csak az mentődik, amit megváltoztatsz.",
+            "A „Beállítási varázsló újrafuttatása” a Beállítások → Névjegy alatt még egyszer végigmegy a beállításon. Az identitásod érintetlen marad, és csak az mentődik, amit módosítasz.",
             "A csomagvizsgáló követi az új csomagokat, szünetel, amikor felgörgetsz, és csak akkor rögzít, amíg meg van nyitva.",
-            "A szerver- és csatornafa alapból egynegyeddel szélesebb, így a hosszabb csatornanevek is elférnek. A saját magad beállította szélességek megmaradnak."
+            "A szerver- és csatornafa alapból egynegyeddel szélesebb, így a hosszabb csatornanevek is elférnek. A saját magad beállította szélességek megmaradnak.",
+            "A beállítások és a beállítási varázsló újratervezve: tíz csoport szakaszkártyákkal, egy keresés, amely a leírásokat és a szinonimákat is megtalálja, Béta, Módosított és Ajánlott jelvények, valamint Szakasz visszaállítása. A varázsló beállítási stílusokat kínál, amelyek egyszerre kitöltik az észszerű választásokat, a nyelvet pedig kereshető listából lehet kiválasztani.",
+            "A csatorna fejléce rendezettebb: a csatornanév előtti szem megmutatja és átkapcsolja, hogy követed-e, a név pedig menüt nyit a Csatornalink másolása, Csatornajelszó…, Csatornainfó és Chatelőzmények törlése… elemekkel.",
+            "A személy menüje az Üzenet küldése, Csatlakozás ide: ‹csatorna› és Barát hozzáadása elemekkel kezdődik; a Csatlakozás megmondja az okot, ha a csatorna tele van vagy zárolva van.",
+            "Új Mumcord-logó: két emberből formált M, az egyik sapkában, a másik kötött sapkában."
           ]
         },
         {
@@ -1249,7 +1263,9 @@
             "A közös nézés tiszteletben tartja a „Linkelőnézetek és beágyazások megjelenítése” beállítást: kikapcsolva semmi nem töltődik be a YouTube-ról vagy a Twitchről, és egy tipp a beállításhoz vezet.",
             "Linux PipeWire-rel: az eszközlisták minden bemenetet és kimenetet úgy mutatnak, mint az asztal hangbeállításai, például egy RØDECaster Pro II „System” és „Chat” eszközét egyetlen „USB Audio” helyett.",
             "A szerverinfó ablak mostantól mind a 24 nyelven le van fordítva.",
-            "A saját üzeneteid már nem játsszák le a megemlítés hangját, nem mutatnak értesítést, és nem számítanak olvasatlannak."
+            "A csatornajelszó párbeszédablak már nem ugrik fel újra és újra, amikor valaki más van egy védett csatornában. Csak akkor jelenik meg, ha te próbálsz csatlakozni.",
+            "Ha az asztal Ne zavarjanak módja be van kapcsolva, a felhasználói panelen lévő tipp most egy kis ? mögött van egy hosszú extra sor helyett.",
+            "A hangminőség panel becsült sávszélesség sora már nem fut bele az értékébe hosszú nyelveken."
           ]
         }
       ],
