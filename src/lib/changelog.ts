@@ -51,6 +51,8 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "Gekickt oder gebannt? Mumcord spielt dazu einen Ton: eine Ohrfeige beim Kick, einen Slapstick-Tritt beim Bann. Beide lassen sich abschalten.",
             "Die Server-Info zeigt, ob der Server ein Relay oder einen Mumbot ankündigt, und warnt, wenn sich das Relay geändert hat.",
             "Flüstern und Rufen: Sprich mit ausgewählten Leuten oder mit allen in einem Kanal, ohne dorthin zu wechseln, mit eigener Taste pro Ziel und einem Banner über dem Chat, das zeigt, mit wem du sprichst.",
+            "Updates in der App: Mumcord sucht nach neuen Versionen, zeigt, was sich geändert hat, und installiert sie mit einem Klick. Jeder Download wird gegen Signatur und Prüfsummen geprüft.",
+            "Rauschunterdrückung in vier Stufen: Leicht, Standard, Erweitert (KI, Beta, mit dem RNNoise-Modell von 2024) und Aus, jede mit einem „?“ erklärt.",
           ],
         },
         {
@@ -61,6 +63,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "Sind Link-Vorschauen aus, verschwinden sie nicht mehr stillschweigend: Eine leise Zeile unter der Nachricht sagt, was ausgeblendet ist, und führt zur passenden Einstellung.",
             "„Einrichtung erneut ausführen“ unter Einstellungen → Über geht Mikrofon, Datenschutz, Update-Hinweis und Sprechmodus noch einmal durch. Deine Identität bleibt unangetastet, und gespeichert wird nur, was du änderst.",
             "Der Paketinspektor folgt neuen Paketen, hält an, wenn du nach oben scrollst, und zeichnet nur auf, solange er offen ist.",
+            "Der Server- und Kanalbaum ist standardmäßig ein Viertel breiter, damit längere Kanalnamen passen. Selbst eingestellte Breiten bleiben.",
           ],
         },
         {
@@ -533,6 +536,8 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "Kicked or banned? Mumcord plays a sound for it: a slap for a kick, a slapstick kick for a ban. Both can be turned off.",
             "Server info shows whether the server announces a relay or a Mumbot, and warns when the relay has changed.",
             "Whisper and shout: talk to chosen people or to everyone in a channel without moving there, with a hold-to-talk key per target and a banner above the chat that shows who you are talking to.",
+            "Updates in the app: Mumcord checks for new versions, shows what changed and installs them with one click. Every download is checked against its signature and checksums.",
+            "Noise suppression in four levels: Light, Standard, Advanced (AI, beta, with the 2024 RNNoise model) and Off, each explained with a “?”.",
           ],
         },
         {
@@ -543,6 +548,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "With link previews off, they no longer vanish silently: a quiet line under the message says what was hidden and leads to the setting.",
             "“Run setup wizard again” in Settings → About goes through microphone, privacy, update hint and talk mode once more. Your identity stays untouched, and only what you change is saved.",
             "The packet inspector follows new packets, pauses when you scroll up, and only records while it is open.",
+            "The server and channel tree is a quarter wider by default, so longer channel names fit. Widths you set yourself stay.",
           ],
         },
         {

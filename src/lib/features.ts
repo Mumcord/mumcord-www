@@ -196,6 +196,14 @@ const source: Record<"de" | "en", FeaturesPage> = {
             body: "Neben dem Installer gibt es ein Zip, das ohne Installation läuft: entpacken und Mumcord.exe starten. Daten, Einstellungen und Logs bleiben in einem Ordner daneben, und ohne dein Zutun wird weder ein mumble://-Handler noch der Start beim Anmelden eingerichtet.",
             since: "0.5.0",
           },
+          {
+            id: "updates",
+            title: "Updates in der App",
+            body: "Mumcord sucht beim Start und alle 12 Stunden nach einer neuen Version, zeigt, was sich seit deiner geändert hat, und installiert sie mit einem Klick. Jeder Download wird vor der Installation gegen Mumcords Signatur und die Prüfsummen des Releases geprüft. Eine Version kannst du überspringen oder dich später erinnern lassen.",
+            shot: "updater-available-dark",
+            alt: "Der Dialog „Update verfügbar“ mit den Änderungen seit deiner Version",
+            since: "0.5.0",
+          },
         ],
       },
       {
@@ -516,6 +524,14 @@ const source: Record<"de" | "en", FeaturesPage> = {
             body: "KI-Rauschunterdrückung, Echounterdrückung und automatische Verstärkung sind an. Geräte wechseln ohne neu zu verbinden, Mikrofontest mit der eigenen Stimme.",
             shot: "wizard-2-microphone",
             alt: "Einrichtungsassistent, Schritt Mikrofon mit Pegeltest",
+          },
+          {
+            id: "rauschunterdrueckung",
+            title: "Rauschunterdrückung in vier Stufen",
+            body: "Einstellungen → Stimme bietet Leicht für gleichmäßiges Rauschen bei wenig CPU, Standard als Voreinstellung, Erweitert (KI) mit dem RNNoise-Modell von 2024 als Beta, das mehr Rauschen entfernt und mehr CPU braucht, und Aus. Ein „?“ neben jeder Stufe sagt, was sie kostet. Alles läuft auf deinem Rechner.",
+            shot: "noise-suppression-dark",
+            alt: "Spracheinstellungen mit den vier Stufen der Rauschunterdrückung",
+            since: "0.5.0",
           },
           {
             id: "musik",
@@ -960,6 +976,14 @@ const source: Record<"de" | "en", FeaturesPage> = {
             body: "Besides the installer there is a zip that runs without installing: unpack it and start Mumcord.exe. Data, settings and logs stay in a folder next to it, and no mumble:// handler or start at login is set up unless you turn it on.",
             since: "0.5.0",
           },
+          {
+            id: "updater",
+            title: "Updates in the app",
+            body: "Mumcord checks for a new version on start and every 12 hours, shows what changed since your version and installs it with one click. Every download is checked against Mumcord's signature and the release's checksums before it is installed; you can skip a version or be reminded later.",
+            shot: "updater-available-dark",
+            alt: "The “Update available” dialog with the changes since your version",
+            since: "0.5.0",
+          },
         ],
       },
       {
@@ -1280,6 +1304,14 @@ const source: Record<"de" | "en", FeaturesPage> = {
             body: "AI noise suppression, echo cancellation and automatic gain are on. Switch devices without reconnecting, test your microphone with your own voice.",
             shot: "wizard-2-microphone",
             alt: "Setup wizard, microphone step with level test",
+          },
+          {
+            id: "noise-levels",
+            title: "Noise suppression in four levels",
+            body: "Settings → Voice offers Light for steady noise with the lowest CPU, Standard as the default, Advanced (AI) with the 2024 RNNoise model as a beta that removes more noise for more CPU, and Off. A “?” next to each level says what it costs. Everything runs on your computer.",
+            shot: "noise-suppression-dark",
+            alt: "Voice settings with the four noise suppression levels",
+            since: "0.5.0",
           },
           {
             id: "music",
