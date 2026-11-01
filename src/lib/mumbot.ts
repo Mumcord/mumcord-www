@@ -157,7 +157,7 @@ export const MUMBOT_CODE = {
   -d '{"channel": 1, "message": "**deploy** finished"}'`,
   peer: `services:
   mumbot:
-    image: ${MUMBOT_IMAGE}:0.2.0
+    image: ${MUMBOT_IMAGE}:0.2.1
     command: ["run"]
     network_mode: "service:mumpeer"
     environment:
