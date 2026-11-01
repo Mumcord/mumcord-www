@@ -2581,7 +2581,8 @@
         "webhook": "Aseta API-avain ja sallitut kanavat tiedostossa `bot.toml`. Sitten `curl` osoitteeseen `http://127.0.0.1:8080/message` lähettää viestin kanavalle.",
         "more": "Alla olevat vaiheet selittävät jokaisen osan tarkasti.",
         "music": "Laita MP3-tiedostot kansioon `media` ja aseta API-avain tiedostossa `bot.toml`. Sitten pyyntö osoitteeseen `http://127.0.0.1:8081` soittaa ne kanavalla.",
-        "history": "Aseta tiedostossa `bot.toml`, kuinka kauan botti säilyttää keskustelun. Se tarvitsee lukuoikeuden kanaviin."
+        "history": "Aseta tiedostossa `bot.toml`, kuinka kauan botti säilyttää keskustelun. Se tarvitsee lukuoikeuden kanaviin.",
+        "relayRegistered": "Valinnalla ”Vain rekisteröidyt käyttäjät” vain palvelimelle rekisteröityneet saavat relay-tokenit (napsauta omaa nimeäsi hiiren kakkospainikkeella → Rekisteröi)."
       },
       "advanced": "Lisäasetukset",
       "pluginLimit": "Piilotettuja paketteja sekunnissa",
@@ -2605,7 +2606,12 @@
         "show": "Näytä salasanat ja kirjoita ne muistiin"
       },
       "copyAll": "Kopioi kaikki kerralla",
-      "needsMumbot": "Webhook, relay, musiikki ja historia toimivat yhdessä yhtenä Mumbotina, jossa on moduuleja. Se tulee Mumbot 0.2.0:n mukana."
+      "needsMumbot": "Webhook, relay, musiikki ja historia toimivat yhdessä yhtenä Mumbotina, jossa on moduuleja. Se tulee Mumbot 0.2.0:n mukana.",
+      "relayAccess": {
+        "label": "Relay kenelle",
+        "registered": "Vain rekisteröidyt käyttäjät",
+        "all": "Kaikki, myös vieraat"
+      }
     },
     "stepsCta": "Vaihe vaiheelta"
   },
@@ -2787,6 +2793,17 @@
           "Viestikortit: webhook lähettää hälytyksiä otsikolla, tilavärillä, kaaviolla ja linkillä, ja Mumcord näyttää ne korttina",
           "Säädettävä bittinopeus puheelle ja musiikille, ei koskaan palvelimen rajan yli",
           "Peer-moduuli: rekisteröi palvelimen käyttäjät mumpeer-välityspalvelimelle ja kertoo Mumcordille, että välityspalvelin on olemassa"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Turvallisempi relay",
+        "summary": "Relayn tietoturvatarkastuksen jälkeen: kuka saa tokeneita, kuinka pitkäksi aikaa ja kuinka monta.",
+        "items": [
+          "Relay-tokenit vain rekisteröityneille käyttäjille, halutessasi myös vieraille",
+          "Palvelimelta poistuminen päättää relay-pääsyn, mutta vasta viimeisen istunnon mukana",
+          "Varmennekohtaiset rajat token-pyynnöille ja avoimille yhteyksille",
+          "Turvallisempi konfiguraatio: ei pelkkää HTTP:tä toisella koneella olevaan relayhin, salaisuudet tarkistetaan tiukasti"
         ]
       },
       {

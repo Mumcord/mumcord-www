@@ -2581,7 +2581,8 @@
         "webhook": "Définis une clé d’API et les canaux autorisés dans `bot.toml`. Ensuite, un `curl` vers `http://127.0.0.1:8080/message` publie dans le canal.",
         "more": "Les étapes ci-dessous expliquent chaque partie en détail.",
         "music": "Mets les MP3 dans le dossier `media` et définis une clé d’API dans `bot.toml`. Ensuite, une requête vers `http://127.0.0.1:8081` les joue dans le canal.",
-        "history": "Définis dans `bot.toml` combien de temps le bot garde le chat. Il a besoin d’un accès en lecture aux canaux."
+        "history": "Définis dans `bot.toml` combien de temps le bot garde le chat. Il a besoin d’un accès en lecture aux canaux.",
+        "relayRegistered": "Avec « Utilisateurs enregistrés uniquement », seules les personnes enregistrées sur le serveur reçoivent des jetons de relais (clic droit sur ton propre nom → Enregistrer)."
       },
       "advanced": "Avancé",
       "pluginLimit": "Paquets cachés par seconde",
@@ -2605,7 +2606,12 @@
         "show": "Affiche les mots de passe et note-les"
       },
       "copyAll": "Copie tout d’un coup",
-      "needsMumbot": "Webhook, relais, musique et historique tournent ensemble comme un seul Mumbot avec des modules. Cela arrive avec Mumbot 0.2.0."
+      "needsMumbot": "Webhook, relais, musique et historique tournent ensemble comme un seul Mumbot avec des modules. Cela arrive avec Mumbot 0.2.0.",
+      "relayAccess": {
+        "label": "Relais pour",
+        "registered": "Utilisateurs enregistrés uniquement",
+        "all": "Tout le monde, invités compris"
+      }
     },
     "stepsCta": "Pas à pas"
   },
@@ -2787,6 +2793,17 @@
           "Cartes de message : le webhook envoie des alertes avec titre, couleur d’état, graphique et lien, que Mumcord affiche sous forme de carte",
           "Débit réglable pour la parole et la musique, jamais au-dessus de la limite du serveur",
           "Module peer : enregistre les utilisateurs du serveur auprès d’un relais mumpeer et indique à Mumcord que le relais existe"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Un relais plus sûr",
+        "summary": "Après un audit de sécurité du relais : qui reçoit des tokens, pour combien de temps et combien.",
+        "items": [
+          "Tokens de relais réservés aux utilisateurs inscrits, aux invités aussi si tu veux",
+          "Quitter le serveur met fin à l’accès au relais, mais seulement avec la dernière session",
+          "Limites par certificat pour les demandes de tokens et les connexions ouvertes",
+          "Configuration plus sûre : pas de HTTP simple vers un relais sur une autre machine, secrets vérifiés strictement"
         ]
       },
       {

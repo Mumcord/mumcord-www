@@ -4,7 +4,7 @@
 import CopyButton from "./CopyButton.astro";
 import { type Lang } from "../i18n";
 import { guides } from "../lib/server-guide";
-import { buildCompose, buildEnv, buildBotToml, botModules, buildCurlSetup, buildCurlSteps, buildSetup, STEP_IDS, DEFAULTS, BANDWIDTH, MUMBOT_MODULES_FROM, atLeast, type ServerOptions, type Quality } from "../lib/compose";
+import { buildCompose, buildEnv, buildBotToml, botModules, buildCurlSetup, buildCurlSteps, buildSetup, STEP_IDS, DEFAULTS, BANDWIDTH, MUMBOT_MODULES_FROM, MUMBOT_RELAY_ACCESS_FROM, atLeast, type ServerOptions, type Quality } from "../lib/compose";
 import { getMumbotVersion, getBotImageVersion } from "../lib/mumbot";
 import { highlight, langOf } from "../lib/highlight";
 
@@ -22,6 +22,8 @@ const d = { ...DEFAULTS[fileLang], mumbotVersion };
 const site = Astro.site!.origin;
 // All bots run as one Mumbot with modules, which comes with 0.2.0; until it is out, say so.
 const modulesOut = atLeast(released, MUMBOT_MODULES_FROM);
+// "Relay for registered users only" needs the peer module of Mumbot 0.2.1.
+const relayAccessOut = atLeast(released, MUMBOT_RELAY_ACCESS_FROM);
 const qualities = Object.keys(BANDWIDTH) as Quality[];
 const steps = buildCurlSteps(fileLang, d, site);
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -61,6 +63,7 @@ const files = [
         <legend>{c.features}</legend>
         {
           checks.map((k) => (
+            <>
             <label class="cfg-check">
               <input name={k} type="checkbox" checked={d[k] === true} />
               <span class="cfg-check-text">
@@ -68,6 +71,29 @@ const files = [
                 <span>{c.options[k][1]}</span>
               </span>
             </label>
+            {k === "relay" && (
+              <div class="cfg-sub" data-relay-access hidden={!d.relay}>
+                <span class="cfg-sub-label">
+                  {c.relayAccess.label}
+                  {!relayAccessOut && <span class="pill">Mumbot 0.2.1</span>}
+                </span>
+                <div class="cfg-seg cfg-seg-2" role="radiogroup" aria-label={c.relayAccess.label}>
+                  <label>
+                    <input type="radio" name="relayGuests" value="0" checked />
+                    <span>
+                      <b>{c.relayAccess.registered}</b>
+                    </span>
+                  </label>
+                  <label>
+                    <input type="radio" name="relayGuests" value="1" />
+                    <span>
+                      <b>{c.relayAccess.all}</b>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            )}
+            </>
           ))
         }
         {!modulesOut && <p class="cfg-hint">{c.needsMumbot}</p>}
@@ -162,6 +188,7 @@ const files = [
           <li set:html={md(c.notes.ports)} />
           <li data-note="relay" hidden set:html={md(c.notes.portsRelay)} />
           <li data-note="relay" hidden set:html={md(c.notes.relay)} />
+          <li data-note="relayRegistered" hidden set:html={md(c.notes.relayRegistered)} />
           <li data-note="webhook" hidden set:html={md(c.notes.webhook)} />
           <li data-note="music" hidden set:html={md(c.notes.music)} />
           <li data-note="history" hidden set:html={md(c.notes.history)} />
@@ -200,6 +227,7 @@ const files = [
         history: maybe("history"),
         quality: ((form.elements.namedItem("quality") as RadioNodeList).value || "standard") as Quality,
         mumbotVersion: root.dataset.mumbot!,
+        relayGuests: (form.elements.namedItem("relayGuests") as RadioNodeList).value === "1",
         pluginLimit: Number(v("pluginLimit").value),
         pluginBurst: Number(v("pluginBurst").value),
       };
@@ -220,7 +248,8 @@ const files = [
       put("env", buildEnv(lang, o, secrets));
       put("bot", buildBotToml(lang, o, { webhook: secrets.webhookKey, music: secrets.musicKey }));
       out("bot").closest("figure")!.dataset.empty = botModules(o).length ? "" : "1";
-      for (const n of root.querySelectorAll<HTMLElement>("[data-note]")) n.hidden = !o[n.dataset.note as "relay" | "webhook" | "music" | "history"];
+      root.querySelector<HTMLElement>("[data-relay-access]")!.hidden = !o.relay;
+      for (const n of root.querySelectorAll<HTMLElement>("[data-note]")) n.hidden = n.dataset.note === "relayRegistered" ? !(o.relay && !o.relayGuests) : !o[n.dataset.note as "relay" | "webhook" | "music" | "history"];
     };
 
     form.addEventListener("input", render);

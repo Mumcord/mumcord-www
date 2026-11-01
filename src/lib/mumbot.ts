@@ -280,7 +280,7 @@ const source: Record<"de" | "en", MumbotPage> = {
         id: "epic-2",
         tag: "Epic 2",
         title: "Module, Musik und Verlauf",
-        status: "now",
+        status: "done",
         version: "0.2.0",
         summary: "Aus einem Bot wird ein Baukasten.",
         items: [
@@ -292,6 +292,20 @@ const source: Record<"de" | "en", MumbotPage> = {
           "Peer-Modul: meldet die Nutzer des Servers bei einem mumpeer-Relay an und teilt Mumcord mit, dass es das Relay gibt",
         ],
         done: [0, 1, 2, 3, 4, 5],
+      },
+      {
+        id: "0.2.1",
+        tag: "0.2.1",
+        title: "Relay sicherer",
+        status: "now",
+        version: "0.2.1",
+        summary: "Nach einer Sicherheitsprüfung des Relays: wer Tokens bekommt, wie lange und wie viele.",
+        items: [
+          "Relay-Tokens nur für registrierte Nutzer, auf Wunsch auch für Gäste",
+          "Wer den Server verlässt, verliert den Relay-Zugang, und zwar erst mit seiner letzten Sitzung",
+          "Limits pro Zertifikat für Token-Anfragen und offene Verbindungen",
+          "Sicherere Konfiguration: kein unverschlüsseltes HTTP zu einem Relay auf einem anderen Rechner, Secrets streng geprüft",
+        ],
       },
       {
         id: "later",
@@ -416,7 +430,7 @@ const source: Record<"de" | "en", MumbotPage> = {
         id: "epic-2",
         tag: "Epic 2",
         title: "Modules, music and history",
-        status: "now",
+        status: "done",
         version: "0.2.0",
         summary: "One bot becomes a toolkit.",
         items: [
@@ -428,6 +442,20 @@ const source: Record<"de" | "en", MumbotPage> = {
           "Peer module: registers the server's users with a mumpeer relay and tells Mumcord the relay exists",
         ],
         done: [0, 1, 2, 3, 4, 5],
+      },
+      {
+        id: "0.2.1",
+        tag: "0.2.1",
+        title: "A safer relay",
+        status: "now",
+        version: "0.2.1",
+        summary: "After a security review of the relay: who gets tokens, for how long and how many.",
+        items: [
+          "Relay tokens for registered users only, guests too if you like",
+          "Leaving the server ends relay access, but only with the last session",
+          "Per-certificate limits for token requests and open connections",
+          "Safer config: no plain HTTP to a relay on another machine, secrets checked strictly",
+        ],
       },
       {
         id: "later",

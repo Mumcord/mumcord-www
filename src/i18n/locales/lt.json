@@ -2581,7 +2581,8 @@
         "webhook": "Nustatyk API raktą ir leidžiamus kanalus faile `bot.toml`. Tada `curl` į `http://127.0.0.1:8080/message` paskelbia žinutę kanale.",
         "more": "Toliau pateikti žingsniai išsamiai paaiškina kiekvieną dalį.",
         "music": "Įdėk MP3 į aplanką `media` ir nustatyk API raktą faile `bot.toml`. Tada užklausa į `http://127.0.0.1:8081` groja juos kanale.",
-        "history": "Faile `bot.toml` nustatyk, kiek laiko botas saugo pokalbį. Jam reikia skaitymo prieigos prie kanalų."
+        "history": "Faile `bot.toml` nustatyk, kiek laiko botas saugo pokalbį. Jam reikia skaitymo prieigos prie kanalų.",
+        "relayRegistered": "Pasirinkus „Tik registruoti naudotojai“, relay žetonus gauna tik serveryje užsiregistravę žmonės (dešiniuoju pelės klavišu spustelėk savo vardą → Registruoti)."
       },
       "advanced": "Papildomi nustatymai",
       "pluginLimit": "Paslėptų paketų per sekundę",
@@ -2605,7 +2606,12 @@
         "show": "Parodyk slaptažodžius ir užsirašyk juos"
       },
       "copyAll": "Nukopijuok viską iš karto",
-      "needsMumbot": "Webhook, relay, muzika ir istorija veikia kartu kaip vienas Mumbot su moduliais. Tai ateis su Mumbot 0.2.0."
+      "needsMumbot": "Webhook, relay, muzika ir istorija veikia kartu kaip vienas Mumbot su moduliais. Tai ateis su Mumbot 0.2.0.",
+      "relayAccess": {
+        "label": "Relay skirtas",
+        "registered": "Tik registruoti naudotojai",
+        "all": "Visi, įskaitant svečius"
+      }
     },
     "stepsCta": "Žingsnis po žingsnio"
   },
@@ -2787,6 +2793,17 @@
           "Žinučių kortelės: webhook siunčia įspėjimus su pavadinimu, būsenos spalva, grafiku ir nuoroda, kuriuos Mumcord rodo kaip kortelę",
           "Reguliuojama bitų sparta kalbai ir muzikai, niekada ne didesnė už serverio ribą",
           "Peer modulis: užregistruoja serverio naudotojus mumpeer tarpiniame serveryje ir praneša Mumcord, kad jis yra"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Saugesnis relay",
+        "summary": "Po relay saugumo peržiūros: kas gauna žetonus, kiek laiko ir kiek.",
+        "items": [
+          "Relay žetonai tik registruotiems naudotojams, jei nori, ir svečiams",
+          "Išėjimas iš serverio nutraukia prieigą prie relay, bet tik su paskutine sesija",
+          "Apribojimai pagal sertifikatą žetonų užklausoms ir atviriems ryšiams",
+          "Saugesnė konfigūracija: jokio paprasto HTTP į relay kitame kompiuteryje, paslaptys tikrinamos griežtai"
         ]
       },
       {

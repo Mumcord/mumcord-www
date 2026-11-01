@@ -2581,7 +2581,8 @@
         "webhook": "Stel een API-sleutel en de toegestane kanalen in `bot.toml` in. Dan plaatst een `curl` naar `http://127.0.0.1:8080/message` een bericht in het kanaal.",
         "more": "De stappen hieronder leggen elk onderdeel uitgebreid uit.",
         "music": "Zet MP3’s in de map `media` en stel een API-sleutel in `bot.toml` in. Dan speelt een verzoek naar `http://127.0.0.1:8081` ze af in het kanaal.",
-        "history": "Stel in `bot.toml` in hoe lang de bot de chat bewaart. Hij heeft leestoegang tot de kanalen nodig."
+        "history": "Stel in `bot.toml` in hoe lang de bot de chat bewaart. Hij heeft leestoegang tot de kanalen nodig.",
+        "relayRegistered": "Met “Alleen geregistreerde gebruikers” krijgen alleen mensen die op de server geregistreerd zijn relay-tokens (klik met rechts op je eigen naam → Registreren)."
       },
       "advanced": "Geavanceerd",
       "pluginLimit": "Verborgen pakketten per seconde",
@@ -2605,7 +2606,12 @@
         "show": "Toon de wachtwoorden en noteer ze"
       },
       "copyAll": "Kopieer alles in één keer",
-      "needsMumbot": "Webhook, relay, muziek en geschiedenis draaien samen als één Mumbot met modules. Dat komt met Mumbot 0.2.0."
+      "needsMumbot": "Webhook, relay, muziek en geschiedenis draaien samen als één Mumbot met modules. Dat komt met Mumbot 0.2.0.",
+      "relayAccess": {
+        "label": "Relay voor",
+        "registered": "Alleen geregistreerde gebruikers",
+        "all": "Iedereen, ook gasten"
+      }
     },
     "stepsCta": "Stap voor stap"
   },
@@ -2787,6 +2793,17 @@
           "Berichtkaarten: de webhook stuurt meldingen met een titel, statuskleur, grafiek en link, die Mumcord als kaart toont",
           "Instelbare bitrate voor spraak en muziek, nooit boven de limiet van de server",
           "Peermodule: meldt de gebruikers van de server aan bij een mumpeer-relay en laat Mumcord weten dat de relay er is"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Een veiligere relay",
+        "summary": "Na een beveiligingsreview van de relay: wie tokens krijgt, voor hoe lang en hoeveel.",
+        "items": [
+          "Relay-tokens alleen voor geregistreerde gebruikers, desgewenst ook voor gasten",
+          "Het verlaten van de server beëindigt de relaytoegang, maar pas met de laatste sessie",
+          "Limieten per certificaat voor tokenaanvragen en open verbindingen",
+          "Veiligere configuratie: geen gewone HTTP naar een relay op een andere machine, geheimen worden strikt gecontroleerd"
         ]
       },
       {

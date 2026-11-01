@@ -10,6 +10,8 @@ export const MUMPEER_IMAGE = "ghcr.io/mumcord/mumpeer:0.1.0";
 export const MUMBOT_IMAGE = "ghcr.io/mumcord/mumbot";
 /** The Mumbot release that brings the music and history bots. */
 export const MUMBOT_MODULES_FROM = "0.2.0";
+/** The Mumbot release whose peer module knows `registered_only`. */
+export const MUMBOT_RELAY_ACCESS_FROM = "0.2.1";
 
 /** Most a person may send, in bit/s: Mumble's own default, room for music, and the hi-fi value of Mumble's sample config. */
 export const BANDWIDTH = { standard: 72000, good: 192000, best: 558000 } as const;
@@ -28,6 +30,8 @@ export interface ServerOptions {
   longText: boolean;
   /** mumpeer relay plus `mumbot peer` for Mumcord's direct connections. */
   relay: boolean;
+  /** Relay tokens for guests too, not only registered users (`[peer] registered_only = false`, from Mumbot 0.2.1). */
+  relayGuests: boolean;
   /** Mumbot's webhook bot: alerts and CI messages into a channel. */
   webhook: boolean;
   /** Hidden plugin-data packets per person and second (`pluginmessagelimit`, server default 4). */
@@ -82,6 +86,7 @@ const COMMENTS = {
     bot: "Mumbot, ein Bot mit diesen Modulen",
     botToml: "Mumbot: ein Bot, Module:",
     botPin: "SHA-256 des Server-Zertifikats; ohne startet das Peer-Modul nicht",
+    relayAccess: "true: Relay nur für registrierte Nutzer; false: auch für Gäste",
     webhookPort: "nur von diesem Rechner aus erreichbar",
     env: "Bleibt auf dem Server. Nie in Git, Chats oder Screenshots teilen.",
     envSuper: "hier-das-zufallspasswort-einfuegen",
@@ -116,6 +121,7 @@ const COMMENTS = {
     bot: "Mumbot, one bot with these modules",
     botToml: "Mumbot: one bot, modules:",
     botPin: "SHA-256 of the server certificate; the peer module won't start without it",
+    relayAccess: "true: relay for registered users only; false: guests too",
     webhookPort: "reachable from this machine only",
     env: "Stays on the server. Never share it in Git, chats or screenshots.",
     envSuper: "paste-the-random-password-here",
@@ -127,8 +133,8 @@ const COMMENTS = {
 } as const;
 
 export const DEFAULTS: Record<CommentLang, ServerOptions> = {
-  de: { name: "Unser Server", welcome: "Willkommen! Sag Hallo im Chat.", users: 50, password: false, bigImages: true, longText: true, relay: false, webhook: false, pluginLimit: 4, pluginBurst: 15, quality: "standard", music: false, history: false, mumbotVersion: "0.1.0" },
-  en: { name: "Our Server", welcome: "Welcome! Say hi in the chat.", users: 50, password: false, bigImages: true, longText: true, relay: false, webhook: false, pluginLimit: 4, pluginBurst: 15, quality: "standard", music: false, history: false, mumbotVersion: "0.1.0" },
+  de: { name: "Unser Server", welcome: "Willkommen! Sag Hallo im Chat.", users: 50, password: false, bigImages: true, longText: true, relay: false, webhook: false, pluginLimit: 4, pluginBurst: 15, quality: "standard", music: false, history: false, mumbotVersion: "0.1.0", relayGuests: false },
+  en: { name: "Our Server", welcome: "Welcome! Say hi in the chat.", users: 50, password: false, bigImages: true, longText: true, relay: false, webhook: false, pluginLimit: 4, pluginBurst: 15, quality: "standard", music: false, history: false, mumbotVersion: "0.1.0", relayGuests: false },
 };
 
 /** Whether version a is at least b (plain x.y.z). */
@@ -258,7 +264,7 @@ export const KEY_PLACEHOLDER = { webhook: "REPLACE-WEBHOOK-KEY", music: "REPLACE
 
 /** Id of the prebuilt bot.toml, e.g. "en-1011g": comment language, webhook/relay/history/music, quality. */
 export const botVariantId = (lang: CommentLang, o: ServerOptions) =>
-  `${lang}-${[o.webhook, o.relay, o.history, o.music].map((x) => (x ? 1 : 0)).join("")}${o.quality[0]}`;
+  `${lang}-${[o.webhook, o.relay, o.history, o.music, o.relay && o.relayGuests].map((x) => (x ? 1 : 0)).join("")}${o.quality[0]}`;
 
 /** Music below the server's limit: the Opus bitrate the music module sends per quality step. */
 const MUSIC_BITRATE: Record<Quality, number> = { standard: 64000, good: 128000, best: 256000 };
@@ -282,7 +288,10 @@ export function buildBotToml(lang: CommentLang, o: ServerOptions, keys?: { webho
   if (o.relay) out.push(`# ${c.botPin}`, 'server_cert_sha256 = "REPLACE-WITH-THE-SERVER-CERTIFICATE-SHA256"');
   if (o.webhook)
     out.push("", "[http]", 'listen = "0.0.0.0:8080"', "rate_limit_per_minute = 20", "delivery_timeout_secs = 3", "", "[[keys]]", `key = "${key(keys?.webhook)}"`, 'label = "webhook"', 'channels = ["Root"]');
-  if (o.relay) out.push("", "[peer]", 'api_url = "http://127.0.0.1:7480"');
+  if (o.relay) {
+    out.push("", "[peer]", 'api_url = "http://127.0.0.1:7480"');
+    if (atLeast(o.mumbotVersion, MUMBOT_RELAY_ACCESS_FROM)) out.push(`# ${c.relayAccess}`, `registered_only = ${!o.relayGuests}`);
+  }
   if (o.history)
     out.push("", "[history]", 'channels = ["*"]', "retention_days = 7", "max_messages_per_channel = 5000", 'database = "/data/history.sqlite3"');
   if (o.music)

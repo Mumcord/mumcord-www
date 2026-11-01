@@ -2581,7 +2581,8 @@
         "webhook": "Määra API võti ja lubatud kanalid failis `bot.toml`. Seejärel postitab `curl` aadressile `http://127.0.0.1:8080/message` sõnumi kanalisse.",
         "more": "Allolevad sammud selgitavad iga osa üksikasjalikult.",
         "music": "Pane MP3-d kausta `media` ja määra API võti failis `bot.toml`. Seejärel esitab päring aadressile `http://127.0.0.1:8081` need kanalis.",
-        "history": "Määra failis `bot.toml`, kui kaua bot vestlust hoiab. Ta vajab kanalitele lugemisõigust."
+        "history": "Määra failis `bot.toml`, kui kaua bot vestlust hoiab. Ta vajab kanalitele lugemisõigust.",
+        "relayRegistered": "Valikuga „Ainult registreeritud kasutajad“ saavad releetokenid ainult serveris registreeritud inimesed (tee oma nimel paremklõps → Registreeri)."
       },
       "advanced": "Täpsemad",
       "pluginLimit": "Peidetud pakette sekundis",
@@ -2605,7 +2606,12 @@
         "show": "Näita paroole ja märgi need üles"
       },
       "copyAll": "Kopeeri kõik korraga",
-      "needsMumbot": "Veebikonks, relee, muusika ja ajalugu töötavad koos ühe Mumbotina, millel on moodulid. See tuleb Mumbot 0.2.0-ga."
+      "needsMumbot": "Veebikonks, relee, muusika ja ajalugu töötavad koos ühe Mumbotina, millel on moodulid. See tuleb Mumbot 0.2.0-ga.",
+      "relayAccess": {
+        "label": "Relee jaoks",
+        "registered": "Ainult registreeritud kasutajad",
+        "all": "Kõik, ka külalised"
+      }
     },
     "stepsCta": "Samm-sammult"
   },
@@ -2787,6 +2793,17 @@
           "Sõnumikaardid: veebihaak saadab hoiatusi pealkirja, olekuvärvi, graafiku ja lingiga, mida Mumcord näitab kaardina",
           "Reguleeritav bitikiirus kõnele ja muusikale, mitte kunagi üle serveri piiri",
           "Peer-moodul: registreerib serveri kasutajad mumpeeri vahendusserveris ja annab Mumcordile teada, et vahendusserver on olemas"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Turvalisem relee",
+        "summary": "Pärast releed puudutavat turvaülevaatust: kes saab märke, kui kauaks ja mitu.",
+        "items": [
+          "Relee märgid ainult registreeritud kasutajatele, soovi korral ka külalistele",
+          "Serverist lahkumine lõpetab releele juurdepääsu, kuid alles viimase seansiga",
+          "Sertifikaadipõhised piirangud märgitaotlustele ja avatud ühendustele",
+          "Turvalisem seadistus: ei mingit lihtsat HTTP-d teisel masinal asuva releeni, saladusi kontrollitakse rangelt"
         ]
       },
       {

@@ -2581,7 +2581,8 @@
         "webhook": "Postavi API ključ i dopuštene kanale u `bot.toml`. Zatim `curl` na `http://127.0.0.1:8080/message` objavljuje u kanal.",
         "more": "Koraci u nastavku detaljno objašnjavaju svaki dio.",
         "music": "Stavi MP3 datoteke u mapu `media` i postavi API ključ u `bot.toml`. Zatim ih zahtjev na `http://127.0.0.1:8081` pušta u kanalu.",
-        "history": "Postavi u `bot.toml` koliko dugo bot čuva chat. Treba mu pristup za čitanje kanalima."
+        "history": "Postavi u `bot.toml` koliko dugo bot čuva chat. Treba mu pristup za čitanje kanalima.",
+        "relayRegistered": "S opcijom „Samo registrirani korisnici” relay tokene dobivaju samo osobe registrirane na poslužitelju (desni klik na vlastito ime → Registriraj)."
       },
       "advanced": "Napredno",
       "pluginLimit": "Skriveni paketi u sekundi",
@@ -2605,7 +2606,12 @@
         "show": "Prikaži lozinke i zapiši ih"
       },
       "copyAll": "Kopiraj sve odjednom",
-      "needsMumbot": "Webhook, relay, glazba i povijest rade zajedno kao jedan Mumbot s modulima. To stiže s Mumbotom 0.2.0."
+      "needsMumbot": "Webhook, relay, glazba i povijest rade zajedno kao jedan Mumbot s modulima. To stiže s Mumbotom 0.2.0.",
+      "relayAccess": {
+        "label": "Relay za",
+        "registered": "Samo registrirani korisnici",
+        "all": "Svi, i gosti"
+      }
     },
     "stepsCta": "Korak po korak"
   },
@@ -2787,6 +2793,17 @@
           "Kartice poruka: webhook šalje upozorenja s naslovom, bojom statusa, grafom i poveznicom, koja Mumcord prikazuje kao karticu",
           "Podesiv bitrate za govor i glazbu, nikad iznad ograničenja poslužitelja",
           "Peer modul: registrira korisnike poslužitelja kod mumpeer relaya i javlja Mumcordu da relay postoji"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Sigurniji relay",
+        "summary": "Nakon sigurnosnog pregleda relaya: tko dobiva tokene, na koliko dugo i koliko ih.",
+        "items": [
+          "Relay tokeni samo za registrirane korisnike, a po želji i za goste",
+          "Napuštanje poslužitelja prekida pristup relayu, ali tek s posljednjom sesijom",
+          "Ograničenja po certifikatu za zahtjeve za tokene i otvorene veze",
+          "Sigurnija konfiguracija: bez običnog HTTP-a prema relayu na drugom računalu, tajne se strogo provjeravaju"
         ]
       },
       {

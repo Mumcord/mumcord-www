@@ -2581,7 +2581,8 @@
         "webhook": "Iestati API atslēgu un atļautos kanālus failā `bot.toml`. Tad `curl` uz `http://127.0.0.1:8080/message` publicē ziņu kanālā.",
         "more": "Tālāk aprakstītie soļi detalizēti izskaidro katru daļu.",
         "music": "Ieliec MP3 mapē `media` un iestati API atslēgu failā `bot.toml`. Tad pieprasījums uz `http://127.0.0.1:8081` tos atskaņo kanālā.",
-        "history": "Failā `bot.toml` iestati, cik ilgi bots glabā čatu. Viņam vajag lasīšanas piekļuvi kanāliem."
+        "history": "Failā `bot.toml` iestati, cik ilgi bots glabā čatu. Viņam vajag lasīšanas piekļuvi kanāliem.",
+        "relayRegistered": "Ar iestatījumu „Tikai reģistrēti lietotāji“ releja žetonus saņem tikai serverī reģistrēti cilvēki (noklikšķini ar peles labo pogu uz sava vārda → Reģistrēt)."
       },
       "advanced": "Papildus",
       "pluginLimit": "Slēpto pakešu sekundē",
@@ -2605,7 +2606,12 @@
         "show": "Parādi paroles un pieraksti tās"
       },
       "copyAll": "Nokopē visu uzreiz",
-      "needsMumbot": "Webhook, relejs, mūzika un vēsture darbojas kopā kā viens Mumbot ar moduļiem. Tas nāks līdz ar Mumbot 0.2.0."
+      "needsMumbot": "Webhook, relejs, mūzika un vēsture darbojas kopā kā viens Mumbot ar moduļiem. Tas nāks līdz ar Mumbot 0.2.0.",
+      "relayAccess": {
+        "label": "Relejs priekš",
+        "registered": "Tikai reģistrēti lietotāji",
+        "all": "Visi, arī viesi"
+      }
     },
     "stepsCta": "Soli pa solim"
   },
@@ -2787,6 +2793,17 @@
           "Ziņu kartītes: webhook sūta brīdinājumus ar virsrakstu, statusa krāsu, grafiku un saiti, ko Mumcord rāda kā kartīti",
           "Regulējams bitu pārraides ātrums runai un mūzikai, nekad virs servera robežas",
           "Peer modulis: reģistrē servera lietotājus mumpeer starpserverī un paziņo Mumcord, ka starpserveris pastāv"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Drošāks releis",
+        "summary": "Pēc releja drošības pārbaudes: kas saņem žetonus, uz cik ilgu laiku un cik daudz.",
+        "items": [
+          "Releja žetoni tikai reģistrētiem lietotājiem, ja vēlies, arī viesiem",
+          "Servera pamešana beidz piekļuvi relejam, bet tikai līdz ar pēdējo sesiju",
+          "Ierobežojumi katram sertifikātam žetonu pieprasījumiem un atvērtiem savienojumiem",
+          "Drošāka konfigurācija: nekāda vienkārša HTTP uz releju citā datorā, noslēpumi tiek pārbaudīti stingri"
         ]
       },
       {

@@ -2581,7 +2581,8 @@
         "webhook": "V `bot.toml` nastav klíč API a povolené kanály. Pak `curl` na `http://127.0.0.1:8080/message` zapíše zprávu do kanálu.",
         "more": "Kroky níže vysvětlují každou část podrobně.",
         "music": "Dej MP3 do složky `media` a nastav klíč API v `bot.toml`. Pak je požadavek na `http://127.0.0.1:8081` přehraje v kanálu.",
-        "history": "V `bot.toml` nastav, jak dlouho bot chat uchovává. Potřebuje přístup ke čtení kanálů."
+        "history": "V `bot.toml` nastav, jak dlouho bot chat uchovává. Potřebuje přístup ke čtení kanálů.",
+        "relayRegistered": "S volbou „Jen registrovaní uživatelé“ dostávají tokeny relay jen lidé registrovaní na serveru (klikni pravým tlačítkem na své jméno → Registrovat)."
       },
       "advanced": "Pokročilé",
       "pluginLimit": "Skryté pakety za sekundu",
@@ -2605,7 +2606,12 @@
         "show": "Zobraz hesla a poznamenej si je"
       },
       "copyAll": "Zkopíruj vše najednou",
-      "needsMumbot": "Webhook, relay, hudba a historie běží společně jako jeden Mumbot s moduly. To přijde s Mumbotem 0.2.0."
+      "needsMumbot": "Webhook, relay, hudba a historie běží společně jako jeden Mumbot s moduly. To přijde s Mumbotem 0.2.0.",
+      "relayAccess": {
+        "label": "Relay pro",
+        "registered": "Jen registrovaní uživatelé",
+        "all": "Všichni, i hosté"
+      }
     },
     "stepsCta": "Krok za krokem"
   },
@@ -2787,6 +2793,17 @@
           "Karty zpráv: webhook posílá upozornění s nadpisem, stavovou barvou, grafem a odkazem, které Mumcord zobrazí jako kartu",
           "Nastavitelný bitrate pro řeč a hudbu, nikdy nad limit serveru",
           "Peer modul: registruje uživatele serveru u mumpeer relaye a dá Mumcordu vědět, že relay existuje"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Bezpečnější relay",
+        "summary": "Po bezpečnostním přezkoumání relay: kdo dostane tokeny, na jak dlouho a kolik jich.",
+        "items": [
+          "Tokeny relay jen pro registrované uživatele, na přání i pro hosty",
+          "Opuštěním serveru končí přístup k relay, ale až s poslední relací",
+          "Limity pro každý certifikát na žádosti o tokeny a otevřená spojení",
+          "Bezpečnější konfigurace: žádné čisté HTTP k relay na jiném stroji, tajné klíče se kontrolují přísně"
         ]
       },
       {

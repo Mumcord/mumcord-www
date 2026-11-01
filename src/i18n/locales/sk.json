@@ -2581,7 +2581,8 @@
         "webhook": "V `bot.toml` nastav kľúč API a povolené kanály. Potom `curl` na `http://127.0.0.1:8080/message` odošle správu do kanála.",
         "more": "Kroky nižšie podrobne vysvetľujú každú časť.",
         "music": "Daj MP3 do priečinka `media` a nastav kľúč API v `bot.toml`. Potom ich požiadavka na `http://127.0.0.1:8081` prehrá v kanáli.",
-        "history": "V `bot.toml` nastav, ako dlho bot uchováva chat. Potrebuje prístup na čítanie ku kanálom."
+        "history": "V `bot.toml` nastav, ako dlho bot uchováva chat. Potrebuje prístup na čítanie ku kanálom.",
+        "relayRegistered": "S voľbou „Iba registrovaní používatelia“ dostávajú tokeny relay iba ľudia registrovaní na serveri (klikni pravým tlačidlom na svoje meno → Registrovať)."
       },
       "advanced": "Pokročilé",
       "pluginLimit": "Skryté pakety za sekundu",
@@ -2605,7 +2606,12 @@
         "show": "Zobraziť heslá a poznačiť si ich"
       },
       "copyAll": "Skopírovať všetko naraz",
-      "needsMumbot": "Webhook, relay, hudba a história bežia spoločne ako jeden Mumbot s modulmi. To príde s Mumbotom 0.2.0."
+      "needsMumbot": "Webhook, relay, hudba a história bežia spoločne ako jeden Mumbot s modulmi. To príde s Mumbotom 0.2.0.",
+      "relayAccess": {
+        "label": "Relay pre",
+        "registered": "Iba registrovaní používatelia",
+        "all": "Všetci, aj hostia"
+      }
     },
     "stepsCta": "Krok za krokom"
   },
@@ -2787,6 +2793,17 @@
           "Karty správ: webhook posiela upozornenia s nadpisom, stavovou farbou, grafom a odkazom, ktoré Mumcord zobrazí ako kartu",
           "Nastaviteľný bitrate pre reč a hudbu, nikdy nad limit servera",
           "Peer modul: registruje používateľov servera v mumpeer relayi a dá Mumcordu vedieť, že relay existuje"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Bezpečnejší relay",
+        "summary": "Po bezpečnostnej kontrole relay: kto dostane tokeny, na ako dlho a koľko.",
+        "items": [
+          "Tokeny relay iba pre registrovaných používateľov, ak chceš, aj pre hostí",
+          "Opustením servera sa prístup k relay skončí, ale až s poslednou reláciou",
+          "Limity pre každý certifikát na žiadosti o tokeny a otvorené spojenia",
+          "Bezpečnejšia konfigurácia: žiadne čisté HTTP k relay na inom stroji, tajomstvá sa kontrolujú prísne"
         ]
       },
       {

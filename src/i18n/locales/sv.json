@@ -2581,7 +2581,8 @@
         "webhook": "Ange en API-nyckel och de tillåtna kanalerna i `bot.toml`. Sedan postar `curl` till `http://127.0.0.1:8080/message` i kanalen.",
         "more": "Stegen nedan förklarar varje del i detalj.",
         "music": "Lägg MP3-filerna i mappen `media` och ange en API-nyckel i `bot.toml`. Sedan spelar en förfrågan till `http://127.0.0.1:8081` upp dem i kanalen.",
-        "history": "Ange i `bot.toml` hur länge boten sparar chatten. Den behöver läsbehörighet till kanalerna."
+        "history": "Ange i `bot.toml` hur länge boten sparar chatten. Den behöver läsbehörighet till kanalerna.",
+        "relayRegistered": "Med ”Endast registrerade användare” får bara personer som är registrerade på servern relätokens (högerklicka på ditt eget namn → Registrera)."
       },
       "advanced": "Avancerat",
       "pluginLimit": "Dolda paket per sekund",
@@ -2605,7 +2606,12 @@
         "show": "Visa lösenorden och anteckna dem"
       },
       "copyAll": "Kopiera allt på en gång",
-      "needsMumbot": "Webhook, relä, musik och historik körs tillsammans som en enda Mumbot med moduler. Det kommer med Mumbot 0.2.0."
+      "needsMumbot": "Webhook, relä, musik och historik körs tillsammans som en enda Mumbot med moduler. Det kommer med Mumbot 0.2.0.",
+      "relayAccess": {
+        "label": "Relä för",
+        "registered": "Endast registrerade användare",
+        "all": "Alla, även gäster"
+      }
     },
     "stepsCta": "Steg för steg"
   },
@@ -2787,6 +2793,17 @@
           "Meddelandekort: webhooken skickar larm med rubrik, statusfärg, diagram och länk som Mumcord visar som ett kort",
           "Justerbar bithastighet för tal och musik, aldrig över serverns gräns",
           "Peer-modul: registrerar serverns användare hos ett mumpeer-relä och talar om för Mumcord att reläet finns"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Ett säkrare relä",
+        "summary": "Efter en säkerhetsgranskning av reläet: vem som får tokens, hur länge och hur många.",
+        "items": [
+          "Relä-tokens bara för registrerade användare, för gäster också om du vill",
+          "Att lämna servern avslutar reläåtkomsten, men först med den sista sessionen",
+          "Gränser per certifikat för token-förfrågningar och öppna anslutningar",
+          "Säkrare konfiguration: inget vanligt HTTP till ett relä på en annan maskin, hemligheter kontrolleras strikt"
         ]
       },
       {

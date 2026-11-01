@@ -2581,7 +2581,8 @@
         "webhook": "Setează o cheie API și canalele permise în `bot.toml`. Apoi un `curl` către `http://127.0.0.1:8080/message` postează în canal.",
         "more": "Pașii de mai jos explică fiecare parte în detaliu.",
         "music": "Pune MP3-urile în folderul `media` și setează o cheie API în `bot.toml`. Apoi o cerere către `http://127.0.0.1:8081` le redă în canal.",
-        "history": "Setează în `bot.toml` cât timp păstrează botul chatul. Are nevoie de acces de citire la canale."
+        "history": "Setează în `bot.toml` cât timp păstrează botul chatul. Are nevoie de acces de citire la canale.",
+        "relayRegistered": "Cu „Doar utilizatori înregistrați” doar oamenii înregistrați pe server primesc tokenuri de releu (clic dreapta pe propriul nume → Înregistrează-te)."
       },
       "advanced": "Avansat",
       "pluginLimit": "Pachete ascunse pe secundă",
@@ -2605,7 +2606,12 @@
         "show": "Afișează parolele și notează-le"
       },
       "copyAll": "Copiază totul deodată",
-      "needsMumbot": "Webhook, releu, muzică și istoric rulează împreună ca un singur Mumbot cu module. Asta vine cu Mumbot 0.2.0."
+      "needsMumbot": "Webhook, releu, muzică și istoric rulează împreună ca un singur Mumbot cu module. Asta vine cu Mumbot 0.2.0.",
+      "relayAccess": {
+        "label": "Releu pentru",
+        "registered": "Doar utilizatori înregistrați",
+        "all": "Toți, și oaspeții"
+      }
     },
     "stepsCta": "Pas cu pas"
   },
@@ -2787,6 +2793,17 @@
           "Carduri de mesaj: webhook-ul trimite alerte cu titlu, culoare de stare, grafic și link, pe care Mumcord le arată ca un card",
           "Bitrate reglabil pentru voce și muzică, niciodată peste limita serverului",
           "Modul peer: înregistrează utilizatorii serverului la un releu mumpeer și îi spune lui Mumcord că releul există"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Un releu mai sigur",
+        "summary": "După o revizuire de securitate a releului: cine primește tokenuri, pentru cât timp și câte.",
+        "items": [
+          "Tokenuri de releu doar pentru utilizatorii înregistrați, și pentru oaspeți dacă vrei",
+          "Părăsirea serverului încheie accesul la releu, dar abia odată cu ultima sesiune",
+          "Limite pe certificat pentru cererile de tokenuri și conexiunile deschise",
+          "Configurare mai sigură: fără HTTP simplu către un releu de pe altă mașină, secretele sunt verificate strict"
         ]
       },
       {

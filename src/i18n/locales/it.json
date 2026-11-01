@@ -2581,7 +2581,8 @@
         "webhook": "Imposta una chiave API e i canali consentiti in `bot.toml`. Poi un `curl` a `http://127.0.0.1:8080/message` pubblica nel canale.",
         "more": "I passaggi qui sotto spiegano ogni parte nel dettaglio.",
         "music": "Metti gli MP3 nella cartella `media` e imposta una chiave API in `bot.toml`. Poi una richiesta a `http://127.0.0.1:8081` li riproduce nel canale.",
-        "history": "Imposta in `bot.toml` per quanto tempo il bot conserva la chat. Ha bisogno dell’accesso in lettura ai canali."
+        "history": "Imposta in `bot.toml` per quanto tempo il bot conserva la chat. Ha bisogno dell’accesso in lettura ai canali.",
+        "relayRegistered": "Con «Solo utenti registrati» solo le persone registrate sul server ricevono i token del relay (clic destro sul tuo nome → Registra)."
       },
       "advanced": "Avanzate",
       "pluginLimit": "Pacchetti nascosti al secondo",
@@ -2605,7 +2606,12 @@
         "show": "Mostra le password e annotale"
       },
       "copyAll": "Copia tutto in una volta",
-      "needsMumbot": "Webhook, relay, musica e cronologia funzionano insieme come un unico Mumbot con moduli. Arriva con Mumbot 0.2.0."
+      "needsMumbot": "Webhook, relay, musica e cronologia funzionano insieme come un unico Mumbot con moduli. Arriva con Mumbot 0.2.0.",
+      "relayAccess": {
+        "label": "Relay per",
+        "registered": "Solo utenti registrati",
+        "all": "Tutti, anche gli ospiti"
+      }
     },
     "stepsCta": "Passo dopo passo"
   },
@@ -2787,6 +2793,17 @@
           "Schede messaggio: il webhook invia avvisi con titolo, colore di stato, grafico e link che Mumcord mostra come scheda",
           "Bitrate regolabile per voce e musica, mai sopra il limite del server",
           "Modulo peer: registra gli utenti del server presso un relay mumpeer e comunica a Mumcord che il relay esiste"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Un relay più sicuro",
+        "summary": "Dopo una revisione della sicurezza del relay: chi riceve i token, per quanto tempo e quanti.",
+        "items": [
+          "Token del relay solo per gli utenti registrati, anche per gli ospiti se vuoi",
+          "Lasciare il server termina l’accesso al relay, ma solo con l’ultima sessione",
+          "Limiti per certificato per le richieste di token e le connessioni aperte",
+          "Configurazione più sicura: niente HTTP semplice verso un relay su un’altra macchina, segreti controllati con rigore"
         ]
       },
       {

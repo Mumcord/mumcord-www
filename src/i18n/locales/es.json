@@ -2581,7 +2581,8 @@
         "webhook": "Define una clave de API y los canales permitidos en `bot.toml`. Después, un `curl` a `http://127.0.0.1:8080/message` publica en el canal.",
         "more": "Los pasos de abajo explican cada parte en detalle.",
         "music": "Pon los MP3 en la carpeta `media` y define una clave de API en `bot.toml`. Después, una petición a `http://127.0.0.1:8081` los reproduce en el canal.",
-        "history": "Define en `bot.toml` cuánto tiempo guarda el bot el chat. Necesita acceso de lectura a los canales."
+        "history": "Define en `bot.toml` cuánto tiempo guarda el bot el chat. Necesita acceso de lectura a los canales.",
+        "relayRegistered": "Con «Solo usuarios registrados», solo las personas registradas en el servidor reciben tokens del relay (clic derecho en tu propio nombre → Registrar)."
       },
       "advanced": "Avanzado",
       "pluginLimit": "Paquetes ocultos por segundo",
@@ -2605,7 +2606,12 @@
         "show": "Muestra las contraseñas y anótalas"
       },
       "copyAll": "Copia todo de una vez",
-      "needsMumbot": "Webhook, relay, música e historial funcionan juntos como un único Mumbot con módulos. Eso llega con Mumbot 0.2.0."
+      "needsMumbot": "Webhook, relay, música e historial funcionan juntos como un único Mumbot con módulos. Eso llega con Mumbot 0.2.0.",
+      "relayAccess": {
+        "label": "Relay para",
+        "registered": "Solo usuarios registrados",
+        "all": "Todos, también invitados"
+      }
     },
     "stepsCta": "Paso a paso"
   },
@@ -2787,6 +2793,17 @@
           "Tarjetas de mensaje: el webhook envía alertas con título, color de estado, gráfica y enlace que Mumcord muestra como tarjeta",
           "Tasa de bits ajustable para voz y música, nunca por encima del límite del servidor",
           "Módulo peer: registra a los usuarios del servidor en un relay mumpeer y le dice a Mumcord que el relay existe"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Un relay más seguro",
+        "summary": "Tras una revisión de seguridad del relay: quién recibe tokens, por cuánto tiempo y cuántos.",
+        "items": [
+          "Tokens de relay solo para usuarios registrados, también para invitados si quieres",
+          "Salir del servidor termina el acceso al relay, pero solo con la última sesión",
+          "Límites por certificado para las solicitudes de tokens y las conexiones abiertas",
+          "Configuración más segura: sin HTTP plano hacia un relay en otra máquina, secretos comprobados con rigor"
         ]
       },
       {

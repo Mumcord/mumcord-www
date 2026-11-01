@@ -2581,7 +2581,8 @@
         "webhook": "Állíts be egy API-kulcsot és az engedélyezett csatornákat a `bot.toml` fájlban. Ezután egy `curl` a `http://127.0.0.1:8080/message` címre üzenetet küld a csatornába.",
         "more": "Az alábbi lépések minden részt részletesen elmagyaráznak.",
         "music": "Tedd az MP3-akat a `media` mappába, és állíts be egy API-kulcsot a `bot.toml` fájlban. Ezután egy kérés a `http://127.0.0.1:8081` címre lejátssza őket a csatornában.",
-        "history": "A `bot.toml` fájlban állítsd be, mennyi ideig őrizze a bot a csevegést. Olvasási hozzáférés kell neki a csatornákhoz."
+        "history": "A `bot.toml` fájlban állítsd be, mennyi ideig őrizze a bot a csevegést. Olvasási hozzáférés kell neki a csatornákhoz.",
+        "relayRegistered": "A „Csak regisztrált felhasználók” beállításnál csak a szerveren regisztrált emberek kapnak relay-tokent (jobb klikk a saját nevedre → Regisztráció)."
       },
       "advanced": "Haladó",
       "pluginLimit": "Rejtett csomagok másodpercenként",
@@ -2605,7 +2606,12 @@
         "show": "Mutasd meg a jelszavakat, és jegyezd fel őket"
       },
       "copyAll": "Másolj ki mindent egyszerre",
-      "needsMumbot": "A webhook, a relay, a zene és az előzmények együtt futnak egyetlen, modulokból álló Mumbotként. Ez a Mumbot 0.2.0-val érkezik."
+      "needsMumbot": "A webhook, a relay, a zene és az előzmények együtt futnak egyetlen, modulokból álló Mumbotként. Ez a Mumbot 0.2.0-val érkezik.",
+      "relayAccess": {
+        "label": "Relay kinek",
+        "registered": "Csak regisztrált felhasználók",
+        "all": "Mindenki, a vendégek is"
+      }
     },
     "stepsCta": "Lépésről lépésre"
   },
@@ -2787,6 +2793,17 @@
           "Üzenetkártyák: a webhook címmel, állapotszínnel, grafikonnal és linkkel küld riasztásokat, amelyeket a Mumcord kártyaként jelenít meg",
           "Állítható bitráta beszédhez és zenéhez, sosem a szerver korlátja fölött",
           "Peer modul: regisztrálja a szerver felhasználóit egy mumpeer relaynél, és jelzi a Mumcordnak, hogy létezik relay"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Biztonságosabb relay",
+        "summary": "A relay biztonsági átvizsgálása után: ki kap tokent, mennyi időre és hányat.",
+        "items": [
+          "Relay tokenek csak regisztrált felhasználóknak, kérésedre a vendégeknek is",
+          "A szerver elhagyása megszünteti a relay-hozzáférést, de csak az utolsó munkamenettel",
+          "Tanúsítványonkénti korlátok a tokenkérésekre és a nyitott kapcsolatokra",
+          "Biztonságosabb konfiguráció: nincs sima HTTP egy másik gépen lévő relayhez, a titkok szigorú ellenőrzéssel mennek át"
         ]
       },
       {

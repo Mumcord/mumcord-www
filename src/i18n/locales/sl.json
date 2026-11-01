@@ -2581,7 +2581,8 @@
         "webhook": "V `bot.toml` nastavi ključ API in dovoljene kanale. Nato `curl` na `http://127.0.0.1:8080/message` objavi sporočilo v kanal.",
         "more": "Spodnji koraki podrobno razložijo vsak del.",
         "music": "Daj MP3 v mapo `media` in nastavi ključ API v `bot.toml`. Nato jih zahteva na `http://127.0.0.1:8081` predvaja v kanalu.",
-        "history": "V `bot.toml` nastavi, kako dolgo bot hrani klepet. Potrebuje bralni dostop do kanalov."
+        "history": "V `bot.toml` nastavi, kako dolgo bot hrani klepet. Potrebuje bralni dostop do kanalov.",
+        "relayRegistered": "Z izbiro „Samo registrirani uporabniki“ žetone posrednika prejmejo samo osebe, registrirane na strežniku (z desnim klikom na svoje ime → Registriraj)."
       },
       "advanced": "Napredno",
       "pluginLimit": "Skriti paketi na sekundo",
@@ -2605,7 +2606,12 @@
         "show": "Pokaži gesla in si jih zapiši"
       },
       "copyAll": "Kopiraj vse naenkrat",
-      "needsMumbot": "Webhook, posrednik, glasba in zgodovina delujejo skupaj kot en Mumbot z moduli. To pride z Mumbotom 0.2.0."
+      "needsMumbot": "Webhook, posrednik, glasba in zgodovina delujejo skupaj kot en Mumbot z moduli. To pride z Mumbotom 0.2.0.",
+      "relayAccess": {
+        "label": "Posrednik za",
+        "registered": "Samo registrirani uporabniki",
+        "all": "Vsi, tudi gosti"
+      }
     },
     "stepsCta": "Korak za korakom"
   },
@@ -2787,6 +2793,17 @@
           "Kartice sporočil: webhook pošilja opozorila z naslovom, barvo stanja, grafom in povezavo, ki jih Mumcord prikaže kot kartico",
           "Nastavljiva bitna hitrost za govor in glasbo, nikoli nad omejitvijo strežnika",
           "Modul peer: prijavi uporabnike strežnika pri posredniku mumpeer in Mumcordu sporoči, da posrednik obstaja"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Varnejši posrednik",
+        "summary": "Po varnostnem pregledu posrednika: kdo dobi žetone, za kako dolgo in koliko.",
+        "items": [
+          "Žetoni posrednika samo za registrirane uporabnike, po želji tudi za goste",
+          "Zapustitev strežnika konča dostop do posrednika, vendar šele z zadnjo sejo",
+          "Omejitve na potrdilo za zahtevke za žetone in odprte povezave",
+          "Varnejša konfiguracija: brez navadnega HTTP do posrednika na drugem računalniku, skrivnosti se strogo preverjajo"
         ]
       },
       {

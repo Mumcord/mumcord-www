@@ -2581,7 +2581,8 @@
         "webhook": "Angiv en API-nøgle og de tilladte kanaler i `bot.toml`. Derefter sender `curl` til `http://127.0.0.1:8080/message` en besked ind i kanalen.",
         "more": "Trinnene nedenfor forklarer hver del i detaljer.",
         "music": "Læg MP3-filer i mappen `media`, og angiv en API-nøgle i `bot.toml`. Derefter afspiller en forespørgsel til `http://127.0.0.1:8081` dem i kanalen.",
-        "history": "Angiv i `bot.toml`, hvor længe botten gemmer chatten. Den skal have læseadgang til kanalerne."
+        "history": "Angiv i `bot.toml`, hvor længe botten gemmer chatten. Den skal have læseadgang til kanalerne.",
+        "relayRegistered": "Med »Kun registrerede brugere« får kun personer, der er registreret på serveren, relay-tokens (højreklik på dit eget navn → Registrer)."
       },
       "advanced": "Avanceret",
       "pluginLimit": "Skjulte pakker pr. sekund",
@@ -2605,7 +2606,12 @@
         "show": "Vis adgangskoderne og skriv dem ned"
       },
       "copyAll": "Kopiér alt på én gang",
-      "needsMumbot": "Webhook, relay, musik og historik kører sammen som én Mumbot med moduler. Det kommer med Mumbot 0.2.0."
+      "needsMumbot": "Webhook, relay, musik og historik kører sammen som én Mumbot med moduler. Det kommer med Mumbot 0.2.0.",
+      "relayAccess": {
+        "label": "Relay til",
+        "registered": "Kun registrerede brugere",
+        "all": "Alle, også gæster"
+      }
     },
     "stepsCta": "Trin for trin"
   },
@@ -2787,6 +2793,17 @@
           "Beskedkort: webhooken sender alarmer med titel, statusfarve, graf og link, som Mumcord viser som et kort",
           "Justerbar bitrate til tale og musik, aldrig over serverens grænse",
           "Peer-modul: registrerer serverens brugere hos et mumpeer-relay og fortæller Mumcord, at relayet findes"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Et sikrere relay",
+        "summary": "Efter en sikkerhedsgennemgang af relayet: hvem der får tokens, hvor længe og hvor mange.",
+        "items": [
+          "Relay-tokens kun til registrerede brugere, også til gæster, hvis du vil",
+          "Når du forlader serveren, slutter relay-adgangen, men først med den sidste session",
+          "Grænser pr. certifikat for token-anmodninger og åbne forbindelser",
+          "Sikrere konfiguration: ingen almindelig HTTP til et relay på en anden maskine, hemmeligheder kontrolleres strengt"
         ]
       },
       {

@@ -2581,7 +2581,8 @@
         "webhook": "Ustaw klucz API i dozwolone kanały w `bot.toml`. Potem `curl` na `http://127.0.0.1:8080/message` publikuje wiadomość na kanale.",
         "more": "Kroki poniżej szczegółowo wyjaśniają każdą część.",
         "music": "Wrzuć MP3 do folderu `media` i ustaw klucz API w `bot.toml`. Potem żądanie na `http://127.0.0.1:8081` odtwarza je na kanale.",
-        "history": "Ustaw w `bot.toml`, jak długo bot przechowuje czat. Potrzebuje dostępu do odczytu kanałów."
+        "history": "Ustaw w `bot.toml`, jak długo bot przechowuje czat. Potrzebuje dostępu do odczytu kanałów.",
+        "relayRegistered": "Przy opcji „Tylko zarejestrowani użytkownicy” tokeny przekaźnika dostają tylko osoby zarejestrowane na serwerze (kliknij prawym przyciskiem swoją nazwę → Zarejestruj)."
       },
       "advanced": "Zaawansowane",
       "pluginLimit": "Ukryte pakiety na sekundę",
@@ -2605,7 +2606,12 @@
         "show": "Pokaż hasła i zapisz je"
       },
       "copyAll": "Skopiuj wszystko naraz",
-      "needsMumbot": "Webhook, przekaźnik, muzyka i historia działają razem jako jeden Mumbot z modułami. To pojawi się w Mumbot 0.2.0."
+      "needsMumbot": "Webhook, przekaźnik, muzyka i historia działają razem jako jeden Mumbot z modułami. To pojawi się w Mumbot 0.2.0.",
+      "relayAccess": {
+        "label": "Przekaźnik dla",
+        "registered": "Tylko zarejestrowani użytkownicy",
+        "all": "Wszyscy, także goście"
+      }
     },
     "stepsCta": "Krok po kroku"
   },
@@ -2787,6 +2793,17 @@
           "Karty wiadomości: webhook wysyła alerty z tytułem, kolorem statusu, wykresem i linkiem, które Mumcord pokazuje jako kartę",
           "Regulowany bitrate dla mowy i muzyki, nigdy powyżej limitu serwera",
           "Moduł peer: rejestruje użytkowników serwera w przekaźniku mumpeer i daje Mumcordowi znać, że przekaźnik istnieje"
+        ]
+      },
+      {
+        "id": "0.2.1",
+        "title": "Bezpieczniejszy przekaźnik",
+        "summary": "Po przeglądzie bezpieczeństwa przekaźnika: kto dostaje tokeny, na jak długo i ile.",
+        "items": [
+          "Tokeny przekaźnika tylko dla zarejestrowanych użytkowników, a jeśli chcesz, także dla gości",
+          "Opuszczenie serwera kończy dostęp do przekaźnika, ale dopiero wraz z ostatnią sesją",
+          "Limity na certyfikat dla próśb o tokeny i otwartych połączeń",
+          "Bezpieczniejsza konfiguracja: bez zwykłego HTTP do przekaźnika na innej maszynie, sekrety sprawdzane ściśle"
         ]
       },
       {
