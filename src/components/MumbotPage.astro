@@ -37,9 +37,10 @@ const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 const md = (s: string) => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>");
 const bots = [
   { id: "webhook", ...p.webhook, code: MUMBOT_CODE.webhook, file: "Terminal", docs: mumbotDoc("webhook") },
-  { id: "peer", ...p.peer, code: MUMBOT_CODE.peer, file: "docker-compose.yml", docs: mumbotDoc("peer"), from: "0.2.0" },
+  { id: "peer", ...p.peer, code: MUMBOT_CODE.peer(atLeast(version, "0.2.1") ? version : "0.2.1"), file: "docker-compose.yml", docs: mumbotDoc("peer"), from: "0.2.0" },
   { id: "music", ...p.music, code: MUMBOT_CODE.music, file: "Terminal", docs: mumbotDoc("music"), from: "0.2.0" },
   { id: "history", ...p.history, code: MUMBOT_CODE.history, file: "bot.toml", docs: mumbotDoc("history"), from: "0.2.0" },
+  { id: "plugins", ...p.plugins, code: MUMBOT_CODE.plugins, file: "bot.toml", docs: mumbotDoc("plugins"), from: "0.3.0" },
   { id: "testbot", ...p.testbot, code: MUMBOT_CODE.testbot, file: "Terminal", docs: MUMBOT_CLI_URL },
 ];
 ---

@@ -128,6 +128,7 @@ export interface MumbotPage {
   peer: { title: string; body: string; points: string[] };
   music: { title: string; body: string; points: string[] };
   history: { title: string; body: string; points: string[] };
+  plugins: { title: string; body: string; points: string[] };
   testbot: { title: string; body: string; points: string[] };
   downloadTitle: string;
   downloadBody: string;
@@ -155,9 +156,9 @@ export const MUMBOT_CODE = {
   webhook: `curl -X POST http://127.0.0.1:8080/message \\
   -H 'X-API-Key: <your key>' \\
   -d '{"channel": 1, "message": "**deploy** finished"}'`,
-  peer: `services:
+  peer: (version: string) => `services:
   mumbot:
-    image: ${MUMBOT_IMAGE}:0.2.1
+    image: ${MUMBOT_IMAGE}:${version}
     command: ["run"]
     network_mode: "service:mumpeer"
     environment:
@@ -168,6 +169,11 @@ export const MUMBOT_CODE = {
   history: `[history]
 channels = ["*"]
 retention_days = 7`,
+  plugins: `[[plugins.announce]]
+id = "dice"
+min = "1.0.0"
+source = "official"
+for = "board game nights"`,
   testbot: `printf '%s\\n' 'join Lobby' 'say "<b>hello</b>"' \\
   'expect message --from Alice --contains hi' \\
   | mumbot --port 44738 --name Bob script`,
@@ -186,7 +192,7 @@ const source: Record<"de" | "en", MumbotPage> = {
     intro:
       "Mumbot meldet sich wie ein Mensch mit eigenem Zertifikat an. Deshalb läuft er auf jedem normalen Mumble-Server, ohne Plugin und ohne Änderung an der Serverkonfiguration. Aus der Familie von Mumcord, Open Source unter AGPL-3.0.",
     toc: { bots: "Die Bots", download: "Download", roadmap: "Roadmap" },
-    botsTitle: "Ein Bot, vier Module",
+    botsTitle: "Ein Bot, fünf Module",
     botsBody: "Mumbot ist ein Programm aus Modulen, für Linux, Windows, macOS und als Docker-Image. Wähle die Module, die du brauchst: Sie laufen zusammen als ein Bot mit einer Verbindung. Der Test-Bot steckt in einem eigenen Build.",
     webhook: {
       title: "Webhook-Bot",
@@ -223,6 +229,15 @@ const source: Record<"de" | "en", MumbotPage> = {
         "Kanäle frei wählbar, 1 bis 7 Tage",
         "Private Nachrichten nie",
         "Antwortet auf Mumcords Verlaufs-Abgleich wie ein normaler Client",
+      ],
+    },
+    plugins: {
+      title: "Plugins",
+      body: "Sagt Mumcord, welche Plugins eure Community nutzt, damit Mitglieder beim Betreten einen Vorschlag zum Installieren bekommen. Plugins kommen mit Mumcord 0.6.0.",
+      points: [
+        "Bis zu 8 Plugins mit Mindestversion und wofür ihr sie nutzt",
+        "Nur an Mumcord-Clients, die danach fragen, höchstens einmal pro Minute",
+        "Braucht einen registrierten Bot-Nutzer und den Fingerabdruck des Server-Zertifikats",
       ],
     },
     testbot: {
@@ -308,6 +323,30 @@ const source: Record<"de" | "en", MumbotPage> = {
         ],
       },
       {
+        id: "0.3.0",
+        tag: "0.3.0",
+        title: "Plugins",
+        status: "now",
+        version: "0.3.0",
+        summary: "Bereit für Mumcord-Plugins.",
+        items: [
+          "Ein Plugins-Modul kündigt Mumcord-Clients bis zu 8 Plugins an, die die Community nutzt",
+          "Die Liste wird beim Start geprüft, eine geänderte nach einem Neustart erneut angekündigt",
+        ],
+      },
+      {
+        id: "0.4.0",
+        tag: "0.4.0",
+        title: "Der Bot stellt sich vor",
+        status: "now",
+        version: "0.4.0",
+        summary: "Mumcord erkennt, dass ein Bot kein Mensch ist.",
+        items: [
+          "Jedes Modul beantwortet Mumcords Hallo: dass es ein Bot ist, welcher und welche Module laufen",
+          "Nur an diesen Client, höchstens alle 10 Sekunden",
+        ],
+      },
+      {
         id: "later",
         tag: "Danach",
         title: "Ideen",
@@ -336,7 +375,7 @@ const source: Record<"de" | "en", MumbotPage> = {
     intro:
       "Mumbot logs in like a person, with its own certificate. That's why it runs on any standard Mumble server, with no plugin and no change to the server config. From the Mumcord family, open source under AGPL-3.0.",
     toc: { bots: "The bots", download: "Download", roadmap: "Roadmap" },
-    botsTitle: "One bot, four modules",
+    botsTitle: "One bot, five modules",
     botsBody: "Mumbot is one program built from modules, for Linux, Windows, macOS and as a Docker image. Pick the modules you need: they run together as one bot with one connection. The test bot lives in a build of its own.",
     webhook: {
       title: "Webhook bot",
@@ -373,6 +412,15 @@ const source: Record<"de" | "en", MumbotPage> = {
         "Any channels you like, 1 to 7 days",
         "Never private messages",
         "Answers Mumcord's history sync like a normal client",
+      ],
+    },
+    plugins: {
+      title: "Plugins",
+      body: "Tells Mumcord which plugins your community uses, so members get a suggestion to install them when they join. Plugins arrive with Mumcord 0.6.0.",
+      points: [
+        "Up to 8 plugins with a minimum version and what you use them for",
+        "Only to Mumcord clients that ask for it, at most once a minute",
+        "Needs a registered bot user and the fingerprint of the server's certificate",
       ],
     },
     testbot: {
@@ -455,6 +503,30 @@ const source: Record<"de" | "en", MumbotPage> = {
           "Leaving the server ends relay access, but only with the last session",
           "Per-certificate limits for token requests and open connections",
           "Safer config: no plain HTTP to a relay on another machine, secrets checked strictly",
+        ],
+      },
+      {
+        id: "0.3.0",
+        tag: "0.3.0",
+        title: "Plugins",
+        status: "now",
+        version: "0.3.0",
+        summary: "Ready for Mumcord plugins.",
+        items: [
+          "A plugins module announces up to 8 plugins the community uses to Mumcord clients",
+          "The list is checked at start, and a changed list is announced again after a restart",
+        ],
+      },
+      {
+        id: "0.4.0",
+        tag: "0.4.0",
+        title: "The bot says hello",
+        status: "now",
+        version: "0.4.0",
+        summary: "Mumcord can tell a bot from a person.",
+        items: [
+          "Every module answers a Mumcord client's hello: that it is a bot, which one and which modules it runs",
+          "Only to that client, at most once every 10 seconds",
         ],
       },
       {
