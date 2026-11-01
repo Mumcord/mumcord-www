@@ -282,11 +282,11 @@
       "title": "O fereastră care ți se pare cunoscută.",
       "items": [
         {
-          "src": "wizard-1-identity",
+          "src": "wizard-identity-dark",
           "caption": "Configurat în cam un minut: identitate, microfon, mod de vorbire."
         },
         {
-          "src": "wizard-4-talk-mode",
+          "src": "wizard-voice-dark",
           "caption": "Activare vocală sau push-to-talk, linkuri mumble:// și pornire la autentificare."
         },
         {
@@ -609,9 +609,9 @@
         "features": [
           {
             "id": "setup",
-            "title": "Configurat într-un minut",
-            "body": "La prima pornire, Mumcord îți cere doar trei lucruri: numele și identitatea, microfonul cu un test de nivel și cum vrei să vorbești. Identitățile Mumble existente se pot importa ca PKCS#12.",
-            "alt": "Asistentul de configurare, pasul identitate"
+            "title": "Configurează cum vrei tu",
+            "body": "La prima pornire, un asistent te ghidează prin identitate, voce și modul de vorbire. Un stil de configurare, precum echilibrat, totul activat sau confidențialitate maximă, completează dintr-o dată restul alegerilor, iar Personalizat le parcurge pe fiecare. Identitățile Mumble existente se pot importa ca PKCS#12.",
+            "alt": "Asistentul de configurare, pasul stilului de configurare cu patru presetări"
           },
           {
             "id": "servers",
@@ -681,7 +681,7 @@
           {
             "id": "setup-again",
             "title": "Rulează din nou asistentul de configurare",
-            "body": "Setări → Despre parcurge configurarea încă o dată, ca să revezi microfonul, confidențialitatea, verificarea de actualizări și modul de vorbire. Pasul identității e sărit, așa că nimic din certificatul tău nu se poate schimba din greșeală, și se salvează doar valorile pe care le-ai schimbat cu adevărat.",
+            "body": "Setări → Despre rulează asistentul de configurare încă o dată, ca să-ți revezi alegerile. Pasul identității este sărit, așa că nimic din certificatul tău nu se poate schimba din greșeală, și se salvează doar valorile pe care le-ai schimbat cu adevărat.",
             "alt": "Asistentul de configurare rulat din nou din setări, cu pasul identității marcat ca sărit"
           },
           {
@@ -938,7 +938,13 @@
             "id": "push-to-talk",
             "title": "Push-to-talk peste tot",
             "body": "Taste și butoane de mouse, chiar și cu un joc în prim-plan. Pe Wayland prin portalul de scurtături sau într-un mod de compatibilitate.",
-            "alt": "Asistentul de configurare, pasul mod de vorbire"
+            "alt": "Asistentul de configurare, pasul vocii cu microfon, difuzoare și modul de vorbire"
+          },
+          {
+            "id": "hotkeys",
+            "title": "Scurtături globale",
+            "body": "Pe lângă push-to-talk, taste pentru dezactivarea microfonului, dezactivarea sunetului, Nu deranja, intrarea și ieșirea din voce, schimbarea serverului sau a canalului, coloana de persoane și setările rapide. Implicit nu e setat nimic, iar o tastă deja ocupată arată conflictul și se mută dintr-un clic. Funcționează în fundal, pe Wayland după ce desktopul întreabă o dată.",
+            "alt": "Setările scurtăturilor, cu un câmp de tastă pentru fiecare acțiune"
           },
           {
             "id": "threshold",
@@ -950,7 +956,7 @@
             "id": "sound",
             "title": "Sunet clar, din prima",
             "body": "Suprimarea zgomotului cu AI, anularea ecoului și controlul automat al volumului sunt pornite. Schimbi dispozitivele fără să te reconectezi și îți testezi microfonul cu propria voce.",
-            "alt": "Asistentul de configurare, pasul microfon cu test de nivel"
+            "alt": "Setări, Voce și audio cu suprimarea zgomotului, anularea ecoului și volum automat"
           },
           {
             "id": "noise-levels",
@@ -1077,14 +1083,14 @@
           {
             "id": "watch-party",
             "title": "Vizionare împreună",
-            "body": "Un watch party pe YouTube în canalul de voce: toți văd același video deodată, oricine poate pune pauză și derula, cu un playlist comun. Cu embedurile dezactivate în setările de confidențialitate, nu se încarcă nimic de la YouTube sau Twitch.",
-            "alt": "Vizionare împreună într-o fereastră plutitoare, cu participanți, comenzi și următorul video"
+            "body": "Un watch party pe YouTube în canalul de voce: toți văd același video deodată, oricine poate pune pauză și derula, cu un playlist comun. Se deschide ca o vedere de cinema cu chatul dedesubt și arată cine este sincronizat sau rămas în urmă; dacă ieși, un mini player rămâne în partea de sus a chatului. Cu embedurile dezactivate în setările de confidențialitate, nu se încarcă nimic de la YouTube sau Twitch.",
+            "alt": "Vederea de cinema Vizionare împreună cu playerul, chatul dedesubt și cine se uită"
           },
           {
             "id": "screen-share",
             "title": "Partajarea ecranului",
-            "body": "Un ecran sau o fereastră pentru până la 8 spectatori, la 720p și 30 de cadre pe secundă, pe Windows și macOS, dacă vrei, cu sunetul aplicației partajate. O pornești din butonul Aplicații din chat. Cât partajezi, o bară roșie arată spectatorii și „Încheie”, iar ceilalți văd un inel roșu cu „LIVE” în jurul pozei tale.",
-            "alt": "Un ecran partajat într-o fereastră plutitoare, cu ecran complet și „Nu mai urmări”"
+            "body": "Un ecran sau o fereastră pentru până la 8 spectatori, la 720p și 30 de cadre pe secundă, pe Windows și macOS, dacă vrei, cu sunetul aplicației partajate. O pornești din butonul Aplicații din chat. Spectatorii se uită în coloana principală, cu rezoluție, rată de cadre și detalii despre flux; tu primești sus în chat o bară de control cu pauză, sunet, spectatori și oprire.",
+            "alt": "Un ecran partajat în coloana principală, cu detaliile fluxului și lista spectatorilor"
           },
           {
             "id": "floating-widgets",
@@ -1131,7 +1137,7 @@
             "id": "privacy",
             "title": "Fără telemetrie",
             "body": "La prima pornire, un pas scurt îți arată la ce se conectează Mumcord și când. Identitatea ta stă în spațiul de stocare securizat al sistemului, iar fișierul de diagnostic nu conține conținut din chat sau parole și pleacă de pe computerul tău doar dacă îl trimiți tu.",
-            "alt": "Asistentul, pasul confidențialitate"
+            "alt": "Asistentul de configurare, pasul conexiunilor și al conținutului"
           },
           {
             "id": "quick-settings",
@@ -1141,8 +1147,8 @@
           },
           {
             "id": "settings-search",
-            "title": "Setări cu căutare",
-            "body": "Găsește secțiuni și setări individuale, sare acolo și le evidențiază. Bara laterală rămâne pe loc cât derulezi.",
+            "title": "Setări, ordonate și cu căutare",
+            "body": "Zece grupuri cu carduri de secțiune. Căutarea găsește setările după nume, descriere sau sinonim, sare la ele și le evidențiază. Insigne marchează ce este Beta, schimbat sau recomandat, iar Resetează secțiunea readuce o secțiune la valorile implicite.",
             "alt": "Căutarea în setări cu rezultate pentru „overlay”"
           },
           {
@@ -1228,7 +1234,11 @@
             "Informațiile serverului arată dacă serverul anunță un releu sau un Mumbot și avertizează când releul s-a schimbat.",
             "Șoaptă și strigăt: vorbește cu persoane alese sau cu toți dintr-un canal fără să te muți acolo, cu o tastă de vorbit cât o ții apăsată pentru fiecare țintă și un banner deasupra chatului care arată cu cine vorbești.",
             "Actualizări în aplicație: Mumcord caută versiuni noi, arată ce s-a schimbat și le instalează cu un clic. Fiecare descărcare este verificată cu semnătura și cu sumele de control proprii.",
-            "Suprimarea zgomotului pe patru niveluri: Ușor, Standard, Avansat (AI, beta, cu modelul RNNoise din 2024) și Oprit, fiecare explicat cu un „?”."
+            "Suprimarea zgomotului pe patru niveluri: Ușor, Standard, Avansat (AI, beta, cu modelul RNNoise din 2024) și Oprit, fiecare explicat cu un „?”.",
+            "Scurtături globale în Setări → Scurtături: pe lângă push-to-talk, taste pentru dezactivarea microfonului, dezactivarea sunetului, Nu deranja, intrarea și ieșirea din voce, schimbarea serverului sau a canalului, coloana de persoane, setările rapide și deschiderea Mumcord. Implicit nu e setat nimic, iar o tastă deja ocupată poate fi mutată dintr-un clic.",
+            "Vizionarea împreună deschide o vedere de cinema: playerul cu chatul canalului dedesubt, comenzi pe imagine și un panou care arată cine este sincronizat, se încarcă sau e rămas în urmă. Dacă ieși, un mini player rămâne în partea de sus a chatului.",
+            "Partajarea ecranului s-a mutat în coloana principală, cu rezoluție, rată de cadre și un popover Detalii despre flux. Cine partajează primește sus în chat o bară de control cu pauză, sunet, schimbare de fereastră, spectatori și oprire.",
+            "„Revocă consimțământul pentru chat…” în meniul persoanei și în prezentarea mesajelor private: după aceea, acea persoană are nevoie de o nouă cerere de mesaj înainte ca mesajele ei să ajungă din nou la tine."
           ]
         },
         {
@@ -1237,9 +1247,13 @@
             "Panoul utilizatorului de sub lista de canale a fost refăcut: are aceeași înălțime în orice stare, ca lista de deasupra să nu mai sară, arată o singură linie clară de stare și are o mică săgeată de meniu pe fiecare buton de voce.",
             "Setările rapide sunt mai liniștite: un rând pentru fiecare setare, în grupuri clare, explicațiile ascunse în spatele unui mic ?, iar grupul Beta începe restrâns.",
             "Când previzualizările de linkuri sunt oprite, nu mai dispar pe tăcute: o linie discretă sub mesaj spune ce a fost ascuns și duce la setare.",
-            "„Rulează din nou asistentul de configurare” din Setări → Despre parcurge încă o dată microfonul, confidențialitatea, indiciul de actualizare și modul de vorbire. Identitatea ta rămâne neatinsă, iar se salvează doar ce schimbi.",
+            "„Rulează din nou asistentul de configurare” din Setări → Despre parcurge configurarea încă o dată. Identitatea ta rămâne neatinsă, și se salvează doar ce schimbi.",
             "Inspectorul de pachete urmărește pachetele noi, se oprește când derulezi în sus și înregistrează doar cât timp este deschis.",
-            "Arborele de servere și canale este implicit cu un sfert mai lat, ca să încapă nume de canale mai lungi. Lățimile pe care le setezi tu rămân."
+            "Arborele de servere și canale este implicit cu un sfert mai lat, ca să încapă nume de canale mai lungi. Lățimile pe care le setezi tu rămân.",
+            "Setările și asistentul de configurare au fost reproiectate: zece grupuri cu carduri de secțiune, o căutare care găsește și descrieri și sinonime, insigne pentru Beta, Schimbat și Recomandat, și Resetează secțiunea. Asistentul oferă stiluri de configurare care completează dintr-o dată alegeri rezonabile, iar limba se alege dintr-o listă cu căutare.",
+            "Antetul canalului e mai ordonat: un ochi înaintea numelui canalului arată și comută dacă îl urmărești, iar numele deschide un meniu cu Copiază linkul canalului, Parola canalului…, Informații despre canal și Șterge istoricul chatului….",
+            "Meniul persoanei începe cu Trimite mesaj, Intră în ‹channel› și Adaugă prieten; Intră spune de ce nu se poate când canalul e plin sau blocat.",
+            "Un nou logo Mumcord: un M format din două persoane, una cu șapcă și una cu căciulă."
           ]
         },
         {
@@ -1249,7 +1263,9 @@
             "Watch party respectă „Arată previzualizări de linkuri și conținut încorporat”: când e oprit, nu se încarcă nimic de la YouTube sau Twitch, iar un indiciu duce la setare.",
             "Linux cu PipeWire: listele de dispozitive arată fiecare intrare și ieșire așa cum o fac setările de sunet ale desktopului, de exemplu „System” și „Chat” de la un RØDECaster Pro II în loc de un singur „USB Audio”.",
             "Fereastra cu informațiile serverului este acum tradusă în toate cele 24 de limbi.",
-            "Mesajele tale nu mai redau sunetul de mențiune, nu mai afișează notificări și nu se mai numără ca necitite."
+            "Dialogul parolei canalului nu mai apare iar și iar cât timp altcineva e într-un canal protejat. Apare doar când încerci tu să intri.",
+            "Cu Nu deranja al desktopului activat, sugestia din panoul utilizatorului stă acum în spatele unui mic ? în loc de o linie suplimentară lungă.",
+            "Rândul pentru lățimea de bandă estimată din panoul calității vocii nu se mai ciocnește de valoarea sa în limbi lungi."
           ]
         }
       ],

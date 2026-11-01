@@ -282,11 +282,11 @@
       "title": "Langas, kuris atrodo pažįstamas.",
       "items": [
         {
-          "src": "wizard-1-identity",
+          "src": "wizard-identity-dark",
           "caption": "Sąranka maždaug per minutę: tapatybė, mikrofonas, kalbėjimo režimas."
         },
         {
-          "src": "wizard-4-talk-mode",
+          "src": "wizard-voice-dark",
           "caption": "Balso aktyvavimas arba „spausk ir kalbėk“, mumble:// nuorodos ir paleidimas prisijungus."
         },
         {
@@ -609,9 +609,9 @@
         "features": [
           {
             "id": "setup",
-            "title": "Sąranka per minutę",
-            "body": "Pirmą kartą paleistas Mumcord klausia tik trijų dalykų: tavo vardo ir tapatybės, mikrofono su lygio testu ir kaip nori kalbėti. Esamas Mumble tapatybes galima importuoti kaip PKCS#12.",
-            "alt": "Sąrankos vedlys, tapatybės žingsnis"
+            "title": "Nusistatyk savaip",
+            "body": "Pirmą kartą paleidus vedlys padeda pasirinkti tapatybę, balsą ir kalbėjimo režimą. Sąrankos stilius, pavyzdžiui, subalansuotas, viskas įjungta arba maksimalus privatumas, iš karto užpildo likusius pasirinkimus, o Pasirinktinis leidžia peržiūrėti kiekvieną iš jų. Esamas Mumble tapatybes galima importuoti kaip PKCS#12.",
+            "alt": "Sąrankos vedlys, sąrankos stiliaus žingsnis su keturiais šablonais"
           },
           {
             "id": "servers",
@@ -681,7 +681,7 @@
           {
             "id": "setup-again",
             "title": "Paleisk sąrankos vedlį dar kartą",
-            "body": "Nustatymai → Apie dar kartą perveda per sąranką, kad galėtum peržiūrėti mikrofoną, privatumą, atnaujinimų patikrą ir kalbėjimo režimą. Tapatybės žingsnis praleidžiamas, todėl su tavo sertifikatu nieko netyčia negali nutikti, ir išsaugomos tik tikrai pakeistos vertės.",
+            "body": "Nustatymai → Apie dar kartą paleidžia sąrankos vedlį, kad peržiūrėtum savo pasirinkimus. Tapatybės žingsnis praleidžiamas, todėl nieko dėl sertifikato netyčia nepasikeis, o išsaugomos tik tikrai pakeistos reikšmės.",
             "alt": "Iš nustatymų vėl paleistas sąrankos vedlys su tapatybės žingsniu, pažymėtu kaip praleistu"
           },
           {
@@ -938,7 +938,13 @@
             "id": "push-to-talk",
             "title": "„Spausk ir kalbėk“ visur",
             "body": "Klavišai ir pelės mygtukai, net kai žaidimas priekiniame plane. Wayland aplinkoje – per sparčiųjų klavišų portalą arba suderinamumo režimu.",
-            "alt": "Sąrankos vedlys, kalbėjimo režimo žingsnis"
+            "alt": "Sąrankos vedlys, balso žingsnis su mikrofonu, garsiakalbiais ir kalbėjimo režimu"
+          },
+          {
+            "id": "hotkeys",
+            "title": "Visuotiniai spartieji klavišai",
+            "body": "Be „Spausk ir kalbėk“, klavišai nutildyti, išjungti garsą, Netrukdyti, prisijungti prie balso ir išeiti, perjungti serverį ar kanalą, dalyvių stulpelį ir greituosius nustatymus. Pagal numatymą nieko nenustatyta, o jau užimtas klavišas parodo konfliktą ir perkeliamas vienu spustelėjimu. Veikia fone, Wayland aplinkoje – kai darbalaukis vieną kartą paklausia.",
+            "alt": "Sparčiųjų klavišų nustatymai su klavišo lauku kiekvienam veiksmui"
           },
           {
             "id": "threshold",
@@ -950,7 +956,7 @@
             "id": "sound",
             "title": "Aiškus garsas iš karto",
             "body": "DI triukšmo slopinimas, aido slopinimas ir automatinis stiprinimas įjungti. Keisk įrenginius neatsijungdamas, išbandyk mikrofoną savo balsu.",
-            "alt": "Sąrankos vedlys, mikrofono žingsnis su lygio testu"
+            "alt": "Nustatymai, Balsas ir garsas su triukšmo slopinimu, aido slopinimu ir automatiniu garsumu"
           },
           {
             "id": "noise-levels",
@@ -1077,14 +1083,14 @@
           {
             "id": "watch-party",
             "title": "Žiūrėjimas kartu",
-            "body": "YouTube watch party balso kanale: visi tuo pat metu mato tą patį vaizdo įrašą, bet kas gali pristabdyti ir prasukti, su bendru grojaraščiu. Kai privatumo nustatymuose įterpiniai išjungti, iš YouTube ar Twitch nieko neįkeliama.",
-            "alt": "Žiūrėjimas kartu slankiajame lange su dalyviais, valdikliais ir kitu vaizdo įrašu"
+            "body": "YouTube watch party balso kanale: visi tuo pat metu mato tą patį vaizdo įrašą, bet kas gali pristabdyti ir prasukti, su bendru grojaraščiu. Atsidaro kaip kino vaizdas su pokalbiu apačioje ir rodo, kas sinchronizuotas, o kas atsilieka; išėjus mini grotuvas lieka pokalbio viršuje. Kai privatumo nustatymuose įterpiniai išjungti, iš YouTube ar Twitch nieko neįkeliama.",
+            "alt": "Žiūrėjimo kartu kino vaizdas su grotuvu, pokalbiu apačioje ir žiūrinčiaisiais"
           },
           {
             "id": "screen-share",
             "title": "Ekrano bendrinimas",
-            "body": "Ekranas arba langas iki 8 žiūrovų, 720p, 30 kadrų per sekundę, Windows ir macOS sistemose, jei nori, su bendrinamos programos garsu. Jį paleidi Programų mygtuku pokalbyje. Kol bendrini, raudona juosta rodo žiūrovus ir „Baigti“, o kiti mato raudoną „LIVE“ žiedą aplink tavo paveikslėlį.",
-            "alt": "Bendrinamas ekranas slankiajame lange su viso ekrano režimu ir „Nebežiūrėti“"
+            "body": "Ekranas ar langas iki 8 žiūrovų, 720p raiška ir 30 kadrų per sekundę, Windows ir macOS sistemose, jei nori – su bendrinamos programos garsu. Pradedi mygtuku Programos pokalbyje. Žiūrovai žiūri pagrindiniame stulpelyje su raiška, kadrų dažniu ir srauto informacija; tu pokalbio viršuje gauni valdymo juostą su pauze, garsu, žiūrovais ir sustabdymu.",
+            "alt": "Bendrinamas ekranas pagrindiniame stulpelyje su srauto informacija ir žiūrovų sąrašu"
           },
           {
             "id": "floating-widgets",
@@ -1131,7 +1137,7 @@
             "id": "privacy",
             "title": "Jokios telemetrijos",
             "body": "Pirmą kartą paleidus trumpas žingsnis parodo, prie ko ir kada jungiasi Mumcord. Tavo tapatybė saugoma sistemos saugioje saugykloje, o diagnostikos faile nėra pokalbių turinio ar slaptažodžių, ir jis palieka tavo kompiuterį tik tada, kai pats jį išsiunti.",
-            "alt": "Vedlys, privatumo žingsnis"
+            "alt": "Sąrankos vedlys, ryšių ir turinio žingsnis"
           },
           {
             "id": "quick-settings",
@@ -1141,8 +1147,8 @@
           },
           {
             "id": "settings-search",
-            "title": "Nustatymai su paieška",
-            "body": "Randa skiltis ir atskirus nustatymus, nukelia ten ir juos paryškina. Šoninė juosta lieka vietoje, kol slenki.",
+            "title": "Nustatymai, išrikiuoti ir randami paieškos",
+            "body": "Dešimt grupių su skyrių kortelėmis. Paieška randa nustatymus pagal pavadinimą, aprašą ar sinonimą, nuveda prie jų ir juos paryškina. Ženkliukai žymi, kas yra Beta, pakeista ar rekomenduojama, o Atstatyti skyrių grąžina skyrių į numatytąsias reikšmes.",
             "alt": "Nustatymų paieška su „perdanga“ rezultatais"
           },
           {
@@ -1228,7 +1234,11 @@
             "Serverio informacija parodo, ar serveris skelbia relę ar Mumbotą, ir įspėja, kai relė pasikeitė.",
             "Šnabždėjimas ir šaukimas: kalbėk su pasirinktais žmonėmis arba su visais kanale ten nesikeldamas, su laikomu kalbėjimo klavišu kiekvienam tikslui ir juosta virš pokalbio, kuri rodo, su kuo kalbi.",
             "Atnaujinimai programoje: Mumcord tikrina naujas versijas, parodo, kas pasikeitė, ir įdiegia jas vienu spustelėjimu. Kiekvienas atsisiuntimas tikrinamas pagal jo parašą ir kontrolines sumas.",
-            "Triukšmo slopinimas keturiais lygiais: Lengvas, Standartinis, Išplėstinis (DI, beta, su 2024 m. RNNoise modeliu) ir Išjungta, kiekvienas paaiškintas „?”."
+            "Triukšmo slopinimas keturiais lygiais: Lengvas, Standartinis, Išplėstinis (DI, beta, su 2024 m. RNNoise modeliu) ir Išjungta, kiekvienas paaiškintas „?”.",
+            "Visuotiniai spartieji klavišai skiltyje Nustatymai → Spartieji klavišai: be „Spausk ir kalbėk“, klavišai nutildyti, išjungti garsą, Netrukdyti, prisijungti prie balso ir išeiti, perjungti serverį ar kanalą, dalyvių stulpelį, greituosius nustatymus ir atidaryti Mumcord. Pagal numatymą nieko nenustatyta, o jau užimtą klavišą galima perkelti vienu spustelėjimu.",
+            "Žiūrėjimas kartu atsidaro kaip kino vaizdas: grotuvas su kanalo pokalbiu apačioje, valdikliai ant vaizdo ir skydelis, rodantis, kas sinchronizuotas, buferizuoja ar atsilieka. Išėjus mini grotuvas lieka pokalbio viršuje.",
+            "Ekrano bendrinimas perkeltas į pagrindinį stulpelį, su raiška, kadrų dažniu ir iškylančiuoju langu Srauto informacija. Bendrinantysis pokalbio viršuje gauna valdymo juostą su pauze, garsu, lango keitimu, žiūrovais ir sustabdymu.",
+            "„Atšaukti sutikimą kalbėtis…“ žmogaus meniu ir privačių pranešimų apžvalgoje: po to tam žmogui reikia naujos žinutės užklausos, kad jo žinutės vėl pasiektų tave."
           ]
         },
         {
@@ -1237,9 +1247,13 @@
             "Naudotojo skydelis po kanalų sąrašu perdarytas: kiekvienoje būsenoje išlaiko tą patį aukštį, todėl sąrašas virš jo niekada nešokinėja, rodo vieną aiškią būsenos eilutę ir turi mažą meniu rodyklę ant kiekvieno balso mygtuko.",
             "Spartieji nustatymai ramesni: viena eilutė kiekvienam nustatymui aiškiose grupėse, paaiškinimai už mažo ?, o grupė Beta pradžioje suskleista.",
             "Kai nuorodų peržiūros išjungtos, jos nebedingsta tyliai: ramus tekstas po žinute pasako, kas buvo paslėpta, ir nuveda į nustatymą.",
-            "„Paleisti sąrankos vedlį iš naujo“ skiltyje Nustatymai → Apie dar kartą pereina mikrofoną, privatumą, atnaujinimų užuominą ir kalbėjimo režimą. Tavo tapatybė lieka nepaliesta, o išsaugoma tik tai, ką pakeiti.",
+            "„Paleisti sąrankos vedlį iš naujo“ skiltyje Nustatymai → Apie dar kartą pereina sąranką. Tavo tapatybė lieka nepaliesta, o išsaugoma tik tai, ką pakeiti.",
             "Paketų tikrintuvas seka naujus paketus, sustoja, kai pasirieti aukštyn, ir įrašo tik tada, kai yra atidarytas.",
-            "Serverių ir kanalų medis pagal numatytuosius nustatymus yra ketvirtadaliu platesnis, todėl telpa ilgesni kanalų pavadinimai. Pačių nustatyti pločiai išlieka."
+            "Serverių ir kanalų medis pagal numatytuosius nustatymus yra ketvirtadaliu platesnis, todėl telpa ilgesni kanalų pavadinimai. Pačių nustatyti pločiai išlieka.",
+            "Nustatymai ir sąrankos vedlys perkurti: dešimt grupių su skyrių kortelėmis, paieška, randanti ir aprašus bei sinonimus, ženkliukai Beta, Pakeista ir Rekomenduojama bei Atstatyti skyrių. Vedlys siūlo sąrankos stilius, kurie iš karto užpildo prasmingus pasirinkimus, o kalba renkamasi iš ieškomo sąrašo.",
+            "Kanalo antraštė tvarkingesnė: akis prieš kanalo pavadinimą rodo ir perjungia, ar sekate kanalą, o pavadinimas atveria meniu su Kopijuoti kanalo nuorodą, Kanalo slaptažodis…, Kanalo informacija ir Išvalyti pokalbio istoriją….",
+            "Žmogaus meniu prasideda nuo Siųsti žinutę, Prisijungti prie ‹kanalas› ir Pridėti draugą; Prisijungti paaiškina priežastį, kai kanalas pilnas ar užrakintas.",
+            "Naujas Mumcord logotipas: M raidė iš dviejų žmonių, vieno su kepuraite su snapeliu, kito su kepure."
           ]
         },
         {
@@ -1249,7 +1263,9 @@
             "Bendras žiūrėjimas gerbia nustatymą „Rodyti nuorodų peržiūras ir įterpinius“: kai jis išjungtas, nieko neįkeliama iš YouTube ar Twitch, o užuomina nuveda į nustatymą.",
             "Linux su PipeWire: įrenginių sąrašai rodo kiekvieną įvestį ir išvestį taip, kaip darbalaukio garso nustatymai, pvz., „System“ ir „Chat“ RØDECaster Pro II vietoje vieno „USB Audio“.",
             "Serverio informacijos langas dabar išverstas į visas 24 kalbas.",
-            "Tavo paties žinutės nebegroja paminėjimo garso, neberodo pranešimo ir nebeskaičiuojamos kaip neskaitytos."
+            "Kanalo slaptažodžio langas nebeiššoka vėl ir vėl, kai kas nors kitas yra apsaugotame kanale. Jis pasirodo tik tada, kai pats bandai prisijungti.",
+            "Kai įjungtas darbalaukio Netrukdyti, užuomina naudotojo skydelyje dabar slepiasi už mažo ?, o ne už ilgos papildomos eilutės.",
+            "Numatomo pralaidumo eilutė balso kokybės skydelyje nebesusilieja su savo reikšme ilgose kalbose."
           ]
         }
       ],

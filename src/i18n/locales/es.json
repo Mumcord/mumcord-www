@@ -282,11 +282,11 @@
       "title": "Una ventana que te resultará familiar.",
       "items": [
         {
-          "src": "wizard-1-identity",
+          "src": "wizard-identity-dark",
           "caption": "Configurado en un minuto: identidad, micrófono, modo de habla."
         },
         {
-          "src": "wizard-4-talk-mode",
+          "src": "wizard-voice-dark",
           "caption": "Activación por voz o pulsar para hablar, enlaces mumble:// e inicio al iniciar sesión."
         },
         {
@@ -609,9 +609,9 @@
         "features": [
           {
             "id": "setup",
-            "title": "Configurado en un minuto",
-            "body": "En el primer inicio, Mumcord solo te pide tres cosas: tu nombre e identidad, el micrófono con una prueba de nivel y cómo quieres hablar. Las identidades de Mumble que ya tengas se pueden importar como PKCS#12.",
-            "alt": "Asistente de configuración, paso de identidad"
+            "title": "Configúralo a tu manera",
+            "body": "En el primer inicio, un asistente te guía por la identidad, la voz y el modo de hablar. Un estilo de configuración como equilibrado, todo activado o máxima privacidad rellena de una vez el resto de las opciones, y Personalizado las recorre una por una. Las identidades de Mumble que ya tengas se pueden importar como PKCS#12.",
+            "alt": "Asistente de configuración, paso del estilo de configuración con cuatro ajustes predefinidos"
           },
           {
             "id": "servers",
@@ -681,7 +681,7 @@
           {
             "id": "setup-again",
             "title": "Repetir el asistente de configuración",
-            "body": "Ajustes → Acerca de repasa de nuevo la configuración para revisar micrófono, privacidad, comprobación de actualizaciones y modo de habla. El paso de identidad se omite, así que nada de tu certificado puede cambiar por accidente, y solo se guardan los valores que realmente cambiaste.",
+            "body": "Ajustes → Acerca de ejecuta el asistente de configuración una vez más para revisar tus opciones. El paso de la identidad se omite, así que nada de tu certificado puede cambiar por accidente, y solo se guardan los valores que realmente has cambiado.",
             "alt": "Asistente de configuración repetido desde los ajustes, con el paso de identidad marcado como omitido"
           },
           {
@@ -938,7 +938,13 @@
             "id": "push-to-talk",
             "title": "Pulsar para hablar en todas partes",
             "body": "Teclas y botones del ratón, incluso con un juego en primer plano. En Wayland mediante el portal de atajos o en un modo compatibilidad.",
-            "alt": "Asistente de configuración, paso del modo de habla"
+            "alt": "Asistente de configuración, paso de voz con micrófono, altavoces y modo de hablar"
+          },
+          {
+            "id": "hotkeys",
+            "title": "Atajos globales",
+            "body": "Además de push-to-talk, teclas para silenciar, ensordecer, No molestar, entrar y salir de la voz, cambiar de servidor o canal, la columna de miembros y los ajustes rápidos. No hay nada asignado por defecto, y una tecla que ya está en uso muestra el conflicto y se mueve con un clic. Funcionan en segundo plano, en Wayland después de que el escritorio pregunte una vez.",
+            "alt": "Ajustes de atajos con un campo de tecla para cada acción"
           },
           {
             "id": "threshold",
@@ -950,7 +956,7 @@
             "id": "sound",
             "title": "Sonido claro desde el primer momento",
             "body": "La supresión de ruido con IA, la cancelación de eco y la ganancia automática vienen activadas. Cambia de dispositivo sin reconectarte y prueba el micrófono con tu propia voz.",
-            "alt": "Asistente de configuración, paso del micrófono con prueba de nivel"
+            "alt": "Ajustes, Voz y audio con supresión de ruido, cancelación de eco y volumen automático"
           },
           {
             "id": "noise-levels",
@@ -1077,14 +1083,14 @@
           {
             "id": "watch-party",
             "title": "Ver juntos",
-            "body": "Una watch party de YouTube en el canal de voz: todos ven el mismo vídeo a la vez, cualquiera puede pausar y avanzar, con una lista de reproducción común. Con los contenidos incrustados desactivados en los ajustes de privacidad, no se carga nada de YouTube ni Twitch.",
-            "alt": "Watch party en una ventana flotante con participantes, controles y el siguiente vídeo"
+            "body": "Una watch party de YouTube en el canal de voz: todos ven el mismo vídeo a la vez, cualquiera puede pausar y avanzar, con una lista de reproducción común. Se abre como una vista de cine con el chat debajo y muestra quién está sincronizado o va por detrás; si sales, un minirreproductor se queda arriba en el chat. Con los contenidos incrustados desactivados en los ajustes de privacidad, no se carga nada de YouTube ni de Twitch.",
+            "alt": "Vista de cine de Ver juntos con el reproductor, el chat debajo y quién está viendo"
           },
           {
             "id": "screen-share",
             "title": "Compartir pantalla",
-            "body": "Una pantalla o una ventana para hasta 8 espectadores, en 720p a 30 fotogramas por segundo, en Windows y macOS con el sonido de la app compartida si quieres. Lo inicias desde el botón Apps del chat. Mientras compartes, una barra roja muestra los espectadores y «Terminar», y los demás ven un anillo rojo «LIVE» alrededor de tu foto.",
-            "alt": "Una pantalla compartida en una ventana flotante con pantalla completa y «Dejar de ver»"
+            "body": "Una pantalla o una ventana para hasta 8 espectadores, a 720p y 30 fotogramas por segundo, en Windows y macOS, si quieres con el sonido de la aplicación compartida. Lo inicias con el botón Apps del chat. Los espectadores ven en la columna principal con resolución, tasa de fotogramas y detalles de la transmisión; tú recibes una barra de control arriba en el chat con pausa, sonido, espectadores y detener.",
+            "alt": "Una pantalla compartida en la columna principal con detalles de la transmisión y la lista de espectadores"
           },
           {
             "id": "floating-widgets",
@@ -1131,7 +1137,7 @@
             "id": "privacy",
             "title": "Sin telemetría",
             "body": "En el primer inicio, un breve paso muestra a qué se conecta Mumcord y cuándo. Tu identidad se guarda en el almacenamiento seguro del sistema, y el archivo de diagnóstico no contiene ni contenido del chat ni contraseñas, y solo sale de tu ordenador si lo envías tú.",
-            "alt": "Asistente, paso de privacidad"
+            "alt": "Asistente de configuración, paso de conexiones y contenido"
           },
           {
             "id": "quick-settings",
@@ -1141,8 +1147,8 @@
           },
           {
             "id": "settings-search",
-            "title": "Ajustes con búsqueda",
-            "body": "Encuentra secciones y ajustes concretos, salta a ellos y los resalta. La barra lateral se queda en su sitio mientras te desplazas.",
+            "title": "Ajustes, ordenados y con búsqueda",
+            "body": "Diez grupos con tarjetas de sección. La búsqueda encuentra ajustes por nombre, descripción o sinónimo, salta a ellos y los resalta. Las insignias marcan lo que es Beta, cambiado o recomendado, y Restablecer sección devuelve una sección a sus valores por defecto.",
             "alt": "Búsqueda en los ajustes con resultados para «overlay»"
           },
           {
@@ -1228,7 +1234,11 @@
             "La información del servidor muestra si el servidor anuncia un relay o un Mumbot y avisa cuando el relay ha cambiado.",
             "Susurrar y gritar: habla con personas concretas o con todos en un canal sin moverte allí, con una tecla de mantener para hablar por destino y un banner sobre el chat que muestra con quién hablas.",
             "Actualizaciones en la aplicación: Mumcord busca versiones nuevas, muestra qué ha cambiado y las instala con un clic. Cada descarga se comprueba con su firma y sus sumas de verificación.",
-            "Supresión de ruido en cuatro niveles: Ligero, Estándar, Avanzado (IA, beta, con el modelo RNNoise de 2024) y Desactivado, cada uno explicado con un «?»."
+            "Supresión de ruido en cuatro niveles: Ligero, Estándar, Avanzado (IA, beta, con el modelo RNNoise de 2024) y Desactivado, cada uno explicado con un «?».",
+            "Atajos globales en Ajustes → Atajos: además de push-to-talk, teclas para silenciar, ensordecer, No molestar, entrar y salir de la voz, cambiar de servidor o canal, la columna de miembros, los ajustes rápidos y abrir Mumcord. No hay nada asignado por defecto, y una tecla que ya está en uso se puede mover con un clic.",
+            "Ver juntos abre una vista de cine: el reproductor con el chat del canal debajo, controles sobre la imagen y un panel que muestra quién está sincronizado, cargando o por detrás. Si sales, un minirreproductor se queda arriba en el chat.",
+            "Compartir pantalla pasó a la columna principal, con resolución, tasa de fotogramas y una ventana emergente de Detalles de la transmisión. Quien comparte recibe una barra de control arriba en el chat con pausa, sonido, cambiar de ventana, espectadores y detener.",
+            "«Retirar consentimiento de chat…» en el menú de la persona y en el resumen de mensajes privados: después, esa persona necesita una nueva solicitud de mensaje para que sus mensajes vuelvan a llegarte."
           ]
         },
         {
@@ -1237,9 +1247,13 @@
             "El panel de usuario bajo la lista de canales está rediseñado: mantiene la misma altura en todos los estados para que la lista de arriba nunca salte, muestra una línea de estado clara y tiene una pequeña flecha de menú en cada botón de voz.",
             "Los ajustes rápidos son más tranquilos: una fila por ajuste en grupos claros, explicaciones tras un pequeño ? y el grupo Beta empieza plegado.",
             "Con las vistas previas de enlaces desactivadas, ya no desaparecen en silencio: una línea discreta bajo el mensaje dice qué se ocultó y lleva al ajuste.",
-            "«Ejecutar de nuevo el asistente de configuración» en Ajustes → Acerca de repasa otra vez el micrófono, la privacidad, el aviso de actualizaciones y el modo de hablar. Tu identidad no se toca y solo se guarda lo que cambies.",
+            "«Ejecutar de nuevo el asistente de configuración» en Ajustes → Acerca de repasa otra vez la configuración. Tu identidad no se toca y solo se guarda lo que cambies.",
             "El inspector de paquetes sigue los paquetes nuevos, se pausa cuando te desplazas hacia arriba y solo graba mientras está abierto.",
-            "El árbol de servidores y canales es por defecto un cuarto más ancho, así que caben nombres de canal más largos. Los anchos que fijes tú se conservan."
+            "El árbol de servidores y canales es por defecto un cuarto más ancho, así que caben nombres de canal más largos. Los anchos que fijes tú se conservan.",
+            "Los ajustes y el asistente de configuración están rediseñados: diez grupos con tarjetas de sección, una búsqueda que también encuentra descripciones y sinónimos, insignias de Beta, Cambiado y Recomendado, y Restablecer sección. El asistente ofrece estilos de configuración que rellenan de una vez opciones sensatas, y el idioma se elige en una lista con búsqueda.",
+            "La cabecera del canal está más ordenada: un ojo delante del nombre del canal muestra y alterna si lo sigues, y el nombre abre un menú con Copiar enlace del canal, Contraseña del canal…, Información del canal y Borrar historial del chat….",
+            "El menú de la persona empieza con Enviar mensaje, Unirse a ‹canal› y Añadir amigo; Unirse explica por qué cuando el canal está lleno o bloqueado.",
+            "Un nuevo logotipo de Mumcord: una M formada por dos personas, una con gorra y otra con gorro."
           ]
         },
         {
@@ -1249,7 +1263,9 @@
             "La watch party respeta «Mostrar vistas previas e incrustaciones de enlaces»: con la opción desactivada no se carga nada de YouTube ni de Twitch, y una pista lleva al ajuste.",
             "Linux con PipeWire: las listas de dispositivos muestran cada entrada y salida tal como lo hacen los ajustes de sonido del escritorio, como «System» y «Chat» en una RØDECaster Pro II en lugar de un único «USB Audio».",
             "La ventana de información del servidor ya está traducida a los 24 idiomas.",
-            "Tus propios mensajes ya no reproducen el sonido de mención ni muestran una notificación, y ya no cuentan como sin leer."
+            "El diálogo de la contraseña del canal ya no aparece una y otra vez mientras otra persona está en un canal protegido. Solo aparece cuando intentas entrar tú.",
+            "Con No molestar del escritorio activado, el aviso en el panel de usuario ahora queda tras un pequeño ? en lugar de una línea extra larga.",
+            "La fila del ancho de banda estimado en el panel de calidad de voz ya no se pega a su valor en idiomas largos."
           ]
         }
       ],

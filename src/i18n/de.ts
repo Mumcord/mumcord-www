@@ -233,8 +233,8 @@ export const de = {
     label: "04 — Einmal durchklicken",
     title: "Ein Fenster, das sich vertraut anfühlt.",
     items: [
-      { src: "wizard-1-identity", caption: "Einrichtung in etwa einer Minute: Identität, Mikrofon, Sprechmodus." },
-      { src: "wizard-4-talk-mode", caption: "Sprachaktivierung oder Push-to-Talk, mumble://-Links und Autostart." },
+      { src: "wizard-identity-dark", caption: "Einrichtung in etwa einer Minute: Identität, Mikrofon, Sprechmodus." },
+      { src: "wizard-voice-dark", caption: "Sprachaktivierung oder Push-to-Talk, mumble://-Links und Autostart." },
       { src: "follow-unread-badge", caption: "Kanälen per Auge folgen, Ungelesenes als Zähler." },
       { src: "notification-toast", caption: "Ein kleines Pop-up meldet neue Nachrichten aus anderen Kanälen." },
       { src: "chat-compact", caption: "Kompaktes Chat-Layout: Zeit, Name und Nachricht in einer Zeile." },

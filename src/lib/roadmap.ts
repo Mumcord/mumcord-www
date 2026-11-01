@@ -275,7 +275,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         id: "epic-3",
         tag: "Epic 3",
         title: "Komfort",
-        status: "now",
+        status: "done",
         version: "0.5.0",
         summary: "Feinschliff für Vielnutzer: mehr Ruhe mit Blockieren, Nachrichtenfilter und Benachrichtigungszentrale, mehrere Identitäten, Server-Info, ein neues Design für Assistent, Einstellungen, Watch-Party und Kanalbaum, Audio pro Kanal, ein Low-Latency-Modus zum Musizieren, Updates in der App und ein optionales Relay für direkte Verbindungen.",
         groups: [
@@ -297,7 +297,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Audiodateien im Chat mit eigenem Player: abspielen, spulen und Lautstärke direkt in der Nachricht",
               "Links zu Spotify, Apple Music, Tidal und anderen Musikdiensten werden zur Musikkarte, die erst nach einem Klick über den offiziellen Player des Dienstes spielt",
             ],
-            done: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+            done: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
             mockups: [
               { shot: "epic3-64-hotkeys-settings-dark", issue: 64, caption: "Globale Tastenkürzel in den Einstellungen" },
               { shot: "epic3-65-tray-menu-and-icon-states-dark", issue: 65, caption: "Volles Tray-Menü und Symbolzustände" },
@@ -328,7 +328,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Schnelleinstellungen überarbeitet",
               "Das Nutzer-Panel unten links neu gestaltet",
             ],
-            done: [4, 5, 6, 7, 8, 9],
+            done: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
             mockups: [
               { shot: "wizard-1-welcome-dark", issue: 159, caption: "Der neue Einrichtungsassistent" },
               { shot: "wizard-0-presets-dark", issue: 159, caption: "Voreinstellungen im Assistenten" },
@@ -423,7 +423,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         id: "epic-3.1",
         tag: "Epic 3.1",
         title: "Plugins",
-        status: "planned",
+        status: "now",
         version: "0.6.0",
         summary: "Mumcord lässt sich mit kleinen, sicheren Plugins erweitern: aus einem offiziellen Verzeichnis in den Einstellungen installiert, ohne Änderung am Server und ohne Backend von Mumcord. Das erste Plugin sind die Echolings.",
         groups: [
@@ -824,7 +824,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         id: "epic-3",
         tag: "Epic 3",
         title: "Comfort",
-        status: "now",
+        status: "done",
         version: "0.5.0",
         summary: "Polish for heavy users: more peace with blocking, a message filter and a notification centre, several identities, server info, a fresh design for the wizard, settings, watch party and channel tree, audio per channel, a low-latency mode for making music, updates in the app and an optional relay for direct connections.",
         groups: [
@@ -846,7 +846,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Audio files in the chat with a player of their own: play, seek and set the volume right in the message",
               "Links to Spotify, Apple Music, Tidal and other music services become a music card that plays through the service's official player, only after a click",
             ],
-            done: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+            done: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
             mockups: [
               { shot: "epic3-64-hotkeys-settings-dark", issue: 64, caption: "Global shortcuts in the settings" },
               { shot: "epic3-65-tray-menu-and-icon-states-dark", issue: 65, caption: "Full tray menu and icon states" },
@@ -877,7 +877,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Quick settings overhauled",
               "The user panel at the bottom left redesigned",
             ],
-            done: [4, 5, 6, 7, 8, 9],
+            done: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
             mockups: [
               { shot: "wizard-1-welcome-dark", issue: 159, caption: "The new setup wizard" },
               { shot: "wizard-0-presets-dark", issue: 159, caption: "Presets in the wizard" },
@@ -972,7 +972,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         id: "epic-3.1",
         tag: "Epic 3.1",
         title: "Plugins",
-        status: "planned",
+        status: "now",
         version: "0.6.0",
         summary: "Mumcord can be extended with small, safe plugins: installed from an official repository in Settings, with no change to the server and no Mumcord backend. The first plugin is Echolings.",
         groups: [

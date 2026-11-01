@@ -282,11 +282,11 @@
       "title": "Ett fönster som känns bekant.",
       "items": [
         {
-          "src": "wizard-1-identity",
+          "src": "wizard-identity-dark",
           "caption": "Klart på ungefär en minut: identitet, mikrofon, pratläge."
         },
         {
-          "src": "wizard-4-talk-mode",
+          "src": "wizard-voice-dark",
           "caption": "Röstaktivering eller push-to-talk, länkar med mumble:// och start vid inloggning."
         },
         {
@@ -609,9 +609,9 @@
         "features": [
           {
             "id": "setup",
-            "title": "Klart på en minut",
-            "body": "Vid första starten frågar Mumcord bara efter tre saker: ditt namn och din identitet, mikrofonen med ett nivåtest och hur du vill prata. Befintliga Mumble-identiteter kan importeras som PKCS#12.",
-            "alt": "Installationsguiden, steget identitet"
+            "title": "Ställ in det på ditt sätt",
+            "body": "Vid första starten guidar en guide dig genom identitet, röst och pratläge. En inställningsstil som balanserad, allt på eller maximal integritet fyller i resten av valen på en gång, och Anpassad går igenom var och en. Befintliga Mumble-identiteter kan importeras som PKCS#12.",
+            "alt": "Installationsguiden, steget för inställningsstil med fyra förval"
           },
           {
             "id": "servers",
@@ -681,7 +681,7 @@
           {
             "id": "setup-again",
             "title": "Kör installationsguiden igen",
-            "body": "Inställningar → Om går igenom installationen en gång till så att du kan se över mikrofon, integritet, uppdateringskontroll och pratläge. Identitetssteget hoppas över, så inget om ditt certifikat kan ändras av misstag, och bara värden du faktiskt ändrat sparas.",
+            "body": "Inställningar → Om kör installationsguiden en gång till så att du kan se över dina val. Identitetssteget hoppas över, så inget om ditt certifikat kan ändras av misstag, och bara värden som du faktiskt ändrat sparas.",
             "alt": "Installationsguiden körd igen från inställningarna, med identitetssteget markerat som överhoppat"
           },
           {
@@ -938,7 +938,13 @@
             "id": "push-to-talk",
             "title": "Push-to-talk överallt",
             "body": "Tangenter och musknappar, även med ett spel i förgrunden. På Wayland via portalen för kortkommandon eller i ett kompatibilitetsläge.",
-            "alt": "Installationsguiden, steget pratläge"
+            "alt": "Installationsguiden, röststeget med mikrofon, högtalare och pratläge"
+          },
+          {
+            "id": "hotkeys",
+            "title": "Globala kortkommandon",
+            "body": "Vid sidan av push-to-talk finns tangenter för mikrofon av, ljud av, Stör ej, att gå med i och lämna röst, byta server eller kanal, medlemskolumnen och snabbinställningarna. Inget är satt som standard, och en tangent som redan är upptagen visar konflikten och flyttas med ett klick. De fungerar i bakgrunden, på Wayland sedan skrivbordet frågat en gång.",
+            "alt": "Kortkommandoinställningar med ett tangentfält för varje åtgärd"
           },
           {
             "id": "threshold",
@@ -950,7 +956,7 @@
             "id": "sound",
             "title": "Klart ljud direkt",
             "body": "AI-brusreducering, ekoeliminering och automatisk förstärkning är på. Byt enheter utan att ansluta på nytt, testa mikrofonen med din egen röst.",
-            "alt": "Installationsguiden, mikrofonsteget med nivåtest"
+            "alt": "Inställningar, Röst och ljud med brusreducering, ekoeliminering och automatisk volym"
           },
           {
             "id": "noise-levels",
@@ -1077,14 +1083,14 @@
           {
             "id": "watch-party",
             "title": "Titta tillsammans",
-            "body": "En YouTube-watch-party i röstkanalen: alla ser samma video samtidigt, alla kan pausa och spola, med en gemensam spellista. Med inbäddningar avstängda i integritetsinställningarna laddas inget från YouTube eller Twitch.",
-            "alt": "Watch-party i ett flytande fönster med deltagare, kontroller och nästa video"
+            "body": "En YouTube-watch-party i röstkanalen: alla ser samma video samtidigt, alla kan pausa och spola, med en gemensam spellista. Den öppnas som en biovy med chatten under och visar vem som är i synk eller ligger efter; lämnar du den ligger en minispelare kvar högst upp i chatten. Med inbäddningar avstängda i integritetsinställningarna laddas inget från YouTube eller Twitch.",
+            "alt": "Biovy för att titta tillsammans med spelaren, chatten under och vilka som tittar"
           },
           {
             "id": "screen-share",
             "title": "Skärmdelning",
-            "body": "En skärm eller ett fönster för upp till 8 tittare, i 720p och 30 bilder per sekund, på Windows och macOS med ljudet från den delade appen om du vill. Du startar den från Appar-knappen i chatten. Medan du delar visar en röd list tittarna och ”Avsluta”, och andra ser en röd ring med ”LIVE” runt din bild.",
-            "alt": "En delad skärm i ett flytande fönster med helskärm och ”Sluta titta”"
+            "body": "En skärm eller ett fönster för upp till 8 tittare, i 720p och 30 bilder per sekund, på Windows och macOS med ljudet från den delade appen om du vill. Du startar den från Appar-knappen i chatten. Tittarna ser den i huvudkolumnen med upplösning, bildfrekvens och strömdetaljer; du får en kontrollist högst upp i chatten med paus, ljud, tittare och stopp.",
+            "alt": "En delad skärm i huvudkolumnen med strömdetaljer och listan över tittare"
           },
           {
             "id": "floating-widgets",
@@ -1131,7 +1137,7 @@
             "id": "privacy",
             "title": "Ingen telemetri",
             "body": "Vid första starten visar ett kort steg vad Mumcord ansluter till och när. Din identitet ligger i systemets säkra lagring, och diagnostikfilen innehåller inget chattinnehåll eller lösenord och lämnar bara din dator om du själv skickar den.",
-            "alt": "Guiden, steget integritet"
+            "alt": "Installationsguiden, steget för anslutningar och innehåll"
           },
           {
             "id": "quick-settings",
@@ -1141,8 +1147,8 @@
           },
           {
             "id": "settings-search",
-            "title": "Inställningar med sökning",
-            "body": "Hittar sektioner och enskilda inställningar, hoppar dit och markerar dem. Sidofältet stannar på plats medan du scrollar.",
+            "title": "Inställningar, sorterade och sökbara",
+            "body": "Tio grupper med sektionskort. Sökningen hittar inställningar via namn, beskrivning eller synonym, hoppar dit och markerar dem. Märken visar vad som är Beta, ändrat eller rekommenderat, och Återställ sektionen sätter tillbaka en sektion till standardvärdena.",
             "alt": "Sökning i inställningarna med resultat för ”overlay”"
           },
           {
@@ -1228,7 +1234,11 @@
             "Serverinfo visar om servern annonserar ett relay eller en Mumbot och varnar när relayet har ändrats.",
             "Viska och ropa: prata med utvalda personer eller med alla i en kanal utan att flytta dit, med en håll-för-att-prata-tangent per mål och en banderoll ovanför chatten som visar vem du pratar med.",
             "Uppdateringar i appen: Mumcord söker efter nya versioner, visar vad som har ändrats och installerar dem med ett klick. Varje nedladdning kontrolleras mot sin signatur och sina kontrollsummor.",
-            "Brusreducering i fyra nivåer: Lätt, Standard, Avancerad (AI, beta, med 2024 års RNNoise-modell) och Av, var och en förklarad med ett „?”."
+            "Brusreducering i fyra nivåer: Lätt, Standard, Avancerad (AI, beta, med 2024 års RNNoise-modell) och Av, var och en förklarad med ett „?”.",
+            "Globala kortkommandon i Inställningar → Kortkommandon: vid sidan av push-to-talk tangenter för mikrofon av, ljud av, Stör ej, att gå med i och lämna röst, byta server eller kanal, medlemskolumnen, snabbinställningarna och att öppna Mumcord. Inget är satt som standard, och en tangent som redan är upptagen kan flyttas med ett klick.",
+            "Titta tillsammans öppnar en biovy: spelaren med kanalens chatt under, kontroller på bilden och en panel som visar vem som är i synk, buffrar eller ligger efter. Lämnar du den ligger en minispelare kvar högst upp i chatten.",
+            "Skärmdelningen har flyttat till huvudkolumnen, med upplösning, bildfrekvens och en popover för Strömdetaljer. Den som delar får en kontrollist högst upp i chatten med paus, ljud, byt fönster, tittare och stopp.",
+            "”Återkalla chattsamtycke …” i personmenyn och i översikten över privata meddelanden: därefter behöver personen en ny meddelandeförfrågan innan hens meddelanden når dig igen."
           ]
         },
         {
@@ -1237,9 +1247,13 @@
             "Användarpanelen under kanallistan har gjorts om: den behåller samma höjd i alla lägen så att listan ovanför aldrig hoppar, visar en tydlig statusrad och har en liten menypil på varje röstknapp.",
             "Snabbinställningarna är lugnare: en rad per inställning i tydliga grupper, förklaringar bakom ett litet ?, och Beta-gruppen startar ihopfälld.",
             "När länkförhandsvisningar är avstängda försvinner de inte längre tyst: en diskret rad under meddelandet säger vad som doldes och leder till inställningen.",
-            "”Kör installationsguiden igen” under Inställningar → Om går igenom mikrofon, integritet, uppdateringstips och talsätt ännu en gång. Din identitet förblir orörd, och bara det du ändrar sparas.",
+            "”Kör installationsguiden igen” i Inställningar → Om går igenom installationen en gång till. Din identitet förblir orörd, och bara det du ändrar sparas.",
             "Paketinspektören följer nya paket, pausar när du scrollar uppåt och spelar bara in medan den är öppen.",
-            "Server- och kanalträdet är som standard en fjärdedel bredare, så längre kanalnamn ryms. Bredder du själv ställt in finns kvar."
+            "Server- och kanalträdet är som standard en fjärdedel bredare, så längre kanalnamn ryms. Bredder du själv ställt in finns kvar.",
+            "Inställningarna och installationsguiden har fått ny design: tio grupper med sektionskort, en sökning som även hittar beskrivningar och synonymer, märken för Beta, Ändrad och Rekommenderad samt Återställ sektionen. Guiden erbjuder inställningsstilar som fyller i förnuftiga val på en gång, och språket väljs från en sökbar lista.",
+            "Kanalhuvudet är snyggare: ett öga framför kanalnamnet visar och växlar om du följer kanalen, och namnet öppnar en meny med Kopiera kanallänk, Kanallösenord …, Kanalinfo och Rensa chatthistorik ….",
+            "Personmenyn börjar med Skicka meddelande, Gå med i ‹channel› och Lägg till vän; Gå med säger varför när kanalen är full eller låst.",
+            "En ny Mumcord-logotyp: ett M format av två personer, en med keps och en med mössa."
           ]
         },
         {
@@ -1249,7 +1263,9 @@
             "Watch party följer ”Visa länkförhandsvisningar och inbäddningar”: när det är av laddas inget från YouTube eller Twitch, och ett tips leder till inställningen.",
             "Linux med PipeWire: enhetslistorna visar varje ingång och utgång på samma sätt som skrivbordets ljudinställningar, till exempel ”System” och ”Chat” på en RØDECaster Pro II i stället för ett enda ”USB Audio”.",
             "Serverinfofönstret är nu översatt till alla 24 språk.",
-            "Dina egna meddelanden spelar inte längre omnämnandeljudet, visar ingen notis och räknas inte längre som olästa."
+            "Dialogrutan för kanallösenord dyker inte längre upp om och om igen medan någon annan är i en skyddad kanal. Den visas bara när du själv försöker gå med.",
+            "Med skrivbordets Stör ej på sitter tipset i användarpanelen nu bakom ett litet ? i stället för en lång extra rad.",
+            "Raden för uppskattad bandbredd i panelen för röstkvalitet krockar inte längre med sitt värde på långa språk."
           ]
         }
       ],

@@ -282,11 +282,11 @@
       "title": "Een venster dat vertrouwd aanvoelt.",
       "items": [
         {
-          "src": "wizard-1-identity",
+          "src": "wizard-identity-dark",
           "caption": "In ongeveer een minuut ingesteld: identiteit, microfoon, spreekmodus."
         },
         {
-          "src": "wizard-4-talk-mode",
+          "src": "wizard-voice-dark",
           "caption": "Spraakactivering of push-to-talk, links met mumble:// en starten bij inloggen."
         },
         {
@@ -609,9 +609,9 @@
         "features": [
           {
             "id": "setup",
-            "title": "Ingesteld in een minuut",
-            "body": "Bij de eerste start vraagt Mumcord maar drie dingen: je naam en identiteit, de microfoon met een niveautest en hoe je wilt praten. Bestaande Mumble-identiteiten kun je importeren als PKCS#12.",
-            "alt": "Installatiewizard, stap identiteit"
+            "title": "Stel het in op jouw manier",
+            "body": "Bij de eerste start loodst een wizard je door identiteit, spraak en praatmodus. Een installatiestijl zoals gebalanceerd, alles aan of maximale privacy vult in één keer de overige keuzes in, en Aangepast loopt ze stuk voor stuk langs. Bestaande Mumble-identiteiten kunnen als PKCS#12 worden geïmporteerd.",
+            "alt": "Installatiewizard, stap installatiestijl met vier voorinstellingen"
           },
           {
             "id": "servers",
@@ -681,7 +681,7 @@
           {
             "id": "setup-again",
             "title": "De installatiewizard opnieuw doorlopen",
-            "body": "Instellingen → Over doorloopt de installatie nog eens om microfoon, privacy, updatecontrole en spreekmodus na te lopen. De identiteitsstap wordt overgeslagen, dus aan je certificaat kan niet per ongeluk iets veranderen, en alleen waarden die je echt hebt gewijzigd worden opgeslagen.",
+            "body": "Instellingen → Over start de installatiewizard nog een keer om je keuzes te bekijken. De identiteitsstap wordt overgeslagen, zodat er per ongeluk niets aan je certificaat kan veranderen, en alleen waarden die je echt hebt gewijzigd worden opgeslagen.",
             "alt": "Installatiewizard opnieuw gestart vanuit de instellingen, met de identiteitsstap als overgeslagen gemarkeerd"
           },
           {
@@ -938,7 +938,13 @@
             "id": "push-to-talk",
             "title": "Push-to-talk overal",
             "body": "Toetsen en muisknoppen, ook met een game op de voorgrond. Op Wayland via de shortcuts-portal of in een compatibiliteitsmodus.",
-            "alt": "Installatiewizard, stap spreekmodus"
+            "alt": "Installatiewizard, spraakstap met microfoon, luidsprekers en praatmodus"
+          },
+          {
+            "id": "hotkeys",
+            "title": "Globale sneltoetsen",
+            "body": "Naast push-to-talk toetsen voor dempen, doofzetten, Niet storen, spraak betreden en verlaten, van server of kanaal wisselen, de ledenkolom en de snelle instellingen. Standaard is er niets ingesteld, en een toets die al bezet is toont het conflict en verhuist met één klik. Ze werken op de achtergrond, op Wayland nadat het bureaublad één keer vraagt.",
+            "alt": "Instellingen voor sneltoetsen met een toetsveld voor elke actie"
           },
           {
             "id": "threshold",
@@ -950,7 +956,7 @@
             "id": "sound",
             "title": "Helder geluid, meteen",
             "body": "AI-ruisonderdrukking, echo-onderdrukking en automatische versterking staan aan. Wissel van apparaat zonder opnieuw te verbinden, test je microfoon met je eigen stem.",
-            "alt": "Installatiewizard, stap microfoon met niveautest"
+            "alt": "Instellingen, Spraak en audio met ruisonderdrukking, echo-onderdrukking en automatisch volume"
           },
           {
             "id": "noise-levels",
@@ -1077,14 +1083,14 @@
           {
             "id": "watch-party",
             "title": "Samen kijken",
-            "body": "Een YouTube-watchparty in het spraakkanaal: iedereen ziet tegelijk dezelfde video, iedereen kan pauzeren en spoelen, met een gedeelde playlist. Staan insluitingen uit in de privacyinstellingen, dan wordt er niets van YouTube of Twitch geladen.",
-            "alt": "Watchparty in een zwevend venster met deelnemers, bediening en de volgende video"
+            "body": "Een YouTube-watchparty in het spraakkanaal: iedereen ziet tegelijk dezelfde video, iedereen kan pauzeren en spoelen, met een gedeelde playlist. Hij opent als bioscoopweergave met de chat eronder en laat zien wie synchroon loopt of achterloopt; verlaat je hem, dan blijft een miniplayer bovenaan de chat staan. Staan insluitingen uit in de privacy-instellingen, dan wordt er niets van YouTube of Twitch geladen.",
+            "alt": "Bioscoopweergave van Samen kijken met de speler, de chat eronder en wie er kijkt"
           },
           {
             "id": "screen-share",
             "title": "Scherm delen",
-            "body": "Een scherm of venster voor maximaal 8 kijkers, in 720p met 30 beelden per seconde, op Windows en macOS desgewenst met het geluid van de gedeelde app. Je start het via de Apps-knop in de chat. Terwijl je deelt, toont een rode balk de kijkers en „Stoppen”, en anderen zien een rode „LIVE”-ring om je afbeelding.",
-            "alt": "Een gedeeld scherm in een zwevend venster met volledig scherm en „Stoppen met kijken”"
+            "body": "Een scherm of een venster voor maximaal 8 kijkers, op 720p en 30 beelden per seconde, op Windows en macOS desgewenst met het geluid van de gedeelde app. Je start het met de knop Apps in de chat. Kijkers kijken in de hoofdkolom met resolutie, framerate en streamdetails; jij krijgt bovenaan de chat een bedieningsbalk met pauze, geluid, kijkers en stoppen.",
+            "alt": "Een gedeeld scherm in de hoofdkolom met streamdetails en de lijst met kijkers"
           },
           {
             "id": "floating-widgets",
@@ -1131,7 +1137,7 @@
             "id": "privacy",
             "title": "Geen telemetrie",
             "body": "Bij de eerste start laat een korte stap zien waarmee Mumcord verbinding maakt en wanneer. Je identiteit staat in de beveiligde opslag van het systeem, en het diagnosebestand bevat geen chatinhoud of wachtwoorden en verlaat je computer alleen als je het zelf verstuurt.",
-            "alt": "Wizard, privacystap"
+            "alt": "Installatiewizard, stap verbindingen en inhoud"
           },
           {
             "id": "quick-settings",
@@ -1141,8 +1147,8 @@
           },
           {
             "id": "settings-search",
-            "title": "Instellingen met zoekfunctie",
-            "body": "Vindt secties en losse instellingen, springt ernaartoe en markeert ze. De zijbalk blijft staan terwijl je scrolt.",
+            "title": "Instellingen, geordend en doorzoekbaar",
+            "body": "Tien groepen met sectiekaarten. De zoekfunctie vindt instellingen op naam, beschrijving of synoniem, springt erheen en markeert ze. Badges geven aan wat Beta, gewijzigd of aanbevolen is, en Sectie resetten zet een sectie terug naar de standaardwaarden.",
             "alt": "Zoeken in de instellingen met resultaten voor „overlay”"
           },
           {
@@ -1228,7 +1234,11 @@
             "Serverinfo toont of de server een relay of een Mumbot aankondigt en waarschuwt wanneer het relay is veranderd.",
             "Fluisteren en roepen: praat met gekozen mensen of met iedereen in een kanaal zonder erheen te gaan, met een indrukken-om-te-praten-toets per doel en een banner boven de chat die toont met wie je praat.",
             "Updates in de app: Mumcord zoekt naar nieuwe versies, laat zien wat er is veranderd en installeert ze met één klik. Elke download wordt gecontroleerd op zijn handtekening en checksums.",
-            "Ruisonderdrukking in vier niveaus: Licht, Standaard, Geavanceerd (AI, bèta, met het RNNoise-model uit 2024) en Uit, elk uitgelegd met een „?”."
+            "Ruisonderdrukking in vier niveaus: Licht, Standaard, Geavanceerd (AI, bèta, met het RNNoise-model uit 2024) en Uit, elk uitgelegd met een „?”.",
+            "Globale sneltoetsen in Instellingen → Sneltoetsen: naast push-to-talk toetsen voor dempen, doofzetten, Niet storen, spraak betreden en verlaten, van server of kanaal wisselen, de ledenkolom, de snelle instellingen en Mumcord openen. Standaard is er niets ingesteld, en een toets die al bezet is kan met één klik worden verplaatst.",
+            "Samen kijken opent een bioscoopweergave: de speler met de kanaalchat eronder, bediening op het beeld en een paneel dat laat zien wie synchroon loopt, buffert of achterloopt. Verlaat je hem, dan blijft een miniplayer bovenaan de chat staan.",
+            "Scherm delen is verhuisd naar de hoofdkolom, met resolutie, framerate en een popover Streamdetails. Wie deelt krijgt bovenaan de chat een bedieningsbalk met pauze, geluid, venster wisselen, kijkers en stoppen.",
+            "„Chattoestemming intrekken…” in het personenmenu en in het overzicht van privéberichten: daarna heeft die persoon een nieuw berichtverzoek nodig voordat zijn of haar berichten je weer bereiken."
           ]
         },
         {
@@ -1237,9 +1247,13 @@
             "Het gebruikerspaneel onder de kanaallijst is opnieuw ontworpen: het houdt in elke status dezelfde hoogte, zodat de lijst erboven nooit verspringt, toont één duidelijke statusregel en heeft een klein menupijltje op elke spraakknop.",
             "De snelle instellingen zijn rustiger: één rij per instelling in duidelijke groepen, uitleg achter een klein ?, en de groep Beta begint ingeklapt.",
             "Met linkvoorbeelden uit verdwijnen ze niet meer stilletjes: een rustige regel onder het bericht zegt wat er is verborgen en leidt naar de instelling.",
-            "„Installatiewizard opnieuw uitvoeren” in Instellingen → Over loopt microfoon, privacy, updatetip en praatmodus nog eens door. Je identiteit blijft ongemoeid en alleen wat je wijzigt wordt opgeslagen.",
+            "„Installatiewizard opnieuw uitvoeren” in Instellingen → Over loopt de installatie nog een keer door. Je identiteit blijft onaangeroerd en alleen wat je wijzigt wordt opgeslagen.",
             "De pakketinspecteur volgt nieuwe pakketten, pauzeert als je omhoog scrolt en neemt alleen op terwijl hij open is.",
-            "De server- en kanaalboom is standaard een kwart breder, zodat langere kanaalnamen passen. Breedtes die je zelf instelt blijven behouden."
+            "De server- en kanaalboom is standaard een kwart breder, zodat langere kanaalnamen passen. Breedtes die je zelf instelt blijven behouden.",
+            "Instellingen en de installatiewizard zijn opnieuw ontworpen: tien groepen met sectiekaarten, een zoekfunctie die ook beschrijvingen en synoniemen vindt, badges voor Beta, Gewijzigd en Aanbevolen, en Sectie resetten. De wizard biedt installatiestijlen die in één keer verstandige keuzes invullen, en de taal kies je uit een doorzoekbare lijst.",
+            "De kanaalkop is opgeruimder: een oog voor de kanaalnaam toont en schakelt of je het kanaal volgt, en de naam opent een menu met Kanaallink kopiëren, Kanaalwachtwoord…, Kanaalinfo en Chatgeschiedenis wissen….",
+            "Het personenmenu begint met Bericht sturen, ‹kanaal› betreden en Vriend toevoegen; Betreden zegt waarom het niet kan als het kanaal vol of vergrendeld is.",
+            "Een nieuw Mumcord-logo: een M gevormd door twee mensen, een met een pet en een met een muts."
           ]
         },
         {
@@ -1249,7 +1263,9 @@
             "De watchparty respecteert „Linkvoorbeelden en insluitingen tonen”: als die uit staat, wordt er niets van YouTube of Twitch geladen en wijst een hint naar de instelling.",
             "Linux met PipeWire: de apparaatlijsten tonen elke ingang en uitgang zoals de geluidsinstellingen van de desktop, zoals „System” en „Chat” op een RØDECaster Pro II in plaats van één „USB Audio”.",
             "Het venster met serverinfo is nu vertaald in alle 24 talen.",
-            "Je eigen berichten spelen niet langer het vermeldingsgeluid af, tonen geen melding meer en tellen niet meer als ongelezen."
+            "Het kanaalwachtwoorddialoog verschijnt niet meer steeds opnieuw terwijl iemand anders in een beveiligd kanaal zit. Het verschijnt alleen wanneer je zelf probeert te betreden.",
+            "Met Niet storen van het bureaublad aan staat de hint in het gebruikerspaneel nu achter een klein ? in plaats van een lange extra regel.",
+            "De rij met de geschatte bandbreedte in het spraakkwaliteitspaneel loopt in lange talen niet meer in zijn waarde over."
           ]
         }
       ],

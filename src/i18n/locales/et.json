@@ -282,11 +282,11 @@
       "title": "Aken, mis tundub tuttav.",
       "items": [
         {
-          "src": "wizard-1-identity",
+          "src": "wizard-identity-dark",
           "caption": "Seadistatud umbes minutiga: identiteet, mikrofon, rääkimisrežiim."
         },
         {
-          "src": "wizard-4-talk-mode",
+          "src": "wizard-voice-dark",
           "caption": "Häälaktivatsioon või push-to-talk, mumble:// lingid ja käivitus sisselogimisel."
         },
         {
@@ -609,9 +609,9 @@
         "features": [
           {
             "id": "setup",
-            "title": "Seadistatud minutiga",
-            "body": "Esimesel käivitusel küsib Mumcord ainult kolme asja: sinu nime ja identiteeti, mikrofoni koos tasemetestiga ja seda, kuidas sa rääkida tahad. Olemasolevaid Mumble'i identiteete saab importida PKCS#12-na.",
-            "alt": "Seadistusviisard, identiteedi samm"
+            "title": "Seadista omal moel",
+            "body": "Esimesel käivitusel juhatab viisard sind läbi identiteedi, hääle ja rääkimisrežiimi. Seadistusstiil, nagu tasakaalustatud, kõik sees või maksimaalne privaatsus, täidab ülejäänud valikud korraga, ja Kohandatud käib need ükshaaval läbi. Olemasolevaid Mumble'i identiteete saab importida PKCS#12-na.",
+            "alt": "Seadistusviisard, seadistusstiili samm nelja eelseadistusega"
           },
           {
             "id": "servers",
@@ -681,7 +681,7 @@
           {
             "id": "setup-again",
             "title": "Käivita seadistusviisard uuesti",
-            "body": "Seaded → Teave läbib seadistuse veel kord, et üle vaadata mikrofon, privaatsus, uuenduste kontroll ja rääkimisviis. Identiteedi samm jäetakse vahele, nii et sinu sertifikaadiga ei saa kogemata midagi juhtuda, ja salvestatakse ainult väärtused, mida sa tegelikult muutsid.",
+            "body": "Seaded → Teave käivitab seadistusviisardi veel kord, et su valikuid üle vaadata. Identiteedi samm jäetakse vahele, nii et sertifikaadiga ei saa kogemata midagi juhtuda, ja salvestatakse ainult väärtused, mida tegelikult muutsid.",
             "alt": "Seadetest uuesti käivitatud seadistusviisard, kus identiteedi samm on märgitud vahelejäetuks"
           },
           {
@@ -938,7 +938,13 @@
             "id": "push-to-talk",
             "title": "Push-to-talk igal pool",
             "body": "Klahvid ja hiirenupud, isegi kui mäng on esiplaanil. Waylandis otseteede portaali kaudu või ühilduvusrežiimis.",
-            "alt": "Seadistusviisard, rääkimisrežiimi samm"
+            "alt": "Seadistusviisard, hääle samm mikrofoni, kõlarite ja rääkimisrežiimiga"
+          },
+          {
+            "id": "hotkeys",
+            "title": "Globaalsed kiirklahvid",
+            "body": "Lisaks push-to-talkile klahvid vaigistamiseks, kurtimiseks, režiimiks Ära sega, häälega liitumiseks ja lahkumiseks, serveri või kanali vahetamiseks, liikmeveeru ja kiirseadete jaoks. Vaikimisi pole midagi määratud, ja juba hõivatud klahv näitab konflikti ning liigub ühe klõpsuga. Need töötavad taustal, Waylandis pärast seda, kui töölaud on korra küsinud.",
+            "alt": "Kiirklahvide seaded, igale toimingule oma klahviväli"
           },
           {
             "id": "threshold",
@@ -950,7 +956,7 @@
             "id": "sound",
             "title": "Selge heli kohe karbist",
             "body": "Tehisintellektil põhinev mürasummutus, kajasummutus ja automaatne võimendus on sees. Vaheta seadmeid ilma uuesti ühendumata, testi mikrofoni oma häälega.",
-            "alt": "Seadistusviisard, mikrofoni samm tasemetestiga"
+            "alt": "Seaded, Hääl ja heli koos müravaigistuse, kaja tühistamise ja automaatse helitugevusega"
           },
           {
             "id": "noise-levels",
@@ -1077,14 +1083,14 @@
           {
             "id": "watch-party",
             "title": "Koos vaatamine",
-            "body": "YouTube’i watch party häälkanalis: kõik näevad sama videot korraga, igaüks saab peatada ja kerida, ühise esitusloendiga. Kui manustatud sisu on privaatsusseadetes välja lülitatud, ei laadita YouTube'ist ega Twitchist midagi.",
-            "alt": "Watch party ujuvas aknas osalejate, juhtnuppude ja järgmise videoga"
+            "body": "YouTube'i watch party häälkanalis: kõik näevad sama videot korraga, igaüks saab peatada ja kerida, ühise esitusloendiga. See avaneb kinovaatena, vestlus all, ning näitab, kes on sünkroonis või maha jäänud; kui sealt lahkud, jääb vestluse ülaossa miniesitaja. Kui manustatud sisu on privaatsusseadetes välja lülitatud, ei laadita YouTube'ist ega Twitchist midagi.",
+            "alt": "Koos vaatamise kinovaade koos esitaja, all oleva vestluse ja vaatajatega"
           },
           {
             "id": "screen-share",
             "title": "Ekraani jagamine",
-            "body": "Ekraan või aken kuni 8 vaatajale, 720p ja 30 kaadrit sekundis, Windowsis ja macOS-is soovi korral jagatud rakenduse heliga. Käivitad selle vestluse Rakendused-nupust. Jagamise ajal näitab punane riba vaatajaid ja nuppu „Lõpeta“ ning teised näevad sinu pildi ümber punast „LIVE“ rõngast.",
-            "alt": "Jagatud ekraan ujuvas aknas täisekraani ja valikuga „Lõpeta vaatamine“"
+            "body": "Ekraan või aken kuni 8 vaatajale, 720p ja 30 kaadrit sekundis, Windowsis ja macOS-is soovi korral jagatud rakenduse heliga. Käivitad selle vestluse nupust Rakendused. Vaatajad vaatavad põhiveerus koos eraldusvõime, kaadrisageduse ja voo üksikasjadega; sinul on vestluse ülaosas juhtriba koos pausi, heli, vaatajate ja lõpetamisega.",
+            "alt": "Jagatud ekraan põhiveerus koos voo üksikasjade ja vaatajate nimekirjaga"
           },
           {
             "id": "floating-widgets",
@@ -1131,7 +1137,7 @@
             "id": "privacy",
             "title": "Ilma telemeetriata",
             "body": "Esimesel käivitusel näitab lühike samm, millega Mumcord ühendub ja millal. Sinu identiteet asub süsteemi turvalises hoidlas ning diagnostikafail ei sisalda vestluste sisu ega paroole ja lahkub sinu arvutist ainult siis, kui sa selle ise saadad.",
-            "alt": "Viisard, privaatsuse samm"
+            "alt": "Seadistusviisard, ühenduste ja sisu samm"
           },
           {
             "id": "quick-settings",
@@ -1141,8 +1147,8 @@
           },
           {
             "id": "settings-search",
-            "title": "Seaded koos otsinguga",
-            "body": "Leiab jaotised ja üksikud seaded, hüppab sinna ja tõstab need esile. Külgriba jääb kerimise ajal paigale.",
+            "title": "Seaded, sorteeritud ja otsitavad",
+            "body": "Kümme rühma koos jaotisekaartidega. Otsing leiab seaded nime, kirjelduse või sünonüümi järgi, hüppab sinna ja tõstab need esile. Märgid näitavad, mis on Beeta, muudetud või soovitatud, ja Lähtesta jaotis toob jaotise tagasi vaikeväärtustele.",
             "alt": "Seadete otsing tulemustega päringule „ülekate“"
           },
           {
@@ -1228,7 +1234,11 @@
             "Serveri teave näitab, kas server teatab releest või Mumbotist, ja hoiatab, kui relee on muutunud.",
             "Sosistamine ja hõikamine: räägi valitud inimestega või kõigiga kanalis, sinna minemata, igale sihtmärgile oma hoia-all-rääkimise klahv ja vestluse kohal riba, mis näitab, kellega räägid.",
             "Uuendused rakenduses: Mumcord kontrollib uusi versioone, näitab, mis on muutunud, ja paigaldab need ühe klõpsuga. Iga allalaadimist kontrollitakse selle allkirja ja kontrollsummade vastu.",
-            "Mürasummutus nelja tasemega: Kerge, Tavaline, Täpsem (AI, beeta, 2024. aasta RNNoise’i mudeliga) ja Väljas, igaüht selgitab „?”."
+            "Mürasummutus nelja tasemega: Kerge, Tavaline, Täpsem (AI, beeta, 2024. aasta RNNoise’i mudeliga) ja Väljas, igaüht selgitab „?”.",
+            "Globaalsed kiirklahvid asukohas Seaded → Kiirklahvid: lisaks push-to-talkile klahvid vaigistamiseks, kurtimiseks, režiimiks Ära sega, häälega liitumiseks ja lahkumiseks, serveri või kanali vahetamiseks, liikmeveeru, kiirseadete ja Mumcordi avamise jaoks. Vaikimisi pole midagi määratud, ja juba hõivatud klahvi saab ühe klõpsuga teisaldada.",
+            "Koos vaatamine avab kinovaate: esitaja ja kanali vestlus all, juhtnupud pildil ning paneel, mis näitab, kes on sünkroonis, puhverdab või on maha jäänud. Kui sealt lahkud, jääb vestluse ülaossa miniesitaja.",
+            "Ekraanijagamine kolis põhiveergu, koos eraldusvõime, kaadrisageduse ja hüpikaknaga Voo üksikasjad. Jagajal on vestluse ülaosas juhtriba koos pausi, heli, akna vahetamise, vaatajate ja lõpetamisega.",
+            "„Tühista vestluse nõusolek…“ inimese menüüs ja privaatsõnumite ülevaates: pärast seda vajab see inimene uut sõnumitaotlust, enne kui tema sõnumid sinuni jõuavad."
           ]
         },
         {
@@ -1237,9 +1247,13 @@
             "Kanaliloendi all olev kasutajapaneel on ümber kujundatud: see jääb igas olekus sama kõrgeks, nii et ülal olev loend ei hüppa kunagi, näitab ühte selget olekurida ja iga häälenupu küljes on väike menüünool.",
             "Kiirseaded on rahulikumad: üks rida seade kohta selgetes rühmades, selgitused väikese ? taga ja rühm Beeta algab ahendatuna.",
             "Kui linkide eelvaated on välja lülitatud, ei kao need enam vaikselt: vaikne rida sõnumi all ütleb, mis peideti, ja viib seadeni.",
-            "„Käivita seadistusviisard uuesti“ jaotises Seaded → Teave käib veel kord läbi mikrofoni, privaatsuse, uuenduse vihje ja rääkimisrežiimi. Sinu identiteeti ei puudutata ja salvestatakse ainult see, mida muudad.",
+            "„Käivita seadistusviisard uuesti“ asukohas Seaded → Teave käib seadistuse veel kord läbi. Su identiteeti ei puututa, ja salvestatakse ainult see, mida muudad.",
             "Pakettide inspektor jälgib uusi pakette, peatub, kui kerid üles, ja salvestab ainult siis, kui see on avatud.",
-            "Serveri- ja kanalipuu on vaikimisi veerandi võrra laiem, nii et pikemad kanalinimed mahuvad ära. Laiused, mille ise määrad, jäävad alles."
+            "Serveri- ja kanalipuu on vaikimisi veerandi võrra laiem, nii et pikemad kanalinimed mahuvad ära. Laiused, mille ise määrad, jäävad alles.",
+            "Seaded ja seadistusviisard on uuesti kujundatud: kümme rühma koos jaotisekaartidega, otsing, mis leiab ka kirjeldused ja sünonüümid, märgid Beeta, Muudetud ja Soovitatud ning Lähtesta jaotis. Viisard pakub seadistusstiile, mis täidavad mõistlikud valikud korraga, ja keel valitakse otsitavast loendist.",
+            "Kanali päis on korrastatud: silm kanali nime ees näitab ja lülitab, kas jälgid seda, ning nimi avab menüü Kopeeri kanali link, Kanali parool…, Kanali info ja Tühjenda vestluse ajalugu….",
+            "Inimese menüü algab valikutega Saada sõnum, Liitu kanaliga ‹kanal› ja Lisa sõbraks; Liitu ütleb põhjuse, kui kanal on täis või lukus.",
+            "Uus Mumcordi logo: kahest inimesest moodustuv M, üks mütsiga ja teine tutimütsiga."
           ]
         },
         {
@@ -1249,7 +1263,9 @@
             "Ühine vaatamine arvestab valikut „Näita linkide eelvaateid ja manuseid“: kui see on väljas, ei laadita YouTube'ist ega Twitchist midagi ja vihje viib seadeni.",
             "Linux koos PipeWire'iga: seadmeloendid näitavad iga sisendit ja väljundit samamoodi nagu töölaua heliseaded, näiteks „System“ ja „Chat“ RØDECaster Pro II puhul ühe „USB Audio“ asemel.",
             "Serveri teabe aken on nüüd tõlgitud kõigisse 24 keelde.",
-            "Sinu enda sõnumid ei mängi enam mainimisheli, ei näita teavitust ega lähe enam lugemata sõnumite hulka."
+            "Kanali parooli dialoog ei hüppa enam üha uuesti esile, kui keegi teine on kaitstud kanalis. See ilmub ainult siis, kui proovid ise liituda.",
+            "Kui töölaua režiim Ära sega on sees, asub kasutajapaneelis olev vihje nüüd väikese ? taga, mitte pika lisaräsi all.",
+            "Hinnangulise ribalaiuse rida häälekvaliteedi paneelis ei jookse pikkades keeltes enam oma väärtusega kokku."
           ]
         }
       ],

@@ -282,11 +282,11 @@
       "title": "Logs, kas šķiet pazīstams.",
       "items": [
         {
-          "src": "wizard-1-identity",
+          "src": "wizard-identity-dark",
           "caption": "Iestatīts apmēram minūtē: identitāte, mikrofons, runāšanas režīms."
         },
         {
-          "src": "wizard-4-talk-mode",
+          "src": "wizard-voice-dark",
           "caption": "Balss aktivizācija vai push-to-talk, mumble:// saites un startēšana pie pieteikšanās."
         },
         {
@@ -609,9 +609,9 @@
         "features": [
           {
             "id": "setup",
-            "title": "Iestatīts minūtē",
-            "body": "Pirmajā startā Mumcord prasa tikai trīs lietas: tavu vārdu un identitāti, mikrofonu ar līmeņa testu un to, kā vēlies runāt. Esošās Mumble identitātes var importēt kā PKCS#12.",
-            "alt": "Iestatīšanas vednis, identitātes solis"
+            "title": "Iestati pēc sava prāta",
+            "body": "Pirmajā palaišanā vednis pavada tevi cauri identitātei, balsij un runas režīmam. Iestatīšanas stils, piemēram, līdzsvarots, viss ieslēgts vai maksimāls privātums, uzreiz aizpilda atlikušās izvēles, bet Pielāgots tās iziet pa vienai. Esošas Mumble identitātes var importēt kā PKCS#12.",
+            "alt": "Iestatīšanas vednis, iestatīšanas stila solis ar četriem sagatavēm"
           },
           {
             "id": "servers",
@@ -681,7 +681,7 @@
           {
             "id": "setup-again",
             "title": "Palaid iestatīšanas vedni vēlreiz",
-            "body": "Iestatījumi → Par lietotni vēlreiz izved cauri iestatīšanai, lai pārskatītu mikrofonu, privātumu, atjauninājumu pārbaudi un runas režīmu. Identitātes solis tiek izlaists, tāpēc ar tavu sertifikātu nejauši nekas nevar mainīties, un tiek saglabātas tikai vērtības, kuras tu patiešām mainīji.",
+            "body": "Iestatījumi → Par vēlreiz palaiž iestatīšanas vedni, lai pārskatītu savas izvēles. Identitātes solis tiek izlaists, tāpēc nekas saistībā ar tavu sertifikātu nejauši nevar mainīties, un tiek saglabātas tikai tās vērtības, ko tu tiešām mainīji.",
             "alt": "Iestatīšanas vednis, palaists vēlreiz no iestatījumiem, ar identitātes soli, atzīmētu kā izlaistu"
           },
           {
@@ -938,7 +938,13 @@
             "id": "push-to-talk",
             "title": "Push-to-talk visur",
             "body": "Taustiņi un peles pogas, arī ar spēli priekšplānā. Uz Wayland caur īsinājumtaustiņu portālu vai saderības režīmā.",
-            "alt": "Iestatīšanas vednis, runāšanas režīma solis"
+            "alt": "Iestatīšanas vednis, balss solis ar mikrofonu, skaļruņiem un runas režīmu"
+          },
+          {
+            "id": "hotkeys",
+            "title": "Globālie īsinājumtaustiņi",
+            "body": "Bez push-to-talk – taustiņi izslēgšanai, apklusināšanai, Netraucēt, pievienošanās balsij un iziešanai, servera vai kanāla pārslēgšanai, dalībnieku kolonnai un ātrajiem iestatījumiem. Pēc noklusējuma nekas nav iestatīts, un jau aizņemts taustiņš parāda konfliktu un tiek pārcelts ar vienu klikšķi. Tie darbojas fonā, uz Wayland pēc tam, kad darbvirsma pajautā vienu reizi.",
+            "alt": "Īsinājumtaustiņu iestatījumi ar taustiņa lauku katrai darbībai"
           },
           {
             "id": "threshold",
@@ -950,7 +956,7 @@
             "id": "sound",
             "title": "Tīra skaņa uzreiz",
             "body": "AI trokšņu slāpēšana, atbalss slāpēšana un automātiskā skaļuma regulēšana ir ieslēgtas. Maini ierīces bez atkārtotas pieslēgšanās, pārbaudi mikrofonu ar savu balsi.",
-            "alt": "Iestatīšanas vednis, mikrofona solis ar līmeņa testu"
+            "alt": "Iestatījumi, Balss un audio ar trokšņu slāpēšanu, atbalss slāpēšanu un automātisko skaļumu"
           },
           {
             "id": "noise-levels",
@@ -1077,14 +1083,14 @@
           {
             "id": "watch-party",
             "title": "Skatīšanās kopā",
-            "body": "YouTube watch party balss kanālā: visi vienlaikus redz to pašu video, ikviens var pauzēt un tīt, ar kopīgu atskaņošanas sarakstu. Ja iegultie ir izslēgti privātuma iestatījumos, no YouTube vai Twitch netiek ielādēts nekas.",
-            "alt": "Watch party peldošā logā ar dalībniekiem, vadīklām un nākamo video"
+            "body": "YouTube watch party balss kanālā: visi vienlaikus redz to pašu video, ikviens var pauzēt un tīt, ar kopīgu atskaņošanas sarakstu. Tas atveras kā kinozāles skats ar tērzēšanu apakšā un parāda, kas ir sinhronizēts vai atpaliek; ja to pamet, mini atskaņotājs paliek tērzēšanas augšā. Ja iegultie ir izslēgti privātuma iestatījumos, no YouTube vai Twitch netiek ielādēts nekas.",
+            "alt": "Skatīšanās kopā kinozāles skats ar atskaņotāju, tērzēšanu apakšā un skatītājiem"
           },
           {
             "id": "screen-share",
             "title": "Ekrāna kopīgošana",
-            "body": "Ekrāns vai logs līdz 8 skatītājiem, 720p ar 30 kadriem sekundē, uz Windows un macOS, ja gribi, ar kopīgotās lietotnes skaņu. To palaid ar Lietotņu pogu tērzēšanā. Kamēr kopīgo, sarkana josla rāda skatītājus un “Beigt”, un citi redz sarkanu “LIVE” riņķi ap tavu attēlu.",
-            "alt": "Kopīgots ekrāns peldošā logā ar pilnekrāna režīmu un “Beigt skatīties”"
+            "body": "Ekrāns vai logs līdz 8 skatītājiem, 720p izšķirtspējā un 30 kadros sekundē, operētājsistēmās Windows un macOS, ja vēlies – ar koplietotās lietotnes skaņu. Sāc ar pogu Lietotnes tērzēšanā. Skatītāji skatās galvenajā kolonnā ar izšķirtspēju, kadru nomaiņas ātrumu un straumes informāciju; tu tērzēšanas augšā saņem vadības joslu ar pauzi, skaņu, skatītājiem un apturēšanu.",
+            "alt": "Koplietots ekrāns galvenajā kolonnā ar straumes informāciju un skatītāju sarakstu"
           },
           {
             "id": "floating-widgets",
@@ -1131,7 +1137,7 @@
             "id": "privacy",
             "title": "Bez telemetrijas",
             "body": "Pirmajā palaišanā īss solis parāda, ar ko un kad Mumcord savienojas. Tava identitāte glabājas sistēmas drošajā krātuvē, un diagnostikas fails nesatur tērzēšanas saturu vai paroles un pamet tavu datoru tikai tad, ja tu to nosūti pats.",
-            "alt": "Vednis, privātuma solis"
+            "alt": "Iestatīšanas vednis, savienojumu un satura solis"
           },
           {
             "id": "quick-settings",
@@ -1141,8 +1147,8 @@
           },
           {
             "id": "settings-search",
-            "title": "Iestatījumi ar meklēšanu",
-            "body": "Atrod sadaļas un atsevišķus iestatījumus, pāriet uz tiem un tos izceļ. Sānjosla paliek vietā, kamēr ritini.",
+            "title": "Iestatījumi, sakārtoti un meklējami",
+            "body": "Desmit grupas ar sadaļu kartēm. Meklēšana atrod iestatījumus pēc nosaukuma, apraksta vai sinonīma, aizved uz tiem un izceļ tos. Nozīmītes norāda, kas ir Beta, mainīts vai ieteicams, un Atiestatīt sadaļu atgriež sadaļu pie noklusējuma vērtībām.",
             "alt": "Iestatījumu meklēšana ar rezultātiem vaicājumam “pārklājums”"
           },
           {
@@ -1228,7 +1234,11 @@
             "Servera informācija rāda, vai serveris paziņo par releju vai Mumbotu, un brīdina, kad relejs ir mainījies.",
             "Čukstēšana un kliegšana: runā ar izvēlētiem cilvēkiem vai ar visiem kanālā, tur nepārvietojoties, ar turēšanas runas taustiņu katram mērķim un joslu virs tērzēšanas, kas rāda, ar ko runā.",
             "Atjauninājumi lietotnē: Mumcord pārbauda jaunas versijas, parāda, kas mainījies, un uzstāda tās ar vienu klikšķi. Katrs lejupielādētais fails tiek pārbaudīts pēc sava paraksta un kontrolsummām.",
-            "Trokšņu slāpēšana četros līmeņos: Viegls, Standarta, Uzlabots (AI, beta, ar 2024. gada RNNoise modeli) un Izslēgts, katrs izskaidrots ar „?”."
+            "Trokšņu slāpēšana četros līmeņos: Viegls, Standarta, Uzlabots (AI, beta, ar 2024. gada RNNoise modeli) un Izslēgts, katrs izskaidrots ar „?”.",
+            "Globālie īsinājumtaustiņi sadaļā Iestatījumi → Īsinājumtaustiņi: bez push-to-talk – taustiņi izslēgšanai, apklusināšanai, Netraucēt, pievienošanās balsij un iziešanai, servera vai kanāla pārslēgšanai, dalībnieku kolonnai, ātrajiem iestatījumiem un Mumcord atvēršanai. Pēc noklusējuma nekas nav iestatīts, un jau aizņemtu taustiņu var pārcelt ar vienu klikšķi.",
+            "Skatīšanās kopā atver kinozāles skatu: atskaņotājs ar kanāla tērzēšanu apakšā, vadīklas uz attēla un panelis, kas rāda, kas ir sinhronizēts, buferē vai atpaliek. Ja to pamet, mini atskaņotājs paliek tērzēšanas augšā.",
+            "Ekrāna kopīgošana pārcelta uz galveno kolonnu, ar izšķirtspēju, kadru nomaiņas ātrumu un uznirstošo logu Straumes informācija. Kas kopīgo, tērzēšanas augšā saņem vadības joslu ar pauzi, skaņu, loga maiņu, skatītājiem un apturēšanu.",
+            "“Atsaukt tērzēšanas piekrišanu…” personas izvēlnē un privāto ziņu pārskatā: pēc tam šai personai vajag jaunu ziņas pieprasījumu, lai tās ziņas atkal sasniegtu tevi."
           ]
         },
         {
@@ -1237,9 +1247,13 @@
             "Lietotāja panelis zem kanālu saraksta ir pārveidots: tas visos stāvokļos saglabā to pašu augstumu, tāpēc saraksts virs tā nekad nelēkā, rāda vienu skaidru statusa rindu un katrai balss pogai ir neliela izvēlnes bultiņa.",
             "Ātrie iestatījumi ir mierīgāki: viena rinda katram iestatījumam skaidrās grupās, paskaidrojumi aiz neliela ?, un grupa Beta sākumā ir sakļauta.",
             "Ja saišu priekšskatījumi ir izslēgti, tie vairs nepazūd klusām: neuzkrītoša rindiņa zem ziņas pasaka, kas tika paslēpts, un ved uz iestatījumu.",
-            "“Palaist iestatīšanas vedni vēlreiz” sadaļā Iestatījumi → Par vēlreiz izvada cauri mikrofonam, privātumam, atjauninājumu norādei un runas režīmam. Tava identitāte paliek neskarta, un tiek saglabāts tikai tas, ko mainīsi.",
+            "“Palaist iestatīšanas vedni vēlreiz” sadaļā Iestatījumi → Par vēlreiz izved cauri iestatīšanu. Tava identitāte paliek neskarta, un tiek saglabāts tikai tas, ko tu maini.",
             "Pakešu inspektors seko jaunajām paketēm, apstājas, kad ritini uz augšu, un ieraksta tikai tad, kad ir atvērts.",
-            "Serveru un kanālu koks pēc noklusējuma ir par ceturtdaļu platāks, tāpēc ietilpst garāki kanālu nosaukumi. Platumi, ko iestatī pats, paliek."
+            "Serveru un kanālu koks pēc noklusējuma ir par ceturtdaļu platāks, tāpēc ietilpst garāki kanālu nosaukumi. Platumi, ko iestatī pats, paliek.",
+            "Iestatījumi un iestatīšanas vednis ir pārveidoti: desmit grupas ar sadaļu kartēm, meklēšana, kas atrod arī aprakstus un sinonīmus, nozīmītes Beta, Mainīts un Ieteicams un Atiestatīt sadaļu. Vednis piedāvā iestatīšanas stilus, kas uzreiz aizpilda saprātīgas izvēles, un valodu izvēlas no meklējama saraksta.",
+            "Kanāla galvene ir sakārtotāka: acs pirms kanāla nosaukuma rāda un pārslēdz, vai tu to seko, un nosaukums atver izvēlni ar Kopēt kanāla saiti, Kanāla parole…, Kanāla informācija un Notīrīt tērzēšanas vēsturi….",
+            "Personas izvēlne sākas ar Sūtīt ziņu, Pievienoties ‹kanāls› un Pievienot draugu; Pievienoties paskaidro iemeslu, kad kanāls ir pilns vai aizslēgts.",
+            "Jauns Mumcord logotips: M burts no diviem cilvēkiem, viens ar cepuri ar nagu, otrs ar adītu cepuri."
           ]
         },
         {
@@ -1249,7 +1263,9 @@
             "Kopīgā skatīšanās ievēro iestatījumu “Rādīt saišu priekšskatījumus un iegultos elementus”: kad tas ir izslēgts, no YouTube vai Twitch netiek ielādēts nekas, un norāde ved uz iestatījumu.",
             "Linux ar PipeWire: ierīču saraksti rāda katru ievadi un izvadi tā, kā darbvirsmas skaņas iestatījumi, piemēram, “System” un “Chat” RØDECaster Pro II vietā, nevis vienu “USB Audio”.",
             "Servera informācijas logs tagad ir tulkots visās 24 valodās.",
-            "Tavas paša ziņas vairs neatskaņo pieminēšanas skaņu, nerāda paziņojumu un vairs netiek skaitītas kā nelasītas."
+            "Kanāla paroles dialoglodziņš vairs nemitīgi neparādās, kamēr kāds cits atrodas aizsargātā kanālā. Tas parādās tikai tad, kad tu pats mēģini pievienoties.",
+            "Ja darbvirsmas Netraucēt ir ieslēgts, ieteikums lietotāja panelī tagad slēpjas aiz neliela ? garas papildu rindas vietā.",
+            "Aptuvenā joslas platuma rinda balss kvalitātes panelī garās valodās vairs nesaplūst ar savu vērtību."
           ]
         }
       ],

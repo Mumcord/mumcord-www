@@ -234,8 +234,8 @@ export const en: Dict = {
     label: "04 — Take a tour",
     title: "A window that feels familiar.",
     items: [
-      { src: "wizard-1-identity", caption: "Set up in about a minute: identity, microphone, talk mode." },
-      { src: "wizard-4-talk-mode", caption: "Voice activation or push-to-talk, mumble:// links and start at login." },
+      { src: "wizard-identity-dark", caption: "Set up in about a minute: identity, microphone, talk mode." },
+      { src: "wizard-voice-dark", caption: "Voice activation or push-to-talk, mumble:// links and start at login." },
       { src: "follow-unread-badge", caption: "Follow channels with the eye, unread messages as a count." },
       { src: "notification-toast", caption: "A small pop-up announces new messages from other channels." },
       { src: "chat-compact", caption: "Compact chat layout: time, name and message on one line." },

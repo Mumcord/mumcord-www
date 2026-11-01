@@ -282,11 +282,11 @@
       "title": "Ikkuna, joka tuntuu tutulta.",
       "items": [
         {
-          "src": "wizard-1-identity",
+          "src": "wizard-identity-dark",
           "caption": "Käyttöönotto noin minuutissa: identiteetti, mikrofoni, puhetila."
         },
         {
-          "src": "wizard-4-talk-mode",
+          "src": "wizard-voice-dark",
           "caption": "Puheaktivointi tai push-to-talk, mumble:// -linkit ja käynnistys kirjautuessa."
         },
         {
@@ -609,9 +609,9 @@
         "features": [
           {
             "id": "setup",
-            "title": "Käyttöönotto minuutissa",
-            "body": "Ensimmäisellä käynnistyksellä Mumcord kysyy vain kolmea asiaa: nimeäsi ja identiteettiäsi, mikrofonia tasotestin kera ja sitä, miten haluat puhua. Olemassa olevat Mumble-identiteetit voi tuoda PKCS#12-muodossa.",
-            "alt": "Ohjattu käyttöönotto, identiteettivaihe"
+            "title": "Määritä omalla tavallasi",
+            "body": "Ensimmäisellä käynnistyksellä avustaja opastaa identiteetin, äänen ja puhetavan läpi. Asetustyyli, kuten tasapainoinen, kaikki päällä tai maksimaalinen yksityisyys, täyttää loput valinnat kerralla, ja Mukautettu käy ne läpi yksitellen. Olemassa olevat Mumble-identiteetit voi tuoda PKCS#12-muodossa.",
+            "alt": "Käyttöönottoavustaja, asetustyylin vaihe neljällä esiasetuksella"
           },
           {
             "id": "servers",
@@ -681,7 +681,7 @@
           {
             "id": "setup-again",
             "title": "Käynnistä käyttöönottoavustaja uudelleen",
-            "body": "Asetukset → Tietoja käy käyttöönoton läpi vielä kerran, jotta voit tarkistaa mikrofonin, yksityisyyden, päivitystarkistuksen ja puhetavan. Identiteettivaihe ohitetaan, joten varmenteellesi ei voi vahingossa tapahtua mitään, ja vain todella muuttamasi arvot tallennetaan.",
+            "body": "Asetukset → Tietoja käynnistää käyttöönottoavustajan uudelleen, jotta voit tarkistaa valintasi. Identiteettivaihe ohitetaan, joten varmenteellesi ei voi vahingossa tapahtua mitään, ja vain todella muuttamasi arvot tallennetaan.",
             "alt": "Asetuksista uudelleen käynnistetty käyttöönottoavustaja, jossa identiteettivaihe on merkitty ohitetuksi"
           },
           {
@@ -938,7 +938,13 @@
             "id": "push-to-talk",
             "title": "Push-to-talk kaikkialla",
             "body": "Näppäimet ja hiiren painikkeet, vaikka peli olisi etualalla. Waylandissa pikanäppäinportaalin kautta tai yhteensopivuustilassa.",
-            "alt": "Ohjattu käyttöönotto, puhetilavaihe"
+            "alt": "Käyttöönottoavustaja, äänivaihe mikrofonilla, kaiuttimilla ja puhetavalla"
+          },
+          {
+            "id": "hotkeys",
+            "title": "Globaalit pikanäppäimet",
+            "body": "Push-to-talkin lisäksi näppäimet mykistykselle, kuulosuojaukselle, Älä häiritse -tilalle, puheeseen liittymiselle ja poistumiselle, palvelimen tai kanavan vaihtamiselle, jäsensarakkeelle ja pika-asetuksille. Oletuksena mitään ei ole asetettu, ja jo varattu näppäin näyttää ristiriidan ja siirtyy yhdellä napsautuksella. Ne toimivat taustalla, Waylandissa sen jälkeen kun työpöytä on kysynyt kerran.",
+            "alt": "Pikanäppäinasetukset, kullekin toiminnolle oma näppäinkenttä"
           },
           {
             "id": "threshold",
@@ -950,7 +956,7 @@
             "id": "sound",
             "title": "Selkeä ääni heti alusta",
             "body": "Tekoälypohjainen kohinanpoisto, kaiunpoisto ja automaattinen vahvistus ovat päällä. Vaihda laitetta ilman uudelleenyhdistämistä, testaa mikrofonia omalla äänelläsi.",
-            "alt": "Ohjattu käyttöönotto, mikrofonivaihe tasotestin kera"
+            "alt": "Asetukset, Ääni ja audio kohinanvaimennuksella, kaiunpoistolla ja automaattisella äänenvoimakkuudella"
           },
           {
             "id": "noise-levels",
@@ -1077,14 +1083,14 @@
           {
             "id": "watch-party",
             "title": "Yhdessä katsominen",
-            "body": "YouTube-watch party puhekanavalla: kaikki näkevät saman videon yhtä aikaa, kuka tahansa voi tauottaa ja kelata, ja mukana on yhteinen soittolista. Kun upotukset on kytketty pois yksityisyysasetuksissa, mitään ei ladata YouTubesta tai Twitchistä.",
-            "alt": "Watch party kelluvassa ikkunassa osallistujien, säätimien ja seuraavan videon kera"
+            "body": "YouTube-watch party puhekanavalla: kaikki näkevät saman videon yhtä aikaa, kuka tahansa voi tauottaa ja kelata, ja mukana on yhteinen soittolista. Se avautuu elokuvanäkymänä chatin ollessa alla ja näyttää, kuka on synkassa tai jäljessä; poistu siitä, niin minisoitin jää chatin yläreunaan. Kun upotukset on kytketty pois yksityisyysasetuksissa, mitään ei ladata YouTubesta tai Twitchistä.",
+            "alt": "Yhdessä katsominen -elokuvanäkymä soittimen, alla olevan chatin ja katsojien kanssa"
           },
           {
             "id": "screen-share",
             "title": "Näytön jakaminen",
-            "body": "Näyttö tai ikkuna jopa 8 katsojalle, 720p:nä ja 30 kuvaa sekunnissa, Windowsissa ja macOS:ssä halutessasi jaetun sovelluksen äänen kanssa. Käynnistät sen chatin Sovellukset-painikkeesta. Jakamisen aikana punainen palkki näyttää katsojat ja ”Lopeta”, ja muut näkevät kuvasi ympärillä punaisen ”LIVE”-renkaan.",
-            "alt": "Jaettu näyttö kelluvassa ikkunassa, jossa koko näytön tila ja ”Lopeta katselu”"
+            "body": "Näyttö tai ikkuna enintään 8 katsojalle, 720p:llä ja 30 kuvaa sekunnissa, Windowsissa ja macOS:ssä halutessasi jaetun sovelluksen äänellä. Aloitat sen chatin Sovellukset-painikkeesta. Katsojat katsovat pääsarakkeessa, jossa näkyvät tarkkuus, kuvataajuus ja lähetyksen tiedot; sinulla on chatin yläreunassa ohjauspalkki tauolla, äänellä, katsojilla ja lopetuksella.",
+            "alt": "Jaettu näyttö pääsarakkeessa lähetyksen tietojen ja katsojaluettelon kanssa"
           },
           {
             "id": "floating-widgets",
@@ -1131,7 +1137,7 @@
             "id": "privacy",
             "title": "Ei telemetriaa",
             "body": "Ensimmäisellä käynnistyksellä lyhyt vaihe näyttää, mihin Mumcord ottaa yhteyttä ja milloin. Identiteettisi säilytetään järjestelmän suojatussa tallennustilassa, ja diagnostiikkatiedosto ei sisällä chatin sisältöä eikä salasanoja, ja se lähtee koneeltasi vain, jos lähetät sen itse.",
-            "alt": "Käyttöönottoavustaja, yksityisyysvaihe"
+            "alt": "Käyttöönottoavustaja, yhteyksien ja sisällön vaihe"
           },
           {
             "id": "quick-settings",
@@ -1141,8 +1147,8 @@
           },
           {
             "id": "settings-search",
-            "title": "Asetukset hakutoiminnolla",
-            "body": "Löytää osiot ja yksittäiset asetukset, hyppää niihin ja korostaa ne. Sivupalkki pysyy paikallaan, kun vierität.",
+            "title": "Asetukset, lajiteltuina ja haettavina",
+            "body": "Kymmenen ryhmää osiokortteineen. Haku löytää asetukset nimen, kuvauksen tai synonyymin perusteella, hyppää niihin ja korostaa ne. Merkit näyttävät, mikä on Beta, muutettu tai suositeltu, ja Palauta osio tuo osion takaisin oletusarvoihin.",
             "alt": "Asetushaku, tulokset haulle ”overlay”"
           },
           {
@@ -1228,7 +1234,11 @@
             "Palvelimen tiedot näyttävät, ilmoittaako palvelin välittimestä tai Mumbotista, ja varoittavat, kun välitin on vaihtunut.",
             "Kuiskaus ja huuto: puhu valituille ihmisille tai kaikille kanavalla siirtymättä sinne, kullekin kohteelle oma pidä-painettuna-puhu-näppäin ja chatin yläpuolella palkki, joka näyttää, kenelle puhut.",
             "Päivitykset sovelluksessa: Mumcord tarkistaa uudet versiot, näyttää, mikä on muuttunut, ja asentaa ne yhdellä napsautuksella. Jokainen lataus tarkistetaan allekirjoitusta ja tarkistussummia vasten.",
-            "Kohinanpoisto neljällä tasolla: Kevyt, Normaali, Edistynyt (tekoäly, beta, vuoden 2024 RNNoise-mallilla) ja Pois, jokainen selitettynä „?”-merkillä."
+            "Kohinanpoisto neljällä tasolla: Kevyt, Normaali, Edistynyt (tekoäly, beta, vuoden 2024 RNNoise-mallilla) ja Pois, jokainen selitettynä „?”-merkillä.",
+            "Globaalit pikanäppäimet kohdassa Asetukset → Pikanäppäimet: push-to-talkin lisäksi näppäimet mykistykselle, kuulosuojaukselle, Älä häiritse -tilalle, puheeseen liittymiselle ja poistumiselle, palvelimen tai kanavan vaihtamiselle, jäsensarakkeelle, pika-asetuksille ja Mumcordin avaamiselle. Oletuksena mitään ei ole asetettu, ja jo varatun näppäimen voi siirtää yhdellä napsautuksella.",
+            "Yhdessä katsominen avaa elokuvanäkymän: soitin ja kanavan chat alla, ohjaimet kuvan päällä sekä paneeli, joka näyttää, kuka on synkassa, puskuroi tai on jäljessä. Poistu siitä, niin minisoitin jää chatin yläreunaan.",
+            "Ruudunjako siirtyi pääsarakkeeseen, jossa näkyvät tarkkuus, kuvataajuus ja Lähetyksen tiedot -ponnahdusikkuna. Jakaja saa chatin yläreunaan ohjauspalkin tauolla, äänellä, ikkunan vaihdolla, katsojilla ja lopetuksella.",
+            "”Peruuta chat-suostumus…” henkilövalikossa ja yksityisviestien yleisnäkymässä: sen jälkeen tämän henkilön on tehtävä uusi viestipyyntö, ennen kuin hänen viestinsä tavoittavat sinut."
           ]
         },
         {
@@ -1237,9 +1247,13 @@
             "Kanavalistan alla oleva käyttäjäpaneeli on suunniteltu uudelleen: se pysyy samankorkuisena kaikissa tiloissa, jotta ylläoleva lista ei hyppää, näyttää yhden selkeän tilarivin ja jokaisessa puhepainikkeessa on pieni valikkonuoli.",
             "Pika-asetukset ovat rauhallisemmat: yksi rivi asetusta kohden selkeissä ryhmissä, selitykset pienen ?-merkin takana ja beta-ryhmä alkaa suljettuna.",
             "Kun linkkien esikatselu on pois päältä, ne eivät enää katoa hiljaa: viestin alla oleva hillitty rivi kertoo, mitä piilotettiin, ja vie asetukseen.",
-            "”Suorita käyttöönottoavustaja uudelleen” kohdassa Asetukset → Tietoja käy läpi mikrofonin, yksityisyyden, päivitysvihjeen ja puhetilan vielä kerran. Identiteettiäsi ei kosketa, ja vain muuttamasi tallennetaan.",
+            "”Suorita käyttöönottoavustaja uudelleen” kohdassa Asetukset → Tietoja käy asetukset läpi vielä kerran. Identiteettiäsi ei kosketa, ja vain muuttamasi tallennetaan.",
             "Pakettitarkastelu seuraa uusia paketteja, pysähtyy, kun vierität ylös, ja tallentaa vain ollessaan auki.",
-            "Palvelin- ja kanavapuu on oletuksena neljänneksen leveämpi, joten pidemmätkin kanavien nimet mahtuvat. Itse asettamasi leveydet säilyvät."
+            "Palvelin- ja kanavapuu on oletuksena neljänneksen leveämpi, joten pidemmätkin kanavien nimet mahtuvat. Itse asettamasi leveydet säilyvät.",
+            "Asetukset ja käyttöönottoavustaja on suunniteltu uudelleen: kymmenen ryhmää osiokortteineen, haku, joka löytää myös kuvaukset ja synonyymit, merkit Beta, Muutettu ja Suositeltu sekä Palauta osio. Avustaja tarjoaa asetustyylejä, jotka täyttävät järkevät valinnat kerralla, ja kieli valitaan haettavasta luettelosta.",
+            "Kanavan otsikko on siistimpi: kanavan nimen edessä oleva silmä näyttää ja vaihtaa, seuraatko kanavaa, ja nimi avaa valikon, jossa on Kopioi kanavan linkki, Kanavan salasana…, Kanavan tiedot ja Tyhjennä chatin historia….",
+            "Henkilövalikko alkaa kohdilla Lähetä viesti, Liity kanavaan ‹kanava› ja Lisää kaveriksi; Liity kertoo syyn, kun kanava on täynnä tai lukittu.",
+            "Uusi Mumcord-logo: kahden ihmisen muodostama M, toisella lippalakki ja toisella pipo."
           ]
         },
         {
@@ -1249,7 +1263,9 @@
             "Yhteiskatselu noudattaa asetusta ”Näytä linkkien esikatselut ja upotukset”: kun se on pois päältä, YouTubesta tai Twitchistä ei ladata mitään, ja vihje vie asetukseen.",
             "Linux ja PipeWire: laiteluettelot näyttävät jokaisen tulon ja lähdön samoin kuin työpöydän ääniasetukset, esimerkiksi RØDECaster Pro II:n ”System” ja ”Chat” yhden ”USB Audion” sijaan.",
             "Palvelimen tiedot -ikkuna on nyt käännetty kaikille 24 kielelle.",
-            "Omat viestisi eivät enää soita mainintaääntä eivätkä näytä ilmoitusta, eikä niitä enää lasketa lukemattomiksi."
+            "Kanavan salasanaikkuna ei enää ponnahda esiin yhä uudelleen, kun joku toinen on suojatulla kanavalla. Se tulee näkyviin vain, kun yrität itse liittyä.",
+            "Kun työpöydän Älä häiritse on päällä, käyttäjäpaneelin vihje on nyt pienen ?-merkin takana pitkän lisärivin sijaan.",
+            "Arvioidun kaistanleveyden rivi äänenlaatupaneelissa ei enää törmää arvoonsa pitkillä kielillä."
           ]
         }
       ],
