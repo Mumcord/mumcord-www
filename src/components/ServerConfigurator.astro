@@ -4,7 +4,7 @@
 import CopyButton from "./CopyButton.astro";
 import { type Lang } from "../i18n";
 import { guides } from "../lib/server-guide";
-import { buildCompose, buildEnv, buildBotToml, botModules, buildCurlSetup, buildCurlSteps, buildSetup, STEP_IDS, DEFAULTS, BANDWIDTH, MUMBOT_MODULES_FROM, MUMBOT_RELAY_ACCESS_FROM, atLeast, type ServerOptions, type Quality } from "../lib/compose";
+import { buildCompose, buildEnv, buildBotToml, buildMumpeerToml, botModules, buildCurlSetup, buildCurlSteps, buildSetup, STEP_IDS, DEFAULTS, BANDWIDTH, MUMBOT_MODULES_FROM, MUMBOT_RELAY_ACCESS_FROM, atLeast, type ServerOptions, type Quality } from "../lib/compose";
 import { getMumbotVersion, getBotImageVersion } from "../lib/mumbot";
 import { highlight, langOf } from "../lib/highlight";
 
@@ -35,6 +35,7 @@ const files = [
   { id: "compose", mode: "files", title: "2. docker-compose.yml", file: "docker-compose.yml", code: buildCompose(fileLang, d) },
   { id: "env", mode: "files", title: "3. .env", file: ".env", code: buildEnv(fileLang, d) },
   { id: "bot", mode: "files", title: "4. bot.toml", file: "bot.toml", code: buildBotToml(fileLang, d) },
+  { id: "mumpeer", mode: "files", title: "5. mumpeer.toml", file: "mumpeer.toml", code: buildMumpeerToml(fileLang, d) },
 ];
 ---
 
@@ -201,7 +202,7 @@ const files = [
 
 <script>
   import { highlight, type CodeLang } from "../lib/highlight";
-  import { buildCompose, buildEnv, buildBotToml, botModules, buildCurlSetup, buildCurlSteps, buildSetup, STEP_IDS, randomSecret, type CommentLang, type ServerOptions, type Secrets, type Quality } from "../lib/compose";
+  import { buildCompose, buildEnv, buildBotToml, buildMumpeerToml, botModules, buildCurlSetup, buildCurlSteps, buildSetup, STEP_IDS, randomSecret, type CommentLang, type ServerOptions, type Secrets, type Quality } from "../lib/compose";
 
   for (const root of document.querySelectorAll<HTMLElement>("[data-configurator]")) {
     const lang = root.dataset.lang as CommentLang;
@@ -248,6 +249,8 @@ const files = [
       put("env", buildEnv(lang, o, secrets));
       put("bot", buildBotToml(lang, o, { webhook: secrets.webhookKey, music: secrets.musicKey }));
       out("bot").closest("figure")!.dataset.empty = botModules(o).length ? "" : "1";
+      put("mumpeer", buildMumpeerToml(lang, o));
+      out("mumpeer").closest("figure")!.dataset.empty = o.relay ? "" : "1";
       root.querySelector<HTMLElement>("[data-relay-access]")!.hidden = !o.relay;
       for (const n of root.querySelectorAll<HTMLElement>("[data-note]")) n.hidden = n.dataset.note === "relayRegistered" ? !(o.relay && !o.relayGuests) : !o[n.dataset.note as "relay" | "webhook" | "music" | "history"];
     };

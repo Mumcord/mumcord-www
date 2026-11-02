@@ -97,6 +97,10 @@
       "toolQuiz": {
         "title": "mumquiz",
         "desc": "Quizbot voor je server"
+      },
+      "plugins": {
+        "title": "Plug-ins",
+        "desc": "Polls, dobbelstenen en meer"
       }
     },
     "hero": {
@@ -536,8 +540,8 @@
       "toolTitle": "Bijdragers"
     },
     "spotlight5": {
-      "label": "Nieuw in 0.5.0",
-      "labelSoon": "Binnenkort: 0.5.0",
+      "label": "Nieuw in 0.5.0/0.6.0",
+      "labelSoon": "Binnenkort: 0.5.0/0.6.0",
       "title": "Meer rust. Meer jij. Meer geluid.",
       "body": "0.5.0 brengt Epic 3: een meldingencentrum, blokkeren, meerdere identiteiten, een nieuwe kanalenboom, muziek in de chat, een lage-latentiemodus om samen muziek te maken en directe verbindingen via een relay.",
       "tiles": {
@@ -567,7 +571,12 @@
         }
       },
       "features": "Alle functies",
-      "changelog": "Alles wat nieuw is"
+      "changelog": "Alles wat nieuw is",
+      "plugins": {
+        "title": "Plug-ins",
+        "body": "0.6.0 voegt kleine, veilige extra's toe bovenop het voicechatten: polls, eerlijke dobbelstenen, een wezentje van geluid en een afstandsbediening voor je muziekbot. Geen serveraanpassingen nodig.",
+        "more": "Ontmoet de plug-ins"
+      }
     },
     "serverCta": {
       "title": "Je eigen server in vijf minuten",
@@ -1112,6 +1121,89 @@
         ]
       },
       {
+        "id": "plugins",
+        "title": "Plug-ins",
+        "features": [
+          {
+            "id": "plugins",
+            "title": "Plug-ins vanuit de instellingen",
+            "body": "Instellingen → Plug-ins met de tabbladen Geïnstalleerd, Bladeren, Updates en Repositories: officiële plug-ins per categorie en met zoekfunctie, aan- en uitzetten, rechten en instellingen wijzigen, hun gegevens exporteren of resetten, verwijderen. Er is niets voorgeïnstalleerd, en plug-ins draaien ook als je niet verbonden bent.",
+            "alt": "Mumcord Instellingen, Plug-ins, tabblad Bladeren met vijf officiële plug-ins (Echolings, Dobbelstenen, EVE Fit, Mumbot Music en Poll), elk met een pictogram en een knop Installeren."
+          },
+          {
+            "id": "plugin-permissions",
+            "title": "Eerst zien wat een plug-in mag",
+            "body": "Vóór het installeren zegt Mumcord in gewone woorden wat een plug-in wil: elk recht groen, geel of rood, vereiste rechten vast, optionele als schakelaars. Wijzigingen gelden meteen. Een plug-in krijgt nooit je chat, bestanden, microfoon, certificaten of wachtwoorden.",
+            "alt": "Installatiemelding van EVE Fit met de rechten gemarkeerd als vereist, een optionele schakelaar en een kader met wat de plug-in nooit krijgt."
+          },
+          {
+            "id": "plugin-places",
+            "title": "Plug-ins waar je ze nodig hebt",
+            "body": "Een plug-inbalk onder de kanaallijst, kaarten in de chat die de plaats van hun bericht innemen, slash-commando’s zoals /roll, een klein badge naast namen, een sectie in profielkaarten, items in het rechtsklikmenu en eigen vensters. Wat een plug-in verstuurt, is gemarkeerd met “via”."
+          },
+          {
+            "id": "plugin-together",
+            "title": "Samen met je kanaal",
+            "body": "Een plug-in praat met dezelfde plug-in bij de andere Mumcord-gebruikers in het kanaal, bijvoorbeeld voor een gedeelde poll. Het gaat via de gewone voiceserver: gewone Mumble-servers hoeven niets te doen, andere clients negeren het, en jij bepaalt wie het ziet. Plug-ins werken in de chat van elke server waarmee je verbonden bent.",
+            "alt": "Zijpaneel van de poll geopend naast de chat met de opties en Glacier geselecteerd."
+          },
+          {
+            "id": "plugin-safety",
+            "title": "Sandbox, handtekeningen en een noodschakelaar",
+            "body": "Plug-ins draaien afgeschermd, zonder toegang tot netwerk, bestanden of audio, met limieten voor geheugen en tijd; een plug-in die blijft crashen wordt uitgezet, en je stem blijft er nooit last van hebben. Officiële plug-ins zijn ondertekend en gecontroleerd. Met een noodschakelaar kan een schadelijke plug-in voor iedereen worden uitgeschakeld, “Alle plug-ins uitzetten” stopt ze in één keer, en --no-plugins start zonder plug-ins.",
+            "alt": "Installatiemelding van EVE Fit met een voortgangsbalk met de tekst “Checking signature…” boven de lijst met rechten."
+          },
+          {
+            "id": "plugin-updates",
+            "title": "Updates zonder verrassingen",
+            "body": "Automatisch installeren, alleen melden of uit. Een update die meer rechten wil of van iemand anders komt, wacht altijd op jouw goedkeuring. Een plug-in die na een update niet start, wordt teruggedraaid, en elke plug-in kan op zijn versie worden vastgezet."
+          },
+          {
+            "id": "plugin-suggestions",
+            "title": "Servers stellen plug-ins voor",
+            "body": "De Mumbot van een server kan plug-ins aanraden die de community gebruikt. De suggestie komt rustig binnen in het meldingencentrum, met Installeren, Details, Nu niet en Niet meer vragen voor deze server. Er wordt niets geïnstalleerd zonder jouw goedkeuring."
+          },
+          {
+            "id": "plugin-repositories",
+            "title": "Je eigen plug-inrepositories",
+            "body": "Tot tien extra repositories in Instellingen → Plug-ins → Repositories, getoond met hun naam en sleutelvingerafdruk. Hun plug-ins krijgen overal het label “Onofficieel”, en als de ondertekeningssleutel verandert, wordt de repository gepauzeerd tot jij bevestigt."
+          },
+          {
+            "id": "plugin-developers",
+            "title": "Bouw je eigen plug-ins",
+            "body": "Plug-ins zijn Rust, gecompileerd naar WebAssembly. cargo install mumcord-plugin geeft je de opdrachtregeltool, en mumcord-plugin new maakt een project op basis van het sjabloon. De ontwikkelaarsmodus laadt een plug-in rechtstreeks uit een map, met herladen en het logboek."
+          },
+          {
+            "id": "poll",
+            "title": "Poll",
+            "body": "Een vraag met 2 tot 10 opties, live resultaten in de chatkaart en het paneel, één stem per persoon. Wie geen Mumcord heeft, stemt met !poll 1, !poll 2 … in de chat.",
+            "alt": "Mumcord-chat waarin Bobs poll “Which map tonight?” verschijnt als kaart met stemmenbalken: Glacier 2 stemmen, Harbor en Canyon 0."
+          },
+          {
+            "id": "dice",
+            "title": "Dobbelstenen",
+            "body": "/roll met d20, 2d6+3, voordeel en nadeel of laagste of hoogste weglaten, plus knoppen voor snelle worpen. Worpen worden samen met het kanaal gedaan, zodat niemand kan valsspelen, en bij elk resultaat staat of het geverifieerd is."
+          },
+          {
+            "id": "echolings",
+            "title": "Echolings",
+            "body": "Een klein wezentje in je plug-inbalk: 5 soorten, 4 groeifases, 3 kleuren. Aaien, voeren, spelen of laten dutten; het gaat nooit dood, slaapt bij Niet storen en er valt niets te kopen. Vrienden zien het als badge en in je profielkaart, kunnen het bezoeken, en er zijn twee minigames.",
+            "alt": "Profielkaart van Bob met zijn Echoling “Moss”, band- en reeksfiches en een knop “Pat Moss”; huisdierbadges naast namen in de kanaalboom."
+          },
+          {
+            "id": "mumbot-music",
+            "title": "Mumbot Music",
+            "body": "De afstandsbediening voor een Mumbot-muziekbot: nu aan het spelen, overslaan, stoppen, volume, de wachtrij en nummers toevoegen. Klik met rechts op de bot → “Bot instellen”; de API-sleutel staat in de sleutelhanger van je systeem."
+          },
+          {
+            "id": "eve-fit",
+            "title": "EVE Fit",
+            "body": "Plak een EVE Online-fitting in de chat en iedereen met de plug-in ziet een scheepskaart. Met één klik open je het fittingwiel met capacitor, aanval, verdediging en navigatie, offline in Mumcord, en met “Fitting kopiëren” krijg je hem er weer uit.",
+            "alt": "EVE Fit-dialoog met het Algos-schip in het fittingwiel, modulepictogrammen en statistieken voor capacitor, aanval, verdediging, targeting, navigatie en drones."
+          }
+        ]
+      },
+      {
         "id": "comfort",
         "title": "Comfort",
         "features": [
@@ -1166,7 +1258,7 @@
           {
             "id": "website-look",
             "title": "De look van deze website",
-            "body": "Gloeiende knoppen, kleurverlopen, glaseffecten en een lichte filmkorrel, ook in de app, uit te zetten.",
+            "body": "Gloeiende knoppen, kleurverlopen en een lichte filmkorrel, ook in de app, uit te zetten.",
             "alt": "Snelle instellingen als matglazen menu op een licht korrelige achtergrond"
           },
           {
@@ -1196,12 +1288,96 @@
             "title": "Compleet traymenu",
             "body": "Het traymenu toont elke verbonden server met status en kanaal, dempen, doofzetten en Niet storen, verplaatst spraak naar een andere server of een ander kanaal en opent recente chats. Het pictogram toont praten, gedempt, ongelezen berichten en Niet storen. Mumcord start desgewenst bij het inloggen, op elk systeem.",
             "alt": "Traymenu met servers, het submenu van het spraakkanaal en recente chats"
+          },
+          {
+            "id": "sound-themes",
+            "title": "Twee geluidsthema’s",
+            "body": "“Klassiek” met de bekende korte tonen is de standaard, “Rijk” brengt nieuwe, vollere geluiden, met een voorbeeld in Instellingen → Geluiden. Plus een eigen geluid voor het wisselen van kanaal en een kort afscheidsgeluid als je Mumcord afsluit terwijl je in voice zit."
+          },
+          {
+            "id": "start-screen",
+            "title": "Een snellere start",
+            "body": "Een startscherm met het logo op je thema in plaats van een leeg wit venster, en ongeveer een derde minder code vóór het eerste scherm: Instellingen, de wizard en schermdelen laden pas als je ze opent."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.6.1",
+      "teaser": "Plug-ins ook op de Mac, een eigen volume voor schermdelen, effen menuachtergronden en “Klassiek” als standaardgeluid.",
+      "summary": "Een kleine update na 0.6.0: plug-ins draaien nu ook op de Mac, schermdelen heeft een eigen volume, menu’s en kaarten hebben een effen achtergrond en nieuwe installaties starten met het geluidsthema “Klassiek”. Op Windows zijn de app en het installatieprogramma nu ondertekend.",
+      "groups": [
+        {
+          "title": "Verbeterd",
+          "items": [
+            "Nieuwe installaties starten met het geluidsthema “Klassiek”. Heb je al “Rijk” gekozen, dan blijft dat zo (#339).",
+            "Rechtsklikmenu’s, popovers, hoverkaarten en de profielkaart hebben een effen achtergrond in plaats van matglas, zodat tekst goed leesbaar blijft, ook waar de blur ontbreekt, bijvoorbeeld op Linux (#337).",
+            "Windows: de app en het installatieprogramma zijn nu ondertekend met een codesigneringscertificaat (#340)."
+          ]
+        },
+        {
+          "title": "Opgelost",
+          "items": [
+            "Het volume van een schermdeling aanpassen verandert niet langer de stem van de persoon. Elk heeft een eigen schuifregelaar, en Mumcord onthoudt beide per persoon (#333).",
+            "macOS: Mumcord crasht niet meer zodra een plug-in start, zoals de Echolings."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.6.0",
+      "teaser": "Plug-ins: polls, dobbelstenen, Echolings, Mumbot Music en EVE Fit, veilig in een sandbox en zonder serveraanpassingen.",
+      "summary": "Mumcord krijgt plug-ins: kleine, veilige extra's, geïnstalleerd vanuit de instellingen, afgeschermd in een sandbox en zonder aanpassing aan de server. Om te beginnen zijn er polls, eerlijke dobbelstenen, Echolings, een afstandsbediening voor de Mumbot-muziekbot en EVE Fit. Plus een nieuw geluidsthema, een afscheidsgeluid en een snellere start met een startscherm.",
+      "groups": [
+        {
+          "title": "Nieuw",
+          "items": [
+            "Plug-ins: kleine add-ons die Mumcord nieuwe functies geven. Instellingen → Plug-ins heeft de tabbladen Geïnstalleerd, Bladeren, Updates, Repositories en, in de ontwikkelaarsmodus, Ontwikkelaar. Er is niets voorgeïnstalleerd, plug-ins draaien ook als je niet verbonden bent, en “Plug-ins” staat ook in het opdrachtenpalet.",
+            "Vóór elke installatie laat Mumcord in gewone woorden zien wat een plug-in wil doen: elk recht groen, geel of rood, vereiste rechten vast, optionele als schakelaars. Rechten kunnen later worden gewijzigd en gelden meteen. Een plug-in krijgt nooit je chat, bestanden, microfoon, certificaten of wachtwoorden.",
+            "Installeren en updaten tonen een voortgangsbalk met de grootte, daarna “Handtekening controleren”, “Uitpakken” en “Starten”; een mislukte download kun je opnieuw proberen.",
+            "Plug-ins verschijnen waar je Mumcord gebruikt: een plug-inbalk onder de kanaallijst, kaarten in de chat, slash-commando’s zoals /roll, een klein badge naast namen, een sectie in profielkaarten, items in het rechtsklikmenu van een persoon en eigen vensters. Berichten die door een plug-in zijn verstuurd, zijn gemarkeerd met “via”.",
+            "Een plug-inkaart neemt de plaats in van het chatbericht waar hij bij hoort, zoals een geplakte fitting of een poll. Vervangen berichten tonen het pictogram en de naam van de plug-in, en “Originele tekst tonen” haalt ze terug. Oudere berichten krijgen hun kaarten ook, zonder dat stemmen dubbel worden geteld.",
+            "Een plug-in kan bepaalde chatberichten herkennen, zoals een geplakte game-fitting. De installatievraag zegt in de eigen woorden van de plug-in wat hij herkent; hij krijgt dan alleen passende berichten in jouw kanaal, nooit van mensen die je hebt geblokkeerd, en geen andere chattekst.",
+            "Plug-ins wisselen gegevens uit met dezelfde plug-in bij andere mensen in jouw kanaal die Mumcord gebruiken, bijvoorbeeld voor een gedeelde poll. Het gaat via de gewone voiceserver: gewone Mumble-servers hoeven niets te doen, andere clients negeren het, en jij bepaalt wie het ziet. Chatfuncties van plug-ins werken op elke server waarmee je verbonden bent.",
+            "Plug-ins kunnen meldingen sturen. Die komen in het meldingencentrum onder “Plug-ins”, kunnen per plug-in worden uitgezet en blijven stil bij Niet storen.",
+            "Plug-inupdates hebben een eigen instelling: automatisch (standaard), alleen melden of uit. Een update die meer rechten wil of van iemand anders komt, wacht altijd op jouw goedkeuring; een plug-in die na een update niet start, wordt teruggedraaid; en elke plug-in kan op zijn versie worden vastgezet. Nieuwe optionele rechten blijven uit en worden aangeboden onder Updates.",
+            "Servers kunnen plug-ins voorstellen: de Mumbot van een server raadt plug-ins aan, die in het meldingencentrum verschijnen met Installeren, Details, Nu niet en Niet meer vragen voor deze server. Er wordt niets geïnstalleerd zonder jouw goedkeuring.",
+            "Je eigen repositories: tot tien in Instellingen → Plug-ins → Repositories, met naam en sleutelvingerafdruk. Hun plug-ins zijn overal “Onofficieel”, de eerste installatie waarschuwt, en als de ondertekeningssleutel verandert, wordt de repository gepauzeerd tot jij bevestigt.",
+            "De ontwikkelaarsmodus (Instellingen → Geavanceerd) voegt een tabblad Ontwikkelaar toe: een plug-in uit een map laden, herladen en verwijderen, met zijn logboek. Voor auteurs zijn er de plug-in-SDK, een sjabloon en de opdrachtregeltool mumcord-plugin op crates.io (cargo install mumcord-plugin).",
+            "Links van de vorm mumcord://plugins/<id> openen de details van een officiële plug-in; ze installeren nooit iets.",
+            "De officiële plug-ins, elk in alle 24 talen: Poll (2 tot 10 opties, live resultaten, één stem per persoon), Dobbelstenen (/roll met d20, 2d6+3, voordeel en nadeel, samen gegooid en geverifieerd), Echolings (een wezentje met 5 soorten, 4 fases en 3 kleuren dat nooit doodgaat en niets verkoopt, met twee minigames), Mumbot Music (nu aan het spelen, overslaan, volume, wachtrij, nummers toevoegen; klik met rechts op de bot → “Bot instellen”) en EVE Fit (scheepskaart en fittingwiel voor geplakte EVE Online-fittings).",
+            "Mumbot stelt zich voor aan Mumcord: Mumcord weet welke gebruikers bots zijn en wat ze kunnen, en “Bot instellen” verschijnt alleen bij bots die muziek aanbieden.",
+            "Veiligheid: plug-ins draaien in een afgesloten sandbox met limieten voor geheugen en tijd. Een plug-in die blijft crashen wordt uitgezet, en je stem blijft er nooit last van hebben. “Alle plug-ins uitzetten” (Instellingen en het opdrachtenpalet) stopt ze allemaal in één keer, en mumcord --no-plugins start zonder plug-ins. Officiële plug-ins worden bij het installeren en na elke update ondertekend en gecontroleerd; een noodschakelaar kan een schadelijke plug-in uitschakelen en wordt dagelijks gecontroleerd.",
+            "Privacy: bij het zoeken naar plug-ins worden geen identificatiegegevens en geen lijst van je plug-ins verstuurd. Plug-ingegevens blijven op je computer, en na het verwijderen van een plug-in nog 30 dagen, tenzij je ze wist.",
+            "Een tweede geluidsthema: “Rijk”, met nieuwe, vollere geluiden voor verbinden, berichten, vermeldingen, dempen, mensen die komen en gaan, kicks en bans, is nu de standaard. Instellingen → Geluiden schakelt over op “Klassiek”, de bekende korte tonen, met een voorbeeld (#325).",
+            "Als je Mumcord afsluit terwijl je in voice zit, klinkt een kort afscheidsgeluid, zodat je merkt dat je zojuist bent vertrokken. Het klinkt alleen bij een echt afsluiten, nooit bij minimaliseren naar het systeemvak, en heeft een eigen schakelaar (#325).",
+            "Van kanaal wisselen terwijl je in voice zit, heeft een eigen kort geluid in plaats van het verbindingsgeluid, met een eigen schakelaar en in beide geluidsthema’s (#325)."
+          ]
+        },
+        {
+          "title": "Verbeterd",
+          "items": [
+            "Mumcord start sneller: de code vóór het eerste scherm is ongeveer een derde kleiner. Instellingen, de installatiewizard, samen kijken, schermdelen, de serverbrowser en code-highlighting laden pas als je ze opent (#323).",
+            "In plaats van een leeg wit venster en “Laden…” is er een startscherm: het logo op je thema met een dunne laadbalk die in de app overvloeit; bij verminderde beweging schakelt het zonder beweging over (#323).",
+            "Het item Plug-ins in de zijbalk van de instellingen laat zien hoeveel updates en nieuwe optionele rechten er wachten.",
+            "Hogere plug-inkaarten krijgen geen eigen schuifbalk meer: ze worden met een zachte vervaging afgekapt, en “Meer tonen” klapt ze uit.",
+            "Schermlezers lezen een vervangen chatregel voor als zijn kaart (bijvoorbeeld “Kaart van Poll: Lunch om twaalf uur?”) en slaan verborgen regels over."
+          ]
+        },
+        {
+          "title": "Opgelost",
+          "items": [
+            "Plakken met Ctrl+V werkt weer op sommige Linux-desktops.",
+            "De link “Wijzigen” in de kaart “Actieve voorinstelling” in de zijbalk van de instellingen steekt bij lange namen niet meer buiten de kaart uit (#321).",
+            "Het invoerveld voor het aantal tegelijk verbonden servers in Instellingen → Server wordt niet meer over de hele kaart uitgerekt (#320).",
+            "In dialogen waarvan de inhoud verandert, blijft de focus in het dialoogvenster, zodat Escape en Tab blijven werken.",
+            "Een profielkaart die met Escape is gesloten direct na het gebruik van een knop erin, gaat daarna weer open."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.5.0",
       "teaser": "Meldingencentrum, alle privéberichten op één plek, blokkeren, meerdere identiteiten en import uit Mumble.",
@@ -2984,5 +3160,277 @@
         "credit": "Het spel en de berichten komen van zorgch/irc-quizbot (GPL-3.0), overgezet naar Rust en naar het Mumble-protocol, met dezelfde protocollaag als Mumcord."
       }
     }
+  },
+  "plugins": {
+    "label": "Plug-ins",
+    "title": "Kleine extra's voor grote avonden",
+    "description": "Mumcord 0.6.0 voegt plug-ins toe: polls, dobbelstenen, een huisdier van geluid en een afstandsbediening voor je muziekbot. Veilig, ondertekend en zonder aanpassingen aan de server.",
+    "intro": "Mumcord 0.6.0 voegt plug-ins toe: kleine, veilige extra's bovenop het voicechatten. Ze draaien in Mumcord, vragen niets van de server en werken op elke gewone Mumble-server. Wie de officiële Mumble-client gebruikt, ziet waar het ertoe doet een gewone tekstregel en verder niets.",
+    "badge": "Nieuw in Mumcord 0.6.0",
+    "ctaPlugins": "Ontmoet de plug-ins",
+    "ctaDev": "Bouw je eigen",
+    "pills": [
+      "In een sandbox",
+      "Ondertekend",
+      "Geen serveraanpassingen",
+      "24 talen"
+    ],
+    "listTitle": "De eerste plug-ins",
+    "listBody": "Er is niets voorgeïnstalleerd. Kies wat je groep leuk vindt en laat de rest links liggen.",
+    "source": "Broncode",
+    "soon": "Binnenkort",
+    "plugins": {
+      "poll": {
+        "name": "Poll",
+        "tagline": "Stel het kanaal een vraag met maximaal tien opties en zie de stemmen live binnenkomen.",
+        "points": [
+          "2 tot 10 opties, live stembalken in een chatkaart",
+          "Geen Mumcord? Stem door `!poll 1`, `!poll 2` … in de chat te typen",
+          "De uitslag verschijnt zodra de poll sluit"
+        ]
+      },
+      "dice": {
+        "name": "Dobbelstenen",
+        "tagline": "`/roll d20` of `2d6+3`, met eerlijke worpen die anderen kunnen zien en controleren.",
+        "points": [
+          "Voordeel en nadeel, laagste of hoogste weglaten, tot 20 dobbelstenen",
+          "Andere Mumcord-gebruikers in het kanaal zien elke worp, dus valsspelen kan niet",
+          "Een worpgeschiedenis die je kunt uitklappen"
+        ]
+      },
+      "echolings": {
+        "name": "Echolings",
+        "tagline": "Een klein wezentje van geluid dat groeit terwijl je met vrienden optrekt.",
+        "points": [
+          "5 soorten, 4 groeifases, 3 kleuren",
+          "Groeit van de tijd die jullie samen in voice en chat doorbrengen",
+          "Gaat nooit dood, zeurt nooit"
+        ]
+      },
+      "mumbot-music": {
+        "name": "Mumbot Music",
+        "tagline": "Een afstandsbediening voor je Mumbot-muziekbot.",
+        "points": [
+          "Klik met rechts op de bot → “Bot instellen”",
+          "Nu aan het spelen, overslaan, volume, de wachtrij en nummers toevoegen",
+          "Vereist een Mumbot op de server: een gewone Mumble-gebruiker, geen aanpassing aan de server"
+        ]
+      },
+      "eve-fit": {
+        "name": "EVE Fit",
+        "tagline": "Plak een EVE Online-fitting in de chat en iedereen ziet een scheepskaart.",
+        "points": [
+          "Herkent in de chat geplakte EFT-fittings en toont een kaart met schip en modules",
+          "Opent de volledige fittingweergave offline, direct in Mumcord",
+          "Een knop “Fitting kopiëren”, en het is gratis"
+        ]
+      }
+    },
+    "mock": {
+      "pollQuestion": "Wat spelen we vanavond?",
+      "pollOptions": [
+        "Deep Rock Galactic",
+        "Valheim",
+        "Iets nieuws"
+      ],
+      "pollVotes": "7 stemmen",
+      "pollLive": "Live",
+      "pollPlain": "Poll: Wat spelen we vanavond? 1) Deep Rock Galactic 2) Valheim 3) Iets nieuws",
+      "pollPlainVote": "!poll 2",
+      "rollWitness": "Gezien door 3 in het kanaal",
+      "rollHistory": "Geschiedenis",
+      "echoStats": [
+        "5 soorten",
+        "4 fases",
+        "3 kleuren"
+      ],
+      "musicNow": "Nu aan het spelen",
+      "musicTrack": "Midnight Raid",
+      "musicArtist": "Lo-fi voor late sessies",
+      "musicQueue": "Wachtrij",
+      "musicQueueItems": [
+        "Boss Music, Volume 2",
+        "Campfire Loop"
+      ],
+      "musicAdd": "Nummer toevoegen",
+      "musicMenu": "Bot instellen",
+      "evePasted": "geplakt door Maya",
+      "eveCopy": "Fitting kopiëren"
+    },
+    "eveNotice": "EVE Online and all related logos and images are trademarks or registered trademarks of CCP hf. Mumcord is not affiliated with CCP hf.",
+    "eveCredit": "De fittingweergave is gebouwd op eveship.fit van het EVEShipFit-project.",
+    "bridgeTitle": "Niemand valt buiten de boot",
+    "bridgeBody": "Plug-ins vragen niets van de server en werken op elke gewone Mumble-server. Vrienden met de officiële Mumble-client zien waar het ertoe doet een gewone tekstregel, en verder niets.",
+    "bridgeMumcord": "In Mumcord",
+    "bridgeMumble": "In de officiële Mumble-client",
+    "bridgeNote": "Een illustratie: de exacte tekst komt van elke plug-in zelf.",
+    "installTitle": "In een minuut geïnstalleerd",
+    "installBody": "Plug-ins vind je in de instellingen, en je ziet wat elk ervan mag doen voordat het op je computer staat.",
+    "steps": [
+      {
+        "title": "Bladeren",
+        "body": "Instellingen → Plug-ins → Bladeren."
+      },
+      {
+        "title": "Controleren",
+        "body": "Kies een plug-in en bekijk de rechten."
+      },
+      {
+        "title": "Installeren",
+        "body": "Het pictogram verschijnt in de plug-inbalk onder de kanaalboom."
+      }
+    ],
+    "stripLabel": "Plug-ins",
+    "stripChannels": [
+      "Lobby",
+      "Raidavond",
+      "AFK"
+    ],
+    "safeTitle": "Veilig door ontwerp",
+    "safeBody": "Een plug-in is een gast in je app. Dit zijn de huisregels.",
+    "safe": {
+      "sandbox": {
+        "title": "Een strikte sandbox",
+        "body": "Elke plug-in is een klein WebAssembly-programma in een strikte sandbox. Geen directe netwerk- of bestandstoegang; Mumcord tekent de interface met ingebouwde bouwstenen."
+      },
+      "permissions": {
+        "title": "Rechten die je kunt zien",
+        "body": "Vooraf zichtbaar, vóór je installeert. Optionele rechten zijn altijd uit te zetten, en updates die meer nodig hebben wachten op jouw goedkeuring."
+      },
+      "signed": {
+        "title": "Van begin tot eind ondertekend",
+        "body": "Het register en elk pakket zijn ondertekend met minisign, en Mumcord controleert ze voor het installeren. Met een noodschakelaar kan een slechte versie overal worden uitgezet."
+      },
+      "server": {
+        "title": "Geen serveraanpassingen",
+        "body": "Werkt met een ongewijzigde Mumble-server. De beheerder hoeft niets te installeren."
+      },
+      "off": {
+        "title": "Eén schakelaar om ze allemaal te stoppen",
+        "body": "Er is niets voorgeïnstalleerd. “Alle plug-ins uitzetten” in Instellingen → Plug-ins of in het opdrachtenpalet (Ctrl+Shift+P) stopt alle plug-ins in één keer."
+      },
+      "langs": {
+        "title": "In jouw taal",
+        "body": "Beschikbaar in alle 24 talen van Mumcord."
+      }
+    },
+    "devLabel": "Voor ontwikkelaars",
+    "devTitle": "Bouw je eigen",
+    "devBody": "Plug-ins worden in Rust geschreven en gecompileerd naar WebAssembly (componentmodel, interface `mumcord:plugin@1.0.0`). De repo bevat de sjabloon, de documentatie en de broncode van elke officiële plug-in.",
+    "cliTitle": "Eén tool voor de hele weg",
+    "cli": [
+      {
+        "cmd": "new",
+        "body": "Maakt een plug-in op basis van het sjabloon."
+      },
+      {
+        "cmd": "build",
+        "body": "Bouwt hem reproduceerbaar."
+      },
+      {
+        "cmd": "check",
+        "body": "Controleert het pakket."
+      },
+      {
+        "cmd": "test",
+        "body": "Draait testscenario’s tegen een mock-host."
+      },
+      {
+        "cmd": "serve-registry",
+        "body": "Draait een lokaal register om het in Mumcord uit te proberen (Ontwikkelaarsmodus in Instellingen → Plug-ins)."
+      }
+    ],
+    "docsTitle": "Documentatie",
+    "docs": {
+      "start": "Aan de slag",
+      "api": "API",
+      "manifest": "Manifest",
+      "permissions": "Rechten",
+      "building": "Bouwen",
+      "testing": "Testen",
+      "publishing": "Publiceren",
+      "repos": "Je eigen repository"
+    },
+    "submitTitle": "Naar het officiële register",
+    "submitBody": "Open een pull request in Mumcord/plugins die `plugins/<id>/` toevoegt. Er is één goedkeuring van een maintainer en een groene CI nodig.",
+    "checksTitle": "Wat CI controleert",
+    "checks": [
+      "Schemacontrole",
+      "Reproduceerbare herbouw",
+      "Handtekening van de auteur",
+      "Verschil in rechten",
+      "Laadtest met mock-host",
+      "Licentiescan"
+    ],
+    "rulesTitle": "De regels",
+    "rules": [
+      "Een door OSI goedgekeurde licentie",
+      "Een reproduceerbare build",
+      "Geen advertenties, tracking, betalingen of lootboxes"
+    ],
+    "policy": "Beoordelingsbeleid",
+    "ownRepoTitle": "Of draai je eigen",
+    "ownRepoBody": "Iedereen kan een eigen plug-inrepository draaien. Gebruikers voegen die toe via Instellingen → Plug-ins.",
+    "licenceTitle": "Licenties",
+    "licenceBody": "Officiële plug-ins vallen onder AGPL-3.0. Het sjabloon, de documentatie en de SDK vallen onder Apache-2.0.",
+    "peopleTitle": "Gemaakt door",
+    "endTitle": "Een idee voor een plug-in?",
+    "endBody": "Alles is open: het sjabloon, de documentatie en elke officiële plug-in.",
+    "endRepo": "Open de plug-inrepo",
+    "copy": "Kopiëren",
+    "copied": "Gekopieerd",
+    "install": "Installeren in Mumcord",
+    "pluginPage": "Pluginpagina",
+    "installNote": "De installatieknoppen openen de plug-in in Mumcord 0.6.0 of nieuwer, waar je de installatie bevestigt. Als er niets opent, staan de details op de pluginpagina.",
+    "galleryLabel": "Schermafbeeldingen",
+    "galleryTitle": "Bekijk ze in Mumcord",
+    "galleryBody": "Rechtstreeks uit Mumcord 0.6.0, in het donkere en het lichte thema.",
+    "dark": "Donker",
+    "light": "Licht",
+    "shots": {
+      "browse": {
+        "caption": "Blader door de officiële plug-ins direct in Instellingen.",
+        "alt": "Mumcord Instellingen, Plug-ins, tabblad Bladeren met vijf officiële plug-ins (Echolings, Dobbelstenen, EVE Fit, Mumbot Music en Poll), elk met een pictogram en een knop Installeren."
+      },
+      "permissions": {
+        "caption": "Elke plug-in zegt vooraf wat hij mag doen.",
+        "alt": "Installatiemelding van EVE Fit met de rechten gemarkeerd als vereist, een optionele schakelaar en een kader met wat de plug-in nooit krijgt."
+      },
+      "progress": {
+        "caption": "Ondertekende pakketten worden gecontroleerd voordat ze worden geïnstalleerd.",
+        "alt": "Installatiemelding van EVE Fit met een voortgangsbalk met de tekst “Checking signature…” boven de lijst met rechten."
+      },
+      "poll": {
+        "caption": "Een poll vervangt zijn chatbericht door een live kaart.",
+        "alt": "Mumcord-chat waarin Bobs poll “Which map tonight?” verschijnt als kaart met stemmenbalken: Glacier 2 stemmen, Harbor en Canyon 0."
+      },
+      "vote": {
+        "caption": "Stem in het zijpaneel; iedereen ziet de teller bijwerken.",
+        "alt": "Zijpaneel van de poll geopend naast de chat met de opties en Glacier geselecteerd."
+      },
+      "echolings": {
+        "caption": "Echolings: een huisdier dat groeit terwijl jullie samen rondhangen.",
+        "alt": "Profielkaart van Bob met zijn Echoling “Moss”, band- en reeksfiches en een knop “Pat Moss”; huisdierbadges naast namen in de kanaalboom."
+      },
+      "snackrace": {
+        "caption": "Laat de Echolings van je vrienden racen naar de snack.",
+        "alt": "Snack Race bezig met banen voor You en Bob, de bewegende snackzone en een Hop!-knop."
+      },
+      "eveCard": {
+        "caption": "Plak een EVE Online-fit en hij wordt een nette kaart.",
+        "alt": "Chatkaart van een Algos-fit “Evening Roam” geplakt door Carol, met slotfiches, drones en ladingaantallen, en de knoppen Copy fitting en Open."
+      },
+      "eveWheel": {
+        "caption": "Open toont het volledige fittingwiel en de statistieken.",
+        "alt": "EVE Fit-dialoog met het Algos-schip in het fittingwiel, modulepictogrammen en statistieken voor capacitor, aanval, verdediging, targeting, navigatie en drones."
+      },
+      "eveCargo": {
+        "caption": "Dronehangar, laadruim en de melding van CCP.",
+        "alt": "Onderste deel van de EVE Fit-dialoog: dronehangar met Hammerhead II en Hobgoblin II, laadruim met lading en repair paste, en de copyrightmelding van CCP onderaan."
+      }
+    },
+    "sdkNote": "De tool en de SDK staan op crates.io. In je Cargo.toml:",
+    "docsAll": "Alle documentatie",
+    "wiki": "Wiki"
   }
 }

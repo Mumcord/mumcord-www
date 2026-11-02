@@ -97,6 +97,10 @@
       "toolQuiz": {
         "title": "mumquiz",
         "desc": "Viktorinos botas tavo serveriui"
+      },
+      "plugins": {
+        "title": "Papildiniai",
+        "desc": "Apklausos, kauliukai ir daugiau"
       }
     },
     "hero": {
@@ -536,8 +540,8 @@
       "toolTitle": "Prisidėję"
     },
     "spotlight5": {
-      "label": "Nauja versijoje 0.5.0",
-      "labelSoon": "Netrukus: 0.5.0",
+      "label": "Nauja versijoje 0.5.0/0.6.0",
+      "labelSoon": "Netrukus: 0.5.0/0.6.0",
       "title": "Daugiau ramybės. Daugiau tavęs. Daugiau garso.",
       "body": "0.5.0 atneša Epic 3: pranešimų centrą, blokavimą, kelias tapatybes, naują kanalų medį, muziką pokalbyje, mažos delsos režimą bendram muzikavimui ir tiesioginius ryšius per relay.",
       "tiles": {
@@ -567,7 +571,12 @@
         }
       },
       "features": "Visos funkcijos",
-      "changelog": "Visos naujienos"
+      "changelog": "Visos naujienos",
+      "plugins": {
+        "title": "Papildiniai",
+        "body": "0.6.0 prideda mažus, saugius priedus prie balso pokalbių: apklausas, sąžiningus kauliukus, garsų padarėlį ir nuotolinį valdymą jūsų muzikos botui. Serverio keisti nereikia.",
+        "more": "Susipažinkite su papildiniais"
+      }
     },
     "serverCta": {
       "title": "Savas serveris per penkias minutes",
@@ -1112,6 +1121,89 @@
         ]
       },
       {
+        "id": "plugins",
+        "title": "Papildiniai",
+        "features": [
+          {
+            "id": "plugins",
+            "title": "Papildiniai iš nustatymų",
+            "body": "Nustatymai → Papildiniai su skirtukais Įdiegti, Naršyti, Atnaujinimai ir Saugyklos: oficialūs papildiniai pagal kategorijas ir su paieška, įjunkite ir išjunkite juos, keiskite leidimus ir nustatymus, eksportuokite ar iš naujo nustatykite jų duomenis, pašalinkite. Nieko iš anksto neįdiegta, o papildiniai veikia net ir tada, kai nesate prisijungę.",
+            "alt": "Mumcord Nustatymai, Papildiniai, skirtukas Naršyti su penkiais oficialiais papildiniais (Echolingai, Kauliukai, EVE Fit, Mumbot Music ir Apklausa), kiekvienas su piktograma ir mygtuku Įdiegti."
+          },
+          {
+            "id": "plugin-permissions",
+            "title": "Pirmiausia pamatykite, ką papildinys gali daryti",
+            "body": "Prieš diegdama Mumcord paprastais žodžiais pasako, ko papildinys nori: kiekvienas leidimas žalias, geltonas ar raudonas, privalomi užfiksuoti, neprivalomi kaip jungikliai. Pakeitimai įsigalioja iškart. Papildinys niekada negauna jūsų pokalbio, failų, mikrofono, sertifikatų ar slaptažodžių.",
+            "alt": "EVE Fit diegimo langas su leidimais, pažymėtais kaip privalomi, pasirenkamu jungikliu ir langeliu, kuriame išvardyta, ko papildinys niekada negauna."
+          },
+          {
+            "id": "plugin-places",
+            "title": "Papildiniai ten, kur jų reikia",
+            "body": "Papildinių juosta po kanalų sąrašu, pokalbio kortelės, užimančios savo žinutės vietą, pasvirojo brūkšnio komandos, pavyzdžiui, /roll, mažas ženklelis prie vardų, skyrius profilio kortelėse, įrašai dešiniojo pelės klavišo meniu ir savi langai. Tai, ką siunčia papildinys, pažymima „per“."
+          },
+          {
+            "id": "plugin-together",
+            "title": "Kartu su jūsų kanalu",
+            "body": "Papildinys bendrauja su tuo pačiu papildiniu pas kitus kanalo Mumcord naudotojus, pavyzdžiui, bendrai apklausai. Tai keliauja per įprastą balso serverį: standartiniams Mumble serveriams nieko nereikia, kitos programos tai ignoruoja, o jūs pasirenkate, kas tai mato. Papildiniai veikia kiekvieno serverio, prie kurio esate prisijungę, pokalbyje.",
+            "alt": "Apklausos šoninė sritis prie pokalbio su pasirinkimais ir pasirinktu Glacier."
+          },
+          {
+            "id": "plugin-safety",
+            "title": "Smėlio dėžė, parašai ir avarinis jungiklis",
+            "body": "Papildiniai veikia izoliuoti, be prieigos prie tinklo, failų ar garso, su atminties ir laiko apribojimais; nuolat strigstantis papildinys išjungiamas, o jūsų balsas niekada nenukenčia. Oficialūs papildiniai pasirašyti ir tikrinami. Avarinis jungiklis gali visiems išjungti žalingą papildinį, „Išjungti visus papildinius“ sustabdo juos vienu metu, o --no-plugins paleidžia be jokių.",
+            "alt": "EVE Fit diegimo langas su eigos juosta „Checking signature…“ virš leidimų sąrašo."
+          },
+          {
+            "id": "plugin-updates",
+            "title": "Atnaujinimai be staigmenų",
+            "body": "Diegti automatiškai, tik pranešti arba išjungta. Atnaujinimas, kuriam reikia daugiau leidimų arba kuris ateina iš kito autoriaus, visada laukia jūsų patvirtinimo. Papildinys, kuris po atnaujinimo nepasileidžia, grąžinamas atgal, o bet kurį papildinį galima užfiksuoti jo versijoje."
+          },
+          {
+            "id": "plugin-suggestions",
+            "title": "Serveriai siūlo papildinius",
+            "body": "Serverio Mumbot gali rekomenduoti papildinius, kuriuos naudoja jo bendruomenė. Pasiūlymas ramiai atkeliauja į pranešimų centrą su parinktimis Įdiegti, Išsamiau, Ne dabar ir Daugiau neklausti šio serverio. Be jūsų patvirtinimo nieko neįdiegiama."
+          },
+          {
+            "id": "plugin-repositories",
+            "title": "Jūsų pačių papildinių saugyklos",
+            "body": "Iki dešimties papildomų saugyklų nustatymuose → Papildiniai → Saugyklos, rodomų su pavadinimu ir rakto kontroliniu kodu. Jų papildiniai visur pažymimi „Neoficialus“, o jei pasikeičia pasirašymo raktas, saugykla pristabdoma, kol patvirtinsite."
+          },
+          {
+            "id": "plugin-developers",
+            "title": "Sukurkite savo papildinius",
+            "body": "Papildiniai rašomi Rust ir kompiliuojami į WebAssembly. cargo install mumcord-plugin parsiunčia komandinės eilutės įrankį, o mumcord-plugin new sukuria projektą iš šablono. Kūrėjo režimas įkelia papildinį tiesiai iš aplanko, su perkrovimu ir žurnalu."
+          },
+          {
+            "id": "poll",
+            "title": "Apklausa",
+            "body": "Klausimas su 2–10 variantų, gyvi rezultatai pokalbio kortelėje ir skydelyje, vienas balsas vienam žmogui. Kas neturi Mumcord, balsuoja pokalbyje rašydamas !poll 1, !poll 2 …",
+            "alt": "Mumcord pokalbis, kuriame Bobo apklausa „Which map tonight?“ rodoma kaip kortelė su balsų juostomis: Glacier 2 balsai, Harbor ir Canyon 0."
+          },
+          {
+            "id": "dice",
+            "title": "Kauliukai",
+            "body": "/roll su d20, 2d6+3, pranašumu ir trūkumu arba mažiausio ar didžiausio atmetimu, plius greito metimo mygtukai. Metimai atliekami kartu su kanalu, tad niekas negali sukčiauti, o prie kiekvieno rezultato parodoma, ar jis patikrintas."
+          },
+          {
+            "id": "echolings",
+            "title": "Echolingai",
+            "body": "Mažas padarėlis jūsų papildinių juostoje: 5 rūšys, 4 augimo etapai, 3 spalvos. Glostykite, šerkite, žaiskite ar leiskite numigti; jis niekada nemiršta, miega, kai įjungtas Netrukdyti, ir nieko nereikia pirkti. Draugai mato jį kaip ženklelį ir jūsų profilio kortelėje, gali jį aplankyti, yra ir du minižaidimai.",
+            "alt": "Bobo profilio kortelė su jo Echolingu „Moss“, ryšio ir serijos žetonais bei mygtuku „Pat Moss“; augintinių ženkleliai šalia vardų kanalų medyje."
+          },
+          {
+            "id": "mumbot-music",
+            "title": "Mumbot Music",
+            "body": "Mumbot muzikos boto nuotolinis valdymas: dabar groja, praleisti, sustabdyti, garsumas, eilė ir takelių pridėjimas. Dešiniuoju pelės klavišu spustelėkite botą → „Konfigūruoti botą“; API raktas saugomas jūsų sistemos raktų saugykloje."
+          },
+          {
+            "id": "eve-fit",
+            "title": "EVE Fit",
+            "body": "Įklijuokite EVE Online komplektaciją į pokalbį, ir visi, turintys papildinį, pamatys laivo kortelę. Vienu spustelėjimu atidaromas komplektacijos ratas su kondensatoriumi, puolimu, gynyba ir navigacija, neprisijungus, Mumcord viduje, o „Kopijuoti komplektaciją“ ją išgauna atgal.",
+            "alt": "EVE Fit langas su Algos laivu įrangos rate, modulių piktogramomis ir kondensatoriaus, atakos, gynybos, taikymosi, navigacijos bei dronų statistika."
+          }
+        ]
+      },
+      {
         "id": "comfort",
         "title": "Patogumas",
         "features": [
@@ -1166,7 +1258,7 @@
           {
             "id": "website-look",
             "title": "Šios svetainės išvaizda",
-            "body": "Švytintys mygtukai, gradientai, stiklo efektai ir lengvas plėvelės grūdėtumas, taip pat programoje, galima išjungti.",
+            "body": "Švytintys mygtukai, gradientai ir lengvas plėvelės grūdėtumas, taip pat programoje, galima išjungti.",
             "alt": "Greitieji nustatymai kaip matinio stiklo meniu virš šiek tiek grūdėto fono"
           },
           {
@@ -1196,12 +1288,96 @@
             "title": "Pilnas dėklo meniu",
             "body": "Dėklo meniu rodo kiekvieną prijungtą serverį su jo būsena ir kanalu, nutildymą, ausinių išjungimą ir Netrukdyti, perkelia balsą į kitą serverį ar kanalą ir atidaro naujausius pokalbius. Piktograma rodo kalbėjimą, nutildymą, neperskaitytas žinutes ir Netrukdyti. Mumcord paleidžiamas prisijungus, jei nori, bet kurioje sistemoje.",
             "alt": "Dėklo meniu su serveriais, balso kanalo submeniu ir naujausiais pokalbiais"
+          },
+          {
+            "id": "sound-themes",
+            "title": "Dvi garsų temos",
+            "body": "„Klasikinė“ su įprastais trumpais tonais yra numatytoji, „Turtinga“ atneša naujus, pilnesnius garsus, su peržiūra nustatymuose → Garsai. Taip pat atskiras garsas kanalų keitimui ir trumpas atsisveikinimas, kai išeinate iš Mumcord būdami balse."
+          },
+          {
+            "id": "start-screen",
+            "title": "Greitesnis startas",
+            "body": "Pradžios ekranas su logotipu jūsų temoje vietoj tuščio balto lango ir maždaug trečdaliu mažiau kodo iki pirmojo ekrano: Nustatymai, vedlys ir ekrano bendrinimas įkeliami tik kai juos atidarote."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.6.1",
+      "teaser": "Papildiniai ir „Mac“, atskiras ekrano bendrinimo garsumas, vientisas meniu fonas ir „Klasikinė“ kaip numatytasis garsas.",
+      "summary": "Nedidelis atnaujinimas po 0.6.0: papildiniai dabar veikia ir „Mac“, ekrano bendrinimas turi savo garsumą, meniu ir kortelės turi vientisą foną, o naujos diegtys prasideda garso tema „Klasikinė“. „Windows“ programa ir diegimo programa dabar pasirašytos.",
+      "groups": [
+        {
+          "title": "Patobulinta",
+          "items": [
+            "Naujos diegtys prasideda garso tema „Klasikinė“. Jei jau pasirinkote „Turtinga“, ji lieka (#339).",
+            "Dešiniojo pelės mygtuko meniu, iškylantieji langai, kortelės užvedus pelę ir profilio kortelė turi vientisą foną vietoj matinio stiklo, todėl tekstas gerai skaitomas ir ten, kur nėra suliejimo, pavyzdžiui, „Linux“ (#337).",
+            "„Windows“: programa ir diegimo programa dabar pasirašytos kodo pasirašymo sertifikatu (#340)."
+          ]
+        },
+        {
+          "title": "Ištaisyta",
+          "items": [
+            "Pakeitus ekrano bendrinimo garsumą, žmogaus balsas nebesikeičia. Kiekvienas turi savo šliaužiklį, o Mumcord įsimena abu kiekvienam žmogui (#333).",
+            "„macOS“: Mumcord nebesudužta vos paleidus papildinį, pavyzdžiui, Echolingus."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.6.0",
+      "teaser": "Papildiniai: apklausos, kauliukai, Echolingai, Mumbot Music ir EVE Fit, saugūs smėlio dėžėje ir be serverio pakeitimų.",
+      "summary": "Mumcord gauna papildinius: mažus, saugius priedus, diegiamus iš nustatymų, izoliuotus smėlio dėžėje ir nekeičiančius serverio. Pradžiai yra apklausos, sąžiningi kauliukai, Echolingai, Mumbot muzikos boto nuotolinis valdymas ir EVE Fit. Be to, nauja garsų tema, atsisveikinimo garsas ir greitesnis startas su pradžios ekranu.",
+      "groups": [
+        {
+          "title": "Nauja",
+          "items": [
+            "Papildiniai: maži priedai, suteikiantys Mumcord naujų funkcijų. Nustatymai → Papildiniai turi skirtukus Įdiegti, Naršyti, Atnaujinimai, Saugyklos ir, Kūrėjo režimu, Kūrėjas. Nieko iš anksto neįdiegta, papildiniai veikia net kai nesate prisijungę, o „Papildiniai“ yra ir komandų paletėje.",
+            "Prieš kiekvieną diegimą Mumcord paprastais žodžiais parodo, ką papildinys nori daryti: kiekvienas leidimas žalias, geltonas ar raudonas, privalomi užfiksuoti, neprivalomi kaip jungikliai. Leidimus vėliau galima keisti, ir jie įsigalioja iškart. Papildinys niekada negauna jūsų pokalbio, failų, mikrofono, sertifikatų ar slaptažodžių.",
+            "Diegimas ir atnaujinimas rodo eigos juostą su dydžiu, tada „Tikrinamas parašas“, „Išpakuojama“ ir „Paleidžiama“; nepavykusį atsisiuntimą galima kartoti.",
+            "Papildiniai atsiranda ten, kur naudojatės Mumcord: papildinių juosta po kanalų sąrašu, kortelės pokalbyje, pasvirojo brūkšnio komandos, pavyzdžiui, /roll, mažas ženklelis prie vardų, skyrius profilio kortelėse, įrašai žmogaus dešiniojo pelės klavišo meniu ir savi langai. Papildinio išsiųstos žinutės pažymimos „per“.",
+            "Papildinio kortelė užima pokalbio žinutės, kuriai priklauso, vietą, pavyzdžiui, įklijuotos komplektacijos ar apklausos. Pakeistos žinutės rodo papildinio piktogramą ir pavadinimą, o „Rodyti originalų tekstą“ jas grąžina. Senesnės žinutės taip pat gauna korteles, balsų nesuskaičiuojant dukart.",
+            "Papildinys gali atpažinti tam tikras pokalbio žinutes, pavyzdžiui, įklijuotą žaidimo komplektaciją. Diegimo užklausoje savais žodžiais pasakoma, ką jis atpažįsta; tada jis gauna tik tinkamas žinutes jūsų kanale, niekada iš jūsų užblokuotų žmonių ir jokio kito pokalbio teksto.",
+            "Papildiniai keičiasi duomenimis su tuo pačiu papildiniu kitų žmonių Mumcord jūsų kanale, pavyzdžiui, bendrai apklausai. Tai keliauja per įprastą balso serverį: standartiniams Mumble serveriams nieko nereikia, kitos programos tai ignoruoja, o jūs pasirenkate, kas tai mato. Papildinių pokalbio funkcijos veikia kiekviename serveryje, prie kurio esate prisijungę.",
+            "Papildiniai gali siųsti pranešimus. Jie patenka į pranešimų centrą skiltyje „Papildiniai“, juos galima išjungti kiekvienam papildiniui atskirai, o įjungus Netrukdyti jie tylūs.",
+            "Papildinių atnaujinimai turi savo nustatymą: automatiškai (numatyta), tik pranešti arba išjungta. Atnaujinimas, kuriam reikia daugiau leidimų arba kuris ateina iš kito autoriaus, visada laukia jūsų patvirtinimo; papildinys, kuris po atnaujinimo nepasileidžia, grąžinamas atgal; o bet kurį papildinį galima užfiksuoti jo versijoje. Nauji neprivalomi leidimai lieka išjungti ir siūlomi skiltyje Atnaujinimai.",
+            "Serveriai gali siūlyti papildinius: serverio Mumbot rekomenduoja papildinius, kurie pasirodo pranešimų centre su parinktimis Įdiegti, Išsamiau, Ne dabar ir Daugiau neklausti šio serverio. Be jūsų patvirtinimo nieko neįdiegiama.",
+            "Jūsų pačių saugyklos: iki dešimties nustatymuose → Papildiniai → Saugyklos, su pavadinimu ir rakto kontroliniu kodu. Jų papildiniai visur „Neoficialūs“, pirmasis diegimas įspėja, o jei pasikeičia pasirašymo raktas, saugykla pristabdoma, kol patvirtinsite.",
+            "Kūrėjo režimas (Nustatymai → Papildomi) prideda skirtuką Kūrėjas: įkelkite, perkraukite ir iškraukite papildinį iš aplanko, su jo žurnalu. Autoriams yra papildinių SDK, šablonas ir komandinės eilutės įrankis mumcord-plugin crates.io (cargo install mumcord-plugin).",
+            "Nuorodos mumcord://plugins/<id> atidaro oficialaus papildinio informaciją; jos niekada nieko neįdiegia.",
+            "Oficialūs papildiniai, kiekvienas visomis 24 kalbomis: Apklausa (2–10 variantų, gyvi rezultatai, vienas balsas vienam žmogui), Kauliukai (/roll su d20, 2d6+3, pranašumu ir trūkumu, metama kartu ir patikrinama), Echolingai (padarėlis su 5 rūšimis, 4 etapais ir 3 spalvomis, kuris niekada nemiršta ir nieko neparduoda, su dviem minižaidimais), Mumbot Music (dabar groja, praleisti, garsumas, eilė, takelių pridėjimas; dešiniuoju pelės klavišu spustelėkite botą → „Konfigūruoti botą“) ir EVE Fit (laivo kortelė ir komplektacijos ratas įklijuotoms EVE Online komplektacijoms).",
+            "Mumbot prisistato Mumcord: Mumcord žino, kurie naudotojai yra botai ir ką jie gali, o „Konfigūruoti botą“ rodomas tik botams, siūlantiems muziką.",
+            "Sauga: papildiniai veikia uždaroje smėlio dėžėje su atminties ir laiko apribojimais. Nuolat strigstantis papildinys išjungiamas, o jūsų balsas niekada nenukenčia. „Išjungti visus papildinius“ (nustatymuose ir komandų paletėje) sustabdo juos visus vienu metu, o mumcord --no-plugins paleidžia be jokių. Oficialūs papildiniai pasirašyti ir tikrinami diegiant bei po kiekvieno atnaujinimo; avarinis jungiklis gali išjungti žalingą papildinį ir tikrinamas kasdien.",
+            "Privatumas: ieškant papildinių nesiunčiami jokie identifikatoriai ir jūsų papildinių sąrašas. Papildinių duomenys lieka jūsų kompiuteryje, o pašalinus papildinį dar 30 dienų, nebent juos ištrinsite.",
+            "Antra garsų tema: „Turtinga“, su naujais, pilnesniais garsais prisijungimui, žinutėms, paminėjimams, nutildymui, žmonių atėjimui ir išėjimui, išmetimams ir draudimams, dabar yra numatytoji. Nustatymai → Garsai perjungia į „Klasikinę“, įprastus trumpus tonus, su peržiūra (#325).",
+            "Išėjus iš Mumcord būnant balse, nuskamba trumpas atsisveikinimo garsas, kad pastebėtumėte, jog ką tik išėjote. Jis skamba tik tikrai išeinant, niekada sumažinus į dėklą, ir turi savo jungiklį (#325).",
+            "Keičiant kanalą būnant balse, vietoj prisijungimo garso skamba savas trumpas garsas, su savu jungikliu ir abiejose garsų temose (#325)."
+          ]
+        },
+        {
+          "title": "Patobulinta",
+          "items": [
+            "Mumcord paleidžiama greičiau: kodas iki pirmojo ekrano maždaug trečdaliu mažesnis. Nustatymai, sąrankos vedlys, žiūrėjimas kartu, ekrano bendrinimas, serverių naršyklė ir kodo paryškinimas įkeliami tik kai juos atidarote (#323).",
+            "Vietoj tuščio balto lango ir „Įkeliama…“ rodomas pradžios ekranas: logotipas jūsų temoje su plona įkėlimo juosta, kuri sklandžiai pereina į programą; esant sumažintam judesiui pereinama be judėjimo (#323).",
+            "Papildinių įrašas nustatymų šoninėje juostoje rodo, kiek atnaujinimų ir naujų neprivalomų leidimų laukia.",
+            "Aukštesnės papildinių kortelės nebeturi savo slinkties juostos: jos nukerpamos švelniu išblukimu, o „Rodyti daugiau“ jas išskleidžia.",
+            "Ekrano skaitytuvai pakeistą pokalbio eilutę perskaito kaip jos kortelę (pavyzdžiui, „Kortelė iš Apklausos: Pietūs dvyliktą?“) ir praleidžia paslėptas eilutes."
+          ]
+        },
+        {
+          "title": "Ištaisyta",
+          "items": [
+            "Įklijavimas su Ctrl+V vėl veikia kai kuriose Linux darbalaukio aplinkose.",
+            "Nuoroda „Keisti“ nustatymų šoninės juostos kortelėje „Aktyvus šablonas“ nebeišlenda už kortelės ribų su ilgais pavadinimais (#321).",
+            "Vienu metu prijungtų serverių skaičiaus laukas nustatymuose → Serveris nebėra ištemptas per visą kortelę (#320).",
+            "Dialoguose, kurių turinys keičiasi, fokusas lieka dialoge, tad Escape ir Tab toliau veikia.",
+            "Profilio kortelė, uždaryta Escape iškart po jos mygtuko naudojimo, vėliau vėl atsidaro."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.5.0",
       "teaser": "Pranešimų centras, visi privatūs pranešimai vienoje vietoje, blokavimas, kelios tapatybės ir importas iš Mumble.",
@@ -2984,5 +3160,277 @@
         "credit": "Žaidimas ir jo pranešimai kilę iš zorgch/irc-quizbot (GPL-3.0), perkelti į Rust ir Mumble protokolą, su tuo pačiu protokolo sluoksniu kaip Mumcord."
       }
     }
+  },
+  "plugins": {
+    "label": "Papildiniai",
+    "title": "Maži priedai dideliems vakarams",
+    "description": "Mumcord 0.6.0 prideda papildinius: apklausas, kauliukus, garsų augintinį ir nuotolinį valdymą jūsų muzikos botui. Saugu, pasirašyta ir be serverio pakeitimų.",
+    "intro": "Mumcord 0.6.0 prideda papildinius: mažus, saugius priedus prie balso pokalbių. Jie veikia Mumcord viduje, nereikalauja serverio pakeitimų ir veikia su bet kuriuo standartiniu Mumble serveriu. Oficialios Mumble programos naudotojai ten, kur svarbu, mato paprastą teksto eilutę, ir nieko daugiau.",
+    "badge": "Nauja Mumcord 0.6.0",
+    "ctaPlugins": "Susipažinkite su papildiniais",
+    "ctaDev": "Sukurkite savo",
+    "pills": [
+      "Izoliuota smėlio dėžėje",
+      "Pasirašyta",
+      "Be serverio pakeitimų",
+      "24 kalbos"
+    ],
+    "listTitle": "Pirmieji papildiniai",
+    "listBody": "Nieko iš anksto neįdiegta. Pasirinkite, kas patinka jūsų kompanijai, o likusį palikite.",
+    "source": "Šaltinis",
+    "soon": "Netrukus",
+    "plugins": {
+      "poll": {
+        "name": "Apklausa",
+        "tagline": "Užduokite kanalui klausimą su iki dešimties variantų ir stebėkite balsus realiu laiku.",
+        "points": [
+          "Nuo 2 iki 10 variantų, gyvos balsų juostos pokalbio kortelėje",
+          "Neturite Mumcord? Balsuokite pokalbyje rašydami `!poll 1`, `!poll 2` …",
+          "Rezultatai parodomi, kai apklausa užbaigiama"
+        ]
+      },
+      "dice": {
+        "name": "Kauliukai",
+        "tagline": "`/roll d20` arba `2d6+3`, su sąžiningais metimais, kuriuos kiti mato ir gali patikrinti.",
+        "points": [
+          "Pranašumas ir trūkumas, atmesti mažiausią ar didžiausią, iki 20 kauliukų",
+          "Kiti kanalo Mumcord naudotojai mato kiekvieną metimą, tad sukčiauti neįmanoma",
+          "Metimų istorija, kurią galite išskleisti"
+        ]
+      },
+      "echolings": {
+        "name": "Echolingai",
+        "tagline": "Mažas garsų padarėlis, kuris auga, kol leidžiate laiką su draugais.",
+        "points": [
+          "5 rūšys, 4 augimo etapai, 3 spalvos",
+          "Auga iš kartu praleisto laiko balso kanaluose ir pokalbyje",
+          "Niekada nemiršta, niekada nepyksta"
+        ]
+      },
+      "mumbot-music": {
+        "name": "Mumbot Music",
+        "tagline": "Nuotolinis valdymas jūsų Mumbot muzikos botui.",
+        "points": [
+          "Dešiniuoju pelės klavišu spustelėkite botą → „Konfigūruoti botą“",
+          "Dabar groja, praleisti, garsumas, eilė ir takelių pridėjimas",
+          "Reikia Mumbot serveryje: tai paprastas Mumble naudotojas, serverio keisti nereikia"
+        ]
+      },
+      "eve-fit": {
+        "name": "EVE Fit",
+        "tagline": "Įklijuokite EVE Online komplektaciją pokalbyje, ir visi pamatys laivo kortelę.",
+        "points": [
+          "Atpažįsta pokalbyje įklijuotas EFT komplektacijas ir parodo kortelę su laivu bei moduliais",
+          "Atidaro visą komplektacijos vaizdą neprisijungus, tiesiog Mumcord viduje",
+          "Mygtukas „Kopijuoti komplektaciją“, ir tai nemokama"
+        ]
+      }
+    },
+    "mock": {
+      "pollQuestion": "Ką šįvakar žaidžiame?",
+      "pollOptions": [
+        "Deep Rock Galactic",
+        "Valheim",
+        "Kažką naujo"
+      ],
+      "pollVotes": "7 balsai",
+      "pollLive": "Tiesiogiai",
+      "pollPlain": "Apklausa: Ką šįvakar žaidžiame? 1) Deep Rock Galactic 2) Valheim 3) Kažką naujo",
+      "pollPlainVote": "!poll 2",
+      "rollWitness": "Mato 3 kanale",
+      "rollHistory": "Istorija",
+      "echoStats": [
+        "5 rūšys",
+        "4 etapai",
+        "3 spalvos"
+      ],
+      "musicNow": "Dabar groja",
+      "musicTrack": "Midnight Raid",
+      "musicArtist": "Lo-fi vėlyvoms sesijoms",
+      "musicQueue": "Eilė",
+      "musicQueueItems": [
+        "Boss Music, Volume 2",
+        "Campfire Loop"
+      ],
+      "musicAdd": "Pridėti takelį",
+      "musicMenu": "Konfigūruoti botą",
+      "evePasted": "įklijavo Maya",
+      "eveCopy": "Kopijuoti komplektaciją"
+    },
+    "eveNotice": "EVE Online and all related logos and images are trademarks or registered trademarks of CCP hf. Mumcord is not affiliated with CCP hf.",
+    "eveCredit": "Komplektacijos vaizdas sukurtas remiantis EVEShipFit projekto eveship.fit.",
+    "bridgeTitle": "Niekas nelieka nuošalyje",
+    "bridgeBody": "Papildiniai nereikalauja serverio pakeitimų ir veikia su bet kuriuo standartiniu Mumble serveriu. Draugai su oficialia Mumble programa ten, kur svarbu, mato paprastą teksto eilutę, ir nieko daugiau.",
+    "bridgeMumcord": "Mumcord",
+    "bridgeMumble": "Oficialioje Mumble programoje",
+    "bridgeNote": "Iliustracija: tikslią formuluotę pateikia kiekvienas papildinys.",
+    "installTitle": "Įdiegiama per minutę",
+    "installBody": "Papildiniai randami nustatymuose, ir dar prieš jiems patenkant į jūsų kompiuterį matote, ką kiekvienas gali daryti.",
+    "steps": [
+      {
+        "title": "Naršykite",
+        "body": "Nustatymai → Papildiniai → Naršyti."
+      },
+      {
+        "title": "Patikrinkite",
+        "body": "Pasirinkite papildinį ir peržiūrėkite jo leidimus."
+      },
+      {
+        "title": "Įdiekite",
+        "body": "Jo piktograma atsiranda papildinių juostoje po kanalų medžiu."
+      }
+    ],
+    "stripLabel": "Papildiniai",
+    "stripChannels": [
+      "Fojė",
+      "Reidų vakaras",
+      "AFK"
+    ],
+    "safeTitle": "Saugu iš pagrindų",
+    "safeBody": "Papildinys yra svečias jūsų programoje. Štai namų taisyklės.",
+    "safe": {
+      "sandbox": {
+        "title": "Griežta smėlio dėžė",
+        "body": "Kiekvienas papildinys yra maža WebAssembly programa griežtoje smėlio dėžėje. Jokios tiesioginės prieigos prie tinklo ar failų; sąsają Mumcord nupiešia iš integruotų kūrimo blokų."
+      },
+      "permissions": {
+        "title": "Leidimai, kuriuos matote",
+        "body": "Parodomi prieš diegiant. Neprivalomus galima bet kada išjungti, o atnaujinimai, kuriems reikia daugiau, laukia jūsų patvirtinimo."
+      },
+      "signed": {
+        "title": "Pasirašyta nuo pradžios iki galo",
+        "body": "Registras ir kiekvienas paketas pasirašyti naudojant minisign, o Mumcord patikrina juos prieš diegdama. Avarinis jungiklis gali visur išjungti blogą versiją."
+      },
+      "server": {
+        "title": "Be serverio pakeitimų",
+        "body": "Veikia su nepakeistu Mumble serveriu. Administratoriui nieko diegti nereikia."
+      },
+      "off": {
+        "title": "Vienas jungiklis visiems sustabdyti",
+        "body": "Nieko iš anksto neįdiegta. „Išjungti visus papildinius“ nustatymuose → Papildiniai arba komandų paletėje (Ctrl+Shift+P) vienu metu sustabdo visus papildinius."
+      },
+      "langs": {
+        "title": "Jūsų kalba",
+        "body": "Pasiekiama visomis 24 Mumcord kalbomis."
+      }
+    },
+    "devLabel": "Kūrėjams",
+    "devTitle": "Sukurkite savo",
+    "devBody": "Papildiniai rašomi Rust kalba ir kompiliuojami į WebAssembly (komponentų modelis, sąsaja `mumcord:plugin@1.0.0`). Saugykloje rasite šabloną, dokumentaciją ir kiekvieno oficialaus papildinio šaltinio kodą.",
+    "cliTitle": "Vienas įrankis visam keliui",
+    "cli": [
+      {
+        "cmd": "new",
+        "body": "Sukuria papildinį iš šablono."
+      },
+      {
+        "cmd": "build",
+        "body": "Sukompiliuoja jį atkuriamai."
+      },
+      {
+        "cmd": "check",
+        "body": "Patikrina paketą."
+      },
+      {
+        "cmd": "test",
+        "body": "Paleidžia bandymų scenarijus su imituojamu šeimininku."
+      },
+      {
+        "cmd": "serve-registry",
+        "body": "Paleidžia vietinį registrą, kad išbandytumėte Mumcord (Kūrėjo režimas nustatymuose → Papildiniai)."
+      }
+    ],
+    "docsTitle": "Dokumentacija",
+    "docs": {
+      "start": "Pradžia",
+      "api": "API",
+      "manifest": "Manifestas",
+      "permissions": "Leidimai",
+      "building": "Kūrimas",
+      "testing": "Testavimas",
+      "publishing": "Publikavimas",
+      "repos": "Jūsų pačių saugykla"
+    },
+    "submitTitle": "Į oficialų registrą",
+    "submitBody": "Atidarykite pull request Mumcord/plugins saugykloje, pridedantį `plugins/<id>/`. Reikia vieno prižiūrėtojo patvirtinimo ir žalio CI.",
+    "checksTitle": "Ką tikrina CI",
+    "checks": [
+      "Schemos patikra",
+      "Atkuriamas perkūrimas",
+      "Autoriaus parašas",
+      "Leidimų skirtumai",
+      "Įkėlimo testas su imituojamu šeimininku",
+      "Licencijų patikra"
+    ],
+    "rulesTitle": "Taisyklės",
+    "rules": [
+      "OSI patvirtinta licencija",
+      "Atkuriamas kūrimas",
+      "Jokių reklamų, sekimo, mokėjimų ar loot box"
+    ],
+    "policy": "Peržiūros politika",
+    "ownRepoTitle": "Arba paleiskite savo",
+    "ownRepoBody": "Kiekvienas gali paleisti savo papildinių saugyklą. Naudotojai ją prideda nustatymuose → Papildiniai.",
+    "licenceTitle": "Licencijos",
+    "licenceBody": "Oficialūs papildiniai licencijuoti AGPL-3.0. Šablonas, dokumentacija ir SDK licencijuoti Apache-2.0.",
+    "peopleTitle": "Sukūrė",
+    "endTitle": "Turite idėją papildiniui?",
+    "endBody": "Viskas atvira: šablonas, dokumentacija ir kiekvienas oficialus papildinys.",
+    "endRepo": "Atidaryti papildinių saugyklą",
+    "copy": "Kopijuoti",
+    "copied": "Nukopijuota",
+    "install": "Įdiegti Mumcord",
+    "pluginPage": "Papildinio puslapis",
+    "installNote": "Diegimo mygtukai atidaro papildinį Mumcord 0.6.0 ar naujesnėje versijoje, kur patvirtini diegimą. Jei nieko neatsidaro, išsamią informaciją rasi papildinio puslapyje.",
+    "galleryLabel": "Ekrano nuotraukos",
+    "galleryTitle": "Pamatyk juos Mumcord",
+    "galleryBody": "Tiesiai iš Mumcord 0.6.0, tamsiąja ir šviesiąja tema.",
+    "dark": "Tamsi",
+    "light": "Šviesi",
+    "shots": {
+      "browse": {
+        "caption": "Naršyk oficialius papildinius tiesiai Nustatymuose.",
+        "alt": "Mumcord Nustatymai, Papildiniai, skirtukas Naršyti su penkiais oficialiais papildiniais (Echolingai, Kauliukai, EVE Fit, Mumbot Music ir Apklausa), kiekvienas su piktograma ir mygtuku Įdiegti."
+      },
+      "permissions": {
+        "caption": "Kiekvienas papildinys iš anksto pasako, ką jam leista daryti.",
+        "alt": "EVE Fit diegimo langas su leidimais, pažymėtais kaip privalomi, pasirenkamu jungikliu ir langeliu, kuriame išvardyta, ko papildinys niekada negauna."
+      },
+      "progress": {
+        "caption": "Pasirašyti paketai patikrinami prieš diegiant.",
+        "alt": "EVE Fit diegimo langas su eigos juosta „Checking signature…“ virš leidimų sąrašo."
+      },
+      "poll": {
+        "caption": "Apklausa pakeičia savo pokalbio žinutę gyva kortele.",
+        "alt": "Mumcord pokalbis, kuriame Bobo apklausa „Which map tonight?“ rodoma kaip kortelė su balsų juostomis: Glacier 2 balsai, Harbor ir Canyon 0."
+      },
+      "vote": {
+        "caption": "Balsuok šoninėje srityje; visi mato, kaip atsinaujina skaičius.",
+        "alt": "Apklausos šoninė sritis prie pokalbio su pasirinkimais ir pasirinktu Glacier."
+      },
+      "echolings": {
+        "caption": "Echolingai: augintinis, kuris auga, kol leidžiate laiką kartu.",
+        "alt": "Bobo profilio kortelė su jo Echolingu „Moss“, ryšio ir serijos žetonais bei mygtuku „Pat Moss“; augintinių ženkleliai šalia vardų kanalų medyje."
+      },
+      "snackrace": {
+        "caption": "Lenktyniauk su draugų Echolingais iki užkandžio.",
+        "alt": "Vykstantis Snack Race su takeliais You ir Bob, judančia užkandžio zona ir mygtuku Hop!."
+      },
+      "eveCard": {
+        "caption": "Įklijuok EVE Online fit ir jis tampa tvarkinga kortele.",
+        "alt": "Pokalbio kortelė Algos fit „Evening Roam“, kurį įklijavo Carol, su lizdų žetonais, dronais ir krovinio skaičiais bei mygtukais Copy fitting ir Open."
+      },
+      "eveWheel": {
+        "caption": "Open parodo visą įrangos ratą ir statistiką.",
+        "alt": "EVE Fit langas su Algos laivu įrangos rate, modulių piktogramomis ir kondensatoriaus, atakos, gynybos, taikymosi, navigacijos bei dronų statistika."
+      },
+      "eveCargo": {
+        "caption": "Dronų angaras, krovinių skyrius ir CCP pranešimas.",
+        "alt": "Apatinė EVE Fit lango dalis: dronų angaras su Hammerhead II ir Hobgoblin II, krovinių skyrius su užtaisais ir repair paste bei CCP autorių teisių pranešimas apačioje."
+      }
+    },
+    "sdkNote": "Įrankis ir SDK yra crates.io. Tavo Cargo.toml:",
+    "docsAll": "Visa dokumentacija",
+    "wiki": "Wiki"
   }
 }

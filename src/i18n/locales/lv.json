@@ -97,6 +97,10 @@
       "toolQuiz": {
         "title": "mumquiz",
         "desc": "Viktorīnas bots tavam serverim"
+      },
+      "plugins": {
+        "title": "Spraudņi",
+        "desc": "Aptaujas, kauliņi un vairāk"
       }
     },
     "hero": {
@@ -536,8 +540,8 @@
       "toolTitle": "Līdzdalībnieki"
     },
     "spotlight5": {
-      "label": "Jaunums versijā 0.5.0",
-      "labelSoon": "Drīzumā: 0.5.0",
+      "label": "Jaunums versijā 0.5.0/0.6.0",
+      "labelSoon": "Drīzumā: 0.5.0/0.6.0",
       "title": "Vairāk miera. Vairāk tevis. Vairāk skaņas.",
       "body": "0.5.0 atnes Epic 3: paziņojumu centru, bloķēšanu, vairākas identitātes, jaunu kanālu koku, mūziku čatā, zemas aiztures režīmu kopīgai muzicēšanai un tiešus savienojumus caur relay.",
       "tiles": {
@@ -567,7 +571,12 @@
         }
       },
       "features": "Visas funkcijas",
-      "changelog": "Viss jaunais"
+      "changelog": "Viss jaunais",
+      "plugins": {
+        "title": "Spraudņi",
+        "body": "0.6.0 pievieno mazus, drošus papildinājumus balss čatam: aptaujas, godīgus kauliņus, skaņu radījumu un tālvadību jūsu mūzikas botam. Servera izmaiņas nav vajadzīgas.",
+        "more": "Iepazīstiet spraudņus"
+      }
     },
     "serverCta": {
       "title": "Savs serveris piecās minūtēs",
@@ -1112,6 +1121,89 @@
         ]
       },
       {
+        "id": "plugins",
+        "title": "Spraudņi",
+        "features": [
+          {
+            "id": "plugins",
+            "title": "Spraudņi no iestatījumiem",
+            "body": "Iestatījumi → Spraudņi ar cilnēm Instalētie, Pārlūkot, Atjauninājumi un Repozitoriji: oficiālie spraudņi pa kategorijām un ar meklēšanu, ieslēdziet un izslēdziet tos, mainiet atļaujas un iestatījumus, eksportējiet vai atiestatiet to datus, noņemiet. Nekas nav iepriekš instalēts, un spraudņi darbojas arī tad, ja neesat savienots.",
+            "alt": "Mumcord Iestatījumi, Spraudņi, cilne Pārlūkot ar pieciem oficiālajiem spraudņiem (Echolingi, Kauliņu metiens, EVE Fit, Mumbot Music un Aptauja), katram ar ikonu un pogu Uzstādīt."
+          },
+          {
+            "id": "plugin-permissions",
+            "title": "Vispirms redziet, ko spraudnis drīkst",
+            "body": "Pirms instalēšanas Mumcord vienkāršiem vārdiem pasaka, ko spraudnis vēlas: katra atļauja zaļa, dzeltena vai sarkana, obligātās fiksētas, neobligātās kā slēdži. Izmaiņas stājas spēkā uzreiz. Spraudnis nekad nesaņem jūsu čatu, failus, mikrofonu, sertifikātus vai paroles.",
+            "alt": "EVE Fit uzstādīšanas lodziņš ar atļaujām, kas atzīmētas kā obligātas, neobligātu slēdzi un lodziņu, kurā uzskaitīts, ko spraudnis nekad nesaņem."
+          },
+          {
+            "id": "plugin-places",
+            "title": "Spraudņi tur, kur tie vajadzīgi",
+            "body": "Spraudņu josla zem kanālu saraksta, kartītes čatā, kas ieņem savas ziņas vietu, slīpsvītras komandas, piemēram, /roll, mazs žetons blakus vārdiem, sadaļa profila kartītēs, ieraksti labā klikšķa izvēlnē un savi logi. Ko spraudnis sūta, tiek atzīmēts ar „via“."
+          },
+          {
+            "id": "plugin-together",
+            "title": "Kopā ar jūsu kanālu",
+            "body": "Spraudnis sazinās ar to pašu spraudni pārējiem kanāla Mumcord lietotājiem, piemēram, kopīgai aptaujai. Tas ceļo pa parasto balss serveri: standarta Mumble serveriem nekas nav vajadzīgs, citas lietotnes to ignorē, un jūs izvēlaties, kas to redz. Spraudņi darbojas katra servera čatā, ar kuru esat savienots.",
+            "alt": "Aptaujas sānjosla blakus tērzēšanai ar variantiem un atlasītu Glacier."
+          },
+          {
+            "id": "plugin-safety",
+            "title": "Smilškaste, paraksti un ārkārtas slēdzis",
+            "body": "Spraudņi darbojas izolēti, bez piekļuves tīklam, failiem vai audio, ar atmiņas un laika ierobežojumiem; spraudnis, kas turpina avarēt, tiek izslēgts, un jūsu balss nekad necieš. Oficiālie spraudņi ir parakstīti un pārbaudīti. Ārkārtas slēdzis var visiem atspējot kaitīgu spraudni, „Izslēgt visus spraudņus“ aptur tos uzreiz, un --no-plugins palaiž bez tiem.",
+            "alt": "EVE Fit uzstādīšanas lodziņš ar norises joslu „Checking signature…“ virs atļauju saraksta."
+          },
+          {
+            "id": "plugin-updates",
+            "title": "Atjauninājumi bez pārsteigumiem",
+            "body": "Instalēt automātiski, tikai paziņot vai izslēgts. Atjauninājums, kuram vajag vairāk atļauju vai kas nāk no cita autora, vienmēr gaida jūsu apstiprinājumu. Spraudnis, kas pēc atjauninājuma neiedarbojas, tiek atgriezts atpakaļ, un jebkuru spraudni var piespraust tā versijai."
+          },
+          {
+            "id": "plugin-suggestions",
+            "title": "Serveri iesaka spraudņus",
+            "body": "Servera Mumbot var ieteikt spraudņus, ko izmanto tā kopiena. Ieteikums mierīgi parādās paziņojumu centrā ar iespējām Instalēt, Detaļas, Ne tagad un Vairs nejautāt par šo serveri. Bez jūsu apstiprinājuma nekas netiek instalēts."
+          },
+          {
+            "id": "plugin-repositories",
+            "title": "Jūsu pašu spraudņu repozitoriji",
+            "body": "Līdz desmit papildu repozitorijiem sadaļā Iestatījumi → Spraudņi → Repozitoriji, parādīti ar nosaukumu un atslēgas pirkstu nospiedumu. To spraudņi visur tiek atzīmēti kā „Neoficiāls“, un, ja parakstīšanas atslēga mainās, repozitorijs tiek apturēts, līdz apstiprināsiet."
+          },
+          {
+            "id": "plugin-developers",
+            "title": "Veidojiet savus spraudņus",
+            "body": "Spraudņi ir Rust, kompilēti uz WebAssembly. cargo install mumcord-plugin iegūst komandrindas rīku, un mumcord-plugin new izveido projektu no veidnes. Izstrādātāja režīms ielādē spraudni tieši no mapes, ar pārlādi un žurnālu."
+          },
+          {
+            "id": "poll",
+            "title": "Aptauja",
+            "body": "Jautājums ar 2 līdz 10 variantiem, tiešraides rezultāti čata kartītē un panelī, viena balss uz cilvēku. Kam nav Mumcord, balso čatā ar !poll 1, !poll 2 …",
+            "alt": "Mumcord tērzēšana, kurā Bob aptauja „Which map tonight?“ redzama kā kartīte ar balsu joslām: Glacier 2 balsis, Harbor un Canyon 0."
+          },
+          {
+            "id": "dice",
+            "title": "Kauliņu metiens",
+            "body": "/roll ar d20, 2d6+3, priekšrocību un trūkumu vai mazākā vai lielākā atmešanu, plus ātrā metiena pogas. Metieni tiek veikti kopā ar kanālu, lai neviens nevarētu krāpties, un katram rezultātam redzams, vai tas ir pārbaudīts."
+          },
+          {
+            "id": "echolings",
+            "title": "Echolingi",
+            "body": "Mazs radījums jūsu spraudņu joslā: 5 sugas, 4 augšanas posmi, 3 krāsas. Glaudiet, barojiet, rotaļājieties vai ļaujiet nosnausties; tas nekad nemirst, guļ, kad ir ieslēgts Netraucēt, un nekas nav jāpērk. Draugi to redz kā žetonu un jūsu profila kartītē, var to apciemot, un ir divas mini spēles.",
+            "alt": "Bob profila kartīte ar viņa Echolingu „Moss“, saites un sērijas žetoniem un pogu „Pat Moss“; mājdzīvnieku nozīmītes blakus vārdiem kanālu kokā."
+          },
+          {
+            "id": "mumbot-music",
+            "title": "Mumbot Music",
+            "body": "Mumbot mūzikas bota tālvadība: tagad skan, izlaist, apturēt, skaļums, rinda un ierakstu pievienošana. Ar peles labo pogu noklikšķiniet uz bota → „Konfigurēt botu“; API atslēga tiek glabāta jūsu sistēmas atslēgu saišķī."
+          },
+          {
+            "id": "eve-fit",
+            "title": "EVE Fit",
+            "body": "Ielīmējiet EVE Online komplektāciju čatā, un ikviens ar spraudni redzēs kuģa kartīti. Ar vienu klikšķi atveras komplektācijas aplis ar kondensatoru, uzbrukumu, aizsardzību un navigāciju, bezsaistē Mumcord iekšienē, un „Kopēt komplektāciju“ to iegūst atpakaļ.",
+            "alt": "EVE Fit dialogs ar Algos kuģi aprīkojuma ritenī, moduļu ikonām un kondensatora, uzbrukuma, aizsardzības, mērķēšanas, navigācijas un dronu statistiku."
+          }
+        ]
+      },
+      {
         "id": "comfort",
         "title": "Ērtības",
         "features": [
@@ -1166,7 +1258,7 @@
           {
             "id": "website-look",
             "title": "Šīs vietnes izskats",
-            "body": "Mirdzošas pogas, krāsu pārejas, stikla efekti un viegls filmas graudainums, arī lietotnē, var izslēgt.",
+            "body": "Mirdzošas pogas, krāsu pārejas un viegls filmas graudainums, arī lietotnē, var izslēgt.",
             "alt": "Ātrie iestatījumi kā matēta stikla izvēlne uz viegli graudaina fona"
           },
           {
@@ -1196,12 +1288,96 @@
             "title": "Pilnīga paplātes izvēlne",
             "body": "Paplātes izvēlne rāda katru pievienoto serveri ar tā stāvokli un kanālu, izslēdz mikrofonu un skaņu, ieslēdz Netraucēt, pārslēdz balsi uz citu serveri vai kanālu un atver nesenās tērzēšanas. Ikona rāda runāšanu, izslēgtu mikrofonu, nelasītas ziņas un Netraucēt. Mumcord palaižas pēc pieteikšanās, ja vēlies, uz jebkuras sistēmas.",
             "alt": "Paplātes izvēlne ar serveriem, balss kanāla apakšizvēlni un nesenajām tērzēšanām"
+          },
+          {
+            "id": "sound-themes",
+            "title": "Divas skaņu tēmas",
+            "body": "„Klasiskā“ ar pazīstamajiem īsajiem toņiem ir noklusējuma, „Bagātā“ ienes jaunas, pilnākas skaņas, ar priekšskatījumu sadaļā Iestatījumi → Skaņas. Plus atsevišķa skaņa kanāla maiņai un īss atvadu signāls, kad aizverat Mumcord, atrodoties balsī."
+          },
+          {
+            "id": "start-screen",
+            "title": "Ātrāks starts",
+            "body": "Sākuma ekrāns ar logotipu jūsu tēmā tukša balta loga vietā un aptuveni par trešdaļu mazāk koda līdz pirmajam ekrānam: Iestatījumi, vednis un ekrāna kopīgošana ielādējas tikai tad, kad tos atverat."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.6.1",
+      "teaser": "Spraudņi arī Mac datoros, atsevišķa ekrāna kopīgošanas skaļums, vienlaidu izvēlņu fons un „Klasiskā“ kā noklusējuma skaņa.",
+      "summary": "Neliels atjauninājums pēc 0.6.0: spraudņi tagad darbojas arī Mac datoros, ekrāna kopīgošanai ir savs skaļums, izvēlnēm un kartītēm ir vienlaidu fons, un jaunas instalācijas sākas ar skaņu tēmu „Klasiskā“. Windows sistēmā lietotne un instalētājs tagad ir parakstīti.",
+      "groups": [
+        {
+          "title": "Uzlabots",
+          "items": [
+            "Jaunas instalācijas sākas ar skaņu tēmu „Klasiskā“. Ja jau esat izvēlējies „Bagātā“, tā paliek (#339).",
+            "Labā peles taustiņa izvēlnēm, uznirstošajiem logiem, kartītēm uz uzvedināšanu un profila kartītei ir vienlaidu fons matētā stikla vietā, tāpēc teksts ir labi lasāms arī tur, kur nav izpludinājuma, piemēram, Linux sistēmā (#337).",
+            "Windows: lietotne un instalētājs tagad ir parakstīti ar kodu parakstīšanas sertifikātu (#340)."
+          ]
+        },
+        {
+          "title": "Labots",
+          "items": [
+            "Mainot ekrāna kopīgošanas skaļumu, cilvēka balss vairs nemainās. Katram ir savs slīdnis, un Mumcord atceras abus katram cilvēkam (#333).",
+            "macOS: Mumcord vairs nekrīt uzreiz, kad sāk darboties spraudnis, piemēram, Echolingi."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.6.0",
+      "teaser": "Spraudņi: aptaujas, kauliņi, Echolingi, Mumbot Music un EVE Fit, droši smilškastē un bez servera izmaiņām.",
+      "summary": "Mumcord iegūst spraudņus: mazus, drošus papildinājumus, kas tiek instalēti no iestatījumiem, ir izolēti smilškastē un neprasa servera izmaiņas. Sākumam ir aptaujas, godīgi kauliņi, Echolingi, Mumbot mūzikas bota tālvadība un EVE Fit. Plus jauna skaņu tēma, atvadu skaņa un ātrāks starts ar sākuma ekrānu.",
+      "groups": [
+        {
+          "title": "Jauns",
+          "items": [
+            "Spraudņi: mazi papildinājumi, kas piešķir Mumcord jaunas funkcijas. Iestatījumi → Spraudņi ir cilnes Instalētie, Pārlūkot, Atjauninājumi, Repozitoriji un, Izstrādātāja režīmā, Izstrādātājs. Nekas nav iepriekš instalēts, spraudņi darbojas arī tad, ja neesat savienots, un „Spraudņi“ ir arī komandu paletē.",
+            "Pirms katras instalēšanas Mumcord vienkāršiem vārdiem parāda, ko spraudnis vēlas darīt: katra atļauja zaļa, dzeltena vai sarkana, obligātās fiksētas, neobligātās kā slēdži. Atļaujas var mainīt vēlāk, un tās stājas spēkā uzreiz. Spraudnis nekad nesaņem jūsu čatu, failus, mikrofonu, sertifikātus vai paroles.",
+            "Instalēšana un atjaunināšana rāda norises joslu ar izmēru, tad „Pārbauda parakstu“, „Izpako“ un „Startē“; neizdevušos lejupielādi var mēģināt vēlreiz.",
+            "Spraudņi parādās tur, kur lietojat Mumcord: spraudņu josla zem kanālu saraksta, kartītes čatā, slīpsvītras komandas, piemēram, /roll, mazs žetons blakus vārdiem, sadaļa profila kartītēs, ieraksti personas labā klikšķa izvēlnē un savi logi. Spraudņa nosūtītās ziņas tiek atzīmētas ar „via“.",
+            "Spraudņa kartīte ieņem čata ziņas vietu, kurai tā pieder, piemēram, ielīmētai komplektācijai vai aptaujai. Aizstātās ziņas rāda spraudņa ikonu un nosaukumu, un „Rādīt sākotnējo tekstu“ tās atgriež. Vecākas ziņas arī saņem savas kartītes, balsis netiek skaitītas divreiz.",
+            "Spraudnis var atpazīt noteiktas čata ziņas, piemēram, ielīmētu spēles komplektāciju. Instalēšanas uzvedne spraudņa paša vārdiem pasaka, ko tas atpazīst; tad tas saņem tikai atbilstošas ziņas jūsu kanālā, nekad no cilvēkiem, kurus esat bloķējis, un nekādu citu čata tekstu.",
+            "Spraudņi apmainās ar datiem ar to pašu spraudni citu cilvēku Mumcord jūsu kanālā, piemēram, kopīgai aptaujai. Tas ceļo pa parasto balss serveri: standarta Mumble serveriem nekas nav vajadzīgs, citas lietotnes to ignorē, un jūs izvēlaties, kas to redz. Spraudņu čata funkcijas darbojas katrā serverī, ar kuru esat savienots.",
+            "Spraudņi var sūtīt paziņojumus. Tie nonāk paziņojumu centrā sadaļā „Spraudņi“, tos var izslēgt katram spraudnim atsevišķi, un tie paliek kluseni, kad ir ieslēgts Netraucēt.",
+            "Spraudņu atjauninājumiem ir savs iestatījums: automātiski (noklusējums), tikai paziņot vai izslēgts. Atjauninājums, kuram vajag vairāk atļauju vai kas nāk no cita autora, vienmēr gaida jūsu apstiprinājumu; spraudnis, kas pēc atjauninājuma neiedarbojas, tiek atgriezts atpakaļ; un jebkuru spraudni var piespraust tā versijai. Jaunas neobligātas atļaujas paliek izslēgtas un tiek piedāvātas sadaļā Atjauninājumi.",
+            "Serveri var ieteikt spraudņus: servera Mumbot iesaka spraudņus, kas parādās paziņojumu centrā ar iespējām Instalēt, Detaļas, Ne tagad un Vairs nejautāt par šo serveri. Bez jūsu apstiprinājuma nekas netiek instalēts.",
+            "Jūsu pašu repozitoriji: līdz desmit sadaļā Iestatījumi → Spraudņi → Repozitoriji, ar nosaukumu un atslēgas pirkstu nospiedumu. To spraudņi visur ir „Neoficiāli“, pirmā instalēšana brīdina, un, ja parakstīšanas atslēga mainās, repozitorijs tiek apturēts, līdz apstiprināsiet.",
+            "Izstrādātāja režīms (Iestatījumi → Papildu) pievieno cilni Izstrādātājs: ielādējiet, pārlādējiet un izlādējiet spraudni no mapes, ar tā žurnālu. Autoriem ir spraudņu SDK, veidne un komandrindas rīks mumcord-plugin vietnē crates.io (cargo install mumcord-plugin).",
+            "Saites mumcord://plugins/<id> atver oficiāla spraudņa detaļas; tās nekad neko neinstalē.",
+            "Oficiālie spraudņi, katrs visās 24 valodās: Aptauja (2 līdz 10 varianti, tiešraides rezultāti, viena balss uz cilvēku), Kauliņu metiens (/roll ar d20, 2d6+3, priekšrocību un trūkumu, met kopā un pārbauda), Echolingi (radījums ar 5 sugām, 4 posmiem un 3 krāsām, kas nekad nemirst un neko nepārdod, ar divām mini spēlēm), Mumbot Music (tagad skan, izlaist, skaļums, rinda, ierakstu pievienošana; ar peles labo pogu noklikšķiniet uz bota → „Konfigurēt botu“) un EVE Fit (kuģa kartīte un komplektācijas aplis ielīmētām EVE Online komplektācijām).",
+            "Mumbot iepazīstina ar sevi Mumcord: Mumcord zina, kuri lietotāji ir boti un ko tie māk, un „Konfigurēt botu“ parādās tikai botiem, kas piedāvā mūziku.",
+            "Drošība: spraudņi darbojas noslēgtā smilškastē ar atmiņas un laika ierobežojumiem. Spraudnis, kas turpina avarēt, tiek izslēgts, un jūsu balss nekad necieš. „Izslēgt visus spraudņus“ (iestatījumos un komandu paletē) aptur tos visus uzreiz, un mumcord --no-plugins palaiž bez tiem. Oficiālie spraudņi tiek parakstīti un pārbaudīti instalējot un pēc katra atjauninājuma; ārkārtas slēdzis var atspējot kaitīgu spraudni, un to pārbauda katru dienu.",
+            "Privātums: pārbaudot spraudņus, netiek sūtīti identifikatori un jūsu spraudņu saraksts. Spraudņu dati paliek jūsu datorā, un pēc spraudņa noņemšanas vēl 30 dienas, ja vien tos neizdzēšat.",
+            "Otra skaņu tēma: „Bagātā“, ar jaunām, pilnākām skaņām savienošanai, ziņām, pieminējumiem, izslēgšanai, cilvēku ierašanās un aiziešanai, izmešanai un liegumiem, tagad ir noklusējuma. Iestatījumi → Skaņas pārslēdz uz „Klasisko“, pazīstamajiem īsajiem toņiem, ar priekšskatījumu (#325).",
+            "Aizverot Mumcord, atrodoties balsī, atskan īss atvadu signāls, lai pamanītu, ka tikko aizgājāt. Tas atskan tikai īstā aizvēršanā, nekad, minimizējot uz paplāti, un tam ir savs slēdzis (#325).",
+            "Kanāla maiņai, atrodoties balsī, ir sava īsa skaņa savienojuma skaņas vietā, ar savu slēdzi un abās skaņu tēmās (#325)."
+          ]
+        },
+        {
+          "title": "Uzlabots",
+          "items": [
+            "Mumcord startē ātrāk: kods līdz pirmajam ekrānam ir aptuveni par trešdaļu mazāks. Iestatījumi, iestatīšanas vednis, skatīšanās kopā, ekrāna kopīgošana, serveru pārlūks un koda izcelšana ielādējas tikai tad, kad tos atverat (#323).",
+            "Tukša balta loga un „Ielādē…“ vietā ir sākuma ekrāns: logotips jūsu tēmā ar tievu ielādes joslu, kas pāriet lietotnē; ar samazinātu kustību pāreja notiek bez kustības (#323).",
+            "Spraudņu ieraksts iestatījumu sānjoslā rāda, cik atjauninājumu un jaunu neobligāto atļauju gaida.",
+            "Augstākām spraudņu kartītēm vairs nav savas ritjoslas: tās tiek nogrieztas ar maigu izbalēšanu, un „Rādīt vairāk“ tās izvērš.",
+            "Ekrāna lasītāji aizstāto čata rindu nolasa kā tās kartīti (piemēram, „Kartīte no Aptaujas: Pusdienas pusdienlaikā?“) un izlaiž slēptās rindas."
+          ]
+        },
+        {
+          "title": "Labots",
+          "items": [
+            "Ielīmēšana ar Ctrl+V atkal darbojas dažās Linux darbvirsmās.",
+            "Saite „Mainīt“ iestatījumu sānjoslas kartītē „Aktīvā profila kopa“ vairs neizlien ārpus kartītes ar gariem nosaukumiem (#321).",
+            "Vienlaikus savienoto serveru skaita lauks sadaļā Iestatījumi → Serveris vairs nav izstiepts pār visu kartīti (#320).",
+            "Dialogos, kuru saturs mainās, fokuss paliek dialogā, tāpēc Escape un Tab turpina darboties.",
+            "Profila kartīte, kas aizvērta ar Escape uzreiz pēc tajā esošas pogas lietošanas, pēc tam atkal atveras."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.5.0",
       "teaser": "Paziņojumu centrs, visas privātās ziņas vienuviet, bloķēšana, vairākas identitātes un imports no Mumble.",
@@ -2984,5 +3160,277 @@
         "credit": "Spēle un tās ziņas nāk no zorgch/irc-quizbot (GPL-3.0), pārnestas uz Rust un Mumble protokolu, ar to pašu protokola slāni kā Mumcord."
       }
     }
+  },
+  "plugins": {
+    "label": "Spraudņi",
+    "title": "Mazi papildinājumi lieliem vakariem",
+    "description": "Mumcord 0.6.0 pievieno spraudņus: aptaujas, kauliņus, skaņu mājdzīvnieku un tālvadību jūsu mūzikas botam. Droši, parakstīti un bez servera izmaiņām.",
+    "intro": "Mumcord 0.6.0 pievieno spraudņus: mazus, drošus papildinājumus balss čatam. Tie darbojas Mumcord iekšienē, neprasa servera izmaiņas un strādā ar jebkuru standarta Mumble serveri. Oficiālās Mumble lietotnes lietotāji tur, kur tas ir svarīgi, redz vienkāršu teksta rindu un neko vairāk.",
+    "badge": "Jaunums Mumcord 0.6.0",
+    "ctaPlugins": "Iepazīstiet spraudņus",
+    "ctaDev": "Izveidojiet savu",
+    "pills": [
+      "Izolēts smilškastē",
+      "Parakstīts",
+      "Bez servera izmaiņām",
+      "24 valodas"
+    ],
+    "listTitle": "Pirmie spraudņi",
+    "listBody": "Nekas nav iepriekš instalēts. Izvēlieties, kas patīk jūsu pulciņam, un pārējo atstājiet.",
+    "source": "Pirmkods",
+    "soon": "Drīzumā",
+    "plugins": {
+      "poll": {
+        "name": "Aptauja",
+        "tagline": "Uzdodiet kanālam jautājumu ar līdz desmit atbilžu variantiem un vērojiet balsis reāllaikā.",
+        "points": [
+          "No 2 līdz 10 variantiem, tiešraides balsu joslas čata kartītē",
+          "Nav Mumcord? Balsojiet, čatā rakstot `!poll 1`, `!poll 2` …",
+          "Rezultāti tiek parādīti, kad aptauja noslēdzas"
+        ]
+      },
+      "dice": {
+        "name": "Kauliņu metiens",
+        "tagline": "`/roll d20` vai `2d6+3`, ar godīgiem metieniem, kurus citi redz un var pārbaudīt.",
+        "points": [
+          "Priekšrocība un trūkums, atmest mazāko vai lielāko, līdz 20 kauliņiem",
+          "Pārējie Mumcord lietotāji kanālā redz katru metienu, tāpēc krāpties nevar",
+          "Metienu vēsture, ko var izvērst"
+        ]
+      },
+      "echolings": {
+        "name": "Echolingi",
+        "tagline": "Mazs skaņu radījums, kas aug, kamēr pavadāt laiku ar draugiem.",
+        "points": [
+          "5 sugas, 4 augšanas posmi, 3 krāsas",
+          "Aug no kopā pavadītā laika balsī un čatā",
+          "Nekad nemirst, nekad netrako"
+        ]
+      },
+      "mumbot-music": {
+        "name": "Mumbot Music",
+        "tagline": "Tālvadība jūsu Mumbot mūzikas botam.",
+        "points": [
+          "Ar peles labo pogu noklikšķiniet uz bota → „Konfigurēt botu“",
+          "Tagad skan, izlaist, skaļums, rinda un ierakstu pievienošana",
+          "Vajag Mumbot serverī: tas ir parasts Mumble lietotājs, servera izmaiņu nav"
+        ]
+      },
+      "eve-fit": {
+        "name": "EVE Fit",
+        "tagline": "Ielīmējiet EVE Online komplektāciju čatā, un visi redzēs kuģa kartīti.",
+        "points": [
+          "Atpazīst čatā ielīmētas EFT komplektācijas un parāda kartīti ar kuģi un moduļiem",
+          "Atver pilnu komplektācijas skatu bezsaistē, tieši Mumcord iekšienē",
+          "Poga „Kopēt komplektāciju“, un tā ir bez maksas"
+        ]
+      }
+    },
+    "mock": {
+      "pollQuestion": "Ko spēlējam šovakar?",
+      "pollOptions": [
+        "Deep Rock Galactic",
+        "Valheim",
+        "Kaut ko jaunu"
+      ],
+      "pollVotes": "7 balsis",
+      "pollLive": "Tiešraidē",
+      "pollPlain": "Aptauja: Ko spēlējam šovakar? 1) Deep Rock Galactic 2) Valheim 3) Kaut ko jaunu",
+      "pollPlainVote": "!poll 2",
+      "rollWitness": "Redz 3 kanālā",
+      "rollHistory": "Vēsture",
+      "echoStats": [
+        "5 sugas",
+        "4 posmi",
+        "3 krāsas"
+      ],
+      "musicNow": "Tagad skan",
+      "musicTrack": "Midnight Raid",
+      "musicArtist": "Lo-fi vēlām sesijām",
+      "musicQueue": "Rinda",
+      "musicQueueItems": [
+        "Boss Music, Volume 2",
+        "Campfire Loop"
+      ],
+      "musicAdd": "Pievienot ierakstu",
+      "musicMenu": "Konfigurēt botu",
+      "evePasted": "ielīmēja Maya",
+      "eveCopy": "Kopēt komplektāciju"
+    },
+    "eveNotice": "EVE Online and all related logos and images are trademarks or registered trademarks of CCP hf. Mumcord is not affiliated with CCP hf.",
+    "eveCredit": "Komplektācijas skats veidots, balstoties uz EVEShipFit projekta eveship.fit.",
+    "bridgeTitle": "Neviens nepaliek malā",
+    "bridgeBody": "Spraudņi neprasa servera izmaiņas un strādā ar jebkuru standarta Mumble serveri. Draugi ar oficiālo Mumble lietotni tur, kur tas ir svarīgi, redz vienkāršu teksta rindu un neko vairāk.",
+    "bridgeMumcord": "Mumcord",
+    "bridgeMumble": "Oficiālajā Mumble lietotnē",
+    "bridgeNote": "Ilustrācija: precīzo formulējumu nosaka katrs spraudnis.",
+    "installTitle": "Uzstādīts minūtē",
+    "installBody": "Spraudņi atrodami iestatījumos, un jūs redzat, ko katrs drīkst darīt, vēl pirms tas nonāk jūsu datorā.",
+    "steps": [
+      {
+        "title": "Pārlūkojiet",
+        "body": "Iestatījumi → Spraudņi → Pārlūkot."
+      },
+      {
+        "title": "Pārbaudiet",
+        "body": "Izvēlieties spraudni un pārskatiet tā atļaujas."
+      },
+      {
+        "title": "Instalējiet",
+        "body": "Tā ikona parādās spraudņu joslā zem kanālu koka."
+      }
+    ],
+    "stripLabel": "Spraudņi",
+    "stripChannels": [
+      "Vestibils",
+      "Reidu vakars",
+      "AFK"
+    ],
+    "safeTitle": "Droši pēc uzbūves",
+    "safeBody": "Spraudnis ir viesis jūsu lietotnē. Lūk, mājas noteikumi.",
+    "safe": {
+      "sandbox": {
+        "title": "Stingra smilškaste",
+        "body": "Katrs spraudnis ir maza WebAssembly programma stingrā smilškastē. Nekādas tiešas piekļuves tīklam vai failiem; saskarni Mumcord uzzīmē no iebūvētiem būvelementiem."
+      },
+      "permissions": {
+        "title": "Atļaujas, ko redzat",
+        "body": "Parādītas pirms instalēšanas. Neobligātās var jebkurā brīdī izslēgt, bet atjauninājumi, kam vajag vairāk, gaida jūsu apstiprinājumu."
+      },
+      "signed": {
+        "title": "Parakstīts no sākuma līdz beigām",
+        "body": "Reģistrs un katra pakotne ir parakstīta ar minisign, un Mumcord tos pārbauda pirms instalēšanas. Ārkārtas slēdzis var visur izslēgt sliktu versiju."
+      },
+      "server": {
+        "title": "Bez servera izmaiņām",
+        "body": "Darbojas ar nemainītu Mumble serveri. Administratoram nekas nav jāinstalē."
+      },
+      "off": {
+        "title": "Viens slēdzis visu apturēšanai",
+        "body": "Nekas nav iepriekš instalēts. „Izslēgt visus spraudņus“ sadaļā Iestatījumi → Spraudņi vai komandu paletē (Ctrl+Shift+P) uzreiz aptur visus spraudņus."
+      },
+      "langs": {
+        "title": "Jūsu valodā",
+        "body": "Pieejams visās 24 Mumcord valodās."
+      }
+    },
+    "devLabel": "Izstrādātājiem",
+    "devTitle": "Izveidojiet savu",
+    "devBody": "Spraudņi tiek rakstīti Rust valodā un kompilēti uz WebAssembly (komponentu modelis, saskarne `mumcord:plugin@1.0.0`). Repozitorijā ir veidne, dokumentācija un katra oficiālā spraudņa pirmkods.",
+    "cliTitle": "Viens rīks visam ceļam",
+    "cli": [
+      {
+        "cmd": "new",
+        "body": "Izveido spraudni no veidnes."
+      },
+      {
+        "cmd": "build",
+        "body": "Būvē to atkārtojami."
+      },
+      {
+        "cmd": "check",
+        "body": "Pārbauda pakotni."
+      },
+      {
+        "cmd": "test",
+        "body": "Palaiž testa scenārijus pret imitētu resursdatoru."
+      },
+      {
+        "cmd": "serve-registry",
+        "body": "Palaiž lokālu reģistru, lai izmēģinātu Mumcord (Izstrādātāja režīms sadaļā Iestatījumi → Spraudņi)."
+      }
+    ],
+    "docsTitle": "Dokumentācija",
+    "docs": {
+      "start": "Darba sākšana",
+      "api": "API",
+      "manifest": "Manifests",
+      "permissions": "Atļaujas",
+      "building": "Būvēšana",
+      "testing": "Testēšana",
+      "publishing": "Publicēšana",
+      "repos": "Jūsu pašu repozitorijs"
+    },
+    "submitTitle": "Oficiālajā reģistrā",
+    "submitBody": "Atveriet pull request repozitorijā Mumcord/plugins, kas pievieno `plugins/<id>/`. Vajadzīgs viens uzturētāja apstiprinājums un zaļš CI.",
+    "checksTitle": "Ko pārbauda CI",
+    "checks": [
+      "Shēmas pārbaude",
+      "Atkārtojama pārbūve",
+      "Autora paraksts",
+      "Atļauju atšķirības",
+      "Ielādes tests ar imitētu resursdatoru",
+      "Licenču skenēšana"
+    ],
+    "rulesTitle": "Noteikumi",
+    "rules": [
+      "OSI apstiprināta licence",
+      "Atkārtojama būve",
+      "Nekādas reklāmas, izsekošanas, maksājumu vai loot box"
+    ],
+    "policy": "Pārbaudes politika",
+    "ownRepoTitle": "Vai uzturiet savu",
+    "ownRepoBody": "Ikviens var uzturēt savu spraudņu repozitoriju. Lietotāji to pievieno sadaļā Iestatījumi → Spraudņi.",
+    "licenceTitle": "Licences",
+    "licenceBody": "Oficiālie spraudņi ir licencēti ar AGPL-3.0. Veidne, dokumentācija un SDK ir licencēti ar Apache-2.0.",
+    "peopleTitle": "Veidojuši",
+    "endTitle": "Ir ideja spraudnim?",
+    "endBody": "Viss ir atvērts: veidne, dokumentācija un katrs oficiālais spraudnis.",
+    "endRepo": "Atvērt spraudņu repozitoriju",
+    "copy": "Kopēt",
+    "copied": "Nokopēts",
+    "install": "Uzstādīt Mumcord",
+    "pluginPage": "Spraudņa lapa",
+    "installNote": "Uzstādīšanas pogas atver spraudni Mumcord 0.6.0 vai jaunākā versijā, kur apstiprini uzstādīšanu. Ja nekas neatveras, informācija ir spraudņa lapā.",
+    "galleryLabel": "Ekrānuzņēmumi",
+    "galleryTitle": "Skati tos Mumcord",
+    "galleryBody": "Tieši no Mumcord 0.6.0, tumšajā un gaišajā tēmā.",
+    "dark": "Tumšs",
+    "light": "Gaišs",
+    "shots": {
+      "browse": {
+        "caption": "Pārlūko oficiālos spraudņus tieši Iestatījumos.",
+        "alt": "Mumcord Iestatījumi, Spraudņi, cilne Pārlūkot ar pieciem oficiālajiem spraudņiem (Echolingi, Kauliņu metiens, EVE Fit, Mumbot Music un Aptauja), katram ar ikonu un pogu Uzstādīt."
+      },
+      "permissions": {
+        "caption": "Katrs spraudnis jau iepriekš pasaka, ko tas drīkst darīt.",
+        "alt": "EVE Fit uzstādīšanas lodziņš ar atļaujām, kas atzīmētas kā obligātas, neobligātu slēdzi un lodziņu, kurā uzskaitīts, ko spraudnis nekad nesaņem."
+      },
+      "progress": {
+        "caption": "Parakstītās pakotnes tiek pārbaudītas pirms uzstādīšanas.",
+        "alt": "EVE Fit uzstādīšanas lodziņš ar norises joslu „Checking signature…“ virs atļauju saraksta."
+      },
+      "poll": {
+        "caption": "Aptauja aizstāj savu tērzēšanas ziņu ar dzīvu kartīti.",
+        "alt": "Mumcord tērzēšana, kurā Bob aptauja „Which map tonight?“ redzama kā kartīte ar balsu joslām: Glacier 2 balsis, Harbor un Canyon 0."
+      },
+      "vote": {
+        "caption": "Balso sānjoslā; visi redz, kā skaits atjaunojas.",
+        "alt": "Aptaujas sānjosla blakus tērzēšanai ar variantiem un atlasītu Glacier."
+      },
+      "echolings": {
+        "caption": "Echolingi: mājdzīvnieks, kas aug, kamēr pavadāt laiku kopā.",
+        "alt": "Bob profila kartīte ar viņa Echolingu „Moss“, saites un sērijas žetoniem un pogu „Pat Moss“; mājdzīvnieku nozīmītes blakus vārdiem kanālu kokā."
+      },
+      "snackrace": {
+        "caption": "Sacenties ar draugu Echolingiem līdz našķim.",
+        "alt": "Notiekošs Snack Race ar celiņiem You un Bob, kustīgo našķa zonu un pogu Hop!."
+      },
+      "eveCard": {
+        "caption": "Ielīmē EVE Online fit, un tas kļūst par kārtīgu kartīti.",
+        "alt": "Tērzēšanas kartīte Algos fit „Evening Roam“, ko ielīmēja Carol, ar slotu žetoniem, droniem un kravas skaitļiem un pogām Copy fitting un Open."
+      },
+      "eveWheel": {
+        "caption": "Open parāda pilnu aprīkojuma riteni un statistiku.",
+        "alt": "EVE Fit dialogs ar Algos kuģi aprīkojuma ritenī, moduļu ikonām un kondensatora, uzbrukuma, aizsardzības, mērķēšanas, navigācijas un dronu statistiku."
+      },
+      "eveCargo": {
+        "caption": "Dronu angārs, kravas telpa un CCP paziņojums.",
+        "alt": "EVE Fit dialoga apakšdaļa: dronu angārs ar Hammerhead II un Hobgoblin II, kravas telpa ar lādiņiem un repair paste un CCP autortiesību paziņojums apakšā."
+      }
+    },
+    "sdkNote": "Rīks un SDK ir crates.io. Tavā Cargo.toml:",
+    "docsAll": "Visa dokumentācija",
+    "wiki": "Wiki"
   }
 }

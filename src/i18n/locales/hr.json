@@ -97,6 +97,10 @@
       "toolQuiz": {
         "title": "mumquiz",
         "desc": "Kviz bot za tvoj poslužitelj"
+      },
+      "plugins": {
+        "title": "Dodaci",
+        "desc": "Ankete, kocke i više"
       }
     },
     "hero": {
@@ -536,8 +540,8 @@
       "toolTitle": "Suradnici"
     },
     "spotlight5": {
-      "label": "Novo u 0.5.0",
-      "labelSoon": "Uskoro: 0.5.0",
+      "label": "Novo u 0.5.0/0.6.0",
+      "labelSoon": "Uskoro: 0.5.0/0.6.0",
       "title": "Više mira. Više tebe. Više zvuka.",
       "body": "0.5.0 donosi Epic 3: centar obavijesti, blokiranje, više identiteta, novo stablo kanala, glazbu u chatu, način niske latencije za zajedničko muziciranje i izravne veze preko releja.",
       "tiles": {
@@ -567,7 +571,12 @@
         }
       },
       "features": "Sve značajke",
-      "changelog": "Sve novosti"
+      "changelog": "Sve novosti",
+      "plugins": {
+        "title": "Dodaci",
+        "body": "0.6.0 donosi male, sigurne ekstre povrh glasovnog razgovora: ankete, poštene kocke, stvorenje od zvuka i daljinski za tvog glazbenog bota. Bez promjena na poslužitelju.",
+        "more": "Upoznaj dodatke"
+      }
     },
     "serverCta": {
       "title": "Vlastiti poslužitelj za pet minuta",
@@ -1112,6 +1121,89 @@
         ]
       },
       {
+        "id": "plugins",
+        "title": "Dodaci",
+        "features": [
+          {
+            "id": "plugins",
+            "title": "Dodaci iz Postavki",
+            "body": "Postavke → Dodaci s karticama Instalirano, Pregledaj, Ažuriranja i Repozitoriji: službeni dodaci po kategorijama i s pretragom, uključi ih i isključi, mijenjaj dopuštenja i postavke, izvezi ili resetiraj njihove podatke, ukloni ih. Ništa nije unaprijed instalirano, a dodaci rade i kad nisi spojen.",
+            "alt": "Postavke Mumcorda, Dodaci, kartica Pregledaj s pet službenih dodataka (Odjecići, Bacanje kocki, EVE Fit, Mumbot Music i Anketa), svaki s ikonom i gumbom Instaliraj."
+          },
+          {
+            "id": "plugin-permissions",
+            "title": "Prvo vidi što dodatak smije",
+            "body": "Prije instalacije Mumcord jednostavnim riječima kaže što dodatak traži: svako dopuštenje zeleno, žuto ili crveno, obavezna fiksna, neobavezna kao sklopke. Promjene vrijede odmah. Dodatak nikad ne dobiva tvoj chat, datoteke, mikrofon, certifikate ni lozinke.",
+            "alt": "Upit za instalaciju EVE Fita s dozvolama označenima kao obvezne, neobveznim prekidačem i okvirom u kojem piše što dodatak nikada ne dobiva."
+          },
+          {
+            "id": "plugin-places",
+            "title": "Dodaci gdje ti trebaju",
+            "body": "Traka dodataka ispod popisa kanala, kartice u chatu koje zamjenjuju svoju poruku, slash naredbe poput /roll, mala značka pokraj imena, odjeljak u karticama profila, stavke u izborniku desnog klika i vlastiti prozori. Što dodatak pošalje označeno je s „via”."
+          },
+          {
+            "id": "plugin-together",
+            "title": "Zajedno s tvojim kanalom",
+            "body": "Dodatak razgovara s istim dodatkom kod drugih Mumcord korisnika u kanalu, na primjer za zajedničku anketu. Putuje preko običnog glasovnog poslužitelja: standardni Mumble poslužitelji ne trebaju ništa, ostali klijenti to zanemaruju, a ti biraš tko to vidi. Dodaci rade u chatu svakog poslužitelja na koji si spojen.",
+            "alt": "Bočna ploča ankete otvorena uz chat s opcijama i odabranim Glacierom."
+          },
+          {
+            "id": "plugin-safety",
+            "title": "Sandbox, potpisi i kill switch",
+            "body": "Dodaci rade zatvoreno, bez pristupa mreži, datotekama ili zvuku, s ograničenjima memorije i vremena; onaj koji se stalno ruši isključuje se, a tvoj glas nikad nije pogođen. Službeni dodaci potpisani su i provjereni. Kill switch može svima onemogućiti štetan dodatak, „Isključi sve dodatke” zaustavlja ih odjednom, a --no-plugins pokreće bez ijednog.",
+            "alt": "Upit za instalaciju EVE Fita s trakom napretka s natpisom „Checking signature…“ iznad popisa dozvola."
+          },
+          {
+            "id": "plugin-updates",
+            "title": "Ažuriranja bez iznenađenja",
+            "body": "Instaliraj automatski, samo obavijesti ili isključeno. Ažuriranje koje traži više dopuštenja ili dolazi od nekog drugog uvijek čeka tvoje odobrenje. Dodatak koji se ne pokrene nakon ažuriranja vraća se na staru verziju, a svaki se dodatak može zaključati na svoju verziju."
+          },
+          {
+            "id": "plugin-suggestions",
+            "title": "Poslužitelji predlažu dodatke",
+            "body": "Mumbot poslužitelja može preporučiti dodatke koje koristi njegova zajednica. Prijedlog stiže mirno u centar obavijesti, s Instaliraj, Detalji, Ne sada i Ne pitaj više za ovaj poslužitelj. Ništa se ne instalira bez tvog odobrenja."
+          },
+          {
+            "id": "plugin-repositories",
+            "title": "Tvoji vlastiti repozitoriji dodataka",
+            "body": "Do deset dodatnih repozitorija u Postavke → Dodaci → Repozitoriji, prikazani s imenom i otiskom ključa. Njihovi su dodaci posvuda označeni „Neslužbeno”, a ako se ključ za potpisivanje promijeni, repozitorij se pauzira dok ne potvrdiš."
+          },
+          {
+            "id": "plugin-developers",
+            "title": "Napravi vlastite dodatke",
+            "body": "Dodaci su Rust, preveden u WebAssembly. cargo install mumcord-plugin daje alat naredbenog retka, a mumcord-plugin new stvara projekt iz predloška. Razvojni način učitava dodatak izravno iz mape, s ponovnim učitavanjem i njegovim logom."
+          },
+          {
+            "id": "poll",
+            "title": "Anketa",
+            "body": "Pitanje s 2 do 10 opcija, rezultati uživo u kartici chata i panelu, jedan glas po osobi. Tko nema Mumcord, glasa s !poll 1, !poll 2 … u chatu.",
+            "alt": "Mumcord chat u kojem se Bobova anketa „Which map tonight?“ prikazuje kao kartica s trakama glasova: Glacier 2 glasa, Harbor i Canyon 0."
+          },
+          {
+            "id": "dice",
+            "title": "Bacanje kocki",
+            "body": "/roll s d20, 2d6+3, prednošću i nedostatkom ili odbacivanjem najnižeg ili najvišeg, plus gumbi za brza bacanja. Bacanja se rade zajedno s kanalom pa nitko ne može varati, a svaki rezultat pokazuje je li provjeren."
+          },
+          {
+            "id": "echolings",
+            "title": "Odjecići",
+            "body": "Malo stvorenje u tvojoj traci dodataka: 5 vrsta, 4 stadija rasta, 3 boje. Pomazi ga, nahrani, igraj se ili pusti da odspava; nikad ne umire, spava kad je uključeno Ne smetaj i ne treba ništa kupovati. Prijatelji ga vide kao značku i u tvojoj kartici profila, mogu ga posjetiti, a tu su i dvije mini igre.",
+            "alt": "Bobova profilna kartica s njegovim Odjecićem „Moss“, čipovima veze i niza te gumbom „Pat Moss“; značke ljubimaca uz imena u stablu kanala."
+          },
+          {
+            "id": "mumbot-music",
+            "title": "Mumbot Music",
+            "body": "Daljinski za glazbenog bota Mumbot: trenutna skladba, preskakanje, zaustavljanje, glasnoća, red čekanja i dodavanje pjesama. Desni klik na bota → „Konfiguriraj bota”; API ključ čuva se u keychainu tvog sustava."
+          },
+          {
+            "id": "eve-fit",
+            "title": "EVE Fit",
+            "body": "Zalijepi EVE Online fitting u chat i svatko s dodatkom vidi karticu broda. Jedan klik otvara kotač fittinga s kapacitorom, napadom, obranom i navigacijom, izvan mreže unutar Mumcorda, a „Kopiraj fitting” ga vraća van.",
+            "alt": "Dijalog EVE Fita s brodom Algos unutar kotača opremanja, ikonama modula i statistikama kondenzatora, napada, obrane, ciljanja, navigacije i dronova."
+          }
+        ]
+      },
+      {
         "id": "comfort",
         "title": "Udobnost",
         "features": [
@@ -1166,7 +1258,7 @@
           {
             "id": "website-look",
             "title": "Izgled ove web stranice",
-            "body": "Svjetleći gumbi, prijelazi boja, efekti stakla i lagano filmsko zrno, i u aplikaciji, mogu se isključiti.",
+            "body": "Svjetleći gumbi, prijelazi boja i lagano filmsko zrno, i u aplikaciji, mogu se isključiti.",
             "alt": "Brze postavke kao izbornik od mutnog stakla iznad blago zrnate pozadine"
           },
           {
@@ -1196,12 +1288,96 @@
             "title": "Potpun izbornik u traci sustava",
             "body": "Izbornik u traci sustava prikazuje svaki spojeni poslužitelj sa stanjem i kanalom, utišavanje mikrofona, utišavanje zvuka i Ne uznemiravaj, prebacuje glas na drugi poslužitelj ili kanal i otvara nedavne chatove. Ikona pokazuje govor, utišanost, nepročitane poruke i Ne uznemiravaj. Mumcord se po želji pokreće pri prijavi, na svakom sustavu.",
             "alt": "Izbornik u traci sustava s poslužiteljima, podizbornikom glasovnog kanala i nedavnim chatovima"
+          },
+          {
+            "id": "sound-themes",
+            "title": "Dvije zvučne teme",
+            "body": "„Klasična” s poznatim kratkim tonovima zadana je, „Bogata” donosi nove, punije zvukove, uz pregled u Postavke → Zvukovi. Uz to poseban zvuk za promjenu kanala i kratak pozdrav kad izađeš iz Mumcorda dok si u glasu."
+          },
+          {
+            "id": "start-screen",
+            "title": "Brži početak",
+            "body": "Početni zaslon s logotipom na tvojoj temi umjesto praznog bijelog prozora i otprilike trećina manje koda prije prvog zaslona: Postavke, čarobnjak i dijeljenje zaslona učitavaju se tek kad ih otvoriš."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.6.1",
+      "teaser": "Dodaci i na Macu, zasebna glasnoća za dijeljenje zaslona, puna pozadina izbornika i „Klasična” kao zadani zvuk.",
+      "summary": "Mala nadogradnja nakon 0.6.0: dodaci sada rade i na Macu, dijeljenje zaslona ima svoju glasnoću, izbornici i kartice imaju punu pozadinu, a nove instalacije počinju sa zvučnom temom „Klasična”. Na Windowsima su aplikacija i instalacijski program sada potpisani.",
+      "groups": [
+        {
+          "title": "Poboljšano",
+          "items": [
+            "Nove instalacije počinju sa zvučnom temom „Klasična”. Ako si već odabrao „Bogata”, ostaje ti ona (#339).",
+            "Izbornici desnog klika, skočni prozori, kartice pri prelasku mišem i kartica profila imaju punu pozadinu umjesto mutnog stakla, pa je tekst čitljiv i tamo gdje nema zamućenja, primjerice na Linuxu (#337).",
+            "Windows: aplikacija i instalacijski program sada su potpisani certifikatom za potpisivanje koda (#340)."
+          ]
+        },
+        {
+          "title": "Popravljeno",
+          "items": [
+            "Promjena glasnoće dijeljenja zaslona više ne mijenja glas osobe. Svaki ima svoj klizač, a Mumcord pamti oba za svaku osobu (#333).",
+            "macOS: Mumcord se više ne ruši čim se pokrene dodatak, primjerice Odjecići."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.6.0",
+      "teaser": "Dodaci: ankete, kocke, Odjecići, Mumbot Music i EVE Fit, sigurni u sandboxu i bez promjena na poslužitelju.",
+      "summary": "Mumcord dobiva dodatke: male, sigurne ekstre, instalirane iz Postavki, zatvorene u sandbox i bez ikakve promjene na poslužitelju. Za početak su tu ankete, poštene kocke, Odjecići, daljinski za glazbenog bota Mumbot i EVE Fit. Uz to nova zvučna tema, zvuk pozdrava i brži početak s početnim zaslonom.",
+      "groups": [
+        {
+          "title": "Novo",
+          "items": [
+            "Dodaci: mali dodatci koji Mumcordu daju nove mogućnosti. Postavke → Dodaci ima kartice Instalirano, Pregledaj, Ažuriranja, Repozitoriji i, u razvojnom načinu, Razvojni. Ništa nije unaprijed instalirano, dodaci rade i kad nisi spojen, a „Dodaci” su i u paleti naredbi.",
+            "Prije svake instalacije Mumcord jednostavnim riječima pokazuje što dodatak želi raditi: svako dopuštenje zeleno, žuto ili crveno, obavezna fiksna, neobavezna kao sklopke. Dopuštenja se kasnije mogu mijenjati i vrijede odmah. Dodatak nikad ne dobiva tvoj chat, datoteke, mikrofon, certifikate ni lozinke.",
+            "Instalacija i ažuriranje prikazuju traku napretka s veličinom, zatim „Provjera potpisa”, „Raspakiravanje” i „Pokretanje”; neuspjelo preuzimanje može se ponoviti.",
+            "Dodaci se pojavljuju tamo gdje koristiš Mumcord: traka dodataka ispod popisa kanala, kartice u chatu, slash naredbe poput /roll, mala značka pokraj imena, odjeljak u karticama profila, stavke u izborniku desnog klika na osobu i vlastiti prozori. Poruke koje šalje dodatak označene su s „via”.",
+            "Kartica dodatka zamjenjuje poruku chata kojoj pripada, kao zalijepljeni fit ili anketa. Zamijenjene poruke prikazuju ikonu i ime dodatka, a „Prikaži izvorni tekst” ih vraća. Starije poruke također dobivaju svoje kartice, bez dvostrukog brojanja glasova.",
+            "Dodatak može prepoznati određene poruke u chatu, poput zalijepljenog fita iz igre. Upit za instalaciju govori vlastitim riječima dodatka što prepoznaje; on tada dobiva samo odgovarajuće poruke u tvom kanalu, nikad od ljudi koje si blokirao, i nikakav drugi tekst chata.",
+            "Dodaci razmjenjuju podatke s istim dodatkom na Mumcordu drugih ljudi u tvom kanalu, na primjer za zajedničku anketu. Putuje preko običnog glasovnog poslužitelja: standardni Mumble poslužitelji ne trebaju ništa, ostali klijenti to zanemaruju, a ti biraš tko to vidi. Chat značajke dodataka rade na svakom poslužitelju na koji si spojen.",
+            "Dodaci mogu slati obavijesti. Stižu u centar obavijesti pod „Dodaci”, mogu se isključiti po dodatku i šute kad je uključeno Ne smetaj.",
+            "Ažuriranja dodataka imaju vlastitu postavku: automatski (zadano), samo obavijesti ili isključeno. Ažuriranje koje traži više dopuštenja ili dolazi od nekog drugog uvijek čeka tvoje odobrenje; dodatak koji se ne pokrene nakon ažuriranja vraća se na staru verziju; a svaki se dodatak može zaključati na svoju verziju. Nova neobavezna dopuštenja ostaju isključena i nude se pod Ažuriranja.",
+            "Poslužitelji mogu predlagati dodatke: Mumbot poslužitelja preporučuje dodatke, koji se pojavljuju u centru obavijesti s Instaliraj, Detalji, Ne sada i Ne pitaj više za ovaj poslužitelj. Ništa se ne instalira bez tvog odobrenja.",
+            "Tvoji vlastiti repozitoriji: do deset u Postavke → Dodaci → Repozitoriji, s imenom i otiskom ključa. Njihovi su dodaci posvuda „Neslužbeni”, prva instalacija upozorava, a ako se ključ za potpisivanje promijeni, repozitorij se pauzira dok ne potvrdiš.",
+            "Razvojni način (Postavke → Napredno) dodaje karticu Razvojni: učitaj, ponovno učitaj i otpusti dodatak iz mape, s njegovim logom. Za autore tu su SDK za dodatke, predložak i alat naredbenog retka mumcord-plugin na crates.io (cargo install mumcord-plugin).",
+            "Poveznice mumcord://plugins/<id> otvaraju detalje službenog dodatka; nikad ništa ne instaliraju.",
+            "Službeni dodaci, svaki na svih 24 jezika: Anketa (2 do 10 opcija, rezultati uživo, jedan glas po osobi), Bacanje kocki (/roll s d20, 2d6+3, prednošću i nedostatkom, bačeno zajedno i provjereno), Odjecići (stvorenje s 5 vrsta, 4 stadija i 3 boje koje nikad ne umire i ništa ne prodaje, s dvije mini igre), Mumbot Music (trenutna skladba, preskakanje, glasnoća, red čekanja, dodavanje pjesama; desni klik na bota → „Konfiguriraj bota”) i EVE Fit (kartica broda i kotač fittinga za zalijepljene EVE Online fitove).",
+            "Mumbot se predstavlja Mumcordu: Mumcord zna koji su korisnici botovi i što mogu, a „Konfiguriraj bota” pojavljuje se samo na botovima koji nude glazbu.",
+            "Sigurnost: dodaci rade u zatvorenom sandboxu s ograničenjima memorije i vremena. Onaj koji se stalno ruši isključuje se, a tvoj glas nikad nije pogođen. „Isključi sve dodatke” (Postavke i paleta naredbi) zaustavlja ih sve odjednom, a mumcord --no-plugins pokreće bez ijednog. Službeni dodaci potpisani su i provjereni pri instalaciji i nakon svakog ažuriranja; kill switch može isključiti štetan dodatak i provjerava se svakodnevno.",
+            "Privatnost: provjera dodataka ne šalje identifikatore ni popis tvojih dodataka. Podaci dodataka ostaju na tvom računalu, i 30 dana nakon uklanjanja dodatka osim ako ih obrišeš.",
+            "Druga zvučna tema: „Bogata”, s novim, punijim zvukovima za spajanje, poruke, spominjanja, utišavanje, dolazak i odlazak ljudi, kickove i banove, sada je zadana. Postavke → Zvukovi prebacuju na „Klasičnu”, poznate kratke tonove, uz pregled (#325).",
+            "Izlazak iz Mumcorda dok si u glasu pušta kratak zvuk pozdrava, da primijetiš da si upravo otišao. Svira samo pri pravom izlasku, nikad pri minimiziranju u traku, i ima vlastitu sklopku (#325).",
+            "Promjena kanala dok si u glasu ima vlastiti kratak zvuk umjesto zvuka spajanja, s vlastitom sklopkom i u obje zvučne teme (#325)."
+          ]
+        },
+        {
+          "title": "Poboljšano",
+          "items": [
+            "Mumcord se pokreće brže: kod prije prvog zaslona manji je otprilike za trećinu. Postavke, čarobnjak za postavljanje, zajedničko gledanje, dijeljenje zaslona, preglednik poslužitelja i isticanje koda učitavaju se tek kad ih otvoriš (#323).",
+            "Umjesto praznog bijelog prozora i „Učitavanje…” sad je početni zaslon: logotip na tvojoj temi s tankom trakom učitavanja koja se utapa u aplikaciju; uz smanjeno kretanje prebacuje se bez pokreta (#323).",
+            "Stavka Dodaci u bočnoj traci Postavki prikazuje koliko ažuriranja i novih neobaveznih dopuštenja čeka.",
+            "Viši dodaci-kartice više nemaju vlastitu traku za pomicanje: odrezani su mekim prijelazom, a „Prikaži više” ih proširuje.",
+            "Čitači zaslona čitaju zamijenjeni redak chata kao njegovu karticu (na primjer „Kartica iz Anketa: Ručak u podne?”) i preskaču skrivene retke."
+          ]
+        },
+        {
+          "title": "Popravljeno",
+          "items": [
+            "Lijepljenje s Ctrl+V ponovno radi na nekim Linux radnim površinama.",
+            "Poveznica „Promijeni” u kartici „Aktivni preset” u bočnoj traci Postavki više ne viri iz kartice kod dugih imena (#321).",
+            "Brojčano polje za istovremeno spojene poslužitelje u Postavke → Poslužitelj više nije razvučeno preko cijele kartice (#320).",
+            "U dijalozima koji mijenjaju sadržaj fokus ostaje u dijalogu, pa Escape i Tab nastavljaju raditi.",
+            "Kartica profila zatvorena s Escape odmah nakon korištenja gumba u njoj poslije se ponovno otvara."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.5.0",
       "teaser": "Centar obavijesti, sve privatne poruke na jednom mjestu, blokiranje, više identiteta i uvoz iz Mumblea.",
@@ -2984,5 +3160,277 @@
         "credit": "Igra i njezine poruke potječu iz zorgch/irc-quizbot (GPL-3.0), prenesene na Rust i na Mumble protokol, s istim protokolnim slojem kao Mumcord."
       }
     }
+  },
+  "plugins": {
+    "label": "Dodaci",
+    "title": "Mali ekstrasi za velike večeri",
+    "description": "Mumcord 0.6.0 donosi dodatke: ankete, kocke, stvorenje od zvuka i daljinski za tvog glazbenog bota. Sigurni, potpisani i bez promjena na poslužitelju.",
+    "intro": "Mumcord 0.6.0 donosi dodatke: male, sigurne ekstre povrh glasovnog razgovora. Rade unutar Mumcorda, ne traže promjene na poslužitelju i rade na svakom standardnom Mumble poslužitelju. Ljudi na službenom Mumble klijentu vide običan redak teksta tamo gdje je bitno, i ništa drugo.",
+    "badge": "Novo u Mumcordu 0.6.0",
+    "ctaPlugins": "Upoznaj dodatke",
+    "ctaDev": "Napravi svoj",
+    "pills": [
+      "U sandboxu",
+      "Potpisani",
+      "Bez promjena na poslužitelju",
+      "24 jezika"
+    ],
+    "listTitle": "Prvi dodaci",
+    "listBody": "Ništa nije unaprijed instalirano. Odaberi što tvoja ekipa voli, a ostalo ostavi.",
+    "source": "Izvorni kod",
+    "soon": "Uskoro",
+    "plugins": {
+      "poll": {
+        "name": "Anketa",
+        "tagline": "Postavi kanalu pitanje s do deset opcija i uživo prati kako stižu glasovi.",
+        "points": [
+          "2 do 10 opcija, trake glasova uživo u kartici u chatu",
+          "Nemaš Mumcord? Glasaj upisivanjem `!poll 1`, `!poll 2` … u chat",
+          "Rezultati se prikazuju kad se anketa zatvori"
+        ]
+      },
+      "dice": {
+        "name": "Bacanje kocki",
+        "tagline": "`/roll d20` ili `2d6+3`, uz poštena bacanja koja drugi mogu posvjedočiti i provjeriti.",
+        "points": [
+          "Prednost i nedostatak, odbaci najnižu ili najvišu, do 20 kocki",
+          "Ostali Mumcord korisnici u kanalu svjedoče svakom bacanju, pa nitko ne može varati",
+          "Povijest bacanja koju možeš proširiti"
+        ]
+      },
+      "echolings": {
+        "name": "Odjecići",
+        "tagline": "Malo stvorenje od zvuka koje raste dok se družiš s prijateljima.",
+        "points": [
+          "5 vrsta, 4 stadija rasta, 3 boje",
+          "Raste od vremena provedenog zajedno u glasu i chatu",
+          "Nikad ne umire, nikad ne gnjavi"
+        ]
+      },
+      "mumbot-music": {
+        "name": "Mumbot Music",
+        "tagline": "Daljinski za tvog glazbenog bota Mumbot.",
+        "points": [
+          "Desni klik na bota → „Konfiguriraj bota”",
+          "Trenutna skladba, preskakanje, glasnoća, red čekanja i dodavanje pjesama",
+          "Treba Mumbot na poslužitelju: običan Mumble korisnik, bez promjene poslužitelja"
+        ]
+      },
+      "eve-fit": {
+        "name": "EVE Fit",
+        "tagline": "Zalijepi EVE Online fitting u chat i svi vide karticu broda.",
+        "points": [
+          "Prepoznaje EFT fittinge zalijepljene u chat i prikazuje karticu s brodom i modulima",
+          "Otvara cijeli prikaz fittinga izvan mreže, izravno u Mumcordu",
+          "Gumb „Kopiraj fitting”, i besplatan je"
+        ]
+      }
+    },
+    "mock": {
+      "pollQuestion": "Što igramo večeras?",
+      "pollOptions": [
+        "Deep Rock Galactic",
+        "Valheim",
+        "Nešto novo"
+      ],
+      "pollVotes": "7 glasova",
+      "pollLive": "Uživo",
+      "pollPlain": "Anketa: Što igramo večeras? 1) Deep Rock Galactic 2) Valheim 3) Nešto novo",
+      "pollPlainVote": "!poll 2",
+      "rollWitness": "Posvjedočilo 3 u kanalu",
+      "rollHistory": "Povijest",
+      "echoStats": [
+        "5 vrsta",
+        "4 stadija",
+        "3 boje"
+      ],
+      "musicNow": "Trenutno svira",
+      "musicTrack": "Midnight Raid",
+      "musicArtist": "Lo-fi za kasne sesije",
+      "musicQueue": "Red čekanja",
+      "musicQueueItems": [
+        "Boss Music, Volume 2",
+        "Campfire Loop"
+      ],
+      "musicAdd": "Dodaj pjesmu",
+      "musicMenu": "Konfiguriraj bota",
+      "evePasted": "zalijepila Maya",
+      "eveCopy": "Kopiraj fitting"
+    },
+    "eveNotice": "EVE Online and all related logos and images are trademarks or registered trademarks of CCP hf. Mumcord is not affiliated with CCP hf.",
+    "eveCredit": "Prikaz fittinga temelji se na eveship.fit projekta EVEShipFit.",
+    "bridgeTitle": "Nitko ne ostaje izvan igre",
+    "bridgeBody": "Dodaci ne traže promjene na poslužitelju i rade na svakom standardnom Mumble poslužitelju. Prijatelji na službenom Mumble klijentu vide običan redak teksta tamo gdje je bitno, i ništa drugo.",
+    "bridgeMumcord": "U Mumcordu",
+    "bridgeMumble": "U službenom Mumble klijentu",
+    "bridgeNote": "Ilustracija: točan tekst dolazi od svakog dodatka.",
+    "installTitle": "Instalirano u minuti",
+    "installBody": "Dodaci žive u postavkama, a vidiš što svaki smije prije nego dođe na tvoje računalo.",
+    "steps": [
+      {
+        "title": "Pregledaj",
+        "body": "Postavke → Dodaci → Pregledaj."
+      },
+      {
+        "title": "Provjeri",
+        "body": "Odaberi dodatak i pogledaj njegova dopuštenja."
+      },
+      {
+        "title": "Instaliraj",
+        "body": "Njegova se ikona pojavi u traci dodataka ispod stabla kanala."
+      }
+    ],
+    "stripLabel": "Dodaci",
+    "stripChannels": [
+      "Predvorje",
+      "Večer raida",
+      "AFK"
+    ],
+    "safeTitle": "Sigurni po dizajnu",
+    "safeBody": "Dodatak je gost u tvojoj aplikaciji. Ovo su kućna pravila.",
+    "safe": {
+      "sandbox": {
+        "title": "Strogi sandbox",
+        "body": "Svaki je dodatak mali WebAssembly program u strogom sandboxu. Nema izravnog pristupa mreži ni datotekama; sučelje crta Mumcord od ugrađenih gradivnih blokova."
+      },
+      "permissions": {
+        "title": "Dopuštenja koja vidiš",
+        "body": "Navedena prije instalacije. Neobavezna možeš isključiti kad god želiš, a ažuriranja koja traže više čekaju tvoje odobrenje."
+      },
+      "signed": {
+        "title": "Potpisano od početka do kraja",
+        "body": "Registar i svaki paket potpisani su minisignom, a Mumcord ih provjerava prije instalacije. Kill switch može isključiti lošu verziju posvuda."
+      },
+      "server": {
+        "title": "Bez promjena na poslužitelju",
+        "body": "Radi s neizmijenjenim Mumble poslužiteljem. Adminu nema ničega za instalirati."
+      },
+      "off": {
+        "title": "Jedna sklopka da ih sve zaustavi",
+        "body": "Ništa nije unaprijed instalirano. „Isključi sve dodatke” u Postavke → Dodaci ili u paleti naredbi (Ctrl+Shift+P) zaustavlja sve dodatke odjednom."
+      },
+      "langs": {
+        "title": "Na tvom jeziku",
+        "body": "Dostupno na svih 24 jezika Mumcorda."
+      }
+    },
+    "devLabel": "Za programere",
+    "devTitle": "Napravi svoj",
+    "devBody": "Dodaci se pišu u Rustu i prevode u WebAssembly (component model, sučelje `mumcord:plugin@1.0.0`). Repozitorij sadrži predložak, dokumentaciju i izvorni kod svakog službenog dodatka.",
+    "cliTitle": "Jedan alat za cijeli put",
+    "cli": [
+      {
+        "cmd": "new",
+        "body": "Stvara dodatak iz predloška."
+      },
+      {
+        "cmd": "build",
+        "body": "Gradi ga ponovljivo."
+      },
+      {
+        "cmd": "check",
+        "body": "Provjerava paket."
+      },
+      {
+        "cmd": "test",
+        "body": "Pokreće testne scenarije protiv lažnog hosta."
+      },
+      {
+        "cmd": "serve-registry",
+        "body": "Poslužuje lokalni registar za isprobavanje u Mumcordu (razvojni način u Postavke → Dodaci)."
+      }
+    ],
+    "docsTitle": "Dokumentacija",
+    "docs": {
+      "start": "Prvi koraci",
+      "api": "API",
+      "manifest": "Manifest",
+      "permissions": "Dopuštenja",
+      "building": "Gradnja",
+      "testing": "Testiranje",
+      "publishing": "Objavljivanje",
+      "repos": "Tvoj vlastiti repozitorij"
+    },
+    "submitTitle": "U službeni registar",
+    "submitBody": "Otvori pull request u Mumcord/plugins koji dodaje `plugins/<id>/`. Treba odobrenje jednog maintainera i zelen CI.",
+    "checksTitle": "Što CI provjerava",
+    "checks": [
+      "Provjera sheme",
+      "Ponovljiva izgradnja",
+      "Potpis autora",
+      "Razlika u dopuštenjima",
+      "Test učitavanja s lažnim hostom",
+      "Skeniranje licenci"
+    ],
+    "rulesTitle": "Pravila",
+    "rules": [
+      "Licenca koju je odobrio OSI",
+      "Ponovljiva izgradnja",
+      "Bez reklama, praćenja, plaćanja ili loot boxeva"
+    ],
+    "policy": "Pravila pregleda",
+    "ownRepoTitle": "Ili pokreni svoj",
+    "ownRepoBody": "Svatko može pokrenuti vlastiti repozitorij dodataka. Korisnici ga dodaju u Postavke → Dodaci.",
+    "licenceTitle": "Licence",
+    "licenceBody": "Službeni dodaci su AGPL-3.0. Predložak, dokumentacija i SDK su Apache-2.0.",
+    "peopleTitle": "Napravili",
+    "endTitle": "Imaš ideju za dodatak?",
+    "endBody": "Sve je otvoreno: predložak, dokumentacija i svaki službeni dodatak.",
+    "endRepo": "Otvori repozitorij dodataka",
+    "copy": "Kopiraj",
+    "copied": "Kopirano",
+    "install": "Instaliraj u Mumcordu",
+    "pluginPage": "Stranica dodatka",
+    "installNote": "Gumbi za instalaciju otvaraju dodatak u Mumcordu 0.6.0 ili novijem, gdje potvrđuješ instalaciju. Ako se ništa ne otvori, pojedinosti su na stranici dodatka.",
+    "galleryLabel": "Snimke zaslona",
+    "galleryTitle": "Pogledaj ih u Mumcordu",
+    "galleryBody": "Izravno iz Mumcorda 0.6.0, u tamnoj i svijetloj temi.",
+    "dark": "Tamna",
+    "light": "Svijetla",
+    "shots": {
+      "browse": {
+        "caption": "Pregledaj službene dodatke izravno u Postavkama.",
+        "alt": "Postavke Mumcorda, Dodaci, kartica Pregledaj s pet službenih dodataka (Odjecići, Bacanje kocki, EVE Fit, Mumbot Music i Anketa), svaki s ikonom i gumbom Instaliraj."
+      },
+      "permissions": {
+        "caption": "Svaki dodatak unaprijed kaže što smije raditi.",
+        "alt": "Upit za instalaciju EVE Fita s dozvolama označenima kao obvezne, neobveznim prekidačem i okvirom u kojem piše što dodatak nikada ne dobiva."
+      },
+      "progress": {
+        "caption": "Potpisani paketi provjeravaju se prije instalacije.",
+        "alt": "Upit za instalaciju EVE Fita s trakom napretka s natpisom „Checking signature…“ iznad popisa dozvola."
+      },
+      "poll": {
+        "caption": "Anketa svoju poruku u chatu zamjenjuje živom karticom.",
+        "alt": "Mumcord chat u kojem se Bobova anketa „Which map tonight?“ prikazuje kao kartica s trakama glasova: Glacier 2 glasa, Harbor i Canyon 0."
+      },
+      "vote": {
+        "caption": "Glasaj u bočnoj ploči; svi vide kako se broj ažurira.",
+        "alt": "Bočna ploča ankete otvorena uz chat s opcijama i odabranim Glacierom."
+      },
+      "echolings": {
+        "caption": "Odjecići: ljubimac koji raste dok se družite.",
+        "alt": "Bobova profilna kartica s njegovim Odjecićem „Moss“, čipovima veze i niza te gumbom „Pat Moss“; značke ljubimaca uz imena u stablu kanala."
+      },
+      "snackrace": {
+        "caption": "Utrkuj se s Odjecićima prijatelja do grickalice.",
+        "alt": "Snack Race u tijeku sa stazama za You i Bob, pokretnom zonom grickalice i gumbom Hop!."
+      },
+      "eveCard": {
+        "caption": "Zalijepi EVE Online fit i postaje uredna kartica.",
+        "alt": "Chat kartica za Algos fit „Evening Roam“ koji je zalijepila Carol, s čipovima slotova, dronovima i brojem tereta te gumbima Copy fitting i Open."
+      },
+      "eveWheel": {
+        "caption": "Open prikazuje cijeli kotač opremanja i statistike.",
+        "alt": "Dijalog EVE Fita s brodom Algos unutar kotača opremanja, ikonama modula i statistikama kondenzatora, napada, obrane, ciljanja, navigacije i dronova."
+      },
+      "eveCargo": {
+        "caption": "Odjeljak za dronove, teretni prostor i obavijest tvrtke CCP.",
+        "alt": "Donji dio dijaloga EVE Fita: odjeljak za dronove s Hammerhead II i Hobgoblin II, teretni prostor s punjenjem i repair paste te CCP-ova obavijest o autorskim pravima na dnu."
+      }
+    },
+    "sdkNote": "Alat i SDK nalaze se na crates.io. U tvom Cargo.toml:",
+    "docsAll": "Sva dokumentacija",
+    "wiki": "Wiki"
   }
 }

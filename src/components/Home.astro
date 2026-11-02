@@ -1,4 +1,11 @@
 ---
+import { pluginsPage, PLUGIN_IDS, type PluginId } from "../lib/plugins";
+import "../styles/plugins.css";
+import plgPoll from "../assets/plugins/poll.png";
+import plgDice from "../assets/plugins/dice.png";
+import plgEcho from "../assets/plugins/echolings.png";
+import plgMusic from "../assets/plugins/mumbot-music.png";
+import plgEve from "../assets/plugins/eve-fit.png";
 import { Picture, Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import mainDark from "../assets/shots/main-dark.png";
@@ -27,6 +34,9 @@ const clean = wavePath({ seed: 7, width: 600, height: 80, points: 220, noise: 0.
 const fingerprint = "4F:9A:C1:07:3B:E2:58:D0:1A:7C:96:E4:2F:B3:0D:61";
 const [showcase, rest] = [t.features.items.slice(0, 3), t.features.items.slice(3)];
 const sp = t.spotlight5;
+const s5plugins = [plgPoll, plgDice, plgEcho, plgMusic, plgEve];
+const pl = pluginsPage[lang];
+const hpIcons: Partial<Record<PluginId, ImageMetadata>> = { poll: plgPoll, dice: plgDice, echolings: plgEcho, "mumbot-music": plgMusic, "eve-fit": plgEve };
 const spotlightOut = (await getReleases()).some((r) => r.version === "0.5.0");
 // The 0.5.0 tiles: small drawn demos, no screenshots; names stay the same in every language.
 // Each links to its card on the features page, whose ids are German on the German page.
@@ -146,6 +156,21 @@ const tourColors = tour.map((x) => allThemes.find((th) => th.id === x.theme)?.[x
     </div>
 
     <div class="s5-bento">
+      <a class="s5-tile s5-plugins" href={routes.plugins[lang]} data-reveal data-spot>
+        <div class="s5-demo" aria-hidden="true">
+          <div class="d5-plugins">
+            {s5plugins.map((ic, i) => <span style={`--i: ${i}`}><Image src={ic} alt="" width={64} height={64} /></span>)}
+          </div>
+          <div class="d5-poll">
+            <i style="--w: 50%" /><i style="--w: 100%" /><i style="--w: 25%" />
+          </div>
+        </div>
+        <div class="s5-text">
+          <h3>{sp.plugins.title} <span class="pill pill-new">0.6.0</span></h3>
+          <p>{sp.plugins.body}</p>
+          <span class="text-link">{sp.plugins.more} →</span>
+        </div>
+      </a>
       <a class="s5-tile s5-notifications" href={s5href(s5tiles[0])} data-reveal data-spot>
         <div class="s5-demo" aria-hidden="true">
                 <div class="d5-bell"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15ZM10 20a2 2 0 0 0 4 0" /></svg><b>3</b></div>
@@ -237,6 +262,52 @@ const tourColors = tour.map((x) => allThemes.find((th) => th.id === x.theme)?.[x
 </section>
 
 <!-- Themes: a stack of screenshots, flipped through while scrolling -->
+<section class="section hp-plugins" id="plugins" aria-labelledby="hp-plugins-title">
+  <div class="wrap">
+    <div class="hp-plugins-top">
+      <div>
+        <p class="plg-badge" data-reveal><span class="live-dot" aria-hidden="true"></span>{pl.badge}</p>
+        <h2 id="hp-plugins-title" class="plg-title hp-plugins-title" data-reveal>{pl.title}</h2>
+        <p class="body" data-reveal>{pl.intro}</p>
+        <ul class="plg-pills" data-reveal>{pl.pills.map((x) => <li>{x}</li>)}</ul>
+        <p class="plg-cta" data-reveal>
+          <a class="btn btn-primary btn-glow" href={routes.plugins[lang]}>{pl.ctaPlugins}</a>
+          <a class="btn btn-ghost" href={`${routes.plugins[lang]}#develop`}>{pl.ctaDev}</a>
+        </p>
+      </div>
+      <div class="plg-orbit" aria-hidden="true" data-reveal style={`--n:${s5plugins.length}`}>
+        <div class="plg-ring plg-ring-1"></div>
+        <div class="plg-ring plg-ring-2"></div>
+        <div class="plg-core"><Image src={icon} alt="" width={96} height={96} /></div>
+        {s5plugins.map((ic, i) => (
+          <div class="plg-sat" style={`--i:${i}`}>
+            <Image src={ic} alt="" width={88} height={88} />
+          </div>
+        ))}
+      </div>
+    </div>
+    <ul class="hp-plugins-list">
+      {PLUGIN_IDS.map((id, i) => (
+        <li data-reveal style={`--i:${i}`}>
+          <a href={`${routes.plugins[lang]}#plugins`}>
+            {hpIcons[id] ? (
+              <Image src={hpIcons[id]!} alt="" width={56} height={56} />
+            ) : (
+              <svg class="plg-icon-eve" viewBox="0 0 56 56" aria-hidden="true">
+                <path d="M28 6 47 17v22L28 50 9 39V17L28 6Z" />
+                <path d="M28 15 39 21.5v13L28 41l-11-6.5v-13L28 15Z" />
+                <path d="M28 15v26M17 21.5l22 13M39 21.5l-22 13" />
+              </svg>
+            )}
+            <b>{pl.plugins[id].name}</b>
+            <span set:html={pl.plugins[id].tagline.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/`([^`]+)`/g, "<code>$1</code>")} />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
 <section class="th-tour" aria-labelledby="th-tour-title" data-theme-tour style={`--n: ${tour.length}`}>
   <div class="th-tour-sticky">
     <div class="wrap th-tour-inner">

@@ -97,6 +97,10 @@
       "toolQuiz": {
         "title": "mumquiz",
         "desc": "Quizbot för din server"
+      },
+      "plugins": {
+        "title": "Tillägg",
+        "desc": "Omröstningar, tärningar och mer"
       }
     },
     "hero": {
@@ -536,8 +540,8 @@
       "toolTitle": "Bidragsgivare"
     },
     "spotlight5": {
-      "label": "Nytt i 0.5.0",
-      "labelSoon": "På väg: 0.5.0",
+      "label": "Nytt i 0.5.0/0.6.0",
+      "labelSoon": "På väg: 0.5.0/0.6.0",
       "title": "Mer lugn. Mer du. Mer ljud.",
       "body": "0.5.0 ger dig Epic 3: ett aviseringscenter, blockering, flera identiteter, ett nytt kanalträd, musik i chatten, ett läge med låg latens för att spela musik ihop och direktanslutningar via ett relä.",
       "tiles": {
@@ -567,7 +571,12 @@
         }
       },
       "features": "Alla funktioner",
-      "changelog": "Alla nyheter"
+      "changelog": "Alla nyheter",
+      "plugins": {
+        "title": "Tillägg",
+        "body": "0.6.0 ger små, säkra extrasaker ovanpå röstchatten: omröstningar, ärliga tärningar, en varelse av ljud och en fjärrkontroll till din musikbot. Inga serverändringar behövs.",
+        "more": "Möt tilläggen"
+      }
     },
     "serverCta": {
       "title": "Din egen server på fem minuter",
@@ -1112,6 +1121,89 @@
         ]
       },
       {
+        "id": "plugins",
+        "title": "Tillägg",
+        "features": [
+          {
+            "id": "plugins",
+            "title": "Tillägg från Inställningar",
+            "body": "Inställningar → Tillägg med flikarna Installerade, Bläddra, Uppdateringar och Arkiv: officiella tillägg efter kategori och med sökning, slå på och av dem, ändra behörigheter och inställningar, exportera eller återställ deras data, ta bort dem. Inget är förinstallerat, och tillägg körs även när du inte är ansluten.",
+            "alt": "Mumcord Inställningar, Tillägg, fliken Bläddra med fem officiella tillägg (Ekolingar, Tärningskastare, EVE Fit, Mumbot Music och Omröstning), vart och ett med en ikon och en Installera-knapp."
+          },
+          {
+            "id": "plugin-permissions",
+            "title": "Se först vad ett tillägg får göra",
+            "body": "Före installation säger Mumcord med enkla ord vad ett tillägg vill ha: varje behörighet är grön, gul eller röd, obligatoriska är låsta, valfria är reglage. Ändringar gäller direkt. Ett tillägg får aldrig din chatt, dina filer, din mikrofon, dina certifikat eller dina lösenord.",
+            "alt": "Installationsdialog för EVE Fit med behörigheterna markerade som obligatoriska, en valfri reglage och en ruta som listar vad tillägget aldrig får."
+          },
+          {
+            "id": "plugin-places",
+            "title": "Tillägg där du behöver dem",
+            "body": "Ett tilläggsfält under kanallistan, kort i chatten som ersätter sitt meddelande, snedstreckskommandon som /roll, ett litet märke vid namnen, ett avsnitt i profilkort, poster i högerklicksmenyn och egna fönster. Det ett tillägg skickar är märkt ”via”."
+          },
+          {
+            "id": "plugin-together",
+            "title": "Tillsammans med din kanal",
+            "body": "Ett tillägg pratar med samma tillägg hos de andra Mumcord-användarna i kanalen, till exempel för en gemensam omröstning. Det går via den vanliga röstservern: vanliga Mumble-servrar behöver ingenting, andra klienter ignorerar det, och du väljer vem som ser det. Tillägg fungerar i chatten på varje server du är ansluten till.",
+            "alt": "Omröstningens sidopanel öppen bredvid chatten med alternativen och Glacier valt."
+          },
+          {
+            "id": "plugin-safety",
+            "title": "Sandlåda, signaturer och en nödbrytare",
+            "body": "Tillägg körs inkapslade utan åtkomst till nätverk, filer eller ljud, med gränser för minne och tid; ett som hela tiden kraschar stängs av, och din röst påverkas aldrig. Officiella tillägg är signerade och kontrollerade. En nödbrytare kan stänga av ett skadligt tillägg för alla, ”Stäng av alla tillägg” stoppar dem på en gång, och --no-plugins startar utan några.",
+            "alt": "Installationsdialog för EVE Fit med en förloppsindikator som visar ”Checking signature…” ovanför behörighetslistan."
+          },
+          {
+            "id": "plugin-updates",
+            "title": "Uppdateringar utan överraskningar",
+            "body": "Installera automatiskt, bara meddela, eller av. En uppdatering som vill ha fler behörigheter eller kommer från någon annan väntar alltid på ditt godkännande. Ett tillägg som inte startar efter en uppdatering rullas tillbaka, och varje tillägg kan låsas till sin version."
+          },
+          {
+            "id": "plugin-suggestions",
+            "title": "Servrar föreslår tillägg",
+            "body": "En servers Mumbot kan rekommendera tillägg som dess community använder. Förslaget dyker lugnt upp i aviseringscentret, med Installera, Detaljer, Inte nu och Fråga inte igen för den här servern. Inget installeras utan ditt godkännande."
+          },
+          {
+            "id": "plugin-repositories",
+            "title": "Dina egna tilläggsarkiv",
+            "body": "Upp till tio arkiv till i Inställningar → Tillägg → Arkiv, visade med namn och nyckelfingeravtryck. Deras tillägg märks ”Inofficiell” överallt, och om signeringsnyckeln ändras pausas arkivet tills du bekräftar."
+          },
+          {
+            "id": "plugin-developers",
+            "title": "Bygg dina egna tillägg",
+            "body": "Tillägg är Rust, kompilerat till WebAssembly. cargo install mumcord-plugin ger dig kommandoradsverktyget, och mumcord-plugin new skapar ett projekt från mallen. Utvecklarläget laddar ett tillägg direkt från en mapp, med omladdning och logg."
+          },
+          {
+            "id": "poll",
+            "title": "Omröstning",
+            "body": "En fråga med 2 till 10 alternativ, live-resultat i chattkortet och panelen, en röst per person. Den som inte har Mumcord röstar med !poll 1, !poll 2 … i chatten.",
+            "alt": "Mumcord-chatt där Bobs omröstning ”Which map tonight?” visas som ett kort med röststaplar: Glacier 2 röster, Harbor och Canyon 0."
+          },
+          {
+            "id": "dice",
+            "title": "Tärningskastare",
+            "body": "/roll med d20, 2d6+3, fördel och nackdel eller släng lägsta eller högsta, plus knappar för snabbkast. Kasten görs tillsammans med kanalen så att ingen kan fuska, och varje resultat visar om det är verifierat."
+          },
+          {
+            "id": "echolings",
+            "title": "Ekolingar",
+            "body": "En liten varelse i ditt tilläggsfält: 5 arter, 4 tillväxtsteg, 3 färger. Klappa den, mata den, lek med den eller låt den ta en tupplur; den dör aldrig, sover när du har Stör ej och har inget att köpa. Vänner ser den som ett märke och i ditt profilkort, kan besöka den, och det finns två minispel.",
+            "alt": "Bobs profilkort med hans Ekoling ”Moss”, band- och streak-chips och en ”Pat Moss”-knapp; husdjursmärken bredvid namnen i kanalträdet."
+          },
+          {
+            "id": "mumbot-music",
+            "title": "Mumbot Music",
+            "body": "Fjärrkontrollen till en Mumbot-musikbot: spelas nu, hoppa över, stopp, volym, kön och att lägga till låtar. Högerklicka på boten → ”Konfigurera boten”; API-nyckeln ligger i systemets nyckelring."
+          },
+          {
+            "id": "eve-fit",
+            "title": "EVE Fit",
+            "body": "Klistra in en EVE Online-fitting i chatten så ser alla med tillägget ett skeppskort. Ett klick öppnar fittinghjulet med kondensator, offensiv, defensiv och navigering, offline inne i Mumcord, och ”Kopiera fitting” tar ut den igen.",
+            "alt": "EVE Fit-dialog med skeppet Algos i fitting-hjulet, modulikoner och statistik för kondensator, anfall, försvar, målinriktning, navigering och drönare."
+          }
+        ]
+      },
+      {
         "id": "comfort",
         "title": "Bekvämlighet",
         "features": [
@@ -1166,7 +1258,7 @@
           {
             "id": "website-look",
             "title": "Den här webbplatsens utseende",
-            "body": "Glödande knappar, gradienter, glaseffekter och ett lätt filmkorn, även i appen, kan stängas av.",
+            "body": "Glödande knappar, gradienter och ett lätt filmkorn, även i appen, kan stängas av.",
             "alt": "Snabbinställningar som en meny i frostat glas över en lätt kornig bakgrund"
           },
           {
@@ -1196,12 +1288,96 @@
             "title": "Komplett systemfältsmeny",
             "body": "Systemfältsmenyn visar varje ansluten server med dess läge och kanal, Mikrofon av, Ljud av och Stör ej, flyttar rösten till en annan server eller kanal och öppnar senaste chattar. Ikonen visar pratande, tystad, olästa meddelanden och Stör ej. Mumcord startar vid inloggning om du vill, på alla system.",
             "alt": "Systemfältsmeny med servrar, röstkanalens undermeny och senaste chattar"
+          },
+          {
+            "id": "sound-themes",
+            "title": "Två ljudteman",
+            "body": "”Klassisk” med de välbekanta korta tonerna är standard, ”Rik” ger nya, fylligare ljud, med förhandslyssning i Inställningar → Ljud. Dessutom ett eget ljud för kanalbyte och ett kort farväl när du avslutar Mumcord medan du är i röst."
+          },
+          {
+            "id": "start-screen",
+            "title": "En snabbare start",
+            "body": "En startskärm med logotypen på ditt tema i stället för ett tomt vitt fönster, och ungefär en tredjedel mindre kod före första skärmen: Inställningar, guiden och skärmdelning laddas först när du öppnar dem."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.6.1",
+      "teaser": "Tillägg även på Mac, en egen volym för skärmdelning, solida menybakgrunder och ”Klassisk” som standardljud.",
+      "summary": "En liten uppdatering efter 0.6.0: tilläggen fungerar nu även på Mac, skärmdelning har en egen volym, menyer och kort har en solid bakgrund och nya installationer startar med ljudtemat ”Klassisk”. På Windows är appen och installationsprogrammet nu signerade.",
+      "groups": [
+        {
+          "title": "Förbättrat",
+          "items": [
+            "Nya installationer startar med ljudtemat ”Klassisk”. Har du redan valt ”Rik” behåller du det (#339).",
+            "Högerklicksmenyer, popovers, hover-kort och profilkortet har en solid bakgrund i stället för frostat glas, så att texten är lätt att läsa även där oskärpan saknas, till exempel på Linux (#337).",
+            "Windows: appen och installationsprogrammet är nu signerade med ett kodsigneringscertifikat (#340)."
+          ]
+        },
+        {
+          "title": "Åtgärdat",
+          "items": [
+            "Att ändra volymen på en skärmdelning ändrar inte längre personens röst. Var och en har sitt eget reglage, och Mumcord minns båda för varje person (#333).",
+            "macOS: Mumcord kraschar inte längre så fort ett tillägg startar, som Ekolingar."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.6.0",
+      "teaser": "Tillägg: omröstningar, tärningar, Ekolingar, Mumbot Music och EVE Fit, säkert i en sandlåda och utan serverändringar.",
+      "summary": "Mumcord får tillägg: små, säkra extrasaker, installerade från Inställningar, inkapslade i en sandlåda och utan ändring på servern. Till att börja med finns omröstningar, ärliga tärningar, Ekolingar, en fjärrkontroll till musikboten Mumbot och EVE Fit. Dessutom ett nytt ljudtema, ett farväljud och en snabbare start med startskärm.",
+      "groups": [
+        {
+          "title": "Nytt",
+          "items": [
+            "Tillägg: små tillägg som ger Mumcord nya funktioner. Inställningar → Tillägg har flikarna Installerade, Bläddra, Uppdateringar, Arkiv och, i utvecklarläge, Utvecklare. Inget är förinstallerat, tillägg körs även när du inte är ansluten, och ”Tillägg” finns också i kommandopaletten.",
+            "Före varje installation visar Mumcord med enkla ord vad ett tillägg vill göra: varje behörighet är grön, gul eller röd, obligatoriska är låsta, valfria är reglage. Behörigheter kan ändras senare och gäller direkt. Ett tillägg får aldrig din chatt, dina filer, din mikrofon, dina certifikat eller dina lösenord.",
+            "Installation och uppdatering visar en förloppsindikator med storleken, sedan ”Kontrollerar signatur”, ”Packar upp” och ”Startar”; en misslyckad nedladdning kan försökas igen.",
+            "Tillägg dyker upp där du använder Mumcord: ett tilläggsfält under kanallistan, kort i chatten, snedstreckskommandon som /roll, ett litet märke vid namnen, ett avsnitt i profilkort, poster i en persons högerklicksmeny och egna fönster. Meddelanden som skickas av ett tillägg är märkta ”via”.",
+            "Ett tilläggskort ersätter det chattmeddelande det hör till, till exempel en inklistrad fitting eller en omröstning. Ersatta meddelanden visar tilläggets ikon och namn, och ”Visa originaltext” tar tillbaka dem. Äldre meddelanden får också sina kort, utan att röster räknas två gånger.",
+            "Ett tillägg kan känna igen vissa chattmeddelanden, till exempel en inklistrad spelfitting. Installationsfrågan säger med tilläggets egna ord vad det känner igen; det får sedan bara matchande meddelanden i din kanal, aldrig från personer du blockerat, och ingen annan chatttext.",
+            "Tillägg utbyter data med samma tillägg hos andra personers Mumcord i din kanal, till exempel för en gemensam omröstning. Det går via den vanliga röstservern: vanliga Mumble-servrar behöver ingenting, andra klienter ignorerar det, och du väljer vem som ser det. Chattfunktioner i tillägg fungerar på varje server du är ansluten till.",
+            "Tillägg kan skicka aviseringar. De hamnar i aviseringscentret under ”Tillägg”, kan stängas av per tillägg och är tysta när du har Stör ej.",
+            "Tilläggsuppdateringar har en egen inställning: automatiskt (standard), bara meddela, eller av. En uppdatering som vill ha fler behörigheter eller kommer från någon annan väntar alltid på ditt godkännande; ett tillägg som inte startar efter en uppdatering rullas tillbaka; och varje tillägg kan låsas till sin version. Nya valfria behörigheter förblir av och erbjuds under Uppdateringar.",
+            "Servrar kan föreslå tillägg: en servers Mumbot rekommenderar tillägg, som dyker upp i aviseringscentret med Installera, Detaljer, Inte nu och Fråga inte igen för den här servern. Inget installeras utan ditt godkännande.",
+            "Dina egna arkiv: upp till tio i Inställningar → Tillägg → Arkiv, med namn och nyckelfingeravtryck. Deras tillägg är ”Inofficiella” överallt, den första installationen varnar, och om signeringsnyckeln ändras pausas arkivet tills du bekräftar.",
+            "Utvecklarläget (Inställningar → Avancerat) lägger till en flik Utvecklare: ladda, ladda om och ladda ur ett tillägg från en mapp, med dess logg. För upphovspersoner finns tilläggs-SDK:n, en mall och kommandoradsverktyget mumcord-plugin på crates.io (cargo install mumcord-plugin).",
+            "Länkar av typen mumcord://plugins/<id> öppnar detaljerna för ett officiellt tillägg; de installerar aldrig något.",
+            "De officiella tilläggen, vart och ett på alla 24 språk: Omröstning (2 till 10 alternativ, live-resultat, en röst per person), Tärningskastare (/roll med d20, 2d6+3, fördel och nackdel, kastat tillsammans och verifierat), Ekolingar (en varelse med 5 arter, 4 steg och 3 färger som aldrig dör och inte säljer något, med två minispel), Mumbot Music (spelas nu, hoppa över, volym, kö, lägg till låtar; högerklicka på boten → ”Konfigurera boten”) och EVE Fit (skeppskort och fittinghjul för inklistrade EVE Online-fittingar).",
+            "Mumbot presenterar sig för Mumcord: Mumcord vet vilka användare som är botar och vad de kan, och ”Konfigurera boten” visas bara på botar som erbjuder musik.",
+            "Säkerhet: tillägg körs i en förseglad sandlåda med gränser för minne och tid. Ett som hela tiden kraschar stängs av, och din röst påverkas aldrig. ”Stäng av alla tillägg” (Inställningar och kommandopaletten) stoppar alla på en gång, och mumcord --no-plugins startar utan några. Officiella tillägg är signerade och kontrolleras vid installation och efter varje uppdatering; en nödbrytare kan stänga av ett skadligt tillägg och kontrolleras dagligen.",
+            "Integritet: när Mumcord söker efter tillägg skickas inga identifierare och ingen lista över dina tillägg. Tilläggsdata stannar på din dator, och i 30 dagar efter att du tagit bort ett tillägg om du inte raderar den.",
+            "Ett andra ljudtema: ”Rik”, med nya, fylligare ljud för anslutning, meddelanden, omnämnanden, tystning, folk som kommer och går, kickar och bannlysningar, är nu standard. Inställningar → Ljud byter till ”Klassisk”, de välbekanta korta tonerna, med förhandslyssning (#325).",
+            "När du avslutar Mumcord medan du är i röst spelas ett kort farväljud, så att du märker att du just lämnade. Det spelas bara vid ett riktigt avslut, aldrig när du minimerar till systemfältet, och har en egen strömbrytare (#325).",
+            "Att byta kanal medan du är i röst har ett eget kort ljud i stället för anslutningsljudet, med en egen strömbrytare och i båda ljudtemana (#325)."
+          ]
+        },
+        {
+          "title": "Förbättrat",
+          "items": [
+            "Mumcord startar snabbare: koden före första skärmen är ungefär en tredjedel mindre. Inställningar, installationsguiden, titta tillsammans, skärmdelning, serverlistan och kodmarkering laddas först när du öppnar dem (#323).",
+            "I stället för ett tomt vitt fönster och ”Laddar …” finns nu en startskärm: logotypen på ditt tema med en smal laddningsstapel som tonar över i appen; med minskad rörelse byter den utan rörelse (#323).",
+            "Posten Tillägg i sidofältet i Inställningar visar hur många uppdateringar och nya valfria behörigheter som väntar.",
+            "Högre tilläggskort får inte längre ett eget rullningsfält: de skärs av med en mjuk toning, och ”Visa mer” fäller ut dem.",
+            "Skärmläsare läser en ersatt chattrad som sitt kort (till exempel ”Kort från Omröstning: Lunch klockan tolv?”) och hoppar över dolda rader."
+          ]
+        },
+        {
+          "title": "Åtgärdat",
+          "items": [
+            "Inklistring med Ctrl+V fungerar igen på vissa Linux-skrivbord.",
+            "Länken ”Ändra” i kortet ”Aktiv förinställning” i sidofältet i Inställningar sticker inte längre ut ur kortet vid långa namn (#321).",
+            "Sifferfältet för samtidigt anslutna servrar i Inställningar → Server är inte längre utsträckt över hela kortet (#320).",
+            "I dialoger som byter innehåll stannar fokus i dialogen, så Escape och Tab fortsätter fungera.",
+            "Ett profilkort som stängts med Escape direkt efter att en knapp i det använts öppnas igen efteråt."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.5.0",
       "teaser": "Notiscentral, alla privata meddelanden på ett ställe, blockering, flera identiteter och import från Mumble.",
@@ -2984,5 +3160,277 @@
         "credit": "Spelet och dess meddelanden kommer från zorgch/irc-quizbot (GPL-3.0), porterade till Rust och till Mumble-protokollet, med samma protokollager som Mumcord."
       }
     }
+  },
+  "plugins": {
+    "label": "Tillägg",
+    "title": "Små extrasaker för stora kvällar",
+    "description": "Mumcord 0.6.0 ger dig tillägg: omröstningar, tärningar, ett djur av ljud och en fjärrkontroll till din musikbot. Säkert, signerat och utan ändringar på servern.",
+    "intro": "Mumcord 0.6.0 ger dig tillägg: små, säkra extrasaker ovanpå röstchatten. De körs inne i Mumcord, kräver inga ändringar på servern och fungerar på vilken vanlig Mumble-server som helst. Den som använder den officiella Mumble-klienten ser en vanlig textrad där det behövs och inget annat.",
+    "badge": "Nytt i Mumcord 0.6.0",
+    "ctaPlugins": "Möt tilläggen",
+    "ctaDev": "Bygg ditt eget",
+    "pills": [
+      "I sandlåda",
+      "Signerat",
+      "Inga serverändringar",
+      "24 språk"
+    ],
+    "listTitle": "De första tilläggen",
+    "listBody": "Inget är förinstallerat. Välj det din grupp gillar och lämna resten.",
+    "source": "Källkod",
+    "soon": "Kommer snart",
+    "plugins": {
+      "poll": {
+        "name": "Omröstning",
+        "tagline": "Ställ en fråga till kanalen med upp till tio alternativ och se rösterna rulla in live.",
+        "points": [
+          "2 till 10 alternativ, röststaplar live i ett chattkort",
+          "Inget Mumcord? Rösta genom att skriva `!poll 1`, `!poll 2` … i chatten",
+          "Resultatet visas när omröstningen stängs"
+        ]
+      },
+      "dice": {
+        "name": "Tärningskastare",
+        "tagline": "`/roll d20` eller `2d6+3`, med ärliga kast som andra kan bevittna och kontrollera.",
+        "points": [
+          "Fördel och nackdel, släng lägsta eller högsta, upp till 20 tärningar",
+          "Andra Mumcord-användare i kanalen bevittnar varje kast, så ingen kan fuska",
+          "En kasthistorik som du kan fälla ut"
+        ]
+      },
+      "echolings": {
+        "name": "Ekolingar",
+        "tagline": "En liten varelse av ljud som växer medan du umgås med vänner.",
+        "points": [
+          "5 arter, 4 tillväxtsteg, 3 färger",
+          "Växer av tiden ni tillbringar tillsammans i röst och chatt",
+          "Dör aldrig, tjatar aldrig"
+        ]
+      },
+      "mumbot-music": {
+        "name": "Mumbot Music",
+        "tagline": "En fjärrkontroll till din musikbot Mumbot.",
+        "points": [
+          "Högerklicka på boten → ”Konfigurera boten”",
+          "Spelas nu, hoppa över, volym, kön och lägga till låtar",
+          "Kräver en Mumbot på servern: en helt vanlig Mumble-användare, ingen serverändring"
+        ]
+      },
+      "eve-fit": {
+        "name": "EVE Fit",
+        "tagline": "Klistra in en EVE Online-fitting i chatten så ser alla ett skeppskort.",
+        "points": [
+          "Hittar EFT-fittingar som klistras in i chatten och visar ett kort med skepp och moduler",
+          "Öppnar hela fittingvyn offline, rakt i Mumcord",
+          "En knapp ”Kopiera fitting”, och det är gratis"
+        ]
+      }
+    },
+    "mock": {
+      "pollQuestion": "Vad spelar vi ikväll?",
+      "pollOptions": [
+        "Deep Rock Galactic",
+        "Valheim",
+        "Något nytt"
+      ],
+      "pollVotes": "7 röster",
+      "pollLive": "Live",
+      "pollPlain": "Omröstning: Vad spelar vi ikväll? 1) Deep Rock Galactic 2) Valheim 3) Något nytt",
+      "pollPlainVote": "!poll 2",
+      "rollWitness": "Bevittnat av 3 i kanalen",
+      "rollHistory": "Historik",
+      "echoStats": [
+        "5 arter",
+        "4 steg",
+        "3 färger"
+      ],
+      "musicNow": "Spelas nu",
+      "musicTrack": "Midnight Raid",
+      "musicArtist": "Lo-fi för sena sessioner",
+      "musicQueue": "Kö",
+      "musicQueueItems": [
+        "Boss Music, Volume 2",
+        "Campfire Loop"
+      ],
+      "musicAdd": "Lägg till låt",
+      "musicMenu": "Konfigurera boten",
+      "evePasted": "inklistrat av Maya",
+      "eveCopy": "Kopiera fitting"
+    },
+    "eveNotice": "EVE Online and all related logos and images are trademarks or registered trademarks of CCP hf. Mumcord is not affiliated with CCP hf.",
+    "eveCredit": "Fittingvyn bygger på eveship.fit från projektet EVEShipFit.",
+    "bridgeTitle": "Ingen lämnas utanför",
+    "bridgeBody": "Tillägg kräver inga ändringar på servern och fungerar på vilken vanlig Mumble-server som helst. Vänner med den officiella Mumble-klienten ser en vanlig textrad där det behövs, och inget annat.",
+    "bridgeMumcord": "I Mumcord",
+    "bridgeMumble": "I den officiella Mumble-klienten",
+    "bridgeNote": "En illustration: den exakta formuleringen kommer från varje tillägg.",
+    "installTitle": "Installerat på en minut",
+    "installBody": "Tilläggen finns i inställningarna, och du ser vad var och ett får göra innan det hamnar på din dator.",
+    "steps": [
+      {
+        "title": "Bläddra",
+        "body": "Inställningar → Tillägg → Bläddra."
+      },
+      {
+        "title": "Kontrollera",
+        "body": "Välj ett tillägg och gå igenom dess behörigheter."
+      },
+      {
+        "title": "Installera",
+        "body": "Dess ikon dyker upp i tilläggsfältet under kanalträdet."
+      }
+    ],
+    "stripLabel": "Tillägg",
+    "stripChannels": [
+      "Lobby",
+      "Raidkväll",
+      "Borta"
+    ],
+    "safeTitle": "Säkert från grunden",
+    "safeBody": "Ett tillägg är en gäst i din app. Det här är husreglerna.",
+    "safe": {
+      "sandbox": {
+        "title": "En sträng sandlåda",
+        "body": "Varje tillägg är ett litet WebAssembly-program i en sträng sandlåda. Ingen rå nätverks- eller filåtkomst; Mumcord ritar gränssnittet av inbyggda byggstenar."
+      },
+      "permissions": {
+        "title": "Behörigheter du kan se",
+        "body": "Listas innan du installerar. Valfria kan stängas av när som helst, och uppdateringar som kräver mer väntar på ditt godkännande."
+      },
+      "signed": {
+        "title": "Signerat hela vägen",
+        "body": "Registret och varje paket är signerade med minisign, och Mumcord kontrollerar dem före installation. En nödbrytare kan stänga av en dålig version överallt."
+      },
+      "server": {
+        "title": "Inga serverändringar",
+        "body": "Fungerar mot en omodifierad Mumble-server. Inget för administratören att installera."
+      },
+      "off": {
+        "title": "En strömbrytare för alla",
+        "body": "Inget är förinstallerat. ”Stäng av alla tillägg” i Inställningar → Tillägg eller i kommandopaletten (Ctrl+Shift+P) stoppar alla tillägg på en gång."
+      },
+      "langs": {
+        "title": "På ditt språk",
+        "body": "Finns på alla 24 Mumcord-språk."
+      }
+    },
+    "devLabel": "För utvecklare",
+    "devTitle": "Bygg ditt eget",
+    "devBody": "Tillägg skrivs i Rust och kompileras till WebAssembly (komponentmodell, gränssnitt `mumcord:plugin@1.0.0`). Repot innehåller mallen, dokumentationen och källkoden till varje officiellt tillägg.",
+    "cliTitle": "Ett verktyg hela vägen",
+    "cli": [
+      {
+        "cmd": "new",
+        "body": "Skapar ett tillägg från mallen."
+      },
+      {
+        "cmd": "build",
+        "body": "Bygger det reproducerbart."
+      },
+      {
+        "cmd": "check",
+        "body": "Kontrollerar paketet."
+      },
+      {
+        "cmd": "test",
+        "body": "Kör testscenarier mot en låtsasvärd."
+      },
+      {
+        "cmd": "serve-registry",
+        "body": "Serverar ett lokalt register så att du kan prova i Mumcord (utvecklarläge i Inställningar → Tillägg)."
+      }
+    ],
+    "docsTitle": "Dokumentation",
+    "docs": {
+      "start": "Kom igång",
+      "api": "API",
+      "manifest": "Manifest",
+      "permissions": "Behörigheter",
+      "building": "Bygga",
+      "testing": "Testa",
+      "publishing": "Publicera",
+      "repos": "Ditt eget arkiv"
+    },
+    "submitTitle": "In i det officiella registret",
+    "submitBody": "Öppna en pull request i Mumcord/plugins som lägger till `plugins/<id>/`. Den kräver ett godkännande från en underhållare och grön CI.",
+    "checksTitle": "Vad CI kontrollerar",
+    "checks": [
+      "Schemakontroll",
+      "Reproducerbar ombyggnad",
+      "Författarsignatur",
+      "Behörighetsdiff",
+      "Laddningstest mot låtsasvärd",
+      "Licensgenomsökning"
+    ],
+    "rulesTitle": "Reglerna",
+    "rules": [
+      "En OSI-godkänd licens",
+      "Ett reproducerbart bygge",
+      "Inga annonser, spårning, betalningar eller lootboxar"
+    ],
+    "policy": "Granskningspolicy",
+    "ownRepoTitle": "Eller kör ditt eget",
+    "ownRepoBody": "Vem som helst kan köra sitt eget tilläggsarkiv. Användare lägger till det i Inställningar → Tillägg.",
+    "licenceTitle": "Licenser",
+    "licenceBody": "Officiella tillägg är AGPL-3.0. Mallen, dokumentationen och SDK:n är Apache-2.0.",
+    "peopleTitle": "Gjort av",
+    "endTitle": "Har du en idé till ett tillägg?",
+    "endBody": "Allt är öppet: mallen, dokumentationen och varje officiellt tillägg.",
+    "endRepo": "Öppna tilläggsrepot",
+    "copy": "Kopiera",
+    "copied": "Kopierat",
+    "install": "Installera i Mumcord",
+    "pluginPage": "Tilläggssida",
+    "installNote": "Installationsknapparna öppnar tillägget i Mumcord 0.6.0 eller nyare, där du bekräftar installationen. Om inget öppnas finns detaljerna på tilläggssidan.",
+    "galleryLabel": "Skärmbilder",
+    "galleryTitle": "Se dem i Mumcord",
+    "galleryBody": "Direkt från Mumcord 0.6.0, i det mörka och det ljusa temat.",
+    "dark": "Mörkt",
+    "light": "Ljust",
+    "shots": {
+      "browse": {
+        "caption": "Bläddra bland de officiella tilläggen direkt i Inställningar.",
+        "alt": "Mumcord Inställningar, Tillägg, fliken Bläddra med fem officiella tillägg (Ekolingar, Tärningskastare, EVE Fit, Mumbot Music och Omröstning), vart och ett med en ikon och en Installera-knapp."
+      },
+      "permissions": {
+        "caption": "Varje tillägg berättar i förväg vad det får göra.",
+        "alt": "Installationsdialog för EVE Fit med behörigheterna markerade som obligatoriska, en valfri reglage och en ruta som listar vad tillägget aldrig får."
+      },
+      "progress": {
+        "caption": "Signerade paket kontrolleras innan de installeras.",
+        "alt": "Installationsdialog för EVE Fit med en förloppsindikator som visar ”Checking signature…” ovanför behörighetslistan."
+      },
+      "poll": {
+        "caption": "En omröstning ersätter sitt chattmeddelande med ett levande kort.",
+        "alt": "Mumcord-chatt där Bobs omröstning ”Which map tonight?” visas som ett kort med röststaplar: Glacier 2 röster, Harbor och Canyon 0."
+      },
+      "vote": {
+        "caption": "Rösta i sidopanelen; alla ser räkningen uppdateras.",
+        "alt": "Omröstningens sidopanel öppen bredvid chatten med alternativen och Glacier valt."
+      },
+      "echolings": {
+        "caption": "Ekolingar: ett husdjur som växer medan ni umgås.",
+        "alt": "Bobs profilkort med hans Ekoling ”Moss”, band- och streak-chips och en ”Pat Moss”-knapp; husdjursmärken bredvid namnen i kanalträdet."
+      },
+      "snackrace": {
+        "caption": "Tävla med vännernas Ekolingar till mellanmålet.",
+        "alt": "Snack Race pågår med banor för You och Bob, den rörliga mellanmålszonen och en Hop!-knapp."
+      },
+      "eveCard": {
+        "caption": "Klistra in en EVE Online-fit så blir den ett prydligt kort.",
+        "alt": "Chattkort för en Algos-fit ”Evening Roam” inklistrad av Carol, med slot-chips, drönare och lastantal samt knapparna Copy fitting och Open."
+      },
+      "eveWheel": {
+        "caption": "Open visar hela fitting-hjulet och statistiken.",
+        "alt": "EVE Fit-dialog med skeppet Algos i fitting-hjulet, modulikoner och statistik för kondensator, anfall, försvar, målinriktning, navigering och drönare."
+      },
+      "eveCargo": {
+        "caption": "Dronhangar, lastrum och CCP:s meddelande.",
+        "alt": "Nedre delen av EVE Fit-dialogen: dronhangar med Hammerhead II och Hobgoblin II, lastrum med laddningar och repair paste samt CCP:s upphovsrättsmeddelande längst ner."
+      }
+    },
+    "sdkNote": "Verktyget och SDK:n finns på crates.io. I din Cargo.toml:",
+    "docsAll": "All dokumentation",
+    "wiki": "Wiki"
   }
 }

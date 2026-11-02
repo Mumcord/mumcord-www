@@ -21,6 +21,80 @@ export interface ChangelogEntry {
 const source: Record<"de" | "en", ChangelogEntry[]> = {
   de: [
     {
+      version: "0.6.1",
+      teaser: "Plugins auf dem Mac, eigene Lautstärke für Bildschirmübertragungen, feste Menühintergründe und „Klassisch“ als Standardklang.",
+      summary: "Ein kleines Update nach 0.6.0: Plugins laufen jetzt auch auf dem Mac, eine Bildschirmübertragung hat ihre eigene Lautstärke, Menüs und Karten haben einen festen Hintergrund, und neue Installationen starten mit dem Klangthema „Klassisch“. Unter Windows sind App und Installer jetzt signiert.",
+      groups: [
+        {
+          title: "Verbessert",
+          items: [
+            "Neue Installationen starten mit dem Klangthema „Klassisch“. Wer schon „Reich“ gewählt hat, behält es (#339).",
+            "Kontextmenüs, Popovers, Hover-Karten und die Profilkarte haben einen festen Hintergrund statt Milchglas. So bleibt Text auch dort gut lesbar, wo der Weichzeichner fehlt, etwa unter Linux (#337).",
+            "Windows: App und Installer sind jetzt mit einem Code-Signing-Zertifikat signiert (#340).",
+          ],
+        },
+        {
+          title: "Behoben",
+          items: [
+            "Die Lautstärke einer Bildschirmübertragung ändert nicht mehr die Stimme der Person. Beide haben ihren eigenen Regler, und Mumcord merkt sich beide pro Person (#333).",
+            "macOS: Mumcord stürzt nicht mehr ab, sobald ein Plugin startet, etwa die Echolinge.",
+          ],
+        },
+      ],
+    },
+    {
+      version: "0.6.0",
+      teaser: "Plugins: Umfragen, Würfel, Echolinge, Mumbot Music und EVE Fit, sicher in einer Sandbox und ohne Änderung am Server.",
+      summary: "Mumcord bekommt Plugins: kleine, sichere Extras, installiert aus den Einstellungen, abgeschottet in einer Sandbox und ohne Änderung am Server. Zum Start gibt es Umfragen, faire Würfel, die Echolinge, eine Fernbedienung für den Mumbot-Musikbot und EVE Fit. Dazu ein neues Klangthema, ein Abschiedston und ein schnellerer Start mit Startbildschirm.",
+      groups: [
+        {
+          title: "Neu",
+          items: [
+            "Plugins: kleine Erweiterungen, die Mumcord neue Funktionen geben. Einstellungen → Plugins hat die Reiter Installiert, Durchsuchen, Updates, Repositories und im Entwicklermodus Entwickler. Nichts ist vorinstalliert, Plugins laufen auch ohne Serververbindung, und „Plugins“ steht auch in der Befehlspalette.",
+            "Vor jeder Installation zeigt Mumcord in klaren Worten, was ein Plugin tun will: jede Berechtigung grün, gelb oder rot, nötige fest, optionale als Schalter. Berechtigungen lassen sich später ändern und gelten sofort. Deinen Chat, deine Dateien, dein Mikrofon, Zertifikate und Passwörter bekommt ein Plugin nie.",
+            "Installieren und Aktualisieren zeigen einen Fortschrittsbalken mit Größe, dann „Signatur prüfen“, „Entpacken“ und „Starten“; ein fehlgeschlagener Download lässt sich wiederholen.",
+            "Plugins erscheinen, wo du Mumcord benutzt: eine Plugin-Leiste unter der Kanalliste, Karten im Chat, Slash-Befehle wie /roll, ein kleines Abzeichen neben Namen, ein Bereich in Profilkarten, Einträge im Rechtsklick-Menü einer Person und eigene Fenster. Nachrichten eines Plugins sind mit „via“ markiert.",
+            "Eine Plugin-Karte ersetzt die Chatnachricht, zu der sie gehört, etwa ein eingefügtes Fitting oder eine Umfrage. Ersetzte Nachrichten zeigen Icon und Name des Plugins, und „Originaltext anzeigen“ holt sie zurück. Ältere Nachrichten bekommen ihre Karten auch, ohne dass Stimmen doppelt zählen.",
+            "Ein Plugin kann bestimmte Chatnachrichten erkennen, etwa ein eingefügtes Spiel-Fitting. Die Installation sagt in den Worten des Plugins, was es erkennt; es bekommt dann nur passende Nachrichten in deinem Kanal, nie von Leuten, die du blockiert hast, und sonst keinen Chattext.",
+            "Plugins tauschen Daten mit demselben Plugin bei anderen im Kanal aus, etwa für eine gemeinsame Umfrage. Das läuft über den normalen Sprachserver: Standard-Mumble-Server brauchen nichts, andere Clients ignorieren es, und du bestimmst, wer es sieht. Plugin-Funktionen im Chat laufen auf jedem verbundenen Server.",
+            "Plugins können Benachrichtigungen schicken. Sie landen in der Benachrichtigungszentrale unter „Plugins“, lassen sich pro Plugin abschalten und schweigen bei „Nicht stören“.",
+            "Plugin-Updates haben eine eigene Einstellung: automatisch (Standard), nur benachrichtigen oder aus. Ein Update, das mehr Rechte will oder von jemand anderem kommt, wartet immer auf dein Okay; startet ein Plugin nach einem Update nicht, geht es zurück; und jedes Plugin lässt sich auf seine Version festpinnen. Neue optionale Rechte bleiben aus und werden unter Updates angeboten.",
+            "Server können Plugins empfehlen: Der Mumbot eines Servers schlägt Plugins vor, die in der Benachrichtigungszentrale erscheinen, mit Installieren, Details, Nicht jetzt und Für diesen Server nicht mehr fragen. Ohne dein Okay wird nichts installiert.",
+            "Eigene Repositories: bis zu zehn in Einstellungen → Plugins → Repositories, mit Name und Schlüssel-Fingerabdruck. Ihre Plugins sind überall „Inoffiziell“, die erste Installation warnt, und ändert sich der Signaturschlüssel, pausiert das Repository, bis du bestätigst.",
+            "Der Entwicklermodus (Einstellungen → Erweitert) bringt den Reiter Entwickler: ein Plugin aus einem Ordner laden, neu laden und entladen, mit Log. Für Autoren gibt es das Plugin-SDK, eine Vorlage und das Kommandozeilen-Tool mumcord-plugin auf crates.io (cargo install mumcord-plugin).",
+            "Links mit mumcord://plugins/<id> öffnen die Details eines offiziellen Plugins; installiert wird dabei nie etwas.",
+            "Die offiziellen Plugins, jedes in allen 24 Sprachen: Umfrage (2 bis 10 Antworten, Live-Ergebnis, eine Stimme pro Person), Würfel (/roll mit d20, 2d6+3, Vorteil und Nachteil, gemeinsam gewürfelt und geprüft), Echolinge (ein Wesen mit 5 Arten, 4 Stufen und 3 Farben, das nie stirbt und nichts verkauft, mit zwei Minispielen), Mumbot Music (was läuft, Überspringen, Lautstärke, Warteschlange, Titel hinzufügen; Rechtsklick auf den Bot → „Bot einrichten“) und EVE Fit (Schiffskarte und Fitting-Rad für eingefügte EVE-Online-Fittings).",
+            "Mumbot stellt sich Mumcord vor: Mumcord weiß, welche Nutzer Bots sind und was sie können, und „Bot einrichten“ erscheint nur bei Bots mit Musik.",
+            "Sicherheit: Plugins laufen in einer abgeschotteten Sandbox mit Grenzen für Speicher und Zeit. Eins, das ständig abstürzt, wird abgeschaltet, und deine Sprache bleibt unberührt. „Alle Plugins ausschalten“ (Einstellungen und Befehlspalette) stoppt alle auf einmal, und mumcord --no-plugins startet ganz ohne. Offizielle Plugins sind signiert und werden bei der Installation und nach jedem Update geprüft; ein Notschalter kann ein schädliches Plugin abschalten und wird täglich geprüft.",
+            "Privatsphäre: Die Suche nach Plugins schickt keine Kennungen und keine Liste deiner Plugins. Plugin-Daten bleiben auf deinem Rechner, und nach dem Entfernen 30 Tage lang, wenn du sie nicht löschst.",
+            "Ein zweites Klangthema: „Reich“ mit neuen, volleren Tönen für Verbinden, Nachrichten, Erwähnungen, Stummschalten, Kommen und Gehen, Kick und Bann ist jetzt der Standard. Einstellungen → Töne wechselt mit Vorschau zu „Klassisch“, den vertrauten kurzen Tönen (#325).",
+            "Beendest du Mumcord mitten im Sprachkanal, verabschiedet es sich mit einem kurzen Ton, damit du merkst, dass du raus bist. Er spielt nur beim echten Beenden, nie beim Minimieren in den Tray, und hat einen eigenen Schalter (#325).",
+            "Ein Kanalwechsel im Sprachkanal hat seinen eigenen kurzen Ton statt des Verbindungstons, mit eigenem Schalter und in beiden Klangthemen (#325).",
+          ],
+        },
+        {
+          title: "Verbessert",
+          items: [
+            "Mumcord startet schneller: Der Code vor dem ersten Bild ist etwa ein Drittel kleiner. Einstellungen, Einrichtungsassistent, Zusammen schauen, Bildschirm teilen, Serverbrowser und Codehervorhebung laden erst, wenn du sie öffnest (#323).",
+            "Statt eines leeren weißen Fensters und „Laden …“ kommt ein Startbildschirm: das Logo auf deinem Theme mit einem schmalen Ladebalken, der ins Programm überblendet; mit reduzierter Bewegung ohne Animation (#323).",
+            "Der Eintrag „Plugins“ in der Einstellungsleiste zeigt, wie viele Updates und neue optionale Rechte warten.",
+            "Höhere Plugin-Karten bekommen keinen eigenen Scrollbalken mehr: Sie werden weich abgeschnitten, und „Mehr anzeigen“ klappt sie auf.",
+            "Screenreader lesen eine ersetzte Chatzeile als Karte vor (etwa „Karte von Umfrage: Mittag um zwölf?“) und überspringen versteckte Zeilen.",
+          ],
+        },
+        {
+          title: "Behoben",
+          items: [
+            "Einfügen mit Strg+V geht auf einigen Linux-Desktops wieder.",
+            "Der Link „Ändern“ in der Karte „Aktives Preset“ der Einstellungsleiste ragt bei langen Namen nicht mehr aus der Karte (#321).",
+            "Das Zahlenfeld für gleichzeitig verbundene Server in Einstellungen → Server ist nicht mehr über die ganze Karte gestreckt (#320).",
+            "In Dialogen, die ihren Inhalt wechseln, bleibt der Fokus im Dialog, sodass Escape und Tab weiter funktionieren.",
+            "Eine Profilkarte, die du direkt nach einem Knopfdruck darin mit Escape schließt, öffnet sich danach wieder.",
+          ],
+        },
+      ],
+    },
+    {
       version: "0.5.0",
       teaser: "Benachrichtigungszentrale, alle privaten Nachrichten an einem Ort, Blockieren, mehrere Identitäten und Import aus Mumble.",
       summary: "Ein großes Update für Chat und Privatsphäre: eine Benachrichtigungszentrale, alle privaten Nachrichten an einem Ort mit deinen eigenen Regeln, wer dir schreiben darf, Blockieren, mehrere Identitäten und der Umzug aus Mumble mit wenigen Klicks. Dazu ein Community-Relay für Bilder und Bildschirm teilen, Musik und Audio im Chat, ein Browser für öffentliche Server und ein Modus mit niedriger Latenz zum gemeinsamen Musikmachen.",
@@ -515,6 +589,80 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
     },
   ],
   en: [
+    {
+      version: "0.6.1",
+      teaser: "Plugins on the Mac, a volume of its own for screen shares, solid menu backgrounds and “Classic” as the default sound.",
+      summary: "A small update after 0.6.0: plugins now run on the Mac too, a screen share has a volume of its own, menus and cards have a solid background, and new installs start with the “Classic” sound theme. On Windows, the app and installer are now signed.",
+      groups: [
+        {
+          title: "Improved",
+          items: [
+            "New installs start with the “Classic” sound theme. If you already picked “Rich”, you keep it (#339).",
+            "Right-click menus, popovers, hover cards and the profile card have a solid background instead of frosted glass, so text stays easy to read where the blur is missing, for example on Linux (#337).",
+            "Windows: the app and installer are now signed with a code signing certificate (#340).",
+          ],
+        },
+        {
+          title: "Fixed",
+          items: [
+            "Changing the volume of a screen share no longer changes the person's voice. Each has its own slider, and Mumcord remembers both per person (#333).",
+            "macOS: Mumcord no longer crashes as soon as a plugin starts, such as Echolings.",
+          ],
+        },
+      ],
+    },
+    {
+      version: "0.6.0",
+      teaser: "Plugins: polls, dice, Echolings, Mumbot Music and EVE Fit, safe in a sandbox and with no server changes.",
+      summary: "Mumcord gets plugins: small, safe extras, installed from Settings, sealed off in a sandbox and with no change to the server. To start there are polls, fair dice, Echolings, a remote for the Mumbot music bot and EVE Fit. Plus a new sound theme, a goodbye sound and a faster start with a start screen.",
+      groups: [
+        {
+          title: "New",
+          items: [
+            "Plugins: small add-ons that give Mumcord new features. Settings → Plugins has the tabs Installed, Browse, Updates, Repositories and, in Developer mode, Developer. Nothing is preinstalled, plugins run even when you're not connected, and “Plugins” is in the command palette too.",
+            "Before every install Mumcord shows in plain words what a plugin wants to do: each permission green, yellow or red, required ones fixed, optional ones as switches. Permissions can be changed later and apply at once. A plugin never gets your chat, files, microphone, certificates or passwords.",
+            "Installing and updating show a progress bar with the size, then “Checking signature”, “Unpacking” and “Starting”; a failed download can be retried.",
+            "Plugins show up where you use Mumcord: a plugins strip under the channel list, cards in the chat, slash commands such as /roll, a small badge next to names, a section in profile cards, entries in a person's right-click menu and windows of their own. Messages sent by a plugin are marked “via”.",
+            "A plugin card takes the place of the chat message it belongs to, such as a pasted fit or a poll. Replaced messages show the plugin's icon and name, and “Show original text” brings them back. Older messages get their cards too, without votes being counted twice.",
+            "A plugin can recognise certain chat messages, such as a pasted game fit. The install prompt says in the plugin's own words what it recognises; it then gets only matching messages in your channel, never from people you blocked, and no other chat text.",
+            "Plugins exchange data with the same plugin on other people's Mumcord in your channel, for a shared poll for example. It travels over the normal voice server: standard Mumble servers need nothing, other clients ignore it, and you choose who sees it. Plugin chat features work on every server you're connected to.",
+            "Plugins can send notifications. They land in the notification centre under “Plugins”, can be switched off per plugin and stay silent on Do Not Disturb.",
+            "Plugin updates have their own setting: automatic (default), notify only, or off. An update that wants more permissions or comes from someone else always waits for your approval; a plugin that fails to start after an update is rolled back; and any plugin can be pinned to its version. New optional permissions stay off and are offered under Updates.",
+            "Servers can suggest plugins: a server's Mumbot recommends plugins, which appear in the notification centre with Install, Details, Not now and Don't ask again for this server. Nothing is installed without your approval.",
+            "Your own repositories: up to ten in Settings → Plugins → Repositories, with name and key fingerprint. Their plugins are “Unofficial” everywhere, the first install warns, and if the signing key changes the repository is paused until you confirm.",
+            "Developer mode (Settings → Advanced) adds a Developer tab: load, reload and unload a plugin from a folder, with its log. For authors there's the plugin SDK, a template and the mumcord-plugin command-line tool on crates.io (cargo install mumcord-plugin).",
+            "mumcord://plugins/<id> links open the details of an official plugin; they never install anything.",
+            "The official plugins, each in all 24 languages: Poll (2 to 10 options, live results, one vote per person), Dice roller (/roll with d20, 2d6+3, advantage and disadvantage, rolled together and verified), Echolings (a creature with 5 species, 4 stages and 3 colours that never dies and sells nothing, with two mini-games), Mumbot Music (now playing, skip, volume, queue, add tracks; right-click the bot → “Configure bot”) and EVE Fit (ship card and fitting wheel for pasted EVE Online fits).",
+            "Mumbot introduces itself to Mumcord: Mumcord knows which users are bots and what they can do, and “Configure bot” only appears on bots that offer music.",
+            "Safety: plugins run in a sealed sandbox with limits on memory and time. One that keeps crashing is turned off, and your voice is never affected. “Turn off all plugins” (Settings and the command palette) stops them all at once, and mumcord --no-plugins starts without any. Official plugins are signed and checked on install and after every update; a kill switch can disable a harmful plugin and is checked daily.",
+            "Privacy: checking for plugins sends no identifiers and no list of your plugins. Plugin data stays on your computer, and for 30 days after removing a plugin unless you delete it.",
+            "A second sound theme: “Rich”, with new, fuller sounds for connecting, messages, mentions, muting, people coming and going, kicks and bans, is now the default. Settings → Sounds switches to “Classic”, the familiar short tones, with a preview (#325).",
+            "Quitting Mumcord while you're in voice plays a short goodbye sound, so you notice you just left. It only plays on a real quit, never when minimising to the tray, and has its own switch (#325).",
+            "Switching channels while in voice has its own short sound instead of the connect sound, with its own switch and in both sound themes (#325).",
+          ],
+        },
+        {
+          title: "Improved",
+          items: [
+            "Mumcord starts faster: the code before the first screen is about a third smaller. Settings, the setup wizard, watch together, screen sharing, the server browser and code highlighting load only when you open them (#323).",
+            "Instead of an empty white window and “Loading…” there's a start screen: the logo on your theme with a slim loading bar that fades into the app; with reduced motion it switches without movement (#323).",
+            "The Plugins entry in the Settings sidebar shows how many updates and new optional permissions are waiting.",
+            "Taller plugin cards no longer get a scrollbar of their own: they're cut off with a soft fade, and “Show more” expands them.",
+            "Screen readers read a replaced chat line as its card (for example “Card from Poll: Lunch at noon?”) and skip hidden lines.",
+          ],
+        },
+        {
+          title: "Fixed",
+          items: [
+            "Pasting with Ctrl+V works again on some Linux desktops.",
+            "The “Change” link in the Settings sidebar's “Active preset” card no longer sticks out of the card with long names (#321).",
+            "The number field for simultaneously connected servers in Settings → Server is no longer stretched across the whole card (#320).",
+            "In dialogs that change their content, focus stays in the dialog, so Escape and Tab keep working.",
+            "A profile card closed with Escape right after using a button in it opens again afterwards.",
+          ],
+        },
+      ],
+    },
     {
       version: "0.5.0",
       teaser: "Notification centre, all private messages in one place, blocking, several identities and import from Mumble.",

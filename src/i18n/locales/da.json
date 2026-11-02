@@ -97,6 +97,10 @@
       "toolQuiz": {
         "title": "mumquiz",
         "desc": "Quizbot til din server"
+      },
+      "plugins": {
+        "title": "Plugins",
+        "desc": "Afstemninger, terninger og mere"
       }
     },
     "hero": {
@@ -536,8 +540,8 @@
       "toolTitle": "Bidragydere"
     },
     "spotlight5": {
-      "label": "Nyt i 0.5.0",
-      "labelSoon": "På vej: 0.5.0",
+      "label": "Nyt i 0.5.0/0.6.0",
+      "labelSoon": "På vej: 0.5.0/0.6.0",
       "title": "Mere ro. Mere dig. Mere lyd.",
       "body": "0.5.0 bringer Epic 3: et notifikationscenter, blokering, flere identiteter, et nyt kanaltræ, musik i chatten, en lav-latenstilstand til at spille musik sammen og direkte forbindelser via et relay.",
       "tiles": {
@@ -567,7 +571,12 @@
         }
       },
       "features": "Alle funktioner",
-      "changelog": "Alle nyheder"
+      "changelog": "Alle nyheder",
+      "plugins": {
+        "title": "Plugins",
+        "body": "0.6.0 tilføjer små, sikre ekstra ting oven på voice-chatten: afstemninger, fair terninger, en skabning af lyd og en fjernbetjening til din musikbot. Ingen serverændringer nødvendige.",
+        "more": "Mød pluginsene"
+      }
     },
     "serverCta": {
       "title": "Din egen server på fem minutter",
@@ -1112,6 +1121,89 @@
         ]
       },
       {
+        "id": "plugins",
+        "title": "Plugins",
+        "features": [
+          {
+            "id": "plugins",
+            "title": "Plugins fra Indstillinger",
+            "body": "Indstillinger → Plugins med fanerne Installerede, Gennemse, Opdateringer og Repositories: officielle plugins efter kategori og med søgning, slå dem til og fra, ændr tilladelser og indstillinger, eksportér eller nulstil deres data, fjern dem. Intet er forudinstalleret, og plugins kører, selv når du ikke er forbundet.",
+            "alt": "Mumcord Indstillinger, Plugins, fanen Gennemse med fem officielle plugins (Echolinger, Terningekast, EVE Fit, Mumbot Music og Afstemning), hver med et ikon og en Installer-knap."
+          },
+          {
+            "id": "plugin-permissions",
+            "title": "Se først, hvad et plugin må",
+            "body": "Før installation siger Mumcord på almindeligt dansk, hvad et plugin vil have: hver tilladelse er grøn, gul eller rød, påkrævede er faste, valgfrie er kontakter. Ændringer gælder med det samme. Et plugin får aldrig din chat, dine filer, din mikrofon, dine certifikater eller adgangskoder.",
+            "alt": "Installationsdialog for EVE Fit med dets tilladelser markeret som påkrævede, en valgfri kontakt og en boks med det, pluginet aldrig får."
+          },
+          {
+            "id": "plugin-places",
+            "title": "Plugins, hvor du har brug for dem",
+            "body": "En plugin-bjælke under kanallisten, kort i chatten, der træder i stedet for deres besked, slash-kommandoer som /roll, et lille badge ved siden af navne, en sektion i profilkort, punkter i højreklikmenuen og egne vinduer. Det, et plugin sender, er markeret med »via«."
+          },
+          {
+            "id": "plugin-together",
+            "title": "Sammen med din kanal",
+            "body": "Et plugin taler med det samme plugin hos de andre Mumcord-brugere i kanalen, for eksempel til en fælles afstemning. Det går via den almindelige voice-server: almindelige Mumble-servere behøver intet, andre klienter ignorerer det, og du vælger, hvem der ser det. Plugins virker i chatten på alle servere, du er forbundet til.",
+            "alt": "Afstemningens sidepanel åbent ved siden af chatten med valgmulighederne og Glacier valgt."
+          },
+          {
+            "id": "plugin-safety",
+            "title": "Sandbox, signaturer og en nødafbryder",
+            "body": "Plugins kører afskærmet uden adgang til netværk, filer eller lyd, med grænser for hukommelse og tid; et plugin, der bliver ved med at gå ned, slås fra, og din stemme bliver aldrig påvirket. Officielle plugins er signerede og tjekkede. En nødafbryder kan deaktivere et skadeligt plugin for alle, »Slå alle plugins fra« stopper dem på én gang, og --no-plugins starter helt uden.",
+            "alt": "Installationsdialog for EVE Fit med en statuslinje, der viser „Checking signature…“, over tilladelseslisten."
+          },
+          {
+            "id": "plugin-updates",
+            "title": "Opdateringer uden overraskelser",
+            "body": "Installér automatisk, giv kun besked, eller slå fra. En opdatering, der kræver flere tilladelser eller kommer fra en anden, venter altid på din godkendelse. Et plugin, der ikke kan starte efter en opdatering, rulles tilbage, og ethvert plugin kan fastlåses til sin version."
+          },
+          {
+            "id": "plugin-suggestions",
+            "title": "Servere foreslår plugins",
+            "body": "En servers Mumbot kan anbefale plugins, som dens fællesskab bruger. Forslaget dukker roligt op i notifikationscenteret med Installér, Detaljer, Ikke nu og Spørg ikke igen for denne server. Intet bliver installeret uden din godkendelse."
+          },
+          {
+            "id": "plugin-repositories",
+            "title": "Dine egne plugin-repositories",
+            "body": "Op til ti ekstra repositories under Indstillinger → Plugins → Repositories, vist med navn og nøglefingeraftryk. Deres plugins er mærket »Uofficiel« overalt, og hvis signeringsnøglen ændrer sig, sættes repositoryet på pause, indtil du bekræfter."
+          },
+          {
+            "id": "plugin-developers",
+            "title": "Byg dine egne plugins",
+            "body": "Plugins er Rust, kompileret til WebAssembly. cargo install mumcord-plugin henter kommandolinjeværktøjet, og mumcord-plugin new opretter et projekt ud fra skabelonen. Udviklertilstand indlæser et plugin direkte fra en mappe, med genindlæsning og log."
+          },
+          {
+            "id": "poll",
+            "title": "Afstemning",
+            "body": "Et spørgsmål med 2 til 10 muligheder, live resultater i chatkortet og panelet, én stemme pr. person. Alle uden Mumcord stemmer med !poll 1, !poll 2 … i chatten.",
+            "alt": "Mumcord-chat, hvor Bobs afstemning „Which map tonight?“ vises som et kort med stemmebjælker: Glacier 2 stemmer, Harbor og Canyon 0."
+          },
+          {
+            "id": "dice",
+            "title": "Terningekast",
+            "body": "/roll med d20, 2d6+3, fordel og ulempe eller drop laveste eller højeste, plus knapper til hurtige slag. Slagene foretages sammen med kanalen, så ingen kan snyde, og hvert resultat viser, om det er verificeret."
+          },
+          {
+            "id": "echolings",
+            "title": "Echolinger",
+            "body": "En lille skabning i din plugin-bjælke: 5 arter, 4 vækststadier, 3 farver. Klap den, giv den mad, leg eller lad den tage en lur; den dør aldrig, sover ved Forstyr ikke og har intet at købe. Venner ser den som et badge og i dit profilkort, kan besøge den, og der er to minispil.",
+            "alt": "Bobs profilkort med hans Echoling „Moss“, bånd- og stribe-chips og en „Pat Moss“-knap; kæledyrsmærker ved navnene i kanaltræet."
+          },
+          {
+            "id": "mumbot-music",
+            "title": "Mumbot Music",
+            "body": "Fjernbetjeningen til en Mumbot-musikbot: spiller nu, spring over, stop, lydstyrke, køen og tilføjelse af numre. Højreklik på botten → »Konfigurer bot«; API-nøglen ligger i din systemnøglering."
+          },
+          {
+            "id": "eve-fit",
+            "title": "EVE Fit",
+            "body": "Indsæt en EVE Online-fitting i chatten, og alle med pluginet ser et skibskort. Ét klik åbner fitting-hjulet med kondensator, angreb, forsvar og navigation, offline i Mumcord, og »Kopiér fitting« får den ud igen.",
+            "alt": "EVE Fit-dialog med Algos-skibet i fitting-hjulet, modulikoner og statistik for kondensator, offensiv, defensiv, målsøgning, navigation og droner."
+          }
+        ]
+      },
+      {
         "id": "comfort",
         "title": "Komfort",
         "features": [
@@ -1166,7 +1258,7 @@
           {
             "id": "website-look",
             "title": "Denne hjemmesides udseende",
-            "body": "Lysende knapper, gradienter, glaseffekter og et let filmkorn, også i appen, kan slås fra.",
+            "body": "Lysende knapper, gradienter og et let filmkorn, også i appen, kan slås fra.",
             "alt": "Hurtige indstillinger som en menu i frostet glas over en let kornet baggrund"
           },
           {
@@ -1196,12 +1288,96 @@
             "title": "Komplet bakkemenu",
             "body": "Bakkemenuen viser hver forbundet server med dens tilstand og kanal, Slå mikrofon fra, Slå lyd fra og Forstyr ikke, flytter stemmen til en anden server eller kanal og åbner seneste chats. Ikonet viser tale, lyd fra, ulæste beskeder og Forstyr ikke. Mumcord starter ved login, hvis du vil, på alle systemer.",
             "alt": "Bakkemenu med servere, undermenuen for talekanalen og seneste chats"
+          },
+          {
+            "id": "sound-themes",
+            "title": "To lydtemaer",
+            "body": "»Classic« med de velkendte korte toner er standard, »Rich« giver nye, fyldigere lyde, med forhåndsvisning under Indstillinger → Lyde. Plus en egen lyd, når du skifter kanal, og et kort farvel, når du lukker Mumcord, mens du er i voice."
+          },
+          {
+            "id": "start-screen",
+            "title": "En hurtigere start",
+            "body": "En startskærm med logoet på dit tema i stedet for et tomt hvidt vindue og omkring en tredjedel mindre kode før den første skærm: Indstillinger, guiden og skærmdeling indlæses først, når du åbner dem."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.6.1",
+      "teaser": "Plugins på Mac, en egen lydstyrke til skærmdeling, solid baggrund i menuer og »Classic« som standardlyd.",
+      "summary": "En lille opdatering efter 0.6.0: plugins kører nu også på Mac, en skærmdeling har sin egen lydstyrke, menuer og kort har en solid baggrund, og nye installationer starter med lydtemaet »Classic«. På Windows er appen og installationsprogrammet nu signeret.",
+      "groups": [
+        {
+          "title": "Forbedret",
+          "items": [
+            "Nye installationer starter med lydtemaet »Classic«. Har du allerede valgt »Rich«, beholder du det (#339).",
+            "Højrekliksmenuer, popovers, hover-kort og profilkortet har en solid baggrund i stedet for matteret glas, så teksten er let at læse, også hvor sløringen mangler, for eksempel på Linux (#337).",
+            "Windows: appen og installationsprogrammet er nu signeret med et kodesigneringscertifikat (#340)."
+          ]
+        },
+        {
+          "title": "Rettet",
+          "items": [
+            "Når du ændrer lydstyrken på en skærmdeling, ændrer det ikke længere personens stemme. Hver har sin egen skyder, og Mumcord husker begge for hver person (#333).",
+            "macOS: Mumcord går ikke længere ned, så snart et plugin starter, for eksempel Echolinger."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.6.0",
+      "teaser": "Plugins: afstemninger, terninger, Echolinger, Mumbot Music og EVE Fit, sikre i en sandbox og uden serverændringer.",
+      "summary": "Mumcord får plugins: små, sikre ekstra ting, installeret fra Indstillinger, afskærmet i en sandbox og uden ændringer på serveren. Til at begynde med er der afstemninger, fair terninger, Echolinger, en fjernbetjening til Mumbot-musikbotten og EVE Fit. Plus et nyt lydtema, en farvel-lyd og en hurtigere start med en startskærm.",
+      "groups": [
+        {
+          "title": "Nyt",
+          "items": [
+            "Plugins: små tilføjelser, der giver Mumcord nye funktioner. Indstillinger → Plugins har fanerne Installerede, Gennemse, Opdateringer, Repositories og, i udviklertilstand, Udvikler. Intet er forudinstalleret, plugins kører, selv når du ikke er forbundet, og »Plugins« findes også i kommandopaletten.",
+            "Før hver installation viser Mumcord på almindeligt dansk, hvad et plugin vil gøre: hver tilladelse er grøn, gul eller rød, påkrævede er faste, valgfrie er kontakter. Tilladelser kan ændres senere og gælder med det samme. Et plugin får aldrig din chat, dine filer, din mikrofon, dine certifikater eller adgangskoder.",
+            "Installation og opdatering viser en statuslinje med størrelsen, derefter »Tjekker signatur«, »Pakker ud« og »Starter«; en mislykket download kan prøves igen.",
+            "Plugins dukker op, hvor du bruger Mumcord: en plugin-bjælke under kanallisten, kort i chatten, slash-kommandoer som /roll, et lille badge ved siden af navne, en sektion i profilkort, punkter i en persons højreklikmenu og egne vinduer. Beskeder sendt af et plugin er markeret med »via«.",
+            "Et plugin-kort træder i stedet for den chatbesked, det hører til, for eksempel en indsat fit eller en afstemning. Erstattede beskeder viser pluginets ikon og navn, og »Vis original tekst« bringer dem tilbage. Ældre beskeder får også deres kort, uden at stemmer tælles to gange.",
+            "Et plugin kan genkende bestemte chatbeskeder, for eksempel en indsat spil-fit. Installationsdialogen siger med pluginets egne ord, hvad det genkender; det får så kun matchende beskeder i din kanal, aldrig fra folk, du har blokeret, og ingen anden chattekst.",
+            "Plugins udveksler data med det samme plugin hos andres Mumcord i din kanal, for eksempel til en fælles afstemning. Det går via den almindelige voice-server: almindelige Mumble-servere behøver intet, andre klienter ignorerer det, og du vælger, hvem der ser det. Plugins chatfunktioner virker på alle servere, du er forbundet til.",
+            "Plugins kan sende notifikationer. De lander i notifikationscenteret under »Plugins«, kan slås fra pr. plugin og er stille ved Forstyr ikke.",
+            "Plugin-opdateringer har deres egen indstilling: automatisk (standard), kun besked eller slået fra. En opdatering, der kræver flere tilladelser eller kommer fra en anden, venter altid på din godkendelse; et plugin, der ikke kan starte efter en opdatering, rulles tilbage; og ethvert plugin kan fastlåses til sin version. Nye valgfrie tilladelser forbliver slået fra og tilbydes under Opdateringer.",
+            "Servere kan foreslå plugins: en servers Mumbot anbefaler plugins, som dukker op i notifikationscenteret med Installér, Detaljer, Ikke nu og Spørg ikke igen for denne server. Intet bliver installeret uden din godkendelse.",
+            "Dine egne repositories: op til ti under Indstillinger → Plugins → Repositories, med navn og nøglefingeraftryk. Deres plugins er »Uofficielle« overalt, den første installation advarer, og hvis signeringsnøglen ændrer sig, sættes repositoryet på pause, indtil du bekræfter.",
+            "Udviklertilstand (Indstillinger → Avanceret) tilføjer en Udvikler-fane: indlæs, genindlæs og afindlæs et plugin fra en mappe, med dets log. Til forfattere findes plugin-SDK'et, en skabelon og kommandolinjeværktøjet mumcord-plugin på crates.io (cargo install mumcord-plugin).",
+            "Links som mumcord://plugins/<id> åbner detaljerne for et officielt plugin; de installerer aldrig noget.",
+            "De officielle plugins, hver på alle 24 sprog: Afstemning (2 til 10 muligheder, live resultater, én stemme pr. person), Terningekast (/roll med d20, 2d6+3, fordel og ulempe, slået sammen og verificeret), Echolinger (en skabning med 5 arter, 4 stadier og 3 farver, der aldrig dør og ikke sælger noget, med to minispil), Mumbot Music (spiller nu, spring over, lydstyrke, kø, tilføj numre; højreklik på botten → »Konfigurer bot«) og EVE Fit (skibskort og fitting-hjul til indsatte EVE Online-fits).",
+            "Mumbot præsenterer sig for Mumcord: Mumcord ved, hvilke brugere der er bots, og hvad de kan, og »Konfigurer bot« vises kun på bots, der tilbyder musik.",
+            "Sikkerhed: plugins kører i en lukket sandbox med grænser for hukommelse og tid. Et plugin, der bliver ved med at gå ned, slås fra, og din stemme bliver aldrig påvirket. »Slå alle plugins fra« (i Indstillinger og kommandopaletten) stopper dem alle på én gang, og mumcord --no-plugins starter helt uden. Officielle plugins er signerede og tjekkede ved installation og efter hver opdatering; en nødafbryder kan deaktivere et skadeligt plugin og tjekkes dagligt.",
+            "Privatliv: når der tjekkes for plugins, sendes hverken identifikatorer eller en liste over dine plugins. Plugin-data bliver på din computer, og i 30 dage efter, at du har fjernet et plugin, medmindre du sletter dem.",
+            "Et andet lydtema: »Rich«, med nye, fyldigere lyde til tilslutning, beskeder, omtaler, mute, folk der kommer og går, kicks og bans, er nu standard. Indstillinger → Lyde skifter til »Classic«, de velkendte korte toner, med forhåndsvisning (#325).",
+            "Når du lukker Mumcord, mens du er i voice, afspilles en kort farvel-lyd, så du lægger mærke til, at du lige har forladt kanalen. Den afspilles kun ved en rigtig afslutning, aldrig når du minimerer til bakken, og har sin egen kontakt (#325).",
+            "Når du skifter kanal i voice, er der en egen kort lyd i stedet for tilslutningslyden, med sin egen kontakt og i begge lydtemaer (#325)."
+          ]
+        },
+        {
+          "title": "Forbedret",
+          "items": [
+            "Mumcord starter hurtigere: koden før den første skærm er omkring en tredjedel mindre. Indstillinger, opsætningsguiden, se sammen, skærmdeling, serverbrowseren og kodefremhævning indlæses først, når du åbner dem (#323).",
+            "I stedet for et tomt hvidt vindue og »Indlæser…« er der en startskærm: logoet på dit tema med en tynd indlæsningslinje, der toner ind i appen; med reduceret bevægelse skifter den uden bevægelse (#323).",
+            "Plugins-punktet i sidebjælken i Indstillinger viser, hvor mange opdateringer og nye valgfrie tilladelser der venter.",
+            "Højere plugin-kort får ikke længere deres egen rullebjælke: de beskæres med en blød tone, og »Vis mere« folder dem ud.",
+            "Skærmlæsere læser en erstattet chatlinje som dens kort (for eksempel »Kort fra Afstemning: Frokost kl. 12?«) og springer skjulte linjer over."
+          ]
+        },
+        {
+          "title": "Rettet",
+          "items": [
+            "Indsæt med Ctrl+V virker igen på nogle Linux-skriveborde.",
+            "Linket »Skift« i kortet »Aktiv preset« i sidebjælken i Indstillinger stikker ikke længere ud af kortet ved lange navne (#321).",
+            "Talfeltet for samtidigt forbundne servere under Indstillinger → Server er ikke længere strakt ud over hele kortet (#320).",
+            "I dialoger, der skifter indhold, bliver fokus i dialogen, så Escape og Tab bliver ved med at virke.",
+            "Et profilkort, der blev lukket med Escape lige efter brug af en knap i det, åbner igen bagefter."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.5.0",
       "teaser": "Notifikationscenter, alle private beskeder ét sted, blokering, flere identiteter og import fra Mumble.",
@@ -2984,5 +3160,277 @@
         "credit": "Spillet og dets beskeder stammer fra zorgch/irc-quizbot (GPL-3.0), porteret til Rust og til Mumble-protokollen, med det samme protokollag som Mumcord."
       }
     }
+  },
+  "plugins": {
+    "label": "Plugins",
+    "title": "Små ekstra ting til store aftener",
+    "description": "Mumcord 0.6.0 tilføjer plugins: afstemninger, terninger, et kæledyr lavet af lyd og en fjernbetjening til din musikbot. Sikre, signerede og uden ændringer på serveren.",
+    "intro": "Mumcord 0.6.0 tilføjer plugins: små, sikre ekstra ting oven på voice-chatten. De kører inde i Mumcord, kræver ingen ændringer på serveren og virker på enhver almindelig Mumble-server. Folk med den officielle Mumble-klient ser en helt almindelig tekstlinje, hvor det betyder noget, og ellers intet.",
+    "badge": "Nyt i Mumcord 0.6.0",
+    "ctaPlugins": "Mød pluginsene",
+    "ctaDev": "Byg dit eget",
+    "pills": [
+      "Sandboxet",
+      "Signeret",
+      "Ingen serverændringer",
+      "24 sprog"
+    ],
+    "listTitle": "De første plugins",
+    "listBody": "Intet er forudinstalleret. Vælg det, din gruppe holder af, og lad resten ligge.",
+    "source": "Kildekode",
+    "soon": "Kommer snart",
+    "plugins": {
+      "poll": {
+        "name": "Afstemning",
+        "tagline": "Stil kanalen et spørgsmål med op til ti svarmuligheder og se stemmerne tikke ind live.",
+        "points": [
+          "2 til 10 muligheder, levende stemmebjælker i et kort i chatten",
+          "Ingen Mumcord? Stem ved at skrive `!poll 1`, `!poll 2` … i chatten",
+          "Resultatet vises, når afstemningen lukkes"
+        ]
+      },
+      "dice": {
+        "name": "Terningekast",
+        "tagline": "`/roll d20` eller `2d6+3`, med fair slag, som andre kan overvære og kontrollere.",
+        "points": [
+          "Fordel og ulempe, drop laveste eller højeste, op til 20 terninger",
+          "Andre Mumcord-brugere i kanalen er vidner til hvert slag, så ingen kan snyde",
+          "En slaghistorik, du kan folde ud"
+        ]
+      },
+      "echolings": {
+        "name": "Echolinger",
+        "tagline": "En lille skabning af lyd, der vokser, mens du hænger ud med venner.",
+        "points": [
+          "5 arter, 4 vækststadier, 3 farver",
+          "Vokser af tid, I bruger sammen i voice og chat",
+          "Dør aldrig, brokker sig aldrig"
+        ]
+      },
+      "mumbot-music": {
+        "name": "Mumbot Music",
+        "tagline": "En fjernbetjening til din Mumbot-musikbot.",
+        "points": [
+          "Højreklik på botten → »Konfigurer bot«",
+          "Spiller nu, spring over, lydstyrke, køen og tilføjelse af numre",
+          "Kræver en Mumbot på serveren: en helt almindelig Mumble-bruger, ingen serverændring"
+        ]
+      },
+      "eve-fit": {
+        "name": "EVE Fit",
+        "tagline": "Indsæt en EVE Online-fitting i chatten, og alle ser et skibskort.",
+        "points": [
+          "Opdager EFT-fits indsat i chatten og viser et kort med skib og moduler",
+          "Åbner hele fitting-visningen offline, direkte i Mumcord",
+          "En »Kopiér fitting«-knap, og den er gratis"
+        ]
+      }
+    },
+    "mock": {
+      "pollQuestion": "Hvad spiller vi i aften?",
+      "pollOptions": [
+        "Deep Rock Galactic",
+        "Valheim",
+        "Noget nyt"
+      ],
+      "pollVotes": "7 stemmer",
+      "pollLive": "Live",
+      "pollPlain": "Afstemning: Hvad spiller vi i aften? 1) Deep Rock Galactic 2) Valheim 3) Noget nyt",
+      "pollPlainVote": "!poll 2",
+      "rollWitness": "Overværet af 3 i kanalen",
+      "rollHistory": "Historik",
+      "echoStats": [
+        "5 arter",
+        "4 stadier",
+        "3 farver"
+      ],
+      "musicNow": "Spiller nu",
+      "musicTrack": "Midnight Raid",
+      "musicArtist": "Lo-fi til sene sessioner",
+      "musicQueue": "Kø",
+      "musicQueueItems": [
+        "Boss Music, Volume 2",
+        "Campfire Loop"
+      ],
+      "musicAdd": "Tilføj nummer",
+      "musicMenu": "Konfigurer bot",
+      "evePasted": "indsat af Maya",
+      "eveCopy": "Kopiér fitting"
+    },
+    "eveNotice": "EVE Online and all related logos and images are trademarks or registered trademarks of CCP hf. Mumcord is not affiliated with CCP hf.",
+    "eveCredit": "Fitting-visningen bygger på eveship.fit fra EVEShipFit-projektet.",
+    "bridgeTitle": "Ingen bliver udenfor",
+    "bridgeBody": "Plugins kræver ingen ændringer på serveren og virker på enhver almindelig Mumble-server. Venner på den officielle Mumble-klient ser en helt almindelig tekstlinje, hvor det betyder noget, og ellers intet.",
+    "bridgeMumcord": "I Mumcord",
+    "bridgeMumble": "I den officielle Mumble-klient",
+    "bridgeNote": "En illustration: den præcise ordlyd kommer fra hvert enkelt plugin.",
+    "installTitle": "Installeret på et minut",
+    "installBody": "Plugins bor i indstillingerne, og du kan se, hvad hver enkelt må, før det kommer på din maskine.",
+    "steps": [
+      {
+        "title": "Find",
+        "body": "Indstillinger → Plugins → Gennemse."
+      },
+      {
+        "title": "Tjek",
+        "body": "Vælg et plugin, og gennemgå dets tilladelser."
+      },
+      {
+        "title": "Installér",
+        "body": "Dets ikon dukker op i plugin-bjælken under kanaltræet."
+      }
+    ],
+    "stripLabel": "Plugins",
+    "stripChannels": [
+      "Lobby",
+      "Raid-aften",
+      "Væk fra tastaturet"
+    ],
+    "safeTitle": "Sikre af design",
+    "safeBody": "Et plugin er en gæst i din app. Her er husreglerne.",
+    "safe": {
+      "sandbox": {
+        "title": "En striks sandbox",
+        "body": "Hvert plugin er et lille WebAssembly-program i en striks sandbox. Ingen rå adgang til netværk eller filer; Mumcord tegner brugerfladen ud fra indbyggede byggeklodser."
+      },
+      "permissions": {
+        "title": "Tilladelser, du kan se",
+        "body": "Vist, før du installerer. Valgfri tilladelser kan slås fra når som helst, og opdateringer, der kræver mere, venter på din godkendelse."
+      },
+      "signed": {
+        "title": "Signeret hele vejen",
+        "body": "Registret og hver pakke er signeret med minisign, og Mumcord tjekker dem, før noget installeres. En nødafbryder kan slå en dårlig version fra overalt."
+      },
+      "server": {
+        "title": "Ingen serverændringer",
+        "body": "Virker mod en uændret Mumble-server. Intet at installere for administratoren."
+      },
+      "off": {
+        "title": "Én kontakt til at stoppe dem alle",
+        "body": "Intet er forudinstalleret. »Slå alle plugins fra« under Indstillinger → Plugins eller i kommandopaletten (Ctrl+Shift+P) stopper alle plugins på én gang."
+      },
+      "langs": {
+        "title": "På dit eget sprog",
+        "body": "Tilgængelige på alle 24 Mumcord-sprog."
+      }
+    },
+    "devLabel": "Til udviklere",
+    "devTitle": "Byg dit eget",
+    "devBody": "Plugins skrives i Rust og kompileres til WebAssembly (komponentmodellen, interface `mumcord:plugin@1.0.0`). Repoet indeholder skabelonen, dokumentationen og kildekoden til hvert officielt plugin.",
+    "cliTitle": "Ét værktøj hele vejen",
+    "cli": [
+      {
+        "cmd": "new",
+        "body": "Opretter et plugin ud fra skabelonen."
+      },
+      {
+        "cmd": "build",
+        "body": "Bygger det reproducerbart."
+      },
+      {
+        "cmd": "check",
+        "body": "Tjekker pakken."
+      },
+      {
+        "cmd": "test",
+        "body": "Kører testscenarier mod en mock-vært."
+      },
+      {
+        "cmd": "serve-registry",
+        "body": "Starter et lokalt register, så du kan prøve det i Mumcord (udviklertilstand under Indstillinger → Plugins)."
+      }
+    ],
+    "docsTitle": "Dokumentation",
+    "docs": {
+      "start": "Kom i gang",
+      "api": "API",
+      "manifest": "Manifest",
+      "permissions": "Tilladelser",
+      "building": "Bygning",
+      "testing": "Test",
+      "publishing": "Udgivelse",
+      "repos": "Dit eget repository"
+    },
+    "submitTitle": "Ind i det officielle register",
+    "submitBody": "Åbn en pull request i Mumcord/plugins, der tilføjer `plugins/<id>/`. Den kræver ét maintainer-godkendelse og grøn CI.",
+    "checksTitle": "Hvad CI tjekker",
+    "checks": [
+      "Skematjek",
+      "Reproducerbar genopbygning",
+      "Forfatterens signatur",
+      "Forskel i tilladelser",
+      "Indlæsningstest mod mock-vært",
+      "Licensscanning"
+    ],
+    "rulesTitle": "Reglerne",
+    "rules": [
+      "En OSI-godkendt licens",
+      "Et reproducerbart build",
+      "Ingen reklamer, tracking, betalinger eller lootbokse"
+    ],
+    "policy": "Gennemgangspolitik",
+    "ownRepoTitle": "Eller drift dit eget",
+    "ownRepoBody": "Alle kan drive deres eget plugin-repository. Brugerne tilføjer det under Indstillinger → Plugins.",
+    "licenceTitle": "Licenser",
+    "licenceBody": "Officielle plugins er AGPL-3.0. Skabelonen, dokumentationen og SDK'et er Apache-2.0.",
+    "peopleTitle": "Lavet af",
+    "endTitle": "Har du en idé til et plugin?",
+    "endBody": "Alt er åbent: skabelonen, dokumentationen og hvert officielt plugin.",
+    "endRepo": "Åbn plugin-repoet",
+    "copy": "Kopiér",
+    "copied": "Kopieret",
+    "install": "Installer i Mumcord",
+    "pluginPage": "Pluginside",
+    "installNote": "Installationsknapperne åbner pluginet i Mumcord 0.6.0 eller nyere, hvor du bekræfter installationen. Hvis intet åbner, står detaljerne på pluginsiden.",
+    "galleryLabel": "Skærmbilleder",
+    "galleryTitle": "Se dem i Mumcord",
+    "galleryBody": "Direkte fra Mumcord 0.6.0, i det mørke og det lyse tema.",
+    "dark": "Mørk",
+    "light": "Lys",
+    "shots": {
+      "browse": {
+        "caption": "Gennemse de officielle plugins direkte i Indstillinger.",
+        "alt": "Mumcord Indstillinger, Plugins, fanen Gennemse med fem officielle plugins (Echolinger, Terningekast, EVE Fit, Mumbot Music og Afstemning), hver med et ikon og en Installer-knap."
+      },
+      "permissions": {
+        "caption": "Hvert plugin fortæller på forhånd, hvad det må.",
+        "alt": "Installationsdialog for EVE Fit med dets tilladelser markeret som påkrævede, en valgfri kontakt og en boks med det, pluginet aldrig får."
+      },
+      "progress": {
+        "caption": "Signerede pakker tjekkes, før de installeres.",
+        "alt": "Installationsdialog for EVE Fit med en statuslinje, der viser „Checking signature…“, over tilladelseslisten."
+      },
+      "poll": {
+        "caption": "En afstemning erstatter sin chatbesked med et levende kort.",
+        "alt": "Mumcord-chat, hvor Bobs afstemning „Which map tonight?“ vises som et kort med stemmebjælker: Glacier 2 stemmer, Harbor og Canyon 0."
+      },
+      "vote": {
+        "caption": "Stem i sidepanelet; alle ser antallet opdatere.",
+        "alt": "Afstemningens sidepanel åbent ved siden af chatten med valgmulighederne og Glacier valgt."
+      },
+      "echolings": {
+        "caption": "Echolinger: et kæledyr, der vokser, mens I hænger ud sammen.",
+        "alt": "Bobs profilkort med hans Echoling „Moss“, bånd- og stribe-chips og en „Pat Moss“-knap; kæledyrsmærker ved navnene i kanaltræet."
+      },
+      "snackrace": {
+        "caption": "Lad dine venners Echolinger løbe om snacken.",
+        "alt": "Snack Race i gang med baner til You og Bob, den bevægelige snackzone og en Hop!-knap."
+      },
+      "eveCard": {
+        "caption": "Indsæt et EVE Online-fit, og det bliver til et pænt kort.",
+        "alt": "Chatkort for et Algos-fit „Evening Roam“ indsat af Carol, med slot-chips, droner og lastantal samt knapperne Copy fitting og Open."
+      },
+      "eveWheel": {
+        "caption": "Open viser det fulde fitting-hjul og statistikkerne.",
+        "alt": "EVE Fit-dialog med Algos-skibet i fitting-hjulet, modulikoner og statistik for kondensator, offensiv, defensiv, målsøgning, navigation og droner."
+      },
+      "eveCargo": {
+        "caption": "Droneområde, lastrum og CCP's meddelelse.",
+        "alt": "Nederste del af EVE Fit-dialogen: droneområde med Hammerhead II og Hobgoblin II, lastrum med ammunition og repair paste og CCP's ophavsretsmeddelelse nederst."
+      }
+    },
+    "sdkNote": "Værktøjet og SDK'et ligger på crates.io. I din Cargo.toml:",
+    "docsAll": "Al dokumentation",
+    "wiki": "Wiki"
   }
 }

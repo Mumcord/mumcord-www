@@ -97,6 +97,10 @@
       "toolQuiz": {
         "title": "mumquiz",
         "desc": "Kvízový bot pre tvoj server"
+      },
+      "plugins": {
+        "title": "Pluginy",
+        "desc": "Ankety, kocky a ďalšie"
       }
     },
     "hero": {
@@ -536,8 +540,8 @@
       "toolTitle": "Prispievatelia"
     },
     "spotlight5": {
-      "label": "Novinky vo verzii 0.5.0",
-      "labelSoon": "Už čoskoro: 0.5.0",
+      "label": "Novinky vo verzii 0.5.0/0.6.0",
+      "labelSoon": "Už čoskoro: 0.5.0/0.6.0",
       "title": "Viac pokoja. Viac teba. Viac zvuku.",
       "body": "0.5.0 prináša Epic 3: centrum oznámení, blokovanie, viac identít, nový strom kanálov, hudbu v chate, režim s nízkou latenciou na spoločné hranie hudby a priame spojenia cez relay.",
       "tiles": {
@@ -567,7 +571,12 @@
         }
       },
       "features": "Všetky funkcie",
-      "changelog": "Všetky novinky"
+      "changelog": "Všetky novinky",
+      "plugins": {
+        "title": "Pluginy",
+        "body": "0.6.0 pridáva malé, bezpečné extra nad hlasovým četom: ankety, férové kocky, stvorenie zo zvuku a diaľkový ovládač pre tvojho hudobného bota. Bez zmien na serveri.",
+        "more": "Zoznám sa s pluginmi"
+      }
     },
     "serverCta": {
       "title": "Vlastný server za päť minút",
@@ -1112,6 +1121,89 @@
         ]
       },
       {
+        "id": "plugins",
+        "title": "Pluginy",
+        "features": [
+          {
+            "id": "plugins",
+            "title": "Pluginy z Nastavení",
+            "body": "Nastavenia → Pluginy s kartami Nainštalované, Prehliadať, Aktualizácie a Repozitáre: oficiálne pluginy podľa kategórií a s vyhľadávaním, zapínanie a vypínanie, zmena oprávnení a nastavení, export alebo reset ich údajov, odstránenie. Nič nie je predinštalované a pluginy bežia aj keď nie si pripojený.",
+            "alt": "Nastavenia Mumcordu, Pluginy, karta Prehliadať s piatimi oficiálnymi pluginmi (Echolingy, Hádzanie kockami, EVE Fit, Mumbot Music a Anketa), každý s ikonou a tlačidlom Nainštalovať."
+          },
+          {
+            "id": "plugin-permissions",
+            "title": "Najprv uvidíš, čo plugin smie",
+            "body": "Pred inštaláciou Mumcord jasne povie, čo plugin chce: každé oprávnenie zelené, žlté alebo červené, povinné pevne, voliteľné ako prepínače. Zmeny sa použijú hneď. Plugin nikdy nedostane tvoj čet, súbory, mikrofón, certifikáty ani heslá.",
+            "alt": "Výzva na inštaláciu EVE Fit s oprávneniami označenými ako povinné, voliteľným prepínačom a poľom s tým, čo plugin nikdy nedostane."
+          },
+          {
+            "id": "plugin-places",
+            "title": "Pluginy tam, kde ich potrebuješ",
+            "body": "Panel pluginov pod zoznamom kanálov, karty v čete, ktoré nahradia svoju správu, príkazy s lomkou ako /roll, malý odznak vedľa mien, sekcia v kartách profilu, položky v ponuke pravého tlačidla a vlastné okná. To, čo plugin pošle, je označené „via“."
+          },
+          {
+            "id": "plugin-together",
+            "title": "Spolu s tvojím kanálom",
+            "body": "Plugin komunikuje s tým istým pluginom u ostatných používateľov Mumcordu na kanáli, napríklad pri spoločnej ankete. Putuje cez bežný hlasový server: štandardné servery Mumble nepotrebujú nič, iní klienti to ignorujú a ty rozhoduješ, kto to uvidí. Pluginy fungujú v čete každého servera, ku ktorému si pripojený.",
+            "alt": "Bočný panel ankety otvorený vedľa chatu s možnosťami a vybraným Glacier."
+          },
+          {
+            "id": "plugin-safety",
+            "title": "Sandbox, podpisy a núdzový vypínač",
+            "body": "Pluginy bežia izolovane, bez prístupu k sieti, súborom či zvuku, s limitmi pamäte a času; ten, ktorý stále padá, sa vypne a tvoj hlas to nikdy neovplyvní. Oficiálne pluginy sú podpísané a kontrolované. Núdzový vypínač dokáže škodlivý plugin vypnúť pre všetkých, „Vypnúť všetky pluginy“ ich zastaví naraz a --no-plugins spustí aplikáciu bez nich.",
+            "alt": "Výzva na inštaláciu EVE Fit s indikátorom priebehu „Checking signature…“ nad zoznamom oprávnení."
+          },
+          {
+            "id": "plugin-updates",
+            "title": "Aktualizácie bez prekvapení",
+            "body": "Inštalovať automaticky, len upozorniť, alebo vypnuté. Aktualizácia, ktorá chce viac oprávnení alebo pochádza od niekoho iného, vždy čaká na tvoj súhlas. Plugin, ktorý sa po aktualizácii nespustí, sa vráti späť a každý plugin sa dá pripnúť na svoju verziu."
+          },
+          {
+            "id": "plugin-suggestions",
+            "title": "Servery navrhujú pluginy",
+            "body": "Mumbot servera môže odporučiť pluginy, ktoré používa jeho komunita. Návrh príde pokojne do centra upozornení s možnosťami Nainštalovať, Podrobnosti, Teraz nie a Pre tento server sa už nepýtať. Nič sa neinštaluje bez tvojho súhlasu."
+          },
+          {
+            "id": "plugin-repositories",
+            "title": "Tvoje vlastné repozitáre pluginov",
+            "body": "Až desať ďalších repozitárov v Nastavenia → Pluginy → Repozitáre, zobrazených s názvom a odtlačkom kľúča. Ich pluginy sú všade označené „Neoficiálne“ a ak sa zmení podpisový kľúč, repozitár sa pozastaví, kým to nepotvrdíš."
+          },
+          {
+            "id": "plugin-developers",
+            "title": "Vytvor si vlastné pluginy",
+            "body": "Pluginy sú v Ruste, kompilované do WebAssembly. cargo install mumcord-plugin ti dá nástroj príkazového riadka a mumcord-plugin new vytvorí projekt zo šablóny. Režim vývojára načíta plugin priamo z priečinka, s opätovným načítaním a jeho logom."
+          },
+          {
+            "id": "poll",
+            "title": "Anketa",
+            "body": "Otázka s 2 až 10 možnosťami, výsledky naživo v karte četu aj v paneli, jeden hlas na osobu. Kto nemá Mumcord, hlasuje v čete pomocou !poll 1, !poll 2 …",
+            "alt": "Chat Mumcordu, v ktorom sa Bobova anketa „Which map tonight?“ zobrazuje ako karta s pruhmi hlasov: Glacier 2 hlasy, Harbor a Canyon 0."
+          },
+          {
+            "id": "dice",
+            "title": "Hádzanie kockami",
+            "body": "/roll s d20, 2d6+3, výhodou a nevýhodou alebo vynechaním najnižšieho či najvyššieho hodu, plus tlačidlá rýchleho hodu. Hody sa robia spolu s kanálom, takže nikto nepodvádza, a každý výsledok ukazuje, či je overený."
+          },
+          {
+            "id": "echolings",
+            "title": "Echolingy",
+            "body": "Malé stvorenie na tvojom paneli pluginov: 5 druhov, 4 štádiá rastu, 3 farby. Pohladkaj ho, nakŕm ho, hraj sa alebo ho nechaj zdriemnuť si; nikdy neumrie, spí pri Nerušiť a nič sa tu nekupuje. Priatelia ho vidia ako odznak a v tvojej karte profilu, môžu ho navštíviť a sú tu dve minihry.",
+            "alt": "Profilová karta Boba s jeho Echolingom „Moss“, čipmi väzby a série a tlačidlom „Pat Moss“; odznaky maznáčikov pri menách v strome kanálov."
+          },
+          {
+            "id": "mumbot-music",
+            "title": "Mumbot Music",
+            "body": "Diaľkový ovládač hudobného bota Mumbot: aktuálne hrá, preskočenie, zastavenie, hlasitosť, poradie a pridávanie skladieb. Pravým tlačidlom na bota → „Nastaviť bota“; kľúč API je uložený v systémovej kľúčenke."
+          },
+          {
+            "id": "eve-fit",
+            "title": "EVE Fit",
+            "body": "Vlož fitting z EVE Online do četu a každý s pluginom uvidí kartu lode. Jedno kliknutie otvorí koleso fittingu s kapacitorom, útokom, obranou a navigáciou, offline v Mumcorde, a „Kopírovať fitting“ ho dostane späť von.",
+            "alt": "Dialóg EVE Fit s loďou Algos v kolese výbavy, ikonami modulov a štatistikami kondenzátora, útoku, obrany, zamerania, navigácie a dronov."
+          }
+        ]
+      },
+      {
         "id": "comfort",
         "title": "Pohodlie",
         "features": [
@@ -1166,7 +1258,7 @@
           {
             "id": "website-look",
             "title": "Vzhľad tohto webu",
-            "body": "Žiariace tlačidlá, prechody farieb, sklenené efekty a jemné filmové zrno aj v aplikácii, dá sa vypnúť.",
+            "body": "Žiariace tlačidlá, prechody farieb a jemné filmové zrno aj v aplikácii, dá sa vypnúť.",
             "alt": "Rýchle nastavenia ako menu z matného skla nad mierne zrnitým pozadím"
           },
           {
@@ -1196,12 +1288,96 @@
             "title": "Úplné menu v systémovej lište",
             "body": "Menu v systémovej lište ukazuje každý pripojený server s jeho stavom a kanálom, Stlmiť, Vypnúť zvuk a Nerušiť, presúva hlas na iný server alebo kanál a otvára nedávne chaty. Ikona ukazuje hovorenie, stlmenie, neprečítané správy a Nerušiť. Mumcord sa spustí po prihlásení, ak chceš, na každom systéme.",
             "alt": "Menu v systémovej lište so servermi, podmenu hlasového kanála a nedávnymi chatmi"
+          },
+          {
+            "id": "sound-themes",
+            "title": "Dve zvukové témy",
+            "body": "„Classic“ so známymi krátkymi tónmi je predvolená, „Rich“ prináša nové, plnšie zvuky, s ukážkou v Nastavenia → Zvuky. Navyše vlastný zvuk pri prepínaní kanálov a krátke rozlúčenie, keď zavrieš Mumcord počas hlasu."
+          },
+          {
+            "id": "start-screen",
+            "title": "Rýchlejší štart",
+            "body": "Úvodná obrazovka s logom na tvojej téme namiesto prázdneho bieleho okna a asi o tretinu menej kódu pred prvou obrazovkou: Nastavenia, sprievodca a zdieľanie obrazovky sa načítajú, až keď ich otvoríš."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.6.1",
+      "teaser": "Pluginy aj na Macu, vlastná hlasitosť pre zdieľanie obrazovky, plné pozadie ponúk a „Classic“ ako predvolený zvuk.",
+      "summary": "Malá aktualizácia po verzii 0.6.0: pluginy teraz bežia aj na Macu, zdieľanie obrazovky má vlastnú hlasitosť, ponuky a karty majú plné pozadie a nové inštalácie začínajú so zvukovou témou „Classic“. Vo Windowse sú aplikácia aj inštalátor teraz podpísané.",
+      "groups": [
+        {
+          "title": "Vylepšené",
+          "items": [
+            "Nové inštalácie začínajú so zvukovou témou „Classic“. Ak si už vybral „Rich“, zostane ti (#339).",
+            "Ponuky pravého tlačidla, vyskakovacie okná, karty po prejdení myšou a profilová karta majú plné pozadie namiesto matného skla, takže sa text dobre číta aj tam, kde chýba rozmazanie, napríklad v Linuxe (#337).",
+            "Windows: aplikácia aj inštalátor sú teraz podpísané certifikátom na podpisovanie kódu (#340)."
+          ]
+        },
+        {
+          "title": "Opravené",
+          "items": [
+            "Zmena hlasitosti zdieľanej obrazovky už nemení hlas danej osoby. Každý má vlastný posuvník a Mumcord si pamätá oba pre každú osobu (#333).",
+            "macOS: Mumcord už nespadne hneď po spustení pluginu, napríklad Echolingov."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.6.0",
+      "teaser": "Pluginy: ankety, kocky, Echolingy, Mumbot Music a EVE Fit, bezpečné v sandboxe a bez zmien na serveri.",
+      "summary": "Mumcord dostáva pluginy: malé, bezpečné extra, inštalované z Nastavení, izolované v sandboxe a bez akejkoľvek zmeny na serveri. Na začiatok sú tu ankety, férové kocky, Echolingy, diaľkový ovládač pre hudobného bota Mumbot a EVE Fit. K tomu nová zvuková téma, zvuk rozlúčky a rýchlejší štart s úvodnou obrazovkou.",
+      "groups": [
+        {
+          "title": "Nové",
+          "items": [
+            "Pluginy: malé doplnky, ktoré dávajú Mumcordu nové funkcie. Nastavenia → Pluginy má karty Nainštalované, Prehliadať, Aktualizácie, Repozitáre a v režime vývojára aj Vývojár. Nič nie je predinštalované, pluginy bežia aj keď nie si pripojený a „Pluginy“ nájdeš aj v palete príkazov.",
+            "Pred každou inštaláciou Mumcord jasne ukáže, čo chce plugin robiť: každé oprávnenie zelené, žlté alebo červené, povinné pevne, voliteľné ako prepínače. Oprávnenia sa dajú neskôr zmeniť a použijú sa hneď. Plugin nikdy nedostane tvoj čet, súbory, mikrofón, certifikáty ani heslá.",
+            "Inštalácia a aktualizácia ukazujú ukazovateľ priebehu s veľkosťou, potom „Kontrola podpisu“, „Rozbaľovanie“ a „Spúšťanie“; neúspešné sťahovanie sa dá zopakovať.",
+            "Pluginy sa objavujú tam, kde Mumcord používaš: panel pluginov pod zoznamom kanálov, karty v čete, príkazy s lomkou ako /roll, malý odznak vedľa mien, sekcia v kartách profilu, položky v ponuke pravého tlačidla pri osobe a vlastné okná. Správy poslané pluginom sú označené „via“.",
+            "Karta pluginu nahradí správu v čete, ku ktorej patrí, napríklad vložený fitting alebo anketu. Nahradené správy ukazujú ikonu a názov pluginu a „Zobraziť pôvodný text“ ich vráti. Aj staršie správy dostanú svoje karty, bez dvojitého počítania hlasov.",
+            "Plugin dokáže rozpoznať určité správy v čete, napríklad vložený herný fitting. Inštalačná výzva vlastnými slovami pluginu povie, čo rozpoznáva; potom dostane len zodpovedajúce správy z tvojho kanála, nikdy od ľudí, ktorých si zablokoval, a žiadny iný text z četu.",
+            "Pluginy si vymieňajú údaje s tým istým pluginom v Mumcorde iných ľudí na tvojom kanáli, napríklad pri spoločnej ankete. Putuje to cez bežný hlasový server: štandardné servery Mumble nepotrebujú nič, iní klienti to ignorujú a ty rozhoduješ, kto to uvidí. Funkcie četu v pluginoch fungujú na každom serveri, ku ktorému si pripojený.",
+            "Pluginy môžu posielať upozornenia. Pristanú v centre upozornení pod „Pluginy“, dajú sa vypnúť pre každý plugin zvlášť a pri Nerušiť mlčia.",
+            "Aktualizácie pluginov majú vlastné nastavenie: automaticky (predvolené), len upozorniť, alebo vypnuté. Aktualizácia, ktorá chce viac oprávnení alebo pochádza od niekoho iného, vždy čaká na tvoj súhlas; plugin, ktorý sa po aktualizácii nespustí, sa vráti späť; a každý plugin sa dá pripnúť na svoju verziu. Nové voliteľné oprávnenia zostanú vypnuté a ponúknu sa v Aktualizáciách.",
+            "Servery môžu navrhovať pluginy: Mumbot servera odporúča pluginy, ktoré sa zobrazia v centre upozornení s možnosťami Nainštalovať, Podrobnosti, Teraz nie a Pre tento server sa už nepýtať. Nič sa neinštaluje bez tvojho súhlasu.",
+            "Vlastné repozitáre: až desať v Nastavenia → Pluginy → Repozitáre, s názvom a odtlačkom kľúča. Ich pluginy sú všade „Neoficiálne“, prvá inštalácia varuje a ak sa zmení podpisový kľúč, repozitár sa pozastaví, kým to nepotvrdíš.",
+            "Režim vývojára (Nastavenia → Rozšírené) pridá kartu Vývojár: načítanie, opätovné načítanie a uvoľnenie pluginu z priečinka, s jeho logom. Pre autorov je tu SDK pre pluginy, šablóna a nástroj príkazového riadka mumcord-plugin na crates.io (cargo install mumcord-plugin).",
+            "Odkazy mumcord://plugins/<id> otvoria podrobnosti oficiálneho pluginu; nikdy nič neinštalujú.",
+            "Oficiálne pluginy, každý vo všetkých 24 jazykoch: Anketa (2 až 10 možností, výsledky naživo, jeden hlas na osobu), Hádzanie kockami (/roll s d20, 2d6+3, výhodou a nevýhodou, hádzané spolu a overené), Echolingy (stvorenie s 5 druhmi, 4 štádiami a 3 farbami, ktoré nikdy neumrie a nič nepredáva, s dvoma minihrami), Mumbot Music (aktuálne hrá, preskočenie, hlasitosť, poradie, pridávanie skladieb; pravým tlačidlom na bota → „Nastaviť bota“) a EVE Fit (karta lode a koleso fittingu pre vložené fitingy z EVE Online).",
+            "Mumbot sa Mumcordu predstaví: Mumcord vie, ktorí používatelia sú boti a čo dokážu, a „Nastaviť bota“ sa zobrazí len pri botoch, ktoré ponúkajú hudbu.",
+            "Bezpečnosť: pluginy bežia v uzavretom sandboxe s limitmi pamäte a času. Ten, ktorý stále padá, sa vypne a tvoj hlas to nikdy neovplyvní. „Vypnúť všetky pluginy“ (Nastavenia a paleta príkazov) ich zastaví naraz a mumcord --no-plugins spustí aplikáciu bez nich. Oficiálne pluginy sú podpísané a kontrolované pri inštalácii aj po každej aktualizácii; núdzový vypínač dokáže vypnúť škodlivý plugin a kontroluje sa denne.",
+            "Súkromie: kontrola pluginov neposiela žiadne identifikátory ani zoznam tvojich pluginov. Údaje pluginov zostávajú v tvojom počítači, a po odstránení pluginu ešte 30 dní, pokiaľ ich nezmažeš.",
+            "Druhá zvuková téma: „Rich“ s novými, plnšími zvukmi pre pripojenie, správy, zmienky, stlmenie, príchody a odchody ľudí, vyhodenia a bany je teraz predvolená. Nastavenia → Zvuky prepnú na „Classic“, známe krátke tóny, s ukážkou (#325).",
+            "Zavretie Mumcordu počas hlasu prehrá krátky zvuk rozlúčky, aby si si všimol, že si práve odišiel. Hrá len pri skutočnom ukončení, nikdy pri minimalizácii do panela, a má vlastný prepínač (#325).",
+            "Prepnutie kanála počas hlasu má vlastný krátky zvuk namiesto zvuku pripojenia, s vlastným prepínačom a v oboch zvukových témach (#325)."
+          ]
+        },
+        {
+          "title": "Vylepšené",
+          "items": [
+            "Mumcord sa spúšťa rýchlejšie: kód pred prvou obrazovkou je asi o tretinu menší. Nastavenia, sprievodca nastavením, sledovanie spolu, zdieľanie obrazovky, prehliadač serverov a zvýrazňovanie kódu sa načítajú, až keď ich otvoríš (#323).",
+            "Namiesto prázdneho bieleho okna a „Načítava sa…“ je tu úvodná obrazovka: logo na tvojej téme s tenkým ukazovateľom načítania, ktorý sa plynulo vytratí do aplikácie; pri obmedzenom pohybe sa prepne bez pohybu (#323).",
+            "Položka Pluginy v bočnom paneli Nastavení ukazuje, koľko aktualizácií a nových voliteľných oprávnení čaká.",
+            "Vyššie karty pluginov už nemajú vlastný posuvník: orežú sa jemným zbledením a „Zobraziť viac“ ich rozbalí.",
+            "Čítačky obrazovky čítajú nahradený riadok četu ako jeho kartu (napríklad „Karta z Anketa: Obed na poludnie?“) a skryté riadky preskakujú."
+          ]
+        },
+        {
+          "title": "Opravené",
+          "items": [
+            "Vkladanie cez Ctrl+V opäť funguje na niektorých desktopoch Linuxu.",
+            "Odkaz „Zmeniť“ v karte „Aktívna predvoľba“ v bočnom paneli Nastavení už pri dlhých názvoch nevyčnieva z karty (#321).",
+            "Číselné pole pre súčasne pripojené servery v Nastavenia → Server už nie je natiahnuté cez celú kartu (#320).",
+            "V dialógoch, ktoré menia obsah, zostáva fokus v dialógu, takže Escape a Tab naďalej fungujú.",
+            "Karta profilu zatvorená klávesom Escape hneď po použití tlačidla v nej sa potom znova otvorí."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.5.0",
       "teaser": "Centrum oznámení, všetky súkromné správy na jednom mieste, blokovanie, viac identít a import z Mumble.",
@@ -2984,5 +3160,277 @@
         "credit": "Hra a jej správy pochádzajú z projektu zorgch/irc-quizbot (GPL-3.0), prenesené do Rustu a na protokol Mumble, s rovnakou protokolovou vrstvou ako Mumcord."
       }
     }
+  },
+  "plugins": {
+    "label": "Pluginy",
+    "title": "Malé extra na veľké večery",
+    "description": "Mumcord 0.6.0 prináša pluginy: ankety, kocky, maznáčika zo zvuku a diaľkový ovládač pre tvojho hudobného bota. Bezpečné, podpísané a bez zmien na serveri.",
+    "intro": "Mumcord 0.6.0 prináša pluginy: malé, bezpečné extra nad hlasovým četom. Bežia priamo v Mumcorde, nepotrebujú zmeny na serveri a fungujú na každom štandardnom serveri Mumble. Ľudia s oficiálnym klientom Mumble uvidia tam, kde to treba, obyčajný riadok textu a nič iné.",
+    "badge": "Novinka v Mumcorde 0.6.0",
+    "ctaPlugins": "Zoznám sa s pluginmi",
+    "ctaDev": "Vytvor si vlastný",
+    "pills": [
+      "V sandboxe",
+      "Podpísané",
+      "Bez zmien na serveri",
+      "24 jazykov"
+    ],
+    "listTitle": "Prvé pluginy",
+    "listBody": "Nič nie je predinštalované. Vyber si, čo baví tvoju partiu, a zvyšok nechaj tak.",
+    "source": "Zdrojový kód",
+    "soon": "Čoskoro",
+    "plugins": {
+      "poll": {
+        "name": "Anketa",
+        "tagline": "Polož kanálu otázku s maximálne desiatimi možnosťami a sleduj, ako hlasy prichádzajú naživo.",
+        "points": [
+          "2 až 10 možností, pruhy hlasov naživo v karte četu",
+          "Nemáš Mumcord? Hlasuj napísaním `!poll 1`, `!poll 2` … do četu",
+          "Výsledky sa zobrazia po uzavretí ankety"
+        ]
+      },
+      "dice": {
+        "name": "Hádzanie kockami",
+        "tagline": "`/roll d20` alebo `2d6+3`, s férovými hodmi, ktoré môžu ostatní dosvedčiť a overiť.",
+        "points": [
+          "Výhoda a nevýhoda, vynechanie najnižšieho alebo najvyššieho hodu, až 20 kociek",
+          "Ostatní používatelia Mumcordu na kanáli každý hod dosvedčia, takže nikto nepodvádza",
+          "História hodov, ktorú môžeš rozbaliť"
+        ]
+      },
+      "echolings": {
+        "name": "Echolingy",
+        "tagline": "Malé stvorenie zo zvuku, ktoré rastie, kým si s kamarátmi.",
+        "points": [
+          "5 druhov, 4 štádiá rastu, 3 farby",
+          "Rastie z času stráveného spolu v hlase a v čete",
+          "Nikdy neumrie, nikdy sa nesťažuje"
+        ]
+      },
+      "mumbot-music": {
+        "name": "Mumbot Music",
+        "tagline": "Diaľkový ovládač pre tvojho hudobného bota Mumbot.",
+        "points": [
+          "Pravým tlačidlom na bota → „Nastaviť bota“",
+          "Aktuálne hrá, preskočenie, hlasitosť, poradie a pridávanie skladieb",
+          "Potrebuje Mumbota na serveri: obyčajného používateľa Mumble, bez zmien na serveri"
+        ]
+      },
+      "eve-fit": {
+        "name": "EVE Fit",
+        "tagline": "Vlož fitting z EVE Online do četu a všetci uvidia kartu lode.",
+        "points": [
+          "Rozpozná EFT fitingy vložené do četu a zobrazí kartu s loďou a modulmi",
+          "Otvorí celé zobrazenie fittingu offline, priamo v Mumcorde",
+          "Tlačidlo „Kopírovať fitting“ a je zadarmo"
+        ]
+      }
+    },
+    "mock": {
+      "pollQuestion": "Čo dnes večer hráme?",
+      "pollOptions": [
+        "Deep Rock Galactic",
+        "Valheim",
+        "Niečo nové"
+      ],
+      "pollVotes": "7 hlasov",
+      "pollLive": "Naživo",
+      "pollPlain": "Anketa: Čo dnes večer hráme? 1) Deep Rock Galactic 2) Valheim 3) Niečo nové",
+      "pollPlainVote": "!poll 2",
+      "rollWitness": "Dosvedčili 3 ľudia na kanáli",
+      "rollHistory": "História",
+      "echoStats": [
+        "5 druhov",
+        "4 štádiá",
+        "3 farby"
+      ],
+      "musicNow": "Teraz hrá",
+      "musicTrack": "Midnight Raid",
+      "musicArtist": "Lo-fi na neskoré sedenia",
+      "musicQueue": "Poradie",
+      "musicQueueItems": [
+        "Boss Music, Volume 2",
+        "Campfire Loop"
+      ],
+      "musicAdd": "Pridať skladbu",
+      "musicMenu": "Nastaviť bota",
+      "evePasted": "vložila Maya",
+      "eveCopy": "Kopírovať fitting"
+    },
+    "eveNotice": "EVE Online and all related logos and images are trademarks or registered trademarks of CCP hf. Mumcord is not affiliated with CCP hf.",
+    "eveCredit": "Zobrazenie fittingu stavia na eveship.fit od projektu EVEShipFit.",
+    "bridgeTitle": "Nikto nezostane bokom",
+    "bridgeBody": "Pluginy nepotrebujú zmeny na serveri a fungujú na každom štandardnom serveri Mumble. Priatelia s oficiálnym klientom Mumble uvidia tam, kde to treba, obyčajný riadok textu a nič iné.",
+    "bridgeMumcord": "V Mumcorde",
+    "bridgeMumble": "V oficiálnom klientovi Mumble",
+    "bridgeNote": "Ilustrácia: presné znenie pochádza z každého pluginu.",
+    "installTitle": "Nainštalované za minútu",
+    "installBody": "Pluginy nájdeš v nastaveniach a predtým, než sa dostanú do tvojho počítača, vidíš, čo môže každý z nich robiť.",
+    "steps": [
+      {
+        "title": "Prehliadaj",
+        "body": "Nastavenia → Pluginy → Prehliadať."
+      },
+      {
+        "title": "Skontroluj",
+        "body": "Vyber plugin a prejdi si jeho oprávnenia."
+      },
+      {
+        "title": "Nainštaluj",
+        "body": "Jeho ikona sa objaví na paneli pluginov pod stromom kanálov."
+      }
+    ],
+    "stripLabel": "Pluginy",
+    "stripChannels": [
+      "Lobby",
+      "Večer raidov",
+      "AFK"
+    ],
+    "safeTitle": "Bezpečné od základov",
+    "safeBody": "Plugin je hosť v tvojej aplikácii. Toto sú pravidlá domu.",
+    "safe": {
+      "sandbox": {
+        "title": "Prísny sandbox",
+        "body": "Každý plugin je malý program WebAssembly v prísnom sandboxe. Bez priameho prístupu k sieti či súborom; rozhranie kreslí Mumcord zo vstavaných stavebných prvkov."
+      },
+      "permissions": {
+        "title": "Oprávnenia, ktoré vidíš",
+        "body": "Vypísané pred inštaláciou. Voliteľné môžeš kedykoľvek vypnúť a aktualizácie, ktoré potrebujú viac, čakajú na tvoj súhlas."
+      },
+      "signed": {
+        "title": "Podpísané od začiatku do konca",
+        "body": "Register aj každý balík sú podpísané pomocou minisign a Mumcord ich pred inštaláciou overí. Núdzový vypínač dokáže chybnú verziu vypnúť všade."
+      },
+      "server": {
+        "title": "Bez zmien na serveri",
+        "body": "Funguje s nezmeneným serverom Mumble. Admin nemusí nič inštalovať."
+      },
+      "off": {
+        "title": "Jeden vypínač na zastavenie všetkých",
+        "body": "Nič nie je predinštalované. „Vypnúť všetky pluginy“ v Nastavenia → Pluginy alebo v palete príkazov (Ctrl+Shift+P) zastaví všetky pluginy naraz."
+      },
+      "langs": {
+        "title": "Vo tvojom jazyku",
+        "body": "Dostupné vo všetkých 24 jazykoch Mumcordu."
+      }
+    },
+    "devLabel": "Pre vývojárov",
+    "devTitle": "Vytvor si vlastný",
+    "devBody": "Pluginy sa píšu v Ruste a kompilujú do WebAssembly (component model, rozhranie `mumcord:plugin@1.0.0`). Repozitár obsahuje šablónu, dokumentáciu a zdrojový kód každého oficiálneho pluginu.",
+    "cliTitle": "Jeden nástroj na celú cestu",
+    "cli": [
+      {
+        "cmd": "new",
+        "body": "Vytvorí plugin zo šablóny."
+      },
+      {
+        "cmd": "build",
+        "body": "Zostaví ho reprodukovateľne."
+      },
+      {
+        "cmd": "check",
+        "body": "Skontroluje balík."
+      },
+      {
+        "cmd": "test",
+        "body": "Spustí testovacie scenáre proti simulovanému hostiteľovi."
+      },
+      {
+        "cmd": "serve-registry",
+        "body": "Spustí lokálny register, aby si to mohol vyskúšať v Mumcorde (režim vývojára v Nastavenia → Pluginy)."
+      }
+    ],
+    "docsTitle": "Dokumentácia",
+    "docs": {
+      "start": "Prvé kroky",
+      "api": "API",
+      "manifest": "Manifest",
+      "permissions": "Oprávnenia",
+      "building": "Zostavovanie",
+      "testing": "Testovanie",
+      "publishing": "Publikovanie",
+      "repos": "Vlastný repozitár"
+    },
+    "submitTitle": "Do oficiálneho registra",
+    "submitBody": "Otvor pull request v Mumcord/plugins, ktorý pridá `plugins/<id>/`. Potrebuje súhlas jedného maintainera a zelené CI.",
+    "checksTitle": "Čo kontroluje CI",
+    "checks": [
+      "Kontrola schémy",
+      "Reprodukovateľné prezostavenie",
+      "Podpis autora",
+      "Rozdiel v oprávneniach",
+      "Test načítania so simulovaným hostiteľom",
+      "Sken licencií"
+    ],
+    "rulesTitle": "Pravidlá",
+    "rules": [
+      "Licencia schválená OSI",
+      "Reprodukovateľné zostavenie",
+      "Žiadne reklamy, sledovanie, platby ani loot boxy"
+    ],
+    "policy": "Pravidlá posudzovania",
+    "ownRepoTitle": "Alebo si prevádzkuj vlastný",
+    "ownRepoBody": "Ktokoľvek môže prevádzkovať vlastný repozitár pluginov. Používatelia ho pridajú v Nastavenia → Pluginy.",
+    "licenceTitle": "Licencie",
+    "licenceBody": "Oficiálne pluginy sú pod AGPL-3.0. Šablóna, dokumentácia a SDK sú pod Apache-2.0.",
+    "peopleTitle": "Vytvorili",
+    "endTitle": "Máš nápad na plugin?",
+    "endBody": "Všetko je otvorené: šablóna, dokumentácia aj každý oficiálny plugin.",
+    "endRepo": "Otvoriť repozitár pluginov",
+    "copy": "Kopírovať",
+    "copied": "Skopírované",
+    "install": "Nainštalovať v Mumcorde",
+    "pluginPage": "Stránka pluginu",
+    "installNote": "Tlačidlá inštalácie otvoria plugin v Mumcorde 0.6.0 alebo novšom, kde inštaláciu potvrdíš. Ak sa nič neotvorí, podrobnosti nájdeš na stránke pluginu.",
+    "galleryLabel": "Snímky obrazovky",
+    "galleryTitle": "Pozri si ich v Mumcorde",
+    "galleryBody": "Priamo z Mumcordu 0.6.0, v tmavom aj svetlom motíve.",
+    "dark": "Tmavá",
+    "light": "Svetlá",
+    "shots": {
+      "browse": {
+        "caption": "Oficiálne pluginy si prezri priamo v Nastaveniach.",
+        "alt": "Nastavenia Mumcordu, Pluginy, karta Prehliadať s piatimi oficiálnymi pluginmi (Echolingy, Hádzanie kockami, EVE Fit, Mumbot Music a Anketa), každý s ikonou a tlačidlom Nainštalovať."
+      },
+      "permissions": {
+        "caption": "Každý plugin vopred povie, čo smie robiť.",
+        "alt": "Výzva na inštaláciu EVE Fit s oprávneniami označenými ako povinné, voliteľným prepínačom a poľom s tým, čo plugin nikdy nedostane."
+      },
+      "progress": {
+        "caption": "Podpísané balíky sa pred inštaláciou skontrolujú.",
+        "alt": "Výzva na inštaláciu EVE Fit s indikátorom priebehu „Checking signature…“ nad zoznamom oprávnení."
+      },
+      "poll": {
+        "caption": "Anketa nahradí svoju správu v chate živou kartou.",
+        "alt": "Chat Mumcordu, v ktorom sa Bobova anketa „Which map tonight?“ zobrazuje ako karta s pruhmi hlasov: Glacier 2 hlasy, Harbor a Canyon 0."
+      },
+      "vote": {
+        "caption": "Hlasuj v bočnom paneli; všetci vidia, ako sa počet aktualizuje.",
+        "alt": "Bočný panel ankety otvorený vedľa chatu s možnosťami a vybraným Glacier."
+      },
+      "echolings": {
+        "caption": "Echolingy: maznáčik, ktorý rastie, keď spolu trávite čas.",
+        "alt": "Profilová karta Boba s jeho Echolingom „Moss“, čipmi väzby a série a tlačidlom „Pat Moss“; odznaky maznáčikov pri menách v strome kanálov."
+      },
+      "snackrace": {
+        "caption": "Pretekaj s Echolingmi kamarátov o desiatu.",
+        "alt": "Prebiehajúci Snack Race s dráhami pre You a Bob, pohyblivou zónou desiaty a tlačidlom Hop!."
+      },
+      "eveCard": {
+        "caption": "Vlož EVE Online fit a zmení sa na úhľadnú kartu.",
+        "alt": "Karta v chate pre fit Algos „Evening Roam“ vložený Carol, s čipmi slotov, dronmi a počtami nákladu a tlačidlami Copy fitting a Open."
+      },
+      "eveWheel": {
+        "caption": "Open ukáže celé koleso výbavy a štatistiky.",
+        "alt": "Dialóg EVE Fit s loďou Algos v kolese výbavy, ikonami modulov a štatistikami kondenzátora, útoku, obrany, zamerania, navigácie a dronov."
+      },
+      "eveCargo": {
+        "caption": "Hangár na drony, nákladný priestor a upozornenie CCP.",
+        "alt": "Spodná časť dialógu EVE Fit: hangár na drony s Hammerhead II a Hobgoblin II, nákladný priestor s nábojmi a repair paste a upozornenie CCP na autorské práva dole."
+      }
+    },
+    "sdkNote": "Nástroj aj SDK sú na crates.io. Vo tvojom Cargo.toml:",
+    "docsAll": "Všetka dokumentácia",
+    "wiki": "Wiki"
   }
 }

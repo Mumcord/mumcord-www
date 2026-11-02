@@ -97,6 +97,10 @@
       "toolQuiz": {
         "title": "mumquiz",
         "desc": "Viktoriinibot sinu serverile"
+      },
+      "plugins": {
+        "title": "Pluginad",
+        "desc": "Hääletused, täringud ja muud"
       }
     },
     "hero": {
@@ -536,8 +540,8 @@
       "toolTitle": "Kaastöölised"
     },
     "spotlight5": {
-      "label": "Uus versioonis 0.5.0",
-      "labelSoon": "Tulekul: 0.5.0",
+      "label": "Uus versioonis 0.5.0/0.6.0",
+      "labelSoon": "Tulekul: 0.5.0/0.6.0",
       "title": "Rohkem rahu. Rohkem sind. Rohkem heli.",
       "body": "0.5.0 toob Epic 3: teavituskeskuse, blokeerimise, mitu identiteeti, uue kanalipuu, muusika vestluses, madala latentsusega režiimi koos musitseerimiseks ja otseühendused releeserveri kaudu.",
       "tiles": {
@@ -567,7 +571,12 @@
         }
       },
       "features": "Kõik funktsioonid",
-      "changelog": "Kõik uuendused"
+      "changelog": "Kõik uuendused",
+      "plugins": {
+        "title": "Pluginad",
+        "body": "0.6.0 toob häälvestluse kõrvale väikesed ja turvalised lisad: hääletused, ausad täringud, helist tehtud olevuse ja pulga sinu muusikabotile. Serverimuudatusi pole vaja.",
+        "more": "Tutvu pluginatega"
+      }
     },
     "serverCta": {
       "title": "Oma server viie minutiga",
@@ -1112,6 +1121,89 @@
         ]
       },
       {
+        "id": "plugins",
+        "title": "Pluginad",
+        "features": [
+          {
+            "id": "plugins",
+            "title": "Pluginad seadetest",
+            "body": "Seaded → Pluginad vahekaartidega Paigaldatud, Sirvi, Uuendused ja Hoidlad: ametlikud pluginad kategooriate ja otsinguga; lülita neid sisse ja välja, muuda lubasid ja seadeid, ekspordi või lähtesta nende andmeid, eemalda need. Midagi pole eelinstallitud ja pluginad töötavad ka siis, kui sa pole ühendatud.",
+            "alt": "Mumcordi Seaded, Pluginad, vahekaart Sirvi, kus on viis ametlikku plugin't (Kajakesed, Täringuviskaja, EVE Fit, Mumbot Music ja Hääletus), igaühel ikoon ja nupp Paigalda."
+          },
+          {
+            "id": "plugin-permissions",
+            "title": "Vaata kõigepealt, mida plugin tohib",
+            "body": "Enne paigaldamist ütleb Mumcord lihtsate sõnadega, mida plugin soovib: iga luba roheline, kollane või punane, nõutavad fikseeritud, valikulised lülititena. Muudatused jõustuvad kohe. Plugin ei saa kunagi su vestlust, faile, mikrofoni, sertifikaate ega paroole.",
+            "alt": "EVE Fit'i paigalduse dialoog, kus load on märgitud nõutavaks, lisaks valikuline lüliti ja kast sellega, mida plugin kunagi ei saa."
+          },
+          {
+            "id": "plugin-places",
+            "title": "Pluginad seal, kus neid vajad",
+            "body": "Pluginariba kanalinimekirja all, vestluse kaardid, mis asendavad oma sõnumi, kaldkriipskäsud nagu /roll, väike märk nimede kõrval, jaotis profiilikaartidel, kirjed paremklõpsu menüüs ja oma aknad. Mida plugin saadab, on märgitud „via”."
+          },
+          {
+            "id": "plugin-together",
+            "title": "Koos oma kanaliga",
+            "body": "Plugin räägib samasuguse pluginaga teistel kanali Mumcordi kasutajatel, näiteks ühise hääletuse jaoks. See liigub tavalise häälserveri kaudu: tavalised Mumble'i serverid ei vaja midagi, teised kliendid ignoreerivad seda ja sina valid, kes seda näeb. Pluginad töötavad igas serveris, millega oled ühendatud.",
+            "alt": "Hääletuse külgpaneel vestluse kõrval valikutega ja valitud Glacieriga."
+          },
+          {
+            "id": "plugin-safety",
+            "title": "Liivakast, allkirjad ja hädaseiskamise lüliti",
+            "body": "Pluginad töötavad suletuna, ilma juurdepääsuta võrgule, failidele ega helile, mälu- ja ajapiirangutega; see, mis kogu aeg kokku jookseb, lülitatakse välja ja sinu hääl ei kannata kunagi. Ametlikud pluginad on allkirjastatud ja kontrollitud. Hädaseiskamise lüliti võib kahjuliku plugina kõigil välja lülitada, „Lülita kõik pluginad välja” peatab need korraga ja --no-plugins käivitub ilma ühegi pluginata.",
+            "alt": "EVE Fit'i paigalduse dialoog, kus lubade loendi kohal on edenemisriba tekstiga „Checking signature…“."
+          },
+          {
+            "id": "plugin-updates",
+            "title": "Uuendused ilma üllatusteta",
+            "body": "Paigalda automaatselt, anna ainult teada või välja. Uuendus, mis soovib rohkem lube või tuleb kelleltki teiselt, ootab alati sinu kinnitust. Plugin, mis pärast uuendust ei käivitu, taastatakse eelmisele versioonile ja iga plugina saab kinnitada tema versiooni külge."
+          },
+          {
+            "id": "plugin-suggestions",
+            "title": "Serverid soovitavad pluginaid",
+            "body": "Serveri Mumbot võib soovitada pluginaid, mida selle kogukond kasutab. Soovitus saabub rahulikult teavituskeskusesse valikutega Paigalda, Üksikasjad, Mitte praegu ja Ära küsi selle serveri kohta enam. Midagi ei paigaldata ilma sinu kinnituseta."
+          },
+          {
+            "id": "plugin-repositories",
+            "title": "Sinu enda pluginahoidlad",
+            "body": "Kuni kümme lisahoidlat menüüs Seaded → Pluginad → Hoidlad, nime ja võtme sõrmejäljega. Nende pluginad on kõikjal märgitud „Mitteametlik” ja kui allkirjastamisvõti muutub, peatatakse hoidla, kuni kinnitad."
+          },
+          {
+            "id": "plugin-developers",
+            "title": "Tee oma pluginaid",
+            "body": "Pluginad on Rust, kompileeritud WebAssemblyks. cargo install mumcord-plugin toob käsurea tööriista ja mumcord-plugin new loob malli põhjal projekti. Arendajarežiim laeb plugina otse kaustast, koos taaslaadimise ja logiga."
+          },
+          {
+            "id": "poll",
+            "title": "Hääletus",
+            "body": "Küsimus 2 kuni 10 valikuga, otsetulemused vestluskaardil ja paneelil, üks hääl inimese kohta. Kes Mumcordi ei kasuta, hääletab vestluses käsuga !poll 1, !poll 2 …",
+            "alt": "Mumcordi vestlus, kus Bobi hääletus „Which map tonight?“ on kaart häälteribadega: Glacier 2 häält, Harbor ja Canyon 0."
+          },
+          {
+            "id": "dice",
+            "title": "Täringuviskaja",
+            "body": "/roll koos d20, 2d6+3, eelise ja puudusega või madalaima või kõrgeima ärajätmisega, pluss kiirviske nupud. Visked tehakse koos kanaliga, nii et keegi ei saa petta, ja iga tulemus näitab, kas see on kontrollitud."
+          },
+          {
+            "id": "echolings",
+            "title": "Kajakesed",
+            "body": "Väike olevus su pluginaribal: 5 liiki, 4 kasvuetappi, 3 värvi. Paita, toida, mängi või lase tal uinakut teha; ta ei sure kunagi, magab režiimis Ära sega ja midagi pole osta. Sõbrad näevad teda märgina ja su profiilikaardil, saavad teda külastada ja kaasas on kaks minimängu.",
+            "alt": "Bobi profiilikaart tema Kajakese „Moss“, sideme ja seeria kiipide ning nupuga „Pat Moss“; lemmikute märgid nimede kõrval kanalipuus."
+          },
+          {
+            "id": "mumbot-music",
+            "title": "Mumbot Music",
+            "body": "Mumboti muusikaboti pult: praegu mängib, järgmine, stopp, helitugevus, järjekord ja lugude lisamine. Paremklõps botil → „Seadista bot”; API võti asub su süsteemi võtmerõngas."
+          },
+          {
+            "id": "eve-fit",
+            "title": "EVE Fit",
+            "body": "Kleebi EVE Online'i fit vestlusse ja kõik, kellel on plugin, näevad laevakaarti. Üks klõps avab fitiratta kondensaatori, ründe, kaitse ja navigatsiooniga, ilma internetita Mumcordi sees, ja „Kopeeri fit” toob selle tagasi välja.",
+            "alt": "EVE Fit'i dialoog Algose laevaga fitting-rattas, mooduli ikoonid ning kondensaatori, ründe, kaitse, sihtimise, navigatsiooni ja droonide statistika."
+          }
+        ]
+      },
+      {
         "id": "comfort",
         "title": "Mugavus",
         "features": [
@@ -1166,7 +1258,7 @@
           {
             "id": "website-look",
             "title": "Selle veebilehe välimus",
-            "body": "Helendavad nupud, üleminekud, klaasiefektid ja kerge filmitera, ka äpis, saab välja lülitada.",
+            "body": "Helendavad nupud, üleminekud ja kerge filmitera, ka äpis, saab välja lülitada.",
             "alt": "Kiirseaded mattklaasist menüüna kergelt teralisel taustal"
           },
           {
@@ -1196,12 +1288,96 @@
             "title": "Täielik salvemenüü",
             "body": "Salvemenüü näitab iga ühendatud serverit koos oleku ja kanaliga, mikrofoni vaigistust, kõrvaklappide vaigistust ja režiimi Ära sega, viib hääle teisele serverile või kanalisse ja avab hiljutised vestlused. Ikoon näitab rääkimist, vaigistust, lugemata sõnumeid ja režiimi Ära sega. Mumcord käivitub soovi korral sisselogimisel, igas süsteemis.",
             "alt": "Salvemenüü serverite, häälkanali alammenüü ja hiljutiste vestlustega"
+          },
+          {
+            "id": "sound-themes",
+            "title": "Kaks heliteemat",
+            "body": "„Classic” tuttavate lühikeste toonidega on vaikimisi, „Rich” toob uued, täidlasemad helid, eelvaatega menüüs Seaded → Helid. Lisaks oma heli kanali vahetamiseks ja lühike hüvasti, kui sulged Mumcordi häälkõnes olles."
+          },
+          {
+            "id": "start-screen",
+            "title": "Kiirem käivitus",
+            "body": "Avaekraan logoga sinu teemal tühja valge akna asemel ja umbes kolmandiku vähem koodi enne esimest ekraani: seaded, viisard ja ekraanijagamine laaditakse alles siis, kui need avad."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.6.1",
+      "teaser": "Pluginad ka Macis, ekraanijagamisele oma helitugevus, püsivalt kindel menüütaust ja „Classic” vaikimisi helina.",
+      "summary": "Väike uuendus pärast 0.6.0: pluginad töötavad nüüd ka Macis, ekraanijagamisel on oma helitugevus, menüüdel ja kaartidel on kindel taust ning uued paigaldused algavad helikujundusega „Classic”. Windowsis on rakendus ja paigaldaja nüüd allkirjastatud.",
+      "groups": [
+        {
+          "title": "Täiustatud",
+          "items": [
+            "Uued paigaldused algavad helikujundusega „Classic”. Kui oled juba valinud „Rich”, jääb see alles (#339).",
+            "Paremklõpsu menüüdel, hüpikakendel, hõljutuskaartidel ja profiilikaardil on härmatise asemel kindel taust, nii et tekst püsib loetav ka seal, kus hägustust pole, näiteks Linuxis (#337).",
+            "Windows: rakendus ja paigaldaja on nüüd allkirjastatud koodiallkirjastamise sertifikaadiga (#340)."
+          ]
+        },
+        {
+          "title": "Parandatud",
+          "items": [
+            "Ekraanijagamise helitugevuse muutmine ei muuda enam inimese häält. Kummalgi on oma liugur ja Mumcord jätab mõlemad inimese kohta meelde (#333).",
+            "macOS: Mumcord ei jookse enam kokku kohe, kui plugin käivitub, näiteks Kajakesed."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.6.0",
+      "teaser": "Pluginad: hääletused, täringud, Kajakesed, Mumbot Music ja EVE Fit, turvaliselt liivakastis ja ilma serverimuudatusteta.",
+      "summary": "Mumcord saab pluginad: väikesed ja turvalised lisad, mis paigaldatakse seadetest, suletakse liivakasti ja ei muuda serverit. Alustuseks on hääletused, ausad täringud, Kajakesed, pult Mumboti muusikabotile ja EVE Fit. Lisaks uus heliteema, hüvastijätuheli ja kiirem käivitus avaekraaniga.",
+      "groups": [
+        {
+          "title": "Uus",
+          "items": [
+            "Pluginad: väikesed lisad, mis annavad Mumcordile uusi funktsioone. Seaded → Pluginad sisaldab vahekaarte Paigaldatud, Sirvi, Uuendused, Hoidlad ja arendajarežiimis Arendaja. Midagi pole eelinstallitud, pluginad töötavad ka siis, kui sa pole ühendatud, ja „Pluginad” on ka käsupaletis.",
+            "Enne iga paigaldamist näitab Mumcord lihtsate sõnadega, mida plugin teha soovib: iga luba roheline, kollane või punane, nõutavad fikseeritud, valikulised lülititena. Lube saab hiljem muuta ja need jõustuvad kohe. Plugin ei saa kunagi su vestlust, faile, mikrofoni, sertifikaate ega paroole.",
+            "Paigaldamine ja uuendamine näitavad edenemisriba koos suurusega, seejärel „Allkirja kontrollimine”, „Lahtipakkimine” ja „Käivitamine”; ebaõnnestunud allalaadimist saab uuesti proovida.",
+            "Pluginad ilmuvad sinna, kus Mumcordi kasutad: pluginariba kanalinimekirja all, kaardid vestluses, kaldkriipskäsud nagu /roll, väike märk nimede kõrval, jaotis profiilikaartidel, kirjed inimese paremklõpsu menüüs ja oma aknad. Plugina saadetud sõnumid on märgitud „via”.",
+            "Plugina kaart asendab vestlussõnumi, mille juurde see kuulub, näiteks kleebitud fiti või hääletuse. Asendatud sõnumid näitavad plugina ikooni ja nime ning „Näita algset teksti” toob need tagasi. Vanemad sõnumid saavad samuti oma kaardid, ilma et hääli loetaks topelt.",
+            "Plugin võib ära tunda teatud vestlussõnumeid, näiteks kleebitud mängufiti. Paigalduse küsimus ütleb plugina enda sõnadega, mida see ära tunneb; seejärel saab see ainult sobivaid sõnumeid sinu kanalis, mitte kunagi blokeeritud inimestelt ega muud vestlusteksti.",
+            "Pluginad vahetavad andmeid sama pluginaga teiste inimeste Mumcordis sinu kanalis, näiteks ühise hääletuse jaoks. See liigub tavalise häälserveri kaudu: tavalised Mumble'i serverid ei vaja midagi, teised kliendid ignoreerivad seda ja sina valid, kes seda näeb. Plugina vestlusfunktsioonid töötavad igas serveris, millega oled ühendatud.",
+            "Pluginad saavad saata teavitusi. Need jõuavad teavituskeskusesse pealkirja „Pluginad” alla, neid saab plugina kaupa välja lülitada ja need jäävad režiimis Ära sega vaikseks.",
+            "Plugina uuendustel on oma seade: automaatne (vaikimisi), anna ainult teada või välja. Uuendus, mis soovib rohkem lube või tuleb kelleltki teiselt, ootab alati sinu kinnitust; plugin, mis pärast uuendust ei käivitu, taastatakse eelmisele versioonile; ja iga plugina saab kinnitada tema versiooni külge. Uued valikulised load jäävad välja lülitatuks ja pakutakse menüüs Uuendused.",
+            "Serverid võivad pluginaid soovitada: serveri Mumbot soovitab pluginaid, mis ilmuvad teavituskeskusesse valikutega Paigalda, Üksikasjad, Mitte praegu ja Ära küsi selle serveri kohta enam. Midagi ei paigaldata ilma sinu kinnituseta.",
+            "Sinu enda hoidlad: kuni kümme menüüs Seaded → Pluginad → Hoidlad, nime ja võtme sõrmejäljega. Nende pluginad on kõikjal „Mitteametlikud”, esimene paigaldus hoiatab ja kui allkirjastamisvõti muutub, peatatakse hoidla, kuni kinnitad.",
+            "Arendajarežiim (Seaded → Täpsemad) lisab vahekaardi Arendaja: laadi, laadi uuesti ja eemalda plugin kaustast, koos selle logiga. Autoritele on plugina SDK, mall ja käsurea tööriist mumcord-plugin saidil crates.io (cargo install mumcord-plugin).",
+            "mumcord://plugins/<id> lingid avavad ametliku plugina üksikasjad; need ei paigalda kunagi midagi.",
+            "Ametlikud pluginad, igaüks kõigis 24 keeles: Hääletus (2 kuni 10 valikut, otsetulemused, üks hääl inimese kohta), Täringuviskaja (/roll koos d20, 2d6+3, eelis ja puudus, visatud koos ja kontrollitud), Kajakesed (olevus 5 liigi, 4 etapi ja 3 värviga, kes ei sure kunagi ega müü midagi, kaks minimängu), Mumbot Music (praegu mängib, järgmine, helitugevus, järjekord, lugude lisamine; paremklõps botil → „Seadista bot”) ja EVE Fit (laevakaart ja fitiratas kleebitud EVE Online'i fitidele).",
+            "Mumbot tutvustab end Mumcordile: Mumcord teab, millised kasutajad on botid ja mida nad oskavad, ja „Seadista bot” ilmub ainult botidele, mis pakuvad muusikat.",
+            "Turvalisus: pluginad töötavad suletud liivakastis mälu- ja ajapiirangutega. See, mis kogu aeg kokku jookseb, lülitatakse välja ja sinu hääl ei kannata kunagi. „Lülita kõik pluginad välja” (seadetes ja käsupaletis) peatab need kõik korraga ja mumcord --no-plugins käivitub ilma ühegi pluginata. Ametlikud pluginad on allkirjastatud ning neid kontrollitakse paigaldamisel ja pärast iga uuendust; hädaseiskamise lüliti võib kahjuliku plugina välja lülitada ja seda kontrollitakse iga päev.",
+            "Privaatsus: pluginate otsimine ei saada tunnuseid ega nimekirja sinu pluginatest. Plugina andmed jäävad sinu arvutisse ja pärast plugina eemaldamist veel 30 päevaks, kui sa neid ei kustuta.",
+            "Teine heliteema: „Rich” uute, täidlasemate helidega ühendumiseks, sõnumiteks, mainimisteks, vaigistamiseks, tulijatele ja minejatele, väljaviskamistele ja keeldudele on nüüd vaikimisi. Menüüs Seaded → Helid saab lülituda teemale „Classic”, tuttavatele lühikestele toonidele, koos eelvaatega (#325).",
+            "Mumcordi sulgemine häälkõnes olles mängib lühikese hüvastijätuheli, et märkaksid just lahkunud olevat. See kõlab ainult päris sulgemisel, mitte kunagi salve minimeerimisel, ja sellel on oma lüliti (#325).",
+            "Kanali vahetamisel häälkõnes olles on oma lühike heli ühendumisheli asemel, oma lülitiga ja mõlemas heliteemas (#325)."
+          ]
+        },
+        {
+          "title": "Täiustatud",
+          "items": [
+            "Mumcord käivitub kiiremini: esimese kuva eel laaditav kood on umbes kolmandiku võrra väiksem. Seaded, seadistusviisard, koos vaatamine, ekraani jagamine, serverite sirvija ja koodi esiletõstmine laaditakse alles siis, kui need avad (#323).",
+            "Tühja valge akna ja teksti „Laadimine…“ asemel tuleb avakuva: logo sinu teemal õhukese laadimisribaga, mis sujuvalt rakendusse üle läheb; vähendatud liikumisega ilma animatsioonita (#323).",
+            "Seadete külgriba kirje „Pluginad“ näitab, mitu uuendust ja uut valikulist õigust ootab.",
+            "Kõrgematel pluginakaartidel pole enam oma kerimisriba: need lõigatakse pehme üleminekuga ära ja „Näita rohkem“ avab need.",
+            "Ekraanilugejad loevad asendatud vestlusrea ette kaardina (näiteks „Kaart pluginast Hääletus: Lõuna kell kaksteist?“) ja jätavad peidetud read vahele."
+          ]
+        },
+        {
+          "title": "Parandatud",
+          "items": [
+            "Kleepimine Ctrl+V-ga töötab jälle mõnel Linuxi töölaual.",
+            "Link „Muuda” seadete külgriba kaardil „Aktiivne eelseadistus” ei ulatu enam pikkade nimedega kaardist välja (#321).",
+            "Samaaegselt ühendatud serverite arvuväli menüüs Seaded → Server ei venitata enam üle kogu kaardi (#320).",
+            "Dialoogides, mille sisu muutub, jääb fookus dialoogi, nii et Escape ja Tab töötavad edasi.",
+            "Profiilikaart, mis suleti Escape'iga kohe pärast selle nupu kasutamist, avaneb pärast seda uuesti."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.5.0",
       "teaser": "Teavituskeskus, kõik privaatsõnumid ühes kohas, blokeerimine, mitu identiteeti ja import Mumble'ist.",
@@ -2984,5 +3160,277 @@
         "credit": "Mäng ja selle sõnumid pärinevad projektist zorgch/irc-quizbot (GPL-3.0), porditud Rustile ja Mumble'i protokollile, samasuguse protokollikihiga nagu Mumcord."
       }
     }
+  },
+  "plugins": {
+    "label": "Pluginad",
+    "title": "Väikesed lisad suurteks õhtuteks",
+    "description": "Mumcord 0.6.0 toob pluginad: hääletused, täringud, helist tehtud lemmikloom ja pult sinu muusikabotile. Turvalised, allkirjastatud ja serverit ei pea puutuma.",
+    "intro": "Mumcord 0.6.0 toob pluginad: väikesed ja turvalised lisad häälvestluse kõrvale. Need töötavad Mumcordi sees, ei vaja serveris muudatusi ja sobivad igale tavalisele Mumble'i serverile. Ametliku Mumble'i kliendi kasutajad näevad seal, kus vaja, tavalist tekstirida ja muud midagi.",
+    "badge": "Uus Mumcord 0.6.0-s",
+    "ctaPlugins": "Tutvu pluginatega",
+    "ctaDev": "Tee oma plugin",
+    "pills": [
+      "Liivakastis",
+      "Allkirjastatud",
+      "Serverimuudatusi pole",
+      "24 keelt"
+    ],
+    "listTitle": "Esimesed pluginad",
+    "listBody": "Midagi pole eelinstallitud. Vali, mis su seltskonnale meeldib, ja jäta ülejäänu.",
+    "source": "Lähtekood",
+    "soon": "Varsti tulekul",
+    "plugins": {
+      "poll": {
+        "name": "Hääletus",
+        "tagline": "Esita kanalile küsimus kuni kümne valikuga ja jälgi hääli otse saabumas.",
+        "points": [
+          "2 kuni 10 valikut, otseülekandes häälte ribad vestluskaardil",
+          "Mumcordi pole? Hääleta, kirjutades vestlusse `!poll 1`, `!poll 2` …",
+          "Tulemused näidatakse, kui hääletus sulgub"
+        ]
+      },
+      "dice": {
+        "name": "Täringuviskaja",
+        "tagline": "`/roll d20` või `2d6+3`, ausate viskeitega, mida teised saavad pealt näha ja kontrollida.",
+        "points": [
+          "Eelis ja puudus, madalaima või kõrgeima ärajätmine, kuni 20 täringut",
+          "Teised kanali Mumcordi kasutajad on iga viske tunnistajad, nii et keegi ei saa petta",
+          "Viskeajalugu, mille saab lahti voltida"
+        ]
+      },
+      "echolings": {
+        "name": "Kajakesed",
+        "tagline": "Väike helist loodud olevus, kes kasvab, kui veedad aega sõpradega.",
+        "points": [
+          "5 liiki, 4 kasvuetappi, 3 värvi",
+          "Kasvab koos veedetud ajast häälkõnes ja vestluses",
+          "Ei sure kunagi, ei nagi kunagi"
+        ]
+      },
+      "mumbot-music": {
+        "name": "Mumbot Music",
+        "tagline": "Pult sinu Mumboti muusikabotile.",
+        "points": [
+          "Paremklõps botil → „Seadista bot”",
+          "Praegu mängib, järgmine, helitugevus, järjekord ja lugude lisamine",
+          "Vajab serveris Mumboti: tavalist Mumble'i kasutajat, serverimuudatusi pole"
+        ]
+      },
+      "eve-fit": {
+        "name": "EVE Fit",
+        "tagline": "Kleebi EVE Online'i fit vestlusse ja kõik näevad laevakaarti.",
+        "points": [
+          "Märkab vestlusse kleebitud EFT-fitte ja näitab kaarti laeva ja moodulitega",
+          "Avab täieliku fitivaate ilma internetita otse Mumcordis",
+          "Nupp „Kopeeri fit” ja see on tasuta"
+        ]
+      }
+    },
+    "mock": {
+      "pollQuestion": "Mida täna õhtul mängime?",
+      "pollOptions": [
+        "Deep Rock Galactic",
+        "Valheim",
+        "Midagi uut"
+      ],
+      "pollVotes": "7 häält",
+      "pollLive": "Otse",
+      "pollPlain": "Hääletus: Mida täna õhtul mängime? 1) Deep Rock Galactic 2) Valheim 3) Midagi uut",
+      "pollPlainVote": "!poll 2",
+      "rollWitness": "Tunnistajaks 3 kanalis",
+      "rollHistory": "Ajalugu",
+      "echoStats": [
+        "5 liiki",
+        "4 etappi",
+        "3 värvi"
+      ],
+      "musicNow": "Praegu mängib",
+      "musicTrack": "Midnight Raid",
+      "musicArtist": "Lo-fi hilisteks sessioonideks",
+      "musicQueue": "Järjekord",
+      "musicQueueItems": [
+        "Boss Music, Volume 2",
+        "Campfire Loop"
+      ],
+      "musicAdd": "Lisa lugu",
+      "musicMenu": "Seadista bot",
+      "evePasted": "kleepis Maya",
+      "eveCopy": "Kopeeri fit"
+    },
+    "eveNotice": "EVE Online and all related logos and images are trademarks or registered trademarks of CCP hf. Mumcord is not affiliated with CCP hf.",
+    "eveCredit": "Fitivaade põhineb EVEShipFit projekti saidil eveship.fit.",
+    "bridgeTitle": "Kedagi ei jäeta kõrvale",
+    "bridgeBody": "Pluginad ei vaja serveris muudatusi ja töötavad igal tavalisel Mumble'i serveril. Sõbrad ametlikus Mumble'i kliendis näevad seal, kus vaja, tavalist tekstirida ja muud midagi.",
+    "bridgeMumcord": "Mumcordis",
+    "bridgeMumble": "Ametlikus Mumble'i kliendis",
+    "bridgeNote": "Illustratsioon: täpne sõnastus tuleb igalt pluginalt.",
+    "installTitle": "Paigaldatud minutiga",
+    "installBody": "Pluginad asuvad seadetes ja sa näed, mida iga plugin tohib teha, enne kui see su arvutisse jõuab.",
+    "steps": [
+      {
+        "title": "Sirvi",
+        "body": "Seaded → Pluginad → Sirvi."
+      },
+      {
+        "title": "Kontrolli",
+        "body": "Vali plugin ja vaata üle selle load."
+      },
+      {
+        "title": "Paigalda",
+        "body": "Selle ikoon ilmub kanalipuu all olevale pluginariba."
+      }
+    ],
+    "stripLabel": "Pluginad",
+    "stripChannels": [
+      "Fuajee",
+      "Raidiõhtu",
+      "AFK"
+    ],
+    "safeTitle": "Turvaline juba loomisel",
+    "safeBody": "Plugin on külaline sinu rakenduses. Need on maja reeglid.",
+    "safe": {
+      "sandbox": {
+        "title": "Range liivakast",
+        "body": "Iga plugin on väike WebAssembly programm ranges liivakastis. Otsest võrgu- või failipöördust pole; Mumcord joonistab liidese sisseehitatud ehituskividest."
+      },
+      "permissions": {
+        "title": "Load on nähtavad",
+        "body": "Loetletud enne paigaldamist. Valikulised saab igal ajal välja lülitada ja uuendused, mis vajavad rohkem, ootavad sinu kinnitust."
+      },
+      "signed": {
+        "title": "Allkirjastatud otsast lõpuni",
+        "body": "Register ja iga pakett on allkirjastatud minisigniga ning Mumcord kontrollib neid enne paigaldamist. Hädaseiskamise lüliti võib halva versiooni kõikjal välja lülitada."
+      },
+      "server": {
+        "title": "Serverimuudatusi pole",
+        "body": "Töötab muutmata Mumble'i serveriga. Administraatoril pole midagi paigaldada."
+      },
+      "off": {
+        "title": "Üks lüliti kõigi peatamiseks",
+        "body": "Midagi pole eelinstallitud. „Lülita kõik pluginad välja” menüüs Seaded → Pluginad või käsupaletis (Ctrl+Shift+P) peatab kõik pluginad korraga."
+      },
+      "langs": {
+        "title": "Sinu keeles",
+        "body": "Saadaval kõigis 24 Mumcordi keeles."
+      }
+    },
+    "devLabel": "Arendajatele",
+    "devTitle": "Tee oma plugin",
+    "devBody": "Pluginad kirjutatakse Rustis ja kompileeritakse WebAssemblyks (komponendimudel, liides `mumcord:plugin@1.0.0`). Hoidlas on mall, dokumentatsioon ja iga ametliku plugina lähtekood.",
+    "cliTitle": "Üks tööriist kogu teekonnaks",
+    "cli": [
+      {
+        "cmd": "new",
+        "body": "Loob malli põhjal plugina."
+      },
+      {
+        "cmd": "build",
+        "body": "Ehitab selle taastoodetavalt."
+      },
+      {
+        "cmd": "check",
+        "body": "Kontrollib paketti."
+      },
+      {
+        "cmd": "test",
+        "body": "Käivitab testistsenaariume näiv-hosti vastu."
+      },
+      {
+        "cmd": "serve-registry",
+        "body": "Pakub kohalikku registrit, et seda Mumcordis proovida (arendajarežiim menüüs Seaded → Pluginad)."
+      }
+    ],
+    "docsTitle": "Dokumentatsioon",
+    "docs": {
+      "start": "Alustamine",
+      "api": "API",
+      "manifest": "Manifest",
+      "permissions": "Load",
+      "building": "Ehitamine",
+      "testing": "Testimine",
+      "publishing": "Avaldamine",
+      "repos": "Sinu enda hoidla"
+    },
+    "submitTitle": "Ametlikku registrisse",
+    "submitBody": "Ava Mumcord/plugins hoidlas pull request, mis lisab `plugins/<id>/`. Vaja on ühe haldaja heakskiitu ja rohelist CI-d.",
+    "checksTitle": "Mida CI kontrollib",
+    "checks": [
+      "Skeemikontroll",
+      "Taastoodetav uuesti ehitamine",
+      "Autori allkiri",
+      "Lubade erinevus",
+      "Laadimistest näiv-hosti vastu",
+      "Litsentside skaneerimine"
+    ],
+    "rulesTitle": "Reeglid",
+    "rules": [
+      "OSI-heakskiidetud litsents",
+      "Taastoodetav ehitus",
+      "Ei mingeid reklaame, jälgimist, makseid ega loot boxe"
+    ],
+    "policy": "Ülevaatuse põhimõtted",
+    "ownRepoTitle": "Või pea oma hoidlat",
+    "ownRepoBody": "Igaüks võib pidada oma pluginahoidlat. Kasutajad lisavad selle menüüs Seaded → Pluginad.",
+    "licenceTitle": "Litsentsid",
+    "licenceBody": "Ametlikud pluginad on AGPL-3.0. Mall, dokumentatsioon ja SDK on Apache-2.0.",
+    "peopleTitle": "Tegijad",
+    "endTitle": "On sul plugina idee?",
+    "endBody": "Kõik on avatud: mall, dokumentatsioon ja iga ametlik plugin.",
+    "endRepo": "Ava pluginahoidla",
+    "copy": "Kopeeri",
+    "copied": "Kopeeritud",
+    "install": "Paigalda Mumcordis",
+    "pluginPage": "Plugina leht",
+    "installNote": "Paigaldusnupud avavad plugina Mumcordis 0.6.0 või uuemas, kus paigalduse kinnitad. Kui midagi ei avane, leiad üksikasjad plugina lehelt.",
+    "galleryLabel": "Ekraanipildid",
+    "galleryTitle": "Vaata neid Mumcordis",
+    "galleryBody": "Otse Mumcord 0.6.0-st, tumedas ja heledas teemas.",
+    "dark": "Tume",
+    "light": "Hele",
+    "shots": {
+      "browse": {
+        "caption": "Sirvi ametlikke plugin'e otse Seadetes.",
+        "alt": "Mumcordi Seaded, Pluginad, vahekaart Sirvi, kus on viis ametlikku plugin't (Kajakesed, Täringuviskaja, EVE Fit, Mumbot Music ja Hääletus), igaühel ikoon ja nupp Paigalda."
+      },
+      "permissions": {
+        "caption": "Iga plugin ütleb ette, mida ta tohib teha.",
+        "alt": "EVE Fit'i paigalduse dialoog, kus load on märgitud nõutavaks, lisaks valikuline lüliti ja kast sellega, mida plugin kunagi ei saa."
+      },
+      "progress": {
+        "caption": "Allkirjastatud paketid kontrollitakse enne paigaldamist.",
+        "alt": "EVE Fit'i paigalduse dialoog, kus lubade loendi kohal on edenemisriba tekstiga „Checking signature…“."
+      },
+      "poll": {
+        "caption": "Hääletus asendab oma vestlussõnumi elava kaardiga.",
+        "alt": "Mumcordi vestlus, kus Bobi hääletus „Which map tonight?“ on kaart häälteribadega: Glacier 2 häält, Harbor ja Canyon 0."
+      },
+      "vote": {
+        "caption": "Hääleta külgpaneelis; kõik näevad, kuidas arv uueneb.",
+        "alt": "Hääletuse külgpaneel vestluse kõrval valikutega ja valitud Glacieriga."
+      },
+      "echolings": {
+        "caption": "Kajakesed: lemmik, kes kasvab, kui koos aega veedate.",
+        "alt": "Bobi profiilikaart tema Kajakese „Moss“, sideme ja seeria kiipide ning nupuga „Pat Moss“; lemmikute märgid nimede kõrval kanalipuus."
+      },
+      "snackrace": {
+        "caption": "Võida sõprade Kajakestega võidu snäkini.",
+        "alt": "Pooleli Snack Race radadega You ja Bob jaoks, liikuva snäki tsooni ja nupuga Hop!."
+      },
+      "eveCard": {
+        "caption": "Kleebi EVE Online'i fit ja see muutub kenaks kaardiks.",
+        "alt": "Caroli kleebitud Algose fit'i „Evening Roam“ vestluskaart, millel on sloti kiibid, droonide ja lasti arvud ning nupud Copy fitting ja Open."
+      },
+      "eveWheel": {
+        "caption": "Open näitab kogu fitting-ratast ja statistikat.",
+        "alt": "EVE Fit'i dialoog Algose laevaga fitting-rattas, mooduli ikoonid ning kondensaatori, ründe, kaitse, sihtimise, navigatsiooni ja droonide statistika."
+      },
+      "eveCargo": {
+        "caption": "Droonide laadung, lastiruum ja CCP teade.",
+        "alt": "EVE Fit'i dialoogi alumine osa: droonilaadung Hammerhead II ja Hobgoblin II-ga, lastiruum laengute ja repair paste'iga ning CCP autoriõiguse teade allosas."
+      }
+    },
+    "sdkNote": "Tööriist ja SDK on crates.io-s. Sinu Cargo.toml-is:",
+    "docsAll": "Kõik juhendid",
+    "wiki": "Viki"
   }
 }

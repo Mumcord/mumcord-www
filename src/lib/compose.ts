@@ -16,7 +16,6 @@ export const MUMBOT_RELAY_ACCESS_FROM = "0.2.1";
 /** Most a person may send, in bit/s: Mumble's own default, room for music, and the hi-fi value of Mumble's sample config. */
 export const BANDWIDTH = { standard: 72000, good: 192000, best: 558000 } as const;
 export type Quality = keyof typeof BANDWIDTH;
-const EXAMPLES = "https://raw.githubusercontent.com/Mumcord/mumbot/main/examples";
 
 export interface ServerOptions {
   name: string;
@@ -86,13 +85,18 @@ const COMMENTS = {
     bot: "Mumbot, ein Bot mit diesen Modulen",
     botToml: "Mumbot: ein Bot, Module:",
     botPin: "SHA-256 des Server-Zertifikats; ohne startet das Peer-Modul nicht",
+    mumpeerToml: "mumpeer: das Relay für Mumcords Direktverbindungen",
+    publicHost: "Adresse, die der Relay-Bot den Mumcord-Clients nennt (DNS-Name oder IP-Adresse): hier deine eintragen",
+    listen: "Relay für die Clients: QUIC über UDP und TLS über TCP (für Netze, die UDP sperren)",
+    api: "Nur lokal; der Bot teilt sich das Netzwerk mit diesem Container",
+    apiSecret: "Das API-Secret kommt aus MUMPEER_API_SECRET (PEER_API_SECRET in .env)",
     relayAccess: "true: Relay nur für registrierte Nutzer; false: auch für Gäste",
     webhookPort: "nur von diesem Rechner aus erreichbar",
     env: "Bleibt auf dem Server. Nie in Git, Chats oder Screenshots teilen.",
     envSuper: "hier-das-zufallspasswort-einfuegen",
     envServer: "hier-das-server-passwort-einfuegen",
     envPeer: "hier-ein-langes-zufallsgeheimnis-einfuegen",
-    put: "docker-compose.yml, .env und bot.toml von unten hier ablegen",
+    put: "docker-compose.yml, .env, bot.toml und mumpeer.toml von unten hier ablegen",
     showEnv: "die Passwörter: einmal notieren",
   },
   en: {
@@ -121,13 +125,18 @@ const COMMENTS = {
     bot: "Mumbot, one bot with these modules",
     botToml: "Mumbot: one bot, modules:",
     botPin: "SHA-256 of the server certificate; the peer module won't start without it",
+    mumpeerToml: "mumpeer: the relay for Mumcord's direct connections",
+    publicHost: "Address announced to Mumcord clients by the relay bot (DNS name or IP address): put yours here",
+    listen: "Client relay listeners: QUIC on UDP and TLS on TCP (for networks that block UDP)",
+    api: "Loopback only; the bot shares this container's network",
+    apiSecret: "The API secret comes from MUMPEER_API_SECRET (PEER_API_SECRET in .env)",
     relayAccess: "true: relay for registered users only; false: guests too",
     webhookPort: "reachable from this machine only",
     env: "Stays on the server. Never share it in Git, chats or screenshots.",
     envSuper: "paste-the-random-password-here",
     envServer: "paste-the-server-password-here",
     envPeer: "paste-a-long-random-secret-here",
-    put: "put docker-compose.yml, .env and bot.toml from below in here",
+    put: "put docker-compose.yml, .env, bot.toml and mumpeer.toml from below in here",
     showEnv: "your passwords: note them once",
   },
 } as const;
@@ -354,7 +363,7 @@ export function buildCurlSteps(lang: CommentLang, o: ServerOptions, site: string
     compose: `curl -fsSL -o docker-compose.yml '${url.replaceAll("'", "%27")}'`,
     env: ["cat > .env <<EOF", ...env, "EOF", "chmod 600 .env"].join("\n"),
     configs: [
-      ...configCommands(o),
+      ...mumpeerCommands(lang, o),
       ...(o.music ? ["mkdir -p media"] : []),
       ...(botModules(o).length
         ? [
@@ -374,13 +383,38 @@ export const buildCurlSetup = (lang: CommentLang, o: ServerOptions, site: string
     .filter(Boolean)
     .join("\n");
 
-function configCommands(o: ServerOptions): string[] {
-  return o.relay ? [`curl -fsSL -o mumpeer.toml ${EXAMPLES}/peer-with-relay/mumpeer.example.toml`] : [];
+/** mumpeer.toml for the relay; empty without it. Every key and its default: mumpeer's mumpeer.example.toml. */
+export function buildMumpeerToml(lang: CommentLang, o: ServerOptions): string {
+  if (!o.relay) return "";
+  const c = COMMENTS[lang];
+  return [
+    `# ${c.mumpeerToml}`,
+    "# https://github.com/Mumcord/mumpeer#readme",
+    "",
+    `# ${c.publicHost}`,
+    'public_host = "relay.example.org"',
+    `# ${c.listen}`,
+    'udp_listen = "[::]:443"',
+    'tcp_listen = "[::]:443"',
+    `# ${c.api}`,
+    'api_listen = "127.0.0.1:7480"',
+    'data_dir = "/var/lib/mumpeer"',
+    `# ${c.apiSecret}`,
+    "",
+    "[limits]",
+    "max_sessions = 50",
+    "token_ttl_s = 120",
+  ].join("\n");
+}
+
+/** The relay config written right there in the curl setup (a here-document, nothing to download). */
+function mumpeerCommands(lang: CommentLang, o: ServerOptions): string[] {
+  return o.relay ? ["cat > mumpeer.toml <<'EOF'", buildMumpeerToml(lang, o), "EOF"] : [];
 }
 
 /** Commands for the server's folder: the bot and relay configs, then the start. */
 export function buildSetup(lang: CommentLang, o: ServerOptions): string {
-  return ["mkdir -p mumble && cd mumble", `# ${COMMENTS[lang].put}`, ...configCommands(o), ...(o.music ? ["mkdir -p media"] : []), "docker compose up -d", "docker compose logs -f"].join("\n");
+  return ["mkdir -p mumble && cd mumble", `# ${COMMENTS[lang].put}`, ...(o.music ? ["mkdir -p media"] : []), "docker compose up -d", "docker compose logs -f"].join("\n");
 }
 
 /** A random password from the browser's crypto; 64 shell-safe characters, so every byte maps evenly. */

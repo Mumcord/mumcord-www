@@ -5,7 +5,7 @@ import { REPO } from "./release";
 import { MUMBOT_REPO } from "./mumbot";
 
 /** Every repo that counts: the app, its tools and this website. */
-const REPOS = [REPO, MUMBOT_REPO, "Mumcord/mumpeer", "Mumcord/mumquiz", "Mumcord/mumcord-www"];
+const REPOS = [REPO, MUMBOT_REPO, "Mumcord/mumpeer", "Mumcord/mumquiz", "Mumcord/plugins", "Mumcord/mumcord-www"];
 
 export interface Contributor {
   /** Only the GitHub username is shown, never a real name. */
