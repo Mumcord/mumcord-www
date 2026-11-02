@@ -534,6 +534,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           {
             title: "Windows",
             items: ["Signierte Windows-Builds, Installer und App"],
+            done: [0],
           },
         ],
       },
@@ -1127,6 +1128,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           {
             title: "Windows",
             items: ["Signed Windows builds, installer and app"],
+            done: [0],
           },
         ],
       },
