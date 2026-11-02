@@ -97,6 +97,10 @@
       "toolQuiz": {
         "title": "mumquiz",
         "desc": "Kviz bot za tvoj strežnik"
+      },
+      "plugins": {
+        "title": "Vtičniki",
+        "desc": "Ankete, kocke in več"
       }
     },
     "hero": {
@@ -536,8 +540,8 @@
       "toolTitle": "Sodelujoči"
     },
     "spotlight5": {
-      "label": "Novo v 0.5.0",
-      "labelSoon": "Kmalu: 0.5.0",
+      "label": "Novo v 0.5.0/0.6.0",
+      "labelSoon": "Kmalu: 0.5.0/0.6.0",
       "title": "Več miru. Več tebe. Več zvoka.",
       "body": "0.5.0 prinaša Epic 3: središče obvestil, blokiranje, več identitet, novo drevo kanalov, glasbo v klepetu, način z nizko zakasnitvijo za skupno muziciranje in neposredne povezave prek releja.",
       "tiles": {
@@ -567,7 +571,12 @@
         }
       },
       "features": "Vse funkcije",
-      "changelog": "Vse novosti"
+      "changelog": "Vse novosti",
+      "plugins": {
+        "title": "Vtičniki",
+        "body": "0.6.0 prinaša majhne, varne dodatke h glasovnemu klepetu: ankete, poštene kocke, bitje iz zvoka in daljinec za tvojega glasbenega bota. Brez sprememb na strežniku.",
+        "more": "Spoznaj vtičnike"
+      }
     },
     "serverCta": {
       "title": "Svoj strežnik v petih minutah",
@@ -1112,6 +1121,89 @@
         ]
       },
       {
+        "id": "plugins",
+        "title": "Vtičniki",
+        "features": [
+          {
+            "id": "plugins",
+            "title": "Vtičniki iz nastavitev",
+            "body": "Nastavitve → Vtičniki z zavihki Nameščeno, Brskanje, Posodobitve in Repozitoriji: uradni vtičniki po kategorijah in z iskanjem, vklop in izklop, spreminjanje dovoljenj in nastavitev, izvoz ali ponastavitev njihovih podatkov, odstranitev. Nič ni vnaprej nameščenega, vtičniki pa delujejo tudi, ko nisi povezan.",
+            "alt": "Nastavitve Mumcorda, Vtičniki, zavihek Brskanje s petimi uradnimi vtičniki (Odmevčki, Metalec kock, EVE Fit, Mumbot Music in Anketa), vsak z ikono in gumbom Namesti."
+          },
+          {
+            "id": "plugin-permissions",
+            "title": "Najprej poglej, kaj sme vtičnik",
+            "body": "Pred namestitvijo ti Mumcord s preprostimi besedami pove, kaj vtičnik želi: vsako dovoljenje je zeleno, rumeno ali rdeče, zahtevana so fiksna, izbirna so stikala. Spremembe veljajo takoj. Vtičnik nikoli ne dobi tvojega klepeta, datotek, mikrofona, certifikatov ali gesel.",
+            "alt": "Poziv za namestitev EVE Fita z dovoljenji, označenimi kot obvezna, izbirnim stikalom in poljem z navedbo, česar vtičnik nikoli ne dobi."
+          },
+          {
+            "id": "plugin-places",
+            "title": "Vtičniki, kjer jih potrebuješ",
+            "body": "Vrstica vtičnikov pod seznamom kanalov, kartice v klepetu, ki zamenjajo svoje sporočilo, poševniški ukazi, kot je /roll, majhna značka ob imenih, razdelek v profilnih karticah, vnosi v meniju desnega klika in lastna okna. Kar pošlje vtičnik, je označeno z „prek“."
+          },
+          {
+            "id": "plugin-together",
+            "title": "Skupaj s tvojim kanalom",
+            "body": "Vtičnik se pogovarja z istim vtičnikom pri drugih uporabnikih Mumcorda v kanalu, na primer za skupno anketo. Podatki potujejo prek običajnega glasovnega strežnika: običajni strežniki Mumble ne potrebujejo ničesar, drugi odjemalci jih prezrejo, ti pa izbereš, kdo jih vidi. Vtičniki delujejo v klepetu vsakega strežnika, s katerim si povezan.",
+            "alt": "Stranska plošča ankete ob klepetu z možnostmi in izbranim Glacier."
+          },
+          {
+            "id": "plugin-safety",
+            "title": "Peskovnik, podpisi in zasilno stikalo",
+            "body": "Vtičniki tečejo zaprti, brez dostopa do omrežja, datotek ali zvoka, z omejitvami pomnilnika in časa; vtičnik, ki se stalno zruši, se izklopi, tvoj glas pa ni nikoli prizadet. Uradni vtičniki so podpisani in preverjeni. Zasilno stikalo lahko škodljiv vtičnik izklopi za vse, „Izklopi vse vtičnike“ jih ustavi naenkrat, --no-plugins pa zažene program brez njih.",
+            "alt": "Poziv za namestitev EVE Fita s trakom napredka z napisom »Checking signature…« nad seznamom dovoljenj."
+          },
+          {
+            "id": "plugin-updates",
+            "title": "Posodobitve brez presenečenj",
+            "body": "Samodejna namestitev, samo obvestilo ali izklopljeno. Posodobitev, ki želi več dovoljenj ali prihaja od koga drugega, vedno počaka na tvojo odobritev. Vtičnik, ki se po posodobitvi ne zažene, se povrne, vsak vtičnik pa lahko pripneš na njegovo različico."
+          },
+          {
+            "id": "plugin-suggestions",
+            "title": "Strežniki predlagajo vtičnike",
+            "body": "Mumbot strežnika lahko priporoči vtičnike, ki jih uporablja njegova skupnost. Predlog mirno prispe v središče obvestil, z gumbi Namesti, Podrobnosti, Ne zdaj in Ne vprašaj več za ta strežnik. Brez tvoje odobritve se ne namesti nič."
+          },
+          {
+            "id": "plugin-repositories",
+            "title": "Tvoji lastni repozitoriji vtičnikov",
+            "body": "Do deset dodatnih repozitorijev v Nastavitve → Vtičniki → Repozitoriji, prikazanih z imenom in prstnim odtisom ključa. Njihovi vtičniki so povsod označeni kot „Neuradno“, in če se podpisni ključ spremeni, je repozitorij zaustavljen, dokler tega ne potrdiš."
+          },
+          {
+            "id": "plugin-developers",
+            "title": "Izdelaj svoje vtičnike",
+            "body": "Vtičniki so v Rustu, prevedeni v WebAssembly. cargo install mumcord-plugin namesti orodje ukazne vrstice, mumcord-plugin new pa ustvari projekt iz predloge. Razvijalski način naloži vtičnik naravnost iz mape, z ponovnim nalaganjem in dnevnikom."
+          },
+          {
+            "id": "poll",
+            "title": "Anketa",
+            "body": "Vprašanje z 2 do 10 možnostmi, rezultati v živo v klepetalni kartici in na plošči, en glas na osebo. Kdor nima Mumcorda, glasuje z !poll 1, !poll 2 … v klepetu.",
+            "alt": "Klepet v Mumcordu, v katerem se Bobova anketa »Which map tonight?« prikazuje kot kartica s stolpci glasov: Glacier 2 glasova, Harbor in Canyon 0."
+          },
+          {
+            "id": "dice",
+            "title": "Metalec kock",
+            "body": "/roll z d20, 2d6+3, prednostjo in slabostjo ali izpustom najnižje oziroma najvišje, poleg tega gumbi za hitre mete. Mete izvedete skupaj s kanalom, zato nihče ne more goljufati, vsak rezultat pa pokaže, ali je preverjen."
+          },
+          {
+            "id": "echolings",
+            "title": "Odmevčki",
+            "body": "Majhno bitje v tvoji vrstici vtičnikov: 5 vrst, 4 stopnje rasti, 3 barve. Pobožaj ga, nahrani, igraj se z njim ali ga pusti dremati; nikoli ne umre, ob Ne moti spi in nima ničesar za kupiti. Prijatelji ga vidijo kot značko in v tvoji profilni kartici, ga lahko obiščejo, na voljo pa sta tudi dve mini igri.",
+            "alt": "Bobova profilna kartica z njegovim Odmevčkom »Moss«, žetoni vezi in niza ter gumbom »Pat Moss«; značke ljubljenčkov ob imenih v drevesu kanalov."
+          },
+          {
+            "id": "mumbot-music",
+            "title": "Mumbot Music",
+            "body": "Daljinec za glasbenega bota Mumbot: trenutno predvajanje, preskok, ustavitev, glasnost, čakalna vrsta in dodajanje skladb. Desni klik na bota → „Nastavi bota“; ključ API je shranjen v sistemski zbirki ključev."
+          },
+          {
+            "id": "eve-fit",
+            "title": "EVE Fit",
+            "body": "Prilepi opremo za EVE Online v klepet in vsi z vtičnikom vidijo kartico ladje. En klik odpre kolo opreme s kondenzatorjem, napadom, obrambo in navigacijo, brez povezave znotraj Mumcorda, „Kopiraj opremo“ pa jo spet spravi ven.",
+            "alt": "Pogovorno okno EVE Fit z ladjo Algos v kolesu opreme, ikonami modulov in statistiko kondenzatorja, napada, obrambe, ciljanja, navigacije in dronov."
+          }
+        ]
+      },
+      {
         "id": "comfort",
         "title": "Udobje",
         "features": [
@@ -1166,7 +1258,7 @@
           {
             "id": "website-look",
             "title": "Videz te spletne strani",
-            "body": "Žareči gumbi, prelivi, stekleni učinki in rahlo filmsko zrno, tudi v aplikaciji, da se izklopiti.",
+            "body": "Žareči gumbi, prelivi in rahlo filmsko zrno, tudi v aplikaciji, da se izklopiti.",
             "alt": "Hitre nastavitve kot meni iz matiranega stekla nad rahlo zrnatim ozadjem"
           },
           {
@@ -1196,12 +1288,96 @@
             "title": "Popoln meni v sistemski vrstici",
             "body": "Meni v sistemski vrstici pokaže vsak povezan strežnik z njegovim stanjem in kanalom, Utišaj, Ogluši in Ne moti, prenese glas na drug strežnik ali kanal in odpre nedavne klepete. Ikona kaže govorjenje, utišanje, neprebrana sporočila in Ne moti. Mumcord se zažene ob prijavi, če želiš, na vsakem sistemu.",
             "alt": "Meni v sistemski vrstici s strežniki, podmenijem glasovnega kanala in nedavnimi klepeti"
+          },
+          {
+            "id": "sound-themes",
+            "title": "Dve zvočni temi",
+            "body": "„Klasična“ z znanimi kratkimi toni je privzeta, „Bogata“ prinaša nove, polnejše zvoke, s predogledom v Nastavitve → Zvoki. Poleg tega lasten zvok za menjavo kanalov in kratko slovo, ko zapustiš Mumcord med glasovnim klepetom."
+          },
+          {
+            "id": "start-screen",
+            "title": "Hitrejši zagon",
+            "body": "Začetni zaslon z logotipom na tvoji temi namesto praznega belega okna in približno tretjino manj kode pred prvim zaslonom: nastavitve, čarovnik in deljenje zaslona se naložijo šele, ko jih odpreš."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.6.1",
+      "teaser": "Vtičniki tudi na Macu, ločena glasnost za deljenje zaslona, polno ozadje menijev in „Klasična“ kot privzeti zvok.",
+      "summary": "Majhna posodobitev po 0.6.0: vtičniki zdaj delujejo tudi na Macu, deljenje zaslona ima svojo glasnost, meniji in kartice imajo polno ozadje, nove namestitve pa se začnejo z zvočno temo „Klasična“. V sistemu Windows sta aplikacija in namestitveni program zdaj podpisana.",
+      "groups": [
+        {
+          "title": "Izboljšano",
+          "items": [
+            "Nove namestitve se začnejo z zvočno temo „Klasična“. Če si že izbral „Bogata“, ti ostane (#339).",
+            "Meniji desnega klika, pojavna okna, kartice ob premiku miške in kartica profila imajo polno ozadje namesto motnega stekla, zato je besedilo berljivo tudi tam, kjer zameglitve ni, na primer v Linuxu (#337).",
+            "Windows: aplikacija in namestitveni program sta zdaj podpisana s potrdilom za podpisovanje kode (#340)."
+          ]
+        },
+        {
+          "title": "Popravljeno",
+          "items": [
+            "Sprememba glasnosti deljenega zaslona ne spremeni več glasu osebe. Vsak ima svoj drsnik, Mumcord pa si zapomni oba za vsako osebo (#333).",
+            "macOS: Mumcord se ne sesuje več takoj, ko se zažene vtičnik, na primer Odmevčki."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.6.0",
+      "teaser": "Vtičniki: ankete, kocke, Odmevčki, Mumbot Music in EVE Fit, varno v peskovniku in brez sprememb na strežniku.",
+      "summary": "Mumcord dobi vtičnike: majhne, varne dodatke, nameščene iz nastavitev, zaprte v peskovniku in brez sprememb na strežniku. Za začetek so tu ankete, poštene kocke, Odmevčki, daljinec za glasbenega bota Mumbot in EVE Fit. Poleg tega nova zvočna tema, zvok slovesa in hitrejši zagon z začetnim zaslonom.",
+      "groups": [
+        {
+          "title": "Novo",
+          "items": [
+            "Vtičniki: majhni dodatki, ki Mumcordu dajo nove funkcije. Nastavitve → Vtičniki ima zavihke Nameščeno, Brskanje, Posodobitve, Repozitoriji in v razvijalskem načinu še Razvijalec. Nič ni vnaprej nameščenega, vtičniki delujejo tudi, ko nisi povezan, „Vtičniki“ pa so tudi v ukazni paleti.",
+            "Pred vsako namestitvijo Mumcord s preprostimi besedami pokaže, kaj vtičnik želi početi: vsako dovoljenje je zeleno, rumeno ali rdeče, zahtevana so fiksna, izbirna so stikala. Dovoljenja lahko pozneje spremeniš in veljajo takoj. Vtičnik nikoli ne dobi tvojega klepeta, datotek, mikrofona, certifikatov ali gesel.",
+            "Namestitev in posodabljanje prikažeta vrstico napredka z velikostjo, nato „Preverjanje podpisa“, „Razpakiranje“ in „Zagon“; spodletel prenos lahko poskusiš znova.",
+            "Vtičniki se pojavijo tam, kjer uporabljaš Mumcord: vrstica vtičnikov pod seznamom kanalov, kartice v klepetu, poševniški ukazi, kot je /roll, majhna značka ob imenih, razdelek v profilnih karticah, vnosi v meniju desnega klika osebe in lastna okna. Sporočila, ki jih pošlje vtičnik, so označena z „prek“.",
+            "Kartica vtičnika zamenja klepetalno sporočilo, ki mu pripada, na primer prilepljeno opremo ali anketo. Zamenjana sporočila kažejo ikono in ime vtičnika, „Pokaži izvirno besedilo“ pa jih vrne. Tudi starejša sporočila dobijo kartice, ne da bi se glasovi šteli dvakrat.",
+            "Vtičnik lahko prepozna določena klepetalna sporočila, na primer prilepljeno opremo iz igre. Poziv za namestitev v vtičnikovih besedah pove, kaj prepozna; nato dobi samo ujemajoča se sporočila v tvojem kanalu, nikoli od ljudi, ki si jih blokiral, in nobenega drugega klepetalnega besedila.",
+            "Vtičniki izmenjujejo podatke z istim vtičnikom v Mumcordu drugih ljudi v tvojem kanalu, na primer za skupno anketo. Podatki potujejo prek običajnega glasovnega strežnika: običajni strežniki Mumble ne potrebujejo ničesar, drugi odjemalci jih prezrejo, ti pa izbereš, kdo jih vidi. Klepetalne funkcije vtičnikov delujejo na vsakem strežniku, s katerim si povezan.",
+            "Vtičniki lahko pošiljajo obvestila. Pristanejo v središču obvestil pod „Vtičniki“, jih je mogoče izklopiti za vsak vtičnik posebej, ob Ne moti pa molčijo.",
+            "Posodobitve vtičnikov imajo lastno nastavitev: samodejno (privzeto), samo obvestilo ali izklopljeno. Posodobitev, ki želi več dovoljenj ali prihaja od koga drugega, vedno počaka na tvojo odobritev; vtičnik, ki se po posodobitvi ne zažene, se povrne; vsak vtičnik pa lahko pripneš na njegovo različico. Nova izbirna dovoljenja ostanejo izklopljena in so ponujena pod Posodobitve.",
+            "Strežniki lahko predlagajo vtičnike: Mumbot strežnika priporoči vtičnike, ki se pojavijo v središču obvestil z gumbi Namesti, Podrobnosti, Ne zdaj in Ne vprašaj več za ta strežnik. Brez tvoje odobritve se ne namesti nič.",
+            "Tvoji lastni repozitoriji: do deset v Nastavitve → Vtičniki → Repozitoriji, z imenom in prstnim odtisom ključa. Njihovi vtičniki so povsod „Neuradni“, prva namestitev opozori, in če se podpisni ključ spremeni, je repozitorij zaustavljen, dokler tega ne potrdiš.",
+            "Razvijalski način (Nastavitve → Napredno) doda zavihek Razvijalec: naloži, ponovno naloži in izklopi vtičnik iz mape, z njegovim dnevnikom. Za avtorje so na voljo SDK za vtičnike, predloga in orodje ukazne vrstice mumcord-plugin na crates.io (cargo install mumcord-plugin).",
+            "Povezave mumcord://plugins/<id> odprejo podrobnosti uradnega vtičnika; ničesar ne namestijo.",
+            "Uradni vtičniki, vsak v vseh 24 jezikih: Anketa (2 do 10 možnosti, rezultati v živo, en glas na osebo), Metalec kock (/roll z d20, 2d6+3, prednostjo in slabostjo, vrženo skupaj in preverjeno), Odmevčki (bitje s 5 vrstami, 4 stopnjami in 3 barvami, ki nikoli ne umre in ničesar ne prodaja, z dvema mini igrama), Mumbot Music (trenutno predvajanje, preskok, glasnost, čakalna vrsta, dodajanje skladb; desni klik na bota → „Nastavi bota“) in EVE Fit (kartica ladje in kolo opreme za prilepljene opreme EVE Online).",
+            "Mumbot se predstavi Mumcordu: Mumcord ve, kateri uporabniki so boti in kaj zmorejo, „Nastavi bota“ pa se pojavi samo pri botih, ki ponujajo glasbo.",
+            "Varnost: vtičniki tečejo v zaprtem peskovniku z omejitvami pomnilnika in časa. Vtičnik, ki se stalno zruši, se izklopi, tvoj glas pa ni nikoli prizadet. „Izklopi vse vtičnike“ (nastavitve in ukazna paleta) ustavi vse naenkrat, mumcord --no-plugins pa zažene program brez njih. Uradni vtičniki so podpisani in preverjeni ob namestitvi in po vsaki posodobitvi; zasilno stikalo lahko škodljiv vtičnik izklopi in se preverja vsak dan.",
+            "Zasebnost: iskanje vtičnikov ne pošilja identifikatorjev ne seznama tvojih vtičnikov. Podatki vtičnikov ostanejo na tvojem računalniku, po odstranitvi vtičnika pa še 30 dni, razen če jih izbrišeš.",
+            "Druga zvočna tema: „Bogata“, z novimi, polnejšimi zvoki za povezavo, sporočila, omembe, utišanje, prihode in odhode ljudi, izločitve in prepovedi, je zdaj privzeta. Nastavitve → Zvoki preklopijo na „Klasična“, znane kratke tone, s predogledom (#325).",
+            "Ko zapustiš Mumcord med glasovnim klepetom, se predvaja kratek zvok slovesa, da opaziš, da si ravnokar odšel. Predvaja se samo ob pravem izhodu, nikoli pri pomanjšanju v sistemsko vrstico, in ima lastno stikalo (#325).",
+            "Menjava kanalov med glasovnim klepetom ima lasten kratek zvok namesto zvoka povezave, z lastnim stikalom in v obeh zvočnih temah (#325)."
+          ]
+        },
+        {
+          "title": "Izboljšano",
+          "items": [
+            "Mumcord se zažene hitreje: koda pred prvim zaslonom je približno tretjino manjša. Nastavitve, čarovnik za nastavitev, skupno gledanje, deljenje zaslona, brskalnik strežnikov in označevanje kode se naložijo šele, ko jih odpreš (#323).",
+            "Namesto praznega belega okna in „Nalaganje …“ je zdaj začetni zaslon: logotip na tvoji temi s tanko vrstico nalaganja, ki se zlije v aplikacijo; ob zmanjšanem gibanju preklopi brez premikanja (#323).",
+            "Vnos Vtičniki v stranski vrstici nastavitev kaže, koliko posodobitev in novih izbirnih dovoljenj čaka.",
+            "Višje kartice vtičnikov nimajo več lastne drsne vrstice: odrezane so z mehkim zbledenjem, „Pokaži več“ pa jih razširi.",
+            "Bralniki zaslona preberejo zamenjano klepetalno vrstico kot njeno kartico (na primer „Kartica iz vtičnika Anketa: Kosilo opoldne?“) in preskočijo skrite vrstice."
+          ]
+        },
+        {
+          "title": "Popravljeno",
+          "items": [
+            "Lepljenje s Ctrl+V spet deluje na nekaterih namizjih Linux.",
+            "Povezava „Spremeni“ v kartici „Aktivna prednastavitev“ v stranski vrstici nastavitev ne štrli več iz kartice pri dolgih imenih (#321).",
+            "Številsko polje za hkrati povezane strežnike v Nastavitve → Strežnik ni več raztegnjeno čez celotno kartico (#320).",
+            "V pogovornih oknih, ki spreminjajo vsebino, fokus ostane v oknu, zato Escape in Tab še naprej delujeta.",
+            "Profilna kartica, zaprta z Escape tik po uporabi gumba v njej, se potem spet odpre."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.5.0",
       "teaser": "Središče obvestil, vsa zasebna sporočila na enem mestu, blokiranje, več identitet in uvoz iz Mumbla.",
@@ -2984,5 +3160,277 @@
         "credit": "Igra in njena sporočila izvirajo iz zorgch/irc-quizbot (GPL-3.0), prenesena v Rust in na protokol Mumble, z istim protokolnim slojem kot Mumcord."
       }
     }
+  },
+  "plugins": {
+    "label": "Vtičniki",
+    "title": "Majhni dodatki za velike večere",
+    "description": "Mumcord 0.6.0 prinaša vtičnike: ankete, kocke, bitje iz zvoka in daljinec za tvojega glasbenega bota. Varno, podpisano in brez sprememb na strežniku.",
+    "intro": "Mumcord 0.6.0 prinaša vtičnike: majhne, varne dodatke h glasovnemu klepetu. Delujejo znotraj Mumcorda, ne zahtevajo sprememb na strežniku in delujejo na vsakem običajnem strežniku Mumble. Ljudje z uradnim odjemalcem Mumble vidijo tam, kjer je pomembno, navadno besedilno vrstico, nič drugega.",
+    "badge": "Novo v Mumcordu 0.6.0",
+    "ctaPlugins": "Spoznaj vtičnike",
+    "ctaDev": "Izdelaj svojega",
+    "pills": [
+      "V peskovniku",
+      "Podpisano",
+      "Brez sprememb na strežniku",
+      "24 jezikov"
+    ],
+    "listTitle": "Prvi vtičniki",
+    "listBody": "Nič ni vnaprej nameščenega. Izberi, kar je všeč tvoji druščini, ostalo pusti.",
+    "source": "Izvorna koda",
+    "soon": "Kmalu",
+    "plugins": {
+      "poll": {
+        "name": "Anketa",
+        "tagline": "Postavi kanalu vprašanje z do desetimi odgovori in opazuj, kako glasovi prihajajo v živo.",
+        "points": [
+          "2 do 10 možnosti, živi stolpci glasov v klepetalni kartici",
+          "Nimaš Mumcorda? Glasuj s tipkanjem `!poll 1`, `!poll 2` … v klepetu",
+          "Rezultati se prikažejo, ko se anketa zapre"
+        ]
+      },
+      "dice": {
+        "name": "Metalec kock",
+        "tagline": "`/roll d20` ali `2d6+3`, s poštenimi meti, ki jih drugi vidijo in preverijo.",
+        "points": [
+          "Prednost in slabost, izpusti najnižjo ali najvišjo, do 20 kock",
+          "Drugi uporabniki Mumcorda v kanalu prisostvujejo vsakemu metu, zato nihče ne more goljufati",
+          "Zgodovina metov, ki jo lahko razširiš"
+        ]
+      },
+      "echolings": {
+        "name": "Odmevčki",
+        "tagline": "Majhno bitje iz zvoka, ki raste, medtem ko se družiš s prijatelji.",
+        "points": [
+          "5 vrst, 4 stopnje rasti, 3 barve",
+          "Raste od časa, ki ga preživite skupaj v glasovnem klepetu in v besedilu",
+          "Nikoli ne umre, nikoli ne gnjavi"
+        ]
+      },
+      "mumbot-music": {
+        "name": "Mumbot Music",
+        "tagline": "Daljinec za tvojega glasbenega bota Mumbot.",
+        "points": [
+          "Desni klik na bota → „Nastavi bota“",
+          "Trenutno predvajanje, preskok, glasnost, čakalna vrsta in dodajanje skladb",
+          "Potrebuje Mumbota na strežniku: čisto navaden uporabnik Mumble, brez sprememb strežnika"
+        ]
+      },
+      "eve-fit": {
+        "name": "EVE Fit",
+        "tagline": "Prilepi opremo za EVE Online v klepet in vsi vidijo kartico ladje.",
+        "points": [
+          "Prepozna prilepljene EFT-opreme v klepetu in prikaže kartico z ladjo in moduli",
+          "Odpre celoten pogled opreme brez povezave, kar v Mumcordu",
+          "Gumb „Kopiraj opremo“ in vse je brezplačno"
+        ]
+      }
+    },
+    "mock": {
+      "pollQuestion": "Kaj igramo nocoj?",
+      "pollOptions": [
+        "Deep Rock Galactic",
+        "Valheim",
+        "Kaj novega"
+      ],
+      "pollVotes": "7 glasov",
+      "pollLive": "V živo",
+      "pollPlain": "Anketa: Kaj igramo nocoj? 1) Deep Rock Galactic 2) Valheim 3) Kaj novega",
+      "pollPlainVote": "!poll 2",
+      "rollWitness": "Priče: 3 v kanalu",
+      "rollHistory": "Zgodovina",
+      "echoStats": [
+        "5 vrst",
+        "4 stopnje",
+        "3 barve"
+      ],
+      "musicNow": "Zdaj igra",
+      "musicTrack": "Midnight Raid",
+      "musicArtist": "Lo-fi za pozne seanse",
+      "musicQueue": "Čakalna vrsta",
+      "musicQueueItems": [
+        "Boss Music, Volume 2",
+        "Campfire Loop"
+      ],
+      "musicAdd": "Dodaj skladbo",
+      "musicMenu": "Nastavi bota",
+      "evePasted": "prilepila Maya",
+      "eveCopy": "Kopiraj opremo"
+    },
+    "eveNotice": "EVE Online and all related logos and images are trademarks or registered trademarks of CCP hf. Mumcord is not affiliated with CCP hf.",
+    "eveCredit": "Pogled opreme temelji na eveship.fit projekta EVEShipFit.",
+    "bridgeTitle": "Nihče ni izpuščen",
+    "bridgeBody": "Vtičniki ne zahtevajo sprememb na strežniku in delujejo na vsakem običajnem strežniku Mumble. Prijatelji z uradnim odjemalcem Mumble vidijo tam, kjer je pomembno, navadno besedilno vrstico, nič drugega.",
+    "bridgeMumcord": "V Mumcordu",
+    "bridgeMumble": "V uradnem odjemalcu Mumble",
+    "bridgeNote": "Ponazoritev: natančno besedilo določi vsak vtičnik.",
+    "installTitle": "Nameščeno v minuti",
+    "installBody": "Vtičniki so v nastavitvah in preden pridejo na tvoj računalnik, vidiš, kaj sme vsak od njih.",
+    "steps": [
+      {
+        "title": "Brskaj",
+        "body": "Nastavitve → Vtičniki → Brskanje."
+      },
+      {
+        "title": "Preveri",
+        "body": "Izberi vtičnik in preglej njegova dovoljenja."
+      },
+      {
+        "title": "Namesti",
+        "body": "Njegova ikona se pojavi v vrstici vtičnikov pod drevesom kanalov."
+      }
+    ],
+    "stripLabel": "Vtičniki",
+    "stripChannels": [
+      "Preddverje",
+      "Večer racije",
+      "Odsoten"
+    ],
+    "safeTitle": "Varno že v zasnovi",
+    "safeBody": "Vtičnik je gost v tvoji aplikaciji. Tu so hišna pravila.",
+    "safe": {
+      "sandbox": {
+        "title": "Strog peskovnik",
+        "body": "Vsak vtičnik je majhen program WebAssembly v strogem peskovniku. Brez neposrednega dostopa do omrežja ali datotek; vmesnik nariše Mumcord iz vgrajenih gradnikov."
+      },
+      "permissions": {
+        "title": "Dovoljenja, ki jih vidiš",
+        "body": "Navedena so pred namestitvijo. Izbirna lahko kadar koli izklopiš, posodobitve, ki potrebujejo več, pa počakajo na tvojo odobritev."
+      },
+      "signed": {
+        "title": "Podpisano od začetka do konca",
+        "body": "Register in vsak paket sta podpisana z minisign, Mumcord ju preveri pred namestitvijo. Zasilno stikalo lahko slabo različico izklopi povsod."
+      },
+      "server": {
+        "title": "Brez sprememb na strežniku",
+        "body": "Deluje s strežnikom Mumble brez sprememb. Skrbnik ne rabi namestiti ničesar."
+      },
+      "off": {
+        "title": "Eno stikalo za vse",
+        "body": "Nič ni vnaprej nameščenega. „Izklopi vse vtičnike“ v Nastavitve → Vtičniki ali v ukazni paleti (Ctrl+Shift+P) ustavi vse vtičnike naenkrat."
+      },
+      "langs": {
+        "title": "V tvojem jeziku",
+        "body": "Na voljo v vseh 24 jezikih Mumcorda."
+      }
+    },
+    "devLabel": "Za razvijalce",
+    "devTitle": "Izdelaj svojega",
+    "devBody": "Vtičnike pišeš v Rustu in jih prevedeš v WebAssembly (komponentni model, vmesnik `mumcord:plugin@1.0.0`). Repozitorij vsebuje predlogo, dokumentacijo in izvorno kodo vsakega uradnega vtičnika.",
+    "cliTitle": "Eno orodje za celotno pot",
+    "cli": [
+      {
+        "cmd": "new",
+        "body": "Ustvari vtičnik iz predloge."
+      },
+      {
+        "cmd": "build",
+        "body": "Ponovljivo ga zgradi."
+      },
+      {
+        "cmd": "check",
+        "body": "Preveri paket."
+      },
+      {
+        "cmd": "test",
+        "body": "Požene testne scenarije proti navideznemu gostitelju."
+      },
+      {
+        "cmd": "serve-registry",
+        "body": "Postreže lokalni register za preizkus v Mumcordu (razvijalski način v Nastavitve → Vtičniki)."
+      }
+    ],
+    "docsTitle": "Dokumentacija",
+    "docs": {
+      "start": "Prvi koraki",
+      "api": "API",
+      "manifest": "Manifest",
+      "permissions": "Dovoljenja",
+      "building": "Gradnja",
+      "testing": "Testiranje",
+      "publishing": "Objava",
+      "repos": "Tvoj lasten repozitorij"
+    },
+    "submitTitle": "V uradni register",
+    "submitBody": "Odpri pull request v Mumcord/plugins, ki doda `plugins/<id>/`. Potrebuje eno odobritev vzdrževalca in zelen CI.",
+    "checksTitle": "Kaj preverja CI",
+    "checks": [
+      "Preverjanje sheme",
+      "Ponovljiva ponovna gradnja",
+      "Podpis avtorja",
+      "Razlika v dovoljenjih",
+      "Preizkus nalaganja z navideznim gostiteljem",
+      "Pregled licenc"
+    ],
+    "rulesTitle": "Pravila",
+    "rules": [
+      "Licenca, ki jo odobri OSI",
+      "Ponovljiva gradnja",
+      "Brez oglasov, sledenja, plačil ali loot boxov"
+    ],
+    "policy": "Pravilnik o pregledu",
+    "ownRepoTitle": "Ali pa poženi svojega",
+    "ownRepoBody": "Vsak lahko vzdržuje svoj repozitorij vtičnikov. Uporabniki ga dodajo v Nastavitve → Vtičniki.",
+    "licenceTitle": "Licence",
+    "licenceBody": "Uradni vtičniki so pod AGPL-3.0. Predloga, dokumentacija in SDK so pod Apache-2.0.",
+    "peopleTitle": "Naredili so",
+    "endTitle": "Imaš idejo za vtičnik?",
+    "endBody": "Vse je odprto: predloga, dokumentacija in vsak uradni vtičnik.",
+    "endRepo": "Odpri repozitorij vtičnikov",
+    "copy": "Kopiraj",
+    "copied": "Kopirano",
+    "install": "Namesti v Mumcord",
+    "pluginPage": "Stran vtičnika",
+    "installNote": "Gumbi za namestitev odprejo vtičnik v Mumcordu 0.6.0 ali novejšem, kjer namestitev potrdiš. Če se nič ne odpre, so podrobnosti na strani vtičnika.",
+    "galleryLabel": "Posnetki zaslona",
+    "galleryTitle": "Poglej jih v Mumcordu",
+    "galleryBody": "Naravnost iz Mumcorda 0.6.0, v temni in svetli temi.",
+    "dark": "Temna",
+    "light": "Svetla",
+    "shots": {
+      "browse": {
+        "caption": "Uradne vtičnike prebrskaj kar v Nastavitvah.",
+        "alt": "Nastavitve Mumcorda, Vtičniki, zavihek Brskanje s petimi uradnimi vtičniki (Odmevčki, Metalec kock, EVE Fit, Mumbot Music in Anketa), vsak z ikono in gumbom Namesti."
+      },
+      "permissions": {
+        "caption": "Vsak vtičnik vnaprej pove, kaj sme početi.",
+        "alt": "Poziv za namestitev EVE Fita z dovoljenji, označenimi kot obvezna, izbirnim stikalom in poljem z navedbo, česar vtičnik nikoli ne dobi."
+      },
+      "progress": {
+        "caption": "Podpisani paketi se pred namestitvijo preverijo.",
+        "alt": "Poziv za namestitev EVE Fita s trakom napredka z napisom »Checking signature…« nad seznamom dovoljenj."
+      },
+      "poll": {
+        "caption": "Anketa svoje sporočilo v klepetu zamenja z živo kartico.",
+        "alt": "Klepet v Mumcordu, v katerem se Bobova anketa »Which map tonight?« prikazuje kot kartica s stolpci glasov: Glacier 2 glasova, Harbor in Canyon 0."
+      },
+      "vote": {
+        "caption": "Glasuj v stranski plošči; vsi vidijo, kako se število posodablja.",
+        "alt": "Stranska plošča ankete ob klepetu z možnostmi in izbranim Glacier."
+      },
+      "echolings": {
+        "caption": "Odmevčki: ljubljenček, ki raste, medtem ko se družite.",
+        "alt": "Bobova profilna kartica z njegovim Odmevčkom »Moss«, žetoni vezi in niza ter gumbom »Pat Moss«; značke ljubljenčkov ob imenih v drevesu kanalov."
+      },
+      "snackrace": {
+        "caption": "S prijateljevimi Odmevčki tekmuj do prigrizka.",
+        "alt": "Snack Race v teku s progami za You in Bob, premikajočim se območjem prigrizka in gumbom Hop!."
+      },
+      "eveCard": {
+        "caption": "Prilepi EVE Online fit in postane urejena kartica.",
+        "alt": "Klepetalna kartica za fit Algos »Evening Roam«, ki ga je prilepila Carol, z žetoni rež, droni in števili tovora ter gumboma Copy fitting in Open."
+      },
+      "eveWheel": {
+        "caption": "Open prikaže celoten kolut opreme in statistiko.",
+        "alt": "Pogovorno okno EVE Fit z ladjo Algos v kolesu opreme, ikonami modulov in statistiko kondenzatorja, napada, obrambe, ciljanja, navigacije in dronov."
+      },
+      "eveCargo": {
+        "caption": "Hangar za drone, tovorni prostor in obvestilo podjetja CCP.",
+        "alt": "Spodnji del okna EVE Fit: hangar za drone s Hammerhead II in Hobgoblin II, tovorni prostor s strelivom in repair paste ter obvestilo o avtorskih pravicah podjetja CCP spodaj."
+      }
+    },
+    "sdkNote": "Orodje in SDK sta na crates.io. V tvojem Cargo.toml:",
+    "docsAll": "Vsa dokumentacija",
+    "wiki": "Wiki"
   }
 }

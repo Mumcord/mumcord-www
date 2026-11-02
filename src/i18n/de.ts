@@ -28,6 +28,7 @@ export const de = {
     features: { title: "Funktionen", desc: "Alles, was Mumcord kann, mit Screenshots" },
     games: { title: "Spiele", desc: "Overlay, Positional Audio und Anti-Cheat" },
     themes: { title: "Themes", desc: "Looks zum Kopieren, hell und dunkel" },
+    plugins: { title: "Plugins", desc: "Umfragen, Würfel und mehr" },
     roadmap: { title: "Roadmap", desc: "Was fertig ist und was als Nächstes kommt" },
     changelog: { title: "Changelog", desc: "Was jede Version gebracht hat" },
     how: { title: "So funktioniert's", desc: "Ein Client für jeden Mumble-Server" },
@@ -81,10 +82,11 @@ export const de = {
     note: "Nur eine Animation. Die Seite nutzt dein Mikrofon nicht.",
   },
   spotlight5: {
-    label: "Neu in 0.5.0",
-    labelSoon: "Bald: 0.5.0",
+    label: "Neu in 0.5.0/0.6.0",
+    labelSoon: "Bald: 0.5.0/0.6.0",
     title: "Mehr Ruhe. Mehr du. Mehr Klang.",
     body: "0.5.0 bringt Epic 3: eine Benachrichtigungszentrale, Blockieren, mehrere Identitäten, einen neuen Kanalbaum, Musik im Chat, einen Low-Latency-Modus zum Musizieren und direkte Verbindungen über ein Relay.",
+    plugins: { title: "Plugins", body: "0.6.0 bringt kleine, sichere Extras zum Sprachchat: Umfragen, faire Würfel, ein Wesen aus Klang und eine Fernbedienung für den Musikbot. Ohne Änderung am Server.", more: "Zu den Plugins" },
     tiles: {
       notifications: { title: "Alles an einem Ort", body: "Die Glocke sammelt Erwähnungen, Antworten, Anfragen und Einladungen von allen Servern. Wer nervt, wird blockiert, erkannt am Zertifikat." },
       identities: { title: "Mehrere Identitäten", body: "Privat, Clan, Arbeit: Pro Server wählst du, als wer du dich verbindest." },

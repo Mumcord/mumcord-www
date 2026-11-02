@@ -97,6 +97,10 @@
       "toolQuiz": {
         "title": "mumquiz",
         "desc": "Tietovisabotti palvelimellesi"
+      },
+      "plugins": {
+        "title": "Lisäosat",
+        "desc": "Äänestykset, nopat ja muuta"
       }
     },
     "hero": {
@@ -536,8 +540,8 @@
       "toolTitle": "Osallistujat"
     },
     "spotlight5": {
-      "label": "Uutta versiossa 0.5.0",
-      "labelSoon": "Tulossa: 0.5.0",
+      "label": "Uutta versiossa 0.5.0/0.6.0",
+      "labelSoon": "Tulossa: 0.5.0/0.6.0",
       "title": "Enemmän rauhaa. Enemmän sinua. Enemmän ääntä.",
       "body": "0.5.0 tuo Epic 3:n: ilmoituskeskuksen, estot, useita identiteettejä, uuden kanavapuun, musiikkia chattiin, matalan viiveen tilan yhdessä soittamiseen ja suorat yhteydet releen kautta.",
       "tiles": {
@@ -567,7 +571,12 @@
         }
       },
       "features": "Kaikki ominaisuudet",
-      "changelog": "Kaikki uutta"
+      "changelog": "Kaikki uutta",
+      "plugins": {
+        "title": "Lisäosat",
+        "body": "0.6.0 tuo äänichatin päälle pieniä, turvallisia lisiä: äänestyksiä, reiluja noppia, äänestä tehdyn otuksen ja kaukosäätimen musiikkibotillesi. Palvelinmuutoksia ei tarvita.",
+        "more": "Tutustu lisäosiin"
+      }
     },
     "serverCta": {
       "title": "Oma palvelin viidessä minuutissa",
@@ -1112,6 +1121,89 @@
         ]
       },
       {
+        "id": "plugins",
+        "title": "Lisäosat",
+        "features": [
+          {
+            "id": "plugins",
+            "title": "Lisäosat asetuksista",
+            "body": "Asetukset → Lisäosat, jossa välilehdet Asennetut, Selaa, Päivitykset ja Repositoriot: viralliset lisäosat luokittain ja hakuineen; kytke ne päälle ja pois, muuta oikeuksia ja asetuksia, vie tai nollaa niiden tiedot, poista ne. Mitään ei ole valmiiksi asennettuna, ja lisäosat toimivat myös silloin, kun et ole yhteydessä.",
+            "alt": "Mumcordin Asetukset, Lisäosat, Selaa-välilehti, jossa viisi virallista lisäosaa (Echolingit, Nopanheitto, EVE Fit, Mumbot Music ja Äänestys), kullakin kuvake ja Asenna-painike."
+          },
+          {
+            "id": "plugin-permissions",
+            "title": "Näe ensin, mitä lisäosa saa tehdä",
+            "body": "Ennen asennusta Mumcord kertoo selkokielellä, mitä lisäosa haluaa: jokainen oikeus vihreänä, keltaisena tai punaisena, pakolliset lukittuina, valinnaiset kytkiminä. Muutokset tulevat voimaan heti. Lisäosa ei koskaan saa chattiasi, tiedostojasi, mikrofoniasi, varmenteitasi tai salasanojasi.",
+            "alt": "EVE Fitin asennusikkuna, jossa sen oikeudet on merkitty pakollisiksi, lisäksi valinnainen kytkin ja ruutu, jossa luetellaan, mitä lisäosa ei koskaan saa."
+          },
+          {
+            "id": "plugin-places",
+            "title": "Lisäosat siellä, missä niitä tarvitset",
+            "body": "Lisäosapalkki kanavalistan alla, chatin kortit, jotka korvaavat oman viestinsä, vinoviivakomennot kuten /roll, pieni merkki nimien vieressä, osio profiilikorteissa, kohdat hiiren kakkospainikkeen valikossa ja omat ikkunat. Lisäosan lähettämät viestit on merkitty ”via”."
+          },
+          {
+            "id": "plugin-together",
+            "title": "Yhdessä kanavasi kanssa",
+            "body": "Lisäosa puhuu samalle lisäosalle muilla kanavan Mumcord-käyttäjillä, esimerkiksi yhteistä äänestystä varten. Se kulkee tavallisen äänipalvelimen kautta: tavalliset Mumble-palvelimet eivät tarvitse mitään, muut asiakkaat ohittavat sen, ja sinä valitset, kuka sen näkee. Lisäosat toimivat jokaisen palvelimen chatissa, johon olet yhteydessä.",
+            "alt": "Äänestyksen sivupaneeli chatin vieressä vaihtoehtoineen ja Glacier valittuna."
+          },
+          {
+            "id": "plugin-safety",
+            "title": "Hiekkalaatikko, allekirjoitukset ja hätäkatkaisin",
+            "body": "Lisäosat toimivat eristettyinä ilman pääsyä verkkoon, tiedostoihin tai ääneen, muistille ja ajalle asetetuin rajoin; jatkuvasti kaatuva kytketään pois, eikä äänesi koskaan häiriinny. Viralliset lisäosat on allekirjoitettu ja tarkistettu. Hätäkatkaisin voi poistaa haitallisen lisäosan käytöstä kaikilta, ”Sammuta kaikki lisäosat” pysäyttää ne kerralla, ja --no-plugins käynnistää ilman yhtäkään.",
+            "alt": "EVE Fitin asennusikkuna, jossa oikeuslistan yläpuolella on edistymispalkki ja teksti ”Checking signature…”."
+          },
+          {
+            "id": "plugin-updates",
+            "title": "Päivityksiä ilman yllätyksiä",
+            "body": "Asenna automaattisesti, ilmoita vain, tai pois päältä. Päivitys, joka haluaa lisää oikeuksia tai tulee joltakulta muulta, odottaa aina hyväksyntääsi. Lisäosa, joka ei käynnisty päivityksen jälkeen, palautetaan edelliseen versioon, ja minkä tahansa lisäosan voi kiinnittää versioonsa."
+          },
+          {
+            "id": "plugin-suggestions",
+            "title": "Palvelimet ehdottavat lisäosia",
+            "body": "Palvelimen Mumbot voi suositella lisäosia, joita sen yhteisö käyttää. Ehdotus saapuu rauhallisesti ilmoituskeskukseen vaihtoehtoineen Asenna, Tiedot, Ei nyt ja Älä kysy enää tällä palvelimella. Mitään ei asenneta ilman hyväksyntääsi."
+          },
+          {
+            "id": "plugin-repositories",
+            "title": "Omat lisäosarepositoriosi",
+            "body": "Jopa kymmenen lisärepositoriota kohdassa Asetukset → Lisäosat → Repositoriot, näytettynä nimellä ja avaimen sormenjäljellä. Niiden lisäosat merkitään kaikkialla ”Epävirallinen”, ja jos allekirjoitusavain vaihtuu, repositorio keskeytetään, kunnes vahvistat."
+          },
+          {
+            "id": "plugin-developers",
+            "title": "Tee omia lisäosia",
+            "body": "Lisäosat ovat Rustia, käännettynä WebAssemblyksi. cargo install mumcord-plugin hakee komentorivityökalun, ja mumcord-plugin new luo projektin pohjasta. Kehittäjätila lataa lisäosan suoraan kansiosta, uudelleenlatauksella ja lokilla."
+          },
+          {
+            "id": "poll",
+            "title": "Äänestys",
+            "body": "Kysymys 2–10 vaihtoehdolla, reaaliaikaiset tulokset chat-kortissa ja paneelissa, yksi ääni per henkilö. Ne, joilla ei ole Mumcordia, äänestävät kirjoittamalla !poll 1, !poll 2 … chattiin.",
+            "alt": "Mumcordin chat, jossa Bobin äänestys ”Which map tonight?” näkyy korttina äänipalkkeineen: Glacier 2 ääntä, Harbor ja Canyon 0."
+          },
+          {
+            "id": "dice",
+            "title": "Nopanheitto",
+            "body": "/roll komennoilla d20, 2d6+3, etu ja haitta tai pienimmän tai suurimman pudotus, sekä pikaheittopainikkeet. Heitot tehdään yhdessä kanavan kanssa, joten kukaan ei voi huijata, ja jokainen tulos kertoo, onko se tarkistettu."
+          },
+          {
+            "id": "echolings",
+            "title": "Echolingit",
+            "body": "Pieni otus lisäosapalkissasi: 5 lajia, 4 kasvuvaihetta, 3 väriä. Silitä, ruoki, leiki tai anna sen ottaa nokoset; se ei koskaan kuole, nukkuu Älä häiritse -tilassa eikä mitään ole ostettavana. Kaverit näkevät sen merkkinä ja profiilikortissasi, voivat käydä sen luona, ja mukana on kaksi minipeliä.",
+            "alt": "Bobin profiilikortti hänen Echolingillään ”Moss”, side- ja putkichipit sekä ”Pat Moss” -painike; lemmikkimerkit nimien vieressä kanavapuussa."
+          },
+          {
+            "id": "mumbot-music",
+            "title": "Mumbot Music",
+            "body": "Mumbot-musiikkibotin kaukosäädin: nyt soi, ohita, pysäytä, äänenvoimakkuus, jono ja kappaleiden lisäys. Napsauta bottia hiiren kakkospainikkeella → ”Määritä botti”; API-avain säilytetään järjestelmäsi avainnipussa."
+          },
+          {
+            "id": "eve-fit",
+            "title": "EVE Fit",
+            "body": "Liitä EVE Online -fitti chattiin, niin kaikki, joilla on lisäosa, näkevät aluskortin. Yksi napsautus avaa fittipyörän kondensaattorilla, hyökkäyksellä, puolustuksella ja navigoinnilla, offline Mumcordin sisällä, ja ”Kopioi fitti” vie sen takaisin ulos.",
+            "alt": "EVE Fit -ikkuna, jossa Algos-alus on varustuspyörän sisällä, moduulikuvakkeet sekä kondensaattorin, hyökkäyksen, puolustuksen, kohdistuksen, navigoinnin ja droonien tilastot."
+          }
+        ]
+      },
+      {
         "id": "comfort",
         "title": "Mukavuus",
         "features": [
@@ -1166,7 +1258,7 @@
           {
             "id": "website-look",
             "title": "Tämän sivuston ilme",
-            "body": "Hehkuvat painikkeet, liukuvärit, lasiefektit ja kevyt filmirae, myös sovelluksessa, voi poistaa käytöstä.",
+            "body": "Hehkuvat painikkeet, liukuvärit ja kevyt filmirae, myös sovelluksessa, voi poistaa käytöstä.",
             "alt": "Pika-asetukset huurrelasivalikkona hieman rakeisen taustan päällä"
           },
           {
@@ -1196,12 +1288,96 @@
             "title": "Täydellinen ilmoitusalueen valikko",
             "body": "Ilmoitusalueen valikko näyttää jokaisen yhdistetyn palvelimen tilan ja kanavan kera, mikrofonin mykistyksen, kuuloketten mykistyksen ja Älä häiritse -tilan, siirtää puheen toiselle palvelimelle tai kanavalle ja avaa viimeisimmät chatit. Kuvake näyttää puhumisen, mykistyksen, lukemattomat viestit ja Älä häiritse -tilan. Mumcord käynnistyy halutessasi kirjautuessa, kaikissa järjestelmissä.",
             "alt": "Ilmoitusalueen valikko palvelimineen, puhekanavan alavalikkoineen ja viimeisimpine chatteineen"
+          },
+          {
+            "id": "sound-themes",
+            "title": "Kaksi äänimaailmaa",
+            "body": "”Classic” tuttuine lyhyine äänineen on oletus, ”Rich” tuo uudet, täyteläisemmät äänet, esikuuntelulla kohdassa Asetukset → Äänet. Lisäksi oma ääni kanavan vaihdolle ja lyhyt hyvästi, kun suljet Mumcordin puhekanavalla ollessasi."
+          },
+          {
+            "id": "start-screen",
+            "title": "Nopeampi käynnistys",
+            "body": "Aloitusnäyttö, jossa logo teemasi päällä tyhjän valkoisen ikkunan sijaan, ja noin kolmanneksen vähemmän koodia ennen ensimmäistä näyttöä: asetukset, ohjattu toiminto ja näytön jako latautuvat vasta, kun avaat ne."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.6.1",
+      "teaser": "Lisäosat myös Macilla, näytönjaolle oma äänenvoimakkuus, umpinaiset valikkotaustat ja ”Classic” oletusääneksi.",
+      "summary": "Pieni päivitys 0.6.0:n jälkeen: lisäosat toimivat nyt myös Macilla, näytönjaolla on oma äänenvoimakkuus, valikoilla ja korteilla on umpinainen tausta ja uudet asennukset alkavat ääniteemalla ”Classic”. Windowsissa sovellus ja asennusohjelma on nyt allekirjoitettu.",
+      "groups": [
+        {
+          "title": "Parannettu",
+          "items": [
+            "Uudet asennukset alkavat ääniteemalla ”Classic”. Jos olet jo valinnut teeman ”Rich”, se pysyy (#339).",
+            "Hiiren oikean painikkeen valikoilla, ponnahdusikkunoilla, kohdistuskorteilla ja profiilikortilla on himmeän lasin sijaan umpinainen tausta, joten teksti pysyy luettavana myös siellä, missä sumennusta ei ole, esimerkiksi Linuxissa (#337).",
+            "Windows: sovellus ja asennusohjelma on nyt allekirjoitettu koodinallekirjoitusvarmenteella (#340)."
+          ]
+        },
+        {
+          "title": "Korjattu",
+          "items": [
+            "Näytönjaon äänenvoimakkuuden muuttaminen ei enää muuta ihmisen ääntä. Kummallakin on oma liukusäädin, ja Mumcord muistaa molemmat henkilökohtaisesti (#333).",
+            "macOS: Mumcord ei enää kaadu heti, kun lisäosa käynnistyy, esimerkiksi Echolingit."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.6.0",
+      "teaser": "Lisäosat: äänestykset, nopat, Echolingit, Mumbot Music ja EVE Fit, turvassa hiekkalaatikossa eikä palvelinmuutoksia.",
+      "summary": "Mumcord saa lisäosat: pieniä, turvallisia lisiä, jotka asennetaan asetuksista, eristetään hiekkalaatikkoon eikä palvelimeen tarvitse koskea. Alkuun tarjolla on äänestykset, reilut nopat, Echolingit, kaukosäädin Mumbot-musiikkibotille ja EVE Fit. Lisäksi uusi äänimaailma, hyvästiääni ja nopeampi käynnistys aloitusnäytön kanssa.",
+      "groups": [
+        {
+          "title": "Uutta",
+          "items": [
+            "Lisäosat: pieniä lisäosia, jotka antavat Mumcordille uusia ominaisuuksia. Asetukset → Lisäosat sisältää välilehdet Asennetut, Selaa, Päivitykset, Repositoriot ja Kehittäjätilassa Kehittäjä. Mitään ei ole valmiiksi asennettuna, lisäosat toimivat myös silloin, kun et ole yhteydessä, ja ”Lisäosat” löytyy myös komentopaletista.",
+            "Ennen jokaista asennusta Mumcord näyttää selkokielellä, mitä lisäosa haluaa tehdä: jokainen oikeus vihreänä, keltaisena tai punaisena, pakolliset lukittuina, valinnaiset kytkiminä. Oikeuksia voi muuttaa myöhemmin, ja ne tulevat voimaan heti. Lisäosa ei koskaan saa chattiasi, tiedostojasi, mikrofoniasi, varmenteitasi tai salasanojasi.",
+            "Asennus ja päivitys näyttävät edistymispalkin kokoineen, sitten ”Tarkistetaan allekirjoitusta”, ”Puretaan” ja ”Käynnistetään”; epäonnistuneen latauksen voi yrittää uudelleen.",
+            "Lisäosat näkyvät siellä, missä käytät Mumcordia: lisäosapalkki kanavalistan alla, chatin kortit, vinoviivakomennot kuten /roll, pieni merkki nimien vieressä, osio profiilikorteissa, kohdat henkilön hiiren kakkospainikkeen valikossa ja omat ikkunat. Lisäosan lähettämät viestit on merkitty ”via”.",
+            "Lisäosan kortti korvaa chat-viestin, johon se kuuluu, kuten liitetyn fitin tai äänestyksen. Korvatuissa viesteissä näkyy lisäosan kuvake ja nimi, ja ”Näytä alkuperäinen teksti” tuo ne takaisin. Myös vanhemmat viestit saavat korttinsa ilman, että ääniä lasketaan kahdesti.",
+            "Lisäosa voi tunnistaa tiettyjä chat-viestejä, kuten liitetyn pelifitin. Asennuskehote kertoo lisäosan omin sanoin, mitä se tunnistaa; se saa sitten vain vastaavat viestit kanavaltasi, ei koskaan estämiltäsi ihmisiltä, eikä muuta chat-tekstiä.",
+            "Lisäosat vaihtavat tietoja saman lisäosan kanssa muiden kanavasi ihmisten Mumcordissa, esimerkiksi yhteistä äänestystä varten. Se kulkee tavallisen äänipalvelimen kautta: tavalliset Mumble-palvelimet eivät tarvitse mitään, muut asiakkaat ohittavat sen, ja sinä valitset, kuka sen näkee. Lisäosien chat-ominaisuudet toimivat jokaisella palvelimella, johon olet yhteydessä.",
+            "Lisäosat voivat lähettää ilmoituksia. Ne päätyvät ilmoituskeskukseen otsikon ”Lisäosat” alle, ne voi kytkeä pois lisäosakohtaisesti ja ne pysyvät hiljaa Älä häiritse -tilassa.",
+            "Lisäosapäivityksillä on oma asetuksensa: automaattinen (oletus), ilmoita vain tai pois. Päivitys, joka haluaa lisää oikeuksia tai tulee joltakulta muulta, odottaa aina hyväksyntääsi; lisäosa, joka ei käynnisty päivityksen jälkeen, palautetaan edelliseen versioon; ja minkä tahansa lisäosan voi kiinnittää versioonsa. Uudet valinnaiset oikeudet pysyvät pois päältä ja tarjotaan kohdassa Päivitykset.",
+            "Palvelimet voivat ehdottaa lisäosia: palvelimen Mumbot suosittelee lisäosia, jotka ilmestyvät ilmoituskeskukseen vaihtoehdoin Asenna, Tiedot, Ei nyt ja Älä kysy enää tällä palvelimella. Mitään ei asenneta ilman hyväksyntääsi.",
+            "Omat repositoriot: jopa kymmenen kohdassa Asetukset → Lisäosat → Repositoriot, nimellä ja avaimen sormenjäljellä. Niiden lisäosat ovat kaikkialla ”Epävirallisia”, ensimmäinen asennus varoittaa, ja jos allekirjoitusavain vaihtuu, repositorio keskeytetään, kunnes vahvistat.",
+            "Kehittäjätila (Asetukset → Lisäasetukset) lisää Kehittäjä-välilehden: lataa, lataa uudelleen ja poista lisäosa kansiosta, lokin kanssa. Tekijöille on lisäosien SDK, pohja ja mumcord-plugin-komentorivityökalu crates.iossa (cargo install mumcord-plugin).",
+            "mumcord://plugins/<id> -linkit avaavat virallisen lisäosan tiedot; ne eivät koskaan asenna mitään.",
+            "Viralliset lisäosat, kukin kaikilla 24 kielellä: Äänestys (2–10 vaihtoehtoa, reaaliaikaiset tulokset, yksi ääni per henkilö), Nopanheitto (/roll komennoilla d20, 2d6+3, etu ja haitta, heitetty yhdessä ja tarkistettu), Echolingit (otus, jolla on 5 lajia, 4 vaihetta ja 3 väriä ja joka ei koskaan kuole eikä myy mitään, kaksi minipeliä mukana), Mumbot Music (nyt soi, ohita, äänenvoimakkuus, jono, kappaleiden lisäys; napsauta bottia hiiren kakkospainikkeella → ”Määritä botti”) ja EVE Fit (aluskortti ja fittipyörä liitetyille EVE Online -fiteille).",
+            "Mumbot esittelee itsensä Mumcordille: Mumcord tietää, ketkä käyttäjät ovat botteja ja mitä ne osaavat, ja ”Määritä botti” näkyy vain boteissa, jotka tarjoavat musiikkia.",
+            "Turvallisuus: lisäosat toimivat suljetussa hiekkalaatikossa muistille ja ajalle asetetuin rajoin. Jatkuvasti kaatuva kytketään pois, eikä äänesi koskaan häiriinny. ”Sammuta kaikki lisäosat” (asetuksissa ja komentopaletissa) pysäyttää ne kaikki kerralla, ja mumcord --no-plugins käynnistää ilman yhtäkään. Viralliset lisäosat allekirjoitetaan ja tarkistetaan asennuksessa ja jokaisen päivityksen jälkeen; hätäkatkaisin voi poistaa haitallisen lisäosan käytöstä, ja se tarkistetaan päivittäin.",
+            "Yksityisyys: lisäosien haku ei lähetä tunnisteita eikä listaa lisäosistasi. Lisäosien tiedot pysyvät koneellasi, ja lisäosan poistamisen jälkeen vielä 30 päivää, ellet poista niitä.",
+            "Toinen äänimaailma: ”Rich” uusine, täyteläisempine ääninensä yhdistämiseen, viesteihin, mainintoihin, mykistykseen, tuloihin ja lähtöihin sekä potkuihin ja porttikieltoihin on nyt oletus. Kohdassa Asetukset → Äänet voi vaihtaa ”Classiciin”, tuttuihin lyhyisiin ääniin, esikuuntelun kanssa (#325).",
+            "Mumcordin sulkeminen puhekanavalla ollessasi soittaa lyhyen hyvästiäänen, jotta huomaat juuri poistuneesi. Se soi vain oikeassa sulkemisessa, ei koskaan pienennettäessä ilmoitusalueelle, ja sillä on oma kytkimensä (#325).",
+            "Kanavan vaihdolla puhekanavalla ollessa on oma lyhyt äänensä yhdistämisäänen sijaan, omalla kytkimellään ja molemmissa äänimaailmoissa (#325)."
+          ]
+        },
+        {
+          "title": "Parannettu",
+          "items": [
+            "Mumcord käynnistyy nopeammin: koodi ennen ensimmäistä näyttöä on noin kolmanneksen pienempi. Asetukset, käyttöönotto-ohjattu toiminto, yhteiskatselu, näytön jako, palvelinselain ja koodin korostus latautuvat vasta, kun avaat ne (#323).",
+            "Tyhjän valkoisen ikkunan ja ”Ladataan…”-tekstin sijaan on aloitusnäyttö: logo teemasi päällä ja ohut latauspalkki, joka häipyy sovellukseen; kun liike on vähennetty, siirtymä tapahtuu ilman liikettä (#323).",
+            "Asetusten sivupalkin Lisäosat-kohta näyttää, kuinka monta päivitystä ja uutta valinnaista oikeutta odottaa.",
+            "Korkeammilla lisäosakorteilla ei enää ole omaa vierityspalkkia: ne leikataan pehmeällä häivytyksellä, ja ”Näytä lisää” avaa ne.",
+            "Näytönlukijat lukevat korvatun chat-rivin korttina (esimerkiksi ”Kortti lisäosalta Äänestys: Lounas kahdeltatoista?”) ja ohittavat piilotetut rivit."
+          ]
+        },
+        {
+          "title": "Korjattu",
+          "items": [
+            "Liittäminen Ctrl+V:llä toimii taas joillakin Linux-työpöydillä.",
+            "Asetusten sivupalkin ”Aktiivinen esiasetus” -kortin ”Vaihda”-linkki ei enää työnny ulos kortista pitkillä nimillä (#321).",
+            "Samanaikaisesti yhdistettyjen palvelimien numerokenttä kohdassa Asetukset → Palvelin ei enää veny koko kortin levyiseksi (#320).",
+            "Sisältöään vaihtavissa dialogeissa kohdistus pysyy dialogissa, joten Esc ja Tab toimivat edelleen.",
+            "Profiilikortti, joka suljettiin Esc-näppäimellä heti sen painikkeen käytön jälkeen, avautuu taas sen jälkeen."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.5.0",
       "teaser": "Ilmoituskeskus, kaikki yksityisviestit yhdessä paikassa, estäminen, useita identiteettejä ja tuonti Mumblesta.",
@@ -2984,5 +3160,277 @@
         "credit": "Peli ja sen viestit tulevat projektista zorgch/irc-quizbot (GPL-3.0), siirrettynä Rustille ja Mumblen protokollalle, samalla protokollakerroksella kuin Mumcord."
       }
     }
+  },
+  "plugins": {
+    "label": "Lisäosat",
+    "title": "Pieniä lisiä isoihin iltoihin",
+    "description": "Mumcord 0.6.0 tuo lisäosat: äänestyksiä, noppia, äänestä tehdyn lemmikin ja kaukosäätimen musiikkibotillesi. Turvallisia, allekirjoitettuja eikä palvelimeen tarvitse koskea.",
+    "intro": "Mumcord 0.6.0 tuo lisäosat: pieniä, turvallisia lisiä äänichatin päälle. Ne toimivat Mumcordin sisällä, eivät vaadi muutoksia palvelimeen ja toimivat millä tahansa tavallisella Mumble-palvelimella. Virallisen Mumble-asiakkaan käyttäjät näkevät tavallisen tekstirivin siellä, missä sillä on merkitystä, eikä mitään muuta.",
+    "badge": "Uutta Mumcord 0.6.0:ssa",
+    "ctaPlugins": "Tutustu lisäosiin",
+    "ctaDev": "Tee omasi",
+    "pills": [
+      "Hiekkalaatikossa",
+      "Allekirjoitettu",
+      "Ei palvelinmuutoksia",
+      "24 kieltä"
+    ],
+    "listTitle": "Ensimmäiset lisäosat",
+    "listBody": "Mitään ei ole valmiiksi asennettuna. Valitse, mistä porukkasi tykkää, ja jätä loput.",
+    "source": "Lähdekoodi",
+    "soon": "Tulossa pian",
+    "plugins": {
+      "poll": {
+        "name": "Äänestys",
+        "tagline": "Kysy kanavalta jotain jopa kymmenellä vaihtoehdolla ja seuraa äänien kertymistä livenä.",
+        "points": [
+          "2–10 vaihtoehtoa, reaaliaikaiset äänipalkit chat-kortissa",
+          "Ei Mumcordia? Äänestä kirjoittamalla `!poll 1`, `!poll 2` … chattiin",
+          "Tulokset näytetään, kun äänestys päättyy"
+        ]
+      },
+      "dice": {
+        "name": "Nopanheitto",
+        "tagline": "`/roll d20` tai `2d6+3`, reiluilla heitoilla, joita muut voivat todistaa ja tarkistaa.",
+        "points": [
+          "Etu ja haitta, pienimmän tai suurimman pudotus, jopa 20 noppaa",
+          "Muut kanavan Mumcord-käyttäjät todistavat jokaisen heiton, joten kukaan ei voi huijata",
+          "Heittohistoria, jonka voi avata"
+        ]
+      },
+      "echolings": {
+        "name": "Echolingit",
+        "tagline": "Pieni äänestä tehty otus, joka kasvaa, kun vietät aikaa kavereiden kanssa.",
+        "points": [
+          "5 lajia, 4 kasvuvaihetta, 3 väriä",
+          "Kasvaa yhdessä puhumisesta ja chattailusta",
+          "Ei kuole koskaan, ei nalkuta koskaan"
+        ]
+      },
+      "mumbot-music": {
+        "name": "Mumbot Music",
+        "tagline": "Kaukosäädin Mumbot-musiikkibotillesi.",
+        "points": [
+          "Napsauta bottia hiiren kakkospainikkeella → ”Määritä botti”",
+          "Nyt soi, ohita, äänenvoimakkuus, jono ja kappaleiden lisäys",
+          "Tarvitsee Mumbotin palvelimelle: tavallisen Mumble-käyttäjän, ei palvelinmuutoksia"
+        ]
+      },
+      "eve-fit": {
+        "name": "EVE Fit",
+        "tagline": "Liitä EVE Online -fitti chattiin, niin kaikki näkevät aluskortin.",
+        "points": [
+          "Tunnistaa chattiin liitetyt EFT-fitit ja näyttää kortin aluksesta ja moduuleista",
+          "Avaa koko fittinäkymän offline-tilassa suoraan Mumcordissa",
+          "”Kopioi fitti” -painike, ja se on ilmainen"
+        ]
+      }
+    },
+    "mock": {
+      "pollQuestion": "Mitä pelataan tänä iltana?",
+      "pollOptions": [
+        "Deep Rock Galactic",
+        "Valheim",
+        "Jotain uutta"
+      ],
+      "pollVotes": "7 ääntä",
+      "pollLive": "Live",
+      "pollPlain": "Äänestys: Mitä pelataan tänä iltana? 1) Deep Rock Galactic 2) Valheim 3) Jotain uutta",
+      "pollPlainVote": "!poll 2",
+      "rollWitness": "Todistajina 3 kanavalla",
+      "rollHistory": "Historia",
+      "echoStats": [
+        "5 lajia",
+        "4 vaihetta",
+        "3 väriä"
+      ],
+      "musicNow": "Nyt soi",
+      "musicTrack": "Midnight Raid",
+      "musicArtist": "Lo-fia myöhäisiin sessioihin",
+      "musicQueue": "Jono",
+      "musicQueueItems": [
+        "Boss Music, Volume 2",
+        "Campfire Loop"
+      ],
+      "musicAdd": "Lisää kappale",
+      "musicMenu": "Määritä botti",
+      "evePasted": "liittänyt Maya",
+      "eveCopy": "Kopioi fitti"
+    },
+    "eveNotice": "EVE Online and all related logos and images are trademarks or registered trademarks of CCP hf. Mumcord is not affiliated with CCP hf.",
+    "eveCredit": "Fittinäkymä perustuu EVEShipFit-projektin eveship.fit-palveluun.",
+    "bridgeTitle": "Kukaan ei jää ulkopuolelle",
+    "bridgeBody": "Lisäosat eivät vaadi muutoksia palvelimeen ja toimivat millä tahansa tavallisella Mumble-palvelimella. Viralliseen Mumble-asiakkaaseen tottuneet kaverit näkevät tavallisen tekstirivin siellä, missä sillä on merkitystä, eikä mitään muuta.",
+    "bridgeMumcord": "Mumcordissa",
+    "bridgeMumble": "Virallisessa Mumble-asiakkaassa",
+    "bridgeNote": "Havainnekuva: tarkka sanamuoto tulee kustakin lisäosasta.",
+    "installTitle": "Asennettu minuutissa",
+    "installBody": "Lisäosat löytyvät asetuksista, ja näet, mitä kukin saa tehdä, ennen kuin se päätyy koneellesi.",
+    "steps": [
+      {
+        "title": "Selaa",
+        "body": "Asetukset → Lisäosat → Selaa."
+      },
+      {
+        "title": "Tarkista",
+        "body": "Valitse lisäosa ja katso sen oikeudet."
+      },
+      {
+        "title": "Asenna",
+        "body": "Sen kuvake ilmestyy lisäosapalkkiin kanavapuun alle."
+      }
+    ],
+    "stripLabel": "Lisäosat",
+    "stripChannels": [
+      "Aula",
+      "Raidi-ilta",
+      "AFK"
+    ],
+    "safeTitle": "Turvallisuus suunniteltu mukaan",
+    "safeBody": "Lisäosa on vieras sovelluksessasi. Tässä talon säännöt.",
+    "safe": {
+      "sandbox": {
+        "title": "Tiukka hiekkalaatikko",
+        "body": "Jokainen lisäosa on pieni WebAssembly-ohjelma tiukassa hiekkalaatikossa. Ei suoraa verkko- tai tiedostokäyttöä; Mumcord piirtää käyttöliittymän valmiista rakennuspalikoista."
+      },
+      "permissions": {
+        "title": "Oikeudet näkyvissä",
+        "body": "Esitellään ennen asennusta. Valinnaiset voi kytkeä pois milloin tahansa, ja päivitykset, jotka tarvitsevat enemmän, odottavat hyväksyntääsi."
+      },
+      "signed": {
+        "title": "Allekirjoitettu päästä päähän",
+        "body": "Rekisteri ja jokainen paketti on allekirjoitettu minisignilla, ja Mumcord tarkistaa ne ennen asennusta. Hätäkatkaisin voi poistaa huonon version käytöstä kaikkialla."
+      },
+      "server": {
+        "title": "Ei palvelinmuutoksia",
+        "body": "Toimii muokkaamattoman Mumble-palvelimen kanssa. Ylläpitäjän ei tarvitse asentaa mitään."
+      },
+      "off": {
+        "title": "Yksi kytkin pysäyttää kaikki",
+        "body": "Mitään ei ole valmiiksi asennettuna. ”Sammuta kaikki lisäosat” kohdassa Asetukset → Lisäosat tai komentopaletissa (Ctrl+Shift+P) pysäyttää kaikki lisäosat kerralla."
+      },
+      "langs": {
+        "title": "Omalla kielellä",
+        "body": "Saatavilla kaikilla 24 Mumcordin kielellä."
+      }
+    },
+    "devLabel": "Kehittäjille",
+    "devTitle": "Tee omasi",
+    "devBody": "Lisäosat kirjoitetaan Rustilla ja käännetään WebAssemblyksi (komponenttimalli, rajapinta `mumcord:plugin@1.0.0`). Repossa ovat pohja, dokumentaatio ja jokaisen virallisen lisäosan lähdekoodi.",
+    "cliTitle": "Yksi työkalu koko matkalle",
+    "cli": [
+      {
+        "cmd": "new",
+        "body": "Luo lisäosan pohjasta."
+      },
+      {
+        "cmd": "build",
+        "body": "Rakentaa sen toistettavasti."
+      },
+      {
+        "cmd": "check",
+        "body": "Tarkistaa paketin."
+      },
+      {
+        "cmd": "test",
+        "body": "Ajaa testiskenaarioita valeisäntää vastaan."
+      },
+      {
+        "cmd": "serve-registry",
+        "body": "Tarjoaa paikallisen rekisterin kokeilua varten Mumcordissa (Kehittäjätila kohdassa Asetukset → Lisäosat)."
+      }
+    ],
+    "docsTitle": "Dokumentaatio",
+    "docs": {
+      "start": "Aloitus",
+      "api": "API",
+      "manifest": "Manifesti",
+      "permissions": "Oikeudet",
+      "building": "Rakentaminen",
+      "testing": "Testaus",
+      "publishing": "Julkaisu",
+      "repos": "Oma repositorio"
+    },
+    "submitTitle": "Viralliseen rekisteriin",
+    "submitBody": "Avaa pull request Mumcord/plugins-repoon, joka lisää `plugins/<id>/`. Tarvitaan yhden ylläpitäjän hyväksyntä ja vihreä CI.",
+    "checksTitle": "Mitä CI tarkistaa",
+    "checks": [
+      "Skeematarkistus",
+      "Toistettava uudelleenrakennus",
+      "Tekijän allekirjoitus",
+      "Oikeuksien erotus",
+      "Lataustesti valeisäntää vastaan",
+      "Lisenssiskannaus"
+    ],
+    "rulesTitle": "Säännöt",
+    "rules": [
+      "OSI-hyväksytty lisenssi",
+      "Toistettava rakennus",
+      "Ei mainoksia, seurantaa, maksuja eikä loot boxeja"
+    ],
+    "policy": "Tarkistuskäytäntö",
+    "ownRepoTitle": "Tai pidä omaa",
+    "ownRepoBody": "Kuka tahansa voi ylläpitää omaa lisäosarepositoriotaan. Käyttäjät lisäävät sen kohdassa Asetukset → Lisäosat.",
+    "licenceTitle": "Lisenssit",
+    "licenceBody": "Viralliset lisäosat ovat AGPL-3.0-lisensoituja. Pohja, dokumentaatio ja SDK ovat Apache-2.0-lisensoituja.",
+    "peopleTitle": "Tekijät",
+    "endTitle": "Onko sinulla idea lisäosaksi?",
+    "endBody": "Kaikki on avointa: pohja, dokumentaatio ja jokainen virallinen lisäosa.",
+    "endRepo": "Avaa lisäosarepo",
+    "copy": "Kopioi",
+    "copied": "Kopioitu",
+    "install": "Asenna Mumcordiin",
+    "pluginPage": "Lisäosan sivu",
+    "installNote": "Asennuspainikkeet avaavat lisäosan Mumcordissa 0.6.0 tai uudemmassa, jossa vahvistat asennuksen. Jos mitään ei avaudu, tiedot löytyvät lisäosan sivulta.",
+    "galleryLabel": "Kuvakaappaukset",
+    "galleryTitle": "Katso ne Mumcordissa",
+    "galleryBody": "Suoraan Mumcord 0.6.0:sta, tummalla ja vaalealla teemalla.",
+    "dark": "Tumma",
+    "light": "Vaalea",
+    "shots": {
+      "browse": {
+        "caption": "Selaa virallisia lisäosia suoraan Asetuksissa.",
+        "alt": "Mumcordin Asetukset, Lisäosat, Selaa-välilehti, jossa viisi virallista lisäosaa (Echolingit, Nopanheitto, EVE Fit, Mumbot Music ja Äänestys), kullakin kuvake ja Asenna-painike."
+      },
+      "permissions": {
+        "caption": "Jokainen lisäosa kertoo etukäteen, mitä se saa tehdä.",
+        "alt": "EVE Fitin asennusikkuna, jossa sen oikeudet on merkitty pakollisiksi, lisäksi valinnainen kytkin ja ruutu, jossa luetellaan, mitä lisäosa ei koskaan saa."
+      },
+      "progress": {
+        "caption": "Allekirjoitetut paketit tarkistetaan ennen asennusta.",
+        "alt": "EVE Fitin asennusikkuna, jossa oikeuslistan yläpuolella on edistymispalkki ja teksti ”Checking signature…”."
+      },
+      "poll": {
+        "caption": "Äänestys korvaa chat-viestinsä elävällä kortilla.",
+        "alt": "Mumcordin chat, jossa Bobin äänestys ”Which map tonight?” näkyy korttina äänipalkkeineen: Glacier 2 ääntä, Harbor ja Canyon 0."
+      },
+      "vote": {
+        "caption": "Äänestä sivupaneelissa; kaikki näkevät lukeman päivittyvän.",
+        "alt": "Äänestyksen sivupaneeli chatin vieressä vaihtoehtoineen ja Glacier valittuna."
+      },
+      "echolings": {
+        "caption": "Echolingit: lemmikki, joka kasvaa, kun vietätte aikaa yhdessä.",
+        "alt": "Bobin profiilikortti hänen Echolingillään ”Moss”, side- ja putkichipit sekä ”Pat Moss” -painike; lemmikkimerkit nimien vieressä kanavapuussa."
+      },
+      "snackrace": {
+        "caption": "Kilpaile ystäviesi Echolingeillä välipalasta.",
+        "alt": "Snack Race käynnissä: kaistat You ja Bob, liikkuva välipalavyöhyke ja Hop!-painike."
+      },
+      "eveCard": {
+        "caption": "Liitä EVE Onlinen fit, ja siitä tulee siisti kortti.",
+        "alt": "Chat-kortti Algos-fitistä ”Evening Roam”, jonka Carol liitti, paikkachipit, droonit ja rahtimäärät sekä painikkeet Copy fitting ja Open."
+      },
+      "eveWheel": {
+        "caption": "Open näyttää koko varustuspyörän ja tilastot.",
+        "alt": "EVE Fit -ikkuna, jossa Algos-alus on varustuspyörän sisällä, moduulikuvakkeet sekä kondensaattorin, hyökkäyksen, puolustuksen, kohdistuksen, navigoinnin ja droonien tilastot."
+      },
+      "eveCargo": {
+        "caption": "Droonitila, rahtitila ja CCP:n huomautus.",
+        "alt": "EVE Fit -ikkunan alaosa: droonitila Hammerhead II:n ja Hobgoblin II:n kanssa, rahtitila ammuksineen ja repair pastoineen sekä CCP:n tekijänoikeushuomautus alareunassa."
+      }
+    },
+    "sdkNote": "Työkalu ja SDK ovat crates.io:ssa. Cargo.tomlissasi:",
+    "docsAll": "Kaikki ohjeet",
+    "wiki": "Wiki"
   }
 }

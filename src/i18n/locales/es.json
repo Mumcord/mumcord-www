@@ -97,6 +97,10 @@
       "toolQuiz": {
         "title": "mumquiz",
         "desc": "Bot de preguntas para tu servidor"
+      },
+      "plugins": {
+        "title": "Plugins",
+        "desc": "Encuestas, dados y más"
       }
     },
     "hero": {
@@ -536,8 +540,8 @@
       "toolTitle": "Colaboradores"
     },
     "spotlight5": {
-      "label": "Novedades en 0.5.0",
-      "labelSoon": "Próximamente: 0.5.0",
+      "label": "Novedades en 0.5.0/0.6.0",
+      "labelSoon": "Próximamente: 0.5.0/0.6.0",
       "title": "Más calma. Más tú. Más sonido.",
       "body": "La 0.5.0 trae el Epic 3: un centro de notificaciones, bloqueo, varias identidades, un nuevo árbol de canales, música en el chat, un modo de baja latencia para hacer música juntos y conexiones directas a través de un relay.",
       "tiles": {
@@ -567,7 +571,12 @@
         }
       },
       "features": "Todas las funciones",
-      "changelog": "Todas las novedades"
+      "changelog": "Todas las novedades",
+      "plugins": {
+        "title": "Plugins",
+        "body": "La 0.6.0 trae pequeños extras seguros que se suman al chat de voz: encuestas, dados justos, una criatura hecha de sonido y un mando a distancia para tu bot de música. Sin cambios en el servidor.",
+        "more": "Conoce los plugins"
+      }
     },
     "serverCta": {
       "title": "Tu propio servidor en cinco minutos",
@@ -1112,6 +1121,89 @@
         ]
       },
       {
+        "id": "plugins",
+        "title": "Plugins",
+        "features": [
+          {
+            "id": "plugins",
+            "title": "Plugins desde Ajustes",
+            "body": "Ajustes → Plugins con las pestañas Instalados, Explorar, Actualizaciones y Repositorios: plugins oficiales por categoría y con búsqueda; actívalos o desactívalos, cambia permisos y ajustes, exporta o restablece sus datos, quítalos. No viene nada preinstalado, y los plugins funcionan aunque no estés conectado.",
+            "alt": "Ajustes de Mumcord, Plugins, pestaña Explorar con cinco plugins oficiales (Echolings, Tirador de dados, EVE Fit, Mumbot Music y Encuesta), cada uno con icono y un botón Instalar."
+          },
+          {
+            "id": "plugin-permissions",
+            "title": "Mira primero lo que puede hacer un plugin",
+            "body": "Antes de instalar, Mumcord te dice con palabras claras lo que quiere un plugin: cada permiso en verde, amarillo o rojo, los obligatorios fijos, los opcionales como interruptores. Los cambios se aplican al instante. Un plugin nunca recibe tu chat, tus archivos, tu micrófono, tus certificados ni tus contraseñas.",
+            "alt": "Aviso de instalación de EVE Fit con sus permisos marcados como obligatorios, un interruptor opcional y un recuadro con lo que el plugin nunca recibe."
+          },
+          {
+            "id": "plugin-places",
+            "title": "Plugins donde los necesitas",
+            "body": "Una barra de plugins bajo la lista de canales, tarjetas en el chat que ocupan el lugar de su mensaje, comandos con barra como /roll, una pequeña insignia junto a los nombres, una sección en las tarjetas de perfil, entradas en el menú contextual y ventanas propias. Lo que envía un plugin lleva la marca «vía»."
+          },
+          {
+            "id": "plugin-together",
+            "title": "Junto con tu canal",
+            "body": "Un plugin habla con el mismo plugin de los demás usuarios de Mumcord del canal, por ejemplo para una encuesta compartida. Viaja por el servidor de voz normal: los servidores Mumble estándar no necesitan nada, los demás clientes lo ignoran y tú eliges quién lo ve. Los plugins funcionan en el chat de todos los servidores a los que estés conectado.",
+            "alt": "Panel lateral de la encuesta junto al chat con las opciones y Glacier seleccionado."
+          },
+          {
+            "id": "plugin-safety",
+            "title": "Entorno aislado, firmas e interruptor de emergencia",
+            "body": "Los plugins se ejecutan aislados, sin acceso a la red, los archivos ni el audio, y con límites de memoria y tiempo; el que se cuelga una y otra vez se desactiva, y tu voz nunca se ve afectada. Los plugins oficiales están firmados y verificados. Un interruptor de emergencia puede desactivar un plugin dañino para todos, «Desactivar todos los plugins» los detiene al instante, y --no-plugins arranca sin ninguno.",
+            "alt": "Aviso de instalación de EVE Fit con una barra de progreso que indica «Checking signature…» sobre la lista de permisos."
+          },
+          {
+            "id": "plugin-updates",
+            "title": "Actualizaciones sin sorpresas",
+            "body": "Instalar automáticamente, solo avisar o desactivadas. Una actualización que pide más permisos o viene de otra persona siempre espera tu aprobación. Un plugin que no arranca tras una actualización vuelve a la versión anterior, y cualquier plugin se puede fijar a su versión."
+          },
+          {
+            "id": "plugin-suggestions",
+            "title": "Los servidores sugieren plugins",
+            "body": "El Mumbot de un servidor puede recomendar los plugins que usa su comunidad. La sugerencia llega con calma al centro de notificaciones, con Instalar, Detalles, Ahora no y No volver a preguntar para este servidor. No se instala nada sin tu aprobación."
+          },
+          {
+            "id": "plugin-repositories",
+            "title": "Tus propios repositorios de plugins",
+            "body": "Hasta diez repositorios más en Ajustes → Plugins → Repositorios, con su nombre y la huella de su clave. Sus plugins se marcan como «No oficial» en todas partes, y si cambia la clave de firma, el repositorio queda en pausa hasta que lo confirmes."
+          },
+          {
+            "id": "plugin-developers",
+            "title": "Crea tus propios plugins",
+            "body": "Los plugins son Rust, compilado a WebAssembly. cargo install mumcord-plugin te da la herramienta de línea de comandos, y mumcord-plugin new crea un proyecto a partir de la plantilla. El modo Desarrollador carga un plugin directamente desde una carpeta, con recarga y su registro."
+          },
+          {
+            "id": "poll",
+            "title": "Encuesta",
+            "body": "Una pregunta con 2 a 10 opciones, resultados en directo en la tarjeta del chat y en el panel, un voto por persona. Quien no tenga Mumcord vota con !poll 1, !poll 2 … en el chat.",
+            "alt": "Chat de Mumcord en el que la encuesta «Which map tonight?» de Bob aparece como una tarjeta con barras de votos: Glacier 2 votos, Harbor y Canyon 0."
+          },
+          {
+            "id": "dice",
+            "title": "Tirador de dados",
+            "body": "/roll con d20, 2d6+3, ventaja y desventaja o descartar el más bajo o el más alto, además de botones de tirada rápida. Las tiradas se hacen junto con el canal para que nadie pueda hacer trampa, y cada resultado indica si está verificado."
+          },
+          {
+            "id": "echolings",
+            "title": "Echolings",
+            "body": "Una pequeña criatura en tu barra de plugins: 5 especies, 4 etapas de crecimiento, 3 colores. Acarícialo, aliméntalo, juega con él o déjalo echarse una siesta; nunca muere, duerme cuando pones No molestar y no hay nada que comprar. Tus amigos lo ven como una insignia y en tu tarjeta de perfil, pueden visitarlo, y hay dos minijuegos.",
+            "alt": "Tarjeta de perfil de Bob con su Echoling «Moss», chips de vínculo y racha y un botón «Pat Moss»; insignias de mascota junto a los nombres del árbol de canales."
+          },
+          {
+            "id": "mumbot-music",
+            "title": "Mumbot Music",
+            "body": "El mando a distancia de un bot de música Mumbot: reproduciendo ahora, saltar, parar, volumen, la cola y añadir canciones. Clic derecho en el bot → «Configurar bot»; la clave de API vive en el llavero de tu sistema."
+          },
+          {
+            "id": "eve-fit",
+            "title": "EVE Fit",
+            "body": "Pega un fitting de EVE Online en el chat y todos los que tengan el plugin verán una tarjeta de nave. Un clic abre la rueda del fitting con capacitor, ataque, defensa y navegación, sin conexión dentro de Mumcord, y «Copiar fitting» lo vuelve a sacar.",
+            "alt": "Diálogo de EVE Fit con la nave Algos dentro de la rueda de fitting, iconos de módulos y estadísticas de capacitador, ataque, defensa, adquisición de objetivos, navegación y drones."
+          }
+        ]
+      },
+      {
         "id": "comfort",
         "title": "Comodidad",
         "features": [
@@ -1166,7 +1258,7 @@
           {
             "id": "website-look",
             "title": "El aspecto de esta web",
-            "body": "Botones brillantes, degradados, efectos de cristal y un ligero grano de película, también en la app, se puede desactivar.",
+            "body": "Botones brillantes, degradados y un ligero grano de película, también en la app, se puede desactivar.",
             "alt": "Ajustes rápidos como menú de cristal esmerilado sobre un fondo con un ligero grano"
           },
           {
@@ -1196,12 +1288,96 @@
             "title": "Menú de la bandeja completo",
             "body": "El menú de la bandeja muestra cada servidor conectado con su estado y canal, silenciar, ensordecer y No molestar, pasa la voz a otro servidor o canal y abre los chats recientes. El icono muestra si hablas, silencio, mensajes sin leer y No molestar. Mumcord se inicia al iniciar sesión si quieres, en todos los sistemas.",
             "alt": "Menú de la bandeja con servidores, el submenú del canal de voz y chats recientes"
+          },
+          {
+            "id": "sound-themes",
+            "title": "Dos temas de sonido",
+            "body": "«Classic», con los tonos cortos de siempre, es el predeterminado; «Rich» trae sonidos nuevos y más plenos, con vista previa en Ajustes → Sonidos. Y además, un sonido propio al cambiar de canal y una breve despedida cuando sales de Mumcord estando en voz."
+          },
+          {
+            "id": "start-screen",
+            "title": "Un arranque más rápido",
+            "body": "Una pantalla de inicio con el logo sobre tu tema en lugar de una ventana blanca vacía, y cerca de un tercio menos de código antes de la primera pantalla: Ajustes, el asistente y la pantalla compartida se cargan solo cuando los abres."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.6.1",
+      "teaser": "Plugins también en Mac, volumen propio para compartir pantalla, fondos sólidos en los menús y «Classic» como sonido predeterminado.",
+      "summary": "Una pequeña actualización tras la 0.6.0: los plugins ya funcionan también en Mac, compartir pantalla tiene su propio volumen, los menús y las tarjetas tienen un fondo sólido y las instalaciones nuevas empiezan con el tema de sonido «Classic». En Windows, la app y el instalador ya están firmados.",
+      "groups": [
+        {
+          "title": "Mejorado",
+          "items": [
+            "Las instalaciones nuevas empiezan con el tema de sonido «Classic». Si ya elegiste «Rich», lo conservas (#339).",
+            "Los menús del clic derecho, las ventanas emergentes, las tarjetas al pasar el ratón y la tarjeta de perfil tienen un fondo sólido en lugar de cristal esmerilado, así el texto se lee bien incluso donde falta el desenfoque, por ejemplo en Linux (#337).",
+            "Windows: la app y el instalador ya están firmados con un certificado de firma de código (#340)."
+          ]
+        },
+        {
+          "title": "Corregido",
+          "items": [
+            "Cambiar el volumen de una pantalla compartida ya no cambia la voz de la persona. Cada una tiene su propio control deslizante y Mumcord recuerda ambos por persona (#333).",
+            "macOS: Mumcord ya no se cierra en cuanto arranca un plugin, como Echolings."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.6.0",
+      "teaser": "Plugins: encuestas, dados, Echolings, Mumbot Music y EVE Fit, seguros en un entorno aislado y sin cambios en el servidor.",
+      "summary": "Mumcord estrena plugins: pequeños extras seguros, que se instalan desde Ajustes, aislados en un entorno protegido y sin tocar el servidor. Para empezar hay encuestas, dados justos, Echolings, un mando a distancia para el bot de música Mumbot y EVE Fit. Además, un nuevo tema de sonido, un sonido de despedida y un arranque más rápido con pantalla de inicio.",
+      "groups": [
+        {
+          "title": "Novedades",
+          "items": [
+            "Plugins: pequeños complementos que dan funciones nuevas a Mumcord. Ajustes → Plugins tiene las pestañas Instalados, Explorar, Actualizaciones, Repositorios y, en modo Desarrollador, Desarrollador. No viene nada preinstalado, los plugins funcionan aunque no estés conectado, y «Plugins» también está en la paleta de comandos.",
+            "Antes de cada instalación, Mumcord muestra con palabras claras lo que quiere hacer un plugin: cada permiso en verde, amarillo o rojo, los obligatorios fijos, los opcionales como interruptores. Los permisos se pueden cambiar después y se aplican al instante. Un plugin nunca recibe tu chat, tus archivos, tu micrófono, tus certificados ni tus contraseñas.",
+            "Al instalar y actualizar se muestra una barra de progreso con el tamaño, y después «Comprobando firma», «Descomprimiendo» e «Iniciando»; una descarga fallida se puede reintentar.",
+            "Los plugins aparecen donde usas Mumcord: una barra de plugins bajo la lista de canales, tarjetas en el chat, comandos con barra como /roll, una pequeña insignia junto a los nombres, una sección en las tarjetas de perfil, entradas en el menú contextual de una persona y ventanas propias. Los mensajes enviados por un plugin llevan la marca «vía».",
+            "Una tarjeta de plugin ocupa el lugar del mensaje de chat al que pertenece, como un fit pegado o una encuesta. Los mensajes sustituidos muestran el icono y el nombre del plugin, y «Mostrar texto original» los devuelve. Los mensajes antiguos también reciben sus tarjetas, sin que se cuenten los votos dos veces.",
+            "Un plugin puede reconocer ciertos mensajes del chat, como un fit de juego pegado. El aviso de instalación dice con las palabras del propio plugin qué reconoce; después recibe solo los mensajes que coinciden en tu canal, nunca de personas que hayas bloqueado, y ningún otro texto del chat.",
+            "Los plugins intercambian datos con el mismo plugin en el Mumcord de otras personas de tu canal, por ejemplo para una encuesta compartida. Viaja por el servidor de voz normal: los servidores Mumble estándar no necesitan nada, los demás clientes lo ignoran y tú eliges quién lo ve. Las funciones de chat de los plugins funcionan en todos los servidores a los que estés conectado.",
+            "Los plugins pueden enviar notificaciones. Llegan al centro de notificaciones bajo «Plugins», se pueden desactivar por plugin y se callan con No molestar.",
+            "Las actualizaciones de plugins tienen su propio ajuste: automáticas (predeterminado), solo avisar o desactivadas. Una actualización que pide más permisos o viene de otra persona siempre espera tu aprobación; un plugin que no arranca tras una actualización vuelve a la versión anterior; y cualquier plugin se puede fijar a su versión. Los nuevos permisos opcionales quedan desactivados y se ofrecen en Actualizaciones.",
+            "Los servidores pueden sugerir plugins: el Mumbot de un servidor recomienda plugins, que aparecen en el centro de notificaciones con Instalar, Detalles, Ahora no y No volver a preguntar para este servidor. No se instala nada sin tu aprobación.",
+            "Tus propios repositorios: hasta diez en Ajustes → Plugins → Repositorios, con nombre y huella de la clave. Sus plugins son «No oficiales» en todas partes, la primera instalación avisa, y si cambia la clave de firma, el repositorio queda en pausa hasta que lo confirmes.",
+            "El modo Desarrollador (Ajustes → Avanzado) añade una pestaña Desarrollador: carga, recarga y descarga un plugin desde una carpeta, con su registro. Para autores hay un SDK de plugins, una plantilla y la herramienta de línea de comandos mumcord-plugin en crates.io (cargo install mumcord-plugin).",
+            "Los enlaces mumcord://plugins/<id> abren los detalles de un plugin oficial; nunca instalan nada.",
+            "Los plugins oficiales, cada uno en los 24 idiomas: Encuesta (de 2 a 10 opciones, resultados en directo, un voto por persona), Tirador de dados (/roll con d20, 2d6+3, ventaja y desventaja, tirado en conjunto y verificado), Echolings (una criatura con 5 especies, 4 etapas y 3 colores que nunca muere y no vende nada, con dos minijuegos), Mumbot Music (reproduciendo ahora, saltar, volumen, cola, añadir canciones; clic derecho en el bot → «Configurar bot») y EVE Fit (tarjeta de nave y rueda de fitting para fits de EVE Online pegados).",
+            "Mumbot se presenta a Mumcord: Mumcord sabe qué usuarios son bots y qué pueden hacer, y «Configurar bot» solo aparece en los bots que ofrecen música.",
+            "Seguridad: los plugins se ejecutan en un entorno aislado y sellado, con límites de memoria y tiempo. El que se cuelga una y otra vez se desactiva, y tu voz nunca se ve afectada. «Desactivar todos los plugins» (Ajustes y la paleta de comandos) los detiene todos a la vez, y mumcord --no-plugins arranca sin ninguno. Los plugins oficiales están firmados y se verifican al instalar y tras cada actualización; un interruptor de emergencia puede desactivar un plugin dañino y se consulta a diario.",
+            "Privacidad: buscar plugins no envía identificadores ni la lista de tus plugins. Los datos de los plugins se quedan en tu ordenador, y durante 30 días tras quitar un plugin, a menos que los borres.",
+            "Un segundo tema de sonido: «Rich», con sonidos nuevos y más plenos para conectar, mensajes, menciones, silenciar, personas que entran y salen, expulsiones y bloqueos, es ahora el predeterminado. Ajustes → Sonidos cambia a «Classic», los tonos cortos de siempre, con vista previa (#325).",
+            "Al salir de Mumcord estando en voz suena una breve despedida, para que notes que te acabas de ir. Solo suena al salir de verdad, nunca al minimizar a la bandeja, y tiene su propio interruptor (#325).",
+            "Cambiar de canal estando en voz tiene su propio sonido corto en lugar del sonido de conexión, con su propio interruptor y en ambos temas de sonido (#325)."
+          ]
+        },
+        {
+          "title": "Mejorado",
+          "items": [
+            "Mumcord arranca más rápido: el código previo a la primera pantalla es cerca de un tercio más pequeño. Ajustes, el asistente de configuración, ver juntos, la pantalla compartida, el explorador de servidores y el resaltado de código se cargan solo cuando los abres (#323).",
+            "En lugar de una ventana blanca vacía y «Cargando…» hay una pantalla de inicio: el logo sobre tu tema con una fina barra de carga que se funde con la app; con movimiento reducido cambia sin animación (#323).",
+            "La entrada Plugins de la barra lateral de Ajustes muestra cuántas actualizaciones y nuevos permisos opcionales están esperando.",
+            "Las tarjetas de plugin más altas ya no tienen su propia barra de desplazamiento: se cortan con un suave degradado, y «Mostrar más» las expande.",
+            "Los lectores de pantalla leen una línea de chat sustituida como su tarjeta (por ejemplo «Tarjeta de Encuesta: ¿Comemos a las doce?») y se saltan las líneas ocultas."
+          ]
+        },
+        {
+          "title": "Corregido",
+          "items": [
+            "Pegar con Ctrl+V vuelve a funcionar en algunos escritorios Linux.",
+            "El enlace «Cambiar» de la tarjeta «Preajuste activo» de la barra lateral de Ajustes ya no se sale de la tarjeta con nombres largos (#321).",
+            "El campo numérico de servidores conectados simultáneamente en Ajustes → Servidor ya no se estira por toda la tarjeta (#320).",
+            "En los diálogos que cambian de contenido, el foco se queda en el diálogo, así que Escape y Tab siguen funcionando.",
+            "Una tarjeta de perfil cerrada con Escape justo después de usar un botón suyo vuelve a abrirse después."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.5.0",
       "teaser": "Centro de notificaciones, todos los mensajes privados en un solo lugar, bloqueo, varias identidades e importación desde Mumble.",
@@ -2984,5 +3160,277 @@
         "credit": "El juego y sus mensajes proceden de zorgch/irc-quizbot (GPL-3.0), portados a Rust y al protocolo de Mumble, con la misma capa de protocolo que Mumcord."
       }
     }
+  },
+  "plugins": {
+    "label": "Plugins",
+    "title": "Pequeños extras para grandes noches",
+    "description": "Mumcord 0.6.0 trae plugins: encuestas, dados, una mascota hecha de sonido y un mando a distancia para tu bot de música. Seguros, firmados y sin tocar el servidor.",
+    "intro": "Mumcord 0.6.0 trae plugins: pequeños extras seguros que se suman al chat de voz. Funcionan dentro de Mumcord, no necesitan cambios en el servidor y sirven en cualquier servidor Mumble estándar. Quien use el cliente oficial de Mumble ve una simple línea de texto donde hace falta, y nada más.",
+    "badge": "Novedad en Mumcord 0.6.0",
+    "ctaPlugins": "Conoce los plugins",
+    "ctaDev": "Crea el tuyo",
+    "pills": [
+      "En un entorno aislado",
+      "Firmados",
+      "Sin cambios en el servidor",
+      "24 idiomas"
+    ],
+    "listTitle": "Los primeros plugins",
+    "listBody": "No viene nada preinstalado. Elige lo que le gusta a tu grupo y deja el resto.",
+    "source": "Código fuente",
+    "soon": "Próximamente",
+    "plugins": {
+      "poll": {
+        "name": "Encuesta",
+        "tagline": "Hazle una pregunta al canal con hasta diez opciones y mira cómo llegan los votos en directo.",
+        "points": [
+          "De 2 a 10 opciones, barras de votos en directo en una tarjeta del chat",
+          "¿Sin Mumcord? Vota escribiendo `!poll 1`, `!poll 2` … en el chat",
+          "Los resultados se muestran al cerrar la encuesta"
+        ]
+      },
+      "dice": {
+        "name": "Tirador de dados",
+        "tagline": "`/roll d20` o `2d6+3`, con tiradas justas que otros pueden presenciar y verificar.",
+        "points": [
+          "Ventaja y desventaja, descartar el más bajo o el más alto, hasta 20 dados",
+          "Los demás usuarios de Mumcord del canal presencian cada tirada, así que nadie puede hacer trampa",
+          "Un historial de tiradas que puedes desplegar"
+        ]
+      },
+      "echolings": {
+        "name": "Echolings",
+        "tagline": "Una criatura hecha de sonido que crece mientras pasas el rato con tus amigos.",
+        "points": [
+          "5 especies, 4 etapas de crecimiento, 3 colores",
+          "Crece con el tiempo que pasáis juntos en la voz y el chat",
+          "Nunca muere, nunca da la lata"
+        ]
+      },
+      "mumbot-music": {
+        "name": "Mumbot Music",
+        "tagline": "Un mando a distancia para tu bot de música Mumbot.",
+        "points": [
+          "Clic derecho en el bot → «Configurar bot»",
+          "Reproduciendo ahora, saltar, volumen, la cola y añadir canciones",
+          "Necesita un Mumbot en el servidor: un usuario de Mumble normal, sin cambios en el servidor"
+        ]
+      },
+      "eve-fit": {
+        "name": "EVE Fit",
+        "tagline": "Pega un fitting de EVE Online en el chat y todos verán una tarjeta de nave.",
+        "points": [
+          "Detecta los fits EFT pegados en el chat y muestra una tarjeta con la nave y los módulos",
+          "Abre la vista completa del fitting sin conexión, dentro de Mumcord",
+          "Un botón «Copiar fitting», y es gratis"
+        ]
+      }
+    },
+    "mock": {
+      "pollQuestion": "¿A qué jugamos esta noche?",
+      "pollOptions": [
+        "Deep Rock Galactic",
+        "Valheim",
+        "Algo nuevo"
+      ],
+      "pollVotes": "7 votos",
+      "pollLive": "En directo",
+      "pollPlain": "Encuesta: ¿A qué jugamos esta noche? 1) Deep Rock Galactic 2) Valheim 3) Algo nuevo",
+      "pollPlainVote": "!poll 2",
+      "rollWitness": "Presenciado por 3 en el canal",
+      "rollHistory": "Historial",
+      "echoStats": [
+        "5 especies",
+        "4 etapas",
+        "3 colores"
+      ],
+      "musicNow": "Reproduciendo ahora",
+      "musicTrack": "Midnight Raid",
+      "musicArtist": "Lo-fi para sesiones nocturnas",
+      "musicQueue": "Cola",
+      "musicQueueItems": [
+        "Boss Music, Volume 2",
+        "Campfire Loop"
+      ],
+      "musicAdd": "Añadir canción",
+      "musicMenu": "Configurar bot",
+      "evePasted": "pegado por Maya",
+      "eveCopy": "Copiar fitting"
+    },
+    "eveNotice": "EVE Online and all related logos and images are trademarks or registered trademarks of CCP hf. Mumcord is not affiliated with CCP hf.",
+    "eveCredit": "La vista de fitting se basa en eveship.fit, del proyecto EVEShipFit.",
+    "bridgeTitle": "Nadie se queda fuera",
+    "bridgeBody": "Los plugins no necesitan cambios en el servidor y funcionan en cualquier servidor Mumble estándar. Tus amigos con el cliente oficial de Mumble ven una simple línea de texto donde hace falta, y nada más.",
+    "bridgeMumcord": "En Mumcord",
+    "bridgeMumble": "En el cliente oficial de Mumble",
+    "bridgeNote": "Una ilustración: el texto exacto depende de cada plugin.",
+    "installTitle": "Instalado en un minuto",
+    "installBody": "Los plugins viven en los ajustes, y ves lo que puede hacer cada uno antes de que llegue a tu equipo.",
+    "steps": [
+      {
+        "title": "Explora",
+        "body": "Ajustes → Plugins → Explorar."
+      },
+      {
+        "title": "Revisa",
+        "body": "Elige un plugin y echa un vistazo a sus permisos."
+      },
+      {
+        "title": "Instala",
+        "body": "Su icono aparece en la barra de plugins, bajo el árbol de canales."
+      }
+    ],
+    "stripLabel": "Plugins",
+    "stripChannels": [
+      "Vestíbulo",
+      "Noche de raid",
+      "AFK"
+    ],
+    "safeTitle": "Seguros por diseño",
+    "safeBody": "Un plugin es un invitado en tu aplicación. Estas son las normas de la casa.",
+    "safe": {
+      "sandbox": {
+        "title": "Un entorno aislado estricto",
+        "body": "Cada plugin es un pequeño programa WebAssembly en un entorno aislado estricto. Sin acceso directo a la red ni a los archivos; Mumcord dibuja la interfaz con bloques de construcción integrados."
+      },
+      "permissions": {
+        "title": "Permisos a la vista",
+        "body": "Se muestran antes de instalar. Los opcionales se pueden desactivar en cualquier momento, y las actualizaciones que piden más esperan tu aprobación."
+      },
+      "signed": {
+        "title": "Firmados de principio a fin",
+        "body": "El registro y cada paquete están firmados con minisign, y Mumcord los comprueba antes de instalar. Un interruptor de emergencia puede desactivar una versión defectuosa en todas partes."
+      },
+      "server": {
+        "title": "Sin cambios en el servidor",
+        "body": "Funciona con un servidor Mumble sin modificar. El administrador no tiene que instalar nada."
+      },
+      "off": {
+        "title": "Un solo interruptor para pararlos todos",
+        "body": "No hay nada preinstalado. «Desactivar todos los plugins» en Ajustes → Plugins o en la paleta de comandos (Ctrl+Shift+P) detiene todos los plugins a la vez."
+      },
+      "langs": {
+        "title": "En tu idioma",
+        "body": "Disponibles en los 24 idiomas de Mumcord."
+      }
+    },
+    "devLabel": "Para desarrolladores",
+    "devTitle": "Crea el tuyo",
+    "devBody": "Los plugins se escriben en Rust y se compilan a WebAssembly (modelo de componentes, interfaz `mumcord:plugin@1.0.0`). El repositorio incluye la plantilla, la documentación y el código fuente de cada plugin oficial.",
+    "cliTitle": "Una sola herramienta para todo el camino",
+    "cli": [
+      {
+        "cmd": "new",
+        "body": "Crea un plugin a partir de la plantilla."
+      },
+      {
+        "cmd": "build",
+        "body": "Lo compila de forma reproducible."
+      },
+      {
+        "cmd": "check",
+        "body": "Comprueba el paquete."
+      },
+      {
+        "cmd": "test",
+        "body": "Ejecuta escenarios de prueba contra un host simulado."
+      },
+      {
+        "cmd": "serve-registry",
+        "body": "Sirve un registro local para probarlo en Mumcord (modo Desarrollador en Ajustes → Plugins)."
+      }
+    ],
+    "docsTitle": "Documentación",
+    "docs": {
+      "start": "Primeros pasos",
+      "api": "API",
+      "manifest": "Manifiesto",
+      "permissions": "Permisos",
+      "building": "Compilación",
+      "testing": "Pruebas",
+      "publishing": "Publicación",
+      "repos": "Tu propio repositorio"
+    },
+    "submitTitle": "Al registro oficial",
+    "submitBody": "Abre un pull request en Mumcord/plugins que añada `plugins/<id>/`. Necesita la aprobación de un mantenedor y un CI en verde.",
+    "checksTitle": "Qué comprueba el CI",
+    "checks": [
+      "Comprobación del esquema",
+      "Recompilación reproducible",
+      "Firma del autor",
+      "Diferencia de permisos",
+      "Prueba de carga con host simulado",
+      "Análisis de licencias"
+    ],
+    "rulesTitle": "Las reglas",
+    "rules": [
+      "Una licencia aprobada por la OSI",
+      "Una compilación reproducible",
+      "Sin anuncios, rastreo, pagos ni cajas de botín"
+    ],
+    "policy": "Política de revisión",
+    "ownRepoTitle": "O monta el tuyo",
+    "ownRepoBody": "Cualquiera puede tener su propio repositorio de plugins. Los usuarios lo añaden en Ajustes → Plugins.",
+    "licenceTitle": "Licencias",
+    "licenceBody": "Los plugins oficiales son AGPL-3.0. La plantilla, la documentación y el SDK son Apache-2.0.",
+    "peopleTitle": "Hecho por",
+    "endTitle": "¿Tienes una idea para un plugin?",
+    "endBody": "Todo es abierto: la plantilla, la documentación y cada plugin oficial.",
+    "endRepo": "Abrir el repositorio de plugins",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "install": "Instalar en Mumcord",
+    "pluginPage": "Página del plugin",
+    "installNote": "Los botones de instalación abren el plugin en Mumcord 0.6.0 o posterior, donde confirmas la instalación. Si no se abre nada, la página del plugin tiene los detalles.",
+    "galleryLabel": "Capturas de pantalla",
+    "galleryTitle": "Míralos en Mumcord",
+    "galleryBody": "Directo desde Mumcord 0.6.0, en el tema oscuro y en el claro.",
+    "dark": "Oscuro",
+    "light": "Claro",
+    "shots": {
+      "browse": {
+        "caption": "Explora los plugins oficiales directamente en Ajustes.",
+        "alt": "Ajustes de Mumcord, Plugins, pestaña Explorar con cinco plugins oficiales (Echolings, Tirador de dados, EVE Fit, Mumbot Music y Encuesta), cada uno con icono y un botón Instalar."
+      },
+      "permissions": {
+        "caption": "Cada plugin dice de antemano lo que puede hacer.",
+        "alt": "Aviso de instalación de EVE Fit con sus permisos marcados como obligatorios, un interruptor opcional y un recuadro con lo que el plugin nunca recibe."
+      },
+      "progress": {
+        "caption": "Los paquetes firmados se comprueban antes de instalarse.",
+        "alt": "Aviso de instalación de EVE Fit con una barra de progreso que indica «Checking signature…» sobre la lista de permisos."
+      },
+      "poll": {
+        "caption": "Una encuesta sustituye su mensaje de chat por una tarjeta en vivo.",
+        "alt": "Chat de Mumcord en el que la encuesta «Which map tonight?» de Bob aparece como una tarjeta con barras de votos: Glacier 2 votos, Harbor y Canyon 0."
+      },
+      "vote": {
+        "caption": "Vota en el panel lateral; todos ven cómo se actualiza el recuento.",
+        "alt": "Panel lateral de la encuesta junto al chat con las opciones y Glacier seleccionado."
+      },
+      "echolings": {
+        "caption": "Echolings: una mascota que crece mientras pasáis el rato juntos.",
+        "alt": "Tarjeta de perfil de Bob con su Echoling «Moss», chips de vínculo y racha y un botón «Pat Moss»; insignias de mascota junto a los nombres del árbol de canales."
+      },
+      "snackrace": {
+        "caption": "Corre con los Echolings de tus amigos hasta el snack.",
+        "alt": "Snack Race en curso con carriles para You y Bob, la zona móvil del snack y un botón Hop!."
+      },
+      "eveCard": {
+        "caption": "Pega un fit de EVE Online y se convierte en una tarjeta ordenada.",
+        "alt": "Tarjeta de chat de un fit de Algos «Evening Roam» pegado por Carol, con chips de slots, drones y cantidades de carga, y los botones Copy fitting y Open."
+      },
+      "eveWheel": {
+        "caption": "Open muestra la rueda de fitting completa y las estadísticas.",
+        "alt": "Diálogo de EVE Fit con la nave Algos dentro de la rueda de fitting, iconos de módulos y estadísticas de capacitador, ataque, defensa, adquisición de objetivos, navegación y drones."
+      },
+      "eveCargo": {
+        "caption": "Hangar de drones, bodega de carga y el aviso de CCP.",
+        "alt": "Parte inferior del diálogo de EVE Fit: hangar de drones con Hammerhead II y Hobgoblin II, bodega de carga con munición y repair paste, y el aviso de copyright de CCP al final."
+      }
+    },
+    "sdkNote": "La herramienta y el SDK están en crates.io. En tu Cargo.toml:",
+    "docsAll": "Toda la documentación",
+    "wiki": "Wiki"
   }
 }

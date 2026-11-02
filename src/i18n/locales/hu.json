@@ -97,6 +97,10 @@
       "toolQuiz": {
         "title": "mumquiz",
         "desc": "Kvízbot a szerveredhez"
+      },
+      "plugins": {
+        "title": "Bővítmények",
+        "desc": "Szavazások, kockák és még több"
       }
     },
     "hero": {
@@ -536,8 +540,8 @@
       "toolTitle": "Közreműködők"
     },
     "spotlight5": {
-      "label": "Újdonság a 0.5.0-ban",
-      "labelSoon": "Hamarosan: 0.5.0",
+      "label": "Újdonság a 0.5.0/0.6.0-ban",
+      "labelSoon": "Hamarosan: 0.5.0/0.6.0",
       "title": "Több nyugalom. Több te. Több hang.",
       "body": "A 0.5.0 meghozza az Epic 3-at: értesítési központot, tiltást, több identitást, új csatornafát, zenét a chatben, alacsony késleltetésű módot a közös zenéléshez és közvetlen kapcsolatokat relén keresztül.",
       "tiles": {
@@ -567,7 +571,12 @@
         }
       },
       "features": "Minden funkció",
-      "changelog": "Minden újdonság"
+      "changelog": "Minden újdonság",
+      "plugins": {
+        "title": "Bővítmények",
+        "body": "A 0.6.0 apró, biztonságos extrákat hoz a hangcsevegés tetejére: szavazásokat, tisztességes kockákat, egy hangból készült lényt és távirányítót a zenebotodhoz. Nem kell hozzá szerverváltoztatás.",
+        "more": "Ismerd meg a bővítményeket"
+      }
     },
     "serverCta": {
       "title": "Saját szerver öt perc alatt",
@@ -1112,6 +1121,89 @@
         ]
       },
       {
+        "id": "plugins",
+        "title": "Bővítmények",
+        "features": [
+          {
+            "id": "plugins",
+            "title": "Bővítmények a Beállításokból",
+            "body": "Beállítások → Bővítmények a Telepítettek, Böngészés, Frissítések és Tárolók fülekkel: hivatalos bővítmények kategóriák szerint és kereséssel, be- és kikapcsolhatod őket, módosíthatod az engedélyeiket és beállításaikat, exportálhatod vagy visszaállíthatod az adataikat, eltávolíthatod őket. Semmi sincs előre telepítve, és a bővítmények akkor is futnak, ha nem vagy csatlakozva.",
+            "alt": "A Mumcord Beállítások, Bővítmények, Böngészés lapja öt hivatalos bővítménnyel (Visszhangocskák, Dobókocka, EVE Fit, Mumbot Music és Szavazás), mindegyik ikonnal és Telepítés gombbal."
+          },
+          {
+            "id": "plugin-permissions",
+            "title": "Előbb nézd meg, mit tehet egy bővítmény",
+            "body": "Telepítés előtt a Mumcord egyszerű szavakkal elmondja, mit kér egy bővítmény: minden engedély zöld, sárga vagy piros, a kötelezők rögzítettek, a nem kötelezők kapcsolók. A változtatások azonnal érvénybe lépnek. Egy bővítmény soha nem kapja meg a csevegésedet, a fájljaidat, a mikrofonodat, a tanúsítványaidat vagy a jelszavaidat.",
+            "alt": "Az EVE Fit telepítési ablaka a kötelezőként jelölt engedélyekkel, egy opcionális kapcsolóval és egy dobozzal, amely felsorolja, mit nem kap meg soha a bővítmény."
+          },
+          {
+            "id": "plugin-places",
+            "title": "Bővítmények ott, ahol kellenek",
+            "body": "Bővítménysáv a csatornalista alatt, a csevegésben kártyák, amelyek a saját üzenetük helyére lépnek, perjeles parancsok, például /roll, egy kis jelvény a nevek mellett, egy szakasz a profilkártyákon, elemek a jobb gombos menüben és saját ablakok. Amit egy bővítmény küld, azt „via” jelöli."
+          },
+          {
+            "id": "plugin-together",
+            "title": "A csatornáddal együtt",
+            "body": "Egy bővítmény beszélget ugyanazzal a bővítménnyel a csatorna többi Mumcord-felhasználójánál, például egy közös szavazáshoz. A normál hangszerveren utazik: a szabványos Mumble szervereknek nem kell semmi, a többi kliens figyelmen kívül hagyja, és te döntöd el, ki látja. A bővítmények minden szerver csevegésében működnek, amelyhez csatlakozva vagy.",
+            "alt": "A szavazás oldalpanelje a csevegő mellett megnyitva a lehetőségekkel és kiválasztott Glacierrel."
+          },
+          {
+            "id": "plugin-safety",
+            "title": "Homokozó, aláírások és kill switch",
+            "body": "A bővítmények elzárva futnak, hálózat, fájlok és hang elérése nélkül, memória- és időkorlátokkal; amelyik folyton összeomlik, azt kikapcsoljuk, és a hangod soha nem sérül. A hivatalos bővítmények alá vannak írva és ellenőrizve. Egy kill switch mindenki számára letilthat egy káros bővítményt, a „Minden bővítmény kikapcsolása” egyszerre leállítja őket, a --no-plugins pedig egyik nélkül indít.",
+            "alt": "Az EVE Fit telepítési ablaka a „Checking signature…” feliratú folyamatjelzővel az engedélyek listája fölött."
+          },
+          {
+            "id": "plugin-updates",
+            "title": "Frissítések meglepetések nélkül",
+            "body": "Automatikus telepítés, csak értesítés vagy kikapcsolva. Az a frissítés, amely több engedélyt kér vagy valaki mástól jön, mindig megvárja a jóváhagyásodat. Az a bővítmény, amely frissítés után nem indul el, visszaáll, és bármelyik bővítmény rögzíthető a verziójához."
+          },
+          {
+            "id": "plugin-suggestions",
+            "title": "A szerverek bővítményeket ajánlanak",
+            "body": "Egy szerver Mumbotja ajánlhat bővítményeket, amelyeket a közössége használ. Az ajánlás nyugodtan érkezik az értesítési központba, a Telepítés, Részletek, Most nem és Ne kérdezd többet ennél a szervernél lehetőségekkel. A jóváhagyásod nélkül semmi sem települ."
+          },
+          {
+            "id": "plugin-repositories",
+            "title": "Saját bővítménytárolóid",
+            "body": "Akár tíz további tároló a Beállítások → Bővítmények → Tárolók alatt, névvel és kulcs-ujjlenyomattal megjelenítve. A bennük lévő bővítményeket mindenhol „Nem hivatalos” címke jelöli, és ha az aláíró kulcs megváltozik, a tároló szünetel, amíg meg nem erősíted."
+          },
+          {
+            "id": "plugin-developers",
+            "title": "Készíts saját bővítményeket",
+            "body": "A bővítmények Rustban íródnak, WebAssemblyre fordítva. A cargo install mumcord-plugin megadja a parancssori eszközt, a mumcord-plugin new pedig projektet hoz létre a sablonból. A fejlesztői mód közvetlenül egy mappából tölt be egy bővítményt, újratöltéssel és a naplójával."
+          },
+          {
+            "id": "poll",
+            "title": "Szavazás",
+            "body": "Egy kérdés 2–10 lehetőséggel, élő eredményekkel a csevegőkártyán és a panelen, személyenként egy szavazattal. Aki nem használ Mumcordot, a csevegésben a !poll 1, !poll 2 … paranccsal szavaz.",
+            "alt": "Mumcord-csevegés, amelyben Bob „Which map tonight?” szavazása szavazatsávos kártyaként jelenik meg: Glacier 2 szavazat, Harbor és Canyon 0."
+          },
+          {
+            "id": "dice",
+            "title": "Dobókocka",
+            "body": "/roll d20-szal, 2d6+3-mal, előnnyel és hátránnyal vagy a legkisebb, illetve legnagyobb eldobásával, plusz gyorsdobás gombok. A dobások a csatornával együtt történnek, így senki sem csalhat, és minden eredmény mutatja, hogy ellenőrzött-e."
+          },
+          {
+            "id": "echolings",
+            "title": "Visszhangocskák",
+            "body": "Egy kis lény a bővítménysávodon: 5 faj, 4 növekedési szint, 3 szín. Simogasd, etesd, játssz vele, vagy hagyd szunyókálni; soha nem pusztul el, Ne zavarjanak módban alszik, és nincs mit vásárolni hozzá. A barátaid jelvényként és a profilkártyádon látják, meglátogathatják, és két minijáték is van.",
+            "alt": "Bob profilkártyája az Echolingjával, „Moss”-szal, kötődés- és sorozatcsipekkel és egy „Pat Moss” gombbal; kedvencjelvények a nevek mellett a csatornafában."
+          },
+          {
+            "id": "mumbot-music",
+            "title": "Mumbot Music",
+            "body": "A Mumbot zenebot távirányítója: éppen szól, ugrás, leállítás, hangerő, a várólista és számok hozzáadása. Kattints jobb gombbal a botra → „Bot beállítása”; az API-kulcs a rendszered kulcstartójában marad."
+          },
+          {
+            "id": "eve-fit",
+            "title": "EVE Fit",
+            "body": "Illessz be egy EVE Online fittinget a csevegésbe, és mindenki, akinek megvan a bővítmény, egy hajókártyát lát. Egy kattintás megnyitja a fittingkereket a kapacitorral, támadással, védelemmel és navigációval, offline a Mumcordon belül, a „Fitting másolása” pedig visszaviszi kifelé.",
+            "alt": "EVE Fit ablak az Algos hajóval a felszerelési kerékben, modulikonokkal és kondenzátor-, támadó-, védelmi-, célzási-, navigációs- és drónstatisztikákkal."
+          }
+        ]
+      },
+      {
         "id": "comfort",
         "title": "Kényelem",
         "features": [
@@ -1166,7 +1258,7 @@
           {
             "id": "website-look",
             "title": "Ennek a weboldalnak a kinézete",
-            "body": "Izzó gombok, színátmenetek, üveghatás és enyhe filmszemcse, az appban is, kikapcsolható.",
+            "body": "Izzó gombok, színátmenetek és enyhe filmszemcse, az appban is, kikapcsolható.",
             "alt": "Gyorsbeállítások matt üveg menüként enyhén szemcsés háttér fölött"
           },
           {
@@ -1196,12 +1288,96 @@
             "title": "Teljes tálcamenü",
             "body": "A tálcamenü megmutatja minden csatlakoztatott szervert az állapotával és csatornájával, a némítást, a süketítést és a Ne zavarjanak módot, átviszi a hangot másik szerverre vagy csatornára, és megnyitja a legutóbbi chateket. Az ikon jelzi a beszédet, a némítást, az olvasatlan üzeneteket és a Ne zavarjanak módot. A Mumcord, ha szeretnéd, bejelentkezéskor indul, minden rendszeren.",
             "alt": "Tálcamenü szerverekkel, a hangcsatorna almenüjével és legutóbbi chatekkel"
+          },
+          {
+            "id": "sound-themes",
+            "title": "Két hangtéma",
+            "body": "A „Klasszikus” az ismerős rövid hangokkal az alapértelmezett, a „Gazdag” új, teltebb hangokat hoz, előnézettel a Beállítások → Hangok alatt. Emellett külön hang a csatornaváltáshoz, és egy rövid búcsú, amikor hangban lévén kilépsz a Mumcordból."
+          },
+          {
+            "id": "start-screen",
+            "title": "Gyorsabb indulás",
+            "body": "Indítóképernyő a logóval a témádon egy üres fehér ablak helyett, és nagyjából egyharmaddal kevesebb kód az első képernyő előtt: a Beállítások, a varázsló és a képernyőmegosztás csak akkor töltődik be, amikor megnyitod."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.6.1",
+      "teaser": "Bővítmények Macen is, külön hangerő a képernyőmegosztásnak, tömör menühátterek és a „Klasszikus” mint alapértelmezett hang.",
+      "summary": "Kis frissítés a 0.6.0 után: a bővítmények már Macen is futnak, a képernyőmegosztásnak saját hangereje van, a menüknek és a kártyáknak tömör a háttere, az új telepítések pedig a „Klasszikus” hangtémával indulnak. Windowson az alkalmazás és a telepítő mostantól alá van írva.",
+      "groups": [
+        {
+          "title": "Továbbfejlesztve",
+          "items": [
+            "Az új telepítések a „Klasszikus” hangtémával indulnak. Ha már a(z) „Gazdag” témát választottad, az megmarad (#339).",
+            "A jobb gombos menük, a felugró ablakok, az egérrel előhívott kártyák és a profilkártya tömör háttért kaptak a matt üveg helyett, így a szöveg ott is jól olvasható, ahol nincs elmosás, például Linuxon (#337).",
+            "Windows: az alkalmazás és a telepítő mostantól kódaláíró tanúsítvánnyal van aláírva (#340)."
+          ]
+        },
+        {
+          "title": "Javítva",
+          "items": [
+            "A képernyőmegosztás hangerejének módosítása már nem változtatja meg a személy hangját. Mindkettőnek saját csúszkája van, és a Mumcord személyenként megjegyzi mindkettőt (#333).",
+            "macOS: a Mumcord már nem omlik össze, amint elindul egy bővítmény, például a Visszhangocskák."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.6.0",
+      "teaser": "Bővítmények: szavazások, kockák, Visszhangocskák, Mumbot Music és EVE Fit, biztonságban egy homokozóban, szerverváltoztatás nélkül.",
+      "summary": "A Mumcord bővítményeket kap: apró, biztonságos extrákat, amelyeket a Beállításokból telepítesz, homokozóba zárva, és a szerver módosítása nélkül. Kezdetnek itt vannak a szavazások, a tisztességes kockák, a Visszhangocskák, egy távirányító a Mumbot zenebothoz és az EVE Fit. Ráadásul új hangtéma, búcsúhang és gyorsabb indulás indítóképernyővel.",
+      "groups": [
+        {
+          "title": "Új",
+          "items": [
+            "Bővítmények: apró kiegészítők, amelyek új funkciókat adnak a Mumcordnak. A Beállítások → Bővítmények a Telepítettek, Böngészés, Frissítések, Tárolók füleket tartalmazza, fejlesztői módban pedig a Fejlesztő fület. Semmi sincs előre telepítve, a bővítmények akkor is futnak, ha nem vagy csatlakozva, és a „Bővítmények” a parancspalettán is ott van.",
+            "Minden telepítés előtt a Mumcord egyszerű szavakkal megmutatja, mit akar tenni egy bővítmény: minden engedély zöld, sárga vagy piros, a kötelezők rögzítettek, a nem kötelezők kapcsolók. Az engedélyek később módosíthatók, és azonnal érvénybe lépnek. Egy bővítmény soha nem kapja meg a csevegésedet, a fájljaidat, a mikrofonodat, a tanúsítványaidat vagy a jelszavaidat.",
+            "A telepítés és a frissítés folyamatjelzőt mutat a mérettel, majd „Aláírás ellenőrzése”, „Kicsomagolás” és „Indítás” következik; a sikertelen letöltés újra megpróbálható.",
+            "A bővítmények ott jelennek meg, ahol a Mumcordot használod: bővítménysáv a csatornalista alatt, kártyák a csevegésben, perjeles parancsok, például /roll, egy kis jelvény a nevek mellett, egy szakasz a profilkártyákon, elemek egy személy jobb gombos menüjében és saját ablakok. A bővítmények által küldött üzeneteket „via” jelöli.",
+            "A bővítménykártya annak a csevegőüzenetnek a helyére lép, amelyhez tartozik, például egy beillesztett fitnek vagy egy szavazásnak. A lecserélt üzenetek a bővítmény ikonját és nevét mutatják, az „Eredeti szöveg megjelenítése” pedig visszahozza őket. A régebbi üzenetek is megkapják a kártyáikat, a szavazatok kétszeri számolása nélkül.",
+            "Egy bővítmény felismerhet bizonyos csevegőüzeneteket, például egy beillesztett játékbeli fitet. A telepítési kérdés a bővítmény saját szavaival elmondja, mit ismer fel; ezután csak a csatornádban lévő egyező üzeneteket kapja meg, soha nem az általad letiltott emberektől, és semmilyen más csevegőszöveget.",
+            "A bővítmények adatot cserélnek ugyanazzal a bővítménnyel mások Mumcordján a csatornádban, például egy közös szavazáshoz. A normál hangszerveren utazik: a szabványos Mumble szervereknek nem kell semmi, a többi kliens figyelmen kívül hagyja, és te döntöd el, ki látja. A bővítmények csevegési funkciói minden szerveren működnek, amelyhez csatlakozva vagy.",
+            "A bővítmények küldhetnek értesítéseket. Ezek az értesítési központban érkeznek a „Bővítmények” alatt, bővítményenként kikapcsolhatók, és Ne zavarjanak módban hallgatnak.",
+            "A bővítményfrissítéseknek saját beállításuk van: automatikus (alapértelmezett), csak értesítés vagy kikapcsolva. Az a frissítés, amely több engedélyt kér vagy valaki mástól jön, mindig megvárja a jóváhagyásodat; az a bővítmény, amely frissítés után nem indul el, visszaáll; és bármelyik bővítmény rögzíthető a verziójához. Az új, nem kötelező engedélyek kikapcsolva maradnak, és a Frissítések alatt kínáljuk fel őket.",
+            "A szerverek bővítményeket ajánlhatnak: egy szerver Mumbotja bővítményeket ajánl, amelyek az értesítési központban jelennek meg a Telepítés, Részletek, Most nem és Ne kérdezd többet ennél a szervernél lehetőségekkel. A jóváhagyásod nélkül semmi sem települ.",
+            "Saját tárolóid: akár tíz a Beállítások → Bővítmények → Tárolók alatt, névvel és kulcs-ujjlenyomattal. A bennük lévő bővítmények mindenhol „Nem hivatalosak”, az első telepítés figyelmeztet, és ha az aláíró kulcs megváltozik, a tároló szünetel, amíg meg nem erősíted.",
+            "A fejlesztői mód (Beállítások → Speciális) egy Fejlesztő fület ad: bővítmény betöltése, újratöltése és eltávolítása egy mappából, a naplójával. A szerzőknek ott a bővítmény-SDK, egy sablon és a mumcord-plugin parancssori eszköz a crates.io-n (cargo install mumcord-plugin).",
+            "A mumcord://plugins/<id> hivatkozások egy hivatalos bővítmény részleteit nyitják meg; soha nem telepítenek semmit.",
+            "A hivatalos bővítmények, mindegyik mind a 24 nyelven: Szavazás (2–10 lehetőség, élő eredmények, személyenként egy szavazat), Dobókocka (/roll d20-szal, 2d6+3-mal, előnnyel és hátránnyal, együtt dobva és ellenőrizve), Visszhangocskák (5 fajú, 4 szintű és 3 színű lény, amely soha nem pusztul el, és semmit sem árul, két minijátékkal), Mumbot Music (éppen szól, ugrás, hangerő, várólista, számok hozzáadása; jobb gombos kattintás a botra → „Bot beállítása”) és EVE Fit (hajókártya és fittingkerék a beillesztett EVE Online fitekhez).",
+            "A Mumbot bemutatkozik a Mumcordnak: a Mumcord tudja, mely felhasználók botok, és mit tudnak, a „Bot beállítása” pedig csak a zenét kínáló botokon jelenik meg.",
+            "Biztonság: a bővítmények lezárt homokozóban futnak memória- és időkorlátokkal. Amelyik folyton összeomlik, azt kikapcsoljuk, és a hangod soha nem sérül. A „Minden bővítmény kikapcsolása” (Beállítások és parancspaletta) egyszerre leállítja mindet, a mumcord --no-plugins pedig egyik nélkül indít. A hivatalos bővítmények alá vannak írva, és telepítéskor, valamint minden frissítés után ellenőrizzük őket; egy kill switch letilthat egy káros bővítményt, és naponta ellenőrizzük.",
+            "Adatvédelem: a bővítmények keresése nem küld azonosítókat és nem küldi el a bővítményeid listáját. A bővítményadatok a gépeden maradnak, egy bővítmény eltávolítása után még 30 napig, hacsak nem törlöd őket.",
+            "Egy második hangtéma: a „Gazdag”, új, teltebb hangokkal a csatlakozáshoz, üzenetekhez, említésekhez, némításhoz, az emberek érkezéséhez és távozásához, kickekhez és banokhoz, mostantól az alapértelmezett. A Beállítások → Hangok a „Klasszikusra” vált, az ismerős rövid hangokra, előnézettel (#325).",
+            "A Mumcordból való kilépéskor, miközben hangban vagy, egy rövid búcsúhang szól, hogy észrevedd, épp kiléptél. Csak valódi kilépéskor szól, soha nem a tálcára kicsinyítéskor, és saját kapcsolója van (#325).",
+            "A csatornaváltásnak hangban lévén saját rövid hangja van a csatlakozási hang helyett, saját kapcsolóval, mindkét hangtémában (#325)."
+          ]
+        },
+        {
+          "title": "Továbbfejlesztve",
+          "items": [
+            "A Mumcord gyorsabban indul: az első képernyő előtti kód nagyjából egyharmaddal kisebb. A Beállítások, a beállítási varázsló, a közös nézés, a képernyőmegosztás, a szerverböngésző és a kódkiemelés csak akkor töltődik be, amikor megnyitod (#323).",
+            "Az üres fehér ablak és a „Betöltés…” helyett indítóképernyő van: a logó a témádon egy vékony betöltősávval, amely beleolvad az alkalmazásba; csökkentett mozgásnál mozgás nélkül vált (#323).",
+            "A Beállítások oldalsávjában a Bővítmények elem megmutatja, hány frissítés és új nem kötelező engedély vár.",
+            "A magasabb bővítménykártyáknak már nincs saját görgetősávjuk: lágy elhalványítással vannak levágva, a „Több megjelenítése” pedig kibontja őket.",
+            "A képernyőolvasók a lecserélt csevegősort a kártyájaként olvassák fel (például „Kártya innen: Szavazás: Ebéd délben?”), a rejtett sorokat pedig kihagyják."
+          ]
+        },
+        {
+          "title": "Javítva",
+          "items": [
+            "A Ctrl+V beillesztés ismét működik néhány Linux asztali környezeten.",
+            "A „Módosítás” hivatkozás a Beállítások oldalsávjának „Aktív preset” kártyáján már nem lóg ki a kártyából hosszú nevek esetén (#321).",
+            "Az egyszerre csatlakoztatott szerverek számmezője a Beállítások → Szerver alatt már nincs az egész kártyára széthúzva (#320).",
+            "A tartalmukat változtató párbeszédablakokban a fókusz az ablakban marad, így az Escape és a Tab tovább működik.",
+            "Az Escape-pel bezárt profilkártya, közvetlenül azután, hogy egy gombját használtad, utána újra megnyílik."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.5.0",
       "teaser": "Értesítési központ, minden privát üzenet egy helyen, letiltás, több identitás és importálás a Mumble-ből.",
@@ -2984,5 +3160,277 @@
         "credit": "A játék és üzenetei a zorgch/irc-quizbot (GPL-3.0) projektből származnak, Rustra és a Mumble protokollra portolva, a Mumcorddal azonos protokollréteggel."
       }
     }
+  },
+  "plugins": {
+    "label": "Bővítmények",
+    "title": "Apró extrák a nagy estékhez",
+    "description": "A Mumcord 0.6.0 bővítményeket hoz: szavazásokat, dobókockákat, egy hangból készült kis lényt és távirányítót a zenebotodhoz. Biztonságos, aláírt, és nem kell hozzá szerverváltoztatás.",
+    "intro": "A Mumcord 0.6.0 bővítményeket hoz: apró, biztonságos extrákat a hangcsevegés tetejére. A Mumcordon belül futnak, nem kérnek változtatást a szerveren, és bármilyen szabványos Mumble szerveren működnek. A hivatalos Mumble klienst használók egy sima szövegsort látnak ott, ahol számít, és semmi mást.",
+    "badge": "Újdonság a Mumcord 0.6.0-ban",
+    "ctaPlugins": "Ismerd meg a bővítményeket",
+    "ctaDev": "Készítsd el a sajátod",
+    "pills": [
+      "Homokozóban",
+      "Aláírt",
+      "Nincs szerverváltoztatás",
+      "24 nyelv"
+    ],
+    "listTitle": "Az első bővítmények",
+    "listBody": "Semmi sincs előre telepítve. Válaszd ki, mit szeret a csapatod, a többit hagyd.",
+    "source": "Forráskód",
+    "soon": "Hamarosan",
+    "plugins": {
+      "poll": {
+        "name": "Szavazás",
+        "tagline": "Tegyél fel egy kérdést a csatornának legfeljebb tíz lehetőséggel, és nézd élőben, ahogy jönnek a szavazatok.",
+        "points": [
+          "2–10 lehetőség, élő szavazatsávok egy csevegőkártyán",
+          "Nincs Mumcordod? Szavazz úgy, hogy beírod: `!poll 1`, `!poll 2` … a csevegésbe",
+          "Az eredmény a szavazás lezárásakor jelenik meg"
+        ]
+      },
+      "dice": {
+        "name": "Dobókocka",
+        "tagline": "`/roll d20` vagy `2d6+3`, tisztességes dobásokkal, amelyeket mások tanúsíthatnak és ellenőrizhetnek.",
+        "points": [
+          "Előny és hátrány, a legkisebb vagy legnagyobb eldobása, legfeljebb 20 kocka",
+          "A csatorna többi Mumcord-felhasználója tanúja minden dobásnak, így senki sem csalhat",
+          "Kibontható dobástörténet"
+        ]
+      },
+      "echolings": {
+        "name": "Visszhangocskák",
+        "tagline": "Egy apró, hangból készült lény, amely nő, miközben a barátaiddal lógsz.",
+        "points": [
+          "5 faj, 4 növekedési szint, 3 szín",
+          "A hangban és csevegésben együtt töltött időtől nő",
+          "Soha nem pusztul el, soha nem nyaggat"
+        ]
+      },
+      "mumbot-music": {
+        "name": "Mumbot Music",
+        "tagline": "Távirányító a Mumbot zenebotodhoz.",
+        "points": [
+          "Kattints jobb gombbal a botra → „Bot beállítása”",
+          "Éppen szól, ugrás, hangerő, a várólista és számok hozzáadása",
+          "Kell hozzá egy Mumbot a szerveren: egy átlagos Mumble-felhasználó, szerverváltoztatás nélkül"
+        ]
+      },
+      "eve-fit": {
+        "name": "EVE Fit",
+        "tagline": "Illessz be egy EVE Online fittinget a csevegésbe, és mindenki egy hajókártyát lát.",
+        "points": [
+          "Felismeri a csevegésbe illesztett EFT fiteket, és kártyát mutat a hajóval és a modulokkal",
+          "Megnyitja a teljes fittingnézetet offline, közvetlenül a Mumcordban",
+          "Van „Fitting másolása” gomb, és ingyenes"
+        ]
+      }
+    },
+    "mock": {
+      "pollQuestion": "Mivel játszunk ma este?",
+      "pollOptions": [
+        "Deep Rock Galactic",
+        "Valheim",
+        "Valami újjal"
+      ],
+      "pollVotes": "7 szavazat",
+      "pollLive": "Élő",
+      "pollPlain": "Szavazás: Mivel játszunk ma este? 1) Deep Rock Galactic 2) Valheim 3) Valami újjal",
+      "pollPlainVote": "!poll 2",
+      "rollWitness": "Tanúja volt 3 ember a csatornában",
+      "rollHistory": "Előzmények",
+      "echoStats": [
+        "5 faj",
+        "4 szint",
+        "3 szín"
+      ],
+      "musicNow": "Éppen szól",
+      "musicTrack": "Midnight Raid",
+      "musicArtist": "Lo-fi a késő esti játékhoz",
+      "musicQueue": "Várólista",
+      "musicQueueItems": [
+        "Boss Music, Volume 2",
+        "Campfire Loop"
+      ],
+      "musicAdd": "Szám hozzáadása",
+      "musicMenu": "Bot beállítása",
+      "evePasted": "beillesztette: Maya",
+      "eveCopy": "Fitting másolása"
+    },
+    "eveNotice": "EVE Online and all related logos and images are trademarks or registered trademarks of CCP hf. Mumcord is not affiliated with CCP hf.",
+    "eveCredit": "A fittingnézet az EVEShipFit projekt eveship.fit megoldására épül.",
+    "bridgeTitle": "Senki sem marad ki",
+    "bridgeBody": "A bővítmények nem kérnek szerverváltoztatást, és bármilyen szabványos Mumble szerveren működnek. A hivatalos Mumble klienst használó barátaid egy sima szövegsort látnak ott, ahol számít, és semmi mást.",
+    "bridgeMumcord": "A Mumcordban",
+    "bridgeMumble": "A hivatalos Mumble kliensben",
+    "bridgeNote": "Szemléltetés: a pontos szöveg bővítményenként más.",
+    "installTitle": "Egy perc alatt telepítve",
+    "installBody": "A bővítmények a beállításokban laknak, és azelőtt látod, mit tehet mindegyik, hogy a gépedre kerülne.",
+    "steps": [
+      {
+        "title": "Böngészés",
+        "body": "Beállítások → Bővítmények → Böngészés."
+      },
+      {
+        "title": "Ellenőrzés",
+        "body": "Válassz egy bővítményt, és nézd át az engedélyeit."
+      },
+      {
+        "title": "Telepítés",
+        "body": "Az ikonja megjelenik a csatornafa alatti bővítménysávon."
+      }
+    ],
+    "stripLabel": "Bővítmények",
+    "stripChannels": [
+      "Előtér",
+      "Rajtaütés-est",
+      "AFK"
+    ],
+    "safeTitle": "Biztonságos már a tervezésnél",
+    "safeBody": "A bővítmény vendég az alkalmazásodban. Ezek a házirend szabályai.",
+    "safe": {
+      "sandbox": {
+        "title": "Szigorú homokozó",
+        "body": "Minden bővítmény egy apró WebAssembly program egy szigorú homokozóban. Nincs nyers hálózati vagy fájlhozzáférés; a felületet a Mumcord rajzolja be beépített építőelemekből."
+      },
+      "permissions": {
+        "title": "Engedélyek, amiket látsz",
+        "body": "Telepítés előtt fel vannak sorolva. A nem kötelezők bármikor kikapcsolhatók, és az olyan frissítések, amelyek többet kérnek, megvárják a jóváhagyásodat."
+      },
+      "signed": {
+        "title": "Végig aláírva",
+        "body": "A nyilvántartást és minden csomagot minisignnel írtak alá, és a Mumcord telepítés előtt ellenőrzi őket. Egy kill switch bárhol kikapcsolhat egy rossz verziót."
+      },
+      "server": {
+        "title": "Nincs szerverváltoztatás",
+        "body": "Módosítatlan Mumble szerverrel működik. Az adminnak nincs mit telepítenie."
+      },
+      "off": {
+        "title": "Egy kapcsoló mindegyik leállításához",
+        "body": "Semmi sincs előre telepítve. A „Minden bővítmény kikapcsolása” a Beállítások → Bővítmények alatt vagy a parancspalettán (Ctrl+Shift+P) egyszerre leállít minden bővítményt."
+      },
+      "langs": {
+        "title": "A te nyelveden",
+        "body": "Elérhető mind a 24 Mumcord-nyelven."
+      }
+    },
+    "devLabel": "Fejlesztőknek",
+    "devTitle": "Készítsd el a sajátod",
+    "devBody": "A bővítmények Rustban íródnak, és WebAssemblyre fordulnak (component model, `mumcord:plugin@1.0.0` felület). A tároló tartalmazza a sablont, a dokumentációt és minden hivatalos bővítmény forráskódját.",
+    "cliTitle": "Egyetlen eszköz a teljes úthoz",
+    "cli": [
+      {
+        "cmd": "new",
+        "body": "Létrehoz egy bővítményt a sablonból."
+      },
+      {
+        "cmd": "build",
+        "body": "Reprodukálhatóan lefordítja."
+      },
+      {
+        "cmd": "check",
+        "body": "Ellenőrzi a csomagot."
+      },
+      {
+        "cmd": "test",
+        "body": "Tesztforgatókönyveket futtat egy hamis hoszt ellen."
+      },
+      {
+        "cmd": "serve-registry",
+        "body": "Helyi nyilvántartást szolgál ki, hogy kipróbálhasd a Mumcordban (fejlesztői mód a Beállítások → Bővítmények alatt)."
+      }
+    ],
+    "docsTitle": "Dokumentáció",
+    "docs": {
+      "start": "Első lépések",
+      "api": "API",
+      "manifest": "Manifest",
+      "permissions": "Engedélyek",
+      "building": "Fordítás",
+      "testing": "Tesztelés",
+      "publishing": "Közzététel",
+      "repos": "Saját tároló"
+    },
+    "submitTitle": "A hivatalos nyilvántartásba",
+    "submitBody": "Nyiss egy pull requestet a Mumcord/plugins tárolóban, amely hozzáadja a `plugins/<id>/` mappát. Egy karbantartó jóváhagyása és zöld CI kell hozzá.",
+    "checksTitle": "Mit ellenőriz a CI",
+    "checks": [
+      "Sémaellenőrzés",
+      "Reprodukálható újrafordítás",
+      "Szerzői aláírás",
+      "Engedélykülönbség",
+      "Betöltési teszt hamis hoszttal",
+      "Licencvizsgálat"
+    ],
+    "rulesTitle": "A szabályok",
+    "rules": [
+      "OSI által jóváhagyott licenc",
+      "Reprodukálható fordítás",
+      "Nincs hirdetés, követés, fizetés vagy loot box"
+    ],
+    "policy": "Felülvizsgálati irányelv",
+    "ownRepoTitle": "Vagy üzemeltesd a sajátod",
+    "ownRepoBody": "Bárki üzemeltethet saját bővítménytárolót. A felhasználók a Beállítások → Bővítmények alatt adják hozzá.",
+    "licenceTitle": "Licencek",
+    "licenceBody": "A hivatalos bővítmények AGPL-3.0 licencűek. A sablon, a dokumentáció és az SDK Apache-2.0.",
+    "peopleTitle": "Készítették",
+    "endTitle": "Van ötleted egy bővítményhez?",
+    "endBody": "Minden nyílt: a sablon, a dokumentáció és minden hivatalos bővítmény.",
+    "endRepo": "Nyisd meg a bővítménytárolót",
+    "copy": "Másolás",
+    "copied": "Másolva",
+    "install": "Telepítés a Mumcordban",
+    "pluginPage": "A bővítmény oldala",
+    "installNote": "A telepítés gombok a bővítményt a Mumcord 0.6.0-ban vagy újabban nyitják meg, ahol megerősíted a telepítést. Ha semmi nem nyílik meg, a részletek a bővítmény oldalán vannak.",
+    "galleryLabel": "Képernyőképek",
+    "galleryTitle": "Nézd meg őket a Mumcordban",
+    "galleryBody": "Egyenesen a Mumcord 0.6.0-ból, sötét és világos témában.",
+    "dark": "Sötét",
+    "light": "Világos",
+    "shots": {
+      "browse": {
+        "caption": "Böngészd a hivatalos bővítményeket közvetlenül a Beállításokban.",
+        "alt": "A Mumcord Beállítások, Bővítmények, Böngészés lapja öt hivatalos bővítménnyel (Visszhangocskák, Dobókocka, EVE Fit, Mumbot Music és Szavazás), mindegyik ikonnal és Telepítés gombbal."
+      },
+      "permissions": {
+        "caption": "Minden bővítmény előre megmondja, mit tehet.",
+        "alt": "Az EVE Fit telepítési ablaka a kötelezőként jelölt engedélyekkel, egy opcionális kapcsolóval és egy dobozzal, amely felsorolja, mit nem kap meg soha a bővítmény."
+      },
+      "progress": {
+        "caption": "Az aláírt csomagokat telepítés előtt ellenőrizzük.",
+        "alt": "Az EVE Fit telepítési ablaka a „Checking signature…” feliratú folyamatjelzővel az engedélyek listája fölött."
+      },
+      "poll": {
+        "caption": "A szavazás a csevegőüzenetét élő kártyára cseréli.",
+        "alt": "Mumcord-csevegés, amelyben Bob „Which map tonight?” szavazása szavazatsávos kártyaként jelenik meg: Glacier 2 szavazat, Harbor és Canyon 0."
+      },
+      "vote": {
+        "caption": "Szavazz az oldalsó panelen; mindenki látja, ahogy frissül az állás.",
+        "alt": "A szavazás oldalpanelje a csevegő mellett megnyitva a lehetőségekkel és kiválasztott Glacierrel."
+      },
+      "echolings": {
+        "caption": "Visszhangocskák: egy kedvenc, amely nő, amíg együtt lógtok.",
+        "alt": "Bob profilkártyája az Echolingjával, „Moss”-szal, kötődés- és sorozatcsipekkel és egy „Pat Moss” gombbal; kedvencjelvények a nevek mellett a csatornafában."
+      },
+      "snackrace": {
+        "caption": "Versenyezz a barátaid Visszhangocskáival a nasiért.",
+        "alt": "Folyamatban lévő Snack Race sávokkal You és Bob számára, a mozgó nasizónával és egy Hop! gombbal."
+      },
+      "eveCard": {
+        "caption": "Illessz be egy EVE Online fitet, és szép kártya lesz belőle.",
+        "alt": "Chatkártya egy Carol által beillesztett Algos fitről, „Evening Roam”, slotcsipekkel, drónokkal és rakományszámokkal, valamint Copy fitting és Open gombokkal."
+      },
+      "eveWheel": {
+        "caption": "Az Open megmutatja a teljes felszerelési kereket és a statisztikákat.",
+        "alt": "EVE Fit ablak az Algos hajóval a felszerelési kerékben, modulikonokkal és kondenzátor-, támadó-, védelmi-, célzási-, navigációs- és drónstatisztikákkal."
+      },
+      "eveCargo": {
+        "caption": "Drónhangár, raktér és a CCP közleménye.",
+        "alt": "Az EVE Fit ablak alsó része: drónhangár Hammerhead II-vel és Hobgoblin II-vel, raktér töltényekkel és repair paste-tel, alul a CCP szerzői jogi közleményével."
+      }
+    },
+    "sdkNote": "Az eszköz és az SDK a crates.io-n van. A Cargo.tomlodban:",
+    "docsAll": "Minden dokumentáció",
+    "wiki": "Wiki"
   }
 }

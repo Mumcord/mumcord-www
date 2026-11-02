@@ -1,0 +1,12 @@
+---
+import Base from "../layouts/Base.astro";
+import PluginsPage from "../components/PluginsPage.astro";
+import { pluginsPage } from "../lib/plugins";
+import { pageJsonLd } from "../lib/jsonld";
+
+const r = pluginsPage.de;
+---
+
+<Base lang="de" page="plugins" title={`${r.title} — ${r.label}`} description={r.description} jsonLd={pageJsonLd("de", Astro.site!, "plugins", r.title)}>
+  <PluginsPage lang="de" />
+</Base>

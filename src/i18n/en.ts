@@ -30,6 +30,7 @@ export const en: Dict = {
     features: { title: "Features", desc: "Everything Mumcord does, with screenshots" },
     games: { title: "Games", desc: "Overlay, positional audio and anti-cheat" },
     themes: { title: "Themes", desc: "Looks to copy, light and dark" },
+    plugins: { title: "Plugins", desc: "Polls, dice and more" },
     roadmap: { title: "Roadmap", desc: "What's done and what's next" },
     changelog: { title: "Changelog", desc: "What every version brought" },
     how: { title: "How it works", desc: "One client for any Mumble server" },
@@ -83,10 +84,11 @@ export const en: Dict = {
     note: "Just an animation. This page never touches your microphone.",
   },
   spotlight5: {
-    label: "New in 0.5.0",
-    labelSoon: "Coming: 0.5.0",
+    label: "New in 0.5.0/0.6.0",
+    labelSoon: "Coming: 0.5.0/0.6.0",
     title: "More calm. More you. More sound.",
     body: "0.5.0 brings Epic 3: a notification centre, blocking, several identities, a new channel tree, music in the chat, a low-latency mode for making music and direct connections through a relay.",
+    plugins: { title: "Plugins", body: "0.6.0 adds small, safe extras on top of voice chat: polls, fair dice, a creature made of sound and a remote for your music bot. No server changes needed.", more: "Meet the plugins" },
     tiles: {
       notifications: { title: "Everything in one place", body: "The bell collects mentions, replies, requests and invites from every server. Whoever bothers you gets blocked, recognised by their certificate." },
       identities: { title: "Several identities", body: "Private, clan, work: per server you choose who you connect as." },

@@ -97,6 +97,10 @@
       "toolQuiz": {
         "title": "mumquiz",
         "desc": "Bot de quiz pentru serverul tău"
+      },
+      "plugins": {
+        "title": "Pluginuri",
+        "desc": "Sondaje, zaruri și altele"
       }
     },
     "hero": {
@@ -536,8 +540,8 @@
       "toolTitle": "Contribuitori"
     },
     "spotlight5": {
-      "label": "Nou în 0.5.0",
-      "labelSoon": "În curând: 0.5.0",
+      "label": "Nou în 0.5.0/0.6.0",
+      "labelSoon": "În curând: 0.5.0/0.6.0",
       "title": "Mai multă liniște. Mai mult tu. Mai mult sunet.",
       "body": "0.5.0 aduce Epic 3: un centru de notificări, blocare, mai multe identități, un nou arbore de canale, muzică în chat, un mod cu latență mică pentru a face muzică împreună și conexiuni directe printr-un relay.",
       "tiles": {
@@ -567,7 +571,12 @@
         }
       },
       "features": "Toate funcțiile",
-      "changelog": "Toate noutățile"
+      "changelog": "Toate noutățile",
+      "plugins": {
+        "title": "Pluginuri",
+        "body": "0.6.0 aduce mici extra sigure peste chatul vocal: sondaje, zaruri corecte, o făptură făcută din sunet și o telecomandă pentru botul tău de muzică. Fără modificări pe server.",
+        "more": "Descoperă pluginurile"
+      }
     },
     "serverCta": {
       "title": "Serverul tău în cinci minute",
@@ -1112,6 +1121,89 @@
         ]
       },
       {
+        "id": "plugins",
+        "title": "Pluginuri",
+        "features": [
+          {
+            "id": "plugins",
+            "title": "Pluginuri din Setări",
+            "body": "Setări → Pluginuri cu filele Instalate, Răsfoiește, Actualizări și Depozite: pluginuri oficiale pe categorii și cu căutare, pornește-le și oprește-le, schimbă permisiuni și setări, exportă sau resetează datele lor, șterge-le. Nimic nu vine preinstalat, iar pluginurile merg și când nu ești conectat.",
+            "alt": "Setările Mumcord, Pluginuri, fila Răsfoiește cu cinci pluginuri oficiale (Echolinguri, Aruncător de zaruri, EVE Fit, Mumbot Music și Sondaj), fiecare cu pictogramă și buton Instalează."
+          },
+          {
+            "id": "plugin-permissions",
+            "title": "Vezi mai întâi ce are voie să facă un plugin",
+            "body": "Înainte de instalare, Mumcord spune pe înțelesul tuturor ce vrea un plugin: fiecare permisiune verde, galbenă sau roșie, cele necesare fixe, cele opționale ca întrerupătoare. Schimbările se aplică imediat. Un plugin nu primește niciodată chatul, fișierele, microfonul, certificatele sau parolele tale.",
+            "alt": "Fereastra de instalare EVE Fit cu permisiunile sale marcate ca necesare, un comutator opțional și o casetă care listează ce nu primește niciodată pluginul."
+          },
+          {
+            "id": "plugin-places",
+            "title": "Pluginuri acolo unde ai nevoie de ele",
+            "body": "O bară de pluginuri sub lista de canale, carduri în chat care iau locul mesajului lor, comenzi cu slash precum /roll, o mică insignă lângă nume, o secțiune în cardurile de profil, intrări în meniul click-dreapta și ferestre proprii. Ce trimite un plugin e marcat cu „via”."
+          },
+          {
+            "id": "plugin-together",
+            "title": "Împreună cu canalul tău",
+            "body": "Un plugin vorbește cu același plugin al celorlalți utilizatori Mumcord de pe canal, de exemplu pentru un sondaj comun. Călătorește prin serverul vocal obișnuit: serverele Mumble standard nu au nevoie de nimic, alți clienți îl ignoră, iar tu alegi cine îl vede. Pluginurile merg în chatul fiecărui server la care ești conectat.",
+            "alt": "Panoul lateral al sondajului deschis lângă chat, cu opțiunile și Glacier selectat."
+          },
+          {
+            "id": "plugin-safety",
+            "title": "Sandbox, semnături și un întrerupător de urgență",
+            "body": "Pluginurile rulează izolat, fără acces la rețea, fișiere sau audio, cu limite de memorie și timp; unul care se blochează mereu e oprit, iar vocea ta nu e afectată niciodată. Pluginurile oficiale sunt semnate și verificate. Un întrerupător de urgență poate dezactiva pentru toți un plugin dăunător, „Oprește toate pluginurile” le oprește deodată, iar --no-plugins pornește fără niciunul.",
+            "alt": "Fereastra de instalare EVE Fit cu o bară de progres cu textul „Checking signature…” deasupra listei de permisiuni."
+          },
+          {
+            "id": "plugin-updates",
+            "title": "Actualizări fără surprize",
+            "body": "Instalează automat, doar anunță, sau oprit. O actualizare care cere mai multe permisiuni sau vine de la altcineva așteaptă mereu aprobarea ta. Un plugin care nu pornește după o actualizare e readus la versiunea veche, iar orice plugin poate fi fixat la versiunea lui."
+          },
+          {
+            "id": "plugin-suggestions",
+            "title": "Serverele sugerează pluginuri",
+            "body": "Mumbotul unui server poate recomanda pluginuri folosite de comunitatea lui. Sugestia ajunge liniștit în centrul de notificări, cu Instalează, Detalii, Nu acum și Nu mai întreba pentru acest server. Nimic nu se instalează fără aprobarea ta."
+          },
+          {
+            "id": "plugin-repositories",
+            "title": "Propriile tale depozite de pluginuri",
+            "body": "Până la zece depozite în plus în Setări → Pluginuri → Depozite, afișate cu numele și amprenta cheii. Pluginurile lor sunt etichetate peste tot „Neoficial”, iar dacă se schimbă cheia de semnare, depozitul e pus în pauză până confirmi."
+          },
+          {
+            "id": "plugin-developers",
+            "title": "Fă-ți propriile pluginuri",
+            "body": "Pluginurile sunt în Rust, compilate în WebAssembly. cargo install mumcord-plugin aduce unealta din linia de comandă, iar mumcord-plugin new creează un proiect din șablon. Modul Dezvoltator încarcă un plugin direct dintr-un folder, cu reîncărcare și jurnalul lui."
+          },
+          {
+            "id": "poll",
+            "title": "Sondaj",
+            "body": "O întrebare cu 2 până la 10 opțiuni, rezultate live în cardul din chat și în panou, un vot pe persoană. Cine nu are Mumcord votează cu !poll 1, !poll 2 … în chat.",
+            "alt": "Chat Mumcord în care sondajul lui Bob „Which map tonight?” apare ca un card cu bare de voturi: Glacier 2 voturi, Harbor și Canyon 0."
+          },
+          {
+            "id": "dice",
+            "title": "Aruncător de zaruri",
+            "body": "/roll cu d20, 2d6+3, avantaj și dezavantaj sau ignorarea celui mai mic ori mai mare, plus butoane de aruncare rapidă. Aruncările se fac împreună cu canalul, ca nimeni să nu trișeze, iar fiecare rezultat arată dacă e verificat."
+          },
+          {
+            "id": "echolings",
+            "title": "Echolinguri",
+            "body": "O mică făptură în bara ta de pluginuri: 5 specii, 4 etape de creștere, 3 culori. Mângâie-o, hrănește-o, joacă-te sau las-o să tragă un pui de somn; nu moare niciodată, doarme la Nu deranja și nu are nimic de cumpărat. Prietenii o văd ca insignă și în cardul tău de profil, o pot vizita, și există două minijocuri.",
+            "alt": "Cardul de profil al lui Bob cu Echolingul său „Moss”, jetoane de legătură și serie și un buton „Pat Moss”; insigne de companioni lângă nume în arborele de canale."
+          },
+          {
+            "id": "mumbot-music",
+            "title": "Mumbot Music",
+            "body": "Telecomanda unui bot de muzică Mumbot: ce rulează acum, salt peste piesă, oprire, volum, coada și adăugarea de piese. Click dreapta pe bot → „Configurează botul”; cheia API stă în keychain-ul sistemului."
+          },
+          {
+            "id": "eve-fit",
+            "title": "EVE Fit",
+            "body": "Lipește un fitting din EVE Online în chat și toți cei cu pluginul văd un card cu nava. Un click deschide roata fittingului cu capacitor, atac, apărare și navigație, offline în Mumcord, iar „Copiază fittingul” îl scoate înapoi.",
+            "alt": "Fereastra EVE Fit cu nava Algos în roata de fitting, pictograme de module și statistici de capacitor, atac, apărare, țintire, navigație și drone."
+          }
+        ]
+      },
+      {
         "id": "comfort",
         "title": "Confort",
         "features": [
@@ -1166,7 +1258,7 @@
           {
             "id": "website-look",
             "title": "Aspectul acestui site",
-            "body": "Butoane strălucitoare, degradeuri, efecte de sticlă și o granulație fină de film, și în aplicație, se pot dezactiva.",
+            "body": "Butoane strălucitoare, degradeuri și o granulație fină de film, și în aplicație, se pot dezactiva.",
             "alt": "Setări rapide ca meniu din sticlă mată peste un fundal ușor granulat"
           },
           {
@@ -1196,12 +1288,96 @@
             "title": "Meniu complet în bara de sistem",
             "body": "Meniul din bara de sistem arată fiecare server conectat cu starea și canalul lui, mut, surd și Nu deranja, mută vocea pe alt server sau canal și deschide chaturile recente. Pictograma arată vorbit, mut, mesaje necitite și Nu deranja. Mumcord pornește la autentificare, dacă vrei, pe orice sistem.",
             "alt": "Meniul din bara de sistem cu servere, submeniul canalului vocal și chaturi recente"
+          },
+          {
+            "id": "sound-themes",
+            "title": "Două teme de sunet",
+            "body": "„Classic”, cu tonurile scurte cunoscute, este cea implicită, „Rich” aduce sunete noi, mai pline, cu previzualizare în Setări → Sunete. Plus un sunet propriu pentru schimbarea canalului și un scurt rămas-bun când închizi Mumcord fiind în voce."
+          },
+          {
+            "id": "start-screen",
+            "title": "Un start mai rapid",
+            "body": "Un ecran de start cu logoul pe tema ta, în loc de o fereastră albă goală, și cu aproximativ o treime mai puțin cod înainte de primul ecran: Setările, asistentul și partajarea ecranului se încarcă abia când le deschizi."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.6.1",
+      "teaser": "Pluginuri și pe Mac, volum propriu pentru partajarea ecranului, fundal opac în meniuri și „Classic” ca sunet implicit.",
+      "summary": "O actualizare mică după 0.6.0: pluginurile rulează acum și pe Mac, partajarea ecranului are volum propriu, meniurile și cardurile au fundal opac, iar instalările noi pornesc cu tema de sunet „Classic”. Pe Windows, aplicația și programul de instalare sunt acum semnate.",
+      "groups": [
+        {
+          "title": "Îmbunătățit",
+          "items": [
+            "Instalările noi pornesc cu tema de sunet „Classic”. Dacă ai ales deja „Rich”, o păstrezi (#339).",
+            "Meniurile de clic dreapta, ferestrele pop-up, cardurile la trecerea mouse-ului și cardul de profil au fundal opac în loc de sticlă mată, ca textul să rămână ușor de citit și acolo unde lipsește estomparea, de exemplu pe Linux (#337).",
+            "Windows: aplicația și programul de instalare sunt acum semnate cu un certificat de semnare a codului (#340)."
+          ]
+        },
+        {
+          "title": "Reparat",
+          "items": [
+            "Schimbarea volumului unei partajări de ecran nu mai schimbă vocea persoanei. Fiecare are propriul cursor, iar Mumcord le ține minte pe amândouă pentru fiecare persoană (#333).",
+            "macOS: Mumcord nu se mai blochează de îndată ce pornește un plugin, cum sunt Echolinguri."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.6.0",
+      "teaser": "Pluginuri: sondaje, zaruri, Echolinguri, Mumbot Music și EVE Fit, sigure într-un sandbox și fără modificări pe server.",
+      "summary": "Mumcord primește pluginuri: mici extra sigure, instalate din Setări, izolate într-un sandbox și fără nicio modificare pe server. Pentru început sunt sondaje, zaruri corecte, Echolinguri, o telecomandă pentru botul de muzică Mumbot și EVE Fit. În plus, o temă de sunet nouă, un sunet de rămas-bun și un start mai rapid cu ecran de start.",
+      "groups": [
+        {
+          "title": "Nou",
+          "items": [
+            "Pluginuri: mici suplimente care dau Mumcord funcții noi. Setări → Pluginuri are filele Instalate, Răsfoiește, Actualizări, Depozite și, în modul Dezvoltator, Dezvoltator. Nimic nu vine preinstalat, pluginurile merg și când nu ești conectat, iar „Pluginuri” e și în paleta de comenzi.",
+            "Înainte de fiecare instalare, Mumcord arată pe înțelesul tuturor ce vrea să facă un plugin: fiecare permisiune verde, galbenă sau roșie, cele necesare fixe, cele opționale ca întrerupătoare. Permisiunile pot fi schimbate ulterior și se aplică imediat. Un plugin nu primește niciodată chatul, fișierele, microfonul, certificatele sau parolele tale.",
+            "Instalarea și actualizarea arată o bară de progres cu dimensiunea, apoi „Se verifică semnătura”, „Se despachetează” și „Pornește”; o descărcare eșuată poate fi reîncercată.",
+            "Pluginurile apar acolo unde folosești Mumcord: o bară de pluginuri sub lista de canale, carduri în chat, comenzi cu slash precum /roll, o mică insignă lângă nume, o secțiune în cardurile de profil, intrări în meniul click-dreapta al unei persoane și ferestre proprii. Mesajele trimise de un plugin sunt marcate cu „via”.",
+            "Un card de plugin ia locul mesajului din chat de care ține, de exemplu un fitting lipit sau un sondaj. Mesajele înlocuite arată pictograma și numele pluginului, iar „Arată textul original” le readuce. Mesajele mai vechi primesc și ele carduri, fără ca voturile să fie numărate de două ori.",
+            "Un plugin poate recunoaște anumite mesaje din chat, cum ar fi un fitting de joc lipit. Fereastra de instalare spune, cu cuvintele pluginului, ce recunoaște; apoi primește doar mesajele care se potrivesc de pe canalul tău, niciodată de la persoane blocate, și niciun alt text din chat.",
+            "Pluginurile schimbă date cu același plugin din Mumcordul altor persoane de pe canalul tău, de exemplu pentru un sondaj comun. Călătoresc prin serverul vocal obișnuit: serverele Mumble standard nu au nevoie de nimic, alți clienți le ignoră, iar tu alegi cine le vede. Funcțiile de chat ale pluginurilor merg pe fiecare server la care ești conectat.",
+            "Pluginurile pot trimite notificări. Ajung în centrul de notificări la „Pluginuri”, pot fi oprite pentru fiecare plugin în parte și tac la Nu deranja.",
+            "Actualizările pluginurilor au propria setare: automat (implicit), doar anunță, sau oprit. O actualizare care cere mai multe permisiuni sau vine de la altcineva așteaptă mereu aprobarea ta; un plugin care nu pornește după o actualizare e readus la versiunea veche; iar orice plugin poate fi fixat la versiunea lui. Permisiunile opționale noi rămân oprite și sunt oferite la Actualizări.",
+            "Serverele pot sugera pluginuri: Mumbotul unui server recomandă pluginuri, care apar în centrul de notificări cu Instalează, Detalii, Nu acum și Nu mai întreba pentru acest server. Nimic nu se instalează fără aprobarea ta.",
+            "Propriile depozite: până la zece în Setări → Pluginuri → Depozite, cu nume și amprenta cheii. Pluginurile lor sunt „Neoficiale” peste tot, prima instalare te avertizează, iar dacă se schimbă cheia de semnare, depozitul e pus în pauză până confirmi.",
+            "Modul Dezvoltator (Setări → Avansat) adaugă o filă Dezvoltator: încarcă, reîncarcă și descarcă un plugin dintr-un folder, cu jurnalul lui. Pentru autori există SDK-ul de pluginuri, un șablon și unealta din linia de comandă mumcord-plugin pe crates.io (cargo install mumcord-plugin).",
+            "Linkurile mumcord://plugins/<id> deschid detaliile unui plugin oficial; nu instalează niciodată nimic.",
+            "Pluginurile oficiale, fiecare în toate cele 24 de limbi: Sondaj (2 până la 10 opțiuni, rezultate live, un vot pe persoană), Aruncător de zaruri (/roll cu d20, 2d6+3, avantaj și dezavantaj, aruncat împreună și verificat), Echolinguri (o făptură cu 5 specii, 4 etape și 3 culori care nu moare niciodată și nu vinde nimic, cu două minijocuri), Mumbot Music (ce rulează acum, salt peste piesă, volum, coadă, adăugare de piese; click dreapta pe bot → „Configurează botul”) și EVE Fit (card cu nava și roata fittingului pentru fittinguri EVE Online lipite).",
+            "Mumbot se prezintă lui Mumcord: Mumcord știe care utilizatori sunt boți și ce pot face, iar „Configurează botul” apare doar la boții care oferă muzică.",
+            "Siguranță: pluginurile rulează într-un sandbox etanș, cu limite de memorie și timp. Unul care se blochează mereu e oprit, iar vocea ta nu e afectată niciodată. „Oprește toate pluginurile” (Setări și paleta de comenzi) le oprește pe toate deodată, iar mumcord --no-plugins pornește fără niciunul. Pluginurile oficiale sunt semnate și verificate la instalare și după fiecare actualizare; un întrerupător de urgență poate dezactiva un plugin dăunător și este verificat zilnic.",
+            "Confidențialitate: căutarea de pluginuri nu trimite identificatori și nici lista pluginurilor tale. Datele pluginurilor rămân pe calculatorul tău, și 30 de zile după ce ștergi un plugin, dacă nu le ștergi tu.",
+            "A doua temă de sunet: „Rich”, cu sunete noi, mai pline, pentru conectare, mesaje, mențiuni, mute, oameni care intră și ies, kickuri și banuri, este acum cea implicită. Setări → Sunete trece pe „Classic”, tonurile scurte cunoscute, cu previzualizare (#325).",
+            "Închiderea Mumcord cât ești în voce redă un scurt sunet de rămas-bun, ca să observi că tocmai ai plecat. Se aude doar la o închidere reală, niciodată la minimizarea în tray, și are propriul întrerupător (#325).",
+            "Schimbarea canalului în voce are un scurt sunet propriu în loc de sunetul de conectare, cu propriul întrerupător și în ambele teme de sunet (#325)."
+          ]
+        },
+        {
+          "title": "Îmbunătățit",
+          "items": [
+            "Mumcord pornește mai repede: codul dinainte de primul ecran e cu aproximativ o treime mai mic. Setările, asistentul de configurare, vizionarea împreună, partajarea ecranului, browserul de servere și evidențierea codului se încarcă abia când le deschizi (#323).",
+            "În loc de o fereastră albă goală și „Se încarcă…” există un ecran de start: logoul pe tema ta, cu o bară subțire de încărcare care se topește în aplicație; cu mișcare redusă, trecerea se face fără mișcare (#323).",
+            "Intrarea Pluginuri din bara laterală a Setărilor arată câte actualizări și permisiuni opționale noi așteaptă.",
+            "Cardurile de plugin mai înalte nu mai au bară de derulare proprie: sunt tăiate cu o estompare fină, iar „Arată mai mult” le extinde.",
+            "Cititoarele de ecran citesc o linie de chat înlocuită ca pe cardul ei (de exemplu „Card de la Sondaj: Prânz la douăsprezece?”) și sar peste liniile ascunse."
+          ]
+        },
+        {
+          "title": "Reparat",
+          "items": [
+            "Lipirea cu Ctrl+V merge din nou pe unele desktopuri Linux.",
+            "Linkul „Schimbă” din cardul „Presetare activă” din bara laterală a Setărilor nu mai iese din card la nume lungi (#321).",
+            "Câmpul numeric pentru serverele conectate simultan din Setări → Server nu mai e întins pe tot cardul (#320).",
+            "În dialogurile care își schimbă conținutul, focusul rămâne în dialog, așa că Escape și Tab merg în continuare.",
+            "Un card de profil închis cu Escape imediat după folosirea unui buton din el se deschide din nou după aceea."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.5.0",
       "teaser": "Centru de notificări, toate mesajele private într-un singur loc, blocare, mai multe identități și import din Mumble.",
@@ -2984,5 +3160,277 @@
         "credit": "Jocul și mesajele lui vin de la zorgch/irc-quizbot (GPL-3.0), portate în Rust și pe protocolul Mumble, cu același strat de protocol ca Mumcord."
       }
     }
+  },
+  "plugins": {
+    "label": "Pluginuri",
+    "title": "Mici extra pentru seri mari",
+    "description": "Mumcord 0.6.0 aduce pluginuri: sondaje, zaruri, o mascotă făcută din sunet și o telecomandă pentru botul tău de muzică. Sigure, semnate și fără modificări pe server.",
+    "intro": "Mumcord 0.6.0 aduce pluginuri: mici extra sigure peste chatul vocal. Rulează în interiorul Mumcord, nu cer modificări pe server și merg pe orice server Mumble obișnuit. Cei care folosesc clientul oficial Mumble văd o simplă linie de text acolo unde contează și nimic altceva.",
+    "badge": "Nou în Mumcord 0.6.0",
+    "ctaPlugins": "Descoperă pluginurile",
+    "ctaDev": "Fă-ți propriul plugin",
+    "pills": [
+      "În sandbox",
+      "Semnate",
+      "Fără modificări pe server",
+      "24 de limbi"
+    ],
+    "listTitle": "Primele pluginuri",
+    "listBody": "Nimic nu vine preinstalat. Alege ce îi place grupului tău și lasă restul.",
+    "source": "Cod sursă",
+    "soon": "În curând",
+    "plugins": {
+      "poll": {
+        "name": "Sondaj",
+        "tagline": "Pune canalului o întrebare cu până la zece opțiuni și urmărește voturile cum sosesc live.",
+        "points": [
+          "2 până la 10 opțiuni, bare de voturi live într-un card de chat",
+          "Nu ai Mumcord? Votezi scriind `!poll 1`, `!poll 2` … în chat",
+          "Rezultatele apar când sondajul se închide"
+        ]
+      },
+      "dice": {
+        "name": "Aruncător de zaruri",
+        "tagline": "`/roll d20` sau `2d6+3`, cu aruncări corecte pe care ceilalți le pot confirma și verifica.",
+        "points": [
+          "Avantaj și dezavantaj, ignorarea celui mai mic sau a celui mai mare, până la 20 de zaruri",
+          "Ceilalți utilizatori Mumcord de pe canal confirmă fiecare aruncare, așa că nimeni nu trișează",
+          "Un istoric al aruncărilor pe care îl poți extinde"
+        ]
+      },
+      "echolings": {
+        "name": "Echolinguri",
+        "tagline": "O mică făptură făcută din sunet, care crește cât timp stai cu prietenii.",
+        "points": [
+          "5 specii, 4 etape de creștere, 3 culori",
+          "Crește din timpul petrecut împreună în voce și chat",
+          "Nu moare niciodată, nu se plânge niciodată"
+        ]
+      },
+      "mumbot-music": {
+        "name": "Mumbot Music",
+        "tagline": "O telecomandă pentru botul tău de muzică Mumbot.",
+        "points": [
+          "Click dreapta pe bot → „Configurează botul”",
+          "Ce rulează acum, salt peste piesă, volum, coada și adăugarea de piese",
+          "Are nevoie de un Mumbot pe server: un utilizator Mumble obișnuit, fără modificări pe server"
+        ]
+      },
+      "eve-fit": {
+        "name": "EVE Fit",
+        "tagline": "Lipește un fitting din EVE Online în chat și toți văd un card cu nava.",
+        "points": [
+          "Recunoaște fittinguri EFT lipite în chat și arată un card cu nava și modulele",
+          "Deschide vizualizarea completă a fittingului offline, chiar în Mumcord",
+          "Un buton „Copiază fittingul”, și e gratuit"
+        ]
+      }
+    },
+    "mock": {
+      "pollQuestion": "Ce jucăm diseară?",
+      "pollOptions": [
+        "Deep Rock Galactic",
+        "Valheim",
+        "Ceva nou"
+      ],
+      "pollVotes": "7 voturi",
+      "pollLive": "Live",
+      "pollPlain": "Sondaj: Ce jucăm diseară? 1) Deep Rock Galactic 2) Valheim 3) Ceva nou",
+      "pollPlainVote": "!poll 2",
+      "rollWitness": "Confirmat de 3 persoane de pe canal",
+      "rollHistory": "Istoric",
+      "echoStats": [
+        "5 specii",
+        "4 etape",
+        "3 culori"
+      ],
+      "musicNow": "Rulează acum",
+      "musicTrack": "Midnight Raid",
+      "musicArtist": "Lo-fi pentru sesiuni târzii",
+      "musicQueue": "Coadă",
+      "musicQueueItems": [
+        "Boss Music, Volume 2",
+        "Campfire Loop"
+      ],
+      "musicAdd": "Adaugă piesă",
+      "musicMenu": "Configurează botul",
+      "evePasted": "lipit de Maya",
+      "eveCopy": "Copiază fittingul"
+    },
+    "eveNotice": "EVE Online and all related logos and images are trademarks or registered trademarks of CCP hf. Mumcord is not affiliated with CCP hf.",
+    "eveCredit": "Vizualizarea fittingului se bazează pe eveship.fit al proiectului EVEShipFit.",
+    "bridgeTitle": "Nimeni nu rămâne pe dinafară",
+    "bridgeBody": "Pluginurile nu cer modificări pe server și merg pe orice server Mumble obișnuit. Prietenii de pe clientul oficial Mumble văd o simplă linie de text acolo unde contează și nimic altceva.",
+    "bridgeMumcord": "În Mumcord",
+    "bridgeMumble": "În clientul oficial Mumble",
+    "bridgeNote": "O ilustrație: formularea exactă vine de la fiecare plugin.",
+    "installTitle": "Instalat într-un minut",
+    "installBody": "Pluginurile stau în setări și vezi ce are voie să facă fiecare înainte să ajungă pe calculatorul tău.",
+    "steps": [
+      {
+        "title": "Răsfoiește",
+        "body": "Setări → Pluginuri → Răsfoiește."
+      },
+      {
+        "title": "Verifică",
+        "body": "Alege un plugin și uită-te la permisiunile lui."
+      },
+      {
+        "title": "Instalează",
+        "body": "Pictograma lui apare în bara de pluginuri de sub arborele de canale."
+      }
+    ],
+    "stripLabel": "Pluginuri",
+    "stripChannels": [
+      "Lobby",
+      "Seară de raid",
+      "AFK"
+    ],
+    "safeTitle": "Sigure din construcție",
+    "safeBody": "Un plugin e un oaspete în aplicația ta. Iată regulile casei.",
+    "safe": {
+      "sandbox": {
+        "title": "Un sandbox strict",
+        "body": "Fiecare plugin e un mic program WebAssembly într-un sandbox strict. Fără acces direct la rețea sau la fișiere; Mumcord desenează interfața din piese de construcție integrate."
+      },
+      "permissions": {
+        "title": "Permisiuni pe care le vezi",
+        "body": "Listate înainte să instalezi. Cele opționale pot fi oprite oricând, iar actualizările care cer mai mult așteaptă aprobarea ta."
+      },
+      "signed": {
+        "title": "Semnate de la un capăt la altul",
+        "body": "Registrul și fiecare pachet sunt semnate cu minisign, iar Mumcord le verifică înainte de instalare. Un întrerupător de urgență poate opri peste tot o versiune rea."
+      },
+      "server": {
+        "title": "Fără modificări pe server",
+        "body": "Merge cu un server Mumble nemodificat. Nimic de instalat pentru admin."
+      },
+      "off": {
+        "title": "Un singur întrerupător să le oprești pe toate",
+        "body": "Nimic nu vine preinstalat. „Oprește toate pluginurile” din Setări → Pluginuri sau din paleta de comenzi (Ctrl+Shift+P) oprește toate pluginurile deodată."
+      },
+      "langs": {
+        "title": "În limba ta",
+        "body": "Disponibile în toate cele 24 de limbi Mumcord."
+      }
+    },
+    "devLabel": "Pentru dezvoltatori",
+    "devTitle": "Fă-ți propriul plugin",
+    "devBody": "Pluginurile se scriu în Rust și se compilează în WebAssembly (component model, interfața `mumcord:plugin@1.0.0`). Depozitul conține șablonul, documentația și codul sursă al fiecărui plugin oficial.",
+    "cliTitle": "O singură unealtă pe tot drumul",
+    "cli": [
+      {
+        "cmd": "new",
+        "body": "Creează un plugin din șablon."
+      },
+      {
+        "cmd": "build",
+        "body": "Îl compilează reproductibil."
+      },
+      {
+        "cmd": "check",
+        "body": "Verifică pachetul."
+      },
+      {
+        "cmd": "test",
+        "body": "Rulează scenarii de test pe o gazdă simulată."
+      },
+      {
+        "cmd": "serve-registry",
+        "body": "Pornește un registru local ca să-l încerci în Mumcord (modul Dezvoltator în Setări → Pluginuri)."
+      }
+    ],
+    "docsTitle": "Documentație",
+    "docs": {
+      "start": "Primii pași",
+      "api": "API",
+      "manifest": "Manifest",
+      "permissions": "Permisiuni",
+      "building": "Compilare",
+      "testing": "Testare",
+      "publishing": "Publicare",
+      "repos": "Propriul depozit"
+    },
+    "submitTitle": "În registrul oficial",
+    "submitBody": "Deschide un pull request în Mumcord/plugins care adaugă `plugins/<id>/`. Are nevoie de aprobarea unui maintainer și de un CI verde.",
+    "checksTitle": "Ce verifică CI",
+    "checks": [
+      "Verificarea schemei",
+      "Recompilare reproductibilă",
+      "Semnătura autorului",
+      "Diferența de permisiuni",
+      "Test de încărcare pe gazdă simulată",
+      "Scanarea licențelor"
+    ],
+    "rulesTitle": "Regulile",
+    "rules": [
+      "O licență aprobată de OSI",
+      "O compilare reproductibilă",
+      "Fără reclame, urmărire, plăți sau loot boxes"
+    ],
+    "policy": "Politica de evaluare",
+    "ownRepoTitle": "Sau ține-l pe al tău",
+    "ownRepoBody": "Oricine poate ține propriul depozit de pluginuri. Utilizatorii îl adaugă în Setări → Pluginuri.",
+    "licenceTitle": "Licențe",
+    "licenceBody": "Pluginurile oficiale sunt AGPL-3.0. Șablonul, documentația și SDK-ul sunt Apache-2.0.",
+    "peopleTitle": "Realizat de",
+    "endTitle": "Ai o idee de plugin?",
+    "endBody": "Totul e deschis: șablonul, documentația și fiecare plugin oficial.",
+    "endRepo": "Deschide depozitul de pluginuri",
+    "copy": "Copiază",
+    "copied": "Copiat",
+    "install": "Instalează în Mumcord",
+    "pluginPage": "Pagina pluginului",
+    "installNote": "Butoanele de instalare deschid pluginul în Mumcord 0.6.0 sau mai nou, unde confirmi instalarea. Dacă nu se deschide nimic, detaliile sunt pe pagina pluginului.",
+    "galleryLabel": "Capturi de ecran",
+    "galleryTitle": "Vezi-le în Mumcord",
+    "galleryBody": "Direct din Mumcord 0.6.0, în tema închisă și în cea deschisă.",
+    "dark": "Întunecat",
+    "light": "Deschis",
+    "shots": {
+      "browse": {
+        "caption": "Răsfoiește pluginurile oficiale direct în Setări.",
+        "alt": "Setările Mumcord, Pluginuri, fila Răsfoiește cu cinci pluginuri oficiale (Echolinguri, Aruncător de zaruri, EVE Fit, Mumbot Music și Sondaj), fiecare cu pictogramă și buton Instalează."
+      },
+      "permissions": {
+        "caption": "Fiecare plugin spune dinainte ce are voie să facă.",
+        "alt": "Fereastra de instalare EVE Fit cu permisiunile sale marcate ca necesare, un comutator opțional și o casetă care listează ce nu primește niciodată pluginul."
+      },
+      "progress": {
+        "caption": "Pachetele semnate sunt verificate înainte de instalare.",
+        "alt": "Fereastra de instalare EVE Fit cu o bară de progres cu textul „Checking signature…” deasupra listei de permisiuni."
+      },
+      "poll": {
+        "caption": "Un sondaj își înlocuiește mesajul din chat cu un card live.",
+        "alt": "Chat Mumcord în care sondajul lui Bob „Which map tonight?” apare ca un card cu bare de voturi: Glacier 2 voturi, Harbor și Canyon 0."
+      },
+      "vote": {
+        "caption": "Votează în panoul lateral; toți văd cum se actualizează numărătoarea.",
+        "alt": "Panoul lateral al sondajului deschis lângă chat, cu opțiunile și Glacier selectat."
+      },
+      "echolings": {
+        "caption": "Echolinguri: un companion care crește cât timp petreceți împreună.",
+        "alt": "Cardul de profil al lui Bob cu Echolingul său „Moss”, jetoane de legătură și serie și un buton „Pat Moss”; insigne de companioni lângă nume în arborele de canale."
+      },
+      "snackrace": {
+        "caption": "Întrece-te cu Echolingurile prietenilor până la snack.",
+        "alt": "Snack Race în desfășurare, cu culoare pentru You și Bob, zona mobilă a snack-ului și un buton Hop!."
+      },
+      "eveCard": {
+        "caption": "Lipește un fit din EVE Online și devine un card ordonat.",
+        "alt": "Card de chat pentru un fit Algos „Evening Roam” lipit de Carol, cu jetoane de sloturi, drone și numere de marfă și butoanele Copy fitting și Open."
+      },
+      "eveWheel": {
+        "caption": "Open arată roata completă de fitting și statisticile.",
+        "alt": "Fereastra EVE Fit cu nava Algos în roata de fitting, pictograme de module și statistici de capacitor, atac, apărare, țintire, navigație și drone."
+      },
+      "eveCargo": {
+        "caption": "Hangarul de drone, cala de marfă și nota CCP.",
+        "alt": "Partea de jos a ferestrei EVE Fit: hangar de drone cu Hammerhead II și Hobgoblin II, cală de marfă cu muniție și repair paste și nota de drepturi de autor CCP la final."
+      }
+    },
+    "sdkNote": "Instrumentul și SDK-ul sunt pe crates.io. În Cargo.toml-ul tău:",
+    "docsAll": "Toată documentația",
+    "wiki": "Wiki"
   }
 }

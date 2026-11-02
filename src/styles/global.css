@@ -348,6 +348,9 @@ p {
     0 30px 80px -50px rgb(255 111 168 / 0.6);
   opacity: 0;
   visibility: hidden;
+  /* A closing panel must not catch the pointer: while it slides up it would land under the
+     pointer again, reopen, slide down, close … and flicker. Only an open panel is hoverable. */
+  pointer-events: none;
   transform: translate(-50%, -8px) scale(0.98);
   transform-origin: 50% 0;
   transition:
@@ -371,6 +374,8 @@ p {
 .nav-item.is-open .nav-panel {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
+  z-index: 3;
   transform: translate(-50%, 0) scale(1);
   transition:
     opacity 0.25s var(--ease-out),
@@ -383,6 +388,8 @@ p {
   .nav-item:hover:not(.is-closed) .nav-panel {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
+    z-index: 3;
     transform: translate(-50%, 0) scale(1);
     transition:
       opacity 0.25s var(--ease-out),
@@ -859,6 +866,7 @@ p {
     visibility: inherit;
     transform: none;
     transition: none;
+    pointer-events: auto;
   }
   .nav-panel::before {
     display: none;
@@ -2386,7 +2394,30 @@ p {
   .s5-relay .s5-demo {
     order: 2;
   }
+  .s5-plugins {
+    grid-column: span 3;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    align-items: center;
+  }
 }
+/* Plugins (0.6.0): the four official icons bobbing over a little live poll. */
+.s5-plugins {
+  background:
+    radial-gradient(520px 260px at 20% 30%, rgb(255 111 168 / 0.18), transparent 70%),
+    linear-gradient(160deg, rgb(155 123 255 / 0.16), rgb(21 15 56 / 0.85));
+}
+.s5-plugins .s5-text { padding-bottom: 28px; }
+.s5-plugins h3 { display: flex; align-items: center; gap: 10px; }
+.d5-plugins { display: flex; gap: 14px; justify-content: center; }
+.d5-plugins span { animation: d5-bob 4s ease-in-out infinite; animation-delay: calc(var(--i) * -1s); }
+.d5-plugins img { width: clamp(48px, 6vw, 64px); height: auto; filter: drop-shadow(0 14px 22px rgb(0 0 0 / 0.45)); }
+@keyframes d5-bob { 50% { transform: translateY(-8px) rotate(-3deg); } }
+.d5-poll { display: grid; gap: 6px; width: min(260px, 80%); justify-self: center; }
+.d5-poll i { display: block; height: 10px; width: var(--w); border-radius: 5px; background: linear-gradient(90deg, var(--violet), var(--pink)); opacity: 0.8; animation: d5-vote 3.2s ease-in-out infinite alternate; transform-origin: left; }
+.d5-poll i:nth-child(2) { animation-delay: -1.1s; }
+.d5-poll i:nth-child(3) { animation-delay: -2.2s; }
+@keyframes d5-vote { from { transform: scaleX(0.7); } }
+@media (prefers-reduced-motion: reduce) { .d5-plugins span, .d5-poll i { animation: none; } }
 .s5-tile {
   position: relative;
   display: grid;

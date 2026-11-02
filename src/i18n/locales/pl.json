@@ -97,6 +97,10 @@
       "toolQuiz": {
         "title": "mumquiz",
         "desc": "Bot quizowy dla twojego serwera"
+      },
+      "plugins": {
+        "title": "Wtyczki",
+        "desc": "Ankiety, kości i nie tylko"
       }
     },
     "hero": {
@@ -536,8 +540,8 @@
       "toolTitle": "Współtwórcy"
     },
     "spotlight5": {
-      "label": "Nowość w 0.5.0",
-      "labelSoon": "Wkrótce: 0.5.0",
+      "label": "Nowość w 0.5.0/0.6.0",
+      "labelSoon": "Wkrótce: 0.5.0/0.6.0",
       "title": "Więcej spokoju. Więcej ciebie. Więcej dźwięku.",
       "body": "0.5.0 przynosi Epic 3: centrum powiadomień, blokowanie, wiele tożsamości, nowe drzewo kanałów, muzykę w czacie, tryb niskiego opóźnienia do wspólnego grania i bezpośrednie połączenia przez relay.",
       "tiles": {
@@ -567,7 +571,12 @@
         }
       },
       "features": "Wszystkie funkcje",
-      "changelog": "Wszystkie nowości"
+      "changelog": "Wszystkie nowości",
+      "plugins": {
+        "title": "Wtyczki",
+        "body": "0.6.0 dodaje małe, bezpieczne dodatki do rozmów głosowych: ankiety, uczciwe kości, stworzonko z dźwięku i pilota do bota muzycznego. Bez zmian na serwerze.",
+        "more": "Poznaj wtyczki"
+      }
     },
     "serverCta": {
       "title": "Własny serwer w pięć minut",
@@ -1112,6 +1121,89 @@
         ]
       },
       {
+        "id": "plugins",
+        "title": "Wtyczki",
+        "features": [
+          {
+            "id": "plugins",
+            "title": "Wtyczki z Ustawień",
+            "body": "Ustawienia → Wtyczki z zakładkami Zainstalowane, Przeglądaj, Aktualizacje i Repozytoria: oficjalne wtyczki według kategorii i z wyszukiwarką, włączanie i wyłączanie, zmiana uprawnień i ustawień, eksport lub reset danych, usuwanie. Nic nie jest zainstalowane z góry, a wtyczki działają nawet bez połączenia.",
+            "alt": "Ustawienia Mumcorda, Wtyczki, karta Przeglądaj z pięcioma oficjalnymi wtyczkami (Echolingi, Rzut kośćmi, EVE Fit, Mumbot Music i Ankieta), każda z ikoną i przyciskiem Zainstaluj."
+          },
+          {
+            "id": "plugin-permissions",
+            "title": "Najpierw zobacz, co wtyczka może",
+            "body": "Przed instalacją Mumcord prostymi słowami mówi, czego chce wtyczka: każde uprawnienie zielone, żółte lub czerwone, wymagane na stałe, opcjonalne jako przełączniki. Zmiany działają od razu. Wtyczka nigdy nie dostaje Twojego czatu, plików, mikrofonu, certyfikatów ani haseł.",
+            "alt": "Okno instalacji EVE Fit z uprawnieniami oznaczonymi jako wymagane, opcjonalnym przełącznikiem i polem z listą tego, czego wtyczka nigdy nie dostaje."
+          },
+          {
+            "id": "plugin-places",
+            "title": "Wtyczki tam, gdzie ich potrzebujesz",
+            "body": "Pasek wtyczek pod listą kanałów, karty na czacie zastępujące swoją wiadomość, polecenia ze slashem, jak /roll, mała plakietka obok nazw, sekcja w kartach profilu, wpisy w menu prawego przycisku i własne okna. To, co wysyła wtyczka, jest oznaczone „via”."
+          },
+          {
+            "id": "plugin-together",
+            "title": "Razem z Twoim kanałem",
+            "body": "Wtyczka rozmawia z tą samą wtyczką u innych użytkowników Mumcorda na kanale, na przykład przy wspólnej ankiecie. Dane idą zwykłym serwerem głosowym: standardowe serwery Mumble nie potrzebują niczego, inni klienci to ignorują, a Ty wybierasz, kto to widzi. Wtyczki działają na czacie każdego serwera, z którym jesteś połączony.",
+            "alt": "Panel boczny ankiety obok czatu z opcjami i zaznaczonym Glacier."
+          },
+          {
+            "id": "plugin-safety",
+            "title": "Piaskownica, podpisy i wyłącznik awaryjny",
+            "body": "Wtyczki działają odizolowane, bez dostępu do sieci, plików i dźwięku, z limitami pamięci i czasu; ta, która ciągle się wywala, zostaje wyłączona, a Twój głos nigdy na tym nie cierpi. Oficjalne wtyczki są podpisane i sprawdzane. Wyłącznik awaryjny może wyłączyć szkodliwą wtyczkę dla wszystkich, „Wyłącz wszystkie wtyczki” zatrzymuje je naraz, a --no-plugins uruchamia program bez żadnej.",
+            "alt": "Okno instalacji EVE Fit z paskiem postępu z napisem „Checking signature…” nad listą uprawnień."
+          },
+          {
+            "id": "plugin-updates",
+            "title": "Aktualizacje bez niespodzianek",
+            "body": "Instaluj automatycznie, tylko powiadamiaj albo wyłącz. Aktualizacja, która chce więcej uprawnień lub pochodzi od kogoś innego, zawsze czeka na Twoją zgodę. Wtyczka, która po aktualizacji się nie uruchomi, jest cofana, a każdą wtyczkę można przypiąć do jej wersji."
+          },
+          {
+            "id": "plugin-suggestions",
+            "title": "Serwery podpowiadają wtyczki",
+            "body": "Mumbot serwera może polecić wtyczki, z których korzysta jego społeczność. Propozycja trafia spokojnie do centrum powiadomień, z opcjami Zainstaluj, Szczegóły, Nie teraz i Nie pytaj więcej dla tego serwera. Nic nie jest instalowane bez Twojej zgody."
+          },
+          {
+            "id": "plugin-repositories",
+            "title": "Własne repozytoria wtyczek",
+            "body": "Do dziesięciu dodatkowych repozytoriów w Ustawienia → Wtyczki → Repozytoria, pokazanych z nazwą i odciskiem klucza. Ich wtyczki są wszędzie oznaczone jako „Nieoficjalne”, a jeśli klucz podpisu się zmieni, repozytorium zostaje wstrzymane, dopóki nie potwierdzisz."
+          },
+          {
+            "id": "plugin-developers",
+            "title": "Zrób własne wtyczki",
+            "body": "Wtyczki piszesz w Rust, a kompilujesz do WebAssembly. cargo install mumcord-plugin daje narzędzie wiersza poleceń, a mumcord-plugin new tworzy projekt z szablonu. Tryb programisty ładuje wtyczkę prosto z folderu, z przeładowaniem i logiem."
+          },
+          {
+            "id": "poll",
+            "title": "Ankieta",
+            "body": "Pytanie z 2 do 10 opcjami, wyniki na żywo w karcie czatu i w panelu, jeden głos na osobę. Kto nie ma Mumcorda, głosuje na czacie przez !poll 1, !poll 2 …",
+            "alt": "Czat Mumcorda, na którym ankieta Boba „Which map tonight?” wygląda jak karta z paskami głosów: Glacier 2 głosy, Harbor i Canyon 0."
+          },
+          {
+            "id": "dice",
+            "title": "Rzut kośćmi",
+            "body": "/roll z d20, 2d6+3, przewagą i utrudnieniem albo odrzuceniem najniższego lub najwyższego wyniku, plus przyciski szybkiego rzutu. Rzuty wykonuje się razem z kanałem, więc nikt nie oszukuje, a każdy wynik pokazuje, czy jest zweryfikowany."
+          },
+          {
+            "id": "echolings",
+            "title": "Echolingi",
+            "body": "Małe stworzonko na Twoim pasku wtyczek: 5 gatunków, 4 etapy wzrostu, 3 kolory. Pogłaszcz je, nakarm, pobaw się albo pozwól mu uciąć drzemkę; nigdy nie umiera, śpi przy Nie przeszkadzać i niczego nie trzeba kupować. Znajomi widzą je jako plakietkę i w Twojej karcie profilu, mogą je odwiedzić, a do tego są dwie minigry.",
+            "alt": "Karta profilu Boba z jego Echolingiem „Moss”, znacznikami więzi i serii oraz przyciskiem „Pat Moss”; odznaki zwierzaków obok nazw w drzewie kanałów."
+          },
+          {
+            "id": "mumbot-music",
+            "title": "Mumbot Music",
+            "body": "Pilot do bota muzycznego Mumbot: aktualnie odtwarzane, pomijanie, stop, głośność, kolejka i dodawanie utworów. Kliknij bota prawym przyciskiem → „Skonfiguruj bota”; klucz API trafia do systemowego pęku kluczy."
+          },
+          {
+            "id": "eve-fit",
+            "title": "EVE Fit",
+            "body": "Wklej fitting z EVE Online na czat, a każdy z wtyczką zobaczy kartę statku. Jedno kliknięcie otwiera koło fittingu z kondensatorem, atakiem, obroną i nawigacją, offline w Mumcordzie, a „Kopiuj fitting” wyciąga go z powrotem.",
+            "alt": "Okno EVE Fit ze statkiem Algos w kole fittingu, ikonami modułów i statystykami kondensatora, ataku, obrony, namierzania, nawigacji i dronów."
+          }
+        ]
+      },
+      {
         "id": "comfort",
         "title": "Wygoda",
         "features": [
@@ -1166,7 +1258,7 @@
           {
             "id": "website-look",
             "title": "Wygląd tej strony",
-            "body": "Świecące przyciski, gradienty, efekty szkła i lekkie ziarno filmowe, także w aplikacji, do wyłączenia.",
+            "body": "Świecące przyciski, gradienty i lekkie ziarno filmowe, także w aplikacji, do wyłączenia.",
             "alt": "Szybkie ustawienia jako menu z matowego szkła na lekko ziarnistym tle"
           },
           {
@@ -1196,12 +1288,96 @@
             "title": "Pełne menu w zasobniku",
             "body": "Menu w zasobniku pokazuje każdy połączony serwer z jego stanem i kanałem, wyciszenie mikrofonu i dźwięku oraz Nie przeszkadzać, przenosi głos na inny serwer lub kanał i otwiera ostatnie czaty. Ikona pokazuje mówienie, wyciszenie, nieprzeczytane wiadomości i Nie przeszkadzać. Mumcord startuje po zalogowaniu, jeśli chcesz, w każdym systemie.",
             "alt": "Menu w zasobniku z serwerami, podmenu kanału głosowego i ostatnimi czatami"
+          },
+          {
+            "id": "sound-themes",
+            "title": "Dwa motywy dźwiękowe",
+            "body": "„Classic” ze znajomymi krótkimi tonami jest domyślny, „Rich” przynosi nowe, pełniejsze dźwięki, z podglądem w Ustawienia → Dźwięki. Do tego własny dźwięk przy zmianie kanału i krótkie pożegnanie, gdy zamykasz Mumcord podczas rozmowy."
+          },
+          {
+            "id": "start-screen",
+            "title": "Szybszy start",
+            "body": "Ekran startowy z logo na Twoim motywie zamiast pustego białego okna i około jedna trzecia mniej kodu przed pierwszym ekranem: Ustawienia, kreator i udostępnianie ekranu ładują się dopiero, gdy je otworzysz."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.6.1",
+      "teaser": "Wtyczki także na Macu, osobna głośność udostępniania ekranu, pełne tło menu i „Classic” jako domyślny dźwięk.",
+      "summary": "Niewielka aktualizacja po 0.6.0: wtyczki działają teraz także na Macu, udostępnianie ekranu ma własną głośność, menu i karty mają pełne tło, a nowe instalacje zaczynają z motywem dźwiękowym „Classic”. W systemie Windows aplikacja i instalator są teraz podpisane.",
+      "groups": [
+        {
+          "title": "Ulepszone",
+          "items": [
+            "Nowe instalacje zaczynają z motywem dźwiękowym „Classic”. Jeśli wybrałeś już „Rich”, zostaje on bez zmian (#339).",
+            "Menu prawego przycisku, wyskakujące okna, karty po najechaniu i karta profilu mają pełne tło zamiast matowego szkła, więc tekst jest czytelny także tam, gdzie brakuje rozmycia, na przykład w Linuksie (#337).",
+            "Windows: aplikacja i instalator są teraz podpisane certyfikatem do podpisywania kodu (#340)."
+          ]
+        },
+        {
+          "title": "Naprawione",
+          "items": [
+            "Zmiana głośności udostępnianego ekranu nie zmienia już głosu danej osoby. Każde ma własny suwak, a Mumcord pamięta oba dla każdej osoby (#333).",
+            "macOS: Mumcord nie zawiesza się już zaraz po uruchomieniu wtyczki, na przykład Echolingów."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.6.0",
+      "teaser": "Wtyczki: ankiety, kości, Echolingi, Mumbot Music i EVE Fit, bezpieczne w piaskownicy i bez zmian na serwerze.",
+      "summary": "Mumcord dostaje wtyczki: małe, bezpieczne dodatki, instalowane z Ustawień, odizolowane w piaskownicy i bez zmian na serwerze. Na start są ankiety, uczciwe kości, Echolingi, pilot do bota muzycznego Mumbot i EVE Fit. Do tego nowy motyw dźwiękowy, dźwięk pożegnania i szybszy start z ekranem startowym.",
+      "groups": [
+        {
+          "title": "Nowe",
+          "items": [
+            "Wtyczki: małe dodatki, które dają Mumcordowi nowe funkcje. Ustawienia → Wtyczki ma zakładki Zainstalowane, Przeglądaj, Aktualizacje, Repozytoria, a w trybie programisty także Programista. Nic nie jest zainstalowane z góry, wtyczki działają nawet bez połączenia, a „Wtyczki” są też w palecie poleceń.",
+            "Przed każdą instalacją Mumcord prostymi słowami pokazuje, co wtyczka chce robić: każde uprawnienie zielone, żółte lub czerwone, wymagane na stałe, opcjonalne jako przełączniki. Uprawnienia można później zmienić i działają od razu. Wtyczka nigdy nie dostaje Twojego czatu, plików, mikrofonu, certyfikatów ani haseł.",
+            "Instalacja i aktualizacja pokazują pasek postępu z rozmiarem, potem „Sprawdzanie podpisu”, „Rozpakowywanie” i „Uruchamianie”; nieudane pobieranie można ponowić.",
+            "Wtyczki pojawiają się tam, gdzie używasz Mumcorda: pasek wtyczek pod listą kanałów, karty na czacie, polecenia ze slashem, jak /roll, mała plakietka obok nazw, sekcja w kartach profilu, wpisy w menu prawego przycisku osoby i własne okna. Wiadomości wysłane przez wtyczkę są oznaczone „via”.",
+            "Karta wtyczki zastępuje wiadomość na czacie, do której należy, na przykład wklejony fitting albo ankietę. Zastąpione wiadomości pokazują ikonę i nazwę wtyczki, a „Pokaż oryginalny tekst” je przywraca. Starsze wiadomości też dostają swoje karty, bez podwójnego liczenia głosów.",
+            "Wtyczka może rozpoznawać pewne wiadomości na czacie, na przykład wklejony fitting z gry. Okno instalacji własnymi słowami wtyczki mówi, co rozpoznaje; wtyczka dostaje wtedy tylko pasujące wiadomości z Twojego kanału, nigdy od zablokowanych osób, i żadnego innego tekstu z czatu.",
+            "Wtyczki wymieniają dane z tą samą wtyczką u innych osób z Mumcordem na Twoim kanale, na przykład przy wspólnej ankiecie. Dane idą zwykłym serwerem głosowym: standardowe serwery Mumble nie potrzebują niczego, inni klienci to ignorują, a Ty wybierasz, kto to widzi. Funkcje czatu wtyczek działają na każdym serwerze, z którym jesteś połączony.",
+            "Wtyczki mogą wysyłać powiadomienia. Trafiają do centrum powiadomień w sekcji „Wtyczki”, można je wyłączyć dla każdej wtyczki osobno i milczą przy Nie przeszkadzać.",
+            "Aktualizacje wtyczek mają własne ustawienie: automatyczne (domyślnie), tylko powiadomienia albo wyłączone. Aktualizacja, która chce więcej uprawnień lub pochodzi od kogoś innego, zawsze czeka na Twoją zgodę; wtyczka, która po aktualizacji się nie uruchomi, jest cofana; a każdą wtyczkę można przypiąć do jej wersji. Nowe opcjonalne uprawnienia zostają wyłączone i są proponowane w Aktualizacjach.",
+            "Serwery mogą podpowiadać wtyczki: Mumbot serwera poleca wtyczki, które pojawiają się w centrum powiadomień z opcjami Zainstaluj, Szczegóły, Nie teraz i Nie pytaj więcej dla tego serwera. Nic nie jest instalowane bez Twojej zgody.",
+            "Własne repozytoria: do dziesięciu w Ustawienia → Wtyczki → Repozytoria, z nazwą i odciskiem klucza. Ich wtyczki są wszędzie „Nieoficjalne”, pierwsza instalacja ostrzega, a jeśli klucz podpisu się zmieni, repozytorium zostaje wstrzymane, dopóki nie potwierdzisz.",
+            "Tryb programisty (Ustawienia → Zaawansowane) dodaje zakładkę Programista: ładowanie, przeładowanie i wyładowanie wtyczki z folderu, z jej logiem. Dla autorów jest SDK wtyczek, szablon i narzędzie wiersza poleceń mumcord-plugin na crates.io (cargo install mumcord-plugin).",
+            "Linki mumcord://plugins/<id> otwierają szczegóły oficjalnej wtyczki; niczego nie instalują.",
+            "Oficjalne wtyczki, każda we wszystkich 24 językach: Ankieta (2 do 10 opcji, wyniki na żywo, jeden głos na osobę), Rzut kośćmi (/roll z d20, 2d6+3, przewagą i utrudnieniem, rzucane razem i weryfikowane), Echolingi (stworzonko z 5 gatunkami, 4 etapami i 3 kolorami, które nigdy nie umiera i niczego nie sprzedaje, z dwiema minigrami), Mumbot Music (aktualnie odtwarzane, pomijanie, głośność, kolejka, dodawanie utworów; prawy przycisk na bocie → „Skonfiguruj bota”) i EVE Fit (karta statku i koło fittingu dla wklejonych fitingów z EVE Online).",
+            "Mumbot przedstawia się Mumcordowi: Mumcord wie, którzy użytkownicy są botami i co potrafią, a „Skonfiguruj bota” pojawia się tylko przy botach z muzyką.",
+            "Bezpieczeństwo: wtyczki działają w szczelnej piaskownicy z limitami pamięci i czasu. Ta, która ciągle się wywala, zostaje wyłączona, a Twój głos nigdy na tym nie cierpi. „Wyłącz wszystkie wtyczki” (Ustawienia i paleta poleceń) zatrzymuje je wszystkie naraz, a mumcord --no-plugins uruchamia program bez żadnej. Oficjalne wtyczki są podpisane i sprawdzane przy instalacji i po każdej aktualizacji; wyłącznik awaryjny może wyłączyć szkodliwą wtyczkę i jest sprawdzany codziennie.",
+            "Prywatność: sprawdzanie wtyczek nie wysyła żadnych identyfikatorów ani listy Twoich wtyczek. Dane wtyczek zostają na Twoim komputerze, a po usunięciu wtyczki jeszcze przez 30 dni, chyba że je skasujesz.",
+            "Drugi motyw dźwiękowy: „Rich”, z nowymi, pełniejszymi dźwiękami połączenia, wiadomości, wzmianek, wyciszenia, wchodzenia i wychodzenia osób, kicków i banów, jest teraz domyślny. Ustawienia → Dźwięki przełączają na „Classic”, znajome krótkie tony, z podglądem (#325).",
+            "Zamknięcie Mumcorda podczas rozmowy odtwarza krótki dźwięk pożegnania, żebyś zauważył(a), że właśnie wychodzisz. Gra tylko przy prawdziwym zamknięciu, nigdy przy minimalizacji do zasobnika, i ma własny przełącznik (#325).",
+            "Zmiana kanału podczas rozmowy ma własny krótki dźwięk zamiast dźwięku połączenia, z własnym przełącznikiem i w obu motywach dźwiękowych (#325)."
+          ]
+        },
+        {
+          "title": "Ulepszone",
+          "items": [
+            "Mumcord startuje szybciej: kod przed pierwszym ekranem jest mniejszy o około jedną trzecią. Ustawienia, kreator konfiguracji, wspólne oglądanie, udostępnianie ekranu, przeglądarka serwerów i podświetlanie kodu ładują się dopiero, gdy je otworzysz (#323).",
+            "Zamiast pustego białego okna i „Ładowanie…” jest ekran startowy: logo na Twoim motywie z wąskim paskiem ładowania, który płynnie znika w aplikacji; przy ograniczonym ruchu przełącza się bez animacji (#323).",
+            "Wpis Wtyczki na pasku bocznym Ustawień pokazuje, ile aktualizacji i nowych opcjonalnych uprawnień czeka.",
+            "Wyższe karty wtyczek nie mają już własnego paska przewijania: są przycinane z miękkim wygaszeniem, a „Pokaż więcej” je rozwija.",
+            "Czytniki ekranu czytają zastąpioną linijkę czatu jako jej kartę (na przykład „Karta z Ankieta: Obiad w południe?”) i pomijają ukryte linijki."
+          ]
+        },
+        {
+          "title": "Naprawione",
+          "items": [
+            "Wklejanie przez Ctrl+V znów działa na niektórych pulpitach Linuksa.",
+            "Link „Zmień” w karcie „Aktywny preset” na pasku bocznym Ustawień nie wystaje już poza kartę przy długich nazwach (#321).",
+            "Pole liczbowe dla jednocześnie połączonych serwerów w Ustawienia → Serwer nie jest już rozciągnięte na całą kartę (#320).",
+            "W oknach dialogowych, które zmieniają zawartość, fokus zostaje w oknie, więc Escape i Tab nadal działają.",
+            "Karta profilu zamknięta klawiszem Escape zaraz po użyciu przycisku w niej otwiera się potem znowu."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.5.0",
       "teaser": "Centrum powiadomień, wszystkie wiadomości prywatne w jednym miejscu, blokowanie, kilka tożsamości i import z Mumble.",
@@ -2984,5 +3160,277 @@
         "credit": "Gra i jej wiadomości pochodzą z zorgch/irc-quizbot (GPL-3.0), przeniesione na Rusta i na protokół Mumble, z tą samą warstwą protokołu co Mumcord."
       }
     }
+  },
+  "plugins": {
+    "label": "Wtyczki",
+    "title": "Małe dodatki na wielkie wieczory",
+    "description": "Mumcord 0.6.0 wprowadza wtyczki: ankiety, kości, zwierzaka z dźwięku i pilota do bota muzycznego. Bezpieczne, podpisane i bez zmian na serwerze.",
+    "intro": "Mumcord 0.6.0 wprowadza wtyczki: małe, bezpieczne dodatki do rozmów głosowych. Działają w samym Mumcordzie, nie wymagają zmian na serwerze i pasują do każdego standardowego serwera Mumble. Osoby z oficjalnym klientem Mumble zobaczą tam, gdzie trzeba, zwykłą linijkę tekstu i nic poza tym.",
+    "badge": "Nowość w Mumcord 0.6.0",
+    "ctaPlugins": "Poznaj wtyczki",
+    "ctaDev": "Zrób własną",
+    "pills": [
+      "W piaskownicy",
+      "Podpisane",
+      "Bez zmian na serwerze",
+      "24 języki"
+    ],
+    "listTitle": "Pierwsze wtyczki",
+    "listBody": "Nic nie jest zainstalowane z góry. Wybierz to, co lubi Twoja ekipa, a resztę zostaw.",
+    "source": "Kod źródłowy",
+    "soon": "Wkrótce",
+    "plugins": {
+      "poll": {
+        "name": "Ankieta",
+        "tagline": "Zadaj kanałowi pytanie z maksymalnie dziesięcioma opcjami i patrz, jak głosy napływają na żywo.",
+        "points": [
+          "Od 2 do 10 opcji, paski głosów na żywo w karcie czatu",
+          "Nie masz Mumcorda? Zagłosuj, wpisując na czacie `!poll 1`, `!poll 2` …",
+          "Wyniki pojawiają się po zamknięciu ankiety"
+        ]
+      },
+      "dice": {
+        "name": "Rzut kośćmi",
+        "tagline": "`/roll d20` albo `2d6+3`, z uczciwymi rzutami, które inni mogą zaświadczyć i sprawdzić.",
+        "points": [
+          "Przewaga i utrudnienie, odrzucanie najniższego lub najwyższego wyniku, do 20 kości",
+          "Inni użytkownicy Mumcorda na kanale poświadczają każdy rzut, więc nikt nie oszukuje",
+          "Historia rzutów, którą możesz rozwinąć"
+        ]
+      },
+      "echolings": {
+        "name": "Echolingi",
+        "tagline": "Małe stworzonko z dźwięku, które rośnie, gdy spędzasz czas ze znajomymi.",
+        "points": [
+          "5 gatunków, 4 etapy wzrostu, 3 kolory",
+          "Rośnie dzięki czasowi spędzonemu razem na głosie i czacie",
+          "Nigdy nie umiera, nigdy nie marudzi"
+        ]
+      },
+      "mumbot-music": {
+        "name": "Mumbot Music",
+        "tagline": "Pilot do Twojego bota muzycznego Mumbot.",
+        "points": [
+          "Kliknij bota prawym przyciskiem → „Skonfiguruj bota”",
+          "Aktualnie odtwarzane, pomijanie, głośność, kolejka i dodawanie utworów",
+          "Wymaga Mumbota na serwerze: to zwykły użytkownik Mumble, bez zmian na serwerze"
+        ]
+      },
+      "eve-fit": {
+        "name": "EVE Fit",
+        "tagline": "Wklej na czacie fitting z EVE Online, a wszyscy zobaczą kartę statku.",
+        "points": [
+          "Rozpoznaje fitingi EFT wklejone na czacie i pokazuje kartę ze statkiem i modułami",
+          "Otwiera pełny widok fittingu offline, prosto w Mumcordzie",
+          "Przycisk „Kopiuj fitting” i do tego za darmo"
+        ]
+      }
+    },
+    "mock": {
+      "pollQuestion": "W co gramy dziś wieczorem?",
+      "pollOptions": [
+        "Deep Rock Galactic",
+        "Valheim",
+        "Coś nowego"
+      ],
+      "pollVotes": "7 głosów",
+      "pollLive": "Na żywo",
+      "pollPlain": "Ankieta: W co gramy dziś wieczorem? 1) Deep Rock Galactic 2) Valheim 3) Coś nowego",
+      "pollPlainVote": "!poll 2",
+      "rollWitness": "Poświadczone przez 3 osoby na kanale",
+      "rollHistory": "Historia",
+      "echoStats": [
+        "5 gatunków",
+        "4 etapy",
+        "3 kolory"
+      ],
+      "musicNow": "Teraz gra",
+      "musicTrack": "Midnight Raid",
+      "musicArtist": "Lo-fi na późne sesje",
+      "musicQueue": "Kolejka",
+      "musicQueueItems": [
+        "Boss Music, Volume 2",
+        "Campfire Loop"
+      ],
+      "musicAdd": "Dodaj utwór",
+      "musicMenu": "Skonfiguruj bota",
+      "evePasted": "wkleił(a) Maya",
+      "eveCopy": "Kopiuj fitting"
+    },
+    "eveNotice": "EVE Online and all related logos and images are trademarks or registered trademarks of CCP hf. Mumcord is not affiliated with CCP hf.",
+    "eveCredit": "Widok fittingu bazuje na eveship.fit projektu EVEShipFit.",
+    "bridgeTitle": "Nikt nie zostaje z boku",
+    "bridgeBody": "Wtyczki nie wymagają zmian na serwerze i działają na każdym standardowym serwerze Mumble. Znajomi z oficjalnym klientem Mumble zobaczą tam, gdzie trzeba, zwykłą linijkę tekstu i nic poza tym.",
+    "bridgeMumcord": "W Mumcordzie",
+    "bridgeMumble": "W oficjalnym kliencie Mumble",
+    "bridgeNote": "Ilustracja: dokładne brzmienie zależy od każdej wtyczki.",
+    "installTitle": "Zainstalowane w minutę",
+    "installBody": "Wtyczki znajdziesz w ustawieniach i zanim trafią na Twój komputer, widzisz, co każda z nich może robić.",
+    "steps": [
+      {
+        "title": "Przeglądaj",
+        "body": "Ustawienia → Wtyczki → Przeglądaj."
+      },
+      {
+        "title": "Sprawdź",
+        "body": "Wybierz wtyczkę i przejrzyj jej uprawnienia."
+      },
+      {
+        "title": "Zainstaluj",
+        "body": "Jej ikona pojawi się na pasku wtyczek pod drzewem kanałów."
+      }
+    ],
+    "stripLabel": "Wtyczki",
+    "stripChannels": [
+      "Lobby",
+      "Wieczór rajdowy",
+      "AFK"
+    ],
+    "safeTitle": "Bezpieczne z założenia",
+    "safeBody": "Wtyczka jest gościem w Twojej aplikacji. Oto zasady domu.",
+    "safe": {
+      "sandbox": {
+        "title": "Ścisła piaskownica",
+        "body": "Każda wtyczka to mały program WebAssembly w ścisłej piaskownicy. Bez surowego dostępu do sieci i plików; interfejs Mumcord rysuje z wbudowanych klocków."
+      },
+      "permissions": {
+        "title": "Uprawnienia, które widzisz",
+        "body": "Wypisane przed instalacją. Opcjonalne możesz wyłączyć w każdej chwili, a aktualizacje wymagające więcej czekają na Twoją zgodę."
+      },
+      "signed": {
+        "title": "Podpisane od początku do końca",
+        "body": "Rejestr i każda paczka są podpisane przez minisign, a Mumcord sprawdza je przed instalacją. Wyłącznik awaryjny może wyłączyć wadliwą wersję wszędzie."
+      },
+      "server": {
+        "title": "Bez zmian na serwerze",
+        "body": "Działa z niezmodyfikowanym serwerem Mumble. Administrator nie musi niczego instalować."
+      },
+      "off": {
+        "title": "Jeden przełącznik, żeby zatrzymać wszystkie",
+        "body": "Nic nie jest zainstalowane z góry. „Wyłącz wszystkie wtyczki” w Ustawienia → Wtyczki lub w palecie poleceń (Ctrl+Shift+P) zatrzymuje wszystkie naraz."
+      },
+      "langs": {
+        "title": "W Twoim języku",
+        "body": "Dostępne we wszystkich 24 językach Mumcorda."
+      }
+    },
+    "devLabel": "Dla programistów",
+    "devTitle": "Zrób własną",
+    "devBody": "Wtyczki pisze się w Rust i kompiluje do WebAssembly (model komponentów, interfejs `mumcord:plugin@1.0.0`). W repozytorium znajdziesz szablon, dokumentację i kod źródłowy każdej oficjalnej wtyczki.",
+    "cliTitle": "Jedno narzędzie na całą drogę",
+    "cli": [
+      {
+        "cmd": "new",
+        "body": "Tworzy wtyczkę z szablonu."
+      },
+      {
+        "cmd": "build",
+        "body": "Buduje ją w powtarzalny sposób."
+      },
+      {
+        "cmd": "check",
+        "body": "Sprawdza paczkę."
+      },
+      {
+        "cmd": "test",
+        "body": "Uruchamia scenariusze testowe na atrapie hosta."
+      },
+      {
+        "cmd": "serve-registry",
+        "body": "Uruchamia lokalny rejestr, by wypróbować wtyczkę w Mumcordzie (tryb programisty w Ustawienia → Wtyczki)."
+      }
+    ],
+    "docsTitle": "Dokumentacja",
+    "docs": {
+      "start": "Pierwsze kroki",
+      "api": "API",
+      "manifest": "Manifest",
+      "permissions": "Uprawnienia",
+      "building": "Budowanie",
+      "testing": "Testowanie",
+      "publishing": "Publikowanie",
+      "repos": "Własne repozytorium"
+    },
+    "submitTitle": "Do oficjalnego rejestru",
+    "submitBody": "Otwórz pull request w Mumcord/plugins, który dodaje `plugins/<id>/`. Potrzebuje jednej akceptacji opiekuna i zielonego CI.",
+    "checksTitle": "Co sprawdza CI",
+    "checks": [
+      "Sprawdzenie schematu",
+      "Powtarzalna przebudowa",
+      "Podpis autora",
+      "Różnica uprawnień",
+      "Test ładowania na atrapie hosta",
+      "Skan licencji"
+    ],
+    "rulesTitle": "Zasady",
+    "rules": [
+      "Licencja zatwierdzona przez OSI",
+      "Powtarzalna kompilacja",
+      "Bez reklam, śledzenia, płatności i loot boxów"
+    ],
+    "policy": "Zasady przeglądu",
+    "ownRepoTitle": "Albo prowadź własne",
+    "ownRepoBody": "Każdy może prowadzić własne repozytorium wtyczek. Użytkownicy dodają je w Ustawienia → Wtyczki.",
+    "licenceTitle": "Licencje",
+    "licenceBody": "Oficjalne wtyczki mają licencję AGPL-3.0. Szablon, dokumentacja i SDK mają Apache-2.0.",
+    "peopleTitle": "Stworzyli",
+    "endTitle": "Masz pomysł na wtyczkę?",
+    "endBody": "Wszystko jest otwarte: szablon, dokumentacja i każda oficjalna wtyczka.",
+    "endRepo": "Otwórz repozytorium wtyczek",
+    "copy": "Kopiuj",
+    "copied": "Skopiowano",
+    "install": "Zainstaluj w Mumcordzie",
+    "pluginPage": "Strona wtyczki",
+    "installNote": "Przyciski instalacji otwierają wtyczkę w Mumcordzie 0.6.0 lub nowszym, gdzie potwierdzasz instalację. Jeśli nic się nie otworzy, szczegóły są na stronie wtyczki.",
+    "galleryLabel": "Zrzuty ekranu",
+    "galleryTitle": "Zobacz je w Mumcordzie",
+    "galleryBody": "Prosto z Mumcorda 0.6.0, w ciemnym i jasnym motywie.",
+    "dark": "Ciemny",
+    "light": "Jasny",
+    "shots": {
+      "browse": {
+        "caption": "Przeglądaj oficjalne wtyczki prosto w Ustawieniach.",
+        "alt": "Ustawienia Mumcorda, Wtyczki, karta Przeglądaj z pięcioma oficjalnymi wtyczkami (Echolingi, Rzut kośćmi, EVE Fit, Mumbot Music i Ankieta), każda z ikoną i przyciskiem Zainstaluj."
+      },
+      "permissions": {
+        "caption": "Każda wtyczka z góry mówi, co jej wolno.",
+        "alt": "Okno instalacji EVE Fit z uprawnieniami oznaczonymi jako wymagane, opcjonalnym przełącznikiem i polem z listą tego, czego wtyczka nigdy nie dostaje."
+      },
+      "progress": {
+        "caption": "Podpisane pakiety są sprawdzane przed instalacją.",
+        "alt": "Okno instalacji EVE Fit z paskiem postępu z napisem „Checking signature…” nad listą uprawnień."
+      },
+      "poll": {
+        "caption": "Ankieta zastępuje swoją wiadomość na czacie żywą kartą.",
+        "alt": "Czat Mumcorda, na którym ankieta Boba „Which map tonight?” wygląda jak karta z paskami głosów: Glacier 2 głosy, Harbor i Canyon 0."
+      },
+      "vote": {
+        "caption": "Głosuj w panelu bocznym; wszyscy widzą, jak licznik się aktualizuje.",
+        "alt": "Panel boczny ankiety obok czatu z opcjami i zaznaczonym Glacier."
+      },
+      "echolings": {
+        "caption": "Echolingi: zwierzak, który rośnie, gdy spędzacie razem czas.",
+        "alt": "Karta profilu Boba z jego Echolingiem „Moss”, znacznikami więzi i serii oraz przyciskiem „Pat Moss”; odznaki zwierzaków obok nazw w drzewie kanałów."
+      },
+      "snackrace": {
+        "caption": "Ścigaj się Echolingami przyjaciół do przekąski.",
+        "alt": "Trwający Snack Race z torami dla You i Bob, ruchomą strefą przekąski i przyciskiem Hop!."
+      },
+      "eveCard": {
+        "caption": "Wklej fit z EVE Online, a stanie się schludną kartą.",
+        "alt": "Karta czatu dla fitu Algos „Evening Roam” wklejonego przez Carol, ze znacznikami slotów, dronami i liczbami ładunku oraz przyciskami Copy fitting i Open."
+      },
+      "eveWheel": {
+        "caption": "Open pokazuje pełne koło fittingu i statystyki.",
+        "alt": "Okno EVE Fit ze statkiem Algos w kole fittingu, ikonami modułów i statystykami kondensatora, ataku, obrony, namierzania, nawigacji i dronów."
+      },
+      "eveCargo": {
+        "caption": "Hangar na drony, ładownia i uwaga CCP.",
+        "alt": "Dolna część okna EVE Fit: hangar na drony z Hammerhead II i Hobgoblin II, ładownia z amunicją i repair paste oraz uwaga o prawach autorskich CCP na dole."
+      }
+    },
+    "sdkNote": "Narzędzie i SDK są na crates.io. W twoim Cargo.toml:",
+    "docsAll": "Cała dokumentacja",
+    "wiki": "Wiki"
   }
 }

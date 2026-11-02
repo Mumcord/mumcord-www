@@ -423,12 +423,13 @@ const source: Record<"de" | "en", RoadmapPage> = {
         id: "epic-3.1",
         tag: "Epic 3.1",
         title: "Plugins",
-        status: "now",
+        status: "done",
         version: "0.6.0",
         summary: "Mumcord lässt sich mit kleinen, sicheren Plugins erweitern: aus einem offiziellen Verzeichnis in den Einstellungen installiert, ohne Änderung am Server und ohne Backend von Mumcord. Das erste Plugin sind die Echolings.",
         groups: [
           {
             title: "Plugins in Mumcord",
+            done: [0, 1, 2, 3],
             items: [
               "Ein Bereich „Plugins“ in den Einstellungen: stöbern, installieren, ein- und ausschalten, einstellen, aktualisieren und entfernen, ohne Konten und Bewertungen",
               "Vor der Installation in klaren Worten sehen, was ein Plugin darf, optionale Teile ablehnen und es später ändern",
@@ -443,6 +444,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Sicher und ohne Backend",
+            done: [0, 1, 2, 3, 4],
             items: [
               "Plugins laufen abgeschottet in einer Sandbox, ohne Zugriff auf Netz, Dateien, Mikrofon oder dein Zertifikat",
               "Nur signierte, geprüfte Pakete. Inoffizielle Plugins sind deutlich gekennzeichnet",
@@ -457,6 +459,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Für Entwickler",
+            done: [0, 1, 2, 3, 4],
             items: [
               "Ein kleines, strenges Manifest und klare Versionsregeln",
               "Eine Schnittstelle für Ereignisse, Speicher, Timer, Benachrichtigungen und das Theme, jede hinter einer Erlaubnis",
@@ -467,6 +470,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Die ersten Plugins",
+            done: [0, 1, 2, 3],
             items: [
               "Umfragen als erstes Test-Plugin: Frage stellen, abstimmen und das Ergebnis live sehen, im Kanal oder in privaten Nachrichten",
               "Würfeln als zweites Test-Plugin: /roll im Chat mit gängiger Würfelnotation, eine animierte Würfelkarte und Würfe, die alle nachprüfen können",
@@ -486,7 +490,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         id: "epic-4",
         tag: "Epic 4",
         title: "Admin",
-        status: "planned",
+        status: "now",
         summary: "Damit Mumcord den offiziellen Client ganz ersetzen kann: Kanäle, Rechte, Banns und Personen verwalten, nur mit normalen Mumble-Nachrichten und ohne Änderung am Server.",
         groups: [
           {
@@ -972,12 +976,13 @@ const source: Record<"de" | "en", RoadmapPage> = {
         id: "epic-3.1",
         tag: "Epic 3.1",
         title: "Plugins",
-        status: "now",
+        status: "done",
         version: "0.6.0",
         summary: "Mumcord can be extended with small, safe plugins: installed from an official repository in Settings, with no change to the server and no Mumcord backend. The first plugin is Echolings.",
         groups: [
           {
             title: "Plugins in Mumcord",
+            done: [0, 1, 2, 3],
             items: [
               "A Plugins section in Settings: browse, install, turn on and off, configure, update and remove, without accounts or ratings",
               "See in plain words what a plugin may do before installing it, say no to optional parts and change your mind later",
@@ -992,6 +997,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Safe and without a backend",
+            done: [0, 1, 2, 3, 4],
             items: [
               "Plugins run sealed off in a sandbox, without access to the network, files, the microphone or your certificate",
               "Only signed, verified packages. Unofficial plugins are clearly marked",
@@ -1006,6 +1012,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "For developers",
+            done: [0, 1, 2, 3, 4],
             items: [
               "A small, strict manifest and clear version rules",
               "An interface for events, storage, timers, notifications and the theme, each behind a permission",
@@ -1016,6 +1023,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "The first plugins",
+            done: [0, 1, 2, 3],
             items: [
               "Polls as the first test plugin: ask a question, vote and watch the result live, in a channel or in private messages",
               "Dice as the second test plugin: /roll in the chat with standard dice notation, an animated dice card and rolls everyone can check",
@@ -1035,7 +1043,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         id: "epic-4",
         tag: "Epic 4",
         title: "Admin",
-        status: "planned",
+        status: "now",
         summary: "So Mumcord can fully replace the official client: manage channels, permissions, bans and people, with standard Mumble messages only and no change to the server.",
         groups: [
           {
