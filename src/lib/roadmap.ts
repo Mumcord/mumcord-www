@@ -633,7 +633,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         status: "later",
         summary: "Installieren ohne Warnungen und immer aktuell.",
         items: [
-          "Signierte Installer, ohne Warnung von SmartScreen und Gatekeeper: für Windows und macOS schon im Release-Ablauf vorbereitet, aktiv, sobald die Zertifikate eingerichtet sind",
+          "Signierte Installer: für macOS seit 0.4.1, für Windows seit 0.6.1. Als Nächstes: keine SmartScreen-Warnung mehr, sobald das Windows-Zertifikat genug Vertrauen aufgebaut hat",
           "Automatische Updates",
           "Absturzberichte, nur wenn du zustimmst",
           "Paketquellen und Stores",
@@ -1227,7 +1227,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         status: "later",
         summary: "Install without warnings and always up to date.",
         items: [
-          "Signed installers, no SmartScreen or Gatekeeper warning: already prepared in the release workflow for Windows and macOS, active once the certificates are set up",
+          "Signed installers: on macOS since 0.4.1, on Windows since 0.6.1. Next: no SmartScreen warning once the Windows certificate has built up enough reputation",
           "Automatic updates",
           "Crash reports, only if you agree",
           "Package repositories and stores",
