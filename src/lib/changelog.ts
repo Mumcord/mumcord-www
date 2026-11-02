@@ -21,6 +21,28 @@ export interface ChangelogEntry {
 const source: Record<"de" | "en", ChangelogEntry[]> = {
   de: [
     {
+      version: "0.6.2",
+      teaser: "Schnellere Fenster im Linux-AppImage, „Was ist neu“ zeigt die richtige Version, und kleine Korrekturen.",
+      summary: "Ein kleines Update: Im Linux-AppImage öffnen sich Fenster viel schneller, „Was ist neu“ zeigt die Notizen deiner Version und bleibt nicht mehr beim Laden hängen, und die Plugin-Leiste und das Menü am Auflegen-Knopf sitzen wieder richtig.",
+      groups: [
+        {
+          title: "Verbessert",
+          items: [
+            "Linux-AppImage: Das Hauptfenster und weitere Fenster wie „Was ist neu“ und der Paketinspektor öffnen sich viel schneller.",
+          ],
+        },
+        {
+          title: "Behoben",
+          items: [
+            "„Was ist neu“ öffnet mit den Notizen der Version, die du gerade nutzt, gefolgt von den älteren. Notizen neuerer Versionen tauchen nicht mehr auf.",
+            "„Was ist neu“ bringt seine Notizen mit und bleibt nicht mehr beim Laden hängen.",
+            "Die Plugin-Symbole in der Leiste unter der Kanalliste sitzen mittig und sind größer.",
+            "Das Menü am Auflegen-Knopf öffnet sich über dem Knopf, statt unten aus dem Fenster zu laufen, und der Eintrag zum Wechseln des Sprachservers hat ein Symbol.",
+          ],
+        },
+      ],
+    },
+    {
       version: "0.6.1",
       teaser: "Plugins auf dem Mac, eigene Lautstärke für Bildschirmübertragungen, feste Menühintergründe und „Klassisch“ als Standardklang.",
       summary: "Ein kleines Update nach 0.6.0: Plugins laufen jetzt auch auf dem Mac, eine Bildschirmübertragung hat ihre eigene Lautstärke, Menüs und Karten haben einen festen Hintergrund, und neue Installationen starten mit dem Klangthema „Klassisch“. Unter Windows sind App und Installer jetzt signiert.",
@@ -589,6 +611,28 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
     },
   ],
   en: [
+    {
+      version: "0.6.2",
+      teaser: "Faster windows in the Linux AppImage, “What’s new” shows the right version, and small fixes.",
+      summary: "A small update: in the Linux AppImage, windows open much faster, “What’s new” shows the notes for your version and no longer gets stuck loading, and the plugin strip and the hang-up button’s menu sit right again.",
+      groups: [
+        {
+          title: "Improved",
+          items: [
+            "Linux AppImage: the main window and other windows such as “What’s new” and the packet inspector open much faster.",
+          ],
+        },
+        {
+          title: "Fixed",
+          items: [
+            "“What’s new” opens on the notes of the version you are running, followed by the older ones. Notes of newer versions no longer show up.",
+            "“What’s new” has its notes built in and no longer gets stuck loading.",
+            "Plugin icons in the strip under the channel list are centred and larger.",
+            "The hang-up button’s menu opens above the button instead of running off the bottom of the window, and the entry for switching voice servers has an icon.",
+          ],
+        },
+      ],
+    },
     {
       version: "0.6.1",
       teaser: "Plugins on the Mac, a volume of its own for screen shares, solid menu backgrounds and “Classic” as the default sound.",
