@@ -6,6 +6,7 @@ import plgDice from "../assets/plugins/dice.png";
 import plgEcho from "../assets/plugins/echolings.png";
 import plgMusic from "../assets/plugins/mumbot-music.png";
 import plgEve from "../assets/plugins/eve-fit.png";
+import plgSkyloom from "../assets/plugins/skyloom.png";
 import { Picture, Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import mainDark from "../assets/shots/main-dark.png";
@@ -583,6 +584,40 @@ const tourColors = tour.map((x) => allThemes.find((th) => th.id === x.theme)?.[x
         <div class="s5-text">
           <h3>{nx.tiles.resize.title} <span class="pill pill-new">0.7.0</span></h3>
           <p>{nx.tiles.resize.body}</p>
+        </div>
+      </a>
+      <a class="nx-tile nx-stage" href={`${routes.roadmap[lang]}#epic-4.1`} data-reveal data-spot>
+        <div class="s5-demo nx-demo" aria-hidden="true">
+          <div class="d7-board">
+            <span class="d7-note" style="--c: #f5d46b; --r: -4deg; --x: 8%; --y: 14%">Launch!</span>
+            <span class="d7-note" style="--c: #f59ac0; --r: 3deg; --x: 26%; --y: 56%">Demo</span>
+            <svg class="d7-ink" viewBox="0 0 300 160"><path d="M70 50 C 120 20, 150 90, 200 60 S 260 120, 280 90" /><ellipse cx="226" cy="112" rx="34" ry="20" /></svg>
+            <i class="d7-laser" />
+            <span class="d7-cursor" style="--c: var(--live)">Maya</span>
+          </div>
+          <div class="d7-sky">
+            <svg viewBox="0 0 200 160"><path d="M30 120 L70 70 L110 92 L150 40 L176 96" /></svg>
+            {[[30, 120], [70, 70], [110, 92], [150, 40], [176, 96]].map(([x, y], i) => <i style={`--x: ${x / 2}%; --y: ${y / 1.6}%; --i: ${i}`} />)}
+            <Image src={plgSkyloom} alt="" width={48} height={48} />
+          </div>
+        </div>
+        <div class="s5-text">
+          <h3>{nx.tiles.stage.title} <span class="pill pill-new">0.7.0</span></h3>
+          <p>{nx.tiles.stage.body}</p>
+        </div>
+      </a>
+      <a class="nx-tile nx-score" href={`${routes.roadmap[lang]}#epic-4.1`} data-reveal data-spot>
+        <div class="s5-demo nx-demo" aria-hidden="true">
+          <ul class="d7-scores">
+            <li><b>Roll Call</b><span class="is-off">✓ Official</span></li>
+            <li><b>Quiet Notes</b><span class="is-low">12 · Low</span></li>
+            <li><b>Overlay Pals</b><span class="is-mid">45 · Medium</span></li>
+            <li><b>Trivia Night</b><span class="is-high">78 · High</span></li>
+          </ul>
+        </div>
+        <div class="s5-text">
+          <h3>{nx.tiles.score.title} <span class="pill pill-new">0.7.0</span></h3>
+          <p>{nx.tiles.score.body}</p>
         </div>
       </a>
     </div>

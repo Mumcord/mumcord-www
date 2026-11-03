@@ -259,13 +259,15 @@ export const de = {
     all: "Die ganze Roadmap im Detail",
     next: {
       title: "Teil was. Zeig was. Zeig dich.",
-      body: "Epic 4.1 bringt Dateien, eine bessere Bildschirmübertragung und Kameras. Alles läuft Ende-zu-Ende-verschlüsselt über das Relay des Servers, am Mumble-Server ändert sich nichts.",
+      body: "0.7.0 bringt Dateien, eine bessere Bildschirmübertragung, Kameras und Plugins, die im Kanal zeichnen und spielen. Alles läuft Ende-zu-Ende-verschlüsselt über das Relay des Servers, am Mumble-Server ändert sich nichts.",
       draft: "Entwurf",
       tiles: {
         files: { title: "Dateien teilen", body: "In den Chat ziehen, bis 2 GB. Niemand sieht deine IP-Adresse, jeder Download braucht deinen Klick und wird per Prüfsumme geprüft." },
         camera: { title: "Der Kameraraum", body: "Bis zu 9 Kameras als Raster über dem Chat, nur für die Leute in deinem Kanal." },
         share: { title: "Bildschirm bis 4K", body: "Auflösung, Bildrate und Codec selbst wählen. Über das Relay schauen bis zu 25 Leute zu, und du lädst nur einmal hoch." },
         blur: { title: "Hintergrund unscharf", body: "Unschärfe oder ein Bild, berechnet auf deinem PC. Die Kamera startet immer mit einer Vorschau." },
+        stage: { title: "Whiteboard und Skyloom", body: "Plugins ziehen in den Medienbereich: ein gemeinsames Whiteboard mit Zetteln und Laserpointer und Skyloom, ein Spiel nur mit eurer Stimme." },
+        score: { title: "Sicherheits-Score", body: "Inoffizielle Plugins bekommen einen Score von 0 bis 100, berechnet auf deinem PC. Mit welchen Websites ein Plugin spricht, siehst du vor der Installation." },
         resize: { title: "Bild und Chat, wie du willst", body: "Am Griff ziehen: mehr Bild oder mehr Chat. Ganz klein wird es zur Mini-Leiste." },
       },
       after: {
@@ -286,7 +288,7 @@ export const de = {
       { tag: "Epic 2", title: "Mehrere Server, Themes und Feinschliff", body: "Mit 0.4.0: bis zu fünf Server gleichzeitig, auf einem sprechen und überall mitlesen. Eigene Themes, teilbar im Chat, auch pro Server. Dazu das Overlay im Spiel unter Windows, die Verbindungsqualität der anderen, Linux-Pakete mit Installation in einer Zeile und, als Beta, YouTube-Watch-Party und Bildschirm teilen." },
       { tag: "Epic 3", title: "Komfort", body: "Globale Hotkeys, volles Tray-Menü, Import aus dem offiziellen Client, Flüstern, Server-Browser, „Bitte nicht stören“, @all und @channel, Blockieren, private Nachrichten nur von Freunden, eine Benachrichtigungszentrale, mehrere Identitäten, Server-Info, ein neues Design für Assistent, Einstellungen, Watch-Party und Kanalbaum, Audio pro Kanal, ein Low-Latency-Modus zum Musizieren, Updates in der App sowie ein optionales Relay für direkte Verbindungen." },
       { tag: "Epic 3.1", title: "Plugins", body: "Kleine, sichere Plugins aus einem offiziellen Verzeichnis, ohne Server-Änderung. Das erste Plugin: Echolings, virtuelle Haustiere aus Klang." },
-      { tag: "Epic 4.1", title: "Dateien, Bildschirm und Kamera", body: "Kommt mit 0.7.0: Dateien teilen ohne sichtbare IP-Adresse, eine Bildschirmübertragung bis 4K für bis zu 25 Leute, deine Kamera mit unscharfem Hintergrund und ein Bild, das du größer oder kleiner ziehst. Alles über das Relay des Servers." },
+      { tag: "Epic 4.1", title: "Dateien, Bildschirm, Kamera und Plugins", body: "Kommt mit 0.7.0: Dateien teilen ohne sichtbare IP-Adresse, eine Bildschirmübertragung bis 4K für bis zu 25 Leute, deine Kamera mit unscharfem Hintergrund, ein Whiteboard und das Spiel Skyloom als Plugins und ein Sicherheits-Score für Plugins von anderen." },
       { tag: "Epic 4", title: "Admin", body: "Kommt mit 0.8.0: Rechte (ACLs) und Gruppen, Kanäle verwalten, Kicks und Banns, Bannliste, registrierte Nutzer, Moderation und Admin-Befehle wie /kick im Chat, sichtbar nur dort, wo der Server es dir erlaubt." },
       { tag: "Epic 5", title: "Mumcord fürs Handy", body: "App für Android und iOS: Server, Kanäle, Push-to-Talk, Chat und Steuerung vom Sperrbildschirm. Zuerst als APK und über TestFlight." },
       { tag: "Epic 6", title: "Auslieferung", body: "Signierte Installer, Auto-Update, Absturzberichte nur mit Zustimmung, Paketquellen, Flathub und die App Stores." },
