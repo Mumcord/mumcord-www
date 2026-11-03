@@ -487,10 +487,78 @@ const source: Record<"de" | "en", RoadmapPage> = {
         ],
       },
       {
+        id: "epic-4.1",
+        tag: "Epic 4.1",
+        title: "Dateien, Bildschirm und Kamera",
+        status: "now",
+        version: "0.7.0",
+        summary: "Dateien teilen, ohne dass jemand deine IP-Adresse sieht, eine Bildschirmübertragung, die mehr Leute in besserer Qualität sehen, und deine Kamera mit unscharfem Hintergrund. Alles läuft über das Relay des Servers, am Mumble-Server ändert sich nichts.",
+        groups: [
+          {
+            title: "Dateien teilen",
+            items: [
+              "Dateien in den Chat ziehen oder über die Büroklammer anhängen, bis 2 GB. Ordner werden vorher gezippt",
+              "Immer über das Relay und Ende-zu-Ende-verschlüsselt: Niemand sieht deine IP-Adresse, und die Datei berührt den Mumble-Server nie",
+              "Nichts lädt von allein: Jeder Download braucht deinen Klick, und Mumcord prüft danach die SHA-256-Prüfsumme, die du auch kopieren kannst",
+              "Eine Warnung vor riskanten Dateitypen wie Programmen und Skripten, dazu eine optionale Prüfung gegen eine Malware-Datenbank",
+              "Eine Datei bleibt verfügbar, solange die Person online ist, höchstens 24 Stunden",
+              "Wer den offiziellen Mumble-Client nutzt, sieht eine kurze Zeile, dass hier eine Datei geteilt wurde",
+            ],
+            mockups: [
+              { shot: "files-offer-dark", issue: 348, caption: "Eine geteilte Datei im Chat" },
+              { shot: "files-drop-dark", issue: 348, caption: "Eine Datei in den Chat ziehen" },
+              { shot: "files-risky-dark", issue: 348, caption: "Warnung vor einem Programm" },
+            ],
+          },
+          {
+            title: "Bildschirmübertragung, aber besser",
+            items: [
+              "Vor dem Start Auflösung bis 4K und Bildrate bis 60 fps wählen und während der Übertragung ändern, ohne neu zu starten",
+              "Optimieren für scharfen Text oder flüssige Bewegung, dazu ein Upload-Limit",
+              "Mehr Zuschauer: Über das Relay lädst du nur einmal hoch, und bis zu 25 Leute schauen zu",
+              "AV1 auf der Grafikkarte oder in Software für scharfen Text bei weniger Bandbreite, VP9 bleibt als Rückfall",
+              "Zuschauer wählen ihre eigene Bildrate und sehen, in welcher Qualität sie die Übertragung bekommen",
+            ],
+            mockups: [
+              { shot: "share-start-dark", issue: 355, caption: "Auflösung, Bildrate und Codec wählen" },
+              { shot: "share-live-bar-dark", issue: 355, caption: "Qualität während der Übertragung ändern" },
+              { shot: "share-viewers-dark", issue: 355, caption: "Bis zu 25 Zuschauer über das Relay" },
+            ],
+          },
+          {
+            title: "Kamera",
+            items: [
+              "Deine Kamera für alle in deinem Sprachkanal, nur über das Relay und Ende-zu-Ende-verschlüsselt",
+              "Ein Kameraraum mit bis zu 9 Kameras als Raster über dem Chat, auch neben einer Bildschirmübertragung oder Watch-Party",
+              "Hintergrund unscharf oder ein Bild dahinter, berechnet auf deinem PC. Eigene Bilder verlassen dein Gerät nie",
+              "Die Kamera startet immer aus und zeigt dir zuerst eine Vorschau. Gesendet wird erst, wenn du sie einschaltest",
+              "Keine Aufnahme-Funktion, Blockierte sehen deine Kamera nie, und wer will, bleibt ganz ohne Video",
+            ],
+            mockups: [
+              { shot: "camera-preview-blur-dark", issue: 388, caption: "Vorschau mit unscharfem Hintergrund" },
+              { shot: "camera-room-4-dark", issue: 388, caption: "Der Kameraraum mit vier Kameras" },
+              { shot: "camera-room-share-dark", issue: 388, caption: "Kameras neben einer Bildschirmübertragung" },
+            ],
+          },
+          {
+            title: "Bild und Chat, wie du willst",
+            items: [
+              "Ein Griff zwischen Bild und Chat: Bildschirmübertragung, Watch-Party und Kameraraum größer oder kleiner ziehen",
+              "Ganz nach oben gezogen wird das Bild zur Mini-Leiste, Doppelklick stellt die alte Größe wieder her",
+              "Auch mit der Tastatur und für Screenreader bedienbar, und Mumcord merkt sich deine Höhe",
+            ],
+            mockups: [
+              { shot: "resize-small-dark", issue: 386, caption: "Das Bild kleiner ziehen, mehr Chat sehen" },
+              { shot: "resize-mini-bar-dark", issue: 386, caption: "Ganz klein wird es zur Mini-Leiste" },
+            ],
+          },
+        ],
+      },
+      {
         id: "epic-4",
         tag: "Epic 4",
         title: "Admin",
-        status: "now",
+        status: "planned",
         summary: "Damit Mumcord den offiziellen Client ganz ersetzen kann: Kanäle, Rechte, Banns und Personen verwalten, nur mit normalen Mumble-Nachrichten und ohne Änderung am Server.",
         groups: [
           {
@@ -535,46 +603,6 @@ const source: Record<"de" | "en", RoadmapPage> = {
             title: "Windows",
             items: ["Signierte Windows-Builds, Installer und App"],
             done: [0],
-          },
-        ],
-      },
-      {
-        id: "epic-4.1",
-        tag: "Epic 4.1",
-        title: "Dateien und Bildschirm",
-        status: "planned",
-        summary: "Dateien teilen, ohne dass jemand deine IP-Adresse sieht, und eine Bildschirmübertragung, die mehr Leute in besserer Qualität sehen. Beides läuft über das Relay des Servers, am Mumble-Server ändert sich nichts.",
-        groups: [
-          {
-            title: "Dateien teilen",
-            items: [
-              "Dateien in den Chat ziehen oder über die Büroklammer anhängen, bis 2 GB. Ordner werden vorher gezippt",
-              "Immer über das Relay und Ende-zu-Ende-verschlüsselt: Niemand sieht deine IP-Adresse, und die Datei berührt den Mumble-Server nie",
-              "Nichts lädt von allein: Jeder Download braucht deinen Klick, und Mumcord prüft danach die SHA-256-Prüfsumme, die du auch kopieren kannst",
-              "Eine Warnung vor riskanten Dateitypen wie Programmen und Skripten, dazu eine optionale Prüfung gegen eine Malware-Datenbank",
-              "Eine Datei bleibt verfügbar, solange die Person online ist, höchstens 24 Stunden",
-              "Wer den offiziellen Mumble-Client nutzt, sieht eine kurze Zeile, dass hier eine Datei geteilt wurde",
-            ],
-            mockups: [
-              { shot: "files-offer-dark", issue: 348, caption: "Eine geteilte Datei im Chat" },
-              { shot: "files-drop-dark", issue: 348, caption: "Eine Datei in den Chat ziehen" },
-              { shot: "files-risky-dark", issue: 348, caption: "Warnung vor einem Programm" },
-            ],
-          },
-          {
-            title: "Bildschirmübertragung, aber besser",
-            items: [
-              "Vor dem Start Auflösung bis 4K und Bildrate bis 60 fps wählen und während der Übertragung ändern, ohne neu zu starten",
-              "Optimieren für scharfen Text oder flüssige Bewegung, dazu ein Upload-Limit",
-              "Mehr Zuschauer: Über das Relay lädst du nur einmal hoch, und bis zu 25 Leute schauen zu",
-              "AV1 auf der Grafikkarte oder in Software für scharfen Text bei weniger Bandbreite, VP9 bleibt als Rückfall",
-              "Zuschauer wählen ihre eigene Bildrate und sehen, in welcher Qualität sie die Übertragung bekommen",
-            ],
-            mockups: [
-              { shot: "share-start-dark", issue: 355, caption: "Auflösung, Bildrate und Codec wählen" },
-              { shot: "share-live-bar-dark", issue: 355, caption: "Qualität während der Übertragung ändern" },
-              { shot: "share-viewers-dark", issue: 355, caption: "Bis zu 25 Zuschauer über das Relay" },
-            ],
           },
         ],
       },
@@ -1081,10 +1109,78 @@ const source: Record<"de" | "en", RoadmapPage> = {
         ],
       },
       {
+        id: "epic-4.1",
+        tag: "Epic 4.1",
+        title: "Files, screen and camera",
+        status: "now",
+        version: "0.7.0",
+        summary: "Share files without anyone seeing your IP address, a screen share more people can watch in better quality, and your camera with a blurred background. It all runs through the server's relay, and nothing changes on the Mumble server.",
+        groups: [
+          {
+            title: "File sharing",
+            items: [
+              "Drag files into the chat or attach them with the paperclip, up to 2 GB. Folders are zipped first",
+              "Always through the relay and end-to-end encrypted: nobody sees your IP address, and the file never touches the Mumble server",
+              "Nothing downloads on its own: every download needs your click, and Mumcord then checks the SHA-256 checksum, which you can also copy",
+              "A warning for risky file types such as programs and scripts, plus an optional check against a malware database",
+              "A file stays available while the person is online, for up to 24 hours",
+              "People on the official Mumble client see a short line saying a file was shared",
+            ],
+            mockups: [
+              { shot: "files-offer-dark", issue: 348, caption: "A shared file in the chat" },
+              { shot: "files-drop-dark", issue: 348, caption: "Drag a file into the chat" },
+              { shot: "files-risky-dark", issue: 348, caption: "A warning for a program" },
+            ],
+          },
+          {
+            title: "Better screen sharing",
+            items: [
+              "Pick resolution up to 4K and frame rate up to 60 fps before you start, and change it while live without restarting",
+              "Optimize for sharp text or smooth motion, plus an upload limit",
+              "More viewers: through the relay you upload once, and up to 25 people can watch",
+              "AV1 on the graphics card or in software for sharp text at lower bandwidth, with VP9 as the fallback",
+              "Viewers pick their own frame rate and see the quality they get",
+            ],
+            mockups: [
+              { shot: "share-start-dark", issue: 355, caption: "Choose resolution, frame rate and codec" },
+              { shot: "share-live-bar-dark", issue: 355, caption: "Change the quality while live" },
+              { shot: "share-viewers-dark", issue: 355, caption: "Up to 25 viewers through the relay" },
+            ],
+          },
+          {
+            title: "Camera",
+            items: [
+              "Your camera for everyone in your voice channel, only through the relay and end-to-end encrypted",
+              "A camera room with up to 9 cameras as a grid above the chat, also next to a screen share or watch party",
+              "Blur your background or put an image behind you, computed on your PC. Your own images never leave your device",
+              "The camera always starts off and shows you a preview first. Nothing is sent until you turn it on",
+              "No record function, blocked people never see your camera, and if you like you stay without video entirely",
+            ],
+            mockups: [
+              { shot: "camera-preview-blur-dark", issue: 388, caption: "Preview with a blurred background" },
+              { shot: "camera-room-4-dark", issue: 388, caption: "The camera room with four cameras" },
+              { shot: "camera-room-share-dark", issue: 388, caption: "Cameras next to a screen share" },
+            ],
+          },
+          {
+            title: "Picture and chat, your way",
+            items: [
+              "A handle between picture and chat: drag the screen share, watch party and camera room bigger or smaller",
+              "Drag it all the way up and the picture becomes the mini bar, a double-click brings back the old size",
+              "Works with the keyboard and screen readers, and Mumcord remembers your height",
+            ],
+            mockups: [
+              { shot: "resize-small-dark", issue: 386, caption: "Drag the picture smaller, see more chat" },
+              { shot: "resize-mini-bar-dark", issue: 386, caption: "Very small, it becomes the mini bar" },
+            ],
+          },
+        ],
+      },
+      {
         id: "epic-4",
         tag: "Epic 4",
         title: "Admin",
-        status: "now",
+        status: "planned",
         summary: "So Mumcord can fully replace the official client: manage channels, permissions, bans and people, with standard Mumble messages only and no change to the server.",
         groups: [
           {
@@ -1129,46 +1225,6 @@ const source: Record<"de" | "en", RoadmapPage> = {
             title: "Windows",
             items: ["Signed Windows builds, installer and app"],
             done: [0],
-          },
-        ],
-      },
-      {
-        id: "epic-4.1",
-        tag: "Epic 4.1",
-        title: "Files and screen",
-        status: "planned",
-        summary: "Share files without anyone seeing your IP address, and a screen share more people can watch in better quality. Both run through the server's relay, and nothing changes on the Mumble server.",
-        groups: [
-          {
-            title: "File sharing",
-            items: [
-              "Drag files into the chat or attach them with the paperclip, up to 2 GB. Folders are zipped first",
-              "Always through the relay and end-to-end encrypted: nobody sees your IP address, and the file never touches the Mumble server",
-              "Nothing downloads on its own: every download needs your click, and Mumcord then checks the SHA-256 checksum, which you can also copy",
-              "A warning for risky file types such as programs and scripts, plus an optional check against a malware database",
-              "A file stays available while the person is online, for up to 24 hours",
-              "People on the official Mumble client see a short line saying a file was shared",
-            ],
-            mockups: [
-              { shot: "files-offer-dark", issue: 348, caption: "A shared file in the chat" },
-              { shot: "files-drop-dark", issue: 348, caption: "Drag a file into the chat" },
-              { shot: "files-risky-dark", issue: 348, caption: "A warning for a program" },
-            ],
-          },
-          {
-            title: "Better screen sharing",
-            items: [
-              "Pick resolution up to 4K and frame rate up to 60 fps before you start, and change it while live without restarting",
-              "Optimize for sharp text or smooth motion, plus an upload limit",
-              "More viewers: through the relay you upload once, and up to 25 people can watch",
-              "AV1 on the graphics card or in software for sharp text at lower bandwidth, with VP9 as the fallback",
-              "Viewers pick their own frame rate and see the quality they get",
-            ],
-            mockups: [
-              { shot: "share-start-dark", issue: 355, caption: "Choose resolution, frame rate and codec" },
-              { shot: "share-live-bar-dark", issue: 355, caption: "Change the quality while live" },
-              { shot: "share-viewers-dark", issue: 355, caption: "Up to 25 viewers through the relay" },
-            ],
           },
         ],
       },
