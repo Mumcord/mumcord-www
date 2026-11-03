@@ -489,10 +489,10 @@ const source: Record<"de" | "en", RoadmapPage> = {
       {
         id: "epic-4.1",
         tag: "Epic 4.1",
-        title: "Dateien, Bildschirm und Kamera",
+        title: "Dateien, Bildschirm, Kamera und Plugins",
         status: "now",
         version: "0.7.0",
-        summary: "Dateien teilen, ohne dass jemand deine IP-Adresse sieht, eine Bildschirmübertragung, die mehr Leute in besserer Qualität sehen, und deine Kamera mit unscharfem Hintergrund. Alles läuft über das Relay des Servers, am Mumble-Server ändert sich nichts.",
+        summary: "Dateien teilen, ohne dass jemand deine IP-Adresse sieht, eine Bildschirmübertragung, die mehr Leute in besserer Qualität sehen, deine Kamera mit unscharfem Hintergrund und Plugins, die im Kanal zeichnen und spielen. Alles läuft über das Relay des Servers, am Mumble-Server ändert sich nichts.",
         groups: [
           {
             title: "Dateien teilen",
@@ -550,6 +550,34 @@ const source: Record<"de" | "en", RoadmapPage> = {
             mockups: [
               { shot: "resize-small-dark", issue: 386, caption: "Das Bild kleiner ziehen, mehr Chat sehen" },
               { shot: "resize-mini-bar-dark", issue: 386, caption: "Ganz klein wird es zur Mini-Leiste" },
+            ],
+          },
+          {
+            title: "Plugins auf der Bühne",
+            items: [
+              "Plugins bekommen den Medienbereich: Spiele und Whiteboards laufen dort, wo sonst Bildschirm, Watch-Party und Kameras sind",
+              "Whiteboard, das offizielle Plugin zum gemeinsamen Denken: eine endlose Fläche mit Stiften, Zetteln und Laserpointer, gespeichert auf deinem Gerät und als PNG, SVG oder PDF exportierbar",
+              "Skyloom, ein Spiel nur mit der Stimme für 2 bis 12 Leute: Eine Person beschreibt ein verborgenes Sternbild, alle anderen setzen je einen Stern",
+              "Plugins öffnen sich auch über das Apps-Menü, in der Seitenleiste oder in einem Dialog, und große Datenmengen gehen Ende-zu-Ende-verschlüsselt über das Relay",
+            ],
+            mockups: [
+              { shot: "whiteboard-live-dark", issue: 397, caption: "Das Whiteboard im Kanal" },
+              { shot: "skyloom-weave-dark", issue: 394, caption: "Skyloom: Alle setzen einen Stern" },
+              { shot: "skyloom-reveal-dark", issue: 394, caption: "Skyloom: das Sternbild wird aufgelöst" },
+            ],
+          },
+          {
+            title: "Plugins von anderen, mit klaren Regeln",
+            items: [
+              "Auch Plugins außerhalb des offiziellen Verzeichnisses dürfen eigene Web-Inhalte zeigen, aber nur in einem abgeschotteten Rahmen",
+              "Jede Website, mit der ein Plugin spricht, steht bei der Installation da, und neue Websites brauchen deine Zustimmung",
+              "Ein Sicherheits-Score von 0 bis 100 für inoffizielle Plugins, berechnet auf deinem Rechner. Offizielle Plugins sind „Offiziell · geprüft“",
+              "Plugins sagen, welche Mumcord-Version sie brauchen, und ältere Versionen bekommen automatisch die neueste passende Plugin-Version",
+            ],
+            mockups: [
+              { shot: "plugin-score-browse-dark", issue: 393, caption: "Plugins mit Sicherheits-Score" },
+              { shot: "plugin-score-install-dark", issue: 393, caption: "Installation mit hohem Risiko" },
+              { shot: "plugin-origins-install-dark", issue: 395, caption: "Die Websites eines Plugins bei der Installation" },
             ],
           },
         ],
@@ -1126,10 +1154,10 @@ const source: Record<"de" | "en", RoadmapPage> = {
       {
         id: "epic-4.1",
         tag: "Epic 4.1",
-        title: "Files, screen and camera",
+        title: "Files, screen, camera and plugins",
         status: "now",
         version: "0.7.0",
-        summary: "Share files without anyone seeing your IP address, a screen share more people can watch in better quality, and your camera with a blurred background. It all runs through the server's relay, and nothing changes on the Mumble server.",
+        summary: "Share files without anyone seeing your IP address, a screen share more people can watch in better quality, your camera with a blurred background, and plugins that draw and play in the channel. It all runs through the server's relay, and nothing changes on the Mumble server.",
         groups: [
           {
             title: "File sharing",
@@ -1187,6 +1215,34 @@ const source: Record<"de" | "en", RoadmapPage> = {
             mockups: [
               { shot: "resize-small-dark", issue: 386, caption: "Drag the picture smaller, see more chat" },
               { shot: "resize-mini-bar-dark", issue: 386, caption: "Very small, it becomes the mini bar" },
+            ],
+          },
+          {
+            title: "Plugins on stage",
+            items: [
+              "Plugins get the media area: games and whiteboards run where the screen share, watch party and cameras usually are",
+              "Whiteboard, the official plugin for thinking together: an endless canvas with pens, sticky notes and a laser pointer, saved on your device and exportable as PNG, SVG or PDF",
+              "Skyloom, a voice-only game for 2 to 12 people: one person describes a hidden constellation, everyone else places one star each",
+              "Plugins also open from the Apps menu, in the side panel or in a dialog, and large amounts of data go end-to-end encrypted through the relay",
+            ],
+            mockups: [
+              { shot: "whiteboard-live-dark", issue: 397, caption: "The whiteboard in the channel" },
+              { shot: "skyloom-weave-dark", issue: 394, caption: "Skyloom: everyone places a star" },
+              { shot: "skyloom-reveal-dark", issue: 394, caption: "Skyloom: the constellation is revealed" },
+            ],
+          },
+          {
+            title: "Plugins from others, with clear rules",
+            items: [
+              "Plugins outside the official repository may show their own web content too, but only in a sealed frame",
+              "Every website a plugin talks to is listed when you install it, and new websites need your approval",
+              "A security score from 0 to 100 for unofficial plugins, worked out on your computer. Official plugins show \"Official · reviewed\"",
+              "Plugins state which Mumcord version they need, and older versions automatically get the newest plugin version that fits",
+            ],
+            mockups: [
+              { shot: "plugin-score-browse-dark", issue: 393, caption: "Plugins with a security score" },
+              { shot: "plugin-score-install-dark", issue: 393, caption: "Installing a high-risk plugin" },
+              { shot: "plugin-origins-install-dark", issue: 395, caption: "A plugin's websites at install time" },
             ],
           },
         ],

@@ -260,13 +260,15 @@ export const en: Dict = {
     all: "The full roadmap in detail",
     next: {
       title: "Send it. Show it. Be seen.",
-      body: "Epic 4.1 brings files, a better screen share and cameras. It all runs end-to-end encrypted through the server's relay, and nothing changes on the Mumble server.",
+      body: "0.7.0 brings files, a better screen share, cameras and plugins that draw and play in the channel. It all runs end-to-end encrypted through the server's relay, and nothing changes on the Mumble server.",
       draft: "Draft",
       tiles: {
         files: { title: "Share files", body: "Drag them into the chat, up to 2 GB. Nobody sees your IP address, every download needs your click and is checked against its checksum." },
         camera: { title: "The camera room", body: "Up to 9 cameras as a grid above the chat, only for the people in your channel." },
         share: { title: "Screen share up to 4K", body: "Pick resolution, frame rate and codec yourself. Through the relay up to 25 people watch, and you upload only once." },
         blur: { title: "Blur your background", body: "Blur or an image, computed on your PC. The camera always starts with a preview." },
+        stage: { title: "Whiteboard and Skyloom", body: "Plugins move into the media area: a shared whiteboard with sticky notes and a laser pointer, and Skyloom, a game played with nothing but your voices." },
+        score: { title: "Security score", body: "Unofficial plugins get a score from 0 to 100, worked out on your PC. You see which websites a plugin talks to before you install it." },
         resize: { title: "Picture and chat, your way", body: "Drag the handle: more picture or more chat. Very small, it becomes the mini bar." },
       },
       after: {
@@ -287,7 +289,7 @@ export const en: Dict = {
       { tag: "Epic 2", title: "Several servers, themes and polish", body: "With 0.4.0: up to five servers at once, talk on one and read along on all. Your own themes, shareable in the chat, per server too. Plus the in-game overlay on Windows, other people's connection quality, Linux packages with a one-line install and, as beta, YouTube watch party and screen sharing." },
       { tag: "Epic 3", title: "Comfort", body: "Global hotkeys, full tray menu, import from the official client, whisper, server browser, Do Not Disturb, @all and @channel, blocking, private messages from friends only, a notification centre, several identities, server info, a fresh design for the wizard, settings, watch party and channel tree, audio per channel, a low-latency mode for making music, updates in the app, plus an optional relay for direct connections." },
       { tag: "Epic 3.1", title: "Plugins", body: "Small, safe plugins from an official repository, no server change needed. The first plugin: Echolings, virtual pets made of sound." },
-      { tag: "Epic 4.1", title: "Files, screen and camera", body: "Coming with 0.7.0: share files without showing your IP address, a screen share up to 4K for up to 25 people, your camera with a blurred background, and a picture you drag bigger or smaller. All through the server's relay." },
+      { tag: "Epic 4.1", title: "Files, screen, camera and plugins", body: "Coming with 0.7.0: share files without showing your IP address, a screen share up to 4K for up to 25 people, your camera with a blurred background, a whiteboard and the game Skyloom as plugins, and a security score for plugins from others." },
       { tag: "Epic 4", title: "Admin", body: "Coming with 0.8.0: permissions (ACLs) and groups, channel management, kicks and bans, the ban list, registered users, moderation and admin commands like /kick in the chat, visible only where the server grants it." },
       { tag: "Epic 5", title: "Mumcord on your phone", body: "An app for Android and iOS: servers, channels, push-to-talk, chat and lock-screen controls. First as an APK and through TestFlight." },
       { tag: "Epic 6", title: "Distribution", body: "Signed installers, auto-update, opt-in crash reports, package listings, Flathub and the app stores." },
