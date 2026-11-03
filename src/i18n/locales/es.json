@@ -378,7 +378,7 @@
         {
           "tag": "Epic 4",
           "title": "Administración",
-          "body": "Permisos (ACL) y grupos, gestión de canales, expulsiones y baneos, la lista de baneos, usuarios registrados y moderación, visibles solo donde el servidor lo concede."
+          "body": "Llega con 0.8.0: permisos (ACLs) y grupos, gestión de canales, expulsiones y baneos, la lista de baneos, usuarios registrados, moderación y comandos de administración como /kick en el chat, visibles solo donde el servidor lo permite."
         },
         {
           "tag": "Epic 5",
@@ -392,10 +392,61 @@
         },
         {
           "tag": "Epic Future",
-          "title": "Búsqueda de GIF",
-          "body": "Buscar GIF sin incluir en la app una clave de API que cualquiera podría extraer. Cómo hacerlo exactamente está aún por decidir."
+          "title": "Ideas para más adelante",
+          "body": "Búsqueda de GIF sin una clave de API que se pueda extraer, filtros de cámara como sombreros y gafas como plugins y una comprobación de malware para los archivos compartidos como plugin oficial."
         }
-      ]
+      ],
+      "next": {
+        "title": "Envíalo. Muéstralo. Que te vean.",
+        "body": "Epic 4.1 trae archivos, una pantalla compartida mejor y cámaras. Todo va cifrado de extremo a extremo a través del relay del servidor y no cambia nada en el servidor Mumble.",
+        "draft": "Borrador",
+        "tiles": {
+          "files": {
+            "title": "Comparte archivos",
+            "body": "Arrástralos al chat, hasta 2 GB. Nadie ve tu dirección IP, cada descarga necesita tu clic y se comprueba con su suma de verificación."
+          },
+          "camera": {
+            "title": "La sala de cámaras",
+            "body": "Hasta 9 cámaras en una cuadrícula sobre el chat, solo para la gente de tu canal."
+          },
+          "share": {
+            "title": "Pantalla compartida hasta 4K",
+            "body": "Elige tú la resolución, la tasa de fotogramas y el códec. A través del relay la ven hasta 25 personas y tú subes solo una vez."
+          },
+          "blur": {
+            "title": "Desenfoca tu fondo",
+            "body": "Desenfoque o una imagen, calculado en tu PC. La cámara siempre empieza con una vista previa."
+          },
+          "resize": {
+            "title": "Imagen y chat, a tu manera",
+            "body": "Arrastra el tirador: más imagen o más chat. Muy pequeño, se convierte en la minibarra."
+          }
+        },
+        "after": {
+          "label": "Después",
+          "title": "Administración, sin el cliente oficial",
+          "body": "Epic 4 convierte a Mumcord en un reemplazo completo: permisos y grupos, canales, expulsiones y baneos y comandos directamente en el chat. Todo con mensajes estándar de Mumble.",
+          "tiles": {
+            "channels": {
+              "title": "Editar y mover canales",
+              "body": "Crea, renombra, ordena y mueve canales, trae a la gente contigo o mueve un canal entero de una vez."
+            },
+            "acl": {
+              "title": "Permisos que se pueden leer",
+              "body": "Un editor de ACLs y grupos que muestra qué se hereda y qué regla gana."
+            },
+            "commands": {
+              "title": "/kick, /ban, /move",
+              "body": "Comandos de administración en el chat, con sugerencias de nombres y canales. Solo ves lo que puedes hacer."
+            },
+            "ban": {
+              "title": "Banea con un motivo",
+              "body": "Por un tiempo o para siempre, por certificado, dirección IP o ambos."
+            }
+          }
+        },
+        "epics": "Todos los epics"
+      }
     },
     "download": {
       "label": "06 — Consíguelo",
@@ -2346,6 +2397,18 @@
             "items": [
               "Compilaciones firmadas de Windows, instalador y app"
             ]
+          },
+          {
+            "title": "Comandos en el chat",
+            "items": [
+              "Comandos de administración directamente en el chat: /kick, /ban, /mute, /deaf y /move, junto a los comandos de los plugins",
+              "Sugerencias de nombres y canales mientras escribes, y la lista solo muestra lo que puedes hacer en este servidor",
+              "Expulsar y banear siguen preguntando primero, y los errores como un nombre desconocido aparecen justo encima del cuadro de mensaje"
+            ],
+            "mockups": [
+              "La lista de comandos en el chat",
+              "Sugerencias de nombres"
+            ]
           }
         ]
       },
@@ -2360,7 +2423,7 @@
               "Arrastra archivos al chat o adjúntalos con el clip, hasta 2 GB. Las carpetas se comprimen antes en un zip",
               "Siempre a través del relay y con cifrado de extremo a extremo: nadie ve tu dirección IP y el archivo nunca pasa por el servidor Mumble",
               "Nada se descarga solo: cada descarga necesita tu clic, y Mumcord comprueba después la suma de comprobación SHA-256, que también puedes copiar",
-              "Una advertencia para tipos de archivo de riesgo como programas y scripts, y una comprobación opcional con una base de datos de malware",
+              "Una advertencia para tipos de archivo de riesgo, como programas y scripts, antes de abrirlos",
               "Un archivo sigue disponible mientras la persona esté conectada, hasta 24 horas",
               "Quienes usan el cliente oficial de Mumble ven una línea breve que dice que se compartió un archivo"
             ],
@@ -2476,10 +2539,12 @@
       {
         "id": "epic-future",
         "title": "Ideas para más adelante",
-        "summary": "Ideas sin un epic planificado, como la búsqueda de GIF.",
+        "summary": "Ideas sin un epic previsto: búsqueda de GIF, filtros de cámara como plugins y una comprobación de malware para los archivos compartidos.",
         "items": [
           "Búsqueda de GIF sin incluir en la app una clave de API que cualquiera podría extraer",
-          "Las opciones son un pequeño servicio intermediario o tu propia clave; se decidirá más adelante"
+          "Las opciones son un pequeño servicio intermediario o tu propia clave; se decidirá más adelante",
+          "Filtros de cámara como plugins: sombreros, barbas, gafas y pegatinas. El seguimiento facial se ejecuta en tu PC, el plugin nunca ve la imagen de tu cámara y los demás no necesitan ningún plugin",
+          "Un plugin oficial de «Comprobación de malware»: busca la suma de comprobación de los archivos compartidos en un servicio de malware y bloquea las descargas peligrosas. Mumcord en sí nunca contacta con ese servicio"
         ]
       }
     ],

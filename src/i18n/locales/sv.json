@@ -378,7 +378,7 @@
         {
           "tag": "Epic 4",
           "title": "Admin",
-          "body": "Behörigheter (ACL:er) och grupper, kanalhantering, kickar och avstängningar, listan över avstängda, registrerade användare och moderering, synligt bara där servern ger det."
+          "body": "Kommer med 0.8.0: behörigheter (ACL:er) och grupper, kanalhantering, utkastningar och avstängningar, bannlistan, registrerade användare, moderering och adminkommandon som /kick i chatten, synliga bara där servern ger dem."
         },
         {
           "tag": "Epic 5",
@@ -392,10 +392,61 @@
         },
         {
           "tag": "Epic Future",
-          "title": "GIF-sökning",
-          "body": "Sök efter GIF:ar utan att skeppa en API-nyckel i appen som vem som helst kan plocka ut. Exakt hur är ännu inte bestämt."
+          "title": "Idéer för senare",
+          "body": "GIF-sökning utan en API-nyckel som går att plocka ut, kamerafilter som hattar och glasögon som plugins och en skadekodskontroll av delade filer som officiellt plugin."
         }
-      ]
+      ],
+      "next": {
+        "title": "Skicka det. Visa det. Bli sedd.",
+        "body": "Epic 4.1 ger dig filer, en bättre skärmdelning och kameror. Allt går end-to-end-krypterat via serverns relä och ingenting ändras på Mumble-servern.",
+        "draft": "Utkast",
+        "tiles": {
+          "files": {
+            "title": "Dela filer",
+            "body": "Dra dem till chatten, upp till 2 GB. Ingen ser din IP-adress, varje nedladdning kräver ditt klick och kontrolleras mot sin kontrollsumma."
+          },
+          "camera": {
+            "title": "Kamerarummet",
+            "body": "Upp till 9 kameror som ett rutnät ovanför chatten, bara för personerna i din kanal."
+          },
+          "share": {
+            "title": "Skärmdelning upp till 4K",
+            "body": "Välj själv upplösning, bildfrekvens och codec. Via reläet tittar upp till 25 personer och du laddar bara upp en gång."
+          },
+          "blur": {
+            "title": "Sudda ut bakgrunden",
+            "body": "Oskärpa eller en bild, beräknad på din dator. Kameran startar alltid med en förhandsvisning."
+          },
+          "resize": {
+            "title": "Bild och chatt, som du vill",
+            "body": "Dra i handtaget: mer bild eller mer chatt. Mycket liten blir den minifältet."
+          }
+        },
+        "after": {
+          "label": "Efter det",
+          "title": "Admin, utan den officiella klienten",
+          "body": "Epic 4 gör Mumcord till en fullständig ersättare: behörigheter och grupper, kanaler, utkastningar och avstängningar och kommandon direkt i chatten. Allt med vanliga Mumble-meddelanden.",
+          "tiles": {
+            "channels": {
+              "title": "Redigera och flytta kanaler",
+              "body": "Skapa, byt namn på, sortera och flytta kanaler, dra över folk till dig eller flytta en hel kanal på en gång."
+            },
+            "acl": {
+              "title": "Behörigheter du kan läsa",
+              "body": "En redigerare för ACL:er och grupper som visar vad som ärvs och vilken regel som vinner."
+            },
+            "commands": {
+              "title": "/kick, /ban, /move",
+              "body": "Adminkommandon i chatten, med förslag på namn och kanaler. Du ser bara det du får göra."
+            },
+            "ban": {
+              "title": "Avstängning med anledning",
+              "body": "Under en tid eller för alltid, via certifikat, IP-adress eller båda."
+            }
+          }
+        },
+        "epics": "Alla epics"
+      }
     },
     "download": {
       "label": "06 – Skaffa den",
@@ -2346,6 +2397,18 @@
             "items": [
               "Signerade Windows-byggen, installationsprogram och app"
             ]
+          },
+          {
+            "title": "Kommandon i chatten",
+            "items": [
+              "Adminkommandon direkt i chatten: /kick, /ban, /mute, /deaf och /move, bredvid plugin-kommandona",
+              "Förslag på namn och kanaler medan du skriver, och listan visar bara det du får göra på den här servern",
+              "Utkastning och avstängning frågar fortfarande först, och fel som ett okänt namn visas precis ovanför meddelandefältet"
+            ],
+            "mockups": [
+              "Kommandolistan i chatten",
+              "Förslag på namn"
+            ]
           }
         ]
       },
@@ -2360,7 +2423,7 @@
               "Dra filer till chatten eller bifoga dem med gemet, upp till 2 GB. Mappar zippas först",
               "Alltid via reläet och end-to-end-krypterat: ingen ser din IP-adress och filen går aldrig via Mumble-servern",
               "Inget laddas ner av sig självt: varje nedladdning kräver ditt klick, och Mumcord kontrollerar sedan SHA-256-kontrollsumman, som du också kan kopiera",
-              "En varning för riskabla filtyper som program och skript, plus en valfri kontroll mot en databas över skadlig kod",
+              "En varning för riskabla filtyper som program och skript, innan du öppnar dem",
               "En fil är tillgänglig så länge personen är online, i upp till 24 timmar",
               "Folk som använder den officiella Mumble-klienten ser en kort rad om att en fil delades"
             ],
@@ -2476,10 +2539,12 @@
       {
         "id": "epic-future",
         "title": "Idéer för senare",
-        "summary": "Idéer utan planerad epic, som GIF-sökning.",
+        "summary": "Idéer utan planerad epic: GIF-sökning, kamerafilter som plugins och en skadekodskontroll av delade filer.",
         "items": [
           "GIF-sökning utan att skeppa en API-nyckel i appen som vem som helst kan plocka ut",
-          "Alternativen är en liten relätjänst eller din egen nyckel; bestäms senare"
+          "Alternativen är en liten relätjänst eller din egen nyckel; bestäms senare",
+          "Kamerafilter som plugins: hattar, skägg, glasögon och klistermärken. Ansiktsspårningen körs på din dator, pluginet ser aldrig din kamerabild och de andra behöver inget plugin",
+          "Ett officiellt plugin, \"Skadekodskontroll\": det slår upp kontrollsumman för delade filer hos en skadekodstjänst och blockerar farliga nedladdningar. Mumcord självt kontaktar aldrig en sådan tjänst"
         ]
       }
     ],

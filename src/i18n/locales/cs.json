@@ -378,7 +378,7 @@
         {
           "tag": "Epic 4",
           "title": "Správa",
-          "body": "Oprávnění (ACL) a skupiny, správa kanálů, vyhazování a bany, seznam banů, registrovaní uživatelé a moderování, viditelné jen tam, kde to server povolí."
+          "body": "Přijde s 0.8.0: oprávnění (ACL) a skupiny, správa kanálů, kicky a bany, seznam banů, registrovaní uživatelé, moderování a správcovské příkazy jako /kick v chatu, viditelné jen tam, kde je server povolí."
         },
         {
           "tag": "Epic 5",
@@ -392,10 +392,61 @@
         },
         {
           "tag": "Epic Future",
-          "title": "Hledání GIFů",
-          "body": "Hledání GIFů bez API klíče přibaleného v aplikaci, který by mohl kdokoli vytáhnout. Jak přesně, se teprve rozhodne."
+          "title": "Nápady na později",
+          "body": "Hledání GIFů bez vytažitelného API klíče, filtry kamery jako klobouky a brýle jako pluginy a kontrola sdílených souborů na malware jako oficiální plugin."
         }
-      ]
+      ],
+      "next": {
+        "title": "Pošli to. Ukaž to. Buď vidět.",
+        "body": "Epic 4.1 přináší soubory, lepší sdílení obrazovky a kamery. Všechno běží end-to-end šifrovaně přes relay serveru a na Mumble serveru se nic nemění.",
+        "draft": "Koncept",
+        "tiles": {
+          "files": {
+            "title": "Sdílej soubory",
+            "body": "Přetáhni je do chatu, až do 2 GB. Nikdo neuvidí tvoji IP adresu, každé stažení vyžaduje tvé kliknutí a ověřuje se kontrolním součtem."
+          },
+          "camera": {
+            "title": "Místnost s kamerami",
+            "body": "Až 9 kamer v mřížce nad chatem, jen pro lidi v tvém kanálu."
+          },
+          "share": {
+            "title": "Sdílení obrazovky až do 4K",
+            "body": "Rozlišení, snímkovou frekvenci a kodek si vybereš sám. Přes relay se dívá až 25 lidí a ty nahráváš jen jednou."
+          },
+          "blur": {
+            "title": "Rozmaž si pozadí",
+            "body": "Rozmazání nebo obrázek, počítané na tvém PC. Kamera vždy začíná náhledem."
+          },
+          "resize": {
+            "title": "Obraz a chat podle tebe",
+            "body": "Táhni za úchyt: víc obrazu, nebo víc chatu. Úplně malý se z něj stane mini lišta."
+          }
+        },
+        "after": {
+          "label": "Potom",
+          "title": "Správa bez oficiálního klienta",
+          "body": "Epic 4 udělá z Mumcordu plnou náhradu: oprávnění a skupiny, kanály, kicky a bany a příkazy přímo v chatu. Všechno se standardními zprávami Mumble.",
+          "tiles": {
+            "channels": {
+              "title": "Úpravy a přesouvání kanálů",
+              "body": "Vytvářej, přejmenovávej, řaď a přesouvej kanály, přetahuj lidi k sobě nebo přesuň celý kanál najednou."
+            },
+            "acl": {
+              "title": "Oprávnění, kterým rozumíš",
+              "body": "Editor ACL a skupin, který ukáže, co se dědí a které pravidlo vyhrává."
+            },
+            "commands": {
+              "title": "/kick, /ban, /move",
+              "body": "Správcovské příkazy v chatu s návrhy jmen a kanálů. Vidíš jen to, co smíš."
+            },
+            "ban": {
+              "title": "Ban s důvodem",
+              "body": "Na čas nebo navždy, podle certifikátu, IP adresy nebo obojího."
+            }
+          }
+        },
+        "epics": "Všechny epicy"
+      }
     },
     "download": {
       "label": "06 — Stáhni si ho",
@@ -2346,6 +2397,18 @@
             "items": [
               "Podepsané buildy pro Windows, instalátor i aplikace"
             ]
+          },
+          {
+            "title": "Příkazy v chatu",
+            "items": [
+              "Správcovské příkazy přímo v chatu: /kick, /ban, /mute, /deaf a /move, vedle příkazů pluginů",
+              "Návrhy jmen a kanálů při psaní a seznam ukazuje jen to, co na tomto serveru smíš",
+              "Kick a ban se pořád nejdřív zeptají a chyby, třeba neznámé jméno, se ukážou přímo nad polem pro zprávu"
+            ],
+            "mockups": [
+              "Seznam příkazů v chatu",
+              "Návrhy jmen"
+            ]
           }
         ]
       },
@@ -2360,7 +2423,7 @@
               "Přetáhni soubory do chatu nebo je připoj sponkou, až do 2 GB. Složky se nejdřív zabalí do zipu",
               "Vždy přes relay a end-to-end šifrovaně: nikdo neuvidí tvoji IP adresu a soubor se nikdy nedostane na Mumble server",
               "Nic se nestahuje samo: každé stažení potřebuje tvé kliknutí, Mumcord pak ověří kontrolní součet SHA-256, který můžeš také zkopírovat",
-              "Varování u rizikových typů souborů, jako jsou programy a skripty, plus volitelná kontrola v databázi malwaru",
+              "Upozornění u rizikových typů souborů, jako jsou programy a skripty, než je otevřeš",
               "Soubor zůstává dostupný, dokud je dotyčný online, nejdéle 24 hodin",
               "Lidé s oficiálním klientem Mumble uvidí krátký řádek, že byl sdílen soubor"
             ],
@@ -2476,10 +2539,12 @@
       {
         "id": "epic-future",
         "title": "Nápady na později",
-        "summary": "Nápady bez plánovaného epiku, například hledání GIFů.",
+        "summary": "Nápady bez plánované epiky: hledání GIFů, filtry kamery jako pluginy a kontrola sdílených souborů na malware.",
         "items": [
           "Hledání GIFů bez API klíče přibaleného v aplikaci, který by mohl kdokoli vytáhnout",
-          "Možnosti jsou malá přeposílací služba nebo vlastní klíč; rozhodne se později"
+          "Možnosti jsou malá přeposílací služba nebo vlastní klíč; rozhodne se později",
+          "Filtry kamery jako pluginy: klobouky, vousy, brýle a samolepky. Sledování obličeje běží na tvém počítači, plugin nikdy nevidí obraz z tvé kamery a ostatní plugin nepotřebují",
+          "Oficiální plugin „Kontrola malwaru“: vyhledá kontrolní součet sdílených souborů ve službě pro malware a zablokuje nebezpečná stahování. Samotný Mumcord se s takovou službou nikdy nespojuje"
         ]
       }
     ],

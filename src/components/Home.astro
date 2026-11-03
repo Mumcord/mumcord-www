@@ -49,10 +49,10 @@ const s5tiles = [
   { id: "relay", anchor: ["relay", "relay"] },
 ] as const;
 const s5href = (x: (typeof s5tiles)[number]) => `${routes.features[lang]}#${x.anchor[lang === "de" ? 0 : 1]}`;
-// The timeline takes each epic's status from the roadmap; an epic is done once its release is out.
+// The epic chips take each epic's status from the roadmap; an epic is done once its release is out.
 const released = new Set((await getReleases()).map((r) => r.version));
 const epicStatus = roadmapPage.en.epics.map((e) => (e.version && released.has(e.version) ? "done" : e.status));
-const doneCount = epicStatus.filter((x) => x === "done").length;
+const nx = t.roadmap.next;
 const tt = t.themesTour;
 const tourColors = tour.map((x) => allThemes.find((th) => th.id === x.theme)?.[x.mode]);
 ---
@@ -497,30 +497,182 @@ const tourColors = tour.map((x) => allThemes.find((th) => th.id === x.theme)?.[x
 </section>
 
 <!-- Roadmap -->
-<section class="section roadmap" id="roadmap" aria-labelledby="roadmap-title">
-  <div class="wrap split split-top">
-    <div class="roadmap-intro">
+<!-- What comes next: 0.7.0 as a bento of mockups, 0.8.0 below, then every epic as a chip -->
+<section class="section roadmap nx" id="roadmap" aria-labelledby="roadmap-title">
+  <div class="spotlight-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="section-head nx-head">
       <p class="label" data-reveal>{t.roadmap.label}</p>
-      <h2 id="roadmap-title" class="h2" data-reveal>{t.roadmap.title}</h2>
-      <p class="body" data-reveal>{t.roadmap.body}</p>
+      <h2 id="roadmap-title" class="h2" data-reveal>{nx.title}</h2>
+      <p class="body" data-reveal>{nx.body}</p>
+      <span class="nx-ver" aria-hidden="true">0.7</span>
     </div>
-    <ol class="timeline" style={`--done: ${doneCount / t.roadmap.steps.length}`}>
+
+    <div class="nx-bento">
+      <a class="nx-tile nx-files" href={`${routes.roadmap[lang]}#epic-4.1`} data-reveal data-spot>
+        <div class="s5-demo nx-demo" aria-hidden="true">
+          <div class="d7-drop"><svg viewBox="0 0 24 24"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14" /></svg></div>
+          <div class="d7-file">
+            <div class="d7-file-top">
+              <span class="d7-ico">PDF</span>
+              <span><b>game-night-slides.pdf</b><em>18.4 MB · Alice</em></span>
+            </div>
+            <div class="d7-hash"><code>SHA-256 3f9a…c21e</code><span>Copy</span></div>
+            <div class="d7-bar"><i /></div>
+            <p class="d7-ok">✓ checksum matches</p>
+          </div>
+          <span class="d5-pill d7-relay">relay · IP hidden</span>
+        </div>
+        <div class="s5-text">
+          <h3>{nx.tiles.files.title} <span class="pill pill-new">0.7.0</span></h3>
+          <p>{nx.tiles.files.body}</p>
+        </div>
+      </a>
+      <a class="nx-tile nx-camera" href={`${routes.roadmap[lang]}#epic-4.1`} data-reveal data-spot>
+        <div class="s5-demo nx-demo" aria-hidden="true">
+          <div class="d7-grid">
+            <span style="--c: var(--peach); --h: 28"><i /><b>Maya</b></span>
+            <span class="is-talk" style="--c: var(--violet); --h: 250"><i /><b>Jonas</b></span>
+            <span style="--c: var(--live); --h: 160"><i /><b>Priya</b></span>
+            <span style="--c: var(--pink); --h: 330"><i /><b>Leo</b><em>LIVE</em></span>
+          </div>
+        </div>
+        <div class="s5-text">
+          <h3>{nx.tiles.camera.title} <span class="pill pill-new">0.7.0</span></h3>
+          <p>{nx.tiles.camera.body}</p>
+        </div>
+      </a>
+      <a class="nx-tile nx-share" href={`${routes.roadmap[lang]}#epic-4.1`} data-reveal data-spot>
+        <div class="s5-demo nx-demo" aria-hidden="true">
+          <div class="d7-chips">
+            <span>720p</span><span>1080p</span><span>1440p</span><span class="is-on">4K</span>
+          </div>
+          <div class="d7-chips d7-fps"><span>30 fps</span><span class="is-on">60 fps</span><span>AV1</span></div>
+          <div class="d7-viewers">
+            <span class="d7-up">↑ 1×</span>
+            <span class="d7-faces">{["var(--peach)", "var(--violet)", "var(--live)", "var(--pink)", "var(--violet)"].map((c) => <i style={`--c: ${c}`} />)}</span>
+            <b>+20</b>
+          </div>
+        </div>
+        <div class="s5-text">
+          <h3>{nx.tiles.share.title} <span class="pill pill-new">0.7.0</span></h3>
+          <p>{nx.tiles.share.body}</p>
+        </div>
+      </a>
+      <a class="nx-tile nx-blur" href={`${routes.roadmap[lang]}#epic-4.1`} data-reveal data-spot>
+        <div class="s5-demo nx-demo" aria-hidden="true">
+          <div class="d7-cam">
+            <div class="d7-bg"><i style="--x: 15%; --y: 30%; --c: var(--peach)" /><i style="--x: 80%; --y: 20%; --c: var(--live)" /><i style="--x: 70%; --y: 85%; --c: var(--violet)" /></div>
+            <div class="d7-person"><i /><b /></div>
+            <span class="d7-blurpill">◐ Blur</span>
+          </div>
+        </div>
+        <div class="s5-text">
+          <h3>{nx.tiles.blur.title} <span class="pill pill-new">0.7.0</span></h3>
+          <p>{nx.tiles.blur.body}</p>
+        </div>
+      </a>
+      <a class="nx-tile nx-resize" href={`${routes.roadmap[lang]}#epic-4.1`} data-reveal data-spot>
+        <div class="s5-demo nx-demo" aria-hidden="true">
+          <div class="d7-split">
+            <div class="d7-pic"><i /><span>1080p</span></div>
+            <div class="d7-handle"><i /></div>
+            <div class="d7-chat"><i style="--w: 70%" /><i style="--w: 45%" /><i style="--w: 60%" /></div>
+          </div>
+        </div>
+        <div class="s5-text">
+          <h3>{nx.tiles.resize.title} <span class="pill pill-new">0.7.0</span></h3>
+          <p>{nx.tiles.resize.body}</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="nx-after">
+      <div class="nx-after-head" data-reveal>
+        <p class="label">{nx.after.label} · 0.8.0</p>
+        <h3 class="nx-after-title">{nx.after.title}</h3>
+        <p class="body">{nx.after.body}</p>
+      </div>
+      <div class="nx-after-grid">
+      <a class="nx-tile nx-acl nx-small" href={`${routes.roadmap[lang]}#epic-4`} data-reveal data-spot>
+        <div class="s5-demo nx-demo" aria-hidden="true">
+          <table class="d7-acl">
+            <tr><th /><th>@admin</th><th>@all</th></tr>
+            <tr><td>Enter</td><td class="y">✓</td><td class="y">✓</td></tr>
+            <tr class="is-win"><td>Speak</td><td class="y">✓</td><td class="n">✕</td></tr>
+            <tr><td>Move</td><td class="y">✓</td><td class="n">✕</td></tr>
+            <tr><td>Ban</td><td class="y">✓</td><td class="n">✕</td></tr>
+          </table>
+        </div>
+        <div class="s5-text">
+          <h3>{nx.after.tiles.acl.title}</h3>
+          <p>{nx.after.tiles.acl.body}</p>
+        </div>
+      </a>
+      <a class="nx-tile nx-channels nx-small" href={`${routes.roadmap[lang]}#epic-4`} data-reveal data-spot>
+        <div class="s5-demo nx-demo" aria-hidden="true">
+          <ul class="d7-tree">
+            <li># Lobby</li>
+            <li class="is-drag"># Raid <span>✎</span></li>
+            <li class="d7-drop-line" />
+            <li># Officers <span>🔒</span></li>
+            <li class="d7-sub"># AFK</li>
+          </ul>
+        </div>
+        <div class="s5-text">
+          <h3>{nx.after.tiles.channels.title}</h3>
+          <p>{nx.after.tiles.channels.body}</p>
+        </div>
+      </a>
+      <a class="nx-tile nx-commands nx-small" href={`${routes.roadmap[lang]}#epic-4`} data-reveal data-spot>
+        <div class="s5-demo nx-demo" aria-hidden="true">
+          <div class="d7-cmd">
+            <ul>
+              <li class="is-on"><b>/kick</b><span>name [reason]</span></li>
+              <li><b>/ban</b><span>name [time]</span></li>
+              <li><b>/move</b><span>name channel</span></li>
+              <li><b>/mute</b><span>name</span></li>
+            </ul>
+            <div class="d7-input">/kick Be<span class="d7-caret" /></div>
+          </div>
+        </div>
+        <div class="s5-text">
+          <h3>{nx.after.tiles.commands.title}</h3>
+          <p>{nx.after.tiles.commands.body}</p>
+        </div>
+      </a>
+      <a class="nx-tile nx-ban nx-small" href={`${routes.roadmap[lang]}#epic-4`} data-reveal data-spot>
+        <div class="s5-demo nx-demo" aria-hidden="true">
+          <div class="d7-ban">
+            <p><b>Ban Ben</b></p>
+            <div class="d7-chips"><span>1 h</span><span class="is-on">1 day</span><span>7 days</span><span>∞</span></div>
+            <div class="d7-toggles"><span class="is-on"><i />cert</span><span class="is-on"><i />IP</span></div>
+            <span class="d7-danger">Ban for 1 day</span>
+          </div>
+        </div>
+        <div class="s5-text">
+          <h3>{nx.after.tiles.ban.title}</h3>
+          <p>{nx.after.tiles.ban.body}</p>
+        </div>
+      </a>
+      </div>
+    </div>
+
+    <ol class="nx-epics" aria-label={nx.epics}>
       {
-        t.roadmap.steps.map((s, i) => (
-          <li class:list={[`is-${epicStatus[i] ?? "later"}`]} data-reveal>
-            <span class="tl-dot" aria-hidden="true" />
-            <p class="tl-tag">
-              {s.tag}
-              {epicStatus[i] !== "later" && <em>{roadmapPage[lang].status[epicStatus[i]]}</em>}
-            </p>
-            <h3>{s.title}</h3>
-            <p>{s.body}</p>
+        t.roadmap.steps.map((st, i) => (
+          <li class:list={[`is-${epicStatus[i] ?? "later"}`]} title={st.body}>
+            <span class="nx-dot" aria-hidden="true" />
+            <span class="nx-tag">{st.tag}</span>
+            <span class="nx-name">{st.title}</span>
+            {epicStatus[i] !== "later" && <em>{roadmapPage[lang].status[epicStatus[i]]}</em>}
           </li>
         ))
       }
     </ol>
-    <p class="roadmap-more" data-reveal>
+    <p class="roadmap-more nx-more" data-reveal>
       <a class="btn btn-small" href={routes.roadmap[lang]}>{t.roadmap.all}</a>
+      <span>{t.roadmap.body}</span>
     </p>
   </div>
 </section>

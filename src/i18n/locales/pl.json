@@ -378,7 +378,7 @@
         {
           "tag": "Epic 4",
           "title": "Administracja",
-          "body": "Uprawnienia (ACL) i grupy, zarządzanie kanałami, wyrzucenia i bany, lista banów, zarejestrowani użytkownicy i moderacja, widoczne tylko tam, gdzie serwer je przyznaje."
+          "body": "Przyjdzie z 0.8.0: uprawnienia (ACL) i grupy, zarządzanie kanałami, wyrzucenia i bany, lista banów, zarejestrowani użytkownicy, moderacja i polecenia administratora, takie jak /kick w czacie, widoczne tylko tam, gdzie serwer na to pozwala."
         },
         {
           "tag": "Epic 5",
@@ -392,10 +392,61 @@
         },
         {
           "tag": "Epic Future",
-          "title": "Wyszukiwanie GIF-ów",
-          "body": "Wyszukiwanie GIF-ów bez dołączania do aplikacji klucza API, który każdy mógłby wyciągnąć. Jak dokładnie — jeszcze nie zdecydowano."
+          "title": "Pomysły na później",
+          "body": "Wyszukiwanie GIF-ów bez klucza API, który można wyciągnąć, filtry kamery, takie jak kapelusze i okulary, jako wtyczki oraz sprawdzanie udostępnianych plików pod kątem złośliwego oprogramowania jako oficjalna wtyczka."
         }
-      ]
+      ],
+      "next": {
+        "title": "Wyślij. Pokaż. Daj się zobaczyć.",
+        "body": "Epic 4.1 przynosi pliki, lepsze udostępnianie ekranu i kamery. Wszystko idzie szyfrowane end-to-end przez przekaźnik serwera, a na serwerze Mumble nic się nie zmienia.",
+        "draft": "Szkic",
+        "tiles": {
+          "files": {
+            "title": "Udostępniaj pliki",
+            "body": "Przeciągnij je do czatu, do 2 GB. Nikt nie widzi twojego adresu IP, każde pobranie wymaga twojego kliknięcia i jest sprawdzane sumą kontrolną."
+          },
+          "camera": {
+            "title": "Pokój kamer",
+            "body": "Do 9 kamer w siatce nad czatem, tylko dla osób z twojego kanału."
+          },
+          "share": {
+            "title": "Udostępnianie ekranu do 4K",
+            "body": "Sam wybierz rozdzielczość, liczbę klatek i kodek. Przez przekaźnik ogląda do 25 osób, a ty wysyłasz tylko raz."
+          },
+          "blur": {
+            "title": "Rozmyj tło",
+            "body": "Rozmycie lub obraz, liczone na twoim komputerze. Kamera zawsze startuje z podglądem."
+          },
+          "resize": {
+            "title": "Obraz i czat po twojemu",
+            "body": "Przeciągnij uchwyt: więcej obrazu albo więcej czatu. Bardzo mały zamienia się w minipasek."
+          }
+        },
+        "after": {
+          "label": "Potem",
+          "title": "Administracja bez oficjalnego klienta",
+          "body": "Epic 4 robi z Mumcorda pełnego zastępcę: uprawnienia i grupy, kanały, wyrzucenia i bany oraz polecenia prosto w czacie. Wszystko standardowymi wiadomościami Mumble.",
+          "tiles": {
+            "channels": {
+              "title": "Edytuj i przenoś kanały",
+              "body": "Twórz, zmieniaj nazwy, sortuj i przenoś kanały, przyciągaj ludzi do siebie albo przenieś cały kanał naraz."
+            },
+            "acl": {
+              "title": "Uprawnienia, które da się przeczytać",
+              "body": "Edytor ACL i grup, który pokazuje, co jest dziedziczone i która reguła wygrywa."
+            },
+            "commands": {
+              "title": "/kick, /ban, /move",
+              "body": "Polecenia administratora w czacie, z podpowiedziami nazw i kanałów. Widzisz tylko to, co ci wolno."
+            },
+            "ban": {
+              "title": "Ban z powodem",
+              "body": "Na jakiś czas albo na zawsze, według certyfikatu, adresu IP lub obu."
+            }
+          }
+        },
+        "epics": "Wszystkie epiki"
+      }
     },
     "download": {
       "label": "06 — Pobierz",
@@ -2346,6 +2397,18 @@
             "items": [
               "Podpisane wersje na Windows, instalator i aplikacja"
             ]
+          },
+          {
+            "title": "Polecenia w czacie",
+            "items": [
+              "Polecenia administratora prosto w czacie: /kick, /ban, /mute, /deaf i /move, obok poleceń wtyczek",
+              "Podpowiedzi nazw i kanałów podczas pisania, a lista pokazuje tylko to, co możesz robić na tym serwerze",
+              "Wyrzucenie i ban nadal najpierw pytają, a błędy, jak nieznana nazwa, pokazują się tuż nad polem wiadomości"
+            ],
+            "mockups": [
+              "Lista poleceń w czacie",
+              "Podpowiedzi nazw"
+            ]
           }
         ]
       },
@@ -2360,7 +2423,7 @@
               "Przeciągnij pliki do czatu albo dołącz je spinaczem, do 2 GB. Foldery są najpierw pakowane do zip",
               "Zawsze przez przekaźnik i z szyfrowaniem end-to-end: nikt nie widzi twojego adresu IP, a plik nigdy nie trafia na serwer Mumble",
               "Nic nie pobiera się samo: każde pobranie wymaga twojego kliknięcia, a Mumcord sprawdza potem sumę kontrolną SHA-256, którą możesz też skopiować",
-              "Ostrzeżenie przy ryzykownych typach plików, takich jak programy i skrypty, oraz opcjonalne sprawdzenie w bazie złośliwego oprogramowania",
+              "Ostrzeżenie przy ryzykownych typach plików, takich jak programy i skrypty, zanim je otworzysz",
               "Plik pozostaje dostępny, dopóki osoba jest online, do 24 godzin",
               "Osoby korzystające z oficjalnego klienta Mumble widzą krótką linijkę, że udostępniono plik"
             ],
@@ -2476,10 +2539,12 @@
       {
         "id": "epic-future",
         "title": "Pomysły na później",
-        "summary": "Pomysły bez zaplanowanego epica, na przykład wyszukiwanie GIF-ów.",
+        "summary": "Pomysły bez zaplanowanego epica: wyszukiwanie GIF-ów, filtry kamery jako wtyczki i sprawdzanie udostępnianych plików pod kątem złośliwego oprogramowania.",
         "items": [
           "Wyszukiwanie GIF-ów bez dołączania do aplikacji klucza API, który każdy mógłby wyciągnąć",
-          "Możliwości to mała usługa pośrednicząca albo własny klucz; decyzja zapadnie później"
+          "Możliwości to mała usługa pośrednicząca albo własny klucz; decyzja zapadnie później",
+          "Filtry kamery jako wtyczki: kapelusze, brody, okulary i naklejki. Śledzenie twarzy działa na twoim komputerze, wtyczka nigdy nie widzi obrazu z twojej kamery, a inni nie potrzebują wtyczki",
+          "Oficjalna wtyczka „Sprawdzanie malware”: wyszukuje sumę kontrolną udostępnianych plików w usłudze antymalware i blokuje niebezpieczne pobrania. Sam Mumcord nigdy nie łączy się z taką usługą"
         ]
       }
     ],
