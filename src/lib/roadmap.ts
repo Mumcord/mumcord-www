@@ -500,7 +500,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Dateien in den Chat ziehen oder über die Büroklammer anhängen, bis 2 GB. Ordner werden vorher gezippt",
               "Immer über das Relay und Ende-zu-Ende-verschlüsselt: Niemand sieht deine IP-Adresse, und die Datei berührt den Mumble-Server nie",
               "Nichts lädt von allein: Jeder Download braucht deinen Klick, und Mumcord prüft danach die SHA-256-Prüfsumme, die du auch kopieren kannst",
-              "Eine Warnung vor riskanten Dateitypen wie Programmen und Skripten, dazu eine optionale Prüfung gegen eine Malware-Datenbank",
+              "Eine Warnung vor riskanten Dateitypen wie Programmen und Skripten, bevor du sie öffnest",
               "Eine Datei bleibt verfügbar, solange die Person online ist, höchstens 24 Stunden",
               "Wer den offiziellen Mumble-Client nutzt, sieht eine kurze Zeile, dass hier eine Datei geteilt wurde",
             ],
@@ -559,6 +559,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         tag: "Epic 4",
         title: "Admin",
         status: "planned",
+        version: "0.8.0",
         summary: "Damit Mumcord den offiziellen Client ganz ersetzen kann: Kanäle, Rechte, Banns und Personen verwalten, nur mit normalen Mumble-Nachrichten und ohne Änderung am Server.",
         groups: [
           {
@@ -603,6 +604,18 @@ const source: Record<"de" | "en", RoadmapPage> = {
             title: "Windows",
             items: ["Signierte Windows-Builds, Installer und App"],
             done: [0],
+          },
+          {
+            title: "Befehle im Chat",
+            items: [
+              "Admin-Befehle direkt im Chat: /kick, /ban, /mute, /deaf und /move, neben den Befehlen der Plugins",
+              "Vorschläge für Namen und Kanäle beim Tippen, und in der Liste steht nur, was du auf diesem Server darfst",
+              "Kick und Bann fragen trotzdem nach, und Fehler wie ein unbekannter Name stehen direkt über dem Eingabefeld",
+            ],
+            mockups: [
+              { shot: "admin-commands-list-dark", issue: 378, caption: "Die Befehlsliste im Chat" },
+              { shot: "admin-commands-names-dark", issue: 378, caption: "Vorschläge für Namen" },
+            ],
           },
         ],
       },
@@ -674,10 +687,12 @@ const source: Record<"de" | "en", RoadmapPage> = {
         tag: "Epic Future",
         title: "Ideen für später",
         status: "later",
-        summary: "Ideen ohne festes Epic, zum Beispiel die Suche nach GIFs.",
+        summary: "Ideen ohne festes Epic: GIF-Suche, Kamera-Filter als Plugins und ein Malware-Check für geteilte Dateien.",
         items: [
           "GIF-Suche, ohne einen API-Schlüssel in die App zu packen, den jemand auslesen könnte",
           "Möglich wäre ein kleiner Vermittlungsdienst oder ein eigener Schlüssel; entschieden wird später",
+          "Kamera-Filter als Plugins: Hüte, Bärte, Brillen und Sticker. Die Gesichtserkennung läuft auf deinem PC, das Plugin sieht nie dein Kamerabild, und die anderen brauchen kein Plugin",
+          "Ein offizielles Plugin „Malware-Check“: Es schlägt die Prüfsumme geteilter Dateien bei einem Malware-Dienst nach und blockt gefährliche Downloads. Mumcord selbst fragt keinen solchen Dienst an",
         ],
       },
     ],
@@ -1122,7 +1137,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
               "Drag files into the chat or attach them with the paperclip, up to 2 GB. Folders are zipped first",
               "Always through the relay and end-to-end encrypted: nobody sees your IP address, and the file never touches the Mumble server",
               "Nothing downloads on its own: every download needs your click, and Mumcord then checks the SHA-256 checksum, which you can also copy",
-              "A warning for risky file types such as programs and scripts, plus an optional check against a malware database",
+              "A warning for risky file types such as programs and scripts, before you open them",
               "A file stays available while the person is online, for up to 24 hours",
               "People on the official Mumble client see a short line saying a file was shared",
             ],
@@ -1181,6 +1196,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         tag: "Epic 4",
         title: "Admin",
         status: "planned",
+        version: "0.8.0",
         summary: "So Mumcord can fully replace the official client: manage channels, permissions, bans and people, with standard Mumble messages only and no change to the server.",
         groups: [
           {
@@ -1225,6 +1241,18 @@ const source: Record<"de" | "en", RoadmapPage> = {
             title: "Windows",
             items: ["Signed Windows builds, installer and app"],
             done: [0],
+          },
+          {
+            title: "Commands in the chat",
+            items: [
+              "Admin commands right in the chat: /kick, /ban, /mute, /deaf and /move, next to the plugin commands",
+              "Suggestions for names and channels while you type, and the list only shows what you may do on this server",
+              "Kick and ban still ask first, and errors like an unknown name show right above the message box",
+            ],
+            mockups: [
+              { shot: "admin-commands-list-dark", issue: 378, caption: "The command list in the chat" },
+              { shot: "admin-commands-names-dark", issue: 378, caption: "Suggestions for names" },
+            ],
           },
         ],
       },
@@ -1296,10 +1324,12 @@ const source: Record<"de" | "en", RoadmapPage> = {
         tag: "Epic Future",
         title: "Ideas for later",
         status: "later",
-        summary: "Ideas without a planned epic, such as GIF search.",
+        summary: "Ideas without a planned epic: GIF search, camera filters as plugins and a malware check for shared files.",
         items: [
           "GIF search without shipping an API key in the app that anyone could extract",
           "Options are a small relay service or your own key; to be decided later",
+          "Camera filters as plugins: hats, beards, glasses and stickers. Face tracking runs on your PC, the plugin never sees your camera picture, and others need no plugin",
+          "An official \"Malware check\" plugin: it looks up the checksum of shared files at a malware service and blocks dangerous downloads. Mumcord itself never contacts such a service",
         ],
       },
     ],

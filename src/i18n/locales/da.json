@@ -378,7 +378,7 @@
         {
           "tag": "Epic 4",
           "title": "Administration",
-          "body": "Tilladelser (ACL'er) og grupper, kanaladministration, kicks og bans, banlisten, registrerede brugere og moderation, kun synligt, hvor serveren giver det."
+          "body": "Kommer med 0.8.0: tilladelser (ACL'er) og grupper, kanaladministration, kicks og bans, banlisten, registrerede brugere, moderering og admin-kommandoer som /kick i chatten, kun synlige, hvor serveren giver lov."
         },
         {
           "tag": "Epic 5",
@@ -392,10 +392,61 @@
         },
         {
           "tag": "Epic Future",
-          "title": "GIF-søgning",
-          "body": "Søg efter GIF'er uden at lægge en API-nøgle i appen, som enhver kunne trække ud. Præcis hvordan er endnu ikke besluttet."
+          "title": "Ideer til senere",
+          "body": "GIF-søgning uden en API-nøgle, der kan udtrækkes, kamerafiltre som hatte og briller som plugins og et malwaretjek af delte filer som officielt plugin."
         }
-      ]
+      ],
+      "next": {
+        "title": "Send det. Vis det. Bliv set.",
+        "body": "Epic 4.1 giver filer, en bedre skærmdeling og kameraer. Alt kører ende-til-ende-krypteret via serverens relay, og der ændres ikke noget på Mumble-serveren.",
+        "draft": "Udkast",
+        "tiles": {
+          "files": {
+            "title": "Del filer",
+            "body": "Træk dem ind i chatten, op til 2 GB. Ingen ser din IP-adresse, hver download kræver dit klik og kontrolleres mod sin checksum."
+          },
+          "camera": {
+            "title": "Kamerarummet",
+            "body": "Op til 9 kameraer som et gitter over chatten, kun for folk i din kanal."
+          },
+          "share": {
+            "title": "Skærmdeling op til 4K",
+            "body": "Vælg selv opløsning, billedfrekvens og codec. Via relayet kan op til 25 se med, og du uploader kun én gang."
+          },
+          "blur": {
+            "title": "Slør din baggrund",
+            "body": "Sløring eller et billede, beregnet på din pc. Kameraet starter altid med en forhåndsvisning."
+          },
+          "resize": {
+            "title": "Billede og chat, som du vil",
+            "body": "Træk i håndtaget: mere billede eller mere chat. Helt lille bliver det til minibjælken."
+          }
+        },
+        "after": {
+          "label": "Bagefter",
+          "title": "Administration, uden den officielle klient",
+          "body": "Epic 4 gør Mumcord til en fuld erstatning: tilladelser og grupper, kanaler, kicks og bans og kommandoer direkte i chatten. Alt sammen med standardbeskeder i Mumble.",
+          "tiles": {
+            "channels": {
+              "title": "Redigér og flyt kanaler",
+              "body": "Opret, omdøb, sortér og flyt kanaler, træk folk over til dig, eller flyt en hel kanal på én gang."
+            },
+            "acl": {
+              "title": "Tilladelser, du kan læse",
+              "body": "En editor til ACL'er og grupper, der viser, hvad der nedarves, og hvilken regel der vinder."
+            },
+            "commands": {
+              "title": "/kick, /ban, /move",
+              "body": "Admin-kommandoer i chatten med forslag til navne og kanaler. Du ser kun det, du må."
+            },
+            "ban": {
+              "title": "Ban med en begrundelse",
+              "body": "For en tid eller for altid, via certifikat, IP-adresse eller begge dele."
+            }
+          }
+        },
+        "epics": "Alle epics"
+      }
     },
     "download": {
       "label": "06 — Hent den",
@@ -2346,6 +2397,18 @@
             "items": [
               "Signerede Windows-builds, installer og app"
             ]
+          },
+          {
+            "title": "Kommandoer i chatten",
+            "items": [
+              "Admin-kommandoer direkte i chatten: /kick, /ban, /mute, /deaf og /move, ved siden af plugin-kommandoerne",
+              "Forslag til navne og kanaler, mens du skriver, og listen viser kun det, du må på denne server",
+              "Kick og ban spørger stadig først, og fejl som et ukendt navn vises lige over beskedfeltet"
+            ],
+            "mockups": [
+              "Kommandolisten i chatten",
+              "Forslag til navne"
+            ]
           }
         ]
       },
@@ -2360,7 +2423,7 @@
               "Træk filer ind i chatten eller vedhæft dem med papirclipsen, op til 2 GB. Mapper pakkes først i en zip",
               "Altid via relayet og ende-til-ende-krypteret: ingen ser din IP-adresse, og filen rører aldrig Mumble-serveren",
               "Intet downloades af sig selv: hver download kræver et klik fra dig, og Mumcord tjekker derefter SHA-256-kontrolsummen, som du også kan kopiere",
-              "Advarsel ved risikable filtyper som programmer og scripts, plus et valgfrit tjek mod en malwaredatabase",
+              "En advarsel ved risikable filtyper som programmer og scripts, før du åbner dem",
               "En fil er tilgængelig, så længe personen er online, i op til 24 timer",
               "Folk på den officielle Mumble-klient ser en kort linje om, at der er delt en fil"
             ],
@@ -2476,10 +2539,12 @@
       {
         "id": "epic-future",
         "title": "Ideer til senere",
-        "summary": "Ideer uden en planlagt epic, f.eks. GIF-søgning.",
+        "summary": "Ideer uden en planlagt epic: GIF-søgning, kamerafiltre som plugins og et malwaretjek af delte filer.",
         "items": [
           "GIF-søgning uden at lægge en API-nøgle i appen, som enhver kunne trække ud",
-          "Mulighederne er en lille relætjeneste eller din egen nøgle; besluttes senere"
+          "Mulighederne er en lille relætjeneste eller din egen nøgle; besluttes senere",
+          "Kamerafiltre som plugins: hatte, skæg, briller og klistermærker. Ansigtssporingen kører på din pc, pluginnet ser aldrig dit kamerabillede, og de andre behøver intet plugin",
+          "Et officielt plugin, \"Malwaretjek\": det slår tjeksummen for delte filer op hos en malwaretjeneste og blokerer farlige downloads. Mumcord selv kontakter aldrig en sådan tjeneste"
         ]
       }
     ],

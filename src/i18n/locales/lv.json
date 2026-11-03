@@ -378,7 +378,7 @@
         {
           "tag": "Epic 4",
           "title": "Administrēšana",
-          "body": "Atļaujas (ACL) un grupas, kanālu pārvaldība, izmešana un bloķēšana, bloķēšanas saraksts, reģistrētie lietotāji un moderēšana, redzami tikai tur, kur serveris to atļauj."
+          "body": "Nāk ar 0.8.0: atļaujas (ACL) un grupas, kanālu pārvaldība, izmešanas un bloķēšanas, bloķēto saraksts, reģistrēti lietotāji, moderēšana un admina komandas, piemēram, /kick tērzēšanā, redzamas tikai tur, kur serveris tās atļauj."
         },
         {
           "tag": "Epic 5",
@@ -392,10 +392,61 @@
         },
         {
           "tag": "Epic Future",
-          "title": "GIF meklēšana",
-          "body": "Meklēt GIF, neiekļaujot lietotnē API atslēgu, ko ikviens varētu izvilkt. Kā tieši — vēl jāizlemj."
+          "title": "Idejas vēlākam laikam",
+          "body": "GIF meklēšana bez izvelkamas API atslēgas, kameras filtri, piemēram, cepures un brilles, kā spraudņi un kopīgoto failu ļaunprogrammatūras pārbaude kā oficiāls spraudnis."
         }
-      ]
+      ],
+      "next": {
+        "title": "Sūti. Rādi. Esi redzams.",
+        "body": "Epic 4.1 atnes failus, labāku ekrāna kopīgošanu un kameras. Viss notiek ar pilnīgu (end-to-end) šifrēšanu caur servera releju, un Mumble serverī nemainās nekas.",
+        "draft": "Melnraksts",
+        "tiles": {
+          "files": {
+            "title": "Dalies ar failiem",
+            "body": "Ievelc tos tērzēšanā, līdz 2 GB. Neviens neredz tavu IP adresi, katrai lejupielādei vajag tavu klikšķi, un tā tiek pārbaudīta pēc kontrolsummas."
+          },
+          "camera": {
+            "title": "Kameru istaba",
+            "body": "Līdz 9 kamerām režģī virs tērzēšanas, tikai cilvēkiem tavā kanālā."
+          },
+          "share": {
+            "title": "Ekrāna kopīgošana līdz 4K",
+            "body": "Pats izvēlies izšķirtspēju, kadru nomaiņas ātrumu un kodeku. Caur releju skatās līdz 25 cilvēkiem, un tu augšupielādē tikai vienu reizi."
+          },
+          "blur": {
+            "title": "Izpludini fonu",
+            "body": "Izplūdums vai attēls, aprēķināts tavā datorā. Kamera vienmēr sākas ar priekšskatījumu."
+          },
+          "resize": {
+            "title": "Attēls un tērzēšana pēc tavas gaumes",
+            "body": "Velc turi: vairāk attēla vai vairāk tērzēšanas. Pavisam mazs tas kļūst par mini joslu."
+          }
+        },
+        "after": {
+          "label": "Pēc tam",
+          "title": "Administrēšana bez oficiālā klienta",
+          "body": "Epic 4 padara Mumcord par pilnu aizstājēju: atļaujas un grupas, kanāli, izmešanas un bloķēšanas un komandas tieši tērzēšanā. Viss ar standarta Mumble ziņojumiem.",
+          "tiles": {
+            "channels": {
+              "title": "Kanālu rediģēšana un pārvietošana",
+              "body": "Izveido, pārsauc, kārto un pārvieto kanālus, pievelc cilvēkus pie sevis vai pārvieto veselu kanālu uzreiz."
+            },
+            "acl": {
+              "title": "Atļaujas, ko var izlasīt",
+              "body": "ACL un grupu redaktors, kas parāda, kas tiek mantots un kurš noteikums uzvar."
+            },
+            "commands": {
+              "title": "/kick, /ban, /move",
+              "body": "Admina komandas tērzēšanā ar vārdu un kanālu ieteikumiem. Tu redzi tikai to, ko drīksti."
+            },
+            "ban": {
+              "title": "Bloķēšana ar iemeslu",
+              "body": "Uz laiku vai uz visiem laikiem, pēc sertifikāta, IP adreses vai abiem."
+            }
+          }
+        },
+        "epics": "Visi epiki"
+      }
     },
     "download": {
       "label": "06 — Iegūsti",
@@ -2346,6 +2397,18 @@
             "items": [
               "Parakstīti Windows būvējumi, instalētājs un lietotne"
             ]
+          },
+          {
+            "title": "Komandas tērzēšanā",
+            "items": [
+              "Admina komandas tieši tērzēšanā: /kick, /ban, /mute, /deaf un /move, līdzās spraudņu komandām",
+              "Vārdu un kanālu ieteikumi, kamēr raksti, un sarakstā redzams tikai tas, ko drīksti šajā serverī",
+              "Izmešana un bloķēšana joprojām vispirms jautā, un kļūdas, piemēram, nezināms vārds, parādās tieši virs ziņojuma lauka"
+            ],
+            "mockups": [
+              "Komandu saraksts tērzēšanā",
+              "Vārdu ieteikumi"
+            ]
           }
         ]
       },
@@ -2360,7 +2423,7 @@
               "Ievelc failus tērzēšanā vai pievieno tos ar saspraudi, līdz 2 GB. Mapes vispirms tiek sapakotas zip failā",
               "Vienmēr caur releju un ar pilnīgu (end-to-end) šifrēšanu: neviens neredz tavu IP adresi, un fails nekad neiet caur Mumble serveri",
               "Nekas netiek lejupielādēts pats: katrai lejupielādei vajadzīgs tavs klikšķis, un Mumcord pēc tam pārbauda SHA-256 kontrolsummu, ko vari arī nokopēt",
-              "Brīdinājums par riskantiem failu veidiem, piemēram, programmām un skriptiem, kā arī izvēles pārbaude ļaunprogrammatūras datubāzē",
+              "Brīdinājums par riskantiem failu veidiem, piemēram, programmām un skriptiem, pirms tos atver",
               "Fails paliek pieejams, kamēr cilvēks ir tiešsaistē, līdz 24 stundām",
               "Cilvēki ar oficiālo Mumble klientu redz īsu rindu, ka ir kopīgots fails"
             ],
@@ -2476,10 +2539,12 @@
       {
         "id": "epic-future",
         "title": "Idejas vēlākam laikam",
-        "summary": "Idejas bez plānota epika, piemēram, GIF meklēšana.",
+        "summary": "Idejas bez plānota epic: GIF meklēšana, kameras filtri kā spraudņi un kopīgoto failu ļaunprogrammatūras pārbaude.",
         "items": [
           "GIF meklēšana, neiekļaujot lietotnē API atslēgu, ko ikviens varētu izvilkt",
-          "Iespējas ir neliels starpniekserviss vai tava paša atslēga; tiks izlemts vēlāk"
+          "Iespējas ir neliels starpniekserviss vai tava paša atslēga; tiks izlemts vēlāk",
+          "Kameras filtri kā spraudņi: cepures, bārdas, brilles un uzlīmes. Sejas izsekošana darbojas tavā datorā, spraudnis nekad neredz tavas kameras attēlu, un citiem spraudnis nav vajadzīgs",
+          "Oficiāls spraudnis “Ļaunprogrammatūras pārbaude”: tas meklē kopīgoto failu kontrolsummu ļaunprogrammatūras pakalpojumā un bloķē bīstamas lejupielādes. Pats Mumcord nekad nesazinās ar šādu pakalpojumu"
         ]
       }
     ],

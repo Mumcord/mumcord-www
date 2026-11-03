@@ -378,7 +378,7 @@
         {
           "tag": "Epic 4",
           "title": "Adminisztráció",
-          "body": "Jogosultságok (ACL-ek) és csoportok, csatornakezelés, kirúgások és kitiltások, a kitiltási lista, regisztrált felhasználók és moderálás, csak ott látható, ahol a szerver engedi."
+          "body": "A 0.8.0-val érkezik: jogosultságok (ACL-ek) és csoportok, csatornakezelés, kirúgások és kitiltások, a tiltólista, regisztrált felhasználók, moderálás és admin parancsok, például /kick a csevegésben, csak ott láthatóan, ahol a szerver engedi."
         },
         {
           "tag": "Epic 5",
@@ -392,10 +392,61 @@
         },
         {
           "tag": "Epic Future",
-          "title": "GIF-keresés",
-          "body": "GIF-keresés úgy, hogy ne kelljen az alkalmazásba olyan API-kulcsot tenni, amit bárki kinyerhet. A pontos megoldás még nem dőlt el."
+          "title": "Ötletek későbbre",
+          "body": "GIF-keresés kinyerhető API-kulcs nélkül, kameraszűrők, például kalapok és szemüvegek bővítményként, és a megosztott fájlok kártevő-ellenőrzése hivatalos bővítményként."
         }
-      ]
+      ],
+      "next": {
+        "title": "Küldd. Mutasd. Mutatkozz.",
+        "body": "Az Epic 4.1 fájlokat, jobb képernyőmegosztást és kamerákat hoz. Minden végpontok közötti titkosítással, a szerver relayén át megy, a Mumble szerveren pedig semmi sem változik.",
+        "draft": "Tervezet",
+        "tiles": {
+          "files": {
+            "title": "Fájlok megosztása",
+            "body": "Húzd be őket a csevegésbe, legfeljebb 2 GB-ig. Senki nem látja az IP-címedet, minden letöltéshez kell a kattintásod, és ellenőrző összeggel is ellenőrizzük."
+          },
+          "camera": {
+            "title": "A kameraszoba",
+            "body": "Legfeljebb 9 kamera rácsban a csevegés fölött, csak a csatornád tagjainak."
+          },
+          "share": {
+            "title": "Képernyőmegosztás akár 4K-ban",
+            "body": "Te választod ki a felbontást, a képkockasebességet és a kodeket. A relayen át akár 25 ember nézheti, te pedig csak egyszer töltesz fel."
+          },
+          "blur": {
+            "title": "Mosd el a hátteredet",
+            "body": "Elmosás vagy egy kép, a gépeden számolva. A kamera mindig előnézettel indul."
+          },
+          "resize": {
+            "title": "Kép és csevegés, ahogy neked jó",
+            "body": "Húzd a fogantyút: több kép vagy több csevegés. Egészen kicsire húzva minisávvá válik."
+          }
+        },
+        "after": {
+          "label": "Utána",
+          "title": "Adminisztráció a hivatalos kliens nélkül",
+          "body": "Az Epic 4 teljes értékű helyettesítővé teszi a Mumcordot: jogosultságok és csoportok, csatornák, kirúgások és kitiltások, valamint parancsok közvetlenül a csevegésben. Mindez szabványos Mumble-üzenetekkel.",
+          "tiles": {
+            "channels": {
+              "title": "Csatornák szerkesztése és mozgatása",
+              "body": "Hozz létre, nevezz át, rendezz és mozgass csatornákat, húzd magad mellé az embereket, vagy mozgass át egy egész csatornát egyszerre."
+            },
+            "acl": {
+              "title": "Jogosultságok, amiket el lehet olvasni",
+              "body": "ACL-ek és csoportok szerkesztője, amely megmutatja, mi öröklődik és melyik szabály győz."
+            },
+            "commands": {
+              "title": "/kick, /ban, /move",
+              "body": "Admin parancsok a csevegésben, nevek és csatornák javaslataival. Csak azt látod, amit szabad."
+            },
+            "ban": {
+              "title": "Kitiltás indoklással",
+              "body": "Egy időre vagy végleg, tanúsítvány, IP-cím vagy mindkettő alapján."
+            }
+          }
+        },
+        "epics": "Az összes epic"
+      }
     },
     "download": {
       "label": "06 — Szerezd be",
@@ -2346,6 +2397,18 @@
             "items": [
               "Aláírt Windows-buildek, telepítő és app"
             ]
+          },
+          {
+            "title": "Parancsok a csevegésben",
+            "items": [
+              "Admin parancsok közvetlenül a csevegésben: /kick, /ban, /mute, /deaf és /move, a bővítményparancsok mellett",
+              "Javaslatok nevekre és csatornákra gépelés közben, a lista pedig csak azt mutatja, amit ezen a szerveren szabad",
+              "A kirúgás és a kitiltás továbbra is előbb rákérdez, a hibák, például egy ismeretlen név, közvetlenül az üzenetmező fölött jelennek meg"
+            ],
+            "mockups": [
+              "A parancslista a csevegésben",
+              "Névjavaslatok"
+            ]
           }
         ]
       },
@@ -2360,7 +2423,7 @@
               "Húzd a fájlokat a csevegésbe, vagy csatold őket a gemkapoccsal, legfeljebb 2 GB-ig. A mappákat előbb zipbe csomagoljuk",
               "Mindig a relayen át és végpontok közötti titkosítással: senki nem látja az IP-címedet, és a fájl soha nem érinti a Mumble szervert",
               "Semmi nem töltődik le magától: minden letöltéshez kell a kattintásod, és a Mumcord utána ellenőrzi az SHA-256 ellenőrző összeget, amit át is másolhatsz",
-              "Figyelmeztetés a kockázatos fájltípusokra, például programokra és szkriptekre, plusz opcionális ellenőrzés kártevő-adatbázisban",
+              "Figyelmeztetés a kockázatos fájltípusoknál, például programoknál és szkripteknél, mielőtt megnyitod őket",
               "A fájl addig elérhető, amíg a másik személy online van, legfeljebb 24 óráig",
               "A hivatalos Mumble klienst használók egy rövid sort látnak arról, hogy fájlt osztottak meg"
             ],
@@ -2476,10 +2539,12 @@
       {
         "id": "epic-future",
         "title": "Ötletek későbbre",
-        "summary": "Ötletek tervezett epic nélkül, például a GIF-keresés.",
+        "summary": "Ötletek tervezett epic nélkül: GIF-keresés, kameraszűrők bővítményként és a megosztott fájlok kártevő-ellenőrzése.",
         "items": [
           "GIF-keresés úgy, hogy ne kelljen az alkalmazásba olyan API-kulcsot tenni, amit bárki kinyerhet",
-          "A lehetőségek: egy kis közvetítőszolgáltatás vagy saját kulcs; később dől el"
+          "A lehetőségek: egy kis közvetítőszolgáltatás vagy saját kulcs; később dől el",
+          "Kameraszűrők bővítményként: kalapok, szakállak, szemüvegek és matricák. Az arckövetés a te gépeden fut, a bővítmény soha nem látja a kameraképedet, a többieknek pedig nincs szükségük bővítményre",
+          "Hivatalos „Kártevő-ellenőrzés” bővítmény: a megosztott fájlok ellenőrző összegét lekérdezi egy kártevőszolgáltatásnál, és blokkolja a veszélyes letöltéseket. Maga a Mumcord soha nem veszi fel a kapcsolatot ilyen szolgáltatással"
         ]
       }
     ],

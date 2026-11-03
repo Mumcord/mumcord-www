@@ -378,7 +378,7 @@
         {
           "tag": "Epic 4",
           "title": "Beheer",
-          "body": "Rechten (ACL's) en groepen, kanaalbeheer, kicks en bans, de banlijst, geregistreerde gebruikers en moderatie, alleen zichtbaar waar de server het toestaat."
+          "body": "Komt met 0.8.0: rechten (ACL's) en groepen, kanaalbeheer, kicks en bans, de banlijst, geregistreerde gebruikers, moderatie en beheercommando's zoals /kick in de chat, alleen zichtbaar waar de server het toestaat."
         },
         {
           "tag": "Epic 5",
@@ -392,10 +392,61 @@
         },
         {
           "tag": "Epic Future",
-          "title": "GIF's zoeken",
-          "body": "GIF's zoeken zonder een API-sleutel in de app mee te leveren die iedereen eruit kan halen. Hoe precies, moet nog worden besloten."
+          "title": "Ideeën voor later",
+          "body": "GIF's zoeken zonder API-sleutel die iemand eruit kan halen, camerafilters zoals hoeden en brillen als plugins en een malwarecontrole voor gedeelde bestanden als officiële plugin."
         }
-      ]
+      ],
+      "next": {
+        "title": "Stuur het. Toon het. Laat je zien.",
+        "body": "Epic 4.1 brengt bestanden, een betere schermdeling en camera's. Alles loopt end-to-end versleuteld via de relay van de server en op de Mumble-server verandert niets.",
+        "draft": "Concept",
+        "tiles": {
+          "files": {
+            "title": "Bestanden delen",
+            "body": "Sleep ze naar de chat, tot 2 GB. Niemand ziet je IP-adres, elke download vraagt om jouw klik en wordt gecontroleerd met zijn checksum."
+          },
+          "camera": {
+            "title": "De camerakamer",
+            "body": "Tot 9 camera's als raster boven de chat, alleen voor de mensen in jouw kanaal."
+          },
+          "share": {
+            "title": "Schermdeling tot 4K",
+            "body": "Kies zelf resolutie, framerate en codec. Via de relay kijken tot 25 mensen mee en jij uploadt maar één keer."
+          },
+          "blur": {
+            "title": "Vervaag je achtergrond",
+            "body": "Vervaging of een afbeelding, berekend op je pc. De camera begint altijd met een voorbeeld."
+          },
+          "resize": {
+            "title": "Beeld en chat, zoals jij wilt",
+            "body": "Sleep de greep: meer beeld of meer chat. Heel klein wordt het de minibalk."
+          }
+        },
+        "after": {
+          "label": "Daarna",
+          "title": "Beheer, zonder de officiële client",
+          "body": "Epic 4 maakt van Mumcord een volledige vervanger: rechten en groepen, kanalen, kicks en bans en commando's direct in de chat. Alles met standaard Mumble-berichten.",
+          "tiles": {
+            "channels": {
+              "title": "Kanalen bewerken en verplaatsen",
+              "body": "Maak kanalen aan, hernoem, sorteer en verplaats ze, haal mensen naar je toe of verplaats in één keer een heel kanaal."
+            },
+            "acl": {
+              "title": "Rechten die je kunt lezen",
+              "body": "Een editor voor ACL's en groepen die laat zien wat er wordt geërfd en welke regel wint."
+            },
+            "commands": {
+              "title": "/kick, /ban, /move",
+              "body": "Beheercommando's in de chat, met suggesties voor namen en kanalen. Je ziet alleen wat je mag doen."
+            },
+            "ban": {
+              "title": "Ban met een reden",
+              "body": "Voor even of voor altijd, op certificaat, IP-adres of allebei."
+            }
+          }
+        },
+        "epics": "Alle epics"
+      }
     },
     "download": {
       "label": "06 — Binnenhalen",
@@ -2346,6 +2397,18 @@
             "items": [
               "Ondertekende Windows-builds, installer en app"
             ]
+          },
+          {
+            "title": "Commando's in de chat",
+            "items": [
+              "Beheercommando's direct in de chat: /kick, /ban, /mute, /deaf en /move, naast de plugincommando's",
+              "Suggesties voor namen en kanalen terwijl je typt, en de lijst toont alleen wat je op deze server mag doen",
+              "Kicken en bannen vragen nog steeds eerst om bevestiging, en fouten zoals een onbekende naam verschijnen vlak boven het berichtenveld"
+            ],
+            "mockups": [
+              "De commandolijst in de chat",
+              "Suggesties voor namen"
+            ]
           }
         ]
       },
@@ -2360,7 +2423,7 @@
               "Sleep bestanden naar de chat of voeg ze toe met de paperclip, tot 2 GB. Mappen worden eerst gezipt",
               "Altijd via de relay en end-to-end versleuteld: niemand ziet je IP-adres en het bestand komt nooit op de Mumble-server",
               "Niets wordt vanzelf gedownload: elke download vraagt om jouw klik, en Mumcord controleert daarna de SHA-256-controlesom, die je ook kunt kopiëren",
-              "Een waarschuwing voor riskante bestandstypen zoals programma's en scripts, plus een optionele controle in een malwaredatabase",
+              "Een waarschuwing bij riskante bestandstypen zoals programma's en scripts, voordat je ze opent",
               "Een bestand blijft beschikbaar zolang de persoon online is, maximaal 24 uur",
               "Mensen met de officiële Mumble-client zien een korte regel dat er een bestand is gedeeld"
             ],
@@ -2476,10 +2539,12 @@
       {
         "id": "epic-future",
         "title": "Ideeën voor later",
-        "summary": "Ideeën zonder geplande epic, zoals GIF's zoeken.",
+        "summary": "Ideeën zonder geplande epic: GIF's zoeken, camerafilters als plugins en een malwarecontrole voor gedeelde bestanden.",
         "items": [
           "GIF's zoeken zonder een API-sleutel in de app mee te leveren die iedereen eruit kan halen",
-          "Opties zijn een kleine relaydienst of je eigen sleutel; wordt later besloten"
+          "Opties zijn een kleine relaydienst of je eigen sleutel; wordt later besloten",
+          "Camerafilters als plugins: hoeden, baarden, brillen en stickers. De gezichtsherkenning draait op je pc, de plugin ziet je camerabeeld nooit en anderen hebben geen plugin nodig",
+          "Een officiële plugin \"Malwarecontrole\": die zoekt de checksum van gedeelde bestanden op bij een malwaredienst en blokkeert gevaarlijke downloads. Mumcord zelf neemt nooit contact op met zo'n dienst"
         ]
       }
     ],

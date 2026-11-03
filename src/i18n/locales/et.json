@@ -378,7 +378,7 @@
         {
           "tag": "Epic 4",
           "title": "Haldus",
-          "body": "Õigused (ACL-id) ja grupid, kanalite haldus, väljaviskamised ja keelud, keelunimekiri, registreeritud kasutajad ja modereerimine, nähtav ainult seal, kus server selle annab."
+          "body": "Tuleb versiooniga 0.8.0: õigused (ACL-id) ja grupid, kanalite haldus, väljaviskamised ja keelud, keeluloend, registreeritud kasutajad, modereerimine ja haldurikäsud nagu /kick vestluses, nähtavad ainult seal, kus server need lubab."
         },
         {
           "tag": "Epic 5",
@@ -392,10 +392,61 @@
         },
         {
           "tag": "Epic Future",
-          "title": "GIF-otsing",
-          "body": "GIF-ide otsing ilma rakendusse API-võtit lisamata, mida igaüks saaks välja võtta. Kuidas täpselt, on veel otsustamata."
+          "title": "Ideid hilisemaks",
+          "body": "GIF-otsing ilma väljavõetava API-võtmeta, kaamerafiltrid nagu mütsid ja prillid pluginatena ning jagatud failide pahavarakontroll ametliku pluginana."
         }
-      ]
+      ],
+      "next": {
+        "title": "Saada. Näita. Ole nähtav.",
+        "body": "Epic 4.1 toob failid, parema ekraanijagamise ja kaamerad. Kõik käib otspunktkrüptitult läbi serveri releed ja Mumble'i serveris ei muutu midagi.",
+        "draft": "Mustand",
+        "tiles": {
+          "files": {
+            "title": "Jaga faile",
+            "body": "Lohista need vestlusesse, kuni 2 GB. Keegi ei näe sinu IP-aadressi, iga allalaadimine vajab sinu klõpsu ja seda kontrollitakse kontrollsumma vastu."
+          },
+          "camera": {
+            "title": "Kaameraruum",
+            "body": "Kuni 9 kaamerat ruudustikuna vestluse kohal, ainult sinu kanali inimestele."
+          },
+          "share": {
+            "title": "Ekraanijagamine kuni 4K",
+            "body": "Vali ise eraldusvõime, kaadrisagedus ja koodek. Läbi relee vaatab kuni 25 inimest ja sina laadid üles ainult korra."
+          },
+          "blur": {
+            "title": "Hägusta oma taust",
+            "body": "Hägustus või pilt, arvutatakse sinu arvutis. Kaamera algab alati eelvaatega."
+          },
+          "resize": {
+            "title": "Pilt ja vestlus nii, nagu sulle meeldib",
+            "body": "Lohista käepidet: rohkem pilti või rohkem vestlust. Päris väikesena muutub see miniribaks."
+          }
+        },
+        "after": {
+          "label": "Pärast seda",
+          "title": "Haldus ilma ametliku kliendita",
+          "body": "Epic 4 teeb Mumcordist täieliku asenduse: õigused ja grupid, kanalid, väljaviskamised ja keelud ning käsud otse vestluses. Kõik tavaliste Mumble’i sõnumitega.",
+          "tiles": {
+            "channels": {
+              "title": "Kanalite muutmine ja liigutamine",
+              "body": "Loo, nimeta ümber, sorteeri ja liiguta kanaleid, too inimesi enda juurde või liiguta terve kanal korraga."
+            },
+            "acl": {
+              "title": "Õigused, mida saab lugeda",
+              "body": "ACL-ide ja gruppide redaktor, mis näitab, mis pärandub ja milline reegel võidab."
+            },
+            "commands": {
+              "title": "/kick, /ban, /move",
+              "body": "Haldurikäsud vestluses koos nimede ja kanalite soovitustega. Näed ainult seda, mida tohid."
+            },
+            "ban": {
+              "title": "Keeld koos põhjusega",
+              "body": "Ajutiselt või päriselt, sertifikaadi, IP-aadressi või mõlema järgi."
+            }
+          }
+        },
+        "epics": "Kõik epic’ud"
+      }
     },
     "download": {
       "label": "06 — Hangi see",
@@ -2346,6 +2397,18 @@
             "items": [
               "Allkirjastatud Windowsi versioonid, paigaldaja ja rakendus"
             ]
+          },
+          {
+            "title": "Käsud vestluses",
+            "items": [
+              "Haldurikäsud otse vestluses: /kick, /ban, /mute, /deaf ja /move, pluginakäskude kõrval",
+              "Nimede ja kanalite soovitused kirjutamise ajal ning loend näitab ainult seda, mida sa sellel serveril tohid",
+              "Väljaviskamine ja keeld küsivad endiselt enne üle ning vead, näiteks tundmatu nimi, ilmuvad otse sõnumivälja kohale"
+            ],
+            "mockups": [
+              "Käskude loend vestluses",
+              "Nimede soovitused"
+            ]
           }
         ]
       },
@@ -2360,7 +2423,7 @@
               "Lohista failid vestlusesse või lisa need kirjaklambriga, kuni 2 GB. Kaustad pakitakse enne zip-failiks",
               "Alati läbi relee ja otspunktkrüptitult: keegi ei näe sinu IP-aadressi ning fail ei läbi kunagi Mumble'i serverit",
               "Midagi ei laeta ise alla: iga allalaadimine vajab sinu klõpsu ning Mumcord kontrollib seejärel SHA-256 kontrollsummat, mida saad ka kopeerida",
-              "Hoiatus riskantsete failitüüpide, näiteks programmide ja skriptide kohta, lisaks valikuline kontroll pahavara andmebaasist",
+              "Hoiatus riskantsete failitüüpide, näiteks programmide ja skriptide kohta enne nende avamist",
               "Fail jääb kättesaadavaks seni, kuni inimene on võrgus, kuni 24 tundi",
               "Ametlikku Mumble'i klienti kasutavad inimesed näevad lühikest rida, et fail jagati"
             ],
@@ -2476,10 +2539,12 @@
       {
         "id": "epic-future",
         "title": "Ideid hilisemaks",
-        "summary": "Ideed, millel pole planeeritud eepost, näiteks GIF-otsing.",
+        "summary": "Ideid ilma planeeritud epicuta: GIF-otsing, kaamerafiltrid pluginatena ja jagatud failide pahavarakontroll.",
         "items": [
           "GIF-otsing ilma rakendusse API-võtit lisamata, mida igaüks saaks välja võtta",
-          "Võimalused on väike vahendusteenus või sinu enda võti; otsustatakse hiljem"
+          "Võimalused on väike vahendusteenus või sinu enda võti; otsustatakse hiljem",
+          "Kaamerafiltrid pluginatena: mütsid, habemed, prillid ja kleebised. Näojälgimine töötab sinu arvutis, plugin ei näe kunagi sinu kaamerapilti ning teised ei vaja pluginat",
+          "Ametlik plugin „Pahavarakontroll“: see otsib jagatud failide kontrollsummat pahavarateenusest ja blokeerib ohtlikud allalaadimised. Mumcord ise ei võta sellise teenusega kunagi ühendust"
         ]
       }
     ],

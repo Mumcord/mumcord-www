@@ -378,7 +378,7 @@
         {
           "tag": "Epic 4",
           "title": "Ylläpito",
-          "body": "Käyttöoikeudet (ACL) ja ryhmät, kanavien hallinta, potkut ja porttikiellot, porttikieltolista, rekisteröidyt käyttäjät ja moderointi, näkyvillä vain siellä, missä palvelin antaa luvan."
+          "body": "Tulossa versiossa 0.8.0: käyttöoikeudet (ACL:t) ja ryhmät, kanavien hallinta, potkut ja porttikiellot, porttikieltolista, rekisteröidyt käyttäjät, moderointi ja ylläpitokomennot kuten /kick keskustelussa, näkyvissä vain siellä, missä palvelin sallii."
         },
         {
           "tag": "Epic 5",
@@ -392,10 +392,61 @@
         },
         {
           "tag": "Epic Future",
-          "title": "GIF-haku",
-          "body": "GIF-haku ilman, että sovelluksen mukana toimitetaan API-avain, jonka kuka tahansa voisi kaivaa esiin. Tarkka toteutus on vielä päättämättä."
+          "title": "Ideoita myöhemmäksi",
+          "body": "GIF-haku ilman poimittavissa olevaa API-avainta, kamerasuodattimet kuten hatut ja lasit lisäosina sekä jaettujen tiedostojen haittaohjelmatarkistus virallisena lisäosana."
         }
-      ]
+      ],
+      "next": {
+        "title": "Lähetä. Näytä. Näy.",
+        "body": "Epic 4.1 tuo tiedostot, paremman näytönjaon ja kamerat. Kaikki kulkee päästä päähän salattuna palvelimen relayn kautta, eikä Mumble-palvelimella muutu mitään.",
+        "draft": "Luonnos",
+        "tiles": {
+          "files": {
+            "title": "Jaa tiedostoja",
+            "body": "Vedä ne keskusteluun, enintään 2 GB. Kukaan ei näe IP-osoitettasi, jokainen lataus vaatii klikkauksesi ja tarkistetaan tarkistussummaa vasten."
+          },
+          "camera": {
+            "title": "Kamerahuone",
+            "body": "Enintään 9 kameraa ruudukkona keskustelun yläpuolella, vain kanavasi väelle."
+          },
+          "share": {
+            "title": "Näytönjako jopa 4K",
+            "body": "Valitse itse resoluutio, kuvataajuus ja koodekki. Relayn kautta jopa 25 ihmistä katsoo, ja sinä lähetät vain kerran."
+          },
+          "blur": {
+            "title": "Sumenna taustasi",
+            "body": "Sumennus tai kuva, laskettuna sinun koneellasi. Kamera alkaa aina esikatselulla."
+          },
+          "resize": {
+            "title": "Kuva ja keskustelu omalla tavallasi",
+            "body": "Vedä kahvasta: enemmän kuvaa tai enemmän keskustelua. Aivan pienenä siitä tulee minipalkki."
+          }
+        },
+        "after": {
+          "label": "Sen jälkeen",
+          "title": "Ylläpito ilman virallista sovellusta",
+          "body": "Epic 4 tekee Mumcordista täyden korvaajan: käyttöoikeudet ja ryhmät, kanavat, potkut ja porttikiellot sekä komennot suoraan keskustelussa. Kaikki Mumblen vakioviesteillä.",
+          "tiles": {
+            "channels": {
+              "title": "Kanavien muokkaus ja siirto",
+              "body": "Luo, nimeä uudelleen, järjestä ja siirrä kanavia, vedä ihmisiä luoksesi tai siirrä koko kanava kerralla."
+            },
+            "acl": {
+              "title": "Käyttöoikeudet, jotka voi lukea",
+              "body": "ACL- ja ryhmäeditori, joka näyttää, mikä periytyy ja mikä sääntö voittaa."
+            },
+            "commands": {
+              "title": "/kick, /ban, /move",
+              "body": "Ylläpitokomennot keskustelussa, ehdotuksia nimistä ja kanavista. Näet vain sen, mihin sinulla on lupa."
+            },
+            "ban": {
+              "title": "Porttikielto syyn kanssa",
+              "body": "Joksikin aikaa tai ikuisesti, varmenteen, IP-osoitteen tai molempien perusteella."
+            }
+          }
+        },
+        "epics": "Kaikki epicit"
+      }
     },
     "download": {
       "label": "06 — Hanki se",
@@ -2346,6 +2397,18 @@
             "items": [
               "Allekirjoitetut Windows-versiot, asennusohjelma ja sovellus"
             ]
+          },
+          {
+            "title": "Komennot keskustelussa",
+            "items": [
+              "Ylläpitokomennot suoraan keskustelussa: /kick, /ban, /mute, /deaf ja /move, lisäosakomentojen rinnalla",
+              "Ehdotuksia nimistä ja kanavista kirjoittaessasi, ja lista näyttää vain sen, mitä saat tällä palvelimella tehdä",
+              "Potku ja porttikielto kysyvät edelleen ensin, ja virheet, kuten tuntematon nimi, näkyvät heti viestikentän yläpuolella"
+            ],
+            "mockups": [
+              "Komentoluettelo keskustelussa",
+              "Ehdotuksia nimistä"
+            ]
           }
         ]
       },
@@ -2360,7 +2423,7 @@
               "Vedä tiedostot keskusteluun tai liitä ne paperiliittimellä, enintään 2 GB. Kansiot pakataan ensin zip-tiedostoksi",
               "Aina relayn kautta ja päästä päähän salattuna: kukaan ei näe IP-osoitettasi, eikä tiedosto koskaan kulje Mumble-palvelimen kautta",
               "Mitään ei lataudu itsestään: jokainen lataus tarvitsee klikkauksesi, ja Mumcord tarkistaa sen jälkeen SHA-256-tarkistussumman, jonka voit myös kopioida",
-              "Varoitus riskialttiista tiedostotyypeistä, kuten ohjelmista ja skripteistä, sekä valinnainen tarkistus haittaohjelmatietokannasta",
+              "Varoitus riskialttiista tiedostotyypeistä, kuten ohjelmista ja skripteistä, ennen kuin avaat ne",
               "Tiedosto pysyy saatavilla niin kauan kuin henkilö on verkossa, enintään 24 tuntia",
               "Virallista Mumble-asiakasohjelmaa käyttävät näkevät lyhyen rivin, että tiedosto jaettiin"
             ],
@@ -2476,10 +2539,12 @@
       {
         "id": "epic-future",
         "title": "Ideoita myöhemmäksi",
-        "summary": "Ideoita ilman suunniteltua epicia, kuten GIF-haku.",
+        "summary": "Ideoita ilman suunniteltua epicia: GIF-haku, kamerasuodattimet lisäosina ja jaettujen tiedostojen haittaohjelmatarkistus.",
         "items": [
           "GIF-haku ilman, että sovelluksen mukana toimitetaan API-avain, jonka kuka tahansa voisi kaivaa esiin",
-          "Vaihtoehtoina pieni välityspalvelu tai oma avain; päätetään myöhemmin"
+          "Vaihtoehtoina pieni välityspalvelu tai oma avain; päätetään myöhemmin",
+          "Kamerasuodattimet lisäosina: hatut, parrat, lasit ja tarrat. Kasvojen seuranta toimii tietokoneellasi, lisäosa ei koskaan näe kamerakuvaasi, eikä muiden tarvitse lisäosaa",
+          "Virallinen \"Haittaohjelmatarkistus\"-lisäosa: se hakee jaettujen tiedostojen tarkistussumman haittaohjelmapalvelusta ja estää vaaralliset lataukset. Mumcord itse ei koskaan ota yhteyttä tällaiseen palveluun"
         ]
       }
     ],

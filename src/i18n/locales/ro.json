@@ -378,7 +378,7 @@
         {
           "tag": "Epic 4",
           "title": "Administrare",
-          "body": "Permisiuni (ACL-uri) și grupuri, gestionarea canalelor, scoateri și banuri, lista de banuri, utilizatori înregistrați și moderare, vizibile doar acolo unde le acordă serverul."
+          "body": "Vine cu 0.8.0: permisiuni (ACL-uri) și grupuri, gestionarea canalelor, excluderi și banuri, lista de banuri, utilizatori înregistrați, moderare și comenzi de admin precum /kick în chat, vizibile doar acolo unde serverul le acordă."
         },
         {
           "tag": "Epic 5",
@@ -392,10 +392,61 @@
         },
         {
           "tag": "Epic Future",
-          "title": "Căutare de GIF-uri",
-          "body": "Caută GIF-uri fără ca aplicația să conțină o cheie API pe care oricine ar putea-o extrage. Cum anume, rămâne de decis."
+          "title": "Idei pentru mai târziu",
+          "body": "Căutare de GIF-uri fără o cheie API care poate fi extrasă, filtre pentru cameră precum pălării și ochelari ca plugin-uri și o verificare de malware pentru fișierele partajate ca plugin oficial."
         }
-      ]
+      ],
+      "next": {
+        "title": "Trimite. Arată. Fii văzut.",
+        "body": "Epic 4.1 aduce fișiere, o partajare de ecran mai bună și camere. Totul trece criptat integral (end-to-end) prin releul serverului și nu se schimbă nimic pe serverul Mumble.",
+        "draft": "Schiță",
+        "tiles": {
+          "files": {
+            "title": "Partajează fișiere",
+            "body": "Trage-le în chat, până la 2 GB. Nimeni nu îți vede adresa IP, fiecare descărcare cere clickul tău și este verificată cu suma de control."
+          },
+          "camera": {
+            "title": "Camera camerelor",
+            "body": "Până la 9 camere într-o grilă deasupra chatului, doar pentru oamenii din canalul tău."
+          },
+          "share": {
+            "title": "Partajare de ecran până la 4K",
+            "body": "Alege tu rezoluția, rata de cadre și codecul. Prin releu se uită până la 25 de oameni, iar tu încarci o singură dată."
+          },
+          "blur": {
+            "title": "Estompează-ți fundalul",
+            "body": "Estompare sau o imagine, calculată pe PC-ul tău. Camera pornește mereu cu o previzualizare."
+          },
+          "resize": {
+            "title": "Imagine și chat, cum vrei tu",
+            "body": "Trage mânerul: mai multă imagine sau mai mult chat. Foarte mic, devine mini bara."
+          }
+        },
+        "after": {
+          "label": "După aceea",
+          "title": "Administrare, fără clientul oficial",
+          "body": "Epic 4 face din Mumcord un înlocuitor complet: permisiuni și grupuri, canale, excluderi și banuri și comenzi direct în chat. Totul cu mesaje Mumble standard.",
+          "tiles": {
+            "channels": {
+              "title": "Editează și mută canale",
+              "body": "Creează, redenumește, sortează și mută canale, adu oamenii la tine sau mută un canal întreg dintr-o dată."
+            },
+            "acl": {
+              "title": "Permisiuni pe care le poți citi",
+              "body": "Un editor pentru ACL-uri și grupuri care arată ce se moștenește și care regulă câștigă."
+            },
+            "commands": {
+              "title": "/kick, /ban, /move",
+              "body": "Comenzi de admin în chat, cu sugestii de nume și canale. Vezi doar ce ai voie să faci."
+            },
+            "ban": {
+              "title": "Ban cu motiv",
+              "body": "Pentru o vreme sau pentru totdeauna, după certificat, adresă IP sau amândouă."
+            }
+          }
+        },
+        "epics": "Toate epicurile"
+      }
     },
     "download": {
       "label": "06 — Ia-l",
@@ -2346,6 +2397,18 @@
             "items": [
               "Versiuni Windows semnate, installer și aplicație"
             ]
+          },
+          {
+            "title": "Comenzi în chat",
+            "items": [
+              "Comenzi de admin direct în chat: /kick, /ban, /mute, /deaf și /move, alături de comenzile pluginurilor",
+              "Sugestii de nume și canale în timp ce scrii, iar lista arată doar ce ai voie să faci pe acest server",
+              "Excluderea și banul întreabă în continuare întâi, iar erorile, precum un nume necunoscut, apar chiar deasupra casetei de mesaj"
+            ],
+            "mockups": [
+              "Lista de comenzi în chat",
+              "Sugestii de nume"
+            ]
           }
         ]
       },
@@ -2360,7 +2423,7 @@
               "Trage fișiere în chat sau atașează-le cu agrafa, până la 2 GB. Folderele sunt arhivate mai întâi în zip",
               "Întotdeauna prin releu și criptat integral (end-to-end): nimeni nu îți vede adresa IP, iar fișierul nu trece niciodată prin serverul Mumble",
               "Nimic nu se descarcă singur: fiecare descărcare are nevoie de clicul tău, iar Mumcord verifică apoi suma de control SHA-256, pe care o poți și copia",
-              "Un avertisment pentru tipurile de fișiere riscante, precum programele și scripturile, plus o verificare opțională într-o bază de date de malware",
+              "Un avertisment pentru tipurile de fișiere riscante, precum programele și scripturile, înainte să le deschizi",
               "Un fișier rămâne disponibil cât timp persoana este online, până la 24 de ore",
               "Cei care folosesc clientul oficial Mumble văd o linie scurtă care spune că s-a partajat un fișier"
             ],
@@ -2476,10 +2539,12 @@
       {
         "id": "epic-future",
         "title": "Idei pentru mai târziu",
-        "summary": "Idei fără un epic planificat, cum ar fi căutarea de GIF-uri.",
+        "summary": "Idei fără un epic planificat: căutare de GIF-uri, filtre pentru cameră ca plugin-uri și o verificare de malware pentru fișierele partajate.",
         "items": [
           "Căutare de GIF-uri fără ca aplicația să conțină o cheie API pe care oricine ar putea-o extrage",
-          "Variantele sunt un mic serviciu releu sau propria ta cheie; se decide mai târziu"
+          "Variantele sunt un mic serviciu releu sau propria ta cheie; se decide mai târziu",
+          "Filtre pentru cameră ca plugin-uri: pălării, bărbi, ochelari și stickere. Urmărirea feței rulează pe PC-ul tău, plugin-ul nu vede niciodată imaginea camerei tale, iar ceilalți nu au nevoie de plugin",
+          "Un plugin oficial „Verificare malware”: caută suma de control a fișierelor partajate la un serviciu de malware și blochează descărcările periculoase. Mumcord în sine nu contactează niciodată un astfel de serviciu"
         ]
       }
     ],

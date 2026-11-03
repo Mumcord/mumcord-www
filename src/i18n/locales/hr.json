@@ -378,7 +378,7 @@
         {
           "tag": "Epic 4",
           "title": "Administracija",
-          "body": "Dozvole (ACL-ovi) i grupe, upravljanje kanalima, izbacivanja i zabrane, popis zabrana, registrirani korisnici i moderiranje, vidljivo samo tamo gdje poslužitelj to dopušta."
+          "body": "Stiže s 0.8.0: dozvole (ACL-ovi) i grupe, upravljanje kanalima, izbacivanja i zabrane, popis zabrana, registrirani korisnici, moderiranje i admin naredbe poput /kick u chatu, vidljive samo ondje gdje ih poslužitelj dopušta."
         },
         {
           "tag": "Epic 5",
@@ -392,10 +392,61 @@
         },
         {
           "tag": "Epic Future",
-          "title": "Pretraživanje GIF-ova",
-          "body": "Traži GIF-ove bez API ključa u aplikaciji koji bi svatko mogao izvući. Kako točno, tek treba odlučiti."
+          "title": "Ideje za kasnije",
+          "body": "Pretraživanje GIF-ova bez API ključa koji se može izvući, filtri za kameru poput šešira i naočala kao dodaci i provjera zlonamjernog softvera za dijeljene datoteke kao službeni dodatak."
         }
-      ]
+      ],
+      "next": {
+        "title": "Pošalji. Pokaži. Budi viđen.",
+        "body": "Epic 4.1 donosi datoteke, bolje dijeljenje zaslona i kamere. Sve ide end-to-end šifrirano preko relaya poslužitelja, a na Mumble poslužitelju se ništa ne mijenja.",
+        "draft": "Skica",
+        "tiles": {
+          "files": {
+            "title": "Dijeli datoteke",
+            "body": "Povuci ih u chat, do 2 GB. Nitko ne vidi tvoju IP adresu, svako preuzimanje traži tvoj klik i provjerava se kontrolnim zbrojem."
+          },
+          "camera": {
+            "title": "Soba s kamerama",
+            "body": "Do 9 kamera u mreži iznad chata, samo za ljude u tvom kanalu."
+          },
+          "share": {
+            "title": "Dijeljenje zaslona do 4K",
+            "body": "Sam odaberi razlučivost, broj sličica u sekundi i kodek. Preko relaya gleda do 25 ljudi, a ti šalješ samo jednom."
+          },
+          "blur": {
+            "title": "Zamuti pozadinu",
+            "body": "Zamućenje ili slika, izračunato na tvom računalu. Kamera uvijek počinje pretpregledom."
+          },
+          "resize": {
+            "title": "Slika i chat po tvom",
+            "body": "Povuci ručku: više slike ili više chata. Sasvim malo postaje mini traka."
+          }
+        },
+        "after": {
+          "label": "Nakon toga",
+          "title": "Administracija, bez službenog klijenta",
+          "body": "Epic 4 od Mumcorda čini potpunu zamjenu: dozvole i grupe, kanali, izbacivanja i zabrane te naredbe izravno u chatu. Sve standardnim porukama Mumblea.",
+          "tiles": {
+            "channels": {
+              "title": "Uređivanje i premještanje kanala",
+              "body": "Stvaraj, preimenuj, sortiraj i premještaj kanale, povuci ljude k sebi ili premjesti cijeli kanal odjednom."
+            },
+            "acl": {
+              "title": "Dozvole koje možeš pročitati",
+              "body": "Uređivač za ACL-ove i grupe koji pokazuje što se nasljeđuje i koje pravilo pobjeđuje."
+            },
+            "commands": {
+              "title": "/kick, /ban, /move",
+              "body": "Admin naredbe u chatu, s prijedlozima imena i kanala. Vidiš samo ono što smiješ."
+            },
+            "ban": {
+              "title": "Zabrana s razlogom",
+              "body": "Na neko vrijeme ili zauvijek, po certifikatu, IP adresi ili oboje."
+            }
+          }
+        },
+        "epics": "Svi epici"
+      }
     },
     "download": {
       "label": "06 — Nabavi ga",
@@ -2346,6 +2397,18 @@
             "items": [
               "Potpisane Windows verzije, instalacijski program i aplikacija"
             ]
+          },
+          {
+            "title": "Naredbe u chatu",
+            "items": [
+              "Admin naredbe izravno u chatu: /kick, /ban, /mute, /deaf i /move, uz naredbe dodataka",
+              "Prijedlozi imena i kanala dok tipkaš, a popis prikazuje samo ono što smiješ na ovom poslužitelju",
+              "Izbacivanje i zabrana i dalje prvo pitaju, a pogreške poput nepoznatog imena prikazuju se točno iznad polja za poruku"
+            ],
+            "mockups": [
+              "Popis naredbi u chatu",
+              "Prijedlozi imena"
+            ]
           }
         ]
       },
@@ -2360,7 +2423,7 @@
               "Povuci datoteke u chat ili ih priloži spajalicom, do 2 GB. Mape se prvo zipaju",
               "Uvijek preko relaya i s end-to-end enkripcijom: nitko ne vidi tvoju IP adresu, a datoteka nikad ne prolazi kroz Mumble poslužitelj",
               "Ništa se ne preuzima samo od sebe: svako preuzimanje traži tvoj klik, a Mumcord zatim provjerava SHA-256 kontrolni zbroj, koji možeš i kopirati",
-              "Upozorenje za rizične vrste datoteka poput programa i skripti, uz neobaveznu provjeru u bazi zlonamjernog softvera",
+              "Upozorenje za rizične vrste datoteka poput programa i skripti prije nego ih otvoriš",
               "Datoteka ostaje dostupna dok je osoba online, najviše 24 sata",
               "Ljudi na službenom Mumble klijentu vide kratku liniju da je datoteka podijeljena"
             ],
@@ -2476,10 +2539,12 @@
       {
         "id": "epic-future",
         "title": "Ideje za kasnije",
-        "summary": "Ideje bez planiranog epica, kao što je pretraživanje GIF-ova.",
+        "summary": "Ideje bez planiranog epica: pretraživanje GIF-ova, filtri za kameru kao dodaci i provjera zlonamjernog softvera za dijeljene datoteke.",
         "items": [
           "Pretraživanje GIF-ova bez API ključa u aplikaciji koji bi svatko mogao izvući",
-          "Opcije su mali relay servis ili tvoj vlastiti ključ; odlučit će se kasnije"
+          "Opcije su mali relay servis ili tvoj vlastiti ključ; odlučit će se kasnije",
+          "Filtri za kameru kao dodaci: šeširi, brade, naočale i naljepnice. Praćenje lica radi na tvom računalu, dodatak nikad ne vidi sliku tvoje kamere, a ostali ne trebaju dodatak",
+          "Službeni dodatak „Provjera zlonamjernog softvera”: traži kontrolni zbroj dijeljenih datoteka u servisu za zlonamjerni softver i blokira opasna preuzimanja. Sam Mumcord nikad ne kontaktira takav servis"
         ]
       }
     ],

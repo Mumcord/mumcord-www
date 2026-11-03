@@ -378,7 +378,7 @@
         {
           "tag": "Epic 4",
           "title": "Administracija",
-          "body": "Dovoljenja (ACL-ji) in skupine, upravljanje kanalov, odstranitve in prepovedi, seznam prepovedi, registrirani uporabniki in moderiranje, vidno samo tam, kjer strežnik to dovoli."
+          "body": "Prihaja z 0.8.0: dovoljenja (ACL-ji) in skupine, upravljanje kanalov, izločitve in prepovedi, seznam prepovedi, registrirani uporabniki, moderiranje in skrbniški ukazi, kot je /kick v klepetu, vidni samo tam, kjer jih strežnik dovoli."
         },
         {
           "tag": "Epic 5",
@@ -392,10 +392,61 @@
         },
         {
           "tag": "Epic Future",
-          "title": "Iskanje GIF-ov",
-          "body": "Iskanje GIF-ov, ne da bi v aplikaciji pošiljali ključ API, ki bi ga lahko kdorkoli izvlekel. Kako točno, še ni odločeno."
+          "title": "Ideje za pozneje",
+          "body": "Iskanje GIF-ov brez ključa API, ki bi ga bilo mogoče izvleči, filtri kamere, kot so klobuki in očala, kot vtičniki ter preverjanje zlonamerne programske opreme v deljenih datotekah kot uradni vtičnik."
         }
-      ]
+      ],
+      "next": {
+        "title": "Pošlji. Pokaži. Bodi viden.",
+        "body": "Epic 4.1 prinaša datoteke, boljšo skupno rabo zaslona in kamere. Vse teče s šifriranjem od konca do konca prek releja strežnika, na strežniku Mumble pa se ne spremeni nič.",
+        "draft": "Osnutek",
+        "tiles": {
+          "files": {
+            "title": "Deli datoteke",
+            "body": "Povleci jih v klepet, do 2 GB. Nihče ne vidi tvojega naslova IP, vsak prenos zahteva tvoj klik in se preveri s kontrolno vsoto."
+          },
+          "camera": {
+            "title": "Soba s kamerami",
+            "body": "Do 9 kamer v mreži nad klepetom, samo za ljudi v tvojem kanalu."
+          },
+          "share": {
+            "title": "Skupna raba zaslona do 4K",
+            "body": "Ločljivost, hitrost sličic in kodek izbereš sam. Prek releja gleda do 25 ljudi, ti pa naložiš samo enkrat."
+          },
+          "blur": {
+            "title": "Zamegli ozadje",
+            "body": "Zamegljenost ali slika, izračunana na tvojem računalniku. Kamera se vedno zažene s predogledom."
+          },
+          "resize": {
+            "title": "Slika in klepet po tvoje",
+            "body": "Povleci ročico: več slike ali več klepeta. Čisto majhno postane mini vrstica."
+          }
+        },
+        "after": {
+          "label": "Potem",
+          "title": "Administracija brez uradnega odjemalca",
+          "body": "Epic 4 naredi iz Mumcorda popolno zamenjavo: dovoljenja in skupine, kanali, izločitve in prepovedi ter ukazi kar v klepetu. Vse s standardnimi sporočili Mumbla.",
+          "tiles": {
+            "channels": {
+              "title": "Urejanje in premikanje kanalov",
+              "body": "Ustvarjaj, preimenuj, razvrščaj in premikaj kanale, povleci ljudi k sebi ali premakni cel kanal naenkrat."
+            },
+            "acl": {
+              "title": "Dovoljenja, ki jih lahko prebereš",
+              "body": "Urejevalnik za ACL-je in skupine, ki pokaže, kaj se podeduje in katero pravilo zmaga."
+            },
+            "commands": {
+              "title": "/kick, /ban, /move",
+              "body": "Skrbniški ukazi v klepetu s predlogi imen in kanalov. Vidiš samo tisto, kar smeš."
+            },
+            "ban": {
+              "title": "Prepoved z razlogom",
+              "body": "Za nekaj časa ali za vedno, po potrdilu, naslovu IP ali obojem."
+            }
+          }
+        },
+        "epics": "Vsi epici"
+      }
     },
     "download": {
       "label": "06 — Prenesi",
@@ -2346,6 +2397,18 @@
             "items": [
               "Podpisane različice za Windows, namestitveni program in aplikacija"
             ]
+          },
+          {
+            "title": "Ukazi v klepetu",
+            "items": [
+              "Skrbniški ukazi kar v klepetu: /kick, /ban, /mute, /deaf in /move, poleg ukazov vtičnikov",
+              "Predlogi imen in kanalov med tipkanjem, seznam pa kaže samo tisto, kar smeš na tem strežniku",
+              "Izločitev in prepoved še vedno najprej vprašata, napake, kot je neznano ime, pa se pokažejo tik nad poljem za sporočilo"
+            ],
+            "mockups": [
+              "Seznam ukazov v klepetu",
+              "Predlogi imen"
+            ]
           }
         ]
       },
@@ -2360,7 +2423,7 @@
               "Povleci datoteke v klepet ali jih priloži s sponko, do 2 GB. Mape se najprej zapakirajo v zip",
               "Vedno prek releja in s šifriranjem od konca do konca: nihče ne vidi tvojega naslova IP, datoteka pa nikoli ne gre prek strežnika Mumble",
               "Nič se ne prenese samo od sebe: vsak prenos potrebuje tvoj klik, Mumcord pa nato preveri kontrolno vsoto SHA-256, ki jo lahko tudi kopiraš",
-              "Opozorilo pri tveganih vrstah datotek, kot so programi in skripte, ter neobvezno preverjanje v bazi zlonamerne programske opreme",
+              "Opozorilo pri tveganih vrstah datotek, kot so programi in skripti, preden jih odpreš",
               "Datoteka ostane na voljo, dokler je oseba na spletu, do 24 ur",
               "Ljudje z uradnim odjemalcem Mumble vidijo kratko vrstico, da je bila datoteka deljena"
             ],
@@ -2476,10 +2539,12 @@
       {
         "id": "epic-future",
         "title": "Ideje za pozneje",
-        "summary": "Ideje brez načrtovanega epica, kot je iskanje GIF-ov.",
+        "summary": "Ideje brez načrtovanega epica: iskanje GIF-ov, filtri kamere kot vtičniki in preverjanje zlonamerne programske opreme v deljenih datotekah.",
         "items": [
           "Iskanje GIF-ov, ne da bi v aplikaciji pošiljali ključ API, ki bi ga lahko kdorkoli izvlekel",
-          "Možnosti sta majhna posredniška storitev ali tvoj lasten ključ; odločitev pride pozneje"
+          "Možnosti sta majhna posredniška storitev ali tvoj lasten ključ; odločitev pride pozneje",
+          "Filtri kamere kot vtičniki: klobuki, brade, očala in nalepke. Sledenje obrazu teče na tvojem računalniku, vtičnik nikoli ne vidi slike tvoje kamere, drugi pa vtičnika ne potrebujejo",
+          "Uradni vtičnik »Preverjanje zlonamerne programske opreme«: kontrolno vsoto deljenih datotek poišče pri storitvi za zlonamerno programsko opremo in blokira nevarne prenose. Mumcord sam nikoli ne vzpostavi stika s takšno storitvijo"
         ]
       }
     ],
