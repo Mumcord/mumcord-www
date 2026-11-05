@@ -496,6 +496,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         groups: [
           {
             title: "Dateien teilen",
+            done: [0, 1, 2, 3, 4, 5],
             items: [
               "Dateien in den Chat ziehen oder über die Büroklammer anhängen, bis 2 GB. Ordner werden vorher gezippt",
               "Immer über das Relay und Ende-zu-Ende-verschlüsselt: Niemand sieht deine IP-Adresse, und die Datei berührt den Mumble-Server nie",
@@ -512,6 +513,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Bildschirmübertragung, aber besser",
+            done: [0, 1, 2, 3, 4],
             items: [
               "Vor dem Start Auflösung bis 4K und Bildrate bis 60 fps wählen und während der Übertragung ändern, ohne neu zu starten",
               "Optimieren für scharfen Text oder flüssige Bewegung, dazu ein Upload-Limit",
@@ -542,6 +544,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Bild und Chat, wie du willst",
+            done: [0, 1, 2],
             items: [
               "Ein Griff zwischen Bild und Chat: Bildschirmübertragung, Watch-Party und Kameraraum größer oder kleiner ziehen",
               "Ganz nach oben gezogen wird das Bild zur Mini-Leiste, Doppelklick stellt die alte Größe wieder her",
@@ -554,6 +557,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Plugins auf der Bühne",
+            done: [0, 3],
             items: [
               "Plugins bekommen den Medienbereich: Spiele und Whiteboards laufen dort, wo sonst Bildschirm, Watch-Party und Kameras sind",
               "Whiteboard, das offizielle Plugin zum gemeinsamen Denken: eine endlose Fläche mit Stiften, Zetteln und Laserpointer, gespeichert auf deinem Gerät und als PNG, SVG oder PDF exportierbar",
@@ -568,6 +572,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Plugins von anderen, mit klaren Regeln",
+            done: [0, 1, 2, 3],
             items: [
               "Auch Plugins außerhalb des offiziellen Verzeichnisses dürfen eigene Web-Inhalte zeigen, aber nur in einem abgeschotteten Rahmen",
               "Jede Website, mit der ein Plugin spricht, steht bei der Installation da, und neue Websites brauchen deine Zustimmung",
@@ -616,6 +621,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Personen und Banns",
+            done: [0, 1],
             items: [
               "Personen vom Server werfen, mit Grund, und auf Wunsch für eine Zeit bannen, nach Zertifikat, IP-Adresse oder beidem",
               "Die Bannliste ansehen, durchsuchen und bearbeiten, auch Banns für Leute, die gerade nicht online sind",
@@ -1161,6 +1167,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         groups: [
           {
             title: "File sharing",
+            done: [0, 1, 2, 3, 4, 5],
             items: [
               "Drag files into the chat or attach them with the paperclip, up to 2 GB. Folders are zipped first",
               "Always through the relay and end-to-end encrypted: nobody sees your IP address, and the file never touches the Mumble server",
@@ -1177,6 +1184,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Better screen sharing",
+            done: [0, 1, 2, 3, 4],
             items: [
               "Pick resolution up to 4K and frame rate up to 60 fps before you start, and change it while live without restarting",
               "Optimize for sharp text or smooth motion, plus an upload limit",
@@ -1207,6 +1215,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Picture and chat, your way",
+            done: [0, 1, 2],
             items: [
               "A handle between picture and chat: drag the screen share, watch party and camera room bigger or smaller",
               "Drag it all the way up and the picture becomes the mini bar, a double-click brings back the old size",
@@ -1219,6 +1228,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Plugins on stage",
+            done: [0, 3],
             items: [
               "Plugins get the media area: games and whiteboards run where the screen share, watch party and cameras usually are",
               "Whiteboard, the official plugin for thinking together: an endless canvas with pens, sticky notes and a laser pointer, saved on your device and exportable as PNG, SVG or PDF",
@@ -1233,6 +1243,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Plugins from others, with clear rules",
+            done: [0, 1, 2, 3],
             items: [
               "Plugins outside the official repository may show their own web content too, but only in a sealed frame",
               "Every website a plugin talks to is listed when you install it, and new websites need your approval",
@@ -1281,6 +1292,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "People and bans",
+            done: [0, 1],
             items: [
               "Remove people from the server with a reason, and ban them for a chosen time if you like, by certificate, IP address or both",
               "See, search and edit the ban list, including bans for people who are not online",

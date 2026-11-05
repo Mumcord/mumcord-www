@@ -1369,6 +1369,94 @@
   },
   "changelog": [
     {
+      "version": "0.7.0",
+      "teaser": "Failų bendrinimas, tavo kamera, ekrano bendrinimas su garsu ir AV1 iki 25 žiūrovų, papildiniai medijos srityje, išmetimas, užblokavimas ir blokavimų sąrašas.",
+      "summary": "Didelis atnaujinimas: kanale bendrini failus iki 2 GB, visada per relay, rodai kamerą su neryškiu fonu, tavo ekrano bendrinimas gauna garsą, AV1 ir iki 25 žiūrovų, vaizdą ir pokalbį dalini viena rankenėle, papildiniai gauna medijos sritį ir aiškias saugos taisykles, o administratoriai gali išmesti, užblokuoti ir tvarkyti blokavimų sąrašą.",
+      "groups": [
+        {
+          "title": "Failų bendrinimas",
+          "items": [
+            "Nutempk failus į pokalbį arba prisegk juos sąvaržėle, iki 2 GB. Aplankai pirmiausia supakuojami į zip.",
+            "Failai visada eina per serverio relay: niekas nemato tavo IP adreso, o failas niekada nepasiekia Mumble serverio.",
+            "Kiekvienas atsisiuntimas pirmiausia paklausia ir parodo aplanką, kuriame išsaugoma. Po to Mumcord patikrina SHA-256 kontrolinę sumą, kurią taip pat gali nukopijuoti.",
+            "Programos ir scenarijai gauna papildomą įspėjimą prieš atsisiunčiant ir prieš atidarant.",
+            "Failas lieka pasiekiamas, kol siuntėjas prisijungęs, daugiausia 24 valandas.",
+            "Nauja skiltyje Nustatymai → Privatumas ir ryšiai: failų gavimas įjungtas arba išjungtas, didžiausias dydis nuo 100 MB iki 2 GB ir gautų failų aplankas."
+          ]
+        },
+        {
+          "title": "Ekrano bendrinimas",
+          "items": [
+            "Garsas bendrinant: visas ekranas bendrina visą garsą, išskyrus Mumcord, langas bendrina tik tos programos garsą. Veikia Windows 10 (2004 ar naujesnė), macOS 13 ir Linux su PipeWire.",
+            "Prieš pradėdamas pasirink raišką iki 4K, kadrų dažnį iki 60 fps, ryškų tekstą arba sklandų judesį, kodeką ir išsiuntimo limitą. Meniu Kokybė juos keičia bendrinimo metu jo nepaleidžiant iš naujo.",
+            "Per relay išsiunti vieną kartą, o žiūri iki 25 žmonių, su visapusiu šifravimu.",
+            "AV1 vaizdo plokštėje arba procesoriuje ryškiam tekstui su mažesniu pralaidumu. VP9 lieka kaip atsarginis variantas, taip pat žiūrovams su senesniu Mumcord.",
+            "Žiūrovai mato kodeką, kelią ir kokybę ir gali sumažinti savo kadrų dažnį. Žiūrovų sąrašas parodo, kas ką gauna.",
+            "Naujas skirtukas „Ekrano bendrinimas“ nustatymuose su tavo numatytosiomis reikšmėmis ir kodavimo įrankiu, kurį naudoja tavo kompiuteris.",
+            "Vaizdą ir pokalbį pasidalink pats: tempk rankenėlę tarp ekrano bendrinimo ar watch party ir pokalbio. Nutempk ją iki viršaus ir vaizdas tampa mini juosta, o Mumcord prisimena aukštį."
+          ]
+        },
+        {
+          "title": "Kamera",
+          "items": [
+            "Tavo kamera visiems tavo balso kanale, tik per relay ir visapusiškai šifruota, iki 25 žiūrovų.",
+            "Kamera prasideda peržiūra, kuri nieko nesiunčia. Ji išeina tik tada, kai ją įjungi.",
+            "Padaryk foną neryškų arba pastatyk paveikslėlį už savęs, apskaičiuota tavo kompiuteryje.",
+            "Jei kameros naudoti negalima, Mumcord pasako kodėl, pavyzdžiui, kai serverio relay kamerų neleidžia."
+          ]
+        },
+        {
+          "title": "Papildiniai",
+          "items": [
+            "Papildiniai gauna medijos sritį, šoninę juostą šalia pokalbio, dialogus ir elementus meniu Programos. Kai veikia daugiau nei vienas, skirtukai perjungia tarp jų.",
+            "Žaidimo duomenys eina visapusiškai šifruoti per relay, vienam žmogui arba visam kanalui.",
+            "Saugos įvertis nuo 0 iki 100 neoficialiems papildiniams, su priežastimis diegiant ir atnaujinant.",
+            "Kiekviena svetainė, su kuria kalbasi papildinys, išvardijama diegiant, o naujoms svetainėms reikia tavo sutikimo.",
+            "Papildinių puslapiai užrakinti: jokios kameros, jokio mikrofono, jokios iškarpinės ir tik svetainės, kurias leidai. Pakibęs puslapis nebesustabdo Mumcord.",
+            "Papildinys, kuriam reikia naujesnio Mumcord, tai pasako užuot įsidiegęs, o atnaujinimai laukia, kol tavo Mumcord galės juos paleisti."
+          ]
+        },
+        {
+          "title": "Administravimas",
+          "items": [
+            "Išmesti… ir Užblokuoti… žmogaus meniu Administravimas, nurodant priežastį. Blokavimai trunka 1 valandą, 1 dieną, 7 dienas, 30 dienų, visam laikui arba iki datos.",
+            "Blokavimų sąrašas serverio meniu: paieška, filtravimas, priežasties ir pabaigos redagavimas, blokavimų panaikinimas ir žmonių, kurių šiuo metu nėra prisijungusių, blokavimas."
+          ]
+        },
+        {
+          "title": "Botai",
+          "items": [
+            "Botai laikomi atskirai: skiltis „Botai šiame serveryje“ po kanalų sąrašu parodo kiekvieną botą ir ką jis daro. Botai be balso nebesirodo tarp žmonių.",
+            "Mumbot savo profilyje ir ryšio informacijoje rodomas kaip „Mumbot <version>“, o ne „Mumcord <version>“."
+          ]
+        },
+        {
+          "title": "Patobulinta",
+          "items": [
+            "Pokalbių istorija tarp žmonių su 0.7.0 pasiekiama greičiau: kiekvienas paveikslėlis keliauja vieną kartą, o jau turimi paveikslėliai nebeatsisiunčiami iš naujo.",
+            "Mumcord vadovaujasi tuo, ką leidžia serverio relay, o serverio informacija parodo, kas tai.",
+            "Jungikliai lieka matomi didelio kontrasto režimu.",
+            "Įterpti YouTube ir Twitch vaizdo įrašai: viso ekrano mygtukas veikia, o atskiras mygtukas nukopijuoja vaizdo įrašo nuorodą."
+          ]
+        },
+        {
+          "title": "Ištaisyta",
+          "items": [
+            "Senesniuose procesoriuose be AVX2 Mumcord nebesudužta paleidžiant. Ekrano bendrinimas ten naudoja VP9.",
+            "Užrakintų kanalų pokalbių istorija siunčiama tik žmonėms, kurie tikrai yra kanale, o ne tiems, kurie jį tik seka ar klausosi.",
+            "Jei kas nors naudoja „Visada naudoti relay“, Mumcord jam nebesiunčia tavo tinklo adreso.",
+            "Profilis iš naujesnio Mumcord nebesukelia strigties. Mumcord tai paaiškina ir siūlo atsisiųsti naujausią versiją.",
+            "Išsiųstos žinutės iškart atsiduria tinkamoje istorijos vietoje ir joje lieka.",
+            "Vidurinis paspaudimas ant nuorodos arba paspaudimas laikant Ctrl, Cmd ar Shift atidaro ją tavo naršyklėje, o ne Mumcord viduje.",
+            "Jei nesi užsiregistravęs serveryje, kurio relay aptarnauja tik registruotus naudotojus, Mumcord dabar tai pasako užuot rašęs „nepavyko pasiekti relay“.",
+            "Blokavimų sąrašo lange yra uždarymo mygtukas, o Išmesti ir Užblokuoti reaguoja į pelės paspaudimus.",
+            "Watch party paleidimas iš meniu Programos nebeperkrauna programos.",
+            "Ekrano bendrinimas dabar kalba visomis kalbomis."
+          ]
+        }
+      ]
+    },
+    {
       "version": "0.6.2",
       "teaser": "Greitesni langai Linux AppImage, „Kas naujo“ rodo tinkamą versiją ir smulkūs pataisymai.",
       "summary": "Nedidelis atnaujinimas: Linux AppImage langai atsidaro daug greičiau, „Kas naujo“ rodo tavo versijos pastabas ir nebelieka kabėti įkeliant, o įskiepių juosta ir skambučio baigimo mygtuko meniu vėl yra tinkamoje vietoje.",

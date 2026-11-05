@@ -1369,6 +1369,94 @@
   },
   "changelog": [
     {
+      "version": "0.7.0",
+      "teaser": "Deljenje datotek, tvoja kamera, deljenje zaslona z zvokom in AV1 za do 25 gledalcev, vtičniki v medijskem območju, brcanje, izgon in seznam izgonov.",
+      "summary": "Velika posodobitev: v kanalu deliš datoteke do 2 GB, vedno prek releja, kažeš kamero z zamegljenim ozadjem, tvoje deljenje zaslona dobi zvok, AV1 in do 25 gledalcev, sliko in klepet razdeliš z enim ročajem, vtičniki dobijo medijsko območje in jasna varnostna pravila, skrbniki pa lahko brcajo, izganjajo in vzdržujejo seznam izgonov.",
+      "groups": [
+        {
+          "title": "Deljenje datotek",
+          "items": [
+            "Povleci datoteke v klepet ali jih pripni s sponko, do 2 GB. Mape se najprej zapakirajo v zip.",
+            "Datoteke vedno gredo prek releja strežnika: nihče ne vidi tvojega naslova IP, datoteka pa se strežnika Mumble nikoli ne dotakne.",
+            "Vsak prenos najprej vpraša in pokaže mapo, v katero se shrani. Nato Mumcord preveri kontrolno vsoto SHA-256, ki jo lahko tudi kopiraš.",
+            "Programi in skripte dobijo dodatno opozorilo pred prenosom in pred odpiranjem.",
+            "Datoteka ostane na voljo, dokler je pošiljatelj na spletu, največ 24 ur.",
+            "Novo v Nastavitvah → Zasebnost in povezave: prejemanje datotek vklopljeno ali izklopljeno, največja velikost od 100 MB do 2 GB in mapa za prejete datoteke."
+          ]
+        },
+        {
+          "title": "Deljenje zaslona",
+          "items": [
+            "Zvok pri deljenju: cel zaslon deli ves zvok razen Mumcordovega, okno deli samo zvok te aplikacije. Deluje v sistemih Windows 10 (2004 ali novejši), macOS 13 in Linux s PipeWire.",
+            "Pred začetkom izberi ločljivost do 4K, hitrost sličic do 60 fps, ostro besedilo ali gladko gibanje, kodek in omejitev nalaganja. Meni Kakovost jih spreminja med deljenjem, ne da bi ga znova zagnal.",
+            "Prek releja naložiš enkrat, gleda pa do 25 ljudi, s šifriranjem od konca do konca.",
+            "AV1 na grafični kartici ali procesorju za ostro besedilo z manj pasovne širine. VP9 ostane kot rezerva, tudi za gledalce s starejšim Mumcordom.",
+            "Gledalci vidijo kodek, pot in kakovost ter lahko znižajo svojo hitrost sličic. Seznam gledalcev kaže, kdo kaj dobi.",
+            "Nov zavihek »Deljenje zaslona« v Nastavitvah z tvojimi privzetimi vrednostmi in kodirnikom, ki ga uporablja tvoj računalnik.",
+            "Sliko in klepet razdeli sam: povleci ročaj med deljenjem zaslona ali watch partyjem in klepetom. Povleci ga čisto na vrh in slika postane mini vrstica, Mumcord pa si zapomni višino."
+          ]
+        },
+        {
+          "title": "Kamera",
+          "items": [
+            "Tvoja kamera za vse v tvojem glasovnem kanalu, samo prek releja in s šifriranjem od konca do konca, za do 25 gledalcev.",
+            "Kamera se začne s predogledom, ki ničesar ne pošilja. Ven gre šele, ko jo vklopiš.",
+            "Zamegli ozadje ali postavi sliko za sebe, izračunano na tvojem računalniku.",
+            "Če kamere ni mogoče uporabiti, Mumcord pove, zakaj, na primer ko relej strežnika kamer ne dovoljuje."
+          ]
+        },
+        {
+          "title": "Vtičniki",
+          "items": [
+            "Vtičniki dobijo medijsko območje, stransko ploščo ob klepetu, pogovorna okna in elemente v meniju Aplikacije. Ko teče več vtičnikov, zavihki preklapljajo med njimi.",
+            "Podatki iger gredo prek releja s šifriranjem od konca do konca, eni osebi ali celotnemu kanalu.",
+            "Varnostna ocena od 0 do 100 za neuradne vtičnike, z razlogi ob namestitvi in posodobitvah.",
+            "Vsako spletno mesto, s katerim vtičnik govori, je ob namestitvi navedeno, nova mesta pa potrebujejo tvoje soglasje.",
+            "Strani vtičnikov so zaklenjene: brez kamere, brez mikrofona, brez odložišča in samo spletna mesta, ki si jih dovolil. Stran, ki se zatakne, Mumcorda ne zamrzne več.",
+            "Vtičnik, ki potrebuje novejši Mumcord, to pove namesto namestitve, posodobitve pa počakajo, dokler jih tvoj Mumcord ne zmore zagnati."
+          ]
+        },
+        {
+          "title": "Skrbništvo",
+          "items": [
+            "Brcni… in Izgoni… v meniju Skrbništvo osebe, z razlogom. Izgoni trajajo 1 uro, 1 dan, 7 dni, 30 dni, za vedno ali do datuma.",
+            "Seznam izgonov v meniju strežnika: iskanje, filtriranje, urejanje razloga in konca, preklic izgonov in izgon oseb, ki trenutno niso na spletu."
+          ]
+        },
+        {
+          "title": "Boti",
+          "items": [
+            "Boti stojijo ločeno: razdelek »Boti na tem strežniku« pod seznamom kanalov prikaže vsakega bota in kaj počne. Boti brez glasu se ne pojavljajo več med ljudmi.",
+            "Mumbot se v svojem profilu in podrobnostih povezave prikaže kot »Mumbot <version>« namesto »Mumcord <version>«."
+          ]
+        },
+        {
+          "title": "Izboljšano",
+          "items": [
+            "Zgodovina klepeta med osebami z 0.7.0 se dohiti hitreje: vsaka slika potuje enkrat, slike, ki jih že imaš, pa se ne prenašajo znova.",
+            "Mumcord sledi temu, kar relej strežnika dovoljuje, informacije o strežniku pa pokažejo, kaj to je.",
+            "Stikala ostanejo vidna v načinu visokega kontrasta.",
+            "Vdelani videoposnetki YouTube in Twitch: gumb za celozaslonski način deluje, poseben gumb pa kopira povezavo do videa."
+          ]
+        },
+        {
+          "title": "Popravljeno",
+          "items": [
+            "Na starejših procesorjih brez AVX2 se Mumcord ob zagonu ne sesuje več. Deljenje zaslona tam uporablja VP9.",
+            "Zgodovina klepeta zaklenjenih kanalov gre samo osebam, ki so res v kanalu, ne tistim, ki ga samo spremljajo ali poslušajo.",
+            "Če nekdo uporablja »Vedno uporabi relej«, mu Mumcord ne pošilja več tvojega omrežnega naslova.",
+            "Profil iz novejšega Mumcorda ne povzroči več sesutja. Mumcord to razloži in ponudi prenos najnovejše različice.",
+            "Poslana sporočila takoj pristanejo na pravem mestu v zgodovini in tam ostanejo.",
+            "Klik s sredinskim gumbom na povezavo ali klik z držanjem Ctrl, Cmd ali Shift jo odpre v tvojem brskalniku, ne znotraj Mumcorda.",
+            "Če nisi registriran na strežniku, katerega relej streže samo registriranim uporabnikom, Mumcord to zdaj pove namesto »releja ni bilo mogoče doseči«.",
+            "Okno seznama izgonov ima gumb za zapiranje, Brcni in Izgoni pa se odzivata na klike z miško.",
+            "Zagon watch partyja iz menija Aplikacije aplikacije ne nalaga več znova.",
+            "Deljenje zaslona zdaj govori vse jezike."
+          ]
+        }
+      ]
+    },
+    {
       "version": "0.6.2",
       "teaser": "Hitrejša okna v Linux AppImage, „Kaj je novega“ prikaže pravo različico in majhni popravki.",
       "summary": "Majhna posodobitev: v Linux AppImage se okna odprejo precej hitreje, „Kaj je novega“ prikaže opombe tvoje različice in se ne zatika več pri nalaganju, vrstica z vtičniki in meni gumba za prekinitev klica pa spet stojita pravilno.",

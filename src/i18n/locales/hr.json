@@ -1369,6 +1369,94 @@
   },
   "changelog": [
     {
+      "version": "0.7.0",
+      "teaser": "Dijeljenje datoteka, tvoja kamera, dijeljenje zaslona sa zvukom i AV1 za do 25 gledatelja, dodaci u medijskom području, izbacivanje, zabrana i popis zabrana.",
+      "summary": "Veliko ažuriranje: dijeliš datoteke do 2 GB u kanalu, uvijek preko releja, prikazuješ kameru sa zamućenom pozadinom, tvoje dijeljenje zaslona dobiva zvuk, AV1 i do 25 gledatelja, sliku i chat dijeliš jednom ručkom, dodaci dobivaju medijsko područje i jasna sigurnosna pravila, a administratori mogu izbacivati, zabranjivati i održavati popis zabrana u redu.",
+      "groups": [
+        {
+          "title": "Dijeljenje datoteka",
+          "items": [
+            "Povuci datoteke u chat ili ih priloži spajalicom, do 2 GB. Mape se prvo zipaju.",
+            "Datoteke uvijek idu preko releja poslužitelja: nitko ne vidi tvoju IP adresu, a datoteka nikad ne dodiruje Mumble poslužitelj.",
+            "Svako preuzimanje prvo pita i prikazuje mapu u koju se sprema. Poslije toga Mumcord provjerava SHA-256 kontrolni zbroj, koji možeš i kopirati.",
+            "Programi i skripte dobivaju dodatno upozorenje prije preuzimanja i prije otvaranja.",
+            "Datoteka ostaje dostupna dok je pošiljatelj online, najviše 24 sata.",
+            "Novo u Postavkama → Privatnost i veze: primanje datoteka uključeno ili isključeno, najveća veličina od 100 MB do 2 GB i mapa za primljene datoteke."
+          ]
+        },
+        {
+          "title": "Dijeljenje zaslona",
+          "items": [
+            "Zvuk pri dijeljenju: cijeli zaslon dijeli sav zvuk osim Mumcordova, prozor dijeli samo zvuk te aplikacije. Radi na Windowsima 10 (2004 ili noviji), macOS-u 13 i Linuxu s PipeWireom.",
+            "Prije početka odaberi razlučivost do 4K, brzinu sličica do 60 fps, oštar tekst ili glatko kretanje, kodek i ograničenje slanja. Izbornik Kvaliteta mijenja ih tijekom dijeljenja bez ponovnog pokretanja.",
+            "Preko releja šalješ jednom, a do 25 ljudi gleda, uz end-to-end šifriranje.",
+            "AV1 na grafičkoj kartici ili procesoru za oštar tekst uz manje podataka. VP9 ostaje kao zamjena, i za gledatelje sa starijim Mumcordom.",
+            "Gledatelji vide kodek, put i kvalitetu i mogu smanjiti svoju brzinu sličica. Popis gledatelja pokazuje tko što dobiva.",
+            "Nova kartica „Dijeljenje zaslona“ u Postavkama s tvojim zadanim vrijednostima i enkoderom koji tvoje računalo koristi.",
+            "Podijeli sliku i chat sam: povuci ručku između dijeljenja zaslona ili watch partyja i chata. Povučeš li je skroz gore, slika postaje mini traka, a Mumcord pamti visinu."
+          ]
+        },
+        {
+          "title": "Kamera",
+          "items": [
+            "Tvoja kamera za sve u tvom glasovnom kanalu, samo preko releja i end-to-end šifrirana, za do 25 gledatelja.",
+            "Kamera počinje s pregledom koji ništa ne šalje. Izlazi tek kad je uključiš.",
+            "Zamuti pozadinu ili stavi sliku iza sebe, izračunato na tvom računalu.",
+            "Ako se kamera ne može koristiti, Mumcord kaže zašto, na primjer kad relej poslužitelja ne dopušta kamere."
+          ]
+        },
+        {
+          "title": "Dodaci",
+          "items": [
+            "Dodaci dobivaju medijsko područje, bočnu ploču uz chat, dijaloge i stavke u izborniku Aplikacije. Kad radi više njih, kartice se prebacuju među njima.",
+            "Podaci igre idu end-to-end šifrirani preko releja, jednoj osobi ili cijelom kanalu.",
+            "Sigurnosna ocjena od 0 do 100 za neslužbene dodatke, s razlozima pri instalaciji i ažuriranjima.",
+            "Svaka web-stranica s kojom dodatak komunicira navodi se pri instalaciji, a nove stranice trebaju tvoj pristanak.",
+            "Stranice dodataka su zaključane: bez kamere, bez mikrofona, bez međuspremnika i samo web-stranice koje si dopustio. Stranica koja se zamrzne više ne zamrzava Mumcord.",
+            "Dodatak kojem treba noviji Mumcord to kaže umjesto da se instalira, a ažuriranja čekaju dok ih tvoj Mumcord ne može pokrenuti."
+          ]
+        },
+        {
+          "title": "Administracija",
+          "items": [
+            "Izbaci… i Zabrani… u izborniku Administracija neke osobe, s razlogom. Zabrane traju 1 sat, 1 dan, 7 dana, 30 dana, zauvijek ili do datuma.",
+            "Popis zabrana u izborniku poslužitelja: pretraživanje, filtriranje, uređivanje razloga i kraja, ukidanje zabrana i zabrana osoba koje trenutačno nisu online."
+          ]
+        },
+        {
+          "title": "Botovi",
+          "items": [
+            "Botovi stoje zasebno: odjeljak „Botovi na ovom poslužitelju“ ispod popisa kanala prikazuje svakog bota i što radi. Botovi bez glasa više se ne pojavljuju među ljudima.",
+            "Mumbot se u svom profilu i u pojedinostima veze prikazuje kao „Mumbot <version>“ umjesto „Mumcord <version>“."
+          ]
+        },
+        {
+          "title": "Poboljšano",
+          "items": [
+            "Povijest chata među osobama na 0.7.0 sustiže se brže: svaka slika putuje jednom, a slike koje već imaš ne preuzimaju se ponovno.",
+            "Mumcord slijedi ono što relej poslužitelja dopušta, a informacije o poslužitelju pokazuju što je to.",
+            "Prekidači ostaju vidljivi u načinu visokog kontrasta.",
+            "Ugrađeni YouTube i Twitch videozapisi: gumb za cijeli zaslon radi, a poseban gumb kopira poveznicu na videozapis."
+          ]
+        },
+        {
+          "title": "Popravljeno",
+          "items": [
+            "Na starijim procesorima bez AVX2 Mumcord se više ne ruši pri pokretanju. Dijeljenje zaslona tamo koristi VP9.",
+            "Povijest chata zaključanih kanala ide samo ljudima koji su doista u kanalu, ne onima koji ga samo prate ili slušaju.",
+            "Ako netko koristi „Uvijek koristi relej“, Mumcord mu više ne šalje tvoju mrežnu adresu.",
+            "Profil iz novijeg Mumcorda više ne uzrokuje rušenje. Mumcord to objašnjava i nudi preuzimanje najnovije verzije.",
+            "Poslane poruke odmah sjedaju na pravo mjesto u povijesti i ostaju tamo.",
+            "Srednji klik na poveznicu ili klik uz pritisnut Ctrl, Cmd ili Shift otvara je u tvom pregledniku umjesto unutar Mumcorda.",
+            "Ako nisi registriran na poslužitelju čiji relej služi samo registriranim korisnicima, Mumcord to sada kaže umjesto „relej nije dostupan“.",
+            "Prozor popisa zabrana ima gumb za zatvaranje, a Izbaci i Zabrani reagiraju na klikove mišem.",
+            "Pokretanje watch partyja iz izbornika Aplikacije više ne učitava ponovno aplikaciju.",
+            "Dijeljenje zaslona sada govori sve jezike."
+          ]
+        }
+      ]
+    },
+    {
       "version": "0.6.2",
       "teaser": "Brži prozori u Linux AppImageu, „Što je novo“ prikazuje pravu verziju i sitni popravci.",
       "summary": "Malo ažuriranje: u Linux AppImageu prozori se otvaraju puno brže, „Što je novo“ prikazuje bilješke tvoje verzije i više se ne zaglavljuje pri učitavanju, a traka s dodacima i izbornik gumba za prekid poziva opet stoje kako treba.",

@@ -1369,6 +1369,94 @@
   },
   "changelog": [
     {
+      "version": "0.7.0",
+      "teaser": "Compartir archivos, tu cámara, compartir pantalla con sonido y AV1 para hasta 25 espectadores, plugins en el área multimedia, expulsar, vetar y la lista de vetos.",
+      "summary": "Una gran actualización: compartes archivos de hasta 2 GB en el canal, siempre a través del relay, muestras tu cámara con el fondo desenfocado, tu pantalla compartida gana sonido, AV1 y hasta 25 espectadores, divides imagen y chat con un asa, los plugins obtienen el área multimedia y reglas de seguridad claras, y los administradores pueden expulsar, vetar y mantener la lista de vetos en orden.",
+      "groups": [
+        {
+          "title": "Compartir archivos",
+          "items": [
+            "Arrastra archivos al chat o adjúntalos con el clip, hasta 2 GB. Las carpetas se comprimen primero en un zip.",
+            "Los archivos siempre pasan por el relay del servidor: nadie ve tu dirección IP y el archivo nunca toca el servidor de Mumble.",
+            "Cada descarga pregunta primero y muestra la carpeta donde se guarda. Después Mumcord comprueba la suma de verificación SHA-256, que también puedes copiar.",
+            "Los programas y scripts reciben un aviso adicional antes de descargarlos y antes de abrirlos.",
+            "Un archivo sigue disponible mientras su remitente esté conectado, como máximo 24 horas.",
+            "Novedad en Ajustes → Privacidad y conexiones: recibir archivos activado o desactivado, el tamaño máximo de 100 MB a 2 GB y la carpeta de los archivos recibidos."
+          ]
+        },
+        {
+          "title": "Compartir pantalla",
+          "items": [
+            "Sonido al compartir: una pantalla entera comparte todo el sonido excepto el de Mumcord, una ventana comparte solo el sonido de esa app. Funciona en Windows 10 (2004 o posterior), macOS 13 y Linux con PipeWire.",
+            "Antes de empezar, elige resolución hasta 4K, tasa de fotogramas hasta 60 fps, texto nítido o movimiento fluido, códec y límite de subida. El menú Calidad los cambia durante la sesión sin reiniciarla.",
+            "Con el relay subes una vez y hasta 25 personas lo ven, con cifrado de extremo a extremo.",
+            "AV1 en la tarjeta gráfica o en el procesador para texto nítido con menos ancho de banda. VP9 sigue como alternativa, también para espectadores con un Mumcord más antiguo.",
+            "Los espectadores ven el códec, la ruta y la calidad y pueden bajar su tasa de fotogramas. La lista de espectadores muestra quién recibe qué.",
+            "Nueva pestaña “Compartir pantalla” en Ajustes con tus valores predeterminados y el codificador que usa tu ordenador.",
+            "Divide tú mismo imagen y chat: arrastra el asa entre una pantalla compartida o watch party y el chat. Si la arrastras hasta arriba, la imagen se convierte en una mini barra y Mumcord recuerda la altura."
+          ]
+        },
+        {
+          "title": "Cámara",
+          "items": [
+            "Tu cámara para todos en tu canal de voz, solo a través del relay y cifrada de extremo a extremo, para hasta 25 espectadores.",
+            "La cámara empieza con una vista previa que no envía nada. Solo sale cuando la activas.",
+            "Desenfoca tu fondo o pon una imagen detrás de ti, calculado en tu ordenador.",
+            "Si la cámara no se puede usar, Mumcord dice por qué, por ejemplo cuando el relay del servidor no permite cámaras."
+          ]
+        },
+        {
+          "title": "Plugins",
+          "items": [
+            "Los plugins obtienen el área multimedia, un panel lateral junto al chat, diálogos y elementos en el menú Apps. Cuando se ejecuta más de uno, las pestañas permiten cambiar entre ellos.",
+            "Los datos de juego van cifrados de extremo a extremo a través del relay, a una persona o a todo el canal.",
+            "Una puntuación de seguridad de 0 a 100 para los plugins no oficiales, con sus motivos al instalar y al actualizar.",
+            "Cada sitio web con el que habla un plugin se enumera al instalar, y los sitios nuevos necesitan tu consentimiento.",
+            "Las páginas de los plugins están blindadas: sin cámara, sin micrófono, sin portapapeles y solo los sitios web que permitiste. Una página que se cuelga ya no congela Mumcord.",
+            "Un plugin que necesita un Mumcord más reciente lo dice en lugar de instalarse, y las actualizaciones esperan hasta que tu Mumcord pueda ejecutarlas."
+          ]
+        },
+        {
+          "title": "Administración",
+          "items": [
+            "Expulsar… y Vetar… en el menú Administración de una persona, con un motivo. Los vetos duran 1 hora, 1 día, 7 días, 30 días, para siempre o hasta una fecha.",
+            "La lista de vetos en el menú del servidor: buscar, filtrar, editar el motivo y el final, levantar vetos y vetar a personas que no están conectadas ahora."
+          ]
+        },
+        {
+          "title": "Bots",
+          "items": [
+            "Los bots van aparte: una sección “Bots en este servidor” bajo la lista de canales muestra cada bot con lo que hace. Los bots sin voz ya no aparecen entre las personas.",
+            "Un mumbot aparece como “Mumbot <version>” en su perfil y en los detalles de conexión en lugar de “Mumcord <version>”."
+          ]
+        },
+        {
+          "title": "Mejorado",
+          "items": [
+            "El historial del chat entre personas con 0.7.0 se pone al día más rápido: cada imagen viaja una vez y las imágenes que ya tienes no se descargan de nuevo.",
+            "Mumcord sigue lo que permite el relay del servidor, y la información del servidor muestra qué es.",
+            "Los interruptores siguen visibles en el modo de alto contraste.",
+            "Vídeos incrustados de YouTube y Twitch: el botón de pantalla completa funciona, y un botón propio copia el enlace del vídeo."
+          ]
+        },
+        {
+          "title": "Corregido",
+          "items": [
+            "En procesadores antiguos sin AVX2, Mumcord ya no se cierra al arrancar. Compartir pantalla usa VP9 allí.",
+            "El historial del chat de los canales bloqueados solo llega a las personas que están realmente dentro del canal, no a quienes solo lo siguen o lo escuchan.",
+            "Si alguien usa “Usar siempre relay”, Mumcord ya no le envía tu dirección de red.",
+            "Un perfil de un Mumcord más reciente ya no provoca un fallo. Mumcord lo explica y ofrece descargar la última versión.",
+            "Los mensajes enviados quedan enseguida en el lugar correcto del historial y se quedan ahí.",
+            "Un clic con la rueda en un enlace, o un clic con Ctrl, Cmd o Mayús pulsado, lo abre en tu navegador en lugar de dentro de Mumcord.",
+            "Si no estás registrado en un servidor cuyo relay solo atiende a usuarios registrados, Mumcord ahora lo dice en lugar de “no se pudo contactar con el relay”.",
+            "La ventana de la lista de vetos tiene un botón de cerrar, y Expulsar y Vetar responden a los clics del ratón.",
+            "Iniciar una watch party desde el menú Apps ya no recarga la app.",
+            "Compartir pantalla ahora habla todos los idiomas."
+          ]
+        }
+      ]
+    },
+    {
       "version": "0.6.2",
       "teaser": "Ventanas más rápidas en el AppImage de Linux, «Novedades» muestra la versión correcta y pequeñas correcciones.",
       "summary": "Una actualización pequeña: en el AppImage de Linux las ventanas se abren mucho más rápido, «Novedades» muestra las notas de tu versión y ya no se queda cargando, y la barra de plugins y el menú del botón de colgar vuelven a quedar bien.",

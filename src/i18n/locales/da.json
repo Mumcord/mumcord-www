@@ -1369,6 +1369,94 @@
   },
   "changelog": [
     {
+      "version": "0.7.0",
+      "teaser": "Fildeling, dit kamera, skærmdeling med lyd og AV1 til op til 25 seere, plugins i medieområdet, kick, ban og banlisten.",
+      "summary": "En stor opdatering: du deler filer op til 2 GB i kanalen, altid via relayet, viser dit kamera med sløret baggrund, din skærmdeling får lyd, AV1 og op til 25 seere, du deler billede og chat med ét håndtag, plugins får medieområdet og klare sikkerhedsregler, og admins kan kicke, banne og holde styr på banlisten.",
+      "groups": [
+        {
+          "title": "Fildeling",
+          "items": [
+            "Træk filer ind i chatten eller vedhæft dem med papirclipsen, op til 2 GB. Mapper zippes først.",
+            "Filer går altid via serverens relay: ingen ser din IP-adresse, og filen rører aldrig Mumble-serveren.",
+            "Hver download spørger først og viser den mappe, den gemmes i. Bagefter tjekker Mumcord SHA-256-kontrolsummen, som du også kan kopiere.",
+            "Programmer og scripts får en ekstra advarsel før download og før åbning.",
+            "En fil er tilgængelig, så længe afsenderen er online, højst i 24 timer.",
+            "Nyt i Indstillinger → Privatliv og forbindelser: modtagelse af filer til eller fra, maksimal størrelse fra 100 MB til 2 GB og mappen til modtagne filer."
+          ]
+        },
+        {
+          "title": "Skærmdeling",
+          "items": [
+            "Lyd under deling: en hel skærm deler al lyd undtagen Mumcords, et vindue deler kun den apps lyd. Virker på Windows 10 (2004 eller nyere), macOS 13 og Linux med PipeWire.",
+            "Før du starter, vælger du opløsning op til 4K, billedfrekvens op til 60 fps, skarp tekst eller glidende bevægelse, codec og uploadgrænse. Menuen Kvalitet ændrer dem under delingen uden at genstarte den.",
+            "Via relayet uploader du én gang, og op til 25 personer ser med, ende-til-ende-krypteret.",
+            "AV1 på grafikkortet eller processoren giver skarp tekst med mindre båndbredde. VP9 bliver som fallback, også til seere med en ældre Mumcord.",
+            "Seere ser codec, vej og kvalitet og kan sænke deres billedfrekvens. Seerlisten viser, hvem der får hvad.",
+            "Ny fane »Skærmdeling« i Indstillinger med dine standardværdier og den encoder, din computer bruger.",
+            "Del selv billede og chat: træk i håndtaget mellem en skærmdeling eller watch party og chatten. Træk det helt op, og billedet bliver til en minibjælke, og Mumcord husker højden."
+          ]
+        },
+        {
+          "title": "Kamera",
+          "items": [
+            "Dit kamera til alle i din stemmekanal, kun via relayet og ende-til-ende-krypteret, til op til 25 seere.",
+            "Kameraet starter med en forhåndsvisning, der ikke sender noget. Det går først ud, når du slår det til.",
+            "Slør din baggrund eller sæt et billede bag dig, beregnet på din computer.",
+            "Hvis kameraet ikke kan bruges, siger Mumcord hvorfor, for eksempel når serverens relay ikke tillader kameraer."
+          ]
+        },
+        {
+          "title": "Plugins",
+          "items": [
+            "Plugins får medieområdet, et sidepanel ved siden af chatten, dialoger og punkter i Apps-menuen. Når mere end ét kører, skifter faner mellem dem.",
+            "Spildata går ende-til-ende-krypteret via relayet, til én person eller hele kanalen.",
+            "En sikkerhedsscore fra 0 til 100 for uofficielle plugins, med begrundelser ved installation og ved opdateringer.",
+            "Hver hjemmeside, et plugin taler med, vises ved installation, og nye hjemmesider kræver dit samtykke.",
+            "Plugin-sider er låst ned: intet kamera, ingen mikrofon, ingen udklipsholder og kun de hjemmesider, du har tilladt. En side, der hænger, fryser ikke længere Mumcord.",
+            "Et plugin, der kræver en nyere Mumcord, siger det i stedet for at installere, og opdateringer venter, til din Mumcord kan køre dem."
+          ]
+        },
+        {
+          "title": "Admin",
+          "items": [
+            "Kick… og Ban… i en persons Admin-menu, med en begrundelse. Bans varer 1 time, 1 dag, 7 dage, 30 dage, for evigt eller til en dato.",
+            "Banlisten i servermenuen: søg, filtrér, redigér begrundelse og slutning, ophæv bans og ban folk, der ikke er online lige nu."
+          ]
+        },
+        {
+          "title": "Bots",
+          "items": [
+            "Bots står for sig selv: et afsnit »Bots på denne server« under kanallisten viser hver bot med det, den gør. Bots uden stemme dukker ikke længere op blandt personer.",
+            "En mumbot vises som »Mumbot <version>« i sin profil og i forbindelsesdetaljerne i stedet for »Mumcord <version>«."
+          ]
+        },
+        {
+          "title": "Forbedret",
+          "items": [
+            "Chathistorik mellem personer på 0.7.0 indhenter hurtigere: hvert billede sendes én gang, og billeder, du allerede har, hentes ikke igen.",
+            "Mumcord følger det, serverens relay tillader, og serverinfoen viser, hvad det er.",
+            "Til/fra-knapper forbliver synlige i højkontrasttilstand.",
+            "Indlejrede YouTube- og Twitch-videoer: knappen til fuld skærm virker, og en egen knap kopierer linket til videoen."
+          ]
+        },
+        {
+          "title": "Rettet",
+          "items": [
+            "På ældre processorer uden AVX2 går Mumcord ikke længere ned ved start. Skærmdeling bruger VP9 der.",
+            "Chathistorik fra låste kanaler går kun til folk, der faktisk er inde i kanalen, ikke til folk, der bare følger eller lytter med.",
+            "Hvis nogen bruger »Brug altid relay«, sender Mumcord ikke længere din netværksadresse til dem.",
+            "En profil fra en nyere Mumcord giver ikke længere et nedbrud. Mumcord forklarer det og tilbyder at hente den nyeste version.",
+            "Sendte beskeder lander straks det rigtige sted i historikken og bliver der.",
+            "Et midterklik på et link, eller et klik med Ctrl, Cmd eller Shift holdt nede, åbner det i din browser i stedet for inde i Mumcord.",
+            "Hvis du ikke er registreret på en server, hvis relay kun betjener registrerede brugere, siger Mumcord nu det i stedet for »relayet kunne ikke nås«.",
+            "Banlistens vindue har en lukkeknap, og Kick og Ban reagerer på museklik.",
+            "At starte en watch party fra Apps-menuen genindlæser ikke længere appen.",
+            "Skærmdeling taler nu alle sprog."
+          ]
+        }
+      ]
+    },
+    {
       "version": "0.6.2",
       "teaser": "Hurtigere vinduer i Linux-AppImage, „Nyheder“ viser den rigtige version, og små rettelser.",
       "summary": "En lille opdatering: i Linux-AppImage åbner vinduer meget hurtigere, „Nyheder“ viser noterne for din version og hænger ikke længere under indlæsning, og pluginlinjen og menuen på læg-på-knappen sidder igen rigtigt.",

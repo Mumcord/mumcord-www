@@ -1369,6 +1369,94 @@
   },
   "changelog": [
     {
+      "version": "0.7.0",
+      "teaser": "Bestanden delen, je camera, scherm delen met geluid en AV1 voor maximaal 25 kijkers, plug-ins in het mediagebied, kicken, bannen en de banlijst.",
+      "summary": "Een grote update: je deelt bestanden tot 2 GB in het kanaal, altijd via de relay, toont je camera met een vervaagde achtergrond, je schermdeling krijgt geluid, AV1 en maximaal 25 kijkers, je verdeelt beeld en chat met één handvat, plug-ins krijgen het mediagebied en duidelijke veiligheidsregels, en beheerders kunnen kicken, bannen en de banlijst op orde houden.",
+      "groups": [
+        {
+          "title": "Bestanden delen",
+          "items": [
+            "Sleep bestanden in de chat of voeg ze toe met de paperclip, tot 2 GB. Mappen worden eerst gezipt.",
+            "Bestanden gaan altijd via de relay van de server: niemand ziet je IP-adres en het bestand raakt de Mumble-server nooit.",
+            "Elke download vraagt eerst en toont de map waarin hij wordt opgeslagen. Daarna controleert Mumcord de SHA-256-controlesom, die je ook kunt kopiëren.",
+            "Programma’s en scripts krijgen een extra waarschuwing vóór het downloaden en vóór het openen.",
+            "Een bestand blijft beschikbaar zolang de afzender online is, maximaal 24 uur.",
+            "Nieuw in Instellingen → Privacy en verbindingen: bestanden ontvangen aan of uit, de maximale grootte van 100 MB tot 2 GB en de map voor ontvangen bestanden."
+          ]
+        },
+        {
+          "title": "Scherm delen",
+          "items": [
+            "Geluid tijdens het delen: een heel scherm deelt al het geluid behalve dat van Mumcord, een venster deelt alleen het geluid van die app. Werkt op Windows 10 (2004 of nieuwer), macOS 13 en Linux met PipeWire.",
+            "Kies voor je begint een resolutie tot 4K, een framesnelheid tot 60 fps, scherpe tekst of vloeiende beweging, de codec en de uploadlimiet. Het menu Kwaliteit wijzigt ze tijdens het delen zonder opnieuw te starten.",
+            "Via de relay upload je één keer en tot 25 mensen kijken mee, end-to-end versleuteld.",
+            "AV1 op de videokaart of de processor voor scherpe tekst met minder bandbreedte. VP9 blijft als terugvaloptie, ook voor kijkers met een oudere Mumcord.",
+            "Kijkers zien codec, route en kwaliteit en kunnen hun framesnelheid verlagen. De kijkerslijst laat zien wie wat krijgt.",
+            "Nieuw tabblad “Scherm delen” in Instellingen met je standaardwaarden en de encoder die je computer gebruikt.",
+            "Verdeel beeld en chat zelf: sleep het handvat tussen een scherm delen of watchparty en de chat. Sleep het helemaal omhoog en het beeld wordt een minibalk, en Mumcord onthoudt de hoogte."
+          ]
+        },
+        {
+          "title": "Camera",
+          "items": [
+            "Je camera voor iedereen in je spraakkanaal, alleen via de relay en end-to-end versleuteld, voor maximaal 25 kijkers.",
+            "De camera begint met een voorbeeld dat niets verzendt. Hij gaat pas uit als je hem aanzet.",
+            "Vervaag je achtergrond of zet een afbeelding achter je, berekend op je computer.",
+            "Als de camera niet gebruikt kan worden, zegt Mumcord waarom, bijvoorbeeld als de relay van de server geen camera’s toestaat."
+          ]
+        },
+        {
+          "title": "Plug-ins",
+          "items": [
+            "Plug-ins krijgen het mediagebied, een zijpaneel naast de chat, dialoogvensters en items in het menu Apps. Als er meer dan één draait, schakelen tabbladen ertussen.",
+            "Spelgegevens gaan end-to-end versleuteld via de relay, naar één persoon of het hele kanaal.",
+            "Een veiligheidsscore van 0 tot 100 voor onofficiële plug-ins, met de redenen bij installatie en updates.",
+            "Elke website waarmee een plug-in praat staat bij installatie in een lijst, en nieuwe websites hebben jouw toestemming nodig.",
+            "Plug-inpagina’s zijn afgesloten: geen camera, geen microfoon, geen klembord en alleen de websites die je hebt toegestaan. Een pagina die vastloopt, bevriest Mumcord niet meer.",
+            "Een plug-in die een nieuwere Mumcord nodig heeft, zegt dat in plaats van te installeren, en updates wachten tot jouw Mumcord ze kan draaien."
+          ]
+        },
+        {
+          "title": "Beheer",
+          "items": [
+            "Kick… en Ban… in het Beheer-menu van een persoon, met een reden. Bans duren 1 uur, 1 dag, 7 dagen, 30 dagen, voor altijd of tot een datum.",
+            "De banlijst in het servermenu: zoeken, filteren, reden en einde bewerken, bans opheffen en mensen bannen die op dit moment niet online zijn."
+          ]
+        },
+        {
+          "title": "Bots",
+          "items": [
+            "Bots staan apart: een sectie “Bots op deze server” onder de kanalenlijst toont elke bot met wat hij doet. Bots zonder stem verschijnen niet meer tussen de mensen.",
+            "Een mumbot verschijnt als “Mumbot <version>” in zijn profiel en de verbindingsgegevens in plaats van “Mumcord <version>”."
+          ]
+        },
+        {
+          "title": "Verbeterd",
+          "items": [
+            "Chatgeschiedenis tussen mensen op 0.7.0 is sneller bijgewerkt: elk beeld reist één keer en beelden die je al hebt, worden niet opnieuw gedownload.",
+            "Mumcord volgt wat de relay van de server toestaat, en de serverinfo laat zien wat dat is.",
+            "Schakelaars blijven zichtbaar in de modus met hoog contrast.",
+            "Ingebedde YouTube- en Twitch-video’s: de knop voor volledig scherm werkt, en een eigen knop kopieert de link naar de video."
+          ]
+        },
+        {
+          "title": "Opgelost",
+          "items": [
+            "Op oudere processors zonder AVX2 crasht Mumcord niet meer bij het starten. Scherm delen gebruikt daar VP9.",
+            "Chatgeschiedenis van vergrendelde kanalen gaat alleen naar mensen die echt in het kanaal zitten, niet naar mensen die het alleen volgen of meeluisteren.",
+            "Als iemand “Altijd relay gebruiken” gebruikt, stuurt Mumcord diegene je netwerkadres niet meer.",
+            "Een profiel van een nieuwere Mumcord veroorzaakt geen crash meer. Mumcord legt het uit en biedt aan de nieuwste versie te downloaden.",
+            "Verzonden berichten staan meteen op de juiste plek in de geschiedenis en blijven daar.",
+            "Een klik met het middelste muisknopje op een link, of een klik met Ctrl, Cmd of Shift ingedrukt, opent hem in je browser in plaats van binnen Mumcord.",
+            "Als je niet geregistreerd bent op een server waarvan de relay alleen geregistreerde gebruikers bedient, zegt Mumcord dat nu in plaats van “relay niet bereikbaar”.",
+            "Het venster van de banlijst heeft een sluitknop, en Kick en Ban reageren op muisklikken.",
+            "Een watchparty starten vanuit het menu Apps laadt de app niet meer opnieuw.",
+            "Scherm delen spreekt nu alle talen."
+          ]
+        }
+      ]
+    },
+    {
       "version": "0.6.2",
       "teaser": "Snellere vensters in de Linux-AppImage, „Wat is er nieuw“ toont de juiste versie, en kleine fixes.",
       "summary": "Een kleine update: in de Linux-AppImage openen vensters veel sneller, „Wat is er nieuw“ toont de notities van jouw versie en blijft niet meer hangen bij het laden, en de pluginbalk en het menu van de ophangknop staan weer goed.",

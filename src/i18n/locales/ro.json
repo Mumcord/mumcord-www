@@ -1369,6 +1369,94 @@
   },
   "changelog": [
     {
+      "version": "0.7.0",
+      "teaser": "Partajare de fișiere, camera ta, partajare de ecran cu sunet și AV1 pentru până la 25 de spectatori, pluginuri în zona media, eliminare, ban și lista de bannuri.",
+      "summary": "O actualizare mare: partajezi fișiere de până la 2 GB în canal, mereu prin relay, îți arăți camera cu fundal estompat, partajarea ecranului primește sunet, AV1 și până la 25 de spectatori, împarți imaginea și chatul cu un mâner, pluginurile primesc zona media și reguli clare de siguranță, iar administratorii pot elimina, bana și ține lista de bannuri în ordine.",
+      "groups": [
+        {
+          "title": "Partajare de fișiere",
+          "items": [
+            "Trage fișiere în chat sau atașează-le cu agrafa, până la 2 GB. Folderele sunt mai întâi comprimate în zip.",
+            "Fișierele trec mereu prin relay-ul serverului: nimeni nu îți vede adresa IP, iar fișierul nu atinge niciodată serverul Mumble.",
+            "Fiecare descărcare întreabă mai întâi și arată folderul în care se salvează. Apoi Mumcord verifică suma de control SHA-256, pe care o poți și copia.",
+            "Programele și scripturile primesc un avertisment în plus înainte de descărcare și înainte de deschidere.",
+            "Un fișier rămâne disponibil cât timp expeditorul este online, cel mult 24 de ore.",
+            "Nou în Setări → Confidențialitate și conexiuni: primirea fișierelor pornită sau oprită, dimensiunea maximă de la 100 MB la 2 GB și folderul pentru fișierele primite."
+          ]
+        },
+        {
+          "title": "Partajare de ecran",
+          "items": [
+            "Sunet la partajare: un ecran întreg partajează tot sunetul, în afară de cel al Mumcord, o fereastră partajează doar sunetul aplicației respective. Funcționează pe Windows 10 (2004 sau mai nou), macOS 13 și Linux cu PipeWire.",
+            "Înainte de start alegi rezoluția până la 4K, rata de cadre până la 60 fps, text clar sau mișcare fluidă, codecul și limita de încărcare. Meniul Calitate le schimbă în timpul partajării, fără să o repornească.",
+            "Prin relay încarci o singură dată și se uită până la 25 de persoane, cu criptare end-to-end.",
+            "AV1 pe placa video sau pe procesor pentru text clar cu mai puțină lățime de bandă. VP9 rămâne ca variantă de rezervă, inclusiv pentru spectatorii cu un Mumcord mai vechi.",
+            "Spectatorii văd codecul, calea și calitatea și își pot reduce rata de cadre. Lista spectatorilor arată cine primește ce.",
+            "Filă nouă „Partajare de ecran” în Setări, cu valorile tale implicite și encoderul pe care îl folosește calculatorul tău.",
+            "Împarte singur imaginea și chatul: trage mânerul dintre o partajare de ecran sau watch party și chat. Trage-l complet în sus și imaginea devine o mini bară, iar Mumcord reține înălțimea."
+          ]
+        },
+        {
+          "title": "Cameră",
+          "items": [
+            "Camera ta pentru toți din canalul tău vocal, doar prin relay și criptată end-to-end, pentru până la 25 de spectatori.",
+            "Camera pornește cu o previzualizare care nu trimite nimic. Iese în aer abia când o pornești.",
+            "Estompează-ți fundalul sau pune o imagine în spatele tău, calculat pe calculatorul tău.",
+            "Dacă camera nu poate fi folosită, Mumcord spune de ce, de exemplu când relay-ul serverului nu permite camere."
+          ]
+        },
+        {
+          "title": "Pluginuri",
+          "items": [
+            "Pluginurile primesc zona media, un panou lateral lângă chat, dialoguri și elemente în meniul Aplicații. Când rulează mai multe, filele comută între ele.",
+            "Datele de joc merg criptate end-to-end prin relay, către o persoană sau către tot canalul.",
+            "Un scor de siguranță de la 0 la 100 pentru pluginurile neoficiale, cu motivele lui la instalare și la actualizări.",
+            "Fiecare site cu care vorbește un plugin este listat la instalare, iar site-urile noi au nevoie de acordul tău.",
+            "Paginile pluginurilor sunt blocate: fără cameră, fără microfon, fără clipboard și doar site-urile pe care le-ai permis. O pagină care se blochează nu mai îngheață Mumcord.",
+            "Un plugin care are nevoie de un Mumcord mai nou spune asta în loc să se instaleze, iar actualizările așteaptă până când Mumcord-ul tău le poate rula."
+          ]
+        },
+        {
+          "title": "Administrare",
+          "items": [
+            "Elimină… și Banează… în meniul Administrare al unei persoane, cu un motiv. Bannurile durează 1 oră, 1 zi, 7 zile, 30 de zile, pe vecie sau până la o dată.",
+            "Lista de bannuri în meniul serverului: caută, filtrează, editează motivul și sfârșitul, ridică bannuri și banează persoane care nu sunt online chiar acum."
+          ]
+        },
+        {
+          "title": "Boți",
+          "items": [
+            "Boții stau separat: o secțiune „Boți pe acest server” sub lista de canale arată fiecare bot cu ceea ce face. Boții fără voce nu mai apar printre persoane.",
+            "Un mumbot apare ca „Mumbot <version>” în profilul său și în detaliile conexiunii în loc de „Mumcord <version>”."
+          ]
+        },
+        {
+          "title": "Îmbunătățit",
+          "items": [
+            "Istoricul chatului între persoane cu 0.7.0 se actualizează mai repede: fiecare imagine călătorește o dată, iar imaginile pe care le ai deja nu se mai descarcă.",
+            "Mumcord urmează ce permite relay-ul serverului, iar informațiile serverului arată ce este acesta.",
+            "Comutatoarele rămân vizibile în modul cu contrast ridicat.",
+            "Videoclipuri YouTube și Twitch încorporate: butonul pentru ecran complet funcționează, iar un buton separat copiază linkul videoclipului."
+          ]
+        },
+        {
+          "title": "Reparat",
+          "items": [
+            "Pe procesoarele mai vechi fără AVX2, Mumcord nu mai cade la pornire. Partajarea ecranului folosește acolo VP9.",
+            "Istoricul chatului canalelor blocate ajunge doar la persoanele aflate cu adevărat în canal, nu la cele care doar îl urmăresc sau îl ascultă.",
+            "Dacă cineva folosește „Folosește mereu relay”, Mumcord nu îi mai trimite adresa ta de rețea.",
+            "Un profil de la un Mumcord mai nou nu mai provoacă o cădere. Mumcord explică și se oferă să descarce ultima versiune.",
+            "Mesajele trimise ajung imediat la locul potrivit în istoric și rămân acolo.",
+            "Un clic de mijloc pe un link, sau un clic cu Ctrl, Cmd sau Shift apăsat, îl deschide în browserul tău, nu în Mumcord.",
+            "Dacă nu ești înregistrat pe un server al cărui relay servește doar utilizatori înregistrați, Mumcord spune acum asta în loc de „relay-ul nu a putut fi contactat”.",
+            "Fereastra listei de bannuri are un buton de închidere, iar Elimină și Banează răspund la clicurile mouse-ului.",
+            "Pornirea unui watch party din meniul Aplicații nu mai reîncarcă aplicația.",
+            "Partajarea de ecran vorbește acum toate limbile."
+          ]
+        }
+      ]
+    },
+    {
       "version": "0.6.2",
       "teaser": "Ferestre mai rapide în AppImage pentru Linux, „Ce e nou” arată versiunea corectă și mici remedieri.",
       "summary": "O actualizare mică: în AppImage pentru Linux ferestrele se deschid mult mai repede, „Ce e nou” arată notele versiunii tale și nu mai rămâne blocat la încărcare, iar bara de plugin-uri și meniul butonului de închidere a apelului sunt din nou la locul lor.",

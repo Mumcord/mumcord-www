@@ -1369,6 +1369,94 @@
   },
   "changelog": [
     {
+      "version": "0.7.0",
+      "teaser": "Tiedostojen jako, kamerasi, näytön jako äänellä ja AV1 jopa 25 katsojalle, lisäosat mediapaneelissa, potkiminen, porttikielto ja porttikieltolista.",
+      "summary": "Iso päivitys: jaat tiedostoja kanavalla jopa 2 Gt, aina releen kautta, näytät kamerasi sumennetulla taustalla, näytönjakoon tulee ääni, AV1 ja jopa 25 katsojaa, jaat kuvan ja keskustelun yhdellä kahvalla, lisäosat saavat mediapaneelin ja selkeät turvallisuussäännöt, ja ylläpitäjät voivat potkia, antaa porttikieltoja ja pitää porttikieltolistan kunnossa.",
+      "groups": [
+        {
+          "title": "Tiedostojen jako",
+          "items": [
+            "Vedä tiedostoja keskusteluun tai liitä ne paperiliittimellä, jopa 2 Gt. Kansiot pakataan ensin zipiksi.",
+            "Tiedostot kulkevat aina palvelimen releen kautta: kukaan ei näe IP-osoitettasi, eikä tiedosto koskaan kosketa Mumble-palvelinta.",
+            "Jokainen lataus kysyy ensin ja näyttää kansion, johon se tallennetaan. Sen jälkeen Mumcord tarkistaa SHA-256-tarkistussumman, jonka voit myös kopioida.",
+            "Ohjelmat ja skriptit saavat lisävaroituksen ennen latausta ja ennen avaamista.",
+            "Tiedosto pysyy saatavilla niin kauan kuin lähettäjä on paikalla, enintään 24 tuntia.",
+            "Uutta kohdassa Asetukset → Yksityisyys ja yhteydet: tiedostojen vastaanotto päälle tai pois, enimmäiskoko 100 Mt:sta 2 Gt:hen ja vastaanotettujen tiedostojen kansio."
+          ]
+        },
+        {
+          "title": "Näytön jako",
+          "items": [
+            "Ääni jaettaessa: koko näyttö jakaa kaiken äänen paitsi Mumcordin, ikkuna jakaa vain kyseisen sovelluksen äänen. Toimii Windows 10:ssä (2004 tai uudempi), macOS 13:ssa ja Linuxissa PipeWirellä.",
+            "Ennen aloitusta valitset tarkkuuden aina 4K:hon, kuvataajuuden aina 60 fps:ään, terävän tekstin tai sulavan liikkeen, koodekin ja lähetysrajan. Laatu-valikko muuttaa niitä jaon aikana käynnistämättä sitä uudelleen.",
+            "Releen kautta lähetät kerran ja jopa 25 ihmistä katsoo, päästä päähän salattuna.",
+            "AV1 näytönohjaimella tai suorittimella antaa terävän tekstin pienemmällä kaistalla. VP9 jää varavaihtoehdoksi, myös vanhempaa Mumcordia käyttäville katsojille.",
+            "Katsojat näkevät koodekin, reitin ja laadun ja voivat pienentää kuvataajuuttaan. Katsojalista näyttää, kuka saa mitä.",
+            "Uusi ”Näytön jako” -välilehti Asetuksissa oletusarvoinesi ja koneesi käyttämällä enkooderilla.",
+            "Jaa kuva ja keskustelu itse: vedä kahvaa näytönjaon tai watch partyn ja keskustelun välillä. Vedä se aivan ylös, niin kuvasta tulee minipalkki, ja Mumcord muistaa korkeuden."
+          ]
+        },
+        {
+          "title": "Kamera",
+          "items": [
+            "Kamerasi kaikille puhekanavallasi, vain releen kautta ja päästä päähän salattuna, jopa 25 katsojalle.",
+            "Kamera käynnistyy esikatselulla, joka ei lähetä mitään. Se lähtee ulos vasta, kun kytket sen päälle.",
+            "Sumenna tausta tai laita kuva taaksesi, laskettuna omalla koneellasi.",
+            "Jos kameraa ei voi käyttää, Mumcord kertoo miksi, esimerkiksi kun palvelimen rele ei salli kameroita."
+          ]
+        },
+        {
+          "title": "Lisäosat",
+          "items": [
+            "Lisäosat saavat mediapaneelin, sivupaneelin keskustelun viereen, valintaikkunoita ja kohtia Sovellukset-valikkoon. Kun useampi on käynnissä, välilehdet vaihtavat niiden välillä.",
+            "Pelidata kulkee päästä päähän salattuna releen kautta yhdelle henkilölle tai koko kanavalle.",
+            "Turvapisteet 0–100 epävirallisille lisäosille, perusteluineen asennuksessa ja päivityksissä.",
+            "Jokainen verkkosivusto, jonka kanssa lisäosa puhuu, luetellaan asennuksessa, ja uudet sivustot tarvitsevat suostumuksesi.",
+            "Lisäosien sivut on lukittu: ei kameraa, ei mikrofonia, ei leikepöytää ja vain sallimasi sivustot. Jumiin jäänyt sivu ei enää jäädytä Mumcordia.",
+            "Lisäosa, joka tarvitsee uudemman Mumcordin, kertoo sen asentumisen sijaan, ja päivitykset odottavat, kunnes Mumcordisi pystyy ajamaan ne."
+          ]
+        },
+        {
+          "title": "Ylläpito",
+          "items": [
+            "Potkaise… ja Anna porttikielto… henkilön Ylläpito-valikossa, syyn kanssa. Porttikiellot kestävät 1 tunnin, 1 päivän, 7 päivää, 30 päivää, ikuisesti tai tiettyyn päivään asti.",
+            "Porttikieltolista palvelinvalikossa: haku, suodatus, syyn ja päättymisen muokkaus, porttikieltojen purku ja porttikiellon antaminen henkilöille, jotka eivät ole juuri nyt paikalla."
+          ]
+        },
+        {
+          "title": "Botit",
+          "items": [
+            "Botit ovat omana ryhmänään: kanavalistan alla oleva ”Botit tällä palvelimella” -osio näyttää jokaisen botin ja sen tehtävän. Botit ilman ääntä eivät enää näy ihmisten joukossa.",
+            "Mumbot näkyy profiilissaan ja yhteystiedoissa nimellä ”Mumbot <version>” eikä ”Mumcord <version>”."
+          ]
+        },
+        {
+          "title": "Parannettu",
+          "items": [
+            "Keskusteluhistoria 0.7.0:aa käyttävien välillä päivittyy nopeammin: jokainen kuva kulkee kerran, eikä jo olemassa olevia kuvia ladata uudelleen.",
+            "Mumcord noudattaa sitä, mitä palvelimen rele sallii, ja palvelintiedot näyttävät, mitä se on.",
+            "Kytkimet pysyvät näkyvissä korkean kontrastin tilassa.",
+            "Upotetut YouTube- ja Twitch-videot: koko näytön painike toimii, ja oma painike kopioi videon linkin."
+          ]
+        },
+        {
+          "title": "Korjattu",
+          "items": [
+            "Vanhemmilla suorittimilla ilman AVX2:ta Mumcord ei enää kaadu käynnistyksessä. Näytön jako käyttää siellä VP9:ää.",
+            "Lukittujen kanavien keskusteluhistoria menee vain ihmisille, jotka ovat oikeasti kanavalla, ei niille, jotka vain seuraavat tai kuuntelevat sitä.",
+            "Jos joku käyttää asetusta ”Käytä aina relettä”, Mumcord ei enää lähetä hänelle verkko-osoitettasi.",
+            "Uudemman Mumcordin profiili ei enää kaada ohjelmaa. Mumcord selittää asian ja tarjoutuu lataamaan uusimman version.",
+            "Lähetetyt viestit asettuvat heti oikeaan kohtaan historiassa ja pysyvät siinä.",
+            "Linkin keskipainikeklikkaus tai klikkaus Ctrl-, Cmd- tai Shift-näppäin pohjassa avaa sen selaimessasi eikä Mumcordin sisällä.",
+            "Jos et ole rekisteröitynyt palvelimelle, jonka rele palvelee vain rekisteröityjä käyttäjiä, Mumcord kertoo sen nyt sen sijaan, että sanoisi ”releeseen ei saatu yhteyttä”.",
+            "Porttikieltolistan ikkunassa on sulkemispainike, ja Potkaise ja Anna porttikielto reagoivat hiiren napsautuksiin.",
+            "Watch partyn aloittaminen Sovellukset-valikosta ei enää lataa sovellusta uudelleen.",
+            "Näytön jako puhuu nyt kaikkia kieliä."
+          ]
+        }
+      ]
+    },
+    {
       "version": "0.6.2",
       "teaser": "Nopeammat ikkunat Linuxin AppImagessa, „Mitä uutta“ näyttää oikean version ja pieniä korjauksia.",
       "summary": "Pieni päivitys: Linuxin AppImagessa ikkunat aukeavat paljon nopeammin, „Mitä uutta“ näyttää oman versiosi muistiinpanot eikä jää enää jumiin latautumaan, ja pluginpalkki sekä luurin laskemisen painikkeen valikko ovat taas kohdallaan.",
