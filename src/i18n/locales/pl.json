@@ -1369,6 +1369,94 @@
   },
   "changelog": [
     {
+      "version": "0.7.0",
+      "teaser": "Udostępnianie plików, Twoja kamera, udostępnianie ekranu z dźwiękiem i AV1 dla maksymalnie 25 widzów, wtyczki w obszarze mediów, wyrzucanie, bany i lista banów.",
+      "summary": "Duża aktualizacja: udostępniasz pliki do 2 GB na kanale, zawsze przez relay, pokazujesz kamerę z rozmytym tłem, Twoje udostępnianie ekranu dostaje dźwięk, AV1 i do 25 widzów, obraz i czat dzielisz jednym uchwytem, wtyczki dostają obszar mediów i jasne zasady bezpieczeństwa, a administratorzy mogą wyrzucać, banować i trzymać listę banów w porządku.",
+      "groups": [
+        {
+          "title": "Udostępnianie plików",
+          "items": [
+            "Przeciągnij pliki na czat albo dołącz je spinaczem, do 2 GB. Foldery są najpierw pakowane do zipa.",
+            "Pliki zawsze idą przez relay serwera: nikt nie widzi Twojego adresu IP, a plik nigdy nie dotyka serwera Mumble.",
+            "Każde pobieranie najpierw pyta i pokazuje folder, do którego zapisuje. Potem Mumcord sprawdza sumę kontrolną SHA-256, którą możesz też skopiować.",
+            "Programy i skrypty dostają dodatkowe ostrzeżenie przed pobraniem i przed otwarciem.",
+            "Plik jest dostępny, dopóki nadawca jest online, najdłużej 24 godziny.",
+            "Nowe w Ustawieniach → Prywatność i połączenia: odbieranie plików włączone lub wyłączone, maksymalny rozmiar od 100 MB do 2 GB i folder na odebrane pliki."
+          ]
+        },
+        {
+          "title": "Udostępnianie ekranu",
+          "items": [
+            "Dźwięk podczas udostępniania: cały ekran udostępnia cały dźwięk poza dźwiękiem Mumcorda, okno udostępnia tylko dźwięk tej aplikacji. Działa na Windows 10 (2004 lub nowszym), macOS 13 i Linuksie z PipeWire.",
+            "Przed startem wybierasz rozdzielczość do 4K, liczbę klatek do 60 fps, ostry tekst lub płynny ruch, kodek i limit wysyłania. Menu Jakość zmienia je w trakcie udostępniania bez jego ponownego uruchamiania.",
+            "Przez relay wysyłasz raz, a ogląda do 25 osób, z szyfrowaniem end-to-end.",
+            "AV1 na karcie graficznej lub procesorze daje ostry tekst przy mniejszym paśmie. VP9 zostaje jako rozwiązanie zapasowe, także dla widzów ze starszym Mumcordem.",
+            "Widzowie widzą kodek, ścieżkę i jakość i mogą obniżyć swoją liczbę klatek. Lista widzów pokazuje, kto co dostaje.",
+            "Nowa karta „Udostępnianie ekranu” w Ustawieniach z Twoimi ustawieniami domyślnymi i enkoderem, którego używa Twój komputer.",
+            "Podziel obraz i czat sam: przeciągnij uchwyt między udostępnianiem ekranu lub watch party a czatem. Przeciągnij go na samą górę, a obraz zmieni się w minipasek, a Mumcord zapamięta wysokość."
+          ]
+        },
+        {
+          "title": "Kamera",
+          "items": [
+            "Twoja kamera dla wszystkich na Twoim kanale głosowym, tylko przez relay i z szyfrowaniem end-to-end, dla maksymalnie 25 widzów.",
+            "Kamera startuje z podglądem, który nic nie wysyła. Wychodzi dopiero po jej włączeniu.",
+            "Rozmyj tło albo ustaw za sobą obraz, liczone na Twoim komputerze.",
+            "Jeśli kamery nie można użyć, Mumcord mówi dlaczego, na przykład gdy relay serwera nie zezwala na kamery."
+          ]
+        },
+        {
+          "title": "Wtyczki",
+          "items": [
+            "Wtyczki dostają obszar mediów, panel boczny obok czatu, okna dialogowe i pozycje w menu Aplikacje. Gdy działa więcej niż jedna, karty przełączają między nimi.",
+            "Dane z gier idą z szyfrowaniem end-to-end przez relay, do jednej osoby albo całego kanału.",
+            "Ocena bezpieczeństwa od 0 do 100 dla nieoficjalnych wtyczek, z uzasadnieniem przy instalacji i aktualizacjach.",
+            "Każda strona, z którą rozmawia wtyczka, jest wymieniona przy instalacji, a nowe strony wymagają Twojej zgody.",
+            "Strony wtyczek są zablokowane: bez kamery, bez mikrofonu, bez schowka i tylko strony dozwolone przez Ciebie. Zawieszona strona nie zamraża już Mumcorda.",
+            "Wtyczka, która potrzebuje nowszego Mumcorda, mówi o tym zamiast się instalować, a aktualizacje czekają, aż Twój Mumcord będzie mógł je uruchomić."
+          ]
+        },
+        {
+          "title": "Administracja",
+          "items": [
+            "Wyrzuć… i Zbanuj… w menu Administracja danej osoby, z powodem. Bany trwają 1 godzinę, 1 dzień, 7 dni, 30 dni, na zawsze lub do wybranej daty.",
+            "Lista banów w menu serwera: szukanie, filtrowanie, edycja powodu i końca, zdejmowanie banów i banowanie osób, których akurat nie ma online."
+          ]
+        },
+        {
+          "title": "Boty",
+          "items": [
+            "Boty stoją osobno: sekcja „Boty na tym serwerze” pod listą kanałów pokazuje każdego bota i to, co robi. Boty bez głosu nie pojawiają się już wśród osób.",
+            "Mumbot jest pokazywany jako „Mumbot <version>” w swoim profilu i szczegółach połączenia zamiast „Mumcord <version>”."
+          ]
+        },
+        {
+          "title": "Ulepszone",
+          "items": [
+            "Historia czatu między osobami na 0.7.0 nadrabia szybciej: każdy obraz podróżuje raz, a obrazy, które już masz, nie są pobierane ponownie.",
+            "Mumcord stosuje się do tego, na co pozwala relay serwera, a informacje o serwerze pokazują, co to jest.",
+            "Przełączniki pozostają widoczne w trybie wysokiego kontrastu.",
+            "Osadzone filmy z YouTube i Twitcha: przycisk pełnego ekranu działa, a osobny przycisk kopiuje link do filmu."
+          ]
+        },
+        {
+          "title": "Naprawione",
+          "items": [
+            "Na starszych procesorach bez AVX2 Mumcord nie wywala się już przy starcie. Udostępnianie ekranu używa tam VP9.",
+            "Historia czatu zablokowanych kanałów trafia tylko do osób naprawdę będących w kanale, nie do tych, które tylko go obserwują lub słuchają.",
+            "Jeśli ktoś używa „Zawsze używaj relay”, Mumcord nie wysyła mu już Twojego adresu sieciowego.",
+            "Profil z nowszego Mumcorda nie powoduje już awarii. Mumcord to wyjaśnia i proponuje pobranie najnowszej wersji.",
+            "Wysłane wiadomości od razu lądują we właściwym miejscu w historii i tam zostają.",
+            "Kliknięcie linku środkowym przyciskiem albo z wciśniętym Ctrl, Cmd lub Shift otwiera go w przeglądarce zamiast w Mumcordzie.",
+            "Jeśli nie jesteś zarejestrowany na serwerze, którego relay obsługuje tylko zarejestrowanych użytkowników, Mumcord teraz to mówi zamiast „nie udało się połączyć z relay”.",
+            "Okno listy banów ma przycisk zamykania, a Wyrzuć i Zbanuj reagują na kliknięcia myszą.",
+            "Uruchomienie watch party z menu Aplikacje nie przeładowuje już aplikacji.",
+            "Udostępnianie ekranu mówi teraz we wszystkich językach."
+          ]
+        }
+      ]
+    },
+    {
       "version": "0.6.2",
       "teaser": "Szybsze okna w AppImage dla Linuxa, „Co nowego” pokazuje właściwą wersję i drobne poprawki.",
       "summary": "Mała aktualizacja: w AppImage dla Linuxa okna otwierają się znacznie szybciej, „Co nowego” pokazuje notatki do Twojej wersji i nie zawiesza się już przy ładowaniu, a pasek wtyczek i menu przycisku rozłączania znów leżą tam, gdzie trzeba.",

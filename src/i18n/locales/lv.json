@@ -1369,6 +1369,94 @@
   },
   "changelog": [
     {
+      "version": "0.7.0",
+      "teaser": "Failu koplietošana, tava kamera, ekrāna koplietošana ar skaņu un AV1 līdz 25 skatītājiem, spraudņi multivides apgabalā, izmešana, bloķēšana un bloķēšanas saraksts.",
+      "summary": "Liels atjauninājums: kanālā koplieto failus līdz 2 GB, vienmēr caur releju, rādi savu kameru ar izplūdušu fonu, tava ekrāna koplietošana iegūst skaņu, AV1 un līdz 25 skatītājiem, attēlu un tērzēšanu sadali ar vienu turi, spraudņi iegūst multivides apgabalu un skaidrus drošības noteikumus, un administratori var izmest, bloķēt un uzturēt bloķēšanas sarakstu kārtībā.",
+      "groups": [
+        {
+          "title": "Failu koplietošana",
+          "items": [
+            "Velc failus tērzēšanā vai pievieno tos ar saspraudi, līdz 2 GB. Mapes vispirms tiek ievietotas zip arhīvā.",
+            "Faili vienmēr iet caur servera releju: neviens neredz tavu IP adresi, un fails nekad nepieskaras Mumble serverim.",
+            "Katra lejupielāde vispirms pajautā un parāda mapi, kurā tiks saglabāts. Pēc tam Mumcord pārbauda SHA-256 kontrolsummu, ko vari arī nokopēt.",
+            "Programmas un skripti pirms lejupielādes un pirms atvēršanas saņem papildu brīdinājumu.",
+            "Fails paliek pieejams, kamēr tā sūtītājs ir tiešsaistē, ne ilgāk kā 24 stundas.",
+            "Jauns sadaļā Iestatījumi → Privātums un savienojumi: failu saņemšana ieslēgta vai izslēgta, maksimālais izmērs no 100 MB līdz 2 GB un saņemto failu mape."
+          ]
+        },
+        {
+          "title": "Ekrāna koplietošana",
+          "items": [
+            "Skaņa koplietošanas laikā: viss ekrāns koplieto visu skaņu, izņemot Mumcord skaņu, logs koplieto tikai šīs lietotnes skaņu. Darbojas Windows 10 (2004 vai jaunākā), macOS 13 un Linux ar PipeWire.",
+            "Pirms sākšanas izvēlies izšķirtspēju līdz 4K, kadru ātrumu līdz 60 fps, asu tekstu vai plūstošu kustību, kodeku un augšupielādes ierobežojumu. Izvēlne Kvalitāte tos maina koplietošanas laikā, to nerestartējot.",
+            "Caur releju augšupielādē vienu reizi, un skatās līdz 25 cilvēkiem, ar pilnīgu šifrēšanu.",
+            "AV1 grafiskajā kartē vai procesorā asam tekstam ar mazāku joslas platumu. VP9 paliek kā rezerves variants, arī skatītājiem ar vecāku Mumcord.",
+            "Skatītāji redz kodeku, ceļu un kvalitāti un var samazināt savu kadru ātrumu. Skatītāju saraksts parāda, kurš ko saņem.",
+            "Jauna cilne “Ekrāna koplietošana” iestatījumos ar tavām noklusējuma vērtībām un kodētāju, ko izmanto tavs dators.",
+            "Sadali attēlu un tērzēšanu pats: velc turi starp ekrāna koplietošanu vai watch party un tērzēšanu. Velc to līdz augšai, un attēls kļūst par mini joslu, un Mumcord atceras augstumu."
+          ]
+        },
+        {
+          "title": "Kamera",
+          "items": [
+            "Tava kamera visiem tavā balss kanālā, tikai caur releju un ar pilnīgu šifrēšanu, līdz 25 skatītājiem.",
+            "Kamera sākas ar priekšskatījumu, kas neko nesūta. Tā iziet tikai tad, kad to ieslēdz.",
+            "Padari fonu izplūdušu vai novieto attēlu aiz sevis, aprēķināts tavā datorā.",
+            "Ja kameru nevar izmantot, Mumcord pasaka, kāpēc, piemēram, ja servera relejs kameras neatļauj."
+          ]
+        },
+        {
+          "title": "Spraudņi",
+          "items": [
+            "Spraudņi iegūst multivides apgabalu, sānu paneli blakus tērzēšanai, dialoglodziņus un vienumus izvēlnē Lietotnes. Kad darbojas vairāki, cilnes pārslēdz starp tiem.",
+            "Spēles dati iet ar pilnīgu šifrēšanu caur releju, vienam cilvēkam vai visam kanālam.",
+            "Drošības vērtējums no 0 līdz 100 neoficiāliem spraudņiem, ar iemesliem instalēšanas un atjaunināšanas brīdī.",
+            "Katra vietne, ar kuru spraudnis sazinās, tiek uzskaitīta instalēšanas laikā, un jaunām vietnēm nepieciešama tava piekrišana.",
+            "Spraudņu lapas ir noslēgtas: nav kameras, nav mikrofona, nav starpliktuves un tikai vietnes, ko esi atļāvis. Lapa, kas uzkaras, vairs neaptur Mumcord.",
+            "Spraudnis, kuram nepieciešams jaunāks Mumcord, to pasaka, nevis instalējas, un atjauninājumi gaida, līdz tavs Mumcord tos var palaist."
+          ]
+        },
+        {
+          "title": "Administrēšana",
+          "items": [
+            "Izmest… un Bloķēt… cilvēka izvēlnē Administrēšana, norādot iemeslu. Bloķēšanas ilgst 1 stundu, 1 dienu, 7 dienas, 30 dienas, uz visiem laikiem vai līdz datumam.",
+            "Bloķēšanas saraksts servera izvēlnē: meklēšana, filtrēšana, iemesla un beigu rediģēšana, bloķēšanu atcelšana un tādu cilvēku bloķēšana, kuri pašlaik nav tiešsaistē."
+          ]
+        },
+        {
+          "title": "Boti",
+          "items": [
+            "Boti stāv atsevišķi: sadaļa “Boti šajā serverī” zem kanālu saraksta parāda katru botu ar to, ko tas dara. Boti bez balss vairs neparādās starp cilvēkiem.",
+            "Mumbot savā profilā un savienojuma informācijā tiek rādīts kā “Mumbot <version>”, nevis “Mumcord <version>”."
+          ]
+        },
+        {
+          "title": "Uzlabots",
+          "items": [
+            "Tērzēšanas vēsture starp cilvēkiem ar 0.7.0 tiek sasniegta ātrāk: katrs attēls ceļo vienu reizi, un attēli, kas tev jau ir, netiek lejupielādēti atkārtoti.",
+            "Mumcord seko tam, ko atļauj servera relejs, un servera informācija parāda, kas tas ir.",
+            "Slēdži paliek redzami augsta kontrasta režīmā.",
+            "Iegultie YouTube un Twitch video: pilnekrāna poga darbojas, un atsevišķa poga nokopē video saiti."
+          ]
+        },
+        {
+          "title": "Labots",
+          "items": [
+            "Vecākos procesoros bez AVX2 Mumcord vairs neavarē startējot. Ekrāna koplietošana tur izmanto VP9.",
+            "Slēgto kanālu tērzēšanas vēsture tiek nosūtīta tikai cilvēkiem, kas patiešām ir kanālā, nevis tiem, kas to tikai seko vai klausās.",
+            "Ja kāds izmanto “Vienmēr izmantot releju”, Mumcord viņam vairs nesūta tavu tīkla adresi.",
+            "Profils no jaunāka Mumcord vairs neizraisa avāriju. Mumcord to izskaidro un piedāvā lejupielādēt jaunāko versiju.",
+            "Nosūtītās ziņas uzreiz nonāk pareizajā vietā vēsturē un tur paliek.",
+            "Vidējais klikšķis uz saites vai klikšķis, turot nospiestu Ctrl, Cmd vai Shift, atver to tavā pārlūkprogrammā, nevis Mumcord iekšienē.",
+            "Ja neesi reģistrēts serverī, kura relejs apkalpo tikai reģistrētus lietotājus, Mumcord tagad to pasaka, nevis “relejam nevarēja piekļūt”.",
+            "Bloķēšanas saraksta logam ir aizvēršanas poga, un Izmest un Bloķēt reaģē uz peles klikšķiem.",
+            "Watch party palaišana no izvēlnes Lietotnes vairs nepārlādē lietotni.",
+            "Ekrāna koplietošana tagad runā visās valodās."
+          ]
+        }
+      ]
+    },
+    {
       "version": "0.6.2",
       "teaser": "Ātrāki logi Linux AppImage, „Kas jauns“ rāda pareizo versiju, un nelieli labojumi.",
       "summary": "Neliels atjauninājums: Linux AppImage logi atveras daudz ātrāk, „Kas jauns“ rāda tavas versijas piezīmes un vairs neiestrēgst ielādē, bet spraudņu josla un zvana beigšanas pogas izvēlne atkal atrodas pareizajā vietā.",

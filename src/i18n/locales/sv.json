@@ -1369,6 +1369,94 @@
   },
   "changelog": [
     {
+      "version": "0.7.0",
+      "teaser": "Fildelning, din kamera, skärmdelning med ljud och AV1 för upp till 25 tittare, tillägg i medieytan, sparka ut, bannlysning och banlistan.",
+      "summary": "En stor uppdatering: du delar filer upp till 2 GB i kanalen, alltid via relayen, visar din kamera med suddig bakgrund, din skärmdelning får ljud, AV1 och upp till 25 tittare, du delar bild och chatt med ett handtag, tillägg får medieytan och tydliga säkerhetsregler, och admins kan sparka ut, bannlysa och hålla ordning på banlistan.",
+      "groups": [
+        {
+          "title": "Fildelning",
+          "items": [
+            "Dra filer till chatten eller bifoga dem med gemet, upp till 2 GB. Mappar zippas först.",
+            "Filer går alltid via serverns relay: ingen ser din IP-adress, och filen rör aldrig Mumble-servern.",
+            "Varje nedladdning frågar först och visar mappen den sparas i. Efteråt kontrollerar Mumcord SHA-256-kontrollsumman, som du också kan kopiera.",
+            "Program och skript får en extra varning före nedladdning och före öppning.",
+            "En fil finns kvar så länge avsändaren är online, högst 24 timmar.",
+            "Nytt i Inställningar → Integritet och anslutningar: filmottagning på eller av, maxstorlek från 100 MB till 2 GB och mappen för mottagna filer."
+          ]
+        },
+        {
+          "title": "Skärmdelning",
+          "items": [
+            "Ljud vid delning: en hel skärm delar allt ljud utom Mumcords, ett fönster delar bara den appens ljud. Fungerar på Windows 10 (2004 eller nyare), macOS 13 och Linux med PipeWire.",
+            "Innan du startar väljer du upplösning upp till 4K, bildfrekvens upp till 60 fps, skarp text eller mjuk rörelse, codec och uppladdningsgräns. Menyn Kvalitet ändrar dem under delningen utan att starta om den.",
+            "Via relayen laddar du upp en gång och upp till 25 personer tittar, end-to-end-krypterat.",
+            "AV1 på grafikkortet eller processorn ger skarp text med mindre bandbredd. VP9 finns kvar som reserv, även för tittare med en äldre Mumcord.",
+            "Tittare ser codec, väg och kvalitet och kan sänka sin bildfrekvens. Tittarlistan visar vem som får vad.",
+            "Ny flik ”Skärmdelning” i Inställningar med dina standardvärden och den kodare din dator använder.",
+            "Dela bild och chatt själv: dra i handtaget mellan en skärmdelning eller watch party och chatten. Dra det hela vägen upp så blir bilden ett minifält, och Mumcord minns höjden."
+          ]
+        },
+        {
+          "title": "Kamera",
+          "items": [
+            "Din kamera för alla i din röstkanal, bara via relayen och end-to-end-krypterad, för upp till 25 tittare.",
+            "Kameran startar med en förhandsvisning som inte skickar något. Den går ut först när du slår på den.",
+            "Sudda ut bakgrunden eller lägg en bild bakom dig, uträknat på din dator.",
+            "Om kameran inte kan användas säger Mumcord varför, till exempel när serverns relay inte tillåter kameror."
+          ]
+        },
+        {
+          "title": "Tillägg",
+          "items": [
+            "Tillägg får medieytan, en sidopanel bredvid chatten, dialogrutor och objekt i Appar-menyn. När fler än ett körs byter flikar mellan dem.",
+            "Speldata går end-to-end-krypterat via relayen, till en person eller hela kanalen.",
+            "Ett säkerhetsbetyg från 0 till 100 för inofficiella tillägg, med skälen vid installation och uppdateringar.",
+            "Varje webbplats ett tillägg pratar med listas vid installation, och nya webbplatser kräver ditt samtycke.",
+            "Tilläggens sidor är låsta: ingen kamera, ingen mikrofon, inget urklipp och bara de webbplatser du tillåtit. En sida som hänger sig fryser inte längre Mumcord.",
+            "Ett tillägg som behöver en nyare Mumcord säger det i stället för att installeras, och uppdateringar väntar tills din Mumcord kan köra dem."
+          ]
+        },
+        {
+          "title": "Admin",
+          "items": [
+            "Sparka ut… och Bannlys… i en persons Admin-meny, med en anledning. Bannlysningar varar i 1 timme, 1 dag, 7 dagar, 30 dagar, för alltid eller till ett datum.",
+            "Banlistan i servermenyn: sök, filtrera, redigera anledning och slut, häv bannlysningar och bannlys personer som inte är online just nu."
+          ]
+        },
+        {
+          "title": "Botar",
+          "items": [
+            "Botar står för sig: ett avsnitt ”Botar på den här servern” under kanallistan visar varje bot med vad den gör. Botar utan röst syns inte längre bland personer.",
+            "En mumbot visas som ”Mumbot <version>” i sin profil och i anslutningsuppgifterna i stället för ”Mumcord <version>”."
+          ]
+        },
+        {
+          "title": "Förbättrat",
+          "items": [
+            "Chatthistorik mellan personer på 0.7.0 hinner ikapp snabbare: varje bild skickas en gång, och bilder du redan har laddas inte ned igen.",
+            "Mumcord följer det serverns relay tillåter, och serverinfon visar vad det är.",
+            "Reglage förblir synliga i högkontrastläge.",
+            "Inbäddade YouTube- och Twitch-videor: helskärmsknappen fungerar, och en egen knapp kopierar länken till videon."
+          ]
+        },
+        {
+          "title": "Åtgärdat",
+          "items": [
+            "På äldre processorer utan AVX2 kraschar Mumcord inte längre vid start. Skärmdelning använder VP9 där.",
+            "Chatthistorik för låsta kanaler går bara till personer som faktiskt är inne i kanalen, inte till dem som bara följer eller lyssnar på den.",
+            "Om någon använder ”Använd alltid relay” skickar Mumcord inte längre din nätverksadress till dem.",
+            "En profil från en nyare Mumcord orsakar inte längre en krasch. Mumcord förklarar det och erbjuder att ladda ned den senaste versionen.",
+            "Skickade meddelanden hamnar direkt på rätt plats i historiken och stannar där.",
+            "Ett mittenklick på en länk, eller ett klick med Ctrl, Cmd eller Skift nedtryckt, öppnar den i din webbläsare i stället för i Mumcord.",
+            "Om du inte är registrerad på en server vars relay bara betjänar registrerade användare säger Mumcord det nu i stället för ”relayen kunde inte nås”.",
+            "Fönstret med banlistan har en stängknapp, och Sparka ut och Bannlys svarar på musklick.",
+            "Att starta en watch party från Appar-menyn laddar inte längre om appen.",
+            "Skärmdelning talar nu alla språk."
+          ]
+        }
+      ]
+    },
+    {
       "version": "0.6.2",
       "teaser": "Snabbare fönster i Linux-AppImage, ”Nyheter” visar rätt version och små fixar.",
       "summary": "En liten uppdatering: i Linux-AppImage öppnas fönster mycket snabbare, ”Nyheter” visar anteckningarna för din version och hänger sig inte längre vid inläsning, och pluginraden och menyn på avsluta-samtal-knappen sitter rätt igen.",

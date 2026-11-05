@@ -1369,6 +1369,94 @@
   },
   "changelog": [
     {
+      "version": "0.7.0",
+      "teaser": "Zdieľanie súborov, tvoja kamera, zdieľanie obrazovky so zvukom a AV1 pre až 25 divákov, pluginy v oblasti médií, vyhodenie, ban a zoznam banov.",
+      "summary": "Veľká aktualizácia: v kanáli zdieľaš súbory do 2 GB, vždy cez relay, ukazuješ kameru s rozmazaným pozadím, zdieľanie obrazovky dostáva zvuk, AV1 a až 25 divákov, obraz a chat si rozdelíš jedným úchytom, pluginy dostávajú oblasť médií a jasné bezpečnostné pravidlá a správcovia môžu vyhadzovať, banovať a udržiavať zoznam banov v poriadku.",
+      "groups": [
+        {
+          "title": "Zdieľanie súborov",
+          "items": [
+            "Presuň súbory do chatu alebo ich pripoj kancelárskou sponkou, do 2 GB. Priečinky sa najprv zabalia do zipu.",
+            "Súbory vždy idú cez relay servera: nikto nevidí tvoju IP adresu a súbor sa nikdy nedotkne servera Mumble.",
+            "Každé sťahovanie sa najprv opýta a ukáže priečinok, do ktorého sa ukladá. Potom Mumcord overí kontrolný súčet SHA-256, ktorý môžeš aj skopírovať.",
+            "Programy a skripty dostanú pred stiahnutím a pred otvorením ďalšie upozornenie.",
+            "Súbor zostáva dostupný, kým je odosielateľ online, najdlhšie 24 hodín.",
+            "Nové v Nastaveniach → Súkromie a pripojenia: príjem súborov zapnutý alebo vypnutý, maximálna veľkosť od 100 MB do 2 GB a priečinok pre prijaté súbory."
+          ]
+        },
+        {
+          "title": "Zdieľanie obrazovky",
+          "items": [
+            "Zvuk pri zdieľaní: celá obrazovka zdieľa všetok zvuk okrem zvuku Mumcordu, okno zdieľa iba zvuk danej aplikácie. Funguje na Windows 10 (2004 alebo novší), macOS 13 a Linuxe s PipeWire.",
+            "Pred začiatkom vyber rozlíšenie až do 4K, snímkovú frekvenciu až do 60 fps, ostrý text alebo plynulý pohyb, kodek a limit odosielania. Ponuka Kvalita ich mení počas zdieľania bez reštartu.",
+            "Cez relay nahrávaš raz a pozerá až 25 ľudí, s end-to-end šifrovaním.",
+            "AV1 na grafickej karte alebo procesore pre ostrý text s menším objemom dát. VP9 ostáva ako záloha, aj pre divákov so starším Mumcordom.",
+            "Diváci vidia kodek, cestu a kvalitu a môžu znížiť svoju snímkovú frekvenciu. Zoznam divákov ukazuje, kto čo dostáva.",
+            "Nová karta „Zdieľanie obrazovky“ v Nastaveniach s tvojimi predvolenými hodnotami a enkodérom, ktorý používa tvoj počítač.",
+            "Obraz a chat si rozdeľ sám: presuň úchyt medzi zdieľaním obrazovky alebo watch party a chatom. Presunieš ho celkom hore a obraz sa zmení na mini lištu a Mumcord si výšku pamätá."
+          ]
+        },
+        {
+          "title": "Kamera",
+          "items": [
+            "Tvoja kamera pre všetkých vo tvojom hlasovom kanáli, len cez relay a s end-to-end šifrovaním, pre až 25 divákov.",
+            "Kamera sa spustí s náhľadom, ktorý nič neodosiela. Vysiela sa, až keď ju zapneš.",
+            "Rozmaž si pozadie alebo daj za seba obrázok, všetko sa počíta na tvojom počítači.",
+            "Ak kameru nemožno použiť, Mumcord povie prečo, napríklad keď relay servera kamery nepovoľuje."
+          ]
+        },
+        {
+          "title": "Pluginy",
+          "items": [
+            "Pluginy dostávajú oblasť médií, bočný panel vedľa chatu, dialógy a položky v ponuke Aplikácie. Keď ich beží viac, karty medzi nimi prepínajú.",
+            "Herné dáta idú s end-to-end šifrovaním cez relay, jednej osobe alebo celému kanálu.",
+            "Bezpečnostné skóre od 0 do 100 pre neoficiálne pluginy, s dôvodmi pri inštalácii a aktualizáciách.",
+            "Každá webová stránka, s ktorou plugin komunikuje, je pri inštalácii vypísaná a nové stránky potrebujú tvoj súhlas.",
+            "Stránky pluginov sú uzamknuté: žiadna kamera, žiadny mikrofón, žiadna schránka a len stránky, ktoré si povolil. Stránka, ktorá sa zasekne, už Mumcord nezmrazí.",
+            "Plugin, ktorý potrebuje novší Mumcord, to povie namiesto inštalácie a aktualizácie čakajú, kým ich tvoj Mumcord dokáže spustiť."
+          ]
+        },
+        {
+          "title": "Správa",
+          "items": [
+            "Vyhodiť… a Zabanovať… v ponuke Správa pri osobe, s dôvodom. Bany trvajú 1 hodinu, 1 deň, 7 dní, 30 dní, navždy alebo do dátumu.",
+            "Zoznam banov v ponuke servera: hľadanie, filtrovanie, úprava dôvodu a konca, zrušenie banov a banovanie ľudí, ktorí práve nie sú online."
+          ]
+        },
+        {
+          "title": "Boti",
+          "items": [
+            "Boti stoja bokom: sekcia „Boti na tomto serveri“ pod zoznamom kanálov ukazuje každého bota a čo robí. Boti bez hlasu sa už neobjavujú medzi ľuďmi.",
+            "Mumbot sa v profile a v podrobnostiach pripojenia zobrazuje ako „Mumbot <version>“ namiesto „Mumcord <version>“."
+          ]
+        },
+        {
+          "title": "Vylepšené",
+          "items": [
+            "História chatu medzi ľuďmi s 0.7.0 sa dobieha rýchlejšie: každý obrázok putuje raz a obrázky, ktoré už máš, sa nesťahujú znova.",
+            "Mumcord sa riadi tým, čo relay servera povoľuje, a informácie o serveri ukazujú, čo to je.",
+            "Prepínače ostávajú viditeľné vo vysokokontrastnom režime.",
+            "Vložené videá z YouTube a Twitchu: tlačidlo celej obrazovky funguje a vlastné tlačidlo skopíruje odkaz na video."
+          ]
+        },
+        {
+          "title": "Opravené",
+          "items": [
+            "Na starších procesoroch bez AVX2 Mumcord už pri štarte nepadá. Zdieľanie obrazovky tam používa VP9.",
+            "História chatu uzamknutých kanálov ide len ľuďom, ktorí sú v kanáli naozaj, nie tým, čo ho len sledujú alebo počúvajú.",
+            "Ak niekto používa „Vždy používať relay“, Mumcord mu už neposiela tvoju sieťovú adresu.",
+            "Profil z novšieho Mumcordu už nespôsobí pád. Mumcord to vysvetlí a ponúkne stiahnutie najnovšej verzie.",
+            "Odoslané správy sa hneď usadia na správne miesto v histórii a zostanú tam.",
+            "Stredný klik na odkaz alebo klik s podržaným Ctrl, Cmd alebo Shift ho otvorí v prehliadači, nie vnútri Mumcordu.",
+            "Ak nie si registrovaný na serveri, ktorého relay obsluhuje len registrovaných používateľov, Mumcord to teraz povie namiesto „relay sa nepodarilo spojiť“.",
+            "Okno zoznamu banov má tlačidlo zavrieť a Vyhodiť aj Zabanovať reagujú na kliknutia myšou.",
+            "Spustenie watch party z ponuky Aplikácie už aplikáciu nenačíta znova.",
+            "Zdieľanie obrazovky teraz hovorí všetkými jazykmi."
+          ]
+        }
+      ]
+    },
+    {
       "version": "0.6.2",
       "teaser": "Rýchlejšie okná v Linuxovom AppImage, „Čo je nové“ ukazuje správnu verziu a drobné opravy.",
       "summary": "Malá aktualizácia: v Linuxovom AppImage sa okná otvárajú oveľa rýchlejšie, „Čo je nové“ ukazuje poznámky k tvojej verzii a už sa nezasekáva pri načítaní, a panel s pluginmi aj ponuka tlačidla na zloženie hovoru sedia zase správne.",

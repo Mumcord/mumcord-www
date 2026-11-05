@@ -1369,6 +1369,94 @@
   },
   "changelog": [
     {
+      "version": "0.7.0",
+      "teaser": "Failide jagamine, sinu kaamera, ekraani jagamine heliga ja AV1 kuni 25 vaatajale, pluginad meediapiirkonnas, väljaviskamine, keelustamine ja keelunimekiri.",
+      "summary": "Suur uuendus: jagad kanalis faile kuni 2 GB, alati releeserveri kaudu, näitad oma kaamerat hägustatud taustaga, sinu ekraani jagamine saab heli, AV1 ja kuni 25 vaatajat, pildi ja vestluse jagad ühe käepideme abil, pluginad saavad meediapiirkonna ja selged turvareeglid ning administraatorid saavad välja visata, keelustada ja hoida keelunimekirja korras.",
+      "groups": [
+        {
+          "title": "Failide jagamine",
+          "items": [
+            "Lohista failid vestlusse või lisa need kirjaklambriga, kuni 2 GB. Kaustad pakitakse enne zip-failiks.",
+            "Failid lähevad alati serveri relee kaudu: keegi ei näe sinu IP-aadressi ja fail ei puutu kunagi Mumble’i serverit.",
+            "Iga allalaadimine küsib enne luba ja näitab kausta, kuhu salvestatakse. Seejärel kontrollib Mumcord SHA-256 kontrollsummat, mida saad ka kopeerida.",
+            "Programmid ja skriptid saavad enne allalaadimist ja enne avamist lisahoiatuse.",
+            "Fail püsib saadaval, kuni saatja on võrgus, kuni 24 tundi.",
+            "Uus jaotises Seaded → Privaatsus ja ühendused: failide vastuvõtt sees või väljas, maksimaalne suurus vahemikus 100 MB kuni 2 GB ja vastuvõetud failide kaust."
+          ]
+        },
+        {
+          "title": "Ekraani jagamine",
+          "items": [
+            "Heli jagamisel: terve ekraan jagab kogu heli peale Mumcordi enda, aken jagab ainult selle rakenduse heli. Töötab Windows 10-s (2004 või uuem), macOS 13-s ja Linuxis PipeWire’iga.",
+            "Enne alustamist vali eraldusvõime kuni 4K, kaadrisagedus kuni 60 fps, terav tekst või sujuv liikumine, kodek ja üleslaadimise piir. Menüü Kvaliteet muudab neid jagamise ajal ilma taaskäivitamata.",
+            "Relee kaudu laed üles korra ja kuni 25 inimest vaatab, otspunktkrüpteeritult.",
+            "AV1 graafikakaardil või protsessoril annab terava teksti väiksema ribalaiusega. VP9 jääb varuvariandiks, ka vanema Mumcordiga vaatajatele.",
+            "Vaatajad näevad kodekit, teed ja kvaliteeti ning saavad oma kaadrisagedust vähendada. Vaatajate loend näitab, kes mida saab.",
+            "Uus vahekaart „Ekraani jagamine“ jaotises Seaded sinu vaikeväärtuste ja kodeerijaga, mida su arvuti kasutab.",
+            "Jaga pilt ja vestlus ise: lohista käepidet ekraanijagamise või watch party ja vestluse vahel. Lohista see päris üles ja pilt muutub miniribaks ning Mumcord jätab kõrguse meelde."
+          ]
+        },
+        {
+          "title": "Kaamera",
+          "items": [
+            "Sinu kaamera kõigile sinu häälekanalis, ainult relee kaudu ja otspunktkrüpteeritult, kuni 25 vaatajale.",
+            "Kaamera algab eelvaatega, mis ei saada midagi. Välja läheb see alles siis, kui selle sisse lülitad.",
+            "Hägusta oma taust või pane enda taha pilt, arvutatuna sinu arvutis.",
+            "Kui kaamerat ei saa kasutada, ütleb Mumcord, miks, näiteks kui serveri relee kaameraid ei luba."
+          ]
+        },
+        {
+          "title": "Pluginad",
+          "items": [
+            "Pluginad saavad meediapiirkonna, vestluse kõrvale külgpaneeli, dialoogid ja kirjed menüüs Rakendused. Kui töötab rohkem kui üks, vahetavad vahekaardid nende vahel.",
+            "Mänguandmed liiguvad otspunktkrüpteeritult relee kaudu ühele inimesele või kogu kanalile.",
+            "Turvaskoor vahemikus 0 kuni 100 mitteametlikele pluginatele, põhjustega paigaldamisel ja uuendustel.",
+            "Iga veebisait, millega plugin suhtleb, kuvatakse paigaldamisel ja uued saidid vajavad sinu nõusolekut.",
+            "Pluginate lehed on lukustatud: ei kaamerat, ei mikrofoni, ei lõikelauda ja ainult saidid, mille lubasid. Hangunud leht ei külmuta enam Mumcordi.",
+            "Plugin, mis vajab uuemat Mumcordi, ütleb seda, selle asemel et paigalduda, ja uuendused ootavad, kuni sinu Mumcord suudab neid käitada."
+          ]
+        },
+        {
+          "title": "Haldus",
+          "items": [
+            "Viska välja… ja Keela… inimese menüüs Haldus, põhjusega. Keelud kestavad 1 tund, 1 päev, 7 päeva, 30 päeva, igavesti või kuni kuupäevani.",
+            "Keelunimekiri serverimenüüs: otsi, filtreeri, muuda põhjust ja lõppu, tühista keelde ja keela inimesi, kes pole praegu võrgus."
+          ]
+        },
+        {
+          "title": "Botid",
+          "items": [
+            "Botid seisavad omaette: kanaliloendi all olev jaotis „Botid sellel serveril“ näitab iga boti koos sellega, mida ta teeb. Hääleta botid ei ilmu enam inimeste sekka.",
+            "Mumbot kuvatakse oma profiilis ja ühenduse andmetes kui „Mumbot <version>“, mitte „Mumcord <version>“."
+          ]
+        },
+        {
+          "title": "Täiustatud",
+          "items": [
+            "Vestlusajalugu 0.7.0 kasutajate vahel jõuab kiiremini järele: iga pilt liigub korra ja pilte, mis sul juba on, ei laadita uuesti.",
+            "Mumcord järgib seda, mida serveri relee lubab, ja serveri info näitab, mis see on.",
+            "Lülitid jäävad kõrge kontrastsuse režiimis nähtavaks.",
+            "Manustatud YouTube’i ja Twitchi videod: täisekraani nupp töötab ja eraldi nupp kopeerib video lingi."
+          ]
+        },
+        {
+          "title": "Parandatud",
+          "items": [
+            "Vanematel protsessoritel ilma AVX2-ta ei jookse Mumcord käivitamisel enam kokku. Ekraani jagamine kasutab seal VP9-t.",
+            "Lukustatud kanalite vestlusajalugu läheb ainult inimestele, kes on tõesti kanalis, mitte neile, kes seda lihtsalt jälgivad või kuulavad.",
+            "Kui keegi kasutab valikut „Kasuta alati releed“, ei saada Mumcord talle enam sinu võrguaadressi.",
+            "Uuema Mumcordi profiil ei põhjusta enam kokkujooksmist. Mumcord selgitab seda ja pakub uusima versiooni allalaadimist.",
+            "Saadetud sõnumid jõuavad kohe ajaloos õigesse kohta ja jäävad sinna.",
+            "Keskmine klõps lingil või klõps hoitud Ctrli, Cmd- või Shift-klahviga avab selle sinu brauseris, mitte Mumcordi sees.",
+            "Kui sa pole registreeritud serveris, mille relee teenindab ainult registreeritud kasutajaid, ütleb Mumcord seda nüüd, mitte „releed ei õnnestunud kätte saada“.",
+            "Keelunimekirja aknal on sulgemisnupp ning Viska välja ja Keela reageerivad hiireklõpsudele.",
+            "Watch party käivitamine menüüst Rakendused ei lae rakendust enam uuesti.",
+            "Ekraani jagamine räägib nüüd kõiki keeli."
+          ]
+        }
+      ]
+    },
+    {
       "version": "0.6.2",
       "teaser": "Kiiremad aknad Linuxi AppImage'is, „Mis on uut“ näitab õiget versiooni ja väikesed parandused.",
       "summary": "Väike uuendus: Linuxi AppImage'is avanevad aknad palju kiiremini, „Mis on uut“ näitab sinu versiooni märkmeid ega jää enam laadima kinni ning pluginariba ja hargilt panemise nupu menüü on taas õigel kohal.",
