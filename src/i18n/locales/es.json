@@ -1489,12 +1489,42 @@
             "id": "start-screen",
             "title": "Un arranque más rápido",
             "body": "Una pantalla de inicio con el logo sobre tu tema en lugar de una ventana blanca vacía, y cerca de un tercio menos de código antes de la primera pantalla: Ajustes, el asistente y la pantalla compartida se cargan solo cuando los abres."
+          },
+          {
+            "id": "crash-reports",
+            "title": "Informes de fallos",
+            "body": "Si Mumcord se cierra de forma inesperada, guarda un informe breve en tu ordenador y te lo dice en el siguiente inicio. En Ajustes → Avanzado y desarrollador ves los últimos 10 y puedes copiarlos, exportarlos o borrarlos. Solo se sube un informe individual, y únicamente después de que confirmes qué se envía exactamente."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.1",
+      "teaser": "Informes de fallos que revisas tú mismo y subes solo si quieres, y correcciones de cámara para cámaras que antes no daban imagen.",
+      "summary": "Una actualización pequeña: si Mumcord se cierra de forma inesperada, queda un informe en tu ordenador y solo se envía si tú quieres. Además arrancan más cámaras, también a través del portal de cámara, y las imágenes de fondo de la vista previa aparecen enseguida.",
+      "groups": [
+        {
+          "title": "Nuevo",
+          "items": [
+            "Informes de fallos: si Mumcord se cierra de forma inesperada, guarda un informe breve en tu ordenador y te lo dice en el siguiente inicio. Incluye qué salió mal, qué funciones estaban en uso, los datos del sistema y las últimas líneas del registro.",
+            "En Ajustes → Avanzado y desarrollador → Informes de fallos ves los últimos 10 y puedes copiarlos, verlos, exportarlos o borrarlos.",
+            "Puedes enviar un solo informe al equipo de Mumcord. La confirmación muestra exactamente qué se envía y admite un comentario. Nada sale de tu ordenador sin «Enviar».",
+            "En Diagnóstico copias las últimas 200 líneas del registro o el registro completo y abres la carpeta de registros.",
+            "El registro nombra más causas: qué modos de cámara se probaron, si el AppImage puede reproducir H.264 (Twitch) y cuándo los efectos de fondo no encuentran a nadie en la imagen."
+          ]
+        },
+        {
+          "title": "Corregido",
+          "items": [
+            "Las cámaras que ofrecen un modo en el que nunca envían imágenes (por ejemplo una Logitech StreamCam a 720p y 30 fps) ahora arrancan: Mumcord prueba una velocidad de fotogramas menor o una imagen más pequeña en lugar de rendirse con «La cámara no envía imágenes».",
+            "Las cámaras a través del portal de cámara del escritorio ya no se detienen con «La cámara envía imágenes ilegibles».",
+            "Vista previa de la cámara: las imágenes de fondo integradas aparecen enseguida al elegir Imagen, en lugar de dejar los mosaicos vacíos un momento cada vez que se abre la vista previa."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.0",
       "teaser": "Compartir archivos, tu cámara, compartir pantalla con sonido y AV1 para hasta 25 espectadores, plugins en el área multimedia, expulsar, vetar y la lista de vetos.",
@@ -2805,7 +2835,7 @@
         "items": [
           "Instaladores firmados: en macOS desde la 0.4.1, en Windows desde la 0.6.1. Siguiente paso: sin aviso de SmartScreen cuando el certificado de Windows haya acumulado suficiente reputación",
           "Actualizaciones automáticas",
-          "Informes de fallos, solo si das tu consentimiento",
+          "Informes de fallos, solo si das tu consentimiento: llega con la 0.7.1, un informe se queda en tu ordenador y solo se envía tras tu confirmación",
           "Repositorios de paquetes y tiendas",
           "Mumcord en Flathub, para cualquier distribución de Linux desde el centro de software",
           "La app para móvil en Google Play, la App Store y F-Droid"

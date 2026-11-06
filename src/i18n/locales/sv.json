@@ -1489,12 +1489,42 @@
             "id": "start-screen",
             "title": "En snabbare start",
             "body": "En startskärm med logotypen på ditt tema i stället för ett tomt vitt fönster, och ungefär en tredjedel mindre kod före första skärmen: Inställningar, guiden och skärmdelning laddas först när du öppnar dem."
+          },
+          {
+            "id": "crash-reports",
+            "title": "Kraschrapporter",
+            "body": "Om Mumcord stängs oväntat sparar det en kort rapport på din dator och berättar det vid nästa start. Under Inställningar → Avancerat & utvecklare ser du de 10 senaste och kopierar, exporterar eller tar bort dem. Bara en enskild rapport laddas någonsin upp, och bara efter att du bekräftat exakt vad som skickas."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.1",
+      "teaser": "Kraschrapporter som du granskar själv och bara laddar upp om du vill, och kamerafixar för kameror som tidigare inte gav någon bild.",
+      "summary": "En liten uppdatering: om Mumcord stängs oväntat blir en rapport kvar på din dator, och den skickas bara om du vill. Fler kameror startar dessutom, även via kameraportalen, och bakgrundsbilderna i förhandsvisningen visas direkt.",
+      "groups": [
+        {
+          "title": "Nytt",
+          "items": [
+            "Kraschrapporter: om Mumcord stängs oväntat sparar det en kort rapport på din dator och berättar det vid nästa start. Den innehåller vad som gick fel, vilka funktioner som användes, systemuppgifterna och de sista loggraderna.",
+            "Under Inställningar → Avancerat & utvecklare → Kraschrapporter ser du de 10 senaste och kan kopiera, visa, exportera eller ta bort dem.",
+            "En enskild rapport kan du skicka till Mumcord-teamet. Bekräftelsen visar exakt vad som skickas och tar emot en kommentar. Utan ”Skicka” lämnar ingenting din dator.",
+            "Under Diagnostik kopierar du de senaste 200 loggraderna eller hela loggen och öppnar loggmappen.",
+            "Loggen nämner fler orsaker: vilka kameralägen som provades, om AppImage kan spela upp H.264 (Twitch) och när bakgrundseffekter inte hittar någon i bilden."
+          ]
+        },
+        {
+          "title": "Åtgärdat",
+          "items": [
+            "Kameror som erbjuder ett läge där de aldrig skickar bilder (till exempel en Logitech StreamCam med 720p och 30 fps) startar nu: Mumcord provar en lägre bildfrekvens eller en mindre bild i stället för att ge upp med ”Kameran skickar inga bilder”.",
+            "Kameror via skrivbordets kameraportal avbryts inte längre med ”Kameran skickar oläsliga bilder”.",
+            "Kameraförhandsvisning: de inbyggda bakgrundsbilderna visas direkt när du väljer Bild, i stället för att lämna rutorna tomma en stund varje gång förhandsvisningen öppnas."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.0",
       "teaser": "Fildelning, din kamera, skärmdelning med ljud och AV1 för upp till 25 tittare, tillägg i medieytan, sparka ut, bannlysning och banlistan.",
@@ -2805,7 +2835,7 @@
         "items": [
           "Signerade installationsprogram: på macOS sedan 0.4.1, på Windows sedan 0.6.1. Nästa steg: ingen SmartScreen-varning när Windows-certifikatet har byggt upp tillräckligt gott rykte",
           "Automatiska uppdateringar",
-          "Kraschrapporter, bara om du godkänner",
+          "Kraschrapporter, bara om du godkänner: kommer med 0.7.1, en rapport stannar kvar på din dator och skickas först efter din bekräftelse",
           "Paketförråd och appbutiker",
           "Mumcord på Flathub, för alla Linux-distributioner direkt från programcentret",
           "Telefonappen i Google Play, App Store och F-Droid"

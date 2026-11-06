@@ -125,7 +125,8 @@ export function parseCrashText(text: string): ParseResult {
       system,
       backtrace: block('backtrace').join('\n'),
       log_tail: logs || null,
-      user_note: null,
+      // The app appends what the person typed in the upload dialog as a trailing `comment:` section.
+      user_note: block('comment').join('\n').trim().slice(0, 4000) || null,
       install_id: null,
       raw: text,
     },

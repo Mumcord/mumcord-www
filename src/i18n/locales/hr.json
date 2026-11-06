@@ -1489,12 +1489,42 @@
             "id": "start-screen",
             "title": "Brži početak",
             "body": "Početni zaslon s logotipom na tvojoj temi umjesto praznog bijelog prozora i otprilike trećina manje koda prije prvog zaslona: Postavke, čarobnjak i dijeljenje zaslona učitavaju se tek kad ih otvoriš."
+          },
+          {
+            "id": "crash-reports",
+            "title": "Izvješća o rušenju",
+            "body": "Ako se Mumcord neočekivano zatvori, sprema kratko izvješće na tvoje računalo i javi ti to pri sljedećem pokretanju. U Postavke → Napredno i razvoj vidiš zadnjih 10 i možeš ih kopirati, izvesti ili izbrisati. Učitava se uvijek samo jedno izvješće, i to tek nakon što potvrdiš što se točno šalje."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.1",
+      "teaser": "Izvješća o rušenju koja sam provjeriš i šalješ samo ako želiš, te popravci za kamere koje prije nisu davale sliku.",
+      "summary": "Malo ažuriranje: ako se Mumcord neočekivano zatvori, izvješće ostaje na tvom računalu i šalje se samo ako to želiš. Osim toga pokreće se više kamera, i preko kamerinog portala, a pozadinske slike u pregledu pojavljuju se odmah.",
+      "groups": [
+        {
+          "title": "Novo",
+          "items": [
+            "Izvješća o rušenju: ako se Mumcord neočekivano zatvori, sprema kratko izvješće na tvoje računalo i javi ti to pri sljedećem pokretanju. U njemu su što je pošlo po zlu, koje su funkcije radile, podaci o sustavu i zadnji retci loga.",
+            "U Postavke → Napredno i razvoj → Izvješća o rušenju vidiš zadnjih 10 i možeš ih kopirati, pregledati, izvesti ili izbrisati.",
+            "Pojedinačno izvješće možeš poslati Mumcordovu timu. Potvrda točno prikazuje što se šalje i prima komentar. Bez „Pošalji” ništa ne napušta tvoje računalo.",
+            "U Dijagnostici kopiraš zadnjih 200 redaka loga ili cijeli log i otvaraš mapu s logovima.",
+            "Log navodi više uzroka: koji su načini kamere isprobani, može li AppImage reproducirati H.264 (Twitch) i kada efekti pozadine ne nalaze nikoga na slici."
+          ]
+        },
+        {
+          "title": "Popravljeno",
+          "items": [
+            "Kamere koje nude način u kojem nikad ne šalju sliku (na primjer Logitech StreamCam pri 720p i 30 sl./s) sada se pokreću: Mumcord isprobava nižu brzinu sličica ili manju sliku umjesto da odustane s „Kamera ne šalje slike”.",
+            "Kamere preko kamerinog portala radne površine više ne staju s „Kamera šalje nečitljive slike”.",
+            "Pregled kamere: ugrađene pozadinske slike pojavljuju se odmah kad odabereš Sliku, umjesto da pločice pri svakom otvaranju pregleda na trenutak ostanu prazne."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.0",
       "teaser": "Dijeljenje datoteka, tvoja kamera, dijeljenje zaslona sa zvukom i AV1 za do 25 gledatelja, dodaci u medijskom području, izbacivanje, zabrana i popis zabrana.",
@@ -2805,7 +2835,7 @@
         "items": [
           "Potpisani instalacijski programi: na macOS-u od 0.4.1, na Windowsu od 0.6.1. Sljedeće: bez upozorenja SmartScreena kada certifikat za Windows stekne dovoljno ugleda",
           "Automatska ažuriranja",
-          "Izvješća o rušenju, samo ako pristaneš",
+          "Izvješća o rušenju, samo ako pristaneš: stiže s 0.7.1, izvješće ostaje na tvom računalu i šalje se tek nakon tvoje potvrde",
           "Repozitoriji paketa i trgovine aplikacija",
           "Mumcord na Flathubu, za svaku Linux distribuciju izravno iz centra za softver",
           "Aplikacija za mobitel u Google Playu, App Storeu i F-Droidu"

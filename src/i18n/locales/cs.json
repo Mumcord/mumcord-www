@@ -1489,12 +1489,42 @@
             "id": "start-screen",
             "title": "Rychlejší start",
             "body": "Úvodní obrazovka s logem v tvém motivu místo prázdného bílého okna a asi o třetinu méně kódu před první obrazovkou: Nastavení, průvodce a sdílení obrazovky se načtou, až když je otevřeš."
+          },
+          {
+            "id": "crash-reports",
+            "title": "Hlášení pádů",
+            "body": "Když se Mumcord neočekávaně zavře, uloží do tvého počítače krátké hlášení a při příštím spuštění ti to řekne. V Nastavení → Pokročilé a vývojář vidíš posledních 10 a můžeš je kopírovat, exportovat nebo mazat. Nahrává se vždy jen jedno hlášení, a to až poté, co potvrdíš, co přesně se odešle."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.1",
+      "teaser": "Hlášení pádů, která si sám zkontroluješ a nahraješ jen na přání, a opravy kamer, které dřív nedávaly obraz.",
+      "summary": "Malá aktualizace: když se Mumcord neočekávaně zavře, zůstane v tvém počítači hlášení a odešle se jen tehdy, když to chceš. Navíc se rozjede víc kamer, i přes kamerový portál, a obrázky pozadí v náhledu se ukážou hned.",
+      "groups": [
+        {
+          "title": "Nové",
+          "items": [
+            "Hlášení pádů: když se Mumcord neočekávaně zavře, uloží do tvého počítače krátké hlášení a při příštím spuštění ti to řekne. Obsahuje, co se pokazilo, které funkce běžely, systémové údaje a poslední řádky logu.",
+            "V Nastavení → Pokročilé a vývojář → Hlášení pádů vidíš posledních 10 a můžeš je kopírovat, prohlížet, exportovat nebo mazat.",
+            "Jedno hlášení můžeš poslat týmu Mumcordu. Potvrzení ukáže přesně, co se odesílá, a přijme komentář. Bez „Odeslat“ z tvého počítače nic neodejde.",
+            "V Diagnostice zkopíruješ posledních 200 řádků logu nebo celý log a otevřeš složku s logy.",
+            "Log uvádí víc příčin: jaké režimy kamery se zkoušely, zda AppImage umí přehrát H.264 (Twitch) a kdy efekty pozadí v obraze nikoho nenajdou."
+          ]
+        },
+        {
+          "title": "Opraveno",
+          "items": [
+            "Kamery, které nabízejí režim, v němž nikdy neposílají obraz (například Logitech StreamCam při 720p a 30 sn./s), se teď rozjedou: Mumcord zkusí nižší snímkovou frekvenci nebo menší obraz, místo aby to vzdal hláškou „Kamera neposílá obraz“.",
+            "Kamery přes kamerový portál desktopu už nekončí hláškou „Kamera posílá nečitelný obraz“.",
+            "Náhled kamery: vestavěné obrázky pozadí se ukážou hned po výběru Obrázku, místo aby dlaždice při každém otevření náhledu chvíli zůstaly prázdné."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.0",
       "teaser": "Sdílení souborů, tvá kamera, sdílení obrazovky se zvukem a AV1 až pro 25 diváků, pluginy v oblasti médií, vyhození, ban a seznam banů.",
@@ -2805,7 +2835,7 @@
         "items": [
           "Podepsané instalátory: na macOS od 0.4.1, na Windows od 0.6.1. Dále: žádné varování SmartScreen, jakmile certifikát pro Windows získá dostatečnou reputaci",
           "Automatické aktualizace",
-          "Hlášení pádů, jen pokud souhlasíš",
+          "Hlášení pádů, jen pokud souhlasíš: přijde s 0.7.1, hlášení zůstane v tvém počítači a odešle se až po tvém potvrzení",
           "Repozitáře balíčků a obchody s aplikacemi",
           "Mumcord na Flathubu, pro každou linuxovou distribuci přímo ze softwarového centra",
           "Aplikace pro telefon v Google Play, App Store a F-Droid"

@@ -1489,12 +1489,42 @@
             "id": "start-screen",
             "title": "Nopeampi käynnistys",
             "body": "Aloitusnäyttö, jossa logo teemasi päällä tyhjän valkoisen ikkunan sijaan, ja noin kolmanneksen vähemmän koodia ennen ensimmäistä näyttöä: asetukset, ohjattu toiminto ja näytön jako latautuvat vasta, kun avaat ne."
+          },
+          {
+            "id": "crash-reports",
+            "title": "Kaatumisraportit",
+            "body": "Jos Mumcord sulkeutuu odottamatta, se tallentaa lyhyen raportin tietokoneellesi ja kertoo siitä seuraavalla käynnistyksellä. Kohdassa Asetukset → Lisäasetukset ja kehittäjä näet viimeiset 10 ja voit kopioida, viedä tai poistaa ne. Vain yksittäinen raportti ladataan, ja vasta kun olet vahvistanut, mitä tarkalleen lähetetään."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.1",
+      "teaser": "Kaatumisraportit, jotka tarkistat itse ja lähetät vain halutessasi, sekä korjauksia kameroihin, jotka eivät aiemmin näyttäneet kuvaa.",
+      "summary": "Pieni päivitys: jos Mumcord sulkeutuu odottamatta, raportti jää tietokoneellesi ja se lähetetään vain, jos haluat. Lisäksi useampi kamera käynnistyy, myös kameraportaalin kautta, ja esikatselun taustakuvat näkyvät heti.",
+      "groups": [
+        {
+          "title": "Uutta",
+          "items": [
+            "Kaatumisraportit: jos Mumcord sulkeutuu odottamatta, se tallentaa lyhyen raportin tietokoneellesi ja kertoo siitä seuraavalla käynnistyksellä. Raportissa on, mikä meni pieleen, mitkä toiminnot olivat käytössä, järjestelmätiedot ja lokin viimeiset rivit.",
+            "Kohdassa Asetukset → Lisäasetukset ja kehittäjä → Kaatumisraportit näet viimeiset 10 ja voit kopioida, katsoa, viedä tai poistaa ne.",
+            "Yksittäisen raportin voit lähettää Mumcord-tiimille. Vahvistus näyttää tarkasti, mitä lähetetään, ja ottaa vastaan kommentin. Ilman ”Lähetä”-painiketta mikään ei poistu tietokoneeltasi.",
+            "Kohdassa Diagnostiikka kopioit lokin viimeiset 200 riviä tai koko lokin ja avaat lokikansion.",
+            "Lokissa mainitaan useampia syitä: mitä kameratiloja kokeiltiin, osaako AppImage toistaa H.264:ää (Twitch) ja milloin taustatehosteet eivät löydä ketään kuvasta."
+          ]
+        },
+        {
+          "title": "Korjattu",
+          "items": [
+            "Kamerat, jotka tarjoavat tilan, jossa ne eivät koskaan lähetä kuvaa (esimerkiksi Logitech StreamCam 720p:llä ja 30 kuvalla sekunnissa), käynnistyvät nyt: Mumcord kokeilee pienempää kuvataajuutta tai pienempää kuvaa sen sijaan, että luovuttaisi viestillä ”Kamera ei lähetä kuvaa”.",
+            "Työpöydän kameraportaalin kautta toimivat kamerat eivät enää katkea viestiin ”Kamera lähettää lukukelvotonta kuvaa”.",
+            "Kameran esikatselu: sisäänrakennetut taustakuvat näkyvät heti, kun valitset Kuvan, eikä ruudut ole joka kerta hetken tyhjinä esikatselun avautuessa."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.0",
       "teaser": "Tiedostojen jako, kamerasi, näytön jako äänellä ja AV1 jopa 25 katsojalle, lisäosat mediapaneelissa, potkiminen, porttikielto ja porttikieltolista.",
@@ -2805,7 +2835,7 @@
         "items": [
           "Allekirjoitetut asennusohjelmat: macOS:lla versiosta 0.4.1, Windowsilla versiosta 0.6.1 alkaen. Seuraavaksi: ei SmartScreen-varoitusta, kun Windows-varmenne on kerännyt tarpeeksi mainetta",
           "Automaattiset päivitykset",
-          "Kaatumisraportit, vain jos suostut",
+          "Kaatumisraportit, vain jos suostut: tulee versiossa 0.7.1, raportti jää tietokoneellesi ja lähetetään vasta vahvistuksesi jälkeen",
           "Pakettivarastot ja sovelluskaupat",
           "Mumcord Flathubissa, jokaiselle Linux-jakelulle suoraan ohjelmistokeskuksesta",
           "Puhelinsovellus Google Playssa, App Storessa ja F-Droidissa"

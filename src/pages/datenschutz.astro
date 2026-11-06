@@ -3,7 +3,7 @@ import Legal from "../layouts/Legal.astro";
 import Address from "../components/Address.astro";
 ---
 
-<Legal lang="de" page="privacy" title="Datenschutzerklärung" description="Datenschutzerklärung von mumcord.app: keine Cookies, kein Tracking, keine Inhalte von Dritten." updated="Stand: Oktober 2026">
+<Legal lang="de" page="privacy" title="Datenschutzerklärung" description="Datenschutzerklärung von mumcord.app: keine Cookies, kein Tracking, keine Inhalte von Dritten." updated="Stand: November 2026">
   <h2>Kurz gesagt</h2>
   <p>
     Diese Website setzt keine Cookies, nutzt keine Analyse- oder Tracking-Werkzeuge und lädt keine Inhalte von Dritten. Schriften, Bilder und Skripte werden vom eigenen Server ausgeliefert. Erst wenn Sie einen Link zu GitHub anklicken, verlassen Sie diese Website.
@@ -40,7 +40,27 @@ import Address from "../components/Address.astro";
 
   <h2>Die App Mumcord</h2>
   <p>
-    Diese Erklärung betrifft die Website. Die App Mumcord selbst sendet keine Telemetrie und keine automatischen Absturzberichte. Sie verbindet sich nur mit den Mumble-Servern, die Sie selbst eintragen; für die Verarbeitung dort ist der jeweilige Server-Betreiber verantwortlich.
+    Diese Erklärung betrifft die Website und den Dienst crash.mumcord.app. Die App Mumcord sendet keine Telemetrie und nichts im Hintergrund. Sie verbindet sich nur mit den Mumble-Servern, die Sie selbst eintragen; für die Verarbeitung dort ist der jeweilige Server-Betreiber verantwortlich. Absturzberichte sendet sie nur, wenn Sie das selbst auslösen.
+  </p>
+
+  <h2>Absturzberichte (crash.mumcord.app)</h2>
+  <p>
+    Stürzt die App ab (ab Version 0.7.1), legt sie auf Ihrem Gerät einen Absturzbericht als Textdatei ab; die letzten zehn bleiben erhalten. Unter Einstellungen → Erweitert &amp; Entwickler → Absturzberichte können Sie sie ansehen, kopieren, exportieren und löschen. Übertragen wird ein Bericht nur, wenn Sie ihn selbst über „Hochladen“ senden. Vorher zeigt die App den vollständigen Inhalt.
+  </p>
+  <p>
+    Ein Bericht enthält die Mumcord-Version, Zeitpunkt, Art und Ursache des Absturzes, die betroffenen Programmstellen (Backtrace), welche Funktionen gerade liefen (etwa Kamera oder Bildschirmübertragung), die letzten Logzeilen, Systemangaben (Betriebssystem, Kernel, Desktop, Prozessor, Grafikkarte, Arbeitsspeicher, Bildschirmauflösungen) und, wenn Sie möchten, Ihren Kommentar. Er enthält keine Chatnachrichten, Namen, Passwörter oder Audio und keine Kennung von Ihnen oder Ihrer Installation. Zusammen können die Systemangaben aber einen Computer wiedererkennbar machen.
+  </p>
+  <p>
+    Der Bericht wird verschlüsselt an crash.mumcord.app übertragen, der auf demselben Server wie diese Website läuft (siehe „Hosting“). Ihre IP-Adresse wird dabei nur kurz im Arbeitsspeicher verwendet, um die Zahl der Anfragen zu begrenzen, und nicht gespeichert. Ähnliche Abstürze werden zusammengefasst. Jeder Bericht wird 90 Tage nach Eingang automatisch gelöscht; danach bleibt nur eine Zusammenfassung ohne Rohdaten (Anzahl, Versionen, Zeitraum, Einordnung). Weil Berichte keine Kennung haben, können wir einen einzelnen Bericht nicht Ihnen zuordnen und ihn deshalb auch nicht gezielt auf Anfrage löschen; die feste Frist von 90 Tagen gilt für alle.
+  </p>
+  <p>
+    Zur ersten Einordnung senden wir Absturzursache, Programmstellen, Versionen, Systemangaben und die passenden Ausschnitte aus dem öffentlichen Quellcode von Mumcord an die Claude-API der Anthropic PBC (USA). Logzeilen und Ihr Kommentar werden dabei nicht übertragen. Daten aus der API verwendet Anthropic nicht zum Training seiner Modelle. Die Übermittlung in die USA erfolgt auf Grundlage der EU-Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO).
+  </p>
+  <p>
+    Wird aus einem Absturz eine Fehlermeldung, legen wir ein öffentliches Issue im Repository Mumcord/mumcord auf GitHub an (GitHub, Inc., USA). Es enthält Absturzursache, Programmstellen, Versionen und Systemangaben; Logzeilen oder Ihren Kommentar nur, wenn wir sie geprüft haben und sie nichts Persönliches enthalten.
+  </p>
+  <p>
+    Rechtsgrundlage ist Ihre Einwilligung, die Sie mit dem Senden erteilen (Art. 6 Abs. 1 lit. a DSGVO). Sie können sie jederzeit für die Zukunft widerrufen, indem Sie keine weiteren Berichte senden. Für die Anmeldung des Administrators setzt crash.mumcord.app ein technisch notwendiges Cookie; wer nur Berichte sendet, bekommt keines.
   </p>
 
   <h2>Ihre Rechte</h2>

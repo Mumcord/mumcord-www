@@ -1489,12 +1489,42 @@
             "id": "start-screen",
             "title": "En hurtigere start",
             "body": "En startskærm med logoet på dit tema i stedet for et tomt hvidt vindue og omkring en tredjedel mindre kode før den første skærm: Indstillinger, guiden og skærmdeling indlæses først, når du åbner dem."
+          },
+          {
+            "id": "crash-reports",
+            "title": "Nedbrudsrapporter",
+            "body": "Lukker Mumcord uventet, gemmer det en kort rapport på din computer og fortæller dig det ved næste start. Under Indstillinger → Avanceret og udvikler ser du de seneste 10 og kopierer, eksporterer eller sletter dem. Der uploades kun én enkelt rapport, og kun når du har bekræftet, hvad der præcis sendes."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.1",
+      "teaser": "Nedbrudsrapporter, du selv gennemgår og kun uploader, hvis du vil, og kamerarettelser til kameraer, der tidligere ikke gav noget billede.",
+      "summary": "En lille opdatering: lukker Mumcord uventet, bliver der en rapport på din computer, og den sendes kun, hvis du vil. Flere kameraer starter desuden, også via kameraportalen, og baggrundsbillederne i forhåndsvisningen vises med det samme.",
+      "groups": [
+        {
+          "title": "Nyt",
+          "items": [
+            "Nedbrudsrapporter: lukker Mumcord uventet, gemmer det en kort rapport på din computer og fortæller dig det ved næste start. Den indeholder, hvad der gik galt, hvilke funktioner der var i brug, systemoplysningerne og de sidste loglinjer.",
+            "Under Indstillinger → Avanceret og udvikler → Nedbrudsrapporter ser du de seneste 10 og kan kopiere, se, eksportere eller slette dem.",
+            "Du kan sende en enkelt rapport til Mumcord-teamet. Bekræftelsen viser præcis, hvad der sendes, og tager imod en kommentar. Uden “Send” forlader intet din computer.",
+            "Under Diagnostik kopierer du de sidste 200 loglinjer eller hele loggen og åbner logmappen.",
+            "Loggen nævner flere årsager: hvilke kameratilstande der blev prøvet, om AppImage kan afspille H.264 (Twitch), og hvornår baggrundseffekter ikke finder nogen i billedet."
+          ]
+        },
+        {
+          "title": "Rettet",
+          "items": [
+            "Kameraer, der tilbyder en tilstand, hvor de aldrig sender billeder (for eksempel et Logitech StreamCam med 720p og 30 fps), starter nu: Mumcord prøver en lavere billedhastighed eller et mindre billede i stedet for at give op med “Kameraet sender ingen billeder”.",
+            "Kameraer via skrivebordets kameraportal stopper ikke længere med “Kameraet sender ulæselige billeder”.",
+            "Kameraforhåndsvisning: de indbyggede baggrundsbilleder vises med det samme, når du vælger Billede, i stedet for at lade felterne stå tomme et øjeblik, hver gang forhåndsvisningen åbner."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.0",
       "teaser": "Fildeling, dit kamera, skærmdeling med lyd og AV1 til op til 25 seere, plugins i medieområdet, kick, ban og banlisten.",
@@ -2805,7 +2835,7 @@
         "items": [
           "Signerede installationsprogrammer: på macOS siden 0.4.1, på Windows siden 0.6.1. Næste skridt: ingen SmartScreen-advarsel, når Windows-certifikatet har opbygget nok omdømme",
           "Automatiske opdateringer",
-          "Nedbrudsrapporter, kun hvis du siger ja",
+          "Nedbrudsrapporter, kun hvis du siger ja: kommer med 0.7.1, en rapport bliver på din computer og sendes først efter din bekræftelse",
           "Pakkearkiver og butikker",
           "Mumcord på Flathub, til alle Linux-distributioner direkte fra softwarecentret",
           "Telefon-appen i Google Play, App Store og F-Droid"

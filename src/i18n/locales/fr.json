@@ -1489,12 +1489,42 @@
             "id": "start-screen",
             "title": "Un démarrage plus rapide",
             "body": "Un écran de démarrage avec le logo sur ton thème au lieu d’une fenêtre blanche vide, et environ un tiers de code en moins avant le premier écran : les Paramètres, l’assistant et le partage d’écran ne se chargent que quand tu les ouvres."
+          },
+          {
+            "id": "crash-reports",
+            "title": "Rapports de plantage",
+            "body": "Quand Mumcord se ferme de façon inattendue, il enregistre un court rapport sur ton ordinateur et te le dit au prochain démarrage. Dans Paramètres → Avancé & développeur, tu vois les 10 derniers et tu les copies, exportes ou supprimes. Un seul rapport est envoyé à la fois, et seulement après que tu as confirmé ce qui est envoyé exactement."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.1",
+      "teaser": "Rapports de plantage que tu vérifies toi-même et n’envoies que si tu veux, et correctifs de caméra pour les caméras qui n’affichaient aucune image.",
+      "summary": "Une petite mise à jour : quand Mumcord se ferme de façon inattendue, un rapport reste sur ton ordinateur et n’est envoyé que si tu le veux. Plus de caméras démarrent, y compris via le portail caméra, et les images d’arrière-plan de l’aperçu s’affichent tout de suite.",
+      "groups": [
+        {
+          "title": "Nouveau",
+          "items": [
+            "Rapports de plantage : quand Mumcord se ferme de façon inattendue, il enregistre un court rapport sur ton ordinateur et te le dit au prochain démarrage. Il contient ce qui a mal tourné, les fonctions utilisées, les détails du système et les dernières lignes du journal.",
+            "Dans Paramètres → Avancé & développeur → Rapports de plantage, tu vois les 10 derniers et tu peux les copier, les consulter, les exporter ou les supprimer.",
+            "Tu peux envoyer un seul rapport à l’équipe Mumcord. La confirmation montre exactement ce qui est envoyé et accepte un commentaire. Rien ne quitte ton ordinateur sans « Envoyer ».",
+            "Sous Diagnostic, tu copies les 200 dernières lignes du journal ou le journal entier et tu ouvres le dossier des journaux.",
+            "Le journal nomme davantage de causes : quels modes de caméra ont été essayés, si l’AppImage peut lire du H.264 (Twitch), et quand les effets d’arrière-plan ne trouvent personne dans l’image."
+          ]
+        },
+        {
+          "title": "Corrigé",
+          "items": [
+            "Les caméras qui annoncent un mode dans lequel elles n’envoient jamais d’images (par exemple une Logitech StreamCam en 720p et 30 i/s) démarrent désormais : Mumcord essaie une cadence plus basse ou une image plus petite au lieu d’abandonner avec « La caméra n’envoie aucune image ».",
+            "Les caméras via le portail caméra du bureau ne s’arrêtent plus avec « La caméra envoie des images illisibles ».",
+            "Aperçu de la caméra : les images d’arrière-plan intégrées s’affichent tout de suite quand tu choisis Image, au lieu de laisser les vignettes vides un instant à chaque ouverture de l’aperçu."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.0",
       "teaser": "Partage de fichiers, ta caméra, partage d’écran avec son et AV1 pour jusqu’à 25 spectateurs, plugins dans la zone média, expulsion, bannissement et liste des bannis.",
@@ -2805,7 +2835,7 @@
         "items": [
           "Installateurs signés : sur macOS depuis la 0.4.1, sur Windows depuis la 0.6.1. Prochaine étape : plus d’avertissement SmartScreen dès que le certificat Windows aura gagné assez de réputation",
           "Mises à jour automatiques",
-          "Rapports de plantage, uniquement si tu es d’accord",
+          "Rapports de plantage, uniquement si tu es d’accord: arrive avec la 0.7.1, un rapport reste sur ton ordinateur et n’est envoyé qu’après ta confirmation",
           "Dépôts de paquets et stores",
           "Mumcord sur Flathub, pour toutes les distributions Linux depuis la logithèque",
           "L’appli du téléphone dans Google Play, l’App Store et F-Droid"

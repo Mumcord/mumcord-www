@@ -98,3 +98,15 @@ test('redactHome removes user names from home paths', () => {
   assert.equal(redactHome('open /home/alice/.config/x failed'), 'open ~/.config/x failed');
   assert.equal(redactHome('C:\\Users\\Bob\\AppData\\x'), '~\\AppData\\x');
 });
+
+test('the trailing comment section from the upload dialog becomes the user note', async () => {
+  const { parseCrashText } = await import('../src/report.ts');
+  const { readFileSync } = await import('node:fs');
+  const text = readFileSync(new URL('./fixtures/panic.txt', import.meta.url), 'utf8').trimEnd() + '\n\ncomment:\nwatched a VP9 share in full screen\n';
+  const r = parseCrashText(text);
+  assert.ok(r.ok);
+  if (r.ok) {
+    assert.equal(r.value.user_note, 'watched a VP9 share in full screen');
+    assert.ok(!r.value.log_tail?.includes('watched a VP9'));
+  }
+});

@@ -1489,12 +1489,42 @@
             "id": "start-screen",
             "title": "Un start mai rapid",
             "body": "Un ecran de start cu logoul pe tema ta, în loc de o fereastră albă goală, și cu aproximativ o treime mai puțin cod înainte de primul ecran: Setările, asistentul și partajarea ecranului se încarcă abia când le deschizi."
+          },
+          {
+            "id": "crash-reports",
+            "title": "Rapoarte de crash",
+            "body": "Dacă Mumcord se închide neașteptat, salvează un raport scurt pe calculatorul tău și îți spune la următoarea pornire. În Setări → Avansat și dezvoltator vezi ultimele 10 și le poți copia, exporta sau șterge. Se încarcă doar un singur raport, și doar după ce ai confirmat ce anume se trimite."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.1",
+      "teaser": "Rapoarte de crash pe care le verifici tu și le trimiți doar dacă vrei, plus remedieri pentru camerele care înainte nu dădeau imagine.",
+      "summary": "O actualizare mică: dacă Mumcord se închide neașteptat, pe calculatorul tău rămâne un raport, iar el e trimis doar dacă vrei. În plus pornesc mai multe camere, inclusiv prin portalul camerei, iar imaginile de fundal din previzualizare apar imediat.",
+      "groups": [
+        {
+          "title": "Nou",
+          "items": [
+            "Rapoarte de crash: dacă Mumcord se închide neașteptat, salvează un raport scurt pe calculatorul tău și îți spune la următoarea pornire. Conține ce a mers prost, ce funcții erau folosite, datele sistemului și ultimele rânduri din jurnal.",
+            "În Setări → Avansat și dezvoltator → Rapoarte de crash vezi ultimele 10 și le poți copia, vizualiza, exporta sau șterge.",
+            "Poți trimite un singur raport echipei Mumcord. Confirmarea arată exact ce se trimite și acceptă un comentariu. Fără „Trimite” nu pleacă nimic de pe calculatorul tău.",
+            "La Diagnosticare copiezi ultimele 200 de rânduri din jurnal sau tot jurnalul și deschizi folderul jurnalelor.",
+            "Jurnalul indică mai multe cauze: ce moduri de cameră au fost încercate, dacă AppImage poate reda H.264 (Twitch) și când efectele de fundal nu găsesc pe nimeni în imagine."
+          ]
+        },
+        {
+          "title": "Reparat",
+          "items": [
+            "Camerele care oferă un mod în care nu trimit niciodată imagini (de exemplu o Logitech StreamCam la 720p și 30 fps) pornesc acum: Mumcord încearcă o rată de cadre mai mică sau o imagine mai mică, în loc să renunțe cu „Camera nu trimite imagini”.",
+            "Camerele prin portalul camerei al desktopului nu se mai opresc cu „Camera trimite imagini ilizibile”.",
+            "Previzualizarea camerei: imaginile de fundal integrate apar imediat când alegi Imagine, în loc să lase câteva clipe casetele goale la fiecare deschidere a previzualizării."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.0",
       "teaser": "Partajare de fișiere, camera ta, partajarea ecranului cu sunet și AV1 pentru până la 25 de spectatori, pluginuri în zona media, kick, ban și lista de banuri.",
@@ -2805,7 +2835,7 @@
         "items": [
           "Instalatoare semnate: pe macOS din 0.4.1, pe Windows din 0.6.1. Urmează: fără avertisment SmartScreen odată ce certificatul pentru Windows a acumulat suficientă reputație",
           "Actualizări automate",
-          "Rapoarte de crash, doar dacă ești de acord",
+          "Rapoarte de crash, doar dacă ești de acord: vine cu 0.7.1, un raport rămâne pe calculatorul tău și se trimite doar după confirmarea ta",
           "Depozite de pachete și magazine de aplicații",
           "Mumcord pe Flathub, pentru orice distribuție Linux direct din centrul de software",
           "Aplicația pentru telefon în Google Play, App Store și F-Droid"

@@ -1489,12 +1489,42 @@
             "id": "start-screen",
             "title": "Kiirem käivitus",
             "body": "Avaekraan logoga sinu teemal tühja valge akna asemel ja umbes kolmandiku vähem koodi enne esimest ekraani: seaded, viisard ja ekraanijagamine laaditakse alles siis, kui need avad."
+          },
+          {
+            "id": "crash-reports",
+            "title": "Krahhiaruanded",
+            "body": "Kui Mumcord sulgub ootamatult, salvestab ta sinu arvutisse lühikese aruande ja annab sellest järgmisel käivitusel teada. Menüüs Seaded → Täpsemad ja arendaja näed viimast 10 ning saad neid kopeerida, eksportida või kustutada. Üles laaditakse alati ainult üks aruanne ja alles pärast seda, kui oled kinnitanud, mis täpselt saadetakse."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.1",
+      "teaser": "Krahhiaruanded, mida kontrollid ise ja laed üles ainult soovi korral, ning parandused kaameratele, mis varem pilti ei andnud.",
+      "summary": "Väike uuendus: kui Mumcord sulgub ootamatult, jääb aruanne sinu arvutisse ja saadetakse ainult siis, kui sa seda soovid. Lisaks käivituvad rohkemad kaamerad, ka kaameraportaali kaudu, ja eelvaate taustapildid ilmuvad kohe.",
+      "groups": [
+        {
+          "title": "Uus",
+          "items": [
+            "Krahhiaruanded: kui Mumcord sulgub ootamatult, salvestab ta sinu arvutisse lühikese aruande ja annab sellest järgmisel käivitusel teada. Selles on, mis valesti läks, millised funktsioonid olid kasutusel, süsteemi andmed ja logi viimased read.",
+            "Menüüs Seaded → Täpsemad ja arendaja → Krahhiaruanded näed viimast 10 ning saad neid kopeerida, vaadata, eksportida või kustutada.",
+            "Ühe aruande saad saata Mumcordi meeskonnale. Kinnitusaken näitab täpselt, mis saadetakse, ja võtab vastu kommentaari. Ilma nuputa „Saada” ei lahku sinu arvutist midagi.",
+            "Jaotises Diagnostika kopeerid logi viimased 200 rida või kogu logi ja avad logikausta.",
+            "Logi nimetab rohkem põhjuseid: milliseid kaamerarežiime proovati, kas AppImage oskab esitada H.264 (Twitch) ja millal taustaefektid ei leia pildilt kedagi."
+          ]
+        },
+        {
+          "title": "Parandatud",
+          "items": [
+            "Kaamerad, mis pakuvad režiimi, milles nad kunagi pilte ei saada (näiteks Logitech StreamCam 720p ja 30 kaadriga sekundis), käivituvad nüüd: Mumcord proovib madalamat kaadrisagedust või väiksemat pilti, selle asemel et loobuda teatega „Kaamera ei saada pilte”.",
+            "Töölaua kaameraportaali kaudu töötavad kaamerad ei katke enam teatega „Kaamera saadab loetamatuid pilte”.",
+            "Kaamera eelvaade: sisseehitatud taustapildid ilmuvad kohe, kui valid Pildi, mitte ei jää ruudud iga eelvaate avamisel hetkeks tühjaks."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.0",
       "teaser": "Failide jagamine, sinu kaamera, ekraani jagamine heliga ja AV1 kuni 25 vaatajale, pluginad meediapiirkonnas, väljaviskamine, keelustamine ja keelunimekiri.",
@@ -2805,7 +2835,7 @@
         "items": [
           "Allkirjastatud paigaldajad: macOS-is alates versioonist 0.4.1, Windowsis alates versioonist 0.6.1. Järgmisena: SmartScreeni hoiatust enam pole, kui Windowsi sertifikaat on piisavalt mainet kogunud",
           "Automaatsed uuendused",
-          "Krahhiaruanded, ainult sinu nõusolekul",
+          "Krahhiaruanded, ainult sinu nõusolekul: tuleb versiooniga 0.7.1, aruanne jääb sinu arvutisse ja saadetakse alles pärast sinu kinnitust",
           "Paketihoidlad ja poed",
           "Mumcord Flathubis, igale Linuxi distributsioonile otse tarkvarakeskusest",
           "Telefonirakendus Google Plays, App Store’is ja F-Droidis"
