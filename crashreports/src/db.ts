@@ -103,7 +103,22 @@ CREATE TABLE IF NOT EXISTS sessions (
   created_at TEXT NOT NULL,
   expires_at TEXT NOT NULL
 );
+CREATE TABLE IF NOT EXISTS github_deliveries (
+  id TEXT PRIMARY KEY,
+  received_at TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS github_deliveries_received ON github_deliveries(received_at);
+CREATE TABLE IF NOT EXISTS github_stats (
+  org TEXT NOT NULL,
+  date TEXT NOT NULL,
+  taken_at TEXT NOT NULL,
+  data_json TEXT NOT NULL,
+  PRIMARY KEY (org, date)
+);
 `;
+
+/** How long GitHub delivery ids are kept for the dedupe. */
+export const DELIVERY_RETENTION_MS = 7 * 86_400_000;
 
 type Row = Record<string, unknown>;
 
@@ -328,6 +343,38 @@ export class Store {
 
   deleteSession(tokenHash: string): void {
     this.db.prepare('DELETE FROM sessions WHERE token_hash = ?').run(tokenHash);
+  }
+
+  // ---- GitHub ----
+
+  /**
+   * Records a GitHub webhook key (delivery id or item key); false when it was seen within the last
+   * 7 days. Older keys are dropped on the way.
+   */
+  claimGithubDelivery(id: string, now: Date = new Date()): boolean {
+    this.db.prepare('DELETE FROM github_deliveries WHERE received_at < ?').run(new Date(now.getTime() - DELIVERY_RETENTION_MS).toISOString());
+    return this.db.prepare('INSERT OR IGNORE INTO github_deliveries (id, received_at) VALUES (?, ?)').run(id, now.toISOString()).changes > 0;
+  }
+
+  hasGithubStats(org: string, date: string): boolean {
+    return !!this.db.prepare('SELECT 1 FROM github_stats WHERE org = ? AND date = ?').get(org, date);
+  }
+
+  /** The latest snapshot before `date` (YYYY-MM-DD), or null. */
+  previousGithubStats<T>(org: string, date: string): { date: string; data: T } | null {
+    const r = this.db
+      .prepare('SELECT date, data_json FROM github_stats WHERE org = ? AND date < ? ORDER BY date DESC LIMIT 1')
+      .get(org, date) as Row | undefined;
+    return r ? { date: r.date as string, data: JSON.parse(r.data_json as string) as T } : null;
+  }
+
+  /** Stores the day's snapshot; false when one exists already (the day's card went out). */
+  saveGithubStats(org: string, date: string, data: unknown, now: Date = new Date()): boolean {
+    return (
+      this.db
+        .prepare('INSERT OR IGNORE INTO github_stats (org, date, taken_at, data_json) VALUES (?, ?, ?, ?)')
+        .run(org, date, now.toISOString(), JSON.stringify(data)).changes > 0
+    );
   }
 
   purgeExpiredSessions(): void {

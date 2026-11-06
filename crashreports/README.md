@@ -50,6 +50,12 @@ test/               node:test tests, test/fixtures/ holds real crash files
 | `MUMBOT_WEBHOOK_URL` | (none) | Mumbot webhook `POST /message` URL, e.g. `http://mumbot:8080/message`. See "Mumbot webhook" |
 | `MUMBOT_WEBHOOK_TOKEN` | (none) | Mumbot API key (a `[[keys]]` entry), sent as `X-API-Key` |
 | `MUMBOT_CHANNEL` | (none) | Channel id (e.g. `42`), or its name, looked up once through Mumbot's `GET /channels` |
+| `MUMBOT_GITHUB_CHANNEL` | `MUMBOT_CHANNEL` | Channel for the GitHub cards (webhook and daily statistics) |
+| `GITHUB_WEBHOOK_SECRET` | (none) | Secret of the GitHub organisation webhook; without it `POST /api/github/webhook` answers 404. See "GitHub webhook" |
+| `GITHUB_ORG` | `Mumcord` | Organisation for the daily statistics; empty turns them off |
+| `GITHUB_STATS` | `1` | `0` turns the daily statistics off |
+| `GITHUB_STATS_TIME` | `22:00` | Local time of the daily statistics card (`HH:MM`) |
+| `GITHUB_STATS_TZ` | `Europe/Berlin` | IANA time zone of `GITHUB_STATS_TIME`; daylight saving time is followed |
 
 ## Setup
 
@@ -259,6 +265,86 @@ No port is published: the crash service reaches Mumbot over the compose network.
 start that HTTP on `0.0.0.0` is unencrypted; that traffic stays on the internal network. Check the
 bot with `GET http://mumbot:8080/health` (`"connected":true`) and the key with
 `GET /channels` (header `X-API-Key`).
+
+## GitHub webhook
+
+New issues and pull requests anywhere in the organisation are posted as cards into
+`MUMBOT_GITHUB_CHANNEL` (default: `MUMBOT_CHANNEL`; a different channel must also be in the Mumbot
+key's `channels` list). Setup:
+
+1. `openssl rand -hex 32` → `GITHUB_WEBHOOK_SECRET` (deploy secret, never committed).
+2. GitHub: organisation **Settings → Webhooks → Add webhook**:
+   - Payload URL: `https://crash.mumcord.app/api/github/webhook`
+   - Content type: `application/json`
+   - Secret: the value from step 1
+   - "Let me select individual events": **Issues** and **Pull requests** (nothing else)
+3. GitHub sends a `ping`; the webhook page shows a green tick when the service answered 200.
+
+Behaviour:
+
+- Every request must carry a valid `X-Hub-Signature-256` (HMAC-SHA256 of the raw body, compared in
+  constant time), else 401. Bodies over 1 MB get 413. Without `GITHUB_WEBHOOK_SECRET` the route is
+  404.
+- Cards go out for `issues` / `opened` and `pull_request` / `opened` or `ready_for_review`. Draft PRs
+  wait until they are ready for review. Issues and PRs by bots (`type: Bot` or a login ending in
+  `[bot]`, e.g. dependabot) are skipped. Other events and actions answer 202 and post nothing.
+- Dedupe: the `X-GitHub-Delivery` id and the issue/PR (`repo#number`) are kept in SQLite for 7 days,
+  so a redelivery, or a PR going back to draft and ready again, posts once.
+- The service answers right away; the card is posted in the background and failures are logged.
+
+```
+[card title="New issue: Crash when joining a channel" color=info icon=info url="HTTPS://github.com/Mumcord/mumcord/issues/42"]
+- Repo: Mumcord/mumcord
+- Number: #42
+- Author: octocat
+- Labels: bug, audio
+[/card]
+
+[card title="New pull request: Add push to talk overlay" color=success icon=check url="HTTPS://github.com/Mumcord/mumcord/pull/7"]
+- Repo: Mumcord/mumcord
+- Number: #7
+- Author: octocat
+- Branches: main ← ptt-overlay
+- Changes: +120 / −8
+[/card]
+```
+
+Issues are `info` (blue), pull requests `success` (green). Labels appear when set; a branch from a
+fork is shown as `owner:branch`. Title and "Open" lead to the issue or PR on github.com.
+
+## Daily GitHub statistics
+
+With the Mumbot webhook configured and `GITHUB_ORG` set (default `Mumcord`), the service posts one
+card a day at `GITHUB_STATS_TIME` in `GITHUB_STATS_TZ` (default 22:00 Europe/Berlin; the next run is
+computed with `Intl` in that zone, so it stays at 22:00 local across the DST changes). `GITHUB_STATS=0`
+turns it off.
+
+Numbers come from the public GitHub REST API, with `GITHUB_TOKEN` when set, else unauthenticated:
+
+- followers: `GET /orgs/{org}`;
+- stars: summed over all public repos that are neither archived nor forks
+  (`GET /orgs/{org}/repos?type=public&per_page=100`, paginated);
+- open issues and PRs: search `is:issue is:open org:{org}` and `is:pr is:open org:{org}`;
+- new in 24 h: the same searches with `created:>=<now − 24 h>`.
+
+Each day's numbers, including the stars per repo, are stored as a snapshot in SQLite. The card shows
+the change against the previous snapshot and the three repos with the most new stars since then:
+
+```
+[card title="Mumcord on GitHub · 2026-11-07" icon=chart url="HTTPS://github.com/Mumcord"]
+- Stars: ★ 128 (+3)
+- Followers: 41 (+1)
+- Open issues: 17 (−2)
+- Open PRs: 4 (±0)
+- New in 24 h: 3 issues, 1 PR
+- Most new stars: mumcord +2, mumbot +1
+[/card]
+```
+
+The day's snapshot is written before the card is posted and is the guard against a second card,
+also across restarts. If the service was down at the run time and starts later the same day (before
+midnight local time), it posts once at start. An API error (e.g. the rate limit) is logged and that
+day's card is skipped (a restart the same evening tries again); nothing crashes.
 
 ## Privacy
 

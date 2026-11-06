@@ -6,16 +6,25 @@ import { loadConfig } from './config.ts';
 import { Store } from './db.ts';
 import { createApp } from './app.ts';
 import { createAnthropic } from './ai.ts';
+import { MumbotNotifier } from './mumbot.ts';
+import { GithubStats } from './githubstats.ts';
 
 const config = loadConfig();
 mkdirSync(config.dataDir, { recursive: true });
 const store = new Store(join(config.dataDir, 'crashreports.db'));
 const anthropic = config.anthropicApiKey ? createAnthropic(config.anthropicApiKey, config.aiTimeoutMs) : null;
 
+const githubMumbot = new MumbotNotifier({
+  url: config.mumbotWebhookUrl,
+  token: config.mumbotWebhookToken,
+  channel: config.mumbotGithubChannel,
+});
+
 const { app } = createApp({
   config,
   store,
   anthropic,
+  githubMumbot,
   getClientIp: (c, _env) => {
     // Behind Traefik (TRUST_PROXY=1) the proxy appends the real client address as the last
     // X-Forwarded-For entry; earlier entries can be forged by the client. Used only for the
@@ -43,11 +52,31 @@ pruneOld();
 const pruneTimer = setInterval(pruneOld, 6 * 3_600_000);
 pruneTimer.unref();
 
+// Daily GitHub statistics card (GITHUB_ORG, Mumbot configured, GITHUB_STATS not 0).
+let githubStats: GithubStats | null = null;
+if (config.githubStats && config.githubOrg && githubMumbot.enabled) {
+  try {
+    githubStats = new GithubStats({
+      store,
+      mumbot: githubMumbot,
+      org: config.githubOrg,
+      time: config.githubStatsTime,
+      tz: config.githubStatsTz,
+      token: config.githubToken,
+    });
+    githubStats.start();
+    console.log(`github stats: ${config.githubOrg} daily at ${config.githubStatsTime} ${config.githubStatsTz}`);
+  } catch (e) {
+    console.warn(`github stats: off: ${e instanceof Error ? e.message : String(e)}`);
+  }
+}
+
 const server = serve({ fetch: app.fetch, port: config.port }, (info) => {
   console.log(`crashreports listening on :${info.port} (origin ${config.origin}, AI ${anthropic ? 'on' : 'off'})`);
 });
 
 const shutdown = () => {
+  githubStats?.stop();
   server.close(() => {
     store.close();
     process.exit(0);
