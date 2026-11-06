@@ -208,11 +208,11 @@ Mumbot's `docs/configuration.md`.
 ```toml
 # bot.toml (secret, never committed)
 [server]
-host = "tiffoyn.de"
+host = "mumble.example.org"
 port = 64738
 name = "Crash reports"
 cert_name = "crash-reports"     # stable identity, no spaces
-channel = "Lobby"               # joined at login
+channel = "Crash reports"               # joined at login
 # connect password: SERVER_PASSWORD env
 
 [http]
@@ -221,10 +221,10 @@ listen = "0.0.0.0:8080"         # inside the container; not published to the hos
 [[keys]]
 key = "CHANGE_ME_MUMBOT_KEY"    # openssl rand -hex 32, same value as MUMBOT_WEBHOOK_TOKEN
 label = "crashreports"
-channels = ["Lobby"]
+channels = ["Crash reports"]
 
 [[token]]                       # channel password (Mumble access token)
-channel = "Lobby"
+channel = "Crash reports"
 password = "CHANGE_ME_CHANNEL_PASSWORD"
 ```
 
