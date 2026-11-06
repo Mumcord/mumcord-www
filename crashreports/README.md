@@ -39,6 +39,7 @@ test/               node:test tests, test/fixtures/ holds real crash files
 | `COOKIE_SECURE` | `1` if `ORIGIN` is https | Set `0` only for plain-http local testing |
 | `TRUST_PROXY` | `0` | `1` behind Traefik: use the last `X-Forwarded-For` entry as the client address for the rate limit |
 | `RATE_LIMIT_PER_MINUTE` | `10` | Reports per client address and minute |
+| `REPORT_RETENTION_DAYS` | `90` | Reports are deleted this many days after they arrive |
 | `GITHUB_REPO` | `Mumcord/mumcord` | Repo for issues and source snippets |
 | `GITHUB_TOKEN` | (none) | Needed for "Create GitHub issue" (Issues: write). Also used for source fetches and code search |
 | `ANTHROPIC_API_KEY` | (none) | Enables the AI analysis |
@@ -150,6 +151,8 @@ When no location is found and `GITHUB_TOKEN` is set, a GitHub code search for a 
 phrase of the cause is tried.
 
 ## Privacy
+
+- Retention: every report (raw text, log lines, system details) is deleted 90 days after it arrives, checked at start and every 6 hours. Groups keep only their aggregate: count, first/last seen, versions, status, analysis and issue link. Reports carry no install or user id, so a single report cannot be traced back to a person or deleted on request; the fixed retention is the safeguard.
 
 - The client IP is never stored. It is used only in memory for the rate limit.
 - Reports contain what the app writes: version, OS, kernel, desktop, CPU, GPU and driver, memory,

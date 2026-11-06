@@ -257,6 +257,13 @@ export class Store {
     return this.db.prepare('DELETE FROM groups WHERE id = ?').run(id).changes > 0;
   }
 
+  /** Deletes reports older than the cut-off and expired sessions; groups keep their counts and analysis. */
+  prune(reportsBefore: Date, now: Date = new Date()): { reports: number; sessions: number } {
+    const reports = this.db.prepare('DELETE FROM reports WHERE created_at < ?').run(reportsBefore.toISOString()).changes;
+    const sessions = this.db.prepare('DELETE FROM sessions WHERE expires_at < ?').run(now.toISOString()).changes;
+    return { reports: Number(reports), sessions: Number(sessions) };
+  }
+
   deleteReport(id: string): boolean {
     const r = this.db.prepare('SELECT group_id FROM reports WHERE id = ?').get(id) as Row | undefined;
     if (!r) return false;

@@ -33,6 +33,16 @@ if (!config.setupToken && store.credentialCount() === 0) {
   console.warn('No passkey registered and SETUP_TOKEN is not set: the admin UI cannot be set up.');
 }
 
+// Retention: reports are deleted REPORT_RETENTION_DAYS (default 90) after they arrive, checked at start and every 6 hours.
+const DAY_MS = 86_400_000;
+const pruneOld = () => {
+  const r = store.prune(new Date(Date.now() - config.reportRetentionDays * DAY_MS));
+  if (r.reports || r.sessions) console.log(`retention: deleted ${r.reports} reports, ${r.sessions} sessions`);
+};
+pruneOld();
+const pruneTimer = setInterval(pruneOld, 6 * 3_600_000);
+pruneTimer.unref();
+
 const server = serve({ fetch: app.fetch, port: config.port }, (info) => {
   console.log(`crashreports listening on :${info.port} (origin ${config.origin}, AI ${anthropic ? 'on' : 'off'})`);
 });

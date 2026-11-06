@@ -14,6 +14,8 @@ export interface Config {
   aiIncludeLogs: boolean;
   aiIncludeSource: boolean;
   aiTimeoutMs: number;
+  /** Reports (raw text, logs, system details) are deleted this many days after they arrive. */
+  reportRetentionDays: number;
 }
 
 /** Deploy placeholders (CHANGE_ME…) count as not set, so a missing key turns the feature off. */
@@ -35,6 +37,7 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): Config {
     cookieSecure,
     trustProxy: env.TRUST_PROXY === '1',
     rateLimitPerMinute: Number(env.RATE_LIMIT_PER_MINUTE ?? 10),
+    reportRetentionDays: Math.max(1, Number(env.REPORT_RETENTION_DAYS ?? 90)),
     githubRepo: env.GITHUB_REPO ?? 'Mumcord/mumcord',
     githubToken: secret(env.GITHUB_TOKEN),
     anthropicApiKey: secret(env.ANTHROPIC_API_KEY),
