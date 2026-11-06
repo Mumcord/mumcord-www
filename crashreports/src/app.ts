@@ -13,6 +13,7 @@ import { buildIssue, createIssue } from './github.ts';
 import { analyzeCrash, describeAiError, type AnthropicLike } from './ai.ts';
 import { SourceFetcher, gatherSnippets } from './source.ts';
 import { AI_WAIT_MS, MumbotNotifier } from './mumbot.ts';
+import { GITHUB_WEBHOOK_MAX_BODY, decide, verifySignature, type GhPayload } from './githubhook.ts';
 
 export interface AppDeps {
   config: Config;
@@ -21,6 +22,8 @@ export interface AppDeps {
   fetchFn?: typeof fetch;
   /** Mumbot notifier; built from the config when not given. */
   mumbot?: MumbotNotifier;
+  /** Mumbot notifier for the GitHub cards (MUMBOT_GITHUB_CHANNEL); built from the config when not given. */
+  githubMumbot?: MumbotNotifier;
   /** How long a new group's card waits for the AI analysis (default 30 s). */
   notifyAiWaitMs?: number;
   /** Anthropic client; null disables AI analysis. */
@@ -49,6 +52,14 @@ export function createApp(deps: AppDeps) {
       url: config.mumbotWebhookUrl,
       token: config.mumbotWebhookToken,
       channel: config.mumbotChannel,
+      fetchFn,
+    });
+  const githubMumbot =
+    deps.githubMumbot ??
+    new MumbotNotifier({
+      url: config.mumbotWebhookUrl,
+      token: config.mumbotWebhookToken,
+      channel: config.mumbotGithubChannel,
       fetchFn,
     });
   const aiWaitMs = deps.notifyAiWaitMs ?? AI_WAIT_MS;
@@ -197,6 +208,47 @@ export function createApp(deps: AppDeps) {
       const regression = previousStatus === 'fixed' || previousStatus === 'ignored';
       if ((isNew || regression) && mumbot.claim(group)) notify(group, aiRun, isNew ? null : previousStatus);
       return c.json({ id, group }, 201);
+    },
+  );
+
+  // ---- GitHub organisation webhook ----
+  app.post(
+    '/api/github/webhook',
+    async (c, next) => (config.githubWebhookSecret ? next() : c.json({ error: 'not found' }, 404)),
+    bodyLimit({ maxSize: GITHUB_WEBHOOK_MAX_BODY, onError: (c) => c.json({ error: 'body too large' }, 413) }),
+    async (c) => {
+      const raw = new Uint8Array(await c.req.arrayBuffer());
+      if (!verifySignature(config.githubWebhookSecret, raw, c.req.header('x-hub-signature-256'))) {
+        return c.json({ error: 'bad signature' }, 401);
+      }
+      const event = c.req.header('x-github-event') ?? '';
+      let payload: GhPayload;
+      try {
+        const body = new TextDecoder().decode(raw);
+        const type = (c.req.header('content-type') ?? '').split(';')[0].trim().toLowerCase();
+        payload = JSON.parse(type === 'application/x-www-form-urlencoded' ? (new URLSearchParams(body).get('payload') ?? '') : body);
+        if (!payload || typeof payload !== 'object') throw new Error('not an object');
+      } catch {
+        return c.json({ error: 'invalid JSON' }, 400);
+      }
+      const decision = decide(event, payload);
+      if (decision.kind === 'ping') return c.json({ ok: true });
+      if (decision.kind === 'ignore') return c.json({ ignored: decision.reason }, 202);
+      const delivery = c.req.header('x-github-delivery')?.trim();
+      if (delivery && !store.claimGithubDelivery(`delivery:${delivery.slice(0, 100)}`)) return c.json({ duplicate: true });
+      if (!store.claimGithubDelivery(decision.key)) return c.json({ duplicate: true });
+      if (!githubMumbot.enabled) {
+        console.warn('github webhook: Mumbot is not configured, card not posted');
+        return c.json({ ok: true, posted: false });
+      }
+      // Reply right away; the card goes out in the background and failures are only logged.
+      const task = githubMumbot.postCard(decision.card, `GitHub card ${decision.key}`).then(
+        () => undefined,
+        (e) => console.warn(`mumbot: ${e instanceof Error ? e.message : String(e)}`),
+      );
+      notifications.add(task);
+      void task.finally(() => notifications.delete(task));
+      return c.json({ ok: true });
     },
   );
 

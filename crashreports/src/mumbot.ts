@@ -27,7 +27,10 @@ export const WEBHOOK_TIMEOUT_MS = 5_000;
 /** How long a new group's card waits for the AI analysis. */
 export const AI_WAIT_MS = 30_000;
 
-export type CardColor = 'error' | 'warning' | null;
+/** Mumcord's status colours (docs/message-cards.md); null is the neutral accent stripe. */
+export type CardColor = 'info' | 'success' | 'warning' | 'error' | null;
+/** Mumcord's built-in card icons. */
+export type CardIcon = 'info' | 'check' | 'warning' | 'error' | 'bell' | 'chart' | 'server' | 'bot';
 type Level = Analysis['severity'];
 
 export interface CardInput {
@@ -43,7 +46,7 @@ export interface CardInput {
 export interface Card {
   title: string;
   color: CardColor;
-  icon: 'error' | 'warning' | 'info';
+  icon: CardIcon;
   url: string;
   lines: string[];
 }
@@ -52,13 +55,13 @@ const oneLine = (s: string) => s.replace(/\s+/g, ' ').trim();
 const clip = (s: string, max: number) => (s.length > max ? `${s.slice(0, max - 1).trimEnd()}…` : s);
 
 /** A value inside a quoted BB code attribute: no quotes, brackets, markup or auto-linked URLs. */
-function attr(s: string, max: number): string {
+export function attr(s: string, max: number): string {
   const v = oneLine(s.replace(/["`*[\]<>]/g, ''));
   return clip(v, max).replace(/https?:\/\//gi, (m) => m.toUpperCase());
 }
 
 /** A line of card text: Mumbot Markdown subset, so no stray markers and no BB code brackets. */
-function text(s: string, max: number): string {
+export function text(s: string, max: number): string {
   return clip(oneLine(s.replace(/[`*]/g, '').replace(/\[/g, '(').replace(/\]/g, ')')), max);
 }
 
@@ -84,10 +87,15 @@ export function colorOf(level: Level): CardColor {
   return null;
 }
 
-/** Deep link into the admin UI; the scheme is upper-case so Mumbot does not turn it into a link. */
+/** A card URL with an upper-case scheme, so Mumbot does not turn it into a link. */
+export function cardUrl(url: string): string {
+  return url.replace(/^https?:/i, (m) => m.toUpperCase());
+}
+
+/** Deep link into the admin UI. */
 export function groupLink(origin: string, groupId: string): string {
   const base = origin.replace(/\/+$/, '');
-  return `${base}/#/groups/${encodeURIComponent(groupId)}`.replace(/^https?:/i, (m) => m.toUpperCase());
+  return cardUrl(`${base}/#/groups/${encodeURIComponent(groupId)}`);
 }
 
 function suspectLocation(input: CardInput): string {
@@ -218,12 +226,16 @@ export class MumbotNotifier {
     return hit.id;
   }
 
-  /** Posts the card. Never throws; failures are logged. */
-  async post(input: CardInput): Promise<boolean> {
+  /** Posts the crash group's card. Never throws; failures are logged. */
+  post(input: CardInput): Promise<boolean> {
+    return this.postCard(buildCard(input), `card for group ${input.group.id.slice(0, 12)}`);
+  }
+
+  /** Posts any card to the configured channel. Never throws; failures are logged under `what`. */
+  async postCard(card: Card, what: string): Promise<boolean> {
     if (!this.enabled) return false;
-    const group = input.group.id.slice(0, 12);
     try {
-      const payload = buildPayload(await this.resolveChannel(), input);
+      const payload: MumbotPayload = { channel: await this.resolveChannel(), message: cardMessage(card) };
       const res = await this.fetchFn(this.opts.url, {
         method: 'POST',
         headers: { 'content-type': 'application/json', 'X-API-Key': this.opts.token },
@@ -232,13 +244,13 @@ export class MumbotNotifier {
       });
       if (!res.ok) {
         const reason = (await res.text().catch(() => '')).slice(0, 200);
-        this.log.warn(`mumbot: card for group ${group} failed: ${res.status} ${reason}`);
+        this.log.warn(`mumbot: ${what} failed: ${res.status} ${reason}`);
         return false;
       }
-      this.log.log(`mumbot: card for group ${group} posted to channel ${payload.channel}`);
+      this.log.log(`mumbot: ${what} posted to channel ${payload.channel}`);
       return true;
     } catch (e) {
-      this.log.warn(`mumbot: card for group ${group} failed: ${e instanceof Error ? e.message : String(e)}`);
+      this.log.warn(`mumbot: ${what} failed: ${e instanceof Error ? e.message : String(e)}`);
       return false;
     }
   }
