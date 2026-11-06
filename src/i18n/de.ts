@@ -309,7 +309,7 @@ export const de = {
     testBuilds: "Releases auf GitHub",
     howTo: "Installationsanleitung",
     platforms: {
-      windows: { name: "Windows", sub: "10 / 11 · Installer (.exe)", warn: "SmartScreen warnt vor unbekanntem Herausgeber: „Weitere Informationen“ → „Trotzdem ausführen“." },
+      windows: { name: "Windows", sub: "10 / 11 · Installer (.exe)", warn: "Signiert als „Open Source Developer, Tobias Vorwachs“. SmartScreen kann anfangs trotzdem warnen: „Weitere Informationen“ → „Trotzdem ausführen“." },
       macos: { name: "macOS", sub: "Universal, Apple Silicon & Intel · .dmg", warn: "Gatekeeper blockiert beim ersten Start: Rechtsklick → „Öffnen“ oder unter Datenschutz & Sicherheit erlauben." },
       linux: { name: "Linux", sub: "X11 & Wayland · AppImage", warn: "chmod +x Mumcord_*.AppImage — braucht WebKitGTK 4.1 und einen Secret-Service-Schlüsselbund." },
     },

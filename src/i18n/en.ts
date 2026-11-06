@@ -310,7 +310,7 @@ export const en: Dict = {
     testBuilds: "Releases on GitHub",
     howTo: "Installation guide",
     platforms: {
-      windows: { name: "Windows", sub: "10 / 11 · installer (.exe)", warn: "SmartScreen warns about an unknown publisher: “More info” → “Run anyway”." },
+      windows: { name: "Windows", sub: "10 / 11 · installer (.exe)", warn: "Signed as “Open Source Developer, Tobias Vorwachs”. SmartScreen may still warn at first: “More info” → “Run anyway”." },
       macos: { name: "macOS", sub: "Universal, Apple Silicon & Intel · .dmg", warn: "Gatekeeper blocks the first launch: right-click → “Open”, or allow it under Privacy & Security." },
       linux: { name: "Linux", sub: "X11 & Wayland · AppImage", warn: "chmod +x Mumcord_*.AppImage — needs WebKitGTK 4.1 and a Secret Service keyring." },
     },
