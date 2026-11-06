@@ -8,6 +8,7 @@ name: Image
 on:
   push:
     branches: [main]
+    paths-ignore: ["crashreports/**", ".github/workflows/crashreports-image.yml"]
   schedule:
     - cron: "17 3 * * *"
   workflow_dispatch:
