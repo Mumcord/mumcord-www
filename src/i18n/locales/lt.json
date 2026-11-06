@@ -373,7 +373,7 @@
         {
           "tag": "Epic 4.1",
           "title": "Failai, ekranas, kamera ir papildiniai",
-          "body": "Atkeliauja su 0.7.0: dalykis failais nerodydamas savo IP adreso, ekrano bendrinimas iki 4K iki 25 žmonių, kamera su neryškiu fonu, lenta ir žaidimas Skyloom kaip papildiniai bei saugumo įvertis kitų papildiniams."
+          "body": "Nuo 0.7.0: dalykis failais nerodydamas savo IP adreso, ekrano bendrinimas iki 4K iki 25 žmonių, kamera su neryškiu fonu, lenta ir žaidimas Skyloom kaip papildiniai bei saugumo įvertis kitų papildiniams."
         },
         {
           "tag": "Epic 4",
@@ -604,8 +604,8 @@
       "toolTitle": "Prisidėję"
     },
     "spotlight5": {
-      "label": "Nauja versijoje 0.5.0/0.6.0",
-      "labelSoon": "Netrukus: 0.5.0/0.6.0",
+      "label": "Nauja versijoje 0.5.0/0.6.0/0.7.0",
+      "labelSoon": "Netrukus: 0.5.0/0.6.0/0.7.0",
       "title": "Daugiau ramybės. Daugiau tavęs. Daugiau garso.",
       "body": "0.5.0 atneša Epic 3: pranešimų centrą, blokavimą, kelias tapatybes, naują kanalų medį, muziką pokalbyje, mažos delsos režimą bendram muzikavimui ir tiesioginius ryšius per relay.",
       "tiles": {
@@ -856,6 +856,24 @@
             "title": "Blokuok žmones",
             "body": "„Blokuoti…“ žmogaus meniu paslepia jų asmenines žinutes ir užklausas, suskleidžia jų žinutes kanale ir nutildo jų balsą, tik tau. Blokavimas seka sertifikatą, todėl galioja skirtinguose serveriuose ir su naujais vardais. Serveriui ar žmogui nieko nesiunčiama, o Nustatymai → Privatumas išvardija visus, kuriuos užblokavai, su „Atblokuoti“.",
             "alt": "Žmogaus blokavimo patvirtinimas, išvardijantis, kas pasikeis"
+          },
+          {
+            "id": "kick-ban",
+            "title": "Išmesti ir užblokuoti",
+            "body": "Žmogaus meniu Administravimas yra „Išmesti…“ ir „Užblokuoti…“, nurodant priežastį. Blokavimai trunka 1 valandą, 1 dieną, 7 dienas, 30 dienų, visam laikui arba iki datos, pagal sertifikatą ir IP adresą. Tik su teise šakniniame kanale.",
+            "alt": "Žmogaus blokavimo langas"
+          },
+          {
+            "id": "ban-list",
+            "title": "Blokavimų sąrašas",
+            "body": "„Blokavimų sąrašas…“ serverio meniu rodo visus blokavimus su vardu, kontroliniu kodu, adresu, priežastimi ir pabaiga. Ieškok, filtruok, redaguok priežastį ir pabaigą tiesiog sąraše, panaikink blokavimus arba blokuok žmones, kurių nėra prisijungusių.",
+            "alt": "Blokavimų sąrašo langas"
+          },
+          {
+            "id": "bots-section",
+            "title": "Botai atskirai",
+            "body": "Skiltis „Botai šiame serveryje“ po kanalų sąrašu rodo kiekvieną botą ir ką jis daro, pavyzdžiui, relay, pokalbių istoriją ar webhook’us. Profilis ir meniu, įskaitant asmenines žinutes, veikia iš ten.",
+            "alt": "Skiltis su serverio botais"
           }
         ]
       },
@@ -1095,6 +1113,11 @@
             "title": "Ramus naudotojo skydelis",
             "body": "Skydelis kanalų sąrašo apačioje visada išlaiko tą patį aukštį: tu su vardu ir serveriu, viena būsenos eilutė, pavyzdžiui, jungiamasi iš naujo ar tavo balso kanalas, maži žetonai Netrukdyti, mažos delsos režimui ir ryšiui, bei mikrofono, ausinių ir padėjimo mygtukai. Kanalų sąrašas virš jo nebešokinėja.",
             "alt": "Naudotojo skydelis keliose būsenose, nuo kalbėjimo ir nutildymo iki pakartotinio prisijungimo"
+          },
+          {
+            "id": "camera-entry",
+            "title": "Kamera naudotojo skydelyje",
+            "body": "Kameros mygtukas šalia nutildymo ir klausos išjungimo atidaro peržiūrą. Kol kamera įjungta, jis tampa raudonas ir iškart ją išjungia, po tavo vardu rodoma „Kamera įjungta“, o raudonas ženklelis rodo tai sistemos dėkle."
           }
         ]
       },
@@ -1162,7 +1185,7 @@
           {
             "id": "screen-share",
             "title": "Ekrano bendrinimas",
-            "body": "Ekranas ar langas iki 8 žiūrovų, 720p raiška ir 30 kadrų per sekundę, Windows ir macOS sistemose, jei nori – su bendrinamos programos garsu. Pradedi mygtuku Programos pokalbyje. Žiūrovai žiūri pagrindiniame stulpelyje su raiška, kadrų dažniu ir srauto informacija; tu pokalbio viršuje gauni valdymo juostą su pauze, garsu, žiūrovais ir sustabdymu.",
+            "body": "Ekranas ar langas iki 8 žiūrovų tiesiogiai arba iki 25 per relay, jei nori – su garsu ir AV1. Pradedi mygtuku Programos pokalbyje ir pirmiausia nustatai kokybę bei kodeką. Žiūrovai žiūri pagrindiniame stulpelyje su raiška, kodeku, keliu ir informacija; tu pokalbio viršuje gauni juostą su kokybe, kodavimo įrankiu, pauze, garsu, žiūrovais ir sustabdymu.",
             "alt": "Bendrinamas ekranas pagrindiniame stulpelyje su srauto informacija ir žiūrovų sąrašu"
           },
           {
@@ -1178,9 +1201,74 @@
           },
           {
             "id": "relay",
-            "title": "Bendruomenės relė",
-            "body": "Serverio bendruomenė gali paleisti relę šalia Mumble serverio. Pilno dydžio paveikslėliai ir ekrano bendrinimas tada veikia net kai tiesioginio ryšio neįmanoma užmegzti, o su „visada relė“ kitas žmogus niekada nemato tavo IP adreso. Relė negali perskaityti šifruoto ryšio, o balsas jos niekada nenaudoja. Renkiesi skiltyje Nustatymai → Privatumas, taip pat kiekvienam serveriui.",
-            "alt": "Privatumo nustatymai su peer-to-peer pasirinkimais tiesiogiai, relė ir išjungta"
+            "title": "Bendruomenės relay",
+            "body": "Serverio bendruomenė gali paleisti relay šalia Mumble serverio. Pilno dydžio paveikslėliai, failai, kameros ir ekrano bendrinimas tada veikia net kai tiesioginio ryšio neįmanoma užmegzti, o su „visada relay“ kitas žmogus niekada nemato tavo IP adreso. Relay negali perskaityti šifruoto ryšio, balsas jo niekada nenaudoja, o Mumcord nenaudoja to, ko relay neleidžia. Renkiesi skiltyje Nustatymai → Privatumas, taip pat kiekvienam serveriui.",
+            "alt": "Privatumo nustatymai su peer-to-peer pasirinkimais tiesiogiai, relay ir išjungta"
+          },
+          {
+            "id": "file-sharing",
+            "title": "Failų bendrinimas",
+            "body": "Nutempk failus ar aplankus į pokalbį arba naudok sąvaržėlę, iki 2 GB. Jie visada eina per serverio relay, niekas nemato tavo IP adreso, o failas niekada nepasiekia Mumble serverio.",
+            "alt": "Bendrinamas failas kaip kortelė pokalbyje"
+          },
+          {
+            "id": "file-safety",
+            "title": "Saugūs atsisiuntimai",
+            "body": "Kiekvienas atsisiuntimas pirmiausia paklausia ir parodo aplanką. Programos ir scenarijai gauna papildomą įspėjimą, o po to Mumcord patikrina, ar failas atkeliavo nepakitęs. Nustatymuose gali išjungti gavimą ir nustatyti dydį bei aplanką.",
+            "alt": "Failų bendrinimo nustatymai"
+          },
+          {
+            "id": "camera",
+            "title": "Kamera",
+            "body": "Tavo kamera visiems tavo balso kanale, tik per relay ir visapusiškai šifruota. Ji prasideda peržiūra, kurios niekas nemato, o kameros mygtukas naudotojo skydelyje, meniu Programos, sistemos dėklas ir sparčiojo klavišo kombinacija ją įjungia bei išjungia.",
+            "alt": "Kameros nustatymai su peržiūra"
+          },
+          {
+            "id": "camera-room",
+            "title": "Kamerų kambarys",
+            "body": "Kanalo kameros būna virš pokalbio: iki devynių plytelių tinklelyje arba viena didelė plytelė su Kalbėtoju. Šalia ekrano bendrinimo ar watch party jos sudaro juostą šalia arba virš jo, arba jas paslepi.",
+            "alt": "Kamerų kambarys su keliomis kameromis virš pokalbio"
+          },
+          {
+            "id": "camera-backgrounds",
+            "title": "Kameros fonai",
+            "body": "Be fono, neryškus (lengvas ar stiprus), vienas iš 18 integruotų paveikslėlių arba tavo paties. Apskaičiuojama tavo kompiuteryje, o keisti gali neišjungdamas kameros.",
+            "alt": "Kameros peržiūra su stipriai neryškiu fonu"
+          },
+          {
+            "id": "camera-tiles",
+            "title": "Plytelių parinktys",
+            "body": "⋯ ant plytelės siūlo „Prisegti man“, „Rodyti didelę“, „Slėpti vaizdą“ (tada jis visai neatsisiunčiamas) ir „Kokybė man“. Be to, atskiras puslapis Nustatymai → Kamera, ir viskas veikia klaviatūra.",
+            "alt": "Kameros plytelės meniu"
+          },
+          {
+            "id": "screen-share-sound",
+            "title": "Garsas bendrinant",
+            "body": "Visas ekranas bendrina visą garsą, išskyrus Mumcord, langas – tik tos programos garsą. Kur neaišku, ką turi omenyje, paklausia „Kurios programos garsas?“. Veikia Windows 10, macOS 13 ir Linux su PipeWire.",
+            "alt": "Dialogas prieš pradedant bendrinti ekraną"
+          },
+          {
+            "id": "screen-share-av1",
+            "title": "AV1 ryškiam tekstui",
+            "body": "Mumcord fone patikrina, ką gali tavo kompiuteris, ir naudoja AV1 vaizdo plokštėje, AV1 procesoriuje arba VP9. Žiūrovai groja AV1 net be aparatinės įrangos, o senesnėms Mumcord versijoms bendrinimas persijungia į VP9.",
+            "alt": "Ekrano bendrinimo nustatymų skirtukas"
+          },
+          {
+            "id": "screen-share-relay",
+            "title": "Iki 25 žiūrovų",
+            "body": "Kai relay tai siūlo, išsiunti vieną kartą, o relay išsiunčia bendrinimą visiems, iki savo ribos (pagal numatytuosius nustatymus 25). Jis visapusiškai šifruotas, relay nieko nemato."
+          },
+          {
+            "id": "screen-share-quality",
+            "title": "Kokybės nustatymas",
+            "body": "Prieš pradėdamas pasirenki raišką, kadrų dažnį, ryškų tekstą ar sklandų judesį ir išsiuntimo limitą. Bendrinimo metu meniu Kokybė viską keičia be paleidimo iš naujo, o skirtukas „Ekrano bendrinimas“ nustatymuose laiko tavo numatytąsias reikšmes. Žiūrovai gali sumažinti savo kadrų dažnį.",
+            "alt": "Valdikliai žiūrint ekrano bendrinimą"
+          },
+          {
+            "id": "media-area-resize",
+            "title": "Vaizdo ir pokalbio padalijimas",
+            "body": "Tempk rankenėlę tarp bendrinimo ar watch party vaizdo ir pokalbio arba naudok rodyklių klavišus. Ji užsifiksuoja ties trečdaliu, puse ir dviem trečdaliais, o Mumcord prisimena aukštį.",
+            "alt": "Ekrano bendrinimas su kameromis juostoje šalia"
           }
         ]
       },
@@ -1214,7 +1302,7 @@
           {
             "id": "plugin-safety",
             "title": "Smėlio dėžė, parašai ir avarinis jungiklis",
-            "body": "Papildiniai veikia izoliuoti, be prieigos prie tinklo, failų ar garso, su atminties ir laiko apribojimais; nuolat strigstantis papildinys išjungiamas, o jūsų balsas niekada nenukenčia. Oficialūs papildiniai pasirašyti ir tikrinami. Avarinis jungiklis gali visiems išjungti žalingą papildinį, „Išjungti visus papildinius“ sustabdo juos vienu metu, o --no-plugins paleidžia be jokių.",
+            "body": "Papildiniai veikia izoliuoti, be prieigos prie failų ar garso, o tik prie svetainių, kurias jie deklaravo ir tu patvirtinai, su atminties ir laiko apribojimais; nuolat strigstantis papildinys išjungiamas, o tavo balsas niekada nenukenčia. Oficialūs papildiniai pasirašyti ir tikrinami. Avarinis jungiklis gali visiems išjungti žalingą papildinį, „Išjungti visus papildinius“ sustabdo juos vienu metu, o --no-plugins paleidžia be jokių.",
             "alt": "EVE Fit diegimo langas su eigos juosta „Checking signature…“ virš leidimų sąrašo."
           },
           {
@@ -1264,6 +1352,45 @@
             "title": "EVE Fit",
             "body": "Įklijuokite EVE Online komplektaciją į pokalbį, ir visi, turintys papildinį, pamatys laivo kortelę. Vienu spustelėjimu atidaromas komplektacijos ratas su kondensatoriumi, puolimu, gynyba ir navigacija, neprisijungus, Mumcord viduje, o „Kopijuoti komplektaciją“ ją išgauna atgal.",
             "alt": "EVE Fit langas su Algos laivu įrangos rate, modulių piktogramomis ir kondensatoriaus, atakos, gynybos, taikymosi, navigacijos bei dronų statistika."
+          },
+          {
+            "id": "plugin-media-area",
+            "title": "Papildiniai medijos srityje",
+            "body": "Papildinių veiklos vyksta medijos srityje su pačios Mumcord antrašte: kas paleido, kiek žmonių groja, kas padarė papildinį. Su viso ekrano režimu ir „Palikti papildinį“. Kai veikia daugiau nei vienas dalykas, tarp jų perjungia skirtukai arba Alt+1 iki Alt+9.",
+            "alt": "Papildinys medijos srityje su skirtukais virš jo"
+          },
+          {
+            "id": "plugin-side-panel",
+            "title": "Šoninė juosta papildiniams",
+            "body": "Papildinys gali rodyti savo puslapį dešinėje nuo pokalbio vietoj narių sąrašo. Keiti jo dydį, Mumcord prisimena plotį kiekvienam papildiniui, o ⋯ meniu veda į papildinio informaciją.",
+            "alt": "Papildinys šoninėje juostoje šalia pokalbio"
+          },
+          {
+            "id": "plugin-apps-menu",
+            "title": "Papildiniai meniu Programos",
+            "body": "Kiekvienas papildinys gali pridėti iki dviejų elementų meniu Programos, skiltyje „Papildiniai“ su savo piktograma ir pavadinimu. Tie patys elementai rodomi komandų paletėje (Ctrl+Shift+P), o papildinys gali elementą pilkai išjungti nurodęs priežastį.",
+            "alt": "Meniu Programos su papildinių elementais"
+          },
+          {
+            "id": "plugin-security-score",
+            "title": "Saugos įvertis",
+            "body": "Neoficialūs papildiniai gauna įvertį nuo 0 iki 100, su didžiausiomis priežastimis ir visa išklotine diegiant bei atnaujinant. Didelės rizikos papildiniams reikia atskiros varnelės, o „Papildinių sauga“ nustatymuose gali juos visai užblokuoti.",
+            "alt": "Papildinio saugos įverčio informacija"
+          },
+          {
+            "id": "plugin-min-version",
+            "title": "Mažiausia papildinių versija",
+            "body": "Jei papildiniui reikia naujesnio Mumcord, rašoma „Reikia Mumcord X ar naujesnės“ ir diegimas išjungtas. Automatiniai atnaujinimai laukia, kol tavo Mumcord galės paleisti naują versiją."
+          },
+          {
+            "id": "plugin-websites",
+            "title": "Papildinių svetainės",
+            "body": "Papildiniai, kalbantys su svetainėmis, diegiant ir savo informacijoje išvardija kiekvieną adresą su užklausų skaičiumi. Jie pasiekia tik tai, ką deklaravo ir tu patvirtinai, tik viešus adresus su galiojančiu sertifikatu. Papildinių puslapiai taip pat atsidaro dialoge."
+          },
+          {
+            "id": "plugin-relay-data",
+            "title": "Papildinio duomenys per relay",
+            "body": "Žaidimo duomenys eina visapusiškai šifruoti per relay, iki 64 KB vienai žinutei, vienam žmogui arba visam kanalui. Išjungi tai kiekvienam papildiniui, o Nustatymai → Papildiniai rodo, kiek duomenų jis panaudojo."
           }
         ]
       },
@@ -1376,11 +1503,12 @@
         {
           "title": "Failų bendrinimas",
           "items": [
-            "Nutempk failus į pokalbį arba prisegk juos sąvaržėle, iki 2 GB. Aplankai pirmiausia supakuojami į zip.",
+            "Nutempk failus ir aplankus į pokalbį arba prisegk juos sąvaržėle, iki 2 GB. Jei relay nėra arba jis failų neleidžia, sąvaržėlė pasako kodėl.",
             "Failai visada eina per serverio relay: niekas nemato tavo IP adreso, o failas niekada nepasiekia Mumble serverio.",
-            "Kiekvienas atsisiuntimas pirmiausia paklausia ir parodo aplanką, kuriame išsaugoma. Po to Mumcord patikrina SHA-256 kontrolinę sumą, kurią taip pat gali nukopijuoti.",
+            "Kiekvienas atsisiuntimas pirmiausia paklausia ir parodo aplanką, kuriame išsaugoma. Po to Mumcord patikrina, ar failas atkeliavo nepakitęs.",
             "Programos ir scenarijai gauna papildomą įspėjimą prieš atsisiunčiant ir prieš atidarant.",
-            "Failas lieka pasiekiamas, kol siuntėjas prisijungęs, daugiausia 24 valandas.",
+            "Tavo bendrinami failai rodo, kas juos atsisiuntė, ir turi mygtuką „Nebebendrinti“.",
+            "Paveikslėlius, kuriuos įmeti į kanalą, gali siųsti kaip paveikslėlius arba bendrinti kaip failus. Visi kiti failai bendrinami iš karto.",
             "Nauja skiltyje Nustatymai → Privatumas ir ryšiai: failų gavimas įjungtas arba išjungtas, didžiausias dydis nuo 100 MB iki 2 GB ir gautų failų aplankas."
           ]
         },
@@ -1388,7 +1516,9 @@
           "title": "Ekrano bendrinimas",
           "items": [
             "Garsas bendrinant: visas ekranas bendrina visą garsą, išskyrus Mumcord, langas bendrina tik tos programos garsą. Veikia Windows 10 (2004 ar naujesnė), macOS 13 ir Linux su PipeWire.",
-            "Prieš pradėdamas pasirink raišką iki 4K, kadrų dažnį iki 60 fps, ryškų tekstą arba sklandų judesį, kodeką ir išsiuntimo limitą. Meniu Kokybė juos keičia bendrinimo metu jo nepaleidžiant iš naujo.",
+            "Prieš pradėdamas pasirink raišką, kadrų dažnį, ryškų tekstą arba sklandų judesį, kodeką ir išsiuntimo limitą. Meniu Kokybė juos keičia bendrinimo metu jo nepaleidžiant iš naujo.",
+            "Mumcord pats pasirenka kodavimo įrankį: AV1 vaizdo plokštėje, AV1 procesoriuje arba VP9. Tavo bendrinimo juosta rodo kokybę, kodavimo įrankį ir ar eina per relay.",
+            "Kai bendrini langą, „Kurios programos garsas?“ paklausia, kieno garsas eina kartu. Gali pasirinkti ir „Be garso“.",
             "Per relay išsiunti vieną kartą, o žiūri iki 25 žmonių, su visapusiu šifravimu.",
             "AV1 vaizdo plokštėje arba procesoriuje ryškiam tekstui su mažesniu pralaidumu. VP9 lieka kaip atsarginis variantas, taip pat žiūrovams su senesniu Mumcord.",
             "Žiūrovai mato kodeką, kelią ir kokybę ir gali sumažinti savo kadrų dažnį. Žiūrovų sąrašas parodo, kas ką gauna.",
@@ -1399,10 +1529,16 @@
         {
           "title": "Kamera",
           "items": [
-            "Tavo kamera visiems tavo balso kanale, tik per relay ir visapusiškai šifruota, iki 25 žiūrovų.",
-            "Kamera prasideda peržiūra, kuri nieko nesiunčia. Ji išeina tik tada, kai ją įjungi.",
-            "Padaryk foną neryškų arba pastatyk paveikslėlį už savęs, apskaičiuota tavo kompiuteryje.",
-            "Jei kameros naudoti negalima, Mumcord pasako kodėl, pavyzdžiui, kai serverio relay kamerų neleidžia."
+            "Tavo kamera visiems tavo balso kanale, tik per relay ir visapusiškai šifruota.",
+            "Kamerų kambarys būna virš pokalbio: iki devynių plytelių tinklelyje arba išdėstymas Kalbėtojas su viena didele plytele. Kiekviena rodo vardą, išjungto mikrofono piktogramą ir žalią rėmelį, kol žmogus kalba.",
+            "Kamera prasideda peržiūra, kurios niekas kitas nemato. Pasirenki kamerą ir foną, o ji išeina tik tada, kai ją įjungi.",
+            "Fonai: be fono, neryškus (lengvas ar stiprus), vienas iš 18 integruotų paveikslėlių arba tavo paties. Apskaičiuojama tavo kompiuteryje, o keisti gali, kol kamera veikia.",
+            "⋯ ant plytelės siūlo „Prisegti man“, „Rodyti didelę“, „Slėpti žmogaus vaizdą“ (tada jis visai neatsisiunčiamas) ir „Kokybė man“. Viskas veikia ir klaviatūra.",
+            "Šalia ekrano bendrinimo ar watch party vaizdas lieka didelis, o kameros sudaro juostą šalia arba virš jo. Arba jas paslepi, ir tada jos neatsisiunčiamos.",
+            "Kameros mygtukas naudotojo skydelyje ir „Įjungti kamerą“ meniu Programos atidaro peržiūrą. Kol kamera įjungta, mygtukas tampa raudonas, o kanalų medyje rodoma kameros piktograma.",
+            "Naujas skirtukas „Kamera“ nustatymuose: peržiūra, kamera, siuntimo kokybė, veidrodinis savęs vaizdas, numatytasis fonas ir kaip matai kitų kameras. Be to, sparčiojo klavišo kombinacija kamerai įjungti ir išjungti.",
+            "Kol kamera įjungta, sistemos dėklo piktograma rodo raudoną kameros ženklelį, o jos meniu siūlo „Išjungti kamerą“. Užrakinus ekraną, kamera gali išsijungti pati.",
+            "Jei kameros naudoti negalima arba ji sustoja pati, Mumcord pasako kodėl, pavyzdžiui, kai serverio relay kamerų neleidžia."
           ]
         },
         {
@@ -1413,13 +1549,18 @@
             "Saugos įvertis nuo 0 iki 100 neoficialiems papildiniams, su priežastimis diegiant ir atnaujinant.",
             "Kiekviena svetainė, su kuria kalbasi papildinys, išvardijama diegiant, o naujoms svetainėms reikia tavo sutikimo.",
             "Papildinių puslapiai užrakinti: jokios kameros, jokio mikrofono, jokios iškarpinės ir tik svetainės, kurias leidai. Pakibęs puslapis nebesustabdo Mumcord.",
-            "Papildinys, kuriam reikia naujesnio Mumcord, tai pasako užuot įsidiegęs, o atnaujinimai laukia, kol tavo Mumcord galės juos paleisti."
+            "Papildinys, kuriam reikia naujesnio Mumcord, tai pasako užuot įsidiegęs, o atnaujinimai laukia, kol tavo Mumcord galės juos paleisti.",
+            "Kiekvienas papildinys gali pridėti iki dviejų elementų meniu Programos, skiltyje „Papildiniai“ su savo piktograma ir pavadinimu. Tie patys elementai rodomi komandų paletėje (Ctrl+Shift+P).",
+            "Papildiniai gali groti trumpus garsus, kuriuos girdi tik tu. Kol kas nors kalba, jie tylesni, o kol tavo klausa išjungta – tylūs.",
+            "Papildinys gali išsaugoti failą, atidaryti paveikslėlį ar paskelbti paveikslėlį pokalbyje, bet tik iškart po tavo paspaudimo ir su leidimu. Jis niekada nesužino, kur yra tavo failai.",
+            "Nustatymai → Papildiniai rodo, kiek duomenų kiekvienas papildinys siunčia per relay, turi jungiklį „Papildinių sauga“ nuo rizikingų papildinių ir išvardija papildinius, kurie buvo atmesti įkeliant.",
+            "Atnaujinimo apžvalga rodo saugos įvertį prieš ir po bei kodėl atnaujinimas laukia. Kai yra leidimo pastabų, nuoroda atidaro jas tavo naršyklėje."
           ]
         },
         {
           "title": "Administravimas",
           "items": [
-            "Išmesti… ir Užblokuoti… žmogaus meniu Administravimas, nurodant priežastį. Blokavimai trunka 1 valandą, 1 dieną, 7 dienas, 30 dienų, visam laikui arba iki datos.",
+            "„Išmesti…“ ir „Užblokuoti…“ žmogaus meniu Administravimas, nurodant priežastį. Blokavimai trunka 1 valandą, 1 dieną, 7 dienas, 30 dienų, visam laikui arba iki datos.",
             "Blokavimų sąrašas serverio meniu: paieška, filtravimas, priežasties ir pabaigos redagavimas, blokavimų panaikinimas ir žmonių, kurių šiuo metu nėra prisijungusių, blokavimas."
           ]
         },
@@ -1436,7 +1577,8 @@
             "Pokalbių istorija tarp žmonių su 0.7.0 pasiekiama greičiau: kiekvienas paveikslėlis keliauja vieną kartą, o jau turimi paveikslėliai nebeatsisiunčiami iš naujo.",
             "Mumcord vadovaujasi tuo, ką leidžia serverio relay, o serverio informacija parodo, kas tai.",
             "Jungikliai lieka matomi didelio kontrasto režimu.",
-            "Įterpti YouTube ir Twitch vaizdo įrašai: viso ekrano mygtukas veikia, o atskiras mygtukas nukopijuoja vaizdo įrašo nuorodą."
+            "Meniu Programos rodo piktogramas „Bendrinti ekraną“ ir „Žiūrėti kartu“, o papildiniai be piktogramos gauna savo spalvotą plytelę.",
+            "Delsos kortelė pasako, kodėl laikas ilgesnis, nei prašo mažos delsos režimas, pavyzdžiui, kai garso serveriui Linux sistemoje reikia didesnių blokų."
           ]
         },
         {
@@ -1449,9 +1591,13 @@
             "Išsiųstos žinutės iškart atsiduria tinkamoje istorijos vietoje ir joje lieka.",
             "Vidurinis paspaudimas ant nuorodos arba paspaudimas laikant Ctrl, Cmd ar Shift atidaro ją tavo naršyklėje, o ne Mumcord viduje.",
             "Jei nesi užsiregistravęs serveryje, kurio relay aptarnauja tik registruotus naudotojus, Mumcord dabar tai pasako užuot rašęs „nepavyko pasiekti relay“.",
-            "Blokavimų sąrašo lange yra uždarymo mygtukas, o Išmesti ir Užblokuoti reaguoja į pelės paspaudimus.",
+            "Išmesti ir Užblokuoti reaguoja į pelės paspaudimus.",
             "Watch party paleidimas iš meniu Programos nebeperkrauna programos.",
-            "Ekrano bendrinimas dabar kalba visomis kalbomis."
+            "Ekrano bendrinimas dabar kalba visomis kalbomis.",
+            "Garsas nebetrūkinėja, kai kita programa tuo pat metu groja garsą.",
+            "Kai baigiasi žiūrimas ekrano bendrinimas, nebelieka tuščio vaizdo, o kameros grįžta į kambario tinklelį.",
+            "Ctrl+C ant pažymėto pokalbio teksto nebepalieka tuščios iškarpinės Linux (X11) sistemoje.",
+            "Papildinys nebegali pats atidaryti savo dialogo, tik netrukus po tavo paspaudimo. Žinutės iš papildinio puslapio ateina teisinga tvarka."
           ]
         }
       ]
@@ -2575,8 +2721,6 @@
             "title": "Papildiniai scenoje",
             "items": [
               "Papildiniai gauna medijos sritį: žaidimai ir lentos veikia ten, kur paprastai būna ekrano bendrinimas, watch party ir kameros",
-              "Whiteboard, oficialus papildinys bendram mąstymui: begalinis drobės plotas su rašikliais, lipniais lapeliais ir lazerine rodykle, išsaugotas tavo įrenginyje ir eksportuojamas kaip PNG, SVG arba PDF",
-              "Skyloom, žaidimas tik balsu 2–12 žmonių: vienas apibūdina paslėptą žvaigždyną, visi kiti padeda po vieną žvaigždę",
               "Papildiniai atsidaro ir iš meniu Programos, šoniniame skydelyje arba dialogo lange, o dideli duomenų kiekiai eina per relay su visiškuoju (end-to-end) šifravimu"
             ],
             "mockups": [
@@ -2597,6 +2741,13 @@
               "Papildiniai su saugumo įverčiu",
               "Didelės rizikos papildinio diegimas",
               "Papildinio svetainės diegimo metu"
+            ]
+          },
+          {
+            "title": "Whiteboard & Skyloom",
+            "items": [
+              "Whiteboard, oficialus papildinys bendram mąstymui: begalinis drobės plotas su rašikliais, lipniais lapeliais ir lazerine rodykle, išsaugotas tavo įrenginyje ir eksportuojamas kaip PNG, SVG arba PDF",
+              "Skyloom, žaidimas tik balsu 2–12 žmonių: vienas apibūdina paslėptą žvaigždyną, visi kiti padeda po vieną žvaigždę"
             ]
           }
         ]
@@ -2993,7 +3144,7 @@
         "id": "relay",
         "title": "Neprivaloma: relay tiesioginiams ryšiams",
         "body": [
-          "Kad ekrano bendrinimas ir viso dydžio paveikslėliai veiktų ir tada, kai du žmonės negali tiesiogiai pasiekti vienas kito, arba kad niekas nematytų kito IP adreso, gali šalia serverio paleisti relay <a href=\"/en/mumpeer\">mumpeer</a>. Turinys lieka užšifruotas nuo galo iki galo.",
+          "Kad ekrano bendrinimas, kameros ir viso dydžio paveikslėliai veiktų ir tada, kai du žmonės negali tiesiogiai pasiekti vienas kito, arba kad niekas nematytų kito IP adreso, gali šalia serverio paleisti relay <a href=\"/en/mumpeer\">mumpeer</a>. Turinys lieka užšifruotas nuo galo iki galo.",
           "Mumcord naudoja relay nuo 0.5.0 versijos. Likusį darbą atlieka relay botas <code>mumbot peer</code>: jis paskelbia relay ir išdalija žetonus.",
           "Serverio aplanke įrašyk bendrą paslaptį į <code>.env</code> ir parsisiųsk abi pavyzdines konfigūracijas. Savo serverio adresą įrašyk į <code>public_host</code> faile <code>mumpeer.toml</code>, o savo Mumble serverio kontrolinį kodą – į <code>bot.toml</code>. Tada pridėk žemiau pateiktas paslaugas į <code>docker-compose.yml</code> po <code>services:</code>, o <code>mumpeer-data:</code> ir <code>mumbot-data:</code> po <code>volumes:</code>."
         ],
@@ -3027,7 +3178,7 @@
         ],
         "relay": [
           "mumpeer relay",
-          "Ekrano bendrinimas ir dideli paveikslėliai net už CGNAT, niekam nematant tavo IP"
+          "Ekrano bendrinimas, kameros ir dideli paveikslėliai net už CGNAT, niekam nematant tavo IP"
         ],
         "webhook": [
           "Mumbot webhook",
@@ -3300,6 +3451,20 @@
         ]
       },
       {
+        "id": "0.5.0",
+        "tag": "0.5.0",
+        "title": "Kameros ir grupės",
+        "summary": "Relay botas dabar tvarko kameras, papildinių duomenis ir grupes.",
+        "items": [
+          "Kameros per relay, pagal numatytuosius nustatymus iki 9 kanale; ekranas ir kamera veikia kartu",
+          "Papildinių duomenys Mumcord papildiniams, iki 8 siuntėjų kanale",
+          "Relay žetonai tik pasirinktų Mumble grupių nariams",
+          "Užrakintų kanalų pokalbių istorija siunčiama tik juose esantiems žmonėms",
+          "Botas nustato savo avatarą iš https URL arba base64",
+          "Mumble ir Mumcord kaip klientą rodo „Mumbot 0.x.y“, muzikos botai atsiranda savo kanale"
+        ]
+      },
+      {
         "id": "later",
         "tag": "Ateityje",
         "title": "Idėjos",
@@ -3324,7 +3489,9 @@
       "points": [
         "Ekrano bendrinimas ir dideli paveikslėliai net už CGNAT arba nerodant tavo IP",
         "Veikia relay tinkle, API lieka vidinis",
-        "Žetonus gauna tik tavo paties serverio registruoti naudotojai"
+        "Žetonus gauna tik tavo paties serverio registruoti naudotojai",
+        "Žetonus kameroms ir papildinių duomenims taip pat išdalija, kai relay tai leidžia",
+        "Jei nori – tik pasirinktų Mumble grupių nariams"
       ]
     },
     "music": {
@@ -3368,7 +3535,7 @@
       "mumpeer": {
         "title": "mumpeer",
         "description": "mumpeer yra nedidelis perdavimo serveris (relay) tiesioginiams Mumcord ryšiams: kai du žmonės negali tiesiogiai pasiekti vienas kito arba nori paslėpti savo IP adresą.",
-        "lead": "Nedidelis perdavimo serveris (relay) tiesioginiams Mumcord ryšiams tarp naudotojų, pavyzdžiui, ekrano bendrinimui ar viso dydžio paveikslėliams. Kai du žmonės negali tiesiogiai pasiekti vienas kito, esant CGNAT, griežtoms užkardoms ar tinkluose be UDP, arba nenori rodyti savo IP adreso, abu jungiasi prie relay. Jis tik perduoda užšifruotus paketus, kaip TURN serveris.",
+        "lead": "Nedidelis relay Mumcord tiesioginiams ryšiams tarp naudotojų, pavyzdžiui, ekrano bendrinimui, kameroms, failams ar viso dydžio paveikslėliams. Kai du žmonės negali tiesiogiai pasiekti vienas kito, esant CGNAT, griežtoms užkardoms ar tinkluose be UDP, arba nenori rodyti savo IP adreso, abu jungiasi prie relay. Jis tik perduoda užšifruotus paketus, kaip TURN serveris.",
         "features": [
           {
             "title": "Šalia tavo Mumble serverio",
@@ -3389,6 +3556,14 @@
           {
             "title": "Visiškai neprivaloma",
             "body": "Mumcord veikia ir be boto bei relay. Mumcord pasirenki pats: relay išjungtas, tik kai tiesioginis ryšys nepavyksta, arba visada."
+          },
+          {
+            "title": "Ekranas, kameros ir papildinių duomenys",
+            "body": "Vienas žmogus siunčia vieną kartą, o relay perduoda visiems žiūrovams jų neskaitydamas. Tai apima ekrano bendrinimą ir kameras: iki 18 kamerų vienu metu, kiekviena daugiausia su 2500 kbit/s išsiuntimu, ir iki 25 žiūrovų vienai transliacijai. Papildinių duomenys taip pat veikia, bet pagal numatytuosius nustatymus išjungti ir turi mažiausią prioritetą."
+          },
+          {
+            "title": "Tu nusprendi, kas leidžiama",
+            "body": "Skiltyje `[uses]` po vieną įjungi arba išjungi paveikslėlius, failus, ekrano bendrinimą, kamerą ir papildinių duomenis. Taip pat yra pralaidumo, sesijų ir transliacijų limitai."
           }
         ],
         "listTitle": "Ką operatorius gali matyti",

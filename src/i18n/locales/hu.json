@@ -373,7 +373,7 @@
         {
           "tag": "Epic 4.1",
           "title": "Fájlok, képernyő, kamera és bővítmények",
-          "body": "Jön a 0.7.0-val: fájlmegosztás az IP-címed megmutatása nélkül, legfeljebb 4K-s képernyőmegosztás akár 25 embernek, a kameráddal elmosott háttér, egy tábla és a Skyloom játék bővítményként, valamint biztonsági pontszám mások bővítményeihez."
+          "body": "A 0.7.0-tól: fájlmegosztás az IP-címed megmutatása nélkül, legfeljebb 4K-s képernyőmegosztás akár 25 embernek, a kameráddal elmosott háttér, egy tábla és a Skyloom játék bővítményként, valamint biztonsági pontszám mások bővítményeihez."
         },
         {
           "tag": "Epic 4",
@@ -604,8 +604,8 @@
       "toolTitle": "Közreműködők"
     },
     "spotlight5": {
-      "label": "Újdonság a 0.5.0/0.6.0-ban",
-      "labelSoon": "Hamarosan: 0.5.0/0.6.0",
+      "label": "Újdonság a 0.5.0/0.6.0/0.7.0-ban",
+      "labelSoon": "Hamarosan: 0.5.0/0.6.0/0.7.0",
       "title": "Több nyugalom. Több te. Több hang.",
       "body": "A 0.5.0 meghozza az Epic 3-at: értesítési központot, tiltást, több identitást, új csatornafát, zenét a chatben, alacsony késleltetésű módot a közös zenéléshez és közvetlen kapcsolatokat relén keresztül.",
       "tiles": {
@@ -856,6 +856,24 @@
             "title": "Emberek letiltása",
             "body": "A személyi menü „Letiltás…” pontja elrejti a privát üzeneteiket és kéréseiket, összecsukja a csatornaüzeneteiket és elnémítja a hangjukat, csak neked. A tiltás a tanúsítványt követi, így több szerveren és új neveknél is érvényes. A szervernek és a személynek semmi sem megy el, a Beállítások → Adatvédelem pedig kilistáz mindenkit, akit letiltottál, „Tiltás feloldása” gombbal.",
             "alt": "Egy személy letiltásának megerősítése, felsorolva, mi változik"
+          },
+          {
+            "id": "kick-ban",
+            "title": "Kirúgás és kitiltás",
+            "body": "Egy személy Adminisztráció menüje „Kirúgás…” és „Kitiltás…” elemet kínál, indokkal. A kitiltások 1 óráig, 1 napig, 7 napig, 30 napig, örökre vagy egy dátumig tartanak, a tanúsítványra és az IP-címre. Csak a gyökércsatornán meglévő joggal.",
+            "alt": "A párbeszédablak egy személy kitiltásához"
+          },
+          {
+            "id": "ban-list",
+            "title": "Tiltólista",
+            "body": "A szerver menü „Tiltólista…” eleme az összes kitiltást megmutatja névvel, ujjlenyomattal, címmel, indokkal és véggel. Keresés, szűrés, az indok és a vég szerkesztése a helyén, kitiltások feloldása vagy olyan emberek kitiltása, akik nincsenek online.",
+            "alt": "A tiltólista ablaka"
+          },
+          {
+            "id": "bots-section",
+            "title": "Botok külön",
+            "body": "A csatornalista alatti „Botok ezen a szerveren” rész minden botot megmutat azzal, amit csinál, például relé, chatelőzmények vagy webhookok. A profil és a menü, a privát üzenetekkel együtt, onnan működik.",
+            "alt": "A szerver botjait mutató rész"
           }
         ]
       },
@@ -1095,6 +1113,11 @@
             "title": "Nyugodt felhasználói panel",
             "body": "A csatornalista alján lévő panel mindig ugyanolyan magas marad: te névvel és szerverrel, egy állapotsor, például újracsatlakozás vagy a hangcsatornád, kis jelzők a Ne zavarjanak, az alacsony késleltetésű mód és a kapcsolat számára, valamint a mikrofon, a fejhallgató és a lerakás gombjai. A fölötte lévő csatornalista már nem ugrál.",
             "alt": "A felhasználói panel több állapotban, a beszédtől és némítástól az újracsatlakozásig"
+          },
+          {
+            "id": "camera-entry",
+            "title": "Kamera a felhasználói panelen",
+            "body": "A némítás és a süketítés melletti kamera gomb megnyitja az előnézetet. Amíg a kamera be van kapcsolva, pirosra vált és azonnal kikapcsolja, a neved alatt „Kamera bekapcsolva” látszik, a tálcán pedig piros jelvény mutatja."
           }
         ]
       },
@@ -1162,7 +1185,7 @@
           {
             "id": "screen-share",
             "title": "Képernyőmegosztás",
-            "body": "Egy képernyő vagy ablak legfeljebb 8 nézőnek, 720p-ben és másodpercenként 30 képkockával, Windowson és macOS-en kívánság szerint a megosztott alkalmazás hangjával. A chat Alkalmazások gombjáról indítod. A nézők a fő oszlopban nézik a felbontással, a képkockasebességgel és az adatfolyam részleteivel; neked a chat tetején van egy vezérlősáv szünettel, hanggal, nézőkkel és leállítással.",
+            "body": "Egy képernyő vagy ablak legfeljebb 8 nézőnek közvetlenül vagy legfeljebb 25-nek a relén keresztül, kívánság szerint hanggal és AV1-gyel. A chat Alkalmazások gombjáról indítod, és előbb beállítod a minőséget és a kodeket. A nézők a fő oszlopban nézik a felbontással, kodekkel, útvonallal és részletekkel; neked a chat tetején van egy sáv minőséggel, kódolóval, szünettel, hanggal, nézőkkel és leállítással.",
             "alt": "Megosztott képernyő a fő oszlopban az adatfolyam részleteivel és a nézők listájával"
           },
           {
@@ -1179,8 +1202,73 @@
           {
             "id": "relay",
             "title": "Közösségi relé",
-            "body": "Egy szerver közössége a Mumble-szervere mellett relét üzemeltethet. A teljes méretű képek és a képernyőmegosztás ekkor akkor is működnek, ha közvetlen kapcsolat nem lehetséges, és az „mindig relé” opcióval a másik fél sosem látja az IP-címedet. A relé nem tudja olvasni a titkosított kapcsolatot, a hang pedig sosem használja. A Beállítások → Adatvédelem alatt döntesz, szerverenként is.",
+            "body": "Egy szerver közössége a Mumble-szervere mellett relét üzemeltethet. A teljes méretű képek, a fájlok, a kamerák és a képernyőmegosztás ekkor akkor is működnek, ha közvetlen kapcsolat nem lehetséges, és az „mindig relé” opcióval a másik fél sosem látja az IP-címedet. A relé nem tudja olvasni a titkosított kapcsolatot, a hang sosem használja, a Mumcord pedig nem használja azt, amit a relé nem enged. A Beállítások → Adatvédelem alatt döntesz, szerverenként is.",
             "alt": "Adatvédelmi beállítások a peer-to-peer közvetlen, relé és kikapcsolt választásaival"
+          },
+          {
+            "id": "file-sharing",
+            "title": "Fájlmegosztás",
+            "body": "Húzz fájlokat vagy mappákat a chatbe, vagy használd a gemkapcsot, akár 2 GB-ig. Mindig a szerver relén keresztül mennek, senki sem látja az IP-címedet, és a fájl soha nem érinti a Mumble szervert.",
+            "alt": "Egy megosztott fájl kártyaként a chatben"
+          },
+          {
+            "id": "file-safety",
+            "title": "Biztonságos letöltések",
+            "body": "Minden letöltés előbb rákérdez, és megmutatja a mappát. A programok és szkriptek külön figyelmeztetést kapnak, utána a Mumcord ellenőrzi, hogy a fájl változatlanul megérkezett. A beállításokban kikapcsolhatod a fogadást, és megadhatod a méretet és a mappát.",
+            "alt": "A fájlmegosztás beállításai"
+          },
+          {
+            "id": "camera",
+            "title": "Kamera",
+            "body": "A kamerád mindenkinek a hangcsatornádban, csak a relén keresztül és végpontok közötti titkosítással. Egy előnézettel indul, amelyet senki sem lát, és a felhasználói panel kamera gombja, az Appok menü, a tálca és egy gyorsbillentyű kapcsolja be és ki.",
+            "alt": "A kamera beállításai előnézettel"
+          },
+          {
+            "id": "camera-room",
+            "title": "Kameraszoba",
+            "body": "A csatorna kamerái a chat fölött vannak, legfeljebb kilenc csempe rácsban vagy egy nagy csempe a Beszélővel. Képernyőmegosztás vagy watch party mellett sávot alkotnak mellette vagy fölötte, vagy elrejted őket.",
+            "alt": "A kameraszoba több kamerával a chat fölött"
+          },
+          {
+            "id": "camera-backgrounds",
+            "title": "Kamerahátterek",
+            "body": "Nincs háttér, elmosás (enyhe vagy erős), a 18 beépített kép egyike vagy a saját képed. A számítógépeden számolódik ki, és a kamera kikapcsolása nélkül módosíthatod.",
+            "alt": "A kamera előnézete erősen elmosott háttérrel"
+          },
+          {
+            "id": "camera-tiles",
+            "title": "Csempebeállítások",
+            "body": "A csempén a ⋯ ezeket kínálja: „Kitűzés nekem”, „Megjelenítés nagyban”, „Videó elrejtése” (ekkor egyáltalán nem töltődik le) és „Minőség nekem”. Ráadásul saját Beállítások → Kamera oldal, és minden működik billentyűzettel is.",
+            "alt": "Egy kameracsempe menüje"
+          },
+          {
+            "id": "screen-share-sound",
+            "title": "Hang megosztáskor",
+            "body": "Egy teljes képernyő minden hangot megoszt a Mumcord hangján kívül, egy ablak csak az adott app hangját. Ahol nem egyértelmű, kire gondolsz, a „Melyik app hangja?” megkérdezi. Működik Windows 10-en, macOS 13-on és Linuxon PipeWire-rel.",
+            "alt": "A párbeszédablak a képernyőmegosztás indítása előtt"
+          },
+          {
+            "id": "screen-share-av1",
+            "title": "AV1 az éles szöveghez",
+            "body": "A Mumcord a háttérben ellenőrzi, mire képes a számítógéped, és AV1-et használ a videokártyán, AV1-et a processzoron vagy VP9-et. A nézők hardver nélkül is lejátsszák az AV1-et, a Mumcord régebbi verzióihoz pedig a megosztás VP9-re vált.",
+            "alt": "A képernyőmegosztás beállítások füle"
+          },
+          {
+            "id": "screen-share-relay",
+            "title": "Akár 25 néző",
+            "body": "Ha a relé kínálja, egyszer töltesz fel, és a relé mindenkinek elküldi a megosztást, a saját korlátjáig (alapértelmezés szerint 25). Végpontok közötti titkosítású, a relé semmit sem lát."
+          },
+          {
+            "id": "screen-share-quality",
+            "title": "A minőség beállítása",
+            "body": "Indítás előtt kiválasztod a felbontást, a képkockasebességet, az éles szöveget vagy a sima mozgást és a feltöltési korlátot. Megosztás közben a Minőség menü mindent újraindítás nélkül módosít, a Beállítások „Képernyőmegosztás” füle pedig az alapértelmezéseidet őrzi. A nézők csökkenthetik a saját képkockasebességüket.",
+            "alt": "A vezérlők egy képernyőmegosztás nézésekor"
+          },
+          {
+            "id": "media-area-resize",
+            "title": "Kép és chat felosztása",
+            "body": "Húzd a fogantyút egy megosztás vagy watch party képe és a chat között, vagy használd a nyílbillentyűket. Egyharmadnál, felénél és kétharmadnál beugrik, a Mumcord pedig megjegyzi a magasságot.",
+            "alt": "Egy képernyőmegosztás mellette sávban lévő kamerákkal"
           }
         ]
       },
@@ -1214,7 +1302,7 @@
           {
             "id": "plugin-safety",
             "title": "Homokozó, aláírások és kill switch",
-            "body": "A bővítmények elzárva futnak, hálózat, fájlok és hang elérése nélkül, memória- és időkorlátokkal; amelyik folyton összeomlik, azt kikapcsoljuk, és a hangod soha nem sérül. A hivatalos bővítmények alá vannak írva és ellenőrizve. Egy kill switch mindenki számára letilthat egy káros bővítményt, a „Minden bővítmény kikapcsolása” egyszerre leállítja őket, a --no-plugins pedig egyik nélkül indít.",
+            "body": "A bővítmények elzárva futnak, fájlok és hang elérése nélkül, és csak olyan weboldalakat érnek el, amelyeket deklaráltak és te jóváhagytál, memória- és időkorlátokkal; amelyik folyton összeomlik, azt kikapcsoljuk, és a hangod soha nem sérül. A hivatalos bővítmények alá vannak írva és ellenőrizve. Egy kill switch mindenki számára letilthat egy káros bővítményt, a „Minden bővítmény kikapcsolása” egyszerre leállítja őket, a --no-plugins pedig egyik nélkül indít.",
             "alt": "Az EVE Fit telepítési ablaka a „Checking signature…” feliratú folyamatjelzővel az engedélyek listája fölött."
           },
           {
@@ -1264,6 +1352,45 @@
             "title": "EVE Fit",
             "body": "Illessz be egy EVE Online fittinget a csevegésbe, és mindenki, akinek megvan a bővítmény, egy hajókártyát lát. Egy kattintás megnyitja a fittingkereket a kapacitorral, támadással, védelemmel és navigációval, offline a Mumcordon belül, a „Fitting másolása” pedig visszaviszi kifelé.",
             "alt": "EVE Fit ablak az Algos hajóval a felszerelési kerékben, modulikonokkal és kondenzátor-, támadó-, védelmi-, célzási-, navigációs- és drónstatisztikákkal."
+          },
+          {
+            "id": "plugin-media-area",
+            "title": "Bővítmények a médiaterületen",
+            "body": "A bővítmények tevékenységei a médiaterületen futnak a Mumcord saját fejlécével: ki indította, hányan játszanak, ki készítette a bővítményt. Teljes képernyővel és „Kilépés a bővítményből” gombbal. Ha egynél több dolog fut, fülek vagy az Alt+1 – Alt+9 váltanak közöttük.",
+            "alt": "Egy bővítmény a médiaterületen, fölötte fülekkel"
+          },
+          {
+            "id": "plugin-side-panel",
+            "title": "Oldalpanel bővítményeknek",
+            "body": "Egy bővítmény a tagok listája helyett a chattől jobbra mutathatja az oldalát. Átméretezheted, a Mumcord bővítményenként megjegyzi a szélességet, a ⋯ menü pedig a bővítmény részleteihez vezet.",
+            "alt": "Egy bővítmény az oldalpanelen a chat mellett"
+          },
+          {
+            "id": "plugin-apps-menu",
+            "title": "Bővítmények az Appok menüben",
+            "body": "Minden bővítmény legfeljebb két elemet adhat az Appok menühöz, a „Bővítmények” alatt az ikonjával és nevével. Ugyanezek az elemek megjelennek a parancspalettán is (Ctrl+Shift+P), és egy bővítmény indoklással szürkévé teheti az elemet.",
+            "alt": "Az Appok menü bővítményelemekkel"
+          },
+          {
+            "id": "plugin-security-score",
+            "title": "Biztonsági pontszám",
+            "body": "A nem hivatalos bővítmények 0-tól 100-ig pontszámot kapnak, a legfontosabb okokkal és a teljes bontással telepítéskor és frissítéskor. A nagy kockázatú bővítményekhez külön pipa kell, és a beállítások „Bővítmények biztonsága” eleme teljesen blokkolhatja őket.",
+            "alt": "Egy bővítmény biztonsági pontszámának részletei"
+          },
+          {
+            "id": "plugin-min-version",
+            "title": "Minimális verzió bővítményeknek",
+            "body": "Ha egy bővítményhez újabb Mumcord kell, kiírja: „Mumcord X vagy újabb szükséges”, és a telepítés le van tiltva. Az automatikus frissítések várnak, amíg a Mumcordod futtatni tudja az új verziót."
+          },
+          {
+            "id": "plugin-websites",
+            "title": "Bővítmények weboldalai",
+            "body": "A weboldalakkal kommunikáló bővítmények telepítéskor és a részleteikben felsorolják az összes címet, a kérések számával. Csak azt érik el, amit deklaráltak és te jóváhagytál, csak érvényes tanúsítvánnyal rendelkező nyilvános címeket. A bővítmények oldalai párbeszédablakban is megnyílnak."
+          },
+          {
+            "id": "plugin-relay-data",
+            "title": "Bővítményadatok a relén keresztül",
+            "body": "A játékadatok végpontok közötti titkosítással mennek a relén keresztül, üzenetenként legfeljebb 64 KB, egy személynek vagy az egész csatornának. Bővítményenként kikapcsolhatod, a Beállítások → Bővítmények pedig megmutatja, mennyi adatot használt."
           }
         ]
       },
@@ -1371,16 +1498,17 @@
     {
       "version": "0.7.0",
       "teaser": "Fájlmegosztás, a kamerád, hanggal és AV1-gyel akár 25 nézőnek szóló képernyőmegosztás, bővítmények a médiaterületen, kirúgás, kitiltás és a tiltólista.",
-      "summary": "Nagy frissítés: akár 2 GB-os fájlokat osztasz meg a csatornában, mindig a relén keresztül, elmosott háttérrel mutatod a kameradat, a képernyőmegosztásod hangot, AV1-et és akár 25 nézőt kap, egyetlen fogantyúval osztod fel a képet és a csevegést, a bővítmények megkapják a médiaterületet és világos biztonsági szabályokat, az adminok pedig kirúghatnak, kitilthatnak, és rendben tarthatják a tiltólistát.",
+      "summary": "Nagy frissítés: akár 2 GB-os fájlokat osztasz meg a csatornában, mindig a relén keresztül, elmosott háttérrel mutatod a kamerádat, a képernyőmegosztás hangot, AV1-et és akár 25 nézőt kap, a képet és a csevegést egyetlen fogantyúval osztod fel, a bővítmények megkapják a médiaterületet és világos biztonsági szabályokat, az adminok pedig kirúghatnak, kitilthatnak és rendben tarthatják a tiltólistát.",
       "groups": [
         {
           "title": "Fájlmegosztás",
           "items": [
-            "Húzd a fájlokat a csevegésbe, vagy csatold őket a gemkapoccsal, legfeljebb 2 GB-ig. A mappák előbb zip-be kerülnek.",
-            "A fájlok mindig a szerver relén keresztül mennek: senki sem látja az IP-címedet, és a fájl soha nem érinti a Mumble-szervert.",
-            "Minden letöltés előbb rákérdez, és megmutatja a mappát, ahová menti. Ezután a Mumcord ellenőrzi az SHA-256 ellenőrző összeget, amelyet le is másolhatsz.",
-            "A programok és szkriptek extra figyelmeztetést kapnak letöltés és megnyitás előtt.",
-            "Egy fájl addig elérhető, amíg a küldője online van, legfeljebb 24 óráig.",
+            "Húzz fájlokat és mappákat a csevegésbe, vagy csatold őket a gemkapoccsal, akár 2 GB-ig. Ha nincs relé, vagy nem engedi a fájlokat, a gemkapocs megmondja, miért.",
+            "A fájlok mindig a szerver relén keresztül mennek: senki sem látja az IP-címedet, és a fájl soha nem érinti a Mumble szervert.",
+            "Minden letöltés előbb rákérdez, és megmutatja a mappát, ahová mentődik. Utána a Mumcord ellenőrzi, hogy a fájl változatlanul megérkezett.",
+            "A programok és szkriptek letöltés előtt és megnyitás előtt külön figyelmeztetést kapnak.",
+            "A megosztott fájljaid megmutatják, ki töltötte le őket, és van rajtuk „Megosztás leállítása” gomb.",
+            "A csatornába húzott képeket elküldheted képként vagy megoszthatod fájlként. Minden más fájl azonnal megosztódik.",
             "Újdonság a Beállítások → Adatvédelem és kapcsolatok alatt: a fájlfogadás be- vagy kikapcsolása, a maximális méret 100 MB-tól 2 GB-ig és a fogadott fájlok mappája."
           ]
         },
@@ -1388,70 +1516,88 @@
           "title": "Képernyőmegosztás",
           "items": [
             "Hang megosztáskor: egy teljes képernyő minden hangot megoszt a Mumcord hangján kívül, egy ablak csak az adott app hangját. Működik Windows 10-en (2004 vagy újabb), macOS 13-on és Linuxon PipeWire-rel.",
-            "Indulás előtt választhatsz felbontást 4K-ig, képkockasebességet 60 fps-ig, éles szöveget vagy sima mozgást, kodeket és feltöltési korlátot. A Minőség menü a megosztás közben, újraindítás nélkül módosítja őket.",
+            "Indítás előtt válaszd ki a felbontást, a képkockasebességet, az éles szöveget vagy a sima mozgást, a kodeket és a feltöltési korlátot. A Minőség menü megosztás közben, újraindítás nélkül módosítja őket.",
+            "A Mumcord maga választja ki a kódolót: AV1 a videokártyán, AV1 a processzoron vagy VP9. A megosztásod sávja mutatja a minőséget, a kódolót és azt, hogy a relén keresztül megy-e.",
+            "Ha ablakot osztasz meg, a „Melyik app hangja?” megkérdezi, kinek a hangja menjen vele. Választhatod a „Nincs hang” opciót is.",
             "A relén keresztül egyszer töltesz fel, és akár 25 ember nézi, végpontok közötti titkosítással.",
-            "AV1 a videokártyán vagy a processzoron éles szöveghez kevesebb sávszélességgel. A VP9 tartalék marad, a régebbi Mumcordot használó nézőknek is.",
-            "A nézők látják a kodeket, az utat és a minőséget, és csökkenthetik a képkockasebességüket. A nézők listája megmutatja, ki mit kap.",
-            "Új „Képernyőmegosztás” fül a Beállításokban az alapértelmezéseiddel és a számítógéped által használt kódolóval.",
+            "AV1 a videokártyán vagy a processzoron éles szöveghez kevesebb sávszélességgel. A VP9 marad tartaléknak, régebbi Mumcordot használó nézőknek is.",
+            "A nézők látják a kodeket, az útvonalat és a minőséget, és csökkenthetik a saját képkockasebességüket. A nézők listája megmutatja, ki mit kap.",
+            "Új „Képernyőmegosztás” fül a Beállításokban az alapértelmezéseiddel és azzal a kódolóval, amelyet a számítógéped használ.",
             "Oszd fel magad a képet és a csevegést: húzd a fogantyút a képernyőmegosztás vagy watch party és a csevegés között. Húzd egészen felfelé, és a kép mini sávvá válik, a Mumcord pedig megjegyzi a magasságot."
           ]
         },
         {
           "title": "Kamera",
           "items": [
-            "A kamerád mindenkinek a hangcsatornádban, csak a relén keresztül és végpontok közötti titkosítással, akár 25 nézőnek.",
-            "A kamera egy semmit sem küldő előnézettel indul. Csak akkor megy ki, ha bekapcsolod.",
-            "Mosd el a hátteredet, vagy tegyél képet magad mögé, a számítógépeden kiszámítva.",
-            "Ha a kamera nem használható, a Mumcord megmondja, miért, például ha a szerver relé nem engedélyez kamerákat."
+            "A kamerád mindenkinek a hangcsatornádban, csak a relén keresztül és végpontok közötti titkosítással.",
+            "A kameraszoba a csevegés fölött van: legfeljebb kilenc csempe rácsban, vagy a Beszélő elrendezés egy nagy csempével. Mindegyik mutatja a nevet, egy kikapcsolt mikrofon ikont és zöld keretet, amíg a személy beszél.",
+            "A kamera egy előnézettel indul, amelyet senki más nem lát. Te választod ki a kamerát és a hátteret, és csak akkor küld, amikor bekapcsolod.",
+            "Hátterek: nincs, elmosás (enyhe vagy erős), a 18 beépített kép egyike vagy a saját képed. A számítógépeden számolódik ki, és futás közben is módosíthatod.",
+            "A csempén a ⋯ ezeket kínálja: „Kitűzés nekem”, „Megjelenítés nagyban”, „…(nevű) videójának elrejtése” (ekkor egyáltalán nem töltődik le) és „Minőség nekem”. Minden működik billentyűzettel is.",
+            "Képernyőmegosztás vagy watch party mellett a kép nagy marad, a kamerák pedig sávban vannak mellette vagy fölötte. Vagy elrejted őket, és akkor nem töltődnek le.",
+            "A felhasználói panel kamera gombja és az Appok menü „Kamera bekapcsolása” eleme megnyitja az előnézetet. Amíg a kamera be van kapcsolva, a gomb pirosra vált, a csatornafán pedig kamera ikon jelenik meg.",
+            "Új „Kamera” fül a Beállításokban: előnézet, kamera, küldési minőség, tükrözött önkép, alapértelmezett háttér és az, hogyan látod mások kameráit. Ráadásul gyorsbillentyű a kamera be- és kikapcsolásához.",
+            "Amíg a kamera be van kapcsolva, a tálca ikonja piros kamera jelvényt mutat, a menüje pedig „Kamera kikapcsolása” elemet kínál. Ha a képernyőd zárolódik, a kamera magától kikapcsolhat.",
+            "Ha a kamera nem használható, vagy magától leáll, a Mumcord megmondja, miért, például amikor a szerver relé nem engedi a kamerákat."
           ]
         },
         {
           "title": "Bővítmények",
           "items": [
             "A bővítmények megkapják a médiaterületet, egy oldalpanelt a csevegés mellett, párbeszédablakokat és elemeket az Appok menüben. Ha több fut, fülek váltanak közöttük.",
-            "A játékadatok végpontok közötti titkosítással mennek a relén keresztül, egy embernek vagy az egész csatornának.",
+            "A játékadatok végpontok közötti titkosítással mennek a relén keresztül, egy személynek vagy az egész csatornának.",
             "0-tól 100-ig terjedő biztonsági pontszám a nem hivatalos bővítményekhez, az okaival telepítéskor és frissítéskor.",
-            "Minden webhely, amellyel egy bővítmény kommunikál, fel van sorolva telepítéskor, az új webhelyekhez pedig a hozzájárulásod kell.",
-            "A bővítményoldalak le vannak zárva: nincs kamera, nincs mikrofon, nincs vágólap, és csak az általad engedélyezett webhelyek érhetők el. Egy lefagyó oldal már nem fagyasztja le a Mumcordot.",
-            "Az újabb Mumcordot igénylő bővítmény ezt kimondja telepítés helyett, a frissítések pedig várnak, amíg a Mumcordod le tudja futtatni őket."
+            "Minden weboldal, amellyel egy bővítmény kommunikál, telepítéskor fel van sorolva, az új oldalakhoz pedig a beleegyezésed kell.",
+            "A bővítmények oldalai le vannak zárva: nincs kamera, nincs mikrofon, nincs vágólap, és csak az általad engedélyezett weboldalak érhetők el. Egy lefagyó oldal már nem fagyasztja le a Mumcordot.",
+            "Az a bővítmény, amelyhez újabb Mumcord kell, ezt kiírja telepítés helyett, a frissítések pedig várnak, amíg a Mumcordod futtatni tudja őket.",
+            "Minden bővítmény legfeljebb két elemet adhat az Appok menühöz, a „Bővítmények” alatt az ikonjával és nevével. Ugyanezek az elemek megjelennek a parancspalettán is (Ctrl+Shift+P).",
+            "A bővítmények rövid hangokat játszhatnak le, amelyeket csak te hallasz. Halkabbak, amíg valaki beszél, és némák, amíg süketítve vagy.",
+            "Egy bővítmény elmenthet egy fájlt, megnyithat egy képet vagy közzétehet egy képet a csevegésben, de csak közvetlenül a kattintásod után és engedéllyel. Soha nem tudja meg, hol vannak a fájljaid.",
+            "A Beállítások → Bővítmények megmutatja, mennyi adatot küld az egyes bővítmények a relén keresztül, van benne „Bővítmények biztonsága” kapcsoló a kockázatos bővítmények ellen, és felsorolja a betöltéskor elutasított bővítményeket.",
+            "A frissítés áttekintése megmutatja a biztonsági pontszámot előtte és utána, és azt, hogy egy frissítés miért vár. Ha vannak kiadási megjegyzések, egy hivatkozás megnyitja őket a böngésződben."
           ]
         },
         {
           "title": "Adminisztráció",
           "items": [
             "Kirúgás… és Kitiltás… egy személy Adminisztráció menüjében, indokkal. A kitiltások 1 óráig, 1 napig, 7 napig, 30 napig, örökre vagy egy dátumig tartanak.",
-            "A tiltólista a szervermenüben: keresés, szűrés, az indok és a vég szerkesztése, tiltások feloldása és olyanok kitiltása, akik épp nincsenek online."
+            "A tiltólista a szerver menüjében: keresés, szűrés, az indok és a vég szerkesztése, kitiltások feloldása és olyan emberek kitiltása, akik épp nincsenek online."
           ]
         },
         {
           "title": "Botok",
           "items": [
             "A botok külön állnak: a csatornalista alatti „Botok ezen a szerveren” rész minden botot megmutat azzal, amit csinál. A hang nélküli botok már nem jelennek meg az emberek között.",
-            "A mumbot a profiljában és a kapcsolat részleteiben „Mumbot <version>” néven jelenik meg a „Mumcord <version>” helyett."
+            "A mumbot a profiljában és a kapcsolati adatokban „Mumbot <version>” néven jelenik meg a „Mumcord <version>” helyett."
           ]
         },
         {
           "title": "Továbbfejlesztve",
           "items": [
-            "A 0.7.0-s emberek közötti csevegési előzmények gyorsabban felzárkóznak: minden kép egyszer utazik, és a már meglévő képeket nem tölti le újra.",
-            "A Mumcord azt követi, amit a szerver relé megenged, a szerverinfó pedig megmutatja, mi az.",
-            "A kapcsolók láthatóak maradnak a nagy kontrasztú módban.",
-            "Beágyazott YouTube- és Twitch-videók: a teljes képernyő gomb működik, és egy külön gomb kimásolja a videó hivatkozását."
+            "A 0.7.0-t használó emberek közötti csevegési előzmények gyorsabban beérik magukat: minden kép egyszer utazik, és a már meglévő képeket nem tölti le újra.",
+            "A Mumcord követi, amit a szerver relé engedélyez, a szerverinfó pedig megmutatja, mi az.",
+            "A kapcsolók nagy kontrasztú módban is láthatók maradnak.",
+            "Az Appok menü ikonokat mutat a „Képernyő megosztása” és a „Nézzük együtt” elemekhez, az ikon nélküli bővítmények pedig saját színes csempét kapnak.",
+            "A késleltetés kártya megmondja, miért hosszabb az idő, mint amit az alacsony késleltetés mód kér, például amikor a Linux hangszervere nagyobb blokkokat igényel."
           ]
         },
         {
           "title": "Javítva",
           "items": [
             "Régebbi, AVX2 nélküli processzorokon a Mumcord már nem omlik össze induláskor. A képernyőmegosztás ott VP9-et használ.",
-            "A zárolt csatornák csevegési előzményei csak azokhoz jutnak el, akik tényleg a csatornában vannak, nem azokhoz, akik csak követik vagy hallgatják.",
+            "A zárolt csatornák csevegési előzményei csak azokhoz jutnak el, akik valóban a csatornában vannak, nem azokhoz, akik csak követik vagy hallgatják.",
             "Ha valaki a „Mindig relé használata” opciót használja, a Mumcord már nem küldi el neki a hálózati címedet.",
-            "Egy újabb Mumcord profilja már nem okoz összeomlást. A Mumcord elmagyarázza, és felajánlja a legújabb verzió letöltését.",
-            "Az elküldött üzenetek azonnal a megfelelő helyre kerülnek az előzményekben, és ott is maradnak.",
-            "A hivatkozásra való középső kattintás, vagy a Ctrl, Cmd vagy Shift nyomva tartása melletti kattintás a böngésződben nyitja meg, nem a Mumcordon belül.",
-            "Ha nem vagy regisztrálva egy szerveren, amelynek relé csak regisztrált felhasználókat szolgál ki, a Mumcord ezt mondja ki a „a relé nem érhető el” helyett.",
-            "A tiltólista ablakának van bezárógombja, a Kirúgás és a Kitiltás pedig reagál az egérkattintásokra.",
+            "Egy újabb Mumcord profilja már nem okoz összeomlást. A Mumcord megmagyarázza, és felajánlja a legújabb verzió letöltését.",
+            "Az elküldött üzenetek azonnal a helyes helyre kerülnek az előzményekben, és ott is maradnak.",
+            "Egy hivatkozásra középső kattintás, vagy kattintás lenyomott Ctrl, Cmd vagy Shift mellett a böngésződben nyitja meg, nem a Mumcordon belül.",
+            "Ha nem vagy regisztrálva egy olyan szerveren, amelynek relé csak regisztrált felhasználókat szolgál ki, a Mumcord ezt most kimondja a „a relé nem érhető el” helyett.",
+            "A Kirúgás és a Kitiltás reagál az egérkattintásokra.",
             "A watch party indítása az Appok menüből már nem tölti újra az appot.",
-            "A képernyőmegosztás mostantól minden nyelven beszél."
+            "A képernyőmegosztás mostantól minden nyelven beszél.",
+            "A hang már nem akad meg, amikor egy másik app egyszerre játszik le hangot.",
+            "Amikor egy megnézett képernyőmegosztás véget ér, nem marad üres kép, a kamerák pedig visszatérnek a szoba rácsába.",
+            "A Ctrl+C a kijelölt csevegésszövegen már nem hagyja üresen a vágólapot Linuxon (X11).",
+            "Egy bővítmény már nem nyithatja meg magától a párbeszédablakát, csak közvetlenül a kattintásod után. Egy bővítményoldal üzenetei a helyes sorrendben érkeznek."
           ]
         }
       ]
@@ -2575,8 +2721,6 @@
             "title": "Bővítmények a színpadon",
             "items": [
               "A bővítmények megkapják a médiaterületet: a játékok és a táblák ott futnak, ahol általában a képernyőmegosztás, a watch party és a kamerák vannak",
-              "Whiteboard, a hivatalos bővítmény a közös gondolkodáshoz: végtelen vászon tollakkal, ragasztós jegyzetekkel és lézermutatóval, az eszközödön mentve, PNG-, SVG- vagy PDF-fájlként exportálható",
-              "Skyloom, csak hanggal játszható játék 2–12 embernek: valaki leír egy rejtett csillagképet, mindenki más egy-egy csillagot helyez el",
               "A bővítmények az Alkalmazások menüből, az oldalpanelen vagy párbeszédablakban is megnyílnak, a nagy adatmennyiségek pedig végpontok közötti titkosítással mennek át a relayen"
             ],
             "mockups": [
@@ -2597,6 +2741,13 @@
               "Bővítmények biztonsági pontszámmal",
               "Nagy kockázatú bővítmény telepítése",
               "Egy bővítmény weboldalai telepítéskor"
+            ]
+          },
+          {
+            "title": "Whiteboard & Skyloom",
+            "items": [
+              "Whiteboard, a hivatalos bővítmény a közös gondolkodáshoz: végtelen vászon tollakkal, ragasztós jegyzetekkel és lézermutatóval, az eszközödön mentve, PNG-, SVG- vagy PDF-fájlként exportálható",
+              "Skyloom, csak hanggal játszható játék 2–12 embernek: valaki leír egy rejtett csillagképet, mindenki más egy-egy csillagot helyez el"
             ]
           }
         ]
@@ -2993,7 +3144,7 @@
         "id": "relay",
         "title": "Opcionális: relé közvetlen kapcsolatokhoz",
         "body": [
-          "Hogy a képernyőmegosztás és a teljes méretű képek akkor is működjenek, ha két ember nem éri el egymást közvetlenül, vagy hogy senki ne lássa a másik IP-jét, futtathatod a <a href=\"/en/mumpeer\">mumpeer</a> relét a szerver mellett. A tartalom végpontok között titkosított marad.",
+          "Hogy a képernyőmegosztás, a kamerák és a teljes méretű képek akkor is működjenek, ha két ember nem éri el egymást közvetlenül, vagy hogy senki ne lássa a másik IP-jét, futtathatod a <a href=\"/en/mumpeer\">mumpeer</a> relét a szerver mellett. A tartalom végpontok között titkosított marad.",
           "A Mumcord a 0.5.0 verziótól használja a relét. A többit a <code>mumbot peer</code> relébot intézi: bejelenti a relét és kiosztja a tokeneket.",
           "A szerver mappájában írj egy közös titkot a <code>.env</code> fájlba, és töltsd le a két példakonfigurációt. Írd a szervered címét a <code>mumpeer.toml</code> fájl <code>public_host</code> mezőjébe, a Mumble-szervered ujjlenyomatát pedig a <code>bot.toml</code> fájlba. Utána add hozzá az alábbi szolgáltatásokat a <code>docker-compose.yml</code> fájlhoz a <code>services:</code> alatt, a <code>mumpeer-data:</code> és a <code>mumbot-data:</code> sort pedig a <code>volumes:</code> alá."
         ],
@@ -3027,7 +3178,7 @@
         ],
         "relay": [
           "mumpeer relay",
-          "Képernyőmegosztás és nagy képek akár CGNAT mögött is, anélkül, hogy bárki látná az IP-címedet"
+          "Képernyőmegosztás, kamerák és nagy képek akár CGNAT mögött is, anélkül, hogy bárki látná az IP-címedet"
         ],
         "webhook": [
           "Mumbot webhook",
@@ -3300,6 +3451,20 @@
         ]
       },
       {
+        "id": "0.5.0",
+        "tag": "0.5.0",
+        "title": "Kamerák és csoportok",
+        "summary": "A relé bot mostantól kezeli a kamerákat, a bővítményadatokat és a csoportokat.",
+        "items": [
+          "Kamerák a relén keresztül, alapértelmezés szerint csatornánként legfeljebb 9; a képernyő és a kamera együtt működik",
+          "Bővítményadatok a Mumcord bővítményeinek, csatornánként legfeljebb 8 küldő",
+          "Relé tokenek csak bizonyos Mumble-csoportok tagjainak",
+          "A zárolt csatornák chatelőzményei csak azokhoz jutnak el, akik bent vannak",
+          "A bot az avatarját https URL-ből vagy base64-ből állítja be",
+          "A Mumble és a Mumcord „Mumbot 0.x.y” néven mutatja kliensként, a zenebotok a saját csatornájukban jelennek meg"
+        ]
+      },
+      {
         "id": "later",
         "tag": "Utána",
         "title": "Ötletek",
@@ -3324,7 +3489,9 @@
       "points": [
         "Képernyőmegosztás és nagy képek akár CGNAT mögött is, vagy az IP-címed megmutatása nélkül",
         "A relay hálózatában fut, az API belső marad",
-        "Csak a saját szervered regisztrált felhasználói kapnak tokent"
+        "Csak a saját szervered regisztrált felhasználói kapnak tokent",
+        "Tokeneket oszt a kamerákhoz és a bővítményadatokhoz is, ha a relé engedélyezi őket",
+        "Kívánságra csak bizonyos Mumble-csoportok tagjainak"
       ]
     },
     "music": {
@@ -3368,7 +3535,7 @@
       "mumpeer": {
         "title": "mumpeer",
         "description": "A mumpeer egy kis relé a Mumcord közvetlen kapcsolataihoz: arra az esetre, ha két ember nem éri el egymást közvetlenül, vagy el akarja rejteni az IP-címét.",
-        "lead": "Egy kis relé a Mumcord felhasználók közötti közvetlen kapcsolataihoz, például képernyőmegosztáshoz vagy teljes méretű képekhez. Ha két ember nem éri el egymást közvetlenül, CGNAT, szigorú tűzfalak mögött vagy UDP nélküli hálózatokban, vagy nem akarja megmutatni az IP-címét, mindketten a relére csatlakoznak. Az csak a titkosított csomagokat továbbítja, mint egy TURN-szerver.",
+        "lead": "Egy kis relé a Mumcord felhasználók közötti közvetlen kapcsolataihoz, például képernyőmegosztáshoz, kamerákhoz, fájlokhoz vagy teljes méretű képekhez. Ha két ember nem éri el egymást közvetlenül, CGNAT, szigorú tűzfalak mögött vagy UDP nélküli hálózatokban, vagy nem akarják megmutatni az IP-címüket, mindketten a relére csatlakoznak helyette. Csak továbbítja a titkosított csomagokat, mint egy TURN-szerver.",
         "features": [
           {
             "title": "A Mumble-szervered mellett",
@@ -3389,6 +3556,14 @@
           {
             "title": "Teljesen opcionális",
             "body": "A Mumcord bot és relé nélkül is működik. A Mumcordban te döntesz: relé kikapcsolva, csak ha a közvetlen kapcsolat nem sikerül, vagy mindig."
+          },
+          {
+            "title": "Képernyő, kamerák és bővítményadatok",
+            "body": "Egy személy egyszer küld, a relé pedig továbbítja az összes nézőnek, anélkül hogy olvasná. Ez a képernyőmegosztásra és a kamerákra is vonatkozik: legfeljebb 18 kamera egyszerre, mindegyik legfeljebb 2500 kbit/s feltöltéssel, és adásonként legfeljebb 25 néző. A bővítményadatok is működnek, de alapértelmezés szerint ki vannak kapcsolva, és a legalacsonyabb prioritásúak."
+          },
+          {
+            "title": "Te döntöd el, mi engedélyezett",
+            "body": "A `[uses]` szakaszban egyenként be- vagy kikapcsolod a képeket, a fájlokat, a képernyőmegosztást, a kamerát és a bővítményadatokat. Ezen kívül korlátok vannak a sávszélességre, a munkamenetekre és az adásokra."
           }
         ],
         "listTitle": "Amit az üzemeltető láthat",

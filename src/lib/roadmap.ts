@@ -529,6 +529,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Kamera",
+            done: [0, 1, 2, 3, 4],
             items: [
               "Deine Kamera für alle in deinem Sprachkanal, nur über das Relay und Ende-zu-Ende-verschlüsselt",
               "Ein Kameraraum mit bis zu 9 Kameras als Raster über dem Chat, auch neben einer Bildschirmübertragung oder Watch-Party",
@@ -557,11 +558,9 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Plugins auf der Bühne",
-            done: [0, 3],
+            done: [0, 1],
             items: [
               "Plugins bekommen den Medienbereich: Spiele und Whiteboards laufen dort, wo sonst Bildschirm, Watch-Party und Kameras sind",
-              "Whiteboard, das offizielle Plugin zum gemeinsamen Denken: eine endlose Fläche mit Stiften, Zetteln und Laserpointer, gespeichert auf deinem Gerät und als PNG, SVG oder PDF exportierbar",
-              "Skyloom, ein Spiel nur mit der Stimme für 2 bis 12 Leute: Eine Person beschreibt ein verborgenes Sternbild, alle anderen setzen je einen Stern",
               "Plugins öffnen sich auch über das Apps-Menü, in der Seitenleiste oder in einem Dialog, und große Datenmengen gehen Ende-zu-Ende-verschlüsselt über das Relay",
             ],
             mockups: [
@@ -583,6 +582,14 @@ const source: Record<"de" | "en", RoadmapPage> = {
               { shot: "plugin-score-browse-dark", issue: 393, caption: "Plugins mit Sicherheits-Score" },
               { shot: "plugin-score-install-dark", issue: 393, caption: "Installation mit hohem Risiko" },
               { shot: "plugin-origins-install-dark", issue: 395, caption: "Die Websites eines Plugins bei der Installation" },
+            ],
+          },
+          {
+            title: "Whiteboard und Skyloom",
+            version: "0.7.1",
+            items: [
+              "Whiteboard, das offizielle Plugin zum gemeinsamen Denken: eine endlose Fläche mit Stiften, Zetteln und Laserpointer, gespeichert auf deinem Gerät und als PNG, SVG oder PDF exportierbar",
+              "Skyloom, ein Spiel nur mit der Stimme für 2 bis 12 Leute: Eine Person beschreibt ein verborgenes Sternbild, alle anderen setzen je einen Stern",
             ],
           },
         ],
@@ -1200,6 +1207,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Camera",
+            done: [0, 1, 2, 3, 4],
             items: [
               "Your camera for everyone in your voice channel, only through the relay and end-to-end encrypted",
               "A camera room with up to 9 cameras as a grid above the chat, also next to a screen share or watch party",
@@ -1228,11 +1236,9 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Plugins on stage",
-            done: [0, 3],
+            done: [0, 1],
             items: [
               "Plugins get the media area: games and whiteboards run where the screen share, watch party and cameras usually are",
-              "Whiteboard, the official plugin for thinking together: an endless canvas with pens, sticky notes and a laser pointer, saved on your device and exportable as PNG, SVG or PDF",
-              "Skyloom, a voice-only game for 2 to 12 people: one person describes a hidden constellation, everyone else places one star each",
               "Plugins also open from the Apps menu, in the side panel or in a dialog, and large amounts of data go end-to-end encrypted through the relay",
             ],
             mockups: [
@@ -1254,6 +1260,14 @@ const source: Record<"de" | "en", RoadmapPage> = {
               { shot: "plugin-score-browse-dark", issue: 393, caption: "Plugins with a security score" },
               { shot: "plugin-score-install-dark", issue: 393, caption: "Installing a high-risk plugin" },
               { shot: "plugin-origins-install-dark", issue: 395, caption: "A plugin's websites at install time" },
+            ],
+          },
+          {
+            title: "Whiteboard and Skyloom",
+            version: "0.7.1",
+            items: [
+              "Whiteboard, the official plugin for thinking together: an endless canvas with pens, sticky notes and a laser pointer, saved on your device and exportable as PNG, SVG or PDF",
+              "Skyloom, a voice-only game for 2 to 12 people: one person describes a hidden constellation, everyone else places one star each",
             ],
           },
         ],

@@ -373,7 +373,7 @@
         {
           "tag": "Epic 4.1",
           "title": "Bestanden, scherm, camera en plug-ins",
-          "body": "Komt met 0.7.0: deel bestanden zonder je IP-adres te tonen, schermdeling tot 4K voor maximaal 25 mensen, je camera met een vervaagde achtergrond, een whiteboard en het spel Skyloom als plug-ins, en een beveiligingsscore voor plug-ins van anderen."
+          "body": "Sinds 0.7.0: deel bestanden zonder je IP-adres te tonen, schermdeling tot 4K voor maximaal 25 mensen, je camera met een vervaagde achtergrond, een whiteboard en het spel Skyloom als plug-ins, en een beveiligingsscore voor plug-ins van anderen."
         },
         {
           "tag": "Epic 4",
@@ -604,8 +604,8 @@
       "toolTitle": "Bijdragers"
     },
     "spotlight5": {
-      "label": "Nieuw in 0.5.0/0.6.0",
-      "labelSoon": "Binnenkort: 0.5.0/0.6.0",
+      "label": "Nieuw in 0.5.0/0.6.0/0.7.0",
+      "labelSoon": "Binnenkort: 0.5.0/0.6.0/0.7.0",
       "title": "Meer rust. Meer jij. Meer geluid.",
       "body": "0.5.0 brengt Epic 3: een meldingencentrum, blokkeren, meerdere identiteiten, een nieuwe kanalenboom, muziek in de chat, een lage-latentiemodus om samen muziek te maken en directe verbindingen via een relay.",
       "tiles": {
@@ -856,6 +856,24 @@
             "title": "Mensen blokkeren",
             "body": "„Blokkeren…” in het persoonsmenu verbergt hun privéberichten en verzoeken, klapt hun kanaalberichten in en dempt hun stem, alleen voor jou. De blokkade volgt het certificaat, dus ze geldt op alle servers en bij nieuwe namen. Er wordt niets naar de server of de persoon gestuurd, en Instellingen → Privacy toont iedereen die je blokkeerde met „Deblokkeren”.",
             "alt": "Bevestiging voor het blokkeren van een persoon, met wat er verandert"
+          },
+          {
+            "id": "kick-ban",
+            "title": "Kicken en bannen",
+            "body": "In het Beheer-menu van een persoon staan „Kick…” en „Ban…”, met een reden. Bans duren 1 uur, 1 dag, 7 dagen, 30 dagen, voor altijd of tot een datum, op certificaat en IP-adres. Alleen met het recht op het hoofdkanaal.",
+            "alt": "Het dialoogvenster om iemand te bannen"
+          },
+          {
+            "id": "ban-list",
+            "title": "Banlijst",
+            "body": "„Banlijst…” in het servermenu toont alle bans met naam, vingerafdruk, adres, reden en einde. Zoek, filter, pas reden en einde direct aan, hef bans op of ban mensen die niet online zijn.",
+            "alt": "Het venster van de banlijst"
+          },
+          {
+            "id": "bots-section",
+            "title": "Bots apart",
+            "body": "Een sectie „Bots op deze server” onder de kanaallijst toont elke bot met wat hij doet, zoals relay, chatgeschiedenis of webhooks. Profiel en menu, privéberichten inbegrepen, werken vanaf daar.",
+            "alt": "De sectie met de bots op een server"
           }
         ]
       },
@@ -1095,6 +1113,11 @@
             "title": "Rustig gebruikerspaneel",
             "body": "Het paneel onderaan de kanaallijst houdt altijd dezelfde hoogte: jij met naam en server, één statusregel zoals opnieuw verbinden of je spraakkanaal, kleine chips voor Niet storen, lage-latentiemodus en de verbinding, en de knoppen voor microfoon, koptelefoon en ophangen. De kanaallijst erboven springt niet meer.",
             "alt": "Het gebruikerspaneel in meerdere toestanden, van pratend en gedempt tot opnieuw verbinden"
+          },
+          {
+            "id": "camera-entry",
+            "title": "Camera in het gebruikerspaneel",
+            "body": "Een cameraknop naast dempen en doof zetten opent het voorbeeld. Zolang de camera aan is, wordt de knop rood en zet hij de camera meteen uit, staat „Camera aan” onder je naam en toont een rode badge dat in het systeemvak."
           }
         ]
       },
@@ -1162,7 +1185,7 @@
           {
             "id": "screen-share",
             "title": "Scherm delen",
-            "body": "Een scherm of een venster voor maximaal 8 kijkers, op 720p en 30 beelden per seconde, op Windows en macOS desgewenst met het geluid van de gedeelde app. Je start het met de knop Apps in de chat. Kijkers kijken in de hoofdkolom met resolutie, framerate en streamdetails; jij krijgt bovenaan de chat een bedieningsbalk met pauze, geluid, kijkers en stoppen.",
+            "body": "Een scherm of een venster voor maximaal 8 kijkers direct of maximaal 25 via de relay, desgewenst met geluid en AV1. Je start het met de knop Apps in de chat en stelt eerst kwaliteit en codec in. Kijkers kijken in de hoofdkolom met resolutie, codec, route en details; jij krijgt bovenaan de chat een balk met kwaliteit, encoder, pauze, geluid, kijkers en stoppen.",
             "alt": "Een gedeeld scherm in de hoofdkolom met streamdetails en de lijst met kijkers"
           },
           {
@@ -1179,8 +1202,73 @@
           {
             "id": "relay",
             "title": "Community-relay",
-            "body": "De community van een server kan naast de Mumble-server een relay draaien. Afbeeldingen op volle grootte en scherm delen werken dan ook als er geen directe verbinding mogelijk is, en met „altijd relay” ziet de ander nooit je IP-adres. De relay kan de versleutelde verbinding niet lezen, en spraak gebruikt hem nooit. Je kiest onder Instellingen → Privacy, ook per server.",
+            "body": "De community van een server kan naast haar Mumble-server een relay draaien. Afbeeldingen op volledige grootte, bestanden, camera’s en scherm delen werken dan ook als een directe verbinding niet mogelijk is, en met „altijd relay” ziet de ander nooit je IP-adres. De relay kan de versleutelde verbinding niet lezen, spraak gebruikt hem nooit, en Mumcord gebruikt niet wat de relay niet toestaat. Je kiest dit onder Instellingen → Privacy, ook per server.",
             "alt": "Privacy-instellingen met de peer-to-peer-keuzes direct, relay en uit"
+          },
+          {
+            "id": "file-sharing",
+            "title": "Bestanden delen",
+            "body": "Sleep bestanden of mappen in de chat of gebruik de paperclip, tot 2 GB. Ze gaan altijd via de relay van de server, niemand ziet je IP-adres en het bestand raakt de Mumble-server nooit.",
+            "alt": "Een gedeeld bestand als kaart in de chat"
+          },
+          {
+            "id": "file-safety",
+            "title": "Veilig downloaden",
+            "body": "Elke download vraagt eerst en toont de map. Programma’s en scripts krijgen een extra waarschuwing, en daarna controleert Mumcord of het bestand ongewijzigd is aangekomen. In de instellingen zet je ontvangen uit en bepaal je de grootte en de map.",
+            "alt": "De instellingen voor bestanden delen"
+          },
+          {
+            "id": "camera",
+            "title": "Camera",
+            "body": "Je camera voor iedereen in je spraakkanaal, alleen via de relay en end-to-end versleuteld. Het begint met een voorbeeld dat niemand ziet, en een cameraknop in het gebruikerspaneel, het Apps-menu, het systeemvak en een sneltoets zetten hem aan en uit.",
+            "alt": "De camera-instellingen met een voorbeeld"
+          },
+          {
+            "id": "camera-room",
+            "title": "Cameraruimte",
+            "body": "De camera’s in het kanaal staan boven de chat, maximaal negen tegels in een raster of één grote tegel met Spreker. Naast een scherm delen of watchparty vormen ze een strook ernaast of erboven, of je verbergt ze.",
+            "alt": "De cameraruimte met meerdere camera’s boven de chat"
+          },
+          {
+            "id": "camera-backgrounds",
+            "title": "Camera-achtergronden",
+            "body": "Geen achtergrond, vervagen (licht of sterk), een van de 18 ingebouwde afbeeldingen of je eigen. Het wordt op je computer berekend en je wijzigt het zonder de camera uit te zetten.",
+            "alt": "Het camerabeeld met een sterk vervaagde achtergrond"
+          },
+          {
+            "id": "camera-tiles",
+            "title": "Tegelopties",
+            "body": "De ⋯ op een tegel biedt „Voor mij vastzetten”, „Groot tonen”, „Video verbergen” (dan wordt hij helemaal niet gedownload) en „Kwaliteit voor mij”. Plus een eigen pagina Instellingen → Camera, en alles werkt met het toetsenbord.",
+            "alt": "Het menu van een camerategel"
+          },
+          {
+            "id": "screen-share-sound",
+            "title": "Geluid tijdens het delen",
+            "body": "Een heel scherm deelt al het geluid behalve dat van Mumcord, een venster alleen het geluid van die app. Waar onduidelijk is wie je bedoelt, vraagt „Geluid van welke app?” het. Werkt op Windows 10, macOS 13 en Linux met PipeWire.",
+            "alt": "Het dialoogvenster voor je een scherm gaat delen"
+          },
+          {
+            "id": "screen-share-av1",
+            "title": "AV1 voor scherpe tekst",
+            "body": "Mumcord controleert op de achtergrond wat je computer kan en gebruikt AV1 op de videokaart, AV1 op de processor of VP9. Kijkers spelen AV1 ook zonder hardware af, en voor oudere Mumcord-versies schakelt het delen over op VP9.",
+            "alt": "Het tabblad voor scherm delen in de instellingen"
+          },
+          {
+            "id": "screen-share-relay",
+            "title": "Tot 25 kijkers",
+            "body": "Als de relay het aanbiedt, upload je één keer en stuurt de relay het gedeelde scherm naar iedereen door, tot zijn limiet (standaard 25). Het is end-to-end versleuteld, de relay ziet niets."
+          },
+          {
+            "id": "screen-share-quality",
+            "title": "Kwaliteit instellen",
+            "body": "Voor je begint kies je resolutie, framerate, scherpe tekst of vloeiende beweging en uploadlimiet. Tijdens het delen wijzigt het menu Kwaliteit alles zonder opnieuw te starten, en het tabblad „Scherm delen” in de instellingen bevat je standaardwaarden. Kijkers kunnen hun framerate verlagen.",
+            "alt": "De bediening tijdens het kijken naar een gedeeld scherm"
+          },
+          {
+            "id": "media-area-resize",
+            "title": "Beeld en chat verdelen",
+            "body": "Sleep het handvat tussen het beeld van een gedeeld scherm of watchparty en de chat, of gebruik de pijltjestoetsen. Het klikt vast op een derde, de helft en twee derde, en Mumcord onthoudt de hoogte.",
+            "alt": "Een gedeeld scherm met camera’s als strook ernaast"
           }
         ]
       },
@@ -1214,8 +1302,8 @@
           {
             "id": "plugin-safety",
             "title": "Sandbox, handtekeningen en een noodschakelaar",
-            "body": "Plug-ins draaien afgeschermd, zonder toegang tot netwerk, bestanden of audio, met limieten voor geheugen en tijd; een plug-in die blijft crashen wordt uitgezet, en je stem blijft er nooit last van hebben. Officiële plug-ins zijn ondertekend en gecontroleerd. Met een noodschakelaar kan een schadelijke plug-in voor iedereen worden uitgeschakeld, “Alle plug-ins uitzetten” stopt ze in één keer, en --no-plugins start zonder plug-ins.",
-            "alt": "Installatiemelding van EVE Fit met een voortgangsbalk met de tekst “Checking signature…” boven de lijst met rechten."
+            "body": "Plug-ins draaien afgesloten, zonder toegang tot bestanden of audio en alleen tot websites die ze hebben opgegeven en jij hebt goedgekeurd, met limieten voor geheugen en tijd; een plug-in die steeds crasht wordt uitgezet, en je stem blijft altijd ongemoeid. Officiële plug-ins zijn ondertekend en gecontroleerd. Een noodschakelaar kan een schadelijke plug-in voor iedereen uitschakelen, „Alle plug-ins uitzetten” stopt ze meteen, en --no-plugins start zonder plug-ins.",
+            "alt": "Installatievenster van EVE fit met een voortgangsbalk met „Handtekening controleren…” boven de lijst met rechten."
           },
           {
             "id": "plugin-updates",
@@ -1264,6 +1352,45 @@
             "title": "EVE Fit",
             "body": "Plak een EVE Online-fitting in de chat en iedereen met de plug-in ziet een scheepskaart. Met één klik open je het fittingwiel met capacitor, aanval, verdediging en navigatie, offline in Mumcord, en met “Fitting kopiëren” krijg je hem er weer uit.",
             "alt": "EVE Fit-dialoog met het Algos-schip in het fittingwiel, modulepictogrammen en statistieken voor capacitor, aanval, verdediging, targeting, navigatie en drones."
+          },
+          {
+            "id": "plugin-media-area",
+            "title": "Plug-ins in het mediagebied",
+            "body": "Plug-inactiviteiten draaien in het mediagebied met de eigen koptekst van Mumcord: wie het startte, hoeveel mensen meedoen, wie de plug-in maakte. Met volledig scherm en „Plug-in verlaten”. Als er meer draait, schakelen tabbladen of Alt+1 tot Alt+9 ertussen.",
+            "alt": "Een plug-in in het mediagebied met tabbladen erboven"
+          },
+          {
+            "id": "plugin-side-panel",
+            "title": "Zijpaneel voor plug-ins",
+            "body": "Een plug-in kan zijn pagina rechts van de chat tonen in plaats van de ledenlijst. Je past de grootte aan, Mumcord onthoudt de breedte per plug-in en een ⋯-menu leidt naar de details van de plug-in.",
+            "alt": "Een plug-in in het zijpaneel naast de chat"
+          },
+          {
+            "id": "plugin-apps-menu",
+            "title": "Plug-ins in het Apps-menu",
+            "body": "Elke plug-in kan tot twee items aan het Apps-menu toevoegen, onder „Plug-ins” met zijn pictogram en naam. Dezelfde items staan in het opdrachtenpalet (Ctrl+Shift+P), en een plug-in kan een item met een reden grijs maken.",
+            "alt": "Het Apps-menu met plug-in-items"
+          },
+          {
+            "id": "plugin-security-score",
+            "title": "Beveiligingsscore",
+            "body": "Niet-officiële plug-ins krijgen een score van 0 tot 100, met de belangrijkste redenen en de volledige uitsplitsing bij installatie en update. Plug-ins met een hoog risico hebben een eigen vinkje nodig, en „Plug-inveiligheid” in de instellingen kan ze helemaal blokkeren.",
+            "alt": "De details van de beveiligingsscore van een plug-in"
+          },
+          {
+            "id": "plugin-min-version",
+            "title": "Minimumversie voor plug-ins",
+            "body": "Als een plug-in een nieuwere Mumcord nodig heeft, staat er „Vereist Mumcord X of nieuwer” en is installeren uitgeschakeld. Automatische updates wachten tot jouw Mumcord de nieuwe versie kan draaien."
+          },
+          {
+            "id": "plugin-websites",
+            "title": "Websites van plug-ins",
+            "body": "Plug-ins die met websites praten, tonen elk adres bij installatie en in hun details, met aantallen verzoeken. Ze bereiken alleen wat ze hebben opgegeven en jij hebt goedgekeurd, alleen openbare adressen met een geldig certificaat. Plug-inpagina’s openen ook in een dialoogvenster."
+          },
+          {
+            "id": "plugin-relay-data",
+            "title": "Plug-indata via de relay",
+            "body": "Spelgegevens gaan end-to-end versleuteld via de relay, tot 64 KB per bericht, naar één persoon of het hele kanaal. Je zet het per plug-in uit, en Instellingen → Plug-ins toont hoeveel data een plug-in heeft gebruikt."
           }
         ]
       },
@@ -1376,11 +1503,12 @@
         {
           "title": "Bestanden delen",
           "items": [
-            "Sleep bestanden in de chat of voeg ze toe met de paperclip, tot 2 GB. Mappen worden eerst gezipt.",
+            "Sleep bestanden en mappen in de chat of voeg ze toe met de paperclip, tot 2 GB. Is er geen relay of staat die geen bestanden toe, dan zegt de paperclip waarom.",
             "Bestanden gaan altijd via de relay van de server: niemand ziet je IP-adres en het bestand raakt de Mumble-server nooit.",
-            "Elke download vraagt eerst en toont de map waarin hij wordt opgeslagen. Daarna controleert Mumcord de SHA-256-controlesom, die je ook kunt kopiëren.",
+            "Elke download vraagt eerst en toont de map waarin hij wordt opgeslagen. Daarna controleert Mumcord of het bestand ongewijzigd is aangekomen.",
             "Programma’s en scripts krijgen een extra waarschuwing vóór het downloaden en vóór het openen.",
-            "Een bestand blijft beschikbaar zolang de afzender online is, maximaal 24 uur.",
+            "Je gedeelde bestanden tonen wie ze heeft gedownload en hebben een knop „Delen stoppen”.",
+            "Afbeeldingen die je in een kanaal sleept, kun je als afbeelding sturen of als bestand delen. Alle andere bestanden worden meteen gedeeld.",
             "Nieuw in Instellingen → Privacy en verbindingen: bestanden ontvangen aan of uit, de maximale grootte van 100 MB tot 2 GB en de map voor ontvangen bestanden."
           ]
         },
@@ -1388,70 +1516,88 @@
           "title": "Scherm delen",
           "items": [
             "Geluid tijdens het delen: een heel scherm deelt al het geluid behalve dat van Mumcord, een venster deelt alleen het geluid van die app. Werkt op Windows 10 (2004 of nieuwer), macOS 13 en Linux met PipeWire.",
-            "Kies voor je begint een resolutie tot 4K, een framesnelheid tot 60 fps, scherpe tekst of vloeiende beweging, de codec en de uploadlimiet. Het menu Kwaliteit wijzigt ze tijdens het delen zonder opnieuw te starten.",
+            "Kies voor je begint een resolutie, framerate, scherpe tekst of vloeiende beweging, codec en uploadlimiet. Het menu Kwaliteit wijzigt ze tijdens het delen zonder opnieuw te starten.",
+            "Mumcord kiest zelf de encoder: AV1 op de videokaart, AV1 op de processor of VP9. De balk van je gedeelde scherm toont kwaliteit, encoder en of het via de relay gaat.",
+            "Als je een venster deelt, vraagt „Geluid van welke app?” wiens geluid meegaat. Je kunt ook „Geen geluid” kiezen.",
             "Via de relay upload je één keer en tot 25 mensen kijken mee, end-to-end versleuteld.",
             "AV1 op de videokaart of de processor voor scherpe tekst met minder bandbreedte. VP9 blijft als terugvaloptie, ook voor kijkers met een oudere Mumcord.",
-            "Kijkers zien codec, route en kwaliteit en kunnen hun framesnelheid verlagen. De kijkerslijst laat zien wie wat krijgt.",
-            "Nieuw tabblad “Scherm delen” in Instellingen met je standaardwaarden en de encoder die je computer gebruikt.",
-            "Verdeel beeld en chat zelf: sleep het handvat tussen een scherm delen of watchparty en de chat. Sleep het helemaal omhoog en het beeld wordt een minibalk, en Mumcord onthoudt de hoogte."
+            "Kijkers zien codec, route en kwaliteit en kunnen hun framerate verlagen. De kijkerslijst laat zien wie wat krijgt.",
+            "Nieuw tabblad „Scherm delen” in Instellingen met je standaardwaarden en de encoder die je computer gebruikt.",
+            "Verdeel beeld en chat zelf: sleep het handvat tussen een gedeeld scherm of watchparty en de chat. Sleep het helemaal omhoog en het beeld wordt een minibalk, en Mumcord onthoudt de hoogte."
           ]
         },
         {
           "title": "Camera",
           "items": [
-            "Je camera voor iedereen in je spraakkanaal, alleen via de relay en end-to-end versleuteld, voor maximaal 25 kijkers.",
-            "De camera begint met een voorbeeld dat niets verzendt. Hij gaat pas uit als je hem aanzet.",
-            "Vervaag je achtergrond of zet een afbeelding achter je, berekend op je computer.",
-            "Als de camera niet gebruikt kan worden, zegt Mumcord waarom, bijvoorbeeld als de relay van de server geen camera’s toestaat."
+            "Je camera voor iedereen in je spraakkanaal, alleen via de relay en end-to-end versleuteld.",
+            "De cameraruimte staat boven de chat: maximaal negen tegels in een raster, of de Spreker-indeling met één grote tegel. Elke tegel toont de naam, een pictogram voor uitgeschakelde microfoon en een groen kader als de persoon praat.",
+            "De camera begint met een voorbeeld dat niemand anders ziet. Je kiest de camera en de achtergrond, en pas als je hem aanzet gaat er iets uit.",
+            "Achtergronden: geen, vervagen (licht of sterk), een van de 18 ingebouwde afbeeldingen of je eigen. Het wordt op je computer berekend en je kunt het wijzigen terwijl de camera draait.",
+            "De ⋯ op een tegel biedt „Voor mij vastzetten”, „Groot tonen”, „Video van … verbergen” (dan wordt hij helemaal niet gedownload) en „Kwaliteit voor mij”. Het werkt ook allemaal met het toetsenbord.",
+            "Naast een gedeeld scherm of watchparty blijft het beeld groot en staan de camera’s in een strook ernaast of erboven. Of je verbergt ze, en dan worden ze niet gedownload.",
+            "Een cameraknop in het gebruikerspaneel en „Camera aanzetten” in het Apps-menu openen het voorbeeld. Zolang de camera aan is, wordt de knop rood en staat er een camerapictogram in de kanaalboom.",
+            "Nieuw tabblad „Camera” in Instellingen: voorbeeld, camera, verzendkwaliteit, gespiegelde zelfweergave, standaardachtergrond en hoe je de camera’s van anderen ziet. Plus een sneltoets om de camera aan en uit te zetten.",
+            "Zolang de camera aan is, toont het systeemvakpictogram een rode camerabadge en biedt het menu „Camera uitzetten”. Als je scherm vergrendelt, kan de camera zichzelf uitzetten.",
+            "Als de camera niet gebruikt kan worden of vanzelf stopt, zegt Mumcord waarom, bijvoorbeeld als de relay van de server geen camera’s toestaat."
           ]
         },
         {
           "title": "Plug-ins",
           "items": [
-            "Plug-ins krijgen het mediagebied, een zijpaneel naast de chat, dialoogvensters en items in het menu Apps. Als er meer dan één draait, schakelen tabbladen ertussen.",
+            "Plug-ins krijgen het mediagebied, een zijpaneel naast de chat, dialoogvensters en items in het Apps-menu. Als er meer dan één draait, schakelen tabbladen ertussen.",
             "Spelgegevens gaan end-to-end versleuteld via de relay, naar één persoon of het hele kanaal.",
-            "Een veiligheidsscore van 0 tot 100 voor onofficiële plug-ins, met de redenen bij installatie en updates.",
-            "Elke website waarmee een plug-in praat staat bij installatie in een lijst, en nieuwe websites hebben jouw toestemming nodig.",
-            "Plug-inpagina’s zijn afgesloten: geen camera, geen microfoon, geen klembord en alleen de websites die je hebt toegestaan. Een pagina die vastloopt, bevriest Mumcord niet meer.",
-            "Een plug-in die een nieuwere Mumcord nodig heeft, zegt dat in plaats van te installeren, en updates wachten tot jouw Mumcord ze kan draaien."
+            "Een beveiligingsscore van 0 tot 100 voor niet-officiële plug-ins, met de redenen bij installatie en updates.",
+            "Elke website waarmee een plug-in praat, staat bij installatie in een lijst, en nieuwe websites hebben jouw toestemming nodig.",
+            "Plug-inpagina’s zijn afgeschermd: geen camera, geen microfoon, geen klembord en alleen de websites die je hebt toegestaan. Een pagina die vastloopt, laat Mumcord niet langer bevriezen.",
+            "Een plug-in die een nieuwere Mumcord nodig heeft, zegt dat in plaats van te installeren, en updates wachten tot jouw Mumcord ze kan draaien.",
+            "Elke plug-in kan tot twee items aan het Apps-menu toevoegen, onder „Plug-ins” met zijn pictogram en naam. Dezelfde items staan in het opdrachtenpalet (Ctrl+Shift+P).",
+            "Plug-ins kunnen korte geluiden afspelen die alleen jij hoort. Ze zijn zachter zolang er iemand praat en stil zolang je doof gezet bent.",
+            "Een plug-in kan een bestand opslaan, een afbeelding openen of een afbeelding in de chat plaatsen, maar alleen direct na jouw klik en met toestemming. Hij komt nooit te weten waar je bestanden staan.",
+            "Instellingen → Plug-ins toont hoeveel data elke plug-in via de relay verstuurt, heeft een schakelaar „Plug-inveiligheid” tegen riskante plug-ins en toont plug-ins die bij het laden zijn geweigerd.",
+            "De updatecontrole toont de beveiligingsscore voor en na en waarom een update wacht. Als er release notes zijn, opent een link ze in je browser."
           ]
         },
         {
           "title": "Beheer",
           "items": [
             "Kick… en Ban… in het Beheer-menu van een persoon, met een reden. Bans duren 1 uur, 1 dag, 7 dagen, 30 dagen, voor altijd of tot een datum.",
-            "De banlijst in het servermenu: zoeken, filteren, reden en einde bewerken, bans opheffen en mensen bannen die op dit moment niet online zijn."
+            "De banlijst in het servermenu: zoeken, filteren, reden en einde aanpassen, bans opheffen en mensen bannen die op dit moment niet online zijn."
           ]
         },
         {
           "title": "Bots",
           "items": [
-            "Bots staan apart: een sectie “Bots op deze server” onder de kanalenlijst toont elke bot met wat hij doet. Bots zonder stem verschijnen niet meer tussen de mensen.",
-            "Een mumbot verschijnt als “Mumbot <version>” in zijn profiel en de verbindingsgegevens in plaats van “Mumcord <version>”."
+            "Bots staan apart: een sectie „Bots op deze server” onder de kanaallijst toont elke bot met wat hij doet. Bots zonder stem verschijnen niet meer tussen de mensen.",
+            "Een mumbot verschijnt als „Mumbot <version>” in zijn profiel en de verbindingsgegevens in plaats van „Mumcord <version>”."
           ]
         },
         {
           "title": "Verbeterd",
           "items": [
-            "Chatgeschiedenis tussen mensen op 0.7.0 is sneller bijgewerkt: elk beeld reist één keer en beelden die je al hebt, worden niet opnieuw gedownload.",
-            "Mumcord volgt wat de relay van de server toestaat, en de serverinfo laat zien wat dat is.",
+            "De chatgeschiedenis tussen mensen op 0.7.0 is sneller bijgewerkt: elke afbeelding reist één keer en afbeeldingen die je al hebt, worden niet opnieuw gedownload.",
+            "Mumcord volgt wat de relay van de server toestaat, en de serverinfo toont wat dat is.",
             "Schakelaars blijven zichtbaar in de modus met hoog contrast.",
-            "Ingebedde YouTube- en Twitch-video’s: de knop voor volledig scherm werkt, en een eigen knop kopieert de link naar de video."
+            "Het Apps-menu toont pictogrammen voor „Je scherm delen” en „Samen kijken”, en plug-ins zonder pictogram krijgen een eigen gekleurde tegel.",
+            "De latentiekaart zegt waarom de tijd langer is dan de lage-latentiemodus vraagt, bijvoorbeeld als de geluidsserver op Linux grotere blokken nodig heeft."
           ]
         },
         {
           "title": "Opgelost",
           "items": [
-            "Op oudere processors zonder AVX2 crasht Mumcord niet meer bij het starten. Scherm delen gebruikt daar VP9.",
-            "Chatgeschiedenis van vergrendelde kanalen gaat alleen naar mensen die echt in het kanaal zitten, niet naar mensen die het alleen volgen of meeluisteren.",
-            "Als iemand “Altijd relay gebruiken” gebruikt, stuurt Mumcord diegene je netwerkadres niet meer.",
+            "Op oudere processors zonder AVX2 crasht Mumcord niet meer bij het opstarten. Scherm delen gebruikt daar VP9.",
+            "De chatgeschiedenis van vergrendelde kanalen gaat alleen naar mensen die echt in het kanaal zitten, niet naar mensen die het alleen volgen of beluisteren.",
+            "Als iemand „Altijd relay gebruiken” aanzet, stuurt Mumcord hem je netwerkadres niet meer.",
             "Een profiel van een nieuwere Mumcord veroorzaakt geen crash meer. Mumcord legt het uit en biedt aan de nieuwste versie te downloaden.",
             "Verzonden berichten staan meteen op de juiste plek in de geschiedenis en blijven daar.",
-            "Een klik met het middelste muisknopje op een link, of een klik met Ctrl, Cmd of Shift ingedrukt, opent hem in je browser in plaats van binnen Mumcord.",
-            "Als je niet geregistreerd bent op een server waarvan de relay alleen geregistreerde gebruikers bedient, zegt Mumcord dat nu in plaats van “relay niet bereikbaar”.",
-            "Het venster van de banlijst heeft een sluitknop, en Kick en Ban reageren op muisklikken.",
-            "Een watchparty starten vanuit het menu Apps laadt de app niet meer opnieuw.",
-            "Scherm delen spreekt nu alle talen."
+            "Een klik met het middelste muisknopje op een link, of een klik met Ctrl, Cmd of Shift ingedrukt, opent hem in je browser in plaats van in Mumcord.",
+            "Als je niet bent geregistreerd op een server waarvan de relay alleen geregistreerde gebruikers bedient, zegt Mumcord dat nu in plaats van „relay niet bereikbaar”.",
+            "Kick en Ban reageren op muisklikken.",
+            "Een watchparty starten vanuit het Apps-menu laadt de app niet meer opnieuw.",
+            "Scherm delen spreekt nu alle talen.",
+            "Audio hapert niet meer als een andere app tegelijk geluid afspeelt.",
+            "Als een gedeeld scherm waar je naar kijkt stopt, blijft er geen leeg beeld achter en gaan de camera’s terug naar het raster van de ruimte.",
+            "Ctrl+C op geselecteerde chattekst laat het klembord op Linux (X11) niet langer leeg.",
+            "Een plug-in kan zijn dialoogvenster niet meer uit zichzelf openen, alleen kort na jouw klik. Berichten van een plug-inpagina komen in de juiste volgorde aan."
           ]
         }
       ]
@@ -2575,8 +2721,6 @@
             "title": "Plug-ins op het podium",
             "items": [
               "Plug-ins krijgen het mediagebied: spellen en whiteboards draaien daar waar normaal de schermdeling, de watch party en de camera's staan",
-              "Whiteboard, de officiële plug-in om samen te denken: een eindeloos canvas met pennen, plaknotities en een laserpointer, opgeslagen op je apparaat en te exporteren als PNG, SVG of PDF",
-              "Skyloom, een spel alleen met stem voor 2 tot 12 mensen: één persoon beschrijft een verborgen sterrenbeeld, alle anderen plaatsen elk één ster",
               "Plug-ins openen ook via het Apps-menu, in het zijpaneel of in een dialoogvenster, en grote hoeveelheden data gaan end-to-end versleuteld via de relay"
             ],
             "mockups": [
@@ -2597,6 +2741,13 @@
               "Plug-ins met een beveiligingsscore",
               "Een plug-in met hoog risico installeren",
               "De websites van een plug-in bij het installeren"
+            ]
+          },
+          {
+            "title": "Whiteboard & Skyloom",
+            "items": [
+              "Whiteboard, de officiële plug-in om samen te denken: een eindeloos canvas met pennen, plaknotities en een laserpointer, opgeslagen op je apparaat en te exporteren als PNG, SVG of PDF",
+              "Skyloom, een spel alleen met stem voor 2 tot 12 mensen: één persoon beschrijft een verborgen sterrenbeeld, alle anderen plaatsen elk één ster"
             ]
           }
         ]
@@ -2993,7 +3144,7 @@
         "id": "relay",
         "title": "Optioneel: een relay voor directe verbindingen",
         "body": [
-          "Zodat schermdelen en afbeeldingen op volledige grootte ook werken als twee mensen elkaar niet direct kunnen bereiken, of zodat niemand het IP-adres van de ander ziet, kun je het <a href=\"/en/mumpeer\">mumpeer</a>-relay naast de server draaien. De inhoud blijft end-to-end versleuteld.",
+          "Zodat scherm delen, camera’s en afbeeldingen op volledige grootte ook werken als twee mensen elkaar niet direct kunnen bereiken, of zodat niemand het IP-adres van de ander ziet, kun je het <a href=\"/en/mumpeer\">mumpeer</a>-relay naast de server draaien. De inhoud blijft end-to-end versleuteld.",
           "Mumcord gebruikt het relay vanaf versie 0.5.0. De relaybot <code>mumbot peer</code> doet de rest: hij kondigt het relay aan en deelt de tokens uit.",
           "Schrijf in de map van de server een gedeeld geheim in <code>.env</code> en haal de twee voorbeeldconfigs op. Zet het adres van je server bij <code>public_host</code> in <code>mumpeer.toml</code>, en de vingerafdruk van je Mumble-server in <code>bot.toml</code>. Voeg dan de onderstaande services toe aan <code>docker-compose.yml</code> onder <code>services:</code>, en <code>mumpeer-data:</code> en <code>mumbot-data:</code> onder <code>volumes:</code>."
         ],
@@ -3027,7 +3178,7 @@
         ],
         "relay": [
           "mumpeer-relay",
-          "Scherm delen en grote afbeeldingen, ook achter CGNAT, zonder dat iemand je IP ziet"
+          "Scherm delen, camera’s en grote afbeeldingen zelfs achter CGNAT, zonder dat iemand je IP ziet"
         ],
         "webhook": [
           "Mumbot-webhook",
@@ -3300,6 +3451,20 @@
         ]
       },
       {
+        "id": "0.5.0",
+        "tag": "0.5.0",
+        "title": "Camera’s en groepen",
+        "summary": "De relaybot regelt nu camera’s, plug-indata en groepen.",
+        "items": [
+          "Camera’s via de relay, standaard maximaal 9 per kanaal; scherm en camera draaien tegelijk",
+          "Plug-indata voor Mumcord-plug-ins, maximaal 8 zenders per kanaal",
+          "Relaytokens alleen voor leden van gekozen Mumble-groepen",
+          "De chatgeschiedenis van vergrendelde kanalen gaat alleen naar mensen erin",
+          "De bot stelt zijn avatar in via een https-URL of base64",
+          "Mumble en Mumcord tonen „Mumbot 0.x.y” als client, muziekbots verschijnen in hun kanaal"
+        ]
+      },
+      {
         "id": "later",
         "tag": "Daarna",
         "title": "Ideeën",
@@ -3324,7 +3489,9 @@
       "points": [
         "Scherm delen en grote afbeeldingen, zelfs achter CGNAT of zonder je IP te tonen",
         "Draait in het netwerk van de relay, de API blijft intern",
-        "Alleen geregistreerde gebruikers van je eigen server krijgen tokens"
+        "Alleen geregistreerde gebruikers van je eigen server krijgen tokens",
+        "Deelt ook tokens uit voor camera’s en plug-indata als de relay ze toestaat",
+        "Desgewenst alleen voor leden van gekozen Mumble-groepen"
       ]
     },
     "music": {
@@ -3368,7 +3535,7 @@
       "mumpeer": {
         "title": "mumpeer",
         "description": "mumpeer is een klein relay voor de directe verbindingen van Mumcord: voor als twee mensen elkaar niet direct kunnen bereiken of hun IP-adres willen verbergen.",
-        "lead": "Een klein relay voor de directe verbindingen van Mumcord tussen gebruikers, bijvoorbeeld voor schermdelen of afbeeldingen op volledige grootte. Als twee mensen elkaar niet direct kunnen bereiken, achter CGNAT, strikte firewalls of in netwerken zonder UDP, of hun IP-adres niet willen laten zien, maken beiden in plaats daarvan verbinding met het relay. Dat geeft alleen de versleutelde pakketten door, zoals een TURN-server.",
+        "lead": "Een klein relay voor de directe verbindingen van Mumcord tussen gebruikers, bijvoorbeeld voor scherm delen, camera’s, bestanden of afbeeldingen op volledige grootte. Als twee mensen elkaar niet direct kunnen bereiken, achter CGNAT, strikte firewalls of in netwerken zonder UDP, of hun IP-adres niet willen laten zien, maken beiden in plaats daarvan verbinding met het relay. Dat geeft alleen de versleutelde pakketten door, zoals een TURN-server.",
         "features": [
           {
             "title": "Naast je Mumble-server",
@@ -3389,6 +3556,14 @@
           {
             "title": "Helemaal optioneel",
             "body": "Mumcord werkt ook zonder bot en relay. In Mumcord kies je zelf: relay uit, alleen als een directe verbinding mislukt, of altijd."
+          },
+          {
+            "title": "Scherm, camera’s en plug-indata",
+            "body": "Eén persoon verstuurt één keer en het relay geeft het zonder te lezen door aan alle kijkers. Dat geldt voor scherm delen en camera’s: tot 18 camera’s tegelijk, elk met hooguit 2500 kbit/s upload, en tot 25 kijkers per uitzending. Plug-indata werkt ook, maar staat standaard uit en heeft de laagste prioriteit."
+          },
+          {
+            "title": "Jij bepaalt wat mag",
+            "body": "In de sectie `[uses]` zet je afbeeldingen, bestanden, scherm delen, camera en plug-indata één voor één aan of uit. Er zijn ook limieten voor bandbreedte, sessies en uitzendingen."
           }
         ],
         "listTitle": "Wat de beheerder kan zien",

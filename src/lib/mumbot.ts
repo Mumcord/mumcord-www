@@ -211,6 +211,8 @@ const source: Record<"de" | "en", MumbotPage> = {
         "Bildschirm teilen und große Bilder auch hinter CGNAT oder ohne die eigene IP zu zeigen",
         "Läuft im Netz des Relays, die API bleibt intern",
         "Nur registrierte Nutzer des eigenen Servers bekommen Tokens",
+        "Vergibt auch Tokens für Kameras und Plugin-Daten, wenn das Relay sie erlaubt",
+        "Auf Wunsch nur für Mitglieder bestimmter Mumble-Gruppen",
       ],
     },
     music: {
@@ -347,6 +349,22 @@ const source: Record<"de" | "en", MumbotPage> = {
         ],
       },
       {
+        id: "0.5.0",
+        tag: "0.5.0",
+        title: "Kameras und Gruppen",
+        status: "now",
+        version: "0.5.0",
+        summary: "Der Relay-Bot kann jetzt Kameras, Plugin-Daten und Gruppen.",
+        items: [
+          "Kameras über das Relay, standardmäßig bis zu 9 pro Kanal; Bildschirm und Kamera laufen zusammen",
+          "Plugin-Daten für Mumcord-Plugins, bis zu 8 Sender pro Kanal",
+          "Relay-Tokens nur für Mitglieder bestimmter Mumble-Gruppen",
+          "Der Chatverlauf gesperrter Kanäle geht nur noch an Leute, die drin sind",
+          "Der Bot setzt sein Avatar-Bild aus einer https-Adresse oder aus base64",
+          "Mumble und Mumcord zeigen „Mumbot 0.x.y“ als Client, Musik-Bots erscheinen in ihrem Kanal",
+        ],
+      },
+      {
         id: "later",
         tag: "Danach",
         title: "Ideen",
@@ -394,6 +412,8 @@ const source: Record<"de" | "en", MumbotPage> = {
         "Screen sharing and large images even behind CGNAT or without showing your IP",
         "Runs in the relay's network, the API stays internal",
         "Only registered users of your own server get tokens",
+        "Also hands out tokens for cameras and plugin data when the relay allows them",
+        "If you like, only for members of chosen Mumble groups",
       ],
     },
     music: {
@@ -527,6 +547,22 @@ const source: Record<"de" | "en", MumbotPage> = {
         items: [
           "Every module answers a Mumcord client's hello: that it is a bot, which one and which modules it runs",
           "Only to that client, at most once every 10 seconds",
+        ],
+      },
+      {
+        id: "0.5.0",
+        tag: "0.5.0",
+        title: "Cameras and groups",
+        status: "now",
+        version: "0.5.0",
+        summary: "The relay bot now handles cameras, plugin data and groups.",
+        items: [
+          "Cameras through the relay, up to 9 per channel by default; screen and camera run together",
+          "Plugin data for Mumcord plugins, up to 8 senders per channel",
+          "Relay tokens only for members of chosen Mumble groups",
+          "The chat history of locked channels only goes to people inside them",
+          "The bot sets its avatar from an https URL or base64",
+          "Mumble and Mumcord show “Mumbot 0.x.y” as the client, music bots appear in their channel",
         ],
       },
       {

@@ -38,7 +38,6 @@ const sp = t.spotlight5;
 const s5plugins = [plgPoll, plgDice, plgEcho, plgMusic, plgEve];
 const pl = pluginsPage[lang];
 const hpIcons: Partial<Record<PluginId, ImageMetadata>> = { poll: plgPoll, dice: plgDice, echolings: plgEcho, "mumbot-music": plgMusic, "eve-fit": plgEve };
-const spotlightOut = (await getReleases()).some((r) => r.version === "0.5.0");
 // The 0.5.0 tiles: small drawn demos, no screenshots; names stay the same in every language.
 // Each links to its card on the features page, whose ids are German on the German page.
 const s5tiles = [
@@ -146,16 +145,128 @@ const tourColors = tour.map((x) => allThemes.find((th) => th.id === x.theme)?.[x
   </div>
 </section>
 
-<!-- Spotlight: what 0.5.0 brings -->
-<section class="section spotlight s5" id="neu" aria-labelledby="spotlight-title">
+<!-- Spotlight: what 0.7.0 brings, as drawn demos -->
+<section class="section spotlight s5 nx" id="neu" aria-labelledby="spotlight-title">
   <div class="spotlight-glow" aria-hidden="true"></div>
   <div class="wrap">
     <div class="section-head spotlight-head">
-      <p class="label" data-reveal>{spotlightOut ? sp.label : sp.labelSoon}</p>
-      <h2 id="spotlight-title" class="h2" data-reveal>{sp.title}</h2>
-      <p class="body" data-reveal>{sp.body}</p>
+      <p class="label" data-reveal>{sp.label}</p>
+      <h2 id="spotlight-title" class="h2" data-reveal>{nx.title}</h2>
+      <p class="body" data-reveal>{nx.body}</p>
     </div>
 
+    <div class="nx-bento">
+      <a class="nx-tile nx-files" href={`${routes.roadmap[lang]}#epic-4.1`} data-reveal data-spot>
+        <div class="s5-demo nx-demo" aria-hidden="true">
+          <div class="d7-drop"><svg viewBox="0 0 24 24"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14" /></svg></div>
+          <div class="d7-file">
+            <div class="d7-file-top">
+              <span class="d7-ico">PDF</span>
+              <span><b>game-night-slides.pdf</b><em>18.4 MB · Alice</em></span>
+            </div>
+            <div class="d7-hash"><code>SHA-256 3f9a…c21e</code><span>Copy</span></div>
+            <div class="d7-bar"><i /></div>
+            <p class="d7-ok">✓ checksum matches</p>
+          </div>
+          <span class="d5-pill d7-relay">relay · IP hidden</span>
+        </div>
+        <div class="s5-text">
+          <h3>{nx.tiles.files.title} <span class="pill pill-new">0.7.0</span></h3>
+          <p>{nx.tiles.files.body}</p>
+        </div>
+      </a>
+      <a class="nx-tile nx-camera" href={`${routes.roadmap[lang]}#epic-4.1`} data-reveal data-spot>
+        <div class="s5-demo nx-demo" aria-hidden="true">
+          <div class="d7-grid">
+            <span style="--c: var(--peach); --h: 28"><i /><b>Maya</b></span>
+            <span class="is-talk" style="--c: var(--violet); --h: 250"><i /><b>Jonas</b></span>
+            <span style="--c: var(--live); --h: 160"><i /><b>Priya</b></span>
+            <span style="--c: var(--pink); --h: 330"><i /><b>Leo</b><em>LIVE</em></span>
+          </div>
+        </div>
+        <div class="s5-text">
+          <h3>{nx.tiles.camera.title} <span class="pill pill-new">0.7.0</span></h3>
+          <p>{nx.tiles.camera.body}</p>
+        </div>
+      </a>
+      <a class="nx-tile nx-share" href={`${routes.roadmap[lang]}#epic-4.1`} data-reveal data-spot>
+        <div class="s5-demo nx-demo" aria-hidden="true">
+          <div class="d7-chips">
+            <span>720p</span><span>1080p</span><span>1440p</span><span class="is-on">4K</span>
+          </div>
+          <div class="d7-chips d7-fps"><span>30 fps</span><span class="is-on">60 fps</span><span>AV1</span></div>
+          <div class="d7-viewers">
+            <span class="d7-up">↑ 1×</span>
+            <span class="d7-faces">{["var(--peach)", "var(--violet)", "var(--live)", "var(--pink)", "var(--violet)"].map((c) => <i style={`--c: ${c}`} />)}</span>
+            <b>+20</b>
+          </div>
+        </div>
+        <div class="s5-text">
+          <h3>{nx.tiles.share.title} <span class="pill pill-new">0.7.0</span></h3>
+          <p>{nx.tiles.share.body}</p>
+        </div>
+      </a>
+      <a class="nx-tile nx-blur" href={`${routes.roadmap[lang]}#epic-4.1`} data-reveal data-spot>
+        <div class="s5-demo nx-demo" aria-hidden="true">
+          <div class="d7-cam">
+            <div class="d7-bg"><i style="--x: 15%; --y: 30%; --c: var(--peach)" /><i style="--x: 80%; --y: 20%; --c: var(--live)" /><i style="--x: 70%; --y: 85%; --c: var(--violet)" /></div>
+            <div class="d7-person"><i /><b /></div>
+            <span class="d7-blurpill">◐ Blur</span>
+          </div>
+        </div>
+        <div class="s5-text">
+          <h3>{nx.tiles.blur.title} <span class="pill pill-new">0.7.0</span></h3>
+          <p>{nx.tiles.blur.body}</p>
+        </div>
+      </a>
+      <a class="nx-tile nx-resize" href={`${routes.roadmap[lang]}#epic-4.1`} data-reveal data-spot>
+        <div class="s5-demo nx-demo" aria-hidden="true">
+          <div class="d7-split">
+            <div class="d7-pic"><i /><span>1080p</span></div>
+            <div class="d7-handle"><i /></div>
+            <div class="d7-chat"><i style="--w: 70%" /><i style="--w: 45%" /><i style="--w: 60%" /></div>
+          </div>
+        </div>
+        <div class="s5-text">
+          <h3>{nx.tiles.resize.title} <span class="pill pill-new">0.7.0</span></h3>
+          <p>{nx.tiles.resize.body}</p>
+        </div>
+      </a>
+      <a class="nx-tile nx-stage" href={`${routes.roadmap[lang]}#epic-4.1`} data-reveal data-spot>
+        <div class="s5-demo nx-demo" aria-hidden="true">
+          <div class="d7-board">
+            <span class="d7-note" style="--c: #f5d46b; --r: -4deg; --x: 8%; --y: 14%">Launch!</span>
+            <span class="d7-note" style="--c: #f59ac0; --r: 3deg; --x: 26%; --y: 56%">Demo</span>
+            <svg class="d7-ink" viewBox="0 0 300 160"><path d="M70 50 C 120 20, 150 90, 200 60 S 260 120, 280 90" /><ellipse cx="226" cy="112" rx="34" ry="20" /></svg>
+            <i class="d7-laser" />
+            <span class="d7-cursor" style="--c: var(--live)">Maya</span>
+          </div>
+          <div class="d7-sky">
+            <svg viewBox="0 0 200 160"><path d="M30 120 L70 70 L110 92 L150 40 L176 96" /></svg>
+            {[[30, 120], [70, 70], [110, 92], [150, 40], [176, 96]].map(([x, y], i) => <i style={`--x: ${x / 2}%; --y: ${y / 1.6}%; --i: ${i}`} />)}
+            <Image src={plgSkyloom} alt="" width={48} height={48} />
+          </div>
+        </div>
+        <div class="s5-text">
+          <h3>{nx.tiles.stage.title} <span class="pill">0.7.1</span></h3>
+          <p>{nx.tiles.stage.body}</p>
+        </div>
+      </a>
+      <a class="nx-tile nx-score" href={`${routes.roadmap[lang]}#epic-4.1`} data-reveal data-spot>
+        <div class="s5-demo nx-demo" aria-hidden="true">
+          <ul class="d7-scores">
+            <li><b>Roll Call</b><span class="is-off">✓ Official</span></li>
+            <li><b>Quiet Notes</b><span class="is-low">12 · Low</span></li>
+            <li><b>Overlay Pals</b><span class="is-mid">45 · Medium</span></li>
+            <li><b>Trivia Night</b><span class="is-high">78 · High</span></li>
+          </ul>
+        </div>
+        <div class="s5-text">
+          <h3>{nx.tiles.score.title} <span class="pill pill-new">0.7.0</span></h3>
+          <p>{nx.tiles.score.body}</p>
+        </div>
+      </a>
+    </div>
     <div class="s5-bento">
       <a class="s5-tile s5-plugins" href={routes.plugins[lang]} data-reveal data-spot>
         <div class="s5-demo" aria-hidden="true">
@@ -498,136 +609,18 @@ const tourColors = tour.map((x) => allThemes.find((th) => th.id === x.theme)?.[x
 </section>
 
 <!-- Roadmap -->
-<!-- What comes next: 0.7.0 as a bento of mockups, 0.8.0 below, then every epic as a chip -->
+<!-- What comes next: 0.8.0 as drawn demos, then every epic as a chip -->
 <section class="section roadmap nx" id="roadmap" aria-labelledby="roadmap-title">
   <div class="spotlight-glow" aria-hidden="true"></div>
   <div class="wrap">
     <div class="section-head nx-head">
-      <p class="label" data-reveal>{t.roadmap.label}</p>
-      <h2 id="roadmap-title" class="h2" data-reveal>{nx.title}</h2>
-      <p class="body" data-reveal>{nx.body}</p>
-      <span class="nx-ver" aria-hidden="true">0.7</span>
-    </div>
-
-    <div class="nx-bento">
-      <a class="nx-tile nx-files" href={`${routes.roadmap[lang]}#epic-4.1`} data-reveal data-spot>
-        <div class="s5-demo nx-demo" aria-hidden="true">
-          <div class="d7-drop"><svg viewBox="0 0 24 24"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14" /></svg></div>
-          <div class="d7-file">
-            <div class="d7-file-top">
-              <span class="d7-ico">PDF</span>
-              <span><b>game-night-slides.pdf</b><em>18.4 MB · Alice</em></span>
-            </div>
-            <div class="d7-hash"><code>SHA-256 3f9a…c21e</code><span>Copy</span></div>
-            <div class="d7-bar"><i /></div>
-            <p class="d7-ok">✓ checksum matches</p>
-          </div>
-          <span class="d5-pill d7-relay">relay · IP hidden</span>
-        </div>
-        <div class="s5-text">
-          <h3>{nx.tiles.files.title} <span class="pill pill-new">0.7.0</span></h3>
-          <p>{nx.tiles.files.body}</p>
-        </div>
-      </a>
-      <a class="nx-tile nx-camera" href={`${routes.roadmap[lang]}#epic-4.1`} data-reveal data-spot>
-        <div class="s5-demo nx-demo" aria-hidden="true">
-          <div class="d7-grid">
-            <span style="--c: var(--peach); --h: 28"><i /><b>Maya</b></span>
-            <span class="is-talk" style="--c: var(--violet); --h: 250"><i /><b>Jonas</b></span>
-            <span style="--c: var(--live); --h: 160"><i /><b>Priya</b></span>
-            <span style="--c: var(--pink); --h: 330"><i /><b>Leo</b><em>LIVE</em></span>
-          </div>
-        </div>
-        <div class="s5-text">
-          <h3>{nx.tiles.camera.title} <span class="pill pill-new">0.7.0</span></h3>
-          <p>{nx.tiles.camera.body}</p>
-        </div>
-      </a>
-      <a class="nx-tile nx-share" href={`${routes.roadmap[lang]}#epic-4.1`} data-reveal data-spot>
-        <div class="s5-demo nx-demo" aria-hidden="true">
-          <div class="d7-chips">
-            <span>720p</span><span>1080p</span><span>1440p</span><span class="is-on">4K</span>
-          </div>
-          <div class="d7-chips d7-fps"><span>30 fps</span><span class="is-on">60 fps</span><span>AV1</span></div>
-          <div class="d7-viewers">
-            <span class="d7-up">↑ 1×</span>
-            <span class="d7-faces">{["var(--peach)", "var(--violet)", "var(--live)", "var(--pink)", "var(--violet)"].map((c) => <i style={`--c: ${c}`} />)}</span>
-            <b>+20</b>
-          </div>
-        </div>
-        <div class="s5-text">
-          <h3>{nx.tiles.share.title} <span class="pill pill-new">0.7.0</span></h3>
-          <p>{nx.tiles.share.body}</p>
-        </div>
-      </a>
-      <a class="nx-tile nx-blur" href={`${routes.roadmap[lang]}#epic-4.1`} data-reveal data-spot>
-        <div class="s5-demo nx-demo" aria-hidden="true">
-          <div class="d7-cam">
-            <div class="d7-bg"><i style="--x: 15%; --y: 30%; --c: var(--peach)" /><i style="--x: 80%; --y: 20%; --c: var(--live)" /><i style="--x: 70%; --y: 85%; --c: var(--violet)" /></div>
-            <div class="d7-person"><i /><b /></div>
-            <span class="d7-blurpill">◐ Blur</span>
-          </div>
-        </div>
-        <div class="s5-text">
-          <h3>{nx.tiles.blur.title} <span class="pill pill-new">0.7.0</span></h3>
-          <p>{nx.tiles.blur.body}</p>
-        </div>
-      </a>
-      <a class="nx-tile nx-resize" href={`${routes.roadmap[lang]}#epic-4.1`} data-reveal data-spot>
-        <div class="s5-demo nx-demo" aria-hidden="true">
-          <div class="d7-split">
-            <div class="d7-pic"><i /><span>1080p</span></div>
-            <div class="d7-handle"><i /></div>
-            <div class="d7-chat"><i style="--w: 70%" /><i style="--w: 45%" /><i style="--w: 60%" /></div>
-          </div>
-        </div>
-        <div class="s5-text">
-          <h3>{nx.tiles.resize.title} <span class="pill pill-new">0.7.0</span></h3>
-          <p>{nx.tiles.resize.body}</p>
-        </div>
-      </a>
-      <a class="nx-tile nx-stage" href={`${routes.roadmap[lang]}#epic-4.1`} data-reveal data-spot>
-        <div class="s5-demo nx-demo" aria-hidden="true">
-          <div class="d7-board">
-            <span class="d7-note" style="--c: #f5d46b; --r: -4deg; --x: 8%; --y: 14%">Launch!</span>
-            <span class="d7-note" style="--c: #f59ac0; --r: 3deg; --x: 26%; --y: 56%">Demo</span>
-            <svg class="d7-ink" viewBox="0 0 300 160"><path d="M70 50 C 120 20, 150 90, 200 60 S 260 120, 280 90" /><ellipse cx="226" cy="112" rx="34" ry="20" /></svg>
-            <i class="d7-laser" />
-            <span class="d7-cursor" style="--c: var(--live)">Maya</span>
-          </div>
-          <div class="d7-sky">
-            <svg viewBox="0 0 200 160"><path d="M30 120 L70 70 L110 92 L150 40 L176 96" /></svg>
-            {[[30, 120], [70, 70], [110, 92], [150, 40], [176, 96]].map(([x, y], i) => <i style={`--x: ${x / 2}%; --y: ${y / 1.6}%; --i: ${i}`} />)}
-            <Image src={plgSkyloom} alt="" width={48} height={48} />
-          </div>
-        </div>
-        <div class="s5-text">
-          <h3>{nx.tiles.stage.title} <span class="pill pill-new">0.7.0</span></h3>
-          <p>{nx.tiles.stage.body}</p>
-        </div>
-      </a>
-      <a class="nx-tile nx-score" href={`${routes.roadmap[lang]}#epic-4.1`} data-reveal data-spot>
-        <div class="s5-demo nx-demo" aria-hidden="true">
-          <ul class="d7-scores">
-            <li><b>Roll Call</b><span class="is-off">✓ Official</span></li>
-            <li><b>Quiet Notes</b><span class="is-low">12 · Low</span></li>
-            <li><b>Overlay Pals</b><span class="is-mid">45 · Medium</span></li>
-            <li><b>Trivia Night</b><span class="is-high">78 · High</span></li>
-          </ul>
-        </div>
-        <div class="s5-text">
-          <h3>{nx.tiles.score.title} <span class="pill pill-new">0.7.0</span></h3>
-          <p>{nx.tiles.score.body}</p>
-        </div>
-      </a>
+      <p class="label" data-reveal>{t.roadmap.label} · 0.8.0</p>
+      <h2 id="roadmap-title" class="h2" data-reveal>{nx.after.title}</h2>
+      <p class="body" data-reveal>{nx.after.body}</p>
+      <span class="nx-ver" aria-hidden="true">0.8</span>
     </div>
 
     <div class="nx-after">
-      <div class="nx-after-head" data-reveal>
-        <p class="label">{nx.after.label} · 0.8.0</p>
-        <h3 class="nx-after-title">{nx.after.title}</h3>
-        <p class="body">{nx.after.body}</p>
-      </div>
       <div class="nx-after-grid">
       <a class="nx-tile nx-acl nx-small" href={`${routes.roadmap[lang]}#epic-4`} data-reveal data-spot>
         <div class="s5-demo nx-demo" aria-hidden="true">

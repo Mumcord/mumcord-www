@@ -16,7 +16,7 @@ export const TOOL_CODE: Record<ToolId, { file: string; code: string; terms?: str
     file: "docker-compose.yml",
     code: `services:
   mumpeer:
-    image: ghcr.io/mumcord/mumpeer:0.1.0
+    image: ghcr.io/mumcord/mumpeer:0.2.0
     restart: unless-stopped
     environment:
       MUMPEER_API_SECRET: \${PEER_API_SECRET:?set PEER_API_SECRET in .env}
@@ -92,13 +92,15 @@ const source: Record<"de" | "en", ToolsPage> = {
       mumpeer: {
         title: "mumpeer",
         description: "mumpeer ist ein kleines Relay für Mumcords direkte Verbindungen: wenn zwei Leute sich nicht direkt erreichen oder ihre IP-Adresse verbergen wollen.",
-        lead: "Ein kleines Relay für Mumcords direkte Verbindungen zwischen Nutzern, etwa beim Bildschirm teilen oder für Bilder in voller Größe. Erreichen sich zwei Leute nicht direkt, hinter CGNAT, strengen Firewalls oder in Netzen ohne UDP, oder wollen sie ihre IP-Adresse nicht zeigen, verbinden sich beide mit dem Relay. Es reicht die verschlüsselten Pakete nur weiter, wie ein TURN-Server.",
+        lead: "Ein kleines Relay für Mumcords direkte Verbindungen zwischen Nutzern, etwa beim Bildschirm teilen, für Kameras, Dateien oder Bilder in voller Größe. Erreichen sich zwei Leute nicht direkt, hinter CGNAT, strengen Firewalls oder in Netzen ohne UDP, oder wollen sie ihre IP-Adresse nicht zeigen, verbinden sich beide mit dem Relay. Es reicht die verschlüsselten Pakete nur weiter, wie ein TURN-Server.",
         features: [
           { title: "Neben deinem Mumble-Server", body: "Eine Community betreibt mumpeer neben ihrem Mumble-Server, zusammen mit dem Relay-Bot `mumbot peer`. Der Bot kündigt das Relay an und vergibt kurzlebige Tokens. Der Mumble-Server bleibt unverändert." },
           { title: "Nur für verifizierte Nutzer", body: "Ein Token gilt nur für genau zwei Zertifikate, einmal pro Seite und standardmäßig 120 Sekunden. Das Relay leitet nirgendwo anders hin und öffnet selbst keine Verbindungen. Ein offener Proxy ist es also nicht." },
           { title: "Ende-zu-Ende verschlüsselt", body: "Was durchs Relay geht, ist eine eigene verschlüsselte Verbindung zwischen den beiden Nutzern, gebunden an ihre Mumble-Zertifikate. Das Relay kann sie weder lesen noch ändern." },
           { title: "Durch fast jede Firewall", body: "QUIC über UDP oder, wo UDP blockiert ist, TLS über TCP. Beides auf Port 443 und mit TLS 1.3." },
           { title: "Ganz optional", body: "Mumcord funktioniert auch ohne Bot und Relay. In Mumcord wählst du: Relay aus, nur wenn direkt nicht klappt, oder immer." },
+          { title: "Bildschirm, Kameras und Plugin-Daten", body: "Eine Person sendet einmal, das Relay verteilt an alle Zuschauer, ohne mitzulesen. Das gilt für Bildschirm und Kameras: Bis zu 18 Kameras gleichzeitig, jede mit höchstens 2500 kbit/s Upload, und bis zu 25 Zuschauer pro Übertragung. Plugin-Daten gehen auch, sind aber standardmäßig aus und haben die niedrigste Priorität." },
+          { title: "Du bestimmst, was erlaubt ist", body: "Im Abschnitt `[uses]` schaltest du Bilder, Dateien, Bildschirm, Kamera und Plugin-Daten einzeln an oder aus. Dazu kommen Limits für Bandbreite, Sitzungen und Übertragungen." },
         ],
         listTitle: "Was der Betreiber sieht",
         list: [
@@ -152,13 +154,15 @@ const source: Record<"de" | "en", ToolsPage> = {
       mumpeer: {
         title: "mumpeer",
         description: "mumpeer is a small relay for Mumcord's direct connections: for when two people cannot reach each other directly or want to hide their IP address.",
-        lead: "A small relay for Mumcord's direct connections between users, for screen sharing or full-size images, for example. When two people cannot reach each other directly, behind CGNAT, strict firewalls or in networks without UDP, or don't want to show their IP address, both connect to the relay instead. It only passes the encrypted packets along, like a TURN server.",
+        lead: "A small relay for Mumcord's direct connections between users, for screen sharing, cameras, files or full-size images, for example. When two people cannot reach each other directly, behind CGNAT, strict firewalls or in networks without UDP, or don't want to show their IP address, both connect to the relay instead. It only passes the encrypted packets along, like a TURN server.",
         features: [
           { title: "Next to your Mumble server", body: "A community runs mumpeer next to its Mumble server, together with the relay bot `mumbot peer`. The bot announces the relay and hands out short-lived tokens. The Mumble server stays unmodified." },
           { title: "Verified users only", body: "A token works only for exactly two certificates, once per side and for 120 seconds by default. The relay never forwards anywhere else and never opens connections itself, so it is not an open proxy." },
           { title: "End-to-end encrypted", body: "What goes through the relay is a separate encrypted connection between the two users, pinned to their Mumble certificates. The relay can neither read nor change it." },
           { title: "Through almost any firewall", body: "QUIC over UDP or, where UDP is blocked, TLS over TCP. Both on port 443 and with TLS 1.3." },
           { title: "Entirely optional", body: "Mumcord works without bot and relay too. In Mumcord you choose: relay off, only when a direct connection fails, or always." },
+          { title: "Screen, cameras and plugin data", body: "One person sends once and the relay passes it on to all viewers without reading it. This covers screen sharing and cameras: up to 18 cameras at the same time, each with at most 2500 kbit/s upload, and up to 25 viewers per broadcast. Plugin data works too, but is off by default and has the lowest priority." },
+          { title: "You decide what is allowed", body: "In the `[uses]` section you switch images, files, screen sharing, camera and plugin data on or off one by one. There are also limits for bandwidth, sessions and broadcasts." },
         ],
         listTitle: "What the operator can see",
         list: [

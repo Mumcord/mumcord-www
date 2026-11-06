@@ -373,7 +373,7 @@
         {
           "tag": "Epic 4.1",
           "title": "Failid, ekraan, kaamera ja pluginad",
-          "body": "Tuleb koos 0.7.0-ga: jaga faile oma IP-aadressi näitamata, ekraanijagamine kuni 4K kuni 25 inimesele, kaamera hägustatud taustaga, tahvel ja mäng Skyloom pluginatena ning turvaskoor teiste pluginatele."
+          "body": "Alates 0.7.0-st: jaga faile oma IP-aadressi näitamata, ekraanijagamine kuni 4K kuni 25 inimesele, kaamera hägustatud taustaga, tahvel ja mäng Skyloom pluginatena ning turvaskoor teiste pluginatele."
         },
         {
           "tag": "Epic 4",
@@ -604,8 +604,8 @@
       "toolTitle": "Kaastöölised"
     },
     "spotlight5": {
-      "label": "Uus versioonis 0.5.0/0.6.0",
-      "labelSoon": "Tulekul: 0.5.0/0.6.0",
+      "label": "Uus versioonis 0.5.0/0.6.0/0.7.0",
+      "labelSoon": "Tulekul: 0.5.0/0.6.0/0.7.0",
       "title": "Rohkem rahu. Rohkem sind. Rohkem heli.",
       "body": "0.5.0 toob Epic 3: teavituskeskuse, blokeerimise, mitu identiteeti, uue kanalipuu, muusika vestluses, madala latentsusega režiimi koos musitseerimiseks ja otseühendused releeserveri kaudu.",
       "tiles": {
@@ -856,6 +856,24 @@
             "title": "Blokeeri inimesi",
             "body": "„Blokeeri…“ inimese menüüs peidab nende privaatsõnumid ja taotlused, voldib kokku nende kanalisõnumid ja vaigistab nende hääle, ainult sinu jaoks. Blokeering järgib sertifikaati, nii et see kehtib serverite vahel ja uute nimede korral. Serverile ega inimesele ei saadeta midagi ning Seaded → Privaatsus loetleb kõik blokeeritud koos nupuga „Eemalda blokeering“.",
             "alt": "Inimese blokeerimise kinnitus, mis loetleb, mis muutub"
+          },
+          {
+            "id": "kick-ban",
+            "title": "Väljaviskamine ja keelustamine",
+            "body": "Inimese menüü Haldus pakub valikuid „Viska välja…“ ja „Keela…“, koos põhjusega. Keelud kestavad 1 tund, 1 päev, 7 päeva, 30 päeva, igaveseks või kuni kuupäevani, sertifikaadi ja IP-aadressi alusel. Ainult juurkanali õigusega.",
+            "alt": "Dialoog inimese keelustamiseks"
+          },
+          {
+            "id": "ban-list",
+            "title": "Keelunimekiri",
+            "body": "„Keelunimekiri…“ serveri menüüs näitab kõiki keelde nime, sõrmejälje, aadressi, põhjuse ja lõpuga. Otsing, filter, põhjuse ja lõpu muutmine kohapeal, keelude tühistamine või inimeste keelustamine, kes pole võrgus.",
+            "alt": "Keelunimekirja aken"
+          },
+          {
+            "id": "bots-section",
+            "title": "Botid omaette",
+            "body": "Kanaliloendi all olev jaotis „Botid sellel serveril“ näitab iga boti koos sellega, mida ta teeb, näiteks relee, vestlusajalugu või veebihaagid. Profiil ja menüü, privaatsõnumid kaasa arvatud, töötavad sealt.",
+            "alt": "Serveri botide jaotis"
           }
         ]
       },
@@ -1095,6 +1113,11 @@
             "title": "Rahulik kasutajapaneel",
             "body": "Kanaliloendi all olev paneel on alati sama kõrgusega: sina koos nime ja serveriga, üks olekurida, näiteks uuesti ühendumine või sinu häälkanal, väikesed märgid režiimile Ära sega, väikese viivitusega režiimile ja ühendusele ning mikrofoni-, kõrvaklappide- ja lõpetamisnupud. Ülal olev kanaliloend ei hüppa enam.",
             "alt": "Kasutajapaneel mitmes olekus, alates rääkimisest ja vaigistusest kuni uuesti ühendumiseni"
+          },
+          {
+            "id": "camera-entry",
+            "title": "Kaamera kasutajapaneelis",
+            "body": "Kaameranupp vaigistamise ja kurdistamise kõrval avab eelvaate. Kuni kaamera on sees, muutub see punaseks ja lülitab kaamera kohe välja, sinu nime all kuvatakse „Kaamera sees“ ja punane märk näitab seda salves."
           }
         ]
       },
@@ -1162,7 +1185,7 @@
           {
             "id": "screen-share",
             "title": "Ekraani jagamine",
-            "body": "Ekraan või aken kuni 8 vaatajale, 720p ja 30 kaadrit sekundis, Windowsis ja macOS-is soovi korral jagatud rakenduse heliga. Käivitad selle vestluse nupust Rakendused. Vaatajad vaatavad põhiveerus koos eraldusvõime, kaadrisageduse ja voo üksikasjadega; sinul on vestluse ülaosas juhtriba koos pausi, heli, vaatajate ja lõpetamisega.",
+            "body": "Ekraan või aken kuni 8 vaatajale otse või kuni 25-le relee kaudu, soovi korral heli ja AV1-ga. Käivitad selle vestluse nupust Rakendused ning määrad enne kvaliteedi ja koodeki. Vaatajad vaatavad põhiveerus koos eraldusvõime, koodeki, tee ja üksikasjadega; sinul on vestluse ülaosas riba koos kvaliteedi, kodeerija, pausi, heli, vaatajate ja lõpetamisega.",
             "alt": "Jagatud ekraan põhiveerus koos voo üksikasjade ja vaatajate nimekirjaga"
           },
           {
@@ -1179,8 +1202,73 @@
           {
             "id": "relay",
             "title": "Kogukonna relee",
-            "body": "Serveri kogukond saab oma Mumble'i serveri kõrval käitada releed. Täissuuruses pildid ja ekraanijagamine töötavad siis ka siis, kui otseühendus pole võimalik, ja valikuga „alati relee kaudu“ ei näe teine inimene kunagi sinu IP-aadressi. Relee ei saa krüptitud ühendust lugeda ja hääl ei kasuta seda kunagi. Valid jaotises Seaded → Privaatsus, ka serveri kaupa.",
+            "body": "Serveri kogukond saab oma Mumble'i serveri kõrval käitada releed. Täissuuruses pildid, failid, kaamerad ja ekraanijagamine töötavad siis ka siis, kui otseühendus pole võimalik, ja valikuga „alati relee kaudu“ ei näe teine inimene kunagi sinu IP-aadressi. Relee ei saa krüptitud ühendust lugeda, hääl ei kasuta seda kunagi ja Mumcord ei kasuta seda, mida relee ei luba. Valid jaotises Seaded → Privaatsus, ka serveri kaupa.",
             "alt": "Privaatsusseaded otse-, relee- ja väljalülitatud peer-to-peer valikutega"
+          },
+          {
+            "id": "file-sharing",
+            "title": "Failide jagamine",
+            "body": "Lohista failid või kaustad vestlusesse või kasuta kirjaklambrit, kuni 2 GB. Need lähevad alati serveri relee kaudu, keegi ei näe sinu IP-aadressi ja fail ei puutu kunagi Mumble’i serverit.",
+            "alt": "Jagatud fail kaardina vestluses"
+          },
+          {
+            "id": "file-safety",
+            "title": "Turvalised allalaadimised",
+            "body": "Iga allalaadimine küsib enne luba ja näitab kausta. Programmid ja skriptid saavad lisahoiatuse ning pärast kontrollib Mumcord, et fail jõudis kohale muutumatuna. Seadetes lülitad vastuvõtu välja ja määrad suuruse ning kausta.",
+            "alt": "Failide jagamise seaded"
+          },
+          {
+            "id": "camera",
+            "title": "Kaamera",
+            "body": "Sinu kaamera kõigile sinu häälekanalis, ainult relee kaudu ja otspunktkrüpteeritult. See algab eelvaatega, mida keegi ei näe, ning kaameranupp kasutajapaneelis, menüü Rakendused, salv ja kiirklahv lülitavad selle sisse ja välja.",
+            "alt": "Kaamera seaded eelvaatega"
+          },
+          {
+            "id": "camera-room",
+            "title": "Kaameraruum",
+            "body": "Kanali kaamerad asuvad vestluse kohal, kuni üheksa paani ruudustikus või üks suur paan koos Kõnelejaga. Ekraanijagamise või watch party kõrval moodustavad need riba kõrval või kohal, või peidad need.",
+            "alt": "Kaameraruum mitme kaameraga vestluse kohal"
+          },
+          {
+            "id": "camera-backgrounds",
+            "title": "Kaamera taustad",
+            "body": "Tausta pole, hägustus (kerge või tugev), üks 18 sisseehitatud pildist või sinu enda oma. See arvutatakse sinu arvutis ja seda muudad kaamerat välja lülitamata.",
+            "alt": "Kaamera eelvaade tugevalt hägustatud taustaga"
+          },
+          {
+            "id": "camera-tiles",
+            "title": "Paani valikud",
+            "body": "Paani ⋯ pakub valikuid „Kinnita endale“, „Näita suurena“, „Peida video“ (siis seda üldse ei laadita) ja „Kvaliteet mulle“. Lisaks oma leht Seaded → Kaamera ning kõik töötab ka klaviatuuriga.",
+            "alt": "Kaamerapaani menüü"
+          },
+          {
+            "id": "screen-share-sound",
+            "title": "Heli jagamisel",
+            "body": "Terve ekraan jagab kogu heli peale Mumcordi enda, aken ainult selle rakenduse heli. Kui pole selge, keda mõtled, küsib „Mille rakenduse heli?“. Töötab Windows 10-s, macOS 13-s ja Linuxis PipeWire’iga.",
+            "alt": "Dialoog enne ekraanijagamise alustamist"
+          },
+          {
+            "id": "screen-share-av1",
+            "title": "AV1 teravale tekstile",
+            "body": "Mumcord kontrollib taustal, mida sinu arvuti suudab, ja kasutab AV1 graafikakaardil, AV1 protsessoril või VP9. Vaatajad esitavad AV1 ka ilma riistvarata ning Mumcordi vanemate versioonide jaoks lülitub jagamine VP9-le.",
+            "alt": "Ekraani jagamise seadete vahekaart"
+          },
+          {
+            "id": "screen-share-relay",
+            "title": "Kuni 25 vaatajat",
+            "body": "Kui relee seda pakub, laed üles korra ja relee saadab jagamise kõigile, kuni oma piirini (vaikimisi 25). See on otspunktkrüpteeritud, relee ei näe midagi."
+          },
+          {
+            "id": "screen-share-quality",
+            "title": "Kvaliteedi seadistamine",
+            "body": "Enne alustamist valid eraldusvõime, kaadrisageduse, terava teksti või sujuva liikumise ja üleslaadimise piiri. Jagamise ajal muudab menüü Kvaliteet kõike taaskäivitamata ning seadete vahekaart „Ekraani jagamine“ hoiab sinu vaikeväärtusi. Vaatajad saavad oma kaadrisagedust vähendada.",
+            "alt": "Juhtelemendid ekraanijagamise vaatamisel"
+          },
+          {
+            "id": "media-area-resize",
+            "title": "Pildi ja vestluse jagamine",
+            "body": "Lohista käepidet ekraanijagamise või watch party pildi ja vestluse vahel või kasuta nooleklahve. See klõpsatab kolmandiku, poole ja kahe kolmandiku juures ning Mumcord jätab kõrguse meelde.",
+            "alt": "Ekraanijagamine kaameratega ribana selle kõrval"
           }
         ]
       },
@@ -1214,7 +1302,7 @@
           {
             "id": "plugin-safety",
             "title": "Liivakast, allkirjad ja hädaseiskamise lüliti",
-            "body": "Pluginad töötavad suletuna, ilma juurdepääsuta võrgule, failidele ega helile, mälu- ja ajapiirangutega; see, mis kogu aeg kokku jookseb, lülitatakse välja ja sinu hääl ei kannata kunagi. Ametlikud pluginad on allkirjastatud ja kontrollitud. Hädaseiskamise lüliti võib kahjuliku plugina kõigil välja lülitada, „Lülita kõik pluginad välja” peatab need korraga ja --no-plugins käivitub ilma ühegi pluginata.",
+            "body": "Pluginad töötavad suletuna, ilma juurdepääsuta failidele ega helile ja ainult saitidele, mille nad deklareerisid ja sina kinnitasid, mälu- ja ajapiirangutega; see, mis kogu aeg kokku jookseb, lülitatakse välja ja sinu hääl ei kannata kunagi. Ametlikud pluginad on allkirjastatud ja kontrollitud. Hädaseiskamise lüliti võib kahjuliku plugina kõigil välja lülitada, „Lülita kõik pluginad välja” peatab need korraga ja --no-plugins käivitub ilma ühegi pluginata.",
             "alt": "EVE Fit'i paigalduse dialoog, kus lubade loendi kohal on edenemisriba tekstiga „Checking signature…“."
           },
           {
@@ -1264,6 +1352,45 @@
             "title": "EVE Fit",
             "body": "Kleebi EVE Online'i fit vestlusse ja kõik, kellel on plugin, näevad laevakaarti. Üks klõps avab fitiratta kondensaatori, ründe, kaitse ja navigatsiooniga, ilma internetita Mumcordi sees, ja „Kopeeri fit” toob selle tagasi välja.",
             "alt": "EVE Fit'i dialoog Algose laevaga fitting-rattas, mooduli ikoonid ning kondensaatori, ründe, kaitse, sihtimise, navigatsiooni ja droonide statistika."
+          },
+          {
+            "id": "plugin-media-area",
+            "title": "Pluginad meediapiirkonnas",
+            "body": "Plugina tegevused töötavad meediapiirkonnas Mumcordi enda päisega: kes selle käivitas, kui paljud mängivad, kes plugina tegi. Täisekraani ja nupuga „Lahku pluginast“. Kui töötab rohkem kui üks asi, vahetavad vahekaardid või Alt+1 kuni Alt+9 nende vahel.",
+            "alt": "Plugin meediapiirkonnas vahekaartidega selle kohal"
+          },
+          {
+            "id": "plugin-side-panel",
+            "title": "Külgpaneel pluginatele",
+            "body": "Plugin võib näidata oma lehte vestlusest paremal liikmeloendi asemel. Muudad selle suurust, Mumcord jätab laiuse plugina kaupa meelde ning menüü ⋯ viib plugina üksikasjadeni.",
+            "alt": "Plugin külgpaneelis vestluse kõrval"
+          },
+          {
+            "id": "plugin-apps-menu",
+            "title": "Pluginad menüüs Rakendused",
+            "body": "Iga plugin võib lisada kuni kaks kirjet menüüsse Rakendused, jaotise „Pluginad“ alla oma ikooni ja nimega. Samad kirjed kuvatakse käsupaletis (Ctrl+Shift+P) ja plugin võib kirje põhjusega hallikaks muuta.",
+            "alt": "Menüü Rakendused plugina kirjetega"
+          },
+          {
+            "id": "plugin-security-score",
+            "title": "Turvaskoor",
+            "body": "Mitteametlikud pluginad saavad skoori vahemikus 0 kuni 100, suurimate põhjuste ja täieliku jaotusega paigaldamisel ja uuendamisel. Kõrge riskiga pluginad vajavad oma linnukest ja „Pluginate turvalisus“ seadetes võib need üldse blokeerida.",
+            "alt": "Plugina turvaskoori üksikasjad"
+          },
+          {
+            "id": "plugin-min-version",
+            "title": "Pluginate miinimumversioon",
+            "body": "Kui plugin vajab uuemat Mumcordi, ütleb see „Vajab Mumcordi X või uuemat“ ja paigaldamine on keelatud. Automaatsed uuendused ootavad, kuni sinu Mumcord suudab uut versiooni käitada."
+          },
+          {
+            "id": "plugin-websites",
+            "title": "Pluginate veebisaidid",
+            "body": "Pluginad, mis suhtlevad veebisaitidega, loetlevad iga aadressi paigaldamisel ja oma üksikasjades, koos päringute arvuga. Nad jõuavad ainult selleni, mille nad deklareerisid ja sina kinnitasid, ainult avalike aadressideni kehtiva sertifikaadiga. Pluginate lehed avanevad ka dialoogis."
+          },
+          {
+            "id": "plugin-relay-data",
+            "title": "Pluginate andmed relee kaudu",
+            "body": "Mängude andmed liiguvad otspunktkrüpteeritult relee kaudu, kuni 64 KB sõnumi kohta, ühele inimesele või kogu kanalile. Lülitad selle välja plugina kaupa ning Seaded → Pluginad näitab, kui palju andmeid see kasutas."
           }
         ]
       },
@@ -1371,16 +1498,17 @@
     {
       "version": "0.7.0",
       "teaser": "Failide jagamine, sinu kaamera, ekraani jagamine heliga ja AV1 kuni 25 vaatajale, pluginad meediapiirkonnas, väljaviskamine, keelustamine ja keelunimekiri.",
-      "summary": "Suur uuendus: jagad kanalis faile kuni 2 GB, alati releeserveri kaudu, näitad oma kaamerat hägustatud taustaga, sinu ekraani jagamine saab heli, AV1 ja kuni 25 vaatajat, pildi ja vestluse jagad ühe käepideme abil, pluginad saavad meediapiirkonna ja selged turvareeglid ning administraatorid saavad välja visata, keelustada ja hoida keelunimekirja korras.",
+      "summary": "Suur uuendus: jagad faile kuni 2 GB kanalis, alati relee kaudu, näitad oma kaamerat hägustatud taustaga, ekraani jagamine saab heli, AV1 ja kuni 25 vaatajat, pildi ja vestluse jagad ühe käepidemega, pluginad saavad meediapiirkonna ja selged turvareeglid ning adminnid saavad välja visata, keelustada ja hoida keelunimekirja korras.",
       "groups": [
         {
           "title": "Failide jagamine",
           "items": [
-            "Lohista failid vestlusse või lisa need kirjaklambriga, kuni 2 GB. Kaustad pakitakse enne zip-failiks.",
+            "Lohista failid ja kaustad vestlusesse või lisa need kirjaklambriga, kuni 2 GB. Kui releed pole või see faile ei luba, ütleb kirjaklamber, miks.",
             "Failid lähevad alati serveri relee kaudu: keegi ei näe sinu IP-aadressi ja fail ei puutu kunagi Mumble’i serverit.",
-            "Iga allalaadimine küsib enne luba ja näitab kausta, kuhu salvestatakse. Seejärel kontrollib Mumcord SHA-256 kontrollsummat, mida saad ka kopeerida.",
+            "Iga allalaadimine küsib enne luba ja näitab kausta, kuhu salvestatakse. Pärast kontrollib Mumcord, et fail jõudis kohale muutumatuna.",
             "Programmid ja skriptid saavad enne allalaadimist ja enne avamist lisahoiatuse.",
-            "Fail püsib saadaval, kuni saatja on võrgus, kuni 24 tundi.",
+            "Sinu jagatud failid näitavad, kes need alla laadis, ja neil on nupp „Lõpeta jagamine“.",
+            "Pildid, mille kanalisse lohistad, saab saata piltidena või jagada failidena. Kõiki muid faile jagatakse kohe.",
             "Uus jaotises Seaded → Privaatsus ja ühendused: failide vastuvõtt sees või väljas, maksimaalne suurus vahemikus 100 MB kuni 2 GB ja vastuvõetud failide kaust."
           ]
         },
@@ -1388,39 +1516,52 @@
           "title": "Ekraani jagamine",
           "items": [
             "Heli jagamisel: terve ekraan jagab kogu heli peale Mumcordi enda, aken jagab ainult selle rakenduse heli. Töötab Windows 10-s (2004 või uuem), macOS 13-s ja Linuxis PipeWire’iga.",
-            "Enne alustamist vali eraldusvõime kuni 4K, kaadrisagedus kuni 60 fps, terav tekst või sujuv liikumine, kodek ja üleslaadimise piir. Menüü Kvaliteet muudab neid jagamise ajal ilma taaskäivitamata.",
+            "Enne alustamist vali eraldusvõime, kaadrisagedus, terav tekst või sujuv liikumine, koodek ja üleslaadimise piir. Menüü Kvaliteet muudab neid jagamise ajal ilma taaskäivitamata.",
+            "Mumcord valib kodeerija ise: AV1 graafikakaardil, AV1 protsessoril või VP9. Sinu jagamise riba näitab kvaliteeti, kodeerijat ja seda, kas see läheb relee kaudu.",
+            "Kui jagad akent, küsib „Mille rakenduse heli?“, kelle heli kaasa läheb. Võid valida ka „Heli pole“.",
             "Relee kaudu laed üles korra ja kuni 25 inimest vaatab, otspunktkrüpteeritult.",
-            "AV1 graafikakaardil või protsessoril annab terava teksti väiksema ribalaiusega. VP9 jääb varuvariandiks, ka vanema Mumcordiga vaatajatele.",
-            "Vaatajad näevad kodekit, teed ja kvaliteeti ning saavad oma kaadrisagedust vähendada. Vaatajate loend näitab, kes mida saab.",
-            "Uus vahekaart „Ekraani jagamine“ jaotises Seaded sinu vaikeväärtuste ja kodeerijaga, mida su arvuti kasutab.",
+            "AV1 graafikakaardil või protsessoril annab teravat teksti väiksema ribalaiusega. VP9 jääb varuvariandiks, ka vanema Mumcordiga vaatajatele.",
+            "Vaatajad näevad koodekit, teed ja kvaliteeti ning saavad oma kaadrisagedust vähendada. Vaatajate loend näitab, kes mida saab.",
+            "Uus vahekaart „Ekraani jagamine“ seadetes sinu vaikeväärtuste ja kodeerijaga, mida sinu arvuti kasutab.",
             "Jaga pilt ja vestlus ise: lohista käepidet ekraanijagamise või watch party ja vestluse vahel. Lohista see päris üles ja pilt muutub miniribaks ning Mumcord jätab kõrguse meelde."
           ]
         },
         {
           "title": "Kaamera",
           "items": [
-            "Sinu kaamera kõigile sinu häälekanalis, ainult relee kaudu ja otspunktkrüpteeritult, kuni 25 vaatajale.",
-            "Kaamera algab eelvaatega, mis ei saada midagi. Välja läheb see alles siis, kui selle sisse lülitad.",
-            "Hägusta oma taust või pane enda taha pilt, arvutatuna sinu arvutis.",
-            "Kui kaamerat ei saa kasutada, ütleb Mumcord, miks, näiteks kui serveri relee kaameraid ei luba."
+            "Sinu kaamera kõigile sinu häälekanalis, ainult relee kaudu ja otspunktkrüpteeritult.",
+            "Kaameraruum asub vestluse kohal: kuni üheksa paani ruudustikus või paigutus Kõneleja ühe suure paaniga. Igaüks näitab nime, vaigistatud mikrofoni ikooni ja rohelist raami, kui inimene räägib.",
+            "Kaamera algab eelvaatega, mida keegi teine ei näe. Valid kaamera ja tausta ning see saadab alles siis, kui selle sisse lülitad.",
+            "Taustad: puudub, hägustus (kerge või tugev), üks 18 sisseehitatud pildist või sinu enda oma. See arvutatakse sinu arvutis ja seda saab muuta, kui kaamera töötab.",
+            "Paani ⋯ pakub valikuid „Kinnita endale“, „Näita suurena“, „Peida …-i video“ (siis seda üldse ei laadita) ja „Kvaliteet mulle“. Kõik töötab ka klaviatuuriga.",
+            "Ekraanijagamise või watch party kõrval jääb pilt suureks ja kaamerad on ribana kõrval või kohal. Või peidad need ära ja siis neid ei laadita.",
+            "Kaameranupp kasutajapaneelis ja „Lülita kaamera sisse“ menüüs Rakendused avavad eelvaate. Kuni kaamera on sees, muutub nupp punaseks ja kanalipuus kuvatakse kaameraikoon.",
+            "Uus vahekaart „Kaamera“ seadetes: eelvaade, kaamera, saatmise kvaliteet, peegeldatud enesevaade, vaiketaust ja see, kuidas näed teiste kaameraid. Lisaks kiirklahv kaamera sisse- ja väljalülitamiseks.",
+            "Kuni kaamera on sees, näitab salveikoon punast kaameramärki ja selle menüü pakub „Lülita kaamera välja“. Kui sinu ekraan lukustub, võib kaamera ise välja lülituda.",
+            "Kui kaamerat ei saa kasutada või see peatub ise, ütleb Mumcord miks, näiteks kui serveri relee kaameraid ei luba."
           ]
         },
         {
           "title": "Pluginad",
           "items": [
             "Pluginad saavad meediapiirkonna, vestluse kõrvale külgpaneeli, dialoogid ja kirjed menüüs Rakendused. Kui töötab rohkem kui üks, vahetavad vahekaardid nende vahel.",
-            "Mänguandmed liiguvad otspunktkrüpteeritult relee kaudu ühele inimesele või kogu kanalile.",
+            "Mängude andmed liiguvad otspunktkrüpteeritult relee kaudu, ühele inimesele või kogu kanalile.",
             "Turvaskoor vahemikus 0 kuni 100 mitteametlikele pluginatele, põhjustega paigaldamisel ja uuendustel.",
-            "Iga veebisait, millega plugin suhtleb, kuvatakse paigaldamisel ja uued saidid vajavad sinu nõusolekut.",
-            "Pluginate lehed on lukustatud: ei kaamerat, ei mikrofoni, ei lõikelauda ja ainult saidid, mille lubasid. Hangunud leht ei külmuta enam Mumcordi.",
-            "Plugin, mis vajab uuemat Mumcordi, ütleb seda, selle asemel et paigalduda, ja uuendused ootavad, kuni sinu Mumcord suudab neid käitada."
+            "Iga veebisait, millega plugin suhtleb, loetletakse paigaldamisel ja uued saidid vajavad sinu nõusolekut.",
+            "Pluginate lehed on lukus: ei kaamerat, ei mikrofoni, ei lõikelauda ja ainult saidid, mille lubasid. Leht, mis hangub, ei külmuta enam Mumcordi.",
+            "Plugin, mis vajab uuemat Mumcordi, ütleb seda paigaldamise asemel ja uuendused ootavad, kuni sinu Mumcord suudab neid käitada.",
+            "Iga plugin võib lisada kuni kaks kirjet menüüsse Rakendused, jaotise „Pluginad“ alla oma ikooni ja nimega. Samad kirjed kuvatakse käsupaletis (Ctrl+Shift+P).",
+            "Pluginad võivad mängida lühikesi helisid, mida kuuled ainult sina. Need on vaiksemad, kui keegi räägib, ja vaiksed, kui oled kurdistatud.",
+            "Plugin võib salvestada faili, avada pildi või postitada pildi vestlusesse, kuid ainult kohe pärast sinu klõpsu ja loaga. Ta ei saa kunagi teada, kus sinu failid asuvad.",
+            "Seaded → Pluginad näitab, kui palju andmeid iga plugin relee kaudu saadab, sisaldab lülitit „Pluginate turvalisus“ riskantsete pluginate vastu ja loetleb laadimisel tagasi lükatud pluginad.",
+            "Uuenduse ülevaatus näitab turvaskoori enne ja pärast ning seda, miks uuendus ootab. Kui on väljalaskemärkmed, avab link need sinu brauseris."
           ]
         },
         {
           "title": "Haldus",
           "items": [
-            "Viska välja… ja Keela… inimese menüüs Haldus, põhjusega. Keelud kestavad 1 tund, 1 päev, 7 päeva, 30 päeva, igavesti või kuni kuupäevani.",
-            "Keelunimekiri serverimenüüs: otsi, filtreeri, muuda põhjust ja lõppu, tühista keelde ja keela inimesi, kes pole praegu võrgus."
+            "Viska välja… ja Keela… inimese menüüs Haldus, koos põhjusega. Keelud kestavad 1 tund, 1 päev, 7 päeva, 30 päeva, igaveseks või kuni kuupäevani.",
+            "Keelunimekiri serveri menüüs: otsing, filter, põhjuse ja lõpu muutmine, keelude tühistamine ja inimeste keelustamine, kes parajasti võrgus ei ole."
           ]
         },
         {
@@ -1433,25 +1574,30 @@
         {
           "title": "Täiustatud",
           "items": [
-            "Vestlusajalugu 0.7.0 kasutajate vahel jõuab kiiremini järele: iga pilt liigub korra ja pilte, mis sul juba on, ei laadita uuesti.",
-            "Mumcord järgib seda, mida serveri relee lubab, ja serveri info näitab, mis see on.",
+            "Vestluse ajalugu 0.7.0 kasutajate vahel jõuab kiiremini järele: iga pilt liigub korra ja pilte, mis sul juba on, ei laadita uuesti.",
+            "Mumcord järgib seda, mida serveri relee lubab, ja serveri teave näitab, mis see on.",
             "Lülitid jäävad kõrge kontrastsuse režiimis nähtavaks.",
-            "Manustatud YouTube’i ja Twitchi videod: täisekraani nupp töötab ja eraldi nupp kopeerib video lingi."
+            "Menüü Rakendused näitab ikoone valikutele „Jaga oma ekraani“ ja „Vaatame koos“ ning ikoonita pluginad saavad oma värvilise paani.",
+            "Latentsuse kaart ütleb, miks aeg on pikem kui madala latentsuse režiim küsib, näiteks kui Linuxi helisserver vajab suuremaid plokke."
           ]
         },
         {
           "title": "Parandatud",
           "items": [
-            "Vanematel protsessoritel ilma AVX2-ta ei jookse Mumcord käivitamisel enam kokku. Ekraani jagamine kasutab seal VP9-t.",
-            "Lukustatud kanalite vestlusajalugu läheb ainult inimestele, kes on tõesti kanalis, mitte neile, kes seda lihtsalt jälgivad või kuulavad.",
+            "Vanematel protsessoritel ilma AVX2-ta ei jookse Mumcord käivitamisel enam kokku. Ekraani jagamine kasutab seal VP9.",
+            "Lukustatud kanalite vestlusajalugu läheb ainult inimestele, kes on tegelikult kanalis, mitte neile, kes seda lihtsalt jälgivad või kuulavad.",
             "Kui keegi kasutab valikut „Kasuta alati releed“, ei saada Mumcord talle enam sinu võrguaadressi.",
             "Uuema Mumcordi profiil ei põhjusta enam kokkujooksmist. Mumcord selgitab seda ja pakub uusima versiooni allalaadimist.",
-            "Saadetud sõnumid jõuavad kohe ajaloos õigesse kohta ja jäävad sinna.",
-            "Keskmine klõps lingil või klõps hoitud Ctrli, Cmd- või Shift-klahviga avab selle sinu brauseris, mitte Mumcordi sees.",
-            "Kui sa pole registreeritud serveris, mille relee teenindab ainult registreeritud kasutajaid, ütleb Mumcord seda nüüd, mitte „releed ei õnnestunud kätte saada“.",
-            "Keelunimekirja aknal on sulgemisnupp ning Viska välja ja Keela reageerivad hiireklõpsudele.",
+            "Saadetud sõnumid satuvad kohe ajaloos õigesse kohta ja jäävad sinna.",
+            "Hiire keskmine klõps lingil või klõps Ctrl-, Cmd- või Shift-klahviga avab selle sinu brauseris, mitte Mumcordi sees.",
+            "Kui sa pole registreeritud serveris, mille relee teenindab ainult registreeritud kasutajaid, ütleb Mumcord seda nüüd selle asemel, et „releed ei õnnestunud kätte saada“.",
+            "Väljaviskamine ja Keelamine reageerivad hiireklõpsudele.",
             "Watch party käivitamine menüüst Rakendused ei lae rakendust enam uuesti.",
-            "Ekraani jagamine räägib nüüd kõiki keeli."
+            "Ekraani jagamine räägib nüüd kõiki keeli.",
+            "Heli ei katke enam, kui mõni teine rakendus mängib samal ajal heli.",
+            "Kui ekraanijagamine, mida vaatad, lõpeb, ei jää tühja pilti ja kaamerad naasevad toa ruudustikku.",
+            "Ctrl+C valitud vestlusetekstil ei jäta Linuxis (X11) enam lõikelauda tühjaks.",
+            "Plugin ei saa enam oma dialoogi ise avada, ainult veidi pärast sinu klõpsu. Plugina lehe sõnumid jõuavad õiges järjekorras."
           ]
         }
       ]
@@ -2575,8 +2721,6 @@
             "title": "Pluginad lavale",
             "items": [
               "Pluginad saavad meediaala: mängud ja tahvlid töötavad seal, kus tavaliselt on ekraanijagamine, watch party ja kaamerad",
-              "Whiteboard, ametlik plugin koos mõtlemiseks: lõputu lõuend pliiatsite, kleebitavate märkmete ja lasernäitajaga, salvestatud sinu seadmesse ja eksporditav PNG-, SVG- või PDF-failina",
-              "Skyloom, ainult häälega mäng 2 kuni 12 inimesele: üks kirjeldab peidetud tähtkuju, kõik teised paigutavad igaüks ühe tähe",
               "Pluginaid saab avada ka menüüst Rakendused, külgpaneelil või dialoogis ning suured andmemahud käivad otspunktkrüptitult läbi relee"
             ],
             "mockups": [
@@ -2597,6 +2741,13 @@
               "Pluginad turvaskooriga",
               "Suure riskiga plugina paigaldamine",
               "Plugina veebisaidid paigaldamisel"
+            ]
+          },
+          {
+            "title": "Whiteboard & Skyloom",
+            "items": [
+              "Whiteboard, ametlik plugin koos mõtlemiseks: lõputu lõuend pliiatsite, kleebitavate märkmete ja lasernäitajaga, salvestatud sinu seadmesse ja eksporditav PNG-, SVG- või PDF-failina",
+              "Skyloom, ainult häälega mäng 2 kuni 12 inimesele: üks kirjeldab peidetud tähtkuju, kõik teised paigutavad igaüks ühe tähe"
             ]
           }
         ]
@@ -2993,7 +3144,7 @@
         "id": "relay",
         "title": "Valikuline: releeserver otseühendustele",
         "body": [
-          "Et ekraanijagamine ja täismõõdus pildid töötaksid ka siis, kui kaks inimest ei saa üksteiseni otse, või et keegi ei näeks teise IP-aadressi, võid serveri kõrval käitada releed <a href=\"/en/mumpeer\">mumpeer</a>. Sisu jääb otspunktkrüptituks.",
+          "Et ekraanijagamine, kaamerad ja täismõõdus pildid töötaksid ka siis, kui kaks inimest ei saa üksteiseni otse, või et keegi ei näeks teise IP-aadressi, võid serveri kõrval käitada releed <a href=\"/en/mumpeer\">mumpeer</a>. Sisu jääb otspunktkrüptituks.",
           "Mumcord kasutab releed alates versioonist 0.5.0. Ülejäänu teeb releebot <code>mumbot peer</code>: ta teatab relee ja jagab välja tokenid.",
           "Kirjuta serveri kaustas ühine saladus faili <code>.env</code> ja too kaks näidiskonfiguratsiooni. Pane oma serveri aadress failis <code>mumpeer.toml</code> väljale <code>public_host</code> ja oma Mumble'i serveri sõrmejälg faili <code>bot.toml</code>. Seejärel lisa allolevad teenused faili <code>docker-compose.yml</code> alla <code>services:</code> ning <code>mumpeer-data:</code> ja <code>mumbot-data:</code> alla <code>volumes:</code>."
         ],
@@ -3027,7 +3178,7 @@
         ],
         "relay": [
           "mumpeeri relee",
-          "Ekraanijagamine ja suured pildid ka CGNAT-i taga, ilma et keegi su IP-d näeks"
+          "Ekraanijagamine, kaamerad ja suured pildid ka CGNAT-i taga, ilma et keegi su IP-d näeks"
         ],
         "webhook": [
           "Mumboti veebikonks",
@@ -3300,6 +3451,20 @@
         ]
       },
       {
+        "id": "0.5.0",
+        "tag": "0.5.0",
+        "title": "Kaamerad ja grupid",
+        "summary": "Relee bot oskab nüüd kaameraid, plugina andmeid ja gruppe.",
+        "items": [
+          "Kaamerad relee kaudu, vaikimisi kuni 9 kanali kohta; ekraan ja kaamera töötavad koos",
+          "Plugina andmed Mumcordi pluginatele, kuni 8 saatjat kanali kohta",
+          "Relee tokenid ainult teatud Mumble’i gruppide liikmetele",
+          "Lukustatud kanalite vestlusajalugu läheb ainult inimestele, kes on sees",
+          "Bot määrab oma avatari https-aadressilt või base64-st",
+          "Mumble ja Mumcord näitavad kliendina „Mumbot 0.x.y“, muusikabotid ilmuvad oma kanalisse"
+        ]
+      },
+      {
         "id": "later",
         "tag": "Edasi",
         "title": "Ideed",
@@ -3324,7 +3489,9 @@
       "points": [
         "Ekraanijagamine ja suured pildid isegi CGNAT-i taga või ilma sinu IP-d näitamata",
         "Töötab relee võrgus, API jääb sisemiseks",
-        "Märke saavad ainult sinu enda serveri registreeritud kasutajad"
+        "Märke saavad ainult sinu enda serveri registreeritud kasutajad",
+        "Jagab tokeneid ka kaameratele ja plugina andmetele, kui relee neid lubab",
+        "Soovi korral ainult teatud Mumble’i gruppide liikmetele"
       ]
     },
     "music": {
@@ -3368,7 +3535,7 @@
       "mumpeer": {
         "title": "mumpeer",
         "description": "mumpeer on väike releeserver Mumcordi otseühenduste jaoks: kui kaks inimest ei saa üksteiseni otse või tahavad oma IP-aadressi peita.",
-        "lead": "Väike releeserver Mumcordi otseühenduste jaoks kasutajate vahel, näiteks ekraanijagamiseks või täismõõdus piltide jaoks. Kui kaks inimest ei saa üksteiseni otse, CGNAT-i, range tulemüüri taga või UDP-ta võrkudes, või ei taha oma IP-aadressi näidata, ühenduvad mõlemad hoopis releega. See annab edasi vaid krüpteeritud pakette, nagu TURN-server.",
+        "lead": "Väike relee Mumcordi otseühenduste jaoks kasutajate vahel, näiteks ekraanijagamiseks, kaameratele, failidele või täismõõdus piltidele. Kui kaks inimest ei saa üksteiseni otse, CGNAT-i taga, ranges tulemüüris või võrkudes ilma UDP-ta, või nad ei taha oma IP-aadressi näidata, ühendavad mõlemad hoopis releega. See annab krüptitud pakette ainult edasi, nagu TURN-server.",
         "features": [
           {
             "title": "Sinu Mumble-serveri kõrval",
@@ -3389,6 +3556,14 @@
           {
             "title": "Täiesti valikuline",
             "body": "Mumcord töötab ka ilma boti ja releeta. Mumcordis valid sina: relee välja, ainult kui otseühendus ebaõnnestub, või alati."
+          },
+          {
+            "title": "Ekraan, kaamerad ja plugina andmed",
+            "body": "Üks inimene saadab korra ja relee annab selle edasi kõigile vaatajatele neid lugemata. See kehtib ekraanijagamise ja kaamerate kohta: kuni 18 kaamerat korraga, igaüks kuni 2500 kbit/s üleslaadimisega, ja kuni 25 vaatajat ülekande kohta. Plugina andmed töötavad samuti, kuid on vaikimisi välja lülitatud ja neil on madalaim prioriteet."
+          },
+          {
+            "title": "Sina otsustad, mis on lubatud",
+            "body": "Jaotises `[uses]` lülitad pildid, failid, ekraanijagamise, kaamera ja plugina andmed eraldi sisse või välja. Lisaks on piirangud ribalaiusele, sessioonidele ja ülekannetele."
           }
         ],
         "listTitle": "Mida operaator näha võib",

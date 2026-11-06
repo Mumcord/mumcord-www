@@ -373,7 +373,7 @@
         {
           "tag": "Epic 4.1",
           "title": "Filer, skärm, kamera och tillägg",
-          "body": "Kommer med 0.7.0: dela filer utan att visa din IP-adress, skärmdelning upp till 4K för upp till 25 personer, din kamera med suddig bakgrund, en tavla och spelet Skyloom som tillägg och ett säkerhetsbetyg för tillägg från andra."
+          "body": "Sedan 0.7.0: dela filer utan att visa din IP-adress, skärmdelning upp till 4K för upp till 25 personer, din kamera med suddig bakgrund, en tavla och spelet Skyloom som tillägg och ett säkerhetsbetyg för tillägg från andra."
         },
         {
           "tag": "Epic 4",
@@ -604,8 +604,8 @@
       "toolTitle": "Bidragsgivare"
     },
     "spotlight5": {
-      "label": "Nytt i 0.5.0/0.6.0",
-      "labelSoon": "På väg: 0.5.0/0.6.0",
+      "label": "Nytt i 0.5.0/0.6.0/0.7.0",
+      "labelSoon": "På väg: 0.5.0/0.6.0/0.7.0",
       "title": "Mer lugn. Mer du. Mer ljud.",
       "body": "0.5.0 ger dig Epic 3: ett aviseringscenter, blockering, flera identiteter, ett nytt kanalträd, musik i chatten, ett läge med låg latens för att spela musik ihop och direktanslutningar via ett relä.",
       "tiles": {
@@ -856,6 +856,24 @@
             "title": "Blockera folk",
             "body": "”Blockera …” i personmenyn döljer personens privata meddelanden och förfrågningar, fäller ihop deras kanalmeddelanden och tystar deras röst, bara för dig. Blockeringen följer certifikatet, så den gäller över servrar och nya namn. Inget skickas till servern eller personen, och Inställningar → Integritet listar alla du blockerat med ”Avblockera”.",
             "alt": "Bekräftelse för att blockera en person som listar vad som ändras"
+          },
+          {
+            "id": "kick-ban",
+            "title": "Sparka ut och bannlys",
+            "body": "I en persons Admin-meny finns ”Sparka ut…” och ”Bannlys…”, med en anledning. Bannlysningar varar i 1 timme, 1 dag, 7 dagar, 30 dagar, för alltid eller till ett datum, på certifikat och IP-adress. Kräver rätten i rotkanalen.",
+            "alt": "Dialogen för att bannlysa en person"
+          },
+          {
+            "id": "ban-list",
+            "title": "Banlista",
+            "body": "”Banlista…” i servermenyn visar alla bannlysningar med namn, fingeravtryck, adress, anledning och slut. Sök, filtrera, redigera anledning och slut direkt, häv bannlysningar eller bannlys personer som inte är online.",
+            "alt": "Fönstret med banlistan"
+          },
+          {
+            "id": "bots-section",
+            "title": "Botar för sig",
+            "body": "Ett avsnitt ”Botar på den här servern” under kanallistan visar varje bot med vad den gör, till exempel relay, chatthistorik eller webhooks. Profil och meny, privata meddelanden inklusive, fungerar därifrån.",
+            "alt": "Avsnittet med botarna på en server"
           }
         ]
       },
@@ -1095,6 +1113,11 @@
             "title": "Lugn användarpanel",
             "body": "Panelen längst ner i kanallistan har alltid samma höjd: du med namn och server, en statusrad som till exempel ansluter igen eller din röstkanal, små chips för Stör ej, låglatensläge och anslutningen, samt knapparna för mikrofon, hörlurar och lägg på. Kanallistan ovanför hoppar inte längre.",
             "alt": "Användarpanelen i flera lägen, från pratande och tystad till återanslutning"
+          },
+          {
+            "id": "camera-entry",
+            "title": "Kamera i användarpanelen",
+            "body": "En kameraknapp bredvid mikrofon- och ljudavstängning öppnar förhandsvisningen. När kameran är på blir den röd och stänger av den direkt, ”Kamera på” visas under ditt namn och ett rött märke visar det i systemfältet."
           }
         ]
       },
@@ -1162,7 +1185,7 @@
           {
             "id": "screen-share",
             "title": "Skärmdelning",
-            "body": "En skärm eller ett fönster för upp till 8 tittare, i 720p och 30 bilder per sekund, på Windows och macOS med ljudet från den delade appen om du vill. Du startar den från Appar-knappen i chatten. Tittarna ser den i huvudkolumnen med upplösning, bildfrekvens och strömdetaljer; du får en kontrollist högst upp i chatten med paus, ljud, tittare och stopp.",
+            "body": "En skärm eller ett fönster för upp till 8 tittare direkt eller upp till 25 via relayen, med ljud och AV1 om du vill. Du startar den från Appar-knappen i chatten och ställer in kvalitet och codec först. Tittarna ser den i huvudkolumnen med upplösning, codec, väg och detaljer; du får en list högst upp i chatten med kvalitet, kodare, paus, ljud, tittare och stopp.",
             "alt": "En delad skärm i huvudkolumnen med strömdetaljer och listan över tittare"
           },
           {
@@ -1179,8 +1202,73 @@
           {
             "id": "relay",
             "title": "Community-relay",
-            "body": "En servers community kan köra ett relay vid sidan av sin Mumble-server. Bilder i full storlek och skärmdelning funkar då även när ingen direkt anslutning är möjlig, och med ”alltid via relay” ser den andra personen aldrig din IP-adress. Relayet kan inte läsa den krypterade anslutningen, och rösten använder det aldrig. Du väljer under Inställningar → Integritet, även per server.",
+            "body": "En servers community kan köra ett relay vid sidan av sin Mumble-server. Bilder i full storlek, filer, kameror och skärmdelning funkar då även när ingen direkt anslutning är möjlig, och med ”alltid via relay” ser den andra personen aldrig din IP-adress. Relayet kan inte läsa den krypterade anslutningen, rösten använder det aldrig, och Mumcord använder inte det som relayet inte tillåter. Du väljer under Inställningar → Integritet, även per server.",
             "alt": "Integritetsinställningar med peer-to-peer-valen direkt, relay och av"
+          },
+          {
+            "id": "file-sharing",
+            "title": "Fildelning",
+            "body": "Dra filer eller mappar till chatten eller använd gemet, upp till 2 GB. De går alltid via serverns relay, ingen ser din IP-adress, och filen rör aldrig Mumble-servern.",
+            "alt": "En delad fil som kort i chatten"
+          },
+          {
+            "id": "file-safety",
+            "title": "Säkra nedladdningar",
+            "body": "Varje nedladdning frågar först och visar mappen. Program och skript får en extra varning, och efteråt kontrollerar Mumcord att filen kom fram oförändrad. I inställningarna stänger du av mottagning och bestämmer storlek och mapp.",
+            "alt": "Inställningarna för fildelning"
+          },
+          {
+            "id": "camera",
+            "title": "Kamera",
+            "body": "Din kamera för alla i din röstkanal, bara via relayen och end-to-end-krypterad. Den startar med en förhandsvisning som ingen ser, och en kameraknapp i användarpanelen, Appar-menyn, systemfältet och en snabbtangent slår på och av den.",
+            "alt": "Kamerainställningarna med en förhandsvisning"
+          },
+          {
+            "id": "camera-room",
+            "title": "Kamerarum",
+            "body": "Kamerorna i kanalen sitter ovanför chatten, upp till nio rutor i ett rutnät eller en stor ruta med Talare. Bredvid en skärmdelning eller watch party bildar de en remsa vid sidan eller ovanför, eller så döljer du dem.",
+            "alt": "Kamerarummet med flera kameror ovanför chatten"
+          },
+          {
+            "id": "camera-backgrounds",
+            "title": "Kamerabakgrunder",
+            "body": "Ingen bakgrund, oskärpa (lätt eller stark), en av 18 inbyggda bilder eller din egen. Det räknas ut på din dator, och du byter utan att stänga av kameran.",
+            "alt": "Kamerans förhandsvisning med kraftigt suddig bakgrund"
+          },
+          {
+            "id": "camera-tiles",
+            "title": "Alternativ för rutor",
+            "body": "⋯ på en ruta ger ”Fäst för mig”, ”Visa stor”, ”Dölj video” (då laddas den inte ned alls) och ”Kvalitet för mig”. Dessutom en egen sida under Inställningar → Kamera, och allt går att styra med tangentbordet.",
+            "alt": "Menyn för en kameraruta"
+          },
+          {
+            "id": "screen-share-sound",
+            "title": "Ljud vid delning",
+            "body": "En hel skärm delar allt ljud utom Mumcords, ett fönster bara den appens ljud. Där det är oklart vem du menar frågar ”Vilken apps ljud?”. Fungerar på Windows 10, macOS 13 och Linux med PipeWire.",
+            "alt": "Dialogen innan en skärmdelning startar"
+          },
+          {
+            "id": "screen-share-av1",
+            "title": "AV1 för skarp text",
+            "body": "Mumcord kontrollerar i bakgrunden vad din dator klarar och använder AV1 på grafikkortet, AV1 på processorn eller VP9. Tittare spelar upp AV1 även utan hårdvara, och för äldre Mumcord-versioner byter delningen till VP9.",
+            "alt": "Fliken för skärmdelning i inställningarna"
+          },
+          {
+            "id": "screen-share-relay",
+            "title": "Upp till 25 tittare",
+            "body": "När relayet erbjuder det laddar du upp en gång och relayet skickar delningen till alla, upp till sin gräns (25 som standard). Den är end-to-end-krypterad, relayet ser ingenting."
+          },
+          {
+            "id": "screen-share-quality",
+            "title": "Ställ in kvaliteten",
+            "body": "Innan du startar väljer du upplösning, bildfrekvens, skarp text eller mjuk rörelse och uppladdningsgräns. Under delningen ändrar menyn Kvalitet allt utan omstart, och fliken ”Skärmdelning” i Inställningar har dina standardvärden. Tittare kan sänka sin bildfrekvens.",
+            "alt": "Kontrollerna när man tittar på en skärmdelning"
+          },
+          {
+            "id": "media-area-resize",
+            "title": "Dela bild och chatt",
+            "body": "Dra i handtaget mellan bilden från en delning eller watch party och chatten, eller använd piltangenterna. Det fäster vid en tredjedel, hälften och två tredjedelar, och Mumcord minns höjden.",
+            "alt": "En skärmdelning med kameror som remsa bredvid"
           }
         ]
       },
@@ -1214,7 +1302,7 @@
           {
             "id": "plugin-safety",
             "title": "Sandlåda, signaturer och en nödbrytare",
-            "body": "Tillägg körs inkapslade utan åtkomst till nätverk, filer eller ljud, med gränser för minne och tid; ett som hela tiden kraschar stängs av, och din röst påverkas aldrig. Officiella tillägg är signerade och kontrollerade. En nödbrytare kan stänga av ett skadligt tillägg för alla, ”Stäng av alla tillägg” stoppar dem på en gång, och --no-plugins startar utan några.",
+            "body": "Tillägg körs inkapslade utan åtkomst till filer eller ljud och bara till webbplatser de angett och du godkänt, med gränser för minne och tid; ett som hela tiden kraschar stängs av, och din röst påverkas aldrig. Officiella tillägg är signerade och kontrollerade. En nödbrytare kan stänga av ett skadligt tillägg för alla, ”Stäng av alla tillägg” stoppar dem på en gång, och --no-plugins startar utan några.",
             "alt": "Installationsdialog för EVE Fit med en förloppsindikator som visar ”Checking signature…” ovanför behörighetslistan."
           },
           {
@@ -1264,6 +1352,45 @@
             "title": "EVE Fit",
             "body": "Klistra in en EVE Online-fitting i chatten så ser alla med tillägget ett skeppskort. Ett klick öppnar fittinghjulet med kondensator, offensiv, defensiv och navigering, offline inne i Mumcord, och ”Kopiera fitting” tar ut den igen.",
             "alt": "EVE Fit-dialog med skeppet Algos i fitting-hjulet, modulikoner och statistik för kondensator, anfall, försvar, målinriktning, navigering och drönare."
+          },
+          {
+            "id": "plugin-media-area",
+            "title": "Tillägg i medieytan",
+            "body": "Tilläggens aktiviteter körs i medieytan med Mumcords eget huvud: vem som startade den, hur många som spelar, vem som gjort tillägget. Med helskärm och ”Lämna tillägget”. När mer än en sak körs byter flikar eller Alt+1 till Alt+9 mellan dem.",
+            "alt": "Ett tillägg i medieytan med flikar ovanför"
+          },
+          {
+            "id": "plugin-side-panel",
+            "title": "Sidopanel för tillägg",
+            "body": "Ett tillägg kan visa sin sida till höger om chatten i stället för medlemslistan. Du ändrar storlek, Mumcord minns bredden per tillägg, och en ⋯-meny leder till tilläggets detaljer.",
+            "alt": "Ett tillägg i sidopanelen bredvid chatten"
+          },
+          {
+            "id": "plugin-apps-menu",
+            "title": "Tillägg i Appar-menyn",
+            "body": "Varje tillägg kan lägga till upp till två objekt i Appar-menyn, under ”Tillägg” med sin ikon och sitt namn. Samma objekt visas i kommandopaletten (Ctrl+Shift+P), och ett tillägg kan gråa ut ett objekt med en anledning.",
+            "alt": "Appar-menyn med tilläggsobjekt"
+          },
+          {
+            "id": "plugin-security-score",
+            "title": "Säkerhetsbetyg",
+            "body": "Inofficiella tillägg får ett betyg från 0 till 100, med de viktigaste skälen och hela specifikationen vid installation och uppdatering. Tillägg med hög risk kräver en egen ikryssning, och ”Tilläggssäkerhet” i inställningarna kan blockera dem helt.",
+            "alt": "Detaljerna i ett tilläggs säkerhetsbetyg"
+          },
+          {
+            "id": "plugin-min-version",
+            "title": "Lägsta version för tillägg",
+            "body": "Om ett tillägg behöver en nyare Mumcord står det ”Kräver Mumcord X eller nyare” och installationen är avstängd. Automatiska uppdateringar väntar tills din Mumcord kan köra den nya versionen."
+          },
+          {
+            "id": "plugin-websites",
+            "title": "Webbplatser för tillägg",
+            "body": "Tillägg som pratar med webbplatser listar varje adress vid installation och i sina detaljer, med antal förfrågningar. De når bara det de angett och du godkänt, bara publika adresser med giltigt certifikat. Tilläggens sidor öppnas också i en dialogruta."
+          },
+          {
+            "id": "plugin-relay-data",
+            "title": "Tilläggsdata via relayen",
+            "body": "Speldata går end-to-end-krypterat via relayen, upp till 64 KB per meddelande, till en person eller hela kanalen. Du stänger av det per tillägg, och Inställningar → Tillägg visar hur mycket data det använt."
           }
         ]
       },
@@ -1376,11 +1503,12 @@
         {
           "title": "Fildelning",
           "items": [
-            "Dra filer till chatten eller bifoga dem med gemet, upp till 2 GB. Mappar zippas först.",
+            "Dra filer och mappar till chatten eller bifoga dem med gemet, upp till 2 GB. Om det inte finns något relay eller det inte tillåter filer säger gemet varför.",
             "Filer går alltid via serverns relay: ingen ser din IP-adress, och filen rör aldrig Mumble-servern.",
-            "Varje nedladdning frågar först och visar mappen den sparas i. Efteråt kontrollerar Mumcord SHA-256-kontrollsumman, som du också kan kopiera.",
+            "Varje nedladdning frågar först och visar mappen den sparas i. Efteråt kontrollerar Mumcord att filen kom fram oförändrad.",
             "Program och skript får en extra varning före nedladdning och före öppning.",
-            "En fil finns kvar så länge avsändaren är online, högst 24 timmar.",
+            "Dina delade filer visar vem som laddat ned dem och har en knapp ”Sluta dela”.",
+            "Bilder du släpper i en kanal kan skickas som bilder eller delas som filer. Alla andra filer delas direkt.",
             "Nytt i Inställningar → Integritet och anslutningar: filmottagning på eller av, maxstorlek från 100 MB till 2 GB och mappen för mottagna filer."
           ]
         },
@@ -1388,7 +1516,9 @@
           "title": "Skärmdelning",
           "items": [
             "Ljud vid delning: en hel skärm delar allt ljud utom Mumcords, ett fönster delar bara den appens ljud. Fungerar på Windows 10 (2004 eller nyare), macOS 13 och Linux med PipeWire.",
-            "Innan du startar väljer du upplösning upp till 4K, bildfrekvens upp till 60 fps, skarp text eller mjuk rörelse, codec och uppladdningsgräns. Menyn Kvalitet ändrar dem under delningen utan att starta om den.",
+            "Innan du startar väljer du upplösning, bildfrekvens, skarp text eller mjuk rörelse, codec och uppladdningsgräns. Menyn Kvalitet ändrar dem under delningen utan att starta om den.",
+            "Mumcord väljer kodare själv: AV1 på grafikkortet, AV1 på processorn eller VP9. Fältet för din delning visar kvalitet, kodare och om den går via relayen.",
+            "När du delar ett fönster frågar ”Vilken apps ljud?” vems ljud som följer med. Du kan också välja ”Inget ljud”.",
             "Via relayen laddar du upp en gång och upp till 25 personer tittar, end-to-end-krypterat.",
             "AV1 på grafikkortet eller processorn ger skarp text med mindre bandbredd. VP9 finns kvar som reserv, även för tittare med en äldre Mumcord.",
             "Tittare ser codec, väg och kvalitet och kan sänka sin bildfrekvens. Tittarlistan visar vem som får vad.",
@@ -1399,10 +1529,16 @@
         {
           "title": "Kamera",
           "items": [
-            "Din kamera för alla i din röstkanal, bara via relayen och end-to-end-krypterad, för upp till 25 tittare.",
-            "Kameran startar med en förhandsvisning som inte skickar något. Den går ut först när du slår på den.",
-            "Sudda ut bakgrunden eller lägg en bild bakom dig, uträknat på din dator.",
-            "Om kameran inte kan användas säger Mumcord varför, till exempel när serverns relay inte tillåter kameror."
+            "Din kamera för alla i din röstkanal, bara via relayen och end-to-end-krypterad.",
+            "Kamerarummet sitter ovanför chatten: upp till nio rutor i ett rutnät, eller layouten Talare med en stor ruta. Varje ruta visar namnet, en ikon för avstängd mikrofon och en grön ram medan personen pratar.",
+            "Kameran startar med en förhandsvisning som ingen annan ser. Du väljer kamera och bakgrund, och den går ut först när du slår på den.",
+            "Bakgrunder: ingen, oskärpa (lätt eller stark), en av 18 inbyggda bilder eller din egen. Det räknas ut på din dator, och du kan byta medan kameran är igång.",
+            "⋯ på en ruta ger ”Fäst för mig”, ”Visa stor”, ”Dölj videon från …” (då laddas den inte ned alls) och ”Kvalitet för mig”. Allt går också att styra med tangentbordet.",
+            "Bredvid en skärmdelning eller watch party förblir bilden stor och kamerorna sitter i en remsa vid sidan eller ovanför. Eller så döljer du dem, och då laddas de inte ned.",
+            "En kameraknapp i användarpanelen och ”Slå på kameran” i Appar-menyn öppnar förhandsvisningen. När kameran är på blir knappen röd och en kameraikon visas i kanalträdet.",
+            "Ny flik ”Kamera” i Inställningar: förhandsvisning, kamera, sändningskvalitet, spegelvänd självvy, standardbakgrund och hur du ser andras kameror. Dessutom en snabbtangent för att slå på och av kameran.",
+            "När kameran är på visar ikonen i systemfältet ett rött kameramärke och menyn har ”Stäng av kameran”. När skärmen låses kan kameran stängas av av sig själv.",
+            "Om kameran inte kan användas eller stannar av sig själv säger Mumcord varför, till exempel när serverns relay inte tillåter kameror."
           ]
         },
         {
@@ -1413,7 +1549,12 @@
             "Ett säkerhetsbetyg från 0 till 100 för inofficiella tillägg, med skälen vid installation och uppdateringar.",
             "Varje webbplats ett tillägg pratar med listas vid installation, och nya webbplatser kräver ditt samtycke.",
             "Tilläggens sidor är låsta: ingen kamera, ingen mikrofon, inget urklipp och bara de webbplatser du tillåtit. En sida som hänger sig fryser inte längre Mumcord.",
-            "Ett tillägg som behöver en nyare Mumcord säger det i stället för att installeras, och uppdateringar väntar tills din Mumcord kan köra dem."
+            "Ett tillägg som behöver en nyare Mumcord säger det i stället för att installeras, och uppdateringar väntar tills din Mumcord kan köra dem.",
+            "Varje tillägg kan lägga till upp till två objekt i Appar-menyn, under ”Tillägg” med sin ikon och sitt namn. Samma objekt visas i kommandopaletten (Ctrl+Shift+P).",
+            "Tillägg kan spela korta ljud som bara du hör. De är tystare medan någon pratar och tysta medan du har ljudet avstängt.",
+            "Ett tillägg kan spara en fil, öppna en bild eller skicka en bild till chatten, men bara direkt efter ditt klick och med tillåtelse. Det får aldrig veta var dina filer finns.",
+            "Inställningar → Tillägg visar hur mycket data varje tillägg skickar via relayen, har en ”Tilläggssäkerhet”-knapp mot riskfyllda tillägg och listar tillägg som vägrades vid inläsning.",
+            "Uppdateringsgranskningen visar säkerhetsbetyget före och efter och varför en uppdatering väntar. När det finns versionsanteckningar öppnar en länk dem i din webbläsare."
           ]
         },
         {
@@ -1436,7 +1577,8 @@
             "Chatthistorik mellan personer på 0.7.0 hinner ikapp snabbare: varje bild skickas en gång, och bilder du redan har laddas inte ned igen.",
             "Mumcord följer det serverns relay tillåter, och serverinfon visar vad det är.",
             "Reglage förblir synliga i högkontrastläge.",
-            "Inbäddade YouTube- och Twitch-videor: helskärmsknappen fungerar, och en egen knapp kopierar länken till videon."
+            "Appar-menyn visar ikoner för ”Dela din skärm” och ”Titta tillsammans”, och tillägg utan ikon får en egen färgad ruta.",
+            "Latenskortet säger varför tiden är längre än lågfördröjningsläget ber om, till exempel när ljudservern på Linux behöver större block."
           ]
         },
         {
@@ -1448,10 +1590,14 @@
             "En profil från en nyare Mumcord orsakar inte längre en krasch. Mumcord förklarar det och erbjuder att ladda ned den senaste versionen.",
             "Skickade meddelanden hamnar direkt på rätt plats i historiken och stannar där.",
             "Ett mittenklick på en länk, eller ett klick med Ctrl, Cmd eller Skift nedtryckt, öppnar den i din webbläsare i stället för i Mumcord.",
-            "Om du inte är registrerad på en server vars relay bara betjänar registrerade användare säger Mumcord det nu i stället för ”relayen kunde inte nås”.",
-            "Fönstret med banlistan har en stängknapp, och Sparka ut och Bannlys svarar på musklick.",
+            "Om du inte är registrerad på en server vars relay bara betjänar registrerade användare säger Mumcord nu det i stället för ”relayet kunde inte nås”.",
+            "Sparka ut och Bannlys reagerar på musklick.",
             "Att starta en watch party från Appar-menyn laddar inte längre om appen.",
-            "Skärmdelning talar nu alla språk."
+            "Skärmdelning talar nu alla språk.",
+            "Ljudet hackar inte längre när en annan app spelar ljud samtidigt.",
+            "När en skärmdelning du tittar på tar slut blir ingen tom bild kvar, och kamerorna går tillbaka till rummets rutnät.",
+            "Ctrl+C på markerad chatttext lämnar inte längre urklippet tomt på Linux (X11).",
+            "Ett tillägg kan inte längre öppna sin dialogruta på egen hand, bara en kort stund efter ditt klick. Meddelanden från en tilläggssida kommer i rätt ordning."
           ]
         }
       ]
@@ -2575,8 +2721,6 @@
             "title": "Tillägg på scenen",
             "items": [
               "Tilläggen får mediayta: spel och tavlor körs där skärmdelningen, watch party och kamerorna brukar vara",
-              "Whiteboard, det officiella tillägget för att tänka tillsammans: en oändlig duk med pennor, klisterlappar och en laserpekare, sparad på din enhet och kan exporteras som PNG, SVG eller PDF",
-              "Skyloom, ett spel med bara rösten för 2 till 12 personer: en beskriver en dold stjärnbild, alla andra placerar varsin stjärna",
               "Tillägg öppnas också från Appar-menyn, i sidopanelen eller i en dialogruta, och stora datamängder går end-to-end-krypterat via reläet"
             ],
             "mockups": [
@@ -2597,6 +2741,13 @@
               "Tillägg med säkerhetsbetyg",
               "Installation av ett högriskstillägg",
               "Ett tilläggs webbplatser vid installationen"
+            ]
+          },
+          {
+            "title": "Whiteboard & Skyloom",
+            "items": [
+              "Whiteboard, det officiella tillägget för att tänka tillsammans: en oändlig duk med pennor, klisterlappar och en laserpekare, sparad på din enhet och kan exporteras som PNG, SVG eller PDF",
+              "Skyloom, ett spel med bara rösten för 2 till 12 personer: en beskriver en dold stjärnbild, alla andra placerar varsin stjärna"
             ]
           }
         ]
@@ -2993,7 +3144,7 @@
         "id": "relay",
         "title": "Valfritt: ett relä för direktanslutningar",
         "body": [
-          "För att skärmdelning och bilder i full storlek ska fungera även när två personer inte kan nå varandra direkt, eller så att ingen ser den andres IP-adress, kan du köra <a href=\"/en/mumpeer\">mumpeer</a>-reläet bredvid servern. Innehållet förblir krypterat från ände till ände.",
+          "Så att skärmdelning, kameror och bilder i full storlek också fungerar när två personer inte kan nå varandra direkt, eller så att ingen ser den andras IP-adress, kan du köra <a href=\"/en/mumpeer\">mumpeer</a>-reläet bredvid servern. Innehållet förblir end-to-end-krypterat.",
           "Mumcord använder reläet från version 0.5.0. Relä-boten <code>mumbot peer</code> sköter resten: den annonserar reläet och delar ut tokens.",
           "Skriv i serverns mapp en delad hemlighet i <code>.env</code> och hämta de två exempelkonfigurationerna. Skriv din servers adress under <code>public_host</code> i <code>mumpeer.toml</code> och din Mumble-servers fingeravtryck i <code>bot.toml</code>. Lägg sedan till tjänsterna nedan i <code>docker-compose.yml</code> under <code>services:</code>, och <code>mumpeer-data:</code> och <code>mumbot-data:</code> under <code>volumes:</code>."
         ],
@@ -3027,7 +3178,7 @@
         ],
         "relay": [
           "mumpeer-relä",
-          "Skärmdelning och stora bilder även bakom CGNAT, utan att någon ser din IP"
+          "Skärmdelning, kameror och stora bilder även bakom CGNAT, utan att någon ser din IP"
         ],
         "webhook": [
           "Mumbot-webhook",
@@ -3300,6 +3451,20 @@
         ]
       },
       {
+        "id": "0.5.0",
+        "tag": "0.5.0",
+        "title": "Kameror och grupper",
+        "summary": "Relä-boten hanterar nu kameror, tilläggsdata och grupper.",
+        "items": [
+          "Kameror via reläet, som standard upp till 9 per kanal; skärm och kamera körs samtidigt",
+          "Tilläggsdata för Mumcord-tillägg, upp till 8 sändare per kanal",
+          "Relätokens bara för medlemmar i valda Mumble-grupper",
+          "Chatthistoriken för låsta kanaler går bara till personer som är inne i dem",
+          "Boten sätter sin avatar från en https-URL eller base64",
+          "Mumble och Mumcord visar ”Mumbot 0.x.y” som klient, musikbotar syns i sin kanal"
+        ]
+      },
+      {
         "id": "later",
         "tag": "Därefter",
         "title": "Idéer",
@@ -3324,7 +3489,9 @@
       "points": [
         "Skärmdelning och stora bilder även bakom CGNAT eller utan att visa din IP",
         "Körs i reläets nätverk, API:et förblir internt",
-        "Bara registrerade användare på din egen server får tokens"
+        "Bara registrerade användare på din egen server får tokens",
+        "Delar också ut tokens för kameror och tilläggsdata när reläet tillåter dem",
+        "Om du vill, bara för medlemmar i valda Mumble-grupper"
       ]
     },
     "music": {
@@ -3368,7 +3535,7 @@
       "mumpeer": {
         "title": "mumpeer",
         "description": "mumpeer är ett litet relä för Mumcords direktanslutningar: för när två personer inte kan nå varandra direkt eller vill dölja sin IP-adress.",
-        "lead": "Ett litet relä för Mumcords direktanslutningar mellan användare, till exempel för skärmdelning eller bilder i full storlek. När två personer inte kan nå varandra direkt, bakom CGNAT, strikta brandväggar eller i nätverk utan UDP, eller inte vill visa sin IP-adress, ansluter båda i stället till reläet. Det skickar bara vidare de krypterade paketen, som en TURN-server.",
+        "lead": "Ett litet relä för Mumcords direktanslutningar mellan användare, till exempel för skärmdelning, kameror, filer eller bilder i full storlek. När två personer inte kan nå varandra direkt, bakom CGNAT, strikta brandväggar eller i nätverk utan UDP, eller inte vill visa sin IP-adress, ansluter båda i stället till reläet. Det skickar bara vidare de krypterade paketen, som en TURN-server.",
         "features": [
           {
             "title": "Bredvid din Mumble-server",
@@ -3389,6 +3556,14 @@
           {
             "title": "Helt valfritt",
             "body": "Mumcord fungerar också utan bot och relä. I Mumcord väljer du själv: relä av, bara när en direktanslutning misslyckas, eller alltid."
+          },
+          {
+            "title": "Skärm, kameror och tilläggsdata",
+            "body": "En person skickar en gång och reläet för det vidare till alla tittare utan att läsa det. Det gäller skärmdelning och kameror: upp till 18 kameror samtidigt, var och en med högst 2500 kbit/s uppladdning, och upp till 25 tittare per sändning. Tilläggsdata fungerar också, men är avstängd som standard och har lägst prioritet."
+          },
+          {
+            "title": "Du bestämmer vad som är tillåtet",
+            "body": "I avsnittet `[uses]` slår du på eller av bilder, filer, skärmdelning, kamera och tilläggsdata var för sig. Det finns också gränser för bandbredd, sessioner och sändningar."
           }
         ],
         "listTitle": "Vad operatören kan se",

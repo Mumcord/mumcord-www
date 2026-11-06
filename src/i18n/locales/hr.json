@@ -373,7 +373,7 @@
         {
           "tag": "Epic 4.1",
           "title": "Datoteke, zaslon, kamera i dodaci",
-          "body": "Stiže s 0.7.0: dijeli datoteke bez otkrivanja IP adrese, dijeljenje zaslona do 4K za do 25 osoba, svoju kameru sa zamućenom pozadinom, ploču i igru Skyloom kao dodatke te sigurnosnu ocjenu za dodatke drugih."
+          "body": "Od 0.7.0: dijeli datoteke bez otkrivanja IP adrese, dijeljenje zaslona do 4K za do 25 osoba, svoju kameru sa zamućenom pozadinom, ploču i igru Skyloom kao dodatke te sigurnosnu ocjenu za dodatke drugih."
         },
         {
           "tag": "Epic 4",
@@ -604,8 +604,8 @@
       "toolTitle": "Suradnici"
     },
     "spotlight5": {
-      "label": "Novo u 0.5.0/0.6.0",
-      "labelSoon": "Uskoro: 0.5.0/0.6.0",
+      "label": "Novo u 0.5.0/0.6.0/0.7.0",
+      "labelSoon": "Uskoro: 0.5.0/0.6.0/0.7.0",
       "title": "Više mira. Više tebe. Više zvuka.",
       "body": "0.5.0 donosi Epic 3: centar obavijesti, blokiranje, više identiteta, novo stablo kanala, glazbu u chatu, način niske latencije za zajedničko muziciranje i izravne veze preko releja.",
       "tiles": {
@@ -856,6 +856,24 @@
             "title": "Blokiraj ljude",
             "body": "„Blokiraj…” u izborniku osobe skriva njihove privatne poruke i zahtjeve, sklapa njihove poruke u kanalima i utišava njihov glas, samo za tebe. Blokada prati certifikat pa vrijedi na svim poslužiteljima i uz nova imena. Ništa se ne šalje poslužitelju ni osobi, a Postavke → Privatnost popisuju sve koje si blokirao s „Odblokiraj”.",
             "alt": "Potvrda blokiranja osobe koja navodi što se mijenja"
+          },
+          {
+            "id": "kick-ban",
+            "title": "Izbacivanje i zabrana",
+            "body": "Izbornik Administracija neke osobe nudi „Izbaci…“ i „Zabrani…“, s razlogom. Zabrane traju 1 sat, 1 dan, 7 dana, 30 dana, zauvijek ili do datuma, po certifikatu i IP adresi. Samo s pravom na korijenskom kanalu.",
+            "alt": "Dijalog za zabranu osobe"
+          },
+          {
+            "id": "ban-list",
+            "title": "Popis zabrana",
+            "body": "„Popis zabrana…“ u izborniku poslužitelja prikazuje sve zabrane s imenom, otiskom, adresom, razlogom i krajem. Pretraga, filtriranje, uređivanje razloga i kraja na mjestu, ukidanje zabrana ili zabranjivanje osoba koje nisu online.",
+            "alt": "Prozor popisa zabrana"
+          },
+          {
+            "id": "bots-section",
+            "title": "Botovi zasebno",
+            "body": "Odjeljak „Botovi na ovom poslužitelju“ ispod popisa kanala prikazuje svakog bota i što radi, na primjer relay, povijest chata ili webhookove. Profil i izbornik, privatne poruke uključene, rade odande.",
+            "alt": "Odjeljak s botovima na poslužitelju"
           }
         ]
       },
@@ -1095,6 +1113,11 @@
             "title": "Mirna korisnička ploča",
             "body": "Ploča na dnu popisa kanala uvijek zadržava istu visinu: ti s imenom i poslužiteljem, jedan redak statusa poput ponovnog spajanja ili tvog glasovnog kanala, male oznake za Ne uznemiravaj, način niske latencije i vezu te gumbi mikrofona, slušalica i prekida. Popis kanala iznad više ne poskakuje.",
             "alt": "Korisnička ploča u raznim stanjima, od govora i utišanosti do ponovnog spajanja"
+          },
+          {
+            "id": "camera-entry",
+            "title": "Kamera u korisničkoj ploči",
+            "body": "Gumb kamere pored utišavanja i gluhoće otvara pregled. Dok je kamera uključena, postaje crven i odmah je isključuje, pod tvojim imenom prikazuje se „Kamera uključena“, a crvena značka to pokazuje u traci sustava."
           }
         ]
       },
@@ -1162,7 +1185,7 @@
           {
             "id": "screen-share",
             "title": "Dijeljenje zaslona",
-            "body": "Zaslon ili prozor za do 8 gledatelja, u 720p i 30 sličica u sekundi, na Windowsima i macOS-u po želji sa zvukom dijeljene aplikacije. Pokrećeš ga gumbom Aplikacije u chatu. Gledatelji gledaju u glavnom stupcu s razlučivosti, brzinom sličica i detaljima strujanja; ti na vrhu chata imaš traku za upravljanje s pauzom, zvukom, gledateljima i zaustavljanjem.",
+            "body": "Zaslon ili prozor za do 8 gledatelja izravno ili do 25 preko releja, po želji sa zvukom i AV1. Pokrećeš ga gumbom Aplikacije u chatu i prvo postaviš kvalitetu i kodek. Gledatelji gledaju u glavnom stupcu s razlučivosti, kodekom, putem i detaljima; ti na vrhu chata imaš traku s kvalitetom, koderom, pauzom, zvukom, gledateljima i zaustavljanjem.",
             "alt": "Dijeljeni zaslon u glavnom stupcu s detaljima strujanja i popisom gledatelja"
           },
           {
@@ -1179,8 +1202,73 @@
           {
             "id": "relay",
             "title": "Relay zajednice",
-            "body": "Zajednica poslužitelja može uz svoj Mumble poslužitelj pokrenuti relay. Slike pune veličine i dijeljenje zaslona tada rade i kad izravna veza nije moguća, a uz „uvijek relay” druga osoba nikad ne vidi tvoju IP adresu. Relay ne može čitati šifriranu vezu, a glas ga nikad ne koristi. Biraš u Postavke → Privatnost, i po poslužitelju.",
+            "body": "Zajednica poslužitelja može uz svoj Mumble poslužitelj pokrenuti relay. Slike pune veličine, datoteke, kamere i dijeljenje zaslona tada rade i kad izravna veza nije moguća, a uz „uvijek relay“ druga osoba nikad ne vidi tvoju IP adresu. Relay ne može čitati šifriranu vezu, glas ga nikad ne koristi, a Mumcord ne koristi ono što relay ne dopušta. Biraš u Postavke → Privatnost, i po poslužitelju.",
             "alt": "Postavke privatnosti s peer-to-peer izborima izravno, relay i isključeno"
+          },
+          {
+            "id": "file-sharing",
+            "title": "Dijeljenje datoteka",
+            "body": "Povuci datoteke ili mape u chat ili koristi spajalicu, do 2 GB. Uvijek idu preko releja poslužitelja, nitko ne vidi tvoju IP adresu, a datoteka nikad ne dodiruje Mumble poslužitelj.",
+            "alt": "Dijeljena datoteka kao kartica u chatu"
+          },
+          {
+            "id": "file-safety",
+            "title": "Sigurna preuzimanja",
+            "body": "Svako preuzimanje prvo pita i prikazuje mapu. Programi i skripte dobivaju dodatno upozorenje, a nakon toga Mumcord provjerava je li datoteka stigla nepromijenjena. U postavkama isključuješ primanje te određuješ veličinu i mapu.",
+            "alt": "Postavke dijeljenja datoteka"
+          },
+          {
+            "id": "camera",
+            "title": "Kamera",
+            "body": "Tvoja kamera za sve u tvom glasovnom kanalu, samo preko releja i end-to-end šifrirana. Počinje pregledom koji nitko ne vidi, a gumb kamere u korisničkoj ploči, izbornik Aplikacije, traka sustava i prečac uključuju je i isključuju.",
+            "alt": "Postavke kamere s pregledom"
+          },
+          {
+            "id": "camera-room",
+            "title": "Soba kamera",
+            "body": "Kamere u kanalu su iznad chata, do devet pločica u mreži ili jedna velika pločica uz Govornika. Uz dijeljenje zaslona ili watch party tvore traku pored ili iznad njega, ili ih sakriješ.",
+            "alt": "Soba kamera s nekoliko kamera iznad chata"
+          },
+          {
+            "id": "camera-backgrounds",
+            "title": "Pozadine kamere",
+            "body": "Bez pozadine, zamućenje (blago ili jako), jedna od 18 ugrađenih slika ili tvoja vlastita. Računa se na tvom računalu, a mijenjaš je bez isključivanja kamere.",
+            "alt": "Pregled kamere s jako zamućenom pozadinom"
+          },
+          {
+            "id": "camera-tiles",
+            "title": "Opcije pločice",
+            "body": "⋯ na pločici nudi „Prikvači za mene“, „Prikaži veliko“, „Sakrij video“ (tada se uopće ne preuzima) i „Kvaliteta za mene“. Uz to zasebna stranica Postavke → Kamera, a sve radi i tipkovnicom.",
+            "alt": "Izbornik pločice kamere"
+          },
+          {
+            "id": "screen-share-sound",
+            "title": "Zvuk pri dijeljenju",
+            "body": "Cijeli zaslon dijeli sav zvuk osim Mumcordova, prozor samo zvuk te aplikacije. Gdje nije jasno koga misliš, „Zvuk koje aplikacije?“ pita. Radi na Windowsima 10, macOS-u 13 i Linuxu s PipeWireom.",
+            "alt": "Dijalog prije početka dijeljenja zaslona"
+          },
+          {
+            "id": "screen-share-av1",
+            "title": "AV1 za oštar tekst",
+            "body": "Mumcord u pozadini provjerava što tvoje računalo može i koristi AV1 na grafičkoj kartici, AV1 na procesoru ili VP9. Gledatelji reproduciraju AV1 i bez hardvera, a za starije verzije Mumcorda dijeljenje prelazi na VP9.",
+            "alt": "Kartica postavki dijeljenja zaslona"
+          },
+          {
+            "id": "screen-share-relay",
+            "title": "Do 25 gledatelja",
+            "body": "Kad relay to nudi, šalješ jednom, a relay šalje dijeljenje svima, do svog ograničenja (zadano 25). Šifrirano je end-to-end, relay ne vidi ništa."
+          },
+          {
+            "id": "screen-share-quality",
+            "title": "Namještanje kvalitete",
+            "body": "Prije početka biraš razlučivost, brzinu sličica, oštar tekst ili glatko kretanje i ograničenje slanja. Tijekom dijeljenja izbornik Kvaliteta sve mijenja bez ponovnog pokretanja, a kartica „Dijeljenje zaslona“ u Postavkama čuva tvoje zadane vrijednosti. Gledatelji mogu sniziti svoju brzinu sličica.",
+            "alt": "Kontrole pri gledanju dijeljenja zaslona"
+          },
+          {
+            "id": "media-area-resize",
+            "title": "Podjela slike i chata",
+            "body": "Povuci ručku između slike dijeljenja ili watch partyja i chata ili koristi tipke sa strelicama. Hvata se na trećini, polovici i dvije trećine, a Mumcord pamti visinu.",
+            "alt": "Dijeljenje zaslona s kamerama u traci pored njega"
           }
         ]
       },
@@ -1214,7 +1302,7 @@
           {
             "id": "plugin-safety",
             "title": "Sandbox, potpisi i kill switch",
-            "body": "Dodaci rade zatvoreno, bez pristupa mreži, datotekama ili zvuku, s ograničenjima memorije i vremena; onaj koji se stalno ruši isključuje se, a tvoj glas nikad nije pogođen. Službeni dodaci potpisani su i provjereni. Kill switch može svima onemogućiti štetan dodatak, „Isključi sve dodatke” zaustavlja ih odjednom, a --no-plugins pokreće bez ijednog.",
+            "body": "Dodaci rade zatvoreno, bez pristupa datotekama ili zvuku i samo web-mjestima koja su deklarirali, a ti odobrio, s ograničenjima memorije i vremena; onaj koji se stalno ruši isključuje se, a tvoj glas nikad nije pogođen. Službeni dodaci potpisani su i provjereni. Kill switch može svima onemogućiti štetan dodatak, „Isključi sve dodatke“ zaustavlja ih odjednom, a --no-plugins pokreće bez ijednog.",
             "alt": "Upit za instalaciju EVE Fita s trakom napretka s natpisom „Checking signature…“ iznad popisa dozvola."
           },
           {
@@ -1264,6 +1352,45 @@
             "title": "EVE Fit",
             "body": "Zalijepi EVE Online fitting u chat i svatko s dodatkom vidi karticu broda. Jedan klik otvara kotač fittinga s kapacitorom, napadom, obranom i navigacijom, izvan mreže unutar Mumcorda, a „Kopiraj fitting” ga vraća van.",
             "alt": "Dijalog EVE Fita s brodom Algos unutar kotača opremanja, ikonama modula i statistikama kondenzatora, napada, obrane, ciljanja, navigacije i dronova."
+          },
+          {
+            "id": "plugin-media-area",
+            "title": "Dodaci u medijskom području",
+            "body": "Aktivnosti dodataka rade u medijskom području s Mumcordovim vlastitim zaglavljem: tko ju je pokrenuo, koliko ih igra, tko je napravio dodatak. S cijelim zaslonom i „Napusti dodatak“. Kad radi više stvari, kartice ili Alt+1 do Alt+9 prebacuju među njima.",
+            "alt": "Dodatak u medijskom području s karticama iznad njega"
+          },
+          {
+            "id": "plugin-side-panel",
+            "title": "Bočna ploča za dodatke",
+            "body": "Dodatak može prikazati svoju stranicu desno od chata umjesto popisa članova. Mijenjaš joj veličinu, Mumcord pamti širinu po dodatku, a izbornik ⋯ vodi do detalja dodatka.",
+            "alt": "Dodatak u bočnoj ploči uz chat"
+          },
+          {
+            "id": "plugin-apps-menu",
+            "title": "Dodaci u izborniku Aplikacije",
+            "body": "Svaki dodatak može dodati do dvije stavke u izbornik Aplikacije, pod „Dodaci“ sa svojom ikonom i imenom. Iste se stavke prikazuju u paleti naredbi (Ctrl+Shift+P), a dodatak može zasivjeti stavku uz razlog.",
+            "alt": "Izbornik Aplikacije sa stavkama dodataka"
+          },
+          {
+            "id": "plugin-security-score",
+            "title": "Sigurnosna ocjena",
+            "body": "Neslužbeni dodaci dobivaju ocjenu od 0 do 100, s najvažnijim razlozima i cijelom raščlambom pri instalaciji i ažuriranju. Visokorizični dodaci trebaju vlastitu kvačicu, a „Sigurnost dodataka“ u postavkama može ih potpuno blokirati.",
+            "alt": "Detalji sigurnosne ocjene dodatka"
+          },
+          {
+            "id": "plugin-min-version",
+            "title": "Najmanja verzija za dodatke",
+            "body": "Ako dodatku treba noviji Mumcord, piše „Treba Mumcord X ili noviji“ i instalacija je onemogućena. Automatska ažuriranja čekaju dok tvoj Mumcord ne može pokrenuti novu verziju."
+          },
+          {
+            "id": "plugin-websites",
+            "title": "Web-mjesta dodataka",
+            "body": "Dodaci koji komuniciraju s web-mjestima navode svaku adresu pri instalaciji i u svojim detaljima, s brojem zahtjeva. Dosežu samo ono što su deklarirali, a ti odobrio, samo javne adrese s valjanim certifikatom. Stranice dodataka otvaraju se i u dijalogu."
+          },
+          {
+            "id": "plugin-relay-data",
+            "title": "Podaci dodataka preko releja",
+            "body": "Podaci igara idu end-to-end šifrirani preko releja, do 64 KB po poruci, jednoj osobi ili cijelom kanalu. Isključuješ ih po dodatku, a Postavke → Dodaci pokazuju koliko je podataka potrošio."
           }
         ]
       },
@@ -1371,16 +1498,17 @@
     {
       "version": "0.7.0",
       "teaser": "Dijeljenje datoteka, tvoja kamera, dijeljenje zaslona sa zvukom i AV1 za do 25 gledatelja, dodaci u medijskom području, izbacivanje, zabrana i popis zabrana.",
-      "summary": "Veliko ažuriranje: dijeliš datoteke do 2 GB u kanalu, uvijek preko releja, prikazuješ kameru sa zamućenom pozadinom, tvoje dijeljenje zaslona dobiva zvuk, AV1 i do 25 gledatelja, sliku i chat dijeliš jednom ručkom, dodaci dobivaju medijsko područje i jasna sigurnosna pravila, a administratori mogu izbacivati, zabranjivati i održavati popis zabrana u redu.",
+      "summary": "Velika nadogradnja: dijeliš datoteke do 2 GB u kanalu, uvijek preko releja, pokazuješ kameru sa zamućenom pozadinom, dijeljenje zaslona dobiva zvuk, AV1 i do 25 gledatelja, sliku i chat dijeliš jednom ručkom, dodaci dobivaju medijsko područje i jasna sigurnosna pravila, a administratori mogu izbacivati, zabranjivati i održavati popis zabrana u redu.",
       "groups": [
         {
           "title": "Dijeljenje datoteka",
           "items": [
-            "Povuci datoteke u chat ili ih priloži spajalicom, do 2 GB. Mape se prvo zipaju.",
+            "Povuci datoteke i mape u chat ili ih priloži spajalicom, do 2 GB. Ako nema releja ili on ne dopušta datoteke, spajalica kaže zašto.",
             "Datoteke uvijek idu preko releja poslužitelja: nitko ne vidi tvoju IP adresu, a datoteka nikad ne dodiruje Mumble poslužitelj.",
-            "Svako preuzimanje prvo pita i prikazuje mapu u koju se sprema. Poslije toga Mumcord provjerava SHA-256 kontrolni zbroj, koji možeš i kopirati.",
+            "Svako preuzimanje prvo pita i prikazuje mapu u koju se sprema. Nakon toga Mumcord provjerava je li datoteka stigla nepromijenjena.",
             "Programi i skripte dobivaju dodatno upozorenje prije preuzimanja i prije otvaranja.",
-            "Datoteka ostaje dostupna dok je pošiljatelj online, najviše 24 sata.",
+            "Tvoje dijeljene datoteke pokazuju tko ih je preuzeo i imaju gumb „Prestani dijeliti“.",
+            "Slike koje ispustiš u kanal možeš poslati kao slike ili podijeliti kao datoteke. Sve ostale datoteke dijele se odmah.",
             "Novo u Postavkama → Privatnost i veze: primanje datoteka uključeno ili isključeno, najveća veličina od 100 MB do 2 GB i mapa za primljene datoteke."
           ]
         },
@@ -1388,70 +1516,88 @@
           "title": "Dijeljenje zaslona",
           "items": [
             "Zvuk pri dijeljenju: cijeli zaslon dijeli sav zvuk osim Mumcordova, prozor dijeli samo zvuk te aplikacije. Radi na Windowsima 10 (2004 ili noviji), macOS-u 13 i Linuxu s PipeWireom.",
-            "Prije početka odaberi razlučivost do 4K, brzinu sličica do 60 fps, oštar tekst ili glatko kretanje, kodek i ograničenje slanja. Izbornik Kvaliteta mijenja ih tijekom dijeljenja bez ponovnog pokretanja.",
+            "Prije početka odaberi razlučivost, brzinu sličica, oštar tekst ili glatko kretanje, kodek i ograničenje slanja. Izbornik Kvaliteta mijenja ih tijekom dijeljenja bez ponovnog pokretanja.",
+            "Mumcord sam bira koder: AV1 na grafičkoj kartici, AV1 na procesoru ili VP9. Traka tvog dijeljenja prikazuje kvalitetu, koder i ide li preko releja.",
+            "Kad dijeliš prozor, „Zvuk koje aplikacije?“ pita čiji zvuk ide uz njega. Možeš odabrati i „Bez zvuka“.",
             "Preko releja šalješ jednom, a do 25 ljudi gleda, uz end-to-end šifriranje.",
-            "AV1 na grafičkoj kartici ili procesoru za oštar tekst uz manje podataka. VP9 ostaje kao zamjena, i za gledatelje sa starijim Mumcordom.",
-            "Gledatelji vide kodek, put i kvalitetu i mogu smanjiti svoju brzinu sličica. Popis gledatelja pokazuje tko što dobiva.",
-            "Nova kartica „Dijeljenje zaslona“ u Postavkama s tvojim zadanim vrijednostima i enkoderom koji tvoje računalo koristi.",
+            "AV1 na grafičkoj kartici ili procesoru za oštar tekst s manje propusnosti. VP9 ostaje kao pričuva, i za gledatelje sa starijim Mumcordom.",
+            "Gledatelji vide kodek, put i kvalitetu te mogu sniziti svoju brzinu sličica. Popis gledatelja pokazuje tko što dobiva.",
+            "Nova kartica „Dijeljenje zaslona“ u Postavkama s tvojim zadanim vrijednostima i koderom koji koristi tvoje računalo.",
             "Podijeli sliku i chat sam: povuci ručku između dijeljenja zaslona ili watch partyja i chata. Povučeš li je skroz gore, slika postaje mini traka, a Mumcord pamti visinu."
           ]
         },
         {
           "title": "Kamera",
           "items": [
-            "Tvoja kamera za sve u tvom glasovnom kanalu, samo preko releja i end-to-end šifrirana, za do 25 gledatelja.",
-            "Kamera počinje s pregledom koji ništa ne šalje. Izlazi tek kad je uključiš.",
-            "Zamuti pozadinu ili stavi sliku iza sebe, izračunato na tvom računalu.",
-            "Ako se kamera ne može koristiti, Mumcord kaže zašto, na primjer kad relej poslužitelja ne dopušta kamere."
+            "Tvoja kamera za sve u tvom glasovnom kanalu, samo preko releja i end-to-end šifrirana.",
+            "Soba kamera je iznad chata: do devet pločica u mreži ili raspored Govornik s jednom velikom pločicom. Svaka prikazuje ime, ikonu isključenog mikrofona i zeleni okvir dok osoba govori.",
+            "Kamera počinje pregledom koji nitko drugi ne vidi. Biraš kameru i pozadinu, a ona šalje tek kad je uključiš.",
+            "Pozadine: nijedna, zamućenje (blago ili jako), jedna od 18 ugrađenih slika ili tvoja vlastita. Računa se na tvom računalu i možeš je mijenjati dok kamera radi.",
+            "⋯ na pločici nudi „Prikvači za mene“, „Prikaži veliko“, „Sakrij video osobe …“ (tada se uopće ne preuzima) i „Kvaliteta za mene“. Sve radi i tipkovnicom.",
+            "Uz dijeljenje zaslona ili watch party slika ostaje velika, a kamere su u traci pored ili iznad nje. Ili ih sakriješ, i tada se ne preuzimaju.",
+            "Gumb kamere u korisničkoj ploči i „Uključi kameru“ u izborniku Aplikacije otvaraju pregled. Dok je kamera uključena, gumb postaje crven, a u stablu kanala prikazuje se ikona kamere.",
+            "Nova kartica „Kamera“ u Postavkama: pregled, kamera, kvaliteta slanja, zrcaljeni vlastiti prikaz, zadana pozadina i kako vidiš tuđe kamere. Uz to prečac za uključivanje i isključivanje kamere.",
+            "Dok je kamera uključena, ikona u traci sustava prikazuje crvenu značku kamere, a njezin izbornik nudi „Isključi kameru“. Kad se zaslon zaključa, kamera se može sama isključiti.",
+            "Ako se kamera ne može koristiti ili se sama zaustavi, Mumcord kaže zašto, na primjer kad relej poslužitelja ne dopušta kamere."
           ]
         },
         {
           "title": "Dodaci",
           "items": [
             "Dodaci dobivaju medijsko područje, bočnu ploču uz chat, dijaloge i stavke u izborniku Aplikacije. Kad radi više njih, kartice se prebacuju među njima.",
-            "Podaci igre idu end-to-end šifrirani preko releja, jednoj osobi ili cijelom kanalu.",
+            "Podaci igara idu end-to-end šifrirani preko releja, jednoj osobi ili cijelom kanalu.",
             "Sigurnosna ocjena od 0 do 100 za neslužbene dodatke, s razlozima pri instalaciji i ažuriranjima.",
-            "Svaka web-stranica s kojom dodatak komunicira navodi se pri instalaciji, a nove stranice trebaju tvoj pristanak.",
-            "Stranice dodataka su zaključane: bez kamere, bez mikrofona, bez međuspremnika i samo web-stranice koje si dopustio. Stranica koja se zamrzne više ne zamrzava Mumcord.",
-            "Dodatak kojem treba noviji Mumcord to kaže umjesto da se instalira, a ažuriranja čekaju dok ih tvoj Mumcord ne može pokrenuti."
+            "Svako web-mjesto s kojim dodatak komunicira navodi se pri instalaciji, a nova web-mjesta traže tvoj pristanak.",
+            "Stranice dodataka su zaključane: bez kamere, bez mikrofona, bez međuspremnika i samo web-mjesta koja si dopustio. Stranica koja se zamrzne više ne zamrzava Mumcord.",
+            "Dodatak kojem treba noviji Mumcord to kaže umjesto da se instalira, a ažuriranja čekaju dok tvoj Mumcord ne može pokrenuti novu verziju.",
+            "Svaki dodatak može dodati do dvije stavke u izbornik Aplikacije, pod „Dodaci“ sa svojom ikonom i imenom. Iste se stavke prikazuju u paleti naredbi (Ctrl+Shift+P).",
+            "Dodaci mogu puštati kratke zvukove koje čuješ samo ti. Tiši su dok netko govori i nečujni dok si utišan.",
+            "Dodatak može spremiti datoteku, otvoriti sliku ili objaviti sliku u chatu, ali samo odmah nakon tvog klika i uz dopuštenje. Nikad ne sazna gdje su tvoje datoteke.",
+            "Postavke → Dodaci pokazuju koliko podataka svaki dodatak šalje preko releja, imaju prekidač „Sigurnost dodataka“ protiv rizičnih dodataka i navode dodatke odbijene pri učitavanju.",
+            "Pregled ažuriranja pokazuje sigurnosnu ocjenu prije i poslije te zašto ažuriranje čeka. Kad postoje bilješke o izdanju, poveznica ih otvara u tvom pregledniku."
           ]
         },
         {
           "title": "Administracija",
           "items": [
             "Izbaci… i Zabrani… u izborniku Administracija neke osobe, s razlogom. Zabrane traju 1 sat, 1 dan, 7 dana, 30 dana, zauvijek ili do datuma.",
-            "Popis zabrana u izborniku poslužitelja: pretraživanje, filtriranje, uređivanje razloga i kraja, ukidanje zabrana i zabrana osoba koje trenutačno nisu online."
+            "Popis zabrana u izborniku poslužitelja: pretraga, filtriranje, uređivanje razloga i kraja, ukidanje zabrana i zabranjivanje osoba koje trenutačno nisu online."
           ]
         },
         {
           "title": "Botovi",
           "items": [
             "Botovi stoje zasebno: odjeljak „Botovi na ovom poslužitelju“ ispod popisa kanala prikazuje svakog bota i što radi. Botovi bez glasa više se ne pojavljuju među ljudima.",
-            "Mumbot se u svom profilu i u pojedinostima veze prikazuje kao „Mumbot <version>“ umjesto „Mumcord <version>“."
+            "Mumbot se u svom profilu i detaljima veze prikazuje kao „Mumbot <version>“ umjesto „Mumcord <version>“."
           ]
         },
         {
           "title": "Poboljšano",
           "items": [
-            "Povijest chata među osobama na 0.7.0 sustiže se brže: svaka slika putuje jednom, a slike koje već imaš ne preuzimaju se ponovno.",
+            "Povijest chata među ljudima s 0.7.0 brže se nadoknađuje: svaka slika putuje jednom, a slike koje već imaš ne preuzimaju se ponovno.",
             "Mumcord slijedi ono što relej poslužitelja dopušta, a informacije o poslužitelju pokazuju što je to.",
             "Prekidači ostaju vidljivi u načinu visokog kontrasta.",
-            "Ugrađeni YouTube i Twitch videozapisi: gumb za cijeli zaslon radi, a poseban gumb kopira poveznicu na videozapis."
+            "Izbornik Aplikacije prikazuje ikone za „Podijeli zaslon“ i „Gledajmo zajedno“, a dodaci bez ikone dobivaju vlastitu obojenu pločicu.",
+            "Kartica latencije kaže zašto je vrijeme dulje nego što traži način niske latencije, na primjer kad zvučni poslužitelj na Linuxu treba veće blokove."
           ]
         },
         {
           "title": "Popravljeno",
           "items": [
             "Na starijim procesorima bez AVX2 Mumcord se više ne ruši pri pokretanju. Dijeljenje zaslona tamo koristi VP9.",
-            "Povijest chata zaključanih kanala ide samo ljudima koji su doista u kanalu, ne onima koji ga samo prate ili slušaju.",
+            "Povijest chata zaključanih kanala ide samo ljudima koji su doista u kanalu, a ne onima koji ga samo prate ili slušaju.",
             "Ako netko koristi „Uvijek koristi relej“, Mumcord mu više ne šalje tvoju mrežnu adresu.",
             "Profil iz novijeg Mumcorda više ne uzrokuje rušenje. Mumcord to objašnjava i nudi preuzimanje najnovije verzije.",
-            "Poslane poruke odmah sjedaju na pravo mjesto u povijesti i ostaju tamo.",
-            "Srednji klik na poveznicu ili klik uz pritisnut Ctrl, Cmd ili Shift otvara je u tvom pregledniku umjesto unutar Mumcorda.",
+            "Poslane poruke odmah dolaze na pravo mjesto u povijesti i ostaju ondje.",
+            "Klik srednjom tipkom na poveznicu, ili klik uz pritisnut Ctrl, Cmd ili Shift, otvara je u tvom pregledniku umjesto unutar Mumcorda.",
             "Ako nisi registriran na poslužitelju čiji relej služi samo registriranim korisnicima, Mumcord to sada kaže umjesto „relej nije dostupan“.",
-            "Prozor popisa zabrana ima gumb za zatvaranje, a Izbaci i Zabrani reagiraju na klikove mišem.",
+            "Izbaci i Zabrani reagiraju na klikove mišem.",
             "Pokretanje watch partyja iz izbornika Aplikacije više ne učitava ponovno aplikaciju.",
-            "Dijeljenje zaslona sada govori sve jezike."
+            "Dijeljenje zaslona sada govori sve jezike.",
+            "Zvuk više ne zaškripi kad druga aplikacija istodobno pušta zvuk.",
+            "Kad završi dijeljenje zaslona koje gledaš, ne ostaje prazna slika, a kamere se vraćaju u mrežu sobe.",
+            "Ctrl+C na odabranom tekstu chata više ne ostavlja međuspremnik praznim na Linuxu (X11).",
+            "Dodatak više ne može sam otvoriti svoj dijalog, samo malo nakon tvog klika. Poruke sa stranice dodatka stižu ispravnim redoslijedom."
           ]
         }
       ]
@@ -2575,8 +2721,6 @@
             "title": "Dodaci na pozornici",
             "items": [
               "Dodaci dobivaju medijsko područje: igre i ploče rade ondje gdje su inače dijeljenje zaslona, watch party i kamere",
-              "Whiteboard, službeni dodatak za zajedničko razmišljanje: beskrajno platno s olovkama, ljepljivim bilješkama i laserskim pokazivačem, spremljeno na tvom uređaju i s izvozom kao PNG, SVG ili PDF",
-              "Skyloom, igra samo glasom za 2 do 12 osoba: jedna osoba opisuje skriveno zviježđe, a svi ostali postavljaju po jednu zvijezdu",
               "Dodaci se otvaraju i iz izbornika Aplikacije, u bočnoj ploči ili u dijalogu, a velike količine podataka idu preko relaya s end-to-end enkripcijom"
             ],
             "mockups": [
@@ -2597,6 +2741,13 @@
               "Dodaci sa sigurnosnom ocjenom",
               "Instalacija dodatka visokog rizika",
               "Web stranice dodatka pri instalaciji"
+            ]
+          },
+          {
+            "title": "Whiteboard & Skyloom",
+            "items": [
+              "Whiteboard, službeni dodatak za zajedničko razmišljanje: beskrajno platno s olovkama, ljepljivim bilješkama i laserskim pokazivačem, spremljeno na tvom uređaju i s izvozom kao PNG, SVG ili PDF",
+              "Skyloom, igra samo glasom za 2 do 12 osoba: jedna osoba opisuje skriveno zviježđe, a svi ostali postavljaju po jednu zvijezdu"
             ]
           }
         ]
@@ -2993,7 +3144,7 @@
         "id": "relay",
         "title": "Neobavezno: relay za izravne veze",
         "body": [
-          "Da dijeljenje zaslona i slike u punoj veličini rade i kad se dvoje ljudi ne mogu dosegnuti izravno, ili da nitko ne vidi tuđu IP adresu, možeš uz poslužitelj pokrenuti relay <a href=\"/en/mumpeer\">mumpeer</a>. Sadržaj ostaje šifriran s kraja na kraj.",
+          "Da dijeljenje zaslona, kamere i slike u punoj veličini rade i kad se dvoje ljudi ne mogu dosegnuti izravno, ili da nitko ne vidi tuđu IP adresu, možeš uz poslužitelj pokrenuti relay <a href=\"/en/mumpeer\">mumpeer</a>. Sadržaj ostaje šifriran s kraja na kraj.",
           "Mumcord koristi relay od verzije 0.5.0. Ostalo radi relay bot <code>mumbot peer</code>: objavljuje relay i dijeli tokene.",
           "U mapi poslužitelja upiši zajedničku tajnu u <code>.env</code> i preuzmi dvije primjer-konfiguracije. Adresu svog poslužitelja upiši pod <code>public_host</code> u <code>mumpeer.toml</code>, a otisak svog Mumble poslužitelja u <code>bot.toml</code>. Zatim dodaj dolje navedene servise u <code>docker-compose.yml</code> pod <code>services:</code>, a <code>mumpeer-data:</code> i <code>mumbot-data:</code> pod <code>volumes:</code>."
         ],
@@ -3027,7 +3178,7 @@
         ],
         "relay": [
           "mumpeer relay",
-          "Dijeljenje zaslona i velike slike čak i iza CGNAT-a, a da nitko ne vidi tvoj IP"
+          "Dijeljenje zaslona, kamere i velike slike čak i iza CGNAT-a, a da nitko ne vidi tvoj IP"
         ],
         "webhook": [
           "Mumbot webhook",
@@ -3300,6 +3451,20 @@
         ]
       },
       {
+        "id": "0.5.0",
+        "tag": "0.5.0",
+        "title": "Kamere i grupe",
+        "summary": "Relay bot sada rukuje kamerama, podacima dodataka i grupama.",
+        "items": [
+          "Kamere preko releja, zadano do 9 po kanalu; zaslon i kamera rade zajedno",
+          "Podaci dodataka za Mumcordove dodatke, do 8 pošiljatelja po kanalu",
+          "Relay tokeni samo za članove odabranih Mumble grupa",
+          "Povijest chata zaključanih kanala ide samo ljudima koji su unutra",
+          "Bot postavlja svoj avatar s https adrese ili iz base64",
+          "Mumble i Mumcord prikazuju „Mumbot 0.x.y“ kao klijent, glazbeni botovi pojavljuju se u svom kanalu"
+        ]
+      },
+      {
         "id": "later",
         "tag": "Nakon toga",
         "title": "Ideje",
@@ -3324,7 +3489,9 @@
       "points": [
         "Dijeljenje zaslona i velike slike čak i iza CGNAT-a ili bez otkrivanja tvoje IP adrese",
         "Radi u mreži relaya, API ostaje interni",
-        "Tokene dobivaju samo registrirani korisnici tvog vlastitog poslužitelja"
+        "Tokene dobivaju samo registrirani korisnici tvog vlastitog poslužitelja",
+        "Dijeli i tokene za kamere i podatke dodataka, kad ih relay dopušta",
+        "Po želji samo za članove odabranih Mumble grupa"
       ]
     },
     "music": {
@@ -3368,7 +3535,7 @@
       "mumpeer": {
         "title": "mumpeer",
         "description": "mumpeer je mali relay za izravne veze Mumcorda: za slučaj kad se dvoje ljudi ne mogu dosegnuti izravno ili žele sakriti svoju IP adresu.",
-        "lead": "Mali relay za izravne veze Mumcorda između korisnika, na primjer za dijeljenje zaslona ili slike u punoj veličini. Kad se dvoje ljudi ne mogu dosegnuti izravno, iza CGNAT-a, strogih vatrozida ili u mrežama bez UDP-a, ili ne žele pokazati svoju IP adresu, oboje se umjesto toga spajaju na relay. On samo prosljeđuje šifrirane pakete, kao TURN poslužitelj.",
+        "lead": "Mali relay za izravne veze Mumcorda između korisnika, na primjer za dijeljenje zaslona, kamere, datoteke ili slike u punoj veličini. Kad se dvoje ljudi ne mogu dosegnuti izravno, iza CGNAT-a, strogih vatrozida ili u mrežama bez UDP-a, ili ne žele pokazati svoju IP adresu, oboje se umjesto toga spajaju na relay. On samo prosljeđuje šifrirane pakete, kao TURN poslužitelj.",
         "features": [
           {
             "title": "Uz tvoj Mumble poslužitelj",
@@ -3389,6 +3556,14 @@
           {
             "title": "Posve neobavezno",
             "body": "Mumcord radi i bez bota i relaya. U Mumcordu biraš ti: relay isključen, samo kad izravna veza ne uspije, ili uvijek."
+          },
+          {
+            "title": "Zaslon, kamere i podaci dodataka",
+            "body": "Jedna osoba šalje jednom, a relay prosljeđuje svim gledateljima, ne čitajući ništa. To vrijedi za dijeljenje zaslona i kamere: do 18 kamera istodobno, svaka s najviše 2500 kbit/s slanja, i do 25 gledatelja po prijenosu. Podaci dodataka također rade, ali su zadano isključeni i imaju najniži prioritet."
+          },
+          {
+            "title": "Ti odlučuješ što je dopušteno",
+            "body": "U odjeljku `[uses]` uključuješ ili isključuješ slike, datoteke, dijeljenje zaslona, kameru i podatke dodataka jedno po jedno. Uz to postoje ograničenja za propusnost, sesije i prijenose."
           }
         ],
         "listTitle": "Što operator može vidjeti",

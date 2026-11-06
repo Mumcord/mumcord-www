@@ -373,7 +373,7 @@
         {
           "tag": "Epic 4.1",
           "title": "Súbory, obrazovka, kamera a pluginy",
-          "body": "Prichádza s 0.7.0: zdieľaj súbory bez ukázania IP adresy, zdieľanie obrazovky až do 4K pre až 25 ľudí, svoju kameru s rozmazaným pozadím, tabuľu a hru Skyloom ako pluginy a bezpečnostné skóre pre pluginy od iných."
+          "body": "Od 0.7.0: zdieľaj súbory bez ukázania IP adresy, zdieľanie obrazovky až do 4K pre až 25 ľudí, svoju kameru s rozmazaným pozadím, tabuľu a hru Skyloom ako pluginy a bezpečnostné skóre pre pluginy od iných."
         },
         {
           "tag": "Epic 4",
@@ -604,8 +604,8 @@
       "toolTitle": "Prispievatelia"
     },
     "spotlight5": {
-      "label": "Novinky vo verzii 0.5.0/0.6.0",
-      "labelSoon": "Už čoskoro: 0.5.0/0.6.0",
+      "label": "Novinky vo verzii 0.5.0/0.6.0/0.7.0",
+      "labelSoon": "Už čoskoro: 0.5.0/0.6.0/0.7.0",
       "title": "Viac pokoja. Viac teba. Viac zvuku.",
       "body": "0.5.0 prináša Epic 3: centrum oznámení, blokovanie, viac identít, nový strom kanálov, hudbu v chate, režim s nízkou latenciou na spoločné hranie hudby a priame spojenia cez relay.",
       "tiles": {
@@ -856,6 +856,24 @@
             "title": "Blokovanie ľudí",
             "body": "„Blokovať…“ v menu osoby skryje jej súkromné správy a žiadosti, zbalí jej správy v kanáli a stlmí jej hlas, len pre teba. Blokovanie sleduje certifikát, takže platí naprieč servermi aj pre nové mená. Serveru ani osobe sa nič neposiela a Nastavenia → Súkromie vypíše všetkých, ktorých si zablokoval, s „Odblokovať“.",
             "alt": "Potvrdenie blokovania osoby so zoznamom toho, čo sa zmení"
+          },
+          {
+            "id": "kick-ban",
+            "title": "Vyhodenie a ban",
+            "body": "V ponuke Správa pri osobe nájdeš „Vyhodiť…“ a „Zabanovať…“, s dôvodom. Ban trvá 1 hodinu, 1 deň, 7 dní, 30 dní, navždy alebo do zadaného dátumu, podľa certifikátu a IP adresy. Len s právom v koreňovom kanáli.",
+            "alt": "Dialóg na zabanovanie osoby"
+          },
+          {
+            "id": "ban-list",
+            "title": "Zoznam banov",
+            "body": "„Zoznam banov…“ v ponuke servera ukáže všetky bany s menom, odtlačkom, adresou, dôvodom a koncom. Hľadaj, filtruj, upravuj dôvod a koniec priamo v zozname, ruš bany alebo banuj aj ľudí, ktorí nie sú online.",
+            "alt": "Okno so zoznamom banov"
+          },
+          {
+            "id": "bots-section",
+            "title": "Boty zvlášť",
+            "body": "Sekcia „Boty na tomto serveri“ pod zoznamom kanálov ukazuje každého bota s tým, čo robí, napríklad relay, históriu chatu alebo webhooky. Profil a ponuka, vrátane súkromných správ, fungujú priamo odtiaľ.",
+            "alt": "Sekcia s botmi na serveri"
           }
         ]
       },
@@ -1095,6 +1113,11 @@
             "title": "Pokojný panel používateľa",
             "body": "Panel dole pod zoznamom kanálov má vždy rovnakú výšku: ty s menom a serverom, jeden stavový riadok, napríklad opätovné pripájanie alebo tvoj hlasový kanál, malé čipy pre Nerušiť, režim nízkej latencie a pripojenie a tlačidlá mikrofónu, slúchadiel a zavesenia. Zoznam kanálov nad ním už neskáče.",
             "alt": "Panel používateľa v rôznych stavoch, od hovorenia a stlmenia po opätovné pripájanie"
+          },
+          {
+            "id": "camera-entry",
+            "title": "Kamera v paneli používateľa",
+            "body": "Tlačidlo kamery vedľa stlmenia mikrofónu a zvuku otvorí náhľad. Kým kamera beží, zčervenie a jedným kliknutím ju vypne, pod tvojím menom sa zobrazí „Kamera zapnutá“ a červená značka to ukazuje aj v oznamovacej oblasti."
           }
         ]
       },
@@ -1162,7 +1185,7 @@
           {
             "id": "screen-share",
             "title": "Zdieľanie obrazovky",
-            "body": "Obrazovka alebo okno až pre 8 divákov, v 720p pri 30 snímkach za sekundu, na Windows a macOS, ak chceš, so zvukom zdieľanej aplikácie. Spustíš ho tlačidlom Aplikácie v chate. Diváci sledujú v hlavnom stĺpci s rozlíšením, snímkovou frekvenciou a detailmi streamu; ty dostaneš hore v chate ovládací pruh s pozastavením, zvukom, divákmi a ukončením.",
+            "body": "Obrazovka alebo okno pre až 8 divákov priamo alebo až 25 cez relay, ak chceš, so zvukom a AV1. Spustíš ho tlačidlom Aplikácie v chate a najprv nastavíš kvalitu a kodek. Diváci sledujú v hlavnom stĺpci s rozlíšením, kodekom, cestou a detailmi; ty dostaneš hore v chate pruh s kvalitou, enkodérom, pozastavením, zvukom, divákmi a ukončením.",
             "alt": "Zdieľaná obrazovka v hlavnom stĺpci s detailmi streamu a zoznamom divákov"
           },
           {
@@ -1179,8 +1202,73 @@
           {
             "id": "relay",
             "title": "Komunitný relay",
-            "body": "Komunita servera môže popri serveri Mumble prevádzkovať relay. Obrázky v plnej veľkosti a zdieľanie obrazovky potom fungujú, aj keď priame spojenie nie je možné, a s „vždy cez relay“ druhá osoba nikdy nevidí tvoju IP adresu. Relay nevie čítať šifrované spojenie a hlas ho nikdy nepoužíva. Vyberáš v Nastavenia → Súkromie, aj pre každý server zvlášť.",
+            "body": "Komunita servera môže popri serveri Mumble prevádzkovať relay. Obrázky v plnej veľkosti, súbory, kamery a zdieľanie obrazovky potom fungujú, aj keď priame spojenie nie je možné, a s „vždy cez relay“ druhá osoba nikdy nevidí tvoju IP adresu. Relay nevie čítať šifrované spojenie, hlas ho nikdy nepoužíva a Mumcord nepoužíva nič, čo relay nepovoľuje. Vyberáš v Nastavenia → Súkromie, aj pre každý server zvlášť.",
             "alt": "Nastavenia súkromia s voľbami peer-to-peer: priamo, relay a vypnuté"
+          },
+          {
+            "id": "file-sharing",
+            "title": "Zdieľanie súborov",
+            "body": "Presuň súbory alebo priečinky do chatu alebo použi kancelársku sponku, do 2 GB. Vždy idú cez relay servera, nikto nevidí tvoju IP adresu a súbor sa nikdy nedotkne servera Mumble.",
+            "alt": "Zdieľaný súbor ako karta v chate"
+          },
+          {
+            "id": "file-safety",
+            "title": "Bezpečné sťahovanie",
+            "body": "Každé sťahovanie sa najprv opýta a ukáže priečinok. Programy a skripty dostanú ďalšie upozornenie a potom Mumcord overí, že súbor dorazil nezmenený. V nastaveniach príjem vypneš a nastavíš veľkosť a priečinok.",
+            "alt": "Nastavenia zdieľania súborov"
+          },
+          {
+            "id": "camera",
+            "title": "Kamera",
+            "body": "Tvoja kamera pre všetkých vo tvojom hlasovom kanáli, len cez relay a s end-to-end šifrovaním. Začne náhľadom, ktorý nikto nevidí, a tlačidlo kamery v paneli používateľa, ponuka Aplikácie, oznamovacia oblasť a klávesová skratka ju zapínajú a vypínajú.",
+            "alt": "Nastavenia kamery s náhľadom"
+          },
+          {
+            "id": "camera-room",
+            "title": "Miestnosť kamier",
+            "body": "Kamery v kanáli sú nad chatom, až deväť dlaždíc v mriežke alebo jedna veľká dlaždica s rozložením Rečník. Popri zdieľaní obrazovky alebo watch party tvoria pruh vedľa nich alebo nad nimi, alebo ich skryješ.",
+            "alt": "Miestnosť kamier s niekoľkými kamerami nad chatom"
+          },
+          {
+            "id": "camera-backgrounds",
+            "title": "Pozadia kamery",
+            "body": "Bez pozadia, rozmazanie (jemné alebo silné), jeden z 18 vstavaných obrázkov alebo tvoj vlastný. Počíta sa na tvojom počítači a meníš ho bez vypnutia kamery.",
+            "alt": "Náhľad kamery so silne rozmazaným pozadím"
+          },
+          {
+            "id": "camera-tiles",
+            "title": "Voľby dlaždice",
+            "body": "⋯ na dlaždici ponúka „Pripnúť pre mňa“, „Zobraziť veľké“, „Skryť video“ (vtedy sa vôbec nesťahuje) a „Kvalita pre mňa“. K tomu vlastná stránka Nastavenia → Kamera a všetko funguje aj z klávesnice.",
+            "alt": "Ponuka dlaždice kamery"
+          },
+          {
+            "id": "screen-share-sound",
+            "title": "Zvuk pri zdieľaní",
+            "body": "Celá obrazovka zdieľa všetok zvuk okrem zvuku Mumcordu, okno len zvuk danej aplikácie. Ak nie je jasné, koho myslíš, opýta sa „Zvuk ktorej aplikácie?“. Funguje na Windows 10, macOS 13 a Linuxe s PipeWire.",
+            "alt": "Dialóg pred začatím zdieľania obrazovky"
+          },
+          {
+            "id": "screen-share-av1",
+            "title": "AV1 pre ostrý text",
+            "body": "Mumcord na pozadí zistí, čo tvoj počítač zvládne, a použije AV1 na grafickej karte, AV1 na procesore alebo VP9. Diváci prehrajú AV1 aj bez hardvéru a pre staršie verzie Mumcordu sa zdieľanie prepne na VP9.",
+            "alt": "Karta nastavení zdieľania obrazovky"
+          },
+          {
+            "id": "screen-share-relay",
+            "title": "Až 25 divákov",
+            "body": "Keď to relay ponúka, nahrávaš raz a relay pošle zdieľanie všetkým, až do svojho limitu (predvolene 25). Je to šifrované end-to-end, relay nič nevidí."
+          },
+          {
+            "id": "screen-share-quality",
+            "title": "Nastavenie kvality",
+            "body": "Pred začiatkom vyberieš rozlíšenie, snímkovú frekvenciu, ostrý text alebo plynulý pohyb a limit odosielania. Počas zdieľania to všetko mení ponuka Kvalita bez reštartu a karta „Zdieľanie obrazovky“ v Nastaveniach drží tvoje predvolené hodnoty. Diváci môžu znížiť svoju snímkovú frekvenciu.",
+            "alt": "Ovládanie pri sledovaní zdieľanej obrazovky"
+          },
+          {
+            "id": "media-area-resize",
+            "title": "Rozdelenie obrazu a chatu",
+            "body": "Presuň úchyt medzi obrazom zdieľania alebo watch party a chatom, alebo použi šípky. Zaskakuje na tretine, polovici a dvoch tretinách a Mumcord si výšku pamätá.",
+            "alt": "Zdieľanie obrazovky s kamerami ako pruhom vedľa neho"
           }
         ]
       },
@@ -1214,7 +1302,7 @@
           {
             "id": "plugin-safety",
             "title": "Sandbox, podpisy a núdzový vypínač",
-            "body": "Pluginy bežia izolovane, bez prístupu k sieti, súborom či zvuku, s limitmi pamäte a času; ten, ktorý stále padá, sa vypne a tvoj hlas to nikdy neovplyvní. Oficiálne pluginy sú podpísané a kontrolované. Núdzový vypínač dokáže škodlivý plugin vypnúť pre všetkých, „Vypnúť všetky pluginy“ ich zastaví naraz a --no-plugins spustí aplikáciu bez nich.",
+            "body": "Pluginy bežia izolovane, bez prístupu k súborom či zvuku a len k stránkam, ktoré deklarovali a ty si schválil, s limitmi pamäte a času; ten, ktorý stále padá, sa vypne a tvoj hlas to nikdy neovplyvní. Oficiálne pluginy sú podpísané a kontrolované. Núdzový vypínač dokáže škodlivý plugin vypnúť pre všetkých, „Vypnúť všetky pluginy“ ich zastaví naraz a --no-plugins spustí aplikáciu bez nich.",
             "alt": "Výzva na inštaláciu EVE Fit s indikátorom priebehu „Checking signature…“ nad zoznamom oprávnení."
           },
           {
@@ -1264,6 +1352,45 @@
             "title": "EVE Fit",
             "body": "Vlož fitting z EVE Online do četu a každý s pluginom uvidí kartu lode. Jedno kliknutie otvorí koleso fittingu s kapacitorom, útokom, obranou a navigáciou, offline v Mumcorde, a „Kopírovať fitting“ ho dostane späť von.",
             "alt": "Dialóg EVE Fit s loďou Algos v kolese výbavy, ikonami modulov a štatistikami kondenzátora, útoku, obrany, zamerania, navigácie a dronov."
+          },
+          {
+            "id": "plugin-media-area",
+            "title": "Pluginy v oblasti médií",
+            "body": "Aktivity pluginov bežia v oblasti médií s vlastnou hlavičkou Mumcordu: kto ich spustil, koľko ľudí hrá, kto plugin vytvoril. S celou obrazovkou a „Opustiť plugin“. Keď beží viac vecí, medzi nimi prepínajú karty alebo Alt+1 až Alt+9.",
+            "alt": "Plugin v oblasti médií s kartami nad ním"
+          },
+          {
+            "id": "plugin-side-panel",
+            "title": "Bočný panel pre pluginy",
+            "body": "Plugin môže ukázať svoju stránku vpravo od chatu namiesto zoznamu členov. Veľkosť meníš, Mumcord si šírku pamätá pre každý plugin a ponuka ⋯ vedie k podrobnostiam pluginu.",
+            "alt": "Plugin v bočnom paneli vedľa chatu"
+          },
+          {
+            "id": "plugin-apps-menu",
+            "title": "Pluginy v ponuke Aplikácie",
+            "body": "Každý plugin môže pridať do ponuky Aplikácie až dve položky, pod „Pluginy“ s jeho ikonou a názvom. Rovnaké položky sa zobrazujú v palete príkazov (Ctrl+Shift+P) a plugin môže položku zosivieť s uvedením dôvodu.",
+            "alt": "Ponuka Aplikácie s položkami pluginov"
+          },
+          {
+            "id": "plugin-security-score",
+            "title": "Bezpečnostné skóre",
+            "body": "Neoficiálne pluginy dostanú skóre od 0 do 100, s najdôležitejšími dôvodmi a úplným rozpisom pri inštalácii a aktualizácii. Vysoko rizikové pluginy potrebujú vlastné zaškrtnutie a „Bezpečnosť pluginov“ v nastaveniach ich môže úplne zablokovať.",
+            "alt": "Podrobnosti bezpečnostného skóre pluginu"
+          },
+          {
+            "id": "plugin-min-version",
+            "title": "Minimálna verzia pre pluginy",
+            "body": "Ak plugin potrebuje novší Mumcord, napíše „Vyžaduje Mumcord X alebo novší“ a inštalácia je vypnutá. Automatické aktualizácie čakajú, kým tvoj Mumcord nezvládne novú verziu."
+          },
+          {
+            "id": "plugin-websites",
+            "title": "Webové stránky pluginov",
+            "body": "Pluginy, ktoré komunikujú s webovými stránkami, vypíšu každú adresu pri inštalácii aj v podrobnostiach, s počtom požiadaviek. Dostanú sa len k tomu, čo deklarovali a ty si schválil, len na verejné adresy s platným certifikátom. Stránky pluginov sa otvárajú aj v dialógu."
+          },
+          {
+            "id": "plugin-relay-data",
+            "title": "Dáta pluginov cez relay",
+            "body": "Herné dáta idú s end-to-end šifrovaním cez relay, až 64 KB na správu, jednej osobe alebo celému kanálu. Vypneš to pre každý plugin zvlášť a Nastavenia → Pluginy ukazujú, koľko dát použil."
           }
         ]
       },
@@ -1376,11 +1503,12 @@
         {
           "title": "Zdieľanie súborov",
           "items": [
-            "Presuň súbory do chatu alebo ich pripoj kancelárskou sponkou, do 2 GB. Priečinky sa najprv zabalia do zipu.",
+            "Presuň súbory a priečinky do chatu alebo ich pripoj kancelárskou sponkou, do 2 GB. Ak nie je relay alebo súbory nepovoľuje, kancelárska spona povie prečo.",
             "Súbory vždy idú cez relay servera: nikto nevidí tvoju IP adresu a súbor sa nikdy nedotkne servera Mumble.",
-            "Každé sťahovanie sa najprv opýta a ukáže priečinok, do ktorého sa ukladá. Potom Mumcord overí kontrolný súčet SHA-256, ktorý môžeš aj skopírovať.",
+            "Každé sťahovanie sa najprv opýta a ukáže priečinok, do ktorého sa ukladá. Potom Mumcord overí, že súbor dorazil nezmenený.",
             "Programy a skripty dostanú pred stiahnutím a pred otvorením ďalšie upozornenie.",
-            "Súbor zostáva dostupný, kým je odosielateľ online, najdlhšie 24 hodín.",
+            "Tvoje zdieľané súbory ukazujú, kto ich stiahol, a majú tlačidlo „Zastaviť zdieľanie“.",
+            "Obrázky, ktoré pustíš do kanála, môžeš poslať ako obrázky alebo zdieľať ako súbory. Všetky ostatné súbory sa zdieľajú hneď.",
             "Nové v Nastaveniach → Súkromie a pripojenia: príjem súborov zapnutý alebo vypnutý, maximálna veľkosť od 100 MB do 2 GB a priečinok pre prijaté súbory."
           ]
         },
@@ -1388,7 +1516,9 @@
           "title": "Zdieľanie obrazovky",
           "items": [
             "Zvuk pri zdieľaní: celá obrazovka zdieľa všetok zvuk okrem zvuku Mumcordu, okno zdieľa iba zvuk danej aplikácie. Funguje na Windows 10 (2004 alebo novší), macOS 13 a Linuxe s PipeWire.",
-            "Pred začiatkom vyber rozlíšenie až do 4K, snímkovú frekvenciu až do 60 fps, ostrý text alebo plynulý pohyb, kodek a limit odosielania. Ponuka Kvalita ich mení počas zdieľania bez reštartu.",
+            "Pred začiatkom vyber rozlíšenie, snímkovú frekvenciu, ostrý text alebo plynulý pohyb, kodek a limit odosielania. Ponuka Kvalita ich mení počas zdieľania bez reštartu.",
+            "Mumcord vyberie enkodér sám: AV1 na grafickej karte, AV1 na procesore alebo VP9. Pruh tvojho zdieľania ukazuje kvalitu, enkodér a či ide cez relay.",
+            "Keď zdieľaš okno, „Zvuk ktorej aplikácie?“ sa opýta, čí zvuk sa pridá. Môžeš zvoliť aj „Bez zvuku“.",
             "Cez relay nahrávaš raz a pozerá až 25 ľudí, s end-to-end šifrovaním.",
             "AV1 na grafickej karte alebo procesore pre ostrý text s menším objemom dát. VP9 ostáva ako záloha, aj pre divákov so starším Mumcordom.",
             "Diváci vidia kodek, cestu a kvalitu a môžu znížiť svoju snímkovú frekvenciu. Zoznam divákov ukazuje, kto čo dostáva.",
@@ -1399,10 +1529,16 @@
         {
           "title": "Kamera",
           "items": [
-            "Tvoja kamera pre všetkých vo tvojom hlasovom kanáli, len cez relay a s end-to-end šifrovaním, pre až 25 divákov.",
-            "Kamera sa spustí s náhľadom, ktorý nič neodosiela. Vysiela sa, až keď ju zapneš.",
-            "Rozmaž si pozadie alebo daj za seba obrázok, všetko sa počíta na tvojom počítači.",
-            "Ak kameru nemožno použiť, Mumcord povie prečo, napríklad keď relay servera kamery nepovoľuje."
+            "Tvoja kamera pre všetkých vo tvojom hlasovom kanáli, len cez relay a s end-to-end šifrovaním.",
+            "Miestnosť kamier je nad chatom: až deväť dlaždíc v mriežke alebo rozloženie Rečník s jednou veľkou dlaždicou. Každá ukazuje meno, ikonu vypnutého mikrofónu a zelený rám, kým osoba hovorí.",
+            "Kamera sa spustí s náhľadom, ktorý nikto iný nevidí. Vyberieš kameru a pozadie a vysiela sa, až keď ju zapneš.",
+            "Pozadia: žiadne, rozmazanie (jemné alebo silné), jeden z 18 vstavaných obrázkov alebo tvoj vlastný. Počíta sa na tvojom počítači a môžeš ho meniť, kým kamera beží.",
+            "⋯ na dlaždici ponúka „Pripnúť pre mňa“, „Zobraziť veľké“, „Skryť video používateľa …“ (vtedy sa vôbec nesťahuje) a „Kvalita pre mňa“. Všetko funguje aj z klávesnice.",
+            "Popri zdieľaní obrazovky alebo watch party ostáva obraz veľký a kamery tvoria pruh vedľa neho alebo nad ním. Alebo ich skryješ a vtedy sa nesťahujú.",
+            "Tlačidlo kamery v paneli používateľa a „Zapnúť kameru“ v ponuke Aplikácie otvoria náhľad. Kým kamera beží, tlačidlo zčervenie a v strome kanálov sa zobrazí ikona kamery.",
+            "Nová karta „Kamera“ v Nastaveniach: náhľad, kamera, kvalita odosielania, zrkadlený pohľad na seba, predvolené pozadie a spôsob, akým vidíš kamery ostatných. K tomu klávesová skratka na zapnutie a vypnutie kamery.",
+            "Kým kamera beží, ikona v oznamovacej oblasti ukazuje červenú značku kamery a jej ponuka ponúka „Vypnúť kameru“. Keď sa zamkne obrazovka, kamera sa môže vypnúť sama.",
+            "Ak kameru nemožno použiť alebo sa sama zastaví, Mumcord povie prečo, napríklad keď relay servera kamery nepovoľuje."
           ]
         },
         {
@@ -1413,20 +1549,25 @@
             "Bezpečnostné skóre od 0 do 100 pre neoficiálne pluginy, s dôvodmi pri inštalácii a aktualizáciách.",
             "Každá webová stránka, s ktorou plugin komunikuje, je pri inštalácii vypísaná a nové stránky potrebujú tvoj súhlas.",
             "Stránky pluginov sú uzamknuté: žiadna kamera, žiadny mikrofón, žiadna schránka a len stránky, ktoré si povolil. Stránka, ktorá sa zasekne, už Mumcord nezmrazí.",
-            "Plugin, ktorý potrebuje novší Mumcord, to povie namiesto inštalácie a aktualizácie čakajú, kým ich tvoj Mumcord dokáže spustiť."
+            "Plugin, ktorý potrebuje novší Mumcord, to povie namiesto inštalácie a aktualizácie čakajú, kým ich tvoj Mumcord nezvládne.",
+            "Každý plugin môže pridať do ponuky Aplikácie až dve položky, pod „Pluginy“ s jeho ikonou a názvom. Rovnaké položky sa zobrazujú v palete príkazov (Ctrl+Shift+P).",
+            "Pluginy môžu prehrávať krátke zvuky, ktoré počuješ len ty. Sú tichšie, kým niekto hovorí, a nehrajú, kým máš vypnutý zvuk.",
+            "Plugin môže uložiť súbor, otvoriť obrázok alebo poslať obrázok do chatu, ale len hneď po tvojom kliknutí a s povolením. Nikdy sa nedozvie, kde máš súbory.",
+            "Nastavenia → Pluginy ukazujú, koľko dát každý plugin posiela cez relay, majú vypínač „Bezpečnosť pluginov“ proti rizikovým pluginom a vypisujú pluginy, ktoré boli pri načítaní odmietnuté.",
+            "Kontrola aktualizácie ukazuje bezpečnostné skóre pred a po a prečo aktualizácia čaká. Ak existujú poznámky k vydaniu, odkaz ich otvorí v prehliadači."
           ]
         },
         {
           "title": "Správa",
           "items": [
-            "Vyhodiť… a Zabanovať… v ponuke Správa pri osobe, s dôvodom. Bany trvajú 1 hodinu, 1 deň, 7 dní, 30 dní, navždy alebo do dátumu.",
-            "Zoznam banov v ponuke servera: hľadanie, filtrovanie, úprava dôvodu a konca, zrušenie banov a banovanie ľudí, ktorí práve nie sú online."
+            "Vyhodiť… a Zabanovať… v ponuke Správa pri osobe, s dôvodom. Ban trvá 1 hodinu, 1 deň, 7 dní, 30 dní, navždy alebo do zadaného dátumu.",
+            "Zoznam banov v ponuke servera: hľadanie, filtrovanie, úprava dôvodu a konca, rušenie banov a banovanie ľudí, ktorí práve nie sú online."
           ]
         },
         {
-          "title": "Boti",
+          "title": "Boty",
           "items": [
-            "Boti stoja bokom: sekcia „Boti na tomto serveri“ pod zoznamom kanálov ukazuje každého bota a čo robí. Boti bez hlasu sa už neobjavujú medzi ľuďmi.",
+            "Boty zvlášť: sekcia „Boty na tomto serveri“ pod zoznamom kanálov ukazuje každého bota s tým, čo robí. Boty bez hlasu sa už nezobrazujú medzi ľuďmi.",
             "Mumbot sa v profile a v podrobnostiach pripojenia zobrazuje ako „Mumbot <version>“ namiesto „Mumcord <version>“."
           ]
         },
@@ -1435,23 +1576,28 @@
           "items": [
             "História chatu medzi ľuďmi s 0.7.0 sa dobieha rýchlejšie: každý obrázok putuje raz a obrázky, ktoré už máš, sa nesťahujú znova.",
             "Mumcord sa riadi tým, čo relay servera povoľuje, a informácie o serveri ukazujú, čo to je.",
-            "Prepínače ostávajú viditeľné vo vysokokontrastnom režime.",
-            "Vložené videá z YouTube a Twitchu: tlačidlo celej obrazovky funguje a vlastné tlačidlo skopíruje odkaz na video."
+            "Prepínače ostávajú viditeľné aj v režime vysokého kontrastu.",
+            "Ponuka Aplikácie ukazuje ikony pri „Zdieľať obrazovku“ a „Pozerať spolu“ a pluginy bez ikony dostanú vlastnú farebnú dlaždicu.",
+            "Karta latencie povie, prečo je čas dlhší, než žiada režim nízkej latencie, napríklad keď zvukový server na Linuxe potrebuje väčšie bloky."
           ]
         },
         {
           "title": "Opravené",
           "items": [
-            "Na starších procesoroch bez AVX2 Mumcord už pri štarte nepadá. Zdieľanie obrazovky tam používa VP9.",
-            "História chatu uzamknutých kanálov ide len ľuďom, ktorí sú v kanáli naozaj, nie tým, čo ho len sledujú alebo počúvajú.",
-            "Ak niekto používa „Vždy používať relay“, Mumcord mu už neposiela tvoju sieťovú adresu.",
+            "Na starších procesoroch bez AVX2 už Mumcord pri štarte nepadá. Zdieľanie obrazovky tam používa VP9.",
+            "História chatu zamknutých kanálov ide len ľuďom, ktorí sú v kanáli naozaj, nie tým, ktorí ho len sledujú alebo počúvajú.",
+            "Ak niekto používa „Vždy cez relay“, Mumcord mu už neposiela tvoju sieťovú adresu.",
             "Profil z novšieho Mumcordu už nespôsobí pád. Mumcord to vysvetlí a ponúkne stiahnutie najnovšej verzie.",
-            "Odoslané správy sa hneď usadia na správne miesto v histórii a zostanú tam.",
-            "Stredný klik na odkaz alebo klik s podržaným Ctrl, Cmd alebo Shift ho otvorí v prehliadači, nie vnútri Mumcordu.",
-            "Ak nie si registrovaný na serveri, ktorého relay obsluhuje len registrovaných používateľov, Mumcord to teraz povie namiesto „relay sa nepodarilo spojiť“.",
-            "Okno zoznamu banov má tlačidlo zavrieť a Vyhodiť aj Zabanovať reagujú na kliknutia myšou.",
-            "Spustenie watch party z ponuky Aplikácie už aplikáciu nenačíta znova.",
-            "Zdieľanie obrazovky teraz hovorí všetkými jazykmi."
+            "Odoslané správy sú v histórii hneď na správnom mieste a ostávajú tam.",
+            "Stredné tlačidlo na odkaze alebo kliknutie s držaným Ctrl, Cmd alebo Shift ho otvorí v prehliadači, nie v Mumcorde.",
+            "Ak nie si registrovaný na serveri, ktorého relay obsluhuje len registrovaných používateľov, Mumcord to teraz povie namiesto „relay sa nepodarilo dosiahnuť“.",
+            "Vyhodiť a Zabanovať reagujú na kliknutia myšou.",
+            "Spustenie watch party z ponuky Aplikácie už nenačíta aplikáciu znova.",
+            "Zdieľanie obrazovky teraz hovorí všetkými jazykmi.",
+            "Zvuk už nešklbe, keď súčasne hrá zvuk iná aplikácia.",
+            "Keď zdieľanie obrazovky, ktoré sleduješ, skončí, nezostane prázdny obraz a kamery sa vrátia do mriežky miestnosti.",
+            "Ctrl+C na označenom texte chatu už na Linuxe (X11) nenecháva schránku prázdnu.",
+            "Plugin už nemôže otvoriť svoj dialóg sám od seba, len krátko po tvojom kliknutí. Správy zo stránky pluginu prichádzajú v správnom poradí."
           ]
         }
       ]
@@ -2575,8 +2721,6 @@
             "title": "Pluginy na scéne",
             "items": [
               "Pluginy dostanú mediálnu oblasť: hry a tabule bežia tam, kde býva zvyčajne zdieľaná obrazovka, watch party a kamery",
-              "Whiteboard, oficiálny plugin na spoločné premýšľanie: nekonečné plátno s perami, lepiacimi lístkami a laserovým ukazovátkom, uložené na tvojom zariadení a exportovateľné ako PNG, SVG alebo PDF",
-              "Skyloom, hra len s hlasom pre 2 až 12 ľudí: jeden opíše skryté súhvezdie, všetci ostatní umiestnia po jednej hviezde",
               "Pluginy sa otvárajú aj z ponuky Aplikácie, v bočnom paneli alebo v dialógu a veľké objemy dát idú cez relay s end-to-end šifrovaním"
             ],
             "mockups": [
@@ -2597,6 +2741,13 @@
               "Pluginy s bezpečnostným skóre",
               "Inštalácia vysoko rizikového pluginu",
               "Webové stránky pluginu pri inštalácii"
+            ]
+          },
+          {
+            "title": "Whiteboard & Skyloom",
+            "items": [
+              "Whiteboard, oficiálny plugin na spoločné premýšľanie: nekonečné plátno s perami, lepiacimi lístkami a laserovým ukazovátkom, uložené na tvojom zariadení a exportovateľné ako PNG, SVG alebo PDF",
+              "Skyloom, hra len s hlasom pre 2 až 12 ľudí: jeden opíše skryté súhvezdie, všetci ostatní umiestnia po jednej hviezde"
             ]
           }
         ]
@@ -2993,7 +3144,7 @@
         "id": "relay",
         "title": "Voliteľné: relay pre priame spojenia",
         "body": [
-          "Aby zdieľanie obrazovky a obrázky v plnej veľkosti fungovali aj vtedy, keď sa dvaja ľudia nedokážu spojiť priamo, alebo aby nikto nevidel IP adresu toho druhého, môžeš vedľa servera prevádzkovať relay <a href=\"/en/mumpeer\">mumpeer</a>. Obsah ostáva šifrovaný end-to-end.",
+          "Aby zdieľanie obrazovky, kamery a obrázky v plnej veľkosti fungovali aj vtedy, keď sa dvaja ľudia nedokážu spojiť priamo, alebo aby nikto nevidel IP adresu toho druhého, môžeš popri serveri prevádzkovať relay <a href=\"/en/mumpeer\">mumpeer</a>. Obsah ostáva šifrovaný end-to-end.",
           "Mumcord používa relay od verzie 0.5.0. Zvyšok obstará relay bot <code>mumbot peer</code>: oznámi relay a rozdáva tokeny.",
           "V priečinku servera zapíš do <code>.env</code> zdieľaný tajný kľúč a stiahni obe ukážkové konfigurácie. Do <code>public_host</code> v <code>mumpeer.toml</code> zadaj adresu svojho servera a do <code>bot.toml</code> odtlačok svojho servera Mumble. Potom pridaj nižšie uvedené služby do <code>docker-compose.yml</code> pod <code>services:</code> a <code>mumpeer-data:</code> a <code>mumbot-data:</code> pod <code>volumes:</code>."
         ],
@@ -3026,8 +3177,8 @@
           "Až 10 000 namiesto 5000 znakov"
         ],
         "relay": [
-          "Relay mumpeer",
-          "Zdieľanie obrazovky a veľké obrázky aj za CGNAT, bez toho, aby niekto videl tvoju IP"
+          "relay mumpeer",
+          "Zdieľanie obrazovky, kamery a veľké obrázky aj za CGNAT, bez toho, aby niekto videl tvoju IP"
         ],
         "webhook": [
           "Webhook Mumbota",
@@ -3300,6 +3451,20 @@
         ]
       },
       {
+        "id": "0.5.0",
+        "tag": "0.5.0",
+        "title": "Kamery a skupiny",
+        "summary": "Relay bot teraz zvláda kamery, dáta pluginov a skupiny.",
+        "items": [
+          "Kamery cez relay, predvolene až 9 na kanál; obrazovka a kamera bežia spolu",
+          "Dáta pluginov pre pluginy Mumcordu, až 8 odosielateľov na kanál",
+          "Tokeny relay iba pre členov vybraných skupín Mumble",
+          "História chatu zamknutých kanálov ide len ľuďom v nich",
+          "Bot nastaví svoj avatar z URL https alebo base64",
+          "Mumble a Mumcord ukazujú ako klienta „Mumbot 0.x.y“, hudobné boty sa zobrazujú vo svojom kanáli"
+        ]
+      },
+      {
         "id": "later",
         "tag": "Potom",
         "title": "Nápady",
@@ -3324,7 +3489,9 @@
       "points": [
         "Zdieľanie obrazovky a veľké obrázky aj za CGNAT alebo bez zobrazenia tvojej IP adresy",
         "Beží v sieti relay, API zostáva interné",
-        "Tokeny dostanú iba registrovaní používatelia tvojho vlastného servera"
+        "Tokeny dostanú iba registrovaní používatelia tvojho vlastného servera",
+        "Rozdáva tokeny aj pre kamery a dáta pluginov, keď ich relay povoľuje",
+        "Ak chceš, len pre členov vybraných skupín Mumble"
       ]
     },
     "music": {
@@ -3368,7 +3535,7 @@
       "mumpeer": {
         "title": "mumpeer",
         "description": "mumpeer je malý relay pre priame spojenia Mumcordu: pre prípad, keď sa dvaja ľudia nedokážu spojiť priamo alebo chcú skryť svoju IP adresu.",
-        "lead": "Malý relay pre priame spojenia Mumcordu medzi používateľmi, napríklad na zdieľanie obrazovky alebo obrázky v plnej veľkosti. Keď sa dvaja ľudia nedokážu spojiť priamo, za CGNAT, prísnymi firewallmi alebo v sieťach bez UDP, alebo nechcú ukázať svoju IP adresu, pripoja sa obaja namiesto toho k relay. To len odovzdáva šifrované pakety, ako server TURN.",
+        "lead": "Malý relay pre priame spojenia Mumcordu medzi používateľmi, napríklad na zdieľanie obrazovky, kamery, súbory alebo obrázky v plnej veľkosti. Keď sa dvaja ľudia nedokážu spojiť priamo, za CGNAT, prísnymi firewallmi alebo v sieťach bez UDP, alebo nechcú ukázať svoju IP adresu, pripoja sa obaja namiesto toho k relay. To len odovzdáva šifrované pakety, ako server TURN.",
         "features": [
           {
             "title": "Vedľa tvojho servera Mumble",
@@ -3389,6 +3556,14 @@
           {
             "title": "Úplne voliteľné",
             "body": "Mumcord funguje aj bez bota a relay. V Mumcorde si vyberáš: relay vypnuté, len keď priame spojenie zlyhá, alebo vždy."
+          },
+          {
+            "title": "Obrazovka, kamery a dáta pluginov",
+            "body": "Jedna osoba odosiela raz a relay to odovzdá všetkým divákom bez čítania. Týka sa to zdieľania obrazovky a kamier: až 18 kamier naraz, každá s najviac 2500 kbit/s odosielania, a až 25 divákov na vysielanie. Dáta pluginov fungujú tiež, ale sú predvolene vypnuté a majú najnižšiu prioritu."
+          },
+          {
+            "title": "Ty rozhoduješ, čo je povolené",
+            "body": "V sekcii `[uses]` zapínaš a vypínaš obrázky, súbory, zdieľanie obrazovky, kameru a dáta pluginov jednotlivo. K dispozícii sú aj limity pre šírku pásma, relácie a vysielania."
           }
         ],
         "listTitle": "Čo môže prevádzkovateľ vidieť",

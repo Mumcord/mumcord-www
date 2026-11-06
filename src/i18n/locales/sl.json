@@ -373,7 +373,7 @@
         {
           "tag": "Epic 4.1",
           "title": "Datoteke, zaslon, kamera in vtičniki",
-          "body": "Prihaja z 0.7.0: deli datoteke, ne da bi pokazal naslov IP, skupna raba zaslona do 4K za do 25 ljudi, svojo kamero z zamegljenim ozadjem, tablo in igro Skyloom kot vtičnika ter varnostno oceno za vtičnike drugih."
+          "body": "Od 0.7.0: deli datoteke, ne da bi pokazal naslov IP, skupna raba zaslona do 4K za do 25 ljudi, svojo kamero z zamegljenim ozadjem, tablo in igro Skyloom kot vtičnika ter varnostno oceno za vtičnike drugih."
         },
         {
           "tag": "Epic 4",
@@ -604,8 +604,8 @@
       "toolTitle": "Sodelujoči"
     },
     "spotlight5": {
-      "label": "Novo v 0.5.0/0.6.0",
-      "labelSoon": "Kmalu: 0.5.0/0.6.0",
+      "label": "Novo v 0.5.0/0.6.0/0.7.0",
+      "labelSoon": "Kmalu: 0.5.0/0.6.0/0.7.0",
       "title": "Več miru. Več tebe. Več zvoka.",
       "body": "0.5.0 prinaša Epic 3: središče obvestil, blokiranje, več identitet, novo drevo kanalov, glasbo v klepetu, način z nizko zakasnitvijo za skupno muziciranje in neposredne povezave prek releja.",
       "tiles": {
@@ -856,6 +856,24 @@
             "title": "Blokiraj osebe",
             "body": "»Blokiraj …« v meniju osebe skrije njena zasebna sporočila in prošnje, skrči njena sporočila v kanalu in utiša njen glas, samo zate. Blokada sledi certifikatu, zato velja med strežniki in za nova imena. Strežniku ali osebi se ne pošlje nič, Nastavitve → Zasebnost pa našteje vse blokirane z »Odblokiraj«.",
             "alt": "Potrditev blokiranja osebe s seznamom sprememb"
+          },
+          {
+            "id": "kick-ban",
+            "title": "Brcanje in izgon",
+            "body": "V meniju Skrbništvo osebe sta »Brcni…« in »Izgoni…«, z razlogom. Izgoni trajajo 1 uro, 1 dan, 7 dni, 30 dni, za vedno ali do datuma, vezani so na certifikat in naslov IP. Samo s pravico na korenskem kanalu.",
+            "alt": "Pogovorno okno za izgon osebe"
+          },
+          {
+            "id": "ban-list",
+            "title": "Seznam izgonov",
+            "body": "»Seznam izgonov…« v meniju strežnika pokaže vse izgone z imenom, prstnim odtisom, naslovom, razlogom in koncem. Iščeš, filtriraš, razlog in konec urejaš kar na mestu, preklicuješ izgone ali izganjaš ljudi, ki niso na spletu.",
+            "alt": "Okno s seznamom izgonov"
+          },
+          {
+            "id": "bots-section",
+            "title": "Boti zase",
+            "body": "Razdelek »Boti na tem strežniku« pod seznamom kanalov pokaže vsakega bota s tem, kar počne, na primer relay, zgodovina klepeta ali webhooki. Profil in meni, tudi zasebna sporočila, delujejo od tam.",
+            "alt": "Razdelek z boti na strežniku"
           }
         ]
       },
@@ -1095,6 +1113,11 @@
             "title": "Miren uporabniški panel",
             "body": "Panel spodaj pod seznamom kanalov ima vedno enako višino: ti z imenom in strežnikom, ena vrstica stanja, na primer ponovno povezovanje ali tvoj glasovni kanal, majhni čipi za Ne moti, način nizke zakasnitve in povezavo ter gumbi za mikrofon, slušalke in prekinitev. Seznam kanalov nad njim ne skače več.",
             "alt": "Uporabniški panel v več stanjih, od govorjenja in utišanja do ponovnega povezovanja"
+          },
+          {
+            "id": "camera-entry",
+            "title": "Kamera v uporabniški plošči",
+            "body": "Gumb za kamero ob utišanju in oglušitvi odpre predogled. Ko je kamera vklopljena, postane rdeč in jo takoj izklopi, pod tvojim imenom piše »Kamera vklopljena«, rdeča značka pa to pokaže tudi v sistemski vrstici."
           }
         ]
       },
@@ -1162,7 +1185,7 @@
           {
             "id": "screen-share",
             "title": "Deljenje zaslona",
-            "body": "Zaslon ali okno za do 8 gledalcev, v 720p pri 30 sličicah na sekundo, na Windows in macOS po želji z zvokom deljene aplikacije. Zaženeš ga z gumbom Aplikacije v klepetu. Gledalci gledajo v glavnem stolpcu z ločljivostjo, hitrostjo sličic in podrobnostmi pretoka; ti dobiš zgoraj v klepetu krmilno vrstico s premorom, zvokom, gledalci in ustavitvijo.",
+            "body": "Zaslon ali okno za do 8 gledalcev neposredno ali do 25 prek relaya, po želji z zvokom in AV1. Zaženeš ga z gumbom Aplikacije v klepetu, prej pa nastaviš kakovost in kodek. Gledalci gledajo v glavnem stolpcu z ločljivostjo, kodekom, potjo in podrobnostmi; ti dobiš vrstico na vrhu klepeta s kakovostjo, kodirnikom, premorom, zvokom, gledalci in ustavitvijo.",
             "alt": "Deljen zaslon v glavnem stolpcu s podrobnostmi pretoka in seznamom gledalcev"
           },
           {
@@ -1178,9 +1201,74 @@
           },
           {
             "id": "relay",
-            "title": "Skupnostni relay",
-            "body": "Skupnost strežnika lahko poleg strežnika Mumble upravlja relay. Slike v polni velikosti in deljenje zaslona nato delujejo tudi, kadar neposredna povezava ni mogoča, z »vedno prek relaya« pa druga oseba nikoli ne vidi tvojega naslova IP. Relay ne more brati šifrirane povezave, glas pa ga nikoli ne uporablja. Izbereš v Nastavitve → Zasebnost, tudi za vsak strežnik posebej.",
+            "title": "Relay skupnosti",
+            "body": "Skupnost strežnika lahko ob svojem strežniku Mumble zažene relay. Slike v polni velikosti, datoteke, kamere in deljenje zaslona potem delujejo, tudi ko neposredna povezava ni mogoča, z »vedno prek relaya« pa druga oseba nikoli ne vidi tvojega naslova IP. Relay ne more brati šifrirane povezave, glas nikoli ne gre prek njega, Mumcord pa ne uporablja tistega, česar relay ne dovoli. Izbereš v Nastavitve → Zasebnost, tudi za vsak strežnik posebej.",
             "alt": "Nastavitve zasebnosti z izbirami peer-to-peer: neposredno, relay in izklopljeno"
+          },
+          {
+            "id": "file-sharing",
+            "title": "Deljenje datotek",
+            "body": "Povleci datoteke ali mape v klepet ali uporabi sponko, do 2 GB. Vedno gredo prek relaya strežnika, nihče ne vidi tvojega naslova IP, datoteka pa se strežnika Mumble nikoli ne dotakne.",
+            "alt": "Deljena datoteka kot kartica v klepetu"
+          },
+          {
+            "id": "file-safety",
+            "title": "Varni prenosi",
+            "body": "Vsak prenos najprej vpraša in pokaže mapo. Programi in skripte dobijo dodatno opozorilo, po prenosu pa Mumcord preveri, da je datoteka prispela nespremenjena. V nastavitvah prejemanje izklopiš ter določiš velikost in mapo.",
+            "alt": "Nastavitve deljenja datotek"
+          },
+          {
+            "id": "camera",
+            "title": "Kamera",
+            "body": "Tvoja kamera za vse v tvojem glasovnem kanalu, samo prek relaya in šifrirana od konca do konca. Začne se s predogledom, ki ga nihče ne vidi, vklopita in izklopita pa jo gumb za kamero v uporabniški plošči, meni Aplikacije, sistemska vrstica in bližnjica.",
+            "alt": "Nastavitve kamere s predogledom"
+          },
+          {
+            "id": "camera-room",
+            "title": "Soba s kamerami",
+            "body": "Kamere v kanalu so nad klepetom, do devet ploščic v mreži ali ena velika ploščica z načinom Govorec. Ob deljenem zaslonu ali skupnem gledanju tvorijo trak ob njem ali nad njim, lahko pa jih skriješ.",
+            "alt": "Soba s kamerami z več kamerami nad klepetom"
+          },
+          {
+            "id": "camera-backgrounds",
+            "title": "Ozadja kamere",
+            "body": "Brez ozadja, zamegljeno (rahlo ali močno), ena od 18 vgrajenih slik ali tvoja lastna. Izračuna se na tvojem računalniku, spremeniš pa ga, ne da bi kamero izklopil.",
+            "alt": "Predogled kamere z močno zamegljenim ozadjem"
+          },
+          {
+            "id": "camera-tiles",
+            "title": "Možnosti ploščice",
+            "body": "⋯ na ploščici ponuja »Pripni zame«, »Pokaži veliko«, »Skrij video« (potem se sploh ne prenaša) in »Kakovost zame«. Poleg tega še lastna stran Nastavitve → Kamera, vse pa deluje tudi s tipkovnico.",
+            "alt": "Meni ploščice kamere"
+          },
+          {
+            "id": "screen-share-sound",
+            "title": "Zvok med deljenjem",
+            "body": "Cel zaslon deli ves zvok razen Mumcordovega, okno samo zvok te aplikacije. Kjer ni jasno, koga misliš, vpraša »Zvok katere aplikacije?«. Deluje v sistemih Windows 10, macOS 13 in Linux s PipeWire.",
+            "alt": "Pogovorno okno pred začetkom deljenja zaslona"
+          },
+          {
+            "id": "screen-share-av1",
+            "title": "AV1 za ostro besedilo",
+            "body": "Mumcord v ozadju preveri, kaj zmore tvoj računalnik, in uporabi AV1 na grafični kartici, AV1 na procesorju ali VP9. Gledalci predvajajo AV1 tudi brez strojne podpore, za starejše različice Mumcorda pa se deljenje preklopi na VP9.",
+            "alt": "Zavihek z nastavitvami deljenja zaslona"
+          },
+          {
+            "id": "screen-share-relay",
+            "title": "Do 25 gledalcev",
+            "body": "Ko relay to ponuja, naložiš enkrat, relay pa pošlje deljenje vsem, do svoje omejitve (privzeto 25). Šifrirano je od konca do konca, relay ne vidi ničesar."
+          },
+          {
+            "id": "screen-share-quality",
+            "title": "Nastavitev kakovosti",
+            "body": "Pred začetkom izbereš ločljivost, hitrost sličic, ostro besedilo ali gladko gibanje in omejitev nalaganja. Med deljenjem meni Kakovost vse spremeni brez ponovnega zagona, zavihek »Deljenje zaslona« v nastavitvah pa hrani tvoje privzete vrednosti. Gledalci lahko znižajo hitrost sličic.",
+            "alt": "Kontrole med gledanjem deljenega zaslona"
+          },
+          {
+            "id": "media-area-resize",
+            "title": "Delitev slike in klepeta",
+            "body": "Povleci ročico med sliko deljenja ali skupnega gledanja in klepetom ali uporabi smerne tipke. Pripne se na tretjino, polovico in dve tretjini, Mumcord pa si zapomni višino.",
+            "alt": "Deljen zaslon s kamerami kot trakom ob njem"
           }
         ]
       },
@@ -1213,9 +1301,9 @@
           },
           {
             "id": "plugin-safety",
-            "title": "Peskovnik, podpisi in zasilno stikalo",
-            "body": "Vtičniki tečejo zaprti, brez dostopa do omrežja, datotek ali zvoka, z omejitvami pomnilnika in časa; vtičnik, ki se stalno zruši, se izklopi, tvoj glas pa ni nikoli prizadet. Uradni vtičniki so podpisani in preverjeni. Zasilno stikalo lahko škodljiv vtičnik izklopi za vse, „Izklopi vse vtičnike“ jih ustavi naenkrat, --no-plugins pa zažene program brez njih.",
-            "alt": "Poziv za namestitev EVE Fita s trakom napredka z napisom »Checking signature…« nad seznamom dovoljenj."
+            "title": "Peskovnik, podpisi in izklopno stikalo",
+            "body": "Vtičniki tečejo zaprti, brez dostopa do datotek ali zvoka in samo do spletnih mest, ki so jih navedli in si jih odobril, z omejitvami pomnilnika in časa; tisti, ki se stalno sesuva, se izklopi, tvoj glas pa ni nikoli prizadet. Uradni vtičniki so podpisani in preverjeni. Izklopno stikalo lahko škodljiv vtičnik onemogoči za vse, »Izklopi vse vtičnike« jih ustavi takoj, --no-plugins pa zažene brez njih.",
+            "alt": "Poziv za namestitev EVE fit z vrstico napredka »Preverjanje podpisa…« nad seznamom dovoljenj."
           },
           {
             "id": "plugin-updates",
@@ -1264,6 +1352,45 @@
             "title": "EVE Fit",
             "body": "Prilepi opremo za EVE Online v klepet in vsi z vtičnikom vidijo kartico ladje. En klik odpre kolo opreme s kondenzatorjem, napadom, obrambo in navigacijo, brez povezave znotraj Mumcorda, „Kopiraj opremo“ pa jo spet spravi ven.",
             "alt": "Pogovorno okno EVE Fit z ladjo Algos v kolesu opreme, ikonami modulov in statistiko kondenzatorja, napada, obrambe, ciljanja, navigacije in dronov."
+          },
+          {
+            "id": "plugin-media-area",
+            "title": "Vtičniki v predstavnostnem območju",
+            "body": "Dejavnosti vtičnikov tečejo v predstavnostnem območju z Mumcordovo lastno glavo: kdo jo je začel, koliko jih igra, kdo je naredil vtičnik. S celim zaslonom in »Zapusti vtičnik«. Ko teče več stvari, med njimi preklapljajo zavihki ali Alt+1 do Alt+9.",
+            "alt": "Vtičnik v predstavnostnem območju z zavihki nad njim"
+          },
+          {
+            "id": "plugin-side-panel",
+            "title": "Stranska plošča za vtičnike",
+            "body": "Vtičnik lahko pokaže svojo stran desno od klepeta namesto seznama članov. Velikost spremeniš, Mumcord si zapomni širino za vsak vtičnik, meni ⋯ pa vodi do podrobnosti vtičnika.",
+            "alt": "Vtičnik v stranski plošči ob klepetu"
+          },
+          {
+            "id": "plugin-apps-menu",
+            "title": "Vtičniki v meniju Aplikacije",
+            "body": "Vsak vtičnik lahko doda do dva elementa v meni Aplikacije, pod »Vtičniki« z ikono in imenom. Isti elementi so v paleti ukazov (Ctrl+Shift+P), vtičnik pa lahko element zasivi z razlogom.",
+            "alt": "Meni Aplikacije z elementi vtičnikov"
+          },
+          {
+            "id": "plugin-security-score",
+            "title": "Varnostna ocena",
+            "body": "Neuradni vtičniki dobijo oceno od 0 do 100, z največjimi razlogi in celotno razčlenitvijo ob namestitvi in posodobitvi. Vtičniki z visokim tveganjem potrebujejo lastno potrditev, »Varnost vtičnikov« v nastavitvah pa jih lahko povsem blokira.",
+            "alt": "Podrobnosti varnostne ocene vtičnika"
+          },
+          {
+            "id": "plugin-min-version",
+            "title": "Najnižja različica za vtičnike",
+            "body": "Če vtičnik potrebuje novejši Mumcord, piše »Potrebuje Mumcord X ali novejši« in namestitev je onemogočena. Samodejne posodobitve počakajo, dokler tvoj Mumcord ne zmore zagnati nove različice."
+          },
+          {
+            "id": "plugin-websites",
+            "title": "Spletna mesta vtičnikov",
+            "body": "Vtičniki, ki se pogovarjajo s spletnimi mesti, ob namestitvi in v podrobnostih navedejo vse naslove, s števci zahtev. Dosežejo samo tisto, kar so navedli in si odobril, samo javne naslove z veljavnim certifikatom. Strani vtičnikov se odprejo tudi v pogovornem oknu."
+          },
+          {
+            "id": "plugin-relay-data",
+            "title": "Podatki vtičnikov prek relaya",
+            "body": "Podatki iger gredo šifrirani od konca do konca prek relaya, do 64 KB na sporočilo, k eni osebi ali celemu kanalu. Izklopiš jih za vsak vtičnik, Nastavitve → Vtičniki pa pokaže, koliko podatkov je porabil."
           }
         ]
       },
@@ -1370,50 +1497,64 @@
   "changelog": [
     {
       "version": "0.7.0",
-      "teaser": "Deljenje datotek, tvoja kamera, deljenje zaslona z zvokom in AV1 za do 25 gledalcev, vtičniki v medijskem območju, brcanje, izgon in seznam izgonov.",
-      "summary": "Velika posodobitev: v kanalu deliš datoteke do 2 GB, vedno prek releja, kažeš kamero z zamegljenim ozadjem, tvoje deljenje zaslona dobi zvok, AV1 in do 25 gledalcev, sliko in klepet razdeliš z enim ročajem, vtičniki dobijo medijsko območje in jasna varnostna pravila, skrbniki pa lahko brcajo, izganjajo in vzdržujejo seznam izgonov.",
+      "teaser": "Deljenje datotek, tvoja kamera, deljenje zaslona z zvokom in AV1 za do 25 gledalcev, vtičniki v predstavnostnem območju, brcanje, izgon in seznam izgonov.",
+      "summary": "Velika posodobitev: datoteke do 2 GB deliš v kanalu, vedno prek relaya, pokažeš svojo kamero z zamegljenim ozadjem, tvoje deljenje zaslona dobi zvok, AV1 in do 25 gledalcev, sliko in klepet razdeliš z eno ročico, vtičniki dobijo predstavnostno območje in jasna varnostna pravila, skrbniki pa lahko brcajo, izganjajo in urejajo seznam izgonov.",
       "groups": [
         {
           "title": "Deljenje datotek",
           "items": [
-            "Povleci datoteke v klepet ali jih pripni s sponko, do 2 GB. Mape se najprej zapakirajo v zip.",
-            "Datoteke vedno gredo prek releja strežnika: nihče ne vidi tvojega naslova IP, datoteka pa se strežnika Mumble nikoli ne dotakne.",
-            "Vsak prenos najprej vpraša in pokaže mapo, v katero se shrani. Nato Mumcord preveri kontrolno vsoto SHA-256, ki jo lahko tudi kopiraš.",
+            "Povleci datoteke in mape v klepet ali jih pripni s sponko, do 2 GB. Če relaya ni ali datotek ne dovoli, sponka pove, zakaj.",
+            "Datoteke vedno gredo prek relaya strežnika: nihče ne vidi tvojega naslova IP, datoteka pa se strežnika Mumble nikoli ne dotakne.",
+            "Vsak prenos najprej vpraša in pokaže mapo, v katero se shrani. Po prenosu Mumcord preveri, da je datoteka prispela nespremenjena.",
             "Programi in skripte dobijo dodatno opozorilo pred prenosom in pred odpiranjem.",
-            "Datoteka ostane na voljo, dokler je pošiljatelj na spletu, največ 24 ur.",
-            "Novo v Nastavitvah → Zasebnost in povezave: prejemanje datotek vklopljeno ali izklopljeno, največja velikost od 100 MB do 2 GB in mapa za prejete datoteke."
+            "Tvoje deljene datoteke pokažejo, kdo jih je prenesel, in imajo gumb »Ustavi deljenje«.",
+            "Slike, ki jih spustiš v kanal, lahko pošlješ kot slike ali deliš kot datoteke. Vse druge datoteke se delijo takoj.",
+            "Novo v Nastavitve → Zasebnost in povezave: prejemanje datotek vklopljeno ali izklopljeno, največja velikost od 100 MB do 2 GB in mapa za prejete datoteke."
           ]
         },
         {
           "title": "Deljenje zaslona",
           "items": [
-            "Zvok pri deljenju: cel zaslon deli ves zvok razen Mumcordovega, okno deli samo zvok te aplikacije. Deluje v sistemih Windows 10 (2004 ali novejši), macOS 13 in Linux s PipeWire.",
-            "Pred začetkom izberi ločljivost do 4K, hitrost sličic do 60 fps, ostro besedilo ali gladko gibanje, kodek in omejitev nalaganja. Meni Kakovost jih spreminja med deljenjem, ne da bi ga znova zagnal.",
-            "Prek releja naložiš enkrat, gleda pa do 25 ljudi, s šifriranjem od konca do konca.",
+            "Zvok med deljenjem: cel zaslon deli ves zvok razen Mumcordovega, okno samo zvok te aplikacije. Deluje v sistemih Windows 10 (2004 ali novejši), macOS 13 in Linux s PipeWire.",
+            "Pred začetkom izberi ločljivost, hitrost sličic, ostro besedilo ali gladko gibanje, kodek in omejitev nalaganja. Meni Kakovost jih med deljenjem spremeni brez ponovnega zagona.",
+            "Mumcord kodirnik izbere sam: AV1 na grafični kartici, AV1 na procesorju ali VP9. Vrstica tvojega deljenja pokaže kakovost, kodirnik in ali gre prek relaya.",
+            "Ko deliš okno, »Zvok katere aplikacije?« vpraša, čigav zvok gre zraven. Izbereš lahko tudi »Brez zvoka«.",
+            "Prek relaya naložiš enkrat, gleda pa do 25 ljudi, šifrirano od konca do konca.",
             "AV1 na grafični kartici ali procesorju za ostro besedilo z manj pasovne širine. VP9 ostane kot rezerva, tudi za gledalce s starejšim Mumcordom.",
-            "Gledalci vidijo kodek, pot in kakovost ter lahko znižajo svojo hitrost sličic. Seznam gledalcev kaže, kdo kaj dobi.",
-            "Nov zavihek »Deljenje zaslona« v Nastavitvah z tvojimi privzetimi vrednostmi in kodirnikom, ki ga uporablja tvoj računalnik.",
-            "Sliko in klepet razdeli sam: povleci ročaj med deljenjem zaslona ali watch partyjem in klepetom. Povleci ga čisto na vrh in slika postane mini vrstica, Mumcord pa si zapomni višino."
+            "Gledalci vidijo kodek, pot in kakovost ter lahko znižajo hitrost sličic. Seznam gledalcev pokaže, kdo kaj dobi.",
+            "Nov zavihek »Deljenje zaslona« v nastavitvah s tvojimi privzetimi vrednostmi in kodirnikom, ki ga uporablja tvoj računalnik.",
+            "Sliko in klepet razdeli sam: povleci ročico med deljenim zaslonom ali skupnim gledanjem in klepetom. Povleci jo čisto navzgor in slika postane mini vrstica, Mumcord pa si zapomni višino."
           ]
         },
         {
           "title": "Kamera",
           "items": [
-            "Tvoja kamera za vse v tvojem glasovnem kanalu, samo prek releja in s šifriranjem od konca do konca, za do 25 gledalcev.",
-            "Kamera se začne s predogledom, ki ničesar ne pošilja. Ven gre šele, ko jo vklopiš.",
-            "Zamegli ozadje ali postavi sliko za sebe, izračunano na tvojem računalniku.",
-            "Če kamere ni mogoče uporabiti, Mumcord pove, zakaj, na primer ko relej strežnika kamer ne dovoljuje."
+            "Tvoja kamera za vse v tvojem glasovnem kanalu, samo prek relaya in šifrirana od konca do konca.",
+            "Soba s kamerami je nad klepetom: do devet ploščic v mreži ali razporeditev Govorec z eno veliko ploščico. Vsaka pokaže ime, ikono izklopljenega mikrofona in zelen okvir, medtem ko oseba govori.",
+            "Kamera se začne s predogledom, ki ga nihče drug ne vidi. Izbereš kamero in ozadje, ven pa gre šele, ko jo vklopiš.",
+            "Ozadja: brez, zamegljeno (rahlo ali močno), ena od 18 vgrajenih slik ali tvoja lastna. Izračuna se na tvojem računalniku, spremeniš pa ga lahko, medtem ko kamera teče.",
+            "⋯ na ploščici ponuja »Pripni zame«, »Pokaži veliko«, »Skrij video osebe …« (potem se sploh ne prenaša) in »Kakovost zame«. Vse deluje tudi s tipkovnico.",
+            "Ob deljenem zaslonu ali skupnem gledanju slika ostane velika, kamere pa so v traku ob njej ali nad njo. Lahko jih tudi skriješ, in potem se ne prenašajo.",
+            "Gumb za kamero v uporabniški plošči in »Vklopi kamero« v meniju Aplikacije odpreta predogled. Ko je kamera vklopljena, gumb postane rdeč, v drevesu kanalov pa se pokaže ikona kamere.",
+            "Nov zavihek »Kamera« v nastavitvah: predogled, kamera, kakovost pošiljanja, zrcalni pogled nase, privzeto ozadje in kako vidiš kamere drugih. Poleg tega bližnjica za vklop in izklop kamere.",
+            "Ko je kamera vklopljena, ikona v sistemski vrstici kaže rdečo značko kamere, njen meni pa ponuja »Izklopi kamero«. Ko se zaslon zaklene, se lahko kamera izklopi sama.",
+            "Če kamere ni mogoče uporabiti ali se sama ustavi, Mumcord pove, zakaj, na primer ko relay strežnika kamer ne dovoli."
           ]
         },
         {
           "title": "Vtičniki",
           "items": [
-            "Vtičniki dobijo medijsko območje, stransko ploščo ob klepetu, pogovorna okna in elemente v meniju Aplikacije. Ko teče več vtičnikov, zavihki preklapljajo med njimi.",
-            "Podatki iger gredo prek releja s šifriranjem od konca do konca, eni osebi ali celotnemu kanalu.",
+            "Vtičniki dobijo predstavnostno območje, stransko ploščo ob klepetu, pogovorna okna in elemente v meniju Aplikacije. Ko teče več vtičnikov, med njimi preklapljajo zavihki.",
+            "Podatki iger gredo šifrirani od konca do konca prek relaya, k eni osebi ali celemu kanalu.",
             "Varnostna ocena od 0 do 100 za neuradne vtičnike, z razlogi ob namestitvi in posodobitvah.",
-            "Vsako spletno mesto, s katerim vtičnik govori, je ob namestitvi navedeno, nova mesta pa potrebujejo tvoje soglasje.",
-            "Strani vtičnikov so zaklenjene: brez kamere, brez mikrofona, brez odložišča in samo spletna mesta, ki si jih dovolil. Stran, ki se zatakne, Mumcorda ne zamrzne več.",
-            "Vtičnik, ki potrebuje novejši Mumcord, to pove namesto namestitve, posodobitve pa počakajo, dokler jih tvoj Mumcord ne zmore zagnati."
+            "Vsako spletno mesto, s katerim se vtičnik pogovarja, je navedeno ob namestitvi, nova spletna mesta pa potrebujejo tvoje soglasje.",
+            "Strani vtičnikov so zaklenjene: brez kamere, mikrofona, odložišča in samo s spletnimi mesti, ki si jih dovolil. Stran, ki obvisi, ne zamrzne več Mumcorda.",
+            "Vtičnik, ki potrebuje novejši Mumcord, to pove namesto namestitve, posodobitve pa počakajo, dokler jih tvoj Mumcord ne zmore zagnati.",
+            "Vsak vtičnik lahko doda do dva elementa v meni Aplikacije, pod »Vtičniki« z ikono in imenom. Isti elementi so v paleti ukazov (Ctrl+Shift+P).",
+            "Vtičniki lahko predvajajo kratke zvoke, ki jih slišiš samo ti. So tišji, medtem ko kdo govori, in tihi, medtem ko si oglušen.",
+            "Vtičnik lahko shrani datoteko, odpre sliko ali objavi sliko v klepet, a samo takoj po tvojem kliku in z dovoljenjem. Nikoli ne izve, kje so tvoje datoteke.",
+            "Nastavitve → Vtičniki pokaže, koliko podatkov vsak vtičnik pošlje prek relaya, ima stikalo »Varnost vtičnikov« proti tveganim vtičnikom in našteje vtičnike, ki so bili ob nalaganju zavrnjeni.",
+            "Pregled posodobitve pokaže varnostno oceno pred posodobitvijo in po njej ter zakaj posodobitev čaka. Ko so opombe ob izdaji, jih povezava odpre v tvojem brskalniku."
           ]
         },
         {
@@ -1426,32 +1567,37 @@
         {
           "title": "Boti",
           "items": [
-            "Boti stojijo ločeno: razdelek »Boti na tem strežniku« pod seznamom kanalov prikaže vsakega bota in kaj počne. Boti brez glasu se ne pojavljajo več med ljudmi.",
-            "Mumbot se v svojem profilu in podrobnostih povezave prikaže kot »Mumbot <version>« namesto »Mumcord <version>«."
+            "Boti stojijo ločeno: razdelek »Boti na tem strežniku« pod seznamom kanalov pokaže vsakega bota s tem, kar počne. Boti brez glasu se ne pojavljajo več med ljudmi.",
+            "Mumbot se v profilu in podrobnostih povezave pokaže kot »Mumbot <različica>« namesto »Mumcord <različica>«."
           ]
         },
         {
           "title": "Izboljšano",
           "items": [
-            "Zgodovina klepeta med osebami z 0.7.0 se dohiti hitreje: vsaka slika potuje enkrat, slike, ki jih že imaš, pa se ne prenašajo znova.",
-            "Mumcord sledi temu, kar relej strežnika dovoljuje, informacije o strežniku pa pokažejo, kaj to je.",
+            "Zgodovina klepeta med ljudmi z 0.7.0 se dohiti hitreje: vsaka slika potuje enkrat, slike, ki jih že imaš, se ne prenašajo znova.",
+            "Mumcord upošteva, kaj relay strežnika dovoljuje, informacije o strežniku pa pokažejo, kaj to je.",
             "Stikala ostanejo vidna v načinu visokega kontrasta.",
-            "Vdelani videoposnetki YouTube in Twitch: gumb za celozaslonski način deluje, poseben gumb pa kopira povezavo do videa."
+            "Meni Aplikacije pokaže ikone za »Deli zaslon« in »Skupno gledanje«, vtičniki brez ikone pa dobijo svojo barvno ploščico.",
+            "Kartica zakasnitve pove, zakaj je čas daljši, kot ga zahteva način nizke zakasnitve, na primer ko zvočni strežnik v Linuxu potrebuje večje bloke."
           ]
         },
         {
           "title": "Popravljeno",
           "items": [
             "Na starejših procesorjih brez AVX2 se Mumcord ob zagonu ne sesuje več. Deljenje zaslona tam uporablja VP9.",
-            "Zgodovina klepeta zaklenjenih kanalov gre samo osebam, ki so res v kanalu, ne tistim, ki ga samo spremljajo ali poslušajo.",
-            "Če nekdo uporablja »Vedno uporabi relej«, mu Mumcord ne pošilja več tvojega omrežnega naslova.",
+            "Zgodovina klepeta zaklenjenih kanalov gre samo ljudem, ki so res v kanalu, ne tistim, ki ga samo spremljajo ali poslušajo.",
+            "Če kdo uporablja »Vedno uporabi relay«, mu Mumcord ne pošilja več tvojega omrežnega naslova.",
             "Profil iz novejšega Mumcorda ne povzroči več sesutja. Mumcord to razloži in ponudi prenos najnovejše različice.",
-            "Poslana sporočila takoj pristanejo na pravem mestu v zgodovini in tam ostanejo.",
-            "Klik s sredinskim gumbom na povezavo ali klik z držanjem Ctrl, Cmd ali Shift jo odpre v tvojem brskalniku, ne znotraj Mumcorda.",
-            "Če nisi registriran na strežniku, katerega relej streže samo registriranim uporabnikom, Mumcord to zdaj pove namesto »releja ni bilo mogoče doseči«.",
-            "Okno seznama izgonov ima gumb za zapiranje, Brcni in Izgoni pa se odzivata na klike z miško.",
-            "Zagon watch partyja iz menija Aplikacije aplikacije ne nalaga več znova.",
-            "Deljenje zaslona zdaj govori vse jezike."
+            "Poslana sporočila takoj sedijo na pravem mestu v zgodovini in tam ostanejo.",
+            "Klik s srednjim gumbom na povezavo ali klik s pritisnjeno tipko Ctrl, Cmd ali Shift jo odpre v brskalniku in ne znotraj Mumcorda.",
+            "Če nisi registriran na strežniku, katerega relay streže samo registriranim uporabnikom, Mumcord zdaj to pove namesto »relaya ni bilo mogoče doseči«.",
+            "Brcni in Izgoni se odzivata na klike miške.",
+            "Začetek skupnega gledanja iz menija Aplikacije ne naloži aplikacije več znova.",
+            "Deljenje zaslona zdaj govori vse jezike.",
+            "Zvok se ne zatika več, ko hkrati predvaja zvok druga aplikacija.",
+            "Ko se deljenje zaslona, ki ga gledaš, konča, ne ostane prazna slika, kamere pa se vrnejo v mrežo sobe.",
+            "Ctrl+C na izbranem besedilu v klepetu ne pusti več praznega odložišča v Linuxu (X11).",
+            "Vtičnik ne more več sam odpreti svojega pogovornega okna, ampak šele kmalu po tvojem kliku. Sporočila s strani vtičnika prihajajo v pravem vrstnem redu."
           ]
         }
       ]
@@ -2575,8 +2721,6 @@
             "title": "Vtičniki na odru",
             "items": [
               "Vtičniki dobijo medijsko območje: igre in table delujejo tam, kjer so običajno skupna raba zaslona, watch party in kamere",
-              "Whiteboard, uradni vtičnik za skupno razmišljanje: neskončno platno s pisali, lepljivimi lističi in laserskim kazalnikom, shranjeno na tvoji napravi in izvozljivo kot PNG, SVG ali PDF",
-              "Skyloom, igra samo z glasom za 2 do 12 ljudi: eden opiše skrito ozvezdje, vsi drugi pa postavijo vsak eno zvezdo",
               "Vtičniki se odprejo tudi iz menija Aplikacije, v stranski plošči ali v pogovornem oknu, velike količine podatkov pa gredo prek releja s šifriranjem od konca do konca"
             ],
             "mockups": [
@@ -2597,6 +2741,13 @@
               "Vtičniki z varnostno oceno",
               "Namestitev vtičnika z visokim tveganjem",
               "Spletna mesta vtičnika ob namestitvi"
+            ]
+          },
+          {
+            "title": "Whiteboard & Skyloom",
+            "items": [
+              "Whiteboard, uradni vtičnik za skupno razmišljanje: neskončno platno s pisali, lepljivimi lističi in laserskim kazalnikom, shranjeno na tvoji napravi in izvozljivo kot PNG, SVG ali PDF",
+              "Skyloom, igra samo z glasom za 2 do 12 ljudi: eden opiše skrito ozvezdje, vsi drugi pa postavijo vsak eno zvezdo"
             ]
           }
         ]
@@ -2993,7 +3144,7 @@
         "id": "relay",
         "title": "Neobvezno: relay za neposredne povezave",
         "body": [
-          "Da bi deljenje zaslona in slike v polni velikosti delovali tudi, ko se dva človeka ne moreta doseči neposredno, ali da nihče ne bi videl tujega IP, lahko ob strežniku zaženeš relay <a href=\"/en/mumpeer\">mumpeer</a>. Vsebina ostane šifrirana od konca do konca.",
+          "Da deljenje zaslona, kamere in slike v polni velikosti delujejo tudi, ko se dva človeka ne moreta doseči neposredno, ali da nihče ne vidi naslova IP drugega, lahko ob strežniku zaženeš relay <a href=\"/en/mumpeer\">mumpeer</a>. Vsebina ostane šifrirana od konca do konca.",
           "Mumcord uporablja relay od različice 0.5.0. Ostalo opravi relay bot <code>mumbot peer</code>: objavi relay in razdeli žetone.",
           "V mapi strežnika vpiši skupno skrivnost v <code>.env</code> in prenesi obe vzorčni konfiguraciji. Naslov svojega strežnika vpiši pod <code>public_host</code> v <code>mumpeer.toml</code>, prstni odtis svojega strežnika Mumble pa v <code>bot.toml</code>. Nato dodaj spodnje storitve v <code>docker-compose.yml</code> pod <code>services:</code>, <code>mumpeer-data:</code> in <code>mumbot-data:</code> pa pod <code>volumes:</code>."
         ],
@@ -3026,8 +3177,8 @@
           "Do 10.000 namesto 5000 znakov"
         ],
         "relay": [
-          "Posrednik mumpeer",
-          "Deljenje zaslona in velike slike tudi za CGNAT, ne da bi kdo videl tvoj IP"
+          "Relay mumpeer",
+          "Deljenje zaslona, kamere in velike slike tudi za CGNAT, ne da bi kdo videl tvoj IP"
         ],
         "webhook": [
           "Webhook za Mumbot",
@@ -3300,6 +3451,20 @@
         ]
       },
       {
+        "id": "0.5.0",
+        "tag": "0.5.0",
+        "title": "Kamere in skupine",
+        "summary": "Bot relaya zdaj obvlada kamere, podatke vtičnikov in skupine.",
+        "items": [
+          "Kamere prek relaya, privzeto do 9 na kanal; zaslon in kamera tečeta hkrati",
+          "Podatki vtičnikov za Mumcordove vtičnike, do 8 pošiljateljev na kanal",
+          "Žetoni relaya samo za člane izbranih skupin Mumble",
+          "Zgodovina klepeta zaklenjenih kanalov gre samo ljudem v njih",
+          "Bot nastavi svoj avatar iz URL-ja https ali base64",
+          "Mumble in Mumcord kot odjemalca pokažeta »Mumbot 0.x.y«, glasbeni boti se pojavijo v svojem kanalu"
+        ]
+      },
+      {
         "id": "later",
         "tag": "Potem",
         "title": "Ideje",
@@ -3323,8 +3488,10 @@
       "body": "Poveže tvoj strežnik s posrednikom mumpeer: bot posrednika objavi Mumcordu in razdeli žetone za neposredne povezave.",
       "points": [
         "Deljenje zaslona in velike slike tudi za CGNAT ali brez razkrivanja tvojega IP-ja",
-        "Deluje v omrežju posrednika, API ostane notranji",
-        "Žetone dobijo samo registrirani uporabniki tvojega lastnega strežnika"
+        "Deluje v omrežju relaya, API ostane notranji",
+        "Žetone dobijo samo registrirani uporabniki tvojega lastnega strežnika",
+        "Razdeli žetone tudi za kamere in podatke vtičnikov, ko to relay dovoli",
+        "Po želji samo za člane izbranih skupin Mumble"
       ]
     },
     "music": {
@@ -3368,7 +3535,7 @@
       "mumpeer": {
         "title": "mumpeer",
         "description": "mumpeer je majhen relay za neposredne povezave Mumcorda: za primer, ko se dva človeka ne moreta doseči neposredno ali želita skriti svoj naslov IP.",
-        "lead": "Majhen relay za neposredne povezave Mumcorda med uporabniki, na primer za deljenje zaslona ali slike v polni velikosti. Ko se dva človeka ne moreta doseči neposredno, za CGNAT, strogimi požarnimi zidovi ali v omrežjih brez UDP, ali ne želita pokazati svojega naslova IP, se oba namesto tega povežeta z relayem. Ta le posreduje šifrirane pakete, kot strežnik TURN.",
+        "lead": "Majhen relay za neposredne povezave Mumcorda med uporabniki, na primer za deljenje zaslona, kamere, datoteke ali slike v polni velikosti. Ko se dva človeka ne moreta doseči neposredno, za CGNAT, strogimi požarnimi zidovi ali v omrežjih brez UDP, ali ne želita pokazati svojega naslova IP, se oba namesto tega povežeta z relayem. Ta le posreduje šifrirane pakete, kot strežnik TURN.",
         "features": [
           {
             "title": "Ob tvojem strežniku Mumble",
@@ -3389,6 +3556,14 @@
           {
             "title": "Povsem neobvezno",
             "body": "Mumcord deluje tudi brez bota in relaya. V Mumcordu izbereš sam: relay izklopljen, samo ko neposredna povezava ne uspe, ali vedno."
+          },
+          {
+            "title": "Zaslon, kamere in podatki vtičnikov",
+            "body": "Ena oseba pošlje enkrat, relay pa to posreduje vsem gledalcem, ne da bi karkoli bral. To zajema deljenje zaslona in kamere: do 18 kamer hkrati, vsaka z največ 2500 kbit/s nalaganja, in do 25 gledalcev na oddajo. Podatki vtičnikov prav tako delujejo, a so privzeto izklopljeni in imajo najnižjo prednost."
+          },
+          {
+            "title": "Ti odločaš, kaj je dovoljeno",
+            "body": "V razdelku `[uses]` slike, datoteke, deljenje zaslona, kamero in podatke vtičnikov vklapljaš in izklapljaš posamično. Obstajajo tudi omejitve za pasovno širino, seje in oddaje."
           }
         ],
         "listTitle": "Kaj lahko vidi operater",
