@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Mumcord Crash Reports</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/webauthn.js" defer></script>
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <h1>Mumcord <span>crash reports</span></h1>
+    <nav id="nav" hidden>
+      <button id="add-passkey" class="ghost">Add passkey</button>
+      <button id="logout" class="ghost">Sign out</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="auth" class="card auth" hidden>
+      <h2 id="auth-title">Sign in</h2>
+      <p id="auth-text">Use your passkey to open the crash report admin.</p>
+      <button id="auth-btn" class="primary">Sign in with passkey</button>
+      <p id="auth-error" class="error" role="alert"></p>
+    </section>
+
+    <section id="app" hidden>
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="Search message, frames, version…" autocomplete="off">
+        <select id="status-filter" aria-label="Status filter">
+          <option value="">All statuses</option>
+          <option value="new">New</option>
+          <option value="triaged">Triaged</option>
+          <option value="fixed">Fixed</option>
+          <option value="ignored">Ignored</option>
+        </select>
+        <button id="refresh" class="ghost">Refresh</button>
+      </div>
+      <div class="split">
+        <div class="list card">
+          <table>
+            <thead><tr><th>Crash</th><th class="num">Count</th><th>Last seen</th><th>Versions</th></tr></thead>
+            <tbody id="groups"></tbody>
+          </table>
+          <p id="empty" class="muted" hidden>No crash groups match.</p>
+        </div>
+        <div id="detail" class="detail card"><p class="muted">Select a crash group.</p></div>
+      </div>
+    </section>
+  </main>
+  <div id="toast" role="status"></div>
+</body>
+</html>

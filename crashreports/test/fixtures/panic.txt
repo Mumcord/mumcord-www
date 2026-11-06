@@ -1,0 +1,74 @@
+Mumcord crash report
+version: 0.7.1
+os: linux x86_64
+time: 1794001864
+kind: panic
+thread: screen-decode
+cause: decoder returned no frame for a keyframe at crates/engine/examples/crash_demo.rs:17
+uptime: 0h 00m 03s
+
+running:
+camera: on air
+install: AppImage
+screens: 2560x1440 @1x, 1920x1080 @1x
+watching a screen share: yes
+
+system:
+os: CachyOS
+kernel: 7.3.0-4-cachyos
+desktop: KDE on wayland, plasmashell 6.8.1, display wayland-1
+cpu: AMD Ryzen 7 5800X3D 8-Core Processor, 16 threads
+instruction sets: sse2 sse3 ssse3 sse4.1 sse4.2 popcnt aes pclmulqdq avx f16c fma bmi1 bmi2 avx2 sha
+gpu 1: Advanced Micro Devices, Inc. [AMD/ATI] Navi 48 [Radeon RX 9070/9070 XT/9070 GRE] [1002:7550], driver amdgpu
+opengl: AMD Radeon RX 9070 XT (radeonsi, gfx1201, ACO, DRM 3.64, 7.3.0-4-cachyos); 4.6 (Compatibility Profile) Mesa 26.2.5-arch3.1
+memory: 32004 MiB total, 15485 MiB available
+
+backtrace:
+   0: {closure#0}
+             at ./crates/engine/src/crash.rs:204:29
+   1: <alloc::boxed::Box<dyn for<'a, 'b> core::ops::function::Fn<(&'a std::panic::PanicHookInfo<'b>,), Output = ()> + core::marker::Send + core::marker::Sync> as core::ops::function::Fn<(&std::panic::PanicHookInfo,)>>::call
+             at /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/boxed.rs:2334:9
+   2: std::panicking::panic_with_hook
+             at /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/std/src/panicking.rs:823:13
+   3: std::panicking::panic_handler::{closure#0}
+             at /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/std/src/panicking.rs:688:13
+   4: std::sys::backtrace::__rust_end_short_backtrace::<std::panicking::panic_handler::{closure#0}, !>
+             at /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/std/src/sys/backtrace.rs:182:18
+   5: __rustc::rust_begin_unwind
+             at /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/std/src/panicking.rs:679:5
+   6: core::panicking::panic_fmt
+             at /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs:80:14
+   7: core::panicking::panic_display::<&str>
+             at /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs:259:5
+   8: core::option::expect_failed
+             at /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/option.rs:2257:5
+   9: <core::option::Option<u32>>::expect
+             at /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/option.rs:969:21
+  10: crash_demo::main::{closure#0}
+             at ./crates/engine/examples/crash_demo.rs:17:15
+  11: __rust_begin_short_backtrace<crash_demo::main::{closure_env#0}, ()>
+             at /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/std/src/sys/backtrace.rs:166:18
+  12: std::thread::lifecycle::spawn_unchecked::<crash_demo::main::{closure#0}, ()>::{closure#1}::{closure#0}
+             at /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/std/src/thread/lifecycle.rs:70:13
+  13: <core::panic::unwind_safe::AssertUnwindSafe<std::thread::lifecycle::spawn_unchecked<crash_demo::main::{closure#0}, ()>::{closure#1}::{closure#0}> as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panic/unwind_safe.rs:275:9
+  14: do_call<core::panic::unwind_safe::AssertUnwindSafe<std::thread::lifecycle::spawn_unchecked::{closure#1}::{closure_env#0}<crash_demo::main::{closure_env#0}, ()>>, ()>
+             at /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/std/src/panicking.rs:576:43
+  15: __rust_try
+  16: catch_unwind<(), core::panic::unwind_safe::AssertUnwindSafe<std::thread::lifecycle::spawn_unchecked::{closure#1}::{closure_env#0}<crash_demo::main::{closure_env#0}, ()>>>
+             at /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/std/src/panicking.rs:544:19
+  17: catch_unwind<core::panic::unwind_safe::AssertUnwindSafe<std::thread::lifecycle::spawn_unchecked::{closure#1}::{closure_env#0}<crash_demo::main::{closure_env#0}, ()>>, ()>
+             at /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/std/src/panic.rs:359:14
+  18: {closure#1}<crash_demo::main::{closure_env#0}, ()>
+             at /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/std/src/thread/lifecycle.rs:68:26
+  19: <std::thread::lifecycle::spawn_unchecked<crash_demo::main::{closure#0}, ()>::{closure#1} as core::ops::function::FnOnce<()>>::call_once::{shim:vtable#0}
+             at /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/ops/function.rs:250:5
+  20: <alloc::boxed::Box<dyn core::ops::function::FnOnce<(), Output = ()> + core::marker::Send> as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/boxed.rs:2320:9
+  21: <std::sys::thread::unix::Thread>::new::thread_start
+             at /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/std/src/sys/thread/unix.rs:123:17
+  22: <unknown>
+  23: <unknown>
+
+
+last log lines:

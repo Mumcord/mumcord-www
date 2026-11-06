@@ -1,0 +1,312 @@
+// Crash report admin UI. Plain JS, no framework. All server text goes through textContent.
+'use strict';
+
+const $ = (id) => document.getElementById(id);
+const { startRegistration, startAuthentication } = window.SimpleWebAuthnBrowser;
+const setupToken = location.pathname === '/setup' ? new URLSearchParams(location.search).get('token') : null;
+
+let cfg = { ai: false, github: false, githubRepo: '' };
+let selectedId = null;
+
+function h(tag, attrs, ...children) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v === undefined || v === null || v === false) continue;
+    if (k === 'class') el.className = v;
+    else if (k.startsWith('on')) el.addEventListener(k.slice(2), v);
+    else el.setAttribute(k, v === true ? '' : String(v));
+  }
+  for (const c of children.flat()) {
+    if (c === null || c === undefined || c === false) continue;
+    el.append(c instanceof Node ? c : document.createTextNode(String(c)));
+  }
+  return el;
+}
+
+async function api(method, path, body) {
+  const res = await fetch(path, {
+    method,
+    credentials: 'same-origin',
+    headers: { 'x-crashreports-csrf': '1', ...(body !== undefined ? { 'content-type': 'application/json' } : {}) },
+    body: body !== undefined ? JSON.stringify(body) : undefined,
+  });
+  const data = await res.json().catch(() => ({}));
+  if (res.status === 401 && path.startsWith('/api/admin')) {
+    showAuth();
+    throw new Error('Session expired, please sign in again');
+  }
+  if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+  return data;
+}
+
+let toastTimer;
+function toast(msg, isError) {
+  const t = $('toast');
+  t.textContent = msg;
+  t.className = 'show' + (isError ? ' err' : '');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => (t.className = ''), 4000);
+}
+
+const fmtTime = (iso) => (iso ? new Date(iso).toLocaleString() : '');
+function ago(iso) {
+  const s = (Date.now() - new Date(iso).getTime()) / 1000;
+  if (s < 60) return 'just now';
+  if (s < 3600) return `${Math.floor(s / 60)} min ago`;
+  if (s < 86400) return `${Math.floor(s / 3600)} h ago`;
+  return `${Math.floor(s / 86400)} d ago`;
+}
+
+// ---------- auth ----------
+
+function showAuth() {
+  $('app').hidden = true;
+  $('nav').hidden = true;
+  $('auth').hidden = false;
+}
+
+async function initAuth() {
+  const state = await api('GET', '/api/auth/state');
+  if (state.loggedIn) return showApp();
+  showAuth();
+  const btn = $('auth-btn');
+  if (!state.hasCredentials) {
+    if (!setupToken) {
+      $('auth-title').textContent = 'Not set up yet';
+      $('auth-text').textContent = 'Open /setup?token=… with the SETUP_TOKEN to register the first passkey.';
+      btn.hidden = true;
+      return;
+    }
+    $('auth-title').textContent = 'Set up';
+    $('auth-text').textContent = 'Register the first admin passkey for this service.';
+    btn.textContent = 'Register passkey';
+    btn.onclick = () => register(true);
+  } else {
+    btn.onclick = login;
+  }
+}
+
+async function register(first) {
+  $('auth-error').textContent = '';
+  try {
+    const optionsJSON = await api('POST', '/api/auth/register/options', { setup_token: setupToken });
+    const response = await startRegistration({ optionsJSON });
+    const name = first ? 'first passkey' : (prompt('Name for this passkey (optional)') || '');
+    await api('POST', '/api/auth/register/verify', { setup_token: setupToken, response, name });
+    if (first) {
+      history.replaceState(null, '', '/');
+      showApp();
+    } else {
+      toast('Passkey added');
+    }
+  } catch (e) {
+    if (first) $('auth-error').textContent = e.message;
+    else toast(e.message, true);
+  }
+}
+
+async function login() {
+  $('auth-error').textContent = '';
+  try {
+    const optionsJSON = await api('POST', '/api/auth/login/options', {});
+    const response = await startAuthentication({ optionsJSON });
+    await api('POST', '/api/auth/login/verify', { response });
+    showApp();
+  } catch (e) {
+    $('auth-error').textContent = e.message;
+  }
+}
+
+// ---------- groups ----------
+
+async function showApp() {
+  $('auth').hidden = true;
+  $('app').hidden = false;
+  $('nav').hidden = false;
+  cfg = await api('GET', '/api/admin/config');
+  await loadGroups();
+}
+
+async function loadGroups() {
+  const q = $('search').value.trim();
+  const status = $('status-filter').value;
+  const params = new URLSearchParams();
+  if (q) params.set('q', q);
+  if (status) params.set('status', status);
+  const groups = await api('GET', '/api/admin/groups?' + params);
+  const tbody = $('groups');
+  tbody.replaceChildren(
+    ...groups.map((g) =>
+      h('tr', { class: g.id === selectedId ? 'selected' : '', 'data-id': g.id, onclick: () => selectGroup(g.id) },
+        h('td', {},
+          h('span', { class: 'msg', title: g.message }, g.ai?.title || g.message),
+          h('span', { class: 'sub' },
+            h('span', { class: `badge ${g.status}` }, g.status),
+            g.ai ? h('span', { class: `badge sev-${g.ai.severity}` }, g.ai.severity) : null,
+            g.kind, g.weak ? ' · weak' : '', g.issue_url ? ' · issue' : ''),
+        ),
+        h('td', { class: 'num' }, g.count),
+        h('td', { class: 'nowrap', title: fmtTime(g.last_seen) }, ago(g.last_seen)),
+        h('td', {}, g.versions.slice(-3).join(', ')),
+      ),
+    ),
+  );
+  $('empty').hidden = groups.length > 0;
+}
+
+async function selectGroup(id) {
+  selectedId = id;
+  for (const tr of $('groups').children) tr.classList.toggle('selected', tr.dataset.id === id);
+  const { group, reports } = await api('GET', `/api/admin/groups/${encodeURIComponent(id)}`);
+  renderDetail(group, reports);
+}
+
+function aiBlock(g) {
+  if (!cfg.ai && !g.ai) return null;
+  const reanalyze = cfg.ai
+    ? h('button', { class: 'ghost', onclick: (e) => analyze(g.id, e.target) }, g.ai ? 'Re-analyze' : 'Analyze')
+    : null;
+  if (g.ai_status === 'pending' && !g.ai) return h('div', { class: 'ai' }, h('p', { class: 'muted' }, 'AI analysis is running…'), reanalyze);
+  if (!g.ai) {
+    return h('div', { class: 'ai' },
+      h('p', { class: g.ai_status === 'error' ? 'error' : 'muted' }, g.ai_status === 'error' ? `AI analysis failed: ${g.ai_error}` : 'No AI analysis yet.'),
+      reanalyze);
+  }
+  const a = g.ai;
+  const src = a.sources || [];
+  return h('div', { class: 'ai' },
+    h('p', {}, h('strong', {}, a.title)),
+    h('p', {}, a.summary),
+    h('p', {}, h('strong', {}, 'Likely cause: '), a.likely_cause),
+    a.suspect_location ? h('p', {}, h('strong', {}, 'Suspect location: '), h('code', {}, a.suspect_location)) : null,
+    a.fix_hint ? h('p', {}, h('strong', {}, 'Fix hint: '), a.fix_hint) : null,
+    h('p', {},
+      h('span', { class: `badge sev-${a.severity}` }, a.severity),
+      h('span', { class: 'badge' }, a.component),
+      ...a.suggested_labels.map((l) => h('span', { class: 'badge' }, l))),
+    src.length
+      ? h('p', { class: 'sub' }, 'Source sent along: ',
+          ...src.flatMap((s, i) => [i ? ', ' : '',
+            h('a', { href: `https://github.com/${cfg.githubRepo}/blob/${encodeURIComponent(s.ref)}/${s.path}#L${s.line}`, target: '_blank', rel: 'noopener' }, `${s.path}:${s.line}`)]))
+      : null,
+    g.ai_status === 'error' ? h('p', { class: 'error' }, `Last re-analysis failed: ${g.ai_error}`) : null,
+    h('p', { class: 'sub' }, `Analyzed ${fmtTime(g.ai_at)} `, reanalyze),
+  );
+}
+
+function kvList(title, map) {
+  const entries = Object.entries(map || {});
+  if (!entries.length) return null;
+  return [h('h3', {}, title), h('dl', { class: 'meta' }, ...entries.flatMap(([k, v]) => [h('dt', {}, k), h('dd', {}, v)]))];
+}
+
+function renderDetail(g, reports) {
+  const statusSel = h('select', { 'aria-label': 'Status', onchange: (e) => setStatus(g.id, e.target.value) },
+    ...['new', 'triaged', 'fixed', 'ignored'].map((s) => h('option', { value: s, selected: s === g.status }, s)));
+  const includePrivate = h('input', { type: 'checkbox', id: 'include-private' });
+  const issue = g.issue_url
+    ? h('a', { href: g.issue_url, target: '_blank', rel: 'noopener' }, 'GitHub issue ↗')
+    : [
+        h('button', { class: 'primary', disabled: !cfg.github, title: cfg.github ? '' : 'GITHUB_TOKEN is not set', onclick: (e) => createIssue(g.id, includePrivate.checked, e.target) }, 'Create GitHub issue'),
+        h('label', { title: 'Adds the latest user note and log tail to the public issue' }, includePrivate, 'include user note + log tail'),
+      ];
+
+  $('detail').replaceChildren(...[
+    h('h2', {}, g.ai?.title || g.message),
+    h('div', { class: 'actions' }, statusSel, issue, h('button', { class: 'danger', onclick: () => deleteGroup(g.id) }, 'Delete group')),
+    aiBlock(g),
+    h('dl', { class: 'meta' },
+      h('dt', {}, 'Kind'), h('dd', {}, g.kind),
+      h('dt', {}, 'Count'), h('dd', {}, g.count),
+      h('dt', {}, 'First seen'), h('dd', {}, fmtTime(g.first_seen)),
+      h('dt', {}, 'Last seen'), h('dd', {}, fmtTime(g.last_seen)),
+      h('dt', {}, 'Versions'), h('dd', {}, g.versions.join(', ')),
+      h('dt', {}, 'OS'), h('dd', {}, g.os_list.join(', ')),
+      h('dt', {}, 'Fingerprint'), h('dd', {}, h('code', {}, g.id.slice(0, 16))),
+    ),
+    h('h3', {}, 'Message'), h('pre', {}, g.message),
+    h('h3', {}, g.weak ? 'Grouping (weak: no backtrace)' : 'Top app frames'), h('pre', {}, g.top_frames.join('\n') || '(none)'),
+    h('h3', {}, `Latest reports (${reports.length})`),
+    ...reports.map((r, i) =>
+      h('details', { class: 'report', open: i === 0 },
+        h('summary', {}, `${fmtTime(r.created_at)} · ${r.app_version} · ${r.os} ${r.os_version} · ${r.arch}`),
+        h('dl', { class: 'meta' },
+          h('dt', {}, 'Report'), h('dd', {}, h('code', {}, r.id)),
+          h('dt', {}, 'Kind'), h('dd', {}, r.signal ? `${r.kind} ${r.signal}` : r.kind),
+          r.thread ? [h('dt', {}, 'Thread'), h('dd', {}, r.thread)] : null,
+          r.uptime ? [h('dt', {}, 'Uptime'), h('dd', {}, r.uptime)] : null,
+          r.install_id ? [h('dt', {}, 'Install'), h('dd', {}, h('code', {}, r.install_id))] : null),
+        kvList('Running', r.running),
+        kvList('System', r.system),
+        h('h3', {}, 'Message'), h('pre', {}, r.message),
+        h('h3', {}, 'Backtrace'), h('pre', {}, r.backtrace || '(none)'),
+        r.log_tail ? [h('h3', {}, 'Last log lines'), h('pre', {}, r.log_tail)] : null,
+        r.user_note ? [h('h3', {}, 'User note'), h('pre', {}, r.user_note)] : null,
+        r.raw ? h('details', { class: 'raw' }, h('summary', {}, 'Raw report'), h('pre', {}, r.raw)) : null,
+        h('div', { class: 'actions' }, h('button', { class: 'danger', onclick: () => deleteReport(r.id, g.id) }, 'Delete report')),
+      ),
+    ),
+  ].flat().filter(Boolean));
+}
+
+async function setStatus(id, status) {
+  try {
+    await api('PATCH', `/api/admin/groups/${encodeURIComponent(id)}`, { status });
+    toast(`Status set to ${status}`);
+    loadGroups();
+  } catch (e) { toast(e.message, true); }
+}
+
+async function deleteGroup(id) {
+  if (!confirm('Delete this crash group and all its reports?')) return;
+  try {
+    await api('DELETE', `/api/admin/groups/${encodeURIComponent(id)}`);
+    selectedId = null;
+    $('detail').replaceChildren(h('p', { class: 'muted' }, 'Group deleted.'));
+    loadGroups();
+  } catch (e) { toast(e.message, true); }
+}
+
+async function deleteReport(id, groupId) {
+  if (!confirm('Delete this report?')) return;
+  try {
+    await api('DELETE', `/api/admin/reports/${encodeURIComponent(id)}`);
+    selectGroup(groupId);
+  } catch (e) { toast(e.message, true); }
+}
+
+async function createIssue(id, includePrivate, btn) {
+  if (includePrivate && !confirm('The user note and log tail will be posted to a public issue. Continue?')) return;
+  btn.disabled = true;
+  try {
+    const { url } = await api('POST', `/api/admin/groups/${encodeURIComponent(id)}/issue`, { include_private: includePrivate });
+    toast('Issue created');
+    await selectGroup(id);
+    loadGroups();
+    return url;
+  } catch (e) { toast(e.message, true); btn.disabled = false; }
+}
+
+async function analyze(id, btn) {
+  btn.disabled = true;
+  btn.textContent = 'Analyzing…';
+  try {
+    await api('POST', `/api/admin/groups/${encodeURIComponent(id)}/analyze`, {});
+    await selectGroup(id);
+    loadGroups();
+  } catch (e) { toast(e.message, true); btn.disabled = false; btn.textContent = 'Re-analyze'; }
+}
+
+// ---------- wiring ----------
+
+let searchTimer;
+$('search').addEventListener('input', () => { clearTimeout(searchTimer); searchTimer = setTimeout(loadGroups, 250); });
+$('status-filter').addEventListener('change', loadGroups);
+$('refresh').addEventListener('click', () => { loadGroups(); if (selectedId) selectGroup(selectedId); });
+$('add-passkey').addEventListener('click', () => register(false));
+$('logout').addEventListener('click', async () => {
+  await api('POST', '/api/auth/logout', {}).catch(() => {});
+  location.href = '/';
+});
+
+initAuth().catch((e) => toast(e.message, true));
