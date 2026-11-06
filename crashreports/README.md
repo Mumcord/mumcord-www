@@ -235,7 +235,7 @@ services:
     environment:
       MUMBOT_WEBHOOK_URL: http://mumbot:8080/message
       MUMBOT_WEBHOOK_TOKEN: ${MUMBOT_WEBHOOK_TOKEN}
-      MUMBOT_CHANNEL: Lobby       # or its numeric id
+      MUMBOT_CHANNEL: "Crash reports"      # or its numeric id
   mumbot:
     image: ghcr.io/mumcord/mumbot:0.5.1
     command: ["webhook"]          # only the webhook module
