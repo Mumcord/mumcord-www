@@ -998,6 +998,8 @@ const source: Record<"de" | "en", FeaturesPage> = {
           },
           {
             id: "plugin-relay-data",
+            shot: "plugin-whiteboard-dark",
+            alt: "Whiteboard",
             title: "Plugin-Daten übers Relay",
             body: "Spieldaten gehen Ende-zu-Ende-verschlüsselt über das Relay, bis 64 KB pro Nachricht, an eine Person oder den ganzen Kanal. Pro Plugin schaltest du es ab, und Einstellungen → Plugins zeigen, wie viele Daten es genutzt hat.",
             since: "0.7.0",
@@ -2068,6 +2070,8 @@ const source: Record<"de" | "en", FeaturesPage> = {
           },
           {
             id: "plugin-relay-data",
+            shot: "plugin-whiteboard-dark",
+            alt: "Whiteboard",
             title: "Plugin data through the relay",
             body: "Game data goes end-to-end encrypted through the relay, up to 64 KB per message, to one person or the whole channel. You switch it off per plugin, and Settings → Plugins shows how much data it used.",
             since: "0.7.0",
