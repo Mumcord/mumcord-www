@@ -8,6 +8,30 @@ const setupToken = location.pathname === '/setup' ? new URLSearchParams(location
 let cfg = { ai: false, github: false, githubRepo: '' };
 let selectedId = null;
 
+// ---------- deep links: #/groups/<id> ----------
+// The hash survives the passkey login (no navigation happens), so a link from the channel card
+// opens its group right after signing in. Opening or closing a group updates the hash, so the
+// back button works.
+
+const GROUP_HASH = /^#\/groups\/([A-Za-z0-9_-]{1,128})$/;
+const hashGroup = () => GROUP_HASH.exec(location.hash)?.[1] ?? null;
+const groupHash = (id) => `#/groups/${encodeURIComponent(id)}`;
+
+function setHash(hash) {
+  if (location.hash === hash || (!hash && !location.hash)) return;
+  if (hash) location.hash = hash;
+  else history.pushState(null, '', location.pathname + location.search);
+}
+
+let routing = false;
+
+/** Opens or closes the group the hash names; called after login and on back/forward. */
+function route() {
+  const id = hashGroup();
+  if (id && id !== selectedId) selectGroup(id, false);
+  else if (!id && selectedId) closeGroup(false);
+}
+
 function h(tag, attrs, ...children) {
   const el = document.createElement(tag);
   for (const [k, v] of Object.entries(attrs || {})) {
@@ -94,7 +118,7 @@ async function register(first) {
     const name = first ? 'first passkey' : (prompt('Name for this passkey (optional)') || '');
     await api('POST', '/api/auth/register/verify', { setup_token: setupToken, response, name });
     if (first) {
-      history.replaceState(null, '', '/');
+      history.replaceState(null, '', '/' + location.hash);
       showApp();
     } else {
       toast('Passkey added');
@@ -125,6 +149,9 @@ async function showApp() {
   $('nav').hidden = false;
   cfg = await api('GET', '/api/admin/config');
   await loadGroups();
+  route();
+  if (!routing) window.addEventListener('hashchange', route);
+  routing = true;
 }
 
 async function loadGroups() {
@@ -154,11 +181,29 @@ async function loadGroups() {
   $('empty').hidden = groups.length > 0;
 }
 
-async function selectGroup(id) {
+function markSelected() {
+  for (const tr of $('groups').children) tr.classList.toggle('selected', tr.dataset.id === selectedId);
+}
+
+async function selectGroup(id, updateHash = true) {
   selectedId = id;
-  for (const tr of $('groups').children) tr.classList.toggle('selected', tr.dataset.id === id);
-  const { group, reports } = await api('GET', `/api/admin/groups/${encodeURIComponent(id)}`);
-  renderDetail(group, reports);
+  if (updateHash) setHash(groupHash(id));
+  markSelected();
+  try {
+    const { group, reports } = await api('GET', `/api/admin/groups/${encodeURIComponent(id)}`);
+    if (selectedId !== id) return;
+    renderDetail(group, reports);
+  } catch (e) {
+    if (selectedId !== id) return;
+    $('detail').replaceChildren(h('p', { class: 'muted' }, `Crash group not found or not loaded: ${e.message}`));
+  }
+}
+
+function closeGroup(updateHash = true, text = 'Select a crash group.') {
+  selectedId = null;
+  if (updateHash) setHash('');
+  markSelected();
+  $('detail').replaceChildren(h('p', { class: 'muted' }, text));
 }
 
 function aiBlock(g) {
@@ -213,7 +258,8 @@ function renderDetail(g, reports) {
 
   $('detail').replaceChildren(...[
     h('h2', {}, g.ai?.title || g.message),
-    h('div', { class: 'actions' }, statusSel, issue, h('button', { class: 'danger', onclick: () => deleteGroup(g.id) }, 'Delete group')),
+    h('div', { class: 'actions' }, statusSel, issue, h('button', { class: 'danger', onclick: () => deleteGroup(g.id) }, 'Delete group'),
+      h('button', { class: 'ghost', title: 'Close this group', onclick: () => closeGroup() }, 'Close')),
     aiBlock(g),
     h('dl', { class: 'meta' },
       h('dt', {}, 'Kind'), h('dd', {}, g.kind),
@@ -261,8 +307,7 @@ async function deleteGroup(id) {
   if (!confirm('Delete this crash group and all its reports?')) return;
   try {
     await api('DELETE', `/api/admin/groups/${encodeURIComponent(id)}`);
-    selectedId = null;
-    $('detail').replaceChildren(h('p', { class: 'muted' }, 'Group deleted.'));
+    closeGroup(true, 'Group deleted.');
     loadGroups();
   } catch (e) { toast(e.message, true); }
 }

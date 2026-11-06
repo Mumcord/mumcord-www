@@ -12,12 +12,17 @@ import { authRoutes, csrfGuard, requireSession, setupTokenOk } from './auth.ts';
 import { buildIssue, createIssue } from './github.ts';
 import { analyzeCrash, describeAiError, type AnthropicLike } from './ai.ts';
 import { SourceFetcher, gatherSnippets } from './source.ts';
+import { AI_WAIT_MS, MumbotNotifier } from './mumbot.ts';
 
 export interface AppDeps {
   config: Config;
   store: Store;
-  /** Injected for tests; defaults to global fetch. Used for GitHub only. */
+  /** Injected for tests; defaults to global fetch. Used for GitHub and the Mumbot webhook. */
   fetchFn?: typeof fetch;
+  /** Mumbot notifier; built from the config when not given. */
+  mumbot?: MumbotNotifier;
+  /** How long a new group's card waits for the AI analysis (default 30 s). */
+  notifyAiWaitMs?: number;
   /** Anthropic client; null disables AI analysis. */
   anthropic?: AnthropicLike | null;
   /** Returns the client IP for rate limiting (never stored). */
@@ -38,6 +43,16 @@ export function createApp(deps: AppDeps) {
   const sources = new SourceFetcher({ fetchFn, repo: config.githubRepo, token: config.githubToken });
   const repoName = config.githubRepo.split('/')[1] ?? 'mumcord';
   const running = new Set<string>();
+  const mumbot =
+    deps.mumbot ??
+    new MumbotNotifier({
+      url: config.mumbotWebhookUrl,
+      token: config.mumbotWebhookToken,
+      channel: config.mumbotChannel,
+      fetchFn,
+    });
+  const aiWaitMs = deps.notifyAiWaitMs ?? AI_WAIT_MS;
+  const notifications = new Set<Promise<void>>();
 
   const files = {
     html: staticFile('../public/index.html'),
@@ -85,6 +100,42 @@ export function createApp(deps: AppDeps) {
       running.delete(groupId);
     }
   }
+
+  /**
+   * Posts the group's card to Mumbot, after the AI analysis when one runs (at most `aiWaitMs`).
+   * Runs in the background and never throws, so webhook trouble never touches ingest.
+   */
+  function notify(groupId: string, aiRun: Promise<void> | null, previousStatus: Status | null): void {
+    const task = (async () => {
+      if (aiRun) {
+        let timer: NodeJS.Timeout | undefined;
+        const wait = new Promise<void>((resolve) => {
+          timer = setTimeout(resolve, aiWaitMs);
+          timer.unref();
+        });
+        await Promise.race([aiRun, wait]);
+        clearTimeout(timer);
+      }
+      const group = store.getGroup(groupId);
+      if (!group) return;
+      const latest = store.latestReports(groupId, 1)[0] ?? null;
+      await mumbot.post({
+        group,
+        latest,
+        regression: previousStatus !== null,
+        previousStatus,
+        origin: config.origin,
+        repoName,
+      });
+    })().catch((e) => console.warn(`mumbot: ${e instanceof Error ? e.message : String(e)}`));
+    notifications.add(task);
+    void task.finally(() => notifications.delete(task));
+  }
+
+  /** Resolves when all pending channel notifications are done (tests). */
+  const notificationsSettled = async () => {
+    while (notifications.size) await Promise.all([...notifications]);
+  };
 
   const app = new Hono();
 
@@ -138,8 +189,13 @@ export function createApp(deps: AppDeps) {
       if (!parsed.ok) return c.json({ error: 'invalid report', details: parsed.errors }, 400);
       const fp = fingerprint(parsed.value);
       const group = fp.id;
-      const { id, isNew } = store.ingest(parsed.value, fp);
-      if (isNew && anthropic) setImmediate(() => void analyze(group));
+      const { id, isNew, previousStatus } = store.ingest(parsed.value, fp);
+      const aiRun =
+        isNew && anthropic ? new Promise<void>((resolve) => setImmediate(() => void analyze(group).finally(resolve))) : null;
+      // Channel card: a new group, or a fixed/ignored group that comes back. Further reports of an
+      // open group stay quiet; the per-group cooldown allows one card per hour at most.
+      const regression = previousStatus === 'fixed' || previousStatus === 'ignored';
+      if ((isNew || regression) && mumbot.claim(group)) notify(group, aiRun, isNew ? null : previousStatus);
       return c.json({ id, group }, 201);
     },
   );
@@ -230,5 +286,5 @@ export function createApp(deps: AppDeps) {
   app.get('/static/style.css', asset(files.css, 'text/css; charset=utf-8'));
   app.get('/static/webauthn.js', asset(files.webauthn, 'text/javascript; charset=utf-8'));
 
-  return { app, analyze };
+  return { app, analyze, notificationsSettled };
 }
