@@ -6,7 +6,7 @@
 export type CommentLang = "de" | "en";
 
 export const IMAGE = "mumblevoip/mumble-server:v1.5.735";
-export const MUMPEER_IMAGE = "ghcr.io/mumcord/mumpeer:0.1.0";
+export const MUMPEER_IMAGE = "ghcr.io/mumcord/mumpeer:0.2.0";
 export const MUMBOT_IMAGE = "ghcr.io/mumcord/mumbot";
 /** The Mumbot release that brings the music and history bots. */
 export const MUMBOT_MODULES_FROM = "0.2.0";
@@ -90,6 +90,7 @@ const COMMENTS = {
     listen: "Relay für die Clients: QUIC über UDP und TLS über TCP (für Netze, die UDP sperren)",
     api: "Nur lokal; der Bot teilt sich das Netzwerk mit diesem Container",
     apiSecret: "Das API-Secret kommt aus MUMPEER_API_SECRET (PEER_API_SECRET in .env)",
+    uses: "Wofür das Relay gilt: Bilder, Dateien, Bildschirm, Kamera; Plugin-Daten sind standardmäßig aus",
     relayAccess: "true: Relay nur für registrierte Nutzer; false: auch für Gäste",
     webhookPort: "nur von diesem Rechner aus erreichbar",
     env: "Bleibt auf dem Server. Nie in Git, Chats oder Screenshots teilen.",
@@ -130,6 +131,7 @@ const COMMENTS = {
     listen: "Client relay listeners: QUIC on UDP and TLS on TCP (for networks that block UDP)",
     api: "Loopback only; the bot shares this container's network",
     apiSecret: "The API secret comes from MUMPEER_API_SECRET (PEER_API_SECRET in .env)",
+    uses: "What the relay is used for: images, files, screen, camera; plugin data is off by default",
     relayAccess: "true: relay for registered users only; false: guests too",
     webhookPort: "reachable from this machine only",
     env: "Stays on the server. Never share it in Git, chats or screenshots.",
@@ -404,6 +406,15 @@ export function buildMumpeerToml(lang: CommentLang, o: ServerOptions): string {
     "[limits]",
     "max_sessions = 50",
     "token_ttl_s = 120",
+    "max_camera_broadcasts = 18",
+    "",
+    `# ${c.uses}`,
+    "[uses]",
+    "images = true",
+    "files = true",
+    "screen_share = true",
+    "camera = true",
+    "plugin_data = false",
   ].join("\n");
 }
 

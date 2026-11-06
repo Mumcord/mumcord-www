@@ -373,7 +373,7 @@
         {
           "tag": "Epic 4.1",
           "title": "File, schermo, fotocamera e plugin",
-          "body": "In arrivo con 0.7.0: condividi file senza mostrare il tuo indirizzo IP, condivisione dello schermo fino a 4K per fino a 25 persone, la tua fotocamera con sfondo sfocato, una lavagna e il gioco Skyloom come plugin e un punteggio di sicurezza per i plugin di altri."
+          "body": "Dalla 0.7.0: condividi file senza mostrare il tuo indirizzo IP, una condivisione dello schermo fino a 4K per fino a 25 persone, la tua fotocamera con sfondo sfocato, una lavagna e il gioco Skyloom come plugin e un punteggio di sicurezza per i plugin di altri."
         },
         {
           "tag": "Epic 4",
@@ -604,8 +604,8 @@
       "toolTitle": "Collaboratori"
     },
     "spotlight5": {
-      "label": "Novità in 0.5.0/0.6.0",
-      "labelSoon": "In arrivo: 0.5.0/0.6.0",
+      "label": "Novità in 0.5.0/0.6.0/0.7.0",
+      "labelSoon": "In arrivo: 0.5.0/0.6.0/0.7.0",
       "title": "Più calma. Più te. Più suono.",
       "body": "La 0.5.0 porta l’Epic 3: un centro notifiche, il blocco, più identità, un nuovo albero dei canali, musica nella chat, una modalità a bassa latenza per fare musica insieme e connessioni dirette tramite relay.",
       "tiles": {
@@ -856,6 +856,24 @@
             "title": "Blocca persone",
             "body": "“Blocca…” nel menu della persona nasconde i suoi messaggi privati e le richieste, comprime i suoi messaggi nei canali e silenzia la sua voce, solo per te. Il blocco segue il certificato, quindi vale su tutti i server e con nomi nuovi. Non viene inviato nulla al server né alla persona, e Impostazioni → Privacy elenca tutti i bloccati con “Sblocca”.",
             "alt": "Conferma per il blocco di una persona che elenca cosa cambia"
+          },
+          {
+            "id": "kick-ban",
+            "title": "Espelli e banna",
+            "body": "Il menu Amministrazione di una persona offre “Espelli…” e “Banna…”, con un motivo. I ban durano 1 ora, 1 giorno, 7 giorni, 30 giorni, per sempre o fino a una data, su certificato e indirizzo IP. Solo con il permesso sul canale principale.",
+            "alt": "La finestra per bannare una persona"
+          },
+          {
+            "id": "ban-list",
+            "title": "Elenco dei ban",
+            "body": "“Elenco dei ban…” nel menu del server mostra tutti i ban con nome, impronta, indirizzo, motivo e scadenza. Cerca, filtra, modifica motivo e scadenza direttamente lì, revoca i ban o banna persone che non sono online.",
+            "alt": "La finestra dell’elenco dei ban"
+          },
+          {
+            "id": "bots-section",
+            "title": "Bot per conto loro",
+            "body": "Una sezione “Bot su questo server” sotto l’elenco dei canali mostra ogni bot con ciò che fa, come relay, cronologia della chat o webhook. Profilo e menu, messaggi privati inclusi, funzionano da lì.",
+            "alt": "La sezione con i bot di un server"
           }
         ]
       },
@@ -1095,6 +1113,11 @@
             "title": "Pannello utente calmo",
             "body": "Il pannello in fondo all'elenco dei canali mantiene sempre la stessa altezza: tu con nome e server, una riga di stato come riconnessione o il tuo canale vocale, piccoli chip per Non disturbare, modalità a bassa latenza e connessione, e i pulsanti di microfono, cuffie e riaggancio. L'elenco dei canali sopra non salta più.",
             "alt": "Il pannello utente in vari stati, da in conversazione e silenziato fino a riconnessione"
+          },
+          {
+            "id": "camera-entry",
+            "title": "Fotocamera nel pannello utente",
+            "body": "Un pulsante della fotocamera accanto a muto e sordo apre l’anteprima. Quando la fotocamera è accesa diventa rosso e la spegne subito, sotto il tuo nome compare “Fotocamera accesa” e un badge rosso la mostra nell’area di notifica."
           }
         ]
       },
@@ -1162,8 +1185,8 @@
           {
             "id": "screen-share",
             "title": "Condivisione dello schermo",
-            "body": "Uno schermo o una finestra per un massimo di 8 spettatori, a 720p e 30 fotogrammi al secondo, su Windows e macOS anche con l'audio dell'app condivisa, se vuoi. Lo avvii dal pulsante App nella chat. Gli spettatori guardano nella colonna principale con risoluzione, frame rate e dettagli dello stream; tu hai una barra di controllo in alto nella chat con pausa, audio, spettatori e stop.",
-            "alt": "Uno schermo condiviso nella colonna principale con i dettagli dello stream e l'elenco degli spettatori"
+            "body": "Uno schermo o una finestra per fino a 8 spettatori in modo diretto o fino a 25 tramite il relay, con audio e AV1 se vuoi. La avvii dal pulsante App nella chat e prima imposti qualità e codec. Gli spettatori guardano nella colonna principale con risoluzione, codec, percorso e dettagli; tu hai una barra in cima alla chat con qualità, encoder, pausa, audio, spettatori e stop.",
+            "alt": "Uno schermo condiviso nella colonna principale con i dettagli dello stream e l’elenco degli spettatori"
           },
           {
             "id": "floating-widgets",
@@ -1179,8 +1202,73 @@
           {
             "id": "relay",
             "title": "Relay della community",
-            "body": "La community di un server può gestire un relay accanto al suo server Mumble. Le immagini a dimensione piena e la condivisione dello schermo funzionano allora anche quando non è possibile una connessione diretta, e con “usa sempre il relay” l'altra persona non vede mai il tuo indirizzo IP. Il relay non può leggere la connessione cifrata, e la voce non lo usa mai. Scegli in Impostazioni → Privacy, anche per singolo server.",
+            "body": "La community di un server può gestire un relay accanto al suo server Mumble. Immagini a dimensione piena, file, fotocamere e condivisione dello schermo funzionano allora anche quando non è possibile una connessione diretta, e con “usa sempre il relay” l’altra persona non vede mai il tuo indirizzo IP. Il relay non può leggere la connessione cifrata, la voce non lo usa mai, e Mumcord non usa ciò che il relay non consente. Scegli tu in Impostazioni → Privacy, anche per singolo server.",
             "alt": "Impostazioni della privacy con le scelte peer-to-peer diretto, relay e disattivato"
+          },
+          {
+            "id": "file-sharing",
+            "title": "Condivisione di file",
+            "body": "Trascina file o cartelle nella chat o usa la graffetta, fino a 2 GB. Passano sempre dal relay del server, nessuno vede il tuo indirizzo IP e il file non tocca mai il server Mumble.",
+            "alt": "Un file condiviso come scheda nella chat"
+          },
+          {
+            "id": "file-safety",
+            "title": "Download sicuri",
+            "body": "Ogni download chiede prima conferma e mostra la cartella. Programmi e script ricevono un avviso in più, e poi Mumcord controlla che il file sia arrivato intatto. Nelle impostazioni disattivi la ricezione e imposti dimensione e cartella.",
+            "alt": "Le impostazioni della condivisione di file"
+          },
+          {
+            "id": "camera",
+            "title": "Fotocamera",
+            "body": "La tua fotocamera per tutti nel tuo canale vocale, solo tramite il relay e cifrata end-to-end. Parte con un’anteprima che nessuno vede, e un pulsante della fotocamera nel pannello utente, il menu App, l’area di notifica e una scorciatoia la accendono e la spengono.",
+            "alt": "Le impostazioni della fotocamera con un’anteprima"
+          },
+          {
+            "id": "camera-room",
+            "title": "Stanza delle fotocamere",
+            "body": "Le fotocamere del canale stanno sopra la chat, fino a nove riquadri in griglia o un grande riquadro con Oratore. Accanto a una condivisione dello schermo o a una watch party formano una striscia di lato o sopra, oppure le nascondi.",
+            "alt": "La stanza delle fotocamere con diverse fotocamere sopra la chat"
+          },
+          {
+            "id": "camera-backgrounds",
+            "title": "Sfondi della fotocamera",
+            "body": "Nessuno sfondo, sfocatura (leggera o forte), una delle 18 immagini incluse o la tua. Viene elaborato sul tuo computer, e lo cambi senza spegnere la fotocamera.",
+            "alt": "L’anteprima della fotocamera con lo sfondo molto sfocato"
+          },
+          {
+            "id": "camera-tiles",
+            "title": "Opzioni dei riquadri",
+            "body": "Il ⋯ su un riquadro offre “Fissa per me”, “Mostra grande”, “Nascondi video” (così non viene scaricato affatto) e “Qualità per me”. Più una pagina Impostazioni → Fotocamera tutta sua, e tutto funziona con la tastiera.",
+            "alt": "Il menu di un riquadro della fotocamera"
+          },
+          {
+            "id": "screen-share-sound",
+            "title": "Audio durante la condivisione",
+            "body": "Uno schermo intero condivide tutto l’audio tranne quello di Mumcord, una finestra solo quello di quell’app. Quando non è chiaro quale intendi, “Audio di quale app?” te lo chiede. Funziona su Windows 10, macOS 13 e Linux con PipeWire.",
+            "alt": "La finestra prima di avviare una condivisione dello schermo"
+          },
+          {
+            "id": "screen-share-av1",
+            "title": "AV1 per testo nitido",
+            "body": "Mumcord controlla in background cosa può fare il tuo computer e usa AV1 sulla scheda grafica, AV1 sul processore o VP9. Gli spettatori riproducono AV1 anche senza hardware dedicato, e per le versioni di Mumcord più vecchie la condivisione passa a VP9.",
+            "alt": "La scheda delle impostazioni della condivisione dello schermo"
+          },
+          {
+            "id": "screen-share-relay",
+            "title": "Fino a 25 spettatori",
+            "body": "Quando il relay lo offre, carichi una sola volta e il relay invia la condivisione a tutti, fino al suo limite (25 per impostazione predefinita). È cifrata end-to-end, il relay non vede nulla."
+          },
+          {
+            "id": "screen-share-quality",
+            "title": "Impostare la qualità",
+            "body": "Prima di iniziare scegli risoluzione, frequenza fotogrammi, testo nitido o movimento fluido e limite di upload. Durante la condivisione il menu Qualità cambia tutto senza riavviare, e la scheda “Condivisione dello schermo” nelle Impostazioni contiene i tuoi valori predefiniti. Gli spettatori possono ridurre la loro frequenza fotogrammi.",
+            "alt": "I controlli durante la visione di una condivisione dello schermo"
+          },
+          {
+            "id": "media-area-resize",
+            "title": "Dividere immagine e chat",
+            "body": "Trascina la maniglia tra l’immagine di una condivisione o watch party e la chat, oppure usa i tasti freccia. Si aggancia a un terzo, a metà e a due terzi, e Mumcord ricorda l’altezza.",
+            "alt": "Una condivisione dello schermo con le fotocamere in una striscia accanto"
           }
         ]
       },
@@ -1214,8 +1302,8 @@
           {
             "id": "plugin-safety",
             "title": "Sandbox, firme e un kill switch",
-            "body": "I plugin girano isolati, senza accesso a rete, file o audio, con limiti di memoria e di tempo; uno che continua ad andare in crash viene disattivato, e la tua voce non ne risente mai. I plugin ufficiali sono firmati e controllati. Un kill switch può disattivare per tutti un plugin dannoso, “Disattiva tutti i plugin” li ferma in un colpo solo e --no-plugins avvia senza nessuno.",
-            "alt": "Richiesta di installazione di EVE Fit con una barra di avanzamento che indica «Checking signature…» sopra l’elenco dei permessi."
+            "body": "I plugin girano isolati, senza accesso a file o audio e solo ai siti web che hanno dichiarato e tu hai approvato, con limiti di memoria e di tempo; uno che continua ad andare in crash viene disattivato, e la tua voce non ne risente mai. I plugin ufficiali sono firmati e controllati. Un kill switch può disattivare per tutti un plugin dannoso, “Disattiva tutti i plugin” li ferma in un colpo, e --no-plugins avvia senza nessuno.",
+            "alt": "Richiesta di installazione di EVE Fit con una barra di avanzamento che dice “Controllo della firma…” sopra l’elenco dei permessi."
           },
           {
             "id": "plugin-updates",
@@ -1264,6 +1352,45 @@
             "title": "EVE Fit",
             "body": "Incolla un fitting di EVE Online in chat e chiunque abbia il plugin vede una scheda della nave. Un clic apre la ruota del fitting con capacitor, attacco, difesa e navigazione, offline dentro Mumcord, e “Copia fitting” lo riporta fuori.",
             "alt": "Finestra di EVE Fit con la nave Algos dentro la ruota di fitting, icone dei moduli e statistiche di capacitore, attacco, difesa, puntamento, navigazione e droni."
+          },
+          {
+            "id": "plugin-media-area",
+            "title": "Plugin nell’area multimediale",
+            "body": "Le attività dei plugin girano nell’area multimediale con l’intestazione di Mumcord: chi l’ha avviata, quanti stanno giocando, chi ha fatto il plugin. Con schermo intero e “Lascia il plugin”. Quando ne gira più di uno, le schede o Alt+1 fino a Alt+9 passano dall’uno all’altro.",
+            "alt": "Un plugin nell’area multimediale con le schede sopra"
+          },
+          {
+            "id": "plugin-side-panel",
+            "title": "Pannello laterale per i plugin",
+            "body": "Un plugin può mostrare la sua pagina a destra della chat al posto dell’elenco dei membri. La ridimensioni, Mumcord ricorda la larghezza per ogni plugin e un menu ⋯ porta ai dettagli del plugin.",
+            "alt": "Un plugin nel pannello laterale accanto alla chat"
+          },
+          {
+            "id": "plugin-apps-menu",
+            "title": "Plugin nel menu App",
+            "body": "Ogni plugin può aggiungere fino a due voci al menu App, sotto “Plugin” con la sua icona e il suo nome. Le stesse voci compaiono nella palette dei comandi (Ctrl+Maiusc+P), e un plugin può disattivare una voce indicandone il motivo.",
+            "alt": "Il menu App con le voci dei plugin"
+          },
+          {
+            "id": "plugin-security-score",
+            "title": "Punteggio di sicurezza",
+            "body": "I plugin non ufficiali ricevono un punteggio da 0 a 100, con i motivi principali e il dettaglio completo all’installazione e agli aggiornamenti. I plugin ad alto rischio richiedono una spunta a parte, e “Sicurezza dei plugin” nelle impostazioni può bloccarli del tutto.",
+            "alt": "I dettagli del punteggio di sicurezza di un plugin"
+          },
+          {
+            "id": "plugin-min-version",
+            "title": "Versione minima per i plugin",
+            "body": "Se un plugin richiede un Mumcord più recente, dice “Richiede Mumcord X o più recente” e l’installazione è disattivata. Gli aggiornamenti automatici aspettano che il tuo Mumcord possa eseguire la nuova versione."
+          },
+          {
+            "id": "plugin-websites",
+            "title": "Siti web dei plugin",
+            "body": "I plugin che parlano con siti web elencano ogni indirizzo all’installazione e nei loro dettagli, con il numero di richieste. Raggiungono solo ciò che hanno dichiarato e tu hai approvato, solo indirizzi pubblici con un certificato valido. Le pagine dei plugin si aprono anche in una finestra."
+          },
+          {
+            "id": "plugin-relay-data",
+            "title": "Dati dei plugin tramite il relay",
+            "body": "I dati di gioco passano cifrati end-to-end dal relay, fino a 64 KB per messaggio, a una persona o all’intero canale. Li disattivi per singolo plugin, e Impostazioni → Plugin mostra quanti dati ha usato."
           }
         ]
       },
@@ -1371,87 +1498,106 @@
     {
       "version": "0.7.0",
       "teaser": "Condivisione di file, la tua fotocamera, condivisione dello schermo con audio e AV1 per fino a 25 spettatori, plugin nell’area multimediale, espulsione, ban e l’elenco dei ban.",
-      "summary": "Un grande aggiornamento: condividi file fino a 2 GB nel canale, sempre tramite il relay, mostri la tua fotocamera con lo sfondo sfocato, la condivisione dello schermo ottiene audio, AV1 e fino a 25 spettatori, dividi immagine e chat con una maniglia, i plugin ottengono l’area multimediale e regole di sicurezza chiare, e gli admin possono espellere, bannare e tenere in ordine l’elenco dei ban.",
+      "summary": "Un grande aggiornamento: condividi file fino a 2 GB nel canale, sempre tramite il relay, mostri la tua fotocamera con lo sfondo sfocato, la tua condivisione dello schermo ottiene audio, AV1 e fino a 25 spettatori, dividi immagine e chat con una sola maniglia, i plugin ottengono l’area multimediale e regole di sicurezza chiare, e gli amministratori possono espellere, bannare e tenere in ordine l’elenco dei ban.",
       "groups": [
         {
           "title": "Condivisione di file",
           "items": [
-            "Trascina i file nella chat o allegali con la graffetta, fino a 2 GB. Le cartelle vengono prima compresse in zip.",
+            "Trascina file e cartelle nella chat o allegali con la graffetta, fino a 2 GB. Se non c’è un relay o non consente i file, la graffetta ne spiega il motivo.",
             "I file passano sempre dal relay del server: nessuno vede il tuo indirizzo IP e il file non tocca mai il server Mumble.",
-            "Ogni download chiede prima e mostra la cartella in cui viene salvato. Poi Mumcord controlla la checksum SHA-256, che puoi anche copiare.",
-            "Programmi e script ricevono un avviso in più prima del download e prima dell’apertura.",
-            "Un file resta disponibile finché il mittente è online, per al massimo 24 ore.",
-            "Novità in Impostazioni → Privacy e connessioni: ricezione dei file attiva o disattiva, dimensione massima da 100 MB a 2 GB e cartella dei file ricevuti."
+            "Ogni download chiede prima conferma e mostra la cartella in cui viene salvato. Poi Mumcord controlla che il file sia arrivato intatto.",
+            "Programmi e script ricevono un avviso in più prima del download e prima di aprirli.",
+            "I tuoi file condivisi mostrano chi li ha scaricati e hanno un pulsante “Interrompi condivisione”.",
+            "Le immagini che trascini in un canale possono essere inviate come immagini o condivise come file. Tutti gli altri file vengono condivisi subito.",
+            "Novità in Impostazioni → Privacy e connessioni: ricezione dei file attiva o disattiva, dimensione massima da 100 MB a 2 GB e cartella per i file ricevuti."
           ]
         },
         {
           "title": "Condivisione dello schermo",
           "items": [
-            "Audio durante la condivisione: un intero schermo condivide tutto l’audio tranne quello di Mumcord, una finestra condivide solo l’audio di quell’app. Funziona su Windows 10 (2004 o successivo), macOS 13 e Linux con PipeWire.",
-            "Prima di iniziare scegli risoluzione fino a 4K, frequenza di fotogrammi fino a 60 fps, testo nitido o movimento fluido, codec e limite di upload. Il menu Qualità li modifica durante la condivisione senza riavviarla.",
-            "Tramite il relay carichi una volta sola e fino a 25 persone guardano, con crittografia end-to-end.",
+            "Audio durante la condivisione: uno schermo intero condivide tutto l’audio tranne quello di Mumcord, una finestra solo quello di quell’app. Funziona su Windows 10 (2004 o più recente), macOS 13 e Linux con PipeWire.",
+            "Prima di iniziare scegli risoluzione, frequenza fotogrammi, testo nitido o movimento fluido, codec e limite di upload. Il menu Qualità li cambia durante la condivisione senza riavviarla.",
+            "Mumcord sceglie l’encoder da solo: AV1 sulla scheda grafica, AV1 sul processore o VP9. La barra della tua condivisione mostra qualità, encoder e se passa dal relay.",
+            "Quando condividi una finestra, “Audio di quale app?” chiede di chi è l’audio che viene condiviso. Puoi anche scegliere “Nessun audio”.",
+            "Tramite il relay carichi una sola volta e fino a 25 persone guardano, cifrato end-to-end.",
             "AV1 sulla scheda grafica o sul processore per testo nitido con meno banda. VP9 resta come alternativa, anche per gli spettatori con un Mumcord più vecchio.",
-            "Gli spettatori vedono codec, percorso e qualità e possono abbassare la propria frequenza di fotogrammi. L’elenco degli spettatori mostra chi riceve cosa.",
-            "Nuova scheda “Condivisione dello schermo” nelle Impostazioni con i tuoi valori predefiniti e l’encoder usato dal tuo computer.",
+            "Gli spettatori vedono codec, percorso e qualità e possono ridurre la loro frequenza fotogrammi. L’elenco degli spettatori mostra chi riceve cosa.",
+            "Nuova scheda “Condivisione dello schermo” nelle Impostazioni con i tuoi valori predefiniti e l’encoder che usa il tuo computer.",
             "Dividi tu stesso immagine e chat: trascina la maniglia tra una condivisione dello schermo o watch party e la chat. Trascinala tutta in alto e l’immagine diventa una mini barra, e Mumcord ricorda l’altezza."
           ]
         },
         {
           "title": "Fotocamera",
           "items": [
-            "La tua fotocamera per tutti nel tuo canale vocale, solo tramite il relay e con crittografia end-to-end, per fino a 25 spettatori.",
-            "La fotocamera parte con un’anteprima che non invia nulla. Esce solo quando la attivi.",
-            "Sfoca lo sfondo o metti un’immagine dietro di te, calcolato sul tuo computer.",
-            "Se la fotocamera non può essere usata, Mumcord dice perché, per esempio quando il relay del server non consente le fotocamere."
+            "La tua fotocamera per tutti nel tuo canale vocale, solo tramite il relay e cifrata end-to-end.",
+            "La stanza delle fotocamere sta sopra la chat: fino a nove riquadri in griglia, oppure il layout Oratore con un grande riquadro. Ognuno mostra il nome, un’icona di microfono spento e un bordo verde mentre la persona parla.",
+            "La fotocamera parte con un’anteprima che nessun altro vede. Scegli la fotocamera e lo sfondo, e va in onda solo quando la accendi.",
+            "Sfondi: nessuno, sfocatura (leggera o forte), una delle 18 immagini incluse o la tua. Viene elaborato sul tuo computer, e puoi cambiarlo mentre la fotocamera è in funzione.",
+            "Il ⋯ su un riquadro offre “Fissa per me”, “Mostra grande”, “Nascondi il video di …” (così non viene scaricato affatto) e “Qualità per me”. Funziona tutto anche con la tastiera.",
+            "Accanto a una condivisione dello schermo o watch party, l’immagine resta grande e le fotocamere stanno in una striscia di lato o sopra. Oppure le nascondi, e allora non vengono scaricate.",
+            "Un pulsante della fotocamera nel pannello utente e “Accendi la fotocamera” nel menu App aprono l’anteprima. Quando la fotocamera è accesa, il pulsante diventa rosso e un’icona della fotocamera compare nell’albero dei canali.",
+            "Nuova scheda “Fotocamera” nelle Impostazioni: anteprima, fotocamera, qualità di invio, autovisione speculare, sfondo predefinito e come vedi le fotocamere degli altri. In più una scorciatoia per accendere e spegnere la fotocamera.",
+            "Quando la fotocamera è accesa, l’icona nell’area di notifica mostra un badge rosso e il suo menu offre “Spegni la fotocamera”. Quando lo schermo si blocca, la fotocamera può spegnersi da sola.",
+            "Se la fotocamera non si può usare o si ferma da sola, Mumcord ne spiega il motivo, per esempio quando il relay del server non consente le fotocamere."
           ]
         },
         {
           "title": "Plugin",
           "items": [
-            "I plugin ottengono l’area multimediale, un pannello laterale accanto alla chat, finestre di dialogo e voci nel menu App. Quando ne è in esecuzione più di uno, le schede permettono di passare dall’uno all’altro.",
-            "I dati di gioco passano con crittografia end-to-end attraverso il relay, a una persona o a tutto il canale.",
+            "I plugin ottengono l’area multimediale, un pannello laterale accanto alla chat, finestre e voci nel menu App. Quando ne gira più di uno, le schede passano dall’uno all’altro.",
+            "I dati di gioco passano cifrati end-to-end dal relay, a una persona o all’intero canale.",
             "Un punteggio di sicurezza da 0 a 100 per i plugin non ufficiali, con i suoi motivi all’installazione e agli aggiornamenti.",
-            "Ogni sito web con cui un plugin comunica è elencato all’installazione e i nuovi siti richiedono il tuo consenso.",
-            "Le pagine dei plugin sono blindate: niente fotocamera, niente microfono, niente appunti e solo i siti web che hai consentito. Una pagina che si blocca non congela più Mumcord.",
-            "Un plugin che richiede un Mumcord più recente lo dice invece di installarsi, e gli aggiornamenti aspettano finché il tuo Mumcord può eseguirli."
+            "Ogni sito web con cui un plugin parla è elencato all’installazione, e i nuovi siti richiedono il tuo consenso.",
+            "Le pagine dei plugin sono bloccate: niente fotocamera, niente microfono, niente appunti e solo i siti web che hai consentito. Una pagina che si blocca non congela più Mumcord.",
+            "Un plugin che richiede un Mumcord più recente lo dice invece di installarsi, e gli aggiornamenti aspettano che il tuo Mumcord possa eseguirli.",
+            "Ogni plugin può aggiungere fino a due voci al menu App, sotto “Plugin” con la sua icona e il suo nome. Le stesse voci compaiono nella palette dei comandi (Ctrl+Maiusc+P).",
+            "I plugin possono riprodurre brevi suoni che senti solo tu. Sono più bassi mentre qualcuno parla e silenziosi quando sei sordo.",
+            "Un plugin può salvare un file, aprire un’immagine o inviarla in chat, ma solo subito dopo un tuo clic e con il permesso. Non sa mai dove si trovano i tuoi file.",
+            "Impostazioni → Plugin mostra quanti dati ogni plugin invia tramite il relay, ha un interruttore “Sicurezza dei plugin” contro i plugin rischiosi ed elenca i plugin rifiutati al caricamento.",
+            "La verifica degli aggiornamenti mostra il punteggio di sicurezza prima e dopo e perché un aggiornamento aspetta. Quando ci sono note di rilascio, un link le apre nel browser."
           ]
         },
         {
           "title": "Amministrazione",
           "items": [
             "Espelli… e Banna… nel menu Amministrazione di una persona, con un motivo. I ban durano 1 ora, 1 giorno, 7 giorni, 30 giorni, per sempre o fino a una data.",
-            "L’elenco dei ban nel menu del server: cerca, filtra, modifica motivo e fine, revoca i ban e banna persone che in questo momento non sono online."
+            "L’elenco dei ban nel menu del server: cerca, filtra, modifica motivo e scadenza, revoca i ban e banna persone che in questo momento non sono online."
           ]
         },
         {
           "title": "Bot",
           "items": [
             "I bot stanno a parte: una sezione “Bot su questo server” sotto l’elenco dei canali mostra ogni bot con ciò che fa. I bot senza voce non compaiono più tra le persone.",
-            "Un mumbot appare come “Mumbot <version>” nel suo profilo e nei dettagli di connessione invece di “Mumcord <version>”."
+            "Un mumbot compare come “Mumbot <version>” nel suo profilo e nei dettagli della connessione invece di “Mumcord <version>”."
           ]
         },
         {
           "title": "Migliorato",
           "items": [
-            "La cronologia della chat tra persone su 0.7.0 si aggiorna più in fretta: ogni immagine viaggia una volta e le immagini che hai già non vengono scaricate di nuovo.",
-            "Mumcord segue ciò che il relay del server consente, e le informazioni sul server mostrano di cosa si tratta.",
-            "Gli interruttori restano visibili in modalità ad alto contrasto.",
-            "Video YouTube e Twitch incorporati: il pulsante a schermo intero funziona e un pulsante apposito copia il link del video."
+            "La cronologia della chat tra persone con la 0.7.0 si aggiorna più in fretta: ogni immagine viaggia una sola volta, e le immagini che hai già non vengono scaricate di nuovo.",
+            "Mumcord segue ciò che il relay del server consente, e le info sul server mostrano di cosa si tratta.",
+            "Gli interruttori restano visibili in modalità alto contrasto.",
+            "Il menu App mostra icone per “Condividi lo schermo” e “Guarda insieme”, e i plugin senza icona ottengono un riquadro colorato tutto loro.",
+            "La scheda della latenza spiega perché il tempo è più lungo di quanto chiede la modalità a bassa latenza, per esempio quando il server audio su Linux richiede blocchi più grandi."
           ]
         },
         {
           "title": "Corretto",
           "items": [
-            "Sui processori più vecchi senza AVX2 Mumcord non si arresta più all’avvio. La condivisione dello schermo vi usa VP9.",
-            "La cronologia della chat dei canali bloccati va solo alle persone realmente dentro il canale, non a chi lo segue o lo ascolta soltanto.",
+            "Sui processori più vecchi senza AVX2, Mumcord non si blocca più all’avvio. La condivisione dello schermo usa lì VP9.",
+            "La cronologia della chat dei canali protetti va solo alle persone effettivamente nel canale, non a chi lo segue o lo ascolta soltanto.",
             "Se qualcuno usa “Usa sempre il relay”, Mumcord non gli invia più il tuo indirizzo di rete.",
-            "Un profilo di un Mumcord più recente non causa più un arresto anomalo. Mumcord lo spiega e propone di scaricare l’ultima versione.",
-            "I messaggi inviati finiscono subito nel punto giusto della cronologia e ci restano.",
-            "Un clic centrale su un link, o un clic tenendo premuto Ctrl, Cmd o Maiusc, lo apre nel tuo browser invece che dentro Mumcord.",
-            "Se non sei registrato su un server il cui relay serve solo utenti registrati, Mumcord ora lo dice invece di “relay non raggiungibile”.",
-            "La finestra dell’elenco dei ban ha un pulsante di chiusura, e Espelli e Banna rispondono ai clic del mouse.",
+            "Un profilo di un Mumcord più recente non causa più un crash. Mumcord lo spiega e offre di scaricare l’ultima versione.",
+            "I messaggi inviati stanno subito al posto giusto nella cronologia e ci restano.",
+            "Un clic con il tasto centrale su un link, o un clic con Ctrl, Cmd o Maiusc premuto, lo apre nel browser invece che dentro Mumcord.",
+            "Se non sei registrato su un server il cui relay serve solo utenti registrati, Mumcord ora lo dice invece di “impossibile raggiungere il relay”.",
+            "Espelli e Banna rispondono ai clic del mouse.",
             "Avviare una watch party dal menu App non ricarica più l’app.",
-            "La condivisione dello schermo ora parla tutte le lingue."
+            "La condivisione dello schermo ora parla tutte le lingue.",
+            "L’audio non singhiozza più quando un’altra app riproduce suoni nello stesso momento.",
+            "Quando finisce una condivisione dello schermo che guardi, non resta più un’immagine vuota, e le fotocamere tornano alla griglia della stanza.",
+            "Ctrl+C sul testo selezionato della chat non lascia più vuoti gli appunti su Linux (X11).",
+            "Un plugin non può più aprire da solo la sua finestra, solo poco dopo un tuo clic. I messaggi di una pagina di plugin arrivano nell’ordine giusto."
           ]
         }
       ]
@@ -2575,8 +2721,6 @@
             "title": "Plugin sul palco",
             "items": [
               "I plugin ottengono l’area multimediale: giochi e lavagne girano dove di solito ci sono la condivisione dello schermo, la watch party e le fotocamere",
-              "Whiteboard, il plugin ufficiale per pensare insieme: una tela infinita con penne, note adesive e puntatore laser, salvata sul tuo dispositivo ed esportabile come PNG, SVG o PDF",
-              "Skyloom, un gioco solo di voce per 2-12 persone: una descrive una costellazione nascosta, tutte le altre piazzano una stella a testa",
               "I plugin si aprono anche dal menu App, nel pannello laterale o in una finestra di dialogo, e grandi quantità di dati passano dal relay con crittografia end-to-end"
             ],
             "mockups": [
@@ -2597,6 +2741,13 @@
               "Plugin con punteggio di sicurezza",
               "Installare un plugin ad alto rischio",
               "I siti web di un plugin al momento dell’installazione"
+            ]
+          },
+          {
+            "title": "Whiteboard & Skyloom",
+            "items": [
+              "Whiteboard, il plugin ufficiale per pensare insieme: una tela infinita con penne, note adesive e puntatore laser, salvata sul tuo dispositivo ed esportabile come PNG, SVG o PDF",
+              "Skyloom, un gioco solo di voce per 2-12 persone: una descrive una costellazione nascosta, tutte le altre piazzano una stella a testa"
             ]
           }
         ]
@@ -2993,7 +3144,7 @@
         "id": "relay",
         "title": "Facoltativo: un relay per connessioni dirette",
         "body": [
-          "Perché condivisione dello schermo e immagini a grandezza naturale funzionino anche quando due persone non riescono a raggiungersi direttamente, o perché nessuno veda l’IP dell’altro, puoi far girare il relay <a href=\"/en/mumpeer\">mumpeer</a> accanto al server. Il contenuto resta cifrato end-to-end.",
+          "Perché condivisione dello schermo, fotocamere e immagini a grandezza naturale funzionino anche quando due persone non riescono a raggiungersi direttamente, o perché nessuno veda l’IP dell’altro, puoi far girare il relay <a href=\"/en/mumpeer\">mumpeer</a> accanto al server. Il contenuto resta cifrato end-to-end.",
           "Mumcord usa il relay dalla versione 0.5.0. Il bot relay <code>mumbot peer</code> fa il resto: annuncia il relay e distribuisce i token.",
           "Nella cartella del server scrivi un segreto condiviso in <code>.env</code> e scarica le due configurazioni di esempio. Inserisci l’indirizzo del tuo server sotto <code>public_host</code> in <code>mumpeer.toml</code>, e l’impronta del tuo server Mumble in <code>bot.toml</code>. Poi aggiungi i servizi qui sotto a <code>docker-compose.yml</code> sotto <code>services:</code>, e <code>mumpeer-data:</code> e <code>mumbot-data:</code> sotto <code>volumes:</code>."
         ],
@@ -3027,7 +3178,7 @@
         ],
         "relay": [
           "Relay mumpeer",
-          "Condivisione dello schermo e immagini grandi anche dietro CGNAT, senza che nessuno veda il tuo IP"
+          "Condivisione dello schermo, fotocamere e immagini grandi anche dietro CGNAT, senza che nessuno veda il tuo IP"
         ],
         "webhook": [
           "Webhook di Mumbot",
@@ -3300,6 +3451,20 @@
         ]
       },
       {
+        "id": "0.5.0",
+        "tag": "0.5.0",
+        "title": "Fotocamere e gruppi",
+        "summary": "Il bot relay ora gestisce fotocamere, dati dei plugin e gruppi.",
+        "items": [
+          "Fotocamere tramite il relay, fino a 9 per canale per impostazione predefinita; schermo e fotocamera girano insieme",
+          "Dati dei plugin per i plugin di Mumcord, fino a 8 mittenti per canale",
+          "Token del relay solo per i membri di gruppi Mumble scelti",
+          "La cronologia della chat dei canali protetti va solo alle persone al loro interno",
+          "Il bot imposta il suo avatar da un URL https o da base64",
+          "Mumble e Mumcord mostrano “Mumbot 0.x.y” come client, i bot musicali compaiono nel loro canale"
+        ]
+      },
+      {
         "id": "later",
         "tag": "Oltre",
         "title": "Idee",
@@ -3324,7 +3489,9 @@
       "points": [
         "Condivisione dello schermo e immagini grandi anche dietro CGNAT o senza mostrare il tuo IP",
         "Gira nella rete del relay, l’API resta interna",
-        "Solo gli utenti registrati del tuo server ricevono i token"
+        "Solo gli utenti registrati del tuo server ricevono i token",
+        "Distribuisce token anche per fotocamere e dati dei plugin quando il relay li consente",
+        "Se vuoi, solo per i membri di gruppi Mumble scelti"
       ]
     },
     "music": {
@@ -3368,7 +3535,7 @@
       "mumpeer": {
         "title": "mumpeer",
         "description": "mumpeer è un piccolo relay per le connessioni dirette di Mumcord: per quando due persone non riescono a raggiungersi direttamente o vogliono nascondere il proprio indirizzo IP.",
-        "lead": "Un piccolo relay per le connessioni dirette di Mumcord tra utenti, per esempio per la condivisione dello schermo o le immagini a grandezza naturale. Quando due persone non riescono a raggiungersi direttamente, dietro CGNAT, firewall rigidi o in reti senza UDP, oppure non vogliono mostrare il proprio indirizzo IP, entrambe si collegano al relay. Esso si limita a inoltrare i pacchetti cifrati, come un server TURN.",
+        "lead": "Un piccolo relay per le connessioni dirette di Mumcord tra utenti, per esempio per la condivisione dello schermo, le fotocamere, i file o le immagini a grandezza naturale. Quando due persone non riescono a raggiungersi direttamente, dietro CGNAT, firewall rigidi o in reti senza UDP, oppure non vogliono mostrare il proprio indirizzo IP, entrambe si collegano al relay. Esso si limita a inoltrare i pacchetti cifrati, come un server TURN.",
         "features": [
           {
             "title": "Accanto al tuo server Mumble",
@@ -3389,6 +3556,14 @@
           {
             "title": "Del tutto facoltativo",
             "body": "Mumcord funziona anche senza bot e relay. In Mumcord scegli tu: relay disattivato, solo quando una connessione diretta fallisce, oppure sempre."
+          },
+          {
+            "title": "Schermo, fotocamere e dati dei plugin",
+            "body": "Una persona invia una sola volta e il relay inoltra a tutti gli spettatori senza leggere nulla. Vale per la condivisione dello schermo e le fotocamere: fino a 18 fotocamere contemporaneamente, ciascuna con al massimo 2500 kbit/s di upload, e fino a 25 spettatori per trasmissione. Funzionano anche i dati dei plugin, ma sono disattivati per impostazione predefinita e hanno la priorità più bassa."
+          },
+          {
+            "title": "Decidi tu cosa è consentito",
+            "body": "Nella sezione `[uses]` attivi o disattivi uno per uno immagini, file, condivisione dello schermo, fotocamera e dati dei plugin. Ci sono anche limiti per banda, sessioni e trasmissioni."
           }
         ],
         "listTitle": "Cosa può vedere l’operatore",

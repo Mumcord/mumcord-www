@@ -373,7 +373,7 @@
         {
           "tag": "Epic 4.1",
           "title": "Fișiere, ecran, cameră și pluginuri",
-          "body": "Vine cu 0.7.0: partajează fișiere fără să-ți arăți adresa IP, partajare de ecran până la 4K pentru până la 25 de persoane, camera ta cu fundal estompat, o tablă și jocul Skyloom ca pluginuri, plus un scor de securitate pentru pluginurile de la alții."
+          "body": "Din 0.7.0: partajează fișiere fără să-ți arăți adresa IP, o partajare de ecran până la 4K pentru până la 25 de persoane, camera ta cu fundal estompat, o tablă și jocul Skyloom ca pluginuri, plus un scor de securitate pentru pluginurile de la alții."
         },
         {
           "tag": "Epic 4",
@@ -604,8 +604,8 @@
       "toolTitle": "Contribuitori"
     },
     "spotlight5": {
-      "label": "Nou în 0.5.0/0.6.0",
-      "labelSoon": "În curând: 0.5.0/0.6.0",
+      "label": "Nou în 0.5.0/0.6.0/0.7.0",
+      "labelSoon": "În curând: 0.5.0/0.6.0/0.7.0",
       "title": "Mai multă liniște. Mai mult tu. Mai mult sunet.",
       "body": "0.5.0 aduce Epic 3: un centru de notificări, blocare, mai multe identități, un nou arbore de canale, muzică în chat, un mod cu latență mică pentru a face muzică împreună și conexiuni directe printr-un relay.",
       "tiles": {
@@ -856,6 +856,24 @@
             "title": "Blochează oameni",
             "body": "„Blochează…” din meniul persoanei ascunde mesajele ei private și cererile, restrânge mesajele ei din canal și îi pune vocea pe mut, doar pentru tine. Blocarea urmează certificatul, deci ține pe toate serverele și la nume noi. Nu se trimite nimic serverului sau persoanei, iar Setări → Confidențialitate îi listează pe toți cei blocați, cu „Deblochează”.",
             "alt": "Confirmarea blocării unei persoane, cu lista a ceea ce se schimbă"
+          },
+          {
+            "id": "kick-ban",
+            "title": "Kick și ban",
+            "body": "Meniul Admin al unei persoane oferă „Kick…” și „Ban…”, cu un motiv. Banurile durează 1 oră, 1 zi, 7 zile, 30 de zile, pe vecie sau până la o dată, după certificat și adresa IP. Doar cu dreptul pe canalul rădăcină.",
+            "alt": "Dialogul pentru banarea unei persoane"
+          },
+          {
+            "id": "ban-list",
+            "title": "Lista de banuri",
+            "body": "„Lista de banuri…” din meniul serverului arată toate banurile cu nume, amprentă, adresă, motiv și sfârșit. Caută, filtrează, editează motivul și sfârșitul direct în listă, ridică banuri sau banează oameni care nu sunt online.",
+            "alt": "Fereastra listei de banuri"
+          },
+          {
+            "id": "bots-section",
+            "title": "Boții, separat",
+            "body": "O secțiune „Boți pe acest server” sub lista de canale arată fiecare bot cu ce face, de exemplu releu, istoric de chat sau webhook-uri. Profilul și meniul, inclusiv mesajele private, merg de acolo.",
+            "alt": "Secțiunea cu boții de pe un server"
           }
         ]
       },
@@ -1095,6 +1113,11 @@
             "title": "Panou de utilizator liniștit",
             "body": "Panoul de jos din lista de canale are mereu aceeași înălțime: tu cu nume și server, o linie de stare, de exemplu reconectare sau canalul tău vocal, chipuri mici pentru Nu deranja, modul cu latență mică și conexiune, plus butoanele de microfon, căști și închidere. Lista de canale de deasupra nu mai sare.",
             "alt": "Panoul de utilizator în mai multe stări, de la vorbit și mut până la reconectare"
+          },
+          {
+            "id": "camera-entry",
+            "title": "Camera în panoul utilizatorului",
+            "body": "Un buton de cameră lângă mute și deafen deschide previzualizarea. Cât timp camera e pornită, devine roșu și o oprește imediat, „Cameră pornită” apare sub numele tău, iar o insignă roșie o arată în tray."
           }
         ]
       },
@@ -1162,8 +1185,8 @@
           {
             "id": "screen-share",
             "title": "Partajarea ecranului",
-            "body": "Un ecran sau o fereastră pentru până la 8 spectatori, la 720p și 30 de cadre pe secundă, pe Windows și macOS, dacă vrei, cu sunetul aplicației partajate. O pornești din butonul Aplicații din chat. Spectatorii se uită în coloana principală, cu rezoluție, rată de cadre și detalii despre flux; tu primești sus în chat o bară de control cu pauză, sunet, spectatori și oprire.",
-            "alt": "Un ecran partajat în coloana principală, cu detaliile fluxului și lista spectatorilor"
+            "body": "Un ecran sau o fereastră pentru până la 8 spectatori direct sau până la 25 prin releu, cu sunet și AV1 dacă vrei. O pornești din butonul Aplicații din chat și setezi întâi calitatea și codecul. Spectatorii se uită în coloana principală, cu rezoluție, codec, traseu și detalii; tu primești sus în chat o bară cu calitate, encoder, pauză, sunet, spectatori și oprire.",
+            "alt": "Un ecran partajat în coloana principală, cu detaliile transmisiei și lista spectatorilor"
           },
           {
             "id": "floating-widgets",
@@ -1178,9 +1201,74 @@
           },
           {
             "id": "relay",
-            "title": "Releu al comunității",
-            "body": "Comunitatea unui server poate rula un releu lângă serverul Mumble. Imaginile la dimensiune completă și partajarea ecranului merg atunci chiar și când nu e posibilă o conexiune directă, iar cu „mereu prin releu” cealaltă persoană nu-ți vede niciodată adresa IP. Releul nu poate citi conexiunea criptată, iar vocea nu-l folosește niciodată. Alegi în Setări → Confidențialitate, și pe fiecare server în parte.",
-            "alt": "Setările de confidențialitate cu opțiunile peer-to-peer direct, releu și oprit"
+            "title": "Releu de comunitate",
+            "body": "Comunitatea unui server poate rula un releu lângă serverul ei Mumble. Imaginile la dimensiune completă, fișierele, camerele și partajarea ecranului merg atunci chiar și când nu e posibilă o conexiune directă, iar cu „mereu prin releu” cealaltă persoană nu-ți vede niciodată adresa IP. Releul nu poate citi conexiunea criptată, vocea nu-l folosește niciodată, iar Mumcord nu folosește ce releul nu permite. Alegi în Setări → Confidențialitate, și pe fiecare server.",
+            "alt": "Setările de confidențialitate cu opțiunile peer-to-peer: direct, releu și oprit"
+          },
+          {
+            "id": "file-sharing",
+            "title": "Partajarea de fișiere",
+            "body": "Trage fișiere sau foldere în chat sau folosește agrafa, până la 2 GB. Trec mereu prin releul serverului, nimeni nu-ți vede adresa IP, iar fișierul nu ajunge niciodată pe serverul Mumble.",
+            "alt": "Un fișier partajat ca un card în chat"
+          },
+          {
+            "id": "file-safety",
+            "title": "Descărcări sigure",
+            "body": "Fiecare descărcare întreabă întâi și arată folderul. Programele și scripturile primesc un avertisment în plus, iar apoi Mumcord verifică dacă fișierul a ajuns neschimbat. În setări oprești primirea și alegi dimensiunea și folderul.",
+            "alt": "Setările pentru partajarea de fișiere"
+          },
+          {
+            "id": "camera",
+            "title": "Cameră",
+            "body": "Camera ta pentru toți din canalul tău de voce, doar prin releu și criptată end-to-end. Începe cu o previzualizare pe care n-o vede nimeni, iar un buton de cameră din panoul utilizatorului, meniul Aplicații, tray și o scurtătură de la tastatură o pornesc și o opresc.",
+            "alt": "Setările camerei, cu previzualizare"
+          },
+          {
+            "id": "camera-room",
+            "title": "Camera room",
+            "body": "Camerele din canal stau deasupra chatului, până la nouă tile-uri într-o grilă sau un tile mare cu Speaker. Lângă o partajare de ecran sau un watch party formează o bandă alături sau deasupra, sau le ascunzi.",
+            "alt": "Camera room cu mai multe camere deasupra chatului"
+          },
+          {
+            "id": "camera-backgrounds",
+            "title": "Fundaluri pentru cameră",
+            "body": "Fără fundal, estompare (ușoară sau puternică), una dintre cele 18 imagini încorporate sau a ta. Se calculează pe computerul tău și o poți schimba fără să oprești camera.",
+            "alt": "Previzualizarea camerei cu fundal puternic estompat"
+          },
+          {
+            "id": "camera-tiles",
+            "title": "Opțiuni pentru tile",
+            "body": "⋯ de pe un tile oferă „Fixează pentru mine”, „Arată mare”, „Ascunde video” (atunci nu se mai descarcă deloc) și „Calitate pentru mine”. Plus o pagină proprie Setări → Cameră, iar totul merge și de la tastatură.",
+            "alt": "Meniul unui tile de cameră"
+          },
+          {
+            "id": "screen-share-sound",
+            "title": "Sunet la partajare",
+            "body": "Un ecran întreg partajează tot sunetul în afară de cel al Mumcord, o fereastră doar sunetul acelei aplicații. Unde nu e clar pe cine ai în vedere, „Sunetul cărei aplicații?” întreabă. Merge pe Windows 10, macOS 13 și Linux cu PipeWire.",
+            "alt": "Dialogul de dinainte de pornirea partajării ecranului"
+          },
+          {
+            "id": "screen-share-av1",
+            "title": "AV1 pentru text clar",
+            "body": "Mumcord verifică în fundal ce poate computerul tău și folosește AV1 pe placa video, AV1 pe procesor sau VP9. Spectatorii redau AV1 chiar și fără hardware, iar pentru versiunile mai vechi de Mumcord partajarea trece pe VP9.",
+            "alt": "Fila de setări pentru partajarea ecranului"
+          },
+          {
+            "id": "screen-share-relay",
+            "title": "Până la 25 de spectatori",
+            "body": "Când releul o oferă, încarci o singură dată, iar releul trimite partajarea tuturor, până la limita lui (implicit 25). E criptată end-to-end, releul nu vede nimic."
+          },
+          {
+            "id": "screen-share-quality",
+            "title": "Reglarea calității",
+            "body": "Înainte să pornești alegi rezoluția, rata de cadre, text clar sau mișcare fluidă și limita de upload. În timpul partajării meniul Calitate schimbă totul fără repornire, iar fila „Partajare de ecran” din Setări ține valorile tale implicite. Spectatorii pot reduce rata de cadre.",
+            "alt": "Comenzile în timpul vizionării unei partajări de ecran"
+          },
+          {
+            "id": "media-area-resize",
+            "title": "Împărțirea între imagine și chat",
+            "body": "Trage mânerul dintre imaginea unei partajări sau a unui watch party și chat, sau folosește tastele săgeți. Se fixează la o treime, jumătate și două treimi, iar Mumcord ține minte înălțimea.",
+            "alt": "O partajare de ecran cu camere într-o bandă alături"
           }
         ]
       },
@@ -1214,8 +1302,8 @@
           {
             "id": "plugin-safety",
             "title": "Sandbox, semnături și un întrerupător de urgență",
-            "body": "Pluginurile rulează izolat, fără acces la rețea, fișiere sau audio, cu limite de memorie și timp; unul care se blochează mereu e oprit, iar vocea ta nu e afectată niciodată. Pluginurile oficiale sunt semnate și verificate. Un întrerupător de urgență poate dezactiva pentru toți un plugin dăunător, „Oprește toate pluginurile” le oprește deodată, iar --no-plugins pornește fără niciunul.",
-            "alt": "Fereastra de instalare EVE Fit cu o bară de progres cu textul „Checking signature…” deasupra listei de permisiuni."
+            "body": "Pluginurile rulează izolat, fără acces la fișiere sau audio și doar la site-uri pe care le-au declarat și le-ai aprobat, cu limite de memorie și timp; unul care se blochează mereu e oprit, iar vocea ta nu e afectată niciodată. Pluginurile oficiale sunt semnate și verificate. Un întrerupător de urgență poate dezactiva pentru toți un plugin dăunător, „Oprește toate pluginurile” le oprește pe loc, iar --no-plugins pornește fără niciunul.",
+            "alt": "Solicitarea de instalare EVE fit cu o bară de progres „Se verifică semnătura…” deasupra listei de permisiuni."
           },
           {
             "id": "plugin-updates",
@@ -1264,6 +1352,45 @@
             "title": "EVE Fit",
             "body": "Lipește un fitting din EVE Online în chat și toți cei cu pluginul văd un card cu nava. Un click deschide roata fittingului cu capacitor, atac, apărare și navigație, offline în Mumcord, iar „Copiază fittingul” îl scoate înapoi.",
             "alt": "Fereastra EVE Fit cu nava Algos în roata de fitting, pictograme de module și statistici de capacitor, atac, apărare, țintire, navigație și drone."
+          },
+          {
+            "id": "plugin-media-area",
+            "title": "Pluginuri în zona media",
+            "body": "Activitățile pluginurilor rulează în zona media, cu antetul propriu al Mumcord: cine a pornit, câți participă, cine a făcut pluginul. Cu ecran complet și „Părăsește pluginul”. Când rulează mai multe, filele sau Alt+1 până la Alt+9 comută între ele.",
+            "alt": "Un plugin în zona media, cu file deasupra"
+          },
+          {
+            "id": "plugin-side-panel",
+            "title": "Panou lateral pentru pluginuri",
+            "body": "Un plugin își poate arăta pagina în dreapta chatului, în locul listei de membri. Îi schimbi lățimea, Mumcord ține minte lățimea pentru fiecare plugin, iar un meniu ⋯ duce la detaliile pluginului.",
+            "alt": "Un plugin în panoul lateral, lângă chat"
+          },
+          {
+            "id": "plugin-apps-menu",
+            "title": "Pluginuri în meniul Aplicații",
+            "body": "Fiecare plugin poate adăuga până la două elemente în meniul Aplicații, sub „Pluginuri”, cu pictograma și numele lui. Aceleași elemente apar în paleta de comenzi (Ctrl+Shift+P), iar un plugin poate dezactiva un element cu un motiv.",
+            "alt": "Meniul Aplicații cu elemente de plugin"
+          },
+          {
+            "id": "plugin-security-score",
+            "title": "Scor de securitate",
+            "body": "Pluginurile neoficiale primesc un scor de la 0 la 100, cu cele mai importante motive și detalierea completă la instalare și actualizare. Pluginurile cu risc ridicat cer o bifă separată, iar „Siguranța pluginurilor” din setări le poate bloca complet.",
+            "alt": "Detaliile scorului de securitate al unui plugin"
+          },
+          {
+            "id": "plugin-min-version",
+            "title": "Versiune minimă pentru pluginuri",
+            "body": "Dacă un plugin are nevoie de un Mumcord mai nou, scrie „Necesită Mumcord X sau mai nou” și instalarea e dezactivată. Actualizările automate așteaptă până când Mumcord-ul tău poate rula noua versiune."
+          },
+          {
+            "id": "plugin-websites",
+            "title": "Site-urile pluginurilor",
+            "body": "Pluginurile care comunică cu site-uri își listează fiecare adresă la instalare și în detalii, cu numărul de cereri. Ajung doar la ce au declarat și ai aprobat, doar la adrese publice cu certificat valid. Paginile pluginurilor se deschid și într-un dialog."
+          },
+          {
+            "id": "plugin-relay-data",
+            "title": "Datele pluginurilor prin releu",
+            "body": "Datele jocului trec criptate end-to-end prin releu, până la 64 KB per mesaj, către o persoană sau tot canalul. Le oprești pentru fiecare plugin, iar Setări → Pluginuri arată câte date a folosit."
           }
         ]
       },
@@ -1370,88 +1497,107 @@
   "changelog": [
     {
       "version": "0.7.0",
-      "teaser": "Partajare de fișiere, camera ta, partajare de ecran cu sunet și AV1 pentru până la 25 de spectatori, pluginuri în zona media, eliminare, ban și lista de bannuri.",
-      "summary": "O actualizare mare: partajezi fișiere de până la 2 GB în canal, mereu prin relay, îți arăți camera cu fundal estompat, partajarea ecranului primește sunet, AV1 și până la 25 de spectatori, împarți imaginea și chatul cu un mâner, pluginurile primesc zona media și reguli clare de siguranță, iar administratorii pot elimina, bana și ține lista de bannuri în ordine.",
+      "teaser": "Partajare de fișiere, camera ta, partajarea ecranului cu sunet și AV1 pentru până la 25 de spectatori, pluginuri în zona media, kick, ban și lista de banuri.",
+      "summary": "O actualizare mare: partajezi fișiere de până la 2 GB în canal, mereu prin releu, îți arăți camera cu fundal estompat, partajarea ecranului primește sunet, AV1 și până la 25 de spectatori, împarți imaginea și chatul dintr-un singur mâner, pluginurile primesc zona media și reguli clare de siguranță, iar adminii pot da kick, ban și țin lista de banuri în ordine.",
       "groups": [
         {
-          "title": "Partajare de fișiere",
+          "title": "Partajarea de fișiere",
           "items": [
-            "Trage fișiere în chat sau atașează-le cu agrafa, până la 2 GB. Folderele sunt mai întâi comprimate în zip.",
-            "Fișierele trec mereu prin relay-ul serverului: nimeni nu îți vede adresa IP, iar fișierul nu atinge niciodată serverul Mumble.",
-            "Fiecare descărcare întreabă mai întâi și arată folderul în care se salvează. Apoi Mumcord verifică suma de control SHA-256, pe care o poți și copia.",
+            "Trage fișiere și foldere în chat sau atașează-le cu agrafa, până la 2 GB. Dacă nu există releu sau nu permite fișiere, agrafa spune de ce.",
+            "Fișierele trec mereu prin releul serverului: nimeni nu-ți vede adresa IP, iar fișierul nu ajunge niciodată pe serverul Mumble.",
+            "Fiecare descărcare întreabă întâi și arată folderul în care se salvează. Apoi Mumcord verifică dacă fișierul a ajuns neschimbat.",
             "Programele și scripturile primesc un avertisment în plus înainte de descărcare și înainte de deschidere.",
-            "Un fișier rămâne disponibil cât timp expeditorul este online, cel mult 24 de ore.",
+            "Fișierele tale partajate arată cine le-a descărcat și au un buton „Oprește partajarea”.",
+            "Imaginile pe care le arunci într-un canal pot fi trimise ca imagini sau partajate ca fișiere. Toate celelalte fișiere se partajează direct.",
             "Nou în Setări → Confidențialitate și conexiuni: primirea fișierelor pornită sau oprită, dimensiunea maximă de la 100 MB la 2 GB și folderul pentru fișierele primite."
           ]
         },
         {
-          "title": "Partajare de ecran",
+          "title": "Partajarea ecranului",
           "items": [
-            "Sunet la partajare: un ecran întreg partajează tot sunetul, în afară de cel al Mumcord, o fereastră partajează doar sunetul aplicației respective. Funcționează pe Windows 10 (2004 sau mai nou), macOS 13 și Linux cu PipeWire.",
-            "Înainte de start alegi rezoluția până la 4K, rata de cadre până la 60 fps, text clar sau mișcare fluidă, codecul și limita de încărcare. Meniul Calitate le schimbă în timpul partajării, fără să o repornească.",
-            "Prin relay încarci o singură dată și se uită până la 25 de persoane, cu criptare end-to-end.",
-            "AV1 pe placa video sau pe procesor pentru text clar cu mai puțină lățime de bandă. VP9 rămâne ca variantă de rezervă, inclusiv pentru spectatorii cu un Mumcord mai vechi.",
-            "Spectatorii văd codecul, calea și calitatea și își pot reduce rata de cadre. Lista spectatorilor arată cine primește ce.",
-            "Filă nouă „Partajare de ecran” în Setări, cu valorile tale implicite și encoderul pe care îl folosește calculatorul tău.",
-            "Împarte singur imaginea și chatul: trage mânerul dintre o partajare de ecran sau watch party și chat. Trage-l complet în sus și imaginea devine o mini bară, iar Mumcord reține înălțimea."
+            "Sunet la partajare: un ecran întreg partajează tot sunetul în afară de cel al Mumcord, o fereastră doar sunetul acelei aplicații. Merge pe Windows 10 (2004 sau mai nou), macOS 13 și Linux cu PipeWire.",
+            "Înainte să pornești, alege rezoluția, rata de cadre, text clar sau mișcare fluidă, codecul și limita de upload. Meniul Calitate le schimbă în timpul partajării, fără repornire.",
+            "Mumcord alege singur encoderul: AV1 pe placa video, AV1 pe procesor sau VP9. Bara partajării tale arată calitatea, encoderul și dacă trece prin releu.",
+            "Când partajezi o fereastră, „Sunetul cărei aplicații?” întreabă al cui sunet merge cu ea. Poți alege și „Fără sunet”.",
+            "Prin releu încarci o singură dată și până la 25 de persoane se uită, criptat end-to-end.",
+            "AV1 pe placa video sau pe procesor pentru text clar cu mai puțină lățime de bandă. VP9 rămâne ca variantă de rezervă, și pentru spectatorii cu un Mumcord mai vechi.",
+            "Spectatorii văd codecul, traseul și calitatea și pot reduce rata de cadre. Lista spectatorilor arată cine primește ce.",
+            "Filă nouă „Partajare de ecran” în Setări, cu valorile tale implicite și encoderul pe care îl folosește computerul tău.",
+            "Împarte singur imaginea și chatul: trage mânerul dintre o partajare de ecran sau un watch party și chat. Trage-l complet în sus și imaginea devine o mini bară, iar Mumcord ține minte înălțimea."
           ]
         },
         {
           "title": "Cameră",
           "items": [
-            "Camera ta pentru toți din canalul tău vocal, doar prin relay și criptată end-to-end, pentru până la 25 de spectatori.",
-            "Camera pornește cu o previzualizare care nu trimite nimic. Iese în aer abia când o pornești.",
-            "Estompează-ți fundalul sau pune o imagine în spatele tău, calculat pe calculatorul tău.",
-            "Dacă camera nu poate fi folosită, Mumcord spune de ce, de exemplu când relay-ul serverului nu permite camere."
+            "Camera ta pentru toți din canalul tău de voce, doar prin releu și criptată end-to-end.",
+            "Camera room stă deasupra chatului: până la nouă tile-uri într-o grilă sau aranjamentul Speaker cu un tile mare. Fiecare arată numele, o pictogramă de microfon oprit și un cadru verde cât timp persoana vorbește.",
+            "Camera începe cu o previzualizare pe care n-o vede nimeni altcineva. Alegi camera și fundalul, iar ea iese abia când o pornești.",
+            "Fundaluri: fără, estompare (ușoară sau puternică), una dintre cele 18 imagini încorporate sau a ta. Se calculează pe computerul tău și o poți schimba cât timp rulează camera.",
+            "⋯ de pe un tile oferă „Fixează pentru mine”, „Arată mare”, „Ascunde videoul lui …” (atunci nu se mai descarcă deloc) și „Calitate pentru mine”. Totul merge și de la tastatură.",
+            "Lângă o partajare de ecran sau un watch party, imaginea rămâne mare, iar camerele stau într-o bandă alături sau deasupra. Sau le ascunzi, și atunci nu se descarcă.",
+            "Un buton de cameră în panoul utilizatorului și „Pornește camera” în meniul Aplicații deschid previzualizarea. Cât timp camera e pornită, butonul devine roșu, iar în arborele de canale apare o pictogramă de cameră.",
+            "Filă nouă „Cameră” în Setări: previzualizare, cameră, calitatea trimiterii, autovedere în oglindă, fundal implicit și cum vezi camerele celorlalți. Plus o scurtătură de la tastatură pentru pornirea și oprirea camerei.",
+            "Cât timp camera e pornită, pictograma din tray arată o insignă roșie de cameră, iar meniul ei oferă „Oprește camera”. Când ți se blochează ecranul, camera se poate opri singură.",
+            "Dacă camera nu poate fi folosită sau se oprește singură, Mumcord spune de ce, de exemplu când releul serverului nu permite camere."
           ]
         },
         {
           "title": "Pluginuri",
           "items": [
             "Pluginurile primesc zona media, un panou lateral lângă chat, dialoguri și elemente în meniul Aplicații. Când rulează mai multe, filele comută între ele.",
-            "Datele de joc merg criptate end-to-end prin relay, către o persoană sau către tot canalul.",
-            "Un scor de siguranță de la 0 la 100 pentru pluginurile neoficiale, cu motivele lui la instalare și la actualizări.",
-            "Fiecare site cu care vorbește un plugin este listat la instalare, iar site-urile noi au nevoie de acordul tău.",
+            "Datele jocului trec criptate end-to-end prin releu, către o persoană sau tot canalul.",
+            "Un scor de securitate de la 0 la 100 pentru pluginurile neoficiale, cu motivele lui la instalare și la actualizări.",
+            "Fiecare site cu care vorbește un plugin e listat la instalare, iar site-urile noi cer acordul tău.",
             "Paginile pluginurilor sunt blocate: fără cameră, fără microfon, fără clipboard și doar site-urile pe care le-ai permis. O pagină care se blochează nu mai îngheață Mumcord.",
-            "Un plugin care are nevoie de un Mumcord mai nou spune asta în loc să se instaleze, iar actualizările așteaptă până când Mumcord-ul tău le poate rula."
+            "Un plugin care are nevoie de un Mumcord mai nou spune asta în loc să se instaleze, iar actualizările așteaptă până când Mumcord-ul tău le poate rula.",
+            "Fiecare plugin poate adăuga până la două elemente în meniul Aplicații, sub „Pluginuri”, cu pictograma și numele lui. Aceleași elemente apar în paleta de comenzi (Ctrl+Shift+P).",
+            "Pluginurile pot reda sunete scurte pe care le auzi doar tu. Sunt mai încet cât timp vorbește cineva și mute cât timp ești cu sunetul oprit.",
+            "Un plugin poate salva un fișier, deschide o imagine sau posta o imagine în chat, dar doar imediat după un clic al tău și cu permisiune. Nu află niciodată unde sunt fișierele tale.",
+            "Setări → Pluginuri arată câte date trimite fiecare plugin prin releu, are un comutator „Siguranța pluginurilor” împotriva pluginurilor riscante și listează pluginurile refuzate la încărcare.",
+            "Revizuirea actualizării arată scorul de securitate înainte și după și de ce o actualizare așteaptă. Când există note de lansare, un link le deschide în browser."
           ]
         },
         {
-          "title": "Administrare",
+          "title": "Admin",
           "items": [
-            "Elimină… și Banează… în meniul Administrare al unei persoane, cu un motiv. Bannurile durează 1 oră, 1 zi, 7 zile, 30 de zile, pe vecie sau până la o dată.",
-            "Lista de bannuri în meniul serverului: caută, filtrează, editează motivul și sfârșitul, ridică bannuri și banează persoane care nu sunt online chiar acum."
+            "Kick… și Ban… în meniul Admin al unei persoane, cu un motiv. Banurile durează 1 oră, 1 zi, 7 zile, 30 de zile, pe vecie sau până la o dată.",
+            "Lista de banuri în meniul serverului: caută, filtrează, editează motivul și sfârșitul, ridică banuri și banează oameni care nu sunt online acum."
           ]
         },
         {
           "title": "Boți",
           "items": [
-            "Boții stau separat: o secțiune „Boți pe acest server” sub lista de canale arată fiecare bot cu ceea ce face. Boții fără voce nu mai apar printre persoane.",
-            "Un mumbot apare ca „Mumbot <version>” în profilul său și în detaliile conexiunii în loc de „Mumcord <version>”."
+            "Boții stau separat: o secțiune „Boți pe acest server” sub lista de canale arată fiecare bot cu ce face. Boții fără voce nu mai apar printre oameni.",
+            "Un mumbot apare ca „Mumbot <version>” în profilul lui și în detaliile conexiunii, în loc de „Mumcord <version>”."
           ]
         },
         {
-          "title": "Îmbunătățit",
+          "title": "Îmbunătățiri",
           "items": [
-            "Istoricul chatului între persoane cu 0.7.0 se actualizează mai repede: fiecare imagine călătorește o dată, iar imaginile pe care le ai deja nu se mai descarcă.",
-            "Mumcord urmează ce permite relay-ul serverului, iar informațiile serverului arată ce este acesta.",
+            "Istoricul chatului între oameni cu 0.7.0 se sincronizează mai repede: fiecare imagine călătorește o singură dată, iar imaginile pe care le ai deja nu se mai descarcă.",
+            "Mumcord respectă ce permite releul serverului, iar informațiile serverului arată ce este.",
             "Comutatoarele rămân vizibile în modul cu contrast ridicat.",
-            "Videoclipuri YouTube și Twitch încorporate: butonul pentru ecran complet funcționează, iar un buton separat copiază linkul videoclipului."
+            "Meniul Aplicații arată pictograme pentru „Partajează-ți ecranul” și „Vizionați împreună”, iar pluginurile fără pictogramă primesc un tile colorat propriu.",
+            "Cardul de latență spune de ce timpul e mai lung decât cere modul cu latență redusă, de exemplu când serverul de sunet de pe Linux are nevoie de blocuri mai mari."
           ]
         },
         {
-          "title": "Reparat",
+          "title": "Remedieri",
           "items": [
-            "Pe procesoarele mai vechi fără AVX2, Mumcord nu mai cade la pornire. Partajarea ecranului folosește acolo VP9.",
-            "Istoricul chatului canalelor blocate ajunge doar la persoanele aflate cu adevărat în canal, nu la cele care doar îl urmăresc sau îl ascultă.",
-            "Dacă cineva folosește „Folosește mereu relay”, Mumcord nu îi mai trimite adresa ta de rețea.",
-            "Un profil de la un Mumcord mai nou nu mai provoacă o cădere. Mumcord explică și se oferă să descarce ultima versiune.",
-            "Mesajele trimise ajung imediat la locul potrivit în istoric și rămân acolo.",
-            "Un clic de mijloc pe un link, sau un clic cu Ctrl, Cmd sau Shift apăsat, îl deschide în browserul tău, nu în Mumcord.",
-            "Dacă nu ești înregistrat pe un server al cărui relay servește doar utilizatori înregistrați, Mumcord spune acum asta în loc de „relay-ul nu a putut fi contactat”.",
-            "Fereastra listei de bannuri are un buton de închidere, iar Elimină și Banează răspund la clicurile mouse-ului.",
+            "Pe procesoare mai vechi fără AVX2, Mumcord nu se mai blochează la pornire. Partajarea ecranului folosește acolo VP9.",
+            "Istoricul chatului canalelor blocate ajunge doar la oamenii aflați efectiv în canal, nu la cei care doar îl urmăresc sau îl ascultă.",
+            "Dacă cineva folosește „Mereu prin releu”, Mumcord nu-i mai trimite adresa ta de rețea.",
+            "Un profil de la un Mumcord mai nou nu mai provoacă o cădere. Mumcord explică și oferă să descarce cea mai recentă versiune.",
+            "Mesajele trimise ajung imediat la locul potrivit din istoric și rămân acolo.",
+            "Un clic de mijloc pe un link, sau un clic cu Ctrl, Cmd sau Shift apăsat, îl deschide în browser, nu în Mumcord.",
+            "Dacă nu ești înregistrat pe un server al cărui releu servește doar utilizatori înregistrați, Mumcord spune acum asta, în loc de „releul nu a putut fi contactat”.",
+            "Kick și Ban răspund la clicurile de mouse.",
             "Pornirea unui watch party din meniul Aplicații nu mai reîncarcă aplicația.",
-            "Partajarea de ecran vorbește acum toate limbile."
+            "Partajarea ecranului vorbește acum toate limbile.",
+            "Audio nu mai sacadează când o altă aplicație redă sunet în același timp.",
+            "Când se termină o partajare de ecran pe care o urmărești, nu rămâne nicio imagine goală, iar camerele revin în grila camerei.",
+            "Ctrl+C pe textul selectat din chat nu mai lasă clipboardul gol pe Linux (X11).",
+            "Un plugin nu-și mai poate deschide singur dialogul, ci doar la scurt timp după un clic al tău. Mesajele de la o pagină de plugin ajung în ordinea corectă."
           ]
         }
       ]
@@ -2575,8 +2721,6 @@
             "title": "Pluginurile pe scenă",
             "items": [
               "Pluginurile primesc zona media: jocurile și tablele rulează acolo unde sunt de obicei partajarea de ecran, watch party și camerele",
-              "Whiteboard, pluginul oficial pentru gândit împreună: o pânză nesfârșită cu pixuri, notițe adezive și un pointer laser, salvată pe dispozitivul tău și exportabilă ca PNG, SVG sau PDF",
-              "Skyloom, un joc doar cu vocea pentru 2 până la 12 persoane: una descrie o constelație ascunsă, iar toți ceilalți așază câte o stea",
               "Pluginurile se deschid și din meniul Aplicații, în panoul lateral sau într-un dialog, iar cantitățile mari de date trec prin releu criptate integral (end-to-end)"
             ],
             "mockups": [
@@ -2597,6 +2741,13 @@
               "Pluginuri cu scor de securitate",
               "Instalarea unui plugin cu risc ridicat",
               "Site-urile unui plugin la instalare"
+            ]
+          },
+          {
+            "title": "Whiteboard & Skyloom",
+            "items": [
+              "Whiteboard, pluginul oficial pentru gândit împreună: o pânză nesfârșită cu pixuri, notițe adezive și un pointer laser, salvată pe dispozitivul tău și exportabilă ca PNG, SVG sau PDF",
+              "Skyloom, un joc doar cu vocea pentru 2 până la 12 persoane: una descrie o constelație ascunsă, iar toți ceilalți așază câte o stea"
             ]
           }
         ]
@@ -2993,7 +3144,7 @@
         "id": "relay",
         "title": "Opțional: un relay pentru conexiuni directe",
         "body": [
-          "Ca partajarea ecranului și imaginile la dimensiune completă să meargă și când două persoane nu se pot ajunge direct, sau ca nimeni să nu vadă IP-ul celuilalt, poți rula relay-ul <a href=\"/en/mumpeer\">mumpeer</a> lângă server. Conținutul rămâne criptat end-to-end.",
+          "Ca partajarea ecranului, camerele și imaginile la dimensiune completă să meargă și când două persoane nu se pot ajunge direct, sau ca nimeni să nu vadă IP-ul celuilalt, poți rula releul <a href=\"/en/mumpeer\">mumpeer</a> lângă server. Conținutul rămâne criptat end-to-end.",
           "Mumcord folosește relay-ul de la versiunea 0.5.0. Botul de relay <code>mumbot peer</code> face restul: anunță relay-ul și împarte tokenurile.",
           "În folderul serverului scrie un secret comun în <code>.env</code> și descarcă cele două configurații-exemplu. Pune adresa serverului tău la <code>public_host</code> în <code>mumpeer.toml</code>, iar amprenta serverului tău Mumble în <code>bot.toml</code>. Apoi adaugă serviciile de mai jos în <code>docker-compose.yml</code> sub <code>services:</code>, iar <code>mumpeer-data:</code> și <code>mumbot-data:</code> sub <code>volumes:</code>."
         ],
@@ -3027,7 +3178,7 @@
         ],
         "relay": [
           "Releu mumpeer",
-          "Partajare de ecran și imagini mari chiar și în spatele CGNAT, fără ca cineva să-ți vadă IP-ul"
+          "Partajare de ecran, camere și imagini mari chiar și în spatele CGNAT, fără ca cineva să-ți vadă IP-ul"
         ],
         "webhook": [
           "Webhook Mumbot",
@@ -3300,6 +3451,20 @@
         ]
       },
       {
+        "id": "0.5.0",
+        "tag": "0.5.0",
+        "title": "Camere și grupuri",
+        "summary": "Botul de releu se ocupă acum de camere, date de plugin și grupuri.",
+        "items": [
+          "Camere prin releu, implicit până la 9 pe canal; ecranul și camera rulează împreună",
+          "Date de plugin pentru pluginurile Mumcord, până la 8 expeditori pe canal",
+          "Tokenuri de releu doar pentru membrii unor grupuri Mumble alese",
+          "Istoricul chatului canalelor blocate ajunge doar la oamenii dinăuntru",
+          "Botul își setează avatarul dintr-un URL https sau base64",
+          "Mumble și Mumcord arată „Mumbot 0.x.y” ca client, iar boții de muzică apar în canalul lor"
+        ]
+      },
+      {
         "id": "later",
         "tag": "Mai departe",
         "title": "Idei",
@@ -3324,7 +3489,9 @@
       "points": [
         "Partajare de ecran și imagini mari chiar și în spatele CGNAT sau fără să-ți arăți IP-ul",
         "Rulează în rețeaua releului, API-ul rămâne intern",
-        "Doar utilizatorii înregistrați ai propriului tău server primesc tokenuri"
+        "Doar utilizatorii înregistrați ai propriului tău server primesc tokenuri",
+        "Împarte tokenuri și pentru camere și date de plugin când releul le permite",
+        "Dacă vrei, doar pentru membrii unor grupuri Mumble alese"
       ]
     },
     "music": {
@@ -3368,7 +3535,7 @@
       "mumpeer": {
         "title": "mumpeer",
         "description": "mumpeer este un mic relay pentru conexiunile directe ale Mumcord: pentru când două persoane nu se pot ajunge direct sau vor să-și ascundă adresa IP.",
-        "lead": "Un mic relay pentru conexiunile directe ale Mumcord între utilizatori, de exemplu pentru partajarea ecranului sau imagini la dimensiune completă. Când două persoane nu se pot ajunge direct, în spatele unui CGNAT, al unor firewall-uri stricte sau în rețele fără UDP, ori nu vor să-și arate adresa IP, ambele se conectează în schimb la relay. Acesta doar transmite pachetele criptate, ca un server TURN.",
+        "lead": "Un mic releu pentru conexiunile directe ale Mumcord între utilizatori, de exemplu pentru partajarea ecranului, camere, fișiere sau imagini la dimensiune completă. Când două persoane nu se pot ajunge direct, în spatele unui CGNAT, al unor firewall-uri stricte sau în rețele fără UDP, ori nu vor să-și arate adresa IP, ambele se conectează în schimb la releu. Acesta doar transmite pachetele criptate, ca un server TURN.",
         "features": [
           {
             "title": "Lângă serverul tău Mumble",
@@ -3389,6 +3556,14 @@
           {
             "title": "Complet opțional",
             "body": "Mumcord funcționează și fără bot și relay. În Mumcord alegi tu: relay oprit, doar când o conexiune directă eșuează, sau mereu."
+          },
+          {
+            "title": "Ecran, camere și date de plugin",
+            "body": "O persoană trimite o singură dată, iar releul transmite mai departe tuturor spectatorilor, fără să citească nimic. Asta acoperă partajarea ecranului și camerele: până la 18 camere în același timp, fiecare cu cel mult 2500 kbit/s upload, și până la 25 de spectatori per transmisie. Datele de plugin merg și ele, dar sunt oprite implicit și au cea mai mică prioritate."
+          },
+          {
+            "title": "Tu decizi ce e permis",
+            "body": "În secțiunea `[uses]` pornești sau oprești pe rând imaginile, fișierele, partajarea ecranului, camera și datele de plugin. Există și limite pentru lățimea de bandă, sesiuni și transmisii."
           }
         ],
         "listTitle": "Ce poate vedea operatorul",

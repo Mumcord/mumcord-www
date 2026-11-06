@@ -182,13 +182,13 @@ const source: Record<Lang, Guide> = {
         id: "relay",
         title: "Optional: ein Relay für direkte Verbindungen",
         body: [
-          "Damit Bildschirm teilen und Bilder in voller Größe auch klappen, wenn sich zwei Leute nicht direkt erreichen, oder damit niemand die IP-Adresse des anderen sieht, kannst du neben dem Server das Relay <a href=\"/mumpeer\">mumpeer</a> betreiben. Der Inhalt bleibt Ende-zu-Ende verschlüsselt.",
+          "Damit Bildschirm teilen, Kameras und Bilder in voller Größe auch klappen, wenn sich zwei Leute nicht direkt erreichen, oder damit niemand die IP-Adresse des anderen sieht, kannst du neben dem Server das Relay <a href=\"/mumpeer\">mumpeer</a> betreiben. Der Inhalt bleibt Ende-zu-Ende verschlüsselt.",
           "Mumcord nutzt das Relay ab Version 0.5.0. Den Rest erledigt der Relay-Bot <code>mumbot peer</code>: Er kündigt das Relay an und vergibt die Tokens.",
           "Im Ordner des Servers ein gemeinsames Secret in die <code>.env</code> schreiben und die beiden Beispiel-Konfigurationen holen. In <code>mumpeer.toml</code> bei <code>public_host</code> die Adresse deines Servers eintragen, in <code>bot.toml</code> den Fingerabdruck deines Mumble-Servers. Dann die Dienste unten in der <code>docker-compose.yml</code> unter <code>services:</code> ergänzen und <code>mumpeer-data:</code> und <code>mumbot-data:</code> unter <code>volumes:</code>.",
         ],
         code: [
           { code: "echo \"PEER_API_SECRET=$(openssl rand -hex 32)\" >> .env\ncurl -fsSL -o mumpeer.toml https://raw.githubusercontent.com/Mumcord/mumbot/main/examples/peer-with-relay/mumpeer.example.toml\ncurl -fsSL -o bot.toml https://raw.githubusercontent.com/Mumcord/mumbot/main/examples/peer-with-relay/bot.example.toml" },
-          { file: "docker-compose.yml", code: "  mumpeer:\n    image: ghcr.io/mumcord/mumpeer:0.1.0\n    restart: unless-stopped\n    environment:\n      MUMPEER_API_SECRET: ${PEER_API_SECRET:?PEER_API_SECRET}\n    ports: [\"443:443/udp\", \"443:443/tcp\"]\n    volumes:\n      - ./mumpeer.toml:/config/mumpeer.toml:ro\n      - mumpeer-data:/var/lib/mumpeer\n  mumbot:\n    image: ghcr.io/mumcord/mumbot:0.2.1\n    command: [\"peer\"]\n    restart: unless-stopped\n    depends_on: [mumble-server, mumpeer]\n    network_mode: \"service:mumpeer\"\n    environment:\n      MUMBOT_CONFIG: /config/bot.toml\n      MUMBOT_PEER_API_SECRET: ${PEER_API_SECRET:?PEER_API_SECRET}\n      SERVER_PASSWORD: ${SERVER_PASSWORD:-}\n    volumes:\n      - ./bot.toml:/config/bot.toml:ro\n      - mumbot-data:/data\n    healthcheck:\n      disable: true" },
+          { file: "docker-compose.yml", code: "  mumpeer:\n    image: ghcr.io/mumcord/mumpeer:0.2.0\n    restart: unless-stopped\n    environment:\n      MUMPEER_API_SECRET: ${PEER_API_SECRET:?PEER_API_SECRET}\n    ports: [\"443:443/udp\", \"443:443/tcp\"]\n    volumes:\n      - ./mumpeer.toml:/config/mumpeer.toml:ro\n      - mumpeer-data:/var/lib/mumpeer\n  mumbot:\n    image: ghcr.io/mumcord/mumbot:0.5.0\n    command: [\"peer\"]\n    restart: unless-stopped\n    depends_on: [mumble-server, mumpeer]\n    network_mode: \"service:mumpeer\"\n    environment:\n      MUMBOT_CONFIG: /config/bot.toml\n      MUMBOT_PEER_API_SECRET: ${PEER_API_SECRET:?PEER_API_SECRET}\n      SERVER_PASSWORD: ${SERVER_PASSWORD:-}\n    volumes:\n      - ./bot.toml:/config/bot.toml:ro\n      - mumbot-data:/data\n    healthcheck:\n      disable: true" },
         ],
         after: [
           "Mit <code>docker compose up -d</code> starten und zusätzlich UDP und TCP auf Port 443 öffnen. Läuft dort schon ein Webserver, nimm in <code>mumpeer.toml</code> andere Ports. Die API bleibt zwischen Relay und Bot.",
@@ -270,7 +270,7 @@ const source: Record<Lang, Guide> = {
         ],
         relay: [
           "mumpeer-Relay",
-          "Bildschirm teilen und große Bilder auch hinter CGNAT, ohne dass jemand deine IP sieht"
+          "Bildschirm teilen, Kameras und große Bilder auch hinter CGNAT, ohne dass jemand deine IP sieht"
         ],
         webhook: [
           "Mumbot-Webhook",
@@ -397,13 +397,13 @@ const source: Record<Lang, Guide> = {
         id: "relay",
         title: "Optional: a relay for direct connections",
         body: [
-          "So screen sharing and full-size images also work when two people cannot reach each other directly, or so nobody sees the other's IP address, you can run the <a href=\"/en/mumpeer\">mumpeer</a> relay next to the server. The content stays end-to-end encrypted.",
+          "So screen sharing, cameras and full-size images also work when two people cannot reach each other directly, or so nobody sees the other's IP address, you can run the <a href=\"/en/mumpeer\">mumpeer</a> relay next to the server. The content stays end-to-end encrypted.",
           "Mumcord uses the relay from version 0.5.0. The relay bot <code>mumbot peer</code> does the rest: it announces the relay and hands out the tokens.",
           "In the server's folder, write a shared secret into <code>.env</code> and fetch the two example configs. Put your server's address under <code>public_host</code> in <code>mumpeer.toml</code>, and your Mumble server's fingerprint in <code>bot.toml</code>. Then add the services below to <code>docker-compose.yml</code> under <code>services:</code>, and <code>mumpeer-data:</code> and <code>mumbot-data:</code> under <code>volumes:</code>.",
         ],
         code: [
           { code: "echo \"PEER_API_SECRET=$(openssl rand -hex 32)\" >> .env\ncurl -fsSL -o mumpeer.toml https://raw.githubusercontent.com/Mumcord/mumbot/main/examples/peer-with-relay/mumpeer.example.toml\ncurl -fsSL -o bot.toml https://raw.githubusercontent.com/Mumcord/mumbot/main/examples/peer-with-relay/bot.example.toml" },
-          { file: "docker-compose.yml", code: "  mumpeer:\n    image: ghcr.io/mumcord/mumpeer:0.1.0\n    restart: unless-stopped\n    environment:\n      MUMPEER_API_SECRET: ${PEER_API_SECRET:?PEER_API_SECRET}\n    ports: [\"443:443/udp\", \"443:443/tcp\"]\n    volumes:\n      - ./mumpeer.toml:/config/mumpeer.toml:ro\n      - mumpeer-data:/var/lib/mumpeer\n  mumbot:\n    image: ghcr.io/mumcord/mumbot:0.2.1\n    command: [\"peer\"]\n    restart: unless-stopped\n    depends_on: [mumble-server, mumpeer]\n    network_mode: \"service:mumpeer\"\n    environment:\n      MUMBOT_CONFIG: /config/bot.toml\n      MUMBOT_PEER_API_SECRET: ${PEER_API_SECRET:?PEER_API_SECRET}\n      SERVER_PASSWORD: ${SERVER_PASSWORD:-}\n    volumes:\n      - ./bot.toml:/config/bot.toml:ro\n      - mumbot-data:/data\n    healthcheck:\n      disable: true" },
+          { file: "docker-compose.yml", code: "  mumpeer:\n    image: ghcr.io/mumcord/mumpeer:0.2.0\n    restart: unless-stopped\n    environment:\n      MUMPEER_API_SECRET: ${PEER_API_SECRET:?PEER_API_SECRET}\n    ports: [\"443:443/udp\", \"443:443/tcp\"]\n    volumes:\n      - ./mumpeer.toml:/config/mumpeer.toml:ro\n      - mumpeer-data:/var/lib/mumpeer\n  mumbot:\n    image: ghcr.io/mumcord/mumbot:0.5.0\n    command: [\"peer\"]\n    restart: unless-stopped\n    depends_on: [mumble-server, mumpeer]\n    network_mode: \"service:mumpeer\"\n    environment:\n      MUMBOT_CONFIG: /config/bot.toml\n      MUMBOT_PEER_API_SECRET: ${PEER_API_SECRET:?PEER_API_SECRET}\n      SERVER_PASSWORD: ${SERVER_PASSWORD:-}\n    volumes:\n      - ./bot.toml:/config/bot.toml:ro\n      - mumbot-data:/data\n    healthcheck:\n      disable: true" },
         ],
         after: [
           "Start with <code>docker compose up -d</code> and open UDP and TCP on port 443 as well. If a web server already runs there, choose other ports in <code>mumpeer.toml</code>. The API stays between relay and bot.",
@@ -485,7 +485,7 @@ const source: Record<Lang, Guide> = {
         ],
         relay: [
           "mumpeer relay",
-          "Screen sharing and large images even behind CGNAT, without anyone seeing your IP"
+          "Screen sharing, cameras and large images even behind CGNAT, without anyone seeing your IP"
         ],
         webhook: [
           "Mumbot webhook",

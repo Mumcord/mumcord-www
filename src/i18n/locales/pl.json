@@ -604,8 +604,8 @@
       "toolTitle": "Współtwórcy"
     },
     "spotlight5": {
-      "label": "Nowość w 0.5.0/0.6.0",
-      "labelSoon": "Wkrótce: 0.5.0/0.6.0",
+      "label": "Nowość w 0.5.0/0.6.0/0.7.0",
+      "labelSoon": "Wkrótce: 0.5.0/0.6.0/0.7.0",
       "title": "Więcej spokoju. Więcej ciebie. Więcej dźwięku.",
       "body": "0.5.0 przynosi Epic 3: centrum powiadomień, blokowanie, wiele tożsamości, nowe drzewo kanałów, muzykę w czacie, tryb niskiego opóźnienia do wspólnego grania i bezpośrednie połączenia przez relay.",
       "tiles": {
@@ -856,6 +856,24 @@
             "title": "Blokuj osoby",
             "body": "„Zablokuj…” w menu osoby ukrywa jej prywatne wiadomości i prośby, zwija jej wiadomości na kanale i wycisza jej głos, tylko dla ciebie. Blokada podąża za certyfikatem, więc działa na wszystkich serwerach i przy nowych nazwach. Nic nie jest wysyłane do serwera ani do tej osoby, a Ustawienia → Prywatność wymieniają wszystkich zablokowanych z przyciskiem „Odblokuj”.",
             "alt": "Potwierdzenie zablokowania osoby z listą tego, co się zmieni"
+          },
+          {
+            "id": "kick-ban",
+            "title": "Wyrzucanie i banowanie",
+            "body": "W menu Administracja danej osoby są „Wyrzuć…” i „Zbanuj…”, z powodem. Bany trwają 1 godzinę, 1 dzień, 7 dni, 30 dni, na zawsze albo do wybranej daty, na certyfikat i adres IP. Tylko z uprawnieniem na kanale głównym.",
+            "alt": "Okno banowania osoby"
+          },
+          {
+            "id": "ban-list",
+            "title": "Lista banów",
+            "body": "„Lista banów…” w menu serwera pokazuje wszystkie bany z nazwą, odciskiem, adresem, powodem i końcem. Wyszukuj, filtruj, edytuj powód i koniec na miejscu, zdejmuj bany albo banuj osoby, których nie ma online.",
+            "alt": "Okno listy banów"
+          },
+          {
+            "id": "bots-section",
+            "title": "Boty osobno",
+            "body": "Sekcja „Boty na tym serwerze” pod listą kanałów pokazuje każdego bota z tym, co robi, na przykład przekaźnik, historia czatu albo webhooki. Profil i menu, także prywatne wiadomości, działają stamtąd.",
+            "alt": "Sekcja z botami na serwerze"
           }
         ]
       },
@@ -1095,6 +1113,11 @@
             "title": "Spokojny panel użytkownika",
             "body": "Panel na dole listy kanałów ma zawsze tę samą wysokość: ty z nazwą i serwerem, jedna linia stanu, np. łączenie ponowne albo twój kanał głosowy, małe znaczki Nie przeszkadzać, trybu niskich opóźnień i połączenia oraz przyciski mikrofonu, słuchawek i rozłączenia. Lista kanałów powyżej już nie skacze.",
             "alt": "Panel użytkownika w kilku stanach, od mówienia i wyciszenia po ponowne łączenie"
+          },
+          {
+            "id": "camera-entry",
+            "title": "Kamera w panelu użytkownika",
+            "body": "Przycisk kamery obok wyciszenia mikrofonu i głośników otwiera podgląd. Gdy kamera jest włączona, robi się czerwony i od razu ją wyłącza, pod twoją nazwą widać „Kamera włączona”, a czerwona plakietka pokazuje to w zasobniku."
           }
         ]
       },
@@ -1162,7 +1185,7 @@
           {
             "id": "screen-share",
             "title": "Udostępnianie ekranu",
-            "body": "Ekran lub okno dla maksymalnie 8 widzów, w 720p przy 30 klatkach na sekundę, na Windowsie i macOS na życzenie z dźwiękiem udostępnianej aplikacji. Uruchomisz je przyciskiem Aplikacje w czacie. Widzowie oglądają w głównej kolumnie z rozdzielczością, liczbą klatek i szczegółami strumienia; ty dostajesz u góry czatu pasek sterowania z pauzą, dźwiękiem, widzami i zakończeniem.",
+            "body": "Ekran lub okno dla maksymalnie 8 widzów bezpośrednio albo do 25 przez przekaźnik, w razie ochoty z dźwiękiem i AV1. Uruchamiasz je przyciskiem Aplikacje w czacie i wcześniej ustawiasz jakość oraz kodek. Widzowie oglądają w głównej kolumnie z rozdzielczością, kodekiem, ścieżką i szczegółami; ty masz u góry czatu pasek z jakością, enkoderem, pauzą, dźwiękiem, widzami i zatrzymaniem.",
             "alt": "Udostępniony ekran w głównej kolumnie ze szczegółami strumienia i listą widzów"
           },
           {
@@ -1179,8 +1202,73 @@
           {
             "id": "relay",
             "title": "Przekaźnik społeczności",
-            "body": "Społeczność serwera może uruchomić przekaźnik obok serwera Mumble. Obrazy w pełnym rozmiarze i udostępnianie ekranu działają wtedy nawet bez bezpośredniego połączenia, a przy „zawsze przez przekaźnik” druga osoba nigdy nie widzi twojego adresu IP. Przekaźnik nie odczyta szyfrowanego połączenia, a głos nigdy go nie używa. Wybierasz w Ustawienia → Prywatność, także osobno dla serwera.",
+            "body": "Społeczność serwera może uruchomić przekaźnik obok serwera Mumble. Obrazy w pełnym rozmiarze, pliki, kamery i udostępnianie ekranu działają wtedy nawet bez bezpośredniego połączenia, a przy „zawsze przez przekaźnik” druga osoba nigdy nie widzi twojego adresu IP. Przekaźnik nie odczyta szyfrowanego połączenia, głos nigdy go nie używa, a Mumcord nie korzysta z tego, na co przekaźnik nie pozwala. Wybierasz w Ustawienia → Prywatność, także osobno dla serwera.",
             "alt": "Ustawienia prywatności z wyborem peer-to-peer: bezpośrednio, przez przekaźnik i wyłączone"
+          },
+          {
+            "id": "file-sharing",
+            "title": "Udostępnianie plików",
+            "body": "Przeciągnij pliki lub foldery do czatu albo użyj spinacza, do 2 GB. Zawsze idą przez przekaźnik serwera, nikt nie widzi twojego adresu IP, a plik nigdy nie dotyka serwera Mumble.",
+            "alt": "Udostępniony plik jako karta w czacie"
+          },
+          {
+            "id": "file-safety",
+            "title": "Bezpieczne pobieranie",
+            "body": "Każde pobranie najpierw pyta i pokazuje folder. Programy i skrypty dostają dodatkowe ostrzeżenie, a potem Mumcord sprawdza, czy plik dotarł bez zmian. W ustawieniach wyłączasz odbieranie oraz ustawiasz rozmiar i folder.",
+            "alt": "Ustawienia udostępniania plików"
+          },
+          {
+            "id": "camera",
+            "title": "Kamera",
+            "body": "Twoja kamera dla wszystkich na twoim kanale głosowym, tylko przez przekaźnik i z szyfrowaniem end-to-end. Zaczyna się od podglądu, którego nikt nie widzi, a przycisk kamery w panelu użytkownika, menu Aplikacje, zasobnik i skrót klawiszowy włączają ją i wyłączają.",
+            "alt": "Ustawienia kamery z podglądem"
+          },
+          {
+            "id": "camera-room",
+            "title": "Pokój kamer",
+            "body": "Kamery z kanału są nad czatem, do dziewięciu kafelków w siatce albo jeden duży kafelek w układzie Mówca. Obok udostępnionego ekranu lub watch party tworzą pasek obok niego albo nad nim, albo je ukrywasz.",
+            "alt": "Pokój kamer z kilkoma kamerami nad czatem"
+          },
+          {
+            "id": "camera-backgrounds",
+            "title": "Tła kamery",
+            "body": "Bez tła, rozmycie (lekkie lub mocne), jeden z 18 wbudowanych obrazów albo własny. Liczy się na twoim komputerze, a zmieniasz je bez wyłączania kamery.",
+            "alt": "Podgląd kamery z mocno rozmytym tłem"
+          },
+          {
+            "id": "camera-tiles",
+            "title": "Opcje kafelka",
+            "body": "⋯ na kafelku oferuje „Przypnij dla mnie”, „Pokaż duży”, „Ukryj wideo” (wtedy w ogóle się nie pobiera) i „Jakość dla mnie”. Do tego własna strona Ustawienia → Kamera, a wszystko działa z klawiatury.",
+            "alt": "Menu kafelka kamery"
+          },
+          {
+            "id": "screen-share-sound",
+            "title": "Dźwięk podczas udostępniania",
+            "body": "Cały ekran udostępnia cały dźwięk poza dźwiękiem Mumcorda, okno tylko dźwięk tej aplikacji. Gdy nie wiadomo, o kogo chodzi, pyta „Dźwięk której aplikacji?”. Działa na Windows 10, macOS 13 i Linuksie z PipeWire.",
+            "alt": "Okno przed rozpoczęciem udostępniania ekranu"
+          },
+          {
+            "id": "screen-share-av1",
+            "title": "AV1 dla ostrego tekstu",
+            "body": "Mumcord w tle sprawdza, co potrafi twój komputer, i używa AV1 na karcie graficznej, AV1 na procesorze albo VP9. Widzowie odtwarzają AV1 nawet bez sprzętu, a dla starszych wersji Mumcorda udostępnianie przełącza się na VP9.",
+            "alt": "Karta ustawień udostępniania ekranu"
+          },
+          {
+            "id": "screen-share-relay",
+            "title": "Do 25 widzów",
+            "body": "Gdy przekaźnik to oferuje, wysyłasz raz, a przekaźnik rozsyła udostępnianie wszystkim, do swojego limitu (domyślnie 25). Jest szyfrowane end-to-end, przekaźnik nic nie widzi."
+          },
+          {
+            "id": "screen-share-quality",
+            "title": "Ustawianie jakości",
+            "body": "Przed startem wybierasz rozdzielczość, liczbę klatek, ostry tekst lub płynny ruch oraz limit wysyłania. W trakcie udostępniania menu Jakość zmienia to wszystko bez restartu, a karta „Udostępnianie ekranu” w Ustawieniach trzyma twoje ustawienia domyślne. Widzowie mogą obniżyć swoją liczbę klatek.",
+            "alt": "Elementy sterowania podczas oglądania udostępnionego ekranu"
+          },
+          {
+            "id": "media-area-resize",
+            "title": "Podział obrazu i czatu",
+            "body": "Przeciągnij uchwyt między obrazem udostępniania lub watch party a czatem albo użyj klawiszy strzałek. Zatrzymuje się przy jednej trzeciej, połowie i dwóch trzecich, a Mumcord zapamiętuje wysokość.",
+            "alt": "Udostępniony ekran z kamerami jako paskiem obok"
           }
         ]
       },
@@ -1214,7 +1302,7 @@
           {
             "id": "plugin-safety",
             "title": "Piaskownica, podpisy i wyłącznik awaryjny",
-            "body": "Wtyczki działają odizolowane, bez dostępu do sieci, plików i dźwięku, z limitami pamięci i czasu; ta, która ciągle się wywala, zostaje wyłączona, a Twój głos nigdy na tym nie cierpi. Oficjalne wtyczki są podpisane i sprawdzane. Wyłącznik awaryjny może wyłączyć szkodliwą wtyczkę dla wszystkich, „Wyłącz wszystkie wtyczki” zatrzymuje je naraz, a --no-plugins uruchamia program bez żadnej.",
+            "body": "Wtyczki działają odizolowane, bez dostępu do plików i dźwięku, a do stron internetowych tylko takich, które zadeklarowały i które zatwierdziłeś, z limitami pamięci i czasu; ta, która ciągle się wywala, zostaje wyłączona, a twój głos nigdy na tym nie cierpi. Oficjalne wtyczki są podpisane i sprawdzane. Wyłącznik awaryjny może wyłączyć szkodliwą wtyczkę dla wszystkich, „Wyłącz wszystkie wtyczki” zatrzymuje je naraz, a --no-plugins uruchamia program bez żadnej.",
             "alt": "Okno instalacji EVE Fit z paskiem postępu z napisem „Checking signature…” nad listą uprawnień."
           },
           {
@@ -1264,6 +1352,45 @@
             "title": "EVE Fit",
             "body": "Wklej fitting z EVE Online na czat, a każdy z wtyczką zobaczy kartę statku. Jedno kliknięcie otwiera koło fittingu z kondensatorem, atakiem, obroną i nawigacją, offline w Mumcordzie, a „Kopiuj fitting” wyciąga go z powrotem.",
             "alt": "Okno EVE Fit ze statkiem Algos w kole fittingu, ikonami modułów i statystykami kondensatora, ataku, obrony, namierzania, nawigacji i dronów."
+          },
+          {
+            "id": "plugin-media-area",
+            "title": "Wtyczki w obszarze mediów",
+            "body": "Aktywności wtyczek działają w obszarze mediów z nagłówkiem Mumcorda: kto je zaczął, ile osób gra, kto zrobił wtyczkę. Z pełnym ekranem i „Opuść wtyczkę”. Gdy działa więcej niż jedna rzecz, przełączają między nimi karty albo Alt+1 do Alt+9.",
+            "alt": "Wtyczka w obszarze mediów z kartami nad nią"
+          },
+          {
+            "id": "plugin-side-panel",
+            "title": "Panel boczny dla wtyczek",
+            "body": "Wtyczka może pokazać swoją stronę po prawej od czatu zamiast listy członków. Zmieniasz jej rozmiar, Mumcord pamięta szerokość osobno dla każdej wtyczki, a menu ⋯ prowadzi do szczegółów wtyczki.",
+            "alt": "Wtyczka w panelu bocznym obok czatu"
+          },
+          {
+            "id": "plugin-apps-menu",
+            "title": "Wtyczki w menu Aplikacje",
+            "body": "Każda wtyczka może dodać do dwóch pozycji do menu Aplikacje, pod „Wtyczki” z jej ikoną i nazwą. Te same pozycje są w palecie poleceń (Ctrl+Shift+P), a wtyczka może wyszarzyć pozycję z podaniem powodu.",
+            "alt": "Menu Aplikacje z pozycjami wtyczek"
+          },
+          {
+            "id": "plugin-security-score",
+            "title": "Ocena bezpieczeństwa",
+            "body": "Nieoficjalne wtyczki dostają ocenę od 0 do 100, z najważniejszymi powodami i pełnym rozbiciem przy instalacji i aktualizacji. Wtyczki wysokiego ryzyka wymagają osobnego zaznaczenia, a „Bezpieczeństwo wtyczek” w ustawieniach może je w ogóle blokować.",
+            "alt": "Szczegóły oceny bezpieczeństwa wtyczki"
+          },
+          {
+            "id": "plugin-min-version",
+            "title": "Minimalna wersja dla wtyczek",
+            "body": "Jeśli wtyczka potrzebuje nowszego Mumcorda, pisze „Wymaga Mumcorda X lub nowszego”, a instalacja jest wyłączona. Automatyczne aktualizacje czekają, aż twój Mumcord będzie mógł uruchomić nową wersję."
+          },
+          {
+            "id": "plugin-websites",
+            "title": "Strony internetowe wtyczek",
+            "body": "Wtyczki łączące się ze stronami internetowymi wymieniają każdy adres przy instalacji i w szczegółach, z liczbą zapytań. Docierają tylko do tego, co zadeklarowały i co zatwierdziłeś, wyłącznie do publicznych adresów z ważnym certyfikatem. Strony wtyczek otwierają się też w oknie dialogowym."
+          },
+          {
+            "id": "plugin-relay-data",
+            "title": "Dane wtyczek przez przekaźnik",
+            "body": "Dane gry idą z szyfrowaniem end-to-end przez przekaźnik, do 64 KB na wiadomość, do jednej osoby lub całego kanału. Wyłączasz je osobno dla każdej wtyczki, a Ustawienia → Wtyczki pokazują, ile danych zużyła."
           }
         ]
       },
@@ -1370,88 +1497,107 @@
   "changelog": [
     {
       "version": "0.7.0",
-      "teaser": "Udostępnianie plików, Twoja kamera, udostępnianie ekranu z dźwiękiem i AV1 dla maksymalnie 25 widzów, wtyczki w obszarze mediów, wyrzucanie, bany i lista banów.",
-      "summary": "Duża aktualizacja: udostępniasz pliki do 2 GB na kanale, zawsze przez relay, pokazujesz kamerę z rozmytym tłem, Twoje udostępnianie ekranu dostaje dźwięk, AV1 i do 25 widzów, obraz i czat dzielisz jednym uchwytem, wtyczki dostają obszar mediów i jasne zasady bezpieczeństwa, a administratorzy mogą wyrzucać, banować i trzymać listę banów w porządku.",
+      "teaser": "Udostępnianie plików, twoja kamera, udostępnianie ekranu z dźwiękiem i AV1 dla maksymalnie 25 widzów, wtyczki w obszarze mediów, wyrzucanie, bany i lista banów.",
+      "summary": "Duża aktualizacja: udostępniasz pliki do 2 GB na kanale, zawsze przez przekaźnik, pokazujesz kamerę z rozmytym tłem, twoje udostępnianie ekranu dostaje dźwięk, AV1 i do 25 widzów, obraz i czat dzielisz jednym uchwytem, wtyczki dostają obszar mediów i jasne zasady bezpieczeństwa, a admini mogą wyrzucać, banować i trzymać listę banów w porządku.",
       "groups": [
         {
           "title": "Udostępnianie plików",
           "items": [
-            "Przeciągnij pliki na czat albo dołącz je spinaczem, do 2 GB. Foldery są najpierw pakowane do zipa.",
-            "Pliki zawsze idą przez relay serwera: nikt nie widzi Twojego adresu IP, a plik nigdy nie dotyka serwera Mumble.",
-            "Każde pobieranie najpierw pyta i pokazuje folder, do którego zapisuje. Potem Mumcord sprawdza sumę kontrolną SHA-256, którą możesz też skopiować.",
+            "Przeciągnij pliki i foldery do czatu albo dołącz je spinaczem, do 2 GB. Jeśli nie ma przekaźnika albo nie pozwala na pliki, spinacz mówi dlaczego.",
+            "Pliki zawsze idą przez przekaźnik serwera: nikt nie widzi twojego adresu IP, a plik nigdy nie dotyka serwera Mumble.",
+            "Każde pobranie najpierw pyta i pokazuje folder, do którego się zapisuje. Potem Mumcord sprawdza, czy plik dotarł bez zmian.",
             "Programy i skrypty dostają dodatkowe ostrzeżenie przed pobraniem i przed otwarciem.",
-            "Plik jest dostępny, dopóki nadawca jest online, najdłużej 24 godziny.",
-            "Nowe w Ustawieniach → Prywatność i połączenia: odbieranie plików włączone lub wyłączone, maksymalny rozmiar od 100 MB do 2 GB i folder na odebrane pliki."
+            "Twoje udostępnione pliki pokazują, kto je pobrał, i mają przycisk „Przestań udostępniać”.",
+            "Obrazy, które upuścisz na kanale, można wysłać jako obrazy albo udostępnić jako pliki. Wszystkie inne pliki są udostępniane od razu.",
+            "Nowe w Ustawienia → Prywatność i połączenia: odbieranie plików włączone lub wyłączone, maksymalny rozmiar od 100 MB do 2 GB i folder na odebrane pliki."
           ]
         },
         {
           "title": "Udostępnianie ekranu",
           "items": [
-            "Dźwięk podczas udostępniania: cały ekran udostępnia cały dźwięk poza dźwiękiem Mumcorda, okno udostępnia tylko dźwięk tej aplikacji. Działa na Windows 10 (2004 lub nowszym), macOS 13 i Linuksie z PipeWire.",
-            "Przed startem wybierasz rozdzielczość do 4K, liczbę klatek do 60 fps, ostry tekst lub płynny ruch, kodek i limit wysyłania. Menu Jakość zmienia je w trakcie udostępniania bez jego ponownego uruchamiania.",
-            "Przez relay wysyłasz raz, a ogląda do 25 osób, z szyfrowaniem end-to-end.",
-            "AV1 na karcie graficznej lub procesorze daje ostry tekst przy mniejszym paśmie. VP9 zostaje jako rozwiązanie zapasowe, także dla widzów ze starszym Mumcordem.",
+            "Dźwięk podczas udostępniania: cały ekran udostępnia cały dźwięk poza dźwiękiem Mumcorda, okno tylko dźwięk tej aplikacji. Działa na Windows 10 (2004 lub nowszym), macOS 13 i Linuksie z PipeWire.",
+            "Przed startem wybierz rozdzielczość, liczbę klatek, ostry tekst lub płynny ruch, kodek i limit wysyłania. Menu Jakość zmienia je w trakcie udostępniania bez restartu.",
+            "Mumcord sam wybiera enkoder: AV1 na karcie graficznej, AV1 na procesorze albo VP9. Pasek twojego udostępniania pokazuje jakość, enkoder i to, czy idzie przez przekaźnik.",
+            "Gdy udostępniasz okno, „Dźwięk której aplikacji?” pyta, czyj dźwięk ma iść razem z obrazem. Możesz też wybrać „Bez dźwięku”.",
+            "Przez przekaźnik wysyłasz raz, a ogląda do 25 osób, z szyfrowaniem end-to-end.",
+            "AV1 na karcie graficznej lub procesorze daje ostry tekst przy mniejszym zużyciu łącza. VP9 zostaje jako rozwiązanie awaryjne, także dla widzów ze starszym Mumcordem.",
             "Widzowie widzą kodek, ścieżkę i jakość i mogą obniżyć swoją liczbę klatek. Lista widzów pokazuje, kto co dostaje.",
-            "Nowa karta „Udostępnianie ekranu” w Ustawieniach z Twoimi ustawieniami domyślnymi i enkoderem, którego używa Twój komputer.",
-            "Podziel obraz i czat sam: przeciągnij uchwyt między udostępnianiem ekranu lub watch party a czatem. Przeciągnij go na samą górę, a obraz zmieni się w minipasek, a Mumcord zapamięta wysokość."
+            "Nowa karta „Udostępnianie ekranu” w Ustawieniach z twoimi ustawieniami domyślnymi i enkoderem, którego używa twój komputer.",
+            "Podziel obraz i czat sam: przeciągnij uchwyt między udostępnionym ekranem lub watch party a czatem. Przeciągnij go na samą górę, a obraz zmieni się w minipasek, a Mumcord zapamięta wysokość."
           ]
         },
         {
           "title": "Kamera",
           "items": [
-            "Twoja kamera dla wszystkich na Twoim kanale głosowym, tylko przez relay i z szyfrowaniem end-to-end, dla maksymalnie 25 widzów.",
-            "Kamera startuje z podglądem, który nic nie wysyła. Wychodzi dopiero po jej włączeniu.",
-            "Rozmyj tło albo ustaw za sobą obraz, liczone na Twoim komputerze.",
-            "Jeśli kamery nie można użyć, Mumcord mówi dlaczego, na przykład gdy relay serwera nie zezwala na kamery."
+            "Twoja kamera dla wszystkich na twoim kanale głosowym, tylko przez przekaźnik i z szyfrowaniem end-to-end.",
+            "Pokój kamer jest nad czatem: do dziewięciu kafelków w siatce albo układ Mówca z jednym dużym kafelkiem. Każdy pokazuje nazwę, ikonę wyłączonego mikrofonu i zieloną ramkę, gdy osoba mówi.",
+            "Kamera zaczyna się od podglądu, którego nikt inny nie widzi. Wybierasz kamerę i tło, a obraz wychodzi dopiero po jej włączeniu.",
+            "Tła: brak, rozmycie (lekkie lub mocne), jeden z 18 wbudowanych obrazów albo własny. Liczy się na twoim komputerze i możesz je zmieniać, gdy kamera działa.",
+            "⋯ na kafelku oferuje „Przypnij dla mnie”, „Pokaż duży”, „Ukryj wideo osoby …” (wtedy w ogóle się nie pobiera) i „Jakość dla mnie”. Wszystko działa też z klawiatury.",
+            "Obok udostępnionego ekranu lub watch party obraz zostaje duży, a kamery tworzą pasek obok niego albo nad nim. Albo je ukrywasz i wtedy się nie pobierają.",
+            "Przycisk kamery w panelu użytkownika i „Włącz kamerę” w menu Aplikacje otwierają podgląd. Gdy kamera jest włączona, przycisk robi się czerwony, a w drzewie kanałów widać ikonę kamery.",
+            "Nowa karta „Kamera” w Ustawieniach: podgląd, kamera, jakość wysyłania, lustrzany podgląd siebie, tło domyślne i sposób, w jaki widzisz kamery innych. Do tego skrót klawiszowy do włączania i wyłączania kamery.",
+            "Gdy kamera jest włączona, ikona w zasobniku pokazuje czerwoną plakietkę kamery, a jej menu oferuje „Wyłącz kamerę”. Gdy ekran się zablokuje, kamera może wyłączyć się sama.",
+            "Jeśli kamery nie da się użyć albo sama się zatrzyma, Mumcord mówi dlaczego, na przykład gdy przekaźnik serwera nie pozwala na kamery."
           ]
         },
         {
           "title": "Wtyczki",
           "items": [
             "Wtyczki dostają obszar mediów, panel boczny obok czatu, okna dialogowe i pozycje w menu Aplikacje. Gdy działa więcej niż jedna, karty przełączają między nimi.",
-            "Dane z gier idą z szyfrowaniem end-to-end przez relay, do jednej osoby albo całego kanału.",
-            "Ocena bezpieczeństwa od 0 do 100 dla nieoficjalnych wtyczek, z uzasadnieniem przy instalacji i aktualizacjach.",
-            "Każda strona, z którą rozmawia wtyczka, jest wymieniona przy instalacji, a nowe strony wymagają Twojej zgody.",
-            "Strony wtyczek są zablokowane: bez kamery, bez mikrofonu, bez schowka i tylko strony dozwolone przez Ciebie. Zawieszona strona nie zamraża już Mumcorda.",
-            "Wtyczka, która potrzebuje nowszego Mumcorda, mówi o tym zamiast się instalować, a aktualizacje czekają, aż Twój Mumcord będzie mógł je uruchomić."
+            "Dane gry idą z szyfrowaniem end-to-end przez przekaźnik, do jednej osoby lub całego kanału.",
+            "Ocena bezpieczeństwa od 0 do 100 dla nieoficjalnych wtyczek, z powodami przy instalacji i aktualizacjach.",
+            "Każda strona internetowa, z którą łączy się wtyczka, jest wymieniona przy instalacji, a nowe strony wymagają twojej zgody.",
+            "Strony wtyczek są zablokowane: bez kamery, mikrofonu, schowka i tylko strony, na które pozwoliłeś. Strona, która się zawiesi, nie zamraża już Mumcorda.",
+            "Wtyczka, która potrzebuje nowszego Mumcorda, mówi o tym zamiast się instalować, a aktualizacje czekają, aż twój Mumcord będzie mógł je uruchomić.",
+            "Każda wtyczka może dodać do dwóch pozycji do menu Aplikacje, pod „Wtyczki” z jej ikoną i nazwą. Te same pozycje są w palecie poleceń (Ctrl+Shift+P).",
+            "Wtyczki mogą odtwarzać krótkie dźwięki, które słyszysz tylko ty. Są cichsze, gdy ktoś mówi, i milczą, gdy masz wyciszone głośniki.",
+            "Wtyczka może zapisać plik, otworzyć obraz albo wysłać obraz na czat, ale tylko zaraz po twoim kliknięciu i za zgodą. Nigdy nie dowiaduje się, gdzie są twoje pliki.",
+            "Ustawienia → Wtyczki pokazują, ile danych każda wtyczka wysyła przez przekaźnik, mają przełącznik „Bezpieczeństwo wtyczek” przeciw ryzykownym wtyczkom i wymieniają wtyczki odrzucone przy ładowaniu.",
+            "Przegląd aktualizacji pokazuje ocenę bezpieczeństwa przed i po oraz powód, dla którego aktualizacja czeka. Gdy są notatki do wydania, link otwiera je w przeglądarce."
           ]
         },
         {
           "title": "Administracja",
           "items": [
             "Wyrzuć… i Zbanuj… w menu Administracja danej osoby, z powodem. Bany trwają 1 godzinę, 1 dzień, 7 dni, 30 dni, na zawsze lub do wybranej daty.",
-            "Lista banów w menu serwera: szukanie, filtrowanie, edycja powodu i końca, zdejmowanie banów i banowanie osób, których akurat nie ma online."
+            "Lista banów w menu serwera: wyszukiwanie, filtrowanie, edycja powodu i końca, zdejmowanie banów i banowanie osób, których akurat nie ma online."
           ]
         },
         {
           "title": "Boty",
           "items": [
-            "Boty stoją osobno: sekcja „Boty na tym serwerze” pod listą kanałów pokazuje każdego bota i to, co robi. Boty bez głosu nie pojawiają się już wśród osób.",
-            "Mumbot jest pokazywany jako „Mumbot <version>” w swoim profilu i szczegółach połączenia zamiast „Mumcord <version>”."
+            "Boty stoją osobno: sekcja „Boty na tym serwerze” pod listą kanałów pokazuje każdego bota z tym, co robi. Boty bez głosu nie pojawiają się już wśród osób.",
+            "Mumbot pokazuje się jako „Mumbot <version>” w swoim profilu i szczegółach połączenia zamiast „Mumcord <version>”."
           ]
         },
         {
-          "title": "Ulepszone",
+          "title": "Ulepszenia",
           "items": [
-            "Historia czatu między osobami na 0.7.0 nadrabia szybciej: każdy obraz podróżuje raz, a obrazy, które już masz, nie są pobierane ponownie.",
-            "Mumcord stosuje się do tego, na co pozwala relay serwera, a informacje o serwerze pokazują, co to jest.",
+            "Historia czatu między osobami na 0.7.0 nadrabia szybciej: każdy obraz wędruje raz, a obrazy, które już masz, nie są pobierane ponownie.",
+            "Mumcord stosuje się do tego, na co pozwala przekaźnik serwera, a informacje o serwerze pokazują, co to jest.",
             "Przełączniki pozostają widoczne w trybie wysokiego kontrastu.",
-            "Osadzone filmy z YouTube i Twitcha: przycisk pełnego ekranu działa, a osobny przycisk kopiuje link do filmu."
+            "Menu Aplikacje pokazuje ikony przy „Udostępnij ekran” i „Oglądaj razem”, a wtyczki bez ikony dostają własny kolorowy kafelek.",
+            "Karta opóźnienia mówi, dlaczego czas jest dłuższy, niż prosi tryb niskich opóźnień, na przykład gdy serwer dźwięku na Linuksie potrzebuje większych bloków."
           ]
         },
         {
-          "title": "Naprawione",
+          "title": "Poprawione",
           "items": [
             "Na starszych procesorach bez AVX2 Mumcord nie wywala się już przy starcie. Udostępnianie ekranu używa tam VP9.",
-            "Historia czatu zablokowanych kanałów trafia tylko do osób naprawdę będących w kanale, nie do tych, które tylko go obserwują lub słuchają.",
-            "Jeśli ktoś używa „Zawsze używaj relay”, Mumcord nie wysyła mu już Twojego adresu sieciowego.",
+            "Historia czatu zablokowanych kanałów trafia tylko do osób naprawdę na kanale, nie do osób, które tylko go śledzą lub słuchają.",
+            "Jeśli ktoś używa „Zawsze przez przekaźnik”, Mumcord nie wysyła mu już twojego adresu sieciowego.",
             "Profil z nowszego Mumcorda nie powoduje już awarii. Mumcord to wyjaśnia i proponuje pobranie najnowszej wersji.",
-            "Wysłane wiadomości od razu lądują we właściwym miejscu w historii i tam zostają.",
-            "Kliknięcie linku środkowym przyciskiem albo z wciśniętym Ctrl, Cmd lub Shift otwiera go w przeglądarce zamiast w Mumcordzie.",
-            "Jeśli nie jesteś zarejestrowany na serwerze, którego relay obsługuje tylko zarejestrowanych użytkowników, Mumcord teraz to mówi zamiast „nie udało się połączyć z relay”.",
-            "Okno listy banów ma przycisk zamykania, a Wyrzuć i Zbanuj reagują na kliknięcia myszą.",
+            "Wysłane wiadomości od razu trafiają we właściwe miejsce w historii i tam zostają.",
+            "Kliknięcie środkowym przyciskiem w link albo kliknięcie z wciśniętym Ctrl, Cmd lub Shift otwiera go w przeglądarce, a nie w Mumcordzie.",
+            "Jeśli nie jesteś zarejestrowany na serwerze, którego przekaźnik obsługuje tylko zarejestrowanych użytkowników, Mumcord mówi to teraz zamiast „nie udało się połączyć z przekaźnikiem”.",
+            "Wyrzuć i Zbanuj reagują na kliknięcia myszą.",
             "Uruchomienie watch party z menu Aplikacje nie przeładowuje już aplikacji.",
-            "Udostępnianie ekranu mówi teraz we wszystkich językach."
+            "Udostępnianie ekranu mówi teraz w każdym języku.",
+            "Dźwięk nie przerywa się już, gdy inna aplikacja gra w tym samym czasie.",
+            "Gdy kończy się oglądane udostępnianie ekranu, nie zostaje pusty obraz, a kamery wracają do siatki pokoju.",
+            "Ctrl+C na zaznaczonym tekście czatu nie zostawia już pustego schowka na Linuksie (X11).",
+            "Wtyczka nie może już sama otworzyć swojego okna dialogowego, tylko krótko po twoim kliknięciu. Wiadomości ze strony wtyczki przychodzą we właściwej kolejności."
           ]
         }
       ]
@@ -2575,8 +2721,6 @@
             "title": "Wtyczki na scenie",
             "items": [
               "Wtyczki dostają obszar multimediów: gry i tablice działają tam, gdzie zwykle jest udostępniany ekran, watch party i kamery",
-              "Whiteboard, oficjalna wtyczka do wspólnego myślenia: nieskończone płótno z pisakami, karteczkami i wskaźnikiem laserowym, zapisane na twoim urządzeniu i eksportowalne jako PNG, SVG lub PDF",
-              "Skyloom, gra tylko na głosy dla 2 do 12 osób: jedna osoba opisuje ukryty gwiazdozbiór, a wszyscy pozostali umieszczają po jednej gwieździe",
               "Wtyczki otwierają się też z menu Aplikacje, w panelu bocznym lub w oknie dialogowym, a duże ilości danych idą przez przekaźnik z szyfrowaniem end-to-end"
             ],
             "mockups": [
@@ -2597,6 +2741,13 @@
               "Wtyczki z oceną bezpieczeństwa",
               "Instalacja wtyczki wysokiego ryzyka",
               "Strony internetowe wtyczki przy instalacji"
+            ]
+          },
+          {
+            "title": "Whiteboard & Skyloom",
+            "items": [
+              "Whiteboard, oficjalna wtyczka do wspólnego myślenia: nieskończone płótno z pisakami, karteczkami i wskaźnikiem laserowym, zapisane na twoim urządzeniu i eksportowalne jako PNG, SVG lub PDF",
+              "Skyloom, gra tylko na głosy dla 2 do 12 osób: jedna osoba opisuje ukryty gwiazdozbiór, a wszyscy pozostali umieszczają po jednej gwieździe"
             ]
           }
         ]
@@ -2993,7 +3144,7 @@
         "id": "relay",
         "title": "Opcjonalnie: relay dla bezpośrednich połączeń",
         "body": [
-          "Żeby udostępnianie ekranu i obrazy w pełnym rozmiarze działały też wtedy, gdy dwie osoby nie mogą się połączyć bezpośrednio, albo żeby nikt nie widział cudzego IP, możesz uruchomić obok serwera relay <a href=\"/en/mumpeer\">mumpeer</a>. Treść pozostaje szyfrowana end-to-end.",
+          "Żeby udostępnianie ekranu, kamery i obrazy w pełnym rozmiarze działały także wtedy, gdy dwie osoby nie mogą się połączyć bezpośrednio, albo żeby nikt nie widział cudzego IP, możesz uruchomić relay <a href=\"/en/mumpeer\">mumpeer</a> obok serwera. Treść pozostaje zaszyfrowana end-to-end.",
           "Mumcord używa relaya od wersji 0.5.0. Resztę robi bot relay <code>mumbot peer</code>: ogłasza relay i rozdaje tokeny.",
           "W folderze serwera wpisz wspólny sekret do <code>.env</code> i pobierz dwie przykładowe konfiguracje. Adres swojego serwera wpisz w <code>public_host</code> w <code>mumpeer.toml</code>, a odcisk swojego serwera Mumble w <code>bot.toml</code>. Potem dodaj poniższe usługi do <code>docker-compose.yml</code> pod <code>services:</code>, a <code>mumpeer-data:</code> i <code>mumbot-data:</code> pod <code>volumes:</code>."
         ],
@@ -3026,8 +3177,8 @@
           "Do 10 000 zamiast 5000 znaków"
         ],
         "relay": [
-          "Przekaźnik mumpeer",
-          "Udostępnianie ekranu i duże obrazy nawet za CGNAT, bez ujawniania nikomu twojego IP"
+          "Relay mumpeer",
+          "Udostępnianie ekranu, kamery i duże obrazy nawet za CGNAT, bez pokazywania komukolwiek twojego IP"
         ],
         "webhook": [
           "Webhook Mumbota",
@@ -3300,6 +3451,20 @@
         ]
       },
       {
+        "id": "0.5.0",
+        "tag": "0.5.0",
+        "title": "Kamery i grupy",
+        "summary": "Bot przekaźnika obsługuje teraz kamery, dane wtyczek i grupy.",
+        "items": [
+          "Kamery przez przekaźnik, domyślnie do 9 na kanał; ekran i kamera działają razem",
+          "Dane wtyczek dla wtyczek Mumcorda, do 8 nadawców na kanał",
+          "Tokeny przekaźnika tylko dla członków wybranych grup Mumble",
+          "Historia czatu zablokowanych kanałów trafia tylko do osób w nich",
+          "Bot ustawia swój awatar z adresu https lub base64",
+          "Mumble i Mumcord pokazują „Mumbot 0.x.y” jako klienta, boty muzyczne pojawiają się na swoim kanale"
+        ]
+      },
+      {
         "id": "later",
         "tag": "Potem",
         "title": "Pomysły",
@@ -3324,7 +3489,9 @@
       "points": [
         "Udostępnianie ekranu i duże obrazy nawet za CGNAT lub bez pokazywania twojego IP",
         "Działa w sieci przekaźnika, API pozostaje wewnętrzne",
-        "Tokeny dostają tylko zarejestrowani użytkownicy twojego własnego serwera"
+        "Tokeny dostają tylko zarejestrowani użytkownicy twojego własnego serwera",
+        "Rozdaje też tokeny do kamer i danych wtyczek, gdy przekaźnik na to pozwala",
+        "Jeśli chcesz, tylko dla członków wybranych grup Mumble"
       ]
     },
     "music": {
@@ -3368,7 +3535,7 @@
       "mumpeer": {
         "title": "mumpeer",
         "description": "mumpeer to mały relay dla bezpośrednich połączeń Mumcorda: na wypadek, gdy dwie osoby nie mogą się połączyć bezpośrednio albo chcą ukryć swój adres IP.",
-        "lead": "Mały relay dla bezpośrednich połączeń Mumcorda między użytkownikami, na przykład do udostępniania ekranu albo obrazów w pełnym rozmiarze. Gdy dwie osoby nie mogą się połączyć bezpośrednio, za CGNAT, ostrymi zaporami albo w sieciach bez UDP, albo nie chcą pokazywać swojego adresu IP, obie łączą się zamiast tego z relayem. On tylko przekazuje zaszyfrowane pakiety, jak serwer TURN.",
+        "lead": "Mały relay dla bezpośrednich połączeń Mumcorda między użytkownikami, na przykład do udostępniania ekranu, kamer, plików albo obrazów w pełnym rozmiarze. Gdy dwie osoby nie mogą się połączyć bezpośrednio, za CGNAT, ostrymi zaporami albo w sieciach bez UDP, albo nie chcą pokazywać swojego adresu IP, obie łączą się zamiast tego z relayem. On tylko przekazuje zaszyfrowane pakiety, jak serwer TURN.",
         "features": [
           {
             "title": "Obok twojego serwera Mumble",
@@ -3389,6 +3556,14 @@
           {
             "title": "Całkowicie opcjonalne",
             "body": "Mumcord działa też bez bota i relaya. W Mumcordzie wybierasz sam: relay wyłączony, tylko gdy połączenie bezpośrednie zawiedzie, albo zawsze."
+          },
+          {
+            "title": "Ekran, kamery i dane wtyczek",
+            "body": "Jedna osoba wysyła raz, a relay przekazuje to wszystkim widzom, nie czytając. Obejmuje to udostępnianie ekranu i kamery: do 18 kamer jednocześnie, każda z wysyłaniem najwyżej 2500 kbit/s, i do 25 widzów na transmisję. Dane wtyczek też działają, ale są domyślnie wyłączone i mają najniższy priorytet."
+          },
+          {
+            "title": "Ty decydujesz, co wolno",
+            "body": "W sekcji `[uses]` włączasz i wyłączasz po kolei obrazy, pliki, udostępnianie ekranu, kamerę i dane wtyczek. Są też limity przepustowości, sesji i transmisji."
           }
         ],
         "listTitle": "Co może zobaczyć operator",
