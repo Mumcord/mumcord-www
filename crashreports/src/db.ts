@@ -157,14 +157,19 @@ export class Store {
 
   // ---- reports & groups ----
 
-  ingest(input: CrashReport, fp: FingerprintResult, now = new Date()): { id: string; isNew: boolean } {
+  /** Stores a report; `previousStatus` is the group's status before it (null for a new group). */
+  ingest(
+    input: CrashReport,
+    fp: FingerprintResult,
+    now = new Date(),
+  ): { id: string; isNew: boolean; previousStatus: Status | null } {
     const ts = now.toISOString();
     const id = randomUUID();
     const groupId = fp.id;
     const osLabel = [input.os, input.arch, input.os_version && `(${input.os_version})`].filter(Boolean).join(' ');
     this.db.exec('BEGIN IMMEDIATE');
     try {
-      const existing = this.db.prepare('SELECT versions, os_list FROM groups WHERE id = ?').get(groupId) as Row | undefined;
+      const existing = this.db.prepare('SELECT versions, os_list, status FROM groups WHERE id = ?').get(groupId) as Row | undefined;
       if (existing) {
         this.db
           .prepare('UPDATE groups SET count = count + 1, last_seen = ?, versions = ?, os_list = ? WHERE id = ?')
@@ -194,7 +199,7 @@ export class Store {
         )
         .run(groupId, groupId, MAX_REPORTS_PER_GROUP);
       this.db.exec('COMMIT');
-      return { id, isNew: !existing };
+      return { id, isNew: !existing, previousStatus: existing ? (existing.status as Status) : null };
     } catch (e) {
       this.db.exec('ROLLBACK');
       throw e;

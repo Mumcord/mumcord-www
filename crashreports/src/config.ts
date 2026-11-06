@@ -16,6 +16,12 @@ export interface Config {
   aiTimeoutMs: number;
   /** Reports (raw text, logs, system details) are deleted this many days after they arrive. */
   reportRetentionDays: number;
+  /** Mumbot webhook `POST /message` URL; empty turns the channel notification off. */
+  mumbotWebhookUrl: string;
+  /** Mumbot API key, sent as `X-API-Key`. */
+  mumbotWebhookToken: string;
+  /** Mumble channel id, or a channel name that is resolved through Mumbot's `GET /channels`. */
+  mumbotChannel: string;
 }
 
 /** Deploy placeholders (CHANGE_ME…) count as not set, so a missing key turns the feature off. */
@@ -44,5 +50,8 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): Config {
     aiIncludeLogs: env.AI_INCLUDE_LOGS === '1',
     aiIncludeSource: (env.AI_INCLUDE_SOURCE ?? '1') === '1',
     aiTimeoutMs: Number(env.AI_TIMEOUT_MS ?? 30_000),
+    mumbotWebhookUrl: secret(env.MUMBOT_WEBHOOK_URL?.trim()),
+    mumbotWebhookToken: secret(env.MUMBOT_WEBHOOK_TOKEN?.trim()),
+    mumbotChannel: secret(env.MUMBOT_CHANNEL?.trim()),
   };
 }

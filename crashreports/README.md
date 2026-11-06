@@ -21,6 +21,7 @@ src/fingerprint.ts  grouping key: kind/signal + cause + top app frames
 src/source.ts       file:line extraction and snippet fetching from GitHub
 src/ai.ts           Claude Haiku analysis (structured JSON output)
 src/github.ts       issue body and GitHub REST call
+src/mumbot.ts       channel card through the Mumbot webhook
 src/auth.ts         WebAuthn, sessions, CSRF guard
 src/db.ts           SQLite schema and queries
 public/             admin UI (plain HTML/CSS/JS)
@@ -46,6 +47,9 @@ test/               node:test tests, test/fixtures/ holds real crash files
 | `AI_INCLUDE_SOURCE` | `1` | Fetch source snippets from the public repo for the AI prompt |
 | `AI_INCLUDE_LOGS` | `0` | `1` also sends the last log lines and the user note to Anthropic |
 | `AI_TIMEOUT_MS` | `30000` | Timeout per AI request |
+| `MUMBOT_WEBHOOK_URL` | (none) | Mumbot webhook `POST /message` URL, e.g. `http://mumbot:8080/message`. See "Mumbot webhook" |
+| `MUMBOT_WEBHOOK_TOKEN` | (none) | Mumbot API key (a `[[keys]]` entry), sent as `X-API-Key` |
+| `MUMBOT_CHANNEL` | (none) | Channel id (e.g. `42`), or its name, looked up once through Mumbot's `GET /channels` |
 
 ## Setup
 
@@ -150,6 +154,112 @@ raw.githubusercontent.com, or through the contents API when `GITHUB_TOKEN` is se
 When no location is found and `GITHUB_TOKEN` is set, a GitHub code search for a distinctive
 phrase of the cause is tried.
 
+## Mumbot webhook
+
+With `MUMBOT_WEBHOOK_URL`, `MUMBOT_WEBHOOK_TOKEN` and `MUMBOT_CHANNEL` set (values starting with
+`CHANGE_ME` count as unset), the service posts a message card into a Mumble channel through a
+[Mumbot](https://github.com/Mumcord/mumbot) webhook bot (0.5.x):
+
+- when a **new group** appears: after its AI analysis has finished or failed (at most 30 s), right
+  away when AI is off;
+- when a group marked **fixed or ignored** comes back (regression).
+
+Further reports of an open group post nothing, and a group gets at most one card per hour
+(in-memory cooldown). Webhook errors are logged and never affect ingest; each request has a 5 s
+timeout.
+
+Mumbot's API is `POST /message` with the header `X-API-Key: <key>` and the body
+`{"channel": <id>, "message": "<text>"}`; the channel must be a numeric id. Mumbot has no card
+object (Mumcord/mumbot#13 was not planned) and escapes HTML, so the message is Mumcord's typed
+BB code `[card …]…[/card]`, which Mumcord renders as a card (`docs/message-cards.md` in the Mumcord
+repo). Official Mumble clients show the BB code as text. Mumbot turns lowercase `http(s)://` into
+links, which would break a card attribute, so the card URL is sent as `HTTPS://…`; Mumcord accepts
+it. Example:
+
+```
+[card title="Screen decoder returns no frame for a keyframe" color=error icon=error url="HTTPS://crash.mumcord.app/#/groups/<groupId>"]
+**High** · screenshare
+The decoder returns no frame for a keyframe and the demo panics instead of skipping it.
+- Version: 0.7.1
+- OS: linux x86_64
+- Kind: panic
+- Count: 1
+- Suspect: `crates/engine/examples/crash_demo.rs:17`
+[/card]
+```
+
+- Title: the AI title, else `Crash: <cause>` (home directories removed).
+- Colour from the AI severity, else from the kind (signal/crash critical, panic high, hang medium):
+  critical/high `error` (red), medium `warning` (orange), low no colour (Mumcord's neutral stripe).
+- With AI: severity label, component and the summary (trimmed). Fields: versions, OS + arch of the
+  report, kind, count, suspect location (AI, else the cause's `file:line`).
+- Title and the "Open" button lead to `${ORIGIN}/#/groups/<groupId>`; the admin page opens that
+  group after the passkey login.
+- Never in the card: log lines, the user note, OS version, kernel, hardware or running context.
+  The channel may be semi-public.
+
+### Running Mumbot next to the service
+
+Mumbot is configured by a `bot.toml` (it does not expand environment variables; only the server
+password can come from `SERVER_PASSWORD`). The API key and channel passwords therefore have to be
+in the file: render it from CI secrets at deploy time and mount it read-only. Keys:
+Mumbot's `docs/configuration.md`.
+
+```toml
+# bot.toml (secret, never committed)
+[server]
+host = "tiffoyn.de"
+port = 64738
+name = "Crash reports"
+cert_name = "crash-reports"     # stable identity, no spaces
+channel = "Lobby"               # joined at login
+# connect password: SERVER_PASSWORD env
+
+[http]
+listen = "0.0.0.0:8080"         # inside the container; not published to the host
+
+[[keys]]
+key = "CHANGE_ME_MUMBOT_KEY"    # openssl rand -hex 32, same value as MUMBOT_WEBHOOK_TOKEN
+label = "crashreports"
+channels = ["Lobby"]
+
+[[token]]                       # channel password (Mumble access token)
+channel = "Lobby"
+password = "CHANGE_ME_CHANNEL_PASSWORD"
+```
+
+```yaml
+services:
+  crashreports:
+    # … as before, plus:
+    environment:
+      MUMBOT_WEBHOOK_URL: http://mumbot:8080/message
+      MUMBOT_WEBHOOK_TOKEN: ${MUMBOT_WEBHOOK_TOKEN}
+      MUMBOT_CHANNEL: Lobby       # or its numeric id
+  mumbot:
+    image: ghcr.io/mumcord/mumbot:0.5.1
+    command: ["webhook"]          # only the webhook module
+    restart: unless-stopped
+    user: "10001:10001"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    environment:
+      MUMBOT_CONFIG: /config/bot.toml
+      SERVER_PASSWORD: ${MUMBLE_SERVER_PASSWORD}
+      RUST_LOG: info
+    volumes:
+      - ./bot.toml:/config/bot.toml:ro
+      - mumbot-data:/data           # client certificate = the bot's identity
+volumes:
+  mumbot-data:
+```
+
+No port is published: the crash service reaches Mumbot over the compose network. Mumbot warns at
+start that HTTP on `0.0.0.0` is unencrypted; that traffic stays on the internal network. Check the
+bot with `GET http://mumbot:8080/health` (`"connected":true`) and the key with
+`GET /channels` (header `X-API-Key`).
+
 ## Privacy
 
 - Retention: every report (raw text, log lines, system details) is deleted 90 days after it arrives, checked at start and every 6 hours. Groups keep only their aggregate: count, first/last seen, versions, status, analysis and issue link. Reports carry no install or user id, so a single report cannot be traced back to a person or deleted on request; the fixed retention is the safeguard.
@@ -165,5 +275,7 @@ phrase of the cause is tried.
 - **To Anthropic:** kind, cause, normalized top app frames, versions, OS list, thread, uptime,
   the running/system context, and source snippets from the public Mumcord repo. Log lines and
   the user note only with `AI_INCLUDE_LOGS=1`. Nothing is sent without `ANTHROPIC_API_KEY`.
+- **To the Mumbot channel:** title, AI severity, component and summary, versions, OS + arch,
+  kind, count, suspect location and the admin link. No log lines, user note or system details.
 - To GitHub for source snippets: only repo paths and the release tag, no report data (except
   the code search phrase taken from the cause, and only when `GITHUB_TOKEN` is set).
