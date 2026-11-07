@@ -14,7 +14,7 @@ test('prune deletes reports older than the cut-off and keeps the group', async (
   assert.equal(res.status, 201);
   const { id, group } = (await res.json()) as { id: string; group: string };
 
-  assert.deepEqual(store.prune(new Date(Date.now() - 90 * 86_400_000)), { reports: 0, sessions: 0 });
+  assert.deepEqual(store.prune(new Date(Date.now() - 90 * 86_400_000)), { reports: 0, sessions: 0, invites: 0 });
   assert.equal(store.latestReports(group, 10).length, 1);
 
   const r = store.prune(new Date(Date.now() + 1000));

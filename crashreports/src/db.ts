@@ -43,7 +43,30 @@ export interface CredentialRow {
   transports: string[];
   name: string;
   created_at: string;
+  last_used_at: string | null;
+  /** Name of the passkey whose invite created this one (null: setup or added by its owner). */
+  invited_by: string | null;
 }
+
+export type InviteState = 'open' | 'used' | 'expired' | 'revoked';
+
+export interface InviteRow {
+  id: string;
+  label: string;
+  created_at: string;
+  expires_at: string;
+  used_at: string | null;
+  revoked_at: string | null;
+  credential_id: string | null;
+  /** Name of the passkey that redeemed it, while it exists. */
+  credential_name: string | null;
+  /** Name of the creator's passkey, while it exists. */
+  created_by: string | null;
+  state: InviteState;
+}
+
+/** Why an invite token cannot be redeemed. */
+export type InviteProblem = 'invalid' | 'expired' | 'used' | 'revoked';
 
 const SCHEMA = `
 PRAGMA journal_mode = WAL;
@@ -96,13 +119,29 @@ CREATE TABLE IF NOT EXISTS credentials (
   counter INTEGER NOT NULL,
   transports TEXT NOT NULL DEFAULT '[]',
   name TEXT NOT NULL DEFAULT '',
-  created_at TEXT NOT NULL
+  created_at TEXT NOT NULL,
+  last_used_at TEXT,
+  invited_by TEXT
 );
 CREATE TABLE IF NOT EXISTS sessions (
   token_hash TEXT PRIMARY KEY,
   created_at TEXT NOT NULL,
-  expires_at TEXT NOT NULL
+  expires_at TEXT NOT NULL,
+  credential_id TEXT
 );
+CREATE TABLE IF NOT EXISTS invites (
+  id TEXT PRIMARY KEY,
+  token_hash TEXT NOT NULL UNIQUE,
+  label TEXT NOT NULL DEFAULT '',
+  created_by_credential TEXT,
+  created_by_session TEXT,
+  created_at TEXT NOT NULL,
+  expires_at TEXT NOT NULL,
+  used_at TEXT,
+  revoked_at TEXT,
+  credential_id TEXT
+);
+CREATE INDEX IF NOT EXISTS invites_expires ON invites(expires_at);
 CREATE TABLE IF NOT EXISTS github_deliveries (
   id TEXT PRIMARY KEY,
   received_at TEXT NOT NULL
@@ -121,6 +160,28 @@ CREATE TABLE IF NOT EXISTS github_stats (
 export const DELIVERY_RETENTION_MS = 7 * 86_400_000;
 
 type Row = Record<string, unknown>;
+
+/** Columns added after the first release; older databases get them on open. */
+const MIGRATIONS: [table: string, column: string, ddl: string][] = [
+  ['credentials', 'last_used_at', 'ALTER TABLE credentials ADD COLUMN last_used_at TEXT'],
+  ['credentials', 'invited_by', 'ALTER TABLE credentials ADD COLUMN invited_by TEXT'],
+  ['sessions', 'credential_id', 'ALTER TABLE sessions ADD COLUMN credential_id TEXT'],
+];
+
+function toCredential(r: Row): CredentialRow {
+  return {
+    ...(r as unknown as CredentialRow),
+    transports: JSON.parse(r.transports as string),
+    last_used_at: (r.last_used_at as string | null) ?? null,
+    invited_by: (r.invited_by as string | null) ?? null,
+  };
+}
+
+function inviteState(r: Row, now: string): InviteState {
+  if (r.used_at) return 'used';
+  if (r.revoked_at) return 'revoked';
+  return (r.expires_at as string) <= now ? 'expired' : 'open';
+}
 
 function addUnique(jsonList: string, value: string, max = 50): string {
   const list = JSON.parse(jsonList) as string[];
@@ -164,6 +225,28 @@ export class Store {
   constructor(path: string) {
     this.db = new DatabaseSync(path);
     this.db.exec(SCHEMA);
+    this.migrate();
+  }
+
+  private migrate(): void {
+    for (const [table, column, ddl] of MIGRATIONS) {
+      const cols = this.db.prepare(`PRAGMA table_info(${table})`).all() as Row[];
+      if (!cols.some((c) => c.name === column)) this.db.exec(ddl);
+    }
+    this.db.exec('CREATE INDEX IF NOT EXISTS sessions_credential ON sessions(credential_id)');
+  }
+
+  /** Runs `fn` in an IMMEDIATE transaction. */
+  private tx<T>(fn: () => T): T {
+    this.db.exec('BEGIN IMMEDIATE');
+    try {
+      const r = fn();
+      this.db.exec('COMMIT');
+      return r;
+    } catch (e) {
+      this.db.exec('ROLLBACK');
+      throw e;
+    }
   }
 
   close(): void {
@@ -277,11 +360,15 @@ export class Store {
     return this.db.prepare('DELETE FROM groups WHERE id = ?').run(id).changes > 0;
   }
 
-  /** Deletes reports older than the cut-off and expired sessions; groups keep their counts and analysis. */
-  prune(reportsBefore: Date, now: Date = new Date()): { reports: number; sessions: number } {
+  /**
+   * Deletes reports older than the cut-off, expired sessions and expired invites (used ones too;
+   * the passkey keeps who invited it). Groups keep their counts and analysis.
+   */
+  prune(reportsBefore: Date, now: Date = new Date()): { reports: number; sessions: number; invites: number } {
     const reports = this.db.prepare('DELETE FROM reports WHERE created_at < ?').run(reportsBefore.toISOString()).changes;
     const sessions = this.db.prepare('DELETE FROM sessions WHERE expires_at < ?').run(now.toISOString()).changes;
-    return { reports: Number(reports), sessions: Number(sessions) };
+    const invites = this.db.prepare('DELETE FROM invites WHERE expires_at < ?').run(now.toISOString()).changes;
+    return { reports: Number(reports), sessions: Number(sessions), invites: Number(invites) };
   }
 
   deleteReport(id: string): boolean {
@@ -298,37 +385,128 @@ export class Store {
   }
 
   listCredentials(): CredentialRow[] {
-    return (this.db.prepare('SELECT * FROM credentials ORDER BY created_at').all() as Row[]).map((r) => ({
-      ...(r as unknown as CredentialRow),
-      transports: JSON.parse(r.transports as string),
-    }));
+    return (this.db.prepare('SELECT * FROM credentials ORDER BY created_at').all() as Row[]).map(toCredential);
   }
 
   getCredential(id: string): CredentialRow | null {
     const r = this.db.prepare('SELECT * FROM credentials WHERE id = ?').get(id) as Row | undefined;
-    return r ? { ...(r as unknown as CredentialRow), transports: JSON.parse(r.transports as string) } : null;
+    return r ? toCredential(r) : null;
   }
 
-  addCredential(c: { id: string; publicKey: Uint8Array; counter: number; transports: string[]; name: string }): void {
+  addCredential(c: { id: string; publicKey: Uint8Array; counter: number; transports: string[]; name: string; invitedBy?: string | null }): void {
     this.db
-      .prepare('INSERT INTO credentials (id, public_key, counter, transports, name, created_at) VALUES (?, ?, ?, ?, ?, ?)')
-      .run(c.id, c.publicKey, c.counter, JSON.stringify(c.transports), c.name, new Date().toISOString());
+      .prepare('INSERT INTO credentials (id, public_key, counter, transports, name, created_at, invited_by) VALUES (?, ?, ?, ?, ?, ?, ?)')
+      .run(c.id, c.publicKey, c.counter, JSON.stringify(c.transports), c.name, new Date().toISOString(), c.invitedBy ?? null);
   }
 
-  updateCounter(id: string, counter: number): void {
-    this.db.prepare('UPDATE credentials SET counter = ? WHERE id = ?').run(counter, id);
+  /** After a login: the new signature counter and the last-used time. */
+  markCredentialUsed(id: string, counter: number, now: Date = new Date()): void {
+    this.db.prepare('UPDATE credentials SET counter = ?, last_used_at = ? WHERE id = ?').run(counter, now.toISOString(), id);
   }
 
-  deleteCredential(id: string): boolean {
-    return this.db.prepare('DELETE FROM credentials WHERE id = ?').run(id).changes > 0;
+  /**
+   * Deletes a passkey and its sessions. Refuses to delete the last passkey ('last'); the count
+   * check and the delete share one transaction.
+   */
+  deleteCredential(id: string): 'ok' | 'last' | 'not found' {
+    return this.tx(() => {
+      if (!this.db.prepare('SELECT 1 FROM credentials WHERE id = ?').get(id)) return 'not found';
+      if (this.credentialCount() <= 1) return 'last';
+      this.db.prepare('DELETE FROM credentials WHERE id = ?').run(id);
+      this.db.prepare('DELETE FROM sessions WHERE credential_id = ?').run(id);
+      return 'ok';
+    });
+  }
+
+  // ---- invites ----
+
+  createInvite(i: {
+    tokenHash: string;
+    label: string;
+    createdByCredential: string | null;
+    createdBySession: string | null;
+    expiresAt: Date;
+    now?: Date;
+  }): string {
+    const id = randomUUID();
+    this.db
+      .prepare(
+        `INSERT INTO invites (id, token_hash, label, created_by_credential, created_by_session, created_at, expires_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?)`,
+      )
+      .run(id, i.tokenHash, i.label, i.createdByCredential, i.createdBySession, (i.now ?? new Date()).toISOString(), i.expiresAt.toISOString());
+    return id;
+  }
+
+  listInvites(now: Date = new Date()): InviteRow[] {
+    const ts = now.toISOString();
+    return (this.db
+      .prepare(
+        `SELECT i.id, i.label, i.created_at, i.expires_at, i.used_at, i.revoked_at, i.credential_id,
+                used.name AS credential_name, creator.name AS created_by
+           FROM invites i
+           LEFT JOIN credentials used ON used.id = i.credential_id
+           LEFT JOIN credentials creator ON creator.id = i.created_by_credential
+          ORDER BY i.created_at DESC`,
+      )
+      .all() as Row[]).map((r) => ({ ...(r as unknown as InviteRow), state: inviteState(r, ts) }));
+  }
+
+  /** Checks an invite token (by hash): its label, or why it cannot be used. */
+  checkInvite(tokenHash: string, now: Date = new Date()): { ok: true; id: string; label: string } | { ok: false; problem: InviteProblem } {
+    const r = this.db.prepare('SELECT * FROM invites WHERE token_hash = ?').get(tokenHash) as Row | undefined;
+    if (!r) return { ok: false, problem: 'invalid' };
+    const state = inviteState(r, now.toISOString());
+    return state === 'open' ? { ok: true, id: r.id as string, label: r.label as string } : { ok: false, problem: state };
+  }
+
+  /**
+   * Redeems an invite: marks it used and stores the new passkey in one transaction, so a token
+   * registers at most one passkey even with concurrent requests.
+   */
+  redeemInvite(
+    tokenHash: string,
+    c: { id: string; publicKey: Uint8Array; counter: number; transports: string[]; name: string },
+    now: Date = new Date(),
+  ): { ok: true } | { ok: false; problem: InviteProblem } {
+    return this.tx(() => {
+      const check = this.checkInvite(tokenHash, now);
+      if (!check.ok) return check;
+      const ts = now.toISOString();
+      const marked = this.db
+        .prepare('UPDATE invites SET used_at = ?, credential_id = ? WHERE token_hash = ? AND used_at IS NULL AND revoked_at IS NULL AND expires_at > ?')
+        .run(ts, c.id, tokenHash, ts).changes;
+      if (!marked) return { ok: false, problem: 'used' as const };
+      const creator = this.db
+        .prepare('SELECT c.name FROM invites i LEFT JOIN credentials c ON c.id = i.created_by_credential WHERE i.token_hash = ?')
+        .get(tokenHash) as Row | undefined;
+      this.addCredential({ ...c, invitedBy: (creator?.name as string | null) || 'an admin' });
+      return { ok: true as const };
+    });
+  }
+
+  /** Revokes an open invite; false when it does not exist or is no longer open. */
+  revokeInvite(id: string, now: Date = new Date()): boolean {
+    const ts = now.toISOString();
+    return (
+      this.db
+        .prepare('UPDATE invites SET revoked_at = ? WHERE id = ? AND used_at IS NULL AND revoked_at IS NULL AND expires_at > ?')
+        .run(ts, id, ts).changes > 0
+    );
   }
 
   // ---- sessions ----
 
-  createSession(tokenHash: string, expiresAt: Date): void {
+  createSession(tokenHash: string, expiresAt: Date, credentialId: string | null = null): void {
     this.db
-      .prepare('INSERT INTO sessions (token_hash, created_at, expires_at) VALUES (?, ?, ?)')
-      .run(tokenHash, new Date().toISOString(), expiresAt.toISOString());
+      .prepare('INSERT INTO sessions (token_hash, created_at, expires_at, credential_id) VALUES (?, ?, ?, ?)')
+      .run(tokenHash, new Date().toISOString(), expiresAt.toISOString(), credentialId);
+  }
+
+  /** The passkey a session was opened with (null for sessions from before that was recorded). */
+  sessionCredential(tokenHash: string): string | null {
+    const r = this.db.prepare('SELECT credential_id FROM sessions WHERE token_hash = ?').get(tokenHash) as Row | undefined;
+    return (r?.credential_id as string | null) ?? null;
   }
 
   sessionValid(tokenHash: string): boolean {

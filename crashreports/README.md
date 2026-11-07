@@ -75,7 +75,8 @@ In production (Docker, see `Dockerfile`):
    (`openssl rand -hex 24`). Route `crash.mumcord.app` to port 8787 in Traefik.
 2. Open `https://crash.mumcord.app/setup?token=<SETUP_TOKEN>` and register the first passkey.
    After that the setup page is closed; the token cannot register more passkeys.
-3. Signed in, use "Add passkey" to register more devices. Sessions last 7 days
+3. Signed in, open "People & passkeys" to add a passkey for yourself or to invite someone
+   (see [Inviting people](#inviting-people)). Sessions last 7 days
    (HttpOnly, Secure, SameSite=Strict cookie; the token is stored only as a hash).
 4. Optionally remove `SETUP_TOKEN` from the environment.
 
@@ -136,6 +137,23 @@ running/system context, log lines and raw report, a status selector, and delete 
 
 All `/api/admin/*` routes need a session (401 otherwise). State-changing requests must send the
 header `x-crashreports-csrf: 1` and, if the browser sends an `Origin`, it must equal `ORIGIN`.
+
+### Inviting people
+
+Signed in, open "People & passkeys", enter an optional label (e.g. "Alex"), pick how long the link
+stays valid (1 hour, 24 hours by default, or 7 days) and create the invite. The link
+`<ORIGIN>/invite#<token>` is shown once with a copy button; send it over a private channel.
+
+- The token is 32 random bytes and sits in the URL fragment, so it never reaches server or proxy
+  logs. The invite page sends it only in request bodies; the server stores only its SHA-256 hash.
+- The invitee opens the link, names the passkey (prefilled with the label) and registers it. The
+  invite is marked used in the same transaction that stores the passkey, so it works once. After
+  that the invitee is signed in.
+- Expired, used and revoked links show a clear error. Open invites can be revoked; expired ones are
+  deleted by the retention job. The invite routes and `/setup` share a rate limit of
+  `RATE_LIMIT_PER_MINUTE` per client address.
+- The passkey list shows name, created and last-used dates and who invited each one. Deleting a
+  passkey ends its sessions right away; the last passkey cannot be deleted.
 
 ## GitHub issues
 
