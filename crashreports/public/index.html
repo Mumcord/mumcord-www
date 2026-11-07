@@ -14,6 +14,7 @@
     <h1>Mumcord <span>crash reports</span></h1>
     <nav id="nav" hidden>
       <button id="people-btn" class="ghost" aria-expanded="false" aria-controls="people">People &amp; sign-in</button>
+      <a id="help-link" class="button ghost" href="/help/mcp">Help</a>
       <button id="logout" class="ghost">Sign out</button>
     </nav>
   </header>
@@ -83,6 +84,33 @@
         <h2>People &amp; sign-in</h2>
         <h3>My sign-in</h3>
         <div id="account"></div>
+        <h3>API tokens</h3>
+        <p class="sub">Personal tokens for the read-only MCP server (<code id="mcp-url"></code>), for AI clients such as Claude Code. They work only for <code>/mcp</code>, never for this page. <a href="/help/mcp">How to connect</a></p>
+        <form id="token-create" class="actions">
+          <input id="token-name" maxlength="80" placeholder="Name, e.g. Laptop – Claude Code" autocomplete="off" required>
+          <select id="token-days" aria-label="Expires">
+            <option value="30">expires in 30 days</option>
+            <option value="90" selected>expires in 90 days</option>
+            <option value="365">expires in 1 year</option>
+            <option value="never">never expires</option>
+          </select>
+          <button class="primary" type="submit">Create token</button>
+        </form>
+        <div id="token-result" class="invite-result" hidden>
+          <p><strong>Copy the token now. It will not be shown again.</strong> Only its hash is stored.</p>
+          <div class="actions">
+            <input id="token-value" readonly aria-label="API token">
+            <button id="token-copy" type="button">Copy</button>
+          </div>
+          <div id="token-setups"></div>
+          <p class="sub">More on each client and example prompts: <a href="/help/mcp">Help: MCP server</a>.</p>
+          <button id="token-done" type="button">Done, I copied it</button>
+        </div>
+        <table class="plain">
+          <thead><tr><th>Name</th><th>Token</th><th>Created</th><th>Last used</th><th>Expires</th><th></th></tr></thead>
+          <tbody id="tokens"></tbody>
+        </table>
+        <p id="tokens-empty" class="muted" hidden>No API tokens.</p>
         <h3>Invite someone</h3>
         <form id="invite-create" class="actions">
           <input id="invite-label" maxlength="60" placeholder="Label (optional), e.g. Alex" autocomplete="off">

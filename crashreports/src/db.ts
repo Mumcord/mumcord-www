@@ -116,6 +116,46 @@ export interface InviteRow {
 /** Why an invite token cannot be redeemed. */
 export type InviteProblem = 'invalid' | 'expired' | 'used' | 'revoked';
 
+/** A personal API token for the read-only MCP endpoint; only its SHA-256 is stored. */
+export interface ApiTokenRow {
+  id: string;
+  user_id: string;
+  name: string;
+  /** First 8 characters of the token (`mcr_` + 4), for recognition only. */
+  prefix: string;
+  created_at: string;
+  /** null: never expires. */
+  expires_at: string | null;
+  last_used_at: string | null;
+  revoked_at: string | null;
+}
+
+/** Filters of the MCP `list_crash_groups` tool. */
+export interface GroupFilter {
+  status?: string;
+  q?: string;
+  /** An exact app version the group was seen in. */
+  version?: string;
+  /** `panic`, `signal`, or the full kind such as `signal SIGSEGV`. */
+  kind?: string;
+  /** AI component, case-insensitive. */
+  component?: string;
+  /** ISO time: only groups seen at or after it. */
+  since?: string;
+  limit?: number;
+}
+
+export interface CrashStats {
+  days: number;
+  since: string;
+  reports: number;
+  per_day: { day: string; reports: number }[];
+  top_groups: { id: string; title: string; reports: number; total_count: number; status: string }[];
+  per_version: { version: string; reports: number }[];
+  per_os: { os: string; reports: number }[];
+  per_component: { component: string; reports: number }[];
+}
+
 const SCHEMA = `
 PRAGMA journal_mode = WAL;
 PRAGMA foreign_keys = ON;
@@ -213,6 +253,18 @@ CREATE TABLE IF NOT EXISTS invites (
   created_by_user TEXT
 );
 CREATE INDEX IF NOT EXISTS invites_expires ON invites(expires_at);
+CREATE TABLE IF NOT EXISTS api_tokens (
+  id TEXT PRIMARY KEY,
+  user_id TEXT NOT NULL,
+  name TEXT NOT NULL,
+  token_hash TEXT NOT NULL UNIQUE,
+  prefix TEXT NOT NULL,
+  created_at TEXT NOT NULL,
+  expires_at TEXT,
+  last_used_at TEXT,
+  revoked_at TEXT
+);
+CREATE INDEX IF NOT EXISTS api_tokens_user ON api_tokens(user_id);
 CREATE TABLE IF NOT EXISTS github_deliveries (
   id TEXT PRIMARY KEY,
   received_at TEXT NOT NULL
@@ -562,6 +614,7 @@ export class Store {
       this.db.prepare('DELETE FROM sessions WHERE credential_id IN (SELECT id FROM credentials WHERE user_id = ?)').run(id);
       this.db.prepare('DELETE FROM credentials WHERE user_id = ?').run(id);
       this.db.prepare('DELETE FROM recovery_codes WHERE user_id = ?').run(id);
+      this.revokeUserApiTokens(id);
       this.db.prepare('DELETE FROM users WHERE id = ?').run(id);
       return 'ok';
     });
@@ -578,6 +631,7 @@ export class Store {
         .run(id);
       this.db.prepare('DELETE FROM recovery_codes WHERE user_id = ?').run(id);
       this.deleteUserSessions(id);
+      this.revokeUserApiTokens(id);
       return 'ok';
     });
   }
@@ -907,6 +961,145 @@ export class Store {
         .prepare('INSERT OR IGNORE INTO github_stats (org, date, taken_at, data_json) VALUES (?, ?, ?, ?)')
         .run(org, date, now.toISOString(), JSON.stringify(data)).changes > 0
     );
+  }
+
+  // ---- API tokens (MCP) ----
+
+  createApiToken(t: { userId: string; name: string; tokenHash: string; prefix: string; expiresAt: Date | null; now?: Date }): ApiTokenRow {
+    const id = randomUUID();
+    const created = (t.now ?? new Date()).toISOString();
+    this.db
+      .prepare('INSERT INTO api_tokens (id, user_id, name, token_hash, prefix, created_at, expires_at) VALUES (?, ?, ?, ?, ?, ?, ?)')
+      .run(id, t.userId, t.name, t.tokenHash, t.prefix, created, t.expiresAt?.toISOString() ?? null);
+    return this.getApiToken(id)!;
+  }
+
+  getApiToken(id: string): ApiTokenRow | null {
+    const r = this.db
+      .prepare('SELECT id, user_id, name, prefix, created_at, expires_at, last_used_at, revoked_at FROM api_tokens WHERE id = ?')
+      .get(id) as ApiTokenRow | undefined;
+    return r ? { ...r } : null;
+  }
+
+  /** The user's tokens that still work (not revoked, not expired), newest first. */
+  listApiTokens(userId: string, now: Date = new Date()): ApiTokenRow[] {
+    return (this.db
+      .prepare(
+        `SELECT id, user_id, name, prefix, created_at, expires_at, last_used_at, revoked_at FROM api_tokens
+         WHERE user_id = ? AND revoked_at IS NULL AND (expires_at IS NULL OR expires_at > ?) ORDER BY created_at DESC, rowid DESC`,
+      )
+      .all(userId, now.toISOString()) as unknown as ApiTokenRow[]).map((r) => ({ ...r }));
+  }
+
+  activeApiTokenCount(userId: string, now: Date = new Date()): number {
+    return this.listApiTokens(userId, now).length;
+  }
+
+  /** Revokes one of the user's tokens; false when it is not theirs or already revoked. */
+  revokeApiToken(id: string, userId: string, now: Date = new Date()): boolean {
+    return (
+      this.db
+        .prepare('UPDATE api_tokens SET revoked_at = ? WHERE id = ? AND user_id = ? AND revoked_at IS NULL')
+        .run(now.toISOString(), id, userId).changes > 0
+    );
+  }
+
+  revokeUserApiTokens(userId: string, now: Date = new Date()): number {
+    return Number(
+      this.db.prepare('UPDATE api_tokens SET revoked_at = ? WHERE user_id = ? AND revoked_at IS NULL').run(now.toISOString(), userId).changes,
+    );
+  }
+
+  /** The token for a hash if it works: not revoked, not expired, and its user still exists. */
+  validApiToken(tokenHash: string, now: Date = new Date()): ApiTokenRow | null {
+    const r = this.db
+      .prepare(
+        `SELECT t.id, t.user_id, t.name, t.prefix, t.created_at, t.expires_at, t.last_used_at, t.revoked_at
+         FROM api_tokens t JOIN users u ON u.id = t.user_id
+         WHERE t.token_hash = ? AND t.revoked_at IS NULL AND (t.expires_at IS NULL OR t.expires_at > ?)`,
+      )
+      .get(tokenHash, now.toISOString()) as ApiTokenRow | undefined;
+    return r ? { ...r } : null;
+  }
+
+  /** Sets last_used_at, at most once per `everyMs` (default one minute). */
+  touchApiToken(id: string, now: Date = new Date(), everyMs = 60_000): boolean {
+    return (
+      this.db
+        .prepare('UPDATE api_tokens SET last_used_at = ? WHERE id = ? AND (last_used_at IS NULL OR last_used_at <= ?)')
+        .run(now.toISOString(), id, new Date(now.getTime() - everyMs).toISOString()).changes > 0
+    );
+  }
+
+  // ---- read-only queries for MCP ----
+
+  searchGroups(f: GroupFilter): GroupRow[] {
+    const where: string[] = [];
+    const args: (string | number)[] = [];
+    const like = (v: string) => `%${v.replace(/[\\%_]/g, (m) => '\\' + m)}%`;
+    if (f.status) {
+      where.push('status = ?');
+      args.push(f.status);
+    }
+    if (f.q) {
+      const l = like(f.q);
+      where.push(`(message LIKE ? ESCAPE '\\' OR top_frames LIKE ? ESCAPE '\\' OR ai_json LIKE ? ESCAPE '\\' OR id LIKE ? ESCAPE '\\')`);
+      args.push(l, l, l, l);
+    }
+    if (f.version) {
+      where.push('EXISTS (SELECT 1 FROM json_each(groups.versions) WHERE value = ?)');
+      args.push(f.version);
+    }
+    if (f.kind) {
+      where.push("(lower(kind) = lower(?) OR lower(kind) LIKE lower(?) || ' %')");
+      args.push(f.kind, f.kind);
+    }
+    if (f.component) {
+      where.push("lower(json_extract(ai_json, '$.component')) = lower(?)");
+      args.push(f.component);
+    }
+    if (f.since) {
+      where.push('last_seen >= ?');
+      args.push(f.since);
+    }
+    const sql = `SELECT * FROM groups ${where.length ? 'WHERE ' + where.join(' AND ') : ''} ORDER BY last_seen DESC LIMIT ?`;
+    args.push(Math.max(1, Math.min(f.limit ?? 25, 100)));
+    return (this.db.prepare(sql).all(...args) as Row[]).map(toGroup);
+  }
+
+  getReport(id: string): ReportRow | null {
+    const r = this.db.prepare('SELECT * FROM reports WHERE id = ?').get(id) as Row | undefined;
+    return r ? toReport(r) : null;
+  }
+
+  /** Report counts over the last `days` days (only reports that are still stored). */
+  crashStats(days: number, now: Date = new Date()): CrashStats {
+    const since = new Date(now.getTime() - days * 86_400_000).toISOString();
+    const all = <T>(sql: string, ...a: (string | number)[]) => this.db.prepare(sql).all(since, ...a) as unknown as T[];
+    const total = (this.db.prepare('SELECT COUNT(*) AS n FROM reports WHERE created_at >= ?').get(since) as Row).n as number;
+    const top = all<Row>(
+      `SELECT g.id, g.message, g.ai_json, g.count, g.status, COUNT(*) AS reports FROM reports r JOIN groups g ON g.id = r.group_id
+       WHERE r.created_at >= ? GROUP BY g.id ORDER BY reports DESC, g.last_seen DESC LIMIT 10`,
+    );
+    return {
+      days,
+      since,
+      reports: total,
+      per_day: all(`SELECT substr(created_at, 1, 10) AS day, COUNT(*) AS reports FROM reports WHERE created_at >= ? GROUP BY day ORDER BY day`),
+      top_groups: top.map((r) => ({
+        id: r.id as string,
+        title: (r.ai_json ? (JSON.parse(r.ai_json as string) as { title?: string }).title : '') || (r.message as string),
+        reports: r.reports as number,
+        total_count: r.count as number,
+        status: r.status as string,
+      })),
+      per_version: all(`SELECT app_version AS version, COUNT(*) AS reports FROM reports WHERE created_at >= ? GROUP BY app_version ORDER BY reports DESC LIMIT 20`),
+      per_os: all(`SELECT os, COUNT(*) AS reports FROM reports WHERE created_at >= ? GROUP BY os ORDER BY reports DESC LIMIT 20`),
+      per_component: all(
+        `SELECT COALESCE(NULLIF(json_extract(g.ai_json, '$.component'), ''), '(not analyzed)') AS component, COUNT(*) AS reports
+         FROM reports r JOIN groups g ON g.id = r.group_id WHERE r.created_at >= ? GROUP BY component ORDER BY reports DESC LIMIT 20`,
+      ),
+    };
   }
 
   purgeExpiredSessions(): void {
