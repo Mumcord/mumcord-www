@@ -38,8 +38,15 @@ const { app } = createApp({
   },
 });
 
-if (!config.setupToken && store.credentialCount() === 0) {
-  console.warn('No passkey registered and SETUP_TOKEN is not set: the admin UI cannot be set up.');
+if (!config.setupToken && store.signInUserCount() === 0) {
+  console.warn('No sign-in method registered and SETUP_TOKEN is not set: the admin UI cannot be set up.');
+}
+if (!config.totpEncryptionKey) {
+  console.warn(
+    process.env.TOTP_ENCRYPTION_KEY && !process.env.TOTP_ENCRYPTION_KEY.startsWith('CHANGE_ME')
+      ? 'TOTP_ENCRYPTION_KEY is not 32 bytes (hex or base64): password login is off.'
+      : 'TOTP_ENCRYPTION_KEY is not set: password login is off, passkeys only.',
+  );
 }
 
 // Retention: reports are deleted REPORT_RETENTION_DAYS (default 90) after they arrive, checked at start and every 6 hours.

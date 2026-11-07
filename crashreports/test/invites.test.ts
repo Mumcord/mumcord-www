@@ -46,11 +46,11 @@ function setup() {
     return { ...j, token: j.url.split('#')[1] };
   };
   /** Runs the invite registration; returns the verify response. */
-  const redeem = async (token: string, credId: string, name = '') => {
-    const o = await call('POST', '/api/auth/invite/register/options', { invite_token: token });
+  const redeem = async (token: string, credId: string, name = '', username = credId) => {
+    const o = await call('POST', '/api/auth/invite/register/options', { invite_token: token, username });
     if (o.status !== 200) return o;
     const { challenge } = (await o.json()) as { challenge: string };
-    return call('POST', '/api/auth/invite/register/verify', { invite_token: token, name, response: { id: credId, challenge } });
+    return call('POST', '/api/auth/invite/register/verify', { invite_token: token, name, username, response: { id: credId, challenge } });
   };
   return { ...ctx, cookie, call, asAdmin, createInvite, redeem };
 }

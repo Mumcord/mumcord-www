@@ -1,3 +1,5 @@
+import { parseEncryptionKey } from './totp.ts';
+
 export interface Config {
   port: number;
   dataDir: string;
@@ -34,6 +36,8 @@ export interface Config {
   githubStatsTime: string;
   /** IANA time zone of `githubStatsTime`. */
   githubStatsTz: string;
+  /** AES-256-GCM key for the TOTP secrets (TOTP_ENCRYPTION_KEY); null turns password login off. */
+  totpEncryptionKey: Buffer | null;
 }
 
 /** Deploy placeholders (CHANGE_ME…) count as not set, so a missing key turns the feature off. */
@@ -71,5 +75,6 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): Config {
     githubStats: env.GITHUB_STATS !== '0',
     githubStatsTime: env.GITHUB_STATS_TIME?.trim() || '22:00',
     githubStatsTz: env.GITHUB_STATS_TZ?.trim() || 'Europe/Berlin',
+    totpEncryptionKey: parseEncryptionKey(env.TOTP_ENCRYPTION_KEY),
   };
 }

@@ -5,6 +5,7 @@
 #   docker run -d --name crashreports -p 8787:8787 -v crashreports-data:/data \
 #     -e RP_ID=crash.mumcord.app -e ORIGIN=https://crash.mumcord.app \
 #     -e SETUP_TOKEN=$(openssl rand -hex 24) -e TRUST_PROXY=1 \
+#     -e TOTP_ENCRYPTION_KEY=$(openssl rand -base64 32) \
 #     -e GITHUB_TOKEN=... -e ANTHROPIC_API_KEY=... \
 #     mumcord-crashreports
 

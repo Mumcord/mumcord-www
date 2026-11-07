@@ -1,14 +1,17 @@
 # Mumcord crash reports
 
 A small service that receives crash reports from the Mumcord desktop app (only sent with the
-user's consent), groups them, and gives the maintainer a passkey-protected admin page with
+user's consent), groups them, and gives the maintainers a protected admin page (passkey, or
+password plus authenticator app) with
 GitHub issue creation and an optional AI pre-analysis by Claude Haiku.
 
 Production: `https://crash.mumcord.app`, behind Traefik as the TLS proxy.
 
 - Node 24 runs the TypeScript directly (type stripping), no build step.
 - Hono + `@hono/node-server`, SQLite via the built-in `node:sqlite`. No native modules.
-- Admin login with passkeys (`@simplewebauthn/server` and `@simplewebauthn/browser`).
+- Admin login with passkeys (`@simplewebauthn/server` and `@simplewebauthn/browser`), or with
+  username + password and a mandatory TOTP second factor (`node:crypto`; QR codes rendered
+  server-side by the `qrcode` package).
 
 ## Layout
 
@@ -34,7 +37,8 @@ test/               node:test tests, test/fixtures/ holds real crash files
 |---|---|---|
 | `RP_ID` | host of `ORIGIN` | WebAuthn relying party ID, `crash.mumcord.app` in production |
 | `ORIGIN` | `http://localhost:8787` | Public origin of the admin page, `https://crash.mumcord.app` in production |
-| `SETUP_TOKEN` | (none) | Allows registering the first passkey at `/setup?token=…` |
+| `SETUP_TOKEN` | (none) | Allows creating the first user at `/setup?token=…` |
+| `TOTP_ENCRYPTION_KEY` | (none) | 32-byte key (base64 or hex) that encrypts the TOTP secrets (AES-256-GCM). Generate with `openssl rand -base64 32`. Unset (or `CHANGE_ME…`): password login is off, passkeys only |
 | `PORT` | `8787` | Listen port |
 | `DATA_DIR` | `./data` (`/data` in Docker) | Location of `crashreports.db` |
 | `COOKIE_SECURE` | `1` if `ORIGIN` is https | Set `0` only for plain-http local testing |
@@ -64,18 +68,22 @@ cd crashreports
 npm ci
 npm test            # node:test, no network
 npm run typecheck
-SETUP_TOKEN=dev-token COOKIE_SECURE=0 npm start
-# open http://localhost:8787/setup?token=dev-token and register a passkey
+SETUP_TOKEN=dev-token COOKIE_SECURE=0 TOTP_ENCRYPTION_KEY=$(openssl rand -base64 32) npm start
+# open http://localhost:8787/setup?token=dev-token, choose a username and a passkey or a password
 ```
 
 In production (Docker, see `Dockerfile`):
 
 1. Build and run the image with a volume on `/data` and `RP_ID=crash.mumcord.app`,
    `ORIGIN=https://crash.mumcord.app`, `TRUST_PROXY=1` and a random `SETUP_TOKEN`
-   (`openssl rand -hex 24`). Route `crash.mumcord.app` to port 8787 in Traefik.
-2. Open `https://crash.mumcord.app/setup?token=<SETUP_TOKEN>` and register the first passkey.
-   After that the setup page is closed; the token cannot register more passkeys.
-3. Signed in, open "People & passkeys" to add a passkey for yourself or to invite someone
+   (`openssl rand -hex 24`), plus `TOTP_ENCRYPTION_KEY` (`openssl rand -base64 32`) if password
+   login is wanted. Keep that key with the other secrets: without it the stored TOTP secrets
+   cannot be read and every password user needs a reset. Route `crash.mumcord.app` to port 8787
+   in Traefik.
+2. Open `https://crash.mumcord.app/setup?token=<SETUP_TOKEN>`, choose a username and either a
+   passkey or a password + authenticator app. After that the setup page is closed; the token
+   cannot create more users.
+3. Signed in, open "People & sign-in" to manage your own sign-in or to invite someone
    (see [Inviting people](#inviting-people)). Sessions last 7 days
    (HttpOnly, Secure, SameSite=Strict cookie; the token is stored only as a hash).
 4. Optionally remove `SETUP_TOKEN` from the environment.
@@ -138,22 +146,74 @@ running/system context, log lines and raw report, a status selector, and delete 
 All `/api/admin/*` routes need a session (401 otherwise). State-changing requests must send the
 header `x-crashreports-csrf: 1` and, if the browser sends an `Origin`, it must equal `ORIGIN`.
 
+### Users and sign-in
+
+Every person is a user (username, unique and not case-sensitive; 2–40 letters, digits and
+`. _ - @`). A user can sign in with passkeys, with a password + authenticator app, or both.
+Databases from before users existed are migrated on start: each passkey becomes a user of its
+own, named after the passkey (`first passkey` becomes `first-passkey`; duplicates get `-2`, …),
+and its open sessions stay valid.
+
+**Password policy** (checked by the server; the form shows the same checks live): 12 to 256
+characters, at least one uppercase letter, one lowercase letter, one digit and one special
+character (anything that is not a letter or digit, a space counts), must not contain the
+username, and must not be on a small built-in list of very common passwords. Passwords are hashed
+with scrypt (N=2^15, r=8, p=1, 16-byte salt, 64-byte key); the parameters are stored with the
+hash.
+
+**Authenticator app (TOTP, mandatory with a password):** RFC 6238, SHA-1, 6 digits, 30 seconds;
+any common app works. Enrollment shows a QR code and the secret as text and is completed only
+after the first valid code. Codes from one step before or after are accepted (clock drift); a
+code is accepted only once. The secret is stored encrypted with AES-256-GCM under
+`TOTP_ENCRYPTION_KEY`.
+
+**Signing in with a password:** username and password first, then the 6-digit code (or a
+recovery code). The second step lives on the server for 5 minutes and allows 5 attempts; only
+after both steps a session is issued. Errors are generic ("Username or password is wrong"), and
+unknown usernames take the same scrypt time. Failed passwords and codes count per account: after
+5 failures in a row the account is locked for 1 minute, then 2, 4, … at most 1 hour; a complete
+sign-in resets the counter. The sign-in routes also have a per-address rate limit of
+`RATE_LIMIT_PER_MINUTE`. Failures are logged with the username only, never a password or code.
+
+**Recovery:** enrollment creates 10 one-time recovery codes (`xxxxx-xxxxx`), shown once with a
+download as `.txt`; only their SHA-256 hashes are stored. A recovery code works once in place of
+the app code. Lost the app and the codes? Another admin resets your password + 2FA in "People &
+sign-in" (this ends your sessions) and sends you an invite link for your account; through it you
+set a new password and app, or register a passkey. If nobody else can sign in, there is no reset
+through the UI: keep your recovery codes.
+
+**"People & sign-in"** lists every user with their passkeys, whether password + 2FA is set up
+and how many recovery codes are left. Under "My sign-in" you can:
+
+- change your password (needs the current password and a code; your other sessions end),
+- set up password + authenticator app if you only have passkeys, or add a passkey,
+- regenerate the recovery codes (needs a code; the old ones stop working),
+- reset the authenticator app (needs a current code or a recovery code; enrolls a new secret and
+  ends your other sessions).
+
+Any admin can delete other users and reset another user's password + 2FA; both end that user's
+sessions right away. The last user who can still sign in (and the last way to sign in to the
+service) can never be removed.
+
 ### Inviting people
 
-Signed in, open "People & passkeys", enter an optional label (e.g. "Alex"), pick how long the link
+Signed in, open "People & sign-in", enter an optional label (e.g. "Alex"), pick how long the link
 stays valid (1 hour, 24 hours by default, or 7 days) and create the invite. The link
 `<ORIGIN>/invite#<token>` is shown once with a copy button; send it over a private channel.
 
 - The token is 32 random bytes and sits in the URL fragment, so it never reaches server or proxy
   logs. The invite page sends it only in request bodies; the server stores only its SHA-256 hash.
-- The invitee opens the link, names the passkey (prefilled with the label) and registers it. The
-  invite is marked used in the same transaction that stores the passkey, so it works once. After
-  that the invitee is signed in.
+- The invitee opens the link, chooses a username and either registers a passkey (named after
+  the label by default) or sets a password and enrolls the authenticator app. The invite is
+  marked used in the same transaction that creates the user, so it works once. After that the
+  invitee is signed in.
+- An invite can also be created for an existing user without sign-in (after a reset); it then
+  restores sign-in for that user instead of creating a new one.
 - Expired, used and revoked links show a clear error. Open invites can be revoked; expired ones are
   deleted by the retention job. The invite routes and `/setup` share a rate limit of
   `RATE_LIMIT_PER_MINUTE` per client address.
-- The passkey list shows name, created and last-used dates and who invited each one. Deleting a
-  passkey ends its sessions right away; the last passkey cannot be deleted.
+- The passkey list shows name, user, created and last-used dates and who invited each one.
+  Deleting a passkey ends its sessions right away; the last way to sign in cannot be deleted.
 
 ## GitHub issues
 

@@ -10,11 +10,14 @@ import { validateReport } from './validate.ts';
 import { RateLimiter } from './ratelimit.ts';
 import { randomBytes } from 'node:crypto';
 import {
+  AuthCore,
   INVITE_TTL_HOURS,
   SESSION_COOKIE,
+  accountRoutes,
   authRoutes,
   csrfGuard,
   currentSession,
+  currentUser,
   hashToken,
   requireSession,
   setupTokenOk,
@@ -42,6 +45,10 @@ export interface AppDeps {
   anthropic?: AnthropicLike | null;
   /** WebAuthn verification; injected by tests, defaults to @simplewebauthn/server. */
   webauthn?: WebAuthnVerifier;
+  /** Clock for the sign-in lockout, pending logins and TOTP; injected by tests. */
+  now?: () => number;
+  /** Where failed sign-ins are logged (username only); defaults to console.warn. */
+  authLog?: (msg: string) => void;
   /** Returns the client IP for rate limiting (never stored). */
   getClientIp?: (c: { req: { header(name: string): string | undefined } }, raw: unknown) => string;
 }
@@ -59,6 +66,9 @@ export function createApp(deps: AppDeps) {
   const limiter = new RateLimiter(config.rateLimitPerMinute);
   /** Separate budget for the token-guarded pages and calls (setup, invites). */
   const authLimiter = new RateLimiter(config.rateLimitPerMinute);
+  /** Per-IP budget for the sign-in and enrollment calls. */
+  const loginLimiter = new RateLimiter(config.rateLimitPerMinute);
+  const authCore = new AuthCore(config, store, { now: deps.now, log: deps.authLog });
   const sources = new SourceFetcher({ fetchFn, repo: config.githubRepo, token: config.githubToken });
   const repoName = config.githubRepo.split('/')[1] ?? 'mumcord';
   const running = new Set<string>();
@@ -269,17 +279,20 @@ export function createApp(deps: AppDeps) {
   );
 
   // ---- auth ----
-  const rateLimited: MiddlewareHandler = async (c, next) => {
-    const wait = authLimiter.check(deps.getClientIp ? deps.getClientIp(c, c.env) : 'unknown');
+  const limitBy = (limiter: RateLimiter): MiddlewareHandler => async (c, next) => {
+    const wait = limiter.check(deps.getClientIp ? deps.getClientIp(c, c.env) : 'unknown');
     if (wait > 0) {
       c.header('Retry-After', String(wait));
-      return c.json({ error: 'rate limited' }, 429);
+      return c.json({ error: 'Too many requests. Please wait a minute.' }, 429);
     }
     await next();
   };
+  const rateLimited = limitBy(authLimiter);
+  const loginLimited = limitBy(loginLimiter);
   app.use('/api/auth/*', csrfGuard(config));
   app.use('/api/auth/invite/*', rateLimited);
-  app.route('/api/auth', authRoutes(config, store, deps.webauthn));
+  for (const p of ['login', 'password', 'enroll', 'register']) app.use(`/api/auth/${p}/*`, loginLimited);
+  app.route('/api/auth', authRoutes(config, store, { verifier: deps.webauthn, core: authCore }));
 
   // ---- admin API ----
   app.use('/api/admin/*', requireSession(store), csrfGuard(config));
@@ -338,11 +351,65 @@ export function createApp(deps: AppDeps) {
     }
   });
 
-  // ---- people & passkeys ----
+  // ---- people & sign-in ----
   const sessionCredential = (c: Context) => {
     const session = currentSession(c, store);
     return { session, credential: session ? store.sessionCredential(session) : null };
   };
+
+  admin.route('/account', accountRoutes(config, store, authCore));
+
+  admin.get('/users', (c) => {
+    const { user, session } = currentUser(c, store);
+    const credential = session ? store.sessionCredential(session) : null;
+    return c.json(
+      store.listUsers().map((u) => ({
+        id: u.id,
+        username: u.username,
+        display_name: u.display_name,
+        created_at: u.created_at,
+        invited_by: u.invited_by,
+        password_2fa: u.password_2fa,
+        recovery_codes_left: u.recovery_codes_left,
+        locked: !!u.locked_until && new Date(u.locked_until).getTime() > authCore.now(),
+        current: u.id === user?.id,
+        passkeys: u.passkeys.map((cr) => ({
+          id: cr.id,
+          name: cr.name,
+          created_at: cr.created_at,
+          last_used_at: cr.last_used_at,
+          invited_by: cr.invited_by,
+          current: cr.id === credential,
+        })),
+      })),
+    );
+  });
+
+  /** Deleting a user ends their sessions; the last user who can sign in cannot be deleted. */
+  admin.delete('/users/:id', (c) => {
+    const id = c.req.param('id');
+    const { user } = currentUser(c, store);
+    const r = store.deleteUser(id);
+    if (r === 'last') return c.json({ error: 'This is the last user who can sign in; it cannot be deleted.' }, 400);
+    if (r === 'not found') return c.json({ error: 'not found' }, 404);
+    const self = id === user?.id;
+    if (self) deleteCookie(c, SESSION_COOKIE, { path: '/', secure: config.cookieSecure });
+    return c.json({ ok: true, self });
+  });
+
+  /** Removes another user's password + 2FA and ends their sessions; they need a new invite link. */
+  admin.post('/users/:id/reset-password', (c) => {
+    const id = c.req.param('id');
+    const { user } = currentUser(c, store);
+    if (id === user?.id) return c.json({ error: 'Use "My sign-in" to change your own password or 2FA.' }, 400);
+    const target = store.getUser(id);
+    if (!target) return c.json({ error: 'not found' }, 404);
+    if (!target.password_hash && !target.totp_secret_enc) return c.json({ error: 'This user has no password set up.' }, 409);
+    const r = store.clearPassword(id);
+    if (r === 'last') return c.json({ error: 'This is the last way to sign in to the service; it cannot be reset.' }, 400);
+    if (r === 'not found') return c.json({ error: 'not found' }, 404);
+    return c.json({ ok: true, needs_invite: store.passkeyCount(id) === 0 });
+  });
 
   admin.get('/credentials', (c) => {
     const { credential } = sessionCredential(c);
@@ -353,6 +420,7 @@ export function createApp(deps: AppDeps) {
         created_at: cr.created_at,
         last_used_at: cr.last_used_at,
         invited_by: cr.invited_by,
+        user_id: cr.user_id,
         current: cr.id === credential,
       })),
     );
@@ -362,7 +430,7 @@ export function createApp(deps: AppDeps) {
     const id = c.req.param('id');
     const { credential } = sessionCredential(c);
     const r = store.deleteCredential(id);
-    if (r === 'last') return c.json({ error: 'cannot delete the last passkey' }, 400);
+    if (r === 'last') return c.json({ error: 'This is the last way to sign in to the service; it cannot be deleted.' }, 400);
     if (r === 'not found') return c.json({ error: 'not found' }, 404);
     // Its sessions are gone, this one included when it was your own passkey.
     const self = id === credential;
@@ -373,14 +441,29 @@ export function createApp(deps: AppDeps) {
   admin.get('/invites', (c) => c.json(store.listInvites()));
 
   admin.post('/invites', async (c) => {
-    const body = (await c.req.json().catch(() => ({}))) as { label?: unknown; ttl_hours?: unknown };
+    const body = (await c.req.json().catch(() => ({}))) as { label?: unknown; ttl_hours?: unknown; user_id?: unknown };
     const ttl = body.ttl_hours ?? 24;
     if (!(INVITE_TTL_HOURS as readonly unknown[]).includes(ttl)) return c.json({ error: 'ttl_hours must be 1, 24 or 168' }, 400);
     const label = typeof body.label === 'string' ? body.label.trim().slice(0, 60) : '';
+    let forUserId: string | null = null;
+    if (body.user_id !== undefined) {
+      const target = typeof body.user_id === 'string' ? store.getUser(body.user_id) : null;
+      if (!target) return c.json({ error: 'user not found' }, 404);
+      forUserId = target.id;
+    }
     const { session, credential } = sessionCredential(c);
+    const creator = session ? store.sessionUser(session) : null;
     const token = randomBytes(32).toString('base64url');
     const expiresAt = new Date(Date.now() + (ttl as number) * 3_600_000);
-    const id = store.createInvite({ tokenHash: hashToken(token), label, createdByCredential: credential, createdBySession: session, expiresAt });
+    const id = store.createInvite({
+      tokenHash: hashToken(token),
+      label,
+      createdByCredential: credential,
+      createdBySession: session,
+      createdByUser: creator,
+      forUserId,
+      expiresAt,
+    });
     // The token sits in the fragment, so it never reaches server or proxy logs.
     return c.json({ id, url: `${config.origin}/invite#${token}`, expires_at: expiresAt.toISOString() }, 201);
   });
@@ -396,7 +479,7 @@ export function createApp(deps: AppDeps) {
   app.get('/', (c) => page(c));
   app.get('/invite', rateLimited, (c) => page(c));
   app.get('/setup', rateLimited, (c) => {
-    if (store.credentialCount() > 0) return c.redirect('/');
+    if (store.signInUserCount() > 0) return c.redirect('/');
     if (!setupTokenOk(config, c.req.query('token'))) return c.text('Invalid or missing setup token', 403);
     return page(c);
   });
