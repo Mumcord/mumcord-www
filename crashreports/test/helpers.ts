@@ -6,8 +6,8 @@ import { hashToken } from '../src/auth.ts';
 export function makeApp(over: Partial<Config> = {}, deps: Partial<AppDeps> = {}) {
   const config = { ...loadConfig({ ORIGIN: 'http://localhost:8787', SETUP_TOKEN: 'setup-secret' }), ...over };
   const store = new Store(':memory:');
-  const { app, analyze } = createApp({ config, store, getClientIp: (c) => c.req.header('x-test-ip') ?? 'ip', ...deps });
-  return { app, analyze, store, config };
+  const { app, analyze, notificationsSettled } = createApp({ config, store, getClientIp: (c) => c.req.header('x-test-ip') ?? 'ip', ...deps });
+  return { app, analyze, notificationsSettled, store, config };
 }
 
 export function adminCookie(store: Store): string {

@@ -21,6 +21,7 @@ src/fingerprint.ts  grouping key: kind/signal + cause + top app frames
 src/source.ts       file:line extraction and snippet fetching from GitHub
 src/ai.ts           Claude Haiku analysis (structured JSON output)
 src/github.ts       issue body and GitHub REST call
+src/mumbot.ts       channel card through the Mumbot webhook
 src/auth.ts         WebAuthn, sessions, CSRF guard
 src/db.ts           SQLite schema and queries
 public/             admin UI (plain HTML/CSS/JS)
@@ -46,6 +47,15 @@ test/               node:test tests, test/fixtures/ holds real crash files
 | `AI_INCLUDE_SOURCE` | `1` | Fetch source snippets from the public repo for the AI prompt |
 | `AI_INCLUDE_LOGS` | `0` | `1` also sends the last log lines and the user note to Anthropic |
 | `AI_TIMEOUT_MS` | `30000` | Timeout per AI request |
+| `MUMBOT_WEBHOOK_URL` | (none) | Mumbot webhook `POST /message` URL, e.g. `http://mumbot:8080/message`. See "Mumbot webhook" |
+| `MUMBOT_WEBHOOK_TOKEN` | (none) | Mumbot API key (a `[[keys]]` entry), sent as `X-API-Key` |
+| `MUMBOT_CHANNEL` | (none) | Channel id (e.g. `42`), or its name, looked up once through Mumbot's `GET /channels` |
+| `MUMBOT_GITHUB_CHANNEL` | `MUMBOT_CHANNEL` | Channel for the GitHub cards (webhook and daily statistics) |
+| `GITHUB_WEBHOOK_SECRET` | (none) | Secret of the GitHub organisation webhook; without it `POST /api/github/webhook` answers 404. See "GitHub webhook" |
+| `GITHUB_ORG` | `Mumcord` | Organisation for the daily statistics; empty turns them off |
+| `GITHUB_STATS` | `1` | `0` turns the daily statistics off |
+| `GITHUB_STATS_TIME` | `22:00` | Local time of the daily statistics card (`HH:MM`) |
+| `GITHUB_STATS_TZ` | `Europe/Berlin` | IANA time zone of `GITHUB_STATS_TIME`; daylight saving time is followed |
 
 ## Setup
 
@@ -150,6 +160,192 @@ raw.githubusercontent.com, or through the contents API when `GITHUB_TOKEN` is se
 When no location is found and `GITHUB_TOKEN` is set, a GitHub code search for a distinctive
 phrase of the cause is tried.
 
+## Mumbot webhook
+
+With `MUMBOT_WEBHOOK_URL`, `MUMBOT_WEBHOOK_TOKEN` and `MUMBOT_CHANNEL` set (values starting with
+`CHANGE_ME` count as unset), the service posts a message card into a Mumble channel through a
+[Mumbot](https://github.com/Mumcord/mumbot) webhook bot (0.5.x):
+
+- when a **new group** appears: after its AI analysis has finished or failed (at most 30 s), right
+  away when AI is off;
+- when a group marked **fixed or ignored** comes back (regression).
+
+Further reports of an open group post nothing, and a group gets at most one card per hour
+(in-memory cooldown). Webhook errors are logged and never affect ingest; each request has a 5 s
+timeout.
+
+Mumbot's API is `POST /message` with the header `X-API-Key: <key>` and the body
+`{"channel": <id>, "message": "<text>"}`; the channel must be a numeric id. Mumbot has no card
+object (Mumcord/mumbot#13 was not planned) and escapes HTML, so the message is Mumcord's typed
+BB code `[card …]…[/card]`, which Mumcord renders as a card (`docs/message-cards.md` in the Mumcord
+repo). Official Mumble clients show the BB code as text. Mumbot turns lowercase `http(s)://` into
+links, which would break a card attribute, so the card URL is sent as `HTTPS://…`; Mumcord accepts
+it. Example:
+
+```
+[card title="Screen decoder returns no frame for a keyframe" color=error icon=error url="HTTPS://crash.mumcord.app/#/groups/<groupId>"]
+**High** · screenshare
+The decoder returns no frame for a keyframe and the demo panics instead of skipping it.
+- Version: 0.7.1
+- OS: linux x86_64
+- Kind: panic
+- Count: 1
+- Suspect: `crates/engine/examples/crash_demo.rs:17`
+[/card]
+```
+
+- Title: the AI title, else `Crash: <cause>` (home directories removed).
+- Colour from the AI severity, else from the kind (signal/crash critical, panic high, hang medium):
+  critical/high `error` (red), medium `warning` (orange), low no colour (Mumcord's neutral stripe).
+- With AI: severity label, component and the summary (trimmed). Fields: versions, OS + arch of the
+  report, kind, count, suspect location (AI, else the cause's `file:line`).
+- Title and the "Open" button lead to `${ORIGIN}/#/groups/<groupId>`; the admin page opens that
+  group after the passkey login.
+- Never in the card: log lines, the user note, OS version, kernel, hardware or running context.
+  The channel may be semi-public.
+
+### Running Mumbot next to the service
+
+Mumbot is configured by a `bot.toml` (it does not expand environment variables; only the server
+password can come from `SERVER_PASSWORD`). The API key and channel passwords therefore have to be
+in the file: render it from CI secrets at deploy time and mount it read-only. Keys:
+Mumbot's `docs/configuration.md`.
+
+```toml
+# bot.toml (secret, never committed)
+[server]
+host = "mumble.example.org"
+port = 64738
+name = "Crash reports"
+cert_name = "crash-reports"     # stable identity, no spaces
+channel = "Crash reports"               # joined at login
+# connect password: SERVER_PASSWORD env
+
+[http]
+listen = "0.0.0.0:8080"         # inside the container; not published to the host
+
+[[keys]]
+key = "CHANGE_ME_MUMBOT_KEY"    # openssl rand -hex 32, same value as MUMBOT_WEBHOOK_TOKEN
+label = "crashreports"
+channels = ["Crash reports"]
+
+[[token]]                       # channel password (Mumble access token)
+channel = "Crash reports"
+password = "CHANGE_ME_CHANNEL_PASSWORD"
+```
+
+```yaml
+services:
+  crashreports:
+    # … as before, plus:
+    environment:
+      MUMBOT_WEBHOOK_URL: http://mumbot:8080/message
+      MUMBOT_WEBHOOK_TOKEN: ${MUMBOT_WEBHOOK_TOKEN}
+      MUMBOT_CHANNEL: "Crash reports"      # or its numeric id
+  mumbot:
+    image: ghcr.io/mumcord/mumbot:0.5.1
+    command: ["webhook"]          # only the webhook module
+    restart: unless-stopped
+    user: "10001:10001"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    environment:
+      MUMBOT_CONFIG: /config/bot.toml
+      SERVER_PASSWORD: ${MUMBLE_SERVER_PASSWORD}
+      RUST_LOG: info
+    volumes:
+      - ./bot.toml:/config/bot.toml:ro
+      - mumbot-data:/data           # client certificate = the bot's identity
+volumes:
+  mumbot-data:
+```
+
+No port is published: the crash service reaches Mumbot over the compose network. Mumbot warns at
+start that HTTP on `0.0.0.0` is unencrypted; that traffic stays on the internal network. Check the
+bot with `GET http://mumbot:8080/health` (`"connected":true`) and the key with
+`GET /channels` (header `X-API-Key`).
+
+## GitHub webhook
+
+New issues and pull requests anywhere in the organisation are posted as cards into
+`MUMBOT_GITHUB_CHANNEL` (default: `MUMBOT_CHANNEL`; a different channel must also be in the Mumbot
+key's `channels` list). Setup:
+
+1. `openssl rand -hex 32` → `GITHUB_WEBHOOK_SECRET` (deploy secret, never committed).
+2. GitHub: organisation **Settings → Webhooks → Add webhook**:
+   - Payload URL: `https://crash.mumcord.app/api/github/webhook`
+   - Content type: `application/json`
+   - Secret: the value from step 1
+   - "Let me select individual events": **Issues** and **Pull requests** (nothing else)
+3. GitHub sends a `ping`; the webhook page shows a green tick when the service answered 200.
+
+Behaviour:
+
+- Every request must carry a valid `X-Hub-Signature-256` (HMAC-SHA256 of the raw body, compared in
+  constant time), else 401. Bodies over 1 MB get 413. Without `GITHUB_WEBHOOK_SECRET` the route is
+  404.
+- Cards go out for `issues` / `opened` and `pull_request` / `opened` or `ready_for_review`. Draft PRs
+  wait until they are ready for review. Issues and PRs by bots (`type: Bot` or a login ending in
+  `[bot]`, e.g. dependabot) are skipped. Other events and actions answer 202 and post nothing.
+- Dedupe: the `X-GitHub-Delivery` id and the issue/PR (`repo#number`) are kept in SQLite for 7 days,
+  so a redelivery, or a PR going back to draft and ready again, posts once.
+- The service answers right away; the card is posted in the background and failures are logged.
+
+```
+[card title="New issue: Crash when joining a channel" color=info icon=info url="HTTPS://github.com/Mumcord/mumcord/issues/42"]
+- Repo: Mumcord/mumcord
+- Number: #42
+- Author: octocat
+- Labels: bug, audio
+[/card]
+
+[card title="New pull request: Add push to talk overlay" color=success icon=check url="HTTPS://github.com/Mumcord/mumcord/pull/7"]
+- Repo: Mumcord/mumcord
+- Number: #7
+- Author: octocat
+- Branches: main ← ptt-overlay
+- Changes: +120 / −8
+[/card]
+```
+
+Issues are `info` (blue), pull requests `success` (green). Labels appear when set; a branch from a
+fork is shown as `owner:branch`. Title and "Open" lead to the issue or PR on github.com.
+
+## Daily GitHub statistics
+
+With the Mumbot webhook configured and `GITHUB_ORG` set (default `Mumcord`), the service posts one
+card a day at `GITHUB_STATS_TIME` in `GITHUB_STATS_TZ` (default 22:00 Europe/Berlin; the next run is
+computed with `Intl` in that zone, so it stays at 22:00 local across the DST changes). `GITHUB_STATS=0`
+turns it off.
+
+Numbers come from the public GitHub REST API, with `GITHUB_TOKEN` when set, else unauthenticated:
+
+- followers: `GET /orgs/{org}`;
+- stars: summed over all public repos that are neither archived nor forks
+  (`GET /orgs/{org}/repos?type=public&per_page=100`, paginated);
+- open issues and PRs: search `is:issue is:open org:{org}` and `is:pr is:open org:{org}`;
+- new in 24 h: the same searches with `created:>=<now − 24 h>`.
+
+Each day's numbers, including the stars per repo, are stored as a snapshot in SQLite. The card shows
+the change against the previous snapshot and the three repos with the most new stars since then:
+
+```
+[card title="Mumcord on GitHub · 2026-11-07" icon=chart url="HTTPS://github.com/Mumcord"]
+- Stars: ★ 128 (+3)
+- Followers: 41 (+1)
+- Open issues: 17 (−2)
+- Open PRs: 4 (±0)
+- New in 24 h: 3 issues, 1 PR
+- Most new stars: mumcord +2, mumbot +1
+[/card]
+```
+
+The day's snapshot is written before the card is posted and is the guard against a second card,
+also across restarts. If the service was down at the run time and starts later the same day (before
+midnight local time), it posts once at start. An API error (e.g. the rate limit) is logged and that
+day's card is skipped (a restart the same evening tries again); nothing crashes.
+
 ## Privacy
 
 - Retention: every report (raw text, log lines, system details) is deleted 90 days after it arrives, checked at start and every 6 hours. Groups keep only their aggregate: count, first/last seen, versions, status, analysis and issue link. Reports carry no install or user id, so a single report cannot be traced back to a person or deleted on request; the fixed retention is the safeguard.
@@ -165,5 +361,7 @@ phrase of the cause is tried.
 - **To Anthropic:** kind, cause, normalized top app frames, versions, OS list, thread, uptime,
   the running/system context, and source snippets from the public Mumcord repo. Log lines and
   the user note only with `AI_INCLUDE_LOGS=1`. Nothing is sent without `ANTHROPIC_API_KEY`.
+- **To the Mumbot channel:** title, AI severity, component and summary, versions, OS + arch,
+  kind, count, suspect location and the admin link. No log lines, user note or system details.
 - To GitHub for source snippets: only repo paths and the release tag, no report data (except
   the code search phrase taken from the cause, and only when `GITHUB_TOKEN` is set).
