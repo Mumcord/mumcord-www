@@ -26,6 +26,8 @@ src/ai.ts           Claude Haiku analysis (structured JSON output)
 src/github.ts       issue body and GitHub REST call
 src/mumbot.ts       channel card through the Mumbot webhook
 src/auth.ts         WebAuthn, sessions, CSRF guard
+src/mcp.ts          read-only MCP server (POST /mcp)
+src/mcphelp.ts      client setup snippets and the /help/mcp page
 src/db.ts           SQLite schema and queries
 public/             admin UI (plain HTML/CSS/JS)
 test/               node:test tests, test/fixtures/ holds real crash files
@@ -44,6 +46,7 @@ test/               node:test tests, test/fixtures/ holds real crash files
 | `COOKIE_SECURE` | `1` if `ORIGIN` is https | Set `0` only for plain-http local testing |
 | `TRUST_PROXY` | `0` | `1` behind Traefik: use the last `X-Forwarded-For` entry as the client address for the rate limit |
 | `RATE_LIMIT_PER_MINUTE` | `10` | Reports per client address and minute |
+| `MCP_RATE_LIMIT_PER_MINUTE` | `60` | MCP requests per API token and minute |
 | `REPORT_RETENTION_DAYS` | `90` | Reports are deleted this many days after they arrive |
 | `GITHUB_REPO` | `Mumcord/mumcord` | Repo for issues and source snippets |
 | `GITHUB_TOKEN` | (none) | Needed for "Create GitHub issue" (Issues: write). Also used for source fetches and code search |
@@ -214,6 +217,97 @@ stays valid (1 hour, 24 hours by default, or 7 days) and create the invite. The 
   `RATE_LIMIT_PER_MINUTE` per client address.
 - The passkey list shows name, user, created and last-used dates and who invited each one.
   Deleting a passkey ends its sessions right away; the last way to sign in cannot be deleted.
+
+## MCP server
+
+The service is a read-only [MCP](https://modelcontextprotocol.io) server at `<ORIGIN>/mcp`
+(`https://crash.mumcord.app/mcp` in production), so an AI client can search and read the crash
+data. It uses the Streamable HTTP transport of the official `@modelcontextprotocol/sdk` in
+stateless mode: `POST` only (JSON responses, no session id); `GET` and `DELETE` answer `405`.
+There are no write tools: no status changes, issues or deletes. The same instructions are at
+`/help/mcp` ("Help" in the top bar).
+
+**Tools** (results are compact JSON as text; errors are tool errors):
+
+- `list_crash_groups(status?, query?, version?, kind?, component?, since?, limit≤100)`: id, title
+  (AI title or cause), kind, status, severity, component, count, first/last seen, versions, issue
+  URL and admin link, most recently seen first.
+- `get_crash_group(id)`: details, the AI analysis (summary, likely cause, suspect location, fix
+  hint, labels) and the latest 10 reports (metadata only).
+- `get_crash_report(id, include_raw=false, include_logs=false)`: the parsed report; the raw text
+  only with `include_raw`, the last log lines and the user note only with `include_logs`.
+- `crash_stats(days=30)`: counts per day, top groups, per version, per OS and per component (from
+  the stored reports, so within the 90-day retention and 50 reports per group).
+
+**API tokens.** Signed in, open "People & sign-in" > "API tokens", enter a name (e.g.
+"Laptop – Claude Code") and an expiry (30 days, 90 days by default, 1 year or never). The token
+(`mcr_` + 32 random bytes, base64url) is shown once, with the client blocks below already filled
+in. The server stores only its SHA-256, the first 8 characters for recognition, name, user,
+created, expires, last used (updated at most once a minute) and revoked. Each user has their own
+tokens (at most 25) and can revoke them in the list. Deleting a user or resetting their
+password + 2FA revokes their tokens. Managing tokens needs a session and the CSRF header; a
+token works only for `/mcp`, never for the admin page or `/api/admin/*`. `/mcp` answers `401`
+with `WWW-Authenticate: Bearer` for a missing, unknown, revoked or expired token, and `429` above
+`MCP_RATE_LIMIT_PER_MINUTE` requests per token.
+
+**Claude Code** ([docs](https://code.claude.com/docs/en/mcp)):
+
+```sh
+claude mcp add --transport http mumcord-crashes https://crash.mumcord.app/mcp \
+  --header "Authorization: Bearer <token>"
+```
+
+**Claude Desktop / claude.ai** ([help article](https://support.claude.com/en/articles/11175166-getting-started-with-custom-connectors-using-remote-mcp)):
+add a custom connector (Pro/Max: Customize > Connectors > + Add > Add custom connector;
+Team/Enterprise: an owner, under Organization settings > Connectors > Add > Custom > Web) with the
+URL `https://crash.mumcord.app/mcp` and, under "Request headers", `Authorization: Bearer <token>`.
+Custom connectors connect from Anthropic's cloud, so this works only while the service is
+reachable from the public internet.
+
+Alternatively, from your own machine: `claude_desktop_config.json` runs local servers only, so
+the [`mcp-remote`](https://github.com/geelen/mcp-remote) bridge (needs Node.js) forwards to the
+endpoint. In Settings > Developer > Edit Config, then restart:
+
+```json
+{
+  "mcpServers": {
+    "mumcord-crashes": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://crash.mumcord.app/mcp", "--header", "Authorization:${AUTH_HEADER}"],
+      "env": { "AUTH_HEADER": "Bearer <token>" }
+    }
+  }
+}
+```
+
+The header value sits in `env` without a space in `args`, as the mcp-remote README recommends
+(Windows quoting bug).
+
+**pi** ([docs](https://pi.dev/docs/latest/mcp)). The pi coding agent has built-in MCP support
+(stdio and Streamable HTTP). `${NAME}` in `headers` is read from the environment:
+
+```sh
+export MUMCORD_CRASH_TOKEN=<token>
+```
+
+```json
+// ~/.pi/agent/mcp.json (or .pi/mcp.json in a trusted project)
+{
+  "mcpServers": {
+    "mumcord-crashes": {
+      "url": "https://crash.mumcord.app/mcp",
+      "headers": { "Authorization": "Bearer ${MUMCORD_CRASH_TOKEN}" }
+    }
+  }
+}
+```
+
+Or: `pi mcp add mumcord-crashes --url https://crash.mumcord.app/mcp --bearer-token-env-var MUMCORD_CRASH_TOKEN`.
+
+**Example prompts:** "Which new crashes appeared since 0.7.1?", "Show the crash stats of the
+last 7 days. Which component crashes most?", "Summarize the top 3 open crash groups and their
+likely causes.", "Get the latest report of the most frequent SIGSEGV group and explain the
+backtrace.", "Are there crashes that only happen on one OS?"
 
 ## GitHub issues
 
@@ -439,6 +533,9 @@ day's card is skipped (a restart the same evening tries again); nothing crashes.
 - **To Anthropic:** kind, cause, normalized top app frames, versions, OS list, thread, uptime,
   the running/system context, and source snippets from the public Mumcord repo. Log lines and
   the user note only with `AI_INCLUDE_LOGS=1`. Nothing is sent without `ANTHROPIC_API_KEY`.
+- **Through MCP:** whatever a token holder's client asks for, including log lines, the user note
+  and the raw report when it sets `include_logs` or `include_raw`. It then goes to the model
+  provider that client uses. Tokens are personal; revoke them when a device is lost.
 - **To the Mumbot channel:** title, AI severity, component and summary, versions, OS + arch,
   kind, count, suspect location and the admin link. No log lines, user note or system details.
 - To GitHub for source snippets: only repo paths and the release tag, no report data (except

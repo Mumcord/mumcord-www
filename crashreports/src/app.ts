@@ -29,6 +29,15 @@ import { analyzeCrash, describeAiError, type AnthropicLike } from './ai.ts';
 import { SourceFetcher, gatherSnippets } from './source.ts';
 import { AI_WAIT_MS, MumbotNotifier } from './mumbot.ts';
 import { GITHUB_WEBHOOK_MAX_BODY, decide, verifySignature, type GhPayload } from './githubhook.ts';
+import { handleMcpRequest } from './mcp.ts';
+import { clientSetups, helpPage, mcpUrl } from './mcphelp.ts';
+
+/** Expiry choices for API tokens in days; null means the token never expires. */
+export const API_TOKEN_DAYS = [30, 90, 365, null] as const;
+/** Working tokens a user can have at once. */
+export const MAX_API_TOKENS = 25;
+const API_TOKEN_RE = /^mcr_[A-Za-z0-9_-]{43}$/;
+const MCP_MAX_BODY = 64 * 1024;
 
 export interface AppDeps {
   config: Config;
@@ -96,7 +105,11 @@ export function createApp(deps: AppDeps) {
     js: staticFile('../public/app.js'),
     css: staticFile('../public/style.css'),
     webauthn: staticFile('../node_modules/@simplewebauthn/browser/dist/bundle/index.umd.min.js'),
+    help: staticFile('../public/help.js'),
+    mcpHelp: helpPage(config.origin),
   };
+  const version = (JSON.parse(staticFile('../package.json')) as { version: string }).version;
+  const now = deps.now ?? Date.now;
 
   /** Run the AI analysis for a group; never throws. Resolves when done (tests can await it). */
   async function analyze(groupId: string): Promise<void> {
@@ -275,6 +288,34 @@ export function createApp(deps: AppDeps) {
       notifications.add(task);
       void task.finally(() => notifications.delete(task));
       return c.json({ ok: true });
+    },
+  );
+
+  // ---- MCP (read-only, personal API tokens) ----
+  const mcpLimiter = new RateLimiter(config.mcpRateLimitPerMinute);
+  app.on(['GET', 'DELETE'], '/mcp', (c) => {
+    // Stateless server: no SSE stream to open and no session to end.
+    c.header('Allow', 'POST');
+    return c.json({ jsonrpc: '2.0', error: { code: -32000, message: 'Method not allowed.' }, id: null }, 405);
+  });
+  app.post(
+    '/mcp',
+    bodyLimit({ maxSize: MCP_MAX_BODY, onError: (c) => c.json({ error: 'body too large' }, 413) }),
+    async (c) => {
+      const m = /^Bearer +(\S+) *$/i.exec(c.req.header('authorization') ?? '');
+      const presented = m?.[1];
+      const token = presented && API_TOKEN_RE.test(presented) ? store.validApiToken(hashToken(presented), new Date(now())) : null;
+      if (!token) {
+        c.header('WWW-Authenticate', presented ? 'Bearer realm="mcp", error="invalid_token"' : 'Bearer realm="mcp"');
+        return c.json({ error: 'unauthorized' }, 401);
+      }
+      const wait = mcpLimiter.check(token.id);
+      if (wait > 0) {
+        c.header('Retry-After', String(wait));
+        return c.json({ error: 'rate limited' }, 429);
+      }
+      store.touchApiToken(token.id, new Date(now()));
+      return handleMcpRequest(c.req.raw, { store, origin: config.origin, version, now });
     },
   );
 
@@ -472,6 +513,57 @@ export function createApp(deps: AppDeps) {
     store.revokeInvite(c.req.param('id')) ? c.json({ ok: true }) : c.json({ error: 'not found or no longer open' }, 404),
   );
 
+  // ---- personal API tokens (for /mcp only) ----
+  /** The signed-in user; sessions from before users existed cannot hold tokens. */
+  const tokenOwner = (c: Context) => currentUser(c, store).user;
+  const tokenView = (t: { id: string; name: string; prefix: string; created_at: string; expires_at: string | null; last_used_at: string | null }) => ({
+    id: t.id,
+    name: t.name,
+    prefix: t.prefix,
+    created_at: t.created_at,
+    expires_at: t.expires_at,
+    last_used_at: t.last_used_at,
+  });
+
+  admin.get('/tokens', (c) => {
+    const user = tokenOwner(c);
+    if (!user) return c.json({ error: 'Sign in again to manage API tokens.' }, 400);
+    return c.json({ mcp_url: mcpUrl(config.origin), tokens: store.listApiTokens(user.id, new Date(now())).map(tokenView) });
+  });
+
+  admin.post('/tokens', async (c) => {
+    const user = tokenOwner(c);
+    if (!user) return c.json({ error: 'Sign in again to manage API tokens.' }, 400);
+    const body = (await c.req.json().catch(() => ({}))) as { name?: unknown; expires_in_days?: unknown };
+    const name = typeof body.name === 'string' ? body.name.trim() : '';
+    if (!name || name.length > 80) return c.json({ error: 'A name (1 to 80 characters) is required.' }, 400);
+    const days = body.expires_in_days === undefined ? 90 : body.expires_in_days;
+    if (!(API_TOKEN_DAYS as readonly unknown[]).includes(days)) return c.json({ error: 'expires_in_days must be 30, 90, 365 or null' }, 400);
+    const t0 = new Date(now());
+    if (store.activeApiTokenCount(user.id, t0) >= MAX_API_TOKENS) {
+      return c.json({ error: `At most ${MAX_API_TOKENS} API tokens; revoke one first.` }, 409);
+    }
+    const token = `mcr_${randomBytes(32).toString('base64url')}`;
+    const row = store.createApiToken({
+      userId: user.id,
+      name,
+      tokenHash: hashToken(token),
+      prefix: token.slice(0, 8),
+      expiresAt: days === null ? null : new Date(t0.getTime() + (days as number) * 86_400_000),
+      now: t0,
+    });
+    // The only time the token leaves the server; it is not stored.
+    return c.json({ ...tokenView(row), token, mcp_url: mcpUrl(config.origin), setups: clientSetups(config.origin, token) }, 201);
+  });
+
+  admin.delete('/tokens/:id', (c) => {
+    const user = tokenOwner(c);
+    if (!user) return c.json({ error: 'Sign in again to manage API tokens.' }, 400);
+    return store.revokeApiToken(c.req.param('id'), user.id, new Date(now()))
+      ? c.json({ ok: true })
+      : c.json({ error: 'not found or already revoked' }, 404);
+  });
+
   app.route('/api/admin', admin);
 
   // ---- UI ----
@@ -487,6 +579,9 @@ export function createApp(deps: AppDeps) {
     new Response(body, { headers: { 'content-type': type, 'cache-control': 'no-cache' } });
   app.get('/static/app.js', asset(files.js, 'text/javascript; charset=utf-8'));
   app.get('/static/style.css', asset(files.css, 'text/css; charset=utf-8'));
+  app.get('/static/help.js', asset(files.help, 'text/javascript; charset=utf-8'));
+  app.get('/help', (c) => c.redirect('/help/mcp'));
+  app.get('/help/mcp', (c) => c.html(files.mcpHelp));
   app.get('/static/webauthn.js', asset(files.webauthn, 'text/javascript; charset=utf-8'));
 
   return { app, analyze, notificationsSettled };

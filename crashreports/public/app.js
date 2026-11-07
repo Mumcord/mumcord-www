@@ -624,13 +624,15 @@ function signInText(u) {
 }
 
 async function loadPeople() {
-  const [users, creds, invites, me] = await Promise.all([
+  const [users, creds, invites, me, tokens] = await Promise.all([
     api('GET', '/api/admin/users'),
     api('GET', '/api/admin/credentials'),
     api('GET', '/api/admin/invites'),
     api('GET', '/api/admin/account').catch(() => null),
+    api('GET', '/api/admin/tokens').catch(() => null),
   ]);
   renderAccount(me);
+  renderTokens(tokens);
   const canSignIn = users.filter((u) => u.passkeys.length || u.password_2fa);
   const isLast = (u) => canSignIn.length <= 1 && canSignIn[0]?.id === u.id;
   $('users').replaceChildren(
@@ -774,6 +776,7 @@ async function togglePeople() {
   $('people-btn').setAttribute('aria-expanded', String(show));
   if (show) {
     $('invite-result').hidden = true;
+    hideToken();
     try { await loadPolicy(); await loadPeople(); } catch (e) { toast(e.message, true); }
   }
 }
@@ -860,6 +863,82 @@ async function deletePasskey(cr) {
   } catch (e) { toast(e.message, true); }
 }
 
+// ---------- API tokens (MCP) ----------
+
+function renderTokens(data) {
+  const list = data ? data.tokens : [];
+  if (data) $('mcp-url').textContent = data.mcp_url;
+  $('tokens').replaceChildren(
+    ...list.map((t) =>
+      h('tr', {},
+        h('td', {}, t.name),
+        h('td', {}, h('code', {}, `${t.prefix}…`)),
+        h('td', { class: 'nowrap', title: fmtTime(t.created_at) }, ago(t.created_at)),
+        h('td', { class: 'nowrap', title: fmtTime(t.last_used_at) }, t.last_used_at ? ago(t.last_used_at) : 'never'),
+        h('td', { class: 'nowrap' }, t.expires_at ? fmtTime(t.expires_at) : 'never'),
+        h('td', {}, h('button', { class: 'danger', onclick: () => revokeToken(t) }, 'Revoke')),
+      ),
+    ),
+  );
+  $('tokens-empty').hidden = list.length > 0;
+}
+
+async function copyText(text, what) {
+  try {
+    await navigator.clipboard.writeText(text);
+    toast(`${what} copied`);
+  } catch {
+    toast('Copying failed; select the text and press Ctrl+C', true);
+  }
+}
+
+/** The one-time panel: the token and the client setup blocks with the token filled in. */
+function showToken(r) {
+  $('token-value').value = r.token;
+  $('token-setups').replaceChildren(
+    ...r.setups.map((s) =>
+      h('div', { class: 'help-block' },
+        h('h4', {}, s.title),
+        h('p', { class: 'sub' }, s.intro),
+        h('div', { class: 'code-wrap' },
+          h('pre', {}, h('code', {}, s.code)),
+          h('button', { type: 'button', onclick: () => copyText(s.code, s.title) }, 'Copy'),
+        ),
+        h('p', { class: 'sub' }, s.note),
+      ),
+    ),
+  );
+  $('token-result').hidden = false;
+  $('token-value').select();
+}
+
+function hideToken() {
+  $('token-value').value = '';
+  $('token-setups').replaceChildren();
+  $('token-result').hidden = true;
+}
+
+async function createToken(ev) {
+  ev.preventDefault();
+  const name = $('token-name').value.trim();
+  if (!name) return toast('Give the token a name', true);
+  const days = $('token-days').value;
+  try {
+    showToken(await api('POST', '/api/admin/tokens', { name, expires_in_days: days === 'never' ? null : Number(days) }));
+    $('token-name').value = '';
+    loadPeople();
+  } catch (e) { toast(e.message, true); }
+}
+
+async function revokeToken(t) {
+  if (!confirm(`Revoke the API token "${t.name}"? Clients using it lose access right away.`)) return;
+  try {
+    await api('DELETE', `/api/admin/tokens/${encodeURIComponent(t.id)}`);
+    toast('Token revoked');
+    loadPeople();
+  } catch (e) { toast(e.message, true); }
+}
+
 // ---------- wiring ----------
 
 let searchTimer;
@@ -869,6 +948,9 @@ $('refresh').addEventListener('click', () => { loadGroups(); if (selectedId) sel
 $('people-btn').addEventListener('click', togglePeople);
 $('invite-create').addEventListener('submit', createInvite);
 $('invite-copy').addEventListener('click', copyInvite);
+$('token-create').addEventListener('submit', createToken);
+$('token-copy').addEventListener('click', () => copyText($('token-value').value, 'Token'));
+$('token-done').addEventListener('click', hideToken);
 $('pw-form').addEventListener('submit', passwordLogin);
 $('code-form').addEventListener('submit', codeLogin);
 $('code-cancel').addEventListener('click', () => resetPasswordLogin());

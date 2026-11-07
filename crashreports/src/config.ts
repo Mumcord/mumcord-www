@@ -10,6 +10,8 @@ export interface Config {
   cookieSecure: boolean;
   trustProxy: boolean;
   rateLimitPerMinute: number;
+  /** MCP requests per API token and minute. */
+  mcpRateLimitPerMinute: number;
   githubRepo: string;
   githubToken: string;
   anthropicApiKey: string;
@@ -59,6 +61,7 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): Config {
     cookieSecure,
     trustProxy: env.TRUST_PROXY === '1',
     rateLimitPerMinute: Number(env.RATE_LIMIT_PER_MINUTE ?? 10),
+    mcpRateLimitPerMinute: Math.max(1, Number(env.MCP_RATE_LIMIT_PER_MINUTE ?? 60)),
     reportRetentionDays: Math.max(1, Number(env.REPORT_RETENTION_DAYS ?? 90)),
     githubRepo: env.GITHUB_REPO ?? 'Mumcord/mumcord',
     githubToken: secret(env.GITHUB_TOKEN),
