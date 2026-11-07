@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { Hono, type Context } from 'hono';
+import { Hono, type Context, type MiddlewareHandler } from 'hono';
 import { bodyLimit } from 'hono/body-limit';
 import { secureHeaders } from 'hono/secure-headers';
 import type { Config } from './config.ts';
@@ -8,7 +8,19 @@ import { fingerprint, redactHome } from './fingerprint.ts';
 import { parseCrashText } from './report.ts';
 import { validateReport } from './validate.ts';
 import { RateLimiter } from './ratelimit.ts';
-import { authRoutes, csrfGuard, requireSession, setupTokenOk } from './auth.ts';
+import { randomBytes } from 'node:crypto';
+import {
+  INVITE_TTL_HOURS,
+  SESSION_COOKIE,
+  authRoutes,
+  csrfGuard,
+  currentSession,
+  hashToken,
+  requireSession,
+  setupTokenOk,
+  type WebAuthnVerifier,
+} from './auth.ts';
+import { deleteCookie } from 'hono/cookie';
 import { buildIssue, createIssue } from './github.ts';
 import { analyzeCrash, describeAiError, type AnthropicLike } from './ai.ts';
 import { SourceFetcher, gatherSnippets } from './source.ts';
@@ -28,6 +40,8 @@ export interface AppDeps {
   notifyAiWaitMs?: number;
   /** Anthropic client; null disables AI analysis. */
   anthropic?: AnthropicLike | null;
+  /** WebAuthn verification; injected by tests, defaults to @simplewebauthn/server. */
+  webauthn?: WebAuthnVerifier;
   /** Returns the client IP for rate limiting (never stored). */
   getClientIp?: (c: { req: { header(name: string): string | undefined } }, raw: unknown) => string;
 }
@@ -43,6 +57,8 @@ export function createApp(deps: AppDeps) {
   const fetchFn = deps.fetchFn ?? fetch;
   const anthropic = deps.anthropic ?? null;
   const limiter = new RateLimiter(config.rateLimitPerMinute);
+  /** Separate budget for the token-guarded pages and calls (setup, invites). */
+  const authLimiter = new RateLimiter(config.rateLimitPerMinute);
   const sources = new SourceFetcher({ fetchFn, repo: config.githubRepo, token: config.githubToken });
   const repoName = config.githubRepo.split('/')[1] ?? 'mumcord';
   const running = new Set<string>();
@@ -253,8 +269,17 @@ export function createApp(deps: AppDeps) {
   );
 
   // ---- auth ----
+  const rateLimited: MiddlewareHandler = async (c, next) => {
+    const wait = authLimiter.check(deps.getClientIp ? deps.getClientIp(c, c.env) : 'unknown');
+    if (wait > 0) {
+      c.header('Retry-After', String(wait));
+      return c.json({ error: 'rate limited' }, 429);
+    }
+    await next();
+  };
   app.use('/api/auth/*', csrfGuard(config));
-  app.route('/api/auth', authRoutes(config, store));
+  app.use('/api/auth/invite/*', rateLimited);
+  app.route('/api/auth', authRoutes(config, store, deps.webauthn));
 
   // ---- admin API ----
   app.use('/api/admin/*', requireSession(store), csrfGuard(config));
@@ -313,21 +338,64 @@ export function createApp(deps: AppDeps) {
     }
   });
 
-  admin.get('/credentials', (c) =>
-    c.json(store.listCredentials().map((cr) => ({ id: cr.id, name: cr.name, created_at: cr.created_at }))),
-  );
+  // ---- people & passkeys ----
+  const sessionCredential = (c: Context) => {
+    const session = currentSession(c, store);
+    return { session, credential: session ? store.sessionCredential(session) : null };
+  };
+
+  admin.get('/credentials', (c) => {
+    const { credential } = sessionCredential(c);
+    return c.json(
+      store.listCredentials().map((cr) => ({
+        id: cr.id,
+        name: cr.name,
+        created_at: cr.created_at,
+        last_used_at: cr.last_used_at,
+        invited_by: cr.invited_by,
+        current: cr.id === credential,
+      })),
+    );
+  });
 
   admin.delete('/credentials/:id', (c) => {
-    if (store.credentialCount() <= 1) return c.json({ error: 'cannot delete the last passkey' }, 400);
-    return store.deleteCredential(c.req.param('id')) ? c.json({ ok: true }) : c.json({ error: 'not found' }, 404);
+    const id = c.req.param('id');
+    const { credential } = sessionCredential(c);
+    const r = store.deleteCredential(id);
+    if (r === 'last') return c.json({ error: 'cannot delete the last passkey' }, 400);
+    if (r === 'not found') return c.json({ error: 'not found' }, 404);
+    // Its sessions are gone, this one included when it was your own passkey.
+    const self = id === credential;
+    if (self) deleteCookie(c, SESSION_COOKIE, { path: '/', secure: config.cookieSecure });
+    return c.json({ ok: true, self });
   });
+
+  admin.get('/invites', (c) => c.json(store.listInvites()));
+
+  admin.post('/invites', async (c) => {
+    const body = (await c.req.json().catch(() => ({}))) as { label?: unknown; ttl_hours?: unknown };
+    const ttl = body.ttl_hours ?? 24;
+    if (!(INVITE_TTL_HOURS as readonly unknown[]).includes(ttl)) return c.json({ error: 'ttl_hours must be 1, 24 or 168' }, 400);
+    const label = typeof body.label === 'string' ? body.label.trim().slice(0, 60) : '';
+    const { session, credential } = sessionCredential(c);
+    const token = randomBytes(32).toString('base64url');
+    const expiresAt = new Date(Date.now() + (ttl as number) * 3_600_000);
+    const id = store.createInvite({ tokenHash: hashToken(token), label, createdByCredential: credential, createdBySession: session, expiresAt });
+    // The token sits in the fragment, so it never reaches server or proxy logs.
+    return c.json({ id, url: `${config.origin}/invite#${token}`, expires_at: expiresAt.toISOString() }, 201);
+  });
+
+  admin.delete('/invites/:id', (c) =>
+    store.revokeInvite(c.req.param('id')) ? c.json({ ok: true }) : c.json({ error: 'not found or no longer open' }, 404),
+  );
 
   app.route('/api/admin', admin);
 
   // ---- UI ----
   const page = (c: Context) => c.html(files.html);
   app.get('/', (c) => page(c));
-  app.get('/setup', (c) => {
+  app.get('/invite', rateLimited, (c) => page(c));
+  app.get('/setup', rateLimited, (c) => {
     if (store.credentialCount() > 0) return c.redirect('/');
     if (!setupTokenOk(config, c.req.query('token'))) return c.text('Invalid or missing setup token', 403);
     return page(c);

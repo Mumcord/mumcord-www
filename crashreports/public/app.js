@@ -129,6 +129,48 @@ async function register(first) {
   }
 }
 
+// ---------- invite: another person registers their own passkey ----------
+// The token lives in the URL fragment (never sent to the server as part of the URL) and goes
+// only into the request bodies.
+
+const inviteToken = location.pathname === '/invite' ? location.hash.slice(1) : null;
+
+function inviteFailed(msg, final) {
+  $('invite-error').textContent = msg;
+  if (final) {
+    $('invite-form').hidden = true;
+    $('invite-text').textContent = 'Ask an admin for a new invite link.';
+  }
+}
+
+async function initInvite() {
+  $('auth').hidden = true;
+  $('invite').hidden = false;
+  if (!inviteToken) return inviteFailed('This invite link is incomplete. Copy the whole link, including the part after #.', true);
+  try {
+    const info = await api('POST', '/api/auth/invite/info', { invite_token: inviteToken });
+    if (info.label) $('invite-name').value = info.label;
+  } catch (e) {
+    return inviteFailed(e.message, true);
+  }
+  $('invite-form').addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    $('invite-error').textContent = '';
+    const btn = $('invite-btn');
+    btn.disabled = true;
+    try {
+      const optionsJSON = await api('POST', '/api/auth/invite/register/options', { invite_token: inviteToken });
+      const response = await startRegistration({ optionsJSON });
+      await api('POST', '/api/auth/invite/register/verify', { invite_token: inviteToken, response, name: $('invite-name').value.trim() });
+      location.replace('/');
+    } catch (e) {
+      const final = /expired|already been used|revoked|not valid/.test(e.message);
+      inviteFailed(e.message, final);
+      btn.disabled = false;
+    }
+  });
+}
+
 async function login() {
   $('auth-error').textContent = '';
   try {
@@ -342,16 +384,107 @@ async function analyze(id, btn) {
   } catch (e) { toast(e.message, true); btn.disabled = false; btn.textContent = 'Re-analyze'; }
 }
 
+// ---------- people & passkeys ----------
+
+async function loadPeople() {
+  const [creds, invites] = await Promise.all([api('GET', '/api/admin/credentials'), api('GET', '/api/admin/invites')]);
+  $('passkeys').replaceChildren(
+    ...creds.map((cr) =>
+      h('tr', {},
+        h('td', {}, cr.name || '(unnamed)', cr.current ? h('span', { class: 'badge new' }, 'you') : null),
+        h('td', { class: 'nowrap', title: fmtTime(cr.created_at) }, ago(cr.created_at)),
+        h('td', { class: 'nowrap', title: fmtTime(cr.last_used_at) }, cr.last_used_at ? ago(cr.last_used_at) : 'never'),
+        h('td', {}, cr.invited_by || '—'),
+        h('td', {}, h('button', { class: 'danger', disabled: creds.length <= 1, title: creds.length <= 1 ? 'The last passkey cannot be deleted' : '', onclick: () => deletePasskey(cr) }, 'Delete')),
+      ),
+    ),
+  );
+  const stateText = { open: 'open', used: 'used', expired: 'expired', revoked: 'revoked' };
+  $('invites').replaceChildren(
+    ...invites.map((i) =>
+      h('tr', { class: i.state === 'open' ? '' : 'inactive' },
+        h('td', {}, i.label || '(no label)', i.created_by ? h('span', { class: 'sub' }, ` · by ${i.created_by}`) : null),
+        h('td', { class: 'nowrap', title: fmtTime(i.created_at) }, ago(i.created_at)),
+        h('td', { class: 'nowrap' }, fmtTime(i.expires_at)),
+        h('td', {}, stateText[i.state], i.state === 'used' && i.credential_name ? ` → ${i.credential_name}` : ''),
+        h('td', {}, i.state === 'open' ? h('button', { class: 'danger', onclick: () => revokeInvite(i.id) }, 'Revoke') : null),
+      ),
+    ),
+  );
+  $('invites-empty').hidden = invites.length > 0;
+}
+
+async function togglePeople() {
+  const show = $('people').hidden;
+  $('people').hidden = !show;
+  $('people-btn').setAttribute('aria-expanded', String(show));
+  if (show) {
+    $('invite-result').hidden = true;
+    try { await loadPeople(); } catch (e) { toast(e.message, true); }
+  }
+}
+
+async function createInvite(ev) {
+  ev.preventDefault();
+  try {
+    const { url, expires_at } = await api('POST', '/api/admin/invites', {
+      label: $('invite-label').value.trim(),
+      ttl_hours: Number($('invite-ttl').value),
+    });
+    $('invite-link').value = url;
+    $('invite-expires').textContent = fmtTime(expires_at);
+    $('invite-result').hidden = false;
+    $('invite-label').value = '';
+    $('invite-link').select();
+    loadPeople();
+  } catch (e) { toast(e.message, true); }
+}
+
+async function copyInvite() {
+  const input = $('invite-link');
+  try {
+    await navigator.clipboard.writeText(input.value);
+    toast('Invite link copied');
+  } catch {
+    input.select();
+    toast('Press Ctrl+C to copy the selected link');
+  }
+}
+
+async function revokeInvite(id) {
+  if (!confirm('Revoke this invite? The link stops working.')) return;
+  try {
+    await api('DELETE', `/api/admin/invites/${encodeURIComponent(id)}`);
+    loadPeople();
+  } catch (e) { toast(e.message, true); }
+}
+
+async function deletePasskey(cr) {
+  const msg = cr.current
+    ? 'This is the passkey you signed in with. Deleting it signs you out here. Continue?'
+    : `Delete the passkey "${cr.name || '(unnamed)'}"? Its sessions end right away.`;
+  if (!confirm(msg)) return;
+  try {
+    const r = await api('DELETE', `/api/admin/credentials/${encodeURIComponent(cr.id)}`);
+    if (r.self) { location.href = '/'; return; }
+    toast('Passkey deleted');
+    loadPeople();
+  } catch (e) { toast(e.message, true); }
+}
+
 // ---------- wiring ----------
 
 let searchTimer;
 $('search').addEventListener('input', () => { clearTimeout(searchTimer); searchTimer = setTimeout(loadGroups, 250); });
 $('status-filter').addEventListener('change', loadGroups);
 $('refresh').addEventListener('click', () => { loadGroups(); if (selectedId) selectGroup(selectedId); });
-$('add-passkey').addEventListener('click', () => register(false));
+$('add-passkey').addEventListener('click', async () => { await register(false); if (!$('people').hidden) loadPeople(); });
+$('people-btn').addEventListener('click', togglePeople);
+$('invite-create').addEventListener('submit', createInvite);
+$('invite-copy').addEventListener('click', copyInvite);
 $('logout').addEventListener('click', async () => {
   await api('POST', '/api/auth/logout', {}).catch(() => {});
   location.href = '/';
 });
 
-initAuth().catch((e) => toast(e.message, true));
+(inviteToken !== null ? initInvite() : initAuth()).catch((e) => toast(e.message, true));

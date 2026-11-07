@@ -46,7 +46,9 @@ if (!config.setupToken && store.credentialCount() === 0) {
 const DAY_MS = 86_400_000;
 const pruneOld = () => {
   const r = store.prune(new Date(Date.now() - config.reportRetentionDays * DAY_MS));
-  if (r.reports || r.sessions) console.log(`retention: deleted ${r.reports} reports, ${r.sessions} sessions`);
+  if (r.reports || r.sessions || r.invites) {
+    console.log(`retention: deleted ${r.reports} reports, ${r.sessions} sessions, ${r.invites} expired invites`);
+  }
 };
 pruneOld();
 const pruneTimer = setInterval(pruneOld, 6 * 3_600_000);

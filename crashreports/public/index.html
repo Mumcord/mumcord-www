@@ -13,7 +13,7 @@
   <header class="top">
     <h1>Mumcord <span>crash reports</span></h1>
     <nav id="nav" hidden>
-      <button id="add-passkey" class="ghost">Add passkey</button>
+      <button id="people-btn" class="ghost" aria-expanded="false" aria-controls="people">People &amp; passkeys</button>
       <button id="logout" class="ghost">Sign out</button>
     </nav>
   </header>
@@ -26,7 +26,50 @@
       <p id="auth-error" class="error" role="alert"></p>
     </section>
 
+    <section id="invite" class="card auth" hidden>
+      <h2>You're invited</h2>
+      <p id="invite-text">Register a passkey to get access to the crash report admin.</p>
+      <form id="invite-form" class="stack">
+        <label for="invite-name">Name for your passkey</label>
+        <input id="invite-name" maxlength="60" autocomplete="off" placeholder="e.g. Alex's laptop">
+        <button id="invite-btn" class="primary" type="submit">Register passkey</button>
+      </form>
+      <p id="invite-error" class="error" role="alert"></p>
+    </section>
+
     <section id="app" hidden>
+      <section id="people" class="card people" hidden>
+        <h2>People &amp; passkeys</h2>
+        <h3>Invite someone</h3>
+        <form id="invite-create" class="actions">
+          <input id="invite-label" maxlength="60" placeholder="Label (optional), e.g. Alex" autocomplete="off">
+          <select id="invite-ttl" aria-label="Valid for">
+            <option value="1">valid 1 hour</option>
+            <option value="24" selected>valid 24 hours</option>
+            <option value="168">valid 7 days</option>
+          </select>
+          <button class="primary" type="submit">Create invite link</button>
+        </form>
+        <div id="invite-result" class="invite-result" hidden>
+          <div class="actions">
+            <input id="invite-link" readonly aria-label="Invite link">
+            <button id="invite-copy" type="button">Copy</button>
+          </div>
+          <p class="sub">Shown only once. The link works for one passkey and expires <span id="invite-expires"></span>. Send it over a private channel.</p>
+        </div>
+        <h3>Passkeys</h3>
+        <table class="plain">
+          <thead><tr><th>Name</th><th>Created</th><th>Last used</th><th>Invited by</th><th></th></tr></thead>
+          <tbody id="passkeys"></tbody>
+        </table>
+        <div class="actions"><button id="add-passkey" class="ghost">Add a passkey for myself</button></div>
+        <h3>Invites</h3>
+        <table class="plain">
+          <thead><tr><th>Label</th><th>Created</th><th>Expires</th><th>Status</th><th></th></tr></thead>
+          <tbody id="invites"></tbody>
+        </table>
+        <p id="invites-empty" class="muted" hidden>No invites.</p>
+      </section>
       <div class="toolbar">
         <input id="search" type="search" placeholder="Search message, frames, version…" autocomplete="off">
         <select id="status-filter" aria-label="Status filter">
