@@ -1489,12 +1489,42 @@
             "id": "start-screen",
             "title": "Szybszy start",
             "body": "Ekran startowy z logo na Twoim motywie zamiast pustego białego okna i około jedna trzecia mniej kodu przed pierwszym ekranem: Ustawienia, kreator i udostępnianie ekranu ładują się dopiero, gdy je otworzysz."
+          },
+          {
+            "id": "crash-reports",
+            "title": "Raporty awarii",
+            "body": "Gdy Mumcord zamknie się nieoczekiwanie, zapisuje na twoim komputerze krótki raport i mówi ci o tym przy następnym uruchomieniu. W Ustawienia → Zaawansowane i deweloper widzisz ostatnie 10 i możesz je kopiować, eksportować lub usuwać. Wysyłany jest zawsze tylko pojedynczy raport i tylko po tym, jak potwierdzisz, co dokładnie zostanie wysłane."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.1",
+      "teaser": "Raporty awarii, które sprawdzasz sam i wysyłasz tylko na życzenie, oraz poprawki dla kamer, które wcześniej nie dawały obrazu.",
+      "summary": "Mała aktualizacja: gdy Mumcord zamknie się nieoczekiwanie, na twoim komputerze zostaje raport, a wysyłany jest tylko wtedy, gdy tego chcesz. Uruchamia się też więcej kamer, także przez portal kamery, a tła w podglądzie pojawiają się od razu.",
+      "groups": [
+        {
+          "title": "Nowe",
+          "items": [
+            "Raporty awarii: gdy Mumcord zamknie się nieoczekiwanie, zapisuje na twoim komputerze krótki raport i mówi ci o tym przy następnym uruchomieniu. Zawiera, co poszło nie tak, jakie funkcje były używane, dane systemu i ostatnie wiersze logu.",
+            "W Ustawienia → Zaawansowane i deweloper → Raporty awarii widzisz ostatnie 10 i możesz je skopiować, obejrzeć, wyeksportować lub usunąć.",
+            "Pojedynczy raport możesz wysłać zespołowi Mumcorda. Potwierdzenie pokazuje dokładnie, co zostanie wysłane, i przyjmuje komentarz. Bez „Wyślij” nic nie opuszcza twojego komputera.",
+            "W Diagnostyce kopiujesz ostatnie 200 wierszy logu lub cały log i otwierasz folder logów.",
+            "Log wskazuje więcej przyczyn: jakie tryby kamery wypróbowano, czy AppImage potrafi odtwarzać H.264 (Twitch) i kiedy efekty tła nie znajdują nikogo w obrazie."
+          ]
+        },
+        {
+          "title": "Naprawione",
+          "items": [
+            "Kamery, które oferują tryb, w którym nigdy nie wysyłają obrazu (na przykład Logitech StreamCam przy 720p i 30 kl./s), teraz się uruchamiają: Mumcord próbuje niższej liczby klatek lub mniejszego obrazu zamiast poddawać się z komunikatem „Kamera nie wysyła obrazu”.",
+            "Kamery przez portal kamery pulpitu nie przerywają już z komunikatem „Kamera wysyła nieczytelny obraz”.",
+            "Podgląd kamery: wbudowane tła pojawiają się od razu po wybraniu Obrazu, zamiast zostawiać kafelki na chwilę puste przy każdym otwarciu podglądu."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.0",
       "teaser": "Udostępnianie plików, twoja kamera, udostępnianie ekranu z dźwiękiem i AV1 dla maksymalnie 25 widzów, wtyczki w obszarze mediów, wyrzucanie, bany i lista banów.",
@@ -2805,7 +2835,7 @@
         "items": [
           "Podpisane instalatory: na macOS od 0.4.1, na Windowsie od 0.6.1. Dalej: bez ostrzeżenia SmartScreen, gdy certyfikat dla Windowsa zbuduje wystarczającą reputację",
           "Automatyczne aktualizacje",
-          "Raporty awarii, tylko za twoją zgodą",
+          "Raporty awarii, tylko za twoją zgodą: od 0.7.1, raport zostaje na twoim komputerze i jest wysyłany dopiero po twoim potwierdzeniu",
           "Repozytoria pakietów i sklepy",
           "Mumcord we Flathubie, dla każdej dystrybucji Linuksa prosto z centrum oprogramowania",
           "Aplikacja na telefon w Google Play, App Store i F-Droid"

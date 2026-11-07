@@ -1489,12 +1489,42 @@
             "id": "start-screen",
             "title": "Een snellere start",
             "body": "Een startscherm met het logo op je thema in plaats van een leeg wit venster, en ongeveer een derde minder code vóór het eerste scherm: Instellingen, de wizard en schermdelen laden pas als je ze opent."
+          },
+          {
+            "id": "crash-reports",
+            "title": "Crashrapporten",
+            "body": "Als Mumcord onverwacht sluit, slaat het een kort rapport op je computer op en meldt dat bij de volgende start. Onder Instellingen → Geavanceerd & ontwikkelaar zie je de laatste 10 en kopieer, exporteer of verwijder je ze. Er wordt altijd maar één rapport geüpload, en alleen nadat je hebt bevestigd wat er precies wordt verstuurd."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.1",
+      "teaser": "Crashrapporten die je zelf controleert en alleen op verzoek uploadt, en camerafixes voor camera’s die eerder geen beeld gaven.",
+      "summary": "Een kleine update: als Mumcord onverwacht sluit, blijft er een rapport op je computer staan dat alleen wordt verstuurd als jij dat wilt. Daarnaast starten meer camera’s, ook via het cameraportaal, en de achtergrondafbeeldingen in het voorbeeld verschijnen meteen.",
+      "groups": [
+        {
+          "title": "Nieuw",
+          "items": [
+            "Crashrapporten: als Mumcord onverwacht sluit, slaat het een kort rapport op je computer op en meldt dat bij de volgende start. Erin staan wat er misging, welke functies in gebruik waren, de systeemgegevens en de laatste logregels.",
+            "Onder Instellingen → Geavanceerd & ontwikkelaar → Crashrapporten zie je de laatste 10 en kun je ze kopiëren, bekijken, exporteren of verwijderen.",
+            "Een enkel rapport kun je naar het Mumcord-team sturen. De bevestiging toont precies wat er wordt verstuurd en neemt een opmerking aan. Zonder “Verzenden” verlaat er niets je computer.",
+            "Onder Diagnose kopieer je de laatste 200 logregels of het hele log en open je de logmap.",
+            "Het log noemt meer oorzaken: welke cameramodi zijn geprobeerd, of de AppImage H.264 (Twitch) kan afspelen en wanneer achtergrondeffecten niemand in beeld vinden."
+          ]
+        },
+        {
+          "title": "Opgelost",
+          "items": [
+            "Camera’s die een modus aanbieden waarin ze nooit beelden sturen (bijvoorbeeld een Logitech StreamCam op 720p en 30 fps) starten nu: Mumcord probeert een lagere framerate of een kleiner beeld in plaats van op te geven met “De camera stuurt geen beelden”.",
+            "Camera’s via het cameraportaal van het bureaublad stoppen niet meer met “De camera stuurt onleesbare beelden”.",
+            "Camerapreview: de ingebouwde achtergrondafbeeldingen verschijnen meteen als je Afbeelding kiest, in plaats van de tegels elke keer even leeg te laten als de preview opent."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.0",
       "teaser": "Bestanden delen, je camera, scherm delen met geluid en AV1 voor maximaal 25 kijkers, plug-ins in het mediagebied, kicken, bannen en de banlijst.",
@@ -2805,7 +2835,7 @@
         "items": [
           "Ondertekende installers: op macOS sinds 0.4.1, op Windows sinds 0.6.1. Volgende stap: geen SmartScreen-waarschuwing meer zodra het Windows-certificaat genoeg reputatie heeft opgebouwd",
           "Automatische updates",
-          "Crashrapporten, alleen als je ermee instemt",
+          "Crashrapporten, alleen als je ermee instemt: sinds 0.7.1, een rapport blijft op je computer en wordt pas verstuurd na jouw bevestiging",
           "Pakketbronnen en stores",
           "Mumcord op Flathub, voor elke Linux-distributie rechtstreeks vanuit het softwarecentrum",
           "De telefoonapp in Google Play, de App Store en F-Droid"

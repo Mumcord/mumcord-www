@@ -1489,12 +1489,42 @@
             "id": "start-screen",
             "title": "Hitrejši zagon",
             "body": "Začetni zaslon z logotipom na tvoji temi namesto praznega belega okna in približno tretjino manj kode pred prvim zaslonom: nastavitve, čarovnik in deljenje zaslona se naložijo šele, ko jih odpreš."
+          },
+          {
+            "id": "crash-reports",
+            "title": "Poročila o sesutjih",
+            "body": "Če se Mumcord nepričakovano zapre, na tvoj računalnik shrani kratko poročilo in ti to pove ob naslednjem zagonu. V Nastavitve → Napredno in razvijalec vidiš zadnjih 10 in jih lahko kopiraš, izvoziš ali izbrišeš. Naloži se vedno le eno poročilo, in to šele, ko potrdiš, kaj natanko se pošlje."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.1",
+      "teaser": "Poročila o sesutjih, ki jih pregledaš sam in naložiš le na željo, ter popravki za kamere, ki prej niso dajale slike.",
+      "summary": "Majhna posodobitev: če se Mumcord nepričakovano zapre, na tvojem računalniku ostane poročilo, poslano pa je le, če to želiš. Poleg tega se zažene več kamer, tudi prek kamernega portala, slike ozadja v predogledu pa se prikažejo takoj.",
+      "groups": [
+        {
+          "title": "Novo",
+          "items": [
+            "Poročila o sesutjih: če se Mumcord nepričakovano zapre, na tvoj računalnik shrani kratko poročilo in ti to pove ob naslednjem zagonu. V njem so, kaj je šlo narobe, katere funkcije so tekle, podatki o sistemu in zadnje vrstice dnevnika.",
+            "V Nastavitve → Napredno in razvijalec → Poročila o sesutjih vidiš zadnjih 10 in jih lahko kopiraš, si jih ogledaš, izvoziš ali izbrišeš.",
+            "Posamezno poročilo lahko pošlješ ekipi Mumcorda. Potrditev pokaže natanko, kaj se pošlje, in sprejme komentar. Brez »Pošlji« z računalnika ne gre nič.",
+            "V Diagnostiki kopiraš zadnjih 200 vrstic dnevnika ali ves dnevnik in odpreš mapo z dnevniki.",
+            "Dnevnik navaja več vzrokov: kateri načini kamere so bili preizkušeni, ali AppImage zna predvajati H.264 (Twitch) in kdaj učinki ozadja na sliki ne najdejo nikogar."
+          ]
+        },
+        {
+          "title": "Popravljeno",
+          "items": [
+            "Kamere, ki ponujajo način, v katerem nikoli ne pošljejo slike (na primer Logitech StreamCam pri 720p in 30 sl./s), se zdaj zaženejo: Mumcord poskusi z nižjo hitrostjo sličic ali manjšo sliko, namesto da bi obupal z »Kamera ne pošilja slik«.",
+            "Kamere prek kamernega portala namizja se ne ustavijo več z »Kamera pošilja neberljive slike«.",
+            "Predogled kamere: vgrajene slike ozadja se prikažejo takoj, ko izbereš Sliko, namesto da bi ploščice ob vsakem odprtju predogleda za trenutek ostale prazne."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.0",
       "teaser": "Deljenje datotek, tvoja kamera, deljenje zaslona z zvokom in AV1 za do 25 gledalcev, vtičniki v predstavnostnem območju, brcanje, izgon in seznam izgonov.",
@@ -2805,7 +2835,7 @@
         "items": [
           "Podpisani namestitveni programi: na macOS od 0.4.1, na Windows od 0.6.1. Naslednje: brez opozorila SmartScreen, ko bo certifikat za Windows pridobil dovolj ugleda",
           "Samodejne posodobitve",
-          "Poročila o sesutjih, samo če se strinjaš",
+          "Poročila o sesutjih, samo če se strinjaš: od 0.7.1, poročilo ostane na tvojem računalniku in se pošlje šele po tvoji potrditvi",
           "Repozitoriji paketov in trgovine",
           "Mumcord na Flathubu, za vsako distribucijo Linuxa neposredno iz programskega središča",
           "Aplikacija za telefon v Google Playu, App Storeu in F-Droidu"

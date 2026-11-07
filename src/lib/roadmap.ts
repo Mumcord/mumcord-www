@@ -586,7 +586,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Whiteboard und Skyloom",
-            version: "0.7.1",
+            version: "0.7.2",
             items: [
               "Whiteboard, das offizielle Plugin zum gemeinsamen Denken: eine endlose Fläche mit Stiften, Zetteln und Laserpointer, gespeichert auf deinem Gerät und als PNG, SVG oder PDF exportierbar",
               "Skyloom, ein Spiel nur mit der Stimme für 2 bis 12 Leute: Eine Person beschreibt ein verborgenes Sternbild, alle anderen setzen je einen Stern",
@@ -717,7 +717,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         items: [
           "Signierte Installer: für macOS seit 0.4.1, für Windows seit 0.6.1. Als Nächstes: keine SmartScreen-Warnung mehr, sobald das Windows-Zertifikat genug Vertrauen aufgebaut hat",
           "Automatische Updates",
-          "Absturzberichte, nur wenn du zustimmst",
+          "Absturzberichte, nur wenn du zustimmst: seit 0.7.1, ein Bericht bleibt auf deinem Computer und geht nur nach deiner Bestätigung raus",
           "Paketquellen und Stores",
           "Mumcord auf Flathub, für jede Linux-Distribution aus dem Software-Center",
           "Die Handy-App in Google Play, im App Store und bei F-Droid",
@@ -1264,7 +1264,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Whiteboard and Skyloom",
-            version: "0.7.1",
+            version: "0.7.2",
             items: [
               "Whiteboard, the official plugin for thinking together: an endless canvas with pens, sticky notes and a laser pointer, saved on your device and exportable as PNG, SVG or PDF",
               "Skyloom, a voice-only game for 2 to 12 people: one person describes a hidden constellation, everyone else places one star each",
@@ -1395,7 +1395,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         items: [
           "Signed installers: on macOS since 0.4.1, on Windows since 0.6.1. Next: no SmartScreen warning once the Windows certificate has built up enough reputation",
           "Automatic updates",
-          "Crash reports, only if you agree",
+          "Crash reports, only if you agree: since 0.7.1, a report stays on your computer and is sent only after you confirm",
           "Package repositories and stores",
           "Mumcord on Flathub, for every Linux distribution from the software centre",
           "The phone app in Google Play, the App Store and F-Droid",

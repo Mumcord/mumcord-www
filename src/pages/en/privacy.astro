@@ -3,7 +3,7 @@ import Legal from "../../layouts/Legal.astro";
 import Address from "../../components/Address.astro";
 ---
 
-<Legal lang="en" page="privacy" title="Privacy policy" description="Privacy policy for mumcord.app: no cookies, no tracking, no third-party content." updated="Last updated: October 2026">
+<Legal lang="en" page="privacy" title="Privacy policy" description="Privacy policy for mumcord.app: no cookies, no tracking, no third-party content." updated="Last updated: November 2026">
   <h2>In short</h2>
   <p>
     This website sets no cookies, uses no analytics or tracking tools and loads no third-party content. Fonts, images and scripts are served from our own server. You only leave this site when you click a link to GitHub.
@@ -40,7 +40,27 @@ import Address from "../../components/Address.astro";
 
   <h2>The Mumcord app</h2>
   <p>
-    This policy covers the website. The Mumcord app itself sends no telemetry and no automatic crash reports. It only connects to the Mumble servers you add yourself; the respective server operator is responsible for processing there.
+    This policy covers the website and the crash.mumcord.app service. The Mumcord app sends no telemetry and nothing in the background. It only connects to the Mumble servers you add yourself; the respective server operator is responsible for processing there. It sends crash reports only when you choose to.
+  </p>
+
+  <h2>Crash reports (crash.mumcord.app)</h2>
+  <p>
+    When the app crashes (from version 0.7.1), it saves a crash report as a text file on your device; the last ten are kept. In Settings → Advanced &amp; Developer → Crash reports you can view, copy, export and delete them. A report is only sent when you send it yourself with “Upload”. Before that, the app shows its full content.
+  </p>
+  <p>
+    A report contains the Mumcord version, the time, kind and cause of the crash, the affected code locations (backtrace), which features were in use (such as the camera or screen sharing), the last log lines, system details (operating system, kernel, desktop, processor, graphics card, memory, screen resolutions) and, if you like, your comment. It contains no chat messages, names, passwords or audio and no identifier of you or your installation. Taken together, the system details can still make a computer recognisable.
+  </p>
+  <p>
+    The report is sent encrypted to crash.mumcord.app, which runs on the same server as this website (see “Hosting”). Your IP address is only used briefly in memory to limit the number of requests and is not stored. Similar crashes are grouped. Every report is deleted automatically 90 days after it arrives; after that only a summary without raw data remains (count, versions, time span, assessment). Because reports carry no identifier, we cannot link a single report to you and therefore cannot delete it on request; the fixed 90-day period applies to all.
+  </p>
+  <p>
+    For a first assessment we send the cause, code locations, versions, system details and the matching excerpts of Mumcord’s public source code to the Claude API of Anthropic PBC (USA). Log lines and your comment are not sent. Anthropic does not use API data to train its models. The transfer to the USA is based on the EU Standard Contractual Clauses (Art. 46(2)(c) GDPR).
+  </p>
+  <p>
+    If a crash turns into a bug report, we open a public issue in the Mumcord/mumcord repository on GitHub (GitHub, Inc., USA). It contains the cause, code locations, versions and system details; log lines or your comment only if we have checked them and they contain nothing personal.
+  </p>
+  <p>
+    The legal basis is your consent, which you give by sending the report (Art. 6(1)(a) GDPR). You can withdraw it at any time for the future by not sending further reports. crash.mumcord.app sets a technically necessary cookie only for the administrator’s sign-in; anyone who just sends reports gets none.
   </p>
 
   <h2>Your rights</h2>

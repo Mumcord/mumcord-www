@@ -21,6 +21,31 @@ export interface ChangelogEntry {
 const source: Record<"de" | "en", ChangelogEntry[]> = {
   de: [
     {
+      version: "0.7.1",
+      teaser: "Absturzberichte, die du selbst prüfst und nur auf Wunsch hochlädst, und Kamera-Fixes für Kameras, die vorher kein Bild lieferten.",
+      summary: "Ein kleines Update: Schließt sich Mumcord unerwartet, bleibt ein Bericht auf deinem Computer, und gesendet wird er nur, wenn du es willst. Dazu starten mehr Kameras, auch über das Kamera-Portal, und die Hintergrundbilder der Vorschau erscheinen sofort.",
+      groups: [
+        {
+          title: "Neu",
+          items: [
+            "Absturzberichte: Schließt sich Mumcord unerwartet, speichert es einen kurzen Bericht auf deinem Computer und sagt es dir beim nächsten Start. Darin stehen, was schiefging, welche Funktionen liefen, die Systemdaten und die letzten Logzeilen.",
+            "Unter Einstellungen → Erweitert & Entwickler → Absturzberichte siehst du die letzten 10 und kannst sie kopieren, ansehen, exportieren oder löschen.",
+            "Einen einzelnen Bericht kannst du an das Mumcord-Team senden. Die Bestätigung zeigt genau, was gesendet wird, und nimmt einen Kommentar an. Ohne „Senden“ geht nichts raus.",
+            "Unter Diagnose kopierst du die letzten 200 Logzeilen oder das ganze Log und öffnest den Log-Ordner.",
+            "Das Log nennt mehr Ursachen: welche Kameramodi probiert wurden, ob die AppImage H.264 (Twitch) abspielen kann und wann Hintergrundeffekte niemanden im Bild finden.",
+          ],
+        },
+        {
+          title: "Behoben",
+          items: [
+            "Kameras, die einen Modus anbieten, in dem sie nie Bilder senden (zum Beispiel eine Logitech StreamCam mit 720p und 30 fps), starten jetzt: Mumcord probiert eine niedrigere Bildrate oder ein kleineres Bild, statt mit „Die Kamera sendet keine Bilder“ aufzugeben.",
+            "Kameras über das Kamera-Portal des Desktops brechen nicht mehr mit „Die Kamera sendet unlesbare Bilder“ ab.",
+            "Kameravorschau: Die eingebauten Hintergrundbilder erscheinen sofort, wenn du „Bild“ wählst, statt bei jedem Öffnen kurz leer zu bleiben.",
+          ],
+        },
+      ],
+    },
+    {
       version: "0.7.0",
       teaser: "Dateien teilen, deine Kamera, Bildschirmübertragung mit Ton und AV1 für bis zu 25 Zuschauer, Plugins im Medienbereich, Kick, Bann und Bannliste.",
       summary: "Ein großes Update: Du teilst Dateien bis 2 GB im Kanal, immer über das Relay, zeigst deine Kamera mit unscharfem Hintergrund, deine Bildschirmübertragung bekommt Ton, AV1 und bis zu 25 Zuschauer, Bild und Chat teilst du dir mit einem Griff auf, Plugins bekommen den Medienbereich und klare Sicherheitsregeln, und Admins können Leute vom Server werfen, bannen und die Bannliste pflegen.",
@@ -718,6 +743,31 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
     },
   ],
   en: [
+    {
+      version: "0.7.1",
+      teaser: "Crash reports you check yourself and upload only on request, and camera fixes for cameras that showed no picture before.",
+      summary: "A small update: when Mumcord closes unexpectedly, a report stays on your computer and is sent only if you want it. More cameras start too, also through the camera portal, and the background pictures in the preview show right away.",
+      groups: [
+        {
+          title: "New",
+          items: [
+            "Crash reports: when Mumcord closes unexpectedly it saves a short report on your computer and tells you at the next start. It holds what went wrong, which features were in use, the system details and the last log lines.",
+            "In Settings → Advanced & Developer → Crash reports you see the last 10 and can copy, view, export or delete them.",
+            "You can send a single report to the Mumcord team. The confirmation shows exactly what is sent and takes a comment. Nothing leaves your computer without “Send”.",
+            "Under Diagnostics you copy the last 200 log lines or the whole log and open the log folder.",
+            "The log names more causes: which camera modes were tried, whether the AppImage can play H.264 (Twitch), and when background effects find nobody in the picture.",
+          ],
+        },
+        {
+          title: "Fixed",
+          items: [
+            "Cameras that list a mode they never send pictures in (for example a Logitech StreamCam at 720p and 30 fps) now start: Mumcord tries a lower frame rate or a smaller picture instead of giving up with “the camera sends no pictures”.",
+            "Cameras through the desktop camera portal no longer stop with “the camera sends unreadable pictures”.",
+            "Camera preview: the built-in background images show right away when you choose Image, instead of leaving the tiles empty for a moment every time the preview opens.",
+          ],
+        },
+      ],
+    },
     {
       version: "0.7.0",
       teaser: "File sharing, your camera, screen sharing with sound and AV1 for up to 25 viewers, plugins in the media area, kick, ban and the ban list.",

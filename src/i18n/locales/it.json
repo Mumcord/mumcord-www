@@ -1489,12 +1489,42 @@
             "id": "start-screen",
             "title": "Un avvio più rapido",
             "body": "Una schermata iniziale con il logo sul tuo tema al posto di una finestra bianca e vuota, e circa un terzo di codice in meno prima della prima schermata: Impostazioni, la procedura guidata e la condivisione dello schermo si caricano solo quando li apri."
+          },
+          {
+            "id": "crash-reports",
+            "title": "Segnalazioni di crash",
+            "body": "Se Mumcord si chiude in modo inatteso, salva una breve segnalazione sul tuo computer e te lo dice al prossimo avvio. In Impostazioni → Avanzate e sviluppatore vedi le ultime 10 e puoi copiarle, esportarle o eliminarle. Viene caricata solo una singola segnalazione, e solo dopo che hai confermato cosa viene inviato esattamente."
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.1",
+      "teaser": "Segnalazioni di crash che controlli tu e invii solo se vuoi, e correzioni per le fotocamere che prima non davano immagine.",
+      "summary": "Un piccolo aggiornamento: se Mumcord si chiude in modo inatteso, sul tuo computer resta una segnalazione che viene inviata solo se lo vuoi. Partono più fotocamere, anche tramite il portale fotocamera, e le immagini di sfondo dell’anteprima compaiono subito.",
+      "groups": [
+        {
+          "title": "Novità",
+          "items": [
+            "Segnalazioni di crash: se Mumcord si chiude in modo inatteso, salva una breve segnalazione sul tuo computer e te lo dice al prossimo avvio. Contiene cosa è andato storto, quali funzioni erano in uso, i dati di sistema e le ultime righe del log.",
+            "In Impostazioni → Avanzate e sviluppatore → Segnalazioni di crash vedi le ultime 10 e puoi copiarle, visualizzarle, esportarle o eliminarle.",
+            "Puoi inviare una singola segnalazione al team di Mumcord. La conferma mostra esattamente cosa viene inviato e accetta un commento. Senza «Invia» non esce nulla dal tuo computer.",
+            "In Diagnostica copi le ultime 200 righe del log o l’intero log e apri la cartella dei log.",
+            "Il log indica più cause: quali modalità della fotocamera sono state provate, se l’AppImage può riprodurre H.264 (Twitch) e quando gli effetti di sfondo non trovano nessuno nell’immagine."
+          ]
+        },
+        {
+          "title": "Corretto",
+          "items": [
+            "Le fotocamere che offrono una modalità in cui non inviano mai immagini (per esempio una Logitech StreamCam a 720p e 30 fps) ora partono: Mumcord prova una frequenza di fotogrammi più bassa o un’immagine più piccola invece di arrendersi con «La fotocamera non invia immagini».",
+            "Le fotocamere tramite il portale fotocamera del desktop non si fermano più con «La fotocamera invia immagini illeggibili».",
+            "Anteprima della fotocamera: le immagini di sfondo integrate compaiono subito quando scegli Immagine, invece di lasciare le tessere vuote per un attimo a ogni apertura dell’anteprima."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.0",
       "teaser": "Condivisione di file, la tua fotocamera, condivisione dello schermo con audio e AV1 per fino a 25 spettatori, plugin nell’area multimediale, espulsione, ban e l’elenco dei ban.",
@@ -2805,7 +2835,7 @@
         "items": [
           "Installer firmati: su macOS dalla 0.4.1, su Windows dalla 0.6.1. Prossimo passo: nessun avviso di SmartScreen quando il certificato Windows avrà accumulato abbastanza reputazione",
           "Aggiornamenti automatici",
-          "Segnalazioni di crash, solo se acconsenti",
+          "Segnalazioni di crash, solo se acconsenti: dalla 0.7.1, una segnalazione resta sul tuo computer e viene inviata solo dopo la tua conferma",
           "Repository di pacchetti e store",
           "Mumcord su Flathub, per ogni distribuzione Linux direttamente dal centro software",
           "L’app per telefono su Google Play, App Store e F-Droid"
