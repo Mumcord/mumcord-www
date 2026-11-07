@@ -13,7 +13,7 @@
   <header class="top">
     <h1>Mumcord <span>crash reports</span></h1>
     <nav id="nav" hidden>
-      <button id="people-btn" class="ghost" aria-expanded="false" aria-controls="people">People &amp; passkeys</button>
+      <button id="people-btn" class="ghost" aria-expanded="false" aria-controls="people">People &amp; sign-in</button>
       <button id="logout" class="ghost">Sign out</button>
     </nav>
   </header>
@@ -21,25 +21,68 @@
   <main>
     <section id="auth" class="card auth" hidden>
       <h2 id="auth-title">Sign in</h2>
-      <p id="auth-text">Use your passkey to open the crash report admin.</p>
-      <button id="auth-btn" class="primary">Sign in with passkey</button>
+      <p id="auth-text">Sign in with your passkey, or with your username, password and authenticator app.</p>
+      <div id="login-box">
+        <button id="auth-btn" class="primary">Sign in with passkey</button>
+        <div id="pw-login" hidden>
+          <p class="or"><span>or</span></p>
+          <form id="pw-form" class="stack">
+            <label for="pw-user">Username</label>
+            <input id="pw-user" autocomplete="username" maxlength="40" required>
+            <label for="pw-pass">Password</label>
+            <input id="pw-pass" type="password" autocomplete="current-password" maxlength="1024" required>
+            <button class="primary" type="submit">Sign in with password</button>
+          </form>
+          <form id="code-form" class="stack" hidden>
+            <label for="code-input">6-digit code from your authenticator app</label>
+            <input id="code-input" inputmode="numeric" autocomplete="one-time-code" maxlength="20" required>
+            <p class="sub">No access to the app? Enter one of your recovery codes instead.</p>
+            <div class="actions">
+              <button class="primary" type="submit">Verify</button>
+              <button id="code-cancel" class="ghost" type="button">Back</button>
+            </div>
+          </form>
+        </div>
+        <p id="pw-off" class="muted" hidden>Password sign-in is off on this server (no TOTP_ENCRYPTION_KEY is set). Use a passkey.</p>
+      </div>
       <p id="auth-error" class="error" role="alert"></p>
     </section>
 
-    <section id="invite" class="card auth" hidden>
-      <h2>You're invited</h2>
-      <p id="invite-text">Register a passkey to get access to the crash report admin.</p>
-      <form id="invite-form" class="stack">
-        <label for="invite-name">Name for your passkey</label>
-        <input id="invite-name" maxlength="60" autocomplete="off" placeholder="e.g. Alex's laptop">
-        <button id="invite-btn" class="primary" type="submit">Register passkey</button>
+    <section id="enroll" class="card auth" hidden>
+      <h2 id="enroll-title">Set up</h2>
+      <p id="enroll-text"></p>
+      <form id="enroll-form" class="stack" novalidate>
+        <label for="enroll-user">Username</label>
+        <input id="enroll-user" maxlength="40" autocomplete="username" placeholder="e.g. alex" required>
+        <p class="sub">2–40 characters: letters, digits and . _ - @. Not case-sensitive.</p>
+        <fieldset class="methods">
+          <legend>How do you want to sign in?</legend>
+          <label><input type="radio" name="enroll-method" value="passkey" checked> Passkey</label>
+          <label><input type="radio" name="enroll-method" value="password" id="enroll-method-password"> Password + authenticator app</label>
+        </fieldset>
+        <p id="enroll-pw-off" class="muted" hidden>Password sign-in is off on this server (no TOTP_ENCRYPTION_KEY is set), so only a passkey is possible.</p>
+        <div id="enroll-passkey" class="stack">
+          <label for="enroll-name">Name for your passkey (optional)</label>
+          <input id="enroll-name" maxlength="60" autocomplete="off" placeholder="e.g. Alex's laptop">
+        </div>
+        <div id="enroll-password" class="stack" hidden>
+          <label for="enroll-pass">Password</label>
+          <input id="enroll-pass" type="password" autocomplete="new-password" maxlength="1024">
+          <label for="enroll-pass2">Repeat password</label>
+          <input id="enroll-pass2" type="password" autocomplete="new-password" maxlength="1024">
+          <ul id="enroll-policy" class="policy" aria-live="polite"></ul>
+        </div>
+        <button id="enroll-btn" class="primary" type="submit">Continue</button>
       </form>
-      <p id="invite-error" class="error" role="alert"></p>
+      <div id="enroll-totp"></div>
+      <p id="enroll-error" class="error" role="alert"></p>
     </section>
 
     <section id="app" hidden>
       <section id="people" class="card people" hidden>
-        <h2>People &amp; passkeys</h2>
+        <h2>People &amp; sign-in</h2>
+        <h3>My sign-in</h3>
+        <div id="account"></div>
         <h3>Invite someone</h3>
         <form id="invite-create" class="actions">
           <input id="invite-label" maxlength="60" placeholder="Label (optional), e.g. Alex" autocomplete="off">
@@ -55,14 +98,18 @@
             <input id="invite-link" readonly aria-label="Invite link">
             <button id="invite-copy" type="button">Copy</button>
           </div>
-          <p class="sub">Shown only once. The link works for one passkey and expires <span id="invite-expires"></span>. Send it over a private channel.</p>
+          <p class="sub">Shown only once. The link works once (a passkey or a password + authenticator app) and expires <span id="invite-expires"></span>. Send it over a private channel.</p>
         </div>
+        <h3>People</h3>
+        <table class="plain">
+          <thead><tr><th>User</th><th>Sign-in</th><th>Created</th><th>Invited by</th><th></th></tr></thead>
+          <tbody id="users"></tbody>
+        </table>
         <h3>Passkeys</h3>
         <table class="plain">
-          <thead><tr><th>Name</th><th>Created</th><th>Last used</th><th>Invited by</th><th></th></tr></thead>
+          <thead><tr><th>Name</th><th>User</th><th>Created</th><th>Last used</th><th>Invited by</th><th></th></tr></thead>
           <tbody id="passkeys"></tbody>
         </table>
-        <div class="actions"><button id="add-passkey" class="ghost">Add a passkey for myself</button></div>
         <h3>Invites</h3>
         <table class="plain">
           <thead><tr><th>Label</th><th>Created</th><th>Expires</th><th>Status</th><th></th></tr></thead>

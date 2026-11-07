@@ -46,6 +46,52 @@ export interface CredentialRow {
   last_used_at: string | null;
   /** Name of the passkey whose invite created this one (null: setup or added by its owner). */
   invited_by: string | null;
+  user_id: string | null;
+}
+
+export interface UserRow {
+  id: string;
+  username: string;
+  display_name: string;
+  created_at: string;
+  invited_by: string | null;
+  password_hash: string | null;
+  totp_secret_enc: string | null;
+  totp_last_step: number | null;
+  failed_attempts: number;
+  locked_until: string | null;
+}
+
+export interface UserSummary {
+  id: string;
+  username: string;
+  display_name: string;
+  created_at: string;
+  invited_by: string | null;
+  password_2fa: boolean;
+  recovery_codes_left: number;
+  locked_until: string | null;
+  passkeys: CredentialRow[];
+}
+
+/** Failed attempts before the lockout starts; then 1 min, doubling, capped at 1 h. */
+export const LOCKOUT_AFTER = 5;
+export const LOCKOUT_BASE_MS = 60_000;
+export const LOCKOUT_MAX_MS = 3_600_000;
+
+/** Usernames: 2–40 of A–Z, a–z, 0–9, '.', '_', '-', '@'; compared case-insensitively. */
+export const USERNAME_RE = /^[A-Za-z0-9][A-Za-z0-9._@-]{1,39}$/;
+
+/** A valid username derived from a free-text name ('' when nothing usable is left). */
+export function usernameFrom(name: string): string {
+  const u = name
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^A-Za-z0-9._@-]+/g, '-')
+    .replace(/^[^A-Za-z0-9]+|[-.]+$/g, '')
+    .slice(0, 40)
+    .replace(/[-.]+$/g, '');
+  return USERNAME_RE.test(u) ? u : '';
 }
 
 export type InviteState = 'open' | 'used' | 'expired' | 'revoked';
@@ -60,8 +106,10 @@ export interface InviteRow {
   credential_id: string | null;
   /** Name of the passkey that redeemed it, while it exists. */
   credential_name: string | null;
-  /** Name of the creator's passkey, while it exists. */
+  /** Name of the creator's passkey (or username), while it exists. */
   created_by: string | null;
+  /** Username the invite restores sign-in for, or null for a new person. */
+  for_user: string | null;
   state: InviteState;
 }
 
@@ -121,13 +169,33 @@ CREATE TABLE IF NOT EXISTS credentials (
   name TEXT NOT NULL DEFAULT '',
   created_at TEXT NOT NULL,
   last_used_at TEXT,
-  invited_by TEXT
+  invited_by TEXT,
+  user_id TEXT
+);
+CREATE TABLE IF NOT EXISTS users (
+  id TEXT PRIMARY KEY,
+  username TEXT NOT NULL UNIQUE COLLATE NOCASE,
+  display_name TEXT NOT NULL DEFAULT '',
+  created_at TEXT NOT NULL,
+  invited_by TEXT,
+  password_hash TEXT,
+  totp_secret_enc TEXT,
+  totp_last_step INTEGER,
+  failed_attempts INTEGER NOT NULL DEFAULT 0,
+  locked_until TEXT
+);
+CREATE TABLE IF NOT EXISTS recovery_codes (
+  user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  code_hash TEXT NOT NULL,
+  used_at TEXT,
+  PRIMARY KEY (user_id, code_hash)
 );
 CREATE TABLE IF NOT EXISTS sessions (
   token_hash TEXT PRIMARY KEY,
   created_at TEXT NOT NULL,
   expires_at TEXT NOT NULL,
-  credential_id TEXT
+  credential_id TEXT,
+  user_id TEXT
 );
 CREATE TABLE IF NOT EXISTS invites (
   id TEXT PRIMARY KEY,
@@ -139,7 +207,10 @@ CREATE TABLE IF NOT EXISTS invites (
   expires_at TEXT NOT NULL,
   used_at TEXT,
   revoked_at TEXT,
-  credential_id TEXT
+  credential_id TEXT,
+  user_id TEXT,
+  for_user_id TEXT,
+  created_by_user TEXT
 );
 CREATE INDEX IF NOT EXISTS invites_expires ON invites(expires_at);
 CREATE TABLE IF NOT EXISTS github_deliveries (
@@ -166,6 +237,11 @@ const MIGRATIONS: [table: string, column: string, ddl: string][] = [
   ['credentials', 'last_used_at', 'ALTER TABLE credentials ADD COLUMN last_used_at TEXT'],
   ['credentials', 'invited_by', 'ALTER TABLE credentials ADD COLUMN invited_by TEXT'],
   ['sessions', 'credential_id', 'ALTER TABLE sessions ADD COLUMN credential_id TEXT'],
+  ['credentials', 'user_id', 'ALTER TABLE credentials ADD COLUMN user_id TEXT'],
+  ['sessions', 'user_id', 'ALTER TABLE sessions ADD COLUMN user_id TEXT'],
+  ['invites', 'user_id', 'ALTER TABLE invites ADD COLUMN user_id TEXT'],
+  ['invites', 'for_user_id', 'ALTER TABLE invites ADD COLUMN for_user_id TEXT'],
+  ['invites', 'created_by_user', 'ALTER TABLE invites ADD COLUMN created_by_user TEXT'],
 ];
 
 function toCredential(r: Row): CredentialRow {
@@ -174,6 +250,7 @@ function toCredential(r: Row): CredentialRow {
     transports: JSON.parse(r.transports as string),
     last_used_at: (r.last_used_at as string | null) ?? null,
     invited_by: (r.invited_by as string | null) ?? null,
+    user_id: (r.user_id as string | null) ?? null,
   };
 }
 
@@ -234,19 +311,34 @@ export class Store {
       if (!cols.some((c) => c.name === column)) this.db.exec(ddl);
     }
     this.db.exec('CREATE INDEX IF NOT EXISTS sessions_credential ON sessions(credential_id)');
+    this.db.exec('CREATE INDEX IF NOT EXISTS sessions_user ON sessions(user_id)');
+    this.db.exec('CREATE INDEX IF NOT EXISTS credentials_user ON credentials(user_id)');
+    // Passkeys from before users existed: each becomes a user of its own.
+    this.tx(() => this.adoptOrphanCredentials());
   }
 
-  /** Runs `fn` in an IMMEDIATE transaction. */
+  private txDepth = 0;
+
+  /** Runs `fn` in an IMMEDIATE transaction; nested calls join the outer one. */
   private tx<T>(fn: () => T): T {
+    if (this.txDepth > 0) return fn();
     this.db.exec('BEGIN IMMEDIATE');
+    this.txDepth++;
     try {
       const r = fn();
+      this.txDepth--;
       this.db.exec('COMMIT');
       return r;
     } catch (e) {
+      this.txDepth--;
       this.db.exec('ROLLBACK');
       throw e;
     }
+  }
+
+  /** Public form of the transaction helper, for multi-step writes in the auth routes. */
+  transaction<T>(fn: () => T): T {
+    return this.tx(fn);
   }
 
   close(): void {
@@ -378,6 +470,193 @@ export class Store {
     return true;
   }
 
+  // ---- users ----
+
+  getUser(id: string): UserRow | null {
+    const r = this.db.prepare('SELECT * FROM users WHERE id = ?').get(id) as Row | undefined;
+    return r ? (r as unknown as UserRow) : null;
+  }
+
+  /** Case-insensitive lookup. */
+  getUserByName(username: string): UserRow | null {
+    const r = this.db.prepare('SELECT * FROM users WHERE username = ? COLLATE NOCASE').get(username) as Row | undefined;
+    return r ? (r as unknown as UserRow) : null;
+  }
+
+  createUser(u: {
+    id?: string;
+    username: string;
+    displayName?: string;
+    invitedBy?: string | null;
+    passwordHash?: string | null;
+    totpSecretEnc?: string | null;
+    totpLastStep?: number | null;
+    now?: Date;
+  }): string {
+    const id = u.id ?? randomUUID();
+    this.db
+      .prepare(
+        `INSERT INTO users (id, username, display_name, created_at, invited_by, password_hash, totp_secret_enc, totp_last_step)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      )
+      .run(id, u.username, u.displayName ?? u.username, (u.now ?? new Date()).toISOString(), u.invitedBy ?? null,
+        u.passwordHash ?? null, u.totpSecretEnc ?? null, u.totpLastStep ?? null);
+    return id;
+  }
+
+  /** Number of users that can sign in (a passkey, or a password with TOTP). */
+  signInUserCount(exceptUserId: string | null = null): number {
+    return (this.db
+      .prepare(
+        `SELECT COUNT(*) AS n FROM users u
+          WHERE (u.id IS NOT ? OR ? IS NULL)
+            AND ((u.password_hash IS NOT NULL AND u.totp_secret_enc IS NOT NULL)
+                 OR EXISTS (SELECT 1 FROM credentials c WHERE c.user_id = u.id))`,
+      )
+      .get(exceptUserId, exceptUserId) as Row).n as number;
+  }
+
+  /**
+   * True when removing `what` from the user leaves nobody who can sign in to the service.
+   * 'user' removes everything, 'password' the password+TOTP, otherwise one passkey id.
+   */
+  private wouldRemoveLastSignIn(userId: string, what: 'user' | 'password' | { passkey: string }): boolean {
+    const u = this.getUser(userId);
+    if (!u) return false;
+    let left = 0;
+    if (what !== 'user') {
+      if (what === 'password') left += this.passkeyCount(userId);
+      else {
+        left += (this.db.prepare('SELECT COUNT(*) AS n FROM credentials WHERE user_id = ? AND id <> ?').get(userId, what.passkey) as Row).n as number;
+        if (u.password_hash && u.totp_secret_enc) left++;
+      }
+    }
+    return left === 0 && this.signInUserCount(userId) === 0;
+  }
+
+  passkeyCount(userId: string): number {
+    return (this.db.prepare('SELECT COUNT(*) AS n FROM credentials WHERE user_id = ?').get(userId) as Row).n as number;
+  }
+
+  listUsers(): UserSummary[] {
+    const users = this.db.prepare('SELECT * FROM users ORDER BY created_at, username').all() as unknown as UserRow[];
+    return users.map((u) => ({
+      id: u.id,
+      username: u.username,
+      display_name: u.display_name,
+      created_at: u.created_at,
+      invited_by: u.invited_by,
+      password_2fa: !!(u.password_hash && u.totp_secret_enc),
+      recovery_codes_left: this.recoveryCodesLeft(u.id),
+      locked_until: u.locked_until,
+      passkeys: (this.db.prepare('SELECT * FROM credentials WHERE user_id = ? ORDER BY created_at').all(u.id) as Row[]).map(toCredential),
+    }));
+  }
+
+  /** Deletes a user with passkeys, recovery codes and sessions; refuses the last one that can sign in. */
+  deleteUser(id: string): 'ok' | 'last' | 'not found' {
+    return this.tx(() => {
+      if (!this.getUser(id)) return 'not found';
+      if (this.wouldRemoveLastSignIn(id, 'user')) return 'last';
+      this.db.prepare('DELETE FROM sessions WHERE user_id = ?').run(id);
+      this.db.prepare('DELETE FROM sessions WHERE credential_id IN (SELECT id FROM credentials WHERE user_id = ?)').run(id);
+      this.db.prepare('DELETE FROM credentials WHERE user_id = ?').run(id);
+      this.db.prepare('DELETE FROM recovery_codes WHERE user_id = ?').run(id);
+      this.db.prepare('DELETE FROM users WHERE id = ?').run(id);
+      return 'ok';
+    });
+  }
+
+  /** Removes password, TOTP and recovery codes, and ends all the user's sessions. */
+  clearPassword(id: string): 'ok' | 'last' | 'not found' {
+    return this.tx(() => {
+      const u = this.getUser(id);
+      if (!u) return 'not found';
+      if (this.wouldRemoveLastSignIn(id, 'password')) return 'last';
+      this.db
+        .prepare('UPDATE users SET password_hash = NULL, totp_secret_enc = NULL, totp_last_step = NULL, failed_attempts = 0, locked_until = NULL WHERE id = ?')
+        .run(id);
+      this.db.prepare('DELETE FROM recovery_codes WHERE user_id = ?').run(id);
+      this.deleteUserSessions(id);
+      return 'ok';
+    });
+  }
+
+  setPasswordHash(id: string, hash: string): void {
+    this.db.prepare('UPDATE users SET password_hash = ? WHERE id = ?').run(hash, id);
+  }
+
+  /** Sets password, TOTP secret and recovery codes in one go (enrollment finished). */
+  setPasswordAndTotp(id: string, p: { passwordHash?: string; totpSecretEnc: string; totpLastStep: number; recoveryHashes: string[] }): void {
+    this.tx(() => {
+      if (p.passwordHash) this.setPasswordHash(id, p.passwordHash);
+      this.db.prepare('UPDATE users SET totp_secret_enc = ?, totp_last_step = ? WHERE id = ?').run(p.totpSecretEnc, p.totpLastStep, id);
+      this.writeRecoveryCodes(id, p.recoveryHashes);
+    });
+  }
+
+  /** Records a used TOTP step; false when that step (or a later one) was used already. */
+  useTotpStep(id: string, step: number): boolean {
+    return (
+      this.db
+        .prepare('UPDATE users SET totp_last_step = ? WHERE id = ? AND (totp_last_step IS NULL OR totp_last_step < ?)')
+        .run(step, id, step).changes > 0
+    );
+  }
+
+  // ---- lockout ----
+
+  /** Counts a failed password or code; from the 5th on, locks for 1 min, 2, 4, … at most 1 h. */
+  recordFailure(id: string, now: Date = new Date()): { failed: number; lockedUntil: string | null } {
+    return this.tx(() => {
+      this.db.prepare('UPDATE users SET failed_attempts = failed_attempts + 1 WHERE id = ?').run(id);
+      const failed = ((this.db.prepare('SELECT failed_attempts FROM users WHERE id = ?').get(id) as Row | undefined)?.failed_attempts as number) ?? 0;
+      let lockedUntil: string | null = null;
+      if (failed >= LOCKOUT_AFTER) {
+        const ms = Math.min(LOCKOUT_BASE_MS * 2 ** Math.min(failed - LOCKOUT_AFTER, 20), LOCKOUT_MAX_MS);
+        lockedUntil = new Date(now.getTime() + ms).toISOString();
+        this.db.prepare('UPDATE users SET locked_until = ? WHERE id = ?').run(lockedUntil, id);
+      }
+      return { failed, lockedUntil };
+    });
+  }
+
+  resetFailures(id: string): void {
+    this.db.prepare('UPDATE users SET failed_attempts = 0, locked_until = NULL WHERE id = ?').run(id);
+  }
+
+  /** Milliseconds the account stays locked (0: not locked). */
+  lockedForMs(id: string, now: Date = new Date()): number {
+    const r = this.db.prepare('SELECT locked_until FROM users WHERE id = ?').get(id) as Row | undefined;
+    const until = r?.locked_until ? new Date(r.locked_until as string).getTime() : 0;
+    return Math.max(0, until - now.getTime());
+  }
+
+  // ---- recovery codes ----
+
+  private writeRecoveryCodes(userId: string, hashes: string[]): void {
+    this.db.prepare('DELETE FROM recovery_codes WHERE user_id = ?').run(userId);
+    const ins = this.db.prepare('INSERT INTO recovery_codes (user_id, code_hash) VALUES (?, ?)');
+    for (const h of hashes) ins.run(userId, h);
+  }
+
+  replaceRecoveryCodes(userId: string, hashes: string[]): void {
+    this.tx(() => this.writeRecoveryCodes(userId, hashes));
+  }
+
+  /** Marks a recovery code used; false when unknown or used before. */
+  useRecoveryCode(userId: string, hash: string, now: Date = new Date()): boolean {
+    return (
+      this.db
+        .prepare('UPDATE recovery_codes SET used_at = ? WHERE user_id = ? AND code_hash = ? AND used_at IS NULL')
+        .run(now.toISOString(), userId, hash).changes > 0
+    );
+  }
+
+  recoveryCodesLeft(userId: string): number {
+    return (this.db.prepare('SELECT COUNT(*) AS n FROM recovery_codes WHERE user_id = ? AND used_at IS NULL').get(userId) as Row).n as number;
+  }
+
   // ---- credentials ----
 
   credentialCount(): number {
@@ -393,10 +672,20 @@ export class Store {
     return r ? toCredential(r) : null;
   }
 
-  addCredential(c: { id: string; publicKey: Uint8Array; counter: number; transports: string[]; name: string; invitedBy?: string | null }): void {
+  /** Stores a passkey; without a user id it becomes a user of its own (as the migration does). */
+  addCredential(c: {
+    id: string;
+    publicKey: Uint8Array;
+    counter: number;
+    transports: string[];
+    name: string;
+    invitedBy?: string | null;
+    userId?: string | null;
+  }): void {
     this.db
-      .prepare('INSERT INTO credentials (id, public_key, counter, transports, name, created_at, invited_by) VALUES (?, ?, ?, ?, ?, ?, ?)')
-      .run(c.id, c.publicKey, c.counter, JSON.stringify(c.transports), c.name, new Date().toISOString(), c.invitedBy ?? null);
+      .prepare('INSERT INTO credentials (id, public_key, counter, transports, name, created_at, invited_by, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)')
+      .run(c.id, c.publicKey, c.counter, JSON.stringify(c.transports), c.name, new Date().toISOString(), c.invitedBy ?? null, c.userId ?? null);
+    if (!c.userId) this.adoptOrphanCredentials();
   }
 
   /** After a login: the new signature counter and the last-used time. */
@@ -405,17 +694,37 @@ export class Store {
   }
 
   /**
-   * Deletes a passkey and its sessions. Refuses to delete the last passkey ('last'); the count
-   * check and the delete share one transaction.
+   * Deletes a passkey and its sessions. Refuses when that would leave nobody able to sign in
+   * ('last'); the check and the delete share one transaction.
    */
   deleteCredential(id: string): 'ok' | 'last' | 'not found' {
     return this.tx(() => {
-      if (!this.db.prepare('SELECT 1 FROM credentials WHERE id = ?').get(id)) return 'not found';
-      if (this.credentialCount() <= 1) return 'last';
+      const r = this.db.prepare('SELECT user_id FROM credentials WHERE id = ?').get(id) as Row | undefined;
+      if (!r) return 'not found';
+      if (r.user_id ? this.wouldRemoveLastSignIn(r.user_id as string, { passkey: id }) : this.credentialCount() <= 1) return 'last';
       this.db.prepare('DELETE FROM credentials WHERE id = ?').run(id);
       this.db.prepare('DELETE FROM sessions WHERE credential_id = ?').run(id);
       return 'ok';
     });
+  }
+
+  /** Gives every passkey without a user a user of its own, named after the passkey. */
+  private adoptOrphanCredentials(): void {
+    const orphans = this.db
+      .prepare('SELECT id, name, created_at, invited_by FROM credentials WHERE user_id IS NULL ORDER BY created_at, rowid')
+      .all() as Row[];
+    for (const o of orphans) {
+      const name = (o.name as string) || '';
+      const base = usernameFrom(name) || 'passkey';
+      let username = base;
+      for (let i = 2; this.getUserByName(username); i++) username = `${base.slice(0, 36)}-${i}`;
+      const userId = this.createUser({ username, displayName: name || username, invitedBy: o.invited_by as string | null, now: new Date(o.created_at as string) });
+      this.db.prepare('UPDATE credentials SET user_id = ? WHERE id = ?').run(userId, o.id as string);
+    }
+    this.db.exec(
+      `UPDATE sessions SET user_id = (SELECT c.user_id FROM credentials c WHERE c.id = sessions.credential_id)
+        WHERE user_id IS NULL AND credential_id IS NOT NULL`,
+    );
   }
 
   // ---- invites ----
@@ -425,16 +734,20 @@ export class Store {
     label: string;
     createdByCredential: string | null;
     createdBySession: string | null;
+    createdByUser?: string | null;
+    /** The invite restores sign-in for this existing user (after a reset) instead of creating one. */
+    forUserId?: string | null;
     expiresAt: Date;
     now?: Date;
   }): string {
     const id = randomUUID();
     this.db
       .prepare(
-        `INSERT INTO invites (id, token_hash, label, created_by_credential, created_by_session, created_at, expires_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        `INSERT INTO invites (id, token_hash, label, created_by_credential, created_by_session, created_by_user, for_user_id, created_at, expires_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       )
-      .run(id, i.tokenHash, i.label, i.createdByCredential, i.createdBySession, (i.now ?? new Date()).toISOString(), i.expiresAt.toISOString());
+      .run(id, i.tokenHash, i.label, i.createdByCredential, i.createdBySession, i.createdByUser ?? null, i.forUserId ?? null,
+        (i.now ?? new Date()).toISOString(), i.expiresAt.toISOString());
     return id;
   }
 
@@ -443,45 +756,66 @@ export class Store {
     return (this.db
       .prepare(
         `SELECT i.id, i.label, i.created_at, i.expires_at, i.used_at, i.revoked_at, i.credential_id,
-                used.name AS credential_name, creator.name AS created_by
+                COALESCE(used.name, uu.username) AS credential_name,
+                COALESCE(creator.name, cu.username) AS created_by,
+                fu.username AS for_user
            FROM invites i
            LEFT JOIN credentials used ON used.id = i.credential_id
+           LEFT JOIN users uu ON uu.id = i.user_id
            LEFT JOIN credentials creator ON creator.id = i.created_by_credential
+           LEFT JOIN users cu ON cu.id = i.created_by_user
+           LEFT JOIN users fu ON fu.id = i.for_user_id
           ORDER BY i.created_at DESC`,
       )
       .all() as Row[]).map((r) => ({ ...(r as unknown as InviteRow), state: inviteState(r, ts) }));
   }
 
-  /** Checks an invite token (by hash): its label, or why it cannot be used. */
-  checkInvite(tokenHash: string, now: Date = new Date()): { ok: true; id: string; label: string } | { ok: false; problem: InviteProblem } {
+  /** Checks an invite token (by hash): its label and target user, or why it cannot be used. */
+  checkInvite(
+    tokenHash: string,
+    now: Date = new Date(),
+  ): { ok: true; id: string; label: string; forUserId: string | null } | { ok: false; problem: InviteProblem } {
     const r = this.db.prepare('SELECT * FROM invites WHERE token_hash = ?').get(tokenHash) as Row | undefined;
     if (!r) return { ok: false, problem: 'invalid' };
     const state = inviteState(r, now.toISOString());
-    return state === 'open' ? { ok: true, id: r.id as string, label: r.label as string } : { ok: false, problem: state };
+    if (state !== 'open') return { ok: false, problem: state };
+    const forUserId = (r.for_user_id as string | null) ?? null;
+    // The target user was deleted meanwhile: the link is useless.
+    if (forUserId && !this.getUser(forUserId)) return { ok: false, problem: 'invalid' };
+    return { ok: true, id: r.id as string, label: r.label as string, forUserId };
   }
 
   /**
-   * Redeems an invite: marks it used and stores the new passkey in one transaction, so a token
-   * registers at most one passkey even with concurrent requests.
+   * Redeems an invite: `create` stores the new sign-in method (and user) and the invite is marked
+   * used in the same transaction, so a token works at most once even with concurrent requests.
+   * A throwing `create` rolls everything back.
    */
-  redeemInvite(
+  redeemInvite<T extends { userId: string; credentialId?: string | null }>(
     tokenHash: string,
-    c: { id: string; publicKey: Uint8Array; counter: number; transports: string[]; name: string },
+    create: (ctx: { forUserId: string | null; creatorName: string; creatorUsername: string | null }) => T,
     now: Date = new Date(),
-  ): { ok: true } | { ok: false; problem: InviteProblem } {
+  ): { ok: true; result: T } | { ok: false; problem: InviteProblem } {
     return this.tx(() => {
       const check = this.checkInvite(tokenHash, now);
       if (!check.ok) return check;
-      const ts = now.toISOString();
-      const marked = this.db
-        .prepare('UPDATE invites SET used_at = ?, credential_id = ? WHERE token_hash = ? AND used_at IS NULL AND revoked_at IS NULL AND expires_at > ?')
-        .run(ts, c.id, tokenHash, ts).changes;
-      if (!marked) return { ok: false, problem: 'used' as const };
       const creator = this.db
-        .prepare('SELECT c.name FROM invites i LEFT JOIN credentials c ON c.id = i.created_by_credential WHERE i.token_hash = ?')
+        .prepare(
+          `SELECT c.name AS cred, u.username AS user FROM invites i
+             LEFT JOIN credentials c ON c.id = i.created_by_credential
+             LEFT JOIN users u ON u.id = COALESCE(i.created_by_user, c.user_id)
+            WHERE i.token_hash = ?`,
+        )
         .get(tokenHash) as Row | undefined;
-      this.addCredential({ ...c, invitedBy: (creator?.name as string | null) || 'an admin' });
-      return { ok: true as const };
+      const result = create({
+        forUserId: check.forUserId,
+        creatorName: (creator?.cred as string | null) || (creator?.user as string | null) || 'an admin',
+        creatorUsername: (creator?.user as string | null) ?? null,
+      });
+      const ts = now.toISOString();
+      this.db
+        .prepare('UPDATE invites SET used_at = ?, credential_id = ?, user_id = ? WHERE token_hash = ?')
+        .run(ts, result.credentialId ?? null, result.userId, tokenHash);
+      return { ok: true as const, result };
     });
   }
 
@@ -497,16 +831,36 @@ export class Store {
 
   // ---- sessions ----
 
-  createSession(tokenHash: string, expiresAt: Date, credentialId: string | null = null): void {
+  /** A session for a user; with only a passkey given, the passkey's user is recorded. */
+  createSession(tokenHash: string, expiresAt: Date, credentialId: string | null = null, userId: string | null = null): void {
+    const uid = userId ?? (credentialId ? (this.getCredential(credentialId)?.user_id ?? null) : null);
     this.db
-      .prepare('INSERT INTO sessions (token_hash, created_at, expires_at, credential_id) VALUES (?, ?, ?, ?)')
-      .run(tokenHash, new Date().toISOString(), expiresAt.toISOString(), credentialId);
+      .prepare('INSERT INTO sessions (token_hash, created_at, expires_at, credential_id, user_id) VALUES (?, ?, ?, ?, ?)')
+      .run(tokenHash, new Date().toISOString(), expiresAt.toISOString(), credentialId, uid);
   }
 
-  /** The passkey a session was opened with (null for sessions from before that was recorded). */
+  /** The passkey a session was opened with (null for password sessions and older ones). */
   sessionCredential(tokenHash: string): string | null {
     const r = this.db.prepare('SELECT credential_id FROM sessions WHERE token_hash = ?').get(tokenHash) as Row | undefined;
     return (r?.credential_id as string | null) ?? null;
+  }
+
+  /** The user a session belongs to (null for sessions from before users existed). */
+  sessionUser(tokenHash: string): string | null {
+    const r = this.db.prepare('SELECT user_id FROM sessions WHERE token_hash = ?').get(tokenHash) as Row | undefined;
+    return (r?.user_id as string | null) ?? null;
+  }
+
+  /** Ends all sessions of a user, except `exceptHash` (the caller's own). */
+  deleteUserSessions(userId: string, exceptHash: string | null = null): number {
+    return Number(
+      this.db
+        .prepare(
+          `DELETE FROM sessions WHERE (user_id = ? OR credential_id IN (SELECT id FROM credentials WHERE user_id = ?))
+             AND token_hash IS NOT ?`,
+        )
+        .run(userId, userId, exceptHash).changes,
+    );
   }
 
   sessionValid(tokenHash: string): boolean {

@@ -83,92 +83,206 @@ function ago(iso) {
 
 // ---------- auth ----------
 
+let authState = { hasCredentials: true, passwordLogin: false, user: null };
+
 function showAuth() {
   $('app').hidden = true;
   $('nav').hidden = true;
+  $('enroll').hidden = true;
   $('auth').hidden = false;
 }
 
-async function initAuth() {
-  const state = await api('GET', '/api/auth/state');
-  if (state.loggedIn) return showApp();
-  showAuth();
-  const btn = $('auth-btn');
-  if (!state.hasCredentials) {
-    if (!setupToken) {
-      $('auth-title').textContent = 'Not set up yet';
-      $('auth-text').textContent = 'Open /setup?token=… with the SETUP_TOKEN to register the first passkey.';
-      btn.hidden = true;
-      return;
-    }
-    $('auth-title').textContent = 'Set up';
-    $('auth-text').textContent = 'Register the first admin passkey for this service.';
-    btn.textContent = 'Register passkey';
-    btn.onclick = () => register(true);
-  } else {
-    btn.onclick = login;
-  }
+// ---------- password policy (the server runs the same checks) ----------
+
+let policy = null;
+async function loadPolicy() {
+  policy ??= await api('GET', '/api/auth/policy');
+  return policy;
 }
 
-async function register(first) {
-  $('auth-error').textContent = '';
-  try {
-    const optionsJSON = await api('POST', '/api/auth/register/options', { setup_token: setupToken });
-    const response = await startRegistration({ optionsJSON });
-    const name = first ? 'first passkey' : (prompt('Name for this passkey (optional)') || '');
-    await api('POST', '/api/auth/register/verify', { setup_token: setupToken, response, name });
-    if (first) {
-      history.replaceState(null, '', '/' + location.hash);
-      showApp();
-    } else {
-      toast('Passkey added');
-    }
-  } catch (e) {
-    if (first) $('auth-error').textContent = e.message;
-    else toast(e.message, true);
-  }
+/** The rules a password breaks, as the server checks them. */
+function policyProblems(pw, username) {
+  const bad = [];
+  const n = [...pw].length;
+  if (n < policy.min) bad.push('length');
+  if (n > policy.max) bad.push('max');
+  if (!/\p{Lu}/u.test(pw)) bad.push('upper');
+  if (!/\p{Ll}/u.test(pw)) bad.push('lower');
+  if (!/\p{Nd}/u.test(pw)) bad.push('digit');
+  if (!/[^\p{L}\p{N}]/u.test(pw)) bad.push('special');
+  const u = (username || '').trim().toLowerCase();
+  if (u && pw.toLowerCase().includes(u)) bad.push('username');
+  if (policy.common.includes(pw.toLowerCase())) bad.push('common');
+  return bad;
 }
 
-// ---------- invite: another person registers their own passkey ----------
-// The token lives in the URL fragment (never sent to the server as part of the URL) and goes
-// only into the request bodies.
-
-const inviteToken = location.pathname === '/invite' ? location.hash.slice(1) : null;
-
-function inviteFailed(msg, final) {
-  $('invite-error').textContent = msg;
-  if (final) {
-    $('invite-form').hidden = true;
-    $('invite-text').textContent = 'Ask an admin for a new invite link.';
-  }
+/**
+ * Live checklist under a password field. Returns check(): an error message, or '' when the
+ * password passes and both fields match.
+ */
+function policyChecklist(ul, pwInput, repeatInput, getUsername) {
+  const rules = ['length', 'upper', 'lower', 'digit', 'special', 'username', 'common'];
+  const items = Object.fromEntries(rules.map((r) => [r, h('li', { 'data-rule': r }, policy.rules[r])]));
+  const match = h('li', { 'data-rule': 'match' }, 'Both passwords match');
+  ul.replaceChildren(...rules.map((r) => items[r]), match);
+  let touched = false;
+  const update = () => {
+    const pw = pwInput.value;
+    const bad = policyProblems(pw, getUsername());
+    if (pw) touched = true;
+    for (const r of rules) items[r].className = bad.includes(r) ? (touched ? 'bad' : '') : 'ok';
+    if (bad.includes('max')) items.length.className = 'bad';
+    const same = pw.length > 0 && pw === repeatInput.value;
+    match.className = same ? 'ok' : repeatInput.value ? 'bad' : '';
+    return { bad, same };
+  };
+  pwInput.addEventListener('input', update);
+  repeatInput.addEventListener('input', update);
+  update();
+  return () => {
+    touched = true;
+    const { bad, same } = update();
+    if (bad.length) return 'The password does not meet the rules: ' + bad.map((r) => (r === 'max' ? `at most ${policy.max} characters` : policy.rules[r].toLowerCase())).join(', ') + '.';
+    if (!same) return 'The two passwords do not match.';
+    return '';
+  };
 }
 
-async function initInvite() {
-  $('auth').hidden = true;
-  $('invite').hidden = false;
-  if (!inviteToken) return inviteFailed('This invite link is incomplete. Copy the whole link, including the part after #.', true);
-  try {
-    const info = await api('POST', '/api/auth/invite/info', { invite_token: inviteToken });
-    if (info.label) $('invite-name').value = info.label;
-  } catch (e) {
-    return inviteFailed(e.message, true);
-  }
-  $('invite-form').addEventListener('submit', async (ev) => {
+// ---------- TOTP enrollment and recovery codes ----------
+
+/**
+ * Shows the QR code and the secret, asks for the first code and calls finish(code), which
+ * resolves to { recovery_codes } or throws. onRestart is called when the server dropped the
+ * enrollment (expired, too many wrong codes).
+ */
+function totpPanel(container, enrollment, finish, onDone, onRestart) {
+  const err = h('p', { class: 'error', role: 'alert' });
+  const code = h('input', { id: 'totp-code', inputmode: 'numeric', autocomplete: 'one-time-code', maxlength: '6', required: true, 'aria-label': '6-digit code' });
+  const btn = h('button', { class: 'primary', type: 'submit' }, 'Confirm');
+  const form = h('form', { class: 'stack', onsubmit: async (ev) => {
     ev.preventDefault();
-    $('invite-error').textContent = '';
-    const btn = $('invite-btn');
+    err.textContent = '';
     btn.disabled = true;
     try {
-      const optionsJSON = await api('POST', '/api/auth/invite/register/options', { invite_token: inviteToken });
-      const response = await startRegistration({ optionsJSON });
-      await api('POST', '/api/auth/invite/register/verify', { invite_token: inviteToken, response, name: $('invite-name').value.trim() });
-      location.replace('/');
+      const r = await finish(code.value.replace(/\s/g, ''));
+      recoveryPanel(container, r.recovery_codes, onDone);
     } catch (e) {
-      const final = /expired|already been used|revoked|not valid/.test(e.message);
-      inviteFailed(e.message, final);
-      btn.disabled = false;
-    }
+      err.textContent = e.message;
+      code.value = '';
+      code.focus();
+      if (e.restart && onRestart) onRestart(e.message);
+    } finally { btn.disabled = false; }
+  } },
+  h('label', { for: 'totp-code' }, 'Enter the 6-digit code the app shows'), code, btn);
+  container.replaceChildren(h('div', { class: 'totp' },
+    h('p', {}, 'Scan this QR code with your authenticator app (e.g. Aegis, Google Authenticator, 1Password, Bitwarden):'),
+    h('img', { class: 'qr', src: enrollment.qr, alt: 'QR code for the authenticator app', width: '200', height: '200' }),
+    h('p', { class: 'sub' }, 'Cannot scan? Enter this key manually (time-based, SHA-1, 6 digits, 30 s):'),
+    h('code', { class: 'secret', id: 'totp-secret' }, enrollment.secret.replace(/(.{4})/g, '$1 ').trim()),
+    form, err));
+  code.focus();
+}
+
+function recoveryPanel(container, codes, onDone) {
+  const download = () => {
+    const text = 'Mumcord Crash Reports: recovery codes\n'
+      + 'Each code works once, in place of the code from the authenticator app.\n\n'
+      + codes.join('\n') + '\n';
+    const url = URL.createObjectURL(new Blob([text], { type: 'text/plain' }));
+    const a = h('a', { href: url, download: 'mumcord-crash-reports-recovery-codes.txt' });
+    document.body.append(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
+  container.replaceChildren(h('div', { class: 'totp', id: 'recovery' },
+    h('h3', {}, 'Recovery codes'),
+    h('p', {}, 'Store these somewhere safe. Each one works once if you lose your authenticator app. They are shown only now.'),
+    h('ol', { class: 'codes', id: 'recovery-codes' }, ...codes.map((c) => h('li', {}, c))),
+    h('div', { class: 'actions' },
+      h('button', { type: 'button', onclick: download }, 'Download as .txt'),
+      h('button', { type: 'button', class: 'primary', id: 'recovery-done', onclick: onDone }, 'I saved them, continue'))));
+}
+
+/** api() that keeps the server's "restart" flag on the error. */
+async function apiStep(method, path, body) {
+  const res = await fetch(path, {
+    method,
+    credentials: 'same-origin',
+    headers: { 'x-crashreports-csrf': '1', 'content-type': 'application/json' },
+    body: JSON.stringify(body),
   });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    const e = new Error(data.error || `HTTP ${res.status}`);
+    e.restart = !!data.restart;
+    e.status = res.status;
+    throw e;
+  }
+  return data;
+}
+
+// ---------- sign in ----------
+
+async function initAuth() {
+  const state = await api('GET', '/api/auth/state');
+  authState = state;
+  if (state.loggedIn) return showApp();
+  if (!state.hasCredentials) {
+    if (setupToken) return initEnroll({ kind: 'setup' });
+    showAuth();
+    $('auth-title').textContent = 'Not set up yet';
+    $('auth-text').textContent = 'Open /setup?token=… with the SETUP_TOKEN to create the first user.';
+    $('login-box').hidden = true;
+    return;
+  }
+  showAuth();
+  $('auth-btn').onclick = login;
+  $('pw-login').hidden = !state.passwordLogin;
+  $('pw-off').hidden = state.passwordLogin;
+}
+
+let pendingLogin = null;
+
+function resetPasswordLogin(msg) {
+  pendingLogin = null;
+  $('code-form').hidden = true;
+  $('pw-form').hidden = false;
+  $('auth-btn').hidden = false;
+  $('pw-pass').value = '';
+  $('auth-error').textContent = msg || '';
+  if (msg) $('pw-pass').focus();
+}
+
+async function passwordLogin(ev) {
+  ev.preventDefault();
+  $('auth-error').textContent = '';
+  try {
+    const r = await apiStep('POST', '/api/auth/password/login', { username: $('pw-user').value.trim(), password: $('pw-pass').value });
+    pendingLogin = r.pending;
+    $('pw-form').hidden = true;
+    $('auth-btn').hidden = true;
+    $('code-form').hidden = false;
+    $('code-input').value = '';
+    $('code-input').focus();
+  } catch (e) {
+    $('auth-error').textContent = e.message;
+  }
+}
+
+async function codeLogin(ev) {
+  ev.preventDefault();
+  $('auth-error').textContent = '';
+  try {
+    await apiStep('POST', '/api/auth/password/verify', { pending: pendingLogin, code: $('code-input').value.trim() });
+    resetPasswordLogin();
+    showApp();
+  } catch (e) {
+    if (e.restart) return resetPasswordLogin(e.message);
+    $('auth-error').textContent = e.message;
+    $('code-input').value = '';
+    $('code-input').focus();
+  }
 }
 
 async function login() {
@@ -183,10 +297,126 @@ async function login() {
   }
 }
 
+// ---------- first setup and invites: passkey, or password + authenticator app ----------
+// The invite token lives in the URL fragment (never sent to the server as part of the URL) and
+// goes only into the request bodies.
+
+const inviteToken = location.pathname === '/invite' ? location.hash.slice(1) : null;
+
+function enrollFailed(msg, final) {
+  $('enroll-error').textContent = msg;
+  if (final) {
+    $('enroll-form').hidden = true;
+    $('enroll-totp').replaceChildren();
+    $('enroll-text').textContent = 'Ask an admin for a new invite link.';
+  }
+}
+
+const enrollMethod = () => document.querySelector('input[name="enroll-method"]:checked').value;
+
+async function initEnroll({ kind }) {
+  $('auth').hidden = true;
+  $('enroll').hidden = false;
+  const invite = kind === 'invite';
+  $('enroll-title').textContent = invite ? "You're invited" : 'Set up';
+  $('enroll-text').textContent = invite
+    ? 'Choose a username and how you want to sign in to the crash report admin.'
+    : 'Create the first admin user for this service.';
+  if (invite && !inviteToken) return enrollFailed('This invite link is incomplete. Copy the whole link, including the part after #.', true);
+  let state = authState;
+  try {
+    if (invite) {
+      state = await api('GET', '/api/auth/state');
+      const info = await api('POST', '/api/auth/invite/info', { invite_token: inviteToken });
+      if (info.username) {
+        // The invite restores sign-in for an existing user after a reset.
+        $('enroll-user').value = info.username;
+        $('enroll-user').readOnly = true;
+        $('enroll-text').textContent = `Set up a new way to sign in for ${info.username}.`;
+      } else if (info.label) {
+        $('enroll-name').value = info.label;
+      }
+    }
+    await loadPolicy();
+  } catch (e) {
+    return enrollFailed(e.message, invite);
+  }
+  if (!state.passwordLogin) {
+    $('enroll-method-password').disabled = true;
+    $('enroll-pw-off').hidden = false;
+  }
+  const check = policyChecklist($('enroll-policy'), $('enroll-pass'), $('enroll-pass2'), () => $('enroll-user').value);
+  $('enroll-user').addEventListener('input', () => $('enroll-pass').dispatchEvent(new Event('input')));
+  const syncMethod = () => {
+    const pw = enrollMethod() === 'password';
+    $('enroll-password').hidden = !pw;
+    $('enroll-passkey').hidden = pw;
+    $('enroll-btn').textContent = pw ? 'Continue' : 'Register passkey';
+  };
+  for (const r of document.querySelectorAll('input[name="enroll-method"]')) r.addEventListener('change', syncMethod);
+  syncMethod();
+  const tokenBody = invite ? { invite_token: inviteToken } : { setup_token: setupToken };
+  const done = () => location.replace('/' + (invite ? '' : location.hash));
+
+  $('enroll-form').addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    $('enroll-error').textContent = '';
+    const username = $('enroll-user').value.trim();
+    if (!new RegExp(policy.username).test(username)) {
+      $('enroll-error').textContent = 'Username: 2–40 characters, letters, digits and . _ - @, starting with a letter or digit.';
+      return;
+    }
+    const btn = $('enroll-btn');
+    if (enrollMethod() === 'password') {
+      const problem = check();
+      if (problem) { $('enroll-error').textContent = problem; return; }
+      btn.disabled = true;
+      try {
+        const e = await apiStep('POST', '/api/auth/enroll/start', { ...tokenBody, username, password: $('enroll-pass').value });
+        $('enroll-form').hidden = true;
+        $('enroll-text').textContent = `Almost done, ${e.username}: connect your authenticator app.`;
+        totpPanel($('enroll-totp'), e, (code) => apiStep('POST', '/api/auth/enroll/finish', { enroll_id: e.enroll_id, code }), done, (msg) => {
+          $('enroll-totp').replaceChildren();
+          $('enroll-form').hidden = false;
+          enrollFailed(msg, /expired|already been used|revoked|not valid/.test(msg) && invite);
+        });
+      } catch (e) {
+        enrollFailed(e.message, invite && /expired|already been used|revoked|not valid/.test(e.message));
+      } finally { btn.disabled = false; }
+      return;
+    }
+    btn.disabled = true;
+    try {
+      const base = invite ? '/api/auth/invite/register' : '/api/auth/register';
+      const optionsJSON = await api('POST', `${base}/options`, { ...tokenBody, username });
+      const response = await startRegistration({ optionsJSON });
+      await api('POST', `${base}/verify`, { ...tokenBody, username, response, name: $('enroll-name').value.trim() });
+      done();
+    } catch (e) {
+      enrollFailed(e.message, invite && /expired|already been used|revoked|not valid/.test(e.message));
+    } finally { btn.disabled = false; }
+  });
+  $('enroll-user').focus();
+}
+
+/** Adds a passkey for the signed-in user. */
+async function addPasskey() {
+  try {
+    const optionsJSON = await api('POST', '/api/auth/register/options', {});
+    const response = await startRegistration({ optionsJSON });
+    const name = prompt('Name for this passkey (optional)') || '';
+    await api('POST', '/api/auth/register/verify', { response, name });
+    toast('Passkey added');
+  } catch (e) {
+    toast(e.message, true);
+  }
+}
+
 // ---------- groups ----------
 
 async function showApp() {
   $('auth').hidden = true;
+  $('enroll').hidden = true;
   $('app').hidden = false;
   $('nav').hidden = false;
   cfg = await api('GET', '/api/admin/config');
@@ -384,18 +614,57 @@ async function analyze(id, btn) {
   } catch (e) { toast(e.message, true); btn.disabled = false; btn.textContent = 'Re-analyze'; }
 }
 
-// ---------- people & passkeys ----------
+// ---------- people & sign-in ----------
+
+function signInText(u) {
+  const parts = [];
+  if (u.passkeys.length) parts.push(`${u.passkeys.length} passkey${u.passkeys.length === 1 ? '' : 's'}`);
+  if (u.password_2fa) parts.push(`password + 2FA (${u.recovery_codes_left} recovery code${u.recovery_codes_left === 1 ? '' : 's'} left)`);
+  return parts.length ? parts.join(', ') : 'no sign-in: needs an invite link';
+}
 
 async function loadPeople() {
-  const [creds, invites] = await Promise.all([api('GET', '/api/admin/credentials'), api('GET', '/api/admin/invites')]);
+  const [users, creds, invites, me] = await Promise.all([
+    api('GET', '/api/admin/users'),
+    api('GET', '/api/admin/credentials'),
+    api('GET', '/api/admin/invites'),
+    api('GET', '/api/admin/account').catch(() => null),
+  ]);
+  renderAccount(me);
+  const canSignIn = users.filter((u) => u.passkeys.length || u.password_2fa);
+  const isLast = (u) => canSignIn.length <= 1 && canSignIn[0]?.id === u.id;
+  $('users').replaceChildren(
+    ...users.map((u) =>
+      h('tr', { 'data-user': u.username },
+        h('td', {}, u.username, u.current ? h('span', { class: 'badge new' }, 'you') : null, u.locked ? h('span', { class: 'badge warn' }, 'locked') : null,
+          u.display_name && u.display_name !== u.username ? h('div', { class: 'sub' }, u.display_name) : null),
+        h('td', {}, signInText(u)),
+        h('td', { class: 'nowrap', title: fmtTime(u.created_at) }, ago(u.created_at)),
+        h('td', {}, u.invited_by || '—'),
+        h('td', { class: 'nowrap' },
+          !u.current && u.password_2fa
+            ? h('button', { class: 'danger', disabled: isLast(u) && !u.passkeys.length, onclick: () => resetUserPassword(u) }, 'Reset password + 2FA')
+            : null,
+          !u.current && !u.passkeys.length && !u.password_2fa
+            ? h('button', { onclick: () => inviteForUser(u) }, 'Create invite link')
+            : null,
+          ' ',
+          h('button', { class: 'danger', disabled: isLast(u), title: isLast(u) ? 'The last user who can sign in cannot be deleted' : '', onclick: () => deleteUser(u) }, 'Delete user'),
+        ),
+      ),
+    ),
+  );
+  const userName = Object.fromEntries(users.map((u) => [u.id, u.username]));
+  const totalWays = creds.length + users.filter((u) => u.password_2fa).length;
   $('passkeys').replaceChildren(
     ...creds.map((cr) =>
       h('tr', {},
-        h('td', {}, cr.name || '(unnamed)', cr.current ? h('span', { class: 'badge new' }, 'you') : null),
+        h('td', {}, cr.name || '(unnamed)', cr.current ? h('span', { class: 'badge new' }, 'this session') : null),
+        h('td', {}, userName[cr.user_id] || '—'),
         h('td', { class: 'nowrap', title: fmtTime(cr.created_at) }, ago(cr.created_at)),
         h('td', { class: 'nowrap', title: fmtTime(cr.last_used_at) }, cr.last_used_at ? ago(cr.last_used_at) : 'never'),
         h('td', {}, cr.invited_by || '—'),
-        h('td', {}, h('button', { class: 'danger', disabled: creds.length <= 1, title: creds.length <= 1 ? 'The last passkey cannot be deleted' : '', onclick: () => deletePasskey(cr) }, 'Delete')),
+        h('td', {}, h('button', { class: 'danger', disabled: totalWays <= 1, title: totalWays <= 1 ? 'The last way to sign in cannot be deleted' : '', onclick: () => deletePasskey(cr) }, 'Delete')),
       ),
     ),
   );
@@ -403,7 +672,7 @@ async function loadPeople() {
   $('invites').replaceChildren(
     ...invites.map((i) =>
       h('tr', { class: i.state === 'open' ? '' : 'inactive' },
-        h('td', {}, i.label || '(no label)', i.created_by ? h('span', { class: 'sub' }, ` · by ${i.created_by}`) : null),
+        h('td', {}, i.label || (i.for_user ? `for ${i.for_user}` : '(no label)'), i.created_by ? h('span', { class: 'sub' }, ` · by ${i.created_by}`) : null),
         h('td', { class: 'nowrap', title: fmtTime(i.created_at) }, ago(i.created_at)),
         h('td', { class: 'nowrap' }, fmtTime(i.expires_at)),
         h('td', {}, stateText[i.state], i.state === 'used' && i.credential_name ? ` → ${i.credential_name}` : ''),
@@ -414,28 +683,124 @@ async function loadPeople() {
   $('invites-empty').hidden = invites.length > 0;
 }
 
+/** A small form inside the account box; fields: [id, label, type, autocomplete]. */
+function miniForm(fields, submitText, onSubmit) {
+  const inputs = {};
+  const err = h('p', { class: 'error', role: 'alert' });
+  const btn = h('button', { class: 'primary', type: 'submit' }, submitText);
+  const form = h('form', { class: 'stack', onsubmit: async (ev) => {
+    ev.preventDefault();
+    err.textContent = '';
+    btn.disabled = true;
+    try { await onSubmit(inputs, err, form); } catch (e) { err.textContent = e.message; } finally { btn.disabled = false; }
+  } },
+  ...fields.flatMap(([id, label, type, ac]) => {
+    inputs[id] = h('input', { id, type: type === 'password' ? 'password' : 'text', autocomplete: ac || 'off', maxlength: '1024' });
+    return [h('label', { for: id }, label), inputs[id]];
+  }));
+  return { form, inputs, err, btn, append: (...els) => { form.append(...els); form.append(btn, err); } };
+}
+
+const CODE_LABEL = 'Code from your authenticator app (or a recovery code)';
+
+function renderAccount(me) {
+  const box = $('account');
+  if (!me) {
+    box.replaceChildren(h('p', { class: 'muted' }, 'This session belongs to no user (it is older than user accounts). Sign out and in again to manage your sign-in.'));
+    return;
+  }
+  const status = h('p', {}, 'Signed in as ', h('strong', {}, me.username), '. ',
+    `${me.passkeys} passkey${me.passkeys === 1 ? '' : 's'}; `,
+    me.password_2fa ? `password + authenticator app set up, ${me.recovery_codes_left} recovery code${me.recovery_codes_left === 1 ? '' : 's'} left.` : 'no password set up.');
+  const panel = h('div', { id: 'account-panel' });
+  const items = [];
+  const reload = () => loadPeople().catch((e) => toast(e.message, true));
+
+  if (me.password_2fa) {
+    // Change password: current password + code.
+    const ch = miniForm([['acc-cur', 'Current password', 'password', 'current-password'], ['acc-code', CODE_LABEL, 'code', 'one-time-code'],
+      ['acc-new', 'New password', 'password', 'new-password'], ['acc-new2', 'Repeat new password', 'password', 'new-password']], 'Change password',
+    async (i, err) => {
+      const problem = checkNew();
+      if (problem) { err.textContent = problem; return; }
+      const r = await api('POST', '/api/admin/account/password/change', { current_password: i['acc-cur'].value, code: i['acc-code'].value.trim(), new_password: i['acc-new'].value });
+      toast(r.sessions_ended ? `Password changed; ${r.sessions_ended} other session(s) ended` : 'Password changed');
+      reload();
+    });
+    const ul = h('ul', { class: 'policy' });
+    ch.append(ul);
+    const checkNew = policyChecklist(ul, ch.inputs['acc-new'], ch.inputs['acc-new2'], () => me.username);
+    items.push(h('details', {}, h('summary', {}, 'Change password'), ch.form));
+
+    const rc = miniForm([['acc-rc-code', CODE_LABEL, 'code', 'one-time-code']], 'New recovery codes', async (i) => {
+      const r = await api('POST', '/api/admin/account/recovery-codes', { code: i['acc-rc-code'].value.trim() });
+      recoveryPanel(panel, r.recovery_codes, () => { panel.replaceChildren(); reload(); });
+    });
+    rc.append(h('p', { class: 'sub' }, 'The old codes stop working.'));
+    items.push(h('details', {}, h('summary', {}, 'Regenerate recovery codes'), rc.form));
+
+    const rt = miniForm([['acc-rt-code', CODE_LABEL, 'code', 'one-time-code']], 'Reset authenticator app', async (i) => {
+      const e = await api('POST', '/api/admin/account/totp/reset', { code: i['acc-rt-code'].value.trim() });
+      totpPanel(panel, e, (code) => apiStep('POST', '/api/admin/account/enroll/finish', { enroll_id: e.enroll_id, code }),
+        () => { panel.replaceChildren(); toast('Authenticator app replaced; your other sessions ended'); reload(); },
+        (msg) => { panel.replaceChildren(h('p', { class: 'error' }, msg)); });
+    });
+    rt.append(h('p', { class: 'sub' }, 'Moves 2FA to a new app or phone. Your other sessions end.'));
+    items.push(h('details', {}, h('summary', {}, 'Reset authenticator app'), rt.form));
+  } else if (me.password_login) {
+    const su = miniForm([['acc-pw', 'Password', 'password', 'new-password'], ['acc-pw2', 'Repeat password', 'password', 'new-password']], 'Continue',
+      async (i, err) => {
+        const problem = check();
+        if (problem) { err.textContent = problem; return; }
+        const e = await api('POST', '/api/admin/account/password/setup', { password: i['acc-pw'].value });
+        totpPanel(panel, e, (code) => apiStep('POST', '/api/admin/account/enroll/finish', { enroll_id: e.enroll_id, code }),
+          () => { panel.replaceChildren(); toast('Password + authenticator app set up'); reload(); },
+          (msg) => { panel.replaceChildren(h('p', { class: 'error' }, msg)); });
+      });
+    const ul = h('ul', { class: 'policy' });
+    su.append(ul);
+    const check = policyChecklist(ul, su.inputs['acc-pw'], su.inputs['acc-pw2'], () => me.username);
+    items.push(h('details', {}, h('summary', {}, 'Set up password + authenticator app'), su.form));
+  } else {
+    items.push(h('p', { class: 'sub' }, 'Password sign-in is off on this server (no TOTP_ENCRYPTION_KEY).'));
+  }
+  items.push(h('div', { class: 'actions' }, h('button', { class: 'ghost', onclick: async () => { await addPasskey(); reload(); } }, 'Add a passkey for myself')));
+  box.replaceChildren(h('div', { class: 'account-box' }, status, ...items, panel));
+}
+
 async function togglePeople() {
   const show = $('people').hidden;
   $('people').hidden = !show;
   $('people-btn').setAttribute('aria-expanded', String(show));
   if (show) {
     $('invite-result').hidden = true;
-    try { await loadPeople(); } catch (e) { toast(e.message, true); }
+    try { await loadPolicy(); await loadPeople(); } catch (e) { toast(e.message, true); }
   }
+}
+
+function showInvite({ url, expires_at }) {
+  $('invite-link').value = url;
+  $('invite-expires').textContent = fmtTime(expires_at);
+  $('invite-result').hidden = false;
+  $('invite-link').select();
 }
 
 async function createInvite(ev) {
   ev.preventDefault();
   try {
-    const { url, expires_at } = await api('POST', '/api/admin/invites', {
+    showInvite(await api('POST', '/api/admin/invites', {
       label: $('invite-label').value.trim(),
       ttl_hours: Number($('invite-ttl').value),
-    });
-    $('invite-link').value = url;
-    $('invite-expires').textContent = fmtTime(expires_at);
-    $('invite-result').hidden = false;
+    }));
     $('invite-label').value = '';
-    $('invite-link').select();
+    loadPeople();
+  } catch (e) { toast(e.message, true); }
+}
+
+async function inviteForUser(u) {
+  try {
+    showInvite(await api('POST', '/api/admin/invites', { user_id: u.id, ttl_hours: Number($('invite-ttl').value) }));
+    toast(`Invite link for ${u.username} created`);
     loadPeople();
   } catch (e) { toast(e.message, true); }
 }
@@ -459,6 +824,29 @@ async function revokeInvite(id) {
   } catch (e) { toast(e.message, true); }
 }
 
+async function deleteUser(u) {
+  const msg = u.current
+    ? 'Delete your own user? You are signed out right away.'
+    : `Delete the user "${u.username}" with all their passkeys and their password? Their sessions end right away.`;
+  if (!confirm(msg)) return;
+  try {
+    const r = await api('DELETE', `/api/admin/users/${encodeURIComponent(u.id)}`);
+    if (r.self) { location.href = '/'; return; }
+    toast('User deleted');
+    loadPeople();
+  } catch (e) { toast(e.message, true); }
+}
+
+async function resetUserPassword(u) {
+  if (!confirm(`Reset the password and authenticator app of "${u.username}"? Their sessions end right away.`)) return;
+  try {
+    const r = await api('POST', `/api/admin/users/${encodeURIComponent(u.id)}/reset-password`, {});
+    if (r.needs_invite && confirm(`${u.username} has no other way to sign in. Create an invite link for them now?`)) await inviteForUser(u);
+    else toast('Password + 2FA reset');
+    loadPeople();
+  } catch (e) { toast(e.message, true); }
+}
+
 async function deletePasskey(cr) {
   const msg = cr.current
     ? 'This is the passkey you signed in with. Deleting it signs you out here. Continue?'
@@ -478,13 +866,15 @@ let searchTimer;
 $('search').addEventListener('input', () => { clearTimeout(searchTimer); searchTimer = setTimeout(loadGroups, 250); });
 $('status-filter').addEventListener('change', loadGroups);
 $('refresh').addEventListener('click', () => { loadGroups(); if (selectedId) selectGroup(selectedId); });
-$('add-passkey').addEventListener('click', async () => { await register(false); if (!$('people').hidden) loadPeople(); });
 $('people-btn').addEventListener('click', togglePeople);
 $('invite-create').addEventListener('submit', createInvite);
 $('invite-copy').addEventListener('click', copyInvite);
+$('pw-form').addEventListener('submit', passwordLogin);
+$('code-form').addEventListener('submit', codeLogin);
+$('code-cancel').addEventListener('click', () => resetPasswordLogin());
 $('logout').addEventListener('click', async () => {
   await api('POST', '/api/auth/logout', {}).catch(() => {});
   location.href = '/';
 });
 
-(inviteToken !== null ? initInvite() : initAuth()).catch((e) => toast(e.message, true));
+(inviteToken !== null ? initEnroll({ kind: 'invite' }) : initAuth()).catch((e) => toast(e.message, true));
