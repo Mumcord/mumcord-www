@@ -717,7 +717,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         items: [
           "Signierte Installer: für macOS seit 0.4.1, für Windows seit 0.6.1. Als Nächstes: keine SmartScreen-Warnung mehr, sobald das Windows-Zertifikat genug Vertrauen aufgebaut hat",
           "Automatische Updates",
-          "Absturzberichte, nur wenn du zustimmst: kommt mit 0.7.1, ein Bericht bleibt auf deinem Computer und geht nur nach deiner Bestätigung raus",
+          "Absturzberichte, nur wenn du zustimmst: seit 0.7.1, ein Bericht bleibt auf deinem Computer und geht nur nach deiner Bestätigung raus",
           "Paketquellen und Stores",
           "Mumcord auf Flathub, für jede Linux-Distribution aus dem Software-Center",
           "Die Handy-App in Google Play, im App Store und bei F-Droid",
@@ -1395,7 +1395,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         items: [
           "Signed installers: on macOS since 0.4.1, on Windows since 0.6.1. Next: no SmartScreen warning once the Windows certificate has built up enough reputation",
           "Automatic updates",
-          "Crash reports, only if you agree: comes with 0.7.1, a report stays on your computer and is sent only after you confirm",
+          "Crash reports, only if you agree: since 0.7.1, a report stays on your computer and is sent only after you confirm",
           "Package repositories and stores",
           "Mumcord on Flathub, for every Linux distribution from the software centre",
           "The phone app in Google Play, the App Store and F-Droid",
