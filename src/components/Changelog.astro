@@ -22,7 +22,7 @@ const entries = [...written, ...extra].sort((a, b) =>
 );
 ---
 
-<article class="wrap changelog">
+<article class="wrap changelog" data-cl data-lang={lang} data-released={t.released} data-download={t.download} data-download-href={download} data-github={t.onGithub} data-known={t.known} data-auto-note={t.autoNote} data-intl={LANG_INFO[lang].intl}>
   <header class="changelog-head">
     <p class="label" data-reveal>{t.label}</p>
     <h1 class="h2" data-reveal>{t.title}</h1>
@@ -32,7 +32,7 @@ const entries = [...written, ...extra].sort((a, b) =>
   <ol class="cl-list">
     {
       entries.map((e) => (
-        <li class="cl-entry" id={`v${e.version}`} data-reveal>
+        <li class="cl-entry" id={`v${e.version}`} data-version={e.version} data-cl-upcoming={e.release ? undefined : ""} data-reveal>
           <div class="cl-side">
             <a class="cl-version" href={`#v${e.version}`}>v{e.version}</a>
             {e.release ? (
@@ -45,7 +45,7 @@ const entries = [...written, ...extra].sort((a, b) =>
               </p>
             )}
           </div>
-          <div class="cl-main">
+          <div class="cl-main" data-cl-auto={e.groups.length ? undefined : e.version}>
             <p class="cl-summary">{e.summary}</p>
             {e.groups.map((g) => (
               <section class="cl-group">

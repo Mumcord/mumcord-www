@@ -2,9 +2,10 @@ export const de = {
   lang: "de",
   locale: "de_DE",
   meta: {
-    title: "Mumcord — moderner Voice-Chat für jeden Mumble-Server",
+    title: "Mumcord – alternativer Mumble-Client für Windows, macOS, Linux",
+    altClient: "alternativer Mumble-Client",
     description:
-      "Mumcord ist ein freier, moderner Desktop-Client für Mumble-Server: Kanälen folgen, Benachrichtigungen, KI-Rauschunterdrückung, Push-to-Talk auch unter Wayland. Für Linux, Windows und macOS. Open Source, ohne Telemetrie.",
+      "Mumcord ist ein freier, alternativer Mumble-Client für Windows, macOS und Linux: Kanälen folgen, Benachrichtigungen, KI-Rauschunterdrückung, Push-to-Talk auch unter Wayland.",
   },
   nav: {
     features: "Funktionen",
@@ -47,11 +48,11 @@ export const de = {
     botIssues: { title: "Issues", desc: "Ideen und Fehler zu Mumbot" },
   },
   hero: {
-    kicker: "Alpha · Open Source · AGPL",
-    titleA: "Dein Mumble-Server.",
+    kicker: "Der alternative Mumble-Client",
+    titleA: "Dein Mumble-Client.",
     titleB: "Endlich gemütlich.",
     lead:
-      "Mumcord ist ein moderner Desktop-Client, der das Mumble-Protokoll spricht. Server-Leiste, Kanäle, Chat und Mitgliederliste — auf jedem ganz normalen Mumble-Server. Am Server ändert sich nichts.",
+      "Mumcord ist ein alternativer Mumble-Client für Windows, macOS und Linux. Server-Leiste, Kanäle, Chat und Mitgliederliste auf jedem ganz normalen Mumble-Server. Am Server ändert sich nichts.",
     ctaDownload: "Herunterladen",
     ctaSource: "Quellcode auf GitHub",
     meta: "Linux · Windows · macOS",
@@ -360,7 +361,7 @@ export const de = {
   },
   downloadPage: {
     title: "Mumcord herunterladen",
-    description: "Mumcord für Windows, macOS und Linux: die passende Version für dein System, alle Pakete, Prüfsummen und ältere Versionen.",
+    description: "Mumcord, der alternative Mumble-Client für Windows, macOS und Linux: die passende Version für dein System, alle Pakete, Prüfsummen und ältere Versionen.",
     label: "Download",
     intro: "Kostenlos und Open Source, ohne Konto und ohne Werbung. Oben steht die Version für dein System, darunter jede Datei des Releases.",
     badges: ["Kostenlos und Open Source", "Signiert und notarisiert", "Auto-Update eingebaut", "Ohne Konto, ohne Werbung"],
@@ -405,6 +406,7 @@ export const de = {
     onGithub: "Release auf GitHub",
     known: "Bekannte Einschränkungen",
     githubOnly: "Für diese Version gibt es nur die Release-Notes auf GitHub.",
+    autoNote: "Automatisch aus den Release-Notes zusammengefasst.",
   },
   footer: {
     loveMade: "Mit",

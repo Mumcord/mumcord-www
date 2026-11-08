@@ -1,10 +1,8 @@
 ---
 import { routes, type Lang } from "../i18n";
-import { roadmapPage, type Stage } from "../lib/roadmap";
+import { roadmapPage, resolveEpics, epicNum as num, epicProgress, type Stage } from "../lib/roadmap";
 import { IDEA_URL } from "../lib/features";
-import { getReleases, REPO_URL } from "../lib/release";
-import { featuresPage } from "../lib/features";
-import { Picture, getImage } from "astro:assets";
+import { getReleases } from "../lib/release";
 
 interface Props {
   lang: Lang;
@@ -14,24 +12,17 @@ const page = roadmapPage[lang];
 const releases = await getReleases();
 // An epic counts as done once the GitHub release of its version is out.
 const released = new Set(releases.map((x) => x.version));
-const r = { ...page, epics: page.epics.map((s) => (s.version && released.has(s.version) ? { ...s, status: "done" as const } : s)) };
+const r = { ...page, epics: resolveEpics(page, released) };
+const base = routes.roadmap[lang];
+const href = (s: Stage) => `${base}/${s.id}`;
+const prog = (s: Stage) => {
+  const { done, total } = epicProgress(s);
+  return { done, total, label: r.epicProgress.replace("{done}", String(done)).replace("{total}", String(total)) };
+};
 const done = r.epics.filter((s) => s.status === "done");
 const next = r.epics.filter((s) => s.status === "now" || s.status === "planned");
 const later = r.epics.filter((s) => s.status === "later");
 const target = next[0];
-const zoom = featuresPage[lang];
-const mockupFiles = import.meta.glob<{ default: ImageMetadata }>("../assets/mockups/*.png", { eager: true });
-const mockup = (name: string) => mockupFiles[`../assets/mockups/${name}.png`].default;
-// Full-size WebP for the lightbox, so a click doesn't load the original PNG.
-const full = new Map<string, string>();
-for (const s of next)
-  for (const m of (s.groups ?? []).flatMap((g) => g.mockups ?? []))
-    full.set(m.shot, (await getImage({ src: mockup(m.shot), format: "webp", width: 2400, quality: 82 })).src);
-// "epic-4" → "04", "epic-3.1" → "3.1"; Epic Future has no number and gets the infinity sign.
-const num = (s: Stage) => {
-  const n = s.id.replace("epic-", "");
-  return n === "future" ? "∞" : n.includes(".") ? n : n.padStart(2, "0");
-};
 const count = (s: Stage) => (s.items?.length ?? 0) + (s.groups ?? []).reduce((n, g) => n + g.items.length, 0);
 // The line runs from the first node to the last and fills up to the next target (or the last done epic).
 const reached = target ? r.epics.indexOf(target) : done.length - 1;
@@ -68,7 +59,7 @@ const progress = Math.max(0, Math.min(1, reached / Math.max(1, r.epics.length - 
         {
           r.epics.map((s) => (
             <li data-status={s.status} data-target={s === target ? "" : undefined}>
-              <a href={`#${s.id}`}>
+              <a href={href(s)}>
                 <span class="rm-node" aria-hidden="true">
                   {s.status === "done" ? (
                     <svg viewBox="0 0 24 24">
@@ -101,14 +92,14 @@ const progress = Math.max(0, Math.min(1, reached / Math.max(1, r.epics.length - 
         </h2>
         <div class="rm-done">
           {done.map((s) => (
-            <article class="rm-card rm-card-done" id={s.id} data-reveal data-spot>
+            <article class="rm-card rm-card-done" id={s.id} data-reveal>
               <span class="rm-num" aria-hidden="true">{num(s)}</span>
               <p class="rm-meta">
                 <span>{s.tag}</span>
                 {s.version && <span class="pill">v{s.version}</span>}
               </p>
               <h3>
-                <a href={`#${s.id}`}>{s.title}</a>
+                <a href={href(s)}>{s.title}</a>
               </h3>
               <p class="rm-summary">{s.summary}</p>
               {s.groups && (
@@ -121,31 +112,9 @@ const progress = Math.max(0, Math.min(1, reached / Math.max(1, r.epics.length - 
                   ))}
                 </ul>
               )}
-              <details class="rm-details">
-                <summary>
-                  <span>{r.delivered.replace("{n}", String(count(s)))}</span>
-                  <span class="rm-more">{r.showAll}</span>
-                </summary>
-                {s.items && (
-                  <ul class="rm-list">
-                    {s.items.map((i) => (
-                      <li>{i}</li>
-                    ))}
-                  </ul>
-                )}
-                {s.groups?.map((g) => (
-                  <div class="rm-group">
-                    <h4>
-                      {g.title} {g.version && <span class="pill">v{g.version}</span>}
-                    </h4>
-                    <ul class="rm-list">
-                      {g.items.map((i) => (
-                        <li>{i}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </details>
+              <a class="rm-open" href={href(s)}>
+                {r.epicItems.replace("{n}", String(count(s)))} · {r.epicOpen} →
+              </a>
             </article>
           ))}
         </div>
@@ -173,66 +142,34 @@ const progress = Math.max(0, Math.min(1, reached / Math.max(1, r.epics.length - 
                 {s.version && <span class="pill pill-new">v{s.version}</span>}
               </p>
               <h3>
-                <a href={`#${s.id}`}>{s.title}</a>
+                <a href={href(s)}>{s.title}</a>
               </h3>
               <p class="rm-summary">{s.summary}</p>
             </div>
-            {s.items && (
-              <ul class="rm-list">
-                {s.items.map((i) => (
-                  <li>{i}</li>
+            {(() => {
+              const p = prog(s);
+              return (
+                p.total > 0 && (
+                  <div class="epic-progress">
+                    <span class="epic-bar" style={`--p: ${p.done / p.total}`} aria-hidden="true" />
+                    <span>{p.label}</span>
+                  </div>
+                )
+              );
+            })()}
+            {s.groups && (
+              <ul class="rm-chips">
+                {s.groups.map((g) => (
+                  <li>
+                    {g.title}
+                    <span>{g.done ? `${g.done.length}/${g.items.length}` : g.items.length}</span>
+                  </li>
                 ))}
               </ul>
             )}
-            {s.groups && (
-              <div class="rm-bento">
-                {s.groups.map((g, i) => (
-                  <section class="rm-card rm-tile" data-spot style={`--i: ${i}`}>
-                    <h4>
-                      <span>{g.title}</span>
-                      <span class="rm-count">{g.done ? `${g.done.length}/${g.items.length}` : g.items.length}</span>
-                    </h4>
-                    <ul class="rm-list">
-                      {g.items.map((x, j) => (
-                        <li class:list={[{ "is-done": g.done?.includes(j) }]}>
-                          {g.done?.includes(j) && <span class="sr-only">{r.status.done}: </span>}
-                          {x}
-                        </li>
-                      ))}
-                    </ul>
-                  </section>
-                ))}
-              </div>
-            )}
-            {s.groups?.some((g) => g.mockups?.length) && (
-              <div class="rm-mockups">
-                <div class="rm-mockups-head">
-                  <h4>{r.mockupsTitle}</h4>
-                  <div class="rm-mockups-nav">
-                    <p>{r.mockupsNote}</p>
-                    <button type="button" aria-label={zoom.prev} data-strip-prev>‹</button>
-                    <button type="button" aria-label={zoom.next} data-strip-next>›</button>
-                  </div>
-                </div>
-                <ul class="rm-strip" data-strip>
-                  {s.groups.flatMap((g) =>
-                    (g.mockups ?? []).map((m) => (
-                      <li>
-                        <figure>
-                          <a class="rm-shot" href={full.get(m.shot)} aria-label={`${zoom.zoom}: ${m.caption}`} data-lightbox data-caption={m.caption} data-alt={m.caption}>
-                            <Picture src={mockup(m.shot)} formats={["avif", "webp"]} widths={[480, 880]} sizes="(min-width: 960px) 440px, 78vw" alt={m.caption} loading="lazy" />
-                          </a>
-                          <figcaption>
-                            <span>{m.caption}</span>
-                            <a href={`${REPO_URL}/issues/${m.issue}`} rel="noopener">#{m.issue}</a>
-                          </figcaption>
-                        </figure>
-                      </li>
-                    )),
-                  )}
-                </ul>
-              </div>
-            )}
+            <p class="rm-feature-foot">
+              <a class="btn btn-small" href={href(s)}>{r.epicOpen} →</a>
+            </p>
           </article>
         ))}
       </section>
@@ -248,36 +185,17 @@ const progress = Math.max(0, Math.min(1, reached / Math.max(1, r.epics.length - 
         </h2>
         <div class="rm-later">
           {later.map((s) => (
-            <article class="rm-card rm-card-later" id={s.id} data-reveal data-spot>
+            <article class="rm-card rm-card-later" id={s.id} data-reveal>
               <span class="rm-num" aria-hidden="true">{num(s)}</span>
               <p class="rm-meta">
                 <span>{s.tag}</span>
                 <span>{r.status[s.status]}</span>
               </p>
               <h3>
-                <a href={`#${s.id}`}>{s.title}</a>
+                <a href={href(s)}>{s.title}</a>
               </h3>
               <p class="rm-summary">{s.summary}</p>
-              {s.items && (
-                <ul class="rm-list">
-                  {s.items.map((i) => (
-                    <li>{i}</li>
-                  ))}
-                </ul>
-              )}
-              {s.groups?.map((g) => (
-                <div class="rm-group">
-                  <h4>{g.title}</h4>
-                  <ul class="rm-list">
-                    {g.items.map((x, j) => (
-                      <li class:list={[{ "is-done": g.done?.includes(j) }]}>
-                        {g.done?.includes(j) && <span class="sr-only">{r.status.done}: </span>}
-                        {x}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+              <a class="rm-open" href={href(s)}>{r.epicOpen} →</a>
             </article>
           ))}
         </div>
@@ -293,13 +211,4 @@ const progress = Math.max(0, Math.min(1, reached / Math.max(1, r.epics.length - 
       <a class="text-link" href={routes.changelog[lang]}>{r.changelog} →</a>
     </p>
   </section>
-  <dialog class="lightbox" data-lightbox-dialog aria-label={zoom.zoom}>
-    <figure>
-      <img alt="" data-lightbox-img />
-      <figcaption data-lightbox-caption></figcaption>
-    </figure>
-    <button type="button" class="lb-btn lb-close" data-lightbox-close aria-label={zoom.close}>×</button>
-    <button type="button" class="lb-btn lb-prev" data-lightbox-prev aria-label={zoom.prev}>‹</button>
-    <button type="button" class="lb-btn lb-next" data-lightbox-next aria-label={zoom.next}>›</button>
-  </dialog>
 </article>

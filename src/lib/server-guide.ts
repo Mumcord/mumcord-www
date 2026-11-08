@@ -82,7 +82,7 @@ const source: Record<Lang, Guide> = {
   de: {
     title: "Eigenen Mumble-Server betreiben",
     description:
-      "Schritt für Schritt zum eigenen Mumble-Server mit Docker Compose: Installation, docker-compose.yml, Ports, Einladungslinks, Updates und Backups.",
+      "Schritt für Schritt zum eigenen Mumble-Server mit Docker Compose für Mumcord, den alternativen Mumble-Client: Installation, Ports, Einladungen, Backups.",
     label: "Anleitung",
     intro:
       "Mumcord braucht keinen besonderen Server: Ein ganz normaler Mumble-Server reicht. Mit Docker steht deiner in etwa 15 Minuten, auch wenn du so etwas noch nie gemacht hast.",
@@ -299,7 +299,7 @@ const source: Record<Lang, Guide> = {
   en: {
     title: "Host your own Mumble server",
     description:
-      "Step by step to your own Mumble server with Docker Compose: installation, docker-compose.yml, ports, invite links, updates and backups.",
+      "Step by step to your own Mumble server with Docker Compose for Mumcord, the alternative Mumble client: installation, ports, invites, backups.",
     label: "Guide",
     intro:
       "Mumcord doesn't need a special server: a plain Mumble server is all it takes. With Docker yours is up in about 15 minutes, even if you've never done this before.",

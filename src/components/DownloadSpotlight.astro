@@ -43,7 +43,7 @@ const panels = platforms.map((p) => {
 });
 ---
 
-<div class="dl-spot" data-dl-spot data-os="windows">
+<div class="dl-spot" data-dl-spot data-os="windows" data-version={release?.version}>
 
   <div class="dl-tabs" role="tablist" aria-label={s.pick}>
     {
@@ -79,7 +79,7 @@ const panels = platforms.map((p) => {
             </span>
             {release && (
               <span>
-                Mumcord {release.version}
+                Mumcord <span data-dl-ver>{release.version}</span>
                 {release.prerelease && ` · ${t.prerelease}`}
               </span>
             )}
@@ -92,7 +92,7 @@ const panels = platforms.map((p) => {
           <div class="dl-buttons">
             {main.length ? (
               main.map((a, i) => (
-                <a class="dl-btn" href={a.url} rel="noopener" data-arch={a.arch} data-name={a.name} data-main={i === 0 ? "" : undefined}>
+                <a class="dl-btn" href={a.url} rel="noopener" data-platform={p} data-kind={a.kind} data-arch={a.arch} data-name={a.name} data-main={i === 0 ? "" : undefined}>
                   <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
                     <path d="M12 4v11M7 10l5 5 5-5M5 20h14" />
                   </svg>
@@ -100,7 +100,7 @@ const panels = platforms.map((p) => {
                     {s.button}
                     {main.length > 1 && <span class="dl-btn-arch">{label(p, a)}</span>}
                   </span>
-                  <span class="dl-btn-size">{formatSize(a.size)}</span>
+                  <span class="dl-btn-size" data-size>{formatSize(a.size)}</span>
                 </a>
               ))
             ) : (
@@ -148,10 +148,10 @@ const panels = platforms.map((p) => {
                 <ul class="dl-alts">
                   {alts.map((a) => (
                     <li data-kind={a.kind} data-arch={a.arch}>
-                      <a href={a.url} rel="noopener">
+                      <a href={a.url} rel="noopener" data-platform={p} data-kind={a.kind} data-arch={a.arch}>
                         <span class="dl-alt-kind">{s.kinds[a.kind]}</span>
                         <span class="dl-alt-arch">{s.arch[a.arch]}</span>
-                        <span class="dl-alt-size">{formatSize(a.size)}</span>
+                        <span class="dl-alt-size" data-size>{formatSize(a.size)}</span>
                         <span class="dl-alt-rec">{s.recommended}</span>
                       </a>
                     </li>

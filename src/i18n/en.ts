@@ -4,9 +4,10 @@ export const en: Dict = {
   lang: "en",
   locale: "en_US",
   meta: {
-    title: "Mumcord — modern voice chat for any Mumble server",
+    title: "Mumcord – alternative Mumble client for Windows, macOS, Linux",
+    altClient: "alternative Mumble client",
     description:
-      "Mumcord is a free, modern desktop client for Mumble servers: follow channels, notifications, AI noise suppression, push-to-talk even on Wayland. For Linux, Windows and macOS. Open source, no telemetry.",
+      "Mumcord is a free, alternative Mumble client for Windows, macOS and Linux: follow channels, notifications, AI noise suppression, push-to-talk even on Wayland.",
   },
   nav: {
     features: "Features",
@@ -49,11 +50,11 @@ export const en: Dict = {
     botIssues: { title: "Issues", desc: "Ideas and bugs for Mumbot" },
   },
   hero: {
-    kicker: "Alpha · Open source · AGPL",
-    titleA: "Your Mumble server.",
+    kicker: "The alternative Mumble client",
+    titleA: "Your Mumble client.",
     titleB: "Finally cosy.",
     lead:
-      "Mumcord is a modern desktop client that speaks the Mumble protocol. Server bar, channels, chat and member list — on any standard Mumble server. Nothing changes on the server.",
+      "Mumcord is an alternative Mumble client for Windows, macOS and Linux. Server bar, channels, chat and member list on any standard Mumble server. Nothing changes on the server.",
     ctaDownload: "Download",
     ctaSource: "Source on GitHub",
     meta: "Linux · Windows · macOS",
@@ -361,7 +362,7 @@ export const en: Dict = {
   },
   downloadPage: {
     title: "Download Mumcord",
-    description: "Mumcord for Windows, macOS and Linux: the right version for your system, every package, checksums and older versions.",
+    description: "Mumcord, the alternative Mumble client for Windows, macOS and Linux: the right version for your system, every package, checksums and older versions.",
     label: "Download",
     intro: "Free and open source, no account, no ads. Up top is the version for your system, below it every file of the release.",
     badges: ["Free and open source", "Signed and notarized", "Auto-update built in", "No account, no ads"],
@@ -406,6 +407,7 @@ export const en: Dict = {
     onGithub: "Release on GitHub",
     known: "Known limitations",
     githubOnly: "For this version there are only the release notes on GitHub.",
+    autoNote: "Summarized automatically from the release notes.",
   },
   footer: {
     loveMade: "Made with",

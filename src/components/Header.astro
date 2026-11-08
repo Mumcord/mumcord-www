@@ -12,8 +12,9 @@ import { changelog } from "../lib/changelog";
 interface Props {
   lang: Lang;
   page: PageId;
+  subpath?: string;
 }
-const { lang, page } = Astro.props;
+const { lang, page, subpath = "" } = Astro.props;
 const t = dicts[lang];
 const m = t.menu;
 const home = routes.home[lang];
@@ -183,7 +184,7 @@ const productCurrent = product.some((p) => p.current);
               {
                 LANGS.map((l) => (
                   <li>
-                    <a href={routes[page][l]} hreflang={l} lang={l} aria-current={l === lang ? "true" : undefined}>
+                    <a href={routes[page][l] + subpath} hreflang={l} lang={l} aria-current={l === lang ? "true" : undefined}>
                       <span class="lang-code">{l}</span>
                       {LANG_INFO[l].name}
                     </a>

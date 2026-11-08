@@ -1,0 +1,14 @@
+---
+import Base from "../../../layouts/Base.astro";
+import EpicPage from "../../../components/EpicPage.astro";
+import { roadmapPage } from "../../../lib/roadmap";
+
+export const getStaticPaths = () => roadmapPage.en.epics.map((e) => ({ params: { epic: e.id } }));
+
+const r = roadmapPage.en;
+const s = r.epics.find((e) => e.id === Astro.params.epic)!;
+---
+
+<Base lang="en" page="roadmap" title={`${s.tag}: ${s.title} — Mumcord`} description={s.summary} subpath={`/${s.id}`}>
+  <EpicPage lang="en" id={s.id} />
+</Base>

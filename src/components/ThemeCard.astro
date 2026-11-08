@@ -14,7 +14,7 @@ const shot = (name: string) => shots[`../assets/shots/${name}.png`].default;
 const modes = ["dark", "light"] as const;
 ---
 
-<li class="th-card" id={th.id} data-theme-card data-mode="dark" style={modes.map((m) => THEME_COLOR_KEYS.map((k) => `--${m}-${k}: ${th[m][k]}`).join("; ")).join("; ")} data-reveal data-spot>
+<li class="th-card" id={th.id} data-theme-card data-mode="dark" style={modes.map((m) => THEME_COLOR_KEYS.map((k) => `--${m}-${k}: ${th[m][k]}`).join("; ")).join("; ")} data-reveal>
   <div class="th-media">
     {modes.map((m) =>
       th.shots[m] ? (

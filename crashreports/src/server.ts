@@ -8,6 +8,7 @@ import { createApp } from './app.ts';
 import { createAnthropic } from './ai.ts';
 import { MumbotNotifier } from './mumbot.ts';
 import { GithubStats } from './githubstats.ts';
+import { SiteFeed } from './site.ts';
 
 const config = loadConfig();
 mkdirSync(config.dataDir, { recursive: true });
@@ -20,10 +21,19 @@ const githubMumbot = new MumbotNotifier({
   channel: config.mumbotGithubChannel,
 });
 
+const siteFeed = new SiteFeed({
+  db: store.db,
+  repo: config.githubRepo,
+  githubToken: config.githubToken,
+  anthropic,
+  aiTimeoutMs: config.aiTimeoutMs,
+});
+
 const { app } = createApp({
   config,
   store,
   anthropic,
+  siteFeed,
   githubMumbot,
   getClientIp: (c, _env) => {
     // Behind Traefik (TRUST_PROXY=1) the proxy appends the real client address as the last

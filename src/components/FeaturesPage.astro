@@ -42,7 +42,6 @@ for (const g of f.groups)
 
 <article class="features-page">
   <header class="wrap fp-head">
-    <div class="fp-head-glow" aria-hidden="true"></div>
     <p class="label" data-reveal>{f.label}</p>
     <h1 class="fp-title" data-reveal>{f.title}</h1>
     <p class="body" data-reveal>{f.intro}</p>
@@ -83,7 +82,7 @@ for (const g of f.groups)
           </header>
           <div class="fp-bento">
             {ordered(g.features).map((x, i) => (
-              <article class={`fp-card fp-card-${size(x, i)}`} id={x.id} data-feature data-since={x.since && minor(x.since)} data-reveal data-spot>
+              <article class={`fp-card fp-card-${size(x, i)}`} id={x.id} data-feature data-since={x.since && minor(x.since)} data-reveal>
                 {x.shot && (
                   <a class="fp-media" href={full.get(x.shot)} aria-label={`${f.zoom}: ${x.alt}`} data-lightbox data-caption={x.title} data-alt={x.alt}>
                     <Picture src={shot(x.shot)} formats={["avif", "webp"]} widths={[640, 1100, 1600]} sizes={size(x, i) === "lg" ? "(min-width: 960px) 760px, 92vw" : "(min-width: 960px) 560px, 92vw"} alt={x.alt ?? ""} />

@@ -60,7 +60,7 @@ const source: Record<"de" | "en", FeaturesPage> = {
   de: {
     title: "Funktionen",
     description:
-      "Alle Funktionen von Mumcord mit Screenshots: Server und Zertifikate, Kanälen folgen, Chat mit Vorschauen und @Erwähnungen, Push-to-Talk, Audio und Komfort.",
+      "Mumcord, der alternative Mumble-Client: alle Funktionen mit Screenshots – Server, Kanälen folgen, Chat mit Vorschauen und @Erwähnungen, Push-to-Talk, Audio.",
     label: "Was Mumcord kann",
     intro:
       "Alles, was Mumcord kann, mit einem Bild dazu, wo es eins gibt, und was mit der nächsten Version kommt. Der Filter zeigt, was in den beiden neuesten Versionen neu ist. Fehlt dir etwas oder klemmt etwas, sag es auf GitHub.",
@@ -1174,7 +1174,7 @@ const source: Record<"de" | "en", FeaturesPage> = {
   en: {
     title: "Features",
     description:
-      "Every Mumcord feature with screenshots: servers and certificates, following channels, chat with previews and @mentions, push-to-talk, audio and comfort.",
+      "Mumcord, the alternative Mumble client: every feature with screenshots – servers, following channels, chat with previews and @mentions, push-to-talk, audio.",
     label: "What Mumcord does",
     intro:
       "Everything Mumcord does, with a picture where there is one, plus what comes with the next version. The filter shows what's new in the two latest versions. Missing something or something broken? Tell us on GitHub.",

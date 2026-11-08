@@ -2,6 +2,7 @@
 // and reduced-motion users get the content without the choreography.
 
 import "./download";
+import "./releases";
 
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 document.documentElement.classList.add("js");
@@ -78,22 +79,11 @@ document.addEventListener("keydown", (e) => {
   open.querySelector("button")?.focus();
 });
 
-// ── Hero window: tilted at rest, flattens as you scroll into it ──────
-const tilt = document.querySelector<HTMLElement>("[data-tilt]");
+// ── Header: solid once the page scrolls ──────────────────────────────
 let ticking = false;
-let lastTilt = -1;
 const onScroll = () => {
   ticking = false;
   header?.classList.toggle("is-scrolled", scrollY > 8);
-  if (tilt && !reduced) {
-    // Set the transform itself, not inherited custom properties: those restyle the whole window
-    // subtree on every scrolled frame. Past the end of the tilt nothing changes any more.
-    const p = Math.min(1, Math.max(0, scrollY / (innerHeight * 0.6)));
-    if (p !== lastTilt) {
-      lastTilt = p;
-      tilt.style.transform = `rotateX(${(14 * (1 - p)).toFixed(2)}deg) scale(${(0.94 + 0.06 * p).toFixed(3)})`;
-    }
-  }
 };
 addEventListener("scroll", () => {
   if (!ticking) {
@@ -296,15 +286,6 @@ if (filterBar) {
     if (empty) empty.hidden = features.some((el) => !el.hidden);
   };
   for (const b of buttons) b.addEventListener("click", () => apply(b.dataset.filter ?? "all"));
-}
-
-// ── Cards: a soft light follows the pointer ──────────────────────────
-for (const card of document.querySelectorAll<HTMLElement>("[data-spot]")) {
-  card.addEventListener("pointermove", (e) => {
-    const r = card.getBoundingClientRect();
-    card.style.setProperty("--mx", `${e.clientX - r.left}px`);
-    card.style.setProperty("--my", `${e.clientY - r.top}px`);
-  });
 }
 
 // ── Features page: mark the section you are in ───────────────────────
