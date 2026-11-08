@@ -72,7 +72,7 @@ export const de = {
     "WCAG 2.2 AA als Ziel",
   ],
   ptt: {
-    label: "01 — Push-to-Talk",
+    label: "Push-to-Talk",
     title: "Halt die Taste. Red los.",
     body:
       "Tasten und Maustasten, auch wenn ein Spiel im Vordergrund läuft. Unter Wayland über das Global-Shortcuts-Portal — oder im Kompatibilitätsmodus.",
@@ -122,7 +122,7 @@ export const de = {
     cta: "Themes zum Kopieren",
   },
   features: {
-    label: "02 — Was Mumcord heute kann",
+    label: "Was Mumcord heute kann",
     title: "Alles, was eine Runde am Abend braucht.",
     intro:
       "Was Mumcord in der aktuellen Version kann. Was noch fehlt, steht ehrlich in der Roadmap.",
@@ -214,7 +214,7 @@ export const de = {
     trustNo: "Abbrechen",
   },
   how: {
-    label: "03 — Nur ein Client",
+    label: "Nur ein Client",
     title: "Nichts am Server installieren. Nie.",
     body:
       "Mumcord spricht das Standard-Mumble-Protokoll. Dein Server bleibt, wie er ist; Freunde mit dem offiziellen Mumble-Client sitzen im selben Kanal wie du.",
@@ -233,7 +233,7 @@ export const de = {
     ],
   },
   gallery: {
-    label: "04 — Einmal durchklicken",
+    label: "Einmal durchklicken",
     title: "Ein Fenster, das sich vertraut anfühlt.",
     items: [
       { src: "wizard-identity-dark", caption: "Einrichtung in etwa einer Minute: Identität, Mikrofon, Sprechmodus." },
@@ -253,7 +253,7 @@ export const de = {
     ],
   },
   roadmap: {
-    label: "05 — Wohin es geht",
+    label: "Wohin es geht",
     title: "Ehrlich: das hier ist eine Alpha.",
     body: "Die Roadmap ist ein Vorschlag und kann sich ändern.",
     now: "jetzt",
@@ -297,7 +297,7 @@ export const de = {
     ],
   },
   download: {
-    label: "06 — Holen",
+    label: "Holen",
     title: "Mumcord herunterladen",
     latest: "Neueste Version",
     prerelease: "Vorabversion",
@@ -456,7 +456,7 @@ export const de = {
     back: "Zurück zur Lobby",
   },
   contributors: {
-    label: "07 — Dahinter",
+    label: "Dahinter",
     title: "Die Leute, die an Mumcord bauen.",
     body: "Alle, die Code zu Mumcord, Mumbot, mumpeer, mumquiz oder dieser Website beigetragen haben. Die Liste kommt bei jedem Build frisch von GitHub.",
     commits: "Commits",

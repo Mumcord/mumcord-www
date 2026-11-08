@@ -93,33 +93,6 @@ const tourColors = tour.map((x) => allThemes.find((th) => th.id === x.theme)?.[x
   </div>
 </section>
 
-<!-- Push-to-talk -->
-<section class="section ptt" id="ptt" aria-labelledby="ptt-title" data-ptt>
-  <div class="wrap split">
-    <div>
-      <p class="label" data-reveal>{t.ptt.label}</p>
-      <h2 id="ptt-title" class="h2" data-reveal>{t.ptt.title}</h2>
-      <p class="body" data-reveal>{t.ptt.body}</p>
-      <p class="fine" data-reveal>{t.ptt.note}</p>
-    </div>
-    <div class="ptt-demo" data-reveal>
-      <Mimo id="ptt" role="ptt" class="mimo-ptt" />
-      <div class="ptt-status" role="status" aria-live="polite">
-        <span class="ptt-dot" aria-hidden="true"></span>
-        <span data-ptt-idle>{t.ptt.idle}</span>
-        <span data-ptt-live hidden>{t.ptt.live}</span>
-      </div>
-      <div class="ptt-wave" aria-hidden="true">
-        {Array.from({ length: 36 }, () => <i></i>)}
-      </div>
-      <button class="keycap" type="button" data-ptt-key aria-describedby="ptt-hint">
-        <span class="keycap-top">{t.ptt.keyLabel}</span>
-      </button>
-      <p class="ptt-hint" id="ptt-hint">{t.ptt.hint}</p>
-    </div>
-  </div>
-</section>
-
 <!-- Spotlight: what 0.7.0 brings, as drawn demos -->
 <section class="section spotlight s5 nx" id="neu" aria-labelledby="spotlight-title">
   <div class="wrap">
