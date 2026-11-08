@@ -34,6 +34,7 @@ const dateFmt = new Intl.DateTimeFormat(LANG_INFO[lang].intl, { dateStyle: "long
 const badges = t.badges ?? dicts.en.downloadPage.badges;
 const yours = t.yours ?? dicts.en.downloadPage.yours;
 const copy = { label: one.copy, copied: one.copied, failed: one.failed };
+import Arrow from "./Arrow.astro";
 ---
 
 <article class="dlp">
@@ -181,7 +182,7 @@ const copy = { label: one.copy, copied: one.copied, failed: one.failed };
       {
         tap && (
           <p class="one-line-note">
-            <a class="text-link" href={BREW_TAP_URL} rel="noopener">mumcord/tap →</a>
+            <a class="text-link" href={BREW_TAP_URL} rel="noopener">mumcord/tap<Arrow /></a>
           </p>
         )
       }
@@ -202,13 +203,13 @@ const copy = { label: one.copy, copied: one.copied, failed: one.failed };
               </code>
             </div>
             {release.checksums && (
-              <a class="text-link" href={release.checksums.url} rel="noopener">SHA256SUMS →</a>
+              <a class="text-link" href={release.checksums.url} rel="noopener">SHA256SUMS<Arrow /></a>
             )}
           </div>
           <div class="dlp-card" data-reveal>
             <h3>{t.verify.sig.title}</h3>
             <p>{t.verify.sig.body}</p>
-            <a class="text-link" href={release.url} rel="noopener">{dl.allReleases} →</a>
+            <a class="text-link" href={release.url} rel="noopener">{dl.allReleases}<Arrow /></a>
           </div>
           {release.sboms.length > 0 && (
             <div class="dlp-card" data-reveal>
@@ -236,15 +237,15 @@ const copy = { label: one.copy, copied: one.copied, failed: one.failed };
     <div class="dlp-card" data-reveal>
       <h2 class="dlp-h">{t.mobileTitle}</h2>
       <p>{t.mobileBody}</p>
-      <a class="text-link" href={routes.roadmap[lang]}>{t.mobileLink} →</a>
+      <a class="text-link" href={routes.roadmap[lang]}>{t.mobileLink}<Arrow /></a>
     </div>
     <div class="dlp-card" data-reveal>
       <h2 class="dlp-h">{t.moreTitle}</h2>
       <p>{t.moreBody}</p>
       <p class="dlp-links">
-        <a class="text-link" href={routes.server[lang]}>{t.moreServer} →</a>
-        <a class="text-link" href={routes.mumbot[lang]}>Mumbot →</a>
-        <a class="text-link" href={routes.mumpeer[lang]}>Mumpeer →</a>
+        <a class="text-link" href={routes.server[lang]}>{t.moreServer}<Arrow /></a>
+        <a class="text-link" href={routes.mumbot[lang]}>Mumbot<Arrow /></a>
+        <a class="text-link" href={routes.mumpeer[lang]}>Mumpeer<Arrow /></a>
       </p>
     </div>
   </section>
@@ -265,7 +266,7 @@ const copy = { label: one.copy, copied: one.copied, failed: one.failed };
           ))}
         </ol>
         <p>
-          <a class="text-link" href={RELEASES_URL} rel="noopener">{dl.allReleases} →</a>
+          <a class="text-link" href={RELEASES_URL} rel="noopener">{dl.allReleases}<Arrow /></a>
         </p>
       </section>
     )

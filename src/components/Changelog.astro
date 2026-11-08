@@ -20,6 +20,7 @@ const extra = releases
 const entries = [...written, ...extra].sort((a, b) =>
   b.version.localeCompare(a.version, "en", { numeric: true }),
 );
+import Arrow from "./Arrow.astro";
 ---
 
 <article class="wrap changelog" data-cl data-lang={lang} data-released={t.released} data-download={t.download} data-download-href={download} data-github={t.onGithub} data-known={t.known} data-auto-note={t.autoNote} data-intl={LANG_INFO[lang].intl}>
@@ -71,12 +72,12 @@ const entries = [...written, ...extra].sort((a, b) =>
               {e.release ? (
                 <>
                   <a class="btn btn-small" href={download}>{t.download}</a>
-                  <a class="text-link" href={e.release.url} rel="noopener">{t.onGithub} →</a>
+                  <a class="text-link" href={e.release.url} rel="noopener">{t.onGithub}<Arrow /></a>
                 </>
               ) : (
                 <>
                   <span class="cl-note">{t.upcomingNote}</span>
-                  <a class="text-link" href={RELEASES_URL} rel="noopener">{t.onGithub} →</a>
+                  <a class="text-link" href={RELEASES_URL} rel="noopener">{t.onGithub}<Arrow /></a>
                 </>
               )}
             </p>

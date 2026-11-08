@@ -12,6 +12,7 @@ const release = await getLatestRelease();
 const date = release
   ? new Intl.DateTimeFormat(LANG_INFO[lang].intl, { dateStyle: "long" }).format(new Date(release.publishedAt))
   : "";
+import Arrow from "./Arrow.astro";
 ---
 
 <section class="section download" id="download" aria-labelledby="download-title">
@@ -37,8 +38,8 @@ const date = release
           <div class="release-meta release-none" data-reveal>
             <p>{t.noRelease}</p>
             <p>
-              <a class="text-link" href={routes.changelog[lang]}>{dicts[lang].changelog.title} →</a>
-              <a class="text-link" href={RELEASES_URL} rel="noopener">{t.testBuilds} →</a>
+              <a class="text-link" href={routes.changelog[lang]}>{dicts[lang].changelog.title}<Arrow /></a>
+              <a class="text-link" href={RELEASES_URL} rel="noopener">{t.testBuilds}<Arrow /></a>
             </p>
           </div>
         )
@@ -51,7 +52,7 @@ const date = release
 
     <a class="dl-all" href={routes.download[lang]} data-reveal>
       {t.spot.all}
-      <span aria-hidden="true">→</span>
+      <Arrow />
     </a>
   </div>
 </section>

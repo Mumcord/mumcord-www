@@ -41,6 +41,7 @@ const panels = platforms.map((p) => {
     .sort((x, y) => kindOrder.indexOf(x.kind) - kindOrder.indexOf(y.kind) || (x.arch === "arm64" ? 1 : 0) - (y.arch === "arm64" ? 1 : 0));
   return { p, main, alts };
 });
+import Arrow from "./Arrow.astro";
 ---
 
 <div class="dl-spot" data-dl-spot data-os="windows" data-version={release?.version}>
@@ -65,7 +66,7 @@ const panels = platforms.map((p) => {
   </div>
 
   <p class="dl-mobile" data-dl-mobile hidden>
-    {s.mobile} <a href={`${routes.roadmap[lang]}`}>{s.mobileLink} →</a>
+    {s.mobile} <a href={`${routes.roadmap[lang]}`}>{s.mobileLink}<Arrow /></a>
   </p>
 
   {

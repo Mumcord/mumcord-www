@@ -66,6 +66,7 @@ const tools = [
 ] as const;
 const toolsCurrent = tools.some((x) => x.current);
 const productCurrent = product.some((p) => p.current);
+import Arrow from "./Arrow.astro";
 ---
 
 <header class="site-header" data-header>
@@ -113,7 +114,7 @@ const productCurrent = product.some((p) => p.current);
                 {released ? m.newIn : m.comingIn} {newest.version}
               </span>
               <span class="nav-feature-text">{newest.teaser ?? newest.summary}</span>
-              <span class="nav-feature-cta">{m.whatsNew} →</span>
+              <span class="nav-feature-cta">{m.whatsNew}<Arrow /></span>
             </a>
           </div>
         </div>

@@ -24,6 +24,7 @@ const icon = { mumpeer: mumpeerIcon, mumquiz: mumquizIcon }[tool];
 // `code` in the texts becomes <code>; everything else is escaped.
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const md = (s: string) => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>");
+import Arrow from "./Arrow.astro";
 ---
 
 <article class="wrap mumbot-page">
@@ -111,8 +112,8 @@ const md = (s: string) => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>");
   <section class="fp-ask" data-reveal>
     <p class="fp-actions">
       <a class="btn btn-small" href={repo} rel="noopener">{t.source}</a>
-      <a class="text-link" href={`${repo}#readme`} rel="noopener">{t.readme} →</a>
-      <a class="text-link" href={`${repo}/issues`} rel="noopener">{t.issues} →</a>
+      <a class="text-link" href={`${repo}#readme`} rel="noopener">{t.readme}<Arrow /></a>
+      <a class="text-link" href={`${repo}/issues`} rel="noopener">{t.issues}<Arrow /></a>
     </p>
   </section>
 </article>

@@ -24,6 +24,7 @@ const open = r.epics.filter((s) => s.status !== "done");
 const current = open[0];
 const after = open.slice(1);
 const cur = current && epicProgress(current);
+import Arrow from "./Arrow.astro";
 ---
 
 <article class="wrap roadmap-page rmx">
@@ -72,7 +73,7 @@ const cur = current && epicProgress(current);
             </div>
           )}
           <p>
-            <a class="btn btn-small" href={href(current)}>{r.epicOpen} →</a>
+            <a class="btn btn-small" href={href(current)}>{r.epicOpen}<Arrow /></a>
           </p>
         </div>
         {current.groups && (
@@ -137,7 +138,7 @@ const cur = current && epicProgress(current);
     <p>{r.ideaBody}</p>
     <p class="fp-actions">
       <a class="btn btn-small" href={IDEA_URL} rel="noopener">{r.idea}</a>
-      <a class="text-link" href={routes.changelog[lang]}>{r.changelog} →</a>
+      <a class="text-link" href={routes.changelog[lang]}>{r.changelog}<Arrow /></a>
     </p>
   </section>
 </article>

@@ -27,10 +27,11 @@ const mockup = (name: string) => mockupFiles[`../assets/mockups/${name}.png`].de
 const mockups = (s.groups ?? []).flatMap((g) => g.mockups ?? []);
 const full = new Map<string, string>();
 for (const m of mockups) full.set(m.shot, (await getImage({ src: mockup(m.shot), format: "webp", width: 2400, quality: 82 })).src);
+import Arrow from "./Arrow.astro";
 ---
 
 <article class="wrap epic-page" data-status={s.status}>
-  <a class="epic-back" href={base}>← {r.epicBack}</a>
+  <a class="epic-back" href={base}><Arrow dir="left" />{r.epicBack}</a>
 
   <header class="epic-head">
     <span class="rm-num" aria-hidden="true">{epicNum(s)}</span>
@@ -124,7 +125,7 @@ for (const m of mockups) full.set(m.shot, (await getImage({ src: mockup(m.shot),
     {
       prev ? (
         <a href={`${base}/${prev.id}`}>
-          <span>← {r.epicPrev}</span>
+          <span><Arrow dir="left" />{r.epicPrev}</span>
           <strong>{prev.tag} · {prev.title}</strong>
         </a>
       ) : (
@@ -134,7 +135,7 @@ for (const m of mockups) full.set(m.shot, (await getImage({ src: mockup(m.shot),
     {
       next && (
         <a class="epic-nav-next" href={`${base}/${next.id}`}>
-          <span>{r.epicNext} →</span>
+          <span>{r.epicNext}<Arrow /></span>
           <strong>{next.tag} · {next.title}</strong>
         </a>
       )
