@@ -1,5 +1,5 @@
-// Mimo, the mascot (src/components/Mimo.astro): eyes follow the pointer, it talks while the
-// push-to-talk demo is live, and the download Mimo points at the download button.
+// Aaron, the mascot (src/components/Aaron.astro): eyes follow the pointer, it talks while the
+// push-to-talk demo is live, and the download Aaron points at the download button.
 
 export {};
 
@@ -15,7 +15,7 @@ interface Rig {
 }
 
 // The rig from the mascot proposals: eyes, a face that turns a little, two pointing arms with
-// an elbow, and a slight lean toward what Mimo points at.
+// an elbow, and a slight lean toward what Aaron points at.
 function attach(svg: SVGSVGElement): Rig {
   const toLocal = (el: Element, x: number, y: number) =>
     new DOMPoint(x, y).matrixTransform((el as SVGGraphicsElement).getScreenCTM()!.inverse());
@@ -67,7 +67,7 @@ function attach(svg: SVGSVGElement): Rig {
     pointAt(x, y) {
       if (!arms.length) return;
       const c = toLocal(arms[0].parentNode as Element, x, y);
-      // Targets on Mimo's right-hand side get the right arm.
+      // Targets on Aaron's right-hand side get the right arm.
       const right = arms.length > 1 && c.x > 100;
       svg.classList.toggle("point-r", right);
       const arm = arms.find((a) => (a.dataset.side === "r") === right) ?? arms[0];
@@ -125,17 +125,17 @@ const centre = (el: Element) => {
   return [r.left + r.width / 2, r.top + r.height / 2] as const;
 };
 
-const rigs = Array.from(document.querySelectorAll<HTMLElement>("[data-mimo]")).map((host) => {
+const rigs = Array.from(document.querySelectorAll<HTMLElement>("[data-aaron]")).map((host) => {
   const rig = attach(host.querySelector("svg")!);
-  const role = host.dataset.mimo;
+  const role = host.dataset.aaron;
   if (role === "ptt") {
     // Talks exactly while the push-to-talk demo is live.
     const demo = host.closest<HTMLElement>("[data-ptt]");
     if (demo) new MutationObserver(() => rig.setTalking(demo.classList.contains("is-live"))).observe(demo, { attributes: true, attributeFilter: ["class"] });
   }
   if (role === "hero") {
-    // Now and then Mimo says something, and every other time points at the download button.
-    const target = document.querySelector("[data-mimo-hero-target]");
+    // Now and then Aaron says something, and every other time points at the download button.
+    const target = document.querySelector("[data-aaron-hero-target]");
     let n = 0;
     const talk = () => {
       if (rig.visible && !reduce.matches && !document.hidden) {
@@ -158,7 +158,7 @@ const rigs = Array.from(document.querySelectorAll<HTMLElement>("[data-mimo]")).m
     // Points at its target (the download button next to it) and keeps pointing there.
     rig.setPointing(true);
     const aim = () => {
-      const btn = host.closest("section, footer")?.querySelector("[data-mimo-target]") ?? document.querySelector("[data-mimo-target]");
+      const btn = host.closest("section, footer")?.querySelector("[data-aaron-target]") ?? document.querySelector("[data-aaron-target]");
       if (btn) rig.pointAt(...centre(btn));
     };
     addEventListener("scroll", aim, { passive: true });
@@ -170,7 +170,7 @@ const rigs = Array.from(document.querySelectorAll<HTMLElement>("[data-mimo]")).m
 });
 
 if (rigs.length) {
-  // Only Mimos on screen follow the pointer, so a long page stays cheap.
+  // Only Aarons on screen follow the pointer, so a long page stays cheap.
   const io = new IntersectionObserver((entries) => {
     for (const en of entries) {
       const r = rigs.find((g) => g.svg === en.target);
