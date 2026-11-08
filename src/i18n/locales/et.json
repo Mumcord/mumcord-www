@@ -874,6 +874,26 @@
             "title": "Botid omaette",
             "body": "Kanaliloendi all olev jaotis „Botid sellel serveril“ näitab iga boti koos sellega, mida ta teeb, näiteks relee, vestlusajalugu või veebihaagid. Profiil ja menüü, privaatsõnumid kaasa arvatud, töötavad sealt.",
             "alt": "Serveri botide jaotis"
+          },
+          {
+            "id": "channel-admin",
+            "title": "Kanalite haldamine",
+            "body": "Haldurina lood alamkanaleid ja ajutisi kanaleid, muudad nime, kirjeldust, ülemkanalit, asukohta ja kasutajate piiri, lingid kanaleid ja kustutad neid pärast kinnitust, mis nimetab mõjutatud kanalid ja inimesed. Näed ainult seda, mida server lubab, ja tagasilükkamine näitab serveri põhjust."
+          },
+          {
+            "id": "channel-permissions",
+            "title": "Kanali õigused ja parool",
+            "body": "Kanaliaknas näitab vahekaart „Õigused“, kes kanalis mida tohib, ja selgitab iga vastust valiku „Miks?“ all. Haldurid muudavad reegleid ja rühmi, Mumcord hoiatab, enne kui end välja lukustad, ega kirjuta kunagi üle muudatust, mille keegi teine tegi. Kanali parooli määrad või kustutad vahekaardil „Parool“, nagu ametlikus kliendis."
+          },
+          {
+            "id": "move-people",
+            "title": "Inimeste liigutamine",
+            "body": "Haldusmenüüs liigutad ühe inimese enda juurde või valitud kanalisse või kõik kanali liikmed korraga. Ctrl-klõpsuga ja Shift-klõpsuga valid mitu inimest ja saad nad koos lohistada. Mumcord ütleb sulle, kui paljud kohale jõudsid."
+          },
+          {
+            "id": "moderation",
+            "title": "Modereerimine isikumenüüs",
+            "body": "Valiku „Haldus“ all vaigistad või kurdistad inimesi serveris, annad eelisõiguse rääkida ning lähtestad kommentaari või avatari. Iga toiming ilmub ainult siis, kui sul on selleks õigus."
           }
         ]
       },
@@ -1018,6 +1038,16 @@
             "title": "Serverilingid kaartidena",
             "body": "mumble:// link vestluses näitab serverit, kanalit, pingi, võrgus olevaid inimesi ja versiooni, nuppudega „Liitu“, „Lisa serveritesse“ ja „Kopeeri link“. Numbrid tulevad standardsest avalikust päringust, mitte kunagi ühendusest. Kasutajanimesid ja paroole lingis ei näidata kunagi ja kopeerimisel need jäetakse välja.",
             "alt": "mumble:// lingi kaart serveri nime, kanali, pingi, kasutajate ja nupuga Liitu"
+          },
+          {
+            "id": "message-bar",
+            "title": "Uus sõnumiriba",
+            "body": "Riba kirjutab ühel real ja kasvab tekstiga kuni umbes kuue reani. Vormindus ilmub väikeses ribas ülaservas, kuni kursor on väljal, ja saatmisnupp muutub aktiivseks alles siis, kui on midagi saata."
+          },
+          {
+            "id": "activity-notifications",
+            "title": "Tegevuse teavitused",
+            "body": "Kui keegi alustab ekraanijagamist, vaatepidu või pluginategevust, teavitab Mumcord sind nagu sõnumi puhul. Tegevuste ajalugu jääb sinu seadmesse ka pärast taaskäivitust ja kustutad selle menüüs Seaded valiku Privaatsus all."
           }
         ]
       },
@@ -1500,6 +1530,56 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.2",
+      "teaser": "Haldus paremklõpsu menüüs: halda kanaleid, õigusi ja paroole, liiguta inimesi, vaigista ja kurdista serveris, lisaks uus sõnumiriba.",
+      "summary": "Mumcord saab oma esimesed haldustööriistad: sa haldad kanaleid, näed ja muudad õigusi, seadistad kanalite paroole, liigutad inimesi ja modereerid, kõik ainult seal, kus server seda lubab. Lisaks tulevad tegevuse teavitused, uus sõnumiriba ja selgemad teated, kui midagi tagasi lükatakse.",
+      "groups": [
+        {
+          "title": "Uus",
+          "items": [
+            "Inimeste liigutamine, isiku- ja kanalimenüüs valiku Haldus ▸ all: „Liiguta minu kanalisse“, „Liiguta kanalisse“ filtreeritava kanalinimekirjaga, mis näitab kasutajate piiri, ja „Liiguta kõik kanalisse“ terve kanali jaoks. Ctrl-klõpsuga (või Ctrl+tühikuga) ja Shift-klõpsuga valid mitu inimest ja lohistad nad koos. Pärast öeldakse, kui paljud kohale jõudsid („Liigutati 28 inimest 30-st kanalisse Raid. Ülejäänud lükati tagasi.“).",
+            "Modereerimine isikumenüüs valiku „Haldus ▸“ all: kõigi jaoks vaigistamine, kõigi jaoks kurdistamine, eelisõigusega kõneleja (täht nime kõrval) ja vaigistuse tühistamine jõustuvad kohe. Kommentaari ja avatari lähtestamine küsivad enne üle. Iga toiming ilmub ainult siis, kui sul on serveris selleks õigus.",
+            "Kanali parool: kanaliakna vahekaardil „Parool“ määrad või kustutad kanalisse sisenemise parooli, täpselt nagu ametlikus Mumble'i kliendis.",
+            "Kanali õigused: vahekaardil „Õigused“ näed, kes kanalis mida tohib (✓, ✗ või ? iga rühma ja inimese kohta). Haldurid muudavad reegleid ja rühmi ning aken „Miks?“ selgitab iga vastust. Mumcord hoiatab, enne kui end välja lukustad, küsib enne kogu serveri reeglite muutmist ega kirjuta kunagi üle muudatust, mille keegi teine tegi.",
+            "Kanalite haldamine: kanalimenüüs valiku „Haldus ▸“ all lood alamkanali või ajutise kanali, muudad kanalit (nimi, kirjeldus, ülemkanal, asukoht, kasutajate piir) ja selle linke, lingid selle oma kanaliga ning kustutad selle pärast kinnitust, mis nimetab mõjutatud alamkanalid ja inimesed. F2 muudab, Delete kustutab valitud kanali.",
+            "Menüüd avavad alammenüüsid: haldustoimingud serverimenüüs ⋯ asuvad nüüd valiku „Haldus ▸“ all (esialgu „Keelunimekiri“), nähtavad ainult siis, kui sul on selleks õigus, punased toimingud viimasena eraldaja taga. → avab alammenüü, ← või Escape läheb tagasi.",
+            "Kui serveri relay vahetub, teatab Mumcord sellest teavituskeskuses ja teavitusena, valikutega „Usalda uut relayd“ ja „Üksikasjad“. Üksikasjad võrdlevad vana ja uut sõrmejälge.",
+            "Tegevuste ajalugu: igal sündmuse liigil on ikoon ning ajalugu jääb sellesse seadmesse ka pärast taaskäivitust. Menüüs Seaded → Privaatsus kustutad selle kõigi serverite jaoks.",
+            "Tegevuse teavitused: kui keegi alustab ekraanijagamist, vaatepidu või pluginategevust, teavitab Mumcord sind nagu sõnumi puhul. Menüüs Seaded → Vestlus ja teavitused on iga liigi jaoks oma lüliti. Liitumised, lahkumised ja liikumised on vaikimisi välja lülitatud.",
+            "Windows: Mumcord salvestab natiivsed kokkujooksmised (erandi kood, moodul ja pinu), et neid saaks krahhiaruandes analüüsida."
+          ]
+        },
+        {
+          "title": "Täiustatud",
+          "items": [
+            "Menüükirjed ei lõpe enam märgiga „…“, igas keeles.",
+            "Kui server midagi tagasi lükkab, ütleb Mumcord selgelt, mida ja kus („Sul pole lubatud inimesi kanalis Raid liigutada.“). Õigused, mida haldur muudab sinu ühenduse ajal, jõustuvad kohe, ilma uuesti ühendamata.",
+            "Kui relay lükkab kaamera, ekraanijagamise või failid tagasi, nimetab Mumcord põhjuse (pole registreeritud, pole lubatud rühmas, pole samas kanalis, vaja uuesti ühendada) ja näitab väljapääsu: „Kuidas registreeruda“ või „Ühenda uuesti“. Ainult registreeritutele mõeldud relays näevad külalised enne proovimist, miks kaamera ja kirjaklamber pole saadaval.",
+            "Raadionupud ja märkeruudud on kõikjal Mumcordi enda kujundusega, selge fookusrõnga ja kõrge kontrasti toega. Valikukaardid nagu „Privaatsõnumid kellelt“ tõstetakse esile tervikuna.",
+            "Seadistus, „Kuidas soovid rääkida?“: kaks selget kaarti lühikese selgitusega, tundlikkus häälaktiveerimise all ja push-to-talk klahv otse oma kaardis. „Edasi“ ootab, kuni klahv on määratud.",
+            "Peer-to-peer: „Otse + relay (alati relay, peidab minu IP)“ on nüüd soovitatud režiim ja uute paigalduste vaikeväärtus. Režiim, mida juba kasutad, jääb samaks.",
+            "Vihje „Sellel serveril pole relayd, seega failijagamine pole saadaval“ saab serveri kaupa sulgeda ning see naaseb, kui server saab relay ja kaotab selle uuesti.",
+            "„Botid sellel serveril“ algab ahendatuna ja Mumcord jätab meelde, kas avasid selle.",
+            "Pluginariba: plugina ikoonidel pole enam raami, plugina oma pilt või värviplaat on kogu ikoon.",
+            "Uus sõnumiriba: tekst algab vasakust servast ühel real, kasvab kuni umbes kuue reani ja kerib siis. Rakenduste, faili, pildi ja GIFi ikoonid on ühtne komplekt ning saatmisnupp on summutatud, kuni on midagi saata. Vormindus asub väikeses ribas ülaservas, kuni kursor on väljal. Kanal, kuhu sul pole lubatud kirjutada, näitab tühja välja asemel märget."
+          ]
+        },
+        {
+          "title": "Parandatud",
+          "items": [
+            "Kanalite otsinguväli külgriba ülaosas joondub vestluse päises oleva kanalinimega.",
+            "Tegevuste ajalugu: nimed töötavad nagu vestluses (klõps avab profiili ja menüü, topeltklõps privaatsõnumi), ja botid ei ilmu enam liitumiste, lahkumiste ja liikumiste hulka.",
+            "Põimitud YouTube'i ja Twitchi mängijad: täisekraan ja „Kopeeri link“ töötavad. Twitch töötab ainult veebisaidil ning Mumcordi aken pole macOS-is ja Linuxis veebisait: kaart säilitab oma pildi, ütleb põhjuse ja „Esita“ avab voo brauseris (#419).",
+            "Seaded: kõrvuti kaardid on ühepikkused ning „?“ jääb oma pika sildi juurde.",
+            "Seaded → Ekraanijagamine → Riistvarakiirendus: pikk olek nagu „Tarkvaraline, peab vastu kuni 1080p30“ jääb paremale joondatuks.",
+            "Kaamera ja ekraanijagamise dialoogid: valikuloendid kasutavad rakenduse enda kujundust nagu seadetes.",
+            "Seaded → Pluginad: kaartide vahe on sama mis teistel lehtedel ja igal kaardil on ikoon.",
+            "Vahekaardid „Liikmed“ ja „Tegevus“ jäävad parempoolse veeru ülaossa, kui pikk loend kerib."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.1",
       "teaser": "Krahhiaruanded, mida kontrollid ise ja laed üles ainult soovi korral, ning parandused kaameratele, mis varem pilti ei andnud.",

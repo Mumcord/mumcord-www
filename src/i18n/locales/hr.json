@@ -874,6 +874,26 @@
             "title": "Botovi zasebno",
             "body": "Odjeljak „Botovi na ovom poslužitelju“ ispod popisa kanala prikazuje svakog bota i što radi, na primjer relay, povijest chata ili webhookove. Profil i izbornik, privatne poruke uključene, rade odande.",
             "alt": "Odjeljak s botovima na poslužitelju"
+          },
+          {
+            "id": "channel-admin",
+            "title": "Upravljanje kanalima",
+            "body": "Kao administrator stvaraš podkanale i privremene kanale, uređuješ ime, opis, roditelja, položaj i ograničenje korisnika, povezuješ kanale i brišeš ih nakon potvrde koja navodi pogođene kanale i ljude. Vidiš samo ono što poslužitelj dopušta, a odbijanje prikazuje razlog poslužitelja."
+          },
+          {
+            "id": "channel-permissions",
+            "title": "Prava i lozinka kanala",
+            "body": "U prozoru kanala kartica Prava pokazuje tko što smije u kanalu i objašnjava svaki odgovor pod „Zašto?“. Administratori uređuju pravila i grupe, Mumcord upozorava prije nego što sam sebe zaključaš i nikad ne prepisuje promjenu koju je napravio netko drugi. Lozinku kanala postavljaš ili brišeš na kartici Lozinka, kao u službenom klijentu."
+          },
+          {
+            "id": "move-people",
+            "title": "Premještanje ljudi",
+            "body": "U izborniku Administracija premještaš jednu osobu k sebi ili u kanal po izboru, ili sve u kanalu odjednom. Ctrl+klikom i Shift+klikom odabireš više ljudi i možeš ih povući zajedno. Mumcord ti kaže koliko ih je stiglo."
+          },
+          {
+            "id": "moderation",
+            "title": "Moderiranje u izborniku osobe",
+            "body": "Pod „Administracija“ utišavaš ili oglušuješ ljude na poslužitelju, daješ prioritet govornika i resetiraš komentar ili avatar. Svaka se radnja prikazuje samo kad imaš pravo na nju."
           }
         ]
       },
@@ -1018,6 +1038,16 @@
             "title": "Poveznice na poslužitelje kao kartice",
             "body": "mumble:// poveznica u chatu prikazuje poslužitelj, kanal, ping, ljude na mreži i verziju, s „Pridruži se”, „Dodaj u poslužitelje” i „Kopiraj poveznicu”. Podaci dolaze iz standardnog javnog upita, nikad iz veze. Korisnička imena i lozinke u poveznici nikad se ne prikazuju i izostavljaju se pri kopiranju.",
             "alt": "Kartica za mumble:// poveznicu s imenom poslužitelja, kanalom, pingom, korisnicima i gumbom Pridruži se"
+          },
+          {
+            "id": "message-bar",
+            "title": "Nova traka za poruke",
+            "body": "Traka tipka u jednom retku i raste s tekstom do otprilike šest redaka. Oblikovanje se prikazuje u maloj pilulji na gornjem rubu dok je kursor u polju, a gumb za slanje postaje aktivan tek kad ima što poslati."
+          },
+          {
+            "id": "activity-notifications",
+            "title": "Obavijesti o aktivnosti",
+            "body": "Kad netko pokrene dijeljenje zaslona, watch party ili aktivnost dodatka, Mumcord te obavijesti kao za poruku. Povijest aktivnosti ostaje na tvom uređaju, i nakon ponovnog pokretanja, a briše se u Postavkama pod Privatnost."
           }
         ]
       },
@@ -1500,6 +1530,56 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.2",
+      "teaser": "Administracija u izborniku desnog klika: upravljaj kanalima, pravima i lozinkama, premještaj ljude, utišaj i ogluši na poslužitelju, uz novu traku za poruke.",
+      "summary": "Mumcord dobiva prve administratorske alate: upravljaš kanalima, vidiš i uređuješ prava, postavljaš lozinke kanala, premještaš ljude i moderiraš, sve samo ondje gdje to poslužitelj dopušta. Tu su i obavijesti o aktivnosti, nova traka za poruke i jasnije poruke kad se nešto odbije.",
+      "groups": [
+        {
+          "title": "Novo",
+          "items": [
+            "Premještanje ljudi, pod Administracija ▸ u izbornicima osobe i kanala: „Premjesti u moj kanal“, „Premjesti u“ s popisom kanala koji se može filtrirati i prikazuje ograničenje korisnika, te „Premjesti sve u“ za cijeli kanal. Ctrl+klikom (ili Ctrl+razmaknicom) i Shift+klikom odabireš više ljudi i povlačiš ih zajedno. Poslije se prikaže koliko ih je stiglo („Premješteno 28 od 30 osoba u Raid. Ostali su odbijeni.“).",
+            "Moderiranje u izborniku osobe pod „Administracija ▸“: utišavanje za sve, gluhoća za sve, prioritetni govornik (zvjezdica pored imena) i ukidanje utišavanja djeluju odmah. Resetiranje komentara i resetiranje avatara prvo pitaju. Svaka se radnja prikazuje samo uz pravo na poslužitelju.",
+            "Lozinka kanala: na kartici Lozinka u prozoru kanala postavljaš ili brišeš lozinku za ulazak u kanal, jednako kao u službenom Mumble klijentu.",
+            "Prava kanala: na kartici Prava vidiš tko što smije u kanalu (✓, ✗ ili ? po grupi i osobi). Administratori uređuju pravila i grupe, a ploča „Zašto?“ objašnjava svaki odgovor. Mumcord upozorava prije nego što sam sebe zaključaš, pita prije promjena pravila cijelog poslužitelja i nikad ne prepisuje promjenu koju je napravio netko drugi.",
+            "Upravljanje kanalima: u izborniku kanala pod „Administracija ▸“ stvaraš podkanal ili privremeni kanal, uređuješ kanal (ime, opis, roditelja, položaj, ograničenje korisnika) i njegove poveznice, povezuješ ga sa svojim kanalom i brišeš ga nakon potvrde koja navodi pogođene podkanale i ljude. F2 uređuje, Delete briše odabrani kanal.",
+            "Izbornici otvaraju podizbornike: administratorske radnje u izborniku poslužitelja ⋯ sada su pod „Administracija ▸“ (zasad „Popis zabrana“), prikazane samo kad imaš pravo na njih, a crvene radnje dolaze zadnje iza razdjelnika. → otvara podizbornik, ← ili Escape vraća natrag.",
+            "Kad se promijeni relay poslužitelja, Mumcord ti to javlja u centru obavijesti i kao obavijest, s opcijama „Vjeruj novom relayu“ i „Detalji“. Detalji uspoređuju stari i novi otisak.",
+            "Povijest aktivnosti: svaka vrsta događaja ima ikonu, a povijest ostaje na ovom uređaju, i nakon ponovnog pokretanja. U Postavke → Privatnost brišeš je za sve poslužitelje.",
+            "Obavijesti o aktivnosti: kad netko pokrene dijeljenje zaslona, watch party ili aktivnost dodatka, Mumcord te obavijesti kao za poruku. Postavke → Chat i obavijesti imaju prekidač za svaku vrstu. Pridruživanja, odlasci i premještanja zadano su isključeni.",
+            "Windows: Mumcord bilježi nativna rušenja (kod iznimke, modul i stog) kako bi se mogla analizirati u izvješću o rušenju."
+          ]
+        },
+        {
+          "title": "Poboljšano",
+          "items": [
+            "Stavke izbornika više ne završavaju na „…“, na svim jezicima.",
+            "Kad poslužitelj nešto odbije, Mumcord jasnim riječima kaže što i gdje („Ne smiješ premještati ljude u Raid.“). Prava koja administrator promijeni dok si povezan stupaju na snagu odmah, bez ponovnog povezivanja.",
+            "Kad relay odbije kameru, dijeljenje zaslona ili datoteke, Mumcord navodi razlog (nije registriran, nije u dopuštenoj grupi, nije u istom kanalu, potrebno ponovno povezivanje) i pokazuje izlaz: „Kako se registrirati“ ili „Ponovno poveži“. Na relayu samo za registrirane gosti prije pokušaja vide zašto kamera i spajalica nisu dostupne.",
+            "Radio gumbi i potvrdni okviri svugdje imaju Mumcordov vlastiti dizajn, s jasnim prstenom fokusa i podrškom za visoki kontrast. Kartice opcija poput „Privatne poruke od“ osvijetle se u cijelosti.",
+            "Postavljanje, „Kako želiš govoriti?“: dvije jasne kartice s kratkim objašnjenjem, osjetljivost ispod glasovne aktivacije i push-to-talk tipka izravno u svojoj kartici. „Nastavi“ čeka dok se tipka ne postavi.",
+            "Peer-to-peer: „Izravno + relay (uvijek relay, skriva moj IP)“ sada je preporučeni način i zadano za nove instalacije. Način koji već koristiš ostaje kakav jest.",
+            "Napomena „Ovaj poslužitelj nema relay pa dijeljenje datoteka nije dostupno“ može se zatvoriti po poslužitelju i vraća se kad poslužitelj dobije relay i ponovno ga izgubi.",
+            "„Botovi na ovom poslužitelju“ počinje sklopljeno, a Mumcord pamti jesi li ga otvorio.",
+            "Traka dodataka: ikone dodataka više nemaju okvir, vlastita slika dodatka ili pločica u boji cijela je ikona.",
+            "Nova traka za poruke: tekst počinje na lijevom rubu u jednom retku, raste do otprilike šest redaka pa se pomiče. Ikone za Aplikacije, datoteku, sliku i GIF jedinstven su skup, a gumb za slanje ostaje prigušen dok nema što poslati. Oblikovanje je u maloj pilulji na gornjem rubu dok je kursor u polju. Kanal u koji ne smiješ pisati prikazuje napomenu umjesto praznog polja."
+          ]
+        },
+        {
+          "title": "Popravljeno",
+          "items": [
+            "Polje za pretragu kanala na vrhu bočne trake poravnato je s imenom kanala u zaglavlju chata.",
+            "Povijest aktivnosti: imena rade kao u chatu (klik otvara profil i izbornik, dvoklik privatnu poruku), a botovi se više ne pojavljuju uz pridruživanja, odlaske i premještanja.",
+            "Ugrađeni YouTube i Twitch playeri: cijeli zaslon i „Kopiraj poveznicu“ rade. Twitch radi samo na web-stranici, a Mumcordov prozor to na macOS-u i Linuxu nije: kartica zadržava sliku, kaže zašto, a „Reproduciraj“ otvara stream u pregledniku (#419).",
+            "Postavke: kartice jedna uz drugu jednako su visoke, a „?“ ostaje uz svoju dugu oznaku.",
+            "Postavke → Dijeljenje zaslona → Hardversko ubrzanje: dugi status poput „Softverski, drži do 1080p30“ ostaje poravnat udesno.",
+            "Dijalozi kamere i dijeljenja zaslona: padajući popisi koriste dizajn same aplikacije kao u Postavkama.",
+            "Postavke → Dodaci: kartice imaju isti razmak kao na ostalim stranicama i svaka kartica ima ikonu.",
+            "Kartice Članovi i Aktivnost ostaju na vrhu desnog stupca kad se dugi popis pomiče."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.1",
       "teaser": "Izvješća o rušenju koja sam provjeriš i šalješ samo ako želiš, te popravci za kamere koje prije nisu davale sliku.",

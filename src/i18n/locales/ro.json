@@ -874,6 +874,26 @@
             "title": "Boții, separat",
             "body": "O secțiune „Boți pe acest server” sub lista de canale arată fiecare bot cu ce face, de exemplu releu, istoric de chat sau webhook-uri. Profilul și meniul, inclusiv mesajele private, merg de acolo.",
             "alt": "Secțiunea cu boții de pe un server"
+          },
+          {
+            "id": "channel-admin",
+            "title": "Gestionarea canalelor",
+            "body": "Ca admin creezi subcanale și canale temporare, editezi numele, descrierea, părintele, poziția și limita de utilizatori, legi canale și le ștergi după o confirmare care numește canalele și oamenii afectați. Vezi doar ce îți permite serverul, iar un refuz arată motivul serverului."
+          },
+          {
+            "id": "channel-permissions",
+            "title": "Permisiunile canalului și parola",
+            "body": "În fereastra canalului, fila Permisiuni arată cine ce poate face în canal și explică fiecare răspuns la „De ce?”. Adminii editează reguli și grupuri, Mumcord te avertizează înainte să te blochezi singur și nu suprascrie niciodată o schimbare făcută de altcineva. Setezi sau ștergi parola unui canal în fila Parolă, ca în clientul oficial."
+          },
+          {
+            "id": "move-people",
+            "title": "Mutarea oamenilor",
+            "body": "În meniul Admin muți o persoană la tine sau într-un canal la alegere, sau pe toți dintr-un canal deodată. Ctrl-clic și Shift-clic aleg mai mulți oameni, ca să-i tragi împreună. Mumcord îți spune câți au ajuns."
+          },
+          {
+            "id": "moderation",
+            "title": "Moderare în meniul persoanei",
+            "body": "La „Admin” pui oamenii pe mut sau le dezactivezi auzul pentru toți, dai prioritate la vorbit și resetezi un comentariu sau un avatar. Fiecare acțiune apare doar când ai dreptul pentru ea."
           }
         ]
       },
@@ -1018,6 +1038,16 @@
             "title": "Linkuri de server ca niște carduri",
             "body": "Un link mumble:// din chat arată serverul, canalul, pingul, oamenii online și versiunea, cu „Intră”, „Adaugă la servere” și „Copiază linkul”. Cifrele vin din interogarea publică standard, niciodată dintr-o conexiune. Numele de utilizator și parolele dintr-un link nu se arată niciodată și sunt lăsate deoparte la copiere.",
             "alt": "Card pentru un link mumble:// cu numele serverului, canal, ping, utilizatori și butonul Intră"
+          },
+          {
+            "id": "message-bar",
+            "title": "Bară de mesaje nouă",
+            "body": "Bara scrie pe un singur rând și crește odată cu textul până la vreo șase rânduri. Formatarea apare într-o mică pastilă pe marginea de sus cât timp cursorul e în câmp, iar butonul de trimitere devine activ abia când e ceva de trimis."
+          },
+          {
+            "id": "activity-notifications",
+            "title": "Notificări de activitate",
+            "body": "Când cineva începe o partajare de ecran, un watch party sau o activitate de plugin, Mumcord te anunță ca pentru un mesaj. Istoricul activității rămâne pe dispozitivul tău, și după o repornire, iar îl ștergi în Setări, la Confidențialitate."
           }
         ]
       },
@@ -1500,6 +1530,56 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.2",
+      "teaser": "Admin în meniul clic dreapta: gestionezi canale, permisiuni și parole, muți oameni, pui pe mut și dezactivezi auzul prin server, plus o bară de mesaje nouă.",
+      "summary": "Mumcord primește primele instrumente de admin: gestionezi canale, vezi și editezi permisiuni, setezi parole de canal, muți oameni și moderezi, totul doar acolo unde serverul îți permite. Mai sunt notificări pentru activitate, o bară de mesaje nouă și mesaje mai clare când ceva este refuzat.",
+      "groups": [
+        {
+          "title": "Nou",
+          "items": [
+            "Mutarea oamenilor, la Admin ▸ în meniurile persoanei și ale canalului: „Mută în canalul meu”, „Mută în” cu o listă de canale filtrabilă care arată limita de utilizatori și „Mută pe toți în” pentru un canal întreg. Ctrl-clic (sau Ctrl+Spațiu) și Shift-clic aleg mai mulți oameni, ca să-i tragi împreună. Apoi îți spune câți au ajuns („Au fost mutate 28 din 30 de persoane în Raid. Restul au fost refuzate.”).",
+            "Moderare în meniul persoanei, la „Admin ▸”: mut prin server, dezactivarea auzului prin server, vorbitor prioritar (o stea lângă nume) și anularea suprimării acționează imediat. Resetarea comentariului și resetarea avatarului întreabă mai întâi. Fiecare acțiune apare doar cu dreptul din server.",
+            "Parola canalului: în fila Parolă a ferestrei canalului setezi sau ștergi parola pentru intrarea într-un canal, la fel ca în clientul oficial Mumble.",
+            "Permisiunile canalului: în fila Permisiuni vezi cine ce poate face în canal (✓, ✗ sau ? pentru fiecare grup și persoană). Adminii editează reguli și grupuri, iar un panou „De ce?” explică fiecare răspuns. Mumcord te avertizează înainte să te blochezi singur, întreabă înainte de schimbări ale regulilor întregului server și nu suprascrie niciodată o schimbare făcută de altcineva.",
+            "Gestionarea canalelor: în meniul canalului, la „Admin ▸”, creezi un subcanal sau un canal temporar, editezi un canal (nume, descriere, părinte, poziție, limită de utilizatori) și legăturile lui, îl legi de canalul tău și îl ștergi după o confirmare care numește subcanalele și oamenii afectați. F2 editează, iar Delete șterge canalul selectat.",
+            "Meniurile pot deschide submeniuri: acțiunile de admin din meniul ⋯ al serverului sunt acum la „Admin ▸” („Lista de banuri” deocamdată), afișate doar când ai un drept în el, cu acțiunile roșii la urmă, după un separator. → deschide un submeniu, ← sau Escape revine.",
+            "Când se schimbă relay-ul unui server, Mumcord îți spune în centrul de notificări și ca notificare, cu „Ai încredere în noul relay” și „Detalii”. Detaliile compară amprenta veche cu cea nouă.",
+            "Istoricul activității: fiecare fel de eveniment are o pictogramă, iar istoricul rămâne pe acest dispozitiv, și după o repornire. În Setări → Confidențialitate îl ștergi pentru toate serverele.",
+            "Notificări de activitate: când cineva începe o partajare de ecran, un watch party sau o activitate de plugin, Mumcord te anunță ca pentru un mesaj. Setări → Chat și notificări are un comutator pentru fiecare fel. Intrările, ieșirile și mutările sunt dezactivate implicit.",
+            "Windows: Mumcord înregistrează crashurile native (codul excepției, modulul și stiva), ca să poată fi analizate în raportul de crash."
+          ]
+        },
+        {
+          "title": "Îmbunătățit",
+          "items": [
+            "Intrările de meniu nu se mai termină cu „…”, în toate limbile.",
+            "Când serverul refuză ceva, Mumcord spune în cuvinte simple ce și unde („Nu ai voie să muți oameni în Raid.”). Drepturile schimbate de un admin cât timp ești conectat se aplică imediat, fără reconectare.",
+            "Când relay-ul refuză camera, partajarea de ecran sau fișierele, Mumcord numește motivul (neînregistrat, nu ești într-un grup permis, nu ești în același canal, e nevoie de reconectare) și arată o ieșire: „Cum te înregistrezi” sau „Reconectează”. Pe un relay doar pentru utilizatori înregistrați, oaspeții văd înainte să încerce de ce camera și agrafa nu sunt disponibile.",
+            "Butoanele radio și casetele de bifat au peste tot designul propriu al Mumcord, cu un inel de focus clar și suport pentru contrast ridicat. Cardurile de opțiuni precum „Mesaje private de la” se evidențiază în întregime.",
+            "Configurare, „Cum vrei să vorbești?”: două carduri clare cu o explicație scurtă, sensibilitatea sub activarea prin voce și tasta push-to-talk chiar în cardul ei. „Continuă” așteaptă până se setează o tastă.",
+            "Peer-to-peer: „Direct + relay (mereu relay, îmi ascunde IP-ul)” este acum modul recomandat și cel implicit la instalările noi. Un mod pe care îl folosești deja rămâne cum e.",
+            "Mesajul „Acest server nu are relay, deci partajarea de fișiere nu este disponibilă” poate fi închis pentru fiecare server și revine când serverul primește un relay și îl pierde din nou.",
+            "„Boți pe acest server” pornește restrâns, iar Mumcord ține minte dacă l-ai deschis.",
+            "Bara de pluginuri: pictogramele pluginurilor nu mai au ramă, imaginea proprie a pluginului sau dala de culoare este întreaga pictogramă.",
+            "Bară de mesaje nouă: textul începe la marginea stângă pe un singur rând, crește până la vreo șase rânduri și apoi derulează. Pictogramele pentru Aplicații, fișier, imagine și GIF sunt un set unitar, iar butonul de trimitere rămâne estompat până când e ceva de trimis. Butoanele de formatare stau într-o mică pastilă pe marginea de sus cât timp cursorul e în câmp. Un canal în care nu ai voie să scrii arată o notă în loc de un câmp gol."
+          ]
+        },
+        {
+          "title": "Reparat",
+          "items": [
+            "Câmpul de căutare a canalelor din partea de sus a barei laterale se aliniază cu numele canalului din antetul chatului.",
+            "Istoricul activității: numele funcționează ca în chat (un clic deschide profilul și meniul, dublu clic un mesaj privat), iar boții nu mai apar la intrări, ieșiri și mutări.",
+            "Playerele încorporate YouTube și Twitch: ecranul complet și „Copiază linkul” funcționează. Twitch rulează doar pe un site web, iar fereastra Mumcord nu este unul pe macOS și Linux: cardul își păstrează imaginea, spune de ce, iar Redă deschide transmisiunea în browser (#419).",
+            "Setări: cardurile alăturate au aceeași înălțime, iar un „?” rămâne lângă eticheta lui lungă.",
+            "Setări → Partajare de ecran → Accelerare hardware: o stare lungă, precum „Software, ține până la 1080p30”, rămâne aliniată la dreapta.",
+            "Dialogurile camerei și ale partajării de ecran: listele derulante folosesc designul propriu al aplicației, ca în Setări.",
+            "Setări → Pluginuri: cardurile au același spațiu ca pe celelalte pagini, iar fiecare card are pictograma lui.",
+            "Filele Membri și Activitate rămân în partea de sus a coloanei din dreapta când o listă lungă derulează."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.1",
       "teaser": "Rapoarte de crash pe care le verifici tu și le trimiți doar dacă vrei, plus remedieri pentru camerele care înainte nu dădeau imagine.",

@@ -874,6 +874,26 @@
             "title": "Botit omana ryhmänään",
             "body": "Kanavalistan alla oleva ”Botit tällä palvelimella” -osio näyttää jokaisen botin ja sen tehtävän, kuten välityspalvelimen, chat-historian tai webhookit. Profiili ja valikko, yksityisviestit mukaan lukien, toimivat sieltä.",
             "alt": "Palvelimen bottien osio"
+          },
+          {
+            "id": "channel-admin",
+            "title": "Kanavien hallinta",
+            "body": "Ylläpitäjänä luot alikanavia ja tilapäisiä kanavia, muokkaat nimeä, kuvausta, ylempää kanavaa, sijaintia ja käyttäjärajaa, linkität kanavia ja poistat niitä vahvistuksen jälkeen, jossa mainitaan vaikutuksen alaiset kanavat ja ihmiset. Näet vain sen, minkä palvelin sallii, ja epäys näyttää palvelimen syyn."
+          },
+          {
+            "id": "channel-permissions",
+            "title": "Kanavan oikeudet ja salasana",
+            "body": "Kanavaikkunassa Oikeudet-välilehti näyttää, kuka saa tehdä mitä kanavalla, ja selittää jokaisen vastauksen kohdassa ”Miksi?”. Ylläpitäjät muokkaavat sääntöjä ja ryhmiä, Mumcord varoittaa, ennen kuin lukitset itsesi ulos, eikä koskaan ylikirjoita jonkun muun tekemää muutosta. Kanavan salasanan asetat tai poistat Salasana-välilehdellä, kuten viralliseen asiakkaaseen."
+          },
+          {
+            "id": "move-people",
+            "title": "Ihmisten siirtäminen",
+            "body": "Ylläpito-valikossa siirrät yhden ihmisen luoksesi tai valitsemallesi kanavalle, tai kaikki kanavalla olevat kerralla. Ctrl- ja Shift-napsautuksella valitset useita ihmisiä ja voit vetää heidät yhdessä. Mumcord kertoo, kuinka moni pääsi perille."
+          },
+          {
+            "id": "moderation",
+            "title": "Moderointi henkilövalikossa",
+            "body": "Kohdassa ”Ylläpito” mykistät tai kuuroutat ihmisiä palvelimella, annat puhujan etuoikeuden ja nollaat kommentin tai avatarin. Jokainen toiminto näkyy vain, jos sinulla on siihen oikeus."
           }
         ]
       },
@@ -1018,6 +1038,16 @@
             "title": "Palvelinlinkit korteiksi",
             "body": "mumble://-linkki chatissa näyttää palvelimen, kanavan, pingin, paikalla olevat ihmiset ja version, painikkeilla ”Liity”, ”Lisää palvelimiin” ja ”Kopioi linkki”. Luvut tulevat tavallisesta julkisesta kyselystä, eivät koskaan yhteydestä. Linkin käyttäjänimiä ja salasanoja ei koskaan näytetä, ja ne jätetään pois kopioitaessa.",
             "alt": "mumble://-linkin kortti palvelimen nimen, kanavan, pingin, käyttäjien ja Liity-painikkeen kera"
+          },
+          {
+            "id": "message-bar",
+            "title": "Uusi viestipalkki",
+            "body": "Palkki kirjoittaa yhdelle riville ja kasvaa tekstin mukana noin kuuteen riviin. Muotoilu näkyy pienessä palkissa yläreunassa, kun kohdistin on kentässä, ja lähetyspainike aktivoituu vasta, kun on jotain lähetettävää."
+          },
+          {
+            "id": "activity-notifications",
+            "title": "Toiminnan ilmoitukset",
+            "body": "Kun joku aloittaa näytön jaon, watch partyn tai lisäosan toiminnan, Mumcord ilmoittaa siitä kuten viestistä. Toimintahistoria säilyy laitteellasi myös uudelleenkäynnistyksen jälkeen, ja tyhjennät sen kohdassa Asetukset → Yksityisyys."
           }
         ]
       },
@@ -1500,6 +1530,56 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.2",
+      "teaser": "Ylläpito hiiren oikean painikkeen valikossa: hallitse kanavia, oikeuksia ja salasanoja, siirrä ihmisiä, mykistä ja kuurouta palvelimella, lisäksi uusi viestipalkki.",
+      "summary": "Mumcord saa ensimmäiset ylläpitotyökalunsa: hallitset kanavia, näet ja muokkaat oikeuksia, asetat kanavien salasanoja, siirrät ihmisiä ja moderoit, kaikki vain siellä, missä palvelin sen sallii. Mukana tulevat myös toiminnan ilmoitukset, uusi viestipalkki ja selkeämmät viestit, kun jokin evätään.",
+      "groups": [
+        {
+          "title": "Uutta",
+          "items": [
+            "Ihmisten siirtäminen, henkilö- ja kanavavalikoissa kohdassa Ylläpito ▸: ”Siirrä omalle kanavalleni”, ”Siirrä kanavalle” suodatettavalla kanavaluettelolla, joka näyttää käyttäjärajan, ja ”Siirrä kaikki kanavalle” koko kanavalle. Ctrl-napsautuksella (tai Ctrl+välilyönnillä) ja Shift-napsautuksella valitset useita ihmisiä ja vedät heidät yhdessä. Lopuksi kerrotaan, kuinka moni pääsi perille (”Siirrettiin 28 ihmistä 30:stä kanavalle Raid. Loput evättiin.”).",
+            "Moderointi henkilövalikossa kohdassa ”Ylläpito ▸”: mykistys kaikille, kuurouttaminen kaikille, puhujan etuoikeus (tähti nimen vieressä) ja mykistyksen poisto toimivat heti. Kommentin ja avatarin nollaus kysyvät ensin. Jokainen toiminto näkyy vain, jos sinulla on siihen oikeus palvelimella.",
+            "Kanavan salasana: kanavaikkunan Salasana-välilehdellä asetat tai poistat kanavalle liittymisen salasanan, aivan kuten viralliseen Mumble-asiakkaaseen.",
+            "Kanavan oikeudet: Oikeudet-välilehdellä näet, kuka saa tehdä mitä kanavalla (✓, ✗ tai ? ryhmää ja henkilöä kohden). Ylläpitäjät muokkaavat sääntöjä ja ryhmiä, ja ”Miksi?”-paneeli selittää jokaisen vastauksen. Mumcord varoittaa, ennen kuin lukitset itsesi ulos, kysyy ennen koko palvelimen sääntöjen muutoksia eikä koskaan ylikirjoita jonkun muun tekemää muutosta.",
+            "Kanavien hallinta: kanavavalikossa kohdassa ”Ylläpito ▸” luot alikanavan tai tilapäisen kanavan, muokkaat kanavaa (nimi, kuvaus, ylempi kanava, sijainti, käyttäjäraja) ja sen linkkejä, linkität sen omaan kanavaasi ja poistat sen vahvistuksen jälkeen, jossa mainitaan vaikutuksen alaiset alikanavat ja ihmiset. F2 muokkaa, Delete poistaa valitun kanavan.",
+            "Valikot avaavat alavalikoita: ylläpitotoiminnot palvelinvalikossa ⋯ ovat nyt kohdassa ”Ylläpito ▸” (toistaiseksi ”Porttikieltolista”), näkyvissä vain, jos sinulla on siihen oikeus, punaiset toiminnot viimeisenä erottimen takana. → avaa alavalikon, ← tai Escape palaa takaisin.",
+            "Kun palvelimen relay vaihtuu, Mumcord kertoo siitä ilmoituskeskuksessa ja ilmoituksena, vaihtoehtoina ”Luota uuteen relayhin” ja ”Tiedot”. Tiedot vertaavat vanhaa ja uutta sormenjälkeä.",
+            "Toimintahistoria: jokaisella tapahtumalajilla on kuvake, ja historia säilyy tällä laitteella myös uudelleenkäynnistyksen jälkeen. Kohdassa Asetukset → Yksityisyys tyhjennät sen kaikilta palvelimilta.",
+            "Toiminnan ilmoitukset: kun joku aloittaa näytön jaon, watch partyn tai lisäosan toiminnan, Mumcord ilmoittaa siitä kuten viestistä. Kohdassa Asetukset → Keskustelu ja ilmoitukset on kytkin jokaiselle lajille. Liittymiset, poistumiset ja siirrot ovat oletuksena pois päältä.",
+            "Windows: Mumcord tallentaa natiivit kaatumiset (poikkeuskoodi, moduuli ja pino), jotta ne voi analysoida kaatumisraportissa."
+          ]
+        },
+        {
+          "title": "Parannettu",
+          "items": [
+            "Valikkokohdat eivät enää pääty merkkeihin ”…”, millään kielellä.",
+            "Kun palvelin evää jotain, Mumcord kertoo selkein sanoin mitä ja missä (”Et saa siirtää ihmisiä kanavalla Raid.”). Oikeudet, joita ylläpitäjä muuttaa yhteytesi aikana, tulevat voimaan heti ilman uudelleenyhdistämistä.",
+            "Kun relay evää kameran, näytön jaon tai tiedostot, Mumcord nimeää syyn (ei rekisteröitynyt, ei sallitussa ryhmässä, ei samalla kanavalla, uudelleenyhdistäminen tarpeen) ja näyttää ulospääsyn: ”Näin rekisteröidyt” tai ”Yhdistä uudelleen”. Vain rekisteröityjen relayssä vieraat näkevät ennen yritystä, miksi kamera ja paperiliitin eivät ole käytettävissä.",
+            "Valintanapit ja valintaruudut ovat kaikkialla Mumcordin omaa ulkoasua, selkeällä kohdistusrenkaalla ja korkean kontrastin tuella. Valintakortit kuten ”Yksityisviestit keneltä” korostuvat kokonaisena korttina.",
+            "Käyttöönotto, ”Miten haluat puhua?”: kaksi selkeää korttia lyhyellä selityksellä, herkkyys äänenkäytön tunnistuksen alla ja push-to-talk-näppäin suoraan kortissaan. ”Jatka” odottaa, kunnes näppäin on asetettu.",
+            "Peer-to-peer: ”Suoraan + relay (aina relay, piilottaa IP-osoitteeni)” on nyt suositeltu tila ja uusien asennusten oletus. Jo käyttämäsi tila pysyy ennallaan.",
+            "Vihjeen ”Tällä palvelimella ei ole relayta, joten tiedostojen jako ei ole käytettävissä” voi sulkea palvelinkohtaisesti, ja se palaa, kun palvelin saa relayn ja menettää sen taas.",
+            "”Botit tällä palvelimella” alkaa suljettuna, ja Mumcord muistaa, avasitko sen.",
+            "Lisäosapalkki: lisäosien kuvakkeilla ei ole enää kehystä, lisäosan oma kuva tai värilaatta on koko kuvake.",
+            "Uusi viestipalkki: teksti alkaa vasemmasta reunasta yhdellä rivillä, kasvaa noin kuuteen riviin ja vierittyy sitten. Sovellusten, tiedoston, kuvan ja GIFin kuvakkeet ovat yhtenäinen sarja, ja lähetyspainike on himmennetty, kunnes on jotain lähetettävää. Muotoilu on pienessä palkissa yläreunassa, kun kohdistin on kentässä. Kanava, johon et saa kirjoittaa, näyttää huomautuksen tyhjän kentän sijaan."
+          ]
+        },
+        {
+          "title": "Korjattu",
+          "items": [
+            "Kanavahakukenttä sivupalkin yläosassa asettuu samaan linjaan keskustelun otsikon kanavanimen kanssa.",
+            "Toimintahistoria: nimet toimivat kuten keskustelussa (napsautus avaa profiilin ja valikon, kaksoisnapsautus yksityisviestin), eivätkä botit enää näy liittymisissä, poistumisissa ja siirroissa.",
+            "Upotetut YouTube- ja Twitch-soittimet: koko näyttö ja ”Kopioi linkki” toimivat. Twitch toimii vain verkkosivustolla, eikä Mumcordin ikkuna ole sellainen macOS:llä ja Linuxilla: kortti säilyttää kuvansa, kertoo syyn, ja ”Toista” avaa lähetyksen selaimessa (#419).",
+            "Asetukset: vierekkäiset kortit ovat yhtä korkeita, ja ”?” pysyy pitkän nimikkeensä vieressä.",
+            "Asetukset → Näytön jako → Laitteistokiihdytys: pitkä tila kuten ”Ohjelmisto, jaksaa jopa 1080p30” pysyy tasattuna oikealle.",
+            "Kameran ja näytön jaon ikkunat: valintaluettelot käyttävät sovelluksen omaa ulkoasua kuten asetuksissa.",
+            "Asetukset → Lisäosat: korttien väli on sama kuin muilla sivuilla, ja jokaisella kortilla on kuvake.",
+            "Jäsenet- ja Toiminta-välilehdet pysyvät oikean sarakkeen yläreunassa, kun pitkä luettelo vierii."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.1",
       "teaser": "Kaatumisraportit, jotka tarkistat itse ja lähetät vain halutessasi, sekä korjauksia kameroihin, jotka eivät aiemmin näyttäneet kuvaa.",

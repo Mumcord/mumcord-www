@@ -21,6 +21,56 @@ export interface ChangelogEntry {
 const source: Record<"de" | "en", ChangelogEntry[]> = {
   de: [
     {
+      version: "0.7.2",
+      teaser: "Admin im Rechtsklick-Menü: Kanäle verwalten, Rechte und Passwörter, Leute verschieben, stumm und taub schalten, dazu eine neue Nachrichtenleiste.",
+      summary: "Mumcord bekommt die ersten Admin-Werkzeuge: Du verwaltest Kanäle, siehst und bearbeitest Rechte, setzt Kanal-Passwörter, verschiebst Leute und moderierst, alles nur, wo der Server es dir erlaubt. Dazu kommen Benachrichtigungen für Aktivität, eine neue Nachrichtenleiste und verständlichere Meldungen, wenn etwas abgelehnt wird.",
+      groups: [
+        {
+          title: "Neu",
+          items: [
+            "Leute verschieben, unter Admin ▸ im Personen- und Kanalmenü: „In meinen Kanal verschieben“, „Verschieben nach“ mit einer filterbaren Kanalliste, die das Nutzerlimit zeigt, und „Alle verschieben nach“ für einen ganzen Kanal. Mit Strg-Klick (oder Strg+Leertaste) und Umschalt-Klick wählst du mehrere Leute und ziehst sie gemeinsam. Danach steht da, wie viele angekommen sind („28 von 30 Leuten nach Raid verschoben. Die übrigen wurden abgelehnt.“).",
+            "Moderation im Personenmenü unter „Admin ▸“: für alle stumm schalten, für alle taub schalten, Vorrang beim Sprechen (ein Stern neben dem Namen) und Stummschaltung aufheben wirken sofort. Kommentar und Profilbild zurücksetzen fragen vorher. Jede Aktion erscheint nur mit dem Recht des Servers.",
+            "Kanal-Passwort: Im Reiter „Passwort“ des Kanalfensters setzt oder löschst du das Passwort zum Betreten, genauso wie im offiziellen Mumble-Client.",
+            "Kanal-Rechte: Im Reiter „Rechte“ siehst du, wer im Kanal was darf (✓, ✗ oder ? je Gruppe und Person). Admins bearbeiten Regeln und Gruppen, und ein „Warum?“-Fenster erklärt jede Antwort. Mumcord warnt, bevor du dich aussperrst, fragt vor Änderungen an den Regeln des ganzen Servers und überschreibt nie eine Änderung, die jemand anderes gemacht hat.",
+            "Kanäle verwalten: Im Kanalmenü unter „Admin ▸“ legst du einen Unterkanal oder temporären Kanal an, bearbeitest einen Kanal (Name, Beschreibung, Eltern, Position, Nutzerlimit) und seine Verknüpfungen, verknüpfst ihn mit deinem Kanal und löschst ihn nach einer Rückfrage, die betroffene Unterkanäle und Leute nennt. F2 bearbeitet, Entf löscht den gewählten Kanal.",
+            "Menüs öffnen Untermenüs: Admin-Aktionen im Server-Menü ⋯ stehen jetzt unter „Admin ▸“ (vorerst „Bannliste“), nur wenn du ein Recht dafür hast, rote Aktionen zuletzt hinter einem Trenner. → öffnet ein Untermenü, ← oder Esc geht zurück.",
+            "Wechselt das Relay eines Servers, sagt Mumcord es dir in der Benachrichtigungszentrale und als Benachrichtigung, mit „Neuem Relay vertrauen“ und „Details“. Die Details vergleichen alten und neuen Fingerabdruck.",
+            "Aktivitätsverlauf: Jede Art von Ereignis hat ein Symbol, und der Verlauf bleibt auf diesem Gerät, auch nach einem Neustart. Unter Einstellungen → Privatsphäre löschst du ihn für alle Server.",
+            "Aktivitäts-Benachrichtigungen: Startet jemand eine Bildschirmübertragung, eine Watch-Party oder eine Plugin-Aktivität, meldet Mumcord das wie eine Nachricht. Unter Einstellungen → Chat & Benachrichtigungen schaltest du jede Art einzeln. Beitritte, Austritte und Wechsel sind standardmäßig aus.",
+            "Windows: Mumcord hält native Abstürze fest (Ausnahmecode, Modul und Stack), damit sie sich im Absturzbericht auswerten lassen.",
+          ],
+        },
+        {
+          title: "Verbessert",
+          items: [
+            "Menüeinträge enden nicht mehr auf „…“, in allen Sprachen.",
+            "Lehnt der Server etwas ab, sagt Mumcord in klaren Worten, was und wo („Du darfst in Raid keine Leute verschieben.“). Rechte, die ein Admin während deiner Verbindung ändert, gelten sofort, ohne neu zu verbinden.",
+            "Lehnt das Relay Kamera, Bildschirmübertragung oder Dateien ab, nennt Mumcord den Grund (nicht registriert, nicht in einer erlaubten Gruppe, nicht im selben Kanal, neu verbinden nötig) und zeigt einen Ausweg: „So registrierst du dich“ oder „Neu verbinden“. Auf einem Relay nur für Registrierte sehen Gäste vorher, warum Kamera und Büroklammer nicht gehen.",
+            "Radiobuttons und Kontrollkästchen haben überall Mumcords eigenes Design, mit klarem Fokusring und Unterstützung für hohen Kontrast. Auswahlkarten wie „Private Nachrichten von“ leuchten als ganze Karte.",
+            "Einrichtung, „Wie möchtest du sprechen?“: zwei klare Karten mit kurzer Erklärung, die Empfindlichkeit unter der Sprachaktivierung und die Push-to-Talk-Taste direkt in der Karte. „Weiter“ wartet, bis eine Taste gesetzt ist.",
+            "Peer-to-Peer: „Direkt + Relay (immer Relay, verbirgt meine IP)“ ist jetzt der empfohlene Modus und der Standard für neue Installationen. Ein Modus, den du schon nutzt, bleibt, wie er ist.",
+            "Der Hinweis „Dieser Server hat kein Relay, daher gibt es kein Dateiteilen“ lässt sich pro Server schließen und kommt zurück, wenn der Server ein Relay bekommt und wieder verliert.",
+            "„Bots auf diesem Server“ startet eingeklappt, und Mumcord merkt sich, ob du es geöffnet hast.",
+            "Plugin-Leiste: Plugin-Symbole haben keinen Rahmen mehr, das eigene Bild oder die Farbkachel ist das ganze Symbol.",
+            "Neue Nachrichtenleiste: Der Text beginnt am linken Rand in einer Zeile, wächst bis etwa sechs Zeilen und scrollt dann. Symbole für Apps, Datei, Bild und GIF sind ein einheitlicher Satz, und der Senden-Knopf ist erst gedämpft und wird zum Hauptknopf, sobald etwas zu senden ist. Die Formatierung sitzt in einer kleinen Leiste am oberen Rand, solange der Cursor im Feld steht. Ein Kanal, in dem du nicht schreiben darfst, zeigt einen Hinweis statt eines leeren Felds.",
+          ],
+        },
+        {
+          title: "Behoben",
+          items: [
+            "Das Kanal-Suchfeld oben in der Seitenleiste fluchtet mit dem Kanalnamen im Chat-Kopf.",
+            "Aktivitätsverlauf: Namen funktionieren wie im Chat (Klick öffnet Profil und Menü, Doppelklick eine private Nachricht), und Bots tauchen nicht mehr bei Beitritten, Austritten und Wechseln auf.",
+            "Eingebettete Player für YouTube und Twitch: Vollbild und „Link kopieren“ funktionieren. Twitch läuft nur auf einer Website, und Mumcords Fenster ist auf macOS und Linux keine: Die Karte behält ihr Bild, sagt warum, und „Abspielen“ öffnet den Stream im Browser (#419).",
+            "Einstellungen: Karten nebeneinander sind gleich hoch, und ein „?“ bleibt bei seiner langen Beschriftung.",
+            "Einstellungen → Bildschirmübertragung → Hardwarebeschleunigung: Ein langer Status wie „Software, hält bis zu 1080p30“ bleibt rechtsbündig.",
+            "Kamera- und Bildschirmdialoge: Die Auswahllisten nutzen das Design der App wie in den Einstellungen.",
+            "Einstellungen → Plugins: Die Karten haben denselben Abstand wie auf den anderen Seiten, und jede hat ein Symbol.",
+            "Die Reiter „Mitglieder“ und „Aktivität“ bleiben oben in der rechten Spalte, wenn eine lange Liste scrollt.",
+          ],
+        },
+      ],
+    },
+    {
       version: "0.7.1",
       teaser: "Absturzberichte, die du selbst prüfst und nur auf Wunsch hochlädst, und Kamera-Fixes für Kameras, die vorher kein Bild lieferten.",
       summary: "Ein kleines Update: Schließt sich Mumcord unerwartet, bleibt ein Bericht auf deinem Computer, und gesendet wird er nur, wenn du es willst. Dazu starten mehr Kameras, auch über das Kamera-Portal, und die Hintergrundbilder der Vorschau erscheinen sofort.",
@@ -743,6 +793,56 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
     },
   ],
   en: [
+    {
+      version: "0.7.2",
+      teaser: "Admin in the right-click menu: manage channels, permissions and passwords, move people, server-mute and deafen, plus a new message bar.",
+      summary: "Mumcord gets its first admin tools: you manage channels, see and edit permissions, set channel passwords, move people and moderate, all only where the server allows it. There are also notifications for activity, a new message bar and clearer messages when something is refused.",
+      groups: [
+        {
+          title: "New",
+          items: [
+            "Moving people, under Admin ▸ in the person and channel menus: “Move to my channel”, “Move to” with a filterable channel list that shows the user limit, and “Move everyone to” for a whole channel. Ctrl-click (or Ctrl+Space) and Shift-click pick several people so you drag them together. Afterwards it says how many arrived (“Moved 28 of 30 people to Raid. The rest were refused.”).",
+            "Moderation in the person menu under “Admin ▸”: server mute, server deafen, priority speaker (a star next to their name) and un-suppress act at once. Reset comment and reset avatar ask first. Each action only appears with the server’s right.",
+            "Channel password: in the Password tab of the channel window you set or clear the password for joining a channel, the same way as in the official Mumble client.",
+            "Channel permissions: in the Permissions tab you see who can do what in the channel (✓, ✗ or ? per group and person). Admins edit rules and groups, and a “Why?” panel explains every answer. Mumcord warns before you would lock yourself out, asks before changes to the whole server’s rules and never overwrites a change someone else made.",
+            "Channel management: in the channel menu under “Admin ▸” you create a sub-channel or a temporary channel, edit a channel (name, description, parent, position, user limit) and its links, link it with your channel, and delete it after a confirmation that names the sub-channels and people affected. F2 edits and Delete deletes the selected channel.",
+            "Menus can open sub-menus: admin actions in the server ⋯ menu now sit under “Admin ▸” (“Ban list” for now), shown only when you have a right in it, with red actions last behind a divider. → opens a sub-menu, ← or Escape goes back.",
+            "When a server’s relay changes, Mumcord says so in the notification centre and as a notification, with “Trust new relay” and “Details”. The details compare the old and new fingerprint.",
+            "Activity history: each kind of event has an icon, and the history stays on this device, also after a restart. In Settings → Privacy you clear it for all servers.",
+            "Activity notifications: when someone starts a screen share, a watch party or a plugin activity, Mumcord notifies you like for a message. Settings → Chat & Notifications has a switch per kind. Joins, leaves and moves are off by default.",
+            "Windows: Mumcord records native crashes (exception code, module and stack) so they can be analysed in the crash report.",
+          ],
+        },
+        {
+          title: "Improved",
+          items: [
+            "Menu entries no longer end in “…”, in every language.",
+            "When the server refuses something, Mumcord says what and where in plain words (“You may not move people in Raid.”). Rights changed by an admin while you are connected take effect right away, without reconnecting.",
+            "When the relay refuses the camera, screen sharing or files, Mumcord names the reason (not registered, not in an allowed group, not in the same channel, reconnect needed) and shows a way out: “How to register” or “Reconnect”. On a relay for registered users only, guests see why the camera and the paperclip are unavailable before trying.",
+            "Radio buttons and checkboxes have Mumcord’s own design everywhere, with a clear focus ring and high-contrast support. Option cards such as “Private messages from” highlight the whole card.",
+            "Setup, “How do you want to talk?”: two clear cards with a short explanation, the sensitivity under voice activation and the push-to-talk key right in its card. Continue waits until a key is set.",
+            "Peer-to-peer: “Direct + relay (always relay, hides my IP)” is now the recommended mode and the default for new installs. A mode you already use stays as it is.",
+            "The hint “This server has no relay, so file sharing isn’t available” can be closed per server and comes back when the server gets a relay and loses it again.",
+            "“Bots on this server” starts collapsed, and Mumcord remembers whether you opened it.",
+            "Plugins strip: plugin icons have no frame anymore, the plugin’s own image or colour tile is the whole icon.",
+            "New message bar: the text starts at the left edge on one line, grows up to about six lines and then scrolls. The icons for Apps, file, picture and GIF are one consistent set, and the send button stays muted until there is something to send. The formatting buttons sit in a small pill on the top edge while the cursor is in the field. A channel you may not write in shows a note instead of an empty field.",
+          ],
+        },
+        {
+          title: "Fixed",
+          items: [
+            "The channel search field at the top of the sidebar lines up with the channel name in the chat header.",
+            "Activity history: names work like in the chat (click opens the profile and menu, double-click a private message), and bots no longer show up with joins, leaves and moves.",
+            "Embedded YouTube and Twitch players: full screen and copy link work. Twitch only runs on a website, and Mumcord’s window is not one on macOS and Linux: the card keeps its picture, says why, and Play opens the stream in the browser (#419).",
+            "Settings: cards side by side are equally tall, and a “?” stays next to its long label.",
+            "Settings → Screen sharing → Hardware acceleration: a long status such as “Software, keeps up to 1080p30” stays right-aligned.",
+            "Camera and screen share dialogs: the dropdowns use the app’s own design like in Settings.",
+            "Settings → Plugins: the cards have the same gap as on the other pages, and every card has its icon.",
+            "The Members and Activity tabs stay at the top of the right column when a long list scrolls.",
+          ],
+        },
+      ],
+    },
     {
       version: "0.7.1",
       teaser: "Crash reports you check yourself and upload only on request, and camera fixes for cameras that showed no picture before.",

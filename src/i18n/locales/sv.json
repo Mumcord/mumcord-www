@@ -874,6 +874,26 @@
             "title": "Botar för sig",
             "body": "Ett avsnitt ”Botar på den här servern” under kanallistan visar varje bot med vad den gör, till exempel relay, chatthistorik eller webhooks. Profil och meny, privata meddelanden inklusive, fungerar därifrån.",
             "alt": "Avsnittet med botarna på en server"
+          },
+          {
+            "id": "channel-admin",
+            "title": "Kanalhantering",
+            "body": "Som admin skapar du underkanaler och tillfälliga kanaler, redigerar namn, beskrivning, överordnad kanal, position och användargräns, länkar kanaler och tar bort dem efter en bekräftelse som nämner berörda kanaler och personer. Du ser bara det servern tillåter, och ett nekande visar serverns orsak."
+          },
+          {
+            "id": "channel-permissions",
+            "title": "Kanalbehörigheter och lösenord",
+            "body": "I kanalfönstret visar fliken Behörigheter vem som får göra vad i kanalen och förklarar varje svar under ”Varför?”. Admins redigerar regler och grupper, Mumcord varnar innan du skulle låsa ut dig själv och skriver aldrig över en ändring som någon annan gjort. Du sätter eller rensar ett kanallösenord på fliken Lösenord, som i den officiella klienten."
+          },
+          {
+            "id": "move-people",
+            "title": "Flytta personer",
+            "body": "I Admin-menyn flyttar du en person till dig eller till en kanal du väljer, eller alla i en kanal på en gång. Ctrl-klick och Shift-klick väljer flera personer så att du kan dra dem tillsammans. Mumcord berättar hur många som kom fram."
+          },
+          {
+            "id": "moderation",
+            "title": "Moderering i personmenyn",
+            "body": "Under ”Admin” tystar eller dövar du personer för alla, ger prioriterad talare och återställer en kommentar eller avatar. Varje åtgärd visas bara när du har behörighet för den."
           }
         ]
       },
@@ -1018,6 +1038,16 @@
             "title": "Serverlänkar som kort",
             "body": "En mumble://-länk i chatten visar server, kanal, ping, personer online och version, med ”Gå med”, ”Lägg till i servrar” och ”Kopiera länk”. Uppgifterna kommer från den vanliga publika förfrågan, aldrig från en anslutning. Användarnamn och lösenord i en länk visas aldrig och utelämnas vid kopiering.",
             "alt": "Kort för en mumble://-länk med servernamn, kanal, ping, användare och knappen Gå med"
+          },
+          {
+            "id": "message-bar",
+            "title": "Nytt meddelandefält",
+            "body": "Fältet skriver på en rad och växer med texten till ungefär sex rader. Formateringen visas i en liten pill på överkanten så länge markören står i fältet, och skicka-knappen blir aktiv först när det finns något att skicka."
+          },
+          {
+            "id": "activity-notifications",
+            "title": "Aktivitetsaviseringar",
+            "body": "När någon startar en skärmdelning, en watch party eller en tilläggsaktivitet aviserar Mumcord dig som för ett meddelande. Aktivitetshistoriken stannar på din enhet, även efter en omstart, och du rensar den i Inställningar under Integritet."
           }
         ]
       },
@@ -1500,6 +1530,56 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.2",
+      "teaser": "Admin i högerklicksmenyn: hantera kanaler, behörigheter och lösenord, flytta personer, tysta och döva via servern, plus ett nytt meddelandefält.",
+      "summary": "Mumcord får sina första adminverktyg: du hanterar kanaler, ser och redigerar behörigheter, sätter kanallösenord, flyttar personer och modererar, allt bara där servern tillåter det. Dessutom finns aviseringar för aktivitet, ett nytt meddelandefält och tydligare meddelanden när något nekas.",
+      "groups": [
+        {
+          "title": "Nytt",
+          "items": [
+            "Flytta personer, under Admin ▸ i person- och kanalmenyerna: ”Flytta till min kanal”, ”Flytta till” med en filtrerbar kanallista som visar användargränsen, och ”Flytta alla till” för en hel kanal. Ctrl-klick (eller Ctrl+blanksteg) och Shift-klick väljer flera personer så att du drar dem tillsammans. Efteråt står det hur många som kom fram (”Flyttade 28 av 30 personer till Raid. De övriga nekades.”).",
+            "Moderering i personmenyn under ”Admin ▸”: tysta för alla, döva för alla, prioriterad talare (en stjärna bredvid namnet) och upphäv undertryckning verkar direkt. Återställ kommentar och återställ avatar frågar först. Varje åtgärd visas bara med serverns behörighet.",
+            "Kanallösenord: på fliken Lösenord i kanalfönstret sätter eller rensar du lösenordet för att gå med i en kanal, på samma sätt som i den officiella Mumble-klienten.",
+            "Kanalbehörigheter: på fliken Behörigheter ser du vem som får göra vad i kanalen (✓, ✗ eller ? per grupp och person). Admins redigerar regler och grupper, och en ”Varför?”-ruta förklarar varje svar. Mumcord varnar innan du skulle låsa ut dig själv, frågar före ändringar av hela serverns regler och skriver aldrig över en ändring som någon annan gjort.",
+            "Kanalhantering: i kanalmenyn under ”Admin ▸” skapar du en underkanal eller en tillfällig kanal, redigerar en kanal (namn, beskrivning, överordnad, position, användargräns) och dess länkar, länkar den till din kanal och tar bort den efter en bekräftelse som nämner berörda underkanaler och personer. F2 redigerar och Delete tar bort den valda kanalen.",
+            "Menyer kan öppna undermenyer: adminåtgärder i servermenyn ⋯ ligger nu under ”Admin ▸” (”Bannlista” för tillfället), visas bara när du har en behörighet i den, med röda åtgärder sist bakom en avdelare. → öppnar en undermeny, ← eller Escape går tillbaka.",
+            "När en servers relay ändras säger Mumcord det i aviseringscentret och som avisering, med ”Lita på nytt relay” och ”Detaljer”. Detaljerna jämför det gamla och det nya fingeravtrycket.",
+            "Aktivitetshistorik: varje slags händelse har en ikon, och historiken stannar på den här enheten, även efter en omstart. Under Inställningar → Integritet rensar du den för alla servrar.",
+            "Aktivitetsaviseringar: när någon startar en skärmdelning, en watch party eller en tilläggsaktivitet aviserar Mumcord dig som för ett meddelande. Inställningar → Chatt och aviseringar har en strömbrytare per slag. Anslutningar, avhopp och flyttar är avstängda som standard.",
+            "Windows: Mumcord registrerar inbyggda krascher (undantagskod, modul och stack) så att de kan analyseras i kraschrapporten."
+          ]
+        },
+        {
+          "title": "Förbättrat",
+          "items": [
+            "Menyalternativ slutar inte längre på ”…”, på alla språk.",
+            "När servern nekar något säger Mumcord med enkla ord vad och var (”Du får inte flytta personer i Raid.”). Rättigheter som en admin ändrar medan du är ansluten gäller direkt, utan att du ansluter igen.",
+            "När relayen nekar kameran, skärmdelning eller filer anger Mumcord orsaken (inte registrerad, inte i en tillåten grupp, inte i samma kanal, behöver ansluta igen) och visar en väg ut: ”Så registrerar du dig” eller ”Anslut igen”. På en relay bara för registrerade användare ser gäster före försöket varför kameran och gem-ikonen inte är tillgängliga.",
+            "Alternativknappar och kryssrutor har Mumcords egen design överallt, med en tydlig fokusring och stöd för hög kontrast. Alternativkort som ”Privata meddelanden från” lyser upp som ett helt kort.",
+            "Installation, ”Hur vill du prata?”: två tydliga kort med en kort förklaring, känsligheten under röstaktivering och push-to-talk-tangenten direkt i sitt kort. ”Fortsätt” väntar tills en tangent är satt.",
+            "Peer-to-peer: ”Direkt + relay (alltid relay, döljer min IP)” är nu det rekommenderade läget och standard för nya installationer. Ett läge som du redan använder förblir som det är.",
+            "Tipset ”Den här servern har inget relay, så fildelning är inte tillgänglig” kan stängas per server och kommer tillbaka när servern får ett relay och förlorar det igen.",
+            "”Botar på den här servern” startar ihopfälld, och Mumcord kommer ihåg om du öppnade den.",
+            "Tilläggsfältet: tilläggsikoner har ingen ram längre, tilläggets egen bild eller färgbricka är hela ikonen.",
+            "Nytt meddelandefält: texten börjar vid vänsterkanten på en rad, växer till ungefär sex rader och rullar sedan. Ikonerna för Appar, fil, bild och GIF är en enhetlig uppsättning, och skicka-knappen är dämpad tills det finns något att skicka. Formateringsknapparna sitter i en liten pill på överkanten så länge markören står i fältet. En kanal som du inte får skriva i visar en notering i stället för ett tomt fält."
+          ]
+        },
+        {
+          "title": "Åtgärdat",
+          "items": [
+            "Kanalsökfältet högst upp i sidofältet linjerar med kanalnamnet i chattrubriken.",
+            "Aktivitetshistorik: namn fungerar som i chatten (klick öppnar profilen och menyn, dubbelklick ett privat meddelande), och botar dyker inte längre upp bland anslutningar, avhopp och flyttar.",
+            "Inbäddade spelare för YouTube och Twitch: helskärm och ”Kopiera länk” fungerar. Twitch körs bara på en webbplats, och Mumcords fönster är ingen sådan på macOS och Linux: kortet behåller sin bild, säger varför, och Spela öppnar strömmen i webbläsaren (#419).",
+            "Inställningar: kort sida vid sida är lika höga, och ett ”?” stannar vid sin långa etikett.",
+            "Inställningar → Skärmdelning → Hårdvaruacceleration: en lång status som ”Mjukvara, klarar upp till 1080p30” förblir högerjusterad.",
+            "Dialogrutor för kamera och skärmdelning: rullgardinerna använder appens egen design som i Inställningar.",
+            "Inställningar → Tillägg: korten har samma avstånd som på de andra sidorna, och varje kort har sin ikon.",
+            "Flikarna Medlemmar och Aktivitet stannar högst upp i högerkolumnen när en lång lista rullar."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.1",
       "teaser": "Kraschrapporter som du granskar själv och bara laddar upp om du vill, och kamerafixar för kameror som tidigare inte gav någon bild.",

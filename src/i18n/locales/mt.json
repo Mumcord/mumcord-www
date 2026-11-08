@@ -874,6 +874,26 @@
             "title": "Bots waħedhom",
             "body": "Taqsima “Bots fuq dan is-server” taħt il-lista tal-kanali turi kull bot b’dak li jagħmel, bħal relay, storja taċ-chat jew webhooks. Il-profil u l-menu, inklużi l-messaġġi privati, jaħdmu minn hemm.",
             "alt": "It-taqsima bil-bots fuq server"
+          },
+          {
+            "id": "channel-admin",
+            "title": "Immaniġġjar tal-kanali",
+            "body": "Bħala admin toħloq sub-kanali u kanali temporanji, teditja l-isem, id-deskrizzjoni, il-kanal ewlieni, il-pożizzjoni u l-limitu tal-utenti, torbot kanali u tħassarhom wara konferma li isemmi l-kanali u n-nies affettwati. Tara biss dak li s-server jippermetti, u rifjut juri r-raġuni tas-server."
+          },
+          {
+            "id": "channel-permissions",
+            "title": "Permessi u password tal-kanal",
+            "body": "Fit-tieqa tal-kanal it-tab Permessi juri min jista’ jagħmel xiex fil-kanal u jispjega kull tweġiba taħt “Għala?”. L-admins jeditjaw ir-regoli u l-gruppi, Mumcord iwissik qabel ma tissakkar barra, u qatt ma jiktbu fuq bidla li għamel xi ħadd ieħor. Tissettja jew tneħħi l-password tal-kanal fit-tab Password, bħal fil-client uffiċjali."
+          },
+          {
+            "id": "move-people",
+            "title": "Tmexxija tan-nies",
+            "body": "Fil-menu Amministrazzjoni tmexxi persuna waħda lejk jew lejn kanal tal-għażla tiegħek, jew lil kulħadd f’kanal f’daqqa. Ctrl-click u Shift-click jagħżlu bosta nies sabiex tkaxkarhom flimkien. Mumcord jgħidlek kemm waslu."
+          },
+          {
+            "id": "moderation",
+            "title": "Moderazzjoni fil-menu tal-persuna",
+            "body": "Taħt “Amministrazzjoni” tagħmel server mute jew server deafen lin-nies, tagħti priority speaker, u terġa’ tissettja kumment jew avatar. Kull azzjoni tidher biss meta jkollok id-dritt għaliha."
           }
         ]
       },
@@ -1018,6 +1038,16 @@
             "title": "Links tas-servers bħala cards",
             "body": "Link mumble:// fiċ-chat juri s-server, il-kanal, il-ping, in-nies online u l-verżjoni, b’“Ingħaqad”, “Żid mas-servers” u “Ikkopja l-link”. Iċ-ċifri jiġu mill-query pubbliku standard, qatt minn konnessjoni. L-ismijiet tal-utenti u l-passwords f’link qatt ma jintwerew u jitħallew barra meta tikkopja.",
             "alt": "Card għal link mumble:// bl-isem tas-server, il-kanal, il-ping, l-utenti u l-buttuna Ingħaqad"
+          },
+          {
+            "id": "message-bar",
+            "title": "Message bar ġdida",
+            "body": "Il-bar tikteb f’linja waħda u tikber mat-test sa madwar sitt linji. Il-formattjar jidher f’pillola żgħira fuq ix-xifer ta’ fuq waqt li l-cursor ikun fil-qasam, u l-buttuna tal-ibgħat issir attiva biss meta jkun hemm xi ħaġa x’tibgħat."
+          },
+          {
+            "id": "activity-notifications",
+            "title": "Notifiki tal-attività",
+            "body": "Meta xi ħadd jibda screen share, watch party jew attività ta’ plugin, Mumcord jinnotifikak bħal ma jagħmel għal messaġġ. L-istorja tal-attività tibqa’ fuq l-apparat tiegħek, anki wara restart, u tneħħiha fis-Settings taħt Privatezza."
           }
         ]
       },
@@ -1500,6 +1530,56 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.2",
+      "teaser": "Amministrazzjoni fil-menu tar-right-click: immaniġġja kanali, permessi u passwords, mexxi nies, agħmel server mute u deafen, flimkien ma’ message bar ġdida.",
+      "summary": "Mumcord jirċievi l-ewwel għodod tal-amministrazzjoni: timmaniġġja l-kanali, tara u teditja l-permessi, tissettja passwords tal-kanali, tmexxi nies u tmoderja, kollox biss fejn is-server jippermetti. Hemm ukoll notifiki għall-attività, message bar ġdida u messaġġi aktar ċari meta xi ħaġa tiġi rifjutata.",
+      "groups": [
+        {
+          "title": "Ġdid",
+          "items": [
+            "It-tmexxija tan-nies, taħt Amministrazzjoni ▸ fil-menus tal-persuna u tal-kanal: “Mexxi lejn il-kanal tiegħi”, “Mexxi lejn” b’lista ta’ kanali li tista’ tiffiltra u li turi l-limitu tal-utenti, u “Mexxi lil kulħadd lejn” għal kanal sħiħ. Ctrl-click (jew Ctrl+Spazju) u Shift-click jagħżlu bosta nies sabiex tkaxkarhom flimkien. Wara jgħidlek kemm waslu (“Tmexxew 28 minn 30 persuna lejn Raid. L-oħrajn ġew rifjutati.”).",
+            "Il-moderazzjoni fil-menu tal-persuna taħt “Amministrazzjoni ▸”: server mute, server deafen, priority speaker (stilla ħdejn ismu) u neħħi s-suppression jaħdmu minnufih. Erġa’ ssettja l-kumment u erġa’ ssettja l-avatar l-ewwel jistaqsu. Kull azzjoni tidher biss bid-dritt tas-server.",
+            "Password tal-kanal: fit-tab Password tat-tieqa tal-kanal tissettja jew tneħħi l-password biex tidħol f’kanal, bl-istess mod bħal fil-client uffiċjali ta’ Mumble.",
+            "Permessi tal-kanal: fit-tab Permessi tara min jista’ jagħmel xiex fil-kanal (✓, ✗ jew ? għal kull grupp u persuna). L-admins jeditjaw ir-regoli u l-gruppi, u panel “Għala?” jispjega kull tweġiba. Mumcord iwissik qabel ma tissakkar barra, jistaqsik qabel bidliet fir-regoli tas-server kollu u qatt ma jiktbu fuq bidla li għamel xi ħadd ieħor.",
+            "Immaniġġjar tal-kanali: fil-menu tal-kanal taħt “Amministrazzjoni ▸” toħloq sub-kanal jew kanal temporanju, teditja kanal (isem, deskrizzjoni, kanal ewlieni, pożizzjoni, limitu tal-utenti) u l-links tiegħu, torbtu mal-kanal tiegħek u tħassru wara konferma li isemmi s-sub-kanali u n-nies affettwati. F2 jeditja u Delete iħassar il-kanal magħżul.",
+            "Il-menus jistgħu jiftħu sub-menus: l-azzjonijiet tal-amministrazzjoni fil-menu ⋯ tas-server issa jinsabu taħt “Amministrazzjoni ▸” (“Lista tal-bans” għalissa), jidhru biss meta jkollok dritt fiha, bl-azzjonijiet ħomor l-aħħar wara diviżur. → jiftaħ sub-menu, ← jew Escape jmur lura.",
+            "Meta r-relay ta’ server jinbidel, Mumcord jgħid dan fiċ-ċentru tan-notifiki u bħala notifika, bil-“Afda r-relay ġdid” u “Dettalji”. Id-dettalji jqabblu l-marka tas-swaba’ l-qadima u l-ġdida.",
+            "L-istorja tal-attività: kull tip ta’ avveniment għandu ikona, u l-istorja tibqa’ fuq dan l-apparat, anki wara restart. Fis-Settings → Privatezza tneħħiha għas-servers kollha.",
+            "Notifiki tal-attività: meta xi ħadd jibda screen share, watch party jew attività ta’ plugin, Mumcord jinnotifikak bħal ma jagħmel għal messaġġ. Settings → Chat u Notifiki għandu swiċċ għal kull tip. Dħul, ħruġ u tmexxijiet huma mitfija awtomatikament.",
+            "Windows: Mumcord jirreġistra l-crashes nativi (kodiċi tal-eċċezzjoni, modulu u stack) biex ikunu jistgħu jiġu analizzati fir-rapport tal-crash."
+          ]
+        },
+        {
+          "title": "Imtejjeb",
+          "items": [
+            "Il-vuċijiet tal-menu m’għadhomx jispiċċaw b’“…”, fil-lingwi kollha.",
+            "Meta s-server jirrifjuta xi ħaġa, Mumcord jgħid x’inhi u fejn b’kliem sempliċi (“Ma tistax tmexxi nies f’Raid.”). Id-drittijiet li admin biddel waqt li int konness jidħlu fis-seħħ minnufih, mingħajr ma terġa’ tikkonnettja.",
+            "Meta r-relay jirrifjuta l-kamera, l-screen sharing jew il-fajls, Mumcord isemmi r-raġuni (mhux irreġistrat, mhux f’grupp permess, mhux fl-istess kanal, jinħtieġ reconnect) u juri ħruġ: “Kif tirreġistra” jew “Erġa’ ikkonnettja”. Fuq relay għal utenti rreġistrati biss, il-mistednin jaraw għala l-kamera u l-paperclip mhumiex disponibbli qabel ma jippruvaw.",
+            "Ir-radio buttons u l-checkboxes għandhom id-disinn proprju ta’ Mumcord kullimkien, b’focus ring ċar u appoġġ għal kuntrast għoli. Il-kards tal-għażliet bħal “Messaġġi privati minn” jenfasizzaw il-kard kollha.",
+            "Is-setup, “Kif trid titkellem?”: żewġ kards ċari b’spjegazzjoni qasira, is-sensittività taħt l-attivazzjoni bil-vuċi u l-key tal-push-to-talk dritt fil-kard tagħha. Kompli jistenna sakemm tiġi ssettjata key.",
+            "Peer-to-peer: “Dirett + relay (dejjem relay, jaħbi l-IP tiegħi)” issa huwa l-modalità rakkomandata u d-default għall-installazzjonijiet ġodda. Modalità li diġà tuża tibqa’ kif inhi.",
+            "It-tagħrif “Dan is-server m’għandux relay, għalhekk il-qsim tal-fajls mhuwiex disponibbli” jista’ jingħalaq għal kull server u jirritorna meta s-server jikseb relay u jerġa’ jitlefu.",
+            "“Bots fuq dan is-server” jibda mingħalaq, u Mumcord jiftakar jekk fthitux.",
+            "Strixxa tal-plugins: l-ikoni tal-plugins m’għadhomx għandhom qafas, l-istampa tal-plugin innifsu jew it-tile tal-kulur hija l-ikona kollha.",
+            "Message bar ġdida: it-test jibda mix-xifer tax-xellug f’linja waħda, jikber sa madwar sitt linji u mbagħad jiskrollja. L-ikoni għall-Apps, il-fajl, l-istampa u l-GIF huma sett konsistenti wieħed, u l-buttuna tal-ibgħat tibqa’ mitfija sakemm ikun hemm xi ħaġa x’tibgħat. Il-buttuni tal-formattjar jinsabu f’pillola żgħira fuq ix-xifer ta’ fuq waqt li l-cursor ikun fil-qasam. Kanal li ma tistax tikteb fih juri nota minflok qasam vojt."
+          ]
+        },
+        {
+          "title": "Imsewwi",
+          "items": [
+            "Il-qasam tat-tiftix tal-kanali fil-quċċata tas-sidebar jallinja mal-isem tal-kanal fl-header taċ-chat.",
+            "L-istorja tal-attività: l-ismijiet jaħdmu bħal fiċ-chat (klikk jiftaħ il-profil u l-menu, double-click jiftaħ messaġġ privat), u l-bots m’għadhomx jidhru mad-dħul, il-ħruġ u t-tmexxijiet.",
+            "Players inkorporati ta’ YouTube u Twitch: il-full screen u l-kopja tal-link jaħdmu. Twitch jaħdem biss fuq websajt, u t-tieqa ta’ Mumcord mhix waħda fuq macOS u Linux: il-kard iżżomm l-istampa tagħha, tgħid għala, u Play jiftaħ l-istream fil-browser (#419).",
+            "Settings: il-kards ħdejn xulxin għandhom l-istess għoli, u “?” jibqa’ ħdejn it-tikketta twila tiegħu.",
+            "Settings → Screen sharing → Hardware acceleration: status twil bħal “Software, iżomm sa 1080p30” jibqa’ allinjat fuq il-lemin.",
+            "Id-dialogs tal-kamera u tal-screen share: id-dropdowns jużaw id-disinn proprju tal-app bħal fis-Settings.",
+            "Settings → Plugins: il-kards għandhom l-istess spazju bħal fil-paġni l-oħra, u kull kard għandha l-ikona tagħha.",
+            "It-tabs Membri u Attività jibqgħu fil-quċċata tal-kolonna tal-lemin meta lista twila tiskrollja."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.1",
       "teaser": "Rapporti tal-crashes li tiċċekkja int innifsek u tgħolli biss jekk trid, u tiswijiet tal-kamera għal kameras li qabel ma taw ebda stampa.",

@@ -874,6 +874,26 @@
             "title": "Bots apart",
             "body": "Een sectie „Bots op deze server” onder de kanaallijst toont elke bot met wat hij doet, zoals relay, chatgeschiedenis of webhooks. Profiel en menu, privéberichten inbegrepen, werken vanaf daar.",
             "alt": "De sectie met de bots op een server"
+          },
+          {
+            "id": "channel-admin",
+            "title": "Kanaalbeheer",
+            "body": "Als beheerder maak je subkanalen en tijdelijke kanalen, bewerk je naam, beschrijving, bovenliggend kanaal, positie en gebruikerslimiet, koppel je kanalen en verwijder je ze na een bevestiging die de getroffen kanalen en mensen noemt. Je ziet alleen wat de server toestaat en een weigering toont de reden van de server."
+          },
+          {
+            "id": "channel-permissions",
+            "title": "Kanaalrechten en wachtwoord",
+            "body": "In het kanaalvenster toont het tabblad Rechten wie wat mag in het kanaal en legt elk antwoord uit onder „Waarom?”. Beheerders bewerken regels en groepen, Mumcord waarschuwt voordat je jezelf buitensluit en overschrijft nooit een wijziging van iemand anders. Een kanaalwachtwoord stel je in of wis je op het tabblad Wachtwoord, zoals in de officiële client."
+          },
+          {
+            "id": "move-people",
+            "title": "Mensen verplaatsen",
+            "body": "In het menu Beheer verplaats je één persoon naar jou of naar een kanaal naar keuze, of iedereen in een kanaal in één keer. Ctrl-klik en Shift-klik selecteren meerdere mensen zodat je ze samen sleept. Mumcord vertelt je hoeveel er zijn aangekomen."
+          },
+          {
+            "id": "moderation",
+            "title": "Moderatie in het persoonsmenu",
+            "body": "Onder „Beheer” demp je mensen op de server of maak je ze doof, geef je prioriteitsspreker en reset je een opmerking of avatar. Elke actie verschijnt alleen als je er het recht voor hebt."
           }
         ]
       },
@@ -1018,6 +1038,16 @@
             "title": "Serverlinks als kaarten",
             "body": "Een mumble://-link in de chat toont server, kanaal, ping, mensen online en versie, met „Betreden”, „Aan servers toevoegen” en „Link kopiëren”. De cijfers komen uit de standaard openbare query, nooit uit een verbinding. Gebruikersnamen en wachtwoorden in een link worden nooit getoond en bij het kopiëren weggelaten.",
             "alt": "Kaart voor een mumble://-link met servernaam, kanaal, ping, gebruikers en de knop Betreden"
+          },
+          {
+            "id": "message-bar",
+            "title": "Nieuwe berichtenbalk",
+            "body": "De balk typt op één regel en groeit mee met de tekst tot ongeveer zes regels. De opmaak verschijnt in een kleine pil op de bovenrand terwijl de cursor in het veld staat, en de verzendknop wordt pas actief als er iets te verzenden is."
+          },
+          {
+            "id": "activity-notifications",
+            "title": "Activiteitsmeldingen",
+            "body": "Als iemand een schermdeling, een watchparty of een pluginactiviteit start, meldt Mumcord dat zoals bij een bericht. De activiteitengeschiedenis blijft op je apparaat, ook na een herstart, en je wist haar in Instellingen onder Privacy."
           }
         ]
       },
@@ -1500,6 +1530,56 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.2",
+      "teaser": "Beheer in het rechtsklikmenu: beheer kanalen, rechten en wachtwoorden, verplaats mensen, demp en maak doof op de server, plus een nieuwe berichtenbalk.",
+      "summary": "Mumcord krijgt zijn eerste beheerhulpmiddelen: je beheert kanalen, bekijkt en bewerkt rechten, stelt kanaalwachtwoorden in, verplaatst mensen en modereert, alles alleen waar de server het toestaat. Er zijn ook meldingen voor activiteit, een nieuwe berichtenbalk en duidelijkere berichten wanneer iets wordt geweigerd.",
+      "groups": [
+        {
+          "title": "Nieuw",
+          "items": [
+            "Mensen verplaatsen, onder Beheer ▸ in de persoons- en kanaalmenu’s: „Naar mijn kanaal verplaatsen”, „Verplaatsen naar” met een filterbare kanaallijst die de gebruikerslimiet toont, en „Iedereen verplaatsen naar” voor een heel kanaal. Ctrl-klik (of Ctrl+spatie) en Shift-klik selecteren meerdere mensen zodat je ze samen sleept. Daarna staat er hoeveel er zijn aangekomen („28 van 30 mensen naar Raid verplaatst. De rest is geweigerd.”).",
+            "Moderatie in het persoonsmenu onder „Beheer ▸”: servermute, serverdoofmaken, prioriteitsspreker (een ster naast de naam) en dempen opheffen werken meteen. Opmerking resetten en avatar resetten vragen eerst bevestiging. Elke actie verschijnt alleen met het recht van de server.",
+            "Kanaalwachtwoord: op het tabblad Wachtwoord van het kanaalvenster stel je het wachtwoord om een kanaal binnen te gaan in of wis je het, net als in de officiële Mumble-client.",
+            "Kanaalrechten: op het tabblad Rechten zie je wie wat mag in het kanaal (✓, ✗ of ? per groep en persoon). Beheerders bewerken regels en groepen, en een paneel „Waarom?” legt elk antwoord uit. Mumcord waarschuwt voordat je jezelf buitensluit, vraagt bevestiging vóór wijzigingen aan de regels van de hele server en overschrijft nooit een wijziging van iemand anders.",
+            "Kanaalbeheer: in het kanaalmenu onder „Beheer ▸” maak je een subkanaal of tijdelijk kanaal, bewerk je een kanaal (naam, beschrijving, bovenliggend kanaal, positie, gebruikerslimiet) en de koppelingen ervan, koppel je het aan je kanaal en verwijder je het na een bevestiging die de getroffen subkanalen en mensen noemt. F2 bewerkt en Delete verwijdert het geselecteerde kanaal.",
+            "Menu’s kunnen submenu’s openen: beheeracties in het ⋯-menu van de server staan nu onder „Beheer ▸” („Banlijst” voorlopig), alleen zichtbaar als je er een recht in hebt, met rode acties als laatste achter een scheidingslijn. → opent een submenu, ← of Escape gaat terug.",
+            "Als de relay van een server verandert, meldt Mumcord dat in het meldingencentrum en als melding, met „Nieuwe relay vertrouwen” en „Details”. De details vergelijken de oude en nieuwe vingerafdruk.",
+            "Activiteitengeschiedenis: elk soort gebeurtenis heeft een pictogram en de geschiedenis blijft op dit apparaat, ook na een herstart. Onder Instellingen → Privacy wis je haar voor alle servers.",
+            "Activiteitsmeldingen: als iemand een schermdeling, een watchparty of een pluginactiviteit start, meldt Mumcord dat zoals bij een bericht. Instellingen → Chat & meldingen heeft een schakelaar per soort. Joins, vertrekken en verplaatsingen staan standaard uit.",
+            "Windows: Mumcord legt native crashes vast (uitzonderingscode, module en stack) zodat ze in het crashrapport kunnen worden geanalyseerd."
+          ]
+        },
+        {
+          "title": "Verbeterd",
+          "items": [
+            "Menu-items eindigen niet meer op „…”, in elke taal.",
+            "Als de server iets weigert, zegt Mumcord in gewone woorden wat en waar („Je mag geen mensen verplaatsen in Raid.”). Rechten die een beheerder wijzigt terwijl je verbonden bent, gaan meteen in, zonder opnieuw te verbinden.",
+            "Als de relay de camera, schermdeling of bestanden weigert, noemt Mumcord de reden (niet geregistreerd, niet in een toegestane groep, niet in hetzelfde kanaal, opnieuw verbinden nodig) en toont een uitweg: „Hoe registreer ik” of „Opnieuw verbinden”. Op een relay alleen voor geregistreerde gebruikers zien gasten waarom de camera en de paperclip niet beschikbaar zijn voordat ze het proberen.",
+            "Keuzerondjes en selectievakjes hebben overal Mumcords eigen ontwerp, met een duidelijke focusring en ondersteuning voor hoog contrast. Optiekaarten zoals „Privéberichten van” lichten de hele kaart op.",
+            "Instellen, „Hoe wil je praten?”: twee duidelijke kaarten met een korte uitleg, de gevoeligheid onder spraakactivering en de push-to-talk-toets direct in zijn kaart. Doorgaan wacht tot er een toets is ingesteld.",
+            "Peer-to-peer: „Direct + relay (altijd relay, verbergt mijn IP)” is nu de aanbevolen modus en de standaard voor nieuwe installaties. Een modus die je al gebruikt, blijft zoals hij is.",
+            "De hint „Deze server heeft geen relay, dus bestanden delen is niet beschikbaar” kun je per server sluiten en hij komt terug als de server een relay krijgt en weer verliest.",
+            "„Bots op deze server” begint ingeklapt en Mumcord onthoudt of je het hebt geopend.",
+            "Pluginbalk: plugin-pictogrammen hebben geen kader meer, de eigen afbeelding of kleurtegel van de plugin is het hele pictogram.",
+            "Nieuwe berichtenbalk: de tekst begint aan de linkerrand op één regel, groeit tot ongeveer zes regels en scrolt dan. De pictogrammen voor Apps, bestand, afbeelding en GIF zijn één consistente set, en de verzendknop blijft gedempt tot er iets te verzenden is. De opmaakknoppen staan in een kleine pil op de bovenrand terwijl de cursor in het veld staat. Een kanaal waarin je niet mag schrijven toont een notitie in plaats van een leeg veld."
+          ]
+        },
+        {
+          "title": "Opgelost",
+          "items": [
+            "Het kanaalzoekveld bovenaan de zijbalk loopt gelijk met de kanaalnaam in de chatkop.",
+            "Activiteitengeschiedenis: namen werken als in de chat (klik opent het profiel en menu, dubbelklik een privébericht) en bots verschijnen niet meer bij joins, vertrekken en verplaatsingen.",
+            "Ingebedde YouTube- en Twitch-spelers: volledig scherm en link kopiëren werken. Twitch draait alleen op een website en het venster van Mumcord is dat op macOS en Linux niet: de kaart houdt zijn afbeelding, zegt waarom, en Afspelen opent de stream in de browser (#419).",
+            "Instellingen: kaarten naast elkaar zijn even hoog en een „?” blijft naast zijn lange label staan.",
+            "Instellingen → Schermdelen → Hardwareversnelling: een lange status zoals „Software, houdt tot 1080p30 bij” blijft rechts uitgelijnd.",
+            "Camera- en schermdelingsvensters: de keuzelijsten gebruiken het eigen ontwerp van de app zoals in Instellingen.",
+            "Instellingen → Plug-ins: de kaarten hebben dezelfde tussenruimte als op de andere pagina’s en elke kaart heeft zijn pictogram.",
+            "De tabbladen Leden en Activiteit blijven bovenaan de rechterkolom staan als een lange lijst scrolt."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.1",
       "teaser": "Crashrapporten die je zelf controleert en alleen op verzoek uploadt, en camerafixes voor camera’s die eerder geen beeld gaven.",

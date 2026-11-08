@@ -874,6 +874,26 @@
             "title": "Boty zvlášť",
             "body": "Sekcia „Boty na tomto serveri“ pod zoznamom kanálov ukazuje každého bota s tým, čo robí, napríklad relay, históriu chatu alebo webhooky. Profil a ponuka, vrátane súkromných správ, fungujú priamo odtiaľ.",
             "alt": "Sekcia s botmi na serveri"
+          },
+          {
+            "id": "channel-admin",
+            "title": "Správa kanálov",
+            "body": "Ako admin vytváraš podkanály a dočasné kanály, upravuješ názov, popis, nadradený kanál, poradie a limit používateľov, prepájaš kanály a mažeš ich po potvrdení, ktoré uvedie dotknuté kanály a ľudí. Vidíš len to, čo ti server dovolí, a odmietnutie ukáže dôvod servera."
+          },
+          {
+            "id": "channel-permissions",
+            "title": "Oprávnenia kanála a heslo",
+            "body": "V okne kanála karta Oprávnenia ukazuje, kto čo môže v kanáli, a každú odpoveď vysvetlí pod „Prečo?“. Admini upravujú pravidlá a skupiny, Mumcord ťa varuje, skôr než by si sa sám vykázal, a nikdy neprepíše zmenu, ktorú urobil niekto iný. Heslo kanála nastavíš alebo vymažeš v karte Heslo, ako v oficiálnom klientovi."
+          },
+          {
+            "id": "move-people",
+            "title": "Presúvanie ľudí",
+            "body": "V menu Admin presunieš jednu osobu k sebe alebo do kanála podľa výberu, alebo všetkých z kanála naraz. Ctrl-klik a Shift-klik vyberú viac ľudí, aby si ich mohol potiahnuť spolu. Mumcord ti povie, koľko ich dorazilo."
+          },
+          {
+            "id": "moderation",
+            "title": "Moderovanie v menu osoby",
+            "body": "Pod „Admin“ ľudí stlmíš alebo ohlušíš pre všetkých, dáš prioritu rečníka a obnovíš komentár alebo avatara. Každá akcia sa zobrazí len vtedy, keď na ňu máš právo."
           }
         ]
       },
@@ -1018,6 +1038,16 @@
             "title": "Odkazy na servery ako karty",
             "body": "Odkaz mumble:// v chate ukáže server, kanál, ping, ľudí online a verziu, s „Pripojiť sa“, „Pridať k serverom“ a „Kopírovať odkaz“. Údaje pochádzajú zo štandardného verejného dotazu, nikdy z pripojenia. Mená a heslá v odkaze sa nikdy nezobrazia a pri kopírovaní sa vynechajú.",
             "alt": "Karta odkazu mumble:// s názvom servera, kanálom, pingom, používateľmi a tlačidlom Pripojiť sa"
+          },
+          {
+            "id": "message-bar",
+            "title": "Nový panel správ",
+            "body": "Panel píše v jednom riadku a rastie s textom do približne šiestich riadkov. Formátovanie sa ukáže v malej pilulke na hornom okraji, kým je kurzor v poli, a tlačidlo odoslať sa aktivuje, až keď je čo odoslať."
+          },
+          {
+            "id": "activity-notifications",
+            "title": "Upozornenia na aktivitu",
+            "body": "Keď niekto spustí zdieľanie obrazovky, watch party alebo aktivitu pluginu, Mumcord ti to oznámi ako správu. História aktivity ostáva na tvojom zariadení, aj po reštarte, a vymažeš ju v Nastaveniach pod Súkromie."
           }
         ]
       },
@@ -1500,6 +1530,56 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.2",
+      "teaser": "Admin v menu pravého klika: spravuj kanály, oprávnenia a heslá, presúvaj ľudí, stlmuj a ohlušuj cez server, k tomu nový panel správ.",
+      "summary": "Mumcord dostáva prvé nástroje pre adminov: spravuješ kanály, vidíš a upravuješ oprávnenia, nastavuješ heslá kanálov, presúvaš ľudí a moderuješ, všetko len tam, kde to server dovolí. K tomu pribudli upozornenia na aktivitu, nový panel správ a jasnejšie hlásenia, keď sa niečo odmietne.",
+      "groups": [
+        {
+          "title": "Nové",
+          "items": [
+            "Presúvanie ľudí, v Admin ▸ v menu osoby a kanála: „Presunúť do môjho kanála“, „Presunúť do“ s filtrovateľným zoznamom kanálov, ktorý ukazuje limit používateľov, a „Presunúť všetkých do“ pre celý kanál. Ctrl-klik (alebo Ctrl+Medzerník) a Shift-klik vyberú viac ľudí, aby si ich potiahol spolu. Potom sa zobrazí, koľko ich dorazilo („Presunutých 28 z 30 ľudí do Raid. Ostatní boli odmietnutí.“).",
+            "Moderovanie v menu osoby pod „Admin ▸“: stlmiť pre všetkých, ohlušiť pre všetkých, prioritný rečník (hviezdička vedľa mena) a zrušenie potlačenia pôsobia okamžite. Obnovenie komentára a obnovenie avatara sa najprv spýtajú. Každá akcia sa zobrazí len s právom na serveri.",
+            "Heslo kanála: v karte Heslo okna kanála nastavíš alebo vymažeš heslo na vstup do kanála, rovnako ako v oficiálnom klientovi Mumble.",
+            "Oprávnenia kanála: v karte Oprávnenia vidíš, kto čo môže v kanáli (✓, ✗ alebo ? pre každú skupinu a osobu). Admini upravujú pravidlá a skupiny a panel „Prečo?“ vysvetlí každú odpoveď. Mumcord ťa varuje, skôr než by si sa sám vykázal, pýta sa pred zmenami pravidiel celého servera a nikdy neprepíše zmenu, ktorú urobil niekto iný.",
+            "Správa kanálov: v menu kanála pod „Admin ▸“ vytvoríš podkanál alebo dočasný kanál, upravíš kanál (názov, popis, nadradený kanál, poradie, limit používateľov) a jeho prepojenia, prepojíš ho so svojím kanálom a zmažeš ho po potvrdení, ktoré uvedie dotknuté podkanály a ľudí. F2 upraví a Delete zmaže vybraný kanál.",
+            "Menu môžu otvárať podmenu: admin akcie v menu servera ⋯ sú teraz pod „Admin ▸“ (zatiaľ „Zoznam banov“), zobrazené len vtedy, keď máš v ňom právo, s červenými akciami na konci za oddeľovačom. → otvorí podmenu, ← alebo Escape sa vráti späť.",
+            "Keď sa zmení relay servera, Mumcord ti to povie v centre upozornení a ako upozornenie, s „Dôverovať novému relayu“ a „Podrobnosti“. Podrobnosti porovnávajú starý a nový odtlačok.",
+            "História aktivity: každý druh udalosti má ikonu a história zostane na tomto zariadení, aj po reštarte. V Nastavenia → Súkromie ju vymažeš pre všetky servery.",
+            "Upozornenia na aktivitu: keď niekto spustí zdieľanie obrazovky, watch party alebo aktivitu pluginu, Mumcord ti to oznámi ako správu. Nastavenia → Chat a upozornenia majú prepínač pre každý druh. Pripojenia, odchody a presuny sú predvolene vypnuté.",
+            "Windows: Mumcord zaznamenáva natívne pády (kód výnimky, modul a zásobník), aby sa dali analyzovať v hlásení o páde."
+          ]
+        },
+        {
+          "title": "Vylepšené",
+          "items": [
+            "Položky menu už nekončia na „…“, vo všetkých jazykoch.",
+            "Keď server niečo odmietne, Mumcord jasnými slovami povie, čo a kde („V Raid nesmieš presúvať ľudí.“). Práva, ktoré admin zmení počas tvojho pripojenia, platia hneď, bez opätovného pripojenia.",
+            "Keď relay odmietne kameru, zdieľanie obrazovky alebo súbory, Mumcord uvedie dôvod (nie si registrovaný, nie si v povolenej skupine, nie si v rovnakom kanáli, treba sa znova pripojiť) a ukáže východisko: „Ako sa zaregistrovať“ alebo „Znova pripojiť“. Na relayi len pre registrovaných vidia hostia ešte pred pokusom, prečo kamera a sponka nie sú dostupné.",
+            "Prepínače a zaškrtávacie políčka majú všade vlastný dizajn Mumcordu, s jasným rámikom zamerania a podporou vysokého kontrastu. Karty volieb ako „Súkromné správy od“ zvýraznia celú kartu.",
+            "Nastavenie, „Ako chceš hovoriť?“: dve jasné karty s krátkym vysvetlením, citlivosť pod hlasovou aktiváciou a kláves push-to-talk priamo v karte. „Pokračovať“ počká, kým sa nastaví kláves.",
+            "Peer-to-peer: „Priamo + relay (vždy relay, skrýva moju IP)“ je teraz odporúčaný režim a predvolený pre nové inštalácie. Režim, ktorý už používaš, ostáva tak, ako je.",
+            "Upozornenie „Tento server nemá relay, takže zdieľanie súborov nie je dostupné“ sa dá zavrieť pre každý server zvlášť a vráti sa, keď server dostane relay a znova o neho príde.",
+            "„Boty na tomto serveri“ začína zbalené a Mumcord si pamätá, či si to otvoril.",
+            "Lišta pluginov: ikony pluginov už nemajú rámik, vlastný obrázok pluginu alebo farebná dlaždica je celá ikona.",
+            "Nový panel správ: text začína na ľavom okraji v jednom riadku, rastie do približne šiestich riadkov a potom sa posúva. Ikony pre Aplikácie, súbor, obrázok a GIF sú jednotná sada a tlačidlo odoslať je stlmené, kým nie je čo odoslať. Tlačidlá formátovania sú v malej pilulke na hornom okraji, kým je kurzor v poli. Kanál, do ktorého nesmieš písať, ukáže poznámku namiesto prázdneho poľa."
+          ]
+        },
+        {
+          "title": "Opravené",
+          "items": [
+            "Pole vyhľadávania kanálov hore v bočnom paneli je zarovnané s názvom kanála v hlavičke chatu.",
+            "História aktivity: mená fungujú ako v chate (klik otvorí profil a menu, dvojklik súkromnú správu) a boty sa už neobjavujú pri pripojeniach, odchodoch a presunoch.",
+            "Vložené prehrávače YouTube a Twitch: celá obrazovka a „Kopírovať odkaz“ fungujú. Twitch beží len na webovej stránke a okno Mumcordu ňou na macOS a Linuxe nie je: karta si ponechá obrázok, povie prečo a Prehrať otvorí stream v prehliadači (#419).",
+            "Nastavenia: karty vedľa seba sú rovnako vysoké a „?“ ostáva pri svojom dlhom popise.",
+            "Nastavenia → Zdieľanie obrazovky → Hardvérová akcelerácia: dlhý stav ako „Softvérovo, zvládne až 1080p30“ ostáva zarovnaný doprava.",
+            "Dialógy kamery a zdieľania obrazovky: rozbaľovacie zoznamy používajú vlastný dizajn aplikácie ako v Nastaveniach.",
+            "Nastavenia → Pluginy: karty majú rovnaký odstup ako na ostatných stránkach a každá má svoju ikonu.",
+            "Karty Členovia a Aktivita ostávajú hore v pravom stĺpci, keď sa posúva dlhý zoznam."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.1",
       "teaser": "Hlásenia pádov, ktoré si sám skontroluješ a nahráš len na želanie, a opravy kamier, ktoré predtým nedávali obraz.",

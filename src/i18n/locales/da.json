@@ -874,6 +874,26 @@
             "title": "Bots for sig",
             "body": "Et afsnit »Bots på denne server« under kanallisten viser hver bot med det, den gør, for eksempel relay, chathistorik eller webhooks. Profil og menu, private beskeder inklusive, virker derfra.",
             "alt": "Afsnittet med botsene på en server"
+          },
+          {
+            "id": "channel-admin",
+            "title": "Kanaladministration",
+            "body": "Som admin opretter du underkanaler og midlertidige kanaler, redigerer navn, beskrivelse, overordnet kanal, position og brugergrænse, linker kanaler og sletter dem efter en bekræftelse, der nævner de berørte kanaler og personer. Du ser kun det, serveren tillader, og en afvisning viser serverens årsag."
+          },
+          {
+            "id": "channel-permissions",
+            "title": "Kanaltilladelser og adgangskode",
+            "body": "I kanalvinduet viser fanen Tilladelser, hvem der må hvad i kanalen, og forklarer hvert svar under »Hvorfor?«. Admins redigerer regler og grupper, Mumcord advarer, før du låser dig selv ude, og overskriver aldrig en ændring, som en anden har lavet. Du sætter eller fjerner en kanaladgangskode under fanen Adgangskode, som i den officielle klient."
+          },
+          {
+            "id": "move-people",
+            "title": "Flyt folk",
+            "body": "I Admin-menuen flytter du en person til dig eller til en kanal efter eget valg, eller alle i en kanal på én gang. Med Ctrl-klik og Shift-klik vælger du flere personer og trækker dem sammen. Mumcord fortæller dig, hvor mange der nåede frem."
+          },
+          {
+            "id": "moderation",
+            "title": "Moderering i personmenuen",
+            "body": "Under »Admin« server-muter eller server-døvgør du folk, giver prioriteret taler og nulstiller en kommentar eller avatar. Hver handling vises kun, når du har rettigheden til den."
           }
         ]
       },
@@ -1018,6 +1038,16 @@
             "title": "Serverlinks som kort",
             "body": "Et mumble://-link i chatten viser server, kanal, ping, folk online og version, med „Gå ind“, „Føj til servere“ og „Kopiér link“. Tallene kommer fra den almindelige offentlige forespørgsel, aldrig fra en forbindelse. Brugernavne og adgangskoder i et link vises aldrig og udelades ved kopiering.",
             "alt": "Kort for et mumble://-link med servernavn, kanal, ping, brugere og knappen Gå ind"
+          },
+          {
+            "id": "message-bar",
+            "title": "Ny beskedlinje",
+            "body": "Linjen skriver på én linje og vokser med teksten op til omkring seks linjer. Formateringen vises i en lille pille på overkanten, mens markøren er i feltet, og send-knappen bliver først aktiv, når der er noget at sende."
+          },
+          {
+            "id": "activity-notifications",
+            "title": "Aktivitetsnotifikationer",
+            "body": "Når nogen starter en skærmdeling, en watch party eller en plugin-aktivitet, giver Mumcord dig besked som ved en besked. Aktivitetshistorikken bliver på din enhed, også efter en genstart, og du sletter den i Indstillinger under Privatliv."
           }
         ]
       },
@@ -1500,6 +1530,56 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.2",
+      "teaser": "Admin i højreklik-menuen: administrer kanaler, tilladelser og adgangskoder, flyt folk, server-mute og døvgør, plus en ny beskedlinje.",
+      "summary": "Mumcord får sine første admin-værktøjer: Du administrerer kanaler, ser og redigerer tilladelser, sætter kanaladgangskoder, flytter folk og modererer, alt sammen kun der, hvor serveren tillader det. Dertil kommer notifikationer om aktivitet, en ny beskedlinje og tydeligere beskeder, når noget afvises.",
+      "groups": [
+        {
+          "title": "Nyt",
+          "items": [
+            "Flyt folk, under Admin ▸ i person- og kanalmenuerne: »Flyt til min kanal«, »Flyt til« med en filtrerbar kanalliste, der viser brugergrænsen, og »Flyt alle til« for en hel kanal. Med Ctrl-klik (eller Ctrl+mellemrum) og Shift-klik vælger du flere personer og trækker dem sammen. Bagefter står der, hvor mange der nåede frem (»28 af 30 personer flyttet til Raid. Resten blev afvist.«).",
+            "Moderering i personmenuen under »Admin ▸«: server-mute, server-døvgør, prioriteret taler (en stjerne ved navnet) og ophæv undertrykkelse virker med det samme. Nulstil kommentar og nulstil avatar spørger først. Hver handling vises kun med serverens rettighed.",
+            "Kanaladgangskode: Under fanen »Adgangskode« i kanalvinduet sætter eller fjerner du adgangskoden til at komme ind i en kanal, på samme måde som i den officielle Mumble-klient.",
+            "Kanaltilladelser: Under fanen »Tilladelser« ser du, hvem der må hvad i kanalen (✓, ✗ eller ? pr. gruppe og person). Admins redigerer regler og grupper, og et »Hvorfor?«-panel forklarer hvert svar. Mumcord advarer, før du låser dig selv ude, spørger før ændringer af hele serverens regler og overskriver aldrig en ændring, som en anden har lavet.",
+            "Kanaladministration: I kanalmenuen under »Admin ▸« opretter du en underkanal eller en midlertidig kanal, redigerer en kanal (navn, beskrivelse, overordnet kanal, position, brugergrænse) og dens links, linker den med din kanal og sletter den efter en bekræftelse, der nævner de berørte underkanaler og personer. F2 redigerer og Delete sletter den valgte kanal.",
+            "Menuer åbner undermenuer: Admin-handlinger i servermenuen ⋯ ligger nu under »Admin ▸« (indtil videre »Banliste«), vises kun, når du har en rettighed i den, og røde handlinger kommer til sidst bag en skillelinje. → åbner en undermenu, ← eller Escape går tilbage.",
+            "Når en servers relay skifter, siger Mumcord det i notifikationscenteret og som notifikation, med »Stol på nyt relay« og »Detaljer«. Detaljerne sammenligner det gamle og det nye fingeraftryk.",
+            "Aktivitetshistorik: Hver slags hændelse har et ikon, og historikken bliver på denne enhed, også efter en genstart. Under Indstillinger → Privatliv sletter du den for alle servere.",
+            "Aktivitetsnotifikationer: Når nogen starter en skærmdeling, en watch party eller en plugin-aktivitet, giver Mumcord dig besked som ved en besked. Under Indstillinger → Chat og notifikationer er der en kontakt for hver slags. Tilgange, afgange og flytninger er slået fra som standard.",
+            "Windows: Mumcord registrerer native nedbrud (undtagelseskode, modul og stak), så de kan analyseres i nedbrudsrapporten."
+          ]
+        },
+        {
+          "title": "Forbedret",
+          "items": [
+            "Menupunkter ender ikke længere på »…«, på alle sprog.",
+            "Når serveren afviser noget, siger Mumcord i klare vendinger hvad og hvor (»Du må ikke flytte folk i Raid.«). Rettigheder, som en admin ændrer, mens du er forbundet, gælder med det samme uden at forbinde igen.",
+            "Når relayet afviser kamera, skærmdeling eller filer, nævner Mumcord årsagen (ikke registreret, ikke i en tilladt gruppe, ikke i samme kanal, du skal forbinde igen) og viser en vej ud: »Sådan registrerer du dig« eller »Forbind igen«. På et relay kun for registrerede kan gæster på forhånd se, hvorfor kameraet og papirclipsen ikke er tilgængelige.",
+            "Radioknapper og afkrydsningsfelter har Mumcords eget design overalt, med en tydelig fokusring og understøttelse af høj kontrast. Valgkort som »Private beskeder fra« fremhæver hele kortet.",
+            "Opsætning, »Hvordan vil du tale?«: to tydelige kort med en kort forklaring, følsomheden under stemmeaktivering og push-to-talk-tasten lige i sit kort. »Fortsæt« venter, til en tast er sat.",
+            "Peer-to-peer: »Direkte + relay (altid relay, skjuler min IP)« er nu den anbefalede tilstand og standard for nye installationer. En tilstand, du allerede bruger, forbliver, som den er.",
+            "Beskeden »Denne server har intet relay, så fildeling er ikke tilgængelig« kan lukkes pr. server og kommer tilbage, når serveren får et relay og mister det igen.",
+            "»Bots på denne server« starter foldet sammen, og Mumcord husker, om du har åbnet den.",
+            "Plugin-linjen: Plugin-ikoner har ikke længere en ramme, pluginnets eget billede eller farvefelt er hele ikonet.",
+            "Ny beskedlinje: Teksten starter ved venstre kant på én linje, vokser op til omkring seks linjer og ruller derefter. Ikonerne til Apps, fil, billede og GIF er ét ensartet sæt, og send-knappen er dæmpet, indtil der er noget at sende. Formateringsknapperne sidder i en lille pille på overkanten, mens markøren er i feltet. En kanal, du ikke må skrive i, viser en note i stedet for et tomt felt."
+          ]
+        },
+        {
+          "title": "Rettet",
+          "items": [
+            "Kanalsøgefeltet øverst i sidepanelet flugter med kanalnavnet i chatoverskriften.",
+            "Aktivitetshistorik: Navne fungerer som i chatten (klik åbner profil og menu, dobbeltklik en privat besked), og bots dukker ikke længere op ved tilgange, afgange og flytninger.",
+            "Indlejrede afspillere til YouTube og Twitch: Fuld skærm og »Kopiér link« virker. Twitch kører kun på et websted, og Mumcords vindue er ikke et på macOS og Linux: Kortet beholder sit billede, siger hvorfor, og »Afspil« åbner streamen i browseren (#419).",
+            "Indstillinger: Kort ved siden af hinanden er lige høje, og et »?« bliver ved sin lange tekst.",
+            "Indstillinger → Skærmdeling → Hardwareacceleration: En lang status som »Software, klarer op til 1080p30« forbliver højrejusteret.",
+            "Kamera- og skærmdelingsdialoger: Rullelisterne bruger appens eget design som i Indstillinger.",
+            "Indstillinger → Plugins: Kortene har samme afstand som på de andre sider, og hvert kort har sit ikon.",
+            "Fanerne »Medlemmer« og »Aktivitet« bliver øverst i højre kolonne, når en lang liste ruller."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.1",
       "teaser": "Nedbrudsrapporter, du selv gennemgår og kun uploader, hvis du vil, og kamerarettelser til kameraer, der tidligere ikke gav noget billede.",
