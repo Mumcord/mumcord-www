@@ -3667,6 +3667,71 @@ p {
     transform: translateY(-22px) scale(1.1);
   }
 }
+/* The new arms: a slow sway at rest, either arm can point, a little hop and lean on pointing. */
+.mascot .m-arm-sway {
+  animation: m-arm-sway 3.6s ease-in-out infinite;
+}
+.mascot .m-arm-sway.m-r {
+  animation-name: m-arm-sway-r;
+}
+@keyframes m-arm-sway {
+  50% {
+    transform: rotate(-6deg);
+  }
+}
+@keyframes m-arm-sway-r {
+  50% {
+    transform: rotate(6deg);
+  }
+}
+.mascot .m-arm-point.m-r,
+.mascot.is-pointing.point-r .m-arm-point:not(.m-r),
+.mascot.is-pointing.point-r .m-arm-rest-r {
+  display: none;
+}
+.mascot.is-pointing.point-r .m-arm-point.m-r,
+.mascot.is-pointing.point-r .m-arm-rest {
+  display: inline;
+}
+.mascot .m-arm-point,
+.mascot .m-forearm,
+.mascot .m-lean,
+.mascot .m-face {
+  transition: transform 0.3s cubic-bezier(0.3, 1.45, 0.55, 1);
+}
+.mascot.is-pointing .m-arm-pop {
+  animation: m-point-in 0.32s ease-out;
+}
+.mascot.is-pointing.point-r .m-arm-pop {
+  animation-name: m-point-in-r;
+}
+@keyframes m-point-in {
+  0% {
+    transform: rotate(-62deg) scale(0.94);
+  }
+  55% {
+    transform: rotate(7deg);
+  }
+}
+@keyframes m-point-in-r {
+  0% {
+    transform: rotate(62deg) scale(0.94);
+  }
+  55% {
+    transform: rotate(-7deg);
+  }
+}
+.mascot.is-pointing .m-hop {
+  animation: m-hop 0.32s ease-out;
+}
+@keyframes m-hop {
+  30% {
+    transform: translateY(2px);
+  }
+  65% {
+    transform: translateY(-2.5px);
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .mascot * {
     animation: none !important;
