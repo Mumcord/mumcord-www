@@ -7,6 +7,7 @@ import plgEcho from "../assets/plugins/echolings.png";
 import plgMusic from "../assets/plugins/mumbot-music.png";
 import plgEve from "../assets/plugins/eve-fit.png";
 import plgSkyloom from "../assets/plugins/skyloom.png";
+import plgWhiteboard from "../assets/plugins/whiteboard.png";
 import { Picture, Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import mainDark from "../assets/shots/main-dark.png";
@@ -34,9 +35,9 @@ const shot = (name: string) => shots[`../assets/shots/${name}.png`].default;
 const noisy = wavePath({ seed: 7, width: 600, height: 80, points: 220, noise: 0.85, speech: 0.5 });
 const clean = wavePath({ seed: 7, width: 600, height: 80, points: 220, noise: 0.04, speech: 0.9 });
 const sp = t.spotlight5;
-const s5plugins = [plgPoll, plgDice, plgEcho, plgMusic, plgEve];
+const s5plugins = [plgPoll, plgDice, plgEcho, plgMusic, plgEve, plgWhiteboard];
 const pl = pluginsPage[lang];
-const hpIcons: Partial<Record<PluginId, ImageMetadata>> = { poll: plgPoll, dice: plgDice, echolings: plgEcho, "mumbot-music": plgMusic, "eve-fit": plgEve };
+const hpIcons: Partial<Record<PluginId, ImageMetadata>> = { poll: plgPoll, dice: plgDice, echolings: plgEcho, "mumbot-music": plgMusic, "eve-fit": plgEve, whiteboard: plgWhiteboard };
 // The 0.5.0 tiles: small drawn demos, no screenshots; names stay the same in every language.
 // The epic chips take each epic's status from the roadmap; an epic is done once its release is out.
 const released = new Set((await getReleases()).map((r) => r.version));

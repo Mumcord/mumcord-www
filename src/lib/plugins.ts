@@ -17,10 +17,10 @@ export const pluginPage = (id: string) => `${PLUGIN_DOCS_URL}plugins/${id}/`;
 export const pluginDocPage = (slug: string) => `${PLUGIN_DOCS_URL}${slug}/`;
 export const PLUGIN_SDK = 'mumcord-plugin-sdk = "0.6"';
 
-export type PluginId = "poll" | "dice" | "echolings" | "mumbot-music" | "eve-fit";
-export const PLUGIN_IDS: PluginId[] = ["poll", "dice", "echolings", "mumbot-music", "eve-fit"];
+export type PluginId = "poll" | "dice" | "echolings" | "mumbot-music" | "eve-fit" | "whiteboard";
+export const PLUGIN_IDS: PluginId[] = ["poll", "dice", "echolings", "mumbot-music", "eve-fit", "whiteboard"];
 /** Shown as "coming soon" until its release is confirmed. */
-export const PLUGIN_SOON: Partial<Record<PluginId, boolean>> = {};
+export const PLUGIN_SOON: Partial<Record<PluginId, boolean>> = { whiteboard: true };
 
 export const PLUGIN_QUICKSTART = `cargo install mumcord-plugin
 mumcord-plugin new my-plugin
@@ -243,6 +243,16 @@ const en: PluginsPageText = {
         "A “Copy fitting” button, and it’s free",
       ],
     },
+    whiteboard: {
+      name: "Whiteboard",
+      tagline: "One shared, endless board for everyone in the voice channel.",
+      points: [
+        "Pen, highlighter, shapes, arrows, sticky notes and text, with everyone’s cursor and strokes live",
+        "Present with a laser pointer while the others follow your view",
+        "Export as PNG, SVG, PDF or a board file, or post a picture to the chat",
+        "Travels through the server’s relay; the host decides who may draw",
+      ],
+    },
   },
   mock: {
     pollQuestion: "What do we play tonight?",
@@ -429,6 +439,16 @@ const de: PluginsPageText = {
         "Erkennt EFT-Fittings im Chat und zeigt eine Karte mit Schiff und Modulen",
         "Öffnet die volle Fitting-Ansicht offline, direkt in Mumcord",
         "Mit „Fitting kopieren“-Knopf, und kostenlos",
+      ],
+    },
+    whiteboard: {
+      name: "Whiteboard",
+      tagline: "Eine gemeinsame, endlose Tafel für alle im Sprachkanal.",
+      points: [
+        "Stift, Textmarker, Formen, Pfeile, Zettel und Text, mit Cursor und Strichen aller live",
+        "Präsentieren mit Laserpointer, während die anderen deiner Ansicht folgen",
+        "Export als PNG, SVG, PDF oder Board-Datei, oder als Bild in den Chat",
+        "Läuft über das Relay des Servers, und der Host bestimmt, wer zeichnen darf",
       ],
     },
   },

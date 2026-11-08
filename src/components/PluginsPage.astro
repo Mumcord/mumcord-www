@@ -8,6 +8,7 @@ import diceIcon from "../assets/plugins/dice.png";
 import echolingsIcon from "../assets/plugins/echolings.png";
 import musicIcon from "../assets/plugins/mumbot-music.png";
 import eveIcon from "../assets/plugins/eve-fit.png";
+import whiteboardIcon from "../assets/plugins/whiteboard.png";
 import { highlight } from "../lib/highlight";
 import { type Lang } from "../i18n";
 import { getRepoContributors } from "../lib/contributors";
@@ -41,7 +42,7 @@ const { lang } = Astro.props;
 const p = pluginsPage[lang];
 const m = p.mock;
 const people = await getRepoContributors(PLUGINS_REPO);
-const icons: Partial<Record<PluginId, ImageMetadata>> = { poll: pollIcon, dice: diceIcon, echolings: echolingsIcon, "mumbot-music": musicIcon, "eve-fit": eveIcon };
+const icons: Partial<Record<PluginId, ImageMetadata>> = { poll: pollIcon, dice: diceIcon, echolings: echolingsIcon, "mumbot-music": musicIcon, "eve-fit": eveIcon, whiteboard: whiteboardIcon };
 // `code` in the texts becomes <code>; everything else is escaped.
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const md = (s: string) => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>");
@@ -50,7 +51,7 @@ const shot = (name: string) => shotFiles[`../assets/shots/${name}.png`].default;
 const pollVotes = [2, 4, 1];
 const pollMax = Math.max(...pollVotes);
 // The bento layout: wide cards for the richer illustrations.
-const span: Record<PluginId, string> = { poll: "wide", dice: "", echolings: "", "mumbot-music": "wide", "eve-fit": "full" };
+const span: Record<PluginId, string> = { poll: "wide", dice: "", echolings: "", "mumbot-music": "wide", "eve-fit": "full", whiteboard: "full" };
 const safeIcons: Record<keyof typeof p.safe, string> = {
   sandbox: "M12 3 4 6.5v5.2c0 4.6 3.4 8.4 8 9.3 4.6-.9 8-4.7 8-9.3V6.5L12 3ZM9 12l2 2 4-4",
   permissions: "M2.5 12s3.5-6.5 9.5-6.5 9.5 6.5 9.5 6.5-3.5 6.5-9.5 6.5S2.5 12 2.5 12ZM12 14.8a2.8 2.8 0 1 0 0-5.6 2.8 2.8 0 0 0 0 5.6Z",
@@ -331,6 +332,19 @@ import Arrow from "./Arrow.astro";
                       </div>
                     </div>
                   </div>
+                )}
+                {id === "whiteboard" && (
+                  <svg class="mk-board" viewBox="0 0 480 220" role="presentation">
+                    <rect x="1" y="1" width="478" height="218" rx="14" fill="var(--bg-2)" stroke="var(--line)" />
+                    <path d="M40 150c30-60 70-80 110-50s60 40 100-10" fill="none" stroke="var(--violet)" stroke-width="5" stroke-linecap="round" />
+                    <rect x="280" y="40" width="80" height="54" rx="6" fill="none" stroke="var(--pink)" stroke-width="4" />
+                    <path d="M250 128h70m-12-10 12 10-12 10" fill="none" stroke="var(--muted)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                    <rect x="350" y="118" width="86" height="70" rx="4" fill="var(--peach)" opacity="0.9" transform="rotate(-4 393 153)" />
+                    <path d="M362 140h56M362 155h44M362 170h50" stroke="var(--bg)" stroke-width="4" stroke-linecap="round" opacity="0.6" transform="rotate(-4 393 153)" />
+                    <circle cx="200" cy="60" r="7" fill="var(--t-error, #ff4d6d)" opacity="0.85" />
+                    <path d="M200 60c-20 6-40 4-58 14" fill="none" stroke="var(--t-error, #ff4d6d)" stroke-width="3" stroke-linecap="round" opacity="0.35" />
+                    <path d="M120 176l10 26 5-11 11-4z" fill="var(--lilac)" />
+                  </svg>
                 )}
               </div>
             </section>
