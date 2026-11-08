@@ -1,0 +1,14 @@
+---
+// The arrow after links and buttons, as an icon instead of a text arrow.
+interface Props {
+  dir?: "right" | "left" | "down";
+}
+const { dir = "right" } = Astro.props;
+const d = {
+  right: "M5 12h14m-6-6 6 6-6 6",
+  left: "M19 12H5m6-6-6 6 6 6",
+  down: "M12 5v14m-6-6 6 6 6-6",
+}[dir];
+---
+
+<svg class:list={["ico-arrow", `ico-arrow-${dir}`]} viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" focusable="false"><path d={d} fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>

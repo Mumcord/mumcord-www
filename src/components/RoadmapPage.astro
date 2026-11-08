@@ -1,10 +1,10 @@
 ---
+// The roadmap at a glance: the epic in work as one card, the rest as quiet rows. Every epic
+// links to its own page (EpicPage.astro) with all groups, ticks and mockups.
 import { routes, type Lang } from "../i18n";
-import { roadmapPage, type Stage } from "../lib/roadmap";
+import { roadmapPage, resolveEpics, epicProgress, type Stage } from "../lib/roadmap";
 import { IDEA_URL } from "../lib/features";
-import { getReleases, REPO_URL } from "../lib/release";
-import { featuresPage } from "../lib/features";
-import { Picture, getImage } from "astro:assets";
+import { getReleases } from "../lib/release";
 
 interface Props {
   lang: Lang;
@@ -13,274 +13,122 @@ const { lang } = Astro.props;
 const page = roadmapPage[lang];
 const releases = await getReleases();
 // An epic counts as done once the GitHub release of its version is out.
-const released = new Set(releases.map((x) => x.version));
-const r = { ...page, epics: page.epics.map((s) => (s.version && released.has(s.version) ? { ...s, status: "done" as const } : s)) };
-const done = r.epics.filter((s) => s.status === "done");
-const next = r.epics.filter((s) => s.status === "now" || s.status === "planned");
-const later = r.epics.filter((s) => s.status === "later");
-const target = next[0];
-const zoom = featuresPage[lang];
-const mockupFiles = import.meta.glob<{ default: ImageMetadata }>("../assets/mockups/*.png", { eager: true });
-const mockup = (name: string) => mockupFiles[`../assets/mockups/${name}.png`].default;
-// Full-size WebP for the lightbox, so a click doesn't load the original PNG.
-const full = new Map<string, string>();
-for (const s of next)
-  for (const m of (s.groups ?? []).flatMap((g) => g.mockups ?? []))
-    full.set(m.shot, (await getImage({ src: mockup(m.shot), format: "webp", width: 2400, quality: 82 })).src);
-// "epic-4" → "04", "epic-3.1" → "3.1"; Epic Future has no number and gets the infinity sign.
-const num = (s: Stage) => {
-  const n = s.id.replace("epic-", "");
-  return n === "future" ? "∞" : n.includes(".") ? n : n.padStart(2, "0");
+const r = { ...page, epics: resolveEpics(page, new Set(releases.map((x) => x.version))) };
+const href = (s: Stage) => `${routes.roadmap[lang]}/${s.id}`;
+const progressLabel = (s: Stage) => {
+  const { done, total } = epicProgress(s);
+  return r.epicProgress.replace("{done}", String(done)).replace("{total}", String(total));
 };
-const count = (s: Stage) => (s.items?.length ?? 0) + (s.groups ?? []).reduce((n, g) => n + g.items.length, 0);
-// The line runs from the first node to the last and fills up to the next target (or the last done epic).
-const reached = target ? r.epics.indexOf(target) : done.length - 1;
-const progress = Math.max(0, Math.min(1, reached / Math.max(1, r.epics.length - 1)));
+const done = r.epics.filter((s) => s.status === "done");
+const open = r.epics.filter((s) => s.status !== "done");
+const current = open[0];
+const after = open.slice(1);
+const cur = current && epicProgress(current);
+import Arrow from "./Arrow.astro";
 ---
 
-<article class="wrap roadmap-page">
-  <header class="rm-hero">
+<article class="wrap roadmap-page rmx">
+  <header class="rmx-hero">
     <p class="label" data-reveal>{r.label}</p>
     <h1 class="rm-title" data-reveal>{r.title}</h1>
     <p class="rm-intro" data-reveal>{r.intro}</p>
-
-    <dl class="rm-stats" data-reveal>
-      <div>
-        <dt>{r.statDone}</dt>
-        <dd>{done.length}<span>/{r.epics.length}</span></dd>
-      </div>
-      <div>
-        <dt>{r.statReleases}</dt>
-        <dd>{releases.length}</dd>
-      </div>
+    <ol class="rmx-steps" aria-label={`${done.length}/${r.epics.length} ${r.statDone}`} data-reveal>
       {
-        target?.version && (
-          <div>
-            <dt>{r.statNext}</dt>
-            <dd class="rm-stat-next">v{target.version}</dd>
-          </div>
-        )
+        r.epics.map((s) => (
+          <li data-status={s === current ? "current" : s.status}>
+            <a href={href(s)} title={`${s.tag}: ${s.title}`}>
+              <span class="sr-only">
+                {s.tag}: {s.title} ({r.status[s.status]})
+              </span>
+            </a>
+          </li>
+        ))
       }
-    </dl>
-
-    <nav class="rm-track" aria-label={r.title} style={`--progress-f: ${progress}; --n: ${r.epics.length}`} data-reveal>
-      <ol>
-        {
-          r.epics.map((s) => (
-            <li data-status={s.status} data-target={s === target ? "" : undefined}>
-              <a href={`#${s.id}`}>
-                <span class="rm-node" aria-hidden="true">
-                  {s.status === "done" ? (
-                    <svg viewBox="0 0 24 24">
-                      <path d="M5 12.5l4.5 4.5L19 7.5" />
-                    </svg>
-                  ) : (
-                    num(s)
-                  )}
-                </span>
-                <span class="rm-track-tag">{s.tag}</span>
-                <span class="rm-track-title">{s.title}</span>
-                <span class="rm-track-status">
-                  {r.status[s.status]}
-                  {s.version && ` · v${s.version}`}
-                </span>
-              </a>
-            </li>
-          ))
-        }
-      </ol>
-    </nav>
+    </ol>
+    <p class="rmx-count" data-reveal>
+      {done.length}/{r.epics.length} {r.statDone} · {releases.length} {r.statReleases}
+    </p>
   </header>
 
   {
-    done.length > 0 && (
-      <section class="rm-section" aria-labelledby="rm-done-h">
-        <h2 id="rm-done-h" class="rm-h" data-reveal>
-          <span class="rm-h-dot" data-status="done" aria-hidden="true" />
-          {r.doneTitle}
-        </h2>
-        <div class="rm-done">
-          {done.map((s) => (
-            <article class="rm-card rm-card-done" id={s.id} data-reveal data-spot>
-              <span class="rm-num" aria-hidden="true">{num(s)}</span>
-              <p class="rm-meta">
-                <span>{s.tag}</span>
-                {s.version && <span class="pill">v{s.version}</span>}
-              </p>
-              <h3>
-                <a href={`#${s.id}`}>{s.title}</a>
-              </h3>
-              <p class="rm-summary">{s.summary}</p>
-              {s.groups && (
-                <ul class="rm-chips">
-                  {s.groups.map((g) => (
-                    <li>
-                      {g.title}
-                      {g.version && <span>v{g.version}</span>}
-                    </li>
-                  ))}
-                </ul>
-              )}
-              <details class="rm-details">
-                <summary>
-                  <span>{r.delivered.replace("{n}", String(count(s)))}</span>
-                  <span class="rm-more">{r.showAll}</span>
-                </summary>
-                {s.items && (
-                  <ul class="rm-list">
-                    {s.items.map((i) => (
-                      <li>{i}</li>
-                    ))}
-                  </ul>
-                )}
-                {s.groups?.map((g) => (
-                  <div class="rm-group">
-                    <h4>
-                      {g.title} {g.version && <span class="pill">v{g.version}</span>}
-                    </h4>
-                    <ul class="rm-list">
-                      {g.items.map((i) => (
-                        <li>{i}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </details>
-            </article>
-          ))}
-        </div>
-      </section>
-    )
-  }
-
-  {
-    next.length > 0 && (
-      <section class="rm-section" aria-labelledby="rm-next-h">
-        <h2 id="rm-next-h" class="rm-h" data-reveal>
-          <span class="rm-h-dot" data-status="planned" aria-hidden="true" />
-          {r.nextTitle}
-        </h2>
-        {next.map((s) => (
-          <article class="rm-feature" id={s.id} data-status={s.status} data-reveal>
-            <div class="rm-feature-head">
-              <span class="rm-num" aria-hidden="true">{num(s)}</span>
-              <p class="rm-meta">
-                <span>{s.tag}</span>
-                <span class="rm-status">
-                  <span class="live-dot" aria-hidden="true" />
-                  {r.status[s.status]}
-                </span>
-                {s.version && <span class="pill pill-new">v{s.version}</span>}
-              </p>
-              <h3>
-                <a href={`#${s.id}`}>{s.title}</a>
-              </h3>
-              <p class="rm-summary">{s.summary}</p>
+    current && cur && (
+      <section class="rmx-now" aria-labelledby="rmx-now-h" data-reveal>
+        <div class="rmx-now-main">
+          <p class="rm-meta">
+            <span class="rm-status">
+              <span class="live-dot" aria-hidden="true" />
+              {r.status[current.status]}
+            </span>
+            <span>{current.tag}</span>
+            {current.version && <span class="pill">v{current.version}</span>}
+          </p>
+          <h2 id="rmx-now-h">
+            <a href={href(current)}>{current.title}</a>
+          </h2>
+          <p class="rm-summary">{current.summary}</p>
+          {cur.total > 0 && (
+            <div class="epic-progress">
+              <span class="epic-bar" style={`--p: ${cur.done / cur.total}`} aria-hidden="true" />
+              <span>{progressLabel(current)}</span>
             </div>
-            {s.items && (
-              <ul class="rm-list">
-                {s.items.map((i) => (
-                  <li>{i}</li>
-                ))}
-              </ul>
-            )}
-            {s.groups && (
-              <div class="rm-bento">
-                {s.groups.map((g, i) => (
-                  <section class="rm-card rm-tile" data-spot style={`--i: ${i}`}>
-                    <h4>
-                      <span>{g.title}</span>
-                      <span class="rm-count">{g.done ? `${g.done.length}/${g.items.length}` : g.items.length}</span>
-                    </h4>
-                    <ul class="rm-list">
-                      {g.items.map((x, j) => (
-                        <li class:list={[{ "is-done": g.done?.includes(j) }]}>
-                          {g.done?.includes(j) && <span class="sr-only">{r.status.done}: </span>}
-                          {x}
-                        </li>
-                      ))}
-                    </ul>
-                  </section>
-                ))}
-              </div>
-            )}
-            {s.groups?.some((g) => g.mockups?.length) && (
-              <div class="rm-mockups">
-                <div class="rm-mockups-head">
-                  <h4>{r.mockupsTitle}</h4>
-                  <div class="rm-mockups-nav">
-                    <p>{r.mockupsNote}</p>
-                    <button type="button" aria-label={zoom.prev} data-strip-prev>‹</button>
-                    <button type="button" aria-label={zoom.next} data-strip-next>›</button>
-                  </div>
-                </div>
-                <ul class="rm-strip" data-strip>
-                  {s.groups.flatMap((g) =>
-                    (g.mockups ?? []).map((m) => (
-                      <li>
-                        <figure>
-                          <a class="rm-shot" href={full.get(m.shot)} aria-label={`${zoom.zoom}: ${m.caption}`} data-lightbox data-caption={m.caption} data-alt={m.caption}>
-                            <Picture src={mockup(m.shot)} formats={["avif", "webp"]} widths={[480, 880]} sizes="(min-width: 960px) 440px, 78vw" alt={m.caption} loading="lazy" />
-                          </a>
-                          <figcaption>
-                            <span>{m.caption}</span>
-                            <a href={`${REPO_URL}/issues/${m.issue}`} rel="noopener">#{m.issue}</a>
-                          </figcaption>
-                        </figure>
-                      </li>
-                    )),
-                  )}
-                </ul>
-              </div>
-            )}
-          </article>
-        ))}
+          )}
+          <p>
+            <a class="btn btn-small" href={href(current)}>{r.epicOpen}<Arrow /></a>
+          </p>
+        </div>
+        {current.groups && (
+          <ul class="rmx-groups">
+            {current.groups.map((g) => (
+              <li>
+                <span>{g.title}</span>
+                <span class="rmx-groups-n">{`${g.done?.length ?? 0}/${g.items.length}`}</span>
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
     )
   }
 
   {
-    later.length > 0 && (
-      <section class="rm-section" aria-labelledby="rm-later-h">
-        <h2 id="rm-later-h" class="rm-h" data-reveal>
-          <span class="rm-h-dot" data-status="later" aria-hidden="true" />
-          {r.laterTitle}
-        </h2>
-        <div class="rm-later">
-          {later.map((s) => (
-            <article class="rm-card rm-card-later" id={s.id} data-reveal data-spot>
-              <span class="rm-num" aria-hidden="true">{num(s)}</span>
-              <p class="rm-meta">
-                <span>{s.tag}</span>
-                <span>{r.status[s.status]}</span>
-              </p>
-              <h3>
-                <a href={`#${s.id}`}>{s.title}</a>
-              </h3>
-              <p class="rm-summary">{s.summary}</p>
-              {s.items && (
-                <ul class="rm-list">
-                  {s.items.map((i) => (
-                    <li>{i}</li>
-                  ))}
-                </ul>
-              )}
-              {s.groups?.map((g) => (
-                <div class="rm-group">
-                  <h4>{g.title}</h4>
-                  <ul class="rm-list">
-                    {g.items.map((x, j) => (
-                      <li class:list={[{ "is-done": g.done?.includes(j) }]}>
-                        {g.done?.includes(j) && <span class="sr-only">{r.status.done}: </span>}
-                        {x}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </article>
+    after.length > 0 && (
+      <section class="rmx-section" aria-labelledby="rmx-after-h">
+        <h2 id="rmx-after-h" class="rmx-h" data-reveal>{r.laterTitle}</h2>
+        <ul class="rmx-rows">
+          {after.map((s) => {
+            const p = epicProgress(s);
+            return (
+              <li data-reveal>
+                <a href={href(s)}>
+                  <span class="rmx-tag">{s.tag}</span>
+                  <h3>{s.title}</h3>
+                  <span class="rmx-state">{p.done > 0 ? `${p.done}/${p.total}` : s.version ? `v${s.version}` : r.status[s.status]}</span>
+                  <p>{s.summary}</p>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    )
+  }
+
+  {
+    done.length > 0 && (
+      <section class="rmx-section" aria-labelledby="rmx-done-h">
+        <h2 id="rmx-done-h" class="rmx-h" data-reveal>{r.doneTitle}</h2>
+        <ul class="rmx-rows">
+          {[...done].reverse().map((s) => (
+            <li data-reveal>
+              <a href={href(s)}>
+                <span class="rmx-tag">{s.tag}</span>
+                <h3>{s.title}</h3>
+                <span class="rmx-state is-done">✓ {s.version ? `v${s.version}` : r.status.done}</span>
+                <p>{s.summary}</p>
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
     )
   }
@@ -290,16 +138,7 @@ const progress = Math.max(0, Math.min(1, reached / Math.max(1, r.epics.length - 
     <p>{r.ideaBody}</p>
     <p class="fp-actions">
       <a class="btn btn-small" href={IDEA_URL} rel="noopener">{r.idea}</a>
-      <a class="text-link" href={routes.changelog[lang]}>{r.changelog} →</a>
+      <a class="text-link" href={routes.changelog[lang]}>{r.changelog}<Arrow /></a>
     </p>
   </section>
-  <dialog class="lightbox" data-lightbox-dialog aria-label={zoom.zoom}>
-    <figure>
-      <img alt="" data-lightbox-img />
-      <figcaption data-lightbox-caption></figcaption>
-    </figure>
-    <button type="button" class="lb-btn lb-close" data-lightbox-close aria-label={zoom.close}>×</button>
-    <button type="button" class="lb-btn lb-prev" data-lightbox-prev aria-label={zoom.prev}>‹</button>
-    <button type="button" class="lb-btn lb-next" data-lightbox-next aria-label={zoom.next}>›</button>
-  </dialog>
 </article>

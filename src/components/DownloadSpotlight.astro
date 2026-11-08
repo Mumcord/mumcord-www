@@ -41,10 +41,10 @@ const panels = platforms.map((p) => {
     .sort((x, y) => kindOrder.indexOf(x.kind) - kindOrder.indexOf(y.kind) || (x.arch === "arm64" ? 1 : 0) - (y.arch === "arm64" ? 1 : 0));
   return { p, main, alts };
 });
+import Arrow from "./Arrow.astro";
 ---
 
-<div class="dl-spot" data-dl-spot data-os="windows">
-  <div class="dl-aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="dl-spot" data-dl-spot data-os="windows" data-version={release?.version}>
 
   <div class="dl-tabs" role="tablist" aria-label={s.pick}>
     {
@@ -66,21 +66,12 @@ const panels = platforms.map((p) => {
   </div>
 
   <p class="dl-mobile" data-dl-mobile hidden>
-    {s.mobile} <a href={`${routes.roadmap[lang]}`}>{s.mobileLink} →</a>
+    {s.mobile} <a href={`${routes.roadmap[lang]}`}>{s.mobileLink}<Arrow /></a>
   </p>
 
   {
     panels.map(({ p, main, alts }) => (
       <div class="dl-panel" role="tabpanel" data-for={p}>
-        <div class="dl-orb" aria-hidden="true">
-          <span class="dl-ring" />
-          <span class="dl-ring" />
-          <span class="dl-ring" />
-          <svg viewBox="0 0 24 24" width="72" height="72">
-            <path fill="currentColor" d={PLATFORM_GLYPHS[p]} />
-          </svg>
-        </div>
-
         <div class="dl-body">
           <p class="dl-kicker">
             <span class="dl-detected" data-dl-detected hidden>
@@ -89,7 +80,7 @@ const panels = platforms.map((p) => {
             </span>
             {release && (
               <span>
-                Mumcord {release.version}
+                Mumcord <span data-dl-ver>{release.version}</span>
                 {release.prerelease && ` · ${t.prerelease}`}
               </span>
             )}
@@ -102,7 +93,7 @@ const panels = platforms.map((p) => {
           <div class="dl-buttons">
             {main.length ? (
               main.map((a, i) => (
-                <a class="dl-btn" href={a.url} rel="noopener" data-arch={a.arch} data-main={i === 0 ? "" : undefined}>
+                <a class="dl-btn" href={a.url} rel="noopener" data-platform={p} data-kind={a.kind} data-arch={a.arch} data-name={a.name} data-main={i === 0 ? "" : undefined}>
                   <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
                     <path d="M12 4v11M7 10l5 5 5-5M5 20h14" />
                   </svg>
@@ -110,7 +101,7 @@ const panels = platforms.map((p) => {
                     {s.button}
                     {main.length > 1 && <span class="dl-btn-arch">{label(p, a)}</span>}
                   </span>
-                  <span class="dl-btn-size">{formatSize(a.size)}</span>
+                  <span class="dl-btn-size" data-size>{formatSize(a.size)}</span>
                 </a>
               ))
             ) : (
@@ -119,13 +110,15 @@ const panels = platforms.map((p) => {
               </a>
             )}
           </div>
-          {main[0] && <p class="dl-file">{main.map((a) => a.name).join(" · ")}</p>}
+          {main[0] && <p class="dl-file" data-dl-file>{main[0].name}</p>}
 
           {p !== "linux" && release?.signed[p] ? (
             <p class="dl-signed">{t.signed[p]}</p>
           ) : (
             <p class="dl-warn">{t.platforms[p].warn}</p>
           )}
+
+        </div>
 
           {(alts.length > 0 || brew[p] || (p === "linux" && release?.installer)) && (
             <div class="dl-also">
@@ -156,10 +149,10 @@ const panels = platforms.map((p) => {
                 <ul class="dl-alts">
                   {alts.map((a) => (
                     <li data-kind={a.kind} data-arch={a.arch}>
-                      <a href={a.url} rel="noopener">
+                      <a href={a.url} rel="noopener" data-platform={p} data-kind={a.kind} data-arch={a.arch}>
                         <span class="dl-alt-kind">{s.kinds[a.kind]}</span>
                         <span class="dl-alt-arch">{s.arch[a.arch]}</span>
-                        <span class="dl-alt-size">{formatSize(a.size)}</span>
+                        <span class="dl-alt-size" data-size>{formatSize(a.size)}</span>
                         <span class="dl-alt-rec">{s.recommended}</span>
                       </a>
                     </li>
@@ -168,7 +161,6 @@ const panels = platforms.map((p) => {
               )}
             </div>
           )}
-        </div>
       </div>
     ))
   }

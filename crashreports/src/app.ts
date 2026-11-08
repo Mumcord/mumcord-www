@@ -1,3 +1,4 @@
+import { siteRoutes, type SiteFeed } from './site.ts';
 import { readFileSync } from 'node:fs';
 import { Hono, type Context, type MiddlewareHandler } from 'hono';
 import { bodyLimit } from 'hono/body-limit';
@@ -58,6 +59,8 @@ export interface AppDeps {
   now?: () => number;
   /** Where failed sign-ins are logged (username only); defaults to console.warn. */
   authLog?: (msg: string) => void;
+  /** Public release and changelog feed for mumcord.app (`/api/site`); off when not given. */
+  siteFeed?: SiteFeed;
   /** Returns the client IP for rate limiting (never stored). */
   getClientIp?: (c: { req: { header(name: string): string | undefined } }, raw: unknown) => string;
 }
@@ -207,6 +210,7 @@ export function createApp(deps: AppDeps) {
   );
 
   app.get('/healthz', (c) => c.json({ ok: true }));
+  if (deps.siteFeed) app.route('/api/site', siteRoutes(deps.siteFeed));
 
   // ---- public ingest ----
   app.post(

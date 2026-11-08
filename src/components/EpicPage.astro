@@ -1,0 +1,154 @@
+---
+// One epic in full: every group with its ticked items, the mockups and the way to the
+// neighbouring epics. The roadmap page itself only shows the overview.
+import { routes, type Lang } from "../i18n";
+import { roadmapPage, resolveEpics, epicNum, epicProgress, type Stage } from "../lib/roadmap";
+import { getReleases, REPO_URL } from "../lib/release";
+import { featuresPage } from "../lib/features";
+import { Picture, getImage } from "astro:assets";
+
+interface Props {
+  lang: Lang;
+  id: string;
+}
+const { lang, id } = Astro.props;
+const r = roadmapPage[lang];
+const releases = await getReleases();
+const epics = resolveEpics(r, new Set(releases.map((x) => x.version)));
+const i = epics.findIndex((e) => e.id === id);
+const s = epics[i];
+const prev: Stage | undefined = epics[i - 1];
+const next: Stage | undefined = epics[i + 1];
+const { done, total } = epicProgress(s);
+const zoom = featuresPage[lang];
+const base = routes.roadmap[lang];
+const mockupFiles = import.meta.glob<{ default: ImageMetadata }>("../assets/mockups/*.png", { eager: true });
+const mockup = (name: string) => mockupFiles[`../assets/mockups/${name}.png`].default;
+const mockups = (s.groups ?? []).flatMap((g) => g.mockups ?? []);
+const full = new Map<string, string>();
+for (const m of mockups) full.set(m.shot, (await getImage({ src: mockup(m.shot), format: "webp", width: 2400, quality: 82 })).src);
+import Arrow from "./Arrow.astro";
+---
+
+<article class="wrap epic-page" data-status={s.status}>
+  <a class="epic-back" href={base}><Arrow dir="left" />{r.epicBack}</a>
+
+  <header class="epic-head">
+    <span class="rm-num" aria-hidden="true">{epicNum(s)}</span>
+    <p class="rm-meta" data-reveal>
+      <span>{s.tag}</span>
+      <span class="rm-status">{r.status[s.status]}</span>
+      {s.version && <span class="pill">v{s.version}</span>}
+    </p>
+    <h1 class="h2" data-reveal>{s.title}</h1>
+    <p class="epic-summary" data-reveal>{s.summary}</p>
+    {
+      total > 0 && (
+        <div class="epic-progress" data-reveal>
+          <span class="epic-bar" style={`--p: ${done / total}`} aria-hidden="true" />
+          <span>{r.epicProgress.replace("{done}", String(done)).replace("{total}", String(total))}</span>
+        </div>
+      )
+    }
+  </header>
+
+  {
+    s.items && (
+      <ul class="rm-list epic-items">
+        {s.items.map((x) => (
+          <li class:list={[{ "is-done": s.status === "done" }]}>{x}</li>
+        ))}
+      </ul>
+    )
+  }
+
+  {
+    s.groups && (
+      <div class="rm-bento epic-groups">
+        {s.groups.map((g, gi) => (
+          <section class="rm-card rm-tile" style={`--i: ${gi}`} data-reveal>
+            <h2>
+              <span>{g.title}</span>
+              <span class="rm-count">
+                {s.status === "done" ? g.items.length : g.done ? `${g.done.length}/${g.items.length}` : g.items.length}
+                {g.version && ` · v${g.version}`}
+              </span>
+            </h2>
+            <ul class="rm-list">
+              {g.items.map((x, j) => {
+                const ok = s.status === "done" || g.done?.includes(j);
+                return (
+                  <li class:list={[{ "is-done": ok }]}>
+                    {ok && <span class="sr-only">{r.status.done}: </span>}
+                    {x}
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        ))}
+      </div>
+    )
+  }
+
+  {
+    mockups.length > 0 && (
+      <section class="rm-mockups" aria-labelledby="epic-mockups-h">
+        <div class="rm-mockups-head">
+          <h2 id="epic-mockups-h">{r.mockupsTitle}</h2>
+          <div class="rm-mockups-nav">
+            <p>{r.mockupsNote}</p>
+            <button type="button" aria-label={zoom.prev} data-strip-prev>‹</button>
+            <button type="button" aria-label={zoom.next} data-strip-next>›</button>
+          </div>
+        </div>
+        <ul class="rm-strip" data-strip>
+          {mockups.map((m) => (
+            <li>
+              <figure>
+                <a class="rm-shot" href={full.get(m.shot)} aria-label={`${zoom.zoom}: ${m.caption}`} data-lightbox data-caption={m.caption} data-alt={m.caption}>
+                  <Picture src={mockup(m.shot)} formats={["avif", "webp"]} widths={[480, 880]} sizes="(min-width: 960px) 440px, 78vw" alt={m.caption} loading="lazy" />
+                </a>
+                <figcaption>
+                  <span>{m.caption}</span>
+                  <a href={`${REPO_URL}/issues/${m.issue}`} rel="noopener">#{m.issue}</a>
+                </figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <nav class="epic-nav" aria-label={r.title}>
+    {
+      prev ? (
+        <a href={`${base}/${prev.id}`}>
+          <span><Arrow dir="left" />{r.epicPrev}</span>
+          <strong>{prev.tag} · {prev.title}</strong>
+        </a>
+      ) : (
+        <span />
+      )
+    }
+    {
+      next && (
+        <a class="epic-nav-next" href={`${base}/${next.id}`}>
+          <span>{r.epicNext}<Arrow /></span>
+          <strong>{next.tag} · {next.title}</strong>
+        </a>
+      )
+    }
+  </nav>
+
+  <dialog class="lightbox" data-lightbox-dialog aria-label={zoom.zoom}>
+    <figure>
+      <img alt="" data-lightbox-img />
+      <figcaption data-lightbox-caption></figcaption>
+    </figure>
+    <button type="button" class="lb-btn lb-close" data-lightbox-close aria-label={zoom.close}>×</button>
+    <button type="button" class="lb-btn lb-prev" data-lightbox-prev aria-label={zoom.prev}>‹</button>
+    <button type="button" class="lb-btn lb-next" data-lightbox-next aria-label={zoom.next}>›</button>
+  </dialog>
+</article>

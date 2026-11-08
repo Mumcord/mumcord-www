@@ -52,6 +52,7 @@ const columns = [
       { label: t.idea, href: IDEA_URL, external: true },
       { label: t.bug, href: BUG_URL, external: true },
       { label: t.issues, href: ISSUES_URL, external: true },
+      { label: t.contributors, href: `${REPO_URL}/graphs/contributors`, external: true },
     ],
   },
   {
@@ -63,20 +64,21 @@ const columns = [
     ],
   },
 ];
+import Mimo from "./Mimo.astro";
 ---
 
 <footer class="site-footer">
   <div class="wrap">
     <section class="footer-cta" aria-labelledby="footer-cta-h">
-      <div class="footer-cta-glow" aria-hidden="true"></div>
       <div class="footer-cta-text">
         <h2 id="footer-cta-h">{t.ctaTitle}</h2>
         <p>{t.ctaBody}</p>
       </div>
       <div class="footer-cta-actions">
-        <a class="btn btn-glow" href={download}>{t.ctaDownload}</a>
+        <a class="btn btn-glow" href={download} data-mimo-target>{t.ctaDownload}</a>
         <a class="btn btn-ghost" href={routes.server[lang]}>{t.ctaServer}</a>
       </div>
+      <Mimo id="cta" role="download" class="mimo-cta" />
       <ul class="footer-os" aria-label={t.platforms}>
         <li>Linux</li>
         <li>Windows</li>

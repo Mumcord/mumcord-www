@@ -73,6 +73,8 @@ function setArch(spot: HTMLElement, arch: Arch) {
     if (!match || btns.length < 2) continue;
     for (const b of btns) b.toggleAttribute("data-main", b === match);
     box.prepend(match);
+    const file = box.parentElement?.querySelector<HTMLElement>("[data-dl-file]");
+    if (file && match.dataset.name) file.textContent = match.dataset.name;
   }
 }
 

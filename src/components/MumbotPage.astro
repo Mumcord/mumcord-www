@@ -43,6 +43,7 @@ const bots = [
   { id: "plugins", ...p.plugins, code: MUMBOT_CODE.plugins, file: "bot.toml", docs: mumbotDoc("plugins"), from: "0.3.0" },
   { id: "testbot", ...p.testbot, code: MUMBOT_CODE.testbot, file: "Terminal", docs: MUMBOT_CLI_URL },
 ];
+import Arrow from "./Arrow.astro";
 ---
 
 <article class="wrap mumbot-page">
@@ -91,7 +92,7 @@ const bots = [
               </figcaption>
               <pre><code set:html={highlight(b.code, langOf(b.file))} /></pre>
             </figure>
-            <a class="text-link" href={b.docs} rel="noopener">{p.docs} →</a>
+            <a class="text-link" href={b.docs} rel="noopener">{p.docs}<Arrow /></a>
           </section>
         ))
       }
@@ -114,7 +115,7 @@ const bots = [
                     <span class="mb-dl-file">
                       {a.name} · {formatSize(a.size)}
                     </span>
-                    <span class="mb-dl-arrow" aria-hidden="true">↓</span>
+                    <span class="mb-dl-arrow" aria-hidden="true"><Arrow dir="down" /></span>
                   </a>
                 </li>
               )
@@ -123,7 +124,7 @@ const bots = [
         </ul>
       ) : (
         <p data-reveal>
-          <a class="text-link" href={MUMBOT_RELEASES_URL} rel="noopener">{p.noRelease} →</a>
+          <a class="text-link" href={MUMBOT_RELEASES_URL} rel="noopener">{p.noRelease}<Arrow /></a>
         </p>
       )
     }
@@ -136,11 +137,11 @@ const bots = [
       <pre><code set:html={highlight(MUMBOT_CODE.docker(version), "shell")} /></pre>
     </figure>
     <p class="mb-sums" data-reveal>
-      <a class="text-link" href={MUMBOT_EXAMPLES_URL} rel="noopener">{p.examples} →</a>
+      <a class="text-link" href={MUMBOT_EXAMPLES_URL} rel="noopener">{p.examples}<Arrow /></a>
     </p>
     {release?.checksums && (
       <p class="mb-sums" data-reveal>
-        <a class="text-link" href={release.checksums.url} rel="noopener">{p.checksums} (SHA256SUMS) →</a>
+        <a class="text-link" href={release.checksums.url} rel="noopener">{p.checksums} (SHA256SUMS)<Arrow /></a>
       </p>
     )}
   </section>
@@ -195,7 +196,7 @@ const bots = [
     <p>{p.ideaBody}</p>
     <p class="fp-actions">
       <a class="btn btn-small" href={MUMBOT_IDEA_URL} rel="noopener">{p.idea}</a>
-      <a class="text-link" href={MUMBOT_REPO_URL} rel="noopener">{p.source} →</a>
+      <a class="text-link" href={MUMBOT_REPO_URL} rel="noopener">{p.source}<Arrow /></a>
     </p>
   </section>
 </article>

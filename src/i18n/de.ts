@@ -2,9 +2,10 @@ export const de = {
   lang: "de",
   locale: "de_DE",
   meta: {
-    title: "Mumcord — moderner Voice-Chat für jeden Mumble-Server",
+    title: "Mumcord – alternativer Mumble-Client für Windows, macOS, Linux",
+    altClient: "alternativer Mumble-Client",
     description:
-      "Mumcord ist ein freier, moderner Desktop-Client für Mumble-Server: Kanälen folgen, Benachrichtigungen, KI-Rauschunterdrückung, Push-to-Talk auch unter Wayland. Für Linux, Windows und macOS. Open Source, ohne Telemetrie.",
+      "Mumcord ist ein freier, alternativer Mumble-Client für Windows, macOS und Linux: Kanälen folgen, Benachrichtigungen, KI-Rauschunterdrückung, Push-to-Talk auch unter Wayland.",
   },
   nav: {
     features: "Funktionen",
@@ -47,11 +48,11 @@ export const de = {
     botIssues: { title: "Issues", desc: "Ideen und Fehler zu Mumbot" },
   },
   hero: {
-    kicker: "Alpha · Open Source · AGPL",
-    titleA: "Dein Mumble-Server.",
+    kicker: "Der alternative Mumble-Client",
+    titleA: "Dein Mumble-Client.",
     titleB: "Endlich gemütlich.",
     lead:
-      "Mumcord ist ein moderner Desktop-Client, der das Mumble-Protokoll spricht. Server-Leiste, Kanäle, Chat und Mitgliederliste — auf jedem ganz normalen Mumble-Server. Am Server ändert sich nichts.",
+      "Mumcord ist ein alternativer Mumble-Client für Windows, macOS und Linux. Server-Leiste, Kanäle, Chat und Mitgliederliste auf jedem ganz normalen Mumble-Server. Am Server ändert sich nichts.",
     ctaDownload: "Herunterladen",
     ctaSource: "Quellcode auf GitHub",
     meta: "Linux · Windows · macOS",
@@ -71,7 +72,7 @@ export const de = {
     "WCAG 2.2 AA als Ziel",
   ],
   ptt: {
-    label: "01 — Push-to-Talk",
+    label: "Push-to-Talk",
     title: "Halt die Taste. Red los.",
     body:
       "Tasten und Maustasten, auch wenn ein Spiel im Vordergrund läuft. Unter Wayland über das Global-Shortcuts-Portal — oder im Kompatibilitätsmodus.",
@@ -81,8 +82,22 @@ export const de = {
     keyLabel: "Leertaste",
     note: "Nur eine Animation. Die Seite nutzt dein Mikrofon nicht.",
   },
+  unique: {
+    label: "Nur in Mumcord",
+    title: "Was du in Mumble bisher vermisst hast.",
+    follow: "Ein Klick aufs Auge, und du liest einen Kanal mit, ohne beizutreten. Ungelesenes steht als Zähler dran.",
+    audio: "KI-Rauschunterdrückung, Echounterdrückung und automatische Verstärkung sind von Anfang an eingeschaltet.",
+    body: "Alles davon läuft auf normalen Mumble-Servern. Am Server wird nichts installiert, und Freunde mit dem offiziellen Client sind weiter dabei.",
+    tiles: {
+      dm: { title: "Privatnachrichten über Server hinweg", body: "Schreib Leuten direkt, egal auf welchem Server ihr gerade seid. Alle Gespräche an einem Ort." },
+      embeds: { title: "Links, Videos, Bilder und Sound im Chat", body: "YouTube, Twitch, Spotify, Bilder und Audio spielen direkt im Chat, mit Vorschau statt nacktem Link." },
+      watch: { title: "Watch-Party", body: "Zusammen YouTube schauen, synchron für alle im Kanal, mit gemeinsamer Playlist." },
+      plugins: { title: "Plugin-System", body: "Umfragen, Würfel, Whiteboard, Spiele: kleine, sichere Plugins aus einem offiziellen Verzeichnis." },
+      bots: { title: "Bots wie Mumbot", body: "Musik, Befehle und Karten im Chat. Mumbot läuft neben jedem Mumble-Server und spricht mit Mumcord." },
+    },
+  },
   spotlight5: {
-    label: "Neu in 0.5.0/0.6.0/0.7.0",
+    label: "Neu in 0.7",
     labelSoon: "Bald: 0.7.0",
     title: "Mehr Ruhe. Mehr du. Mehr Klang.",
     body: "0.5.0 bringt Epic 3: eine Benachrichtigungszentrale, Blockieren, mehrere Identitäten, einen neuen Kanalbaum, Musik im Chat, einen Low-Latency-Modus zum Musizieren und direkte Verbindungen über ein Relay.",
@@ -117,11 +132,11 @@ export const de = {
   themesTour: {
     label: "Themes",
     title: "Dein Mumcord. Deine Farben.",
-    body: "Vorlagen oder ganz eigene Themes, jedes hell und dunkel. Scroll weiter und blätter durch ein paar davon.",
+    body: "Vorlagen oder ganz eigene Themes, jedes hell und dunkel. Hier blättern ein paar davon durch.",
     cta: "Themes zum Kopieren",
   },
   features: {
-    label: "02 — Was Mumcord heute kann",
+    label: "Was Mumcord heute kann",
     title: "Alles, was eine Runde am Abend braucht.",
     intro:
       "Was Mumcord in der aktuellen Version kann. Was noch fehlt, steht ehrlich in der Roadmap.",
@@ -213,7 +228,7 @@ export const de = {
     trustNo: "Abbrechen",
   },
   how: {
-    label: "03 — Nur ein Client",
+    label: "Nur ein Client",
     title: "Nichts am Server installieren. Nie.",
     body:
       "Mumcord spricht das Standard-Mumble-Protokoll. Dein Server bleibt, wie er ist; Freunde mit dem offiziellen Mumble-Client sitzen im selben Kanal wie du.",
@@ -232,7 +247,7 @@ export const de = {
     ],
   },
   gallery: {
-    label: "04 — Einmal durchklicken",
+    label: "Einmal durchklicken",
     title: "Ein Fenster, das sich vertraut anfühlt.",
     items: [
       { src: "wizard-identity-dark", caption: "Einrichtung in etwa einer Minute: Identität, Mikrofon, Sprechmodus." },
@@ -252,7 +267,7 @@ export const de = {
     ],
   },
   roadmap: {
-    label: "05 — Wohin es geht",
+    label: "Wohin es geht",
     title: "Ehrlich: das hier ist eine Alpha.",
     body: "Die Roadmap ist ein Vorschlag und kann sich ändern.",
     now: "jetzt",
@@ -296,7 +311,7 @@ export const de = {
     ],
   },
   download: {
-    label: "06 — Holen",
+    label: "Holen",
     title: "Mumcord herunterladen",
     latest: "Neueste Version",
     prerelease: "Vorabversion",
@@ -360,7 +375,7 @@ export const de = {
   },
   downloadPage: {
     title: "Mumcord herunterladen",
-    description: "Mumcord für Windows, macOS und Linux: die passende Version für dein System, alle Pakete, Prüfsummen und ältere Versionen.",
+    description: "Mumcord, der alternative Mumble-Client für Windows, macOS und Linux: die passende Version für dein System, alle Pakete, Prüfsummen und ältere Versionen.",
     label: "Download",
     intro: "Kostenlos und Open Source, ohne Konto und ohne Werbung. Oben steht die Version für dein System, darunter jede Datei des Releases.",
     badges: ["Kostenlos und Open Source", "Signiert und notarisiert", "Auto-Update eingebaut", "Ohne Konto, ohne Werbung"],
@@ -405,6 +420,7 @@ export const de = {
     onGithub: "Release auf GitHub",
     known: "Bekannte Einschränkungen",
     githubOnly: "Für diese Version gibt es nur die Release-Notes auf GitHub.",
+    autoNote: "Automatisch aus den Release-Notes zusammengefasst.",
   },
   footer: {
     loveMade: "Mit",
@@ -416,6 +432,7 @@ export const de = {
     product: "Produkt",
     host: "Hosten und Doku",
     community: "Mitmachen",
+    contributors: "Mitwirkende",
     games: "Spiele",
     themes: "Themes",
     download: "Download",
@@ -453,7 +470,7 @@ export const de = {
     back: "Zurück zur Lobby",
   },
   contributors: {
-    label: "07 — Dahinter",
+    label: "Dahinter",
     title: "Die Leute, die an Mumcord bauen.",
     body: "Alle, die Code zu Mumcord, Mumbot, mumpeer, mumquiz oder dieser Website beigetragen haben. Die Liste kommt bei jedem Build frisch von GitHub.",
     commits: "Commits",

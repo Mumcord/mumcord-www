@@ -26,6 +26,7 @@ const platforms = [
   { key: "macos", name: "macOS" },
 ] as const;
 const mark: Record<Support, string> = { yes: "✓", later: "◷", no: "–" };
+import Arrow from "./Arrow.astro";
 ---
 
 <article class="wrap games-page">
@@ -176,7 +177,7 @@ const mark: Record<Support, string> = { yes: "✓", later: "◷", no: "–" };
     <p>{g.askBody}</p>
     <p class="fp-actions">
       <a class="btn btn-small" href={IDEA_URL} rel="noopener">{g.ask}</a>
-      <a class="text-link" href={BUG_URL} rel="noopener">{g.bug} →</a>
+      <a class="text-link" href={BUG_URL} rel="noopener">{g.bug}<Arrow /></a>
     </p>
   </section>
 </article>

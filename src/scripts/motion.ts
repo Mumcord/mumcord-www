@@ -2,6 +2,8 @@
 // and reduced-motion users get the content without the choreography.
 
 import "./download";
+import "./releases";
+import "./mimo";
 
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 document.documentElement.classList.add("js");
@@ -78,22 +80,11 @@ document.addEventListener("keydown", (e) => {
   open.querySelector("button")?.focus();
 });
 
-// ── Hero window: tilted at rest, flattens as you scroll into it ──────
-const tilt = document.querySelector<HTMLElement>("[data-tilt]");
+// ── Header: solid once the page scrolls ──────────────────────────────
 let ticking = false;
-let lastTilt = -1;
 const onScroll = () => {
   ticking = false;
   header?.classList.toggle("is-scrolled", scrollY > 8);
-  if (tilt && !reduced) {
-    // Set the transform itself, not inherited custom properties: those restyle the whole window
-    // subtree on every scrolled frame. Past the end of the tilt nothing changes any more.
-    const p = Math.min(1, Math.max(0, scrollY / (innerHeight * 0.6)));
-    if (p !== lastTilt) {
-      lastTilt = p;
-      tilt.style.transform = `rotateX(${(14 * (1 - p)).toFixed(2)}deg) scale(${(0.94 + 0.06 * p).toFixed(3)})`;
-    }
-  }
 };
 addEventListener("scroll", () => {
   if (!ticking) {
@@ -298,15 +289,6 @@ if (filterBar) {
   for (const b of buttons) b.addEventListener("click", () => apply(b.dataset.filter ?? "all"));
 }
 
-// ── Cards: a soft light follows the pointer ──────────────────────────
-for (const card of document.querySelectorAll<HTMLElement>("[data-spot]")) {
-  card.addEventListener("pointermove", (e) => {
-    const r = card.getBoundingClientRect();
-    card.style.setProperty("--mx", `${e.clientX - r.left}px`);
-    card.style.setProperty("--my", `${e.clientY - r.top}px`);
-  });
-}
-
 // ── Features page: mark the section you are in ───────────────────────
 const tocLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-toc] a"));
 if (tocLinks.length && "IntersectionObserver" in window) {
@@ -333,37 +315,42 @@ if (tocLinks.length && "IntersectionObserver" in window) {
 // ── Home theme tour: scrolling through the section flips the stack ───
 const tourEl = document.querySelector<HTMLElement>("[data-theme-tour]");
 if (tourEl) {
+  // The themes flip by themselves while the section is on screen; a click on a name jumps there.
   const count = Number(getComputedStyle(tourEl).getPropertyValue("--n")) || 1;
   const names = [...tourEl.querySelectorAll<HTMLElement>("[data-tour-name]")];
   const dots = [...tourEl.querySelectorAll<HTMLElement>("[data-tour-dot]")];
-  let shown = -1;
-  const update = () => {
-    const r = tourEl.getBoundingClientRect();
-    const run = r.height - innerHeight;
-    const p = run > 0 ? Math.min(1, Math.max(0, -r.top / run)) * (count - 1) : 0;
+  let target = 0;
+  let p = 0;
+  let raf = 0;
+  let timer = 0;
+  let visible = false;
+  const step = () => {
+    p += (target - p) * (reduced ? 1 : 0.12);
+    if (Math.abs(target - p) < 0.002) p = target;
     tourEl.style.setProperty("--p", p.toFixed(3));
-    const active = Math.round(p);
-    if (active !== shown) {
-      shown = active;
-      names.forEach((n, i) => n.classList.toggle("is-on", i === active));
-      dots.forEach((d, i) => d.classList.toggle("is-on", i === active));
-    }
+    raf = p === target ? 0 : requestAnimationFrame(step);
   };
-  let queued = false;
-  addEventListener(
-    "scroll",
-    () => {
-      if (queued) return;
-      queued = true;
-      requestAnimationFrame(() => {
-        queued = false;
-        update();
-      });
-    },
-    { passive: true },
+  const show = (i: number) => {
+    target = i;
+    names.forEach((n, j) => n.classList.toggle("is-on", j === i));
+    dots.forEach((d, j) => d.classList.toggle("is-on", j === i));
+    if (!raf) raf = requestAnimationFrame(step);
+  };
+  const run = () => {
+    clearInterval(timer);
+    if (visible && !reduced) timer = window.setInterval(() => show((target + 1) % count), 3200);
+  };
+  names.forEach((n, i) =>
+    n.addEventListener("click", () => {
+      show(i);
+      run();
+    }),
   );
-  addEventListener("resize", update);
-  update();
+  new IntersectionObserver(([e]) => {
+    visible = e.isIntersecting;
+    run();
+  }, { threshold: 0.35 }).observe(tourEl);
+  show(0);
 }
 
 // ── Themes page: light/dark switch per card, copy the share message ──

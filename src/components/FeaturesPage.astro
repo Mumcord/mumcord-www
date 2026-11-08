@@ -38,17 +38,17 @@ const full = new Map<string, string>();
 for (const g of f.groups)
   for (const x of withShot(g.features))
     if (!full.has(x.shot!)) full.set(x.shot!, (await getImage({ src: shot(x.shot!), format: "webp", width: 2400, quality: 82 })).src);
+import Arrow from "./Arrow.astro";
 ---
 
 <article class="features-page">
   <header class="wrap fp-head">
-    <div class="fp-head-glow" aria-hidden="true"></div>
     <p class="label" data-reveal>{f.label}</p>
     <h1 class="fp-title" data-reveal>{f.title}</h1>
     <p class="body" data-reveal>{f.intro}</p>
     <p class="fp-actions" data-reveal>
       <a class="btn btn-small btn-glow" href={IDEA_URL} rel="noopener">{f.idea}</a>
-      <a class="text-link" href={BUG_URL} rel="noopener">{f.bug} →</a>
+      <a class="text-link" href={BUG_URL} rel="noopener">{f.bug}<Arrow /></a>
     </p>
     <dl class="fp-stats" data-reveal>
       <div><dt>{f.statFeatures}</dt><dd>{all.length}</dd></div>
@@ -83,7 +83,7 @@ for (const g of f.groups)
           </header>
           <div class="fp-bento">
             {ordered(g.features).map((x, i) => (
-              <article class={`fp-card fp-card-${size(x, i)}`} id={x.id} data-feature data-since={x.since && minor(x.since)} data-reveal data-spot>
+              <article class={`fp-card fp-card-${size(x, i)}`} id={x.id} data-feature data-since={x.since && minor(x.since)} data-reveal>
                 {x.shot && (
                   <a class="fp-media" href={full.get(x.shot)} aria-label={`${f.zoom}: ${x.alt}`} data-lightbox data-caption={x.title} data-alt={x.alt}>
                     <Picture src={shot(x.shot)} formats={["avif", "webp"]} widths={[640, 1100, 1600]} sizes={size(x, i) === "lg" ? "(min-width: 960px) 760px, 92vw" : "(min-width: 960px) 560px, 92vw"} alt={x.alt ?? ""} />

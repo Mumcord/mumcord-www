@@ -56,6 +56,13 @@ export interface RoadmapPage {
   ideaBody: string;
   idea: string;
   changelog: string;
+  /** Epic subpages. "{done}" and "{total}" are replaced in epicProgress. */
+  epicOpen: string;
+  epicBack: string;
+  epicPrev: string;
+  epicNext: string;
+  epicProgress: string;
+  epicItems: string;
   epics: Stage[];
 }
 
@@ -82,6 +89,12 @@ const source: Record<"de" | "en", RoadmapPage> = {
     ideaBody: "Wünsche landen in den Issues auf GitHub und fließen in die Planung ein.",
     idea: "Feature wünschen",
     changelog: "Was schon erschienen ist, steht im Changelog",
+    epicOpen: "Zum Epic",
+    epicBack: "Zur Roadmap",
+    epicPrev: "Vorheriges Epic",
+    epicNext: "Nächstes Epic",
+    epicProgress: "{done} von {total} erledigt",
+    epicItems: "{n} Punkte",
     epics: [
       {
         id: "epic-1",
@@ -761,6 +774,12 @@ const source: Record<"de" | "en", RoadmapPage> = {
     ideaBody: "Requests go into the issues on GitHub and feed into the planning.",
     idea: "Request a feature",
     changelog: "What's already out is in the changelog",
+    epicOpen: "Open the epic",
+    epicBack: "Back to the roadmap",
+    epicPrev: "Previous epic",
+    epicNext: "Next epic",
+    epicProgress: "{done} of {total} done",
+    epicItems: "{n} items",
     epics: [
       {
         id: "epic-1",
@@ -1447,3 +1466,22 @@ const mergeRoadmap = (en: RoadmapPage, tr: RoadmapText | undefined): RoadmapPage
 };
 
 export const roadmapPage = localized(source, (l) => mergeRoadmap(source.en, bundles[l]?.roadmap));
+
+/** Epics with their status as of the given releases: an epic is done once its version is out. */
+export function resolveEpics(page: RoadmapPage, released: Set<string>): Stage[] {
+  return page.epics.map((s) => (s.version && released.has(s.version) ? { ...s, status: "done" as const } : s));
+}
+
+/** "epic-4" → "04", "epic-3.1" → "3.1"; Epic Future has no number and gets the infinity sign. */
+export function epicNum(s: Stage): string {
+  const n = s.id.replace("epic-", "");
+  return n === "future" ? "∞" : n.includes(".") ? n : n.padStart(2, "0");
+}
+
+/** Items and ticked items of an epic; a done epic counts everything as ticked. */
+export function epicProgress(s: Stage): { done: number; total: number } {
+  const total = (s.items?.length ?? 0) + (s.groups ?? []).reduce((n, g) => n + g.items.length, 0);
+  if (s.status === "done") return { done: total, total };
+  const done = (s.groups ?? []).reduce((n, g) => n + (g.done?.length ?? 0), 0);
+  return { done, total };
+}

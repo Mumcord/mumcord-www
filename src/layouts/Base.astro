@@ -14,13 +14,15 @@ interface Props {
   description: string;
   jsonLd?: Record<string, unknown>[];
   noindex?: boolean;
+  /** Appended to the page's route in every language, e.g. "/epic-4" for an epic of the roadmap. */
+  subpath?: string;
 }
 
-const { lang, page, title, description, jsonLd = [], noindex = false } = Astro.props;
+const { lang, page, title, description, jsonLd = [], noindex = false, subpath = "" } = Astro.props;
 const t = dicts[lang];
 const site = Astro.site!;
-const canonical = new URL(routes[page][lang], site).href;
-const alternates = pageLangs(page).map((l) => ({ lang: l, href: new URL(routes[page][l], site).href }));
+const canonical = new URL(routes[page][lang] + subpath, site).href;
+const alternates = pageLangs(page).map((l) => ({ lang: l, href: new URL(routes[page][l] + subpath, site).href }));
 const ogImage = new URL("/og.jpg", site).href;
 ---
 
@@ -61,7 +63,7 @@ const ogImage = new URL("/og.jpg", site).href;
   </head>
   <body id="top">
     <a class="skip" href="#main">{t.nav.skip}</a>
-    <Header lang={lang} page={page} />
+    <Header lang={lang} page={page} subpath={subpath} />
     <main id="main">
       <slot />
     </main>
