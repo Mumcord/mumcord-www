@@ -3,7 +3,7 @@
 
 import "./download";
 import "./releases";
-import "./mimo";
+import "./aaron";
 
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 document.documentElement.classList.add("js");
