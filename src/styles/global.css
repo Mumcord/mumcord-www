@@ -2843,86 +2843,19 @@ p {
 }
 /* The download card: one big button for the visitor's system (src/scripts/download.ts). */
 .dl-spot {
-  --dl-a: #7aa7ff;
-  --dl-b: var(--violet);
   position: relative;
-  isolation: isolate;
-  overflow: hidden;
   padding: clamp(20px, 3.4vw, 44px);
-  border-radius: 32px;
-  border: 1px solid transparent;
-  background:
-    linear-gradient(180deg, rgb(29 22 80 / 0.92), rgb(14 10 38 / 0.96)) padding-box,
-    conic-gradient(from var(--dl-angle, 0deg), var(--dl-a), var(--dl-b), var(--pink), var(--dl-a)) border-box;
-  box-shadow: 0 40px 120px -40px rgb(155 123 255 / 0.55);
-  animation: dl-spin 10s linear infinite;
-}
-.dl-spot[data-os="macos"] {
-  --dl-a: var(--peach);
-  --dl-b: var(--pink);
-}
-.dl-spot[data-os="linux"] {
-  --dl-a: var(--live);
-  --dl-b: #7ad7ff;
-}
-@property --dl-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-@keyframes dl-spin {
-  to {
-    --dl-angle: 360deg;
-  }
-}
-.dl-aurora {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-}
-.dl-aurora i {
-  position: absolute;
-  width: 46%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  filter: blur(70px);
-  opacity: 0.38;
-  background: var(--dl-a);
-  top: -18%;
-  left: -8%;
-  transition: background-color 0.8s;
-  animation: dl-drift 14s ease-in-out infinite alternate;
-}
-.dl-aurora i:nth-child(2) {
-  background: var(--dl-b);
-  top: auto;
-  bottom: -30%;
-  left: 38%;
-  animation-delay: -5s;
-}
-.dl-aurora i:nth-child(3) {
-  background: var(--pink);
-  width: 30%;
-  left: auto;
-  right: -6%;
-  top: 10%;
-  opacity: 0.22;
-  animation-delay: -9s;
-}
-@keyframes dl-drift {
-  to {
-    transform: translate(8%, 10%) scale(1.15);
-  }
+  border-radius: 28px;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
 }
 .dl-tabs {
   display: inline-flex;
   gap: 4px;
   padding: 4px;
   border-radius: 999px;
-  background: rgb(14 10 38 / 0.6);
+  background: var(--bg);
   border: 1px solid var(--line);
-  backdrop-filter: blur(10px);
 }
 .dl-tab {
   display: inline-flex;
@@ -2976,7 +2909,7 @@ p {
 @media (min-width: 980px) {
   .dl-panel {
     grid-template-columns: 1.15fr 1fr;
-    align-items: center;
+    align-items: start;
   }
 }
 .dl-kicker {
@@ -2997,10 +2930,10 @@ p {
 .dl-title {
   margin-top: 10px;
   font-family: var(--font-display);
-  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
 }
 .dl-sub {
   margin-top: 10px;
@@ -3043,34 +2976,15 @@ p {
   stroke-linejoin: round;
 }
 .dl-btn[data-main] {
-  height: 76px;
-  padding: 0 34px;
+  height: 60px;
+  padding: 0 28px;
   border: 0;
-  font-size: 1.3rem;
-  color: #1a1033;
-  background: linear-gradient(110deg, var(--peach), var(--pink) 45%, var(--violet));
-  box-shadow:
-    0 1px 0 rgb(255 255 255 / 0.5) inset,
-    0 18px 50px -14px rgb(255 111 168 / 0.9);
-}
-.dl-btn[data-main]::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(100deg, transparent 30%, rgb(255 255 255 / 0.45) 50%, transparent 70%);
-  transform: translateX(-120%);
-  animation: dl-shine 4.5s var(--ease-out) infinite 1s;
-}
-@keyframes dl-shine {
-  40%,
-  to {
-    transform: translateX(120%);
-  }
+  font-size: 1.0625rem;
+  color: var(--bg);
+  background: var(--text);
 }
 .dl-btn[data-main]:hover {
-  box-shadow:
-    0 1px 0 rgb(255 255 255 / 0.5) inset,
-    0 22px 60px -12px rgb(155 123 255 / 1);
+  background: var(--peach);
 }
 .dl-btn-text {
   display: grid;
@@ -3112,12 +3026,10 @@ p {
 .dl-also {
   display: grid;
   gap: 14px;
-  padding: clamp(18px, 2.4vw, 28px);
-  border-radius: 24px;
+  padding: clamp(18px, 2.4vw, 26px);
+  border-radius: 20px;
   border: 1px solid var(--line);
-  background: rgb(14 10 38 / 0.45);
-  backdrop-filter: blur(14px);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06);
+  background: var(--bg);
 }
 .dl-also-head {
   font-family: var(--font-mono);
@@ -3193,15 +3105,12 @@ p {
 }
 .dl-alt-rec {
   display: none;
-  padding: 1px 8px;
+  padding: 0 8px;
   border-radius: 999px;
-  background: var(--live);
-  color: #0e0a26;
+  border: 1px solid rgb(62 227 158 / 0.5);
+  color: var(--live);
   font-size: 0.7rem;
-  font-weight: 700;
-}
-.dl-alts li.is-rec a {
-  border-color: rgb(62 227 158 / 0.5);
+  font-weight: 600;
 }
 .dl-alts li.is-rec .dl-alt-rec {
   display: inline;
@@ -3222,9 +3131,6 @@ p {
   transform: translateX(4px);
 }
 @media (prefers-reduced-motion: reduce) {
-  .dl-spot,
-  .dl-aurora i,
-  .dl-btn[data-main]::after,
   .dl-panel {
     animation: none;
   }
@@ -3237,9 +3143,6 @@ p {
 .dlp-hero .body {
   max-width: 60ch;
 }
-.dlp-release {
-  margin-top: 22px;
-}
 .dlp-date {
   color: var(--muted);
   font-size: 0.9375rem;
@@ -3250,9 +3153,6 @@ p {
 .dlp-none {
   margin-top: 18px;
   color: var(--muted);
-}
-.dlp-spot {
-  margin-top: clamp(32px, 5vw, 56px);
 }
 .dlp-section {
   margin-top: clamp(64px, 9vw, 112px);
@@ -3358,11 +3258,6 @@ p {
 .dlp-terminal .one-line {
   margin-top: 0;
 }
-.dlp-brew {
-  background:
-    radial-gradient(80% 120% at 100% 0%, rgb(255 176 138 / 0.12), transparent 60%),
-    linear-gradient(180deg, rgb(29 22 80 / 0.7), rgb(21 15 56 / 0.6));
-}
 .dlp-cards {
   display: grid;
   gap: 18px;
@@ -3392,11 +3287,6 @@ p {
 .dlp-card p {
   color: var(--muted);
   font-size: 0.9375rem;
-}
-.dlp-card-glow {
-  background:
-    radial-gradient(90% 120% at 0% 0%, rgb(155 123 255 / 0.18), transparent 60%),
-    var(--bg-2);
 }
 .dlp-links {
   display: flex;
@@ -3452,6 +3342,94 @@ p {
 }
 .dlp-older a {
   color: var(--peach);
+}
+
+.dl-panel > *,
+.dl-cmd,
+.dl-body {
+  min-width: 0;
+}
+.dl-tab svg {
+  flex-shrink: 0;
+}
+@media (max-width: 520px) {
+  .dl-tabs {
+    display: flex;
+  }
+  .dl-tab {
+    flex: 1;
+    justify-content: center;
+    padding: 8px 10px;
+  }
+  .dl-btn,
+  .dl-btn[data-main] {
+    width: 100%;
+    justify-content: center;
+  }
+  .dl-alts a {
+    flex-wrap: wrap;
+  }
+}
+/* Download page: badges and the visitor's card. */
+.dlp {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+}
+.dlp-title {
+  margin-top: 14px;
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 5.4vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.dlp-badges {
+  list-style: none;
+  padding: 0;
+  margin: 22px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+}
+.dlp-badges li {
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+.dlp-badges li::before {
+  content: "✓ ";
+  color: var(--live);
+}
+.dlp-release {
+  margin-top: 18px;
+}
+.dlp-spot {
+  margin-top: clamp(32px, 5vw, 56px);
+}
+.dlp-os {
+  position: relative;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+.dlp-yours {
+  display: none;
+  position: absolute;
+  top: 28px;
+  right: 24px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--live);
+}
+.dlp-os.is-mine {
+  border-color: var(--line-strong);
+  background: var(--bg-3);
+}
+.dlp-os.is-mine .dlp-yours {
+  display: block;
+}
+.dlp-table tr.is-mine th a {
+  color: var(--live);
 }
 
 /* ── Footer ──────────────────────────────────────────── */
@@ -7467,169 +7445,3 @@ p {
 
 /* 0.5.0/0.6.0 tiles below the 0.7.0 bento in the "new" spotlight */
 .nx-bento + .s5-bento { margin-top: clamp(16px, 2vw, 24px); }
-.dl-panel > *,
-.dl-cmd,
-.dl-body {
-  min-width: 0;
-}
-.dl-tab svg {
-  flex-shrink: 0;
-}
-@media (max-width: 520px) {
-  .dl-tabs {
-    display: flex;
-  }
-  .dl-tab {
-    flex: 1;
-    justify-content: center;
-    padding: 8px 10px;
-  }
-  .dl-btn,
-  .dl-btn[data-main] {
-    width: 100%;
-    justify-content: center;
-  }
-  .dl-alts a {
-    flex-wrap: wrap;
-  }
-}
-/* Download page: sky, big title, badges, the visitor's card. */
-.dlp {
-  position: relative;
-  isolation: isolate;
-  overflow-x: clip;
-}
-.dlp-sky {
-  position: absolute;
-  inset: -120px 0 auto;
-  height: 900px;
-  z-index: -1;
-  pointer-events: none;
-  mask-image: linear-gradient(180deg, #000 55%, transparent);
-}
-.dlp-sky::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgb(246 240 232 / 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(246 240 232 / 0.05) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(70% 60% at 50% 30%, #000, transparent);
-}
-.dlp-sky i {
-  position: absolute;
-  width: 520px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  filter: blur(110px);
-  opacity: 0.35;
-  background: var(--violet);
-  top: 0;
-  left: 8%;
-  animation: dl-drift 16s ease-in-out infinite alternate;
-}
-.dlp-sky i:nth-child(2) {
-  background: var(--pink);
-  left: auto;
-  right: 6%;
-  top: 80px;
-  opacity: 0.25;
-  animation-delay: -6s;
-}
-.dlp-sky i:nth-child(3) {
-  background: var(--peach);
-  width: 360px;
-  left: 40%;
-  top: 260px;
-  opacity: 0.2;
-  animation-delay: -11s;
-}
-.dlp-hero {
-  text-align: center;
-}
-.dlp-hero .label {
-  justify-content: center;
-}
-.dlp-hero .body,
-.dlp-hero .dlp-none {
-  margin-inline: auto;
-}
-.dlp-title {
-  margin: 14px auto 0;
-  max-width: 14ch;
-  font-family: var(--font-display);
-  font-size: clamp(2.8rem, 8.5vw, 6.6rem);
-  font-weight: 800;
-  line-height: 0.95;
-  letter-spacing: -0.045em;
-  text-wrap: balance;
-  background: linear-gradient(100deg, var(--text) 30%, var(--peach) 55%, var(--pink) 72%, var(--violet));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.dlp-badges {
-  list-style: none;
-  padding: 0;
-  margin: 26px 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-}
-.dlp-badges li {
-  padding: 6px 14px;
-  border-radius: 999px;
-  border: 1px solid var(--line-strong);
-  background: rgb(14 10 38 / 0.5);
-  backdrop-filter: blur(8px);
-  font-size: 0.875rem;
-  color: var(--muted);
-}
-.dlp-badges li::before {
-  content: "✓ ";
-  color: var(--live);
-}
-.dlp-release {
-  justify-content: center;
-}
-.dlp-spot {
-  text-align: left;
-}
-.dlp-os {
-  position: relative;
-  transition:
-    border-color 0.3s,
-    box-shadow 0.3s;
-}
-.dlp-yours {
-  display: none;
-  position: absolute;
-  top: -11px;
-  right: 18px;
-  padding: 2px 10px;
-  border-radius: 999px;
-  background: var(--live);
-  color: #0e0a26;
-  font-size: 0.72rem;
-  font-weight: 700;
-}
-.dlp-os.is-mine {
-  border-color: rgb(255 176 138 / 0.5);
-  background:
-    linear-gradient(160deg, rgb(255 176 138 / 0.12), rgb(155 123 255 / 0.1) 60%, transparent),
-    var(--bg-2);
-  box-shadow: 0 30px 80px -40px rgb(255 111 168 / 0.7);
-}
-.dlp-os.is-mine .dlp-yours {
-  display: block;
-}
-.dlp-table tr.is-mine {
-  background: rgb(62 227 158 / 0.07);
-}
-@media (prefers-reduced-motion: reduce) {
-  .dlp-sky i {
-    animation: none;
-  }
-}
