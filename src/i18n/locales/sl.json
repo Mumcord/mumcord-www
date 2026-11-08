@@ -874,6 +874,26 @@
             "title": "Boti zase",
             "body": "Razdelek »Boti na tem strežniku« pod seznamom kanalov pokaže vsakega bota s tem, kar počne, na primer relay, zgodovina klepeta ali webhooki. Profil in meni, tudi zasebna sporočila, delujejo od tam.",
             "alt": "Razdelek z boti na strežniku"
+          },
+          {
+            "id": "channel-admin",
+            "title": "Upravljanje kanalov",
+            "body": "Kot administrator ustvarjaš podkanale in začasne kanale, urejaš ime, opis, nadrejeni kanal, položaj in omejitev uporabnikov, povezuješ kanale in jih brišeš po potrditvi, ki našteje prizadete kanale in ljudi. Vidiš le to, kar ti strežnik dovoli, zavrnitev pa pokaže razlog strežnika."
+          },
+          {
+            "id": "channel-permissions",
+            "title": "Pravice kanala in geslo",
+            "body": "V oknu kanala zavihek Pravice pokaže, kdo v kanalu kaj sme, in vsak odgovor razloži pod »Zakaj?«. Administratorji urejajo pravila in skupine, Mumcord te opozori, preden bi se zaklenil ven, in nikoli ne prepiše spremembe, ki jo je naredil nekdo drug. Geslo kanala nastaviš ali počistiš v zavihku Geslo, kot v uradnem odjemalcu."
+          },
+          {
+            "id": "move-people",
+            "title": "Premikanje ljudi",
+            "body": "V meniju Admin premakneš eno osebo k sebi ali v kanal po izbiri, ali pa vse v kanalu naenkrat. Ctrl-klik in Shift-klik izbereta več ljudi, da jih lahko povlečeš skupaj. Mumcord ti pove, koliko jih je prispelo."
+          },
+          {
+            "id": "moderation",
+            "title": "Moderiranje v meniju osebe",
+            "body": "Pod »Admin« ljudi utišaš ali oglušiš za vse, daš prednost govorcu ter ponastaviš komentar ali avatar. Vsako dejanje se pokaže le, če imaš zanj pravico."
           }
         ]
       },
@@ -1018,6 +1038,16 @@
             "title": "Povezave do strežnikov kot kartice",
             "body": "Povezava mumble:// v klepetu pokaže strežnik, kanal, ping, ljudi na spletu in različico, z »Pridruži se«, »Dodaj med strežnike« in »Kopiraj povezavo«. Podatki pridejo iz običajne javne poizvedbe, nikoli iz povezave. Uporabniška imena in gesla v povezavi se nikoli ne prikažejo in se pri kopiranju izpustijo.",
             "alt": "Kartica povezave mumble:// z imenom strežnika, kanalom, pingom, uporabniki in gumbom Pridruži se"
+          },
+          {
+            "id": "message-bar",
+            "title": "Nova vrstica za sporočila",
+            "body": "Vrstica piše v eni vrstici in raste z besedilom do približno šestih vrstic. Oblikovanje se pokaže v majhni tabletki na zgornjem robu, dokler je kazalec v polju, gumb za pošiljanje pa postane aktiven šele, ko je kaj poslati."
+          },
+          {
+            "id": "activity-notifications",
+            "title": "Obvestila o dejavnosti",
+            "body": "Ko nekdo začne deljenje zaslona, watch party ali dejavnost vtičnika, te Mumcord obvesti kot ob sporočilu. Zgodovina dejavnosti ostane na tvoji napravi, tudi po ponovnem zagonu, počistiš pa jo v Nastavitvah pod Zasebnost."
           }
         ]
       },
@@ -1500,6 +1530,56 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.2",
+      "teaser": "Admin v meniju desnega klika: upravljaj kanale, pravice in gesla, premikaj ljudi, utišaj in oglušaj prek strežnika, poleg tega nova vrstica za sporočila.",
+      "summary": "Mumcord dobi prva orodja za administratorje: upravljaš kanale, vidiš in urejaš pravice, nastavljaš gesla kanalov, premikaš ljudi in moderiraš, vse le tam, kjer ti strežnik dovoli. Poleg tega so tu obvestila o dejavnosti, nova vrstica za sporočila in jasnejša sporočila, kadar je kaj zavrnjeno.",
+      "groups": [
+        {
+          "title": "Novo",
+          "items": [
+            "Premikanje ljudi, pod Admin ▸ v menijih osebe in kanala: »Premakni v moj kanal«, »Premakni v« s filtrirnim seznamom kanalov, ki kaže omejitev uporabnikov, in »Premakni vse v« za cel kanal. Ctrl-klik (ali Ctrl+preslednica) in Shift-klik izbereta več ljudi, da jih povlečeš skupaj. Nato se izpiše, koliko jih je prispelo (»Premaknjenih 28 od 30 ljudi v Raid. Preostali so bili zavrnjeni.«).",
+            "Moderiranje v meniju osebe pod »Admin ▸«: utišaj za vse, oglušaj za vse, prednostni govorec (zvezdica ob imenu) in odprava zadušitve delujejo takoj. Ponastavitev komentarja in ponastavitev avatarja se prej vprašata. Vsako dejanje se pokaže le s pravico na strežniku.",
+            "Geslo kanala: v zavihku Geslo v oknu kanala nastaviš ali počistiš geslo za vstop v kanal, enako kot v uradnem odjemalcu Mumble.",
+            "Pravice kanala: v zavihku Pravice vidiš, kdo v kanalu kaj sme (✓, ✗ ali ? za vsako skupino in osebo). Administratorji urejajo pravila in skupine, okno »Zakaj?« pa razloži vsak odgovor. Mumcord te opozori, preden bi se zaklenil ven, vpraša pred spremembami pravil celotnega strežnika in nikoli ne prepiše spremembe, ki jo je naredil nekdo drug.",
+            "Upravljanje kanalov: v meniju kanala pod »Admin ▸« ustvariš podkanal ali začasni kanal, urediš kanal (ime, opis, nadrejeni kanal, položaj, omejitev uporabnikov) in njegove povezave, ga povežeš s svojim kanalom in izbrišeš po potrditvi, ki našteje prizadete podkanale in ljudi. F2 ureja, Delete pa izbriše izbrani kanal.",
+            "Meniji lahko odprejo podmenije: skrbniška dejanja v meniju strežnika ⋯ so zdaj pod »Admin ▸« (za zdaj »Seznam prepovedi«), prikazana le, če imaš v njem pravico, rdeča dejanja pa so na koncu za ločilom. → odpre podmeni, ← ali Escape gre nazaj.",
+            "Ko se relay strežnika spremeni, ti Mumcord to pove v centru obvestil in kot obvestilo, z »Zaupaj novemu relayu« in »Podrobnosti«. Podrobnosti primerjajo stari in novi prstni odtis.",
+            "Zgodovina dejavnosti: vsaka vrsta dogodka ima ikono, zgodovina pa ostane na tej napravi, tudi po ponovnem zagonu. V Nastavitve → Zasebnost jo počistiš za vse strežnike.",
+            "Obvestila o dejavnosti: ko nekdo začne deljenje zaslona, watch party ali dejavnost vtičnika, te Mumcord obvesti kot ob sporočilu. Nastavitve → Klepet in obvestila imajo stikalo za vsako vrsto. Pridružitve, odhodi in premiki so privzeto izklopljeni.",
+            "Windows: Mumcord beleži izvorna sesutja (kodo izjeme, modul in sklad), da jih je mogoče analizirati v poročilu o sesutju."
+          ]
+        },
+        {
+          "title": "Izboljšano",
+          "items": [
+            "Menijske postavke se ne končajo več z »…«, v vseh jezikih.",
+            "Ko strežnik kaj zavrne, Mumcord s preprostimi besedami pove, kaj in kje (»V Raid ne smeš premikati ljudi.«). Pravice, ki jih administrator spremeni, medtem ko si povezan, veljajo takoj, brez ponovne povezave.",
+            "Ko relay zavrne kamero, deljenje zaslona ali datoteke, Mumcord navede razlog (nisi registriran, nisi v dovoljeni skupini, nisi v istem kanalu, potrebna je ponovna povezava) in pokaže izhod: »Kako se registriraš« ali »Poveži znova«. Na relayu samo za registrirane gostje pred poskusom vidijo, zakaj kamera in sponka nista na voljo.",
+            "Izbirni gumbi in potrditvena polja imajo povsod Mumcordov lasten videz, z jasnim obročem fokusa in podporo za visok kontrast. Kartice z možnostmi, kot je »Zasebna sporočila od«, osvetlijo celotno kartico.",
+            "Nastavitev, »Kako želiš govoriti?«: dve jasni kartici s kratko razlago, občutljivost pod glasovno aktivacijo in tipka za pritisni in govori kar v svoji kartici. »Naprej« počaka, da je tipka nastavljena.",
+            "Peer-to-peer: »Neposredno + relay (vedno relay, skrije moj IP)« je zdaj priporočeni način in privzet za nove namestitve. Način, ki ga že uporabljaš, ostane tak, kot je.",
+            "Namig »Ta strežnik nima releja, zato deljenje datotek ni na voljo« lahko zapreš za vsak strežnik posebej, vrne pa se, ko strežnik dobi relay in ga spet izgubi.",
+            "»Boti na tem strežniku« se zažene strnjeno, Mumcord pa si zapomni, ali si ga odprl.",
+            "Vrstica vtičnikov: ikone vtičnikov nimajo več okvirja, lastna slika vtičnika ali barvna ploščica je cela ikona.",
+            "Nova vrstica za sporočila: besedilo se začne ob levem robu v eni vrstici, raste do približno šestih vrstic in se nato pomika. Ikone za Aplikacije, datoteko, sliko in GIF so enoten komplet, gumb za pošiljanje pa je zatemnjen, dokler ni kaj poslati. Gumbi za oblikovanje so v majhni tabletki na zgornjem robu, dokler je kazalec v polju. Kanal, v katerega ne smeš pisati, pokaže opombo namesto praznega polja."
+          ]
+        },
+        {
+          "title": "Popravljeno",
+          "items": [
+            "Iskalno polje za kanale na vrhu stranske vrstice je poravnano z imenom kanala v glavi klepeta.",
+            "Zgodovina dejavnosti: imena delujejo kot v klepetu (klik odpre profil in meni, dvoklik zasebno sporočilo), boti pa se ne pojavljajo več med pridružitvami, odhodi in premiki.",
+            "Vdelani predvajalniki YouTube in Twitch: celozaslonski način in »Kopiraj povezavo« delujeta. Twitch deluje le na spletni strani, okno Mumcorda pa to v macOS in Linuxu ni: kartica obdrži sliko, pove zakaj, Predvajaj pa odpre prenos v brskalniku (#419).",
+            "Nastavitve: kartice druga ob drugi so enako visoke, »?« pa ostane ob svoji dolgi oznaki.",
+            "Nastavitve → Deljenje zaslona → Strojno pospeševanje: dolg status, kot je »Programsko, zmore do 1080p30«, ostane desno poravnan.",
+            "Pogovorni okni kamere in deljenja zaslona: spustni seznami uporabljajo lasten videz aplikacije kot v Nastavitvah.",
+            "Nastavitve → Vtičniki: kartice imajo enak razmik kot na drugih straneh, vsaka pa ima svojo ikono.",
+            "Zavihka Člani in Dejavnost ostaneta na vrhu desnega stolpca, ko se dolg seznam pomika."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.1",
       "teaser": "Poročila o sesutjih, ki jih pregledaš sam in naložiš le na željo, ter popravki za kamere, ki prej niso dajale slike.",

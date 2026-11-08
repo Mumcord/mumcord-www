@@ -874,6 +874,26 @@
             "title": "Boti atsevišķi",
             "body": "Sadaļa „Boti šajā serverī” zem kanālu saraksta rāda katru botu ar to, ko tas dara, piemēram, relejs, tērzēšanas vēsture vai webhook. Profils un izvēlne, arī privātās ziņas, darbojas no turienes.",
             "alt": "Sadaļa ar botiem serverī"
+          },
+          {
+            "id": "channel-admin",
+            "title": "Kanālu pārvaldība",
+            "body": "Kā administrators tu izveido apakškanālus un pagaidu kanālus, rediģē nosaukumu, aprakstu, vecākkanālu, pozīciju un lietotāju ierobežojumu, sasaisti kanālus un dzēs tos pēc apstiprinājuma, kurā nosaukti skartie kanāli un cilvēki. Tu redzi tikai to, ko serveris atļauj, un noraidījums parāda servera iemeslu."
+          },
+          {
+            "id": "channel-permissions",
+            "title": "Kanāla tiesības un parole",
+            "body": "Kanāla logā cilne Tiesības rāda, kurš kanālā ko drīkst, un izskaidro katru atbildi sadaļā „Kāpēc?”. Administratori rediģē noteikumus un grupas, Mumcord brīdina, pirms tu varētu izslēgt pats sevi, un nekad nepārraksta cita cilvēka izdarītu izmaiņu. Kanāla paroli tu iestati vai noņem cilnē Parole, tāpat kā oficiālajā klientā."
+          },
+          {
+            "id": "move-people",
+            "title": "Cilvēku pārvietošana",
+            "body": "Izvēlnē Administrēšana tu pārvieto vienu cilvēku pie sevis vai uz izvēlētu kanālu, vai visus kanālā uzreiz. Ctrl+klikšķis un Shift+klikšķis atlasa vairākus cilvēkus, lai tu tos velc kopā. Mumcord pasaka, cik no viņiem ieradās."
+          },
+          {
+            "id": "moderation",
+            "title": "Moderēšana cilvēka izvēlnē",
+            "body": "Sadaļā „Administrēšana” tu apklusini vai izslēdz skaņu cilvēkiem serverī, piešķir prioritārā runātāja statusu un atiestati komentāru vai avataru. Katra darbība parādās tikai tad, ja tev ir tai tiesības."
           }
         ]
       },
@@ -1018,6 +1038,16 @@
             "title": "Servera saites kā kartītes",
             "body": "mumble:// saite tērzēšanā rāda serveri, kanālu, pingu, cilvēkus tiešsaistē un versiju, ar “Pievienoties”, “Pievienot serveriem” un “Kopēt saiti”. Skaitļi nāk no standarta publiskā vaicājuma, nekad no savienojuma. Lietotājvārdi un paroles saitē nekad netiek rādīti un kopējot tiek izlaisti.",
             "alt": "Kartīte mumble:// saitei ar servera nosaukumu, kanālu, pingu, lietotājiem un pogu Pievienoties"
+          },
+          {
+            "id": "message-bar",
+            "title": "Jauna ziņu josla",
+            "body": "Josla raksta vienā rindā un aug kopā ar tekstu līdz apmēram sešām rindām. Formatējums parādās mazā tabletē augšējā malā, kamēr kursors ir laukā, un sūtīšanas poga kļūst aktīva tikai tad, kad ir ko sūtīt."
+          },
+          {
+            "id": "activity-notifications",
+            "title": "Aktivitāšu paziņojumi",
+            "body": "Kad kāds sāk ekrāna kopīgošanu, watch party vai spraudņa aktivitāti, Mumcord tev paziņo tāpat kā par ziņu. Aktivitāšu vēsture paliek tavā ierīcē, arī pēc restartēšanas, un tu to notīri Iestatījumos sadaļā Privātums."
           }
         ]
       },
@@ -1500,6 +1530,56 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.2",
+      "teaser": "Administrēšana labā klikšķa izvēlnē: pārvaldi kanālus, tiesības un paroles, pārvieto cilvēkus, apklusini un izslēdz skaņu serverī, kā arī jauna ziņu josla.",
+      "summary": "Mumcord iegūst pirmos administrēšanas rīkus: pārvaldi kanālus, redzi un maini tiesības, iestati kanālu paroles, pārvieto cilvēkus un moderē, taču tikai tur, kur serveris to atļauj. Ir arī paziņojumi par aktivitāti, jauna ziņu josla un skaidrāki paziņojumi, kad kaut kas tiek noraidīts.",
+      "groups": [
+        {
+          "title": "Jaunumi",
+          "items": [
+            "Cilvēku pārvietošana sadaļā Administrēšana ▸ cilvēka un kanāla izvēlnēs: „Pārvietot uz manu kanālu”, „Pārvietot uz” ar filtrējamu kanālu sarakstu, kas rāda lietotāju ierobežojumu, un „Pārvietot visus uz” veselam kanālam. Ctrl+klikšķis (vai Ctrl+atstarpe) un Shift+klikšķis atlasa vairākus cilvēkus, lai tu tos velc kopā. Pēc tam parādās, cik no viņiem ieradās („Pārvietoti 28 no 30 cilvēkiem uz Raid. Pārējie tika noraidīti.”).",
+            "Moderēšana cilvēka izvēlnē sadaļā „Administrēšana ▸”: apklusināšana serverī, skaņas izslēgšana serverī, prioritārais runātājs (zvaigznīte blakus vārdam) un apklusināšanas atcelšana darbojas uzreiz. Komentāra un avatara atiestatīšana vispirms pajautā. Katra darbība parādās tikai tad, ja tev ir servera tiesības.",
+            "Kanāla parole: kanāla loga cilnē Parole tu iestati vai noņem paroli, lai pievienotos kanālam, tāpat kā oficiālajā Mumble klientā.",
+            "Kanāla tiesības: cilnē Tiesības tu redzi, kurš kanālā ko drīkst (✓, ✗ vai ? katrai grupai un cilvēkam). Administratori rediģē noteikumus un grupas, un panelis „Kāpēc?” izskaidro katru atbildi. Mumcord brīdina, pirms tu varētu izslēgt pats sevi, pajautā pirms visa servera noteikumu maiņas un nekad nepārraksta cita cilvēka izdarītu izmaiņu.",
+            "Kanālu pārvaldība: kanāla izvēlnē sadaļā „Administrēšana ▸” tu izveido apakškanālu vai pagaidu kanālu, rediģē kanālu (nosaukumu, aprakstu, vecākkanālu, pozīciju, lietotāju ierobežojumu) un tā saites, sasaisti to ar savu kanālu un dzēs to pēc apstiprinājuma, kurā nosaukti skartie apakškanāli un cilvēki. F2 rediģē, un Delete dzēš atlasīto kanālu.",
+            "Izvēlnes var atvērt apakšizvēlnes: administrēšanas darbības servera ⋯ izvēlnē tagad atrodas sadaļā „Administrēšana ▸” (pagaidām „Bloķēšanas saraksts”), tās redzamas tikai tad, ja tev tajā ir tiesības, un sarkanās darbības ir pēdējās aiz atdalītāja. → atver apakšizvēlni, ← vai Escape atgriež atpakaļ.",
+            "Kad servera relay mainās, Mumcord to paziņo paziņojumu centrā un kā paziņojumu, ar „Uzticēties jaunajam relay” un „Detaļas”. Detaļas salīdzina veco un jauno pirkstu nospiedumu.",
+            "Aktivitāšu vēsture: katram notikuma veidam ir ikona, un vēsture paliek šajā ierīcē, arī pēc restartēšanas. Iestatījumi → Privātums to notīra visiem serveriem.",
+            "Aktivitāšu paziņojumi: kad kāds sāk ekrāna kopīgošanu, watch party vai spraudņa aktivitāti, Mumcord tev paziņo tāpat kā par ziņu. Iestatījumi → Tērzēšana un paziņojumi ir slēdzis katram veidam. Pievienošanās, aiziešana un pārvietošana pēc noklusējuma ir izslēgta.",
+            "Windows: Mumcord reģistrē natīvās avārijas (izņēmuma kodu, moduli un steku), lai tās varētu analizēt avārijas ziņojumā."
+          ]
+        },
+        {
+          "title": "Uzlabots",
+          "items": [
+            "Izvēlnes ieraksti vairs nebeidzas ar „…”, visās valodās.",
+            "Kad serveris kaut ko noraida, Mumcord vienkāršiem vārdiem pasaka, ko un kur („Tu nedrīksti pārvietot cilvēkus kanālā Raid.”). Tiesības, ko administrators mainījis, kamēr esi pieslēdzies, stājas spēkā uzreiz, bez atkārtotas pieslēgšanās.",
+            "Kad relay noraida kameru, ekrāna kopīgošanu vai failus, Mumcord nosauc iemeslu (nereģistrēts, nav atļautā grupā, nav tajā pašā kanālā, nepieciešama atkārtota pieslēgšanās) un parāda izeju: „Kā reģistrēties” vai „Pieslēgties vēlreiz”. Relay, kas paredzēts tikai reģistrētiem lietotājiem, viesi vēl pirms mēģinājuma redz, kāpēc kamera un saspraude nav pieejamas.",
+            "Radiopogām un izvēles rūtiņām visur ir Mumcord pašu dizains ar skaidru fokusa apli un augsta kontrasta atbalstu. Opciju kartītes, piemēram, „Privātās ziņas no”, izceļ visu kartīti.",
+            "Iestatīšana, „Kā tu vēlies runāt?”: divas skaidras kartītes ar īsu paskaidrojumu, jutība zem balss aktivizēšanas un push-to-talk taustiņš tieši savā kartītē. Turpināt gaida, līdz taustiņš ir iestatīts.",
+            "Peer-to-peer: „Tieši + relay (vienmēr relay, slēpj manu IP)” tagad ir ieteicamais režīms un noklusējums jaunām instalācijām. Režīms, ko jau izmanto, paliek nemainīgs.",
+            "Norādi „Šim serverim nav relay, tāpēc failu kopīgošana nav pieejama” var aizvērt katram serverim atsevišķi, un tā atgriežas, kad serveris iegūst relay un atkal to zaudē.",
+            "„Boti šajā serverī” sākas sakļauts, un Mumcord atceras, vai tu to atvēri.",
+            "Spraudņu josla: spraudņu ikonām vairs nav rāmja, paša spraudņa attēls vai krāsainā flīze ir visa ikona.",
+            "Jauna ziņu josla: teksts sākas pie kreisās malas vienā rindā, aug līdz apmēram sešām rindām un tad ritinās. Lietotņu, faila, attēla un GIF ikonas ir viens konsekvents komplekts, un sūtīšanas poga paliek blāva, kamēr nav ko sūtīt. Formatēšanas pogas atrodas mazā tabletē augšējā malā, kamēr kursors ir laukā. Kanāls, kurā nedrīksti rakstīt, rāda piezīmi tukša lauka vietā."
+          ]
+        },
+        {
+          "title": "Labots",
+          "items": [
+            "Kanālu meklēšanas lauks sānjoslas augšā ir izlīdzināts ar kanāla nosaukumu tērzēšanas galvenē.",
+            "Aktivitāšu vēsture: vārdi darbojas kā tērzēšanā (klikšķis atver profilu un izvēlni, dubultklikšķis privāto ziņu), un boti vairs neparādās kopā ar pievienošanos, aiziešanu un pārvietošanu.",
+            "Iegultie YouTube un Twitch atskaņotāji: pilnekrāna režīms un saites kopēšana darbojas. Twitch darbojas tikai tīmekļa vietnē, un Mumcord logs macOS un Linux sistēmās tāda nav: kartīte saglabā savu attēlu, paskaidro iemeslu, un Atskaņot atver straumi pārlūkprogrammā (#419).",
+            "Iestatījumi: blakus esošās kartītes ir vienāda augstuma, un „?” paliek blakus savam garajam nosaukumam.",
+            "Iestatījumi → Ekrāna kopīgošana → Aparatūras paātrinājums: garš statuss, piemēram, „Programmatūra, tur līdz 1080p30”, paliek izlīdzināts pa labi.",
+            "Kameras un ekrāna kopīgošanas dialogi: nolaižamie saraksti izmanto lietotnes pašas dizainu kā Iestatījumos.",
+            "Iestatījumi → Spraudņi: kartītēm ir tāds pats atstatums kā citās lapās, un katrai kartītei ir sava ikona.",
+            "Cilnes Dalībnieki un Aktivitāte paliek labās kolonnas augšā, kad ritina garu sarakstu."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.1",
       "teaser": "Avāriju ziņojumi, ko pārbaudi pats un augšupielādē tikai tad, ja vēlies, un kameru labojumi kamerām, kas iepriekš nerādīja attēlu.",

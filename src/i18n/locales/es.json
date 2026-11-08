@@ -874,6 +874,26 @@
             "title": "Bots aparte",
             "body": "Una sección “Bots en este servidor” bajo la lista de canales muestra cada bot con lo que hace, como relay, historial del chat o webhooks. El perfil y el menú, mensajes privados incluidos, funcionan desde ahí.",
             "alt": "La sección con los bots de un servidor"
+          },
+          {
+            "id": "channel-admin",
+            "title": "Gestión de canales",
+            "body": "Como administrador creas subcanales y canales temporales, editas nombre, descripción, canal padre, posición y límite de usuarios, enlazas canales y los borras tras una confirmación que nombra los canales y las personas afectados. Solo ves lo que el servidor permite, y un rechazo muestra el motivo del servidor."
+          },
+          {
+            "id": "channel-permissions",
+            "title": "Permisos y contraseña de canal",
+            "body": "En la ventana del canal, la pestaña Permisos muestra quién puede hacer qué en el canal y explica cada respuesta en “¿Por qué?”. Los administradores editan reglas y grupos, Mumcord avisa antes de que te dejes fuera y nunca sobrescribe un cambio que hizo otra persona. Pones o quitas la contraseña de un canal en la pestaña Contraseña, como en el cliente oficial."
+          },
+          {
+            "id": "move-people",
+            "title": "Mover gente",
+            "body": "En el menú Admin mueves a una persona hasta ti o a un canal de tu elección, o a todos los de un canal a la vez. Con Ctrl+clic y Mayús+clic eliges a varias personas y las arrastras juntas. Mumcord te dice cuántas llegaron."
+          },
+          {
+            "id": "moderation",
+            "title": "Moderación en el menú de persona",
+            "body": "En “Admin” silencias o ensordeces a la gente en el servidor, das prioridad al hablar y restableces un comentario o un avatar. Cada acción solo aparece cuando tienes el derecho para ella."
           }
         ]
       },
@@ -1018,6 +1038,16 @@
             "title": "Enlaces de servidor como tarjetas",
             "body": "Un enlace mumble:// en el chat muestra servidor, canal, ping, gente en línea y versión, con «Unirse», «Añadir a servidores» y «Copiar enlace». Las cifras vienen de la consulta pública estándar, nunca de una conexión. Los nombres de usuario y contraseñas de un enlace nunca se muestran y se omiten al copiar.",
             "alt": "Tarjeta de un enlace mumble:// con nombre del servidor, canal, ping, usuarios y el botón Unirse"
+          },
+          {
+            "id": "message-bar",
+            "title": "Nueva barra de mensajes",
+            "body": "La barra escribe en una línea y crece con el texto hasta unas seis líneas. El formato aparece en una pequeña píldora en el borde superior mientras el cursor está en el campo, y el botón de enviar solo se activa cuando hay algo que enviar."
+          },
+          {
+            "id": "activity-notifications",
+            "title": "Notificaciones de actividad",
+            "body": "Cuando alguien inicia una pantalla compartida, una watch party o una actividad de un plugin, Mumcord te avisa como con un mensaje. El historial de actividad se queda en tu dispositivo, también tras reiniciar, y lo borras en Ajustes, en Privacidad."
           }
         ]
       },
@@ -1500,6 +1530,56 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.2",
+      "teaser": "Administración en el menú contextual: gestiona canales, permisos y contraseñas, mueve gente, silencia y ensordece en el servidor, y una barra de mensajes nueva.",
+      "summary": "Mumcord estrena sus primeras herramientas de administración: gestionas canales, ves y editas permisos, pones contraseñas a los canales, mueves gente y moderas, todo solo donde el servidor te lo permite. Además hay notificaciones de actividad, una barra de mensajes nueva y avisos más claros cuando algo se rechaza.",
+      "groups": [
+        {
+          "title": "Nuevo",
+          "items": [
+            "Mover gente, en Admin ▸ de los menús de persona y de canal: “Mover a mi canal”, “Mover a” con una lista de canales filtrable que muestra el límite de usuarios, y “Mover a todos a” para un canal entero. Con Ctrl+clic (o Ctrl+Espacio) y Mayús+clic eliges a varias personas y las arrastras juntas. Después dice cuántas llegaron (“Se movieron 28 de 30 personas a Raid. El resto fue rechazado.”).",
+            "Moderación en el menú de persona, en “Admin ▸”: silenciar para todos, ensordecer para todos, orador prioritario (una estrella junto al nombre) y quitar la supresión actúan al instante. Restablecer comentario y restablecer avatar preguntan antes. Cada acción solo aparece con el derecho del servidor.",
+            "Contraseña de canal: en la pestaña “Contraseña” de la ventana del canal pones o quitas la contraseña para entrar en un canal, igual que en el cliente oficial de Mumble.",
+            "Permisos de canal: en la pestaña “Permisos” ves quién puede hacer qué en el canal (✓, ✗ o ? por grupo y persona). Los administradores editan reglas y grupos, y un panel “¿Por qué?” explica cada respuesta. Mumcord te avisa antes de que te dejes fuera, pregunta antes de cambiar las reglas de todo el servidor y nunca sobrescribe un cambio que hizo otra persona.",
+            "Gestión de canales: en el menú del canal, en “Admin ▸”, creas un subcanal o un canal temporal, editas un canal (nombre, descripción, canal padre, posición, límite de usuarios) y sus enlaces, lo enlazas con tu canal y lo borras tras una confirmación que nombra los subcanales y las personas afectados. F2 edita y Supr borra el canal seleccionado.",
+            "Los menús abren submenús: las acciones de administración del menú del servidor ⋯ ahora están en “Admin ▸” (por ahora “Lista de baneos”), solo se muestran si tienes un derecho en él, y las acciones en rojo van al final tras un separador. → abre un submenú, ← o Escape vuelve atrás.",
+            "Cuando cambia el relay de un servidor, Mumcord te lo dice en el centro de notificaciones y como notificación, con “Confiar en el nuevo relay” y “Detalles”. Los detalles comparan la huella antigua y la nueva.",
+            "Historial de actividad: cada tipo de evento tiene un icono, y el historial se queda en este dispositivo, también tras reiniciar. En Ajustes → Privacidad lo borras para todos los servidores.",
+            "Notificaciones de actividad: cuando alguien inicia una pantalla compartida, una watch party o una actividad de un plugin, Mumcord te avisa como con un mensaje. En Ajustes → Chat y notificaciones hay un interruptor por tipo. Las entradas, salidas y movimientos vienen desactivados por defecto.",
+            "Windows: Mumcord registra los fallos nativos (código de excepción, módulo y pila) para poder analizarlos en el informe de fallos."
+          ]
+        },
+        {
+          "title": "Mejorado",
+          "items": [
+            "Las entradas de menú ya no terminan en “…”, en todos los idiomas.",
+            "Cuando el servidor rechaza algo, Mumcord dice con palabras claras qué y dónde (“No puedes mover gente en Raid.”). Los derechos que cambia un administrador mientras estás conectado surten efecto al instante, sin reconectar.",
+            "Cuando el relay rechaza la cámara, la pantalla compartida o los archivos, Mumcord indica el motivo (no registrado, no estás en un grupo permitido, no estás en el mismo canal, hace falta reconectar) y muestra una salida: “Cómo registrarte” o “Reconectar”. En un relay solo para usuarios registrados, los invitados ven de antemano por qué no están disponibles la cámara y el clip.",
+            "Los botones de opción y las casillas tienen el diseño propio de Mumcord en todas partes, con un anillo de foco claro y soporte de alto contraste. Las tarjetas de opciones como “Mensajes privados de” se iluminan enteras.",
+            "Configuración, “¿Cómo quieres hablar?”: dos tarjetas claras con una explicación breve, la sensibilidad bajo la activación por voz y la tecla de pulsar para hablar dentro de su tarjeta. “Continuar” espera hasta que haya una tecla asignada.",
+            "Igual a igual: “Directo + relay (siempre relay, oculta mi IP)” es ahora el modo recomendado y el predeterminado en instalaciones nuevas. Un modo que ya usas se queda como está.",
+            "El aviso “Este servidor no tiene relay, así que no se pueden compartir archivos” se puede cerrar por servidor y vuelve cuando el servidor obtiene un relay y lo pierde otra vez.",
+            "“Bots en este servidor” empieza contraído, y Mumcord recuerda si lo abriste.",
+            "Barra de plugins: los iconos de plugins ya no tienen marco, la imagen propia o el mosaico de color del plugin es el icono entero.",
+            "Nueva barra de mensajes: el texto empieza en el borde izquierdo en una línea, crece hasta unas seis líneas y luego se desplaza. Los iconos de Apps, archivo, imagen y GIF son un conjunto uniforme, y el botón de enviar queda atenuado hasta que haya algo que enviar. Los botones de formato están en una pequeña píldora en el borde superior mientras el cursor está en el campo. Un canal en el que no puedes escribir muestra una nota en vez de un campo vacío."
+          ]
+        },
+        {
+          "title": "Corregido",
+          "items": [
+            "El campo de búsqueda de canales en la parte superior de la barra lateral se alinea con el nombre del canal en la cabecera del chat.",
+            "Historial de actividad: los nombres funcionan como en el chat (un clic abre el perfil y el menú, doble clic un mensaje privado), y los bots ya no aparecen en entradas, salidas y movimientos.",
+            "Reproductores incrustados de YouTube y Twitch: la pantalla completa y “Copiar enlace” funcionan. Twitch solo funciona en un sitio web, y la ventana de Mumcord no lo es en macOS y Linux: la tarjeta conserva su imagen, dice por qué, y “Reproducir” abre el stream en el navegador (#419).",
+            "Ajustes: las tarjetas una al lado de otra tienen la misma altura, y un “?” se queda junto a su etiqueta larga.",
+            "Ajustes → Pantalla compartida → Aceleración por hardware: un estado largo como “Software, mantiene hasta 1080p30” se queda alineado a la derecha.",
+            "Diálogos de cámara y pantalla compartida: los desplegables usan el diseño propio de la app como en Ajustes.",
+            "Ajustes → Plugins: las tarjetas tienen la misma separación que en las demás páginas, y todas tienen su icono.",
+            "Las pestañas “Miembros” y “Actividad” se quedan arriba en la columna derecha cuando se desplaza una lista larga."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.1",
       "teaser": "Informes de fallos que revisas tú mismo y subes solo si quieres, y correcciones de cámara para cámaras que antes no daban imagen.",

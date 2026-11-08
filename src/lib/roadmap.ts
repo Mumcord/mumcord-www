@@ -586,7 +586,6 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Whiteboard und Skyloom",
-            version: "0.7.2",
             items: [
               "Whiteboard, das offizielle Plugin zum gemeinsamen Denken: eine endlose Fläche mit Stiften, Zetteln und Laserpointer, gespeichert auf deinem Gerät und als PNG, SVG oder PDF exportierbar",
               "Skyloom, ein Spiel nur mit der Stimme für 2 bis 12 Leute: Eine Person beschreibt ein verborgenes Sternbild, alle anderen setzen je einen Stern",
@@ -604,6 +603,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         groups: [
           {
             title: "Admin, wo du ohnehin suchst",
+            done: [0, 1],
             items: [
               "Admin-Aktionen erscheinen nur, wo der Server sie dir erlaubt. Ohne Rechte siehst du nichts davon",
               "Alles im Rechtsklick-Menü von Kanälen und Personen und im Server-Menü, ohne eigenen Admin-Modus",
@@ -615,6 +615,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Kanäle und Rechte",
+            done: [0, 1, 2],
             items: [
               "Kanäle anlegen, umbenennen, beschreiben, verschieben, sortieren und löschen, auch temporäre Kanäle, Nutzerlimits und Verknüpfungen",
               "Kanal-Passwörter setzen, ändern und entfernen, so wie im offiziellen Client",
@@ -628,7 +629,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Personen und Banns",
-            done: [0, 1],
+            done: [0, 1, 2, 4],
             items: [
               "Personen vom Server werfen, mit Grund, und auf Wunsch für eine Zeit bannen, nach Zertifikat, IP-Adresse oder beidem",
               "Die Bannliste ansehen, durchsuchen und bearbeiten, auch Banns für Leute, die gerade nicht online sind",
@@ -1264,7 +1265,6 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Whiteboard and Skyloom",
-            version: "0.7.2",
             items: [
               "Whiteboard, the official plugin for thinking together: an endless canvas with pens, sticky notes and a laser pointer, saved on your device and exportable as PNG, SVG or PDF",
               "Skyloom, a voice-only game for 2 to 12 people: one person describes a hidden constellation, everyone else places one star each",
@@ -1282,6 +1282,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         groups: [
           {
             title: "Admin where you already look",
+            done: [0, 1],
             items: [
               "Admin actions only appear where the server grants them. Without rights you see none of it",
               "Everything in the right-click menus of channels and people and in the server menu, no separate admin mode",
@@ -1293,6 +1294,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Channels and permissions",
+            done: [0, 1, 2],
             items: [
               "Create, rename, describe, move, reorder and delete channels, including temporary channels, user limits and links",
               "Set, change and remove channel passwords, the same way as in the official client",
@@ -1306,7 +1308,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "People and bans",
-            done: [0, 1],
+            done: [0, 1, 2, 4],
             items: [
               "Remove people from the server with a reason, and ban them for a chosen time if you like, by certificate, IP address or both",
               "See, search and edit the ban list, including bans for people who are not online",

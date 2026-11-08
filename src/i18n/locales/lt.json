@@ -874,6 +874,26 @@
             "title": "Botai atskirai",
             "body": "Skiltis „Botai šiame serveryje“ po kanalų sąrašu rodo kiekvieną botą ir ką jis daro, pavyzdžiui, relay, pokalbių istoriją ar webhook’us. Profilis ir meniu, įskaitant asmenines žinutes, veikia iš ten.",
             "alt": "Skiltis su serverio botais"
+          },
+          {
+            "id": "channel-admin",
+            "title": "Kanalų tvarkymas",
+            "body": "Kaip administratorius kuri pokanalius ir laikinuosius kanalus, redaguoji pavadinimą, aprašymą, tėvinį kanalą, vietą ir naudotojų ribą, susieji kanalus ir ištrini juos po patvirtinimo, kuriame įvardyti paveikti kanalai ir žmonės. Matai tik tai, ką leidžia serveris, o atmetimas parodo serverio nurodytą priežastį."
+          },
+          {
+            "id": "channel-permissions",
+            "title": "Kanalo teisės ir slaptažodis",
+            "body": "Kanalo lange skirtukas Teisės rodo, kas ką gali daryti kanale, ir paaiškina kiekvieną atsakymą skiltyje „Kodėl?“. Administratoriai redaguoja taisykles ir grupes, Mumcord įspėja prieš tau užsirakinant save ir niekada neperrašo kito žmogaus padarytų pakeitimų. Kanalo slaptažodį nustatai arba pašalini skirtuke Slaptažodis, kaip oficialiame kliente."
+          },
+          {
+            "id": "move-people",
+            "title": "Žmonių perkėlimas",
+            "body": "Meniu Administravimas perkeli vieną žmogų pas save arba į pasirinktą kanalą, arba visus kanale iš karto. Ctrl + spustelėjimas ir Shift + spustelėjimas pasirenka kelis žmones, kad galėtum juos nutempti kartu. Mumcord pasako, kiek jų atkeliavo."
+          },
+          {
+            "id": "moderation",
+            "title": "Moderavimas žmogaus meniu",
+            "body": "Skiltyje „Administravimas“ nutildai arba išjungi garsą žmonėms serveryje, suteiki prioritetinio kalbėtojo statusą ir atstatai komentarą ar avatarą. Kiekvienas veiksmas rodomas tik tada, kai turi tam teisę."
           }
         ]
       },
@@ -1018,6 +1038,16 @@
             "title": "Serverių nuorodos kaip kortelės",
             "body": "mumble:// nuoroda pokalbyje rodo serverį, kanalą, ping, prisijungusius žmones ir versiją, su „Prisijungti“, „Pridėti prie serverių“ ir „Kopijuoti nuorodą“. Skaičiai gaunami iš standartinės viešos užklausos, niekada per ryšį. Vartotojo vardai ir slaptažodžiai nuorodoje niekada nerodomi ir kopijuojant praleidžiami.",
             "alt": "mumble:// nuorodos kortelė su serverio pavadinimu, kanalu, ping, vartotojais ir mygtuku Prisijungti"
+          },
+          {
+            "id": "message-bar",
+            "title": "Nauja žinučių juosta",
+            "body": "Juosta rašo vienoje eilutėje ir auga kartu su tekstu iki maždaug šešių eilučių. Formatavimas rodomas mažoje piliulėje viršutiniame krašte, kol žymeklis yra lauke, o siuntimo mygtukas tampa aktyvus tik tada, kai yra ką siųsti."
+          },
+          {
+            "id": "activity-notifications",
+            "title": "Pranešimai apie veiklą",
+            "body": "Kai kas nors pradeda ekrano bendrinimą, watch party ar papildinio veiklą, Mumcord praneša tau kaip apie žinutę. Veiklos istorija lieka tavo įrenginyje, ir po paleidimo iš naujo, o išvalai ją Nustatymuose skiltyje Privatumas."
           }
         ]
       },
@@ -1500,6 +1530,56 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.2",
+      "teaser": "Administravimas dešiniojo spustelėjimo meniu: tvarkyk kanalus, teises ir slaptažodžius, perkelk žmones, nutildyk ir išjunk garsą serveryje, taip pat nauja žinučių juosta.",
+      "summary": "Mumcord gauna pirmuosius administravimo įrankius: tvarkai kanalus, matai ir keiti teises, nustatai kanalų slaptažodžius, perkeli žmones ir moderuoji, bet tik ten, kur tai leidžia serveris. Taip pat atsiranda pranešimai apie veiklą, nauja žinučių juosta ir aiškesni pranešimai, kai kas nors atmetama.",
+      "groups": [
+        {
+          "title": "Nauja",
+          "items": [
+            "Žmonių perkėlimas, skiltyje Administravimas ▸ žmogaus ir kanalo meniu: „Perkelti į mano kanalą“, „Perkelti į“ su filtruojamu kanalų sąrašu, kuriame rodoma naudotojų riba, ir „Perkelti visus į“ visam kanalui. Ctrl + spustelėjimas (arba Ctrl+tarpas) ir Shift + spustelėjimas pasirenka kelis žmones, kad galėtum juos nutempti kartu. Po to parodoma, kiek jų atkeliavo („Perkelta 28 iš 30 žmonių į Raid. Likusieji buvo atmesti.“).",
+            "Moderavimas žmogaus meniu skiltyje „Administravimas ▸“: nutildymas serveryje, garso išjungimas serveryje, prioritetinis kalbėtojas (žvaigždutė šalia vardo) ir nutildymo panaikinimas veikia iš karto. Komentaro ir avataro atstatymas pirmiau paklausia. Kiekvienas veiksmas rodomas tik tada, kai turi serverio teisę.",
+            "Kanalo slaptažodis: kanalo lango skirtuke Slaptažodis nustatai arba pašalini slaptažodį, reikalingą prisijungti prie kanalo, lygiai kaip oficialiame Mumble kliente.",
+            "Kanalo teisės: skirtuke Teisės matai, kas ką gali daryti kanale (✓, ✗ arba ? kiekvienai grupei ir žmogui). Administratoriai redaguoja taisykles ir grupes, o skydelis „Kodėl?“ paaiškina kiekvieną atsakymą. Mumcord įspėja prieš tau užsirakinant save, paklausia prieš keičiant viso serverio taisykles ir niekada neperrašo kito žmogaus padarytų pakeitimų.",
+            "Kanalų tvarkymas: kanalo meniu skiltyje „Administravimas ▸“ sukuri pokanalį arba laikinąjį kanalą, redaguoji kanalą (pavadinimą, aprašymą, tėvinį kanalą, vietą, naudotojų ribą) ir jo nuorodas, susieji jį su savo kanalu ir ištrini jį po patvirtinimo, kuriame įvardyti paveikti pokanaliai ir žmonės. F2 redaguoja, o Delete ištrina pasirinktą kanalą.",
+            "Meniu gali atverti submeniu: administravimo veiksmai serverio ⋯ meniu dabar yra skiltyje „Administravimas ▸“ (kol kas „Blokavimų sąrašas“), rodomi tik tada, kai joje turi teisę, o raudoni veiksmai eina paskutiniai už skirtuko. → atveria submeniu, ← arba Esc grąžina atgal.",
+            "Kai serverio relay pasikeičia, Mumcord apie tai praneša pranešimų centre ir kaip pranešimą, su „Pasitikėti nauju relay“ ir „Išsamiau“. Išsamesnėje informacijoje palyginamas senas ir naujas kontrolinis kodas.",
+            "Veiklos istorija: kiekvienas įvykio tipas turi piktogramą, o istorija lieka šiame įrenginyje, ir po paleidimo iš naujo. Nustatymai → Privatumas ją išvalo visiems serveriams.",
+            "Pranešimai apie veiklą: kai kas nors pradeda ekrano bendrinimą, watch party ar papildinio veiklą, Mumcord praneša tau kaip apie žinutę. Nustatymai → Pokalbiai ir pranešimai turi jungiklį kiekvienam tipui. Prisijungimai, išėjimai ir perkėlimai pagal numatytuosius nustatymus išjungti.",
+            "Windows: Mumcord užregistruoja vietines strigtis (išimties kodą, modulį ir dėklą), kad jas būtų galima išanalizuoti strigčių ataskaitoje."
+          ]
+        },
+        {
+          "title": "Patobulinta",
+          "items": [
+            "Meniu punktai nebesibaigia „…“, visomis kalbomis.",
+            "Kai serveris ką nors atmeta, Mumcord paprastais žodžiais pasako, ką ir kur („Tu negali perkelti žmonių kanale Raid.“). Teisės, kurias administratorius pakeitė tau esant prisijungus, įsigalioja iš karto, be pakartotinio prisijungimo.",
+            "Kai relay atmeta kamerą, ekrano bendrinimą ar failus, Mumcord įvardija priežastį (neregistruotas, ne leidžiamoje grupėje, ne tame pačiame kanale, reikia prisijungti iš naujo) ir parodo išeitį: „Kaip užsiregistruoti“ arba „Prisijungti iš naujo“. Relay, skirtame tik registruotiems naudotojams, svečiai dar nieko nebandę mato, kodėl kamera ir sąvaržėlė nepasiekiamos.",
+            "Pasirinkimo mygtukai ir žymimieji langeliai visur turi nuosavą Mumcord dizainą, su aiškiu fokuso žiedu ir didelio kontrasto palaikymu. Pasirinkimų kortelės, pavyzdžiui, „Asmeninės žinutės iš“, paryškina visą kortelę.",
+            "Sąranka, „Kaip nori kalbėti?“: dvi aiškios kortelės su trumpu paaiškinimu, jautrumas po aktyvinimo balsu ir „Spausk ir kalbėk“ klavišas tiesiai savo kortelėje. Tęsti laukia, kol bus nustatytas klavišas.",
+            "Peer-to-peer: „Tiesiogiai + relay (visada relay, paslepia mano IP)“ dabar yra rekomenduojamas režimas ir numatytasis naujiems diegimams. Jau naudojamas režimas lieka toks, koks yra.",
+            "Užuominą „Šiame serveryje nėra relay, todėl failų bendrinimas nepasiekiamas“ galima uždaryti kiekvienam serveriui atskirai, ir ji grįžta, kai serveris gauna relay ir vėl jį praranda.",
+            "„Botai šiame serveryje“ pradeda suskleisti, o Mumcord prisimena, ar tu jį atvėrei.",
+            "Papildinių juosta: papildinių piktogramos nebeturi rėmelio, paties papildinio paveikslėlis ar spalvota plytelė yra visa piktograma.",
+            "Nauja žinučių juosta: tekstas prasideda kairiajame krašte vienoje eilutėje, auga iki maždaug šešių eilučių ir tada slenka. Programų, failo, paveikslėlio ir GIF piktogramos yra vienas nuoseklus rinkinys, o siuntimo mygtukas lieka priblukęs, kol nėra ką siųsti. Formatavimo mygtukai yra mažoje piliulėje viršutiniame krašte, kol žymeklis yra lauke. Kanalas, kuriame negali rašyti, rodo pastabą vietoj tuščio lauko."
+          ]
+        },
+        {
+          "title": "Ištaisyta",
+          "items": [
+            "Kanalų paieškos laukas šoninės juostos viršuje sulygiuotas su kanalo pavadinimu pokalbio antraštėje.",
+            "Veiklos istorija: vardai veikia kaip pokalbyje (spustelėjimas atveria profilį ir meniu, dvigubas spustelėjimas – asmeninę žinutę), o botai nebesirodo su prisijungimais, išėjimais ir perkėlimais.",
+            "Įterpti YouTube ir Twitch grotuvai: veikia viso ekrano režimas ir nuorodos kopijavimas. Twitch veikia tik svetainėje, o Mumcord langas macOS ir Linux sistemose ja nėra: kortelė išlaiko savo paveikslėlį, paaiškina kodėl, o Groti atidaro transliaciją naršyklėje (#419).",
+            "Nustatymai: greta esančios kortelės yra vienodo aukščio, o „?“ lieka prie savo ilgos etiketės.",
+            "Nustatymai → Ekrano bendrinimas → Aparatinis spartinimas: ilga būsena, pavyzdžiui, „Programinis, išlaiko iki 1080p30“, lieka lygiuota dešinėje.",
+            "Kameros ir ekrano bendrinimo dialogai: išskleidžiamieji sąrašai naudoja programos nuosavą dizainą kaip Nustatymuose.",
+            "Nustatymai → Papildiniai: kortelės turi tokį patį tarpą kaip kituose puslapiuose, ir kiekviena kortelė turi savo piktogramą.",
+            "Skirtukai Nariai ir Veikla lieka dešiniojo stulpelio viršuje, kai slenka ilgas sąrašas."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.1",
       "teaser": "Strigčių ataskaitos, kurias pats patikrini ir įkeli tik norėdamas, bei kamerų pataisymai kameroms, kurios anksčiau nerodė vaizdo.",

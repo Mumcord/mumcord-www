@@ -874,6 +874,26 @@
             "title": "Boty osobno",
             "body": "Sekcja „Boty na tym serwerze” pod listą kanałów pokazuje każdego bota z tym, co robi, na przykład przekaźnik, historia czatu albo webhooki. Profil i menu, także prywatne wiadomości, działają stamtąd.",
             "alt": "Sekcja z botami na serwerze"
+          },
+          {
+            "id": "channel-admin",
+            "title": "Zarządzanie kanałami",
+            "body": "Jako admin tworzysz podkanały i kanały tymczasowe, edytujesz nazwę, opis, kanał nadrzędny, pozycję i limit użytkowników, łączysz kanały i usuwasz je po potwierdzeniu, które wymienia dotknięte kanały i osoby. Widzisz tylko to, na co serwer ci pozwala, a odmowa pokazuje powód podany przez serwer."
+          },
+          {
+            "id": "channel-permissions",
+            "title": "Uprawnienia kanału i hasło",
+            "body": "W oknie kanału zakładka Uprawnienia pokazuje, kto co może w kanale, i wyjaśnia każdą odpowiedź pod „Dlaczego?”. Admini edytują reguły i grupy, Mumcord ostrzega, zanim sam się zablokujesz, i nigdy nie nadpisuje zmiany, którą ktoś inny wprowadził. Hasło kanału ustawiasz lub usuwasz w zakładce Hasło, tak jak w oficjalnym kliencie."
+          },
+          {
+            "id": "move-people",
+            "title": "Przenoszenie osób",
+            "body": "W menu Admin przenosisz jedną osobę do siebie lub do wybranego kanału, albo wszystkich z kanału naraz. Ctrl-klik i Shift-klik wybierają kilka osób, żebyś mógł przeciągnąć je razem. Mumcord mówi ci, ile dotarło."
+          },
+          {
+            "id": "moderation",
+            "title": "Moderacja w menu osoby",
+            "body": "Pod „Admin” wyciszasz lub ogłuszasz osoby dla wszystkich, dajesz priorytet mówcy oraz resetujesz komentarz lub awatar. Każda akcja pojawia się tylko wtedy, gdy masz do niej prawo."
           }
         ]
       },
@@ -1018,6 +1038,16 @@
             "title": "Linki do serwerów jako karty",
             "body": "Link mumble:// na czacie pokazuje serwer, kanał, ping, osoby online i wersję, z „Dołącz”, „Dodaj do serwerów” i „Kopiuj link”. Dane pochodzą ze standardowego publicznego zapytania, nigdy z połączenia. Nazwy użytkowników i hasła w linku nigdy nie są pokazywane i są pomijane przy kopiowaniu.",
             "alt": "Karta linku mumble:// z nazwą serwera, kanałem, pingiem, użytkownikami i przyciskiem Dołącz"
+          },
+          {
+            "id": "message-bar",
+            "title": "Nowy pasek wiadomości",
+            "body": "Pasek pisze w jednym wierszu i rośnie wraz z tekstem do około sześciu wierszy. Formatowanie pokazuje się w małej kapsule na górnej krawędzi, dopóki kursor jest w polu, a przycisk wysyłania staje się aktywny dopiero wtedy, gdy jest co wysłać."
+          },
+          {
+            "id": "activity-notifications",
+            "title": "Powiadomienia o aktywności",
+            "body": "Gdy ktoś zacznie udostępniać ekran, watch party lub aktywność wtyczki, Mumcord powiadamia cię jak o wiadomości. Historia aktywności zostaje na twoim urządzeniu, także po ponownym uruchomieniu, a czyścisz ją w Ustawieniach pod Prywatność."
           }
         ]
       },
@@ -1500,6 +1530,56 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.2",
+      "teaser": "Admin w menu prawego przycisku: zarządzaj kanałami, uprawnieniami i hasłami, przenoś osoby, wyciszaj i ogłuszaj przez serwer, a do tego nowy pasek wiadomości.",
+      "summary": "Mumcord dostaje pierwsze narzędzia admina: zarządzasz kanałami, widzisz i edytujesz uprawnienia, ustawiasz hasła kanałów, przenosisz osoby i moderujesz, wszystko tylko tam, gdzie serwer na to pozwala. Do tego powiadomienia o aktywności, nowy pasek wiadomości i jaśniejsze komunikaty, gdy coś zostaje odrzucone.",
+      "groups": [
+        {
+          "title": "Nowe",
+          "items": [
+            "Przenoszenie osób, w Admin ▸ w menu osoby i kanału: „Przenieś do mojego kanału”, „Przenieś do” z filtrowaną listą kanałów, która pokazuje limit użytkowników, oraz „Przenieś wszystkich do” dla całego kanału. Ctrl-klik (albo Ctrl+Spacja) i Shift-klik wybierają kilka osób, żebyś przeciągnął je razem. Potem widzisz, ile dotarło („Przeniesiono 28 z 30 osób do Raid. Pozostałe zostały odrzucone.”).",
+            "Moderacja w menu osoby pod „Admin ▸”: wyciszenie przez serwer, ogłuszenie przez serwer, priorytetowy mówca (gwiazdka obok nazwy) i zdjęcie wyciszenia działają od razu. Zresetowanie komentarza i zresetowanie awatara pytają wcześniej. Każda akcja pojawia się tylko wtedy, gdy masz do niej prawo na serwerze.",
+            "Hasło kanału: w zakładce Hasło okna kanału ustawiasz lub usuwasz hasło wymagane do wejścia, tak samo jak w oficjalnym kliencie Mumble.",
+            "Uprawnienia kanału: w zakładce Uprawnienia widzisz, kto co może w kanale (✓, ✗ lub ? dla każdej grupy i osoby). Admini edytują reguły i grupy, a panel „Dlaczego?” wyjaśnia każdą odpowiedź. Mumcord ostrzega, zanim sam się zablokujesz, pyta przed zmianami reguł całego serwera i nigdy nie nadpisuje zmiany, którą ktoś inny wprowadził.",
+            "Zarządzanie kanałami: w menu kanału pod „Admin ▸” tworzysz podkanał lub kanał tymczasowy, edytujesz kanał (nazwę, opis, nadrzędny, pozycję, limit użytkowników) i jego powiązania, łączysz go ze swoim kanałem i usuwasz go po potwierdzeniu, które wymienia dotknięte podkanały i osoby. F2 edytuje, a Delete usuwa wybrany kanał.",
+            "Menu mogą otwierać podmenu: akcje admina w menu serwera ⋯ są teraz pod „Admin ▸” (na razie „Lista banów”), widoczne tylko wtedy, gdy masz do nich prawo, a czerwone akcje są na końcu za separatorem. → otwiera podmenu, ← lub Escape wraca.",
+            "Gdy zmieni się relay serwera, Mumcord mówi o tym w centrum powiadomień i jako powiadomienie, z „Zaufaj nowemu relayowi” i „Szczegóły”. Szczegóły porównują stary i nowy odcisk.",
+            "Historia aktywności: każdy rodzaj zdarzenia ma ikonę, a historia zostaje na tym urządzeniu, także po ponownym uruchomieniu. W Ustawienia → Prywatność czyścisz ją dla wszystkich serwerów.",
+            "Powiadomienia o aktywności: gdy ktoś zacznie udostępniać ekran, watch party lub aktywność wtyczki, Mumcord powiadamia cię jak o wiadomości. Ustawienia → Czat i powiadomienia mają przełącznik dla każdego rodzaju. Dołączenia, wyjścia i przeniesienia są domyślnie wyłączone.",
+            "Windows: Mumcord zapisuje natywne awarie (kod wyjątku, moduł i stos), żeby można je było przeanalizować w raporcie awarii."
+          ]
+        },
+        {
+          "title": "Ulepszone",
+          "items": [
+            "Pozycje menu nie kończą się już na „…”, we wszystkich językach.",
+            "Gdy serwer coś odrzuci, Mumcord mówi prostymi słowami, co i gdzie („Nie możesz przenosić osób w Raid.”). Prawa zmienione przez admina podczas twojego połączenia działają od razu, bez ponownego łączenia.",
+            "Gdy relay odrzuci kamerę, udostępnianie ekranu lub pliki, Mumcord podaje powód (brak rejestracji, brak w dozwolonej grupie, nie ten sam kanał, potrzebne ponowne połączenie) i pokazuje wyjście: „Jak się zarejestrować” lub „Połącz ponownie”. Na relayu tylko dla zarejestrowanych goście widzą przed próbą, dlaczego kamera i spinacz są niedostępne.",
+            "Przyciski opcji i pola wyboru mają wszędzie własny wygląd Mumcorda, z wyraźną obwódką fokusu i obsługą wysokiego kontrastu. Karty opcji, takie jak „Prywatne wiadomości od”, podświetlają się w całości.",
+            "Konfiguracja, „Jak chcesz mówić?”: dwie czytelne karty z krótkim wyjaśnieniem, czułość pod aktywacją głosem i klawisz push-to-talk wprost w swojej karcie. „Dalej” czeka, aż klawisz zostanie ustawiony.",
+            "Peer-to-peer: „Bezpośrednio + relay (zawsze relay, ukrywa mój IP)” jest teraz zalecanym trybem i domyślnym dla nowych instalacji. Tryb, którego już używasz, zostaje bez zmian.",
+            "Podpowiedź „Ten serwer nie ma relaya, więc udostępnianie plików jest niedostępne” można zamknąć osobno dla każdego serwera, a wraca, gdy serwer dostanie relay i znów go straci.",
+            "„Boty na tym serwerze” startuje zwinięte, a Mumcord zapamiętuje, czy to otworzyłeś.",
+            "Pasek wtyczek: ikony wtyczek nie mają już ramki, a własny obraz wtyczki lub kolorowa kafelka jest całą ikoną.",
+            "Nowy pasek wiadomości: tekst zaczyna się przy lewej krawędzi w jednym wierszu, rośnie do około sześciu wierszy, a potem się przewija. Ikony Aplikacji, pliku, obrazu i GIF-a są jednolitym zestawem, a przycisk wysyłania jest przygaszony, dopóki nie ma czego wysłać. Przyciski formatowania są w małej kapsule na górnej krawędzi, dopóki kursor jest w polu. Kanał, w którym nie wolno ci pisać, pokazuje notkę zamiast pustego pola."
+          ]
+        },
+        {
+          "title": "Naprawione",
+          "items": [
+            "Pole wyszukiwania kanałów u góry paska bocznego jest wyrównane z nazwą kanału w nagłówku czatu.",
+            "Historia aktywności: nazwy działają jak w czacie (kliknięcie otwiera profil i menu, dwukrotne kliknięcie prywatną wiadomość), a boty nie pojawiają się już przy dołączeniach, wyjściach i przeniesieniach.",
+            "Osadzone odtwarzacze YouTube i Twitch: pełny ekran i „Kopiuj link” działają. Twitch działa tylko na stronie internetowej, a okno Mumcorda nią nie jest na macOS i Linuksie: karta zachowuje obraz, mówi dlaczego, a „Odtwórz” otwiera stream w przeglądarce (#419).",
+            "Ustawienia: karty obok siebie mają tę samą wysokość, a „?” zostaje przy swojej długiej etykiecie.",
+            "Ustawienia → Udostępnianie ekranu → Akceleracja sprzętowa: długi status, taki jak „Programowo, utrzymuje do 1080p30”, zostaje wyrównany do prawej.",
+            "Okna kamery i udostępniania ekranu: listy rozwijane używają własnego wyglądu aplikacji, jak w Ustawieniach.",
+            "Ustawienia → Wtyczki: karty mają ten sam odstęp co na innych stronach, a każda ma swoją ikonę.",
+            "Zakładki Członkowie i Aktywność zostają u góry prawej kolumny, gdy długa lista się przewija."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.1",
       "teaser": "Raporty awarii, które sprawdzasz sam i wysyłasz tylko na życzenie, oraz poprawki dla kamer, które wcześniej nie dawały obrazu.",

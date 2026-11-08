@@ -874,6 +874,26 @@
             "title": "Les bots à part",
             "body": "Une section « Bots sur ce serveur » sous la liste des salons montre chaque bot avec ce qu’il fait, comme le relais, l’historique du chat ou les webhooks. Le profil et le menu, messages privés compris, marchent depuis là.",
             "alt": "La section avec les bots d’un serveur"
+          },
+          {
+            "id": "channel-admin",
+            "title": "Gestion des salons",
+            "body": "En tant qu’admin, tu crées des sous-salons et des salons temporaires, tu modifies le nom, la description, le parent, la position et la limite d’utilisateurs, tu relies des salons et tu les supprimes après une confirmation qui nomme les salons et les personnes concernés. Tu ne vois que ce que le serveur permet, et un refus montre la raison du serveur."
+          },
+          {
+            "id": "channel-permissions",
+            "title": "Droits et mot de passe du salon",
+            "body": "Dans la fenêtre du salon, l’onglet Droits montre qui peut faire quoi dans le salon et explique chaque réponse sous « Pourquoi ? ». Les admins modifient les règles et les groupes, Mumcord te prévient avant que tu ne t’enfermes dehors et n’écrase jamais une modification faite par quelqu’un d’autre. Tu définis ou supprimes un mot de passe de salon dans l’onglet Mot de passe, comme dans le client officiel."
+          },
+          {
+            "id": "move-people",
+            "title": "Déplacer des gens",
+            "body": "Dans le menu Administration, tu déplaces une personne vers toi ou vers un salon de ton choix, ou tout le monde dans un salon d’un coup. Avec Ctrl+clic et Maj+clic, tu sélectionnes plusieurs personnes pour les glisser ensemble. Mumcord te dit combien sont arrivées."
+          },
+          {
+            "id": "moderation",
+            "title": "Modération dans le menu d’une personne",
+            "body": "Sous « Administration », tu mets des gens en sourdine ou les rends sourds sur le serveur, tu donnes la priorité de parole et tu réinitialises un commentaire ou un avatar. Chaque action n’apparaît que si tu as le droit correspondant."
           }
         ]
       },
@@ -1018,6 +1038,16 @@
             "title": "Liens de serveur en cartes",
             "body": "Un lien mumble:// dans le chat affiche serveur, salon, ping, personnes en ligne et version, avec « Rejoindre », « Ajouter aux serveurs » et « Copier le lien ». Les chiffres viennent de la requête publique standard, jamais d’une connexion. Les noms d’utilisateur et mots de passe dans un lien ne sont jamais affichés et sont omis à la copie.",
             "alt": "Carte d’un lien mumble:// avec nom du serveur, salon, ping, utilisateurs et bouton Rejoindre"
+          },
+          {
+            "id": "message-bar",
+            "title": "Nouvelle barre de messages",
+            "body": "La barre écrit sur une ligne et grandit avec le texte jusqu’à environ six lignes. La mise en forme s’affiche dans une petite pastille sur le bord supérieur tant que le curseur est dans le champ, et le bouton d’envoi ne devient actif que lorsqu’il y a quelque chose à envoyer."
+          },
+          {
+            "id": "activity-notifications",
+            "title": "Notifications d’activité",
+            "body": "Quand quelqu’un lance un partage d’écran, une watch party ou une activité de plugin, Mumcord te prévient comme pour un message. L’historique d’activité reste sur ton appareil, même après un redémarrage, et tu l’effaces dans Paramètres sous Confidentialité."
           }
         ]
       },
@@ -1500,6 +1530,56 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.2",
+      "teaser": "L’administration dans le menu du clic droit : gère les salons, les droits et les mots de passe, déplace des gens, mets en sourdine ou rends sourd sur le serveur, et découvre une nouvelle barre de messages.",
+      "summary": "Mumcord reçoit ses premiers outils d’administration : tu gères les salons, tu vois et modifies les droits, tu définis des mots de passe de salon, tu déplaces des gens et tu modères, le tout uniquement là où le serveur te le permet. S’y ajoutent des notifications d’activité, une nouvelle barre de messages et des messages plus clairs quand quelque chose est refusé.",
+      "groups": [
+        {
+          "title": "Nouveau",
+          "items": [
+            "Déplacer des gens, sous Administration ▸ dans les menus d’une personne et d’un salon : « Déplacer vers mon salon », « Déplacer vers » avec une liste de salons filtrable qui montre la limite d’utilisateurs, et « Déplacer tout le monde vers » pour un salon entier. Avec Ctrl+clic (ou Ctrl+Espace) et Maj+clic, tu sélectionnes plusieurs personnes et les glisses ensemble. Ensuite, un message indique combien sont arrivées (« 28 personnes sur 30 déplacées vers Raid. Les autres ont été refusées. »).",
+            "Modération dans le menu d’une personne sous « Administration ▸ » : mettre en sourdine pour tous, rendre sourd pour tous, priorité de parole (une étoile à côté du nom) et lever la mise en sourdine agissent aussitôt. Réinitialiser le commentaire et réinitialiser l’avatar demandent d’abord confirmation. Chaque action n’apparaît qu’avec le droit du serveur.",
+            "Mot de passe de salon : dans l’onglet Mot de passe de la fenêtre du salon, tu définis ou supprimes le mot de passe pour rejoindre un salon, exactement comme dans le client Mumble officiel.",
+            "Droits du salon : dans l’onglet Droits, tu vois qui peut faire quoi dans le salon (✓, ✗ ou ? par groupe et par personne). Les admins modifient les règles et les groupes, et un panneau « Pourquoi ? » explique chaque réponse. Mumcord te prévient avant que tu ne t’enfermes dehors, demande confirmation avant de modifier les règles de tout le serveur et n’écrase jamais une modification faite par quelqu’un d’autre.",
+            "Gestion des salons : dans le menu du salon sous « Administration ▸ », tu crées un sous-salon ou un salon temporaire, tu modifies un salon (nom, description, parent, position, limite d’utilisateurs) et ses liens, tu le relies à ton salon et tu le supprimes après une confirmation qui nomme les sous-salons et les personnes concernés. F2 modifie, Suppr supprime le salon sélectionné.",
+            "Les menus ouvrent des sous-menus : les actions d’administration du menu du serveur ⋯ se trouvent désormais sous « Administration ▸ » (pour l’instant « Liste des bannis »), visibles seulement si tu as un droit dessus, avec les actions en rouge en dernier derrière un séparateur. → ouvre un sous-menu, ← ou Échap revient en arrière.",
+            "Quand le relay d’un serveur change, Mumcord te le dit dans le centre de notifications et sous forme de notification, avec « Faire confiance au nouveau relay » et « Détails ». Les détails comparent l’ancienne et la nouvelle empreinte.",
+            "Historique d’activité : chaque type d’événement a une icône, et l’historique reste sur cet appareil, même après un redémarrage. Dans Paramètres → Confidentialité, tu l’effaces pour tous les serveurs.",
+            "Notifications d’activité : quand quelqu’un lance un partage d’écran, une watch party ou une activité de plugin, Mumcord te prévient comme pour un message. Paramètres → Discussion et notifications a un interrupteur par type. Les arrivées, les départs et les déplacements sont désactivés par défaut.",
+            "Windows : Mumcord enregistre les plantages natifs (code d’exception, module et pile) pour qu’ils puissent être analysés dans le rapport de plantage."
+          ]
+        },
+        {
+          "title": "Amélioré",
+          "items": [
+            "Les entrées de menu ne se terminent plus par « … », dans toutes les langues.",
+            "Quand le serveur refuse quelque chose, Mumcord dit clairement quoi et où (« Tu n’as pas le droit de déplacer des gens dans Raid. »). Les droits modifiés par un admin pendant que tu es connecté prennent effet tout de suite, sans te reconnecter.",
+            "Quand le relay refuse la caméra, le partage d’écran ou les fichiers, Mumcord nomme la raison (non inscrit, pas dans un groupe autorisé, pas dans le même salon, reconnexion nécessaire) et montre une issue : « Comment s’inscrire » ou « Se reconnecter ». Sur un relay réservé aux inscrits, les invités voient avant d’essayer pourquoi la caméra et le trombone sont indisponibles.",
+            "Les boutons radio et les cases à cocher ont partout le design propre à Mumcord, avec un anneau de focus net et la prise en charge du contraste élevé. Les cartes d’options comme « Messages privés de » s’illuminent en entier.",
+            "Configuration, « Comment veux-tu parler ? » : deux cartes claires avec une courte explication, la sensibilité sous l’activation vocale et la touche push-to-talk directement dans sa carte. « Continuer » attend qu’une touche soit définie.",
+            "Peer-to-peer : « Direct + relay (toujours relay, masque mon IP) » est désormais le mode recommandé et le réglage par défaut des nouvelles installations. Un mode que tu utilises déjà reste tel quel.",
+            "L’indication « Ce serveur n’a pas de relay, le partage de fichiers n’est donc pas disponible » peut être fermée par serveur et revient quand le serveur obtient un relay puis le perd à nouveau.",
+            "« Bots sur ce serveur » démarre replié, et Mumcord retient si tu l’as ouvert.",
+            "Barre des plugins : les icônes de plugin n’ont plus de cadre, l’image du plugin ou la tuile de couleur est toute l’icône.",
+            "Nouvelle barre de messages : le texte commence au bord gauche sur une ligne, grandit jusqu’à environ six lignes puis défile. Les icônes d’Apps, de fichier, d’image et de GIF forment un jeu cohérent, et le bouton d’envoi reste atténué tant qu’il n’y a rien à envoyer. La mise en forme se trouve dans une petite pastille sur le bord supérieur tant que le curseur est dans le champ. Un salon où tu n’as pas le droit d’écrire affiche une note au lieu d’un champ vide."
+          ]
+        },
+        {
+          "title": "Corrigé",
+          "items": [
+            "Le champ de recherche de salons en haut de la barre latérale s’aligne sur le nom du salon dans l’en-tête du chat.",
+            "Historique d’activité : les noms fonctionnent comme dans le chat (un clic ouvre le profil et le menu, un double-clic un message privé), et les bots n’apparaissent plus avec les arrivées, les départs et les déplacements.",
+            "Lecteurs YouTube et Twitch intégrés : le plein écran et « Copier le lien » fonctionnent. Twitch ne fonctionne que sur un site web, et la fenêtre de Mumcord n’en est pas un sous macOS et Linux : la carte garde son image, dit pourquoi, et « Lire » ouvre le flux dans le navigateur (#419).",
+            "Paramètres : les cartes côte à côte ont la même hauteur, et un « ? » reste à côté de son long libellé.",
+            "Paramètres → Partage d’écran → Accélération matérielle : un long statut comme « Logiciel, tient jusqu’à 1080p30 » reste aligné à droite.",
+            "Boîtes de dialogue de la caméra et du partage d’écran : les listes déroulantes utilisent le design propre à l’application, comme dans les Paramètres.",
+            "Paramètres → Plugins : les cartes ont le même espacement que sur les autres pages, et chaque carte a son icône.",
+            "Les onglets Membres et Activité restent en haut de la colonne de droite quand une longue liste défile."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.1",
       "teaser": "Rapports de plantage que tu vérifies toi-même et n’envoies que si tu veux, et correctifs de caméra pour les caméras qui n’affichaient aucune image.",

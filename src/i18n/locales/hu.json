@@ -874,6 +874,26 @@
             "title": "Botok külön",
             "body": "A csatornalista alatti „Botok ezen a szerveren” rész minden botot megmutat azzal, amit csinál, például relé, chatelőzmények vagy webhookok. A profil és a menü, a privát üzenetekkel együtt, onnan működik.",
             "alt": "A szerver botjait mutató rész"
+          },
+          {
+            "id": "channel-admin",
+            "title": "Csatornakezelés",
+            "body": "Adminként alcsatornákat és ideiglenes csatornákat hozol létre, szerkeszted a nevet, a leírást, a szülőt, a pozíciót és a felhasználói korlátot, összekapcsolsz csatornákat, és törlöd őket egy megerősítés után, amely megnevezi az érintett csatornákat és embereket. Csak azt látod, amit a szerver megenged, az elutasítás pedig a szerver indokát mutatja."
+          },
+          {
+            "id": "channel-permissions",
+            "title": "Csatornajogosultságok és jelszó",
+            "body": "A csatornaablakban a Jogosultságok lap megmutatja, ki mit tehet a csatornában, és minden választ megmagyaráz a „Miért?” alatt. Az adminok szerkesztik a szabályokat és a csoportokat, a Mumcord figyelmeztet, mielőtt kizárnád magad, és soha nem írja felül más módosítását. A csatornajelszót a Jelszó lapon állítod be vagy törlöd, mint a hivatalos kliensben."
+          },
+          {
+            "id": "move-people",
+            "title": "Emberek áthelyezése",
+            "body": "Az Adminisztráció menüben egy embert áthelyezel magadhoz vagy egy általad választott csatornába, vagy egyszerre mindenkit egy csatornából. Ctrl+kattintással és Shift+kattintással több embert jelölsz ki, hogy együtt húzhasd őket. A Mumcord megmondja, hányan érkeztek meg."
+          },
+          {
+            "id": "moderation",
+            "title": "Moderálás a személymenüben",
+            "body": "Az „Adminisztráció” alatt szerveroldalon némítasz vagy süketítesz embereket, elsőbbségi beszélői jogot adsz, és visszaállítod a megjegyzést vagy az avatart. Minden művelet csak akkor jelenik meg, ha van hozzá jogod."
           }
         ]
       },
@@ -1018,6 +1038,16 @@
             "title": "Szerverlinkek kártyaként",
             "body": "A chatben lévő mumble:// link megmutatja a szervert, a csatornát, a pinget, az online embereket és a verziót, „Belépés”, „Hozzáadás a szerverekhez” és „Link másolása” gombokkal. Az adatok a szabványos nyilvános lekérdezésből jönnek, sosem kapcsolatból. A linkben lévő felhasználónevek és jelszavak sosem jelennek meg, és másoláskor kimaradnak.",
             "alt": "Kártya egy mumble:// linkhez szervernévvel, csatornával, pinggel, felhasználókkal és a Belépés gombbal"
+          },
+          {
+            "id": "message-bar",
+            "title": "Új üzenetsáv",
+            "body": "A sáv egy sorban gépel, és a szöveggel együtt nő körülbelül hat sorig. A formázás egy kis pirulában jelenik meg a felső szélen, amíg a kurzor a mezőben van, a küldés gomb pedig csak akkor válik aktívvá, ha van mit küldeni."
+          },
+          {
+            "id": "activity-notifications",
+            "title": "Tevékenységértesítések",
+            "body": "Ha valaki képernyőmegosztást, watch partyt vagy bővítménytevékenységet indít, a Mumcord úgy értesít, mint egy üzenetnél. A tevékenységelőzmények az eszközödön maradnak, újraindítás után is, és a Beállítások Adatvédelem pontja alatt törlöd őket."
           }
         ]
       },
@@ -1500,6 +1530,56 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.7.2",
+      "teaser": "Adminisztráció a jobb gombos menüben: csatornák, jogosultságok és jelszavak kezelése, emberek áthelyezése, szerveroldali némítás és süketítés, plusz egy új üzenetsáv.",
+      "summary": "A Mumcord megkapja az első adminisztrációs eszközeit: csatornákat kezelsz, jogosultságokat nézel és szerkesztesz, csatornajelszavakat állítasz be, embereket helyezel át és moderálsz, mindezt csak ott, ahol a szerver engedi. Emellett értesítések jönnek a tevékenységekről, új üzenetsáv érkezik, és érthetőbb üzenetek jelennek meg, ha valamit elutasítanak.",
+      "groups": [
+        {
+          "title": "Új",
+          "items": [
+            "Emberek áthelyezése, az Adminisztráció ▸ alatt a személy- és csatornamenüben: „Áthelyezés a csatornámba”, „Áthelyezés ide” szűrhető csatornalistával, amely mutatja a felhasználói korlátot, és „Mindenki áthelyezése ide” egy egész csatornához. Ctrl+kattintással (vagy Ctrl+szóközzel) és Shift+kattintással több embert jelölsz ki, és együtt húzod őket. Utána kiírja, hányan érkeztek meg („28 személy áthelyezve 30-ból ide: Raid. A többit elutasították.”).",
+            "Moderálás a személymenü „Adminisztráció ▸” pontja alatt: mindenki számára némítás, mindenki számára süketítés, elsőbbségi beszélő (csillag a név mellett) és a némítás feloldása azonnal hat. A megjegyzés és az avatar visszaállítása előbb rákérdez. Minden művelet csak a szerver jogával jelenik meg.",
+            "Csatornajelszó: a csatornaablak Jelszó lapján beállítod vagy törlöd a csatornába belépéshez szükséges jelszót, pontosan úgy, mint a hivatalos Mumble-kliensben.",
+            "Csatornajogosultságok: a Jogosultságok lapon látod, ki mit tehet a csatornában (✓, ✗ vagy ? csoportonként és személyenként). Az adminok szerkesztik a szabályokat és a csoportokat, a „Miért?” panel pedig minden választ megmagyaráz. A Mumcord figyelmeztet, mielőtt kizárnád magad, rákérdez, mielőtt az egész szerver szabályait módosítanád, és soha nem írja felül más módosítását.",
+            "Csatornakezelés: a csatornamenü „Adminisztráció ▸” pontja alatt létrehozol egy alcsatornát vagy ideiglenes csatornát, szerkesztesz egy csatornát (név, leírás, szülő, pozíció, felhasználói korlát) és a hivatkozásait, összekapcsolod a saját csatornáddal, és törlöd egy megerősítés után, amely megnevezi az érintett alcsatornákat és embereket. Az F2 szerkeszti, a Delete törli a kijelölt csatornát.",
+            "A menük almenüket nyitnak: a szerver ⋯ menüjének adminisztrációs műveletei mostantól az „Adminisztráció ▸” alatt vannak (egyelőre „Tiltólista”), csak akkor látszanak, ha van hozzájuk jogod, a piros műveletek pedig utolsóként, egy elválasztó mögött. A → almenüt nyit, a ← vagy az Escape visszalép.",
+            "Ha egy szerver relay-je megváltozik, a Mumcord szól erről az értesítési központban és értesítésként is, „Új relay megbízhatónak jelölése” és „Részletek” gombokkal. A részletek összehasonlítják a régi és az új ujjlenyomatot.",
+            "Tevékenységelőzmények: minden eseménytípusnak van ikonja, és az előzmények ezen az eszközön maradnak, újraindítás után is. A Beállítások → Adatvédelem alatt minden szerverre törlöd őket.",
+            "Tevékenységértesítések: ha valaki képernyőmegosztást, watch partyt vagy bővítménytevékenységet indít, a Mumcord úgy értesít, mint egy üzenetnél. A Beállítások → Csevegés és értesítések alatt minden fajtához van egy kapcsoló. A belépések, kilépések és áthelyezések alapból ki vannak kapcsolva.",
+            "Windows: a Mumcord rögzíti a natív összeomlásokat (kivételkód, modul és verem), hogy elemezhetők legyenek az összeomlási jelentésben."
+          ]
+        },
+        {
+          "title": "Továbbfejlesztve",
+          "items": [
+            "A menüpontok már nem végződnek „…” jellel, minden nyelven.",
+            "Ha a szerver valamit elutasít, a Mumcord érthetően megmondja, mit és hol („Nem helyezhetsz át embereket itt: Raid.”). Az adminisztrátor által a kapcsolatod közben módosított jogok azonnal érvénybe lépnek, újracsatlakozás nélkül.",
+            "Ha a relay elutasítja a kamerát, a képernyőmegosztást vagy a fájlokat, a Mumcord megnevezi az okot (nincs regisztrálva, nem engedélyezett csoportban vagy, nem ugyanabban a csatornában vagy, újracsatlakozás szükséges), és kiutat mutat: „Hogyan regisztrálj” vagy „Újracsatlakozás”. Csak regisztráltaknak szóló relay-en a vendégek már próbálkozás előtt látják, miért nem érhető el a kamera és a gemkapocs.",
+            "A rádiógombok és a jelölőnégyzetek mindenhol a Mumcord saját dizájnját kapják, tiszta fókuszgyűrűvel és magas kontrasztú támogatással. Az olyan opciókártyák, mint a „Privát üzenetek tőle”, egészében kiemelkednek.",
+            "Beállítás, „Hogyan szeretnél beszélni?”: két világos kártya rövid magyarázattal, az érzékenység a hangaktiválás alatt, a push-to-talk billentyű pedig közvetlenül a kártyájában. A „Tovább” megvárja, míg be van állítva egy billentyű.",
+            "Peer-to-peer: a „Közvetlen + relay (mindig relay, elrejti az IP-met)” mostantól az ajánlott mód és az új telepítések alapértelmezése. A már használt mód változatlan marad.",
+            "A „Ennek a szervernek nincs relay-e, ezért a fájlmegosztás nem érhető el” tipp szerverenként bezárható, és visszatér, ha a szerver kap egy relay-t, majd újra elveszíti.",
+            "A „Botok ezen a szerveren” összecsukva indul, és a Mumcord megjegyzi, hogy kinyitottad-e.",
+            "Bővítménysáv: a bővítményikonoknak már nincs keretük, a bővítmény saját képe vagy színes csempéje az egész ikon.",
+            "Új üzenetsáv: a szöveg a bal szélen kezdődik egy sorban, nő körülbelül hat sorig, majd görget. Az Alkalmazások, fájl, kép és GIF ikonjai egységes készletet alkotnak, a küldés gomb pedig tompa marad, amíg nincs mit küldeni. A formázás egy kis pirulában ül a felső szélen, amíg a kurzor a mezőben van. Az a csatorna, ahová nem írhatsz, üres mező helyett megjegyzést mutat."
+          ]
+        },
+        {
+          "title": "Javítva",
+          "items": [
+            "A csatornakereső mező az oldalsáv tetején egy vonalban van a csatorna nevével a csevegés fejlécében.",
+            "Tevékenységelőzmények: a nevek úgy működnek, mint a csevegésben (a kattintás megnyitja a profilt és a menüt, a dupla kattintás egy privát üzenetet), a botok pedig már nem jelennek meg a belépések, kilépések és áthelyezések között.",
+            "Beágyazott YouTube- és Twitch-lejátszók: a teljes képernyő és a „Link másolása” működik. A Twitch csak weboldalon fut, a Mumcord ablaka pedig macOS-en és Linuxon nem az: a kártya megtartja a képét, megmondja az okot, a „Lejátszás” pedig a böngészőben nyitja meg a streamet (#419).",
+            "Beállítások: az egymás melletti kártyák egyforma magasak, a „?” pedig a hosszú felirata mellett marad.",
+            "Beállítások → Képernyőmegosztás → Hardveres gyorsítás: egy hosszú állapot, például „Szoftveres, akár 1080p30-ig bírja”, jobbra igazítva marad.",
+            "Kamera- és képernyőmegosztási párbeszédablakok: a legördülő listák az alkalmazás saját dizájnját használják, mint a Beállításokban.",
+            "Beállítások → Bővítmények: a kártyák között ugyanakkora a hézag, mint a többi oldalon, és minden kártyának van ikonja.",
+            "A Tagok és a Tevékenység lap a jobb oldali oszlop tetején marad, amikor egy hosszú lista görget."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.1",
       "teaser": "Összeomlási jelentések, amelyeket magad ellenőrzöl, és csak kívánságodra töltesz fel, valamint javítások olyan kamerákhoz, amelyek korábban nem adtak képet.",
