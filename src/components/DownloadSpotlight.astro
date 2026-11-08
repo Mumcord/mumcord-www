@@ -1,0 +1,175 @@
+---
+// The download card: one big button for the visitor's system (picked in src/scripts/download.ts
+// from the browser), the other systems one tab away. Without JS it shows Windows and the tabs
+// still link to the full download page.
+import CopyButton from "./CopyButton.astro";
+import { dicts, routes, type Lang } from "../i18n";
+import { PLATFORM_GLYPHS } from "../lib/glyphs";
+import {
+  formatSize,
+  hasHomebrewTap,
+  BREW_CASK,
+  BREW_FORMULA,
+  INSTALL_COMMAND,
+  RELEASES_URL,
+  type Kind,
+  type Platform,
+  type PlatformAsset,
+  type Release,
+} from "../lib/release";
+
+interface Props {
+  lang: Lang;
+  release: Release | null;
+}
+const { lang, release } = Astro.props;
+const t = dicts[lang].download;
+const s = t.spot;
+const tap = await hasHomebrewTap();
+const platforms: Platform[] = ["windows", "macos", "linux"];
+const mainKind: Record<Platform, Kind> = { windows: "setup", macos: "dmg", linux: "appimage" };
+const brew: Partial<Record<Platform, string>> = { macos: BREW_CASK, linux: BREW_FORMULA };
+
+const label = (p: Platform, a: PlatformAsset) =>
+  p === "macos" && a.arch !== "universal" ? s.macArch[a.arch] : s.arch[a.arch];
+const panels = platforms.map((p) => {
+  const all = release?.assets[p] ?? [];
+  const main = all.filter((a) => a.kind === mainKind[p]);
+  const kindOrder = ["setup", "dmg", "appimage", "deb", "rpm", "portable", "other"];
+  const alts = all
+    .filter((a) => !main.includes(a))
+    .sort((x, y) => kindOrder.indexOf(x.kind) - kindOrder.indexOf(y.kind) || (x.arch === "arm64" ? 1 : 0) - (y.arch === "arm64" ? 1 : 0));
+  return { p, main, alts };
+});
+---
+
+<div class="dl-spot" data-dl-spot data-os="windows">
+  <div class="dl-aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+
+  <div class="dl-tabs" role="tablist" aria-label={s.pick}>
+    {
+      platforms.map((p, i) => (
+        <a
+          class="dl-tab"
+          role="tab"
+          href={`${routes.download[lang]}#${p}`}
+          data-dl-tab={p}
+          aria-selected={i === 0 ? "true" : "false"}
+        >
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path fill="currentColor" d={PLATFORM_GLYPHS[p]} />
+          </svg>
+          {t.platforms[p].name}
+        </a>
+      ))
+    }
+  </div>
+
+  <p class="dl-mobile" data-dl-mobile hidden>
+    {s.mobile} <a href={`${routes.roadmap[lang]}`}>{s.mobileLink} →</a>
+  </p>
+
+  {
+    panels.map(({ p, main, alts }) => (
+      <div class="dl-panel" role="tabpanel" data-for={p}>
+        <div class="dl-orb" aria-hidden="true">
+          <span class="dl-ring" />
+          <span class="dl-ring" />
+          <span class="dl-ring" />
+          <svg viewBox="0 0 24 24" width="72" height="72">
+            <path fill="currentColor" d={PLATFORM_GLYPHS[p]} />
+          </svg>
+        </div>
+
+        <div class="dl-body">
+          <p class="dl-kicker">
+            <span class="dl-detected" data-dl-detected hidden>
+              <span class="live-dot" aria-hidden="true" />
+              {s.detected}
+            </span>
+            {release && (
+              <span>
+                Mumcord {release.version}
+                {release.prerelease && ` · ${t.prerelease}`}
+              </span>
+            )}
+          </p>
+          <h3 class="dl-title">
+            {s.for} {t.platforms[p].name}
+          </h3>
+          <p class="dl-sub">{t.platforms[p].sub}</p>
+
+          <div class="dl-buttons">
+            {main.length ? (
+              main.map((a, i) => (
+                <a class="dl-btn" href={a.url} rel="noopener" data-arch={a.arch} data-main={i === 0 ? "" : undefined}>
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                    <path d="M12 4v11M7 10l5 5 5-5M5 20h14" />
+                  </svg>
+                  <span class="dl-btn-text">
+                    {s.button}
+                    {main.length > 1 && <span class="dl-btn-arch">{label(p, a)}</span>}
+                  </span>
+                  <span class="dl-btn-size">{formatSize(a.size)}</span>
+                </a>
+              ))
+            ) : (
+              <a class="dl-btn" data-main href={release?.url ?? RELEASES_URL} rel="noopener">
+                <span class="dl-btn-text">{t.testBuilds}</span>
+              </a>
+            )}
+          </div>
+          {main[0] && <p class="dl-file">{main.map((a) => a.name).join(" · ")}</p>}
+
+          {p !== "linux" && release?.signed[p] ? (
+            <p class="dl-signed">{t.signed[p]}</p>
+          ) : (
+            <p class="dl-warn">{t.platforms[p].warn}</p>
+          )}
+
+          {(alts.length > 0 || brew[p] || (p === "linux" && release?.installer)) && (
+            <div class="dl-also">
+              <p class="dl-also-head">{s.also}</p>
+              {p === "linux" && release?.installer && (
+                <div class="dl-cmd">
+                  <span class="dl-cmd-label">{s.orLine}</span>
+                  <code>
+                    <span aria-hidden="true">$ </span>
+                    {INSTALL_COMMAND}
+                  </code>
+                  <CopyButton text={INSTALL_COMMAND} label={t.oneLine.copy} copied={t.oneLine.copied} failed={t.oneLine.failed} />
+                </div>
+              )}
+              {brew[p] && (
+                <div class:list={["dl-cmd", { "is-soon": !tap }]}>
+                  <span class="dl-cmd-label">
+                    {s.brew} {!tap && <span class="pill">{s.soon}</span>}
+                  </span>
+                  <code>
+                    <span aria-hidden="true">$ </span>
+                    {brew[p]}
+                  </code>
+                  {tap && <CopyButton text={brew[p]!} label={t.oneLine.copy} copied={t.oneLine.copied} failed={t.oneLine.failed} />}
+                </div>
+              )}
+              {alts.length > 0 && (
+                <ul class="dl-alts">
+                  {alts.map((a) => (
+                    <li data-kind={a.kind} data-arch={a.arch}>
+                      <a href={a.url} rel="noopener">
+                        <span class="dl-alt-kind">{s.kinds[a.kind]}</span>
+                        <span class="dl-alt-arch">{s.arch[a.arch]}</span>
+                        <span class="dl-alt-size">{formatSize(a.size)}</span>
+                        <span class="dl-alt-rec">{s.recommended}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    ))
+  }
+</div>

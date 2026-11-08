@@ -1,6 +1,8 @@
 // All page motion in one place. Everything degrades to a static page without JS,
 // and reduced-motion users get the content without the choreography.
 
+import "./download";
+
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 document.documentElement.classList.add("js");
 
@@ -238,11 +240,6 @@ const scrollStrip = (dir: number) => {
 };
 document.querySelector("[data-gallery-prev]")?.addEventListener("click", () => scrollStrip(-1));
 document.querySelector("[data-gallery-next]")?.addEventListener("click", () => scrollStrip(1));
-
-// ── Highlight the visitor's platform in the download section ─────────
-const ua = navigator.userAgent;
-const mine = /Windows/.test(ua) ? "windows" : /Mac OS X|Macintosh/.test(ua) && !/iPhone|iPad/.test(ua) ? "macos" : /Linux|X11/.test(ua) && !/Android/.test(ua) ? "linux" : null;
-if (mine) document.querySelector(`[data-platform="${mine}"]`)?.classList.add("is-mine");
 
 // ── Screenshot lightbox (features page) ──────────────────────────────
 const lightbox = document.querySelector<HTMLDialogElement>("[data-lightbox-dialog]");

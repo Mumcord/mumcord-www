@@ -1,0 +1,274 @@
+---
+import CopyButton from "./CopyButton.astro";
+import DownloadSpotlight from "./DownloadSpotlight.astro";
+import { dicts, routes, type Lang, LANG_INFO } from "../i18n";
+import { PLATFORM_GLYPHS } from "../lib/glyphs";
+import {
+  formatSize,
+  getReleases,
+  hasHomebrewTap,
+  BREW_CASK,
+  BREW_FORMULA,
+  BREW_TAP_URL,
+  INSTALL_COMMAND,
+  UNINSTALL_COMMAND,
+  RELEASES_URL,
+  WIKI_URL,
+  type Platform,
+} from "../lib/release";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const d = dicts[lang];
+const t = d.downloadPage;
+const dl = d.download;
+const one = dl.oneLine;
+const releases = await getReleases();
+const release = releases[0] ?? null;
+const tap = await hasHomebrewTap();
+const platforms: Platform[] = ["windows", "macos", "linux"];
+const dateFmt = new Intl.DateTimeFormat(LANG_INFO[lang].intl, { dateStyle: "long" });
+// Locale files that predate these keys fall back to English.
+const badges = t.badges ?? dicts.en.downloadPage.badges;
+const yours = t.yours ?? dicts.en.downloadPage.yours;
+const copy = { label: one.copy, copied: one.copied, failed: one.failed };
+---
+
+<article class="dlp">
+  <div class="dlp-sky" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="wrap dlp-hero">
+    <p class="label" data-reveal>{t.label}</p>
+    <h1 class="dlp-title" data-reveal>{t.title}</h1>
+    <p class="body dlp-intro" data-reveal>{t.intro}</p>
+    <ul class="dlp-badges" data-reveal>
+      {badges.map((b) => <li>{b}</li>)}
+    </ul>
+    {
+      release && (
+        <p class="release-tag dlp-release" data-reveal>
+          <span class="live-dot" aria-hidden="true" />
+          {dl.latest}: <strong>{release.name}</strong>
+          {release.prerelease && <span class="pill">{dl.prerelease}</span>}
+          <span class="dlp-date">
+            {dl.published} {dateFmt.format(new Date(release.publishedAt))} ·{" "}
+            <a href={`${routes.changelog[lang]}#v${release.version}`}>{dl.notes}</a>
+          </span>
+        </p>
+      )
+    }
+    {!release && <p class="dlp-none">{dl.noRelease}</p>}
+    <div class="dlp-spot" data-reveal>
+      <DownloadSpotlight lang={lang} release={release} />
+    </div>
+  </div>
+
+  {
+    release && (
+      <section class="wrap dlp-section" aria-labelledby="dlp-files">
+        <h2 id="dlp-files" class="dlp-h" data-reveal>{t.allTitle}</h2>
+        <p class="dlp-lead" data-reveal>{t.allIntro}</p>
+        <div class="dlp-files">
+          {platforms.map((p) => (
+            <section class="dlp-os" id={p} data-file-card={p} data-reveal>
+              <span class="dlp-yours">{yours}</span>
+              <h3>
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                  <path fill="currentColor" d={PLATFORM_GLYPHS[p]} />
+                </svg>
+                {dl.platforms[p].name}
+              </h3>
+              <table class="dlp-table">
+                <thead>
+                  <tr>
+                    <th scope="col">{t.head.type}</th>
+                    <th scope="col">{t.head.arch}</th>
+                    <th scope="col" class="num">{t.head.size}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {release.assets[p].map((a) => (
+                    <tr data-file-os={p} data-file-arch={a.arch}>
+                      <th scope="row">
+                        <a href={a.url} rel="noopener">
+                          {dl.spot.kinds[a.kind]}
+                          <span class="dlp-file">{a.name}</span>
+                        </a>
+                      </th>
+                      <td>{p === "macos" && a.arch !== "universal" ? dl.spot.macArch[a.arch] : dl.spot.arch[a.arch]}</td>
+                      <td class="num">{formatSize(a.size)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <ul class="dlp-req">
+                {t.req[p].map((r) => (
+                  <li>{r}</li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <section class="wrap dlp-section dlp-terminal" aria-labelledby="dlp-terminal">
+    <h2 id="dlp-terminal" class="sr-only">{one.title} · {t.brewTitle}</h2>
+    <div class="one-line" data-reveal>
+      <div class="one-line-head">
+        <h3>{one.title}</h3>
+      </div>
+      <p class="one-line-body">{one.body}</p>
+      {
+        [
+          { cmd: INSTALL_COMMAND, label: one.title },
+          { cmd: UNINSTALL_COMMAND, label: one.uninstall },
+        ].map((c, i) => (
+          <div class:list={["one-line-cmd", { "is-small": i > 0 }]}>
+            {i > 0 && <span class="one-line-label">{c.label}</span>}
+            <code>
+              <span aria-hidden="true">$ </span>
+              {c.cmd}
+            </code>
+            <CopyButton text={c.cmd} {...copy} />
+          </div>
+        ))
+      }
+      <table class="one-line-table">
+        <thead>
+          <tr>
+            <th scope="col">{one.distroHead}</th>
+            <th scope="col">{one.howHead}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            one.rows.map((r) => (
+              <tr>
+                <th scope="row">{r.distro}</th>
+                <td>{r.how}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+      <p class="one-line-note">{one.manager}</p>
+      <p class="one-line-note">{one.asks}</p>
+    </div>
+
+    <div class="one-line dlp-brew" data-reveal>
+      <div class="one-line-head">
+        <h3>{t.brewTitle}</h3>
+        {!tap && <span class="pill">{dl.spot.soon}</span>}
+      </div>
+      <p class="one-line-body">{t.brewBody}</p>
+      {
+        [
+          { cmd: BREW_CASK, label: dl.platforms.macos.name },
+          { cmd: BREW_FORMULA, label: dl.platforms.linux.name },
+        ].map((c) => (
+          <div class:list={["one-line-cmd", "is-small", { "is-soon": !tap }]}>
+            <span class="one-line-label">{c.label}</span>
+            <code>
+              <span aria-hidden="true">$ </span>
+              {c.cmd}
+            </code>
+            {tap && <CopyButton text={c.cmd} {...copy} />}
+          </div>
+        ))
+      }
+      {
+        tap && (
+          <p class="one-line-note">
+            <a class="text-link" href={BREW_TAP_URL} rel="noopener">mumcord/tap →</a>
+          </p>
+        )
+      }
+    </div>
+  </section>
+
+  {
+    release && (
+      <section class="wrap dlp-section" aria-labelledby="dlp-verify">
+        <h2 id="dlp-verify" class="dlp-h" data-reveal>{t.verifyTitle}</h2>
+        <div class="dlp-cards">
+          <div class="dlp-card" data-reveal>
+            <h3>{t.verify.checksums.title}</h3>
+            <p>{t.verify.checksums.body}</p>
+            <div class="one-line-cmd is-small">
+              <code>
+                <span aria-hidden="true">$ </span>sha256sum -c SHA256SUMS --ignore-missing
+              </code>
+            </div>
+            {release.checksums && (
+              <a class="text-link" href={release.checksums.url} rel="noopener">SHA256SUMS →</a>
+            )}
+          </div>
+          <div class="dlp-card" data-reveal>
+            <h3>{t.verify.sig.title}</h3>
+            <p>{t.verify.sig.body}</p>
+            <a class="text-link" href={release.url} rel="noopener">{dl.allReleases} →</a>
+          </div>
+          {release.sboms.length > 0 && (
+            <div class="dlp-card" data-reveal>
+              <h3>{t.verify.sbom.title}</h3>
+              <p>{t.verify.sbom.body}</p>
+              <ul class="dlp-sboms">
+                {release.sboms.map((a) => (
+                  <li>
+                    <a href={a.url} rel="noopener">{a.name.replace(/^mumcord-[\d.]+-/, "").replace(/\.cdx\.json$/, "")}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+        <p class="dlp-howto" data-reveal>
+          <a class="text-link" href={`${WIKI_URL}/Installation`} rel="noopener">{dl.howTo}</a> · {dl.source}{" "}
+          <a class="text-link" href={`${WIKI_URL}/Building`} rel="noopener">{dl.sourceLink}</a>
+        </p>
+      </section>
+    )
+  }
+
+  <section class="wrap dlp-section dlp-cards" aria-label={`${t.mobileTitle} · ${t.moreTitle}`}>
+    <div class="dlp-card dlp-card-glow" data-reveal>
+      <h2 class="dlp-h">{t.mobileTitle}</h2>
+      <p>{t.mobileBody}</p>
+      <a class="text-link" href={routes.roadmap[lang]}>{t.mobileLink} →</a>
+    </div>
+    <div class="dlp-card" data-reveal>
+      <h2 class="dlp-h">{t.moreTitle}</h2>
+      <p>{t.moreBody}</p>
+      <p class="dlp-links">
+        <a class="text-link" href={routes.server[lang]}>{t.moreServer} →</a>
+        <a class="text-link" href={routes.mumbot[lang]}>Mumbot →</a>
+        <a class="text-link" href={routes.mumpeer[lang]}>Mumpeer →</a>
+      </p>
+    </div>
+  </section>
+
+  {
+    releases.length > 1 && (
+      <section class="wrap dlp-section" aria-labelledby="dlp-older">
+        <h2 id="dlp-older" class="dlp-h" data-reveal>{t.olderTitle}</h2>
+        <p class="dlp-lead" data-reveal>{t.olderBody}</p>
+        <ol class="dlp-older" data-reveal>
+          {releases.slice(1, 9).map((r) => (
+            <li>
+              <span class="dlp-older-v">v{r.version}</span>
+              <time datetime={r.publishedAt}>{dateFmt.format(new Date(r.publishedAt))}</time>
+              <a href={`${routes.changelog[lang]}#v${r.version}`}>{t.notes}</a>
+              <a href={r.url} rel="noopener">{t.github}</a>
+            </li>
+          ))}
+        </ol>
+        <p>
+          <a class="text-link" href={RELEASES_URL} rel="noopener">{dl.allReleases} →</a>
+        </p>
+      </section>
+    )
+  }
+</article>
