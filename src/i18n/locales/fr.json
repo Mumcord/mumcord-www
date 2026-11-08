@@ -894,6 +894,11 @@
             "title": "Mises à jour dans l’application",
             "body": "Mumcord cherche une nouvelle version au démarrage et toutes les 12 heures, montre ce qui a changé depuis ta version et l’installe en un clic. Chaque téléchargement est vérifié avec la signature de Mumcord et les sommes de contrôle de la version avant d’être installé ; tu peux ignorer une version ou te la faire rappeler plus tard.",
             "alt": "La boîte de dialogue « Mise à jour disponible » avec les changements depuis ta version"
+          },
+          {
+            "id": "homebrew",
+            "title": "Homebrew et versions Mac natives",
+            "body": "Mumcord est sur Homebrew pour macOS et Linux. Les Mac ont chacun leur téléchargement natif, pour Apple Silicon et pour Intel, signé, notarisé et moitié plus léger que l’ancienne app universelle."
           }
         ]
       },
@@ -1021,6 +1026,29 @@
             "id": "moderation",
             "title": "Modération dans le menu d’une personne",
             "body": "Sous « Administration », tu mets des gens en sourdine ou les rends sourds sur le serveur, tu donnes la priorité de parole et tu réinitialises un commentaire ou un avatar. Chaque action n’apparaît que si tu as le droit correspondant."
+          },
+          {
+            "id": "admin-commands",
+            "title": "Commandes d’administration dans le chat",
+            "body": "Taper «  /  » liste les commandes d’administration que le serveur t’autorise : /kick, /ban, /mute, /deaf, /priority, /register, /move, /moveall, /unban et d’autres. Mumcord complète les noms et les salons pendant que tu tapes, expulser et bannir demandent quand même confirmation, et une ligne de résultat que toi seul vois dit ce qui s’est passé.",
+            "alt": "La liste des commandes d’administration au-dessus de la zone de message"
+          },
+          {
+            "id": "registered-users",
+            "title": "Utilisateurs enregistrés",
+            "body": "Un onglet de l’administration du serveur liste tous les comptes que le serveur connaît, avec la dernière connexion vue et le dernier salon. Tu cherches, filtres par en ligne ou longtemps inactifs, renommes, désinscris et enregistres des personnes en ligne, puis tu enregistres tout d’un coup.",
+            "alt": "L’onglet Utilisateurs enregistrés dans l’administration du serveur"
+          },
+          {
+            "id": "server-info-admin",
+            "title": "Section d’administration dans les infos du serveur",
+            "body": "Avec les droits d’administration, les infos du serveur montrent tes droits en mots simples, les limites du serveur et le message d’accueil. L’avis du serveur, la description du salon racine, tu le modifies directement là.",
+            "alt": "La section d’administration à la fin des infos du serveur"
+          },
+          {
+            "id": "drag-channels",
+            "title": "Glisse les salons pour les déplacer",
+            "body": "Dépose un salon sur un autre pour le déplacer là avec ses sous-salons et les personnes dedans, ou entre deux salons pour changer l’ordre. Un nouveau parent demande d’abord et montre le chemin avant et après. Fonctionne avec tous les serveurs Mumble standard."
           }
         ]
       },
@@ -1174,7 +1202,22 @@
           {
             "id": "activity-notifications",
             "title": "Notifications d’activité",
-            "body": "Quand quelqu’un lance un partage d’écran, une watch party ou une activité de plugin, Mumcord te prévient comme pour un message. L’historique d’activité reste sur ton appareil, même après un redémarrage, et tu l’effaces dans Paramètres sous Confidentialité."
+            "body": "Quand quelqu’un lance un partage d’écran, une watch party ou une activité de plugin, Mumcord te prévient comme pour un message. Mumcord ne garde l’historique d’activité après un redémarrage que si tu l’actives, et tu le vides dans Réglages, sous Confidentialité."
+          },
+          {
+            "id": "rich-text-editor",
+            "title": "Éditeur de texte pour commentaires et descriptions",
+            "body": "Ton commentaire de profil et les descriptions de salons ont droit à un éditeur avec gras, italique, couleurs, liens, images, listes et une vue du code source. Les images sont réduites jusqu’à ce que tout tienne dans la limite du serveur, et un indicateur montre la place qui reste."
+          },
+          {
+            "id": "channel-mentions",
+            "title": "Mentions de #salon",
+            "body": "Taper «  #  » propose les salons du serveur, et #Salon dans un message devient un lien : rejoindre le salon, l’afficher dans la liste des salons ou copier le nom. Les autres clients Mumble voient le texte brut."
+          },
+          {
+            "id": "notifications-per-kind",
+            "title": "Notifications par type",
+            "body": "Pour les nouveaux messages et chaque type d’activité, tu choisis Désactivée, Dans l’app, Système ou Les deux, dans les Réglages et déjà dans l’assistant de configuration."
           }
         ]
       },
@@ -1221,7 +1264,7 @@
           {
             "id": "now-playing",
             "title": "En écoute",
-            "body": "Si tu veux, les autres utilisateurs de Mumcord voient quelle musique tu écoutes, avec pochette et progression. Sous Linux et Windows.",
+            "body": "Si tu veux, les autres utilisateurs de Mumcord voient quelle musique tu écoutes, avec pochette et progression. Sous Linux, Windows et macOS.",
             "alt": "Carte de profil avec « En écoute » et une barre de progression"
           },
           {
@@ -1426,6 +1469,11 @@
             "title": "Répartir image et chat",
             "body": "Fais glisser la poignée entre l’image d’un partage ou d’une watch party et le chat, ou utilise les flèches du clavier. Elle s’accroche au tiers, à la moitié et aux deux tiers, et Mumcord retient la hauteur.",
             "alt": "Un partage d’écran avec les caméras dans une bande à côté"
+          },
+          {
+            "id": "screen-share-window-name",
+            "title": "Nom de la fenêtre dans la barre en direct",
+            "body": "Quand tu partages une fenêtre, la barre en direct la nomme, par exemple «  Fenêtre · VS Code  », sous Windows et macOS. Le titre reste sur ton appareil ; les spectateurs, le relais et le serveur ne le voient jamais."
           }
         ]
       },
@@ -1651,12 +1699,75 @@
             "id": "crash-reports",
             "title": "Rapports de plantage",
             "body": "Quand Mumcord se ferme de façon inattendue, il enregistre un court rapport sur ton ordinateur et te le dit au prochain démarrage. Dans Paramètres → Avancé & développeur, tu vois les 10 derniers et tu les copies, exportes ou supprimes. Un seul rapport est envoyé à la fois, et seulement après que tu as confirmé ce qui est envoyé exactement."
+          },
+          {
+            "id": "aaron-tour",
+            "title": "Aaron te fait visiter",
+            "body": "Après la configuration, Aaron, un axolotl aux couleurs de Mumcord, te guide dans la fenêtre principale : serveurs, salons, prise de parole, recherche, chat, apps et thèmes, un conseil à la fois. Dans l’assistant de configuration, il donne un court conseil pour chaque étape. Relance la visite quand tu veux dans Réglages → À propos → Conseils.",
+            "alt": "Aaron montrant une partie de la fenêtre principale"
+          },
+          {
+            "id": "disk-writes",
+            "title": "Moins d’écritures sur le disque",
+            "body": "Mumcord écrit le journal et l’historique du chat par lots au lieu de chaque ligne. Pour ménager ton SSD, désactive un par un dans les Réglages le journal sur le disque, les enregistrements sûrs, les aperçus de liens et le cache des plugins.",
+            "alt": "La carte Réduire les écritures disque dans les Réglages"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.8.0",
+      "teaser": "Commandes d’administration dans le chat, utilisateurs enregistrés, déplacement des salons par glisser-déposer, un nouvel éditeur de texte et Aaron pour te faire découvrir Mumcord.",
+      "summary": "Avec la 0.8.0, la partie administration est complète : commandes d’administration directement dans le chat, utilisateurs enregistrés, salons qu’on déplace en les glissant et section d’administration dans les infos du serveur. S’y ajoutent des notifications par type, les mentions de #salon, un nouvel éditeur pour les commentaires et les descriptions, Aaron comme guide au premier lancement et des téléchargements séparés pour les Mac Apple Silicon et Intel.",
+      "groups": [
+        {
+          "title": "Nouveau",
+          "items": [
+            "Commandes d’administration dans le chat (#378) : taper «  /  » liste les commandes d’administration que le serveur t’autorise, au-dessus des commandes des plugins et marquées «  Intégré  » : /kick, /ban, /mute, /unmute, /deaf, /undeaf, /priority, /register, /move, /moveall et /unban. Mumcord complète les noms et les salons pendant que tu tapes. Expulser, bannir, débannir et tout déplacer demandent quand même confirmation, et chaque commande se termine par une courte ligne de résultat que toi seul vois. Le texte de la commande n’est jamais envoyé.",
+            "Utilisateurs enregistrés (#256) : «  Utilisateurs enregistrés  » dans le menu du serveur ouvre un onglet à côté de la liste des bannissements avec tous les comptes que le serveur connaît, avec l’ID du compte, la dernière connexion vue et le dernier salon. Avec la recherche, les filtres «  En ligne  » et «  Inactifs depuis 90+ jours  », le renommage, la désinscription et l’enregistrement de personnes en ligne à l’instant. Tu enregistres toutes les modifications d’un coup, et Mumcord te dit clairement quand le serveur n’en a pas pris une en compte. Uniquement avec le droit «  Enregistrer  ».",
+            "Section d’administration dans les infos du serveur (#258) : avec les droits d’administration, les infos du serveur montrent tes droits en mots simples, les limites du serveur, le message d’accueil et l’avis du serveur (la description du salon racine), que tu modifies directement là, ainsi qu’un lien vers l’administration du serveur.",
+            "Glisser les salons (#676) : dépose un salon sur un autre pour le déplacer là avec ses sous-salons et les personnes dedans, ou entre deux salons pour changer l’ordre. Un nouveau parent demande d’abord et montre le chemin avant et après. Si le serveur refuse, un avis dit pourquoi et l’arborescence reste comme elle était.",
+            "Nouvel éditeur de texte pour ton commentaire de profil et les descriptions de salons (#666) : gras, italique, souligné, barré, couleur du texte, liens, images, listes et une vue du code source. Les images sont réduites jusqu’à ce que tout tienne dans la limite du serveur, et un indicateur sous le texte montre la place qui reste. Les autres clients Mumble voient la même mise en forme.",
+            "Mentions de #salon : taper «  #  » propose les salons du serveur, et #Salon dans un message devient un lien avec «  Rejoindre le salon  », «  Afficher dans la liste des salons  » et «  Copier le nom  ».",
+            "Notifications par type (#660) : pour les nouveaux messages et chaque type d’activité, tu choisis séparément Désactivée, Dans l’app, Système ou Les deux, dans les Réglages et dans une nouvelle étape de l’assistant de configuration.",
+            "Aaron, un axolotl aux couleurs de Mumcord, fait découvrir la fenêtre principale aux nouveaux venus après la configuration, en une courte visite (#637), un conseil à la fois avec Retour, Suivant et Passer. Dans l’assistant de configuration, il se tient à côté du champ de chaque étape. Dans Réglages → À propos → Conseils, tu relances la visite quand tu veux.",
+            "Moins d’écritures sur le disque : dans Diagnostic, tu désactives le journal sur le disque, et une nouvelle carte «  Réduire les écritures disque  » regroupe les enregistrements sûrs, les aperçus de liens et le cache des plugins. Mumcord écrit désormais le journal et l’historique du chat par lots au lieu de chaque ligne.",
+            "Partage d’écran : la barre en direct nomme la fenêtre partagée, par exemple «  Fenêtre · VS Code  » (#558), sous Windows et macOS 15.2 et plus récent. Le titre reste sur ton appareil.",
+            "«  En écoute  » sous macOS (#658) : Mumcord lit le titre au même endroit que le Centre de contrôle, donc Musique, Spotify, les navigateurs et d’autres lecteurs fonctionnent, sans demande d’autorisation.",
+            "Homebrew (#662) : brew install --cask mumcord/tap/mumcord sous macOS et brew install mumcord/tap/mumcord sous Linux.",
+            "Versions candidates (#686) : les versions à venir peuvent être essayées en avance comme préversions. Le programme de mise à jour, Homebrew et l’AUR continuent de ne proposer que des versions finales."
+          ]
+        },
+        {
+          "title": "Amélioré",
+          "items": [
+            "macOS se télécharge en deux versions au lieu d’une app universelle (#663) : «  macOS (Apple Silicon)  » et «  macOS (Intel)  », chacune compilée nativement, signée et notarisée. Le téléchargement et l’app font environ moitié moins, et les apps universelles installées passent à la version de leur propre Mac.",
+            "Linux : les vidéos H.264 (Twitch, liens .mp4) et le son AAC fonctionnent sur toutes les distributions sans paquets supplémentaires (#678). L’AppImage, le .deb et le .rpm embarquent leurs propres décodeurs, donc Fedora n’a plus besoin de RPM Fusion.",
+            "Historique d’activité seulement si tu le veux (#661) : l’historique ne survit à un redémarrage que si tu actives «  Conserver l’historique d’activité après un redémarrage  ». C’est désactivé par défaut, et le désactiver supprime ce qui était enregistré.",
+            "Partage de fichiers (#673) : les données du fichier voyagent désormais comme documents Bovnar. L’envoi vers Mumcord 0.7.x et la réception depuis cette version fonctionnent comme avant.",
+            "Mumcord reconnaît les autres utilisateurs de Mumcord même quand leur premier bonjour s’est perdu, et redemande jusqu’à trois fois. Les clients Mumble n’en remarquent rien.",
+            "Les notifications d’erreur ont leur propre son.",
+            "Sécurité : le message d’accueil du serveur est assaini une fois de plus dans l’interface, et la politique de sécurité du contenu (CSP) de l’app est plus stricte."
+          ]
+        },
+        {
+          "title": "Corrigé",
+          "items": [
+            "Windows : les rapports de plantage nomment le plantage dans plus de cas, y compris après un dépassement de pile, une corruption du tas, abort() ou lorsqu’une bibliothèque remplace le gestionnaire de plantages de Mumcord (#699).",
+            "Windows : les caméras virtuelles comme l’OBS Virtual Camera apparaissent dans la liste des caméras et fonctionnent comme de vraies caméras, effets d’arrière-plan compris (#631).",
+            "Linux : les caméras via le portail caméra ne s’arrêtent plus avec «  La caméra envoie des images illisibles  ».",
+            "Les pages de scène des plugins peuvent de nouveau envoyer à leur plugin des messages allant jusqu’à 64 KiB (#692).",
+            "Le fil d’activité ne propose plus «  Regarder  » sur ton propre partage d’écran ni «  Rejoindre  » sur ta propre watch party (#664).",
+            "Les lecteurs d’écran entendent combien de suggestions il y a pour les mentions @ et les commandes /, au lieu d’une annonce de liste cassée.",
+            "Les icônes de la liste des permissions d’un plugin sont dessinées et ont le même aspect partout. Un badge de plugin à côté d’un long nom ne rétrécit plus.",
+            "macOS : le contenu des plugins dans les boîtes de dialogue et les panneaux s’ajuste de nouveau exactement à son cadre, et la fenêtre redémarre de nouveau après qu’un plugin l’a gelée.",
+            "La copie fonctionne de nouveau dans l’inspecteur de paquets et, quand Windows refuse le presse-papiers, aussi pour les rapports de plantage."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.2",
       "teaser": "L’administration dans le menu du clic droit : gère les salons, les droits et les mots de passe, déplace des gens, mets en sourdine ou rends sourd sur le serveur, et découvre une nouvelle barre de messages.",

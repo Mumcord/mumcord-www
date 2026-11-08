@@ -894,6 +894,11 @@
             "title": "Aktualizace v aplikaci",
             "body": "Mumcord při spuštění a každých 12 hodin zkontroluje novou verzi, ukáže, co se od tvé verze změnilo, a nainstaluje ji jedním kliknutím. Každé stažení se před instalací ověří podle podpisu Mumcordu a kontrolních součtů vydání; verzi můžeš přeskočit nebo si nechat připomenout později.",
             "alt": "Dialog „Je dostupná aktualizace“ se změnami od tvé verze"
+          },
+          {
+            "id": "homebrew",
+            "title": "Homebrew a nativní sestavení pro Mac",
+            "body": "Mumcord je na Homebrew pro macOS a Linux. Macy dostanou nativní stažení zvlášť pro Apple Silicon a Intel, podepsané, notarizované a poloviční oproti dřívější univerzální aplikaci."
           }
         ]
       },
@@ -1021,6 +1026,29 @@
             "id": "moderation",
             "title": "Moderování v nabídce osoby",
             "body": "Pod „Admin“ lidi na serveru ztlumíš nebo ohlušíš, dáš jim přednostní mluvčí a obnovíš komentář nebo avatar. Každá akce se zobrazí jen tehdy, když na ni máš právo."
+          },
+          {
+            "id": "admin-commands",
+            "title": "Admin příkazy v chatu",
+            "body": "Po napsání „/“ se zobrazí admin příkazy, které ti server povoluje: /kick, /ban, /mute, /deaf, /priority, /register, /move, /moveall, /unban a další. Při psaní Mumcord doplňuje jména a kanály, vyhození a ban se stále potvrzují a řádek s výsledkem, který vidíš jen ty, říká, co se stalo.",
+            "alt": "Seznam admin příkazů nad polem pro zprávu"
+          },
+          {
+            "id": "registered-users",
+            "title": "Registrovaní uživatelé",
+            "body": "Karta ve správě serveru vypíše všechny účty, které server zná, s posledním spatřením a posledním kanálem. Hledáš, filtruješ podle online nebo dlouho neaktivních, přejmenováváš, rušíš registraci a registruješ lidi, kteří jsou online, a vše uložíš najednou.",
+            "alt": "Karta Registrovaní uživatelé ve správě serveru"
+          },
+          {
+            "id": "server-info-admin",
+            "title": "Admin sekce v informacích o serveru",
+            "body": "S admin právy ukazují informace o serveru tvá práva srozumitelnými slovy, limity serveru a uvítací text. Oznámení serveru, tedy popis hlavního kanálu, upravuješ přímo tam.",
+            "alt": "Admin sekce na konci informací o serveru"
+          },
+          {
+            "id": "drag-channels",
+            "title": "Přesouvání kanálů tažením",
+            "body": "Přetáhni kanál na jiný, aby se přesunul tam i s podkanály a lidmi, nebo mezi dva kanály, abys změnil pořadí. Nový nadřazený kanál se předtím zeptá a ukáže cestu před změnou a po ní. Funguje s každým standardním serverem Mumble."
           }
         ]
       },
@@ -1174,7 +1202,22 @@
           {
             "id": "activity-notifications",
             "title": "Oznámení o aktivitě",
-            "body": "Když někdo spustí sdílení obrazovky, watch party nebo aktivitu pluginu, Mumcord tě upozorní jako na zprávu. Historie aktivity zůstává na tvém zařízení, i po restartu, a smažeš ji v Nastavení pod Soukromí."
+            "body": "Když někdo zahájí sdílení obrazovky, společné sledování nebo aktivitu pluginu, Mumcord tě upozorní jako u zprávy. Historii aktivit si Mumcord po restartu ponechá, jen když to zapneš, a vymažeš ji v Nastavení v části Soukromí."
+          },
+          {
+            "id": "rich-text-editor",
+            "title": "Textový editor pro komentáře a popisy",
+            "body": "Komentář v profilu a popisy kanálů dostanou editor s tučným písmem, kurzívou, barvami, odkazy, obrázky, seznamy a zobrazením zdrojového kódu. Obrázky se zmenšují, dokud se vše nevejde do limitu serveru, a ukazatel ukazuje, kolik místa zbývá."
+          },
+          {
+            "id": "channel-mentions",
+            "title": "Zmínky #kanálů",
+            "body": "Po napsání „#“ se nabídnou kanály serveru a #Kanál ve zprávě se změní v odkaz: vstup do kanálu, ukaž ho v seznamu kanálů nebo zkopíruj název. Ostatní klienty Mumble vidí prostý text."
+          },
+          {
+            "id": "notifications-per-kind",
+            "title": "Oznámení podle druhu",
+            "body": "Pro nové zprávy a každý druh aktivity vybíráš Vypnuto, V aplikaci, Systém nebo Obojí, v nastavení a už v průvodci nastavením."
           }
         ]
       },
@@ -1221,7 +1264,7 @@
           {
             "id": "now-playing",
             "title": "Právě poslouchá",
-            "body": "Pokud chceš, ostatní uživatelé Mumcordu uvidí, jakou hudbu posloucháš, s obalem a průběhem. Na Linuxu a Windows.",
+            "body": "Pokud chceš, ostatní uživatelé Mumcordu uvidí, jakou hudbu posloucháš, s obalem a průběhem. Na Linuxu, Windows a macOS.",
             "alt": "Karta profilu s „Poslouchá“ a ukazatelem průběhu"
           },
           {
@@ -1426,6 +1469,11 @@
             "title": "Dělení obrazu a chatu",
             "body": "Přetáhni úchyt mezi obrazem sdílení nebo watch party a chatem, nebo použij šipky. Zacvakne na třetině, polovině a dvou třetinách a Mumcord si výšku pamatuje.",
             "alt": "Sdílení obrazovky s kamerami v pruhu vedle něj"
+          },
+          {
+            "id": "screen-share-window-name",
+            "title": "Název okna v živém panelu",
+            "body": "Když sdílíš okno, živý panel ho pojmenuje, třeba „Okno · VS Code“, na Windows a macOS. Titulek zůstává na tvém zařízení; diváci, relay ani server ho nikdy neuvidí."
           }
         ]
       },
@@ -1651,12 +1699,75 @@
             "id": "crash-reports",
             "title": "Hlášení pádů",
             "body": "Když se Mumcord neočekávaně zavře, uloží do tvého počítače krátké hlášení a při příštím spuštění ti to řekne. V Nastavení → Pokročilé a vývojář vidíš posledních 10 a můžeš je kopírovat, exportovat nebo mazat. Nahrává se vždy jen jedno hlášení, a to až poté, co potvrdíš, co přesně se odešle."
+          },
+          {
+            "id": "aaron-tour",
+            "title": "Aaron ti vše ukáže",
+            "body": "Po nastavení tě Aaron, axolotl v barvách Mumcordu, provede hlavním oknem: servery, kanály, mluvení, hledání, chat, aplikace a motivy, tip po tipu. V průvodci nastavením dává ke každému kroku krátký tip. Prohlídku spustíš kdykoli znovu v Nastavení → O aplikaci → Tipy.",
+            "alt": "Aaron ukazuje na část hlavního okna"
+          },
+          {
+            "id": "disk-writes",
+            "title": "Méně zápisů na disk",
+            "body": "Mumcord zapisuje log a historii chatu po dávkách, ne po každém řádku. Abys šetřil SSD, vypni v nastavení jednotlivě log na disku, bezpečná uložení, náhledy odkazů a cache pluginů.",
+            "alt": "Karta Omezit zápisy na disk v nastavení"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.8.0",
+      "teaser": "Admin příkazy v chatu, registrovaní uživatelé, přesouvání kanálů tažením, nový textový editor a Aaron, který ti Mumcord provede.",
+      "summary": "S verzí 0.8.0 je administrátorská část kompletní: admin příkazy přímo v chatu, správa registrovaných uživatelů, přesouvání kanálů tažením a admin sekce v informacích o serveru. Přibyla také oznámení podle druhu, zmínky #kanálů, nový editor komentářů a popisů, Aaron jako průvodce při prvním spuštění a samostatná stažení pro Macy s Apple Silicon a Intel.",
+      "groups": [
+        {
+          "title": "Nové",
+          "items": [
+            "Admin příkazy v chatu (#378): po napsání „/“ se zobrazí admin příkazy, které ti server povoluje, nad příkazy pluginů a s označením „Vestavěný“: /kick, /ban, /mute, /unmute, /deaf, /undeaf, /priority, /register, /move, /moveall a /unban. Při psaní Mumcord doplňuje jména a kanály. Vyhození, ban, zrušení banu a přesun všech se ještě potvrzují a každý příkaz končí krátkým řádkem s výsledkem, který vidíš jen ty. Text příkazu se nikdy neodesílá.",
+            "Registrovaní uživatelé (#256): „Registrovaní uživatelé“ v nabídce serveru otevře kartu vedle seznamu banů se všemi účty, které server zná, s ID účtu, posledním spatřením a posledním kanálem. K dispozici je hledání, filtry „Online“ a „Neaktivní 90+ dní“, přejmenování, zrušení registrace a registrace lidí, kteří jsou právě online. Všechny změny uložíš najednou a Mumcord jasně řekne, když některou server nepřijal. Jen s právem „Registrovat“.",
+            "Admin sekce v informacích o serveru (#258): s admin právy ukazují informace o serveru tvá práva srozumitelnými slovy, limity serveru, uvítací text a oznámení serveru (popis hlavního kanálu), které tam také upravuješ, a k tomu odkaz na správu serveru.",
+            "Tažení kanálů (#676): přetáhni kanál na jiný, aby se přesunul tam i s podkanály a lidmi, nebo mezi dva kanály, abys změnil pořadí. Nový nadřazený kanál se předtím zeptá a ukáže cestu před změnou a po ní. Když server odmítne, upozornění řekne proč a strom zůstane, jak byl.",
+            "Nový textový editor pro komentář v profilu a popisy kanálů (#666): tučné, kurzíva, podtržené, přeškrtnuté, barva textu, odkazy, obrázky, seznamy a zobrazení zdrojového kódu. Obrázky se zmenšují, dokud se vše nevejde do limitu serveru, a ukazatel pod textem ukazuje, kolik místa zbývá. Ostatní klienty Mumble vidí stejné formátování.",
+            "Zmínky #kanálů: po napsání „#“ se nabídnou kanály serveru a #Kanál ve zprávě se změní v odkaz s „Vstoupit do kanálu“, „Ukázat v seznamu kanálů“ a „Kopírovat název“.",
+            "Oznámení podle druhu (#660): pro nové zprávy a každý druh aktivity vybíráš zvlášť Vypnuto, V aplikaci, Systém nebo Obojí, v nastavení i v novém kroku průvodce nastavením.",
+            "Aaron, axolotl v barvách Mumcordu, po nastavení krátce provede nové lidi hlavním oknem (#637), tip po tipu s tlačítky Zpět, Další a Přeskočit. V průvodci nastavením stojí vedle pole každého kroku. V Nastavení → O aplikaci → Tipy spustíš prohlídku kdykoli znovu.",
+            "Méně zápisů na disk: v Diagnostice vypneš log na disku a nová karta „Omezit zápisy na disk“ shrnuje bezpečná uložení, náhledy odkazů a cache pluginů. Mumcord nyní zapisuje log a historii chatu po dávkách, ne po každém řádku.",
+            "Sdílení obrazovky: živý panel pojmenuje sdílené okno, třeba „Okno · VS Code“ (#558), na Windows a macOS 15.2 a novějším. Titulek zůstává na tvém zařízení.",
+            "„Právě poslouchá“ na macOS (#658): Mumcord čte skladbu ze stejného místa jako Ovládací centrum, takže fungují Music, Spotify, prohlížeče i další přehrávače, bez dotazu na oprávnění.",
+            "Homebrew (#662): brew install --cask mumcord/tap/mumcord na macOS a brew install mumcord/tap/mumcord na Linuxu.",
+            "Release kandidáti (#686): připravované verze lze vyzkoušet dříve jako předběžné verze. Aktualizátor, Homebrew a AUR dál nabízejí jen finální verze."
+          ]
+        },
+        {
+          "title": "Vylepšeno",
+          "items": [
+            "macOS je ke stažení ve dvou verzích místo jedné univerzální aplikace (#663): „macOS (Apple Silicon)“ a „macOS (Intel)“, každá nativně sestavená, podepsaná a notarizovaná. Stažení i aplikace jsou zhruba poloviční a nainstalované univerzální aplikace se aktualizují na sestavení pro svůj Mac.",
+            "Linux: videa H.264 (Twitch, odkazy na .mp4) a zvuk AAC se přehrají na každé distribuci bez dalších balíčků (#678). AppImage, .deb a .rpm mají vlastní dekodéry, takže Fedora už nepotřebuje RPM Fusion.",
+            "Historie aktivit jen když chceš (#661): historie přežije restart, jen když zapneš „Ponechat historii aktivit po restartu“. Ve výchozím stavu je vypnuto a vypnutí smaže, co bylo uloženo.",
+            "Sdílení souborů (#673): data souborů se nyní přenášejí jako dokumenty Bovnar. Odesílání do Mumcordu 0.7.x a příjem z něj funguje dál jako dřív.",
+            "Mumcord pozná další uživatele Mumcordu, i když se jejich první pozdrav ztratil, a zeptá se až třikrát. Klienti Mumble o tom nic nepoznají.",
+            "Oznámení o chybách mají vlastní zvuk.",
+            "Zabezpečení: uvítací text serveru se v rozhraní čistí ještě jednou a Content Security Policy aplikace je přísnější."
+          ]
+        },
+        {
+          "title": "Opraveno",
+          "items": [
+            "Windows: hlášení o pádech pojmenují pád ve více případech, včetně přetečení zásobníku, poškození haldy, abort() a knihovny, která nahradí obsluhu pádů Mumcordu (#699).",
+            "Windows: virtuální kamery jako OBS Virtual Camera se zobrazí v seznamu kamer a fungují jako skutečné kamery, včetně efektů pozadí (#631).",
+            "Linux: kamery přes portál kamer už nekončí hláškou „Kamera posílá nečitelné obrázky“.",
+            "Stránky pódií pluginů mohou svému pluginu opět posílat zprávy až do 64 KiB (#692).",
+            "Přehled aktivit už nenabízí „Sledovat“ u tvého vlastního sdílení obrazovky ani „Připojit se“ k tvé vlastní společné projekci (#664).",
+            "Čtečky obrazovky slyší, kolik je návrhů pro zmínky @ a příkazy /, místo rozbitého oznámení seznamu.",
+            "Ikony v seznamu oprávnění pluginu jsou nakreslené a všude vypadají stejně. Odznak pluginu vedle dlouhého názvu se už nesmršťuje.",
+            "macOS: obsah pluginů v dialozích a panelech zase přesně sedí v rámečku a okno se po zamrznutí pluginem zase restartuje.",
+            "Kopírování opět funguje v inspektoru paketů a, když Windows odmítne schránku, i u hlášení o pádech."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.2",
       "teaser": "Správa v nabídce pravého tlačítka: spravuj kanály, oprávnění a hesla, přesouvej lidi, ztlumuj a ohluš je na serveru, plus nová lišta zpráv.",

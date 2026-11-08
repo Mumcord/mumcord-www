@@ -628,7 +628,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Kanäle und Rechte",
-            done: [0, 1, 2],
+            done: [0, 1, 2, 3],
             items: [
               "Kanäle anlegen, umbenennen, beschreiben, verschieben, sortieren und löschen, auch temporäre Kanäle, Nutzerlimits und Verknüpfungen",
               "Kanal-Passwörter setzen, ändern und entfernen, so wie im offiziellen Client",
@@ -642,7 +642,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Personen und Banns",
-            done: [0, 1, 2, 4],
+            done: [0, 1, 2, 3, 4],
             items: [
               "Personen vom Server werfen, mit Grund, und auf Wunsch für eine Zeit bannen, nach Zertifikat, IP-Adresse oder beidem",
               "Die Bannliste ansehen, durchsuchen und bearbeiten, auch Banns für Leute, die gerade nicht online sind",
@@ -662,6 +662,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Befehle im Chat",
+            done: [0, 1, 2],
             items: [
               "Admin-Befehle direkt im Chat: /kick, /ban, /mute, /deaf und /move, neben den Befehlen der Plugins",
               "Vorschläge für Namen und Kanäle beim Tippen, und in der Liste steht nur, was du auf diesem Server darfst",
@@ -1313,7 +1314,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Channels and permissions",
-            done: [0, 1, 2],
+            done: [0, 1, 2, 3],
             items: [
               "Create, rename, describe, move, reorder and delete channels, including temporary channels, user limits and links",
               "Set, change and remove channel passwords, the same way as in the official client",
@@ -1327,7 +1328,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "People and bans",
-            done: [0, 1, 2, 4],
+            done: [0, 1, 2, 3, 4],
             items: [
               "Remove people from the server with a reason, and ban them for a chosen time if you like, by certificate, IP address or both",
               "See, search and edit the ban list, including bans for people who are not online",
@@ -1347,6 +1348,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
           },
           {
             title: "Commands in the chat",
+            done: [0, 1, 2],
             items: [
               "Admin commands right in the chat: /kick, /ban, /mute, /deaf and /move, next to the plugin commands",
               "Suggestions for names and channels while you type, and the list only shows what you may do on this server",

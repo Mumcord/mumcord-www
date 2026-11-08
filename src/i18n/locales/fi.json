@@ -894,6 +894,11 @@
             "title": "Päivitykset sovelluksessa",
             "body": "Mumcord tarkistaa uuden version käynnistyksessä ja 12 tunnin välein, näyttää, mikä on muuttunut omaan versioosi verrattuna, ja asentaa sen yhdellä napsautuksella. Jokainen lataus tarkistetaan Mumcordin allekirjoitusta ja julkaisun tarkistussummia vasten ennen asennusta; voit ohittaa version tai pyytää muistutuksen myöhemmin.",
             "alt": "Ikkuna „Päivitys saatavilla” ja muutokset omaan versioosi verrattuna"
+          },
+          {
+            "id": "homebrew",
+            "title": "Homebrew ja natiivit Mac-versiot",
+            "body": "Mumcord on Homebrewssa macOS:lle ja Linuxille. Macit saavat kumpikin oman natiivilatauksensa, Apple Silicon ja Intel, allekirjoitettuna, notarisoituna ja puolet entisen universaalisovelluksen koosta."
           }
         ]
       },
@@ -1021,6 +1026,29 @@
             "id": "moderation",
             "title": "Moderointi henkilövalikossa",
             "body": "Kohdassa ”Ylläpito” mykistät tai kuuroutat ihmisiä palvelimella, annat puhujan etuoikeuden ja nollaat kommentin tai avatarin. Jokainen toiminto näkyy vain, jos sinulla on siihen oikeus."
+          },
+          {
+            "id": "admin-commands",
+            "title": "Ylläpitäjän komennot chatissa",
+            "body": "”/” näyttää ylläpitäjän komennot, jotka palvelin sallii sinulle: /kick, /ban, /mute, /deaf, /priority, /register, /move, /moveall, /unban ja lisää. Mumcord täydentää nimiä ja kanavia kirjoittaessasi, potkut ja porttikielto kysyvät silti ensin, ja vain sinulle näkyvä tulosrivi kertoo, mitä tapahtui.",
+            "alt": "Ylläpitäjän komentojen luettelo viestikentän yläpuolella"
+          },
+          {
+            "id": "registered-users",
+            "title": "Rekisteröidyt käyttäjät",
+            "body": "Palvelimen hallinnan välilehti listaa kaikki palvelimen tuntemat tilit viimeisimpine näkemisineen ja viimeisine kanavineen. Haet, suodatat paikalla olevien tai pitkään epäaktiivisten mukaan, nimeät uudelleen, poistat rekisteröinnin ja rekisteröit paikalla olevia ihmisiä ja tallennat kaiken kerralla.",
+            "alt": "Rekisteröidyt käyttäjät -välilehti palvelimen hallinnassa"
+          },
+          {
+            "id": "server-info-admin",
+            "title": "Ylläpito-osio palvelimen tiedoissa",
+            "body": "Ylläpito-oikeuksilla palvelimen tiedot näyttävät oikeutesi selkein sanoin, palvelimen rajat ja tervetuloviestin. Palvelimen tiedotetta, eli päähuoneen kuvausta, muokkaat suoraan siinä.",
+            "alt": "Ylläpito-osio palvelimen tietojen lopussa"
+          },
+          {
+            "id": "drag-channels",
+            "title": "Siirrä kanavia vetämällä",
+            "body": "Pudota kanava toisen päälle siirtääksesi sen sinne alikanavineen ja ihmisineen, tai kahden kanavan väliin vaihtaaksesi järjestystä. Uusi yläkanava kysyy ensin ja näyttää polun ennen ja jälkeen. Toimii kaikkien tavallisten Mumble-palvelimien kanssa."
           }
         ]
       },
@@ -1174,7 +1202,22 @@
           {
             "id": "activity-notifications",
             "title": "Toiminnan ilmoitukset",
-            "body": "Kun joku aloittaa näytön jaon, watch partyn tai lisäosan toiminnan, Mumcord ilmoittaa siitä kuten viestistä. Toimintahistoria säilyy laitteellasi myös uudelleenkäynnistyksen jälkeen, ja tyhjennät sen kohdassa Asetukset → Yksityisyys."
+            "body": "Kun joku aloittaa näytönjaon, yhteiskatselun tai lisäosan toiminnan, Mumcord ilmoittaa siitä kuten viestistä. Mumcord säilyttää toimintahistorian uudelleenkäynnistyksen yli vain, jos kytket sen päälle, ja tyhjennät sen Asetuksissa kohdassa Yksityisyys."
+          },
+          {
+            "id": "rich-text-editor",
+            "title": "Tekstieditori kommenteille ja kuvauksille",
+            "body": "Profiilikommenttisi ja kanavien kuvaukset saavat editorin, jossa on lihavointi, kursiivi, värit, linkit, kuvat, luettelot ja lähdekoodinäkymä. Kuvat pienennetään, kunnes kaikki mahtuu palvelimen rajaan, ja mittari näyttää, kuinka paljon tilaa on jäljellä."
+          },
+          {
+            "id": "channel-mentions",
+            "title": "#kanava-maininnat",
+            "body": "”#” ehdottaa palvelimen kanavia, ja #Kanava viestissä muuttuu linkiksi: liity kanavaan, näytä se kanavalistassa tai kopioi nimi. Muut Mumble-asiakkaat näkevät pelkän tekstin."
+          },
+          {
+            "id": "notifications-per-kind",
+            "title": "Ilmoitukset lajeittain",
+            "body": "Uusille viesteille ja jokaiselle toiminnan lajille valitset Pois, Sovelluksessa, Järjestelmä tai Molemmat, asetuksissa ja jo käyttöönottoavustajassa."
           }
         ]
       },
@@ -1221,7 +1264,7 @@
           {
             "id": "now-playing",
             "title": "Nyt soi",
-            "body": "Halutessasi muut Mumcordin käyttäjät näkevät, mitä musiikkia kuuntelet, kansikuvan ja edistymisen kera. Linuxissa ja Windowsissa.",
+            "body": "Halutessasi muut Mumcordin käyttäjät näkevät, mitä musiikkia kuuntelet, kansikuvan ja edistymisen kera. Linuxissa, Windowsissa ja macOS:ssä.",
             "alt": "Profiilikortti, jossa ”Kuuntelee” ja edistymispalkki"
           },
           {
@@ -1426,6 +1469,11 @@
             "title": "Kuvan ja chatin jako",
             "body": "Vedä kahvaa näytönjaon tai watch partyn kuvan ja chatin välillä tai käytä nuolinäppäimiä. Se napsahtaa kolmannekseen, puoleen ja kahteen kolmannekseen, ja Mumcord muistaa korkeuden.",
             "alt": "Näytön jako ja kamerat kaistaleena sen vieressä"
+          },
+          {
+            "id": "screen-share-window-name",
+            "title": "Ikkunan nimi live-palkissa",
+            "body": "Kun jaat ikkunan, live-palkki nimeää sen, esimerkiksi ”Ikkuna · VS Code”, Windowsissa ja macOS:ssä. Otsikko pysyy laitteellasi; katsojat, välityspalvelin ja palvelin eivät koskaan näe sitä."
           }
         ]
       },
@@ -1651,12 +1699,75 @@
             "id": "crash-reports",
             "title": "Kaatumisraportit",
             "body": "Jos Mumcord sulkeutuu odottamatta, se tallentaa lyhyen raportin tietokoneellesi ja kertoo siitä seuraavalla käynnistyksellä. Kohdassa Asetukset → Lisäasetukset ja kehittäjä näet viimeiset 10 ja voit kopioida, viedä tai poistaa ne. Vain yksittäinen raportti ladataan, ja vasta kun olet vahvistanut, mitä tarkalleen lähetetään."
+          },
+          {
+            "id": "aaron-tour",
+            "title": "Aaron esittelee sinulle paikat",
+            "body": "Käyttöönoton jälkeen Aaron, Mumcordin väreissä oleva aksolotli, kiertää kanssasi pääikkunan: palvelimet, kanavat, puhuminen, haku, chat, sovellukset ja teemat, yksi vinkki kerrallaan. Käyttöönottoavustajassa se antaa lyhyen vinkin jokaiseen vaiheeseen. Aloita kierros uudelleen milloin tahansa kohdasta Asetukset → Tietoja → Vinkit.",
+            "alt": "Aaron osoittaa pääikkunan osaa"
+          },
+          {
+            "id": "disk-writes",
+            "title": "Vähemmän levykirjoituksia",
+            "body": "Mumcord kirjoittaa lokin ja chatin historian erissä eikä jokaisella rivillä. SSD:si säästämiseksi voit kytkeä asetuksista pois yksitellen levylle kirjoitettavan lokin, varmat tallennukset, linkkien esikatselut ja lisäosien välimuistin.",
+            "alt": "Vähennä levykirjoituksia -kortti asetuksissa"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.8.0",
+      "teaser": "Ylläpitäjän komennot chatissa, rekisteröidyt käyttäjät, kanavien siirto vetämällä, uusi tekstieditori ja Aaron, joka esittelee sinulle Mumcordin.",
+      "summary": "Versiossa 0.8.0 ylläpito on valmis: ylläpitäjän komennot suoraan chatissa, rekisteröidyt käyttäjät, vetämällä siirrettävät kanavat ja ylläpito-osio palvelimen tiedoissa. Mukana tulevat myös ilmoitukset lajeittain, #kanava-maininnat, uusi editori kommenteille ja kuvauksille, Aaron oppaana ensimmäisellä käynnistyksellä sekä omat lataukset Apple Silicon- ja Intel-Maceille.",
+      "groups": [
+        {
+          "title": "Uutta",
+          "items": [
+            "Ylläpitäjän komennot chatissa (#378): ”/” näyttää ylläpitäjän komennot, jotka palvelin sallii sinulle, lisäosien komentojen yläpuolella ja merkittyinä ”Sisäänrakennettu”: /kick, /ban, /mute, /unmute, /deaf, /undeaf, /priority, /register, /move, /moveall ja /unban. Mumcord täydentää nimiä ja kanavia kirjoittaessasi. Potkut, porttikielto, porttikiellon purku ja kaikkien siirto kysyvät silti ensin, ja jokainen komento päättyy lyhyeen tulosriviin, jonka näet vain sinä. Itse komentotekstiä ei koskaan lähetetä.",
+            "Rekisteröidyt käyttäjät (#256): palvelinvalikon ”Rekisteröidyt käyttäjät” avaa välilehden porttikieltolistan viereen, ja siinä ovat kaikki palvelimen tuntemat tilit tunnuksineen, viimeisimpine näkemisineen ja viimeisine kanavineen. Mukana ovat haku, suodattimet ”Paikalla” ja ”Epäaktiivinen 90+ päivää”, uudelleennimeäminen, rekisteröinnin poisto sekä juuri paikalla olevien ihmisten rekisteröinti. Tallennat kaikki muutokset kerralla, ja Mumcord kertoo selvästi, jos palvelin ei hyväksynyt jotakin. Vain ”Rekisteröi”-oikeudella.",
+            "Ylläpito-osio palvelimen tiedoissa (#258): ylläpito-oikeuksilla palvelimen tiedot näyttävät oikeutesi selkein sanoin, palvelimen rajat, tervetuloviestin ja palvelimen tiedotteen (päähuoneen kuvauksen), jota voit muokata siellä, sekä linkin palvelimen hallintaan.",
+            "Kanavien vetäminen (#676): pudota kanava toisen päälle siirtääksesi sen sinne alikanavineen ja ihmisineen, tai kahden kanavan väliin vaihtaaksesi järjestystä. Uusi yläkanava kysyy ensin ja näyttää polun ennen ja jälkeen. Jos palvelin kieltäytyy, ilmoitus kertoo syyn ja puu pysyy ennallaan.",
+            "Uusi tekstieditori profiilikommenttiisi ja kanavien kuvauksiin (#666): lihavointi, kursiivi, alleviivaus, yliviivaus, tekstin väri, linkit, kuvat, luettelot ja lähdekoodinäkymä. Kuvat pienennetään, kunnes kaikki mahtuu palvelimen rajaan, ja tekstin alla oleva mittari näyttää, kuinka paljon tilaa on jäljellä. Muut Mumble-asiakkaat näkevät saman muotoilun.",
+            "#kanava-maininnat: ”#” ehdottaa palvelimen kanavia, ja #Kanava viestissä muuttuu linkiksi, jossa on ”Liity kanavaan”, ”Näytä kanavalistassa” ja ”Kopioi nimi”.",
+            "Ilmoitukset lajeittain (#660): uusille viesteille ja jokaiselle toiminnan lajille valitset erikseen Pois, Sovelluksessa, Järjestelmä tai Molemmat, asetuksissa ja käyttöönottoavustajan uudessa vaiheessa.",
+            "Aaron, Mumcordin väreissä oleva aksolotli, esittelee uusille ihmisille käyttöönoton jälkeen pääikkunan lyhyellä kierroksella (#637), yksi vinkki kerrallaan painikkeilla Takaisin, Seuraava ja Ohita. Käyttöönottoavustajassa se seisoo jokaisen vaiheen kentän vieressä. Kohdasta Asetukset → Tietoja → Vinkit aloitat kierroksen uudelleen milloin tahansa.",
+            "Vähemmän levykirjoituksia: Diagnostiikassa kytket levylle kirjoitettavan lokin pois, ja uusi kortti ”Vähennä levykirjoituksia” kokoaa varmat tallennukset, linkkien esikatselut ja lisäosien välimuistin. Mumcord kirjoittaa nyt lokin ja chatin historian erissä eikä jokaisella rivillä.",
+            "Näytönjako: live-palkki nimeää jaetun ikkunan, esimerkiksi ”Ikkuna · VS Code” (#558), Windowsissa ja macOS 15.2:ssa ja uudemmissa. Otsikko pysyy laitteellasi.",
+            "”Nyt soi” macOS:ssä (#658): Mumcord lukee kappaleen samasta paikasta kuin Ohjauskeskus, joten Music, Spotify, selaimet ja muut soittimet toimivat ilman oikeuskyselyä.",
+            "Homebrew (#662): brew install --cask mumcord/tap/mumcord macOS:ssä ja brew install mumcord/tap/mumcord Linuxissa.",
+            "Julkaisuehdokkaat (#686): tulevia versioita voi kokeilla etukäteen esiversioina. Päivittäjä, Homebrew ja AUR tarjoavat edelleen vain lopullisia versioita."
+          ]
+        },
+        {
+          "title": "Parannettu",
+          "items": [
+            "macOS on kahtena latauksena yhden universaalisovelluksen sijaan (#663): ”macOS (Apple Silicon)” ja ”macOS (Intel)”, kumpikin natiivisti rakennettu, allekirjoitettu ja notarisoitu. Lataus ja sovellus ovat noin puolet pienemmät, ja asennetut universaalisovellukset päivittyvät oman Macinsa versioon.",
+            "Linux: H.264-videot (Twitch, .mp4-linkit) ja AAC-ääni toimivat kaikissa jakeluissa ilman lisäpaketteja (#678). AppImage, .deb ja .rpm tuovat omat dekooderinsa, joten Fedora ei enää tarvitse RPM Fusionia.",
+            "Toimintahistoria vain, jos haluat (#661): historia säilyy uudelleenkäynnistyksen yli vain, jos kytket päälle ”Säilytä toimintahistoria uudelleenkäynnistyksen jälkeen”. Oletuksena se on pois päältä, ja pois kytkeminen poistaa tallennetun.",
+            "Tiedostojen jako (#673): tiedoston data kulkee nyt Bovnar-dokumentteina. Lähetys Mumcord 0.7.x:ään ja vastaanotto siltä toimii kuten ennenkin.",
+            "Mumcord tunnistaa muut Mumcordin käyttäjät, vaikka heidän ensimmäinen tervehdyksensä hukkuisi, ja kysyy uudelleen enintään kolme kertaa. Mumble-asiakkaat eivät huomaa tästä mitään.",
+            "Virheilmoituksilla on oma äänensä.",
+            "Tietoturva: palvelimen tervetuloviesti puhdistetaan käyttöliittymässä vielä kerran, ja sovelluksen sisällön tietoturvakäytäntö (CSP) on tiukempi."
+          ]
+        },
+        {
+          "title": "Korjattu",
+          "items": [
+            "Windows: kaatumisraportit nimeävät kaatumisen useammissa tapauksissa, mukaan lukien pinon ylivuoto, keon vioittuminen, abort() ja kirjasto, joka korvaa Mumcordin kaatumisenkäsittelijän (#699).",
+            "Windows: virtuaalikamerat kuten OBS Virtual Camera näkyvät kameraluettelossa ja toimivat kuin oikeat kamerat, taustatehosteet mukaan lukien (#631).",
+            "Linux: kamerat kameraportaalin kautta eivät enää pysähdy virheeseen ”Kamera lähettää lukukelvottomia kuvia”.",
+            "Lisäosien näyttämösivut voivat taas lähettää lisäosalleen jopa 64 KiB:n viestejä (#692).",
+            "Toimintasyöte ei enää tarjoa ”Katso” omalle näytönjaollesi eikä ”Liity” omaan yhteiskatseluusi (#664).",
+            "Ruudunlukijat kuulevat, montako ehdotusta @-maininnoille ja /-komennoille on, rikkinäisen luetteloilmoituksen sijaan.",
+            "Lisäosan oikeusluettelon kuvakkeet on piirretty ja näyttävät samalta kaikkialla. Lisäosan merkki pitkän nimen vieressä ei enää kutistu.",
+            "macOS: lisäosien sisältö dialogeissa ja paneeleissa istuu taas tarkasti kehyksessään, ja ikkuna käynnistyy taas uudelleen sen jälkeen, kun lisäosa jäädytti sen.",
+            "Kopiointi toimii taas pakettitarkastajassa ja, kun Windows kieltää leikepöydän, myös kaatumisraporteissa."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.2",
       "teaser": "Ylläpito hiiren oikean painikkeen valikossa: hallitse kanavia, oikeuksia ja salasanoja, siirrä ihmisiä, mykistä ja kuurouta palvelimella, lisäksi uusi viestipalkki.",

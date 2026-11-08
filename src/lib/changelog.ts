@@ -21,6 +21,57 @@ export interface ChangelogEntry {
 const source: Record<"de" | "en", ChangelogEntry[]> = {
   de: [
     {
+      version: "0.8.0",
+      teaser: "Admin-Befehle im Chat, registrierte Nutzer, Kanäle per Ziehen verschieben, ein neuer Texteditor und Aaron, der dir Mumcord zeigt.",
+      summary: "Mit 0.8.0 ist der Admin-Teil komplett: Admin-Befehle direkt im Chat, registrierte Nutzer verwalten, Kanäle per Ziehen verschieben und ein Admin-Bereich in den Server-Infos. Dazu kommen Benachrichtigungen je Art, #Kanal-Erwähnungen, ein neuer Editor für Kommentare und Beschreibungen, Aaron als Begleiter für den ersten Start und eigene Downloads für Macs mit Apple Silicon und Intel.",
+      groups: [
+        {
+          title: "Neu",
+          items: [
+            "Admin-Befehle im Chat (#378): Ein „/“ im Eingabefeld zeigt die Admin-Befehle, die dir der Server erlaubt, über den Plugin-Befehlen und als „Eingebaut“ markiert: /kick, /ban, /mute, /unmute, /deaf, /undeaf, /priority, /register, /move, /moveall und /unban. Beim Tippen ergänzt Mumcord Namen und Kanäle. Kick, Bann, Entbannen und „Alle verschieben“ fragen trotzdem nach, und jeder Befehl endet mit einer kurzen Ergebniszeile, die nur du siehst. Der Befehlstext selbst wird nie gesendet.",
+            "Registrierte Nutzer (#256): „Registrierte Nutzer“ im Server-Menü öffnet einen Reiter neben der Bannliste mit allen Konten des Servers, mit Konto-ID, zuletzt gesehen und letztem Kanal. Mit Suche, den Filtern „Online“ und „Seit 90+ Tagen inaktiv“, Umbenennen, Abmelden und Registrieren von Leuten, die gerade online sind. Alle Änderungen speicherst du auf einmal, und Mumcord sagt klar, wenn der Server eine nicht übernommen hat. Nur mit dem Recht „Registrieren“.",
+            "Admin-Bereich in den Server-Infos (#258): Mit Admin-Rechten zeigen die Server-Infos deine Rechte in klaren Worten, die Grenzen des Servers, die Willkommensnachricht und den Server-Hinweis (die Beschreibung des Hauptkanals), den du dort auch bearbeitest, dazu einen Link zur Server-Verwaltung.",
+            "Kanäle ziehen (#676): Zieh einen Kanal auf einen anderen, um ihn samt Unterkanälen und Leuten dorthin zu verschieben, oder zwischen zwei Kanäle, um die Reihenfolge zu ändern. Ein neuer Elternkanal fragt vorher und zeigt den Pfad davor und danach. Lehnt der Server ab, sagt ein Hinweis warum, und der Baum bleibt, wie er war.",
+            "Neuer Texteditor für deinen Profilkommentar und Kanalbeschreibungen (#666): fett, kursiv, unterstrichen, durchgestrichen, Textfarbe, Links, Bilder, Listen und eine Quelltext-Ansicht. Bilder werden verkleinert, bis alles in das Limit des Servers passt, und eine Anzeige unter dem Text zeigt, wie viel Platz noch bleibt. Andere Mumble-Clients sehen dieselbe Formatierung.",
+            "#Kanal-Erwähnungen: Ein „#“ im Eingabefeld schlägt die Kanäle des Servers vor, und #Kanal in einer Nachricht wird zum Link mit „Kanal betreten“, „In der Kanalliste zeigen“ und „Namen kopieren“.",
+            "Benachrichtigungen je Art (#660): Für neue Nachrichten und jede Art von Aktivität wählst du einzeln Aus, In der App, System oder Beides, in den Einstellungen und in einem neuen Schritt der Einrichtung.",
+            "Aaron, ein Axolotl in Mumcords Farben, zeigt neuen Leuten nach der Einrichtung in einer kurzen Tour das Hauptfenster (#637), Tipp für Tipp mit Zurück, Weiter und Überspringen. In der Einrichtung steht er neben dem Feld jedes Schritts. Unter Einstellungen → Über → Tipps startest du die Tour jederzeit neu.",
+            "Weniger Schreibzugriffe auf die Festplatte: Unter Diagnose schaltest du das Log auf der Festplatte ab, und eine neue Karte „Schreibzugriffe reduzieren“ bündelt sichere Speicherungen, Linkvorschauen und den Plugin-Cache. Log und Chatverlauf schreibt Mumcord jetzt gesammelt statt bei jeder Zeile.",
+            "Bildschirmübertragung: Die Live-Leiste nennt das geteilte Fenster, etwa „Fenster · VS Code“ (#558), auf Windows und macOS 15.2 und neuer. Der Titel bleibt auf deinem Gerät.",
+            "„Läuft gerade“ auf macOS (#658): Mumcord liest den Titel von derselben Stelle wie das Kontrollzentrum, also aus Musik, Spotify, Browsern und anderen Playern, ohne Rückfrage nach Rechten.",
+            "Homebrew (#662): brew install --cask mumcord/tap/mumcord auf macOS und brew install mumcord/tap/mumcord auf Linux.",
+            "Release-Kandidaten (#686): Kommende Versionen lassen sich vorab als Vorabversion testen. Updater, Homebrew und AUR bieten weiter nur fertige Versionen an.",
+          ],
+        },
+        {
+          title: "Verbessert",
+          items: [
+            "macOS gibt es als zwei Downloads statt einer Universal-App (#663): „macOS (Apple Silicon)“ und „macOS (Intel)“, jeweils nativ gebaut, signiert und notarisiert. Download und App sind etwa halb so groß, und installierte Universal-Apps aktualisieren auf den Build für ihren Mac.",
+            "Linux: H.264-Videos (Twitch, .mp4-Links) und AAC-Ton laufen auf jeder Distribution ohne zusätzliche Pakete (#678). AppImage, .deb und .rpm bringen ihre eigenen Decoder mit, Fedora braucht kein RPM Fusion mehr.",
+            "Aktivitätsverlauf nur, wenn du willst (#661): Der Verlauf bleibt nach einem Neustart nur, wenn du „Aktivitätsverlauf nach Neustart behalten“ einschaltest. Standardmäßig ist das aus, und Ausschalten löscht, was gespeichert war.",
+            "Dateien teilen (#673): Die Dateidaten reisen jetzt als Bovnar-Dokumente. Mit Mumcord 0.7.x funktioniert das Senden und Empfangen weiter wie bisher.",
+            "Mumcord erkennt andere Mumcord-Nutzer auch, wenn ihr erstes Hallo verloren ging, und fragt bis zu dreimal nach. Mumble-Clients merken davon nichts.",
+            "Fehlermeldungen als Benachrichtigung haben einen eigenen Ton.",
+            "Sicherheit: Die Willkommensnachricht des Servers wird auch in der Oberfläche noch einmal bereinigt, und die Content-Security-Policy der App ist strenger.",
+          ],
+        },
+        {
+          title: "Behoben",
+          items: [
+            "Windows: Absturzberichte nennen den Absturz in mehr Fällen, auch nach Stapelüberlauf, Heap-Beschädigung, abort() oder wenn eine Bibliothek Mumcords Absturzbehandlung ersetzt hat (#699).",
+            "Windows: Virtuelle Kameras wie die OBS Virtual Camera erscheinen in der Kameraliste und funktionieren wie echte Kameras, Hintergrundeffekte inklusive (#631).",
+            "Linux: Kameras über das Kamera-Portal brechen nicht mehr mit „Die Kamera sendet unlesbare Bilder“ ab.",
+            "Plugin-Bühnen senden wieder Nachrichten bis 64 KiB an ihr Plugin (#692).",
+            "Der Aktivitätsverlauf bietet nicht mehr „Ansehen“ für deine eigene Übertragung oder „Beitreten“ für deine eigene Watch-Party an (#664).",
+            "Screenreader hören, wie viele Vorschläge es für @-Erwähnungen und /-Befehle gibt, statt einer kaputten Listenansage.",
+            "Die Symbole in der Rechteliste eines Plugins sind gezeichnet und sehen überall gleich aus. Ein Plugin-Abzeichen neben einem langen Namen schrumpft nicht mehr.",
+            "macOS: Plugin-Inhalte in Dialogen und Panels sitzen wieder genau im Rahmen, und das Fenster startet nach einem eingefrorenen Plugin wieder neu.",
+            "Kopieren funktioniert wieder im Paket-Inspektor und, wenn Windows die Zwischenablage verweigert, auch beim Absturzbericht.",
+          ],
+        },
+      ],
+    },
+    {
       version: "0.7.2",
       teaser: "Admin im Rechtsklick-Menü: Kanäle verwalten, Rechte und Passwörter, Leute verschieben, stumm und taub schalten, dazu eine neue Nachrichtenleiste.",
       summary: "Mumcord bekommt die ersten Admin-Werkzeuge: Du verwaltest Kanäle, siehst und bearbeitest Rechte, setzt Kanal-Passwörter, verschiebst Leute und moderierst, alles nur, wo der Server es dir erlaubt. Dazu kommen Benachrichtigungen für Aktivität, eine neue Nachrichtenleiste und verständlichere Meldungen, wenn etwas abgelehnt wird.",
@@ -793,6 +844,57 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
     },
   ],
   en: [
+    {
+      version: "0.8.0",
+      teaser: "Admin commands in the chat, registered users, drag channels to move them, a new text editor, and Aaron to show you around.",
+      summary: "0.8.0 completes the admin work: admin commands right in the chat, registered users, channels you move by dragging and an admin section in the server info. There are also notifications per kind, #channel mentions, a new editor for comments and descriptions, Aaron as a guide on first start, and separate downloads for Apple Silicon and Intel Macs.",
+      groups: [
+        {
+          title: "New",
+          items: [
+            "Admin commands in the chat (#378): typing “/” lists the admin commands the server allows you, above the plugin commands and marked “Built-in”: /kick, /ban, /mute, /unmute, /deaf, /undeaf, /priority, /register, /move, /moveall and /unban. Mumcord completes names and channels while you type. Kick, ban, unban and move-everyone still confirm first, and every command ends with a short result line only you see. The command text itself is never sent.",
+            "Registered users (#256): “Registered users” in the server menu opens a tab next to the ban list with every account the server knows, with account id, last seen and last channel. Search, the “Online” and “Inactive 90+ days” filters, renaming, unregistering and registering people who are online right now. You save all changes at once, and Mumcord says clearly when the server did not take one. Only with the Register right.",
+            "Admin section in the server info (#258): with admin rights the server info shows your rights in plain words, the server’s limits, the welcome text and the server notice (the root channel’s description), which you can edit there, plus a link to the server administration.",
+            "Drag channels (#676): drop a channel onto another one to move it there with its sub-channels and people, or between two channels to change the order. A new parent asks first and shows the path before and after. When the server refuses, a notice says why and the tree stays as it was.",
+            "New text editor for your profile comment and channel descriptions (#666): bold, italic, underline, strikethrough, text colour, links, images, lists and a source view. Images are scaled down until everything fits the server’s limit, and a meter under the text shows how much room is left. Other Mumble clients see the same formatting.",
+            "#channel mentions: typing “#” suggests the server’s channels, and #Channel in a message becomes a link with Join channel, Show in channel list and Copy name.",
+            "Notifications per kind (#660): for new messages and each kind of activity you choose Off, In-app, System or Both, in Settings and in a new step of the setup wizard.",
+            "Aaron, an axolotl in Mumcord’s colours, gives new people a short tour of the main window after setup (#637), one tip at a time with Back, Next and Skip. In the setup wizard it stands next to the field of each step. Settings → About → Tips starts the tour again any time.",
+            "Fewer disk writes: under Diagnostics you turn off the log on disk, and a new “Reduce disk writes” card holds durable saves, link previews and the plugin cache. Mumcord now writes the log and chat history in batches instead of on every line.",
+            "Screen share: the live bar names the shared window, e.g. “Window · VS Code” (#558), on Windows and macOS 15.2 and newer. The title stays on your device.",
+            "Now playing on macOS (#658): Mumcord reads the track from the same place as Control Center, so Music, Spotify, browsers and other players work, without a permission prompt.",
+            "Homebrew (#662): brew install --cask mumcord/tap/mumcord on macOS and brew install mumcord/tap/mumcord on Linux.",
+            "Release candidates (#686): coming versions can be tried early as pre-releases. The updater, Homebrew and the AUR keep offering only final releases.",
+          ],
+        },
+        {
+          title: "Improved",
+          items: [
+            "macOS comes as two downloads instead of one universal app (#663): “macOS (Apple Silicon)” and “macOS (Intel)”, each built natively, signed and notarized. Download and app are about half the size, and installed universal apps update to the build for their own Mac.",
+            "Linux: H.264 videos (Twitch, .mp4 links) and AAC sound play on every distribution without extra packages (#678). The AppImage, .deb and .rpm bring their own decoders, so Fedora no longer needs RPM Fusion.",
+            "Activity history only when you want it (#661): the history only survives a restart when you turn on “Keep activity history after a restart”. It is off by default, and turning it off deletes what was saved.",
+            "File sharing (#673): the file data now travels as Bovnar documents. Sending to and receiving from Mumcord 0.7.x keeps working as before.",
+            "Mumcord recognises other Mumcord users even when their first hello got lost, and asks again up to three times. Mumble clients notice nothing of this.",
+            "Error notifications have their own sound.",
+            "Security: the server’s welcome text is sanitized once more in the interface, and the app’s content security policy is stricter.",
+          ],
+        },
+        {
+          title: "Fixed",
+          items: [
+            "Windows: crash reports name the crash in more cases, including stack overflows, heap corruption, abort() and a library replacing Mumcord’s crash handler (#699).",
+            "Windows: virtual cameras like the OBS Virtual Camera show in the camera list and work like real cameras, background effects included (#631).",
+            "Linux: cameras through the camera portal no longer stop with “the camera sends unreadable pictures”.",
+            "Plugin stage pages can send messages of up to 64 KiB to their plugin again (#692).",
+            "The activity feed no longer offers “Watch” on your own screen share or “Join” on your own watch party (#664).",
+            "Screen readers hear how many suggestions there are for @mentions and /commands instead of a broken list announcement.",
+            "The icons in a plugin’s permission list are drawn and look the same everywhere. A plugin badge next to a long name no longer shrinks.",
+            "macOS: plugin content in dialogs and panels sits exactly in its frame again, and the window restarts again after a plugin froze it.",
+            "Copy works again in the packet inspector and, when Windows refuses the clipboard, for crash reports too.",
+          ],
+        },
+      ],
+    },
     {
       version: "0.7.2",
       teaser: "Admin in the right-click menu: manage channels, permissions and passwords, move people, server-mute and deafen, plus a new message bar.",

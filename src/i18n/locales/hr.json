@@ -894,6 +894,11 @@
             "title": "Ažuriranja u aplikaciji",
             "body": "Mumcord provjerava ima li nove verzije pri pokretanju i svakih 12 sati, pokazuje što se promijenilo od tvoje verzije i instalira je jednim klikom. Svako preuzimanje provjerava se prema potpisu Mumcorda i kontrolnim zbrojevima izdanja prije instalacije; verziju možeš preskočiti ili zatražiti podsjetnik kasnije.",
             "alt": "Dijalog „Dostupno ažuriranje” s promjenama od tvoje verzije"
+          },
+          {
+            "id": "homebrew",
+            "title": "Homebrew i nativne izvedbe za Mac",
+            "body": "Mumcord je na Homebrewu za macOS i Linux. Macovi dobivaju po jedno nativno preuzimanje za Apple Silicon i Intel, potpisano i notarizirano te upola manje od nekadašnje univerzalne aplikacije."
           }
         ]
       },
@@ -1021,6 +1026,29 @@
             "id": "moderation",
             "title": "Moderiranje u izborniku osobe",
             "body": "Pod „Administracija“ utišavaš ili oglušuješ ljude na poslužitelju, daješ prioritet govornika i resetiraš komentar ili avatar. Svaka se radnja prikazuje samo kad imaš pravo na nju."
+          },
+          {
+            "id": "admin-commands",
+            "title": "Admin naredbe u chatu",
+            "body": "Upisivanjem „/” dobivaš popis admin naredbi koje ti poslužitelj dopušta: /kick, /ban, /mute, /deaf, /priority, /register, /move, /moveall, /unban i druge. Mumcord dovršava imena i kanale dok tipkaš, kick i ban i dalje traže potvrdu, a redak s rezultatom koji vidiš samo ti kaže što se dogodilo.",
+            "alt": "Popis admin naredbi iznad okvira za poruke"
+          },
+          {
+            "id": "registered-users",
+            "title": "Registrirani korisnici",
+            "body": "Kartica u administraciji poslužitelja prikazuje sve račune koje poslužitelj poznaje, sa zadnjom prijavom i zadnjim kanalom. Možeš pretraživati, filtrirati po online ili dugo neaktivnima, preimenovati, ukinuti registraciju i registrirati ljude koji su online, te sve spremiti odjednom.",
+            "alt": "Kartica Registrirani korisnici u administraciji poslužitelja"
+          },
+          {
+            "id": "server-info-admin",
+            "title": "Admin odjeljak u informacijama o poslužitelju",
+            "body": "S admin pravima informacije o poslužitelju prikazuju tvoja prava jednostavnim riječima, ograničenja poslužitelja i pozdravni tekst. Obavijest poslužitelja, opis korijenskog kanala, uređuješ odmah tamo.",
+            "alt": "Admin odjeljak na kraju informacija o poslužitelju"
+          },
+          {
+            "id": "drag-channels",
+            "title": "Premještaj kanala povlačenjem",
+            "body": "Ispusti kanal na drugi da ga premjestiš tamo s podkanalima i ljudima, ili između dva kanala da promijeniš redoslijed. Novi nadređeni kanal prvo pita i prikazuje putanju prije i poslije. Radi sa svakim standardnim Mumble poslužiteljem."
           }
         ]
       },
@@ -1174,7 +1202,22 @@
           {
             "id": "activity-notifications",
             "title": "Obavijesti o aktivnosti",
-            "body": "Kad netko pokrene dijeljenje zaslona, watch party ili aktivnost dodatka, Mumcord te obavijesti kao za poruku. Povijest aktivnosti ostaje na tvom uređaju, i nakon ponovnog pokretanja, a briše se u Postavkama pod Privatnost."
+            "body": "Kad netko pokrene dijeljenje zaslona, zajedničko gledanje ili aktivnost dodatka, Mumcord te obavijesti kao za poruku. Mumcord čuva povijest aktivnosti nakon ponovnog pokretanja samo ako to uključiš, a briše je u Postavkama pod Privatnost."
+          },
+          {
+            "id": "rich-text-editor",
+            "title": "Uređivač teksta za komentare i opise",
+            "body": "Komentar tvog profila i opisi kanala dobivaju uređivač s podebljanim, kurzivom, bojama, poveznicama, slikama, popisima i prikazom izvornog koda. Slike se smanjuju dok sve ne stane u ograničenje poslužitelja, a mjerač pokazuje koliko je mjesta ostalo."
+          },
+          {
+            "id": "channel-mentions",
+            "title": "#kanal spominjanja",
+            "body": "Upisivanjem „#” predlažu se kanali poslužitelja, a #Kanal u poruci postaje poveznica: pridruži se kanalu, prikaži ga na popisu kanala ili kopiraj naziv. Drugi Mumble klijenti vide običan tekst."
+          },
+          {
+            "id": "notifications-per-kind",
+            "title": "Obavijesti po vrsti",
+            "body": "Za nove poruke i svaku vrstu aktivnosti biraš Isključeno, U aplikaciji, Sustav ili Oboje, u Postavkama i već u čarobnjaku za postavljanje."
           }
         ]
       },
@@ -1221,7 +1264,7 @@
           {
             "id": "now-playing",
             "title": "Sad svira",
-            "body": "Ako želiš, drugi korisnici Mumcorda vide koju glazbu slušaš, s omotom i napretkom. Na Linuxu i Windowsima.",
+            "body": "Ako želiš, drugi korisnici Mumcorda vide koju glazbu slušaš, s omotom i napretkom. Na Linuxu, Windowsima i macOS-u.",
             "alt": "Kartica profila sa „Sluša” i trakom napretka"
           },
           {
@@ -1426,6 +1469,11 @@
             "title": "Podjela slike i chata",
             "body": "Povuci ručku između slike dijeljenja ili watch partyja i chata ili koristi tipke sa strelicama. Hvata se na trećini, polovici i dvije trećine, a Mumcord pamti visinu.",
             "alt": "Dijeljenje zaslona s kamerama u traci pored njega"
+          },
+          {
+            "id": "screen-share-window-name",
+            "title": "Naziv prozora u live traci",
+            "body": "Kad dijeliš prozor, live traka ga imenuje, npr. „Prozor · VS Code”, na Windowsima i macOS-u. Naslov ostaje na tvom uređaju; gledatelji, relay i poslužitelj ga nikad ne vide."
           }
         ]
       },
@@ -1651,12 +1699,75 @@
             "id": "crash-reports",
             "title": "Izvješća o rušenju",
             "body": "Ako se Mumcord neočekivano zatvori, sprema kratko izvješće na tvoje računalo i javi ti to pri sljedećem pokretanju. U Postavke → Napredno i razvoj vidiš zadnjih 10 i možeš ih kopirati, izvesti ili izbrisati. Učitava se uvijek samo jedno izvješće, i to tek nakon što potvrdiš što se točno šalje."
+          },
+          {
+            "id": "aaron-tour",
+            "title": "Aaron te vodi kroz aplikaciju",
+            "body": "Nakon postavljanja Aaron, aksolotl u bojama Mumcorda, provede te kroz glavni prozor: poslužitelji, kanali, govor, pretraga, chat, aplikacije i teme, jedan savjet po jedan. U čarobnjaku za postavljanje daje kratak savjet za svaki korak. Obilazak možeš ponovno pokrenuti kad god želiš pod Postavke → O programu → Savjeti.",
+            "alt": "Aaron pokazuje na dio glavnog prozora"
+          },
+          {
+            "id": "disk-writes",
+            "title": "Manje zapisivanja na disk",
+            "body": "Mumcord zapisnik i povijest chata zapisuje u skupinama, a ne uz svaki redak. Da poštediš SSD, u Postavkama jedno po jedno isključi zapisnik na disku, trajna spremanja, preglede poveznica i predmemoriju dodataka.",
+            "alt": "Kartica Smanji zapisivanje na disk u Postavkama"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.8.0",
+      "teaser": "Admin naredbe u chatu, registrirani korisnici, kanali koje premještaš povlačenjem, novi uređivač teksta i Aaron koji te vodi kroz aplikaciju.",
+      "summary": "Verzija 0.8.0 dovršava admin dio: admin naredbe izravno u chatu, registrirani korisnici, kanali koje premještaš povlačenjem i admin odjeljak u informacijama o poslužitelju. Tu su i obavijesti po vrsti, #kanal spominjanja, novi uređivač za komentare i opise, Aaron kao vodič pri prvom pokretanju te zasebna preuzimanja za Mac s Apple Siliconom i Intelom.",
+      "groups": [
+        {
+          "title": "Novo",
+          "items": [
+            "Admin naredbe u chatu (#378): upisivanjem „/” dobivaš popis admin naredbi koje ti poslužitelj dopušta, iznad naredbi dodataka i označene s „Ugrađeno”: /kick, /ban, /mute, /unmute, /deaf, /undeaf, /priority, /register, /move, /moveall i /unban. Mumcord dovršava imena i kanale dok tipkaš. Kick, ban, unban i premještanje svih i dalje traže potvrdu, a svaka naredba završava kratkim retkom s rezultatom koji vidiš samo ti. Sam tekst naredbe nikad se ne šalje.",
+            "Registrirani korisnici (#256): „Registrirani korisnici” u izborniku poslužitelja otvara karticu pored popisa banova sa svim računima koje poslužitelj poznaje, s ID-jem računa, zadnjom prijavom i zadnjim kanalom. Pretraga, filtri „Online” i „Neaktivni 90+ dana”, preimenovanje, ukidanje registracije i registriranje ljudi koji su trenutno online. Sve promjene spremaš odjednom, a Mumcord jasno kaže kad poslužitelj neku nije prihvatio. Samo s pravom Register.",
+            "Admin odjeljak u informacijama o poslužitelju (#258): s admin pravima informacije o poslužitelju prikazuju tvoja prava jednostavnim riječima, ograničenja poslužitelja, pozdravni tekst i obavijest poslužitelja (opis korijenskog kanala), koju tamo možeš urediti, plus poveznicu na administraciju poslužitelja.",
+            "Povlačenje kanala (#676): ispusti kanal na drugi da ga premjestiš tamo s podkanalima i ljudima, ili između dva kanala da promijeniš redoslijed. Novi nadređeni kanal prvo pita i prikazuje putanju prije i poslije. Kad poslužitelj odbije, obavijest kaže zašto, a stablo ostaje kakvo je bilo.",
+            "Novi uređivač teksta za komentar profila i opise kanala (#666): podebljano, kurziv, podcrtano, precrtano, boja teksta, poveznice, slike, popisi i prikaz izvornog koda. Slike se smanjuju dok sve ne stane u ograničenje poslužitelja, a mjerač ispod teksta pokazuje koliko je mjesta ostalo. Drugi Mumble klijenti vide isto oblikovanje.",
+            "#kanal spominjanja: upisivanjem „#” predlažu se kanali poslužitelja, a #Kanal u poruci postaje poveznica s opcijama Pridruži se kanalu, Prikaži na popisu kanala i Kopiraj naziv.",
+            "Obavijesti po vrsti (#660): za nove poruke i svaku vrstu aktivnosti biraš Isključeno, U aplikaciji, Sustav ili Oboje, u Postavkama i u novom koraku čarobnjaka za postavljanje.",
+            "Aaron, aksolotl u bojama Mumcorda, nakon postavljanja novim ljudima kratko pokaže glavni prozor (#637), jedan savjet po jedan s Natrag, Dalje i Preskoči. U čarobnjaku za postavljanje stoji pored polja svakog koraka. Postavke → O programu → Savjeti ponovno pokreću obilazak kad god želiš.",
+            "Manje zapisivanja na disk: pod Dijagnostika isključuješ zapisnik na disku, a nova kartica „Smanji zapisivanje na disk” skuplja trajna spremanja, preglede poveznica i predmemoriju dodataka. Mumcord sada zapisnik i povijest chata zapisuje u skupinama, a ne uz svaki redak.",
+            "Dijeljenje zaslona: live traka imenuje dijeljeni prozor, npr. „Prozor · VS Code” (#558), na Windowsima i macOS-u 15.2 i novijem. Naslov ostaje na tvom uređaju.",
+            "Sad svira na macOS-u (#658): Mumcord čita pjesmu s istog mjesta kao Control Center, pa rade Music, Spotify, preglednici i drugi playeri, bez upita za dozvolu.",
+            "Homebrew (#662): brew install --cask mumcord/tap/mumcord na macOS-u i brew install mumcord/tap/mumcord na Linuxu.",
+            "Release kandidati (#686): nadolazeće verzije možeš rano isprobati kao pretprodajne verzije. Ažuriranje, Homebrew i AUR i dalje nude samo završna izdanja."
+          ]
+        },
+        {
+          "title": "Poboljšano",
+          "items": [
+            "macOS dolazi u dva preuzimanja umjesto jedne univerzalne aplikacije (#663): „macOS (Apple Silicon)” i „macOS (Intel)”, svako izgrađeno nativno, potpisano i notarizirano. Preuzimanje i aplikacija otprilike su upola manji, a već instalirane univerzalne aplikacije ažuriraju se na izdanje za vlastiti Mac.",
+            "Linux: H.264 videi (Twitch, .mp4 poveznice) i AAC zvuk rade na svakoj distribuciji bez dodatnih paketa (#678). AppImage, .deb i .rpm donose vlastite dekodere, pa Fedori više ne treba RPM Fusion.",
+            "Povijest aktivnosti samo kad želiš (#661): povijest preživljava ponovno pokretanje samo ako uključiš „Zadrži povijest aktivnosti nakon ponovnog pokretanja”. Prema zadanom je isključeno, a isključivanjem se briše ono što je bilo spremljeno.",
+            "Dijeljenje datoteka (#673): podaci datoteke sada putuju kao Bovnar dokumenti. Slanje prema Mumcordu 0.7.x i primanje od njega radi kao i prije.",
+            "Mumcord prepoznaje druge korisnike Mumcorda čak i kad im se prvi pozdrav izgubi, te pita ponovno do tri puta. Mumble klijenti ništa ne primjećuju.",
+            "Obavijesti o pogreškama imaju vlastiti zvuk.",
+            "Sigurnost: pozdravni tekst poslužitelja u sučelju se još jednom sanitizira, a politika sigurnosti sadržaja aplikacije je stroža."
+          ]
+        },
+        {
+          "title": "Popravljeno",
+          "items": [
+            "Windows: izvješća o rušenju imenuju rušenje u više slučajeva, uključujući prelijevanje stoga, oštećenje hrpe, abort() i biblioteku koja zamjenjuje Mumcordov rukovatelj rušenjima (#699).",
+            "Windows: virtualne kamere poput OBS Virtual Camera pojavljuju se na popisu kamera i rade kao prave kamere, uključujući efekte pozadine (#631).",
+            "Linux: kamere preko portala za kameru više ne staju uz poruku „kamera šalje nečitljive slike”.",
+            "Stranice pozornice dodataka ponovno mogu slati poruke do 64 KiB svom dodatku (#692).",
+            "Feed aktivnosti više ne nudi „Gledaj” na tvom vlastitom dijeljenju zaslona ni „Pridruži se” na tvojoj vlastitoj zajedničkoj projekciji (#664).",
+            "Čitači zaslona čitaju koliko ima prijedloga za @spominjanja i /naredbe umjesto pokvarene najave popisa.",
+            "Ikone na popisu dozvola dodatka crtaju se i izgledaju isto posvuda. Značka dodatka pored dugog naziva više se ne smanjuje.",
+            "macOS: sadržaj dodataka u dijalozima i pločama ponovno stoji točno u svom okviru, a prozor se ponovno pokreće nakon što ga je dodatak zamrznuo.",
+            "Kopiranje ponovno radi u inspektoru paketa i, kad Windows odbije međuspremnik, i za izvješća o rušenju."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.2",
       "teaser": "Administracija u izborniku desnog klika: upravljaj kanalima, pravima i lozinkama, premještaj ljude, utišaj i ogluši na poslužitelju, uz novu traku za poruke.",
