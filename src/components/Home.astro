@@ -13,10 +13,9 @@ import mainDark from "../assets/shots/main-dark.png";
 import icon from "../assets/mumcord-icon.png";
 import Diagram from "./Diagram.astro";
 import Download from "./Download.astro";
-import Contributors from "./Contributors.astro";
+import Mimo from "./Mimo.astro";
 import { dicts, routes, type Lang } from "../i18n";
 import { REPO_URL, getLatestRelease, getReleases } from "../lib/release";
-import { wavePath } from "../lib/wave";
 import { tour, allThemes, THEME_COLOR_KEYS } from "../lib/themes";
 import { roadmapPage } from "../lib/roadmap";
 
@@ -30,25 +29,11 @@ const release = await getLatestRelease();
 const shots = import.meta.glob<{ default: ImageMetadata }>("../assets/shots/*.png", { eager: true });
 const shot = (name: string) => shots[`../assets/shots/${name}.png`].default;
 
-const noisy = wavePath({ seed: 7, width: 600, height: 80, points: 220, noise: 0.85, speech: 0.5 });
-const clean = wavePath({ seed: 7, width: 600, height: 80, points: 220, noise: 0.04, speech: 0.9 });
-const fingerprint = "4F:9A:C1:07:3B:E2:58:D0:1A:7C:96:E4:2F:B3:0D:61";
-const [showcase, rest] = [t.features.items.slice(0, 3), t.features.items.slice(3)];
 const sp = t.spotlight5;
 const s5plugins = [plgPoll, plgDice, plgEcho, plgMusic, plgEve];
 const pl = pluginsPage[lang];
 const hpIcons: Partial<Record<PluginId, ImageMetadata>> = { poll: plgPoll, dice: plgDice, echolings: plgEcho, "mumbot-music": plgMusic, "eve-fit": plgEve };
 // The 0.5.0 tiles: small drawn demos, no screenshots; names stay the same in every language.
-// Each links to its card on the features page, whose ids are German on the German page.
-const s5tiles = [
-  { id: "notifications", anchor: ["benachrichtigungszentrale", "notification-centre"] },
-  { id: "identities", anchor: ["identitaeten", "identities"] },
-  { id: "tree", anchor: ["kanalbaum", "channel-tree"] },
-  { id: "lowLatency", anchor: ["niedrige-latenz", "low-latency"] },
-  { id: "music", anchor: ["spotify", "spotify"] },
-  { id: "relay", anchor: ["relay", "relay"] },
-] as const;
-const s5href = (x: (typeof s5tiles)[number]) => `${routes.features[lang]}#${x.anchor[lang === "de" ? 0 : 1]}`;
 // The epic chips take each epic's status from the roadmap; an epic is done once its release is out.
 const released = new Set((await getReleases()).map((r) => r.version));
 const epicStatus = roadmapPage.en.epics.map((e) => (e.version && released.has(e.version) ? "done" : e.status));
@@ -103,16 +88,10 @@ const tourColors = tour.map((x) => allThemes.find((th) => th.id === x.theme)?.[x
         />
       </div>
     </figure>
+    <Mimo id="hero" role="hero" class="mimo-hero" />
   </div>
   </div>
 </section>
-
-<!-- Ticker -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
-    {[0, 1].map(() => t.ticker.map((item) => <span>{item}</span>))}
-  </div>
-</div>
 
 <!-- Push-to-talk -->
 <section class="section ptt" id="ptt" aria-labelledby="ptt-title" data-ptt>
@@ -124,6 +103,7 @@ const tourColors = tour.map((x) => allThemes.find((th) => th.id === x.theme)?.[x
       <p class="fine" data-reveal>{t.ptt.note}</p>
     </div>
     <div class="ptt-demo" data-reveal>
+      <Mimo id="ptt" role="ptt" class="mimo-ptt" />
       <div class="ptt-status" role="status" aria-live="polite">
         <span class="ptt-dot" aria-hidden="true"></span>
         <span data-ptt-idle>{t.ptt.idle}</span>
@@ -261,105 +241,6 @@ const tourColors = tour.map((x) => allThemes.find((th) => th.id === x.theme)?.[x
         </div>
       </a>
     </div>
-    <div class="s5-bento">
-      <a class="s5-tile s5-plugins" href={routes.plugins[lang]} data-reveal>
-        <div class="s5-demo" aria-hidden="true">
-          <div class="d5-plugins">
-            {s5plugins.map((ic, i) => <span style={`--i: ${i}`}><Image src={ic} alt="" width={64} height={64} /></span>)}
-          </div>
-          <div class="d5-poll">
-            <i style="--w: 50%" /><i style="--w: 100%" /><i style="--w: 25%" />
-          </div>
-        </div>
-        <div class="s5-text">
-          <h3>{sp.plugins.title} <span class="pill pill-new">0.6.0</span></h3>
-          <p>{sp.plugins.body}</p>
-          <span class="text-link">{sp.plugins.more} →</span>
-        </div>
-      </a>
-      <a class="s5-tile s5-notifications" href={s5href(s5tiles[0])} data-reveal>
-        <div class="s5-demo" aria-hidden="true">
-                <div class="d5-bell"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15ZM10 20a2 2 0 0 0 4 0" /></svg><b>3</b></div>
-                <ul class="d5-notes">
-                  <li><i style="--c: var(--pink)" /><span><b>Priya</b> @Maya</span><em>Raid Night</em></li>
-                  <li><i style="--c: var(--violet)" /><span><b>Jonas</b> ↩ 20:00?</span><em>LAN Party</em></li>
-                  <li><i style="--c: var(--live)" /><span><b>Leo</b> → #lobby</span><em>Night Owls</em></li>
-                </ul>
-        </div>
-        <div class="s5-text">
-          <h3>{sp.tiles.notifications.title}</h3>
-          <p>{sp.tiles.notifications.body}</p>
-        </div>
-      </a>
-      <a class="s5-tile s5-identities" href={s5href(s5tiles[1])} data-reveal>
-        <div class="s5-demo" aria-hidden="true">
-                <ul class="d5-ids">
-                  <li><i style="--c: var(--peach)">M</i>Maya</li>
-                  <li class="is-on"><i style="--c: var(--violet)">M</i>Maya [RN]</li>
-                  <li><i style="--c: var(--live)">M</i>m.koch</li>
-                </ul>
-        </div>
-        <div class="s5-text">
-          <h3>{sp.tiles.identities.title}</h3>
-          <p>{sp.tiles.identities.body}</p>
-        </div>
-      </a>
-      <a class="s5-tile s5-tree" href={s5href(s5tiles[2])} data-reveal>
-        <div class="s5-demo" aria-hidden="true">
-                <ul class="d5-tree">
-                  <li><span>🔊 Lobby</span><em>4</em></li>
-                  <li class="is-full"><span>🔊 Officers</span><em>🔒 5/5</em></li>
-                  <li class="is-on"><span>🔊 Raid</span><em>1/10</em></li>
-                </ul>
-                <ul class="d5-menu"><li>↪ Join</li><li>☆ Follow</li><li>ⓘ Info</li></ul>
-        </div>
-        <div class="s5-text">
-          <h3>{sp.tiles.tree.title}</h3>
-          <p>{sp.tiles.tree.body}</p>
-        </div>
-      </a>
-      <a class="s5-tile s5-lowLatency" href={s5href(s5tiles[3])} data-reveal>
-        <div class="s5-demo" aria-hidden="true">
-                <p class="d5-ms"><b>40</b><span>ms</span><s>90 ms</s></p>
-                <div class="d5-wave">{Array.from({ length: 24 }, (_, i) => <i style={`--h: ${30 + ((i * 37) % 60)}%`} />)}</div>
-        </div>
-        <div class="s5-text">
-          <h3>{sp.tiles.lowLatency.title}</h3>
-          <p>{sp.tiles.lowLatency.body}</p>
-        </div>
-      </a>
-      <a class="s5-tile s5-music" href={s5href(s5tiles[4])} data-reveal>
-        <div class="s5-demo" aria-hidden="true">
-                <div class="d5-music">
-                  <div class="d5-cover" />
-                  <div class="d5-track"><b>Midnight Signals</b><span>Lumen Park</span><div class="d5-bar"><i /></div></div>
-                  <span class="d5-play">▶</span>
-                </div>
-        </div>
-        <div class="s5-text">
-          <h3>{sp.tiles.music.title}</h3>
-          <p>{sp.tiles.music.body}</p>
-        </div>
-      </a>
-      <a class="s5-tile s5-relay" href={s5href(s5tiles[5])} data-reveal>
-        <div class="s5-demo" aria-hidden="true">
-                <svg class="d5-relay" viewBox="0 0 320 120" aria-hidden="true">
-                  <path class="d5-direct" d="M60 92 H260" />
-                  <path class="d5-arc" d="M60 92 C60 30 110 24 160 24 C210 24 260 30 260 92" />
-                  <circle cx="60" cy="92" r="16" fill="var(--peach)" />
-                  <circle cx="260" cy="92" r="16" fill="var(--violet)" />
-                  <circle cx="160" cy="24" r="20" fill="#f6f0e8" />
-                  <rect x="151" y="21" width="18" height="13" rx="3" fill="#1d0f5c" />
-                  <path d="M155 21 v-4 a5 5 0 0 1 10 0 v4" fill="none" stroke="#1d0f5c" stroke-width="3" />
-                </svg>
-                <span class="d5-pill">IP hidden</span>
-        </div>
-        <div class="s5-text">
-          <h3>{sp.tiles.relay.title}</h3>
-          <p>{sp.tiles.relay.body}</p>
-        </div>
-      </a>
-    </div>
     <p class="s5-more" data-reveal>
       <a class="btn btn-small" href={routes.features[lang]}>{sp.features}</a>
       <a class="text-link" href={routes.changelog[lang]}>{sp.changelog} →</a>
@@ -454,81 +335,6 @@ const tourColors = tour.map((x) => allThemes.find((th) => th.id === x.theme)?.[x
   </div>
 </section>
 
-<!-- Features -->
-<section class="section features" id="features" aria-labelledby="features-title">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="label" data-reveal>{t.features.label}</p>
-      <h2 id="features-title" class="h2" data-reveal>{t.features.title}</h2>
-      <p class="body" data-reveal>{t.features.intro}</p>
-    </div>
-
-    <div class="showcase">
-      <article class="card card-follow" data-reveal>
-        <div class="demo demo-follow" aria-hidden="true" data-follow-demo>
-          <div class="ch"><span class="hash">#</span>Lobby<span class="ch-count">5</span></div>
-          <div class="ch is-followed">
-            <span class="hash">#</span>{t.features.followDemo.channel}
-            <svg class="eye" viewBox="0 0 24 24" width="15" height="15"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
-            <span class="badge" data-badge>3</span>
-          </div>
-          <div class="ch"><span class="hash">#</span>Squad A<span class="ch-count">2</span></div>
-          <div class="ch dim"><span class="hash">#</span>AFK</div>
-          <div class="toast" data-toast><b>{t.features.followDemo.unread}</b> {t.features.followDemo.message}</div>
-        </div>
-        <h3>{showcase[0].title}</h3>
-        <p>{showcase[0].body}</p>
-      </article>
-
-      <article class="card card-audio" data-reveal>
-        <div class="demo demo-audio" aria-hidden="true">
-          <div class="wave-row">
-            <span class="wave-label">{t.features.noise.before}</span>
-            <svg viewBox="0 0 600 80" preserveAspectRatio="none" class="wave wave-noisy"><path d={noisy} /></svg>
-          </div>
-          <div class="wave-row">
-            <span class="wave-label">{t.features.noise.after}</span>
-            <svg viewBox="0 0 600 80" preserveAspectRatio="none" class="wave wave-clean"><path d={clean} /></svg>
-          </div>
-        </div>
-        <h3>{showcase[1].title}</h3>
-        <p>{showcase[1].body}</p>
-      </article>
-
-      <article class="card card-trust" data-reveal>
-        <div class="demo demo-trust" aria-hidden="true">
-          <p class="trust-q">{t.features.trustQuestion}</p>
-          <p class="trust-host">voice.night-owls.example : 64738</p>
-          <p class="trust-label">{t.features.fingerprint}</p>
-          <code class="trust-fp" data-scramble={fingerprint}>{fingerprint}</code>
-          <div class="trust-actions">
-            <span class="fake-btn">{t.features.trustNo}</span>
-            <span class="fake-btn fake-btn-primary">{t.features.trustYes}</span>
-          </div>
-        </div>
-        <h3>{showcase[2].title}</h3>
-        <p>{showcase[2].body}</p>
-      </article>
-    </div>
-
-    <ol class="feature-list">
-      {
-        rest.map((f, i) => (
-          <li data-reveal>
-            <span class="feature-no">{String(i + 4).padStart(2, "0")}</span>
-            <div>
-              <h3>{f.title}</h3>
-              <p>{f.body}</p>
-            </div>
-          </li>
-        ))
-      }
-    </ol>
-    <p class="features-more" data-reveal>
-      <a class="btn btn-small" href={routes.features[lang]}>{t.features.all}</a>
-    </p>
-  </div>
-</section>
 
 <!-- How it works -->
 <section class="section how" id="how" aria-labelledby="how-title">
@@ -576,31 +382,6 @@ const tourColors = tour.map((x) => allThemes.find((th) => th.id === x.theme)?.[x
   </div>
 </section>
 
-<!-- Gallery -->
-<section class="section gallery" aria-labelledby="gallery-title">
-  <div class="wrap gallery-head">
-    <div>
-      <p class="label" data-reveal>{t.gallery.label}</p>
-      <h2 id="gallery-title" class="h2" data-reveal>{t.gallery.title}</h2>
-    </div>
-    <div class="gallery-nav">
-      <button type="button" class="round-btn" data-gallery-prev aria-label="←">←</button>
-      <button type="button" class="round-btn" data-gallery-next aria-label="→">→</button>
-    </div>
-  </div>
-  <ul class="gallery-strip" data-gallery tabindex="0" aria-label={t.gallery.title}>
-    {
-      t.gallery.items.map((g) => (
-        <li>
-          <figure>
-            <Picture src={shot(g.src)} formats={["avif", "webp"]} widths={[640, 1100]} sizes="(min-width: 900px) 560px, 82vw" alt={g.caption} />
-            <figcaption>{g.caption}</figcaption>
-          </figure>
-        </li>
-      ))
-    }
-  </ul>
-</section>
 
 <!-- Roadmap -->
 <!-- What comes next: 0.8.0 as drawn demos, then every epic as a chip -->
@@ -700,4 +481,3 @@ const tourColors = tour.map((x) => allThemes.find((th) => th.id === x.theme)?.[x
 
 <Download lang={lang} />
 
-<Contributors lang={lang} />

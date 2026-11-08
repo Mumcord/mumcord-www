@@ -85,7 +85,7 @@ export const en: Dict = {
     note: "Just an animation. This page never touches your microphone.",
   },
   spotlight5: {
-    label: "New in 0.5.0/0.6.0/0.7.0",
+    label: "New in 0.7",
     labelSoon: "Coming: 0.7.0",
     title: "More calm. More you. More sound.",
     body: "0.5.0 brings Epic 3: a notification centre, blocking, several identities, a new channel tree, music in the chat, a low-latency mode for making music and direct connections through a relay.",
@@ -419,6 +419,7 @@ export const en: Dict = {
     product: "Product",
     host: "Hosting and docs",
     community: "Get involved",
+    contributors: "Contributors",
     games: "Games",
     themes: "Themes",
     download: "Download",

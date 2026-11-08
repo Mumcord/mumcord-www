@@ -83,7 +83,7 @@ export const de = {
     note: "Nur eine Animation. Die Seite nutzt dein Mikrofon nicht.",
   },
   spotlight5: {
-    label: "Neu in 0.5.0/0.6.0/0.7.0",
+    label: "Neu in 0.7",
     labelSoon: "Bald: 0.7.0",
     title: "Mehr Ruhe. Mehr du. Mehr Klang.",
     body: "0.5.0 bringt Epic 3: eine Benachrichtigungszentrale, Blockieren, mehrere Identitäten, einen neuen Kanalbaum, Musik im Chat, einen Low-Latency-Modus zum Musizieren und direkte Verbindungen über ein Relay.",
@@ -418,6 +418,7 @@ export const de = {
     product: "Produkt",
     host: "Hosten und Doku",
     community: "Mitmachen",
+    contributors: "Mitwirkende",
     games: "Spiele",
     themes: "Themes",
     download: "Download",

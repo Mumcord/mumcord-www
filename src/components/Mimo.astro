@@ -1,0 +1,18 @@
+---
+import SVG from "../assets/mimo.svg?raw";
+
+// Mimo, Mumcord's mascot: an axolotl whose gills are a live equalizer. The eyes follow the
+// pointer, it talks while someone speaks and can point at things (src/scripts/mimo.ts).
+interface Props {
+  /** Unique per page: the SVG's gradient and clip ids are prefixed with it. */
+  id: string;
+  /** Optional role on the page; src/scripts/mimo.ts wires talking and pointing by it. */
+  role?: "hero" | "ptt" | "download";
+  class?: string;
+}
+const { id, role, class: cls } = Astro.props;
+const svg = SVG.replaceAll("__UID__", `mimo-${id}`);
+---
+
+<div class:list={["mimo", cls]} data-mimo={role ?? ""} set:html={svg} />
+
