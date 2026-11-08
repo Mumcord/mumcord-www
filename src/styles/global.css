@@ -3673,6 +3673,60 @@ p {
     transition: none !important;
   }
 }
+/* "Mimo spricht": the speaker tag that shows while the hero Mimo talks. */
+.mimo-say {
+  position: absolute;
+  left: 78%;
+  top: 4%;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 12px 12px 12px 4px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.8125rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(6px) scale(0.96);
+  transform-origin: 0 100%;
+  transition:
+    opacity 0.25s,
+    transform 0.3s var(--ease-spring);
+  box-shadow: 0 12px 30px -12px rgb(0 0 0 / 0.6);
+}
+.mimo.is-talking .mimo-say {
+  opacity: 1;
+  transform: none;
+}
+.mimo-bars {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  height: 12px;
+}
+.mimo-bars i {
+  width: 3px;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--live);
+  animation: mimo-bar 0.8s ease-in-out infinite alternate;
+}
+.mimo-bars i:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.mimo-bars i:nth-child(3) {
+  animation-delay: -0.55s;
+}
+.mimo-bars i:nth-child(4) {
+  animation-delay: -0.15s;
+}
+@keyframes mimo-bar {
+  from {
+    transform: scaleY(0.3);
+  }
+}
 /* Where Mimo sits. */
 .hero-stage {
   position: relative;
@@ -3693,15 +3747,14 @@ p {
   right: -18px;
   width: clamp(96px, 10vw, 130px);
 }
-.download .wrap {
+.footer-cta {
   position: relative;
 }
-.mimo-download {
+.mimo-cta {
   position: absolute;
-  z-index: 2;
-  right: clamp(8px, 3vw, 40px);
-  top: clamp(150px, 16vw, 200px);
-  width: clamp(96px, 10vw, 140px);
+  right: clamp(12px, 4vw, 56px);
+  top: 18px;
+  width: clamp(96px, 9vw, 128px);
 }
 @media (max-width: 760px) {
   .mimo-hero {
@@ -3709,8 +3762,344 @@ p {
     right: -6px;
     bottom: -40px;
   }
-  .mimo-download {
+  .mimo-cta {
     display: none;
+  }
+}
+
+/* "Only in Mumcord" (Home.astro): eight drawn mockups of what sets Mumcord apart, one size each. */
+.uq-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: clamp(28px, 4vw, 44px);
+}
+@media (min-width: 680px) {
+  .uq-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1080px) {
+  .uq-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+/* The tiles come from three older layouts; here they all get one shape: mockup, title, text. */
+.uq-grid > * {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  display: flex !important;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 12px 12px 20px !important;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+.uq-grid > *:hover {
+  border-color: var(--line-strong);
+}
+.uq-grid .s5-demo,
+.uq-grid .demo {
+  flex: none;
+  width: 100% !important;
+  height: 190px !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.uq-grid .s5-demo,
+.uq-grid .demo {
+  order: -1;
+}
+.uq-grid .s5-relay .s5-demo {
+  display: grid !important;
+  place-items: center;
+}
+.uq-grid .nx-files .s5-demo > *,
+.uq-grid .s5-notifications .s5-demo > * {
+  zoom: 0.85;
+}
+.uq-grid .s5-text {
+  display: grid;
+  gap: 6px;
+  padding: 0 6px;
+}
+.uq-grid h3 {
+  margin: 0;
+  padding: 0 6px;
+  font-family: var(--font-body);
+  font-size: 1.125rem !important;
+  font-weight: 650;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+.uq-grid p {
+  margin: 0;
+  padding: 0 6px;
+  color: var(--muted);
+  font-size: 0.9rem !important;
+  line-height: 1.5;
+}
+.uq-grid .s5-text h3,
+.uq-grid .s5-text p {
+  padding: 0;
+}
+
+/* Mini mockups for the "Only in Mumcord" tiles drawn in HTML (Home.astro). */
+.mm-demo {
+  display: grid !important;
+  grid-template-columns: 100%;
+  justify-content: stretch !important;
+  align-items: center;
+  padding: 14px;
+  background: var(--bg);
+}
+.mm-demo > * {
+  justify-self: stretch;
+  min-width: 0;
+}
+.mm-dm {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.mm-dm li {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  gap: 0 10px;
+  align-items: center;
+  padding: 7px 10px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+}
+.mm-dm li.is-on {
+  background: var(--bg-3);
+}
+.mm-dm i {
+  grid-row: span 2;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--c);
+  color: var(--bg);
+  font-style: normal;
+  font-weight: 700;
+}
+.mm-dm span {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+}
+.mm-dm em {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--faint);
+}
+.mm-dm small {
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+.mm-play {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--text);
+  position: relative;
+}
+.mm-play::after {
+  content: "";
+  position: absolute;
+  left: 13px;
+  top: 10px;
+  border-left: 11px solid var(--bg);
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+.mm-play-s {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+.mm-play-s::after {
+  left: 7px;
+  top: 5px;
+  border-left-width: 7px;
+  border-top-width: 5px;
+  border-bottom-width: 5px;
+}
+.mm-embed {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 8px;
+  height: 150px;
+}
+.mm-video {
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #3b2a8a, #7a3f8f 60%, #c2577a);
+}
+.mm-video b {
+  position: absolute;
+  left: 8px;
+  bottom: 6px;
+  font-size: 0.65rem;
+  color: var(--text);
+  opacity: 0.85;
+}
+.mm-side {
+  display: grid;
+  gap: 8px;
+  grid-template-rows: 1fr auto;
+}
+.mm-img {
+  border-radius: 10px;
+  background:
+    radial-gradient(circle at 70% 30%, #ffd27a 0 12%, transparent 13%),
+    linear-gradient(180deg, #4b3aa8 0 55%, #2f8a6a 55%);
+}
+.mm-audio {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px;
+  border-radius: 999px;
+  background: var(--bg-3);
+}
+.mm-audio i,
+.mm-now i {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--peach) 40%, var(--line-strong) 40%);
+}
+.mm-watch {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+}
+.mm-screen {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 96px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1f4f7a, #3b2a8a);
+}
+.mm-sync {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgb(62 227 158 / 0.18);
+  color: var(--live);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+}
+.mm-bar {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--line-strong);
+}
+.mm-bar i {
+  display: block;
+  width: 58%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--peach);
+  animation: mm-bar 12s linear infinite;
+}
+@keyframes mm-bar {
+  from {
+    width: 20%;
+  }
+  to {
+    width: 90%;
+  }
+}
+.mm-viewers {
+  display: flex;
+  align-items: center;
+}
+.mm-viewers i {
+  width: 22px;
+  height: 22px;
+  margin-right: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+  background: var(--c);
+}
+.mm-viewers span {
+  margin-left: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+.mm-bot {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  font-size: 0.75rem;
+}
+.mm-bot-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mm-bot-head i {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  background: var(--violet);
+  color: var(--bg);
+  font-style: normal;
+  font-weight: 700;
+}
+.mm-bot-head span {
+  padding: 0 6px;
+  border-radius: 4px;
+  background: var(--bg-3);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--muted);
+}
+.mm-bot code {
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: var(--bg-3);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--peach);
+}
+.mm-now {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+@media (prefers-reduced-motion: reduce) {
+  .mm-bar i {
+    animation: none;
   }
 }
 
@@ -6952,19 +7341,19 @@ p {
 
 /* ── Home theme tour ─────────────────────────────────── */
 /* The section is tall; its sticky inner stays put while the stack flips one card per step. */
+/* One screen tall: the themes flip by themselves (motion.ts), a click on a name jumps there. */
 .th-tour {
   --p: 0;
   position: relative;
-  height: calc(var(--n) * 55vh + 100vh);
+  padding-block: clamp(64px, 9vw, 112px);
   overflow-x: clip;
 }
 .th-tour-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  height: 100svh;
   display: grid;
   align-items: center;
+}
+.th-tour-names li {
+  cursor: pointer;
 }
 .th-tour-inner {
   display: grid;

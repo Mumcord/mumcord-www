@@ -62,6 +62,7 @@ function attach(svg: SVGSVGElement): Rig {
     },
     setTalking(on) {
       svg.classList.toggle("is-talking", on);
+      svg.parentElement?.classList.toggle("is-talking", on);
       clearInterval(talk);
       if (!on) return;
       if (reduce.matches) {
@@ -86,11 +87,22 @@ const rigs = Array.from(document.querySelectorAll<HTMLElement>("[data-mimo]")).m
     const demo = host.closest<HTMLElement>("[data-ptt]");
     if (demo) new MutationObserver(() => rig.setTalking(demo.classList.contains("is-live"))).observe(demo, { attributes: true, attributeFilter: ["class"] });
   }
+  if (role === "hero") {
+    // Now and then Mimo says something: a few seconds of talking, then a pause.
+    const talk = () => {
+      if (rig.visible && !reduce.matches && !document.hidden) {
+        rig.setTalking(true);
+        setTimeout(() => rig.setTalking(false), 2200 + Math.random() * 1600);
+      }
+      setTimeout(talk, 6000 + Math.random() * 5000);
+    };
+    setTimeout(talk, 1800);
+  }
   if (role === "download") {
-    // Points at the main download button and keeps pointing there.
+    // Points at its target (the download button next to it) and keeps pointing there.
     rig.svg.classList.add("is-pointing");
     const aim = () => {
-      const btn = document.querySelector<HTMLElement>(".dl-btn[data-main]");
+      const btn = document.querySelector<HTMLElement>("[data-mimo-target]") ?? document.querySelector<HTMLElement>(".dl-btn[data-main]");
       if (!btn) return;
       const r = btn.getBoundingClientRect();
       rig.pointAt(r.left + r.width / 2, r.top + r.height / 2);

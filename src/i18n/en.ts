@@ -84,6 +84,20 @@ export const en: Dict = {
     keyLabel: "Space",
     note: "Just an animation. This page never touches your microphone.",
   },
+  unique: {
+    label: "Only in Mumcord",
+    title: "What you've been missing in Mumble.",
+    follow: "One click on the eye and you read along in a channel without joining it. Unread messages show as a count.",
+    audio: "AI noise suppression, echo cancellation and automatic gain are on from the start.",
+    body: "All of it runs on normal Mumble servers. Nothing gets installed on the server, and friends on the official client stay in the conversation.",
+    tiles: {
+      dm: { title: "Direct messages across servers", body: "Message people directly, whichever server you're each on. Every conversation in one place." },
+      embeds: { title: "Links, videos, images and sound in chat", body: "YouTube, Twitch, Spotify, images and audio play right in the chat, with a preview instead of a bare link." },
+      watch: { title: "Watch party", body: "Watch YouTube together, in sync for everyone in the channel, with a shared playlist." },
+      plugins: { title: "Plugin system", body: "Polls, dice, whiteboard, games: small, safe plugins from an official directory." },
+      bots: { title: "Bots like Mumbot", body: "Music, commands and cards in chat. Mumbot runs next to any Mumble server and talks to Mumcord." },
+    },
+  },
   spotlight5: {
     label: "New in 0.7",
     labelSoon: "Coming: 0.7.0",
@@ -120,7 +134,7 @@ export const en: Dict = {
   themesTour: {
     label: "Themes",
     title: "Your Mumcord. Your colours.",
-    body: "Presets or themes all your own, each in light and dark. Keep scrolling to flip through a few.",
+    body: "Presets or themes all your own, each in light and dark. A few of them flip by right here.",
     cta: "Themes to copy",
   },
   features: {

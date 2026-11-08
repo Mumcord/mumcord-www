@@ -14,5 +14,8 @@ const { id, role, class: cls } = Astro.props;
 const svg = SVG.replaceAll("__UID__", `mimo-${id}`);
 ---
 
-<div class:list={["mimo", cls]} data-mimo={role ?? ""} set:html={svg} />
+<div class:list={["mimo", cls]} data-mimo={role ?? ""}>
+  <Fragment set:html={svg} />
+  <slot />
+</div>
 

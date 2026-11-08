@@ -315,37 +315,42 @@ if (tocLinks.length && "IntersectionObserver" in window) {
 // ── Home theme tour: scrolling through the section flips the stack ───
 const tourEl = document.querySelector<HTMLElement>("[data-theme-tour]");
 if (tourEl) {
+  // The themes flip by themselves while the section is on screen; a click on a name jumps there.
   const count = Number(getComputedStyle(tourEl).getPropertyValue("--n")) || 1;
   const names = [...tourEl.querySelectorAll<HTMLElement>("[data-tour-name]")];
   const dots = [...tourEl.querySelectorAll<HTMLElement>("[data-tour-dot]")];
-  let shown = -1;
-  const update = () => {
-    const r = tourEl.getBoundingClientRect();
-    const run = r.height - innerHeight;
-    const p = run > 0 ? Math.min(1, Math.max(0, -r.top / run)) * (count - 1) : 0;
+  let target = 0;
+  let p = 0;
+  let raf = 0;
+  let timer = 0;
+  let visible = false;
+  const step = () => {
+    p += (target - p) * (reduced ? 1 : 0.12);
+    if (Math.abs(target - p) < 0.002) p = target;
     tourEl.style.setProperty("--p", p.toFixed(3));
-    const active = Math.round(p);
-    if (active !== shown) {
-      shown = active;
-      names.forEach((n, i) => n.classList.toggle("is-on", i === active));
-      dots.forEach((d, i) => d.classList.toggle("is-on", i === active));
-    }
+    raf = p === target ? 0 : requestAnimationFrame(step);
   };
-  let queued = false;
-  addEventListener(
-    "scroll",
-    () => {
-      if (queued) return;
-      queued = true;
-      requestAnimationFrame(() => {
-        queued = false;
-        update();
-      });
-    },
-    { passive: true },
+  const show = (i: number) => {
+    target = i;
+    names.forEach((n, j) => n.classList.toggle("is-on", j === i));
+    dots.forEach((d, j) => d.classList.toggle("is-on", j === i));
+    if (!raf) raf = requestAnimationFrame(step);
+  };
+  const run = () => {
+    clearInterval(timer);
+    if (visible && !reduced) timer = window.setInterval(() => show((target + 1) % count), 3200);
+  };
+  names.forEach((n, i) =>
+    n.addEventListener("click", () => {
+      show(i);
+      run();
+    }),
   );
-  addEventListener("resize", update);
-  update();
+  new IntersectionObserver(([e]) => {
+    visible = e.isIntersecting;
+    run();
+  }, { threshold: 0.35 }).observe(tourEl);
+  show(0);
 }
 
 // ── Themes page: light/dark switch per card, copy the share message ──

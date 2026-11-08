@@ -82,6 +82,20 @@ export const de = {
     keyLabel: "Leertaste",
     note: "Nur eine Animation. Die Seite nutzt dein Mikrofon nicht.",
   },
+  unique: {
+    label: "Nur in Mumcord",
+    title: "Was du in Mumble bisher vermisst hast.",
+    follow: "Ein Klick aufs Auge, und du liest einen Kanal mit, ohne beizutreten. Ungelesenes steht als Zähler dran.",
+    audio: "KI-Rauschunterdrückung, Echounterdrückung und automatische Verstärkung sind von Anfang an eingeschaltet.",
+    body: "Alles davon läuft auf normalen Mumble-Servern. Am Server wird nichts installiert, und Freunde mit dem offiziellen Client sind weiter dabei.",
+    tiles: {
+      dm: { title: "Privatnachrichten über Server hinweg", body: "Schreib Leuten direkt, egal auf welchem Server ihr gerade seid. Alle Gespräche an einem Ort." },
+      embeds: { title: "Links, Videos, Bilder und Sound im Chat", body: "YouTube, Twitch, Spotify, Bilder und Audio spielen direkt im Chat, mit Vorschau statt nacktem Link." },
+      watch: { title: "Watch-Party", body: "Zusammen YouTube schauen, synchron für alle im Kanal, mit gemeinsamer Playlist." },
+      plugins: { title: "Plugin-System", body: "Umfragen, Würfel, Whiteboard, Spiele: kleine, sichere Plugins aus einem offiziellen Verzeichnis." },
+      bots: { title: "Bots wie Mumbot", body: "Musik, Befehle und Karten im Chat. Mumbot läuft neben jedem Mumble-Server und spricht mit Mumcord." },
+    },
+  },
   spotlight5: {
     label: "Neu in 0.7",
     labelSoon: "Bald: 0.7.0",
@@ -118,7 +132,7 @@ export const de = {
   themesTour: {
     label: "Themes",
     title: "Dein Mumcord. Deine Farben.",
-    body: "Vorlagen oder ganz eigene Themes, jedes hell und dunkel. Scroll weiter und blätter durch ein paar davon.",
+    body: "Vorlagen oder ganz eigene Themes, jedes hell und dunkel. Hier blättern ein paar davon durch.",
     cta: "Themes zum Kopieren",
   },
   features: {

@@ -64,6 +64,7 @@ const columns = [
     ],
   },
 ];
+import Mimo from "./Mimo.astro";
 ---
 
 <footer class="site-footer">
@@ -74,9 +75,10 @@ const columns = [
         <p>{t.ctaBody}</p>
       </div>
       <div class="footer-cta-actions">
-        <a class="btn btn-glow" href={download}>{t.ctaDownload}</a>
+        <a class="btn btn-glow" href={download} data-mimo-target>{t.ctaDownload}</a>
         <a class="btn btn-ghost" href={routes.server[lang]}>{t.ctaServer}</a>
       </div>
+      <Mimo id="cta" role="download" class="mimo-cta" />
       <ul class="footer-os" aria-label={t.platforms}>
         <li>Linux</li>
         <li>Windows</li>
