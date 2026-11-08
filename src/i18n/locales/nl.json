@@ -894,6 +894,11 @@
             "title": "Updates in de app",
             "body": "Mumcord zoekt bij het starten en elke 12 uur naar een nieuwe versie, laat zien wat er sinds jouw versie is veranderd en installeert hem met één klik. Elke download wordt voor de installatie gecontroleerd op de handtekening van Mumcord en de checksums van de release; je kunt een versie overslaan of later herinnerd worden.",
             "alt": "Het dialoogvenster „Update beschikbaar” met de wijzigingen sinds jouw versie"
+          },
+          {
+            "id": "homebrew",
+            "title": "Homebrew en native Mac-builds",
+            "body": "Mumcord staat op Homebrew voor macOS en Linux. Macs krijgen elk een native download voor Apple Silicon en Intel, ondertekend en genotariseerd en half zo groot als de vroegere universele app."
           }
         ]
       },
@@ -1021,6 +1026,29 @@
             "id": "moderation",
             "title": "Moderatie in het persoonsmenu",
             "body": "Onder „Beheer” demp je mensen op de server of maak je ze doof, geef je prioriteitsspreker en reset je een opmerking of avatar. Elke actie verschijnt alleen als je er het recht voor hebt."
+          },
+          {
+            "id": "admin-commands",
+            "title": "Beheercommando’s in de chat",
+            "body": "Met „/” zie je de beheercommando’s die de server je toestaat: /kick, /ban, /mute, /deaf, /priority, /register, /move, /moveall, /unban en meer. Mumcord vult namen en kanalen aan terwijl je typt, kick en ban vragen nog steeds eerst om bevestiging, en een resultaatregel die alleen jij ziet zegt wat er gebeurde.",
+            "alt": "De lijst met beheercommando’s boven het berichtvak"
+          },
+          {
+            "id": "registered-users",
+            "title": "Geregistreerde gebruikers",
+            "body": "Een tabblad in het serverbeheer toont elk account dat de server kent, met laatst gezien en laatste kanaal. Je zoekt, filtert op online of lang inactief, hernoemt, heft registraties op en registreert mensen die online zijn, en slaat alles in één keer op.",
+            "alt": "Het tabblad Geregistreerde gebruikers in het serverbeheer"
+          },
+          {
+            "id": "server-info-admin",
+            "title": "Beheergedeelte in de serverinfo",
+            "body": "Met beheerrechten toont de serverinfo je rechten in gewone woorden, de limieten van de server en de welkomsttekst. De servermelding, de beschrijving van het rootkanaal, bewerk je direct daar.",
+            "alt": "Het beheergedeelte aan het eind van de serverinfo"
+          },
+          {
+            "id": "drag-channels",
+            "title": "Kanalen slepen om ze te verplaatsen",
+            "body": "Zet een kanaal op een ander kanaal om het met zijn subkanalen en mensen daarheen te verplaatsen, of tussen twee kanalen om de volgorde te wijzigen. Bij een nieuw bovenliggend kanaal wordt eerst gevraagd en het pad ervoor en erna getoond. Werkt met elke standaard Mumble-server."
           }
         ]
       },
@@ -1174,7 +1202,22 @@
           {
             "id": "activity-notifications",
             "title": "Activiteitsmeldingen",
-            "body": "Als iemand een schermdeling, een watchparty of een pluginactiviteit start, meldt Mumcord dat zoals bij een bericht. De activiteitengeschiedenis blijft op je apparaat, ook na een herstart, en je wist haar in Instellingen onder Privacy."
+            "body": "Als iemand een schermdeling, een watchparty of een pluginactiviteit start, meldt Mumcord dat net als bij een bericht. Mumcord bewaart de activiteitengeschiedenis na een herstart alleen als je dat aanzet, en je wist haar in de instellingen onder Privacy."
+          },
+          {
+            "id": "rich-text-editor",
+            "title": "Teksteditor voor opmerkingen en beschrijvingen",
+            "body": "Je profielopmerking en kanaalbeschrijvingen krijgen een editor met vet, cursief, kleuren, links, afbeeldingen, lijsten en een bronweergave. Afbeeldingen worden verkleind totdat alles binnen de limiet van de server past, en een meter laat zien hoeveel ruimte er nog is."
+          },
+          {
+            "id": "channel-mentions",
+            "title": "#kanaal-vermeldingen",
+            "body": "Met „#” krijg je de kanalen van de server als suggestie, en #Kanaal in een bericht wordt een link: het kanaal betreden, het tonen in de kanaallijst of de naam kopiëren. Andere Mumble-clients zien de gewone tekst."
+          },
+          {
+            "id": "notifications-per-kind",
+            "title": "Meldingen per soort",
+            "body": "Voor nieuwe berichten en elke soort activiteit kies je Uit, In-app, Systeem of Beide, in de instellingen en al in de installatiewizard."
           }
         ]
       },
@@ -1221,7 +1264,7 @@
           {
             "id": "now-playing",
             "title": "Nu aan het luisteren",
-            "body": "Als je wilt, zien andere Mumcord-gebruikers naar welke muziek je luistert, met hoes en voortgang. Op Linux en Windows.",
+            "body": "Als je wilt, zien andere Mumcord-gebruikers naar welke muziek je luistert, met hoes en voortgang. Op Linux, Windows en macOS.",
             "alt": "Profielkaart met „Luistert naar” en een voortgangsbalk"
           },
           {
@@ -1426,6 +1469,11 @@
             "title": "Beeld en chat verdelen",
             "body": "Sleep het handvat tussen het beeld van een gedeeld scherm of watchparty en de chat, of gebruik de pijltjestoetsen. Het klikt vast op een derde, de helft en twee derde, en Mumcord onthoudt de hoogte.",
             "alt": "Een gedeeld scherm met camera’s als strook ernaast"
+          },
+          {
+            "id": "screen-share-window-name",
+            "title": "Vensternaam in de live-balk",
+            "body": "Als je een venster deelt, noemt de live-balk het, bijv. „Venster · VS Code”, op Windows en macOS. De titel blijft op je apparaat; kijkers, de relay en de server zien hem nooit."
           }
         ]
       },
@@ -1651,12 +1699,75 @@
             "id": "crash-reports",
             "title": "Crashrapporten",
             "body": "Als Mumcord onverwacht sluit, slaat het een kort rapport op je computer op en meldt dat bij de volgende start. Onder Instellingen → Geavanceerd & ontwikkelaar zie je de laatste 10 en kopieer, exporteer of verwijder je ze. Er wordt altijd maar één rapport geüpload, en alleen nadat je hebt bevestigd wat er precies wordt verstuurd."
+          },
+          {
+            "id": "aaron-tour",
+            "title": "Aaron leidt je rond",
+            "body": "Na de installatie loopt Aaron, een axolotl in de kleuren van Mumcord, met je door het hoofdvenster: servers, kanalen, praten, zoeken, chat, apps en thema’s, steeds één tip. In de installatiewizard geeft Aaron bij elke stap een korte tip. Start de rondleiding op elk moment opnieuw via Instellingen → Over → Tips.",
+            "alt": "Aaron wijst naar een deel van het hoofdvenster"
+          },
+          {
+            "id": "disk-writes",
+            "title": "Minder schijfschrijfacties",
+            "body": "Mumcord schrijft het log en de chatgeschiedenis in batches in plaats van bij elke regel. Om je SSD te sparen zet je in de instellingen het logbestand op schijf, duurzaam opslaan, linkvoorvertoningen en de plugincache een voor een uit.",
+            "alt": "De kaart Schijfschrijfacties beperken in de instellingen"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.8.0",
+      "teaser": "Beheercommando’s in de chat, geregistreerde gebruikers, kanalen verplaatsen door te slepen, een nieuwe teksteditor en Aaron die je rondleidt.",
+      "summary": "0.8.0 maakt het beheer compleet: beheercommando’s direct in de chat, geregistreerde gebruikers, kanalen die je door te slepen verplaatst en een beheergedeelte in de serverinfo. Daarnaast zijn er meldingen per soort, #kanaal-vermeldingen, een nieuwe editor voor opmerkingen en beschrijvingen, Aaron als gids bij de eerste start en aparte downloads voor Macs met Apple Silicon en Intel.",
+      "groups": [
+        {
+          "title": "Nieuw",
+          "items": [
+            "Beheercommando’s in de chat (#378): met „/” zie je de beheercommando’s die de server je toestaat, boven de plugincommando’s en gemarkeerd als „Ingebouwd”: /kick, /ban, /mute, /unmute, /deaf, /undeaf, /priority, /register, /move, /moveall en /unban. Mumcord vult namen en kanalen aan terwijl je typt. Kick, ban, unban en iedereen verplaatsen vragen nog steeds eerst om bevestiging, en elk commando eindigt met een korte resultaatregel die alleen jij ziet. De commandotekst zelf wordt nooit verstuurd.",
+            "Geregistreerde gebruikers (#256): „Geregistreerde gebruikers” in het servermenu opent een tabblad naast de banlijst met elk account dat de server kent, met account-id, laatst gezien en laatste kanaal. Zoeken, de filters „Online” en „Inactief 90+ dagen”, hernoemen, registratie opheffen en mensen registreren die nu online zijn. Je slaat alle wijzigingen in één keer op en Mumcord meldt duidelijk als de server er een niet heeft overgenomen. Alleen met het recht Registreren.",
+            "Beheergedeelte in de serverinfo (#258): met beheerrechten toont de serverinfo je rechten in gewone woorden, de limieten van de server, de welkomsttekst en de servermelding (de beschrijving van het rootkanaal), die je daar kunt bewerken, plus een link naar het serverbeheer.",
+            "Kanalen slepen (#676): zet een kanaal op een ander kanaal om het met zijn subkanalen en mensen daarheen te verplaatsen, of tussen twee kanalen om de volgorde te wijzigen. Bij een nieuw bovenliggend kanaal wordt eerst gevraagd en het pad ervoor en erna getoond. Als de server weigert, legt een melding uit waarom en blijft de boom zoals hij was.",
+            "Nieuwe teksteditor voor je profielopmerking en kanaalbeschrijvingen (#666): vet, cursief, onderstreept, doorgehaald, tekstkleur, links, afbeeldingen, lijsten en een bronweergave. Afbeeldingen worden verkleind totdat alles binnen de limiet van de server past, en een meter onder de tekst laat zien hoeveel ruimte er nog is. Andere Mumble-clients zien dezelfde opmaak.",
+            "#kanaal-vermeldingen: met „#” krijg je de kanalen van de server als suggestie, en #Kanaal in een bericht wordt een link met Kanaal betreden, Tonen in kanaallijst en Naam kopiëren.",
+            "Meldingen per soort (#660): voor nieuwe berichten en elke soort activiteit kies je Uit, In-app, Systeem of Beide, in de instellingen en in een nieuwe stap van de installatiewizard.",
+            "Aaron, een axolotl in de kleuren van Mumcord, geeft nieuwe mensen na de installatie een korte rondleiding door het hoofdvenster (#637), steeds één tip met Terug, Volgende en Overslaan. In de installatiewizard staat Aaron naast het veld van elke stap. Via Instellingen → Over → Tips start je de rondleiding op elk moment opnieuw.",
+            "Minder schijfschrijfacties: onder Diagnostiek zet je het logbestand op schijf uit, en een nieuwe kaart „Schijfschrijfacties beperken” bundelt duurzaam opslaan, linkvoorvertoningen en de plugincache. Mumcord schrijft het log en de chatgeschiedenis nu in batches in plaats van bij elke regel.",
+            "Scherm delen: de live-balk noemt het gedeelde venster, bijv. „Venster · VS Code” (#558), op Windows en macOS 15.2 en nieuwer. De titel blijft op je apparaat.",
+            "Nu aan het luisteren op macOS (#658): Mumcord leest het nummer van dezelfde plek als het Controlecentrum, zodat Muziek, Spotify, browsers en andere spelers werken, zonder toestemmingsvraag.",
+            "Homebrew (#662): brew install --cask mumcord/tap/mumcord op macOS en brew install mumcord/tap/mumcord op Linux.",
+            "Release candidates (#686): komende versies kun je vroeg uitproberen als pre-releases. De updater, Homebrew en de AUR bieden nog steeds alleen definitieve releases aan."
+          ]
+        },
+        {
+          "title": "Verbeterd",
+          "items": [
+            "macOS komt als twee downloads in plaats van één universele app (#663): „macOS (Apple Silicon)” en „macOS (Intel)”, elk native gebouwd, ondertekend en genotariseerd. Download en app zijn ongeveer half zo groot, en geïnstalleerde universele apps updaten naar de build voor hun eigen Mac.",
+            "Linux: H.264-video’s (Twitch, .mp4-links) en AAC-geluid spelen op elke distributie zonder extra pakketten (#678). De AppImage, .deb en .rpm brengen hun eigen decoders mee, dus Fedora heeft RPM Fusion niet meer nodig.",
+            "Activiteitengeschiedenis alleen als je dat wilt (#661): de geschiedenis blijft alleen na een herstart bewaard als je „Activiteitengeschiedenis bewaren na een herstart” aanzet. Dit staat standaard uit, en uitzetten wist wat was opgeslagen.",
+            "Bestanden delen (#673): de bestandsgegevens reizen nu als Bovnar-documenten. Verzenden naar en ontvangen van Mumcord 0.7.x werkt zoals voorheen.",
+            "Mumcord herkent andere Mumcord-gebruikers ook als hun eerste hallo verloren ging, en vraagt tot drie keer opnieuw. Mumble-clients merken hier niets van.",
+            "Foutmeldingen hebben hun eigen geluid.",
+            "Beveiliging: de welkomsttekst van de server wordt in de interface nog een keer gesaneerd, en het contentbeveiligingsbeleid van de app is strenger."
+          ]
+        },
+        {
+          "title": "Opgelost",
+          "items": [
+            "Windows: crashrapporten benoemen de crash in meer gevallen, waaronder stack overflows, heapcorruptie, abort() en een bibliotheek die de crashhandler van Mumcord vervangt (#699).",
+            "Windows: virtuele camera’s zoals de OBS Virtual Camera staan in de cameralijst en werken als echte camera’s, achtergrondeffecten inbegrepen (#631).",
+            "Linux: camera’s via het cameraportaal stoppen niet meer met „de camera stuurt onleesbare beelden”.",
+            "Pluginpodiumpagina’s kunnen weer berichten tot 64 KiB naar hun plugin sturen (#692).",
+            "De activiteitenfeed biedt geen „Kijken” meer aan bij je eigen scherm delen of „Deelnemen” bij je eigen watchparty (#664).",
+            "Schermlezers horen hoeveel suggesties er zijn voor @vermeldingen en /commando’s in plaats van een kapotte lijstaankondiging.",
+            "De pictogrammen in de rechtenlijst van een plugin worden overal hetzelfde getekend en zien er overal hetzelfde uit. Een pluginbadge naast een lange naam wordt niet meer kleiner.",
+            "macOS: plugininhoud in dialogen en panelen zit weer precies in zijn kader, en het venster start weer opnieuw nadat een plugin het had laten vastlopen.",
+            "Kopiëren werkt weer in de pakketinspecteur en, als Windows het klembord weigert, ook voor crashrapporten."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.2",
       "teaser": "Beheer in het rechtsklikmenu: beheer kanalen, rechten en wachtwoorden, verplaats mensen, demp en maak doof op de server, plus een nieuwe berichtenbalk.",

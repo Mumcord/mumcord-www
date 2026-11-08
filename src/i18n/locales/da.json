@@ -894,6 +894,11 @@
             "title": "Opdateringer i appen",
             "body": "Mumcord tjekker for en ny version ved start og hver 12. time, viser, hvad der er ændret siden din version, og installerer den med ét klik. Hver download kontrolleres mod Mumcords signatur og udgivelsens kontrolsummer, før den installeres; du kan springe en version over eller blive mindet om den senere.",
             "alt": "Dialogen „Opdatering tilgængelig“ med ændringerne siden din version"
+          },
+          {
+            "id": "homebrew",
+            "title": "Homebrew og native Mac-builds",
+            "body": "Mumcord findes på Homebrew til macOS og Linux. Mac får en native download hver til Apple Silicon og Intel, signeret, notariseret og halvt så stor som den tidligere universelle app."
           }
         ]
       },
@@ -1021,6 +1026,29 @@
             "id": "moderation",
             "title": "Moderering i personmenuen",
             "body": "Under »Admin« server-muter eller server-døvgør du folk, giver prioriteret taler og nulstiller en kommentar eller avatar. Hver handling vises kun, når du har rettigheden til den."
+          },
+          {
+            "id": "admin-commands",
+            "title": "Admin-kommandoer i chatten",
+            "body": "Skriver du „/“, vises de admin-kommandoer, serveren giver dig lov til: /kick, /ban, /mute, /deaf, /priority, /register, /move, /moveall, /unban og flere. Mumcord fuldfører navne og kanaler, mens du skriver, kick og ban spørger stadig først, og en resultatlinje, som kun du ser, fortæller, hvad der skete.",
+            "alt": "Listen over admin-kommandoer over beskedfeltet"
+          },
+          {
+            "id": "registered-users",
+            "title": "Registrerede brugere",
+            "body": "En fane i serveradministrationen viser alle konti, serveren kender, med sidst set og sidste kanal. Du søger, filtrerer efter online eller længe inaktive, omdøber, afregistrerer og registrerer folk, der er online, og gemmer alt på én gang.",
+            "alt": "Fanen Registrerede brugere i serveradministrationen"
+          },
+          {
+            "id": "server-info-admin",
+            "title": "Admin-afsnit i serverinfo",
+            "body": "Med admin-rettigheder viser serverinfo dine rettigheder i klart sprog, serverens grænser og velkomstteksten. Servermeddelelsen, hovedkanalens beskrivelse, redigerer du lige dér.",
+            "alt": "Admin-afsnittet nederst i serverinfo"
+          },
+          {
+            "id": "drag-channels",
+            "title": "Træk kanaler for at flytte dem",
+            "body": "Slip en kanal oven på en anden for at flytte den dertil med underkanaler og folk, eller mellem to kanaler for at ændre rækkefølgen. En ny overordnet kanal spørger først og viser stien før og efter. Virker med enhver standard Mumble-server."
           }
         ]
       },
@@ -1174,7 +1202,22 @@
           {
             "id": "activity-notifications",
             "title": "Aktivitetsnotifikationer",
-            "body": "Når nogen starter en skærmdeling, en watch party eller en plugin-aktivitet, giver Mumcord dig besked som ved en besked. Aktivitetshistorikken bliver på din enhed, også efter en genstart, og du sletter den i Indstillinger under Privatliv."
+            "body": "Når nogen starter en skærmdeling, en watch party eller en plugin-aktivitet, giver Mumcord dig besked som ved en besked. Mumcord beholder aktivitetshistorikken efter en genstart, kun hvis du slår det til, og du rydder den i Indstillinger under Privatliv."
+          },
+          {
+            "id": "rich-text-editor",
+            "title": "Teksteditor til kommentarer og beskrivelser",
+            "body": "Din profilkommentar og kanalbeskrivelser får en editor med fed, kursiv, farver, links, billeder, lister og en kildevisning. Billeder skaleres ned, til alt passer inden for serverens grænse, og en måler viser, hvor meget plads der er tilbage."
+          },
+          {
+            "id": "channel-mentions",
+            "title": "#kanal-omtaler",
+            "body": "Skriver du „#“, foreslås serverens kanaler, og #Kanal i en besked bliver til et link: gå ind i kanalen, vis den i kanallisten eller kopiér navnet. Andre Mumble-klienter ser den almindelige tekst."
+          },
+          {
+            "id": "notifications-per-kind",
+            "title": "Notifikationer pr. type",
+            "body": "For nye beskeder og hver type aktivitet vælger du Fra, I appen, System eller Begge, i indstillingerne og allerede i opsætningsguiden."
           }
         ]
       },
@@ -1221,7 +1264,7 @@
           {
             "id": "now-playing",
             "title": "Lytter nu",
-            "body": "Hvis du vil, kan andre Mumcord-brugere se, hvilken musik du lytter til, med cover og fremskridt. På Linux og Windows.",
+            "body": "Hvis du vil, kan andre Mumcord-brugere se, hvilken musik du lytter til, med cover og fremskridt. På Linux, Windows og macOS.",
             "alt": "Profilkort med „Lytter til“ og en statuslinje"
           },
           {
@@ -1426,6 +1469,11 @@
             "title": "Deling af billede og chat",
             "body": "Træk i håndtaget mellem billedet fra en deling eller watch party og chatten, eller brug piletasterne. Det klikker fast ved en tredjedel, halvdelen og to tredjedele, og Mumcord husker højden.",
             "alt": "En skærmdeling med kameraer i en stribe ved siden af"
+          },
+          {
+            "id": "screen-share-window-name",
+            "title": "Vinduesnavn i livelinjen",
+            "body": "Når du deler et vindue, nævner livelinjen det, f.eks. „Vindue · VS Code“, på Windows og macOS. Titlen bliver på din enhed; seere, relayet og serveren ser den aldrig."
           }
         ]
       },
@@ -1651,12 +1699,75 @@
             "id": "crash-reports",
             "title": "Nedbrudsrapporter",
             "body": "Lukker Mumcord uventet, gemmer det en kort rapport på din computer og fortæller dig det ved næste start. Under Indstillinger → Avanceret og udvikler ser du de seneste 10 og kopierer, eksporterer eller sletter dem. Der uploades kun én enkelt rapport, og kun når du har bekræftet, hvad der præcis sendes."
+          },
+          {
+            "id": "aaron-tour",
+            "title": "Aaron viser dig rundt",
+            "body": "Efter opsætningen guider Aaron, en axolotl i Mumcords farver, dig gennem hovedvinduet: servere, kanaler, tale, søgning, chat, apps og temaer, ét tip ad gangen. I opsætningsguiden giver den et kort tip til hvert trin. Start rundvisningen igen når som helst under Indstillinger → Om → Tips.",
+            "alt": "Aaron peger på en del af hovedvinduet"
+          },
+          {
+            "id": "disk-writes",
+            "title": "Færre skrivninger til disken",
+            "body": "Mumcord skriver log og chathistorik i bunker i stedet for ved hver linje. For at skåne din SSD kan du i indstillingerne slå loggen på disken, sikre gemninger, linkforhåndsvisninger og plugin-cachen fra én for én.",
+            "alt": "Kortet Reducer skrivninger til disk i indstillingerne"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.8.0",
+      "teaser": "Admin-kommandoer i chatten, registrerede brugere, flyt kanaler ved at trække, en ny teksteditor og Aaron, der viser dig rundt i Mumcord.",
+      "summary": "Med 0.8.0 er admin-delen komplet: admin-kommandoer direkte i chatten, registrerede brugere, kanaler du flytter ved at trække, og et admin-afsnit i serverinfo. Dertil kommer notifikationer pr. type, #kanal-omtaler, en ny editor til kommentarer og beskrivelser, Aaron som guide ved første start og separate downloads til Mac med Apple Silicon og Intel.",
+      "groups": [
+        {
+          "title": "Nyt",
+          "items": [
+            "Admin-kommandoer i chatten (#378): skriver du „/“, vises de admin-kommandoer, serveren giver dig lov til, over plugin-kommandoerne og mærket „Indbygget“: /kick, /ban, /mute, /unmute, /deaf, /undeaf, /priority, /register, /move, /moveall og /unban. Mumcord fuldfører navne og kanaler, mens du skriver. Kick, ban, ophævelse af ban og flyt alle spørger stadig først, og hver kommando slutter med en kort resultatlinje, som kun du ser. Selve kommandoteksten bliver aldrig sendt.",
+            "Registrerede brugere (#256): „Registrerede brugere“ i servermenuen åbner en fane ved siden af banlisten med alle konti, serveren kender, med konto-id, sidst set og sidste kanal. Med søgning, filtrene „Online“ og „Inaktiv 90+ dage“, omdøbning, afregistrering og registrering af folk, der er online lige nu. Du gemmer alle ændringer på én gang, og Mumcord siger tydeligt til, når serveren ikke har taget en af dem. Kun med rettigheden „Registrer“.",
+            "Admin-afsnit i serverinfo (#258): med admin-rettigheder viser serverinfo dine rettigheder i klart sprog, serverens grænser, velkomstteksten og servermeddelelsen (hovedkanalens beskrivelse), som du også redigerer dér, samt et link til serveradministrationen.",
+            "Træk kanaler (#676): slip en kanal oven på en anden for at flytte den dertil med underkanaler og folk, eller mellem to kanaler for at ændre rækkefølgen. En ny overordnet kanal spørger først og viser stien før og efter. Afviser serveren det, siger en besked hvorfor, og træet forbliver, som det var.",
+            "Ny teksteditor til din profilkommentar og kanalbeskrivelser (#666): fed, kursiv, understreget, gennemstreget, tekstfarve, links, billeder, lister og en kildevisning. Billeder skaleres ned, til alt passer inden for serverens grænse, og en måler under teksten viser, hvor meget plads der er tilbage. Andre Mumble-klienter ser den samme formatering.",
+            "#kanal-omtaler: skriver du „#“, foreslås serverens kanaler, og #Kanal i en besked bliver til et link med „Gå ind i kanalen“, „Vis i kanallisten“ og „Kopiér navn“.",
+            "Notifikationer pr. type (#660): for nye beskeder og hver type aktivitet vælger du Fra, I appen, System eller Begge, i indstillingerne og i et nyt trin i opsætningsguiden.",
+            "Aaron, en axolotl i Mumcords farver, giver nye brugere en kort rundvisning i hovedvinduet efter opsætningen (#637), ét tip ad gangen med Tilbage, Næste og Spring over. I opsætningsguiden står den ved siden af feltet i hvert trin. Under Indstillinger → Om → Tips starter du rundvisningen igen når som helst.",
+            "Færre skrivninger til disken: under Diagnostik slår du loggen på disken fra, og et nyt kort „Reducer skrivninger til disk“ samler sikre gemninger, linkforhåndsvisninger og plugin-cachen. Mumcord skriver nu log og chathistorik i bunker i stedet for ved hver linje.",
+            "Skærmdeling: livelinjen nævner det delte vindue, f.eks. „Vindue · VS Code“ (#558), på Windows og macOS 15.2 og nyere. Titlen bliver på din enhed.",
+            "„Lytter nu“ på macOS (#658): Mumcord henter nummeret samme sted som Kontrolcenter, så Music, Spotify, browsere og andre afspillere virker, uden at der spørges om tilladelse.",
+            "Homebrew (#662): brew install --cask mumcord/tap/mumcord på macOS og brew install mumcord/tap/mumcord på Linux.",
+            "Release candidates (#686): kommende versioner kan prøves tidligt som foreløbige versioner. Opdateringen, Homebrew og AUR tilbyder fortsat kun endelige versioner."
+          ]
+        },
+        {
+          "title": "Forbedret",
+          "items": [
+            "macOS fås som to downloads i stedet for én universel app (#663): „macOS (Apple Silicon)“ og „macOS (Intel)“, hver især bygget nativt, signeret og notariseret. Download og app er omkring halvt så store, og installerede universelle apps opdaterer til buildet til deres egen Mac.",
+            "Linux: H.264-videoer (Twitch, .mp4-links) og AAC-lyd afspilles på enhver distribution uden ekstra pakker (#678). AppImage, .deb og .rpm har deres egne dekodere med, så Fedora ikke længere behøver RPM Fusion.",
+            "Aktivitetshistorik kun når du vil (#661): historikken overlever kun en genstart, hvis du slår „Behold aktivitetshistorik efter genstart“ til. Det er slået fra som standard, og slår du det fra, slettes det gemte.",
+            "Fildeling (#673): fildataene rejser nu som Bovnar-dokumenter. Afsendelse til og modtagelse fra Mumcord 0.7.x virker stadig som før.",
+            "Mumcord genkender andre Mumcord-brugere, selv når deres første goddag gik tabt, og spørger igen op til tre gange. Mumble-klienter mærker intet til det.",
+            "Fejlnotifikationer har deres egen lyd.",
+            "Sikkerhed: serverens velkomsttekst renses endnu en gang i brugerfladen, og appens Content Security Policy er strengere."
+          ]
+        },
+        {
+          "title": "Rettet",
+          "items": [
+            "Windows: nedbrudsrapporter navngiver nedbruddet i flere tilfælde, herunder stack overflow, heap-korruption, abort() og et bibliotek, der erstatter Mumcords nedbrudshåndtering (#699).",
+            "Windows: virtuelle kameraer som OBS Virtual Camera vises i kameralisten og virker som rigtige kameraer, baggrundseffekter inklusive (#631).",
+            "Linux: kameraer via kameraportalen stopper ikke længere med „Kameraet sender ulæselige billeder“.",
+            "Plugin-scener kan igen sende beskeder på op til 64 KiB til deres plugin (#692).",
+            "Aktivitetsfeedet tilbyder ikke længere „Se“ på din egen skærmdeling eller „Deltag“ i din egen watch party (#664).",
+            "Skærmlæsere hører, hvor mange forslag der er til @-omtaler og /-kommandoer, i stedet for en ødelagt listeannoncering.",
+            "Ikonerne i et plugins rettighedsliste er tegnede og ser ens ud overalt. Et plugin-badge ved siden af et langt navn skrumper ikke længere.",
+            "macOS: plugin-indhold i dialoger og paneler sidder igen præcis i sin ramme, og vinduet genstarter igen, efter at et plugin har frosset det.",
+            "Kopiering virker igen i pakkeinspektøren og, når Windows nægter udklipsholderen, også ved nedbrudsrapporter."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.2",
       "teaser": "Admin i højreklik-menuen: administrer kanaler, tilladelser og adgangskoder, flyt folk, server-mute og døvgør, plus en ny beskedlinje.",

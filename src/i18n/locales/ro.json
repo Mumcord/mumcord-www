@@ -894,6 +894,11 @@
             "title": "Actualizări în aplicație",
             "body": "Mumcord caută o versiune nouă la pornire și la fiecare 12 ore, arată ce s-a schimbat față de versiunea ta și o instalează cu un clic. Fiecare descărcare este verificată cu semnătura Mumcord și cu sumele de control ale lansării înainte de instalare; poți sări peste o versiune sau poți cere o reamintire mai târziu.",
             "alt": "Dialogul „Actualizare disponibilă” cu modificările față de versiunea ta"
+          },
+          {
+            "id": "homebrew",
+            "title": "Homebrew și versiuni native pentru Mac",
+            "body": "Mumcord este pe Homebrew pentru macOS și Linux. Mac-urile primesc câte o descărcare nativă pentru Apple Silicon și Intel, semnată și autentificată notarial, cu jumătate din dimensiunea fostei aplicații universale."
           }
         ]
       },
@@ -1021,6 +1026,29 @@
             "id": "moderation",
             "title": "Moderare în meniul persoanei",
             "body": "La „Admin” pui oamenii pe mut sau le dezactivezi auzul pentru toți, dai prioritate la vorbit și resetezi un comentariu sau un avatar. Fiecare acțiune apare doar când ai dreptul pentru ea."
+          },
+          {
+            "id": "admin-commands",
+            "title": "Comenzi de administrare în chat",
+            "body": "Dacă scrii „/”, vezi comenzile de administrare pe care serverul ți le permite: /kick, /ban, /mute, /deaf, /priority, /register, /move, /moveall, /unban și altele. Mumcord completează numele și canalele pe măsură ce scrii, excluderea și banarea cer în continuare confirmare, iar o linie de rezultat pe care o vezi doar tu spune ce s-a întâmplat.",
+            "alt": "Lista comenzilor de administrare deasupra casetei de mesaj"
+          },
+          {
+            "id": "registered-users",
+            "title": "Utilizatori înregistrați",
+            "body": "O filă din administrarea serverului listează toate conturile pe care le cunoaște serverul, cu ultima dată văzut și ultimul canal. Cauți, filtrezi după online sau inactiv de mult, redenumești, anulezi înregistrarea și înregistrezi persoane online, apoi salvezi totul deodată.",
+            "alt": "Fila Utilizatori înregistrați din administrarea serverului"
+          },
+          {
+            "id": "server-info-admin",
+            "title": "Secțiune de administrare în informațiile serverului",
+            "body": "Cu drepturi de administrator, informațiile serverului îți arată drepturile în cuvinte simple, limitele serverului și textul de bun venit. Anunțul serverului, descrierea canalului rădăcină, îl editezi chiar acolo.",
+            "alt": "Secțiunea de administrare de la sfârșitul informațiilor serverului"
+          },
+          {
+            "id": "drag-channels",
+            "title": "Trage canalele ca să le muți",
+            "body": "Lasă un canal peste altul ca să-l muți acolo cu subcanalele și oamenii lui, sau între două canale ca să schimbi ordinea. Un părinte nou cere mai întâi confirmare și arată calea înainte și după. Merge cu orice server Mumble standard."
           }
         ]
       },
@@ -1174,7 +1202,22 @@
           {
             "id": "activity-notifications",
             "title": "Notificări de activitate",
-            "body": "Când cineva începe o partajare de ecran, un watch party sau o activitate de plugin, Mumcord te anunță ca pentru un mesaj. Istoricul activității rămâne pe dispozitivul tău, și după o repornire, iar îl ștergi în Setări, la Confidențialitate."
+            "body": "Când cineva pornește o partajare de ecran, o petrecere de vizionare sau o activitate de plugin, Mumcord te anunță ca la un mesaj. Mumcord păstrează istoricul activității după o repornire doar dacă activezi asta, iar îl ștergi în Setări, la Confidențialitate."
+          },
+          {
+            "id": "rich-text-editor",
+            "title": "Editor de text pentru comentarii și descrieri",
+            "body": "Comentariul din profil și descrierile canalelor primesc un editor cu aldin, cursiv, culori, linkuri, imagini, liste și o vizualizare a sursei. Imaginile sunt micșorate până când totul încape în limita serverului, iar un indicator arată cât loc a mai rămas."
+          },
+          {
+            "id": "channel-mentions",
+            "title": "Mențiuni #canal",
+            "body": "Dacă scrii „#”, apar sugestii cu canalele serverului, iar #Canal dintr-un mesaj devine un link: intri pe canal, îl arăți în lista de canale sau copiezi numele. Alți clienți Mumble văd textul simplu."
+          },
+          {
+            "id": "notifications-per-kind",
+            "title": "Notificări pe tipuri",
+            "body": "Pentru mesaje noi și fiecare tip de activitate alegi Oprit, În aplicație, Sistem sau Ambele, în Setări și încă din expertul de configurare."
           }
         ]
       },
@@ -1221,7 +1264,7 @@
           {
             "id": "now-playing",
             "title": "Acum ascultă",
-            "body": "Dacă vrei, ceilalți utilizatori Mumcord văd ce muzică asculți, cu copertă și progres. Pe Linux și Windows.",
+            "body": "Dacă vrei, ceilalți utilizatori Mumcord văd ce muzică asculți, cu copertă și progres. Pe Linux, Windows și macOS.",
             "alt": "Card de profil cu „Ascultă” și o bară de progres"
           },
           {
@@ -1426,6 +1469,11 @@
             "title": "Împărțirea între imagine și chat",
             "body": "Trage mânerul dintre imaginea unei partajări sau a unui watch party și chat, sau folosește tastele săgeți. Se fixează la o treime, jumătate și două treimi, iar Mumcord ține minte înălțimea.",
             "alt": "O partajare de ecran cu camere într-o bandă alături"
+          },
+          {
+            "id": "screen-share-window-name",
+            "title": "Numele ferestrei în bara live",
+            "body": "Când partajezi o fereastră, bara live o numește, de ex. „Fereastră · VS Code”, pe Windows și macOS. Titlul rămâne pe dispozitivul tău; spectatorii, releul și serverul nu-l văd niciodată."
           }
         ]
       },
@@ -1651,12 +1699,75 @@
             "id": "crash-reports",
             "title": "Rapoarte de crash",
             "body": "Dacă Mumcord se închide neașteptat, salvează un raport scurt pe calculatorul tău și îți spune la următoarea pornire. În Setări → Avansat și dezvoltator vezi ultimele 10 și le poți copia, exporta sau șterge. Se încarcă doar un singur raport, și doar după ce ai confirmat ce anume se trimite."
+          },
+          {
+            "id": "aaron-tour",
+            "title": "Aaron îți arată aplicația",
+            "body": "După configurare, Aaron, un axolotl în culorile Mumcord, te plimbă prin fereastra principală: servere, canale, vorbit, căutare, chat, aplicații și teme, câte un sfat pe rând. În expertul de configurare dă un sfat scurt pentru fiecare pas. Pornește turul din nou oricând din Setări → Despre → Sfaturi.",
+            "alt": "Aaron arătând spre o parte a ferestrei principale"
+          },
+          {
+            "id": "disk-writes",
+            "title": "Mai puține scrieri pe disc",
+            "body": "Mumcord scrie jurnalul și istoricul chatului în loturi, nu la fiecare linie. Ca să-ți cruți SSD-ul, oprești în Setări, pe rând, jurnalul de pe disc, salvările durabile, previzualizările linkurilor și cache-ul pluginurilor.",
+            "alt": "Cardul Reduce scrierile pe disc din Setări"
           }
         ]
       }
     ]
   },
   "changelog": [
+    {
+      "version": "0.8.0",
+      "teaser": "Comenzi de administrare în chat, utilizatori înregistrați, canale mutate prin tragere, un editor de text nou și Aaron, care îți arată cum merg lucrurile.",
+      "summary": "0.8.0 încheie munca de administrare: comenzi de administrare direct în chat, utilizatori înregistrați, canale pe care le muți prin tragere și o secțiune de administrare în informațiile serverului. Mai sunt notificări pe tipuri, mențiuni #canal, un editor nou pentru comentarii și descrieri, Aaron ca ghid la prima pornire și descărcări separate pentru Mac-urile Apple Silicon și Intel.",
+      "groups": [
+        {
+          "title": "Nou",
+          "items": [
+            "Comenzi de administrare în chat (#378): dacă scrii „/”, vezi comenzile de administrare pe care serverul ți le permite, deasupra comenzilor pluginurilor și marcate „Integrat”: /kick, /ban, /mute, /unmute, /deaf, /undeaf, /priority, /register, /move, /moveall și /unban. Mumcord completează numele și canalele pe măsură ce scrii. Excluderea, banarea, debanarea și mutarea tuturor cer în continuare confirmare mai întâi, iar fiecare comandă se încheie cu o scurtă linie de rezultat pe care o vezi doar tu. Textul comenzii în sine nu este trimis niciodată.",
+            "Utilizatori înregistrați (#256): „Utilizatori înregistrați” din meniul serverului deschide o filă lângă lista de ban-uri, cu toate conturile pe care le cunoaște serverul, cu id-ul contului, ultima dată văzut și ultimul canal. Căutare, filtrele „Online” și „Inactivi 90+ zile”, redenumire, anularea înregistrării și înregistrarea persoanelor care sunt online acum. Salvezi toate modificările deodată, iar Mumcord spune clar când serverul nu a preluat vreuna. Doar cu dreptul Înregistrare.",
+            "Secțiune de administrare în informațiile serverului (#258): cu drepturi de administrator, informațiile serverului îți arată drepturile în cuvinte simple, limitele serverului, textul de bun venit și anunțul serverului (descrierea canalului rădăcină), pe care le poți edita acolo, plus un link către administrarea serverului.",
+            "Tragerea canalelor (#676): lasă un canal peste altul ca să-l muți acolo cu subcanalele și oamenii lui, sau între două canale ca să schimbi ordinea. Un părinte nou cere mai întâi confirmare și arată calea înainte și după. Când serverul refuză, o notificare spune de ce, iar arborele rămâne cum era.",
+            "Editor de text nou pentru comentariul din profil și descrierile canalelor (#666): aldin, cursiv, subliniat, tăiat, culoarea textului, linkuri, imagini, liste și o vizualizare a sursei. Imaginile sunt micșorate până când totul încape în limita serverului, iar un indicator sub text arată cât loc a mai rămas. Alți clienți Mumble văd aceeași formatare.",
+            "Mențiuni #canal: dacă scrii „#”, apar sugestii cu canalele serverului, iar #Canal dintr-un mesaj devine un link cu Intră pe canal, Arată în lista de canale și Copiază numele.",
+            "Notificări pe tipuri (#660): pentru mesaje noi și fiecare tip de activitate alegi Oprit, În aplicație, Sistem sau Ambele, în Setări și într-un pas nou al expertului de configurare.",
+            "Aaron, un axolotl în culorile Mumcord, le face celor noi un scurt tur al ferestrei principale după configurare (#637), câte un sfat pe rând, cu Înapoi, Înainte și Omite. În expertul de configurare stă lângă câmpul fiecărui pas. Setări → Despre → Sfaturi pornește turul din nou oricând.",
+            "Mai puține scrieri pe disc: la Diagnosticare oprești jurnalul de pe disc, iar un card nou „Reduce scrierile pe disc” cuprinde salvările durabile, previzualizările linkurilor și cache-ul pluginurilor. Mumcord scrie acum jurnalul și istoricul chatului în loturi, nu la fiecare linie.",
+            "Partajarea ecranului: bara live numește fereastra partajată, de ex. „Fereastră · VS Code” (#558), pe Windows și macOS 15.2 și mai nou. Titlul rămâne pe dispozitivul tău.",
+            "Acum ascultă pe macOS (#658): Mumcord citește piesa din același loc ca Centrul de control, așa că merg Music, Spotify, browserele și alte playere, fără cerere de permisiune.",
+            "Homebrew (#662): brew install --cask mumcord/tap/mumcord pe macOS și brew install mumcord/tap/mumcord pe Linux.",
+            "Release candidates (#686): versiunile viitoare pot fi încercate din timp ca versiuni preliminare. Actualizatorul, Homebrew și AUR oferă în continuare doar versiuni finale."
+          ]
+        },
+        {
+          "title": "Îmbunătățit",
+          "items": [
+            "macOS vine în două descărcări în loc de o aplicație universală (#663): „macOS (Apple Silicon)” și „macOS (Intel)”, fiecare compilată nativ, semnată și autentificată notarial. Descărcarea și aplicația au cam jumătate din dimensiune, iar aplicațiile universale instalate se actualizează la versiunea pentru propriul Mac.",
+            "Linux: videoclipurile H.264 (Twitch, linkuri .mp4) și sunetul AAC merg pe orice distribuție fără pachete suplimentare (#678). AppImage, .deb și .rpm vin cu propriile decodoare, deci Fedora nu mai are nevoie de RPM Fusion.",
+            "Istoricul activității doar când vrei (#661): istoricul supraviețuiește unei reporniri doar dacă activezi „Păstrează istoricul activității după repornire”. Este dezactivat implicit, iar dezactivarea șterge ce era salvat.",
+            "Partajarea fișierelor (#673): datele fișierului călătoresc acum ca documente Bovnar. Trimiterea către Mumcord 0.7.x și primirea de la el merg ca înainte.",
+            "Mumcord recunoaște alți utilizatori Mumcord chiar și când primul lor salut s-a pierdut, și întreabă din nou de până la trei ori. Clienții Mumble nu observă nimic.",
+            "Notificările de eroare au sunetul lor.",
+            "Securitate: textul de bun venit al serverului este igienizat încă o dată în interfață, iar politica de securitate a conținutului aplicației este mai strictă."
+          ]
+        },
+        {
+          "title": "Reparat",
+          "items": [
+            "Windows: rapoartele de crash numesc crash-ul în mai multe cazuri, inclusiv depășiri de stivă, coruperea heap-ului, abort() și o bibliotecă ce înlocuiește gestionarul de crash al Mumcord (#699).",
+            "Windows: camerele virtuale precum OBS Virtual Camera apar în lista de camere și merg ca niște camere reale, inclusiv cu efectele de fundal (#631).",
+            "Linux: camerele prin portalul de camere nu se mai opresc cu „camera trimite imagini ilizibile”.",
+            "Paginile de scenă ale pluginurilor pot din nou să trimită pluginului lor mesaje de până la 64 KiB (#692).",
+            "Fluxul de activitate nu mai oferă „Privește” la propria ta partajare de ecran sau „Intră” la propria ta petrecere de vizionare (#664).",
+            "Cititoarele de ecran aud câte sugestii există pentru @mențiuni și /comenzi, în loc de un anunț stricat al listei.",
+            "Pictogramele din lista de permisiuni a unui plugin sunt desenate și arată la fel peste tot. O insignă de plugin lângă un nume lung nu se mai micșorează.",
+            "macOS: conținutul pluginurilor din dialoguri și panouri stă din nou exact în cadrul lui, iar fereastra repornește din nou după ce un plugin a blocat-o.",
+            "Copierea merge din nou în inspectorul de pachete și, când Windows refuză clipboardul, și pentru rapoartele de crash."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.2",
       "teaser": "Admin în meniul clic dreapta: gestionezi canale, permisiuni și parole, muți oameni, pui pe mut și dezactivezi auzul prin server, plus o bară de mesaje nouă.",
