@@ -1,0 +1,8 @@
+# Serves a site that is already built (dist/), for CI: the Image workflow builds the site
+# on the runner, where Astro's optimized images stay cached between runs, and only copies
+# the result into Caddy. For a full build from source use the Dockerfile.
+FROM caddy:2-alpine
+COPY Caddyfile /etc/caddy/Caddyfile
+COPY dist /srv
+EXPOSE 80
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s CMD wget -qO- http://localhost/ >/dev/null || exit 1
