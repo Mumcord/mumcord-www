@@ -603,7 +603,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         groups: [
           {
             title: "Admin, wo du ohnehin suchst",
-            done: [0, 1],
+            done: [0, 1, 2],
             items: [
               "Admin-Aktionen erscheinen nur, wo der Server sie dir erlaubt. Ohne Rechte siehst du nichts davon",
               "Alles im Rechtsklick-Menü von Kanälen und Personen und im Server-Menü, ohne eigenen Admin-Modus",
@@ -1282,7 +1282,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         groups: [
           {
             title: "Admin where you already look",
-            done: [0, 1],
+            done: [0, 1, 2],
             items: [
               "Admin actions only appear where the server grants them. Without rights you see none of it",
               "Everything in the right-click menus of channels and people and in the server menu, no separate admin mode",
