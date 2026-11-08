@@ -13,7 +13,7 @@ const { lang } = Astro.props;
 const t = dicts[lang].footer;
 const year = new Date().getFullYear();
 const latest = await getLatestRelease();
-const download = `${routes.home[lang]}#download`;
+const download = routes.download[lang];
 
 const columns = [
   {

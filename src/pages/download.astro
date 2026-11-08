@@ -1,0 +1,12 @@
+---
+import Base from "../layouts/Base.astro";
+import DownloadPage from "../components/DownloadPage.astro";
+import { dicts } from "../i18n";
+import { pageJsonLd } from "../lib/jsonld";
+
+const t = dicts.de.downloadPage;
+---
+
+<Base lang="de" page="download" title={`${t.title} — Mumcord`} description={t.description} jsonLd={pageJsonLd("de", Astro.site!, "download", t.title)}>
+  <DownloadPage lang="de" />
+</Base>

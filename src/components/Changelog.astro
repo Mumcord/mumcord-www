@@ -10,7 +10,7 @@ const { lang } = Astro.props;
 const t = dicts[lang].changelog;
 const releases = await getReleases();
 const dateFmt = new Intl.DateTimeFormat(LANG_INFO[lang].intl, { dateStyle: "long" });
-const download = `${routes.home[lang]}#download`;
+const download = routes.download[lang];
 
 // Hand-written entries first; a published GitHub release without one still gets listed.
 const written = changelog[lang].map((e) => ({ ...e, release: releases.find((r) => r.version === e.version) }));
