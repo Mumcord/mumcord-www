@@ -20,7 +20,7 @@ export const PLUGIN_SDK = 'mumcord-plugin-sdk = "0.6"';
 export type PluginId = "poll" | "dice" | "echolings" | "mumbot-music" | "eve-fit" | "whiteboard";
 export const PLUGIN_IDS: PluginId[] = ["poll", "dice", "echolings", "mumbot-music", "eve-fit", "whiteboard"];
 /** Shown as "coming soon" until its release is confirmed. */
-export const PLUGIN_SOON: Partial<Record<PluginId, boolean>> = { whiteboard: true };
+export const PLUGIN_SOON: Partial<Record<PluginId, boolean>> = {};
 
 export const PLUGIN_QUICKSTART = `cargo install mumcord-plugin
 mumcord-plugin new my-plugin
