@@ -1,6 +1,6 @@
 ---
 import { dicts, routes, type Lang, LANG_INFO } from "../i18n";
-import { changelog } from "../lib/changelog";
+import { changelog, issueLinks } from "../lib/changelog";
 import { getReleases, RELEASES_URL } from "../lib/release";
 
 interface Props {
@@ -53,7 +53,7 @@ import Arrow from "./Arrow.astro";
                 <h2>{g.title}</h2>
                 <ul>
                   {g.items.map((i) => (
-                    <li>{i}</li>
+                    <li set:html={issueLinks(i)} />
                   ))}
                 </ul>
               </section>
@@ -63,7 +63,7 @@ import Arrow from "./Arrow.astro";
                 <h2>{t.known}</h2>
                 <ul>
                   {e.known.map((i) => (
-                    <li>{i}</li>
+                    <li set:html={issueLinks(i)} />
                   ))}
                 </ul>
               </section>

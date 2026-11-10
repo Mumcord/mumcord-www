@@ -3,6 +3,12 @@
 // the matching GitHub release once it is published (see pages/changelog).
 import { localized } from "../i18n";
 import { bundles } from "../i18n/locales";
+import { REPO_URL } from "./release";
+
+const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+/** A changelog line as HTML: escaped, with every "#123" linked to its GitHub issue. */
+export const issueLinks = (text: string) =>
+  esc(text).replace(/(^|[\s(])#(\d{1,5})\b/g, (_, pre: string, n: string) => `${pre}<a href="${REPO_URL}/issues/${n}" rel="noopener">#${n}</a>`);
 
 export interface ChangeGroup {
   title: string;
@@ -41,6 +47,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "„Läuft gerade“ auf macOS (#658): Mumcord liest den Titel von derselben Stelle wie das Kontrollzentrum, also aus Musik, Spotify, Browsern und anderen Playern, ohne Rückfrage nach Rechten.",
             "Homebrew (#662): brew install --cask mumcord/tap/mumcord auf macOS und brew install mumcord/tap/mumcord auf Linux.",
             "Release-Kandidaten (#686): Kommende Versionen lassen sich vorab als Vorabversion testen. Updater, Homebrew und AUR bieten weiter nur fertige Versionen an.",
+            "Plugin-Rechte auf einmal erlauben (#708): Beim Installieren schaltet „Alle erlauben“ alle optionalen Rechte mit einem Klick ein. Sind riskante darunter, fragt Mumcord vorher und nennt sie.",
           ],
         },
         {
@@ -53,6 +60,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "Mumcord erkennt andere Mumcord-Nutzer auch, wenn ihr erstes Hallo verloren ging, und fragt bis zu dreimal nach. Mumble-Clients merken davon nichts.",
             "Fehlermeldungen als Benachrichtigung haben einen eigenen Ton.",
             "Sicherheit: Die Willkommensnachricht des Servers wird auch in der Oberfläche noch einmal bereinigt, und die Content-Security-Policy der App ist strenger.",
+            "Übersetzungen in allen 23 Sprachen überarbeitet (#687): natürlichere Formulierungen, überall das lockere Du und ein Wort pro Begriff in jeder Sprache.",
           ],
         },
         {
@@ -67,6 +75,10 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "Die Symbole in der Rechteliste eines Plugins sind gezeichnet und sehen überall gleich aus. Ein Plugin-Abzeichen neben einem langen Namen schrumpft nicht mehr.",
             "macOS: Plugin-Inhalte in Dialogen und Panels sitzen wieder genau im Rahmen, und das Fenster startet nach einem eingefrorenen Plugin wieder neu.",
             "Kopieren funktioniert wieder im Paket-Inspektor und, wenn Windows die Zwischenablage verweigert, auch beim Absturzbericht.",
+            "Bilder im Profilkommentar, in Kanalbeschreibungen und im Server-Hinweis werden wieder gespeichert, statt mit „Zu groß für den Server“ abzubrechen (#712).",
+            "Plugins werden beim Beenden oder Neustarten von Mumcord sauber gestoppt, damit nichts verloren geht, etwa die letzten Änderungen am Whiteboard (#704).",
+            "Eine Fehlermeldung über dem Eingabefeld wie „Es können nur Bilder gesendet werden.“ verschwindet nach ein paar Sekunden von selbst (#707).",
+            "Linux: Kameras über das Kamera-Portal bekommen das Format und die Größe, die Mumcord wählt, statt oft nur 640×480.",
           ],
         },
       ],
@@ -865,6 +877,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "Now playing on macOS (#658): Mumcord reads the track from the same place as Control Center, so Music, Spotify, browsers and other players work, without a permission prompt.",
             "Homebrew (#662): brew install --cask mumcord/tap/mumcord on macOS and brew install mumcord/tap/mumcord on Linux.",
             "Release candidates (#686): coming versions can be tried early as pre-releases. The updater, Homebrew and the AUR keep offering only final releases.",
+            "Allow all plugin permissions at once (#708): when installing, “Allow all” switches on every optional permission with one click. When high-risk ones are among them, Mumcord asks first and names them.",
           ],
         },
         {
@@ -877,6 +890,7 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "Mumcord recognises other Mumcord users even when their first hello got lost, and asks again up to three times. Mumble clients notice nothing of this.",
             "Error notifications have their own sound.",
             "Security: the server’s welcome text is sanitized once more in the interface, and the app’s content security policy is stricter.",
+            "Translations reviewed in all 23 languages (#687): more natural wording, the informal “you” everywhere and one word per term in each language.",
           ],
         },
         {
@@ -891,6 +905,10 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
             "The icons in a plugin’s permission list are drawn and look the same everywhere. A plugin badge next to a long name no longer shrinks.",
             "macOS: plugin content in dialogs and panels sits exactly in its frame again, and the window restarts again after a plugin froze it.",
             "Copy works again in the packet inspector and, when Windows refuses the clipboard, for crash reports too.",
+            "Pictures in your profile comment, channel descriptions and the server notice are saved again instead of failing with “too large for the server” (#712).",
+            "Plugins are stopped properly when Mumcord quits or restarts, so nothing gets lost, such as the last Whiteboard edits (#704).",
+            "An error above the message box, such as “Only images can be sent.”, goes away by itself after a few seconds (#707).",
+            "Linux: cameras through the camera portal get the format and size Mumcord picks instead of often just 640×480.",
           ],
         },
       ],
