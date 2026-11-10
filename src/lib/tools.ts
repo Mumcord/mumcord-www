@@ -4,6 +4,7 @@
 import { localized } from "../i18n";
 import { bundles } from "../i18n/locales";
 import type { ToolsText } from "../i18n/bundle";
+import { isCandidate } from "./release";
 
 export type ToolId = "mumpeer" | "mumquiz";
 
@@ -25,7 +26,7 @@ export const TOOL_CODE: Record<ToolId, { file: string; code: string; terms?: str
       - ./mumpeer.toml:/config/mumpeer.toml:ro
       - mumpeer-data:/var/lib/mumpeer
   mumbot:
-    image: ghcr.io/mumcord/mumbot:0.5.3
+    image: ghcr.io/mumcord/mumbot:0.5.4
     command: ["peer"]
     restart: unless-stopped
     network_mode: "service:mumpeer"
@@ -238,7 +239,7 @@ async function load(id: ToolId): Promise<ToolRelease | null> {
       return null;
     }
     const list = (await res.json()) as { tag_name: string; html_url: string; draft: boolean }[];
-    const rel = list.find((r) => !r.draft);
+    const rel = list.find((r) => !r.draft && !isCandidate(r.tag_name));
     return rel ? { version: rel.tag_name.replace(/^v/, ""), url: rel.html_url } : null;
   } catch (err) {
     console.warn(`[tools] could not reach GitHub for ${id}; building without release data`, err);

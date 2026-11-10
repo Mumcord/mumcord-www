@@ -108,6 +108,9 @@ export function findAsset(r: Release, p: Platform, kind: Kind, arch?: Arch): Pla
   return r.assets[p].find((a) => a.kind === kind && (!arch || a.arch === arch));
 }
 
+/** A tag with a pre-release suffix such as v0.8.0-rc.3. */
+export const isCandidate = (tag: string) => /^v?\d+\.\d+\.\d+-/.test(tag);
+
 let cached: Promise<Release[]> | undefined;
 
 function toRelease(rel: GhRelease): Release {
@@ -163,7 +166,8 @@ async function load(): Promise<Release[]> {
       }
       list = (await res.json()) as GhRelease[];
     }
-    return list.filter((r) => !r.draft).map(toRelease);
+    // Release candidates (v0.8.0-rc.3) are for testers on GitHub only; the site shows final versions.
+    return list.filter((r) => !r.draft && !isCandidate(r.tag_name)).map(toRelease);
   } catch (err) {
     console.warn("[release] could not reach GitHub; building without release data", err);
     return [];
