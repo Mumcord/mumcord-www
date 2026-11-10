@@ -16,7 +16,8 @@ let releasesP: Promise<Release[]> | undefined;
 const releases = () =>
   (releasesP ??= fetch(`${API}/releases`)
     .then((r) => (r.ok ? r.json() : { releases: [] }))
-    .then((j: { releases: Release[] }) => j.releases)
+    // Release candidates stay on GitHub; the site only shows final versions.
+    .then((j: { releases: Release[] }) => j.releases.filter((r) => !/^v?\d+\.\d+\.\d+-/.test(r.version)))
     .catch(() => []));
 
 function el<K extends keyof HTMLElementTagNameMap>(tag: K, cls?: string, text?: string): HTMLElementTagNameMap[K] {

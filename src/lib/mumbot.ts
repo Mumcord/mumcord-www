@@ -5,6 +5,7 @@ import { localized } from "../i18n";
 import { bundles } from "../i18n/locales";
 import type { Status } from "./roadmap";
 import { atLeast, MUMBOT_MODULES_FROM } from "./compose";
+import { isCandidate } from "./release";
 
 export const MUMBOT_REPO = "Mumcord/mumbot";
 export const MUMBOT_REPO_URL = `https://github.com/${MUMBOT_REPO}`;
@@ -63,7 +64,7 @@ async function load(): Promise<BotRelease | null> {
       console.warn(`[mumbot] GitHub API answered ${res.status}; building without release data`);
       return null;
     }
-    const rel = ((await res.json()) as GhRelease[]).find((r) => !r.draft);
+    const rel = ((await res.json()) as GhRelease[]).find((r) => !r.draft && !isCandidate(r.tag_name));
     if (!rel) return null;
     const assets: BotRelease["assets"] = {};
     let checksums: BotAsset | undefined;
