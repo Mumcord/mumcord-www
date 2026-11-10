@@ -27,6 +27,23 @@ function el<K extends keyof HTMLElementTagNameMap>(tag: K, cls?: string, text?: 
   return e;
 }
 
+// A changelog line with every "#123" linked to its GitHub issue, built without innerHTML.
+function withIssues(text: string): HTMLLIElement {
+  const li = el("li");
+  let last = 0;
+  for (const m of text.matchAll(/(^|[\s(])#(\d{1,5})\b/g)) {
+    const at = m.index! + m[1].length;
+    li.append(text.slice(last, at));
+    const a = el("a", undefined, `#${m[2]}`);
+    a.href = `https://github.com/Mumcord/mumcord/issues/${m[2]}`;
+    a.rel = "noopener";
+    li.append(a);
+    last = at + m[2].length + 1;
+  }
+  li.append(text.slice(last));
+  return li;
+}
+
 // ── Changelog ────────────────────────────────────────────────────────
 const cl = document.querySelector<HTMLElement>("[data-cl]");
 if (cl) {
@@ -56,14 +73,14 @@ if (cl) {
       for (const g of e.groups ?? []) {
         const s = el("section", "cl-group");
         const ul = el("ul");
-        for (const i of g.items) ul.append(el("li", undefined, i));
+        for (const i of g.items) ul.append(withIssues(i));
         s.append(el("h2", undefined, g.title), ul);
         main.append(s);
       }
       if (e.known?.length) {
         const s = el("section", "cl-group cl-known");
         const ul = el("ul");
-        for (const i of e.known) ul.append(el("li", undefined, i));
+        for (const i of e.known) ul.append(withIssues(i));
         s.append(el("h2", undefined, d.known), ul);
         main.append(s);
       }
