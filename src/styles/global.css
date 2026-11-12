@@ -8197,3 +8197,12 @@ a:hover span > .ico-arrow-left {
 
 /* 0.5.0/0.6.0 tiles below the 0.7.0 bento in the "new" spotlight */
 .nx-bento + .s5-bento { margin-top: clamp(16px, 2vw, 24px); }
+
+/* Home: the next epic's groups as tiles, two by two, with a mockup where the roadmap has one. */
+@media (min-width: 760px) {
+  .nx-after-grid:has(.nx-plan) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.nx-plan-demo { min-height: 0; padding: 14px; }
+.nx-plan-demo svg { display: block; width: min(100%, 300px); height: auto; font-family: var(--font-display); }
+.nx-plan-list { margin: 8px 0 0; padding-left: 1.1em; color: var(--muted); font-size: 0.9375rem; }
+.nx-plan-list li + li { margin-top: 6px; }
