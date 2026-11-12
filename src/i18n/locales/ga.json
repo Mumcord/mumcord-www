@@ -477,7 +477,7 @@
         },
         "macos": {
           "name": "macOS",
-          "sub": "Uilíoch, Apple Silicon & Intel · .dmg",
+          "sub": "Apple Silicon & Intel · .dmg",
           "warn": "Cuireann Gatekeeper bac ar an gcéad tosú: deaschliceáil → “Oscail”, nó ceadaigh é faoi Príobháideacht & Slándáil."
         },
         "linux": {
@@ -899,6 +899,17 @@
             "id": "homebrew",
             "title": "Homebrew agus tógálacha dúchasacha Mac",
             "body": "Tá Mumcord ar Homebrew do macOS agus Linux. Faigheann Macanna íoslódáil dhúchasach an ceann do Apple Silicon agus Intel, sínithe agus nótaráilte agus leath de mhéid na haipe uilíche a bhí ann roimhe."
+          },
+          {
+            "id": "update-channel",
+            "title": "Cainéal nuashonraithe",
+            "body": "Faoi Socruithe → Nuashonruithe roghnaíonn tú “Cobhsaí”, eisiúintí deiridh amháin, nó “Iarrthóirí eisiúna” chun an chéad leagan eile a thriail go luath. Tá suaitheantas dá gcuid féin ar iarrthóirí eisiúna.",
+            "alt": "An socrú Cainéal nuashonraithe faoi Nuashonruithe"
+          },
+          {
+            "id": "freebsd",
+            "title": "FreeBSD",
+            "body": "Ritheann Mumcord ar FreeBSD 15 (amd64) mar .pkg a shuitear le pkg add agus a nuashonraítear le pkg upgrade, le guth, comhrá, comhaid, breiseáin, push-to-talk agus roinnt scáileáin faoi X11."
           }
         ]
       },
@@ -1596,6 +1607,12 @@
             "id": "plugin-relay-data",
             "title": "Sonraí breiseán tríd an athsheachadán",
             "body": "Téann sonraí cluiche tríd an athsheachadán criptithe ó cheann go ceann, suas le 64 KB in aghaidh teachtaireachta, chuig duine amháin nó chuig an gcainéal ar fad. Casann tú as é in aghaidh breiseáin, agus taispeánann Socruithe → Breiseáin cé mhéad sonraí a d’úsáid sé."
+          },
+          {
+            "id": "plugin-link-cards",
+            "title": "Naisc breiseán mar chártaí",
+            "body": "Taispeánann nasc chuig breiseán oifigiúil sa chomhrá cárta le deilbhín, ainm agus cur síos gearr. As sin, suiteálann tú an breiseán, osclaíonn tú é nó féachann tú ar a shonraí.",
+            "alt": "Cárta do nasc breiseáin sa chomhrá leis an gcnaipe Suiteáil"
           }
         ]
       },
@@ -1738,7 +1755,11 @@
             "Á sheinm anois ar macOS (#658): léann Mumcord an rian ón áit chéanna le Control Center, mar sin oibríonn Music, Spotify, brabhsálaithe agus seinnteoirí eile, gan iarratas ar chead.",
             "Homebrew (#662): brew install --cask mumcord/tap/mumcord ar macOS agus brew install mumcord/tap/mumcord ar Linux.",
             "Iarrthóirí eisiúna (#686): is féidir leat leaganacha atá le teacht a thriail go luath mar réamheisiúintí. Ní thairgeann an t-nuashonraitheoir, Homebrew ná an AUR ach eisiúintí deiridh i gcónaí.",
-            "Ceadaigh gach cead breiseáin ag an am céanna (#708): le linn suiteála, casann “Ceadaigh uile” gach cead roghnach air le cliceáil amháin. Má tá cinn ardriosca ina measc, fiafraíonn Mumcord ar dtús agus ainmníonn sé iad."
+            "Ceadaigh gach cead breiseáin ag an am céanna (#708): le linn suiteála, casann “Ceadaigh uile” gach cead roghnach air le cliceáil amháin. Má tá cinn ardriosca ina measc, fiafraíonn Mumcord ar dtús agus ainmníonn sé iad.",
+            "Cainéal nuashonraithe (#741): faoi Socruithe → Nuashonruithe roghnaíonn tú idir “Cobhsaí” (eisiúintí deiridh amháin, an réamhshocrú) agus “Iarrthóirí eisiúna” (tógálacha luatha den chéad leagan eile). Tá suaitheantas dá gcuid féin ar iarrthóirí eisiúna, agus ní thairgeann an nuashonróir iad ach amháin má roghnaigh tú an cainéal sin.",
+            "Naisc breiseán sa chomhrá (#755): taispeánann nasc mumcord://plugins/… chuig breiseán oifigiúil cárta le deilbhín, ainm agus cur síos gearr, le cnaipí chun é a shuiteáil, a oscailt nó na sonraí a fheiceáil.",
+            "FreeBSD 15 (amd64) mar ardán deisce: .pkg a shuitear le pkg add agus a nuashonraítear le pkg upgrade, le guth, comhrá, comhaid, féachaint le chéile, breiseáin, push-to-talk, fuaim shuímh agus roinnt scáileáin faoi X11.",
+            "Tá tionscnamh sínithe an tógála (mumcord-<version>.intoto.jsonl) ceangailte le gach eisiúint, ionas gur féidir na híosluchtuithe a sheiceáil as líne freisin le gh attestation verify."
           ]
         },
         {
@@ -1751,7 +1772,13 @@
             "Aithníonn Mumcord úsáideoirí eile Mumcord fiú nuair a cailleadh a gcéad chúirtéis, agus fiafraíonn sé arís suas le trí huaire. Ní thugann cliaint Mumble faoi deara aon rud de seo.",
             "Tá fuaim dá chuid féin ag fógraí earráide.",
             "Slándáil: déantar téacs fáilte an fhreastalaí a ghlanadh uair amháin eile sa chomhéadan, agus tá polasaí slándála ábhair na haipe níos déine.",
-            "Athbhreithníodh na haistriúcháin sna 23 teanga go léir (#687): foclaíocht níos nádúrtha, an “tú” neamhfhoirmiúil i ngach áit agus focal amháin an téarma i ngach teanga."
+            "Athbhreithníodh na haistriúcháin sna 23 teanga go léir (#687): foclaíocht níos nádúrtha, an “tú” neamhfhoirmiúil i ngach áit agus focal amháin an téarma i ngach teanga.",
+            "Tá cearta cainéil níos éasca a léamh (#711): taispeánann an cluaisín go soiléir cén radharc atá oscailte (“Cé a fhéadann cad”, “Rialacha” nó “Grúpaí”), le líon na rialacha agus na ngrúpaí, agus tosaíonn Grúpaí le cnaipe feiceálach “Grúpa nua”.",
+            "Osclaíonn an colún ball anois ar an gcluaisín “Gníomhaíocht” (#709). Má athraíonn tú go “Baill”, fanann sé mar sin go dtí go ndícheangail tú.",
+            "Taispeánann “Róbónna ar an bhfreastalaí seo” cainéal gach róbóin, lena n-áirítear róbónna nach labhraíonn choíche.",
+            "Ní spreagann daoine a bhlocáil tú fógraí isteach, amach agus aistrithe a thuilleadh, agus gach duine eile uair amháin gach 30 soicind ar a mhéad.",
+            "Ní iompaíonn cur faoi chois torainn ardleibhéil (AI) do ghuth ina thorann a thuilleadh nuair nach féidir leis an ríomhaire coinneáil suas (#753): má thógann sé rófhada, athraíonn Mumcord leis féin go dtí an tsamhail “Caighdeánach”.",
+            "Slándáil: ní sheolann “Tástáil” sa dialóg freastalaí focal faire a thuilleadh chuig freastalaí a bhfuil teastas difriúil aige. Ní féidir le paicéad gutha cumtha ná liosta cainéal le lúba Mumcord a thuairteáil a thuilleadh, agus diúltaítear do íomhánna os cionn 8K. Ní oibríonn sábháil agus ceangal comhad ach le comhaid agus fillteáin a roghnaigh tú féin, agus freagraíonn Mumcord iarratais heileo ón duine céanna uair amháin gach 30 soicind ar a mhéad."
           ]
         },
         {
@@ -1769,7 +1796,11 @@
             "Sábháiltear pictiúir i gcomhad tráchta an phróifíle, i dtuairiscí cainéal agus i bhfógra an fhreastalaí arís, in ionad teip le “Rómhór don fhreastalaí” (#712).",
             "Stopann breiseáin i gceart nuair a scoireann nó a atosaíonn Mumcord, ionas nach gcaillfear aon rud, ar nós na n-athruithe deireanacha ar an Whiteboard (#704).",
             "Imíonn earráid os cionn an bhosca teachtaireachta, ar nós “Ní féidir ach íomhánna a sheoladh.”, léi féin tar éis cúpla soicind (#707).",
-            "Linux: faigheann ceamaraí tríd an tairseach ceamaraí an fhormáid agus an méid a roghnaíonn Mumcord, in ionad 640×480 amháin go minic."
+            "Linux: faigheann ceamaraí tríd an tairseach ceamaraí an fhormáid agus an méid a roghnaíonn Mumcord, in ionad 640×480 amháin go minic.",
+            "Imríonn orduithe riaracháin mar /mute Bob Smith go díreach ar an duine leis an ainm sin in ionad “Bob”, agus osclaíonn ainm nár clóscríobhadh ach i bpáirt an roghnóir.",
+            "Cearta → “Cé a fhéadann cad”: is féidir an duine atá á sheiceáil a dhíthiceáil le “×” beag, agus críochnaíonn an seiceáil nuair a fhágann sé an freastalaí (#710).",
+            "Linux: stopann breiseáin i gceart freisin ag logáil amach, múchadh, kill nó Ctrl+C (#748).",
+            "macOS: ní dhúnann dialóga, painéil agus stáitsí breiseán tar éis cúig soicind a thuilleadh, tugann deilbhín an tráidire agus fógraí an fhuinneog ar ais agus breiseán oscailte (#705), agus fanann ábhar breiseán go díreach ina fhráma nuair a athraíonn airde na fuinneoige (#706)."
           ]
         }
       ]

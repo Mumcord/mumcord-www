@@ -477,7 +477,7 @@
         },
         "macos": {
           "name": "macOS",
-          "sub": "Universali, Apple Silicon ir Intel · .dmg",
+          "sub": "Apple Silicon ir Intel · .dmg",
           "warn": "Gatekeeper blokuoja pirmą paleidimą: dešinysis spustelėjimas → „Atidaryti“ arba leisk skiltyje „Privatumas ir sauga“."
         },
         "linux": {
@@ -899,6 +899,17 @@
             "id": "homebrew",
             "title": "Homebrew ir natyvios Mac versijos",
             "body": "Mumcord yra Homebrew sistemoms macOS ir Linux. Mac kompiuteriai gauna po natyvų atsisiuntimą Apple Silicon ir Intel, pasirašytą ir notarizuotą ir perpus mažesnį nei ankstesnė universali programa."
+          },
+          {
+            "id": "update-channel",
+            "title": "Atnaujinimų kanalas",
+            "body": "Nustatymai → Naujinimai pasirenki „Stabilus“, tik galutinės versijos, arba „Išleidimo kandidatai“, kad kitą versiją išbandytum anksčiau. Išleidimo kandidatai turi savo ženklelį.",
+            "alt": "Atnaujinimų kanalo nustatymas skiltyje Naujinimai"
+          },
+          {
+            "id": "freebsd",
+            "title": "FreeBSD",
+            "body": "„Mumcord“ veikia FreeBSD 15 (amd64) kaip .pkg, kuris diegiamas su pkg add ir atnaujinamas su pkg upgrade, su balsu, pokalbiais, failais, papildiniais, push-to-talk ir ekrano bendrinimu su X11."
           }
         ]
       },
@@ -1596,6 +1607,12 @@
             "id": "plugin-relay-data",
             "title": "Papildinio duomenys per relay",
             "body": "Žaidimo duomenys eina visapusiškai šifruoti per relay, iki 64 KB vienai žinutei, vienam žmogui arba visam kanalui. Išjungi tai kiekvienam papildiniui, o Nustatymai → Papildiniai rodo, kiek duomenų jis panaudojo."
+          },
+          {
+            "id": "plugin-link-cards",
+            "title": "Papildinių nuorodos kaip kortelės",
+            "body": "Nuoroda į oficialų papildinį pokalbyje rodo kortelę su piktograma, pavadinimu ir trumpu aprašu. Iš ten papildinį įdiegi, atidarai arba peržiūri jo informaciją.",
+            "alt": "Papildinio nuorodos kortelė pokalbyje su mygtuku Įdiegti"
           }
         ]
       },
@@ -1738,7 +1755,11 @@
             "Dabar groja sistemoje macOS (#658): Mumcord skaito kūrinį iš tos pačios vietos kaip Control Center, todėl veikia Music, Spotify, naršyklės ir kiti grotuvai, be leidimo užklausos.",
             "Homebrew (#662): brew install --cask mumcord/tap/mumcord sistemoje macOS ir brew install mumcord/tap/mumcord sistemoje Linux.",
             "Leidimo kandidatai (#686): būsimas versijas galima išbandyti anksti kaip išankstinius leidimus. Atnaujinimo priemonė, Homebrew ir AUR ir toliau siūlo tik galutinius leidimus.",
-            "Leisk visus papildinių leidimus iš karto (#708): diegiant „Leisti viską“ vienu spustelėjimu įjungia visus neprivalomus leidimus. Jei tarp jų yra rizikingų, Mumcord pirmiausia paklausia ir juos įvardija."
+            "Leisk visus papildinių leidimus iš karto (#708): diegiant „Leisti viską“ vienu spustelėjimu įjungia visus neprivalomus leidimus. Jei tarp jų yra rizikingų, Mumcord pirmiausia paklausia ir juos įvardija.",
+            "Atnaujinimų kanalas (#741): Nustatymai → Naujinimai pasirenki tarp „Stabilus“ (tik galutinės versijos, numatytasis) ir „Išleidimo kandidatai“ (ankstyvos kitos versijos darinės). Išleidimo kandidatai turi savo ženklelį, o naujinimo programa juos siūlo tik jei pasirinkai šį kanalą.",
+            "Papildinių nuorodos pokalbyje (#755): nuoroda mumcord://plugins/… į oficialų papildinį rodo kortelę su piktograma, pavadinimu ir trumpu aprašu bei mygtukais įdiegti, atidaryti ar peržiūrėti išsamią informaciją.",
+            "FreeBSD 15 (amd64) kaip darbalaukio platforma: .pkg, kuris diegiamas su pkg add ir atnaujinamas su pkg upgrade, su balsu, pokalbiais, failais, bendru žiūrėjimu, papildiniais, push-to-talk, pozicine garso erdve ir ekrano bendrinimu su X11.",
+            "Prie kiekvieno leidimo pridedama pasirašyta darinio kilmė (mumcord-<version>.intoto.jsonl), todėl atsisiuntimus galima patikrinti ir neprisijungus su gh attestation verify."
           ]
         },
         {
@@ -1751,7 +1772,13 @@
             "Mumcord atpažįsta kitus Mumcord naudotojus, net jei jų pirmasis pasisveikinimas pasimetė, ir klausia iš naujo iki trijų kartų. Mumble klientai to nepastebi.",
             "Klaidų pranešimai turi savo garsą.",
             "Sauga: serverio sveikinimo tekstas sąsajoje išvalomas dar kartą, o programos turinio saugos politika griežtesnė.",
-            "Vertimai peržiūrėti visomis 23 kalbomis (#687): natūralesnės formuluotės, visur neformalus „tu“ ir vienas žodis kiekvienam terminui kiekviena kalba."
+            "Vertimai peržiūrėti visomis 23 kalbomis (#687): natūralesnės formuluotės, visur neformalus „tu“ ir vienas žodis kiekvienam terminui kiekviena kalba.",
+            "Kanalo teises lengviau skaityti (#711): skirtukas aiškiai rodo, kuris vaizdas atidarytas („Kas ką gali“, „Taisyklės“ arba „Grupės“), su taisyklių ir grupių skaičiumi, o Grupės prasideda matomu mygtuku „Nauja grupė“.",
+            "Narių stulpelis dabar atsidaro skirtuke „Veikla“ (#709). Jei persijungi į „Nariai“, taip lieka iki atsijungimo.",
+            "„Botai šiame serveryje“ rodo kiekvieno boto kanalą, įskaitant botus, kurie niekada nekalba.",
+            "Užblokuoti žmonės nebesukelia pranešimų apie prisijungimą, išėjimą ir perkėlimą, o visi kiti – daugiausia vieną per 30 sekundžių.",
+            "Išplėstinis (DI) triukšmo slopinimas nebeverčia tavo balso triukšmu, kai kompiuteris nespėja (#753): jei užtrunka per ilgai, „Mumcord“ pats persijungia į modelį „Standartinis“.",
+            "Sauga: „Išbandyti“ serverio dialoge nebesiunčia slaptažodžio serveriui su kitu sertifikatu. Suklastotas balso paketas ar kanalų sąrašas su ciklais nebegali sugadinti „Mumcord“, o didesni nei 8K paveikslėliai atmetami. Failų išsaugojimas ir prisegimas veikia tik su failais ir aplankais, kuriuos pasirinkai pats, o „Mumcord“ į to paties asmens sveikinimo užklausas atsako daugiausia kas 30 sekundžių."
           ]
         },
         {
@@ -1769,7 +1796,11 @@
             "Paveikslėliai profilio komentare, kanalų aprašuose ir serverio pranešime vėl išsaugomi, o ne nepavyksta su pranešimu „Per didelis serveriui“ (#712).",
             "Papildiniai tinkamai sustabdomi, kai Mumcord užsidaro ar paleidžiamas iš naujo, todėl nieko nepraranda, pavyzdžiui, paskutinių Whiteboard pakeitimų (#704).",
             "Klaida virš pranešimo lauko, pavyzdžiui, „Galima siųsti tik paveikslėlius.“, po kelių sekundžių pati išnyksta (#707).",
-            "Linux: kameros per kamerų portalą gauna formatą ir dydį, kuriuos pasirenka Mumcord, o ne dažnai tik 640×480."
+            "Linux: kameros per kamerų portalą gauna formatą ir dydį, kuriuos pasirenka Mumcord, o ne dažnai tik 640×480.",
+            "Administratoriaus komandos, pavyzdžiui, /mute Bob Smith, veikia būtent žmogų tokiu vardu, o ne „Bob“, o tik iš dalies įvestas vardas atidaro pasirinkimą.",
+            "Teisės → „Kas ką gali“: tikrinamą žmogų galima vėl atžymėti mažu „×“, o patikra baigiasi, kai jis palieka serverį (#710).",
+            "Linux: papildiniai tinkamai sustabdomi ir atsijungiant, išjungiant, su kill ar Ctrl+C (#748).",
+            "macOS: papildinių dialogai, skydeliai ir scenos nebeužsidaro po penkių sekundžių, dėklo piktograma ir pranešimai grąžina langą, kol papildinys atidarytas (#705), o papildinių turinys lieka tiksliai savo rėmelyje, kai keičiasi lango aukštis (#706)."
           ]
         }
       ]

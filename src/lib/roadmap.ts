@@ -610,7 +610,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         id: "epic-4",
         tag: "Epic 4",
         title: "Admin",
-        status: "planned",
+        status: "done",
         version: "0.8.0",
         summary: "Damit Mumcord den offiziellen Client ganz ersetzen kann: Kanäle, Rechte, Banns und Personen verwalten, nur mit normalen Mumble-Nachrichten und ohne Änderung am Server.",
         groups: [
@@ -1296,7 +1296,7 @@ const source: Record<"de" | "en", RoadmapPage> = {
         id: "epic-4",
         tag: "Epic 4",
         title: "Admin",
-        status: "planned",
+        status: "done",
         version: "0.8.0",
         summary: "So Mumcord can fully replace the official client: manage channels, permissions, bans and people, with standard Mumble messages only and no change to the server.",
         groups: [

@@ -477,7 +477,7 @@
         },
         "macos": {
           "name": "macOS",
-          "sub": "Universal, Apple Silicon i Intel · .dmg",
+          "sub": "Apple Silicon i Intel · .dmg",
           "warn": "Gatekeeper blokira prvo pokretanje: desni klik → „Otvori” ili dopusti pod Privatnost i sigurnost."
         },
         "linux": {
@@ -899,6 +899,17 @@
             "id": "homebrew",
             "title": "Homebrew i nativne izvedbe za Mac",
             "body": "Mumcord je na Homebrewu za macOS i Linux. Macovi dobivaju po jedno nativno preuzimanje za Apple Silicon i Intel, potpisano i notarizirano te upola manje od nekadašnje univerzalne aplikacije."
+          },
+          {
+            "id": "update-channel",
+            "title": "Kanal ažuriranja",
+            "body": "U Postavke → Ažuriranja biraš „Stabilno“, samo konačna izdanja, ili „Kandidate za izdanje“ da sljedeću verziju isprobaš ranije. Kandidati za izdanje imaju vlastitu značku.",
+            "alt": "Postavka Kanal ažuriranja u Ažuriranjima"
+          },
+          {
+            "id": "freebsd",
+            "title": "FreeBSD",
+            "body": "Mumcord radi na FreeBSD-u 15 (amd64) kao .pkg koji se instalira naredbom pkg add i ažurira naredbom pkg upgrade, s glasom, chatom, datotekama, dodacima, push-to-talk i dijeljenjem zaslona pod X11."
           }
         ]
       },
@@ -1596,6 +1607,12 @@
             "id": "plugin-relay-data",
             "title": "Podaci dodataka preko releja",
             "body": "Podaci igara idu end-to-end šifrirani preko releja, do 64 KB po poruci, jednoj osobi ili cijelom kanalu. Isključuješ ih po dodatku, a Postavke → Dodaci pokazuju koliko je podataka potrošio."
+          },
+          {
+            "id": "plugin-link-cards",
+            "title": "Poveznice na dodatke kao kartice",
+            "body": "Poveznica na službeni dodatak u chatu prikazuje karticu s ikonom, imenom i kratkim opisom. Odatle dodatak instaliraš, otvaraš ili pregledavaš njegove pojedinosti.",
+            "alt": "Kartica poveznice na dodatak u chatu s gumbom Instaliraj"
           }
         ]
       },
@@ -1738,7 +1755,11 @@
             "Sad svira na macOS-u (#658): Mumcord čita pjesmu s istog mjesta kao Control Center, pa rade Music, Spotify, preglednici i drugi playeri, bez upita za dozvolu.",
             "Homebrew (#662): brew install --cask mumcord/tap/mumcord na macOS-u i brew install mumcord/tap/mumcord na Linuxu.",
             "Release kandidati (#686): nadolazeće verzije možeš rano isprobati kao pretprodajne verzije. Ažuriranje, Homebrew i AUR i dalje nude samo završna izdanja.",
-            "Dopusti sva dopuštenja dodataka odjednom (#708): pri instalaciji „Dopusti sve“ jednim klikom uključuje sva neobavezna dopuštenja. Ako među njima ima rizičnih, Mumcord prvo pita i imenuje ih."
+            "Dopusti sva dopuštenja dodataka odjednom (#708): pri instalaciji „Dopusti sve“ jednim klikom uključuje sva neobavezna dopuštenja. Ako među njima ima rizičnih, Mumcord prvo pita i imenuje ih.",
+            "Kanal ažuriranja (#741): u Postavke → Ažuriranja biraš između „Stabilno“ (samo konačna izdanja, zadano) i „Kandidati za izdanje“ (rane inačice sljedeće verzije). Kandidati za izdanje imaju vlastitu značku, a program za ažuriranje nudi ih samo ako si odabrao taj kanal.",
+            "Poveznice na dodatke u chatu (#755): poveznica mumcord://plugins/… na službeni dodatak prikazuje karticu s ikonom, imenom i kratkim opisom te gumbima za instalaciju, otvaranje ili pregled pojedinosti.",
+            "FreeBSD 15 (amd64) kao desktop platforma: .pkg koji se instalira naredbom pkg add i ažurira naredbom pkg upgrade, s glasom, chatom, datotekama, zajedničkim gledanjem, dodacima, push-to-talk, pozicijskim zvukom i dijeljenjem zaslona pod X11.",
+            "Svakom izdanju priložen je potpisani izvor izgradnje (mumcord-<version>.intoto.jsonl), pa se preuzimanja mogu provjeriti i izvan mreže naredbom gh attestation verify."
           ]
         },
         {
@@ -1751,7 +1772,13 @@
             "Mumcord prepoznaje druge korisnike Mumcorda čak i kad im se prvi pozdrav izgubi, te pita ponovno do tri puta. Mumble klijenti ništa ne primjećuju.",
             "Obavijesti o pogreškama imaju vlastiti zvuk.",
             "Sigurnost: pozdravni tekst poslužitelja u sučelju se još jednom sanitizira, a politika sigurnosti sadržaja aplikacije je stroža.",
-            "Prijevodi su pregledani na svih 23 jezika (#687): prirodnije formulacije, neformalno „ti“ posvuda i jedna riječ po pojmu u svakom jeziku."
+            "Prijevodi su pregledani na svih 23 jezika (#687): prirodnije formulacije, neformalno „ti“ posvuda i jedna riječ po pojmu u svakom jeziku.",
+            "Dozvole kanala lakše se čitaju (#711): kartica jasno pokazuje koji je prikaz otvoren („Tko što smije“, „Pravila“ ili „Grupe“), s brojem pravila i grupa, a Grupe počinju istaknutim gumbom „Nova grupa“.",
+            "Stupac članova sada se otvara na kartici „Aktivnost“ (#709). Ako prijeđeš na „Članovi“, to ostaje do odspajanja.",
+            "„Botovi na ovom poslužitelju“ prikazuje kanal svakog bota, uključujući botove koji nikad ne govore.",
+            "Osobe koje si blokirao više ne pokreću obavijesti o pridruživanju, odlasku i premještanju, a svi ostali najviše jednu svakih 30 sekundi.",
+            "Napredno (AI) potiskivanje šuma više ne pretvara tvoj glas u šum kad računalo ne stigne (#753): ako traje predugo, Mumcord sam prelazi na model „Standardni“.",
+            "Sigurnost: „Testiraj“ u dijalogu poslužitelja više ne šalje lozinku poslužitelju s drugim certifikatom. Podmetnut glasovni paket ili popis kanala s petljama više ne mogu srušiti Mumcord, a slike veće od 8K odbijaju se. Spremanje i prilaganje datoteka radi samo s datotekama i mapama koje si sam odabrao, a Mumcord odgovara na zahtjeve za pozdrav iste osobe najviše svakih 30 sekundi."
           ]
         },
         {
@@ -1769,7 +1796,11 @@
             "Slike u komentaru profila, opisima kanala i obavijesti poslužitelja ponovno se spremaju umjesto da ne uspiju s porukom „Prevelika za poslužitelj“ (#712).",
             "Dodaci se pravilno zaustavljaju kad se Mumcord zatvori ili ponovno pokrene, pa se ništa ne gubi, na primjer zadnje izmjene na Whiteboardu (#704).",
             "Pogreška iznad okvira za poruke, poput „Mogu se slati samo slike.“, nestaje sama nakon nekoliko sekundi (#707).",
-            "Linux: kamere preko portala za kamere dobivaju format i veličinu koje Mumcord odabere, umjesto često samo 640×480."
+            "Linux: kamere preko portala za kamere dobivaju format i veličinu koje Mumcord odabere, umjesto često samo 640×480.",
+            "Admin naredbe poput /mute Bob Smith pogađaju točno osobu s tim imenom umjesto „Boba“, a samo djelomično upisano ime otvara odabir.",
+            "Dozvole → „Tko što smije“: provjeravana osoba može se maknuti malim „×“, a provjera završava kad napusti poslužitelj (#710).",
+            "Linux: dodaci se ispravno zaustavljaju i pri odjavi, gašenju, naredbi kill ili Ctrl+C (#748).",
+            "macOS: dijalozi, paneli i pozornice dodataka više se ne zatvaraju nakon pet sekundi, ikona u traci i obavijesti vraćaju prozor dok je dodatak otvoren (#705), a sadržaj dodataka ostaje točno u svom okviru kad se promijeni visina prozora (#706)."
           ]
         }
       ]

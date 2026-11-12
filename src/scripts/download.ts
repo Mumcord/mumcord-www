@@ -2,7 +2,7 @@
 // processor from Client Hints or the WebGL renderer, Linux distro from the user agent.
 // Everything is a guess, so the other systems and files always stay one click away.
 
-type Os = "windows" | "macos" | "linux";
+type Os = "windows" | "macos" | "linux" | "freebsd";
 type Arch = "x86_64" | "arm64";
 
 interface UaData {
@@ -22,7 +22,9 @@ const os: Os | null = mobile
     ? "windows"
     : /Mac/i.test(plat)
       ? "macos"
-      : /Linux|X11|CrOS/i.test(plat)
+      : /FreeBSD/i.test(plat)
+        ? "freebsd"
+        : /Linux|X11|CrOS/i.test(plat)
         ? "linux"
         : null;
 
@@ -87,7 +89,10 @@ for (const spot of spots) {
     });
   }
   const hash = location.hash.slice(1);
-  select(spot, (["windows", "macos", "linux"].includes(hash) ? hash : (os ?? "windows")) as Os);
+  // FreeBSD has a tab only when the release ships its package; without one its visitors start on Linux.
+  const has = (p: string) => !!spot.querySelector(`[data-dl-tab="${p}"]`);
+  const wanted = has(hash) ? hash : os && has(os) ? os : os === "freebsd" ? "linux" : "windows";
+  select(spot, wanted as Os);
   if (mobile) spot.querySelector<HTMLElement>("[data-dl-mobile]")!.hidden = false;
   if (distro) spot.querySelectorAll(`[data-for="linux"] .dl-alts li[data-kind="${distro}"]`).forEach((li) => li.classList.add("is-rec"));
 }

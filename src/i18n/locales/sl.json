@@ -477,7 +477,7 @@
         },
         "macos": {
           "name": "macOS",
-          "sub": "Universal, Apple Silicon in Intel · .dmg",
+          "sub": "Apple Silicon in Intel · .dmg",
           "warn": "Gatekeeper blokira prvi zagon: desni klik → »Odpri« ali dovoli v Zasebnost in varnost."
         },
         "linux": {
@@ -899,6 +899,17 @@
             "id": "homebrew",
             "title": "Homebrew in nativne gradnje za Mac",
             "body": "Mumcord je na Homebrew za macOS in Linux. Maci dobijo vsak svoj nativni prenos za Apple Silicon in Intel, podpisan in notariziran ter za polovico manjši od nekdanje univerzalne aplikacije."
+          },
+          {
+            "id": "update-channel",
+            "title": "Kanal posodobitev",
+            "body": "V Nastavitve → Posodobitve izbereš „Stabilno“, samo končne različice, ali „Kandidate za izdajo“, da naslednjo različico preizkusiš prej. Kandidati za izdajo imajo svojo značko.",
+            "alt": "Nastavitev Kanal posodobitev v Posodobitvah"
+          },
+          {
+            "id": "freebsd",
+            "title": "FreeBSD",
+            "body": "Mumcord deluje na FreeBSD 15 (amd64) kot paket .pkg, ki se namesti z pkg add in posodobi s pkg upgrade, z glasom, klepetom, datotekami, vtičniki, push-to-talk in deljenjem zaslona pod X11."
           }
         ]
       },
@@ -1596,6 +1607,12 @@
             "id": "plugin-relay-data",
             "title": "Podatki vtičnikov prek relaya",
             "body": "Podatki iger gredo šifrirani od konca do konca prek relaya, do 64 KB na sporočilo, k eni osebi ali celemu kanalu. Izklopiš jih za vsak vtičnik, Nastavitve → Vtičniki pa pokaže, koliko podatkov je porabil."
+          },
+          {
+            "id": "plugin-link-cards",
+            "title": "Povezave do vtičnikov kot kartice",
+            "body": "Povezava do uradnega vtičnika v klepetu prikaže kartico z ikono, imenom in kratkim opisom. Od tam vtičnik namestiš, odpreš ali si ogledaš njegove podrobnosti.",
+            "alt": "Kartica povezave do vtičnika v klepetu z gumbom Namesti"
           }
         ]
       },
@@ -1738,7 +1755,11 @@
             "Zdaj predvajam v macOS (#658): Mumcord prebere skladbo z istega mesta kot Nadzorni center, zato delujejo Glasba, Spotify, brskalniki in drugi predvajalniki, brez vprašanja za dovoljenje.",
             "Homebrew (#662): brew install --cask mumcord/tap/mumcord v macOS in brew install mumcord/tap/mumcord v Linuxu.",
             "Kandidati za izdajo (#686): prihajajoče različice lahko preizkusiš zgodaj kot predizdaje. Posodabljalnik, Homebrew in AUR še naprej ponujajo samo končne izdaje.",
-            "Dovoli vsa dovoljenja vtičnikov naenkrat (#708): pri namestitvi „Dovoli vse“ z enim klikom vklopi vsa izbirna dovoljenja. Če so med njimi tvegana, Mumcord najprej vpraša in jih poimenuje."
+            "Dovoli vsa dovoljenja vtičnikov naenkrat (#708): pri namestitvi „Dovoli vse“ z enim klikom vklopi vsa izbirna dovoljenja. Če so med njimi tvegana, Mumcord najprej vpraša in jih poimenuje.",
+            "Kanal posodobitev (#741): v Nastavitve → Posodobitve izbereš med „Stabilno“ (samo končne različice, privzeto) in „Kandidati za izdajo“ (zgodnje izdelave naslednje različice). Kandidati za izdajo imajo svojo značko, posodobitelj pa jih ponudi le, če si izbral ta kanal.",
+            "Povezave do vtičnikov v klepetu (#755): povezava mumcord://plugins/… do uradnega vtičnika prikaže kartico z ikono, imenom in kratkim opisom ter gumbi za namestitev, odpiranje ali ogled podrobnosti.",
+            "FreeBSD 15 (amd64) kot namizna platforma: paket .pkg, ki se namesti z pkg add in posodobi s pkg upgrade, z glasom, klepetom, datotekami, skupnim gledanjem, vtičniki, push-to-talk, pozicijskim zvokom in deljenjem zaslona pod X11.",
+            "Vsaki izdaji je priložen podpisan izvor izdelave (mumcord-<version>.intoto.jsonl), tako da je prenose mogoče preveriti tudi brez povezave z gh attestation verify."
           ]
         },
         {
@@ -1751,7 +1772,13 @@
             "Mumcord prepozna druge uporabnike Mumcorda, tudi če se je njihov prvi pozdrav izgubil, in vpraša znova do trikrat. Odjemalci Mumble ne opazijo ničesar.",
             "Obvestila o napakah imajo svoj zvok.",
             "Varnost: pozdravno besedilo strežnika se v vmesniku še enkrat očisti, varnostna politika vsebine aplikacije pa je strožja.",
-            "Prevodi pregledani v vseh 23 jezikih (#687): naravnejše formulacije, povsod sproščeno tikanje in ena beseda na pojem v vsakem jeziku."
+            "Prevodi pregledani v vseh 23 jezikih (#687): naravnejše formulacije, povsod sproščeno tikanje in ena beseda na pojem v vsakem jeziku.",
+            "Dovoljenja kanala so lažja za branje (#711): zavihek jasno pokaže, kateri pogled je odprt („Kdo sme kaj“, „Pravila“ ali „Skupine“), s številom pravil in skupin, Skupine pa se začnejo z opaznim gumbom „Nova skupina“.",
+            "Stolpec članov se zdaj odpre na zavihku „Dejavnost“ (#709). Če preklopiš na „Člani“, ostane tako do prekinitve povezave.",
+            "„Roboti na tem strežniku“ pokaže kanal vsakega robota, tudi robotov, ki nikoli ne govorijo.",
+            "Blokirane osebe ne sprožajo več obvestil o pridružitvi, odhodu in premiku, vsi drugi pa največ eno na 30 sekund.",
+            "Napredno (UI) dušenje šuma tvojega glasu ne spremeni več v šum, ko računalnik ne zmore (#753): če traja predolgo, Mumcord sam preklopi na model „Standardni“.",
+            "Varnost: „Preizkusi“ v pogovornem oknu strežnika ne pošlje več gesla strežniku z drugačnim potrdilom. Ponarejen glasovni paket ali seznam kanalov z zankami ne more več zrušiti Mumcorda, slike nad 8K pa se zavrnejo. Shranjevanje in pripenjanje datotek deluje samo z datotekami in mapami, ki si jih izbral sam, Mumcord pa na zahteve za pozdrav iste osebe odgovori največ vsakih 30 sekund."
           ]
         },
         {
@@ -1769,7 +1796,11 @@
             "Slike v komentarju profila, opisih kanalov in obvestilu strežnika se spet shranijo, namesto da bi spodletele z „Prevelika za strežnik“ (#712).",
             "Vtičniki se ob zaprtju ali ponovnem zagonu Mumcorda pravilno ustavijo, tako da se nič ne izgubi, na primer zadnje spremembe na Whiteboardu (#704).",
             "Napaka nad poljem za sporočila, kot je „Pošiljate lahko le slike.“, po nekaj sekundah sama izgine (#707).",
-            "Linux: kamere prek kamernega portala dobijo obliko in velikost, ki ju izbere Mumcord, namesto pogosto le 640×480."
+            "Linux: kamere prek kamernega portala dobijo obliko in velikost, ki ju izbere Mumcord, namesto pogosto le 640×480.",
+            "Skrbniški ukazi, kot je /mute Bob Smith, zadenejo natanko osebo s tem imenom namesto „Bob“, le deloma vpisano ime pa odpre izbirnik.",
+            "Dovoljenja → „Kdo sme kaj“: preverjano osebo lahko z majhnim „×“ spet odznačiš, preverjanje pa se konča, ko zapusti strežnik (#710).",
+            "Linux: vtičniki se pravilno ustavijo tudi ob odjavi, zaustavitvi, z ukazom kill ali Ctrl+C (#748).",
+            "macOS: pogovorna okna, plošče in odri vtičnikov se ne zaprejo več po petih sekundah, ikona v sistemski vrstici in obvestila vrnejo okno, dokler je vtičnik odprt (#705), vsebina vtičnikov pa ostane natanko v svojem okvirju, ko se spremeni višina okna (#706)."
           ]
         }
       ]

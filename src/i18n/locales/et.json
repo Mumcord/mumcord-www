@@ -477,7 +477,7 @@
         },
         "macos": {
           "name": "macOS",
-          "sub": "Universal, Apple Silicon ja Intel · .dmg",
+          "sub": "Apple Silicon ja Intel · .dmg",
           "warn": "Gatekeeper blokeerib esimese käivituse: paremklõps → „Ava“ või luba see jaotises Privaatsus ja turvalisus."
         },
         "linux": {
@@ -899,6 +899,17 @@
             "id": "homebrew",
             "title": "Homebrew ja natiivsed Maci ehitused",
             "body": "Mumcord on Homebrewis macOS-i ja Linuxi jaoks. Macid saavad kumbki oma natiivse allalaadimise, Apple Silicon ja Intel, allkirjastatud, notariseeritud ja poole väiksema kui varasem universaalrakendus."
+          },
+          {
+            "id": "update-channel",
+            "title": "Värskenduskanal",
+            "body": "Seadetes → Värskendused valid „Stabiilne“, ainult lõplikud versioonid, või „Väljalaskekandidaadid“, et järgmist versiooni varakult proovida. Väljalaskekandidaatidel on oma märk.",
+            "alt": "Värskenduskanali säte jaotises Värskendused"
+          },
+          {
+            "id": "freebsd",
+            "title": "FreeBSD",
+            "body": "Mumcord töötab FreeBSD 15 (amd64) peal .pkg-ina, mis paigaldatakse käsuga pkg add ja uuendatakse käsuga pkg upgrade, koos hääle, vestluse, failide, pluginate, push-to-talk’i ja ekraanijagamisega X11 all."
           }
         ]
       },
@@ -1596,6 +1607,12 @@
             "id": "plugin-relay-data",
             "title": "Pluginate andmed relee kaudu",
             "body": "Mängude andmed liiguvad otspunktkrüpteeritult relee kaudu, kuni 64 KB sõnumi kohta, ühele inimesele või kogu kanalile. Lülitad selle välja plugina kaupa ning Seaded → Pluginad näitab, kui palju andmeid see kasutas."
+          },
+          {
+            "id": "plugin-link-cards",
+            "title": "Pluginalingid kaartidena",
+            "body": "Link ametlikule pluginale vestluses näitab kaarti ikooni, nime ja lühikirjeldusega. Sealt installid pluginat, avad selle või vaatad selle üksikasju.",
+            "alt": "Pluginalingi kaart vestluses nupuga „Installi“"
           }
         ]
       },
@@ -1738,7 +1755,11 @@
             "„Praegu kõlab“ macOS-is (#658): Mumcord loeb loo samast kohast nagu Juhtimiskeskus, nii et Music, Spotify, brauserid ja teised mängijad töötavad, ilma õiguste küsimiseta.",
             "Homebrew (#662): brew install --cask mumcord/tap/mumcord macOS-is ja brew install mumcord/tap/mumcord Linuxis.",
             "Väljalaskekandidaadid (#686): tulevasi versioone saab varakult eelversioonidena proovida. Uuendaja, Homebrew ja AUR pakuvad edasi ainult lõplikke versioone.",
-            "Luba kõik pluginate õigused korraga (#708): paigaldamisel lülitab „Luba kõik“ ühe klõpsuga sisse kõik valikulised õigused. Kui nende hulgas on riskantseid, küsib Mumcord enne ja nimetab need."
+            "Luba kõik pluginate õigused korraga (#708): paigaldamisel lülitab „Luba kõik“ ühe klõpsuga sisse kõik valikulised õigused. Kui nende hulgas on riskantseid, küsib Mumcord enne ja nimetab need.",
+            "Värskenduskanal (#741): Seadetes → Värskendused valid „Stabiilne“ (ainult lõplikud versioonid, vaikimisi) ja „Väljalaskekandidaadid“ (järgmise versiooni varased järgud) vahel. Väljalaskekandidaatidel on oma märk ja uuendaja pakub neid ainult siis, kui oled selle kanali valinud.",
+            "Pluginalingid vestluses (#755): mumcord://plugins/…-link ametlikule pluginale näitab kaarti ikooni, nime ja lühikirjeldusega ning nuppudega installimiseks, avamiseks või üksikasjade vaatamiseks.",
+            "FreeBSD 15 (amd64) töölauaplatvormina: .pkg, mis paigaldatakse käsuga pkg add ja uuendatakse käsuga pkg upgrade, koos hääle, vestluse, failide, ühisvaatamise, pluginate, push-to-talk’i, positsioonilise heli ja ekraanijagamisega X11 all.",
+            "Igale väljalaskele on lisatud allkirjastatud järgu päritolu (mumcord-<version>.intoto.jsonl), et allalaaditud faile saaks kontrollida ka võrguühenduseta käsuga gh attestation verify."
           ]
         },
         {
@@ -1751,7 +1772,13 @@
             "Mumcord tunneb ära teised Mumcordi kasutajad ka siis, kui nende esimene tervitus kadus, ning küsib uuesti kuni kolm korda. Mumble'i kliendid ei märka sellest midagi.",
             "Veateadetel on oma heli.",
             "Turvalisus: serveri tervitustekst puhastatakse liideses veel kord ja rakenduse sisuturbepoliitika (CSP) on rangem.",
-            "Tõlked on üle vaadatud kõigis 23 keeles (#687): loomulikumad sõnastused, igal pool mitteametlik „sina“ ja iga mõiste jaoks üks sõna igas keeles."
+            "Tõlked on üle vaadatud kõigis 23 keeles (#687): loomulikumad sõnastused, igal pool mitteametlik „sina“ ja iga mõiste jaoks üks sõna igas keeles.",
+            "Kanaliõigusi on lihtsam lugeda (#711): sakk näitab selgelt, milline vaade on avatud („Kes mida tohib“, „Reeglid“ või „Grupid“), koos reeglite ja gruppide arvuga, ning Grupid algavad silmatorkava nupuga „Uus grupp“.",
+            "Liikmete veerg avaneb nüüd sakil „Tegevus“ (#709). Kui vahetad sakile „Liikmed“, jääb see kehtima ühenduse katkestamiseni.",
+            "„Botid sellel serveril“ näitab iga boti kanalit, ka botidel, kes kunagi ei räägi.",
+            "Blokeeritud inimesed ei tekita enam liitumise, lahkumise ja liikumise teavitusi ning kõik teised kuni ühe 30 sekundi kohta.",
+            "Täiustatud (tehisintellekti) mürasummutus ei muuda su häält enam krõbinaks, kui arvuti ei jõua järele (#753): kui see võtab liiga kaua, lülitub Mumcord ise mudelile „Standard“.",
+            "Turvalisus: „Testi“ serveridialoogis ei saada enam parooli serverile, millel on teine sertifikaat. Võltsitud häälepakett või tsüklitega kanaliloend ei saa enam Mumcordi kokku jooksutada ja üle 8K pildid lükatakse tagasi. Failide salvestamine ja lisamine töötab ainult failide ja kaustadega, mille oled ise valinud, ja Mumcord vastab sama inimese tervitustaotlustele kõige rohkem iga 30 sekundi järel."
           ]
         },
         {
@@ -1769,7 +1796,11 @@
             "Pildid profiilikommentaaris, kanalite kirjeldustes ja serveri teates salvestatakse taas, selle asemel et katkeda teatega „Serverile liiga suur“ (#712).",
             "Pluginad peatatakse korralikult, kui Mumcord sulgub või taaskäivitub, nii et midagi ei lähe kaotsi, näiteks Whiteboardi viimased muudatused (#704).",
             "Viga sõnumivälja kohal, näiteks „Saata saab ainult pilte.“, kaob mõne sekundi pärast ise (#707).",
-            "Linux: kaamerad kaamerapordi kaudu saavad vormingu ja suuruse, mille Mumcord valib, mitte sageli ainult 640×480."
+            "Linux: kaamerad kaamerapordi kaudu saavad vormingu ja suuruse, mille Mumcord valib, mitte sageli ainult 640×480.",
+            "Admini käsud nagu /mute Bob Smith mõjuvad täpselt sellele nimega inimesele, mitte „Bobile“, ja ainult osaliselt sisestatud nimi avab valiku.",
+            "Õigused → „Kes mida tohib“: kontrollitava inimese saab väikese „×“ abil uuesti valikust eemaldada ja kontroll lõpeb, kui ta serverist lahkub (#710).",
+            "Linux: pluginad peatatakse korralikult ka väljalogimisel, väljalülitamisel, käsuga kill või Ctrl+C (#748).",
+            "macOS: pluginate dialoogid, paneelid ja lavad ei sulgu enam viie sekundi järel, salveikoon ja teavitused toovad akna tagasi, kui plugin on avatud (#705), ning pluginate sisu jääb täpselt oma raami, kui akna kõrgus muutub (#706)."
           ]
         }
       ]

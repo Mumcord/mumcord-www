@@ -10,6 +10,7 @@ import {
   hasHomebrewTap,
   BREW_CASK,
   BREW_FORMULA,
+  pkgAddCommand,
   INSTALL_COMMAND,
   RELEASES_URL,
   type Kind,
@@ -26,8 +27,9 @@ const { lang, release } = Astro.props;
 const t = dicts[lang].download;
 const s = t.spot;
 const tap = await hasHomebrewTap();
-const platforms: Platform[] = ["windows", "macos", "linux"];
-const mainKind: Record<Platform, Kind> = { windows: "setup", macos: "dmg", linux: "appimage" };
+// FreeBSD only shows once a release ships its package (0.8.0 and newer).
+const platforms: Platform[] = ["windows", "macos", "linux", ...(release?.assets.freebsd.length ? (["freebsd"] as Platform[]) : [])];
+const mainKind: Record<Platform, Kind> = { windows: "setup", macos: "dmg", linux: "appimage", freebsd: "pkg" };
 const brew: Partial<Record<Platform, string>> = { macos: BREW_CASK, linux: BREW_FORMULA };
 
 const label = (p: Platform, a: PlatformAsset) =>
@@ -35,7 +37,7 @@ const label = (p: Platform, a: PlatformAsset) =>
 const panels = platforms.map((p) => {
   const all = release?.assets[p] ?? [];
   const main = all.filter((a) => a.kind === mainKind[p]);
-  const kindOrder = ["setup", "dmg", "appimage", "deb", "rpm", "portable", "other"];
+  const kindOrder = ["setup", "dmg", "appimage", "deb", "rpm", "pkg", "portable", "other"];
   const alts = all
     .filter((a) => !main.includes(a))
     .sort((x, y) => kindOrder.indexOf(x.kind) - kindOrder.indexOf(y.kind) || (x.arch === "arm64" ? 1 : 0) - (y.arch === "arm64" ? 1 : 0));
@@ -56,8 +58,8 @@ import Arrow from "./Arrow.astro";
           data-dl-tab={p}
           aria-selected={i === 0 ? "true" : "false"}
         >
-          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-            <path fill="currentColor" d={PLATFORM_GLYPHS[p]} />
+          <svg viewBox={PLATFORM_GLYPHS[p].viewBox} width="18" height="18" aria-hidden="true">
+            <path fill="currentColor" d={PLATFORM_GLYPHS[p].d} />
           </svg>
           {t.platforms[p].name}
         </a>
@@ -112,7 +114,7 @@ import Arrow from "./Arrow.astro";
           </div>
           {main[0] && <p class="dl-file" data-dl-file>{main[0].name}</p>}
 
-          {p !== "linux" && release?.signed[p] ? (
+          {(p === "windows" || p === "macos") && release?.signed[p] ? (
             <p class="dl-signed">{t.signed[p]}</p>
           ) : (
             <p class="dl-warn">{t.platforms[p].warn}</p>
@@ -120,9 +122,19 @@ import Arrow from "./Arrow.astro";
 
         </div>
 
-          {(alts.length > 0 || brew[p] || (p === "linux" && release?.installer)) && (
+          {(alts.length > 0 || brew[p] || (p === "linux" && release?.installer) || (p === "freebsd" && main[0])) && (
             <div class="dl-also">
               <p class="dl-also-head">{s.also}</p>
+              {p === "freebsd" && main[0] && (
+                <div class="dl-cmd">
+                  <span class="dl-cmd-label">{s.pkgAdd}</span>
+                  <code>
+                    <span aria-hidden="true">$ </span>
+                    {pkgAddCommand(main[0].name)}
+                  </code>
+                  <CopyButton text={pkgAddCommand(main[0].name)} label={t.oneLine.copy} copied={t.oneLine.copied} failed={t.oneLine.failed} />
+                </div>
+              )}
               {p === "linux" && release?.installer && (
                 <div class="dl-cmd">
                   <span class="dl-cmd-label">{s.orLine}</span>

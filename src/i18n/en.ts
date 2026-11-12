@@ -326,8 +326,9 @@ export const en: Dict = {
     howTo: "Installation guide",
     platforms: {
       windows: { name: "Windows", sub: "10 / 11 · installer (.exe)", warn: "Signed as “Open Source Developer, Tobias Vorwachs”. SmartScreen may still warn at first: “More info” → “Run anyway”." },
-      macos: { name: "macOS", sub: "Universal, Apple Silicon & Intel · .dmg", warn: "Gatekeeper blocks the first launch: right-click → “Open”, or allow it under Privacy & Security." },
+      macos: { name: "macOS", sub: "Apple Silicon & Intel · .dmg", warn: "Gatekeeper blocks the first launch: right-click → “Open”, or allow it under Privacy & Security." },
       linux: { name: "Linux", sub: "X11 & Wayland · AppImage", warn: "chmod +x Mumcord_*.AppImage — needs WebKitGTK 4.1 and a Secret Service keyring." },
+      freebsd: { name: "FreeBSD", sub: "15.x · amd64 · package (.pkg)", warn: "Updates come with pkg upgrade. Camera, the in-game overlay and screen-share sound are not available on FreeBSD." },
     },
     signed: {
       macos: "Signed and notarized by Apple: opens without a warning.",
@@ -367,10 +368,11 @@ export const en: Dict = {
       mobile: "You're on a phone right now. Mumcord for Android and iOS comes with Epic 5; until then, here are the desktop versions.",
       mobileLink: "See the roadmap",
       all: "All downloads, checksums and older versions",
-      kinds: { setup: "Installer", portable: "Portable, no install", dmg: "Disk image", appimage: "AppImage", deb: "Debian/Ubuntu package", rpm: "Fedora/openSUSE package", other: "File" },
+      kinds: { setup: "Installer", portable: "Portable, no install", dmg: "Disk image", appimage: "AppImage", deb: "Debian/Ubuntu package", rpm: "Fedora/openSUSE package", pkg: "FreeBSD package", other: "File" },
       arch: { x86_64: "x86_64 (Intel/AMD)", arm64: "ARM64", universal: "Apple Silicon & Intel" },
       macArch: { arm64: "Apple Silicon", x86_64: "Intel" },
       brew: "With Homebrew",
+      pkgAdd: "Install in the terminal",
       soon: "Coming soon",
     },
   },
@@ -389,8 +391,9 @@ export const en: Dict = {
     reqTitle: "System requirements",
     req: {
       windows: ["Windows 10 or 11, 64-bit", "WebView2: built into Windows 11, the installer fetches it on Windows 10"],
-      macos: ["One app for Apple Silicon and Intel (Universal)", "Signed and notarized by Apple"],
+      macos: ["A native build each for Apple Silicon and Intel", "Signed and notarized by Apple"],
       linux: ["x86_64 or ARM64, X11 and Wayland", "WebKitGTK 4.1 and a Secret Service keyring (GNOME Keyring, KWallet)"],
+      freebsd: ["FreeBSD 15.x, amd64, X11", "Intel graphics need drm-66-kmod, real-time audio needs the realtime group"],
     },
     verifyTitle: "Check what you download",
     verify: {

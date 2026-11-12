@@ -2730,7 +2730,8 @@ p {
 }
 .dl-spot[data-os="windows"] .dl-panel:not([data-for="windows"]),
 .dl-spot[data-os="macos"] .dl-panel:not([data-for="macos"]),
-.dl-spot[data-os="linux"] .dl-panel:not([data-for="linux"]) {
+.dl-spot[data-os="linux"] .dl-panel:not([data-for="linux"]),
+.dl-spot[data-os="freebsd"] .dl-panel:not([data-for="freebsd"]) {
   display: none;
 }
 @keyframes dl-in {
@@ -3006,6 +3007,10 @@ p {
 @media (min-width: 980px) {
   .dlp-files {
     grid-template-columns: repeat(3, 1fr);
+  }
+  /* Four systems (with FreeBSD) sit two by two instead of leaving one card alone in a row. */
+  .dlp-files:has(> :nth-child(4)) {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 .dlp-os {
@@ -6822,7 +6827,13 @@ a:hover span > .ico-arrow-left {
   border-color: var(--line-strong); 
 }
 .mb-dl-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-weight: 600;
+}
+.mb-dl-name svg {
+  flex-shrink: 0;
 }
 .mb-dl-file {
   grid-column: 1;
