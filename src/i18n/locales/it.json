@@ -477,7 +477,7 @@
         },
         "macos": {
           "name": "macOS",
-          "sub": "Universal, Apple Silicon e Intel · .dmg",
+          "sub": "Apple Silicon e Intel · .dmg",
           "warn": "Gatekeeper blocca il primo avvio: clic destro → “Apri”, oppure consentilo in Privacy e sicurezza."
         },
         "linux": {
@@ -899,6 +899,17 @@
             "id": "homebrew",
             "title": "Homebrew e build native per Mac",
             "body": "Mumcord è su Homebrew per macOS e Linux. I Mac ottengono un download nativo ciascuno per Apple Silicon e Intel, firmato e notarizzato e grande la metà della vecchia app universale."
+          },
+          {
+            "id": "update-channel",
+            "title": "Canale di aggiornamento",
+            "body": "In Impostazioni → Aggiornamenti scegli «Stabile», solo versioni finali, oppure «Release candidate» per provare in anticipo la prossima versione. Le release candidate hanno un proprio badge.",
+            "alt": "L’impostazione Canale di aggiornamento in Aggiornamenti"
+          },
+          {
+            "id": "freebsd",
+            "title": "FreeBSD",
+            "body": "Mumcord funziona su FreeBSD 15 (amd64) come .pkg che si installa con pkg add e si aggiorna con pkg upgrade, con voce, chat, file, plugin, push-to-talk e condivisione dello schermo sotto X11."
           }
         ]
       },
@@ -1596,6 +1607,12 @@
             "id": "plugin-relay-data",
             "title": "Dati dei plugin tramite il relay",
             "body": "I dati di gioco passano cifrati end-to-end dal relay, fino a 64 KB per messaggio, a una persona o all’intero canale. Li disattivi per singolo plugin, e Impostazioni → Plugin mostra quanti dati ha usato."
+          },
+          {
+            "id": "plugin-link-cards",
+            "title": "Link ai plugin come schede",
+            "body": "Un link a un plugin ufficiale nella chat mostra una scheda con icona, nome e breve descrizione. Da lì installi il plugin, lo apri o ne vedi i dettagli.",
+            "alt": "Scheda di un link a un plugin nella chat con il pulsante Installa"
           }
         ]
       },
@@ -1738,7 +1755,11 @@
             "In riproduzione su macOS (#658): Mumcord legge il brano dallo stesso posto del Centro di Controllo, quindi funzionano Music, Spotify, browser e altri lettori, senza richiesta di autorizzazione.",
             "Homebrew (#662): brew install --cask mumcord/tap/mumcord su macOS e brew install mumcord/tap/mumcord su Linux.",
             "Release candidate (#686): le versioni in arrivo si possono provare in anticipo come pre-release. L’aggiornamento, Homebrew e l’AUR continuano a offrire solo le versioni finali.",
-            "Consenti tutti i permessi dei plugin in una volta (#708): durante l’installazione «Consenti tutto» attiva tutti i permessi facoltativi con un clic. Se tra questi ce ne sono di rischiosi, Mumcord te lo chiede prima e li nomina."
+            "Consenti tutti i permessi dei plugin in una volta (#708): durante l’installazione «Consenti tutto» attiva tutti i permessi facoltativi con un clic. Se tra questi ce ne sono di rischiosi, Mumcord te lo chiede prima e li nomina.",
+            "Canale di aggiornamento (#741): in Impostazioni → Aggiornamenti scegli tra «Stabile» (solo versioni finali, l’impostazione predefinita) e «Release candidate» (build iniziali della prossima versione). Le release candidate hanno un proprio badge e l’aggiornatore le propone solo se hai scelto quel canale.",
+            "Link ai plugin nella chat (#755): un link mumcord://plugins/… a un plugin ufficiale mostra una scheda con icona, nome e breve descrizione, con pulsanti per installare, aprire o vedere i dettagli.",
+            "FreeBSD 15 (amd64) come piattaforma desktop: un .pkg che si installa con pkg add e si aggiorna con pkg upgrade, con voce, chat, file, visione condivisa, plugin, push-to-talk, audio posizionale e condivisione dello schermo sotto X11.",
+            "Ogni release ha allegata la propria provenienza di build firmata (mumcord-<version>.intoto.jsonl), così i download si possono verificare anche offline con gh attestation verify."
           ]
         },
         {
@@ -1751,7 +1772,13 @@
             "Mumcord riconosce gli altri utenti Mumcord anche quando il loro primo saluto è andato perso, e chiede di nuovo fino a tre volte. I client Mumble non si accorgono di nulla.",
             "Le notifiche di errore hanno un suono tutto loro.",
             "Sicurezza: il testo di benvenuto del server viene sanificato ancora una volta nell’interfaccia, e la content security policy dell’app è più rigida.",
-            "Traduzioni riviste in tutte le 23 lingue (#687): formulazioni più naturali, il tu informale ovunque e una sola parola per termine in ogni lingua."
+            "Traduzioni riviste in tutte le 23 lingue (#687): formulazioni più naturali, il tu informale ovunque e una sola parola per termine in ogni lingua.",
+            "I permessi del canale sono più facili da leggere (#711): la scheda mostra chiaramente quale vista è aperta («Chi può cosa», «Regole» o «Gruppi»), con il numero di regole e gruppi, e Gruppi inizia con un pulsante ben visibile «Nuovo gruppo».",
+            "La colonna dei membri ora si apre sulla scheda «Attività» (#709). Se passi a «Membri», resta così fino alla disconnessione.",
+            "«Bot su questo server» mostra il canale di ogni bot, anche dei bot che non parlano mai.",
+            "Le persone che hai bloccato non attivano più notifiche di ingresso, uscita e spostamento, e tutte le altre al massimo una ogni 30 secondi.",
+            "La soppressione del rumore avanzata (IA) non trasforma più la tua voce in fruscio quando il computer non regge il ritmo (#753): se ci mette troppo, Mumcord passa da solo al modello «Standard».",
+            "Sicurezza: «Prova» nella finestra del server non invia più una password a un server con un certificato diverso. Un pacchetto vocale manipolato o un elenco di canali con cicli non possono più mandare in crash Mumcord, e le immagini oltre 8K vengono rifiutate. Salvare e allegare file funziona solo con file e cartelle che hai scelto tu, e Mumcord risponde alle richieste di saluto della stessa persona al massimo ogni 30 secondi."
           ]
         },
         {
@@ -1769,7 +1796,11 @@
             "Le immagini nel commento del profilo, nelle descrizioni dei canali e nell’avviso del server vengono di nuovo salvate, invece di fallire con «Troppo grande per il server» (#712).",
             "I plugin vengono fermati correttamente quando Mumcord si chiude o si riavvia, così non si perde nulla, ad esempio le ultime modifiche alla Whiteboard (#704).",
             "Un errore sopra la casella dei messaggi, come «Si possono inviare solo immagini.», sparisce da solo dopo qualche secondo (#707).",
-            "Linux: le webcam tramite il portale fotocamere ricevono il formato e la dimensione scelti da Mumcord, invece di spesso solo 640×480."
+            "Linux: le webcam tramite il portale fotocamere ricevono il formato e la dimensione scelti da Mumcord, invece di spesso solo 640×480.",
+            "I comandi di amministrazione come /mute Bob Smith colpiscono esattamente la persona con quel nome invece di «Bob», e un nome digitato solo in parte apre il selettore.",
+            "Permessi → «Chi può cosa»: la persona controllata può essere deselezionata con una piccola «×», e il controllo termina quando lascia il server (#710).",
+            "Linux: i plugin vengono fermati correttamente anche al logout, allo spegnimento, con kill o Ctrl+C (#748).",
+            "macOS: le finestre di dialogo, i pannelli e le scene dei plugin non si chiudono più dopo cinque secondi, l’icona nella barra e le notifiche riportano la finestra mentre un plugin è aperto (#705), e i contenuti dei plugin restano esattamente nel loro riquadro quando cambia l’altezza della finestra (#706)."
           ]
         }
       ]

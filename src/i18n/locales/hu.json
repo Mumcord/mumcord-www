@@ -477,7 +477,7 @@
         },
         "macos": {
           "name": "macOS",
-          "sub": "Universal, Apple Silicon és Intel · .dmg",
+          "sub": "Apple Silicon és Intel · .dmg",
           "warn": "A Gatekeeper blokkolja az első indítást: jobb klikk → „Megnyitás”, vagy engedélyezd az Adatvédelem és biztonság alatt."
         },
         "linux": {
@@ -899,6 +899,17 @@
             "id": "homebrew",
             "title": "Homebrew és natív Mac-buildek",
             "body": "A Mumcord elérhető Homebrew-n macOS-re és Linuxra. A Macek külön natív letöltést kapnak Apple Siliconhoz és Inteléhez, aláírva és hitelesítve, és feleakkorát, mint a korábbi univerzális app."
+          },
+          {
+            "id": "update-channel",
+            "title": "Frissítési csatorna",
+            "body": "A Beállítások → Frissítések alatt a „Stabil” (csak végleges kiadások) vagy a „Kiadásjelöltek” közül választasz, hogy korán kipróbáld a következő verziót. A kiadásjelöltek saját jelvényt kapnak.",
+            "alt": "A Frissítési csatorna beállítás a Frissítések alatt"
+          },
+          {
+            "id": "freebsd",
+            "title": "FreeBSD",
+            "body": "A Mumcord FreeBSD 15-ön (amd64) fut .pkg-ként, amely a pkg add paranccsal telepíthető és a pkg upgrade paranccsal frissíthető, hanggal, chattel, fájlokkal, bővítményekkel, push-to-talk-kal és képernyőmegosztással X11 alatt."
           }
         ]
       },
@@ -1596,6 +1607,12 @@
             "id": "plugin-relay-data",
             "title": "Bővítményadatok a relén keresztül",
             "body": "A játékadatok végpontok közötti titkosítással mennek a relén keresztül, üzenetenként legfeljebb 64 KB, egy személynek vagy az egész csatornának. Bővítményenként kikapcsolhatod, a Beállítások → Bővítmények pedig megmutatja, mennyi adatot használt."
+          },
+          {
+            "id": "plugin-link-cards",
+            "title": "Bővítménylinkek kártyaként",
+            "body": "Egy hivatalos bővítményre mutató link a chatben kártyát jelenít meg ikonnal, névvel és rövid leírással. Innen telepítheted a bővítményt, megnyithatod, vagy megnézheted a részleteit.",
+            "alt": "Bővítménylink kártyája a chatben a Telepítés gombbal"
           }
         ]
       },
@@ -1738,7 +1755,11 @@
             "Most szól macOS-en (#658): a Mumcord ugyanonnan olvassa a számot, mint a Vezérlőközpont, így működik a Music, a Spotify, a böngészők és más lejátszók, engedélykérés nélkül.",
             "Homebrew (#662): brew install --cask mumcord/tap/mumcord macOS-en és brew install mumcord/tap/mumcord Linuxon.",
             "Kiadásjelöltek (#686): a készülő verziókat korán kipróbálhatod előzetes kiadásként. A frissítő, a Homebrew és az AUR továbbra is csak végleges kiadásokat kínál.",
-            "Az összes bővítményjogosultság egyszerre engedélyezhető (#708): telepítéskor az „Összes engedélyezése” egy kattintással bekapcsolja az összes választható jogosultságot. Ha köztük kockázatosak is vannak, a Mumcord előbb rákérdez, és megnevezi őket."
+            "Az összes bővítményjogosultság egyszerre engedélyezhető (#708): telepítéskor az „Összes engedélyezése” egy kattintással bekapcsolja az összes választható jogosultságot. Ha köztük kockázatosak is vannak, a Mumcord előbb rákérdez, és megnevezi őket.",
+            "Frissítési csatorna (#741): a Beállítások → Frissítések alatt választhatsz a „Stabil” (csak végleges kiadások, az alapértelmezett) és a „Kiadásjelöltek” (a következő verzió korai buildjei) között. A kiadásjelöltek saját jelvényt kapnak, és a frissítő csak akkor ajánlja fel őket, ha ezt a csatornát választottad.",
+            "Bővítménylinkek a chatben (#755): egy hivatalos bővítményre mutató mumcord://plugins/… link kártyát jelenít meg ikonnal, névvel és rövid leírással, a telepítéshez, megnyitáshoz vagy a részletek megtekintéséhez szükséges gombokkal.",
+            "FreeBSD 15 (amd64) asztali platformként: egy .pkg, amely a pkg add paranccsal telepíthető és a pkg upgrade paranccsal frissíthető, hanggal, chattel, fájlokkal, közös nézéssel, bővítményekkel, push-to-talk-kal, pozicionális hanggal és képernyőmegosztással X11 alatt.",
+            "Minden kiadáshoz mellékeljük az aláírt build-eredetet (mumcord-<version>.intoto.jsonl), így a letöltések offline is ellenőrizhetők a gh attestation verify paranccsal."
           ]
         },
         {
@@ -1751,7 +1772,13 @@
             "A Mumcord akkor is felismeri a többi Mumcord-felhasználót, ha az első üdvözlésük elveszett, és legfeljebb háromszor újra rákérdez. A Mumble kliensek ebből semmit sem vesznek észre.",
             "A hibaértesítéseknek saját hangjuk van.",
             "Biztonság: a szerver üdvözlőszövegét a felület még egyszer megtisztítja, az app tartalombiztonsági irányelve pedig szigorúbb.",
-            "A fordítások mind a 23 nyelven átnézve (#687): természetesebb megfogalmazások, mindenütt a tegezés és fogalmanként egy szó minden nyelven."
+            "A fordítások mind a 23 nyelven átnézve (#687): természetesebb megfogalmazások, mindenütt a tegezés és fogalmanként egy szó minden nyelven.",
+            "A csatornajogosultságok könnyebben olvashatók (#711): a fül egyértelműen mutatja, melyik nézet van megnyitva („Ki mit tehet”, „Szabályok” vagy „Csoportok”), a szabályok és csoportok számával, a Csoportok pedig feltűnő „Új csoport” gombbal kezdődik.",
+            "A tagok oszlopa mostantól a „Tevékenység” fülön nyílik meg (#709). Ha átváltasz a „Tagok” fülre, az a leválasztásig megmarad.",
+            "A „Botok ezen a szerveren” minden bot csatornáját mutatja, azokét is, amelyek soha nem beszélnek.",
+            "A letiltott emberek már nem váltanak ki belépési, kilépési és áthelyezési értesítést, mindenki más pedig legfeljebb egyet 30 másodpercenként.",
+            "A speciális (MI) zajszűrés már nem változtatja zajjá a hangodat, ha a számítógép nem bírja a tempót (#753): ha túl sokáig tart, a Mumcord magától átvált a „Szabványos” modellre.",
+            "Biztonság: a szerverpárbeszéd „Teszt” gombja már nem küld jelszót eltérő tanúsítványú szervernek. Egy megformált hangcsomag vagy egy hurkokat tartalmazó csatornalista már nem tudja összeomlatni a Mumcordot, és a 8K-nál nagyobb képeket elutasítja. A fájlok mentése és csatolása csak az általad választott fájlokkal és mappákkal működik, a Mumcord pedig ugyanattól a személytől érkező köszönéskéréseket legfeljebb 30 másodpercenként válaszolja meg."
           ]
         },
         {
@@ -1769,7 +1796,11 @@
             "A profilmegjegyzésben, a csatornaleírásokban és a szerverüzenetben lévő képek újra mentődnek, ahelyett hogy „Túl nagy a szervernek” hibával megszakadnának (#712).",
             "A bővítmények rendesen leállnak, amikor a Mumcord kilép vagy újraindul, így semmi sem vész el, például a Whiteboard utolsó módosításai (#704).",
             "Az üzenetmező feletti hibaüzenet, például „Csak képeket lehet küldeni.”, pár másodperc után magától eltűnik (#707).",
-            "Linux: a kameraportálon át használt kamerák azt a formátumot és méretet kapják, amelyet a Mumcord választ, nem gyakran csak 640×480-at."
+            "Linux: a kameraportálon át használt kamerák azt a formátumot és méretet kapják, amelyet a Mumcord választ, nem gyakran csak 640×480-at.",
+            "Az adminparancsok, például a /mute Bob Smith, pontosan az adott nevű személyre hatnak a „Bob” helyett, és a csak részben begépelt név megnyitja a választót.",
+            "Jogosultságok → „Ki mit tehet”: az ellenőrzött személy egy kis „×” gombbal újra kijelölés nélkülivé tehető, és az ellenőrzés véget ér, amikor elhagyja a szervert (#710).",
+            "Linux: a bővítmények kijelentkezéskor, leállításkor, kill-lel vagy Ctrl+C-vel is rendesen leállnak (#748).",
+            "macOS: a bővítmények párbeszédablakai, paneljei és színpadai már nem záródnak be öt másodperc után, a tálcaikon és az értesítések visszahozzák az ablakot, amíg egy bővítmény nyitva van (#705), és a bővítmények tartalma pontosan a keretében marad, ha az ablak magassága változik (#706)."
           ]
         }
       ]

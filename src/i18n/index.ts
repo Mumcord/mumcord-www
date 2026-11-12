@@ -13,13 +13,20 @@ export function localized<T>(base: { de: T; en: T }, extra: (lang: (typeof EXTRA
   return Object.fromEntries(LANGS.map((l) => [l, l === "de" || l === "en" ? base[l] : extra(l)])) as Record<Lang, T>;
 }
 
-// Missing keys in a translation fall back to English, one level deep is enough for the dicts.
+// Missing keys in a translation fall back to English at every depth, so a new key never breaks a language.
+const deep = (base: unknown, tr: unknown): unknown => {
+  if (tr === undefined || tr === null) return base;
+  if (!base || typeof base !== "object" || Array.isArray(base) || typeof tr !== "object" || Array.isArray(tr)) return tr;
+  const out: Record<string, unknown> = { ...(base as Record<string, unknown>) };
+  for (const [k, v] of Object.entries(tr as Record<string, unknown>)) out[k] = deep(out[k], v);
+  return out;
+};
 const mergeDict = (lang: string, tr: Partial<Dict> | undefined): Dict => {
   if (!tr) return { ...en, lang, locale: LANG_INFO[lang as Lang].og };
   const out: Record<string, unknown> = { ...en };
   for (const [k, v] of Object.entries(tr)) {
     const base = (en as Record<string, unknown>)[k];
-    out[k] = base && typeof base === "object" && !Array.isArray(base) && v && typeof v === "object" && !Array.isArray(v) ? { ...base, ...v } : v;
+    out[k] = deep(base, v);
   }
   return { ...(out as Dict), lang, locale: LANG_INFO[lang as Lang].og };
 };

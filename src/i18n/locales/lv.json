@@ -477,7 +477,7 @@
         },
         "macos": {
           "name": "macOS",
-          "sub": "Universal, Apple Silicon un Intel · .dmg",
+          "sub": "Apple Silicon un Intel · .dmg",
           "warn": "Gatekeeper bloķē pirmo palaišanu: labais klikšķis → “Atvērt” vai atļauj to sadaļā “Privātums un drošība”."
         },
         "linux": {
@@ -899,6 +899,17 @@
             "id": "homebrew",
             "title": "Homebrew un natīvi Mac būvējumi",
             "body": "Mumcord ir pieejams Homebrew operētājsistēmām macOS un Linux. Mac datori saņem pa vienai natīvai lejupielādei Apple Silicon un Intel, parakstītai un notarizētai un uz pusi mazākai nekā agrākā universālā lietotne."
+          },
+          {
+            "id": "update-channel",
+            "title": "Atjauninājumu kanāls",
+            "body": "Sadaļā Iestatījumi → Atjauninājumi izvēlies „Stabils”, tikai galīgās versijas, vai „Laidiena kandidāti”, lai nākamo versiju izmēģinātu agrāk. Laidiena kandidātiem ir sava nozīmīte.",
+            "alt": "Iestatījums Atjauninājumu kanāls sadaļā Atjauninājumi"
+          },
+          {
+            "id": "freebsd",
+            "title": "FreeBSD",
+            "body": "Mumcord darbojas uz FreeBSD 15 (amd64) kā .pkg, ko instalē ar pkg add un atjaunina ar pkg upgrade, ar balsi, tērzēšanu, failiem, spraudņiem, push-to-talk un ekrāna kopīgošanu zem X11."
           }
         ]
       },
@@ -1596,6 +1607,12 @@
             "id": "plugin-relay-data",
             "title": "Spraudņu dati caur releju",
             "body": "Spēles dati iet šifrēti no gala līdz galam caur releju, līdz 64 KB vienā ziņā, vienam cilvēkam vai visam kanālam. Izslēdz to katram spraudnim, un Iestatījumi → Spraudņi rāda, cik datu tas izmantojis."
+          },
+          {
+            "id": "plugin-link-cards",
+            "title": "Spraudņu saites kā kartes",
+            "body": "Saite uz oficiālu spraudni tērzēšanā parāda karti ar ikonu, nosaukumu un īsu aprakstu. No turienes spraudni instalē, atver vai apskati tā sīkāku informāciju.",
+            "alt": "Spraudņa saites karte tērzēšanā ar pogu Instalēt"
           }
         ]
       },
@@ -1738,7 +1755,11 @@
             "Tagad skan operētājsistēmā macOS (#658): Mumcord nolasa skaņdarbu no tās pašas vietas kā Control Center, tāpēc darbojas Music, Spotify, pārlūki un citi atskaņotāji, bez atļaujas pieprasījuma.",
             "Homebrew (#662): brew install --cask mumcord/tap/mumcord operētājsistēmā macOS un brew install mumcord/tap/mumcord operētājsistēmā Linux.",
             "Laidiena kandidāti (#686): gaidāmās versijas var izmēģināt agrīni kā pirmslaidiena versijas. Atjauninātājs, Homebrew un AUR joprojām piedāvā tikai galīgos laidienus.",
-            "Atļauj visas spraudņu atļaujas uzreiz (#708): instalējot, „Atļaut visu“ ar vienu klikšķi ieslēdz visas neobligātās atļaujas. Ja starp tām ir riskantas, Mumcord vispirms pajautā un tās nosauc."
+            "Atļauj visas spraudņu atļaujas uzreiz (#708): instalējot, „Atļaut visu“ ar vienu klikšķi ieslēdz visas neobligātās atļaujas. Ja starp tām ir riskantas, Mumcord vispirms pajautā un tās nosauc.",
+            "Atjauninājumu kanāls (#741): sadaļā Iestatījumi → Atjauninājumi izvēlies starp „Stabils” (tikai galīgās versijas, noklusējums) un „Laidiena kandidāti” (nākamās versijas agrīni būvējumi). Laidiena kandidātiem ir sava nozīmīte, un atjauninātājs tos piedāvā tikai tad, ja esi izvēlējies šo kanālu.",
+            "Spraudņu saites tērzēšanā (#755): saite mumcord://plugins/… uz oficiālu spraudni parāda karti ar ikonu, nosaukumu un īsu aprakstu, ar pogām instalēšanai, atvēršanai vai sīkākas informācijas skatīšanai.",
+            "FreeBSD 15 (amd64) kā darbvirsmas platforma: .pkg, ko instalē ar pkg add un atjaunina ar pkg upgrade, ar balsi, tērzēšanu, failiem, kopīgu skatīšanos, spraudņiem, push-to-talk, pozicionālo skaņu un ekrāna kopīgošanu zem X11.",
+            "Katram izlaidumam ir pievienota parakstīta būvējuma izcelsme (mumcord-<version>.intoto.jsonl), lai lejupielādes varētu pārbaudīt arī bezsaistē ar gh attestation verify."
           ]
         },
         {
@@ -1751,7 +1772,13 @@
             "Mumcord atpazīst citus Mumcord lietotājus, pat ja viņu pirmais sveiciens ir pazudis, un jautā vēlreiz līdz trim reizēm. Mumble klienti to nemana.",
             "Kļūdu paziņojumiem ir sava skaņa.",
             "Drošība: servera sveiciena teksts saskarnē tiek attīrīts vēl vienu reizi, un lietotnes satura drošības politika ir stingrāka.",
-            "Tulkojumi pārskatīti visās 23 valodās (#687): dabiskāki formulējumi, visur neformālā uzruna ar „tu“ un viens vārds katram terminam katrā valodā."
+            "Tulkojumi pārskatīti visās 23 valodās (#687): dabiskāki formulējumi, visur neformālā uzruna ar „tu“ un viens vārds katram terminam katrā valodā.",
+            "Kanāla atļaujas ir vieglāk lasāmas (#711): cilne skaidri parāda, kurš skats ir atvērts („Kam ko drīkst”, „Noteikumi” vai „Grupas”), ar noteikumu un grupu skaitu, un Grupas sākas ar redzamu pogu „Jauna grupa”.",
+            "Dalībnieku kolonna tagad atveras cilnē „Aktivitāte” (#709). Ja pārslēdzies uz „Dalībnieki”, tas paliek līdz atvienošanai.",
+            "„Boti šajā serverī” rāda katra bota kanālu, arī botiem, kas nekad nerunā.",
+            "Bloķētie cilvēki vairs neizraisa paziņojumus par pievienošanos, aiziešanu un pārvietošanu, bet visi pārējie – ne biežāk kā reizi 30 sekundēs.",
+            "Uzlabotā (MI) trokšņu slāpēšana vairs nepārvērš tavu balsi troksnī, kad dators netiek līdzi (#753): ja tas aizņem pārāk ilgi, Mumcord pats pārslēdzas uz modeli „Standarta”.",
+            "Drošība: „Pārbaudīt” servera dialogā vairs nesūta paroli serverim ar citu sertifikātu. Safabricēta balss pakete vai kanālu saraksts ar cilpām vairs nevar sabojāt Mumcord, un attēli virs 8K tiek noraidīti. Failu saglabāšana un pievienošana darbojas tikai ar failiem un mapēm, ko izvēlējies pats, un Mumcord uz tās pašas personas sveiciena pieprasījumiem atbild ne biežāk kā reizi 30 sekundēs."
           ]
         },
         {
@@ -1769,7 +1796,11 @@
             "Attēli profila komentārā, kanālu aprakstos un servera paziņojumā atkal tiek saglabāti, nevis beidzas ar kļūdu „Pārāk liels serverim“ (#712).",
             "Spraudņi tiek pareizi apturēti, kad Mumcord aizveras vai restartējas, lai nekas nepazustu, piemēram, pēdējās izmaiņas Whiteboard (#704).",
             "Kļūda virs ziņojuma lauka, piemēram, „Var sūtīt tikai attēlus.“, pēc dažām sekundēm pazūd pati (#707).",
-            "Linux: kameras caur kameru portālu saņem formātu un izmēru, ko izvēlas Mumcord, nevis bieži tikai 640×480."
+            "Linux: kameras caur kameru portālu saņem formātu un izmēru, ko izvēlas Mumcord, nevis bieži tikai 640×480.",
+            "Administratora komandas, piemēram, /mute Bob Smith, attiecas tieši uz personu ar šādu vārdu, nevis uz „Bob”, un tikai daļēji ievadīts vārds atver izvēli.",
+            "Atļaujas → „Kam ko drīkst”: pārbaudāmo personu var atcelt ar mazu „×”, un pārbaude beidzas, kad tā atstāj serveri (#710).",
+            "Linux: spraudņi tiek pareizi apturēti arī izrakstoties, izslēdzot, ar kill vai Ctrl+C (#748).",
+            "macOS: spraudņu dialogi, paneļi un skatuves vairs neaizveras pēc piecām sekundēm, teknes ikona un paziņojumi atgriež logu, kamēr spraudnis ir atvērts (#705), un spraudņu saturs paliek tieši savā rāmī, kad mainās loga augstums (#706)."
           ]
         }
       ]

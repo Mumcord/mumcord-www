@@ -477,7 +477,7 @@
         },
         "macos": {
           "name": "macOS",
-          "sub": "Universal, Apple Silicon a Intel · .dmg",
+          "sub": "Apple Silicon a Intel · .dmg",
           "warn": "Gatekeeper zablokuje prvé spustenie: pravý klik → „Otvoriť“, alebo to povoľ v časti Súkromie a bezpečnosť."
         },
         "linux": {
@@ -899,6 +899,17 @@
             "id": "homebrew",
             "title": "Homebrew a natívne zostavenia pre Mac",
             "body": "Mumcord je na Homebrew pre macOS a Linux. Macy dostanú natívne stiahnutie osobitne pre Apple Silicon a Intel, podpísané a notarizované a o polovicu menšie než bývalá univerzálna aplikácia."
+          },
+          {
+            "id": "update-channel",
+            "title": "Kanál aktualizácií",
+            "body": "V Nastavenia → Aktualizácie si vyberieš „Stabilný“, teda iba finálne verzie, alebo „Release kandidátov“, aby si ďalšiu verziu vyskúšal skôr. Release kandidáti majú vlastný odznak.",
+            "alt": "Nastavenie Kanál aktualizácií v časti Aktualizácie"
+          },
+          {
+            "id": "freebsd",
+            "title": "FreeBSD",
+            "body": "Mumcord beží na FreeBSD 15 (amd64) ako balík .pkg, ktorý sa inštaluje pomocou pkg add a aktualizuje pomocou pkg upgrade, s hlasom, chatom, súbormi, pluginmi, push-to-talk a zdieľaním obrazovky pod X11."
           }
         ]
       },
@@ -1596,6 +1607,12 @@
             "id": "plugin-relay-data",
             "title": "Dáta pluginov cez relay",
             "body": "Herné dáta idú s end-to-end šifrovaním cez relay, až 64 KB na správu, jednej osobe alebo celému kanálu. Vypneš to pre každý plugin zvlášť a Nastavenia → Pluginy ukazujú, koľko dát použil."
+          },
+          {
+            "id": "plugin-link-cards",
+            "title": "Odkazy na pluginy ako karty",
+            "body": "Odkaz na oficiálny plugin v chate zobrazí kartu s ikonou, názvom a krátkym popisom. Odtiaľ plugin nainštaluješ, otvoríš alebo si zobrazíš jeho podrobnosti.",
+            "alt": "Karta odkazu na plugin v chate s tlačidlom Inštalovať"
           }
         ]
       },
@@ -1738,7 +1755,11 @@
             "Práve počúvaš v macOS (#658): Mumcord číta skladbu z rovnakého miesta ako Ovládacie centrum, takže fungujú Hudba, Spotify, prehliadače a iné prehrávače, bez žiadosti o povolenie.",
             "Homebrew (#662): brew install --cask mumcord/tap/mumcord v macOS a brew install mumcord/tap/mumcord v Linuxe.",
             "Release candidates (#686): pripravované verzie môžeš vyskúšať skôr ako predbežné vydania. Aktualizátor, Homebrew a AUR ponúkajú naďalej iba finálne vydania.",
-            "Povolenie všetkých oprávnení pluginov naraz (#708): pri inštalácii „Povoliť všetko“ jedným klikom zapne všetky voliteľné oprávnenia. Ak sú medzi nimi rizikové, Mumcord sa najprv opýta a pomenuje ich."
+            "Povolenie všetkých oprávnení pluginov naraz (#708): pri inštalácii „Povoliť všetko“ jedným klikom zapne všetky voliteľné oprávnenia. Ak sú medzi nimi rizikové, Mumcord sa najprv opýta a pomenuje ich.",
+            "Kanál aktualizácií (#741): v Nastavenia → Aktualizácie si vyberieš medzi „Stabilný“ (iba finálne verzie, predvolené) a „Release kandidáti“ (skoré zostavenia ďalšej verzie). Release kandidáti majú vlastný odznak a aktualizátor ich ponúka, len ak si zvolil tento kanál.",
+            "Odkazy na pluginy v chate (#755): odkaz mumcord://plugins/… na oficiálny plugin zobrazí kartu s ikonou, názvom a krátkym popisom a tlačidlami na inštaláciu, otvorenie alebo zobrazenie podrobností.",
+            "FreeBSD 15 (amd64) ako desktopová platforma: balík .pkg, ktorý sa inštaluje pomocou pkg add a aktualizuje pomocou pkg upgrade, s hlasom, chatom, súbormi, spoločným sledovaním, pluginmi, push-to-talk, pozičným zvukom a zdieľaním obrazovky pod X11.",
+            "Ku každému vydaniu je priložený podpísaný pôvod zostavenia (mumcord-<version>.intoto.jsonl), takže stiahnuté súbory možno overiť aj offline pomocou gh attestation verify."
           ]
         },
         {
@@ -1751,7 +1772,13 @@
             "Mumcord spozná ostatných používateľov Mumcordu, aj keď sa ich prvý pozdrav stratil, a pýta sa znova až trikrát. Klienti Mumble si nič nevšimnú.",
             "Upozornenia na chyby majú vlastný zvuk.",
             "Bezpečnosť: uvítací text servera sa v rozhraní sanitizuje ešte raz a politika zabezpečenia obsahu aplikácie je prísnejšia.",
-            "Preklady skontrolované vo všetkých 23 jazykoch (#687): prirodzenejšie formulácie, všade neformálne tykanie a jedno slovo na pojem v každom jazyku."
+            "Preklady skontrolované vo všetkých 23 jazykoch (#687): prirodzenejšie formulácie, všade neformálne tykanie a jedno slovo na pojem v každom jazyku.",
+            "Oprávnenia kanála sa čítajú ľahšie (#711): karta jasne ukazuje, ktorý pohľad je otvorený („Kto smie čo“, „Pravidlá“ alebo „Skupiny“), s počtom pravidiel a skupín, a Skupiny začínajú výrazným tlačidlom „Nová skupina“.",
+            "Stĺpec členov sa teraz otvára na karte „Aktivita“ (#709). Ak prepneš na „Členovia“, ostane to do odpojenia.",
+            "„Boty na tomto serveri“ ukazuje kanál každého bota, aj botov, ktorí nikdy nehovoria.",
+            "Ľudia, ktorých si zablokoval, už nespúšťajú oznámenia o pripojení, odchode a presune a všetci ostatní najviac jedno za 30 sekúnd.",
+            "Pokročilé (AI) potláčanie šumu už nemení tvoj hlas na šum, keď počítač nestíha (#753): ak to trvá príliš dlho, Mumcord sám prepne na model „Štandardný“.",
+            "Zabezpečenie: „Test“ v dialógu servera už neposiela heslo serveru s iným certifikátom. Podvrhnutý hlasový paket alebo zoznam kanálov so slučkami už nemôže zhodiť Mumcord a obrázky nad 8K sa odmietajú. Ukladanie a pripájanie súborov funguje len so súbormi a priečinkami, ktoré si vybral sám, a Mumcord odpovedá na žiadosti o pozdrav od tej istej osoby najviac raz za 30 sekúnd."
           ]
         },
         {
@@ -1769,7 +1796,11 @@
             "Obrázky v komentári profilu, v popisoch kanálov a v správe servera sa znova ukladajú, namiesto aby zlyhali s hlásením „Príliš veľké pre server“ (#712).",
             "Pluginy sa pri ukončení alebo reštarte Mumcordu riadne zastavia, takže sa nič nestratí, napríklad posledné úpravy vo Whiteboarde (#704).",
             "Chyba nad poľom správy, napríklad „Odosielať sa dajú iba obrázky.“, sama zmizne po pár sekundách (#707).",
-            "Linux: kamery cez kamerový portál dostanú formát a veľkosť, ktoré Mumcord zvolí, namiesto často len 640×480."
+            "Linux: kamery cez kamerový portál dostanú formát a veľkosť, ktoré Mumcord zvolí, namiesto často len 640×480.",
+            "Admin príkazy ako /mute Bob Smith zasiahnu presne osobu s týmto menom namiesto „Bob“ a len čiastočne napísané meno otvorí výber.",
+            "Oprávnenia → „Kto smie čo“: kontrolovanú osobu možno malým „×“ zase zrušiť a kontrola skončí, keď opustí server (#710).",
+            "Linux: pluginy sa správne zastavia aj pri odhlásení, vypnutí, kill alebo Ctrl+C (#748).",
+            "macOS: dialógy, panely a scény pluginov sa už nezatvárajú po piatich sekundách, ikona v oznamovacej oblasti a oznámenia vrátia okno, kým je plugin otvorený (#705), a obsah pluginov ostáva presne vo svojom ráme, keď sa zmení výška okna (#706)."
           ]
         }
       ]

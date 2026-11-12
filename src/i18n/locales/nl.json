@@ -477,7 +477,7 @@
         },
         "macos": {
           "name": "macOS",
-          "sub": "Universal, Apple Silicon & Intel · .dmg",
+          "sub": "Apple Silicon & Intel · .dmg",
           "warn": "Gatekeeper blokkeert de eerste start: rechtsklik → „Open”, of sta het toe onder Privacy en beveiliging."
         },
         "linux": {
@@ -899,6 +899,17 @@
             "id": "homebrew",
             "title": "Homebrew en native Mac-builds",
             "body": "Mumcord staat op Homebrew voor macOS en Linux. Macs krijgen elk een native download voor Apple Silicon en Intel, ondertekend en genotariseerd en half zo groot als de vroegere universele app."
+          },
+          {
+            "id": "update-channel",
+            "title": "Updatekanaal",
+            "body": "Onder Instellingen → Updates kies je “Stabiel”, alleen definitieve versies, of “Releasekandidaten” om de volgende versie vroeg uit te proberen. Releasekandidaten hebben een eigen badge.",
+            "alt": "De instelling Updatekanaal onder Updates"
+          },
+          {
+            "id": "freebsd",
+            "title": "FreeBSD",
+            "body": "Mumcord draait op FreeBSD 15 (amd64) als .pkg die je installeert met pkg add en bijwerkt met pkg upgrade, met spraak, chat, bestanden, plugins, push-to-talk en scherm delen onder X11."
           }
         ]
       },
@@ -1596,6 +1607,12 @@
             "id": "plugin-relay-data",
             "title": "Plug-indata via de relay",
             "body": "Spelgegevens gaan end-to-end versleuteld via de relay, tot 64 KB per bericht, naar één persoon of het hele kanaal. Je zet het per plug-in uit, en Instellingen → Plug-ins toont hoeveel data een plug-in heeft gebruikt."
+          },
+          {
+            "id": "plugin-link-cards",
+            "title": "Pluginlinks als kaarten",
+            "body": "Een link naar een officiële plugin in de chat toont een kaart met pictogram, naam en korte beschrijving. Van daaruit installeer je de plugin, open je hem of bekijk je de details.",
+            "alt": "Kaart voor een pluginlink in de chat met de knop Installeren"
           }
         ]
       },
@@ -1738,7 +1755,11 @@
             "Nu aan het luisteren op macOS (#658): Mumcord leest het nummer van dezelfde plek als het Controlecentrum, zodat Muziek, Spotify, browsers en andere spelers werken, zonder toestemmingsvraag.",
             "Homebrew (#662): brew install --cask mumcord/tap/mumcord op macOS en brew install mumcord/tap/mumcord op Linux.",
             "Release candidates (#686): komende versies kun je vroeg uitproberen als pre-releases. De updater, Homebrew en de AUR bieden nog steeds alleen definitieve releases aan.",
-            "Alle plugin-rechten in één keer toestaan (#708): bij het installeren zet „Alles toestaan” alle optionele rechten met één klik aan. Zitten er riskante tussen, dan vraagt Mumcord eerst en noemt ze."
+            "Alle plugin-rechten in één keer toestaan (#708): bij het installeren zet „Alles toestaan” alle optionele rechten met één klik aan. Zitten er riskante tussen, dan vraagt Mumcord eerst en noemt ze.",
+            "Updatekanaal (#741): onder Instellingen → Updates kies je tussen “Stabiel” (alleen definitieve versies, de standaard) en “Releasekandidaten” (vroege builds van de volgende versie). Releasekandidaten hebben een eigen badge en de updater biedt ze alleen aan als je dit kanaal hebt gekozen.",
+            "Pluginlinks in de chat (#755): een mumcord://plugins/…-link naar een officiële plugin toont een kaart met pictogram, naam en korte beschrijving, met knoppen om te installeren, te openen of de details te bekijken.",
+            "FreeBSD 15 (amd64) als desktopplatform: een .pkg die je installeert met pkg add en bijwerkt met pkg upgrade, met spraak, chat, bestanden, samen kijken, plugins, push-to-talk, positionele audio en scherm delen onder X11.",
+            "Elke release heeft zijn ondertekende build-herkomst (mumcord-<version>.intoto.jsonl) erbij, zodat de downloads ook offline gecontroleerd kunnen worden met gh attestation verify."
           ]
         },
         {
@@ -1751,7 +1772,13 @@
             "Mumcord herkent andere Mumcord-gebruikers ook als hun eerste hallo verloren ging, en vraagt tot drie keer opnieuw. Mumble-clients merken hier niets van.",
             "Foutmeldingen hebben hun eigen geluid.",
             "Beveiliging: de welkomsttekst van de server wordt in de interface nog een keer gesaneerd, en het contentbeveiligingsbeleid van de app is strenger.",
-            "Vertalingen herzien in alle 23 talen (#687): natuurlijkere formuleringen, overal het informele „je” en één woord per term in elke taal."
+            "Vertalingen herzien in alle 23 talen (#687): natuurlijkere formuleringen, overal het informele „je” en één woord per term in elke taal.",
+            "Kanaalrechten zijn makkelijker te lezen (#711): het tabblad toont duidelijk welke weergave open is (“Wie mag wat”, “Regels” of “Groepen”), met het aantal regels en groepen, en Groepen begint met een opvallende knop “Nieuwe groep”.",
+            "De ledenkolom opent nu op het tabblad “Activiteit” (#709). Schakel je over naar “Leden”, dan blijft dat zo tot je de verbinding verbreekt.",
+            "“Bots op deze server” toont van elke bot het kanaal, ook van bots die nooit praten.",
+            "Mensen die je hebt geblokkeerd veroorzaken geen meldingen meer voor binnenkomen, vertrekken en verplaatsen, en alle anderen hooguit één per 30 seconden.",
+            "De geavanceerde (AI) ruisonderdrukking maakt je stem niet meer tot ruis als de computer het niet bijhoudt (#753): duurt het te lang, dan schakelt Mumcord zelf over naar het model “Standaard”.",
+            "Beveiliging: “Testen” in het serverdialoog stuurt geen wachtwoord meer naar een server met een ander certificaat. Een geprepareerd spraakpakket of een kanaallijst met lussen kan Mumcord niet meer laten crashen, en afbeeldingen boven 8K worden geweigerd. Bestanden opslaan en bijvoegen werkt alleen met bestanden en mappen die je zelf hebt gekozen, en Mumcord beantwoordt hallo-verzoeken van dezelfde persoon hooguit elke 30 seconden."
           ]
         },
         {
@@ -1769,7 +1796,11 @@
             "Afbeeldingen in je profielopmerking, kanaalbeschrijvingen en de servermelding worden weer opgeslagen, in plaats van te mislukken met „Te groot voor de server” (#712).",
             "Plugins worden netjes gestopt wanneer Mumcord afsluit of herstart, zodat er niets verloren gaat, zoals de laatste wijzigingen op het Whiteboard (#704).",
             "Een foutmelding boven het berichtvak, zoals „Er kunnen alleen afbeeldingen worden verstuurd.”, verdwijnt na een paar seconden vanzelf (#707).",
-            "Linux: camera’s via het cameraportaal krijgen het formaat en de grootte die Mumcord kiest, in plaats van vaak alleen 640×480."
+            "Linux: camera’s via het cameraportaal krijgen het formaat en de grootte die Mumcord kiest, in plaats van vaak alleen 640×480.",
+            "Beheercommando’s zoals /mute Bob Smith treffen precies de persoon met die naam in plaats van “Bob”, en een maar deels getypte naam opent de keuzelijst.",
+            "Rechten → “Wie mag wat”: de gecontroleerde persoon kun je met een klein “×” weer deselecteren, en de controle eindigt als die de server verlaat (#710).",
+            "Linux: plugins worden ook netjes gestopt bij afmelden, afsluiten, kill of Ctrl+C (#748).",
+            "macOS: plugindialogen, -panelen en -podia sluiten niet meer na vijf seconden, het systeemvakpictogram en meldingen halen het venster terug terwijl een plugin openstaat (#705), en plugininhoud blijft precies in zijn kader als de vensterhoogte verandert (#706)."
           ]
         }
       ]

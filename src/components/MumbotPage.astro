@@ -1,4 +1,5 @@
 ---
+import { PLATFORM_GLYPHS } from "../lib/glyphs";
 import { Image } from "astro:assets";
 import CopyButton from "./CopyButton.astro";
 import { atLeast } from "../lib/compose";
@@ -32,6 +33,7 @@ const version = release?.version ?? "latest";
 // A stage counts as done once the release of its version is out.
 const stages = p.epics.map((s) => (s.version && release && atLeast(release.version, s.version) ? { ...s, status: "done" as const } : s));
 const platforms: BotPlatform[] = ["linux", "linuxArm", "windows", "macos"];
+const glyph = (k: BotPlatform) => PLATFORM_GLYPHS[k === "linuxArm" ? "linux" : k];
 // `code` in the texts becomes <code>; everything else is escaped.
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const md = (s: string) => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>");
@@ -111,7 +113,12 @@ import Arrow from "./Arrow.astro";
               a && (
                 <li>
                   <a href={a.url} rel="noopener">
-                    <span class="mb-dl-name">{p.platforms[k]}</span>
+                    <span class="mb-dl-name">
+                      <svg viewBox={glyph(k).viewBox} width="16" height="16" aria-hidden="true">
+                        <path fill="currentColor" d={glyph(k).d} />
+                      </svg>
+                      {p.platforms[k]}
+                    </span>
                     <span class="mb-dl-file">
                       {a.name} · {formatSize(a.size)}
                     </span>

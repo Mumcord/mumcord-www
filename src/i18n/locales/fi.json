@@ -477,7 +477,7 @@
         },
         "macos": {
           "name": "macOS",
-          "sub": "Universal, Apple Silicon ja Intel · .dmg",
+          "sub": "Apple Silicon ja Intel · .dmg",
           "warn": "Gatekeeper estää ensimmäisen käynnistyksen: hiiren oikea painike → ”Avaa”, tai salli se kohdassa Tietosuoja ja turvallisuus."
         },
         "linux": {
@@ -899,6 +899,17 @@
             "id": "homebrew",
             "title": "Homebrew ja natiivit Mac-versiot",
             "body": "Mumcord on Homebrewssa macOS:lle ja Linuxille. Macit saavat kumpikin oman natiivilatauksensa, Apple Silicon ja Intel, allekirjoitettuna, notarisoituna ja puolet entisen universaalisovelluksen koosta."
+          },
+          {
+            "id": "update-channel",
+            "title": "Päivityskanava",
+            "body": "Asetukset → Päivitykset -kohdassa valitset ”Vakaa”, vain lopulliset versiot, tai ”Julkaisuehdokkaat”, jos haluat kokeilla seuraavaa versiota etukäteen. Julkaisuehdokkailla on oma merkkinsä.",
+            "alt": "Päivityskanava-asetus Päivitykset-kohdassa"
+          },
+          {
+            "id": "freebsd",
+            "title": "FreeBSD",
+            "body": "Mumcord toimii FreeBSD 15:llä (amd64) .pkg-pakettina, joka asennetaan komennolla pkg add ja päivitetään komennolla pkg upgrade, ja jossa on puhe, chat, tiedostot, lisäosat, push-to-talk ja näytön jakaminen X11:ssä."
           }
         ]
       },
@@ -1596,6 +1607,12 @@
             "id": "plugin-relay-data",
             "title": "Lisäosien data välityspalvelimen kautta",
             "body": "Pelidata kulkee päästä päähän salattuna välityspalvelimen kautta, enintään 64 kt viestiä kohden, yhdelle henkilölle tai koko kanavalle. Kytket sen pois lisäosakohtaisesti, ja Asetukset → Lisäosat näyttää, kuinka paljon dataa se käytti."
+          },
+          {
+            "id": "plugin-link-cards",
+            "title": "Lisäosalinkit korteiksi",
+            "body": "Chatissa oleva linkki viralliseen lisäosaan näyttää kortin, jossa on kuvake, nimi ja lyhyt kuvaus. Siitä asennat lisäosan, avaat sen tai katsot sen tiedot.",
+            "alt": "Lisäosalinkin kortti chatissa Asenna-painikkeella"
           }
         ]
       },
@@ -1738,7 +1755,11 @@
             "”Nyt soi” macOS:ssä (#658): Mumcord lukee kappaleen samasta paikasta kuin Ohjauskeskus, joten Music, Spotify, selaimet ja muut soittimet toimivat ilman oikeuskyselyä.",
             "Homebrew (#662): brew install --cask mumcord/tap/mumcord macOS:ssä ja brew install mumcord/tap/mumcord Linuxissa.",
             "Julkaisuehdokkaat (#686): tulevia versioita voi kokeilla etukäteen esiversioina. Päivittäjä, Homebrew ja AUR tarjoavat edelleen vain lopullisia versioita.",
-            "Salli kaikki lisäosien oikeudet kerralla (#708): asennuksen aikana ”Salli kaikki” ottaa kaikki valinnaiset oikeudet käyttöön yhdellä napsautuksella. Jos mukana on riskialttiita, Mumcord kysyy ensin ja nimeää ne."
+            "Salli kaikki lisäosien oikeudet kerralla (#708): asennuksen aikana ”Salli kaikki” ottaa kaikki valinnaiset oikeudet käyttöön yhdellä napsautuksella. Jos mukana on riskialttiita, Mumcord kysyy ensin ja nimeää ne.",
+            "Päivityskanava (#741): Asetukset → Päivitykset -kohdassa valitset ”Vakaa” (vain lopulliset versiot, oletus) ja ”Julkaisuehdokkaat” (seuraavan version varhaisia koonteja) väliltä. Julkaisuehdokkailla on oma merkkinsä, ja päivitin tarjoaa ne vain, jos olet valinnut tämän kanavan.",
+            "Lisäosalinkit chatissa (#755): mumcord://plugins/…-linkki viralliseen lisäosaan näyttää kortin, jossa on kuvake, nimi ja lyhyt kuvaus sekä painikkeet asentamiseen, avaamiseen ja tietojen katsomiseen.",
+            "FreeBSD 15 (amd64) työpöytäalustana: .pkg, joka asennetaan komennolla pkg add ja päivitetään komennolla pkg upgrade, ja jossa on puhe, chat, tiedostot, yhteiskatselu, lisäosat, push-to-talk, paikkaääni ja näytön jakaminen X11:ssä.",
+            "Jokaiseen julkaisuun on liitetty allekirjoitettu koonnin alkuperätieto (mumcord-<version>.intoto.jsonl), jotta lataukset voi tarkistaa myös offline-tilassa komennolla gh attestation verify."
           ]
         },
         {
@@ -1751,7 +1772,13 @@
             "Mumcord tunnistaa muut Mumcordin käyttäjät, vaikka heidän ensimmäinen tervehdyksensä hukkuisi, ja kysyy uudelleen enintään kolme kertaa. Mumble-asiakkaat eivät huomaa tästä mitään.",
             "Virheilmoituksilla on oma äänensä.",
             "Tietoturva: palvelimen tervetuloviesti puhdistetaan käyttöliittymässä vielä kerran, ja sovelluksen sisällön tietoturvakäytäntö (CSP) on tiukempi.",
-            "Käännökset tarkistettu kaikilla 23 kielellä (#687): luontevampaa sanamuotoa, tuttavallinen sinuttelu kaikkialla ja yksi sana per termi jokaisella kielellä."
+            "Käännökset tarkistettu kaikilla 23 kielellä (#687): luontevampaa sanamuotoa, tuttavallinen sinuttelu kaikkialla ja yksi sana per termi jokaisella kielellä.",
+            "Kanavan oikeudet on helpompi lukea (#711): välilehti näyttää selvästi, mikä näkymä on auki (”Kuka saa tehdä mitä”, ”Säännöt” tai ”Ryhmät”), sekä sääntöjen ja ryhmien määrän, ja Ryhmät alkavat selkeällä ”Uusi ryhmä” -painikkeella.",
+            "Jäsensarake avautuu nyt ”Toiminta”-välilehdelle (#709). Jos vaihdat kohtaan ”Jäsenet”, valinta pysyy, kunnes katkaiset yhteyden.",
+            "”Botit tällä palvelimella” näyttää jokaisen botin kanavan, myös botit, jotka eivät koskaan puhu.",
+            "Estämäsi ihmiset eivät enää laukaise liittymis-, poistumis- ja siirtoilmoituksia, ja kaikki muut korkeintaan yhden 30 sekunnin välein.",
+            "Kehittynyt (tekoäly) kohinanvaimennus ei enää muuta ääntäsi kohinaksi, kun tietokone ei pysy mukana (#753): jos se kestää liian kauan, Mumcord vaihtaa itse ”Vakio”-malliin.",
+            "Tietoturva: palvelinikkunan ”Testaa” ei enää lähetä salasanaa palvelimelle, jolla on eri varmenne. Väärennetty puhepaketti tai silmukoita sisältävä kanavaluettelo ei enää kaada Mumcordia, ja yli 8K:n kuvat hylätään. Tiedostojen tallennus ja liittäminen toimii vain itse valitsemillesi tiedostoille ja kansioille, ja Mumcord vastaa saman henkilön hei-pyyntöihin korkeintaan 30 sekunnin välein."
           ]
         },
         {
@@ -1769,7 +1796,11 @@
             "Kuvat profiilikommentissa, kanavien kuvauksissa ja palvelimen ilmoituksessa tallentuvat taas sen sijaan, että epäonnistuisivat ilmoitukseen ”Liian suuri palvelimelle” (#712).",
             "Lisäosat pysäytetään kunnolla, kun Mumcord suljetaan tai käynnistetään uudelleen, jotta mitään ei katoa, kuten Whiteboardin viimeiset muutokset (#704).",
             "Viestikentän yläpuolella näkyvä virhe, kuten ”Vain kuvia voi lähettää.”, katoaa itsestään muutaman sekunnin kuluttua (#707).",
-            "Linux: kamerat kameraportaalin kautta saavat muodon ja koon, jonka Mumcord valitsee, eivätkä usein vain 640×480."
+            "Linux: kamerat kameraportaalin kautta saavat muodon ja koon, jonka Mumcord valitsee, eivätkä usein vain 640×480.",
+            "Ylläpitokomennot kuten /mute Bob Smith kohdistuvat täsmälleen siihen henkilöön, jolla on tämä nimi, eikä ”Bobiin”, ja vain osittain kirjoitettu nimi avaa valitsimen.",
+            "Oikeudet → ”Kuka saa tehdä mitä”: tarkistettavan henkilön valinnan voi poistaa pienellä ”×”-merkillä, ja tarkistus päättyy, kun hän poistuu palvelimelta (#710).",
+            "Linux: lisäosat pysäytetään kunnolla myös uloskirjautumisessa, sammutuksessa, kill-komennolla tai Ctrl+C:llä (#748).",
+            "macOS: lisäosien ikkunat, paneelit ja lavat eivät enää sulkeudu viiden sekunnin jälkeen, ilmaisinalueen kuvake ja ilmoitukset tuovat ikkunan takaisin lisäosan ollessa auki (#705), ja lisäosien sisältö pysyy täsmälleen kehyksessään, kun ikkunan korkeus muuttuu (#706)."
           ]
         }
       ]

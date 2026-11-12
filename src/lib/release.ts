@@ -17,11 +17,13 @@ export const UNINSTALL_COMMAND = `${INSTALL_COMMAND} -s -- --uninstall`;
 export const BREW_TAP_URL = "https://github.com/Mumcord/homebrew-tap";
 export const BREW_CASK = "brew install --cask mumcord/tap/mumcord";
 export const BREW_FORMULA = "brew install mumcord/tap/mumcord";
+/** FreeBSD: the package is installed with pkg and updated with pkg upgrade. */
+export const pkgAddCommand = (file: string) => `sudo pkg add ./${file}`;
 
-export type Platform = "windows" | "macos" | "linux";
+export type Platform = "windows" | "macos" | "linux" | "freebsd";
 
 export type Arch = "x86_64" | "arm64" | "universal";
-export type Kind = "setup" | "portable" | "dmg" | "appimage" | "deb" | "rpm" | "other";
+export type Kind = "setup" | "portable" | "dmg" | "appimage" | "deb" | "rpm" | "pkg" | "other";
 
 export interface Asset {
   name: string;
@@ -74,6 +76,8 @@ function platformOf(name: string): Platform | null {
   if (n.endsWith(".exe") || n.endsWith(".msi") || (n.endsWith(".zip") && n.includes("portable"))) return "windows";
   if (n.endsWith(".dmg")) return "macos";
   if (n.endsWith(".appimage") || n.endsWith(".deb") || n.endsWith(".rpm")) return "linux";
+  // mumcord-<version>.pkg, the FreeBSD package (since 0.8.0).
+  if (n.endsWith(".pkg")) return "freebsd";
   return null;
 }
 
@@ -85,6 +89,7 @@ function kindOf(name: string): Kind {
   if (n.endsWith(".appimage")) return "appimage";
   if (n.endsWith(".deb")) return "deb";
   if (n.endsWith(".rpm")) return "rpm";
+  if (n.endsWith(".pkg")) return "pkg";
   return "other";
 }
 
@@ -95,7 +100,7 @@ function archOf(name: string): Arch {
   return "x86_64";
 }
 
-const KIND_ORDER: Kind[] = ["setup", "dmg", "appimage", "deb", "rpm", "portable", "other"];
+const KIND_ORDER: Kind[] = ["setup", "dmg", "appimage", "deb", "rpm", "pkg", "portable", "other"];
 
 // The first asset is the platform's main download: the installer on Windows, the x86_64 AppImage
 // on Linux (it runs on any distro), then the native packages, x86_64 before ARM.
@@ -114,7 +119,7 @@ export const isCandidate = (tag: string) => /^v?\d+\.\d+\.\d+-/.test(tag);
 let cached: Promise<Release[]> | undefined;
 
 function toRelease(rel: GhRelease): Release {
-  const assets: Record<Platform, PlatformAsset[]> = { windows: [], macos: [], linux: [] };
+  const assets: Record<Platform, PlatformAsset[]> = { windows: [], macos: [], linux: [], freebsd: [] };
   const sboms: Asset[] = [];
   let checksums: Asset | undefined;
   let installer: Asset | undefined;

@@ -325,8 +325,9 @@ export const de = {
     howTo: "Installationsanleitung",
     platforms: {
       windows: { name: "Windows", sub: "10 / 11 · Installer (.exe)", warn: "Signiert als „Open Source Developer, Tobias Vorwachs“. SmartScreen kann anfangs trotzdem warnen: „Weitere Informationen“ → „Trotzdem ausführen“." },
-      macos: { name: "macOS", sub: "Universal, Apple Silicon & Intel · .dmg", warn: "Gatekeeper blockiert beim ersten Start: Rechtsklick → „Öffnen“ oder unter Datenschutz & Sicherheit erlauben." },
+      macos: { name: "macOS", sub: "Apple Silicon & Intel · .dmg", warn: "Gatekeeper blockiert beim ersten Start: Rechtsklick → „Öffnen“ oder unter Datenschutz & Sicherheit erlauben." },
       linux: { name: "Linux", sub: "X11 & Wayland · AppImage", warn: "chmod +x Mumcord_*.AppImage — braucht WebKitGTK 4.1 und einen Secret-Service-Schlüsselbund." },
+      freebsd: { name: "FreeBSD", sub: "15.x · amd64 · Paket (.pkg)", warn: "Updates kommen mit pkg upgrade. Kamera, das In-Game-Overlay und Ton bei der Bildschirmübertragung gibt es unter FreeBSD nicht." },
     },
     signed: {
       macos: "Signiert und von Apple notarisiert: öffnet sich ohne Warnung.",
@@ -366,10 +367,11 @@ export const de = {
       mobile: "Du bist gerade am Handy. Mumcord für Android und iOS kommt mit Epic 5, bis dahin findest du hier die Desktop-Versionen.",
       mobileLink: "Zur Roadmap",
       all: "Alle Downloads, Prüfsummen und ältere Versionen",
-      kinds: { setup: "Installer", portable: "Portable, ohne Installation", dmg: "Disk-Image", appimage: "AppImage", deb: "Debian/Ubuntu-Paket", rpm: "Fedora/openSUSE-Paket", other: "Datei" },
+      kinds: { setup: "Installer", portable: "Portable, ohne Installation", dmg: "Disk-Image", appimage: "AppImage", deb: "Debian/Ubuntu-Paket", rpm: "Fedora/openSUSE-Paket", pkg: "FreeBSD-Paket", other: "Datei" },
       arch: { x86_64: "x86_64 (Intel/AMD)", arm64: "ARM64", universal: "Apple Silicon & Intel" },
       macArch: { arm64: "Apple Silicon", x86_64: "Intel" },
       brew: "Mit Homebrew",
+      pkgAdd: "Im Terminal installieren",
       soon: "Kommt bald",
     },
   },
@@ -388,8 +390,9 @@ export const de = {
     reqTitle: "Systemanforderungen",
     req: {
       windows: ["Windows 10 oder 11, 64 Bit", "WebView2: bei Windows 11 schon dabei, unter Windows 10 holt der Installer es nach"],
-      macos: ["Eine App für Apple Silicon und Intel (Universal)", "Signiert und von Apple notarisiert"],
+      macos: ["Je ein nativer Build für Apple Silicon und Intel", "Signiert und von Apple notarisiert"],
       linux: ["x86_64 oder ARM64, X11 und Wayland", "WebKitGTK 4.1 und ein Secret-Service-Schlüsselbund (GNOME Keyring, KWallet)"],
+      freebsd: ["FreeBSD 15.x, amd64, X11", "Intel-Grafik braucht drm-66-kmod, Echtzeit-Audio die Gruppe realtime"],
     },
     verifyTitle: "Prüfen, was du lädst",
     verify: {
