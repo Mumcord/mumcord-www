@@ -42,6 +42,16 @@ const hpIcons: Partial<Record<PluginId, ImageMetadata>> = { poll: plgPoll, dice:
 // The epic chips take each epic's status from the roadmap; an epic is done once its release is out.
 const released = new Set((await getReleases()).map((r) => r.version));
 const epicStatus = roadmapPage.en.epics.map((e) => (e.version && released.has(e.version) ? "done" : e.status));
+// The block above the chips shows the first epic that is neither out nor far off.
+const nextIdx = epicStatus.findIndex((st) => st === "now" || st === "planned");
+const nextEpic = nextIdx >= 0 ? roadmapPage[lang].epics[nextIdx] : undefined;
+// Small drawn demos for the next epic's groups (epic id : group index); a group without one shows text only.
+const planDemos: Record<string, string> = {
+  "epic-5:0": "<rect x=\"30\" y=\"8\" width=\"84\" height=\"154\" rx=\"14\" fill=\"var(--bg-2)\" stroke=\"var(--line-strong)\" stroke-width=\"2\"/><rect x=\"60\" y=\"14\" width=\"24\" height=\"5\" rx=\"2.5\" fill=\"var(--line-strong)\"/><rect x=\"126\" y=\"8\" width=\"84\" height=\"154\" rx=\"14\" fill=\"var(--bg-2)\" stroke=\"var(--line-strong)\" stroke-width=\"2\"/><rect x=\"156\" y=\"14\" width=\"24\" height=\"5\" rx=\"2.5\" fill=\"var(--line-strong)\"/><path d=\"M72 52v40m-14-14 14 14 14-14M54 104h36\" fill=\"none\" stroke=\"var(--violet)\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"46\" y=\"122\" width=\"52\" height=\"20\" rx=\"10\" fill=\"var(--violet)\" opacity=\"0.25\"/><text x=\"72\" y=\"136\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\" fill=\"var(--text)\">APK</text><path d=\"M168 52v40m-14-14 14 14 14-14M150 104h36\" fill=\"none\" stroke=\"var(--pink)\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"136\" y=\"122\" width=\"64\" height=\"20\" rx=\"10\" fill=\"var(--pink)\" opacity=\"0.25\"/><text x=\"168\" y=\"136\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\" fill=\"var(--text)\">TestFlight</text>",
+  "epic-5:1": "<rect x=\"78\" y=\"8\" width=\"84\" height=\"154\" rx=\"14\" fill=\"var(--bg-2)\" stroke=\"var(--line-strong)\" stroke-width=\"2\"/><rect x=\"108\" y=\"14\" width=\"24\" height=\"5\" rx=\"2.5\" fill=\"var(--line-strong)\"/><circle cx=\"94\" cy=\"38\" r=\"7\" fill=\"var(--violet)\" opacity=\"1\"/><circle cx=\"94\" cy=\"60\" r=\"7\" fill=\"var(--pink)\" opacity=\"0.7\"/><circle cx=\"94\" cy=\"82\" r=\"7\" fill=\"var(--peach)\" opacity=\"0.7\"/><circle cx=\"94\" cy=\"104\" r=\"7\" fill=\"var(--muted)\" opacity=\"0.4\"/><path d=\"M108 26v128\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><rect x=\"114\" y=\"32\" width=\"34\" height=\"8\" rx=\"4\" fill=\"var(--muted)\" opacity=\"0.5\"/><rect x=\"114\" y=\"52\" width=\"40\" height=\"8\" rx=\"4\" fill=\"var(--violet)\" opacity=\"1\"/><rect x=\"114\" y=\"72\" width=\"28\" height=\"8\" rx=\"4\" fill=\"var(--muted)\" opacity=\"0.5\"/><rect x=\"114\" y=\"92\" width=\"36\" height=\"8\" rx=\"4\" fill=\"var(--muted)\" opacity=\"0.5\"/><circle cx=\"120\" cy=\"66\" r=\"4\" fill=\"var(--live, #3ddc97)\"/><circle cx=\"131\" cy=\"66\" r=\"4\" fill=\"var(--lilac)\"/><circle cx=\"142\" cy=\"66\" r=\"4\" fill=\"var(--peach)\"/><rect x=\"90\" y=\"132\" width=\"60\" height=\"18\" rx=\"9\" fill=\"var(--violet)\" opacity=\"0.25\"/><rect x=\"104\" y=\"138\" width=\"32\" height=\"6\" rx=\"3\" fill=\"var(--violet)\"/>",
+  "epic-5:2": "<rect x=\"78\" y=\"8\" width=\"84\" height=\"154\" rx=\"14\" fill=\"var(--bg-2)\" stroke=\"var(--line-strong)\" stroke-width=\"2\"/><rect x=\"108\" y=\"14\" width=\"24\" height=\"5\" rx=\"2.5\" fill=\"var(--line-strong)\"/><rect x=\"88\" y=\"30\" width=\"46\" height=\"14\" rx=\"7\" fill=\"var(--bg-3)\"/><rect x=\"106\" y=\"50\" width=\"46\" height=\"14\" rx=\"7\" fill=\"var(--violet)\" opacity=\"0.55\"/><rect x=\"88\" y=\"70\" width=\"34\" height=\"14\" rx=\"7\" fill=\"var(--bg-3)\"/><circle cx=\"120\" cy=\"122\" r=\"24\" fill=\"var(--violet)\" opacity=\"0.2\"/><circle cx=\"120\" cy=\"122\" r=\"17\" fill=\"var(--violet)\"/><path d=\"M120 112v10m-6-3a6 6 0 0 0 12 0m-6 6v5\" fill=\"none\" stroke=\"var(--bg)\" stroke-width=\"3\" stroke-linecap=\"round\"/><rect x=\"117\" y=\"110\" width=\"6\" height=\"12\" rx=\"3\" fill=\"var(--bg)\"/><path d=\"M166 108c5 8 5 20 0 28m10-36c9 13 9 31 0 44\" fill=\"none\" stroke=\"var(--violet)\" stroke-width=\"3\" stroke-linecap=\"round\" opacity=\"0.6\"/>",
+  "epic-5:3": "<rect x=\"78\" y=\"8\" width=\"84\" height=\"154\" rx=\"14\" fill=\"var(--bg-2)\" stroke=\"var(--line-strong)\" stroke-width=\"2\"/><rect x=\"108\" y=\"14\" width=\"24\" height=\"5\" rx=\"2.5\" fill=\"var(--line-strong)\"/><text x=\"120\" y=\"52\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"var(--text)\">21:04</text><rect x=\"86\" y=\"66\" width=\"68\" height=\"46\" rx=\"8\" fill=\"var(--bg-3)\" stroke=\"var(--line)\"/><rect x=\"92\" y=\"73\" width=\"30\" height=\"5\" rx=\"2.5\" fill=\"var(--violet)\"/><rect x=\"92\" y=\"83\" width=\"44\" height=\"4\" rx=\"2\" fill=\"var(--muted)\" opacity=\"0.6\"/><circle cx=\"98\" cy=\"100\" r=\"7\" fill=\"var(--violet)\" opacity=\"0.85\"/><circle cx=\"120\" cy=\"100\" r=\"7\" fill=\"var(--muted)\" opacity=\"0.85\"/><circle cx=\"142\" cy=\"100\" r=\"7\" fill=\"var(--pink)\" opacity=\"0.85\"/><path d=\"M22 96a16 16 0 0 1 24 0M27 102a9 9 0 0 1 14 0\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"3\" stroke-linecap=\"round\"/><circle cx=\"34\" cy=\"108\" r=\"2.5\" fill=\"var(--muted)\"/><path d=\"M48 84h14m-5-5 5 5-5 5\" fill=\"none\" stroke=\"var(--violet)\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"186\" y=\"104\" width=\"5\" height=\"8\" rx=\"1.5\" fill=\"var(--violet)\" opacity=\"0.45\"/><rect x=\"194\" y=\"98\" width=\"5\" height=\"14\" rx=\"1.5\" fill=\"var(--violet)\" opacity=\"0.63\"/><rect x=\"202\" y=\"92\" width=\"5\" height=\"20\" rx=\"1.5\" fill=\"var(--violet)\" opacity=\"0.81\"/><rect x=\"210\" y=\"86\" width=\"5\" height=\"26\" rx=\"1.5\" fill=\"var(--violet)\" opacity=\"0.99\"/><rect x=\"100\" y=\"126\" width=\"40\" height=\"16\" rx=\"4\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"2\"/><rect x=\"103\" y=\"129\" width=\"24\" height=\"10\" rx=\"2\" fill=\"var(--live, #3ddc97)\"/><rect x=\"141\" y=\"131\" width=\"3\" height=\"6\" rx=\"1\" fill=\"var(--muted)\"/>",
+};
 const nx = t.roadmap.next;
 const tt = t.themesTour;
 const tourColors = tour.map((x) => allThemes.find((th) => th.id === x.theme)?.[x.mode]);
@@ -434,81 +444,41 @@ import Arrow from "./Arrow.astro";
 
 
 <!-- Roadmap -->
-<!-- What comes next: 0.8.0 as drawn demos, then every epic as a chip -->
+<!-- What comes next: the first epic that is not out yet, straight from the roadmap, then every epic as a chip -->
 <section class="section roadmap nx" id="roadmap" aria-labelledby="roadmap-title">
   <div class="wrap">
     <div class="section-head nx-head">
-      <p class="label" data-reveal>{t.roadmap.label} · 0.8.0</p>
-      <h2 id="roadmap-title" class="h2" data-reveal>{nx.after.title}</h2>
-      <p class="body" data-reveal>{nx.after.body}</p>
-      <span class="nx-ver" aria-hidden="true">0.8</span>
+      <p class="label" data-reveal>{t.roadmap.label}{nextEpic && ` · ${nextEpic.version ?? nextEpic.tag}`}</p>
+      <h2 id="roadmap-title" class="h2" data-reveal>{nextEpic?.title ?? t.roadmap.all}</h2>
+      {nextEpic && <p class="body" data-reveal>{nextEpic.summary}</p>}
+      {nextEpic && <span class="nx-ver" aria-hidden="true">{nextEpic.version?.replace(/\.\d+$/, "") ?? nextEpic.tag.replace(/^\D+/, "")}</span>}
     </div>
 
-    <div class="nx-after">
-      <div class="nx-after-grid">
-      <a class="nx-tile nx-acl nx-small" href={`${routes.roadmap[lang]}#epic-4`} data-reveal>
-        <div class="s5-demo nx-demo" aria-hidden="true">
-          <table class="d7-acl">
-            <tr><th /><th>@admin</th><th>@all</th></tr>
-            <tr><td>Enter</td><td class="y">✓</td><td class="y">✓</td></tr>
-            <tr class="is-win"><td>Speak</td><td class="y">✓</td><td class="n">✕</td></tr>
-            <tr><td>Move</td><td class="y">✓</td><td class="n">✕</td></tr>
-            <tr><td>Ban</td><td class="y">✓</td><td class="n">✕</td></tr>
-          </table>
-        </div>
-        <div class="s5-text">
-          <h3>{nx.after.tiles.acl.title}</h3>
-          <p>{nx.after.tiles.acl.body}</p>
-        </div>
-      </a>
-      <a class="nx-tile nx-channels nx-small" href={`${routes.roadmap[lang]}#epic-4`} data-reveal>
-        <div class="s5-demo nx-demo" aria-hidden="true">
-          <ul class="d7-tree">
-            <li># Lobby</li>
-            <li class="is-drag"># Raid <span>✎</span></li>
-            <li class="d7-drop-line" />
-            <li># Officers <span>🔒</span></li>
-            <li class="d7-sub"># AFK</li>
-          </ul>
-        </div>
-        <div class="s5-text">
-          <h3>{nx.after.tiles.channels.title}</h3>
-          <p>{nx.after.tiles.channels.body}</p>
-        </div>
-      </a>
-      <a class="nx-tile nx-commands nx-small" href={`${routes.roadmap[lang]}#epic-4`} data-reveal>
-        <div class="s5-demo nx-demo" aria-hidden="true">
-          <div class="d7-cmd">
-            <ul>
-              <li class="is-on"><b>/kick</b><span>name [reason]</span></li>
-              <li><b>/ban</b><span>name [time]</span></li>
-              <li><b>/move</b><span>name channel</span></li>
-              <li><b>/mute</b><span>name</span></li>
-            </ul>
-            <div class="d7-input">/kick Be<span class="d7-caret" /></div>
+    {
+      nextEpic && (
+        <div class="nx-after">
+          <div class="nx-after-grid">
+            {(nextEpic.groups ?? []).map((g, gi) => (
+              <a class="nx-tile nx-small nx-plan" href={`${routes.roadmap[lang]}/${nextEpic.id}`} data-reveal>
+                {planDemos[`${nextEpic.id}:${gi}`] && (
+                  <div class="s5-demo nx-demo nx-plan-demo" aria-hidden="true">
+                    <svg viewBox="0 0 240 170" set:html={planDemos[`${nextEpic.id}:${gi}`]} />
+                  </div>
+                )}
+                <div class="s5-text">
+                  <h3>{g.title}</h3>
+                  <ul class="nx-plan-list">
+                    {g.items.slice(0, 2).map((i) => (
+                      <li>{i}</li>
+                    ))}
+                  </ul>
+                </div>
+              </a>
+            ))}
           </div>
         </div>
-        <div class="s5-text">
-          <h3>{nx.after.tiles.commands.title}</h3>
-          <p>{nx.after.tiles.commands.body}</p>
-        </div>
-      </a>
-      <a class="nx-tile nx-ban nx-small" href={`${routes.roadmap[lang]}#epic-4`} data-reveal>
-        <div class="s5-demo nx-demo" aria-hidden="true">
-          <div class="d7-ban">
-            <p><b>Ban Ben</b></p>
-            <div class="d7-chips"><span>1 h</span><span class="is-on">1 day</span><span>7 days</span><span>∞</span></div>
-            <div class="d7-toggles"><span class="is-on"><i />cert</span><span class="is-on"><i />IP</span></div>
-            <span class="d7-danger">Ban for 1 day</span>
-          </div>
-        </div>
-        <div class="s5-text">
-          <h3>{nx.after.tiles.ban.title}</h3>
-          <p>{nx.after.tiles.ban.body}</p>
-        </div>
-      </a>
-      </div>
-    </div>
+      )
+    }
 
     <ol class="nx-epics" aria-label={nx.epics}>
       {
