@@ -10,6 +10,10 @@
 
 	# Clean (extensionless) URLs for Astro's "file" build output:
 	#   /impressum -> impressum.html, /en -> en.html, /en/privacy -> en/privacy.html
+	# German lives at the root, so /de is the home page, and index.html is the same page as /.
+	@german path /de /de/
+	redir @german / 301
+	redir /index.html / 301
 	@trailing path_regexp trailing ^(.+)/$
 	redir @trailing {re.trailing.1} 301
 	try_files {path} {path}.html {path}/index.html

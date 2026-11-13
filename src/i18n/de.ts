@@ -5,7 +5,7 @@ export const de = {
     title: "Mumcord – alternativer Mumble-Client für Windows, macOS, Linux",
     altClient: "alternativer Mumble-Client",
     description:
-      "Mumcord ist ein freier, alternativer Mumble-Client für Windows, macOS und Linux: Kanälen folgen, Benachrichtigungen, KI-Rauschunterdrückung, Push-to-Talk auch unter Wayland.",
+      "Mumcord ist ein freier, alternativer Mumble-Client für Windows, macOS und Linux: Kanälen folgen, Benachrichtigungen, KI-Rauschunterdrückung, Push-to-Talk.",
   },
   nav: {
     features: "Funktionen",

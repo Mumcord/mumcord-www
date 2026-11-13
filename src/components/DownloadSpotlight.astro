@@ -22,8 +22,11 @@ import {
 interface Props {
   lang: Lang;
   release: Release | null;
+  /** Heading level of each panel title: 3 inside a section with its own h2, 2 right under the page title. */
+  level?: 2 | 3;
 }
-const { lang, release } = Astro.props;
+const { lang, release, level = 3 } = Astro.props;
+const Heading = `h${level}` as "h2" | "h3";
 const t = dicts[lang].download;
 const s = t.spot;
 const tap = await hasHomebrewTap();
@@ -87,9 +90,9 @@ import Arrow from "./Arrow.astro";
               </span>
             )}
           </p>
-          <h3 class="dl-title">
+          <Heading class="dl-title">
             {s.for} {t.platforms[p].name}
-          </h3>
+          </Heading>
           <p class="dl-sub">{t.platforms[p].sub}</p>
 
           <div class="dl-buttons">

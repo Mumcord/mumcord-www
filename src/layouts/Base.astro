@@ -18,8 +18,23 @@ interface Props {
   subpath?: string;
 }
 
-const { lang, page, title, description, jsonLd = [], noindex = false, subpath = "" } = Astro.props;
+const { lang, page, title: rawTitle, description: rawDescription, jsonLd = [], noindex = false, subpath = "" } = Astro.props;
 const t = dicts[lang];
+// Search results show about 60 characters of a title and 160 of a description. A title that only
+// says "Features — Mumcord" gets what Mumcord is; a long description ends at a sentence or a word.
+const MAX_TITLE = 62;
+const MAX_DESC = 160;
+const brand = `Mumcord, ${t.meta.altClient}`;
+const titled = / — Mumcord$/.test(rawTitle) ? rawTitle.replace(/ — Mumcord$/, ` — ${brand}`) : /Mumcord/.test(rawTitle) ? rawTitle : `${rawTitle} · Mumcord`;
+const title = page !== "home" && titled.length <= MAX_TITLE ? titled : rawTitle;
+const clamp = (text: string) => {
+  if (text.length <= MAX_DESC) return text;
+  const cut = text.slice(0, MAX_DESC);
+  const sentence = Math.max(cut.lastIndexOf(". "), cut.lastIndexOf("! "), cut.lastIndexOf("? "));
+  if (sentence >= 80) return cut.slice(0, sentence + 1);
+  return `${cut.slice(0, cut.lastIndexOf(" ")).replace(/[,;:–—-]$/, "")}…`;
+};
+const description = clamp(rawDescription);
 const site = Astro.site!;
 const canonical = new URL(routes[page][lang] + subpath, site).href;
 const alternates = pageLangs(page).map((l) => ({ lang: l, href: new URL(routes[page][l] + subpath, site).href }));
