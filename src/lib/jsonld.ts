@@ -34,7 +34,7 @@ export function homeJsonLd(lang: Lang, site: URL, release: Release | null, scree
       keywords: [...new Set(["Mumble client", t.meta.altClient, "alternative Mumble client", "Mumble", "voice chat", "VoIP"])].join(", "),
       applicationCategory: "CommunicationApplication",
       applicationSubCategory: "Voice chat",
-      operatingSystem: "Windows 10, Windows 11, macOS, Linux",
+      operatingSystem: "Windows 10, Windows 11, macOS, Linux, FreeBSD",
       inLanguage: [...LANGS],
       image: new URL("/og.jpg", site).href,
       screenshot: new URL(screenshot, site).href,
@@ -65,6 +65,30 @@ export function pageJsonLd(lang: Lang, site: URL, page: PageId, title: string) {
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Mumcord", item: new URL(routes.home[lang], site).href },
           { "@type": "ListItem", position: 2, name: title, item: new URL(routes[page][lang], site).href },
+        ],
+      },
+    },
+  ];
+}
+
+/** A roadmap epic's own page: a WebPage with the trail Mumcord > Roadmap > Epic. */
+export function epicJsonLd(lang: Lang, site: URL, epicId: string, epicTitle: string, roadmapTitle: string) {
+  const roadmap = new URL(routes.roadmap[lang], site).href;
+  const url = `${roadmap}/${epicId}`;
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      url,
+      name: epicTitle,
+      inLanguage: lang,
+      isPartOf: { "@id": `${site.origin}/#website` },
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Mumcord", item: new URL(routes.home[lang], site).href },
+          { "@type": "ListItem", position: 2, name: roadmapTitle, item: roadmap },
+          { "@type": "ListItem", position: 3, name: epicTitle, item: url },
         ],
       },
     },

@@ -1718,3 +1718,9 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
 export const changelog = localized(source, (l) =>
   source.en.map((e) => bundles[l]?.changelog.find((t) => t.version === e.version) ?? e),
 );
+
+/** The changelog page's description: the page's own line plus what the newest version brings. */
+export const changelogDescription = (lang: keyof typeof changelog, base: string) => {
+  const newest = changelog[lang][0];
+  return newest ? `${base} ${newest.version}: ${newest.teaser ?? newest.summary}` : base;
+};
