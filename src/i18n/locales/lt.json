@@ -1431,7 +1431,7 @@
           {
             "id": "camera",
             "title": "Kamera",
-            "body": "Tavo kamera visiems tavo balso kanale, tik per relay ir visapusiškai šifruota. Ji prasideda peržiūra, kurios niekas nemato, o kameros mygtukas naudotojo skydelyje, meniu Programos, sistemos dėklas ir sparčiojo klavišo kombinacija ją įjungia bei išjungia.",
+            "body": "Tavo kamera visiems tavo balso kanale, tiesiogiai arba per relay ir visapusiškai šifruota. Ji prasideda peržiūra, kurios niekas nemato, o kameros mygtukas naudotojo skydelyje, meniu Programos, sistemos dėklas ir sparčiojo klavišo kombinacija ją įjungia bei išjungia.",
             "alt": "Kameros nustatymai su peržiūra"
           },
           {
@@ -1439,6 +1439,11 @@
             "title": "Kamerų kambarys",
             "body": "Kanalo kameros būna virš pokalbio: iki devynių plytelių tinklelyje arba viena didelė plytelė su Kalbėtoju. Šalia ekrano bendrinimo ar watch party jos sudaro juostą šalia arba virš jo, arba jas paslepi.",
             "alt": "Kamerų kambarys su keliomis kameromis virš pokalbio"
+          },
+          {
+            "id": "camera-path",
+            "title": "Tiesiogiai ar per relay",
+            "body": "Kamera ir ekrano bendrinimas keliauja nauju medijos formatu, tiesiogiai tarp jūsų arba per relay. Kameros kelią pasirenki tu, o kamerų kambarys parodo, kurį gauna kiekvienas žiūrovas. Kai kas nors tavęs nemato, Mumcord pasako kodėl."
           },
           {
             "id": "camera-backgrounds",
@@ -1718,6 +1723,11 @@
             "body": "Jei Mumcord netikėtai užsidaro, jis išsaugo trumpą ataskaitą tavo kompiuteryje ir apie tai pasako kitą kartą paleidus. Nustatymai → Papildomi ir kūrėjas rodo paskutines 10, jas galima kopijuoti, eksportuoti arba ištrinti. Įkeliama visada tik viena ataskaita ir tik tada, kai patvirtini, kas tiksliai siunčiama."
           },
           {
+            "id": "freeze-reports",
+            "title": "Strigčių ataskaitos (Linux)",
+            "body": "Kai langas nustoja atsakyti arba garso gija viršija savo realaus laiko biudžetą, Mumcord išsaugo ataskaitą, kuri parodo, kur strigo. Kai Mumcord buvo nutrauktas iš išorės, ataskaita pasako, kuo. Ji išsiunčiama tik jei to nori."
+          },
+          {
             "id": "aaron-tour",
             "title": "Aaronas viską parodo",
             "body": "Po sąrankos Aaronas, aksolotlis Mumcord spalvomis, perveda tave per pagrindinį langą: serveriai, kanalai, kalbėjimas, paieška, pokalbis, programos ir temos, po vieną patarimą. Sąrankos vedlyje jis duoda trumpą patarimą kiekvienam žingsniui. Ekskursiją bet kada paleisk iš naujo skiltyje Nustatymai → Apie → Patarimai.",
@@ -1734,6 +1744,57 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.9.0",
+      "teaser": "Kamera ir ekrano bendrinimas naujame medijos formate, kiekvienam žiūrovui tiesiu keliu arba per relay, strigčių ataskaitos Linux sistemoje, FreeBSD diegimo scenarijuje ir daug pataisymų.",
+      "summary": "0.9.0 perkelia kamerą ir ekrano bendrinimą į naują medijos formatą: kiekvienas žiūrovas gauna savo kelią, tiesioginį arba per relay, o kamerų kambarys parodo, kurį. Linux sistemoje strigtys ir staigūs išėjimai dabar palieka ataskaitą, diegimo scenarijus palaiko FreeBSD, o šnabždesys pasiekia tik tuos žmones, kuriuos pasirinkai. Be to, daug pataisymų Windows ir Linux sistemoms.",
+      "groups": [
+        {
+          "title": "Nauja",
+          "items": [
+            "Kamera ir ekrano bendrinimas naujame medijos formate (#492, #814): kameros ir ekrano bendrinimo vaizdas bei garsas keliauja nauju medijos srautu, tiesiogiai tarp jūsų arba per relay, o srauto aprašas relay yra užšifruotas. Senesnės Mumcord versijos vis dar gauna seną formatą; kur to nepakanka, pastaba sako, kad reikia naujesnio Mumcord.",
+            "Tiesiogiai ar per relay, kiekvienam žiūrovui: kameros kelią pasirenki kiekvienai sesijai, o kamerų kambarys kiekvienam žiūrovui parodo, ar vaizdas ateina tiesiogiai, ar per relay. Kai kas nors nemato tavo kameros, Mumcord paaiškina kodėl, taip pat klaviatūra ir ekrano skaitytuvu.",
+            "Paketų inspektorius skaito naują medijos srautą: formatą, aprašą, kanalus ir kadrus.",
+            "Strigčių ataskaitos (Linux): kai langas neatsako apie 8 sekundes, Mumcord išsaugo „freeze“ tipo ataskaitą su visų gijų dėklais. Programa toliau veikia, o ataskaita išsiunčiama tik jei to nori.",
+            "Realaus laiko viršijimo ataskaitos (Linux): kai garso gija viršija savo realaus laiko biudžetą, ataskaita skiltyje Nustatymai → Strigčių ataskaitos parodo, kur ji buvo užsiėmusi. Tai ne strigtis; programa toliau veikia.",
+            "„Ended by“ (Linux): kai Mumcord buvo uždarytas be tinkamo išjungimo, ataskaita nurodo, ką apie tai užfiksavo sistema, pavyzdžiui, out-of-memory killer arba SIGKILL iš išorės.",
+            "Diegimo scenarijus palaiko FreeBSD (#781): FreeBSD 15.x (amd64) sistemoje jis atsisiunčia paketą, patikrina jį pagal SHA256 ir įdiegia su pkg add. Paleidus dar kartą, Mumcord atnaujinamas, --uninstall jį pašalina."
+          ]
+        },
+        {
+          "title": "Patobulinta",
+          "items": [
+            "Ilgi pokalbiai slenka sklandžiau, o narių sąrašai nebesurikiuojami iš naujo po kiekvieno kalbėjimo indikatoriaus.",
+            "Paveikslėliai ir medija dekoduojami greičiau, o atsarginė ekrano bendrinimo ir kameros konversija naudoja mažiau atminties.",
+            "Ekrano bendrinimo ir kameros vaizdo koduotuvai bei dekoduotuvai dabar ateina iš atvirojo kodo bibliotekos hwcodec, kurią Mumcord komanda prižiūri savo saugykloje (#449). Bendrinimas atrodo ir veikia taip pat.",
+            "Mumble protokolas dabar gyvena atvirojo kodo bibliotekoje mumble-client-protocol (#455). Serveriai vis dar mato Mumcord kaip „Mumcord“ su jo versija."
+          ]
+        },
+        {
+          "title": "Ištaisyta",
+          "items": [
+            "Windows: įterpti YouTube, Twitch, Spotify ir SoundCloud grotuvai bei watch party nuo 0.8.0 likdavo juodi. Dabar vėl groja.",
+            "Windows: kai kamera nesiuntė vaizdo, Mumcord užstrigdavo išeinant iš kameros nustatymų, keičiant kamerą arba uždarant („Neatsako“). Sustabdymas dabar pasiduoda po dviejų sekundžių.",
+            "Linux: nebėra ilgalaikio strigimo, kai padedi ragelį, o PipeWire neatsako.",
+            "Linux: Mumcord nebedingsta be strigties dialogo, kai kompiuteris labai užimtas (#844). Realaus laiko prioritetą dabar išlaiko tik garso gijos.",
+            "Linux: trumpai užimta balso gija išlaiko realaus laiko prioritetą, nes Mumcord skambučio metu atkuria numatytą 100 ms atsargą.",
+            "Linux: pranešimas „libayatana-appindicator is deprecated“ nebesirodo terminale ir žurnale kiekvieną kartą paleidus (#822).",
+            "AppImage: kai trūksta H.264 atkūrimo, grotuvas siūlo atnaujinimą arba tavo distribucijos paketą vietoj gst-libav, kurio AppImage negali naudoti (#567).",
+            "Nebėra begalinio prisijungimo iš naujo prie serverio, kuris užsidaro iškart po prisijungimo, pavyzdžiui, su uždrausta sertifikatu: po 10 trumpų ryšių Mumcord sustoja ir pasako, kas įvyko.",
+            "Kai ryšys nutrūksta, vykstantis šnabždesys taip pat baigiasi, o laikomas push-to-talk klavišas laikomas atleistu.",
+            "Paketų inspektorius: Markdown eksportas nebelaužo lentelės eilutės, kai pavadinime yra atvirkštinis brūkšnys (#771)."
+          ]
+        },
+        {
+          "title": "Sauga",
+          "items": [
+            "Šnabždesys pasiekia tik pasirinktus žmones: iki šiol taikinys buvo ieškomas pagal vardą kiekvieną kartą, todėl tokiu pat vardu pasivadinęs žmogus galėjo pasiklausyti. Dabar šnabždesys susietas būtent su tais žmonėmis; vėliau prisijungęs nieko negirdi, koks bebūtų jo vardas.",
+            "Pokalbio HTML ir papildinių SVG naudoja pataisytą ammonia versiją (RUSTSEC-2026-0533, #819).",
+            "Nauji tapatybės raktai kuriami naudojant pataisytą rsa 0.10 biblioteką (#131). Esamos tapatybės ir sertifikatai lieka tie patys."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.8.0",
       "teaser": "Administratoriaus komandos pokalbyje, registruoti naudotojai, kanalai, perkeliami tempiant, naujas teksto redaktorius ir Aaronas, kuris viską parodo.",

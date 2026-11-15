@@ -1431,7 +1431,7 @@
           {
             "id": "camera",
             "title": "Kamera",
-            "body": "Din kamera för alla i din röstkanal, bara via relayen och end-to-end-krypterad. Den startar med en förhandsvisning som ingen ser, och en kameraknapp i användarpanelen, Appar-menyn, systemfältet och en snabbtangent slår på och av den.",
+            "body": "Din kamera för alla i din röstkanal, direkt eller via relayen och end-to-end-krypterad. Den startar med en förhandsvisning som ingen ser, och en kameraknapp i användarpanelen, Appar-menyn, systemfältet och en snabbtangent slår på och av den.",
             "alt": "Kamerainställningarna med en förhandsvisning"
           },
           {
@@ -1439,6 +1439,11 @@
             "title": "Kamerarum",
             "body": "Kamerorna i kanalen sitter ovanför chatten, upp till nio rutor i ett rutnät eller en stor ruta med Talare. Bredvid en skärmdelning eller watch party bildar de en remsa vid sidan eller ovanför, eller så döljer du dem.",
             "alt": "Kamerarummet med flera kameror ovanför chatten"
+          },
+          {
+            "id": "camera-path",
+            "title": "Direkt eller via relay",
+            "body": "Kamera och skärmdelning går i ett nytt medieformat, direkt mellan er eller via relay. Du väljer väg för din kamera, och kamerarummet visar vilken varje tittare får. När någon inte kan se dig säger Mumcord varför."
           },
           {
             "id": "camera-backgrounds",
@@ -1718,6 +1723,11 @@
             "body": "Om Mumcord stängs oväntat sparar det en kort rapport på din dator och berättar det vid nästa start. Under Inställningar → Avancerat & utvecklare ser du de 10 senaste och kopierar, exporterar eller tar bort dem. Bara en enskild rapport laddas någonsin upp, och bara efter att du bekräftat exakt vad som skickas."
           },
           {
+            "id": "freeze-reports",
+            "title": "Frysrapporter (Linux)",
+            "body": "När fönstret slutar svara eller en ljudtråd överskrider sin realtidsbudget sparar Mumcord en rapport som visar var det hänger. När Mumcord avslutades utifrån anger rapporten av vad. Den laddas bara upp om du vill."
+          },
+          {
             "id": "aaron-tour",
             "title": "Aaron visar dig runt",
             "body": "Efter installationen går Aaron, en axolotl i Mumcords färger, igenom huvudfönstret med dig: servrar, kanaler, prata, sök, chatt, appar och teman, ett tips i taget. I installationsguiden ger Aaron ett kort tips för varje steg. Starta rundturen igen när som helst under Inställningar → Om → Tips.",
@@ -1734,6 +1744,57 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.9.0",
+      "teaser": "Kamera och skärmdelning i ett nytt medieformat med direkt väg eller väg via relay för varje tittare, rapporter vid frysningar på Linux, FreeBSD i installationsskriptet och många fixar.",
+      "summary": "0.9.0 flyttar kamera och skärmdelning till ett nytt medieformat: varje tittare får sin egen väg, direkt eller via relay, och kamerarummet visar vilken. På Linux lämnar frysningar och plötsliga avslut nu en rapport, installationsskriptet stöder FreeBSD och en viskning når exakt de personer du valde. Dessutom många fixar för Windows och Linux.",
+      "groups": [
+        {
+          "title": "Nytt",
+          "items": [
+            "Kamera och skärmdelning i ett nytt medieformat (#492, #814): bild och ljud från kamera och skärmdelning går i en ny mediaström, direkt mellan er eller via relay, med strömbeskrivningen krypterad på relay. Äldre Mumcord-versioner får fortfarande det gamla formatet; där det inte räcker säger en notis att en nyare Mumcord behövs.",
+            "Direkt eller via relay, per tittare: du väljer väg för din kamera per session, och kamerarummet visar för varje tittare om bilden kommer direkt eller via relay. När någon inte kan se din kamera förklarar Mumcord varför, även via tangentbord och skärmläsare.",
+            "Paketinspektören läser den nya mediaströmmen: format, beskrivning, kanaler och bildrutor.",
+            "Frysrapporter (Linux): när fönstret inte svarat på cirka 8 sekunder sparar Mumcord en rapport av typen ”freeze” med stackarna för alla trådar. Appen fortsätter köra, och rapporten laddas bara upp om du vill.",
+            "Rapporter om överskriden realtid (Linux): när en ljudtråd överskrider sin realtidsbudget visar en rapport under Inställningar → Kraschrapporter var den var upptagen. Det är ingen krasch; appen fortsätter köra.",
+            "”Avslutad av” (Linux): när Mumcord stängdes utan att avslutas på vanligt sätt anger rapporten vad systemet registrerade om det, till exempel out-of-memory killer eller en SIGKILL utifrån.",
+            "Installationsskriptet stöder FreeBSD (#781): på FreeBSD 15.x (amd64) hämtar det paketet, kontrollerar det mot SHA256 och installerar det med pkg add. Körs det igen uppdateras Mumcord, --uninstall tar bort det."
+          ]
+        },
+        {
+          "title": "Förbättrat",
+          "items": [
+            "Långa konversationer rullar mjukare, och medlemslistor sorteras inte längre om vid varje pratindikator.",
+            "Bilder och media avkodas snabbare, och reservkonverteringen för skärmdelning och kamera använder mindre minne.",
+            "Videokodarna och avkodarna för skärmdelning och kamera kommer nu från biblioteket hwcodec med öppen källkod, som Mumcord-teamet underhåller i ett eget repository (#449). Delningen ser ut och fungerar likadant.",
+            "Mumble-protokollet bor nu i biblioteket mumble-client-protocol med öppen källkod (#455). Servrar ser fortfarande Mumcord som ”Mumcord” med sin version."
+          ]
+        },
+        {
+          "title": "Åtgärdat",
+          "items": [
+            "Windows: inbäddade YouTube-, Twitch-, Spotify- och SoundCloud-spelare och watch party förblev svarta sedan 0.8.0. De spelar upp igen.",
+            "Windows: när en kamera inte gav någon bild hängde sig Mumcord när du lämnade kamerainställningarna, bytte kamera eller stängde („Svarar inte”). Att stoppa ger nu upp efter två sekunder.",
+            "Linux: ingen bestående frysning längre när du lägger på medan PipeWire inte svarar.",
+            "Linux: Mumcord försvinner inte längre utan kraschdialog när datorn är mycket upptagen (#844). Bara ljudtrådarna behåller nu realtidsprioritet.",
+            "Linux: en kort stund upptagen rösttråd behåller sin realtidsprioritet, eftersom Mumcord återställer den avsedda marginalen på 100 ms under ett samtal.",
+            "Linux: meddelandet ”libayatana-appindicator is deprecated” visas inte längre i terminalen och loggen vid varje start (#822).",
+            "AppImage: när H.264-uppspelning saknas föreslår spelaren en uppdatering eller din distributions paket i stället för gst-libav, som AppImage inte kan använda (#567).",
+            "Ingen ändlös återanslutning längre till en server som stänger direkt efter inloggning, till exempel med ett bannlyst certifikat: efter 10 korta anslutningar slutar Mumcord och säger vad som hände.",
+            "När anslutningen tar slut tar även en pågående viskning slut, och en nedhållen push-to-talk-tangent räknas som släppt.",
+            "Paketinspektören: Markdown-exporten bryter inte längre en tabellrad när ett namn innehåller ett omvänt snedstreck (#771)."
+          ]
+        },
+        {
+          "title": "Säkerhet",
+          "items": [
+            "En viskning når bara de personer du valde: tidigare slogs målet upp på namn varje gång, så någon med samma namn kunde lyssna. Nu är en viskning knuten till exakt de personerna; den som går med senare hör ingenting, oavsett namn.",
+            "Chatt-HTML och SVG:er i tillägg använder en patchad version av ammonia (RUSTSEC-2026-0533, #819).",
+            "Nya identitetsnycklar skapas med det rättade biblioteket rsa 0.10 (#131). Befintliga identiteter och certifikat förblir desamma."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.8.0",
       "teaser": "Adminkommandon i chatten, registrerade användare, kanaler som flyttas genom att dra, en ny textredigerare och Aaron som visar dig runt.",

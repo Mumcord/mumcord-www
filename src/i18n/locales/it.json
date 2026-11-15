@@ -1431,7 +1431,7 @@
           {
             "id": "camera",
             "title": "Fotocamera",
-            "body": "La tua fotocamera per tutti nel tuo canale vocale, solo tramite il relay e cifrata end-to-end. Parte con un’anteprima che nessuno vede, e un pulsante della fotocamera nel pannello utente, il menu App, l’area di notifica e una scorciatoia la accendono e la spengono.",
+            "body": "La tua fotocamera per tutti nel tuo canale vocale, direttamente o tramite il relay e cifrata end-to-end. Parte con un’anteprima che nessuno vede, e un pulsante della fotocamera nel pannello utente, il menu App, l’area di notifica e una scorciatoia la accendono e la spengono.",
             "alt": "Le impostazioni della fotocamera con un’anteprima"
           },
           {
@@ -1439,6 +1439,11 @@
             "title": "Stanza delle fotocamere",
             "body": "Le fotocamere del canale stanno sopra la chat, fino a nove riquadri in griglia o un grande riquadro con Oratore. Accanto a una condivisione dello schermo o a una watch party formano una striscia di lato o sopra, oppure le nascondi.",
             "alt": "La stanza delle fotocamere con diverse fotocamere sopra la chat"
+          },
+          {
+            "id": "camera-path",
+            "title": "Diretto o relay",
+            "body": "Fotocamera e condivisione dello schermo viaggiano in un nuovo formato multimediale, direttamente tra voi o tramite il relay. Scegli tu il percorso della tua fotocamera, e la camera room mostra quale riceve ogni spettatore. Quando qualcuno non ti vede, Mumcord dice perché."
           },
           {
             "id": "camera-backgrounds",
@@ -1718,6 +1723,11 @@
             "body": "Se Mumcord si chiude in modo inatteso, salva una breve segnalazione sul tuo computer e te lo dice al prossimo avvio. In Impostazioni → Avanzate e sviluppatore vedi le ultime 10 e puoi copiarle, esportarle o eliminarle. Viene caricata solo una singola segnalazione, e solo dopo che hai confermato cosa viene inviato esattamente."
           },
           {
+            "id": "freeze-reports",
+            "title": "Report di blocco (Linux)",
+            "body": "Quando la finestra smette di rispondere o un thread audio supera il suo budget in tempo reale, Mumcord salva un report che mostra dove si blocca. Quando Mumcord è stato terminato dall’esterno, il report dice da cosa. Viene caricato solo se lo vuoi."
+          },
+          {
             "id": "aaron-tour",
             "title": "Aaron ti accompagna",
             "body": "Dopo la configurazione Aaron, un axolotl nei colori di Mumcord, ti guida nella finestra principale: server, canali, parlare, ricerca, chat, app e temi, un consiglio alla volta. Nella procedura guidata offre un breve consiglio per ogni passaggio. Riavvia il giro quando vuoi in Impostazioni → Informazioni → Consigli.",
@@ -1734,6 +1744,57 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.9.0",
+      "teaser": "Fotocamera e condivisione dello schermo in un nuovo formato multimediale con percorso diretto o tramite relay per ogni spettatore, report per i blocchi su Linux, FreeBSD nello script di installazione e tante correzioni.",
+      "summary": "La 0.9.0 sposta fotocamera e condivisione dello schermo su un nuovo formato multimediale: ogni spettatore ha il suo percorso, diretto o tramite il relay, e la camera room mostra quale. Su Linux i blocchi e le chiusure improvvise ora lasciano un report, lo script di installazione supporta FreeBSD e un sussurro raggiunge solo le persone che hai scelto. In più tante correzioni per Windows e Linux.",
+      "groups": [
+        {
+          "title": "Novità",
+          "items": [
+            "Fotocamera e condivisione dello schermo in un nuovo formato multimediale (#492, #814): immagine e audio di fotocamera e condivisione dello schermo viaggiano in un nuovo flusso multimediale, direttamente tra voi o tramite il relay, con la descrizione del flusso cifrata sul relay. Le versioni più vecchie di Mumcord ricevono ancora il vecchio formato; dove non basta, una nota dice che serve un Mumcord più recente.",
+            "Diretto o relay, per spettatore: scegli il percorso della tua fotocamera per sessione, e la camera room mostra per ogni spettatore se l’immagine arriva direttamente o tramite il relay. Quando qualcuno non vede la tua fotocamera, Mumcord ne spiega il motivo, anche da tastiera e con lo screen reader.",
+            "L’ispettore di pacchetti legge il nuovo flusso multimediale: formato, descrizione, canali e frame.",
+            "Report di blocco (Linux): quando la finestra non risponde da circa 8 secondi, Mumcord salva un report di tipo “freeze” con gli stack di tutti i thread. L’app continua a funzionare e il report viene caricato solo se lo vuoi.",
+            "Report di superamento del tempo reale (Linux): quando un thread audio supera il suo budget in tempo reale, un report in Impostazioni → Segnalazioni di crash mostra dove era occupato. Non è un crash; l’app continua a funzionare.",
+            "“Ended by” (Linux): quando Mumcord è stato chiuso senza spegnersi, il report indica cosa ha registrato il sistema, ad esempio l’out-of-memory killer o un SIGKILL dall’esterno.",
+            "Lo script di installazione supporta FreeBSD (#781): su FreeBSD 15.x (amd64) scarica il pacchetto, lo verifica con SHA256 e lo installa con pkg add. Eseguirlo di nuovo aggiorna Mumcord, --uninstall lo rimuove."
+          ]
+        },
+        {
+          "title": "Migliorato",
+          "items": [
+            "Le conversazioni lunghe scorrono più fluide e gli elenchi dei membri non si riordinano più a ogni indicatore di voce.",
+            "Immagini e media si decodificano più in fretta, e la conversione di ripiego per condivisione dello schermo e fotocamera usa meno memoria.",
+            "Gli encoder e i decoder video per condivisione dello schermo e fotocamera arrivano ora dalla libreria open source hwcodec, che il team di Mumcord mantiene nel proprio repository (#449). La condivisione ha lo stesso aspetto e funziona allo stesso modo.",
+            "Il protocollo Mumble ora vive nella libreria open source mumble-client-protocol (#455). I server vedono ancora Mumcord come “Mumcord” con la sua versione."
+          ]
+        },
+        {
+          "title": "Corretto",
+          "items": [
+            "Windows: i player incorporati di YouTube, Twitch, Spotify e SoundCloud e la watch party restavano neri dalla 0.8.0. Ora tornano a riprodurre.",
+            "Windows: quando una fotocamera non forniva immagini, Mumcord si bloccava uscendo dalle impostazioni della fotocamera, cambiando fotocamera o chiudendo (“Non risponde”). L’arresto ora rinuncia dopo due secondi.",
+            "Linux: niente più blocco permanente quando riattacchi mentre PipeWire non risponde.",
+            "Linux: Mumcord non scompare più senza finestra di crash quando il computer è molto occupato (#844). Ora solo i thread audio mantengono la priorità in tempo reale.",
+            "Linux: un thread vocale occupato per poco mantiene la priorità in tempo reale, perché Mumcord ripristina il margine previsto di 100 ms durante una chiamata.",
+            "Linux: l’avviso “libayatana-appindicator is deprecated” non compare più nel terminale e nel log a ogni avvio (#822).",
+            "AppImage: quando manca la riproduzione H.264, il player suggerisce un aggiornamento o il pacchetto della tua distribuzione invece di gst-libav, che l’AppImage non può usare (#567).",
+            "Niente più riconnessioni infinite a un server che chiude subito dopo l’accesso, ad esempio con un certificato bannato: dopo 10 connessioni brevi Mumcord si ferma e dice cos’è successo.",
+            "Quando la connessione termina, termina anche un sussurro in corso, e un tasto push-to-talk tenuto premuto conta come rilasciato.",
+            "Ispettore di pacchetti: l’esportazione Markdown non rompe più una riga di tabella quando un nome contiene una barra rovesciata (#771)."
+          ]
+        },
+        {
+          "title": "Sicurezza",
+          "items": [
+            "Un sussurro raggiunge solo le persone che hai scelto: finora il destinatario veniva cercato ogni volta per nome, quindi qualcuno con lo stesso nome poteva ascoltare. Ora un sussurro è legato esattamente a quelle persone; chi entra dopo non sente nulla, qualunque sia il suo nome.",
+            "L’HTML della chat e gli SVG dei plugin usano una versione corretta di ammonia (RUSTSEC-2026-0533, #819).",
+            "Le nuove chiavi di identità vengono create con la libreria rsa 0.10 corretta (#131). Le identità e i certificati esistenti restano invariati."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.8.0",
       "teaser": "Comandi admin nella chat, utenti registrati, canali da spostare trascinandoli, un nuovo editor di testo e Aaron che ti accompagna.",

@@ -1431,7 +1431,7 @@
           {
             "id": "camera",
             "title": "Kamera",
-            "body": "Twoja kamera dla wszystkich na twoim kanale głosowym, tylko przez przekaźnik i z szyfrowaniem end-to-end. Zaczyna się od podglądu, którego nikt nie widzi, a przycisk kamery w panelu użytkownika, menu Aplikacje, zasobnik i skrót klawiszowy włączają ją i wyłączają.",
+            "body": "Twoja kamera dla wszystkich na twoim kanale głosowym, bezpośrednio lub przez przekaźnik i z szyfrowaniem end-to-end. Zaczyna się od podglądu, którego nikt nie widzi, a przycisk kamery w panelu użytkownika, menu Aplikacje, zasobnik i skrót klawiszowy włączają ją i wyłączają.",
             "alt": "Ustawienia kamery z podglądem"
           },
           {
@@ -1439,6 +1439,11 @@
             "title": "Pokój kamer",
             "body": "Kamery z kanału są nad czatem, do dziewięciu kafelków w siatce albo jeden duży kafelek w układzie Mówca. Obok udostępnionego ekranu lub watch party tworzą pasek obok niego albo nad nim, albo je ukrywasz.",
             "alt": "Pokój kamer z kilkoma kamerami nad czatem"
+          },
+          {
+            "id": "camera-path",
+            "title": "Bezpośrednio lub przez relay",
+            "body": "Kamera i udostępnianie ekranu płyną w nowym formacie multimediów, bezpośrednio między wami lub przez relay. Drogę dla kamery wybierasz sam, a pokój kamer pokazuje, którą dostaje każdy widz. Gdy ktoś Cię nie widzi, Mumcord mówi dlaczego."
           },
           {
             "id": "camera-backgrounds",
@@ -1718,6 +1723,11 @@
             "body": "Gdy Mumcord zamknie się nieoczekiwanie, zapisuje na twoim komputerze krótki raport i mówi ci o tym przy następnym uruchomieniu. W Ustawienia → Zaawansowane i deweloper widzisz ostatnie 10 i możesz je kopiować, eksportować lub usuwać. Wysyłany jest zawsze tylko pojedynczy raport i tylko po tym, jak potwierdzisz, co dokładnie zostanie wysłane."
           },
           {
+            "id": "freeze-reports",
+            "title": "Raporty zawieszeń (Linux)",
+            "body": "Gdy okno przestaje odpowiadać lub wątek audio przekracza budżet czasu rzeczywistego, Mumcord zapisuje raport pokazujący, gdzie się zawiesił. Gdy Mumcord został zakończony z zewnątrz, raport podaje przez co. Jest wysyłany tylko wtedy, gdy tego chcesz."
+          },
+          {
             "id": "aaron-tour",
             "title": "Aaron oprowadza Cię po aplikacji",
             "body": "Po konfiguracji Aaron, aksolotl w kolorach Mumcorda, prowadzi Cię przez główne okno: serwery, kanały, rozmowę, wyszukiwanie, czat, aplikacje i motywy, po jednej wskazówce naraz. W kreatorze konfiguracji daje krótką wskazówkę do każdego kroku. Oprowadzanie uruchomisz ponownie w dowolnej chwili w Ustawienia → O programie → Wskazówki.",
@@ -1734,6 +1744,57 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.9.0",
+      "teaser": "Kamera i udostępnianie ekranu w nowym formacie multimediów z bezpośrednią lub przez relay drogą dla każdego widza, raporty zawieszeń na Linuksie, FreeBSD w skrypcie instalacyjnym i wiele poprawek.",
+      "summary": "Wersja 0.9.0 przenosi kamerę i udostępnianie ekranu na nowy format multimediów: każdy widz dostaje własną drogę, bezpośrednią lub przez relay, a pokój kamer pokazuje, którą. Na Linuksie zawieszenia i nagłe zakończenia zostawiają teraz raport, skrypt instalacyjny obsługuje FreeBSD, a szept trafia dokładnie do osób, które wybrałeś. Do tego wiele poprawek dla Windowsa i Linuksa.",
+      "groups": [
+        {
+          "title": "Nowe",
+          "items": [
+            "Kamera i udostępnianie ekranu w nowym formacie multimediów (#492, #814): obraz i dźwięk z kamery i udostępniania ekranu płyną nowym strumieniem multimediów, bezpośrednio między wami lub przez relay, a opis strumienia jest na relayu zaszyfrowany. Starsze wersje Mumcorda nadal dostają stary format; gdy to nie wystarcza, komunikat informuje, że potrzebna jest nowsza wersja Mumcorda.",
+            "Bezpośrednio lub przez relay, osobno dla każdego widza: drogę dla swojej kamery wybierasz na sesję, a pokój kamer pokazuje przy każdym widzu, czy obraz idzie bezpośrednio, czy przez relay. Gdy ktoś nie widzi Twojej kamery, Mumcord wyjaśnia dlaczego, także z klawiatury i czytnika ekranu.",
+            "Inspektor pakietów czyta nowy strumień multimediów: format, opis, kanały i klatki.",
+            "Raporty zawieszeń (Linux): gdy okno nie odpowiada przez około 8 sekund, Mumcord zapisuje raport typu „freeze” ze stosami wszystkich wątków. Aplikacja działa dalej, a raport jest wysyłany tylko wtedy, gdy tego chcesz.",
+            "Raporty przekroczenia czasu rzeczywistego (Linux): gdy wątek audio przekroczy swój budżet czasu rzeczywistego, raport w Ustawienia → Raporty o awariach pokazuje, czym był zajęty. To nie jest awaria; aplikacja działa dalej.",
+            "„Zakończone przez” (Linux): gdy Mumcord został zamknięty bez prawidłowego wyłączenia, raport podaje, co system o tym zapisał, na przykład out-of-memory killer albo SIGKILL z zewnątrz.",
+            "Skrypt instalacyjny obsługuje FreeBSD (#781): na FreeBSD 15.x (amd64) pobiera pakiet, sprawdza go przez SHA256 i instaluje przez pkg add. Ponowne uruchomienie aktualizuje Mumcorda, --uninstall go usuwa."
+          ]
+        },
+        {
+          "title": "Poprawione",
+          "items": [
+            "Długie rozmowy przewijają się płynniej, a listy osób nie sortują się już na nowo przy każdym wskaźniku mówienia.",
+            "Obrazy i multimedia dekodują się szybciej, a zapasowa konwersja dla udostępniania ekranu i kamery zużywa mniej pamięci.",
+            "Kodery i dekodery wideo dla udostępniania ekranu i kamery pochodzą teraz z otwartoźródłowej biblioteki hwcodec, którą zespół Mumcorda utrzymuje we własnym repozytorium (#449). Udostępnianie wygląda i działa tak samo.",
+            "Protokół Mumble mieszka teraz w otwartoźródłowej bibliotece mumble-client-protocol (#455). Serwery nadal widzą Mumcorda jako „Mumcord” z jego wersją."
+          ]
+        },
+        {
+          "title": "Naprawione",
+          "items": [
+            "Windows: osadzone odtwarzacze YouTube, Twitch, Spotify i SoundCloud oraz watch party były czarne od wersji 0.8.0. Znów odtwarzają.",
+            "Windows: gdy kamera nie dostarczała obrazu, Mumcord zawieszał się przy wychodzeniu z ustawień kamery, zmianie kamery lub zamykaniu („Nie odpowiada”). Zatrzymywanie poddaje się teraz po dwóch sekundach.",
+            "Linux: koniec z trwałym zawieszeniem po rozłączeniu, gdy PipeWire nie odpowiada.",
+            "Linux: Mumcord nie znika już bez okna z informacją o awarii, gdy komputer jest bardzo obciążony (#844). Priorytet czasu rzeczywistego zachowują teraz tylko wątki audio.",
+            "Linux: na chwilę obciążony wątek głosowy zachowuje priorytet czasu rzeczywistego, bo Mumcord podczas rozmowy przywraca zamierzony margines 100 ms.",
+            "Linux: komunikat „libayatana-appindicator is deprecated” nie pojawia się już w terminalu i logu przy każdym uruchomieniu (#822).",
+            "AppImage: gdy brakuje odtwarzania H.264, odtwarzacz proponuje aktualizację lub pakiet Twojej dystrybucji zamiast gst-libav, którego AppImage nie może użyć (#567).",
+            "Koniec z niekończącym się ponownym łączeniem z serwerem, który zamyka połączenie zaraz po zalogowaniu, na przykład przy zbanowanym certyfikacie: po 10 krótkich połączeniach Mumcord przestaje i mówi, co się stało.",
+            "Gdy połączenie się kończy, kończy się też trwający szept, a przytrzymany klawisz push-to-talk liczy się jako puszczony.",
+            "Inspektor pakietów: eksport Markdown nie psuje już wiersza tabeli, gdy nazwa zawiera ukośnik wsteczny (#771)."
+          ]
+        },
+        {
+          "title": "Bezpieczeństwo",
+          "items": [
+            "Szept trafia tylko do osób, które wybrałeś: dotąd cel był za każdym razem wyszukiwany po nazwie, więc ktoś o tej samej nazwie mógł podsłuchiwać. Teraz szept jest powiązany dokładnie z tymi osobami; kto dołączy później, nic nie usłyszy, niezależnie od nazwy.",
+            "HTML czatu i SVG wtyczek używają załatanej wersji ammonia (RUSTSEC-2026-0533, #819).",
+            "Nowe klucze tożsamości powstają przy użyciu naprawionej biblioteki rsa 0.10 (#131). Istniejące tożsamości i certyfikaty pozostają bez zmian."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.8.0",
       "teaser": "Polecenia administracyjne na czacie, zarejestrowani użytkownicy, przenoszenie kanałów przeciąganiem, nowy edytor tekstu i Aaron, który wszystko Ci pokaże.",

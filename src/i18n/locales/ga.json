@@ -1431,7 +1431,7 @@
           {
             "id": "camera",
             "title": "Ceamara",
-            "body": "Do cheamara do gach duine i do chainéal gutha, tríd an athsheachadán amháin agus criptithe ó cheann go ceann. Tosaíonn sé le réamhamharc nach bhfeiceann aon duine, agus casann cnaipe ceamara sa phainéal úsáideora, an roghchlár Aipeanna, an tráidire agus aicearra méarchláir air agus as é.",
+            "body": "Do cheamara do gach duine i do chainéal gutha, go díreach nó tríd an athsheachadán agus criptithe ó cheann go ceann. Tosaíonn sé le réamhamharc nach bhfeiceann aon duine, agus casann cnaipe ceamara sa phainéal úsáideora, an roghchlár Aipeanna, an tráidire agus aicearra méarchláir air agus as é.",
             "alt": "Socruithe an cheamara le réamhamharc"
           },
           {
@@ -1439,6 +1439,11 @@
             "title": "Seomra na gceamaraí",
             "body": "Tá ceamaraí an chainéil os cionn an chomhrá, suas le naoi leacán i ngreille nó leacán mór amháin leis an gCainteoir. In aice le comhroinnt scáileáin nó watch party déanann siad stiall ar a thaobh nó os a chionn, nó folaíonn tú iad.",
             "alt": "Seomra na gceamaraí le roinnt ceamaraí os cionn an chomhrá"
+          },
+          {
+            "id": "camera-path",
+            "title": "Díreach nó relay",
+            "body": "Taistealaíonn ceamara agus comhroinnt scáileáin i bhformáid nua meáin, go díreach eadraibh nó tríd an relay. Roghnaíonn tú an cosán do do cheamara, agus taispeánann an seomra ceamaraí cé acu a fhaigheann gach breathnóir. Nuair nach bhfeiceann duine thú, deir Mumcord cén fáth."
           },
           {
             "id": "camera-backgrounds",
@@ -1718,6 +1723,11 @@
             "body": "Má dhúnann Mumcord gan choinne, sábhálann sé tuairisc ghearr ar do ríomhaire agus insíonn sé duit é ag an chéad tús eile. Faoi Socruithe → Casta agus forbróir feiceann tú na 10 gcinn is déanaí agus is féidir leat iad a chóipeáil, a onnmhairiú nó a scriosadh. Ní uaslódáiltear ach tuairisc amháin i gcónaí, agus ach amháin tar éis duit deimhniú cad a sheoltar go beacht."
           },
           {
+            "id": "freeze-reports",
+            "title": "Tuairiscí reoite (Linux)",
+            "body": "Nuair a stopann an fhuinneog ag freagairt nó nuair a théann snáithe fuaime thar a bhuiséad fíor-ama, sábhálann Mumcord tuairisc a thaispeánann cá bhfuil sé crochta. Nuair a chuir rud éigin ó lasmuigh deireadh le Mumcord, deir an tuairisc cén rud. Ní uaslódáiltear í ach amháin más mian leat."
+          },
+          {
             "id": "aaron-tour",
             "title": "Aaron ag taispeáint na háite duit",
             "body": "Tar éis an tsocraithe tugann Aaron, axolotl i ndathanna Mumcord, timpeall na príomhfhuinneoige thú: freastalaithe, cainéil, labhairt, cuardach, comhrá, aipeanna agus téamaí, leid amháin ag an am. Sa draoi socraithe tugann sé leid ghearr do gach céim. Cuir an turas ar bun arís am ar bith faoi Socruithe → Maidir le → Leideanna.",
@@ -1734,6 +1744,57 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.9.0",
+      "teaser": "Ceamara agus comhroinnt scáileáin i bhformáid nua meáin le cosán díreach nó relay do gach breathnóir, tuairiscí do reonna ar Linux, FreeBSD sa script suiteála agus go leor ceartúchán.",
+      "summary": "Aistríonn 0.9.0 ceamara agus comhroinnt scáileáin chuig formáid nua meáin: faigheann gach breathnóir a chosán féin, díreach nó tríd an relay, agus taispeánann an seomra ceamaraí cé acu. Ar Linux fágann reonna agus scoirt tobann tuairisc anois, tacaíonn an script suiteála le FreeBSD, agus ní shroicheann cogar ach na daoine a roghnaigh tú go beacht. Móide go leor ceartúchán do Windows agus do Linux.",
+      "groups": [
+        {
+          "title": "Nua",
+          "items": [
+            "Ceamara agus comhroinnt scáileáin i bhformáid nua meáin (#492, #814): taistealaíonn pictiúr agus fuaim ón gceamara agus ón gcomhroinnt scáileáin i sruth nua meáin, go díreach eadraibh nó tríd an relay, agus tá cur síos an tsrutha criptithe ar an relay. Faigheann leaganacha Mumcord níos sine an seanfhormáid fós; nuair nach leor sin, deir nóta go bhfuil Mumcord níos nuaí de dhíth.",
+            "Díreach nó relay, do gach breathnóir: roghnaíonn tú an cosán do do cheamara i ngach seisiún, agus taispeánann an seomra ceamaraí do gach breathnóir an dtagann an pictiúr go díreach nó tríd an relay. Nuair nach bhfeiceann duine do cheamara, míníonn Mumcord cén fáth, leis an méarchlár agus le léitheoir scáileáin freisin.",
+            "Léann an t-iniúchóir paicéad an sruth nua meáin: formáid, cur síos, cainéil agus frámaí.",
+            "Tuairiscí reoite (Linux): nuair nach bhfuil freagra tagtha ón bhfuinneog ar feadh thart ar 8 soicind, sábhálann Mumcord tuairisc de chineál “freeze” le cruacha na snáitheanna go léir. Leanann an aip ag rith, agus ní uaslódáiltear an tuairisc ach amháin más mian leat.",
+            "Tuairiscí ar sháruithe fíor-ama (Linux): nuair a théann snáithe fuaime thar a bhuiséad fíor-ama, taispeánann tuairisc faoi Socruithe → Tuairiscí tuairteála cá raibh sé gnóthach. Ní tuairteáil atá ann; leanann an aip ag rith.",
+            "“Ended by” (Linux): nuair a dúnadh Mumcord gan é a mhúchadh i gceart, ainmníonn an tuairisc an méid a thaifead an córas faoi, mar mharfóir an easpa cuimhne nó SIGKILL ó lasmuigh.",
+            "Tacaíonn an script suiteála le FreeBSD (#781): ar FreeBSD 15.x (amd64) íoslódálann sé an pacáiste, seiceálann sé é in aghaidh SHA256 agus suiteálann sé le pkg add. Nuashonraíonn rith arís é, baineann --uninstall Mumcord."
+          ]
+        },
+        {
+          "title": "Feabhsaithe",
+          "items": [
+            "Scrollaíonn comhráite fada níos réidhe, agus ní athordaítear liostaí baill a thuilleadh le gach táscaire cainte.",
+            "Díchódaítear íomhánna agus meáin níos tapúla, agus úsáideann an ghiniúint ar ais le haghaidh comhroinnt scáileáin agus ceamara níos lú cuimhne.",
+            "Tagann na códairí agus díchódairí físe do chomhroinnt scáileáin agus ceamara anois ón leabharlann foinse oscailte hwcodec, a chothaíonn foireann Mumcord ina stóras féin (#449). Breathnaíonn comhroinnt agus oibríonn sí mar a bhí.",
+            "Tá prótacal Mumble anois sa leabharlann foinse oscailte mumble-client-protocol (#455). Feiceann freastalaithe Mumcord fós mar “Mumcord” lena leagan."
+          ]
+        },
+        {
+          "title": "Ceartaithe",
+          "items": [
+            "Windows: d’fhan seinnteoirí leabaithe YouTube, Twitch, Spotify agus SoundCloud agus an chóisir faire dubh ó 0.8.0. Seinneann siad arís.",
+            "Windows: nuair nár sheol ceamara aon phictiúr, chroch Mumcord agus an ceamara á fhágáil sna socruithe, ceamara á athrú nó á dhúnadh (“Ní fhreagraíonn”). Géilleann an stopadh anois tar éis dhá shoicind.",
+            "Linux: níl reo buan ann a thuilleadh nuair a chuireann tú an fón síos agus PipeWire gan freagra a thabhairt.",
+            "Linux: ní imíonn Mumcord a thuilleadh gan dialóg tuairteála nuair a bhíonn an ríomhaire an-ghnóthach (#844). Ní choinníonn ach na snáitheanna fuaime tosaíocht fíor-ama anois.",
+            "Linux: coinníonn snáithe guth atá gnóthach go gairid a thosaíocht fíor-ama, mar athchóiríonn Mumcord an corrlach beartaithe 100 ms le linn glao.",
+            "Linux: ní thaispeántar an fógra “libayatana-appindicator is deprecated” sa teirminéal agus sa logchomhad gach uair a thosaítear a thuilleadh (#822).",
+            "AppImage: nuair a bhíonn seinm H.264 ar iarraidh, molann an seinnteoir nuashonrú nó pacáiste do dháilte in ionad gst-libav, nach féidir leis an AppImage a úsáid (#567).",
+            "Níl athcheangal gan deireadh ann a thuilleadh le freastalaí a dhúnann díreach tar éis logáil isteach, mar shampla le teastas toirmiscthe: tar éis 10 gceangal gearr stopann Mumcord agus insíonn sé cad a tharla.",
+            "Nuair a chríochnaíonn an nasc, críochnaíonn cogar atá ar siúl freisin, agus áirítear eochair push-to-talk atá coinnithe síos mar scaoilte.",
+            "An t-iniúchóir paicéad: ní bhriseann easpórtáil Markdown sraith tábla a thuilleadh nuair a bhíonn cúlslais in ainm (#771)."
+          ]
+        },
+        {
+          "title": "Slándáil",
+          "items": [
+            "Ní shroicheann cogar ach na daoine a roghnaigh tú: go dtí seo cuardaíodh an sprioc de réir ainm gach uair, agus mar sin d’fhéadfadh duine leis an ainm céanna éisteacht isteach. Tá cogar ceangailte anois leis na daoine sin go beacht; ní chloiseann aon duine a thagann isteach níos déanaí faic, is cuma cén t-ainm atá air.",
+            "Úsáideann HTML comhrá agus SVGanna breiseán leagan paiste de ammonia (RUSTSEC-2026-0533, #819).",
+            "Déantar eochracha céannachta nua leis an leabharlann rsa 0.10 socraithe (#131). Fanann céannachtaí agus teastais atá ann cheana mar a bhí."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.8.0",
       "teaser": "Orduithe riaracháin sa chomhrá, úsáideoirí cláraithe, cainéil le bogadh trí tharraingt, eagarthóir téacs nua, agus Aaron chun an chuid eile a thaispeáint duit.",

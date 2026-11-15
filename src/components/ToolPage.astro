@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { getImageVersions, withImageVersions } from "../lib/images";
 import CopyButton from "./CopyButton.astro";
 import mumpeerIcon from "../assets/tools/mumpeer.png";
 import mumquizIcon from "../assets/tools/mumquiz.png";
@@ -16,7 +17,8 @@ interface Props {
 const { lang, tool } = Astro.props;
 const t = toolsPage[lang];
 const p = t.pages[tool];
-const { file, code, terms } = TOOL_CODE[tool];
+const { file, terms } = TOOL_CODE[tool];
+const code = withImageVersions(TOOL_CODE[tool].code, await getImageVersions());
 const release = await getToolRelease(tool);
 const repo = toolRepoUrl(tool);
 const people = await getRepoContributors(TOOL_REPO[tool]);

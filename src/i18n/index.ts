@@ -6,7 +6,7 @@ import { EXTRA_LANGS, LANGS, LANG_INFO, type Lang } from "./langs";
 export { LANGS, EXTRA_LANGS, LANG_INFO };
 export type { Lang };
 export type { ExtraLang } from "./langs";
-export type PageId = "home" | "features" | "games" | "themes" | "roadmap" | "changelog" | "download" | "server" | "mumbot" | "plugins" | "mumpeer" | "mumquiz" | "imprint" | "privacy";
+export type PageId = "home" | "features" | "games" | "themes" | "roadmap" | "changelog" | "download" | "server" | "mumbot" | "plugins" | "mumpeer" | "mumquiz" | "hwcodec" | "protocol" | "imprint" | "privacy";
 
 /** Builds a per-language record: German and English as given, the others from their translation file. */
 export function localized<T>(base: { de: T; en: T }, extra: (lang: (typeof EXTRA_LANGS)[number]) => T): Record<Lang, T> {
@@ -46,12 +46,15 @@ const base: Record<PageId, { de: string; en: string }> = {
   plugins: { de: "/plugins", en: "/en/plugins" },
   mumpeer: { de: "/mumpeer", en: "/en/mumpeer" },
   mumquiz: { de: "/mumquiz", en: "/en/mumquiz" },
+  hwcodec: { de: "/hwcodec", en: "/en/hwcodec" },
+  protocol: { de: "/mumble-client-protocol", en: "/en/mumble-client-protocol" },
   imprint: { de: "/impressum", en: "/en/legal-notice" },
   privacy: { de: "/datenschutz", en: "/en/privacy" },
 };
 
-/** Legal pages stay binding in German and English; the other languages link to the English ones. */
-const legal = new Set<PageId>(["imprint", "privacy"]);
+/** Pages only in German and English; the other languages link to the English ones. Legal pages stay
+ * binding in those two, and the library docs are for developers, who read English. */
+const legal = new Set<PageId>(["imprint", "privacy", "hwcodec", "protocol"]);
 
 export const routes = Object.fromEntries(
   (Object.keys(base) as PageId[]).map((page) => [
@@ -60,5 +63,5 @@ export const routes = Object.fromEntries(
   ]),
 ) as Record<PageId, Record<Lang, string>>;
 
-/** The languages a page really exists in (legal pages only in German and English). */
+/** The languages a page really exists in (legal pages and library docs only in German and English). */
 export const pageLangs = (page: PageId): readonly Lang[] => (legal.has(page) ? (["de", "en"] as const) : LANGS);

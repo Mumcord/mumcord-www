@@ -1431,7 +1431,7 @@
           {
             "id": "camera",
             "title": "Kamera",
-            "body": "Tava kamera visiem tavā balss kanālā, tikai caur releju un šifrēta no gala līdz galam. Sākas ar priekšskatījumu, ko neviens neredz, un kameras poga lietotāja panelī, izvēlne Lietotnes, tekne un īsinājumtaustiņš to ieslēdz un izslēdz.",
+            "body": "Tava kamera visiem tavā balss kanālā, tieši vai caur releju un šifrēta no gala līdz galam. Sākas ar priekšskatījumu, ko neviens neredz, un kameras poga lietotāja panelī, izvēlne Lietotnes, tekne un īsinājumtaustiņš to ieslēdz un izslēdz.",
             "alt": "Kameras iestatījumi ar priekšskatījumu"
           },
           {
@@ -1439,6 +1439,11 @@
             "title": "Kameru telpa",
             "body": "Kanāla kameras atrodas virs tērzēšanas, līdz deviņām flīzēm režģī vai viena liela flīze ar Runātāju. Blakus ekrāna kopīgošanai vai watch party tās veido joslu blakus vai virs tā, vai arī tu tās paslēp.",
             "alt": "Kameru telpa ar vairākām kamerām virs tērzēšanas"
+          },
+          {
+            "id": "camera-path",
+            "title": "Tieši vai caur relay",
+            "body": "Kamera un ekrāna kopīgošana ceļo jaunā multivides formātā, tieši starp jums vai caur relay. Kameras ceļu izvēlies tu, un kameru telpa parāda, kuru saņem katrs skatītājs. Kad kāds tevi neredz, Mumcord pasaka, kāpēc."
           },
           {
             "id": "camera-backgrounds",
@@ -1718,6 +1723,11 @@
             "body": "Ja Mumcord negaidīti aizveras, tas saglabā īsu ziņojumu tavā datorā un nākamajā startā tev par to pasaka. Iestatījumi → Papildu un izstrādātājs rāda pēdējos 10, un tos var kopēt, eksportēt vai dzēst. Vienmēr tiek augšupielādēts tikai viens ziņojums un tikai pēc tam, kad esi apstiprinājis, kas tieši tiek sūtīts."
           },
           {
+            "id": "freeze-reports",
+            "title": "Uzkāršanās ziņojumi (Linux)",
+            "body": "Kad logs pārstāj atbildēt vai audio pavediens pārsniedz savu reāllaika budžetu, Mumcord saglabā ziņojumu, kas parāda, kur tas iestrēdzis. Kad Mumcord tika pārtraukts no ārpuses, ziņojums pasaka, ar ko. Tas tiek augšupielādēts tikai tad, ja to vēlies."
+          },
+          {
             "id": "aaron-tour",
             "title": "Aarons visu parāda",
             "body": "Pēc iestatīšanas Aarons, aksolotls Mumcord krāsās, izvada tevi cauri galvenajam logam: serveri, kanāli, runāšana, meklēšana, tērzēšana, lietotnes un tēmas, pa vienam padomam. Iestatīšanas vednī tas dod īsu padomu katram solim. Ekskursiju jebkurā laikā sāc no jauna sadaļā Iestatījumi → Par → Padomi.",
@@ -1734,6 +1744,57 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.9.0",
+      "teaser": "Kamera un ekrāna kopīgošana jaunā multivides formātā, katram skatītājam tiešā vai relay ceļā, ziņojumi par uzkāršanos Linux sistēmā, FreeBSD instalēšanas skriptā un daudz labojumu.",
+      "summary": "0.9.0 pārceļ kameru un ekrāna kopīgošanu uz jaunu multivides formātu: katrs skatītājs saņem savu ceļu, tiešu vai caur relay, un kameru telpa parāda, kuru. Linux sistēmā uzkāršanās un pēkšņas aizvēršanās tagad atstāj ziņojumu, instalēšanas skripts atbalsta FreeBSD, un čuksts sasniedz tikai tos cilvēkus, ko izvēlējies. Turklāt daudz labojumu Windows un Linux sistēmām.",
+      "groups": [
+        {
+          "title": "Jaunumi",
+          "items": [
+            "Kamera un ekrāna kopīgošana jaunā multivides formātā (#492, #814): kameras un ekrāna kopīgošanas attēls un skaņa ceļo jaunā multivides straumē, tieši starp jums vai caur relay, un straumes apraksts uz relay ir šifrēts. Vecākas Mumcord versijas joprojām saņem veco formātu; kur ar to nepietiek, piezīme norāda, ka vajag jaunāku Mumcord.",
+            "Tieši vai caur relay, katram skatītājam: kameras ceļu izvēlies katrai sesijai, un kameru telpa katram skatītājam parāda, vai attēls nāk tieši vai caur relay. Kad kāds neredz tavu kameru, Mumcord paskaidro, kāpēc, arī ar tastatūru un ekrāna lasītāju.",
+            "Pakešu inspektors lasa jauno multivides straumi: formātu, aprakstu, kanālus un kadrus.",
+            "Uzkāršanās ziņojumi (Linux): kad logs neatbild apmēram 8 sekundes, Mumcord saglabā „freeze” veida ziņojumu ar visu pavedienu steku. Lietotne turpina darboties, un ziņojums tiek augšupielādēts tikai tad, ja to vēlies.",
+            "Reāllaika pārsniegšanas ziņojumi (Linux): kad audio pavediens pārsniedz savu reāllaika budžetu, ziņojums sadaļā Iestatījumi → Avāriju ziņojumi parāda, kur tas bija aizņemts. Tā nav avārija; lietotne turpina darboties.",
+            "„Ended by” (Linux): kad Mumcord tika aizvērts bez pareizas izslēgšanas, ziņojums nosauc, ko sistēma par to reģistrēja, piemēram, out-of-memory killer vai SIGKILL no ārpuses.",
+            "Instalēšanas skripts atbalsta FreeBSD (#781): FreeBSD 15.x (amd64) tas lejupielādē pakotni, pārbauda to ar SHA256 un instalē ar pkg add. Palaižot vēlreiz, Mumcord tiek atjaunināts, --uninstall to noņem."
+          ]
+        },
+        {
+          "title": "Uzlabojumi",
+          "items": [
+            "Garas sarunas ritinās vienmērīgāk, un dalībnieku saraksti vairs netiek pārkārtoti ar katru runas indikatoru.",
+            "Attēli un multivide tiek dekodēti ātrāk, un rezerves konvertēšana ekrāna kopīgošanai un kamerai izmanto mazāk atmiņas.",
+            "Video kodētāji un dekodētāji ekrāna kopīgošanai un kamerai tagad nāk no atvērtā koda bibliotēkas hwcodec, ko Mumcord komanda uztur savā repozitorijā (#449). Kopīgošana izskatās un darbojas tāpat.",
+            "Mumble protokols tagad atrodas atvērtā koda bibliotēkā mumble-client-protocol (#455). Serveri joprojām redz Mumcord kā „Mumcord” ar tā versiju."
+          ]
+        },
+        {
+          "title": "Labots",
+          "items": [
+            "Windows: iegultie YouTube, Twitch, Spotify un SoundCloud atskaņotāji un watch party kopš 0.8.0 palika melni. Tagad tie atkal atskaņo.",
+            "Windows: kad kamera nesūtīja attēlu, Mumcord uzkarājās, izejot no kameras iestatījumiem, mainot kameru vai aizverot („Neatbild”). Apturēšana tagad padodas pēc divām sekundēm.",
+            "Linux: vairs nav ilgstošas sasalšanas, kad nolieci klausuli, kamēr PipeWire neatbild.",
+            "Linux: Mumcord vairs nepazūd bez avārijas dialoga, kad dators ir ļoti noslogots (#844). Reāllaika prioritāti tagad saglabā tikai audio pavedieni.",
+            "Linux: īslaicīgi aizņemts balss pavediens saglabā reāllaika prioritāti, jo Mumcord zvana laikā atjauno paredzēto 100 ms rezervi.",
+            "Linux: paziņojums „libayatana-appindicator is deprecated” vairs neparādās terminālī un žurnālā katrā startā (#822).",
+            "AppImage: kad trūkst H.264 atskaņošanas, atskaņotājs iesaka atjauninājumu vai tava izplatījuma pakotni gst-libav vietā, ko AppImage nevar izmantot (#567).",
+            "Vairs nav bezgalīgas atkārtotas savienošanās ar serveri, kas aizveras uzreiz pēc pieteikšanās, piemēram, ar aizliegtu sertifikātu: pēc 10 īsiem savienojumiem Mumcord apstājas un pasaka, kas notika.",
+            "Kad savienojums beidzas, beidzas arī notiekošs čuksts, un turēts push-to-talk taustiņš tiek uzskatīts par atlaistu.",
+            "Pakešu inspektors: Markdown eksports vairs nesalauž tabulas rindu, ja nosaukumā ir atpakaļvērstā slīpsvītra (#771)."
+          ]
+        },
+        {
+          "title": "Drošība",
+          "items": [
+            "Čuksts sasniedz tikai tos cilvēkus, ko izvēlējies: līdz šim mērķis katru reizi tika meklēts pēc vārda, tāpēc kāds ar tādu pašu vārdu varēja noklausīties. Tagad čuksts ir piesaistīts tieši šiem cilvēkiem; kas pievienojas vēlāk, neko nedzird, lai kāds būtu viņa vārds.",
+            "Tērzēšanas HTML un spraudņu SVG izmanto salabotu ammonia versiju (RUSTSEC-2026-0533, #819).",
+            "Jaunas identitātes atslēgas tiek veidotas ar salaboto rsa 0.10 bibliotēku (#131). Esošās identitātes un sertifikāti paliek tādi paši."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.8.0",
       "teaser": "Administratora komandas tērzētavā, reģistrētie lietotāji, kanāli, ko pārvieto ar vilkšanu, jauns teksta redaktors un Aarons, kas visu parāda.",

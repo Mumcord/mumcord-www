@@ -1431,7 +1431,7 @@
           {
             "id": "camera",
             "title": "Kamera",
-            "body": "Il-kamera tiegħek għal kulħadd fil-kanal tal-vuċi tiegħek, biss permezz tar-relay u kriptata minn tarf għal tarf. Tibda b’previżjoni li ħadd ma jara, u buttuna tal-kamera fil-pannell tal-utent, il-menu Apps, it-tray u hotkey jixgħluha u jitfuha.",
+            "body": "Il-kamera tiegħek għal kulħadd fil-kanal tal-vuċi tiegħek, direttament jew permezz tar-relay u kriptata minn tarf għal tarf. Tibda b’previżjoni li ħadd ma jara, u buttuna tal-kamera fil-pannell tal-utent, il-menu Apps, it-tray u hotkey jixgħluha u jitfuha.",
             "alt": "Is-settings tal-kamera b’previżjoni"
           },
           {
@@ -1439,6 +1439,11 @@
             "title": "Kamra tal-kameras",
             "body": "Il-kameras fil-kanal joqogħdu fuq iċ-chat, sa disa’ tiles f’grilja jew tile kbira waħda bi Speaker. Ħdejn kondiviżjoni tal-iskrin jew watch party jiffurmaw strixxa maġenbha jew fuqha, jew taħbihom.",
             "alt": "Il-kamra tal-kameras b’diversi kameras fuq iċ-chat"
+          },
+          {
+            "id": "camera-path",
+            "title": "Dirett jew relay",
+            "body": "Kamera u qsim tal-iskrin jivvjaġġaw f’format ġdid tal-midja, direttament bejniethom jew permezz tar-relay. Int tagħżel it-triq tal-kamera tiegħek, u l-kamra tal-kameras turi liema jieħu kull spettatur. Meta xi ħadd ma jarakx, Mumcord jgħid għalfejn."
           },
           {
             "id": "camera-backgrounds",
@@ -1718,6 +1723,11 @@
             "body": "Jekk Mumcord jingħalaq b’mod mhux mistenni, isalva rapport qasir fuq il-kompjuter tiegħek u jgħidlek fil-bidu li jmiss. Fis-Settings → Avvanzat u żviluppatur tara l-aħħar 10 u tista’ tikkopjahom, tesportahom jew tħassarhom. Dejjem jitgħolla biss rapport wieħed, u biss wara li tikkonferma x’qed jintbagħat eżattament."
           },
           {
+            "id": "freeze-reports",
+            "title": "Rapporti tal-iffriżar (Linux)",
+            "body": "Meta t-tieqa ma tibqax twieġeb jew thread tal-awdjo jaqbeż il-baġit tiegħu tal-ħin reali, Mumcord isejvja rapport li juri fejn qed jaqa’. Meta Mumcord ikun twaqqaf minn barra, ir-rapport jgħid minn xiex. Jittella’ biss jekk trid."
+          },
+          {
             "id": "aaron-tour",
             "title": "Aaron juri madwar",
             "body": "Wara s-setup Aaron, axolotl bil-kuluri ta’ Mumcord, iwassalek mat-tieqa prinċipali: servers, kanali, titkellem, tfittxija, chat, apps u temi, suġġeriment wieħed kull darba. Fil-wizard tas-setup jagħti suġġeriment qasir għal kull pass. Erġa’ ibda l-ġirja meta trid taħt Settings → Dwar → Suġġerimenti.",
@@ -1734,6 +1744,57 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.9.0",
+      "teaser": "Kamera u qsim tal-iskrin f’format ġdid tal-midja b’triq diretta jew bir-relay għal kull spettatur, rapporti tal-iffriżar fuq Linux, FreeBSD fl-iscript tal-installazzjoni u ħafna tiswijiet.",
+      "summary": "0.9.0 jgħaddi l-kamera u l-qsim tal-iskrin għal format ġdid tal-midja: kull spettatur jieħu triqtu, diretta jew permezz tar-relay, u l-kamra tal-kameras turi liema. Fuq Linux l-iffriżar u l-ħruġ f’daqqa issa jħallu rapport, l-iscript tal-installazzjoni jsapporti FreeBSD, u whisper jilħaq biss in-nies eżatti li għażilt. Flimkien ma’ ħafna tiswijiet għal Windows u Linux.",
+      "groups": [
+        {
+          "title": "Ġdid",
+          "items": [
+            "Kamera u qsim tal-iskrin f’format ġdid tal-midja (#492, #814): stampa u ħoss tal-kamera u tal-qsim tal-iskrin jivvjaġġaw f’fluss ġdid tal-midja, direttament bejniethom jew permezz tar-relay, bid-deskrizzjoni tal-fluss ikkriptata fuq ir-relay. Verżjonijiet eqdem ta’ Mumcord xorta jirċievu l-format l-antik; fejn dan ma jkunx biżżejjed, nota tgħid li jinħtieġ Mumcord iżjed ġdid.",
+            "Dirett jew relay, għal kull spettatur: int tagħżel it-triq tal-kamera tiegħek għal kull sessjoni, u l-kamra tal-kameras turi għal kull spettatur jekk l-istampa tiġix direttament jew permezz tar-relay. Meta xi ħadd ma jarax il-kamera tiegħek, Mumcord jispjega għalfejn, ukoll bit-tastiera u bi screen reader.",
+            "Il-packet inspector jaqra l-fluss il-ġdid tal-midja: format, deskrizzjoni, kanali u frames.",
+            "Rapporti tal-iffriżar (Linux): meta t-tieqa ma twieġbx għal madwar 8 sekondi, Mumcord isejvja rapport tat-tip “freeze” bl-istacks tat-threads kollha. L-app tibqa’ taħdem, u r-rapport jittella’ biss jekk trid.",
+            "Rapporti tal-qbiż tal-ħin reali (Linux): meta thread tal-awdjo jaqbeż il-baġit tiegħu tal-ħin reali, rapport taħt Settings → Rapporti tal-crashes juri fejn kien okkupat. Mhuwiex crash; l-app tibqa’ taħdem.",
+            "“Ended by” (Linux): meta Mumcord ingħalaq mingħajr ma twaqqaf kif suppost, ir-rapport jiżvela x’irreġistra s-sistema dwaru, bħall-out-of-memory killer jew SIGKILL minn barra.",
+            "L-iscript tal-installazzjoni jsapporti FreeBSD (#781): fuq FreeBSD 15.x (amd64) iniżżel il-pakkett, jiċċekkjah kontra SHA256 u jinstallah b’pkg add. Jekk terġa’ tħaddmu, jaġġorna Mumcord, --uninstall ineħħih."
+          ]
+        },
+        {
+          "title": "Imtejjeb",
+          "items": [
+            "Konverżazzjonijiet twal jiskrollaw b’mod iktar bla xkiel, u l-listi tal-membri m’għadhomx jerġgħu jiġu rranġati ma’ kull indikatur tal-kliem.",
+            "Stampi u midja jiġu dekodifikati iktar malajr, u l-konverżjoni ta’ riserva għall-qsim tal-iskrin u l-kamera tuża inqas memorja.",
+            "L-enkoders u d-dekoders tal-video għall-qsim tal-iskrin u l-kamera issa jiġu mil-librerija open-source hwcodec, li t-tim ta’ Mumcord iżomm fir-repożitorju tiegħu stess (#449). Il-qsim jidher u jaħdem l-istess.",
+            "Il-protokoll ta’ Mumble issa jgħix fil-librerija open-source mumble-client-protocol (#455). Is-servers xorta jaraw Mumcord bħala “Mumcord” bil-verżjoni tiegħu."
+          ]
+        },
+        {
+          "title": "Imsewwi",
+          "items": [
+            "Windows: il-players inkorporati ta’ YouTube, Twitch, Spotify u SoundCloud u l-watch party baqgħu suwed minn 0.8.0. Issa jerġgħu jilagħbu.",
+            "Windows: meta kamera ma kinitx tibgħat stampa, Mumcord kien jiffriża meta toħroġ mis-settings tal-kamera, tbiddel il-kamera jew tagħlaq (“Mhux qed iwieġeb”). It-twaqqif issa jċedi wara ż-żewġ sekondi.",
+            "Linux: m’hemmx iktar iffriżar dejjem meta tagħlaq it-telefonata waqt li PipeWire ma jweġibx.",
+            "Linux: Mumcord m’għadux jisparixxi mingħajr dijalogu tal-crash meta l-kompjuter ikun impenjat ħafna (#844). Biss it-threads tal-awdjo jżommu l-prijorità tal-ħin reali issa.",
+            "Linux: thread tal-vuċi okkupat għal ftit żmien iżomm il-prijorità tiegħu tal-ħin reali, għax Mumcord jerġa’ jwaqqaf il-marġni maħsub ta’ 100 ms waqt telefonata.",
+            "Linux: l-avviż “libayatana-appindicator is deprecated” m’għadux jidher fit-terminal u fil-log f’kull bidu (#822).",
+            "AppImage: meta jonqos il-playback ta’ H.264, il-player jissuġġerixxi aġġornament jew il-pakkett tad-distribuzzjoni tiegħek minflok gst-libav, li l-AppImage ma jistax juża (#567).",
+            "M’hemmx iktar rikonnessjoni bla tmiem ma’ server li jagħlaq eżatt wara l-login, pereżempju b’ċertifikat bannat: wara 10 konnessjonijiet qosra Mumcord jieqaf u jgħid x’ġara.",
+            "Meta tintemm il-konnessjoni, whisper li jkun għaddej jintemm ukoll, u key tal-push-to-talk miżmuma tgħodd bħala meħlusa.",
+            "Packet inspector: l-esportazzjoni Markdown m’għadhiex tkisser ringiela tat-tabella meta isem ikun fih backslash (#771)."
+          ]
+        },
+        {
+          "title": "Sigurtà",
+          "items": [
+            "Whisper jilħaq biss in-nies li għażilt: sa issa is-target kien jinstab bl-isem kull darba, għalhekk xi ħadd bl-istess isem seta’ jisma’. Whisper issa huwa marbut ma’ dawk in-nies eżatt; kull min jingħaqad iktar tard ma jismax xejn, ikun xi jkun ismu.",
+            "L-HTML taċ-chat u l-SVGs tal-plugins jużaw verżjoni rranġata ta’ ammonia (RUSTSEC-2026-0533, #819).",
+            "Ċwievet ġodda tal-identità jsiru bil-librerija rranġata rsa 0.10 (#131). Identitajiet u ċertifikati eżistenti jibqgħu l-istess."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.8.0",
       "teaser": "Kmandi tal-admin fmiċ-chat, utenti rreġistrati, kanali li timxi billi ssuqhom, editur tat-test ġdid, u Aaron biex juri madwar.",

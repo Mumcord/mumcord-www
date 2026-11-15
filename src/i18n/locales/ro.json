@@ -1431,7 +1431,7 @@
           {
             "id": "camera",
             "title": "Cameră",
-            "body": "Camera ta pentru toți din canalul tău de voce, doar prin releu și criptată end-to-end. Începe cu o previzualizare pe care n-o vede nimeni, iar un buton de cameră din panoul utilizatorului, meniul Aplicații, tray și o scurtătură de la tastatură o pornesc și o opresc.",
+            "body": "Camera ta pentru toți din canalul tău de voce, direct sau prin releu și criptată end-to-end. Începe cu o previzualizare pe care n-o vede nimeni, iar un buton de cameră din panoul utilizatorului, meniul Aplicații, tray și o scurtătură de la tastatură o pornesc și o opresc.",
             "alt": "Setările camerei, cu previzualizare"
           },
           {
@@ -1439,6 +1439,11 @@
             "title": "Camera room",
             "body": "Camerele din canal stau deasupra chatului, până la nouă tile-uri într-o grilă sau un tile mare cu Speaker. Lângă o partajare de ecran sau un watch party formează o bandă alături sau deasupra, sau le ascunzi.",
             "alt": "Camera room cu mai multe camere deasupra chatului"
+          },
+          {
+            "id": "camera-path",
+            "title": "Direct sau prin relay",
+            "body": "Camera și partajarea ecranului circulă într-un format media nou, direct între voi sau prin relay. Alegi calea camerei tale, iar camera de camere arată care ajunge la fiecare spectator. Când cineva nu te poate vedea, Mumcord spune de ce."
           },
           {
             "id": "camera-backgrounds",
@@ -1718,6 +1723,11 @@
             "body": "Dacă Mumcord se închide neașteptat, salvează un raport scurt pe calculatorul tău și îți spune la următoarea pornire. În Setări → Avansat și dezvoltator vezi ultimele 10 și le poți copia, exporta sau șterge. Se încarcă doar un singur raport, și doar după ce ai confirmat ce anume se trimite."
           },
           {
+            "id": "freeze-reports",
+            "title": "Rapoarte de blocare (Linux)",
+            "body": "Când fereastra nu mai răspunde sau un fir audio depășește bugetul de timp real, Mumcord salvează un raport care arată unde se blochează. Când Mumcord a fost încheiat din exterior, raportul spune de ce. Se încarcă doar dacă vrei tu."
+          },
+          {
             "id": "aaron-tour",
             "title": "Aaron îți arată aplicația",
             "body": "După configurare, Aaron, un axolotl în culorile Mumcord, te plimbă prin fereastra principală: servere, canale, vorbit, căutare, chat, aplicații și teme, câte un sfat pe rând. În expertul de configurare dă un sfat scurt pentru fiecare pas. Pornește turul din nou oricând din Setări → Despre → Sfaturi.",
@@ -1734,6 +1744,57 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.9.0",
+      "teaser": "Camera și partajarea ecranului într-un format media nou, cu cale directă sau prin relay pentru fiecare spectator, rapoarte pentru blocări pe Linux, FreeBSD în scriptul de instalare și multe remedieri.",
+      "summary": "0.9.0 mută camera și partajarea ecranului pe un format media nou: fiecare spectator primește calea lui, directă sau prin relay, iar camera de camere arată care. Pe Linux, blocările și închiderile bruște lasă acum un raport, scriptul de instalare acceptă FreeBSD, iar o șoaptă ajunge exact la persoanele pe care le-ai ales. În plus, multe remedieri pentru Windows și Linux.",
+      "groups": [
+        {
+          "title": "Nou",
+          "items": [
+            "Camera și partajarea ecranului într-un format media nou (#492, #814): imaginea și sunetul de la cameră și de la partajarea ecranului circulă într-un flux media nou, direct între voi sau prin relay, cu descrierea fluxului criptată pe relay. Versiunile mai vechi de Mumcord primesc în continuare formatul vechi; unde asta nu ajunge, o notă spune că e nevoie de un Mumcord mai nou.",
+            "Direct sau prin relay, pentru fiecare spectator: alegi calea camerei tale pe sesiune, iar camera de camere arată pentru fiecare spectator dacă imaginea vine direct sau prin relay. Când cineva nu-ți poate vedea camera, Mumcord explică de ce, inclusiv de la tastatură și cu cititorul de ecran.",
+            "Inspectorul de pachete citește noul flux media: format, descriere, canale și cadre.",
+            "Rapoarte de blocare (Linux): când fereastra nu răspunde circa 8 secunde, Mumcord salvează un raport de tip „freeze” cu stivele tuturor firelor. Aplicația rămâne pornită, iar raportul se încarcă doar dacă vrei tu.",
+            "Rapoarte de depășire în timp real (Linux): când un fir audio depășește bugetul său de timp real, un raport din Setări → Rapoarte de crash arată unde era ocupat. Nu este un crash; aplicația rămâne pornită.",
+            "„Încheiat de” (Linux): când Mumcord a fost închis fără oprire normală, raportul spune ce a înregistrat sistemul despre asta, de exemplu out-of-memory killer sau un SIGKILL din exterior.",
+            "Scriptul de instalare acceptă FreeBSD (#781): pe FreeBSD 15.x (amd64) descarcă pachetul, îl verifică cu SHA256 și îl instalează cu pkg add. Dacă îl rulezi din nou, actualizează Mumcord, --uninstall îl elimină."
+          ]
+        },
+        {
+          "title": "Îmbunătățit",
+          "items": [
+            "Conversațiile lungi derulează mai fluid, iar listele de membri nu se mai reordonează la fiecare indicator de vorbire.",
+            "Imaginile și media se decodează mai repede, iar conversia de rezervă pentru partajarea ecranului și cameră folosește mai puțină memorie.",
+            "Codificatoarele și decodificatoarele video pentru partajarea ecranului și cameră vin acum din biblioteca open-source hwcodec, pe care echipa Mumcord o întreține în propriul depozit (#449). Partajarea arată și funcționează la fel.",
+            "Protocolul Mumble se află acum în biblioteca open-source mumble-client-protocol (#455). Serverele văd în continuare Mumcord ca „Mumcord” cu versiunea lui."
+          ]
+        },
+        {
+          "title": "Reparat",
+          "items": [
+            "Windows: playerele încorporate YouTube, Twitch, Spotify și SoundCloud și watch party-ul rămâneau negre de la 0.8.0. Acum redau din nou.",
+            "Windows: când o cameră nu dădea imagine, Mumcord se bloca la ieșirea din setările camerei, la schimbarea camerei sau la închidere („Nu răspunde”). Oprirea renunță acum după două secunde.",
+            "Linux: nu mai apare o blocare permanentă când închizi apelul în timp ce PipeWire nu răspunde.",
+            "Linux: Mumcord nu mai dispare fără dialog de crash când calculatorul e foarte ocupat (#844). Acum doar firele audio păstrează prioritatea de timp real.",
+            "Linux: un fir de voce ocupat scurt timp își păstrează prioritatea de timp real, pentru că Mumcord restabilește marja prevăzută de 100 ms în timpul unui apel.",
+            "Linux: mesajul „libayatana-appindicator is deprecated” nu mai apare în terminal și în jurnal la fiecare pornire (#822).",
+            "AppImage: când lipsește redarea H.264, playerul sugerează o actualizare sau pachetul distribuției tale în loc de gst-libav, pe care AppImage nu îl poate folosi (#567).",
+            "Nu mai există reconectare fără sfârșit la un server care se închide imediat după autentificare, de exemplu cu un certificat banat: după 10 conexiuni scurte, Mumcord se oprește și spune ce s-a întâmplat.",
+            "Când conexiunea se încheie, se încheie și o șoaptă în curs, iar o tastă push-to-talk ținută apăsată se consideră eliberată.",
+            "Inspector de pachete: exportul Markdown nu mai strică un rând de tabel când un nume conține o bară oblică inversă (#771)."
+          ]
+        },
+        {
+          "title": "Securitate",
+          "items": [
+            "O șoaptă ajunge doar la persoanele pe care le-ai ales: până acum ținta era căutată după nume de fiecare dată, așa că cineva cu același nume putea asculta. Acum o șoaptă e legată exact de acele persoane; cine intră mai târziu nu aude nimic, indiferent de nume.",
+            "HTML-ul din chat și SVG-urile din pluginuri folosesc o versiune corectată a ammonia (RUSTSEC-2026-0533, #819).",
+            "Cheile de identitate noi se fac cu biblioteca rsa 0.10 corectată (#131). Identitățile și certificatele existente rămân la fel."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.8.0",
       "teaser": "Comenzi de administrare în chat, utilizatori înregistrați, canale mutate prin tragere, un editor de text nou și Aaron, care îți arată cum merg lucrurile.",

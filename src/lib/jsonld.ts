@@ -1,6 +1,7 @@
 import { dicts, routes, LANGS, type Lang, type PageId } from "../i18n";
 import { OWNER } from "./site";
 import { REPO_URL, RELEASES_URL, type Release } from "./release";
+import { libsPage, libLinks, LIB_META, LIB_PAGE, type LibId } from "./libs";
 
 const person = (site: URL) => ({
   "@type": "Person",
@@ -91,6 +92,28 @@ export function epicJsonLd(lang: Lang, site: URL, epicId: string, epicTitle: str
           { "@type": "ListItem", position: 3, name: epicTitle, item: url },
         ],
       },
+    },
+  ];
+}
+
+/** A library's documentation page: the WebPage plus the crate as SoftwareSourceCode. */
+export function libJsonLd(lang: "de" | "en", site: URL, lib: LibId) {
+  const p = libsPage[lang].pages[lib];
+  const meta = LIB_META[lib];
+  const links = libLinks(lib);
+  return [
+    ...pageJsonLd(lang, site, LIB_PAGE[lib], p.title),
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareSourceCode",
+      name: meta.crate,
+      description: p.description,
+      codeRepository: links.repo,
+      programmingLanguage: "Rust",
+      license: meta.license.split(" OR ").map((l) => `https://spdx.org/licenses/${l}.html`),
+      url: new URL(routes[LIB_PAGE[lib]][lang], site).href,
+      sameAs: [links.crates, links.docs],
+      author: { "@id": `${site.origin}/#owner` },
     },
   ];
 }

@@ -1,0 +1,178 @@
+---
+import CopyButton from "./CopyButton.astro";
+import PeopleList from "./PeopleList.astro";
+import Arrow from "./Arrow.astro";
+import { highlight, langOf } from "../lib/highlight";
+import { dicts, routes, type Lang } from "../i18n";
+import { getRepoContributors } from "../lib/contributors";
+import { getRepoRelease } from "../lib/tools";
+import { libText, libLinks, LIB_META, LIB_CODE, LIB_IDS, LIB_PAGE, type LibId } from "../lib/libs";
+
+interface Props {
+  lang: Lang;
+  lib: LibId;
+}
+const { lang, lib } = Astro.props;
+const t = libText(lang);
+const p = t.pages[lib];
+const meta = LIB_META[lib];
+const links = libLinks(lib);
+const release = await getRepoRelease(meta.repo);
+const people = await getRepoContributors(meta.repo);
+const others = LIB_IDS.filter((x) => x !== lib);
+// `code` in the texts becomes <code>; everything else is escaped.
+const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const md = (s: string) => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>");
+---
+
+<article class="wrap mumbot-page lib-page">
+  <header class="rp-head mb-head">
+    <span class="lib-hero-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16" /></svg>
+    </span>
+    <p class="label" data-reveal>{t.label} · Rust</p>
+    <h1 class="h2" data-reveal>{p.title}</h1>
+    <p class="body" data-reveal>{p.lead}</p>
+    <p class="mb-release" data-reveal>
+      {
+        release ? (
+          <>
+            <span class="live-dot" aria-hidden="true" />
+            <a href={release.url} rel="noopener">
+              {t.release}: v{release.version}
+            </a>
+          </>
+        ) : (
+          <span>{t.noRelease}</span>
+        )
+      }
+    </p>
+    <ul class="lib-facts" data-reveal>
+      <li><span>crate</span><code>{meta.crate}</code></li>
+      <li><span>{t.license}</span>{meta.license}</li>
+      <li><span>MSRV</span>{meta.msrv}</li>
+    </ul>
+    <p class="fp-actions" data-reveal>
+      <a class="btn btn-small btn-glow" href={links.docs} rel="noopener">{t.docsRs}</a>
+      <a class="text-link" href={links.crates} rel="noopener">{t.crates}<Arrow /></a>
+      <a class="text-link" href={links.repo} rel="noopener">GitHub<Arrow /></a>
+    </p>
+    <p class="lib-status" data-reveal>{p.status}</p>
+  </header>
+
+  <section class="rp-section" aria-label={p.title}>
+    <div class="tool-features">
+      {
+        p.highlights.map((f) => (
+          <section class="mb-bot" data-reveal>
+            <h2>{f.title}</h2>
+            <p set:html={md(f.body)} />
+          </section>
+        ))
+      }
+    </div>
+  </section>
+
+  <div class="lib-doc">
+    <nav class="lib-toc" aria-label={t.contents}>
+      <p class="fp-row-label">{t.contents}</p>
+      <ol>
+        {p.sections.map((s) => <li><a href={`#${s.id}`}>{s.title}</a></li>)}
+      </ol>
+    </nav>
+    <div class="lib-sections">
+      {
+        p.sections.map((s) => (
+          <section class="rp-section lib-section" id={s.id} aria-labelledby={`${s.id}-h`}>
+            <h2 id={`${s.id}-h`} data-reveal>
+              <a href={`#${s.id}`}>{s.title}</a>
+            </h2>
+            {s.blocks.map((b) =>
+              "p" in b ? (
+                <p class="rp-section-body" data-reveal set:html={md(b.p)} />
+              ) : "code" in b ? (
+                <>
+                  <figure class="code" data-reveal>
+                    <figcaption>
+                      <span>{LIB_CODE[b.code].file}</span>
+                      <CopyButton label={t.copy} copied={t.copied} class="is-quiet" />
+                    </figcaption>
+                    <pre><code set:html={highlight(LIB_CODE[b.code].code, langOf(LIB_CODE[b.code].file))} /></pre>
+                  </figure>
+                  {b.note && <p class="rp-section-body lib-note" data-reveal set:html={md(b.note)} />}
+                </>
+              ) : "list" in b ? (
+                <ul class="tool-list" data-reveal>
+                  {b.list.map((x) => (
+                    <li set:html={md(x)} />
+                  ))}
+                </ul>
+              ) : "table" in b ? (
+                <div class="lib-table-wrap" data-reveal>
+                  <table class="dlp-table lib-table">
+                    <thead>
+                      <tr>{b.table.head.map((h) => <th scope="col">{h}</th>)}</tr>
+                    </thead>
+                    <tbody>
+                      {b.table.rows.map((r) => (
+                        <tr>
+                          {r.map((c, i) => (i === 0 ? <th scope="row" set:html={md(c)} /> : <td set:html={md(c)} />))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <dl class="tool-terms lib-terms" data-reveal>
+                  {b.terms.map(([k, v]) => (
+                    <div>
+                      <dt>
+                        <code>{k}</code>
+                      </dt>
+                      <dd set:html={md(v)} />
+                    </div>
+                  ))}
+                </dl>
+              ),
+            )}
+          </section>
+        ))
+      }
+    </div>
+  </div>
+
+  {
+    people.length > 0 && (
+      <section class="rp-section" id="contributors" aria-labelledby="lib-people-h">
+        <h2 id="lib-people-h" data-reveal>{dicts[lang].contributors.toolTitle}</h2>
+        <PeopleList lang={lang} people={people} />
+      </section>
+    )
+  }
+
+  <section class="rp-section" aria-labelledby="lib-also-h">
+    <h2 id="lib-also-h" data-reveal>{t.alsoTitle}</h2>
+    <ul class="lib-also" data-reveal>
+      {
+        others.map((o) => (
+          <li>
+            <a class="nav-card" href={routes[LIB_PAGE[o]][lang]}>
+              <span class="nav-card-text">
+                <b>{t.pages[o].title}</b>
+                <span>{t.pages[o].menu}</span>
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="fp-ask" data-reveal>
+    <p class="fp-actions">
+      <a class="btn btn-small" href={links.repo} rel="noopener">{t.source}</a>
+      <a class="text-link" href={links.changelog} rel="noopener">{t.changelog}<Arrow /></a>
+      <a class="text-link" href={links.issues} rel="noopener">{t.issues}<Arrow /></a>
+    </p>
+  </section>
+</article>

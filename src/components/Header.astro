@@ -64,7 +64,12 @@ const tools = [
   { key: "toolPeer", img: mumpeerIcon, href: routes.mumpeer[lang], current: page === "mumpeer" },
   { key: "toolQuiz", img: mumquizIcon, href: routes.mumquiz[lang], current: page === "mumquiz" },
 ] as const;
-const toolsCurrent = tools.some((x) => x.current);
+// The libraries that came out of Mumcord, under the tools.
+const libs = [
+  { key: "libCodec", href: routes.hwcodec[lang], current: page === "hwcodec" },
+  { key: "libProtocol", href: routes.protocol[lang], current: page === "protocol" },
+] as const;
+const toolsCurrent = tools.some((x) => x.current) || libs.some((x) => x.current);
 const productCurrent = product.some((p) => p.current);
 import Arrow from "./Arrow.astro";
 ---
@@ -131,6 +136,24 @@ import Arrow from "./Arrow.astro";
                   <li>
                     <a class="nav-card nav-card-small" href={b.href} aria-current={b.current ? "page" : undefined}>
                       <Image class="nav-app-icon" src={b.img} alt="" width={40} height={40} />
+                      <span class="nav-card-text">
+                        <b>{m[b.key].title}</b>
+                        <span>{m[b.key].desc}</span>
+                      </span>
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+            <p class="nav-sub" id="menu-libs-h">{m.libs}</p>
+            <ul class="nav-list" aria-labelledby="menu-libs-h">
+              {
+                libs.map((b) => (
+                  <li>
+                    <a class="nav-card nav-card-small" href={b.href} aria-current={b.current ? "page" : undefined}>
+                      <span class="nav-app-icon nav-lib-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16" /></svg>
+                      </span>
                       <span class="nav-card-text">
                         <b>{m[b.key].title}</b>
                         <span>{m[b.key].desc}</span>

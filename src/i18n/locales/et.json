@@ -1431,7 +1431,7 @@
           {
             "id": "camera",
             "title": "Kaamera",
-            "body": "Sinu kaamera kõigile sinu häälekanalis, ainult relee kaudu ja otspunktkrüpteeritult. See algab eelvaatega, mida keegi ei näe, ning kaameranupp kasutajapaneelis, menüü Rakendused, salv ja kiirklahv lülitavad selle sisse ja välja.",
+            "body": "Sinu kaamera kõigile sinu häälekanalis, otse või relee kaudu ja otspunktkrüpteeritult. See algab eelvaatega, mida keegi ei näe, ning kaameranupp kasutajapaneelis, menüü Rakendused, salv ja kiirklahv lülitavad selle sisse ja välja.",
             "alt": "Kaamera seaded eelvaatega"
           },
           {
@@ -1439,6 +1439,11 @@
             "title": "Kaameraruum",
             "body": "Kanali kaamerad asuvad vestluse kohal, kuni üheksa paani ruudustikus või üks suur paan koos Kõnelejaga. Ekraanijagamise või watch party kõrval moodustavad need riba kõrval või kohal, või peidad need.",
             "alt": "Kaameraruum mitme kaameraga vestluse kohal"
+          },
+          {
+            "id": "camera-path",
+            "title": "Otse või relay kaudu",
+            "body": "Kaamera ja ekraanijagamine liiguvad uues meediavormingus, otse teie vahel või relay kaudu. Sina valid oma kaamera tee ja kaameraruum näitab, millise iga vaataja saab. Kui keegi sind ei näe, ütleb Mumcord, miks."
           },
           {
             "id": "camera-backgrounds",
@@ -1718,6 +1723,11 @@
             "body": "Kui Mumcord sulgub ootamatult, salvestab ta sinu arvutisse lühikese aruande ja annab sellest järgmisel käivitusel teada. Menüüs Seaded → Täpsemad ja arendaja näed viimast 10 ning saad neid kopeerida, eksportida või kustutada. Üles laaditakse alati ainult üks aruanne ja alles pärast seda, kui oled kinnitanud, mis täpselt saadetakse."
           },
           {
+            "id": "freeze-reports",
+            "title": "Hangumisaruanded (Linux)",
+            "body": "Kui aken lakkab vastamast või heli lõim ületab oma reaalaja eelarve, salvestab Mumcord aruande, mis näitab, kus see kinni jääb. Kui Mumcord lõpetati väljastpoolt, ütleb aruanne, mille poolt. See laaditakse üles ainult siis, kui sa seda tahad."
+          },
+          {
             "id": "aaron-tour",
             "title": "Aaron näitab sulle ringi",
             "body": "Pärast seadistust käib Aaron, aksolotl Mumcordi värvides, sinuga peaakna läbi: serverid, kanalid, rääkimine, otsing, vestlus, rakendused ja teemad, üks nõuanne korraga. Seadistusviisardis annab ta iga sammu kohta lühikese nõuande. Käivita ringkäik igal ajal uuesti menüüst Seaded → Teave → Nõuanded.",
@@ -1734,6 +1744,57 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.9.0",
+      "teaser": "Kaamera ja ekraanijagamine uues meediavormingus, iga vaataja jaoks otsetee või tee relay kaudu, krahhiaruanded Linuxi hangumiste kohta, FreeBSD paigaldusskriptis ja palju parandusi.",
+      "summary": "0.9.0 viib kaamera ja ekraanijagamise uude meediavormingusse: iga vaataja saab oma tee, otse või relay kaudu, ja kaameraruum näitab, kumma. Linuxis jätavad hangumised ja järsud sulgumised nüüd aruande, paigaldusskript toetab FreeBSD-d ning sosin jõuab ainult täpselt nendeni, keda valisid. Lisaks palju parandusi Windowsile ja Linuxile.",
+      "groups": [
+        {
+          "title": "Uus",
+          "items": [
+            "Kaamera ja ekraanijagamine uues meediavormingus (#492, #814): kaamera ja ekraanijagamise pilt ja heli liiguvad uues meediavoos, otse teie vahel või relay kaudu, ning voo kirjeldus on relay peal krüptitud. Vanemad Mumcordi versioonid saavad endiselt vana vormingu; kui sellest ei piisa, ütleb märkus, et vaja on uuemat Mumcordi.",
+            "Otse või relay kaudu, vaataja kaupa: valid oma kaamera tee seansi kaupa ja kaameraruum näitab iga vaataja kohta, kas pilt tuleb otse või relay kaudu. Kui keegi ei näe sinu kaamerat, selgitab Mumcord, miks, ka klaviatuuri ja ekraanilugeja jaoks.",
+            "Paketiinspektor loeb uut meediavoogu: vormingut, kirjeldust, kanaleid ja kaadreid.",
+            "Hangumisaruanded (Linux): kui aken pole umbes 8 sekundit vastanud, salvestab Mumcord liigi „freeze“ aruande kõigi lõimede pinudega. Rakendus töötab edasi ja aruanne laaditakse üles ainult siis, kui sa seda tahad.",
+            "Reaalaja ületamise aruanded (Linux): kui heli lõim ületab oma reaalaja eelarve, näitab aruanne menüüs Seaded → Krahhiaruanded, kus see hõivatud oli. See pole krahh; rakendus töötab edasi.",
+            "„Lõpetas“ (Linux): kui Mumcord suleti korrektselt väljumata, nimetab aruanne, mida süsteem selle kohta registreeris, näiteks out-of-memory killer või väljastpoolt tulnud SIGKILL.",
+            "Paigaldusskript toetab FreeBSD-d (#781): FreeBSD 15.x (amd64) all laadib see paketi alla, kontrollib seda SHA256-ga ja paigaldab käsuga pkg add. Uuesti käivitamine uuendab Mumcordi, --uninstall eemaldab selle."
+          ]
+        },
+        {
+          "title": "Täiustatud",
+          "items": [
+            "Pikad vestlused kerivad sujuvamalt ja liikmeloendid ei sorteeru enam iga kõnenäidiku peale ümber.",
+            "Pildid ja meedia dekodeeritakse kiiremini ning ekraanijagamise ja kaamera varumuundamine kasutab vähem mälu.",
+            "Ekraanijagamise ja kaamera videokodekid tulevad nüüd avatud lähtekoodiga teegist hwcodec, mida Mumcordi meeskond haldab oma hoidlas (#449). Jagamine näeb välja ja töötab samamoodi.",
+            "Mumble'i protokoll elab nüüd avatud lähtekoodiga teegis mumble-client-protocol (#455). Serverid näevad Mumcordi endiselt nimega „Mumcord“ koos selle versiooniga."
+          ]
+        },
+        {
+          "title": "Parandatud",
+          "items": [
+            "Windows: põimitud YouTube'i, Twitchi, Spotify ja SoundCloudi mängijad ning watch party olid alates versioonist 0.8.0 mustad. Need mängivad jälle.",
+            "Windows: kui kaamera ei andnud pilti, jäi Mumcord kaamera seadetest lahkumisel, kaamerate vahetamisel või sulgemisel rippuma („Ei vasta“). Peatamine loobub nüüd kahe sekundi pärast.",
+            "Linux: enam ei teki püsivat hangumist, kui lõpetad kõne ajal, mil PipeWire ei vasta.",
+            "Linux: Mumcord ei kao enam ilma krahhidialoogita, kui arvuti on väga hõivatud (#844). Reaalaja prioriteet jääb nüüd ainult heli lõimedele.",
+            "Linux: korraks hõivatud hääle lõim säilitab oma reaalaja prioriteedi, sest Mumcord taastab kõne ajal ettenähtud 100 ms varu.",
+            "Linux: teade „libayatana-appindicator is deprecated“ ei ilmu enam igal käivitusel terminali ega logisse (#822).",
+            "AppImage: kui H.264 taasesitus puudub, soovitab mängija uuendust või sinu distributsiooni paketti gst-libav asemel, mida AppImage kasutada ei saa (#567).",
+            "Lõpp lõputule uuesti ühendumisele serveriga, mis sulgub kohe pärast sisselogimist, näiteks keelatud sertifikaadi korral: pärast 10 lühikest ühendust Mumcord peatub ja ütleb, mis juhtus.",
+            "Kui ühendus lõpeb, lõpeb ka käimasolev sosin ning all hoitud push-to-talk-klahv loetakse vabastatuks.",
+            "Paketiinspektor: Markdowni eksport ei lõhu enam tabeli rida, kui nimes on kaldkriips tagurpidi (#771)."
+          ]
+        },
+        {
+          "title": "Turvalisus",
+          "items": [
+            "Sosin jõuab ainult nendeni, keda valisid: seni otsiti sihtmärki iga kord nime järgi, nii et sama nimega inimene võis pealt kuulata. Nüüd on sosin seotud täpselt nende inimestega; hiljem liituja ei kuule midagi, olenemata nimest.",
+            "Vestluse HTML ja pluginate SVG-d kasutavad ammonia parandatud versiooni (RUSTSEC-2026-0533, #819).",
+            "Uued identiteedivõtmed tehakse parandatud teegiga rsa 0.10 (#131). Olemasolevad identiteedid ja sertifikaadid jäävad samaks."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.8.0",
       "teaser": "Administraatori käsud vestluses, registreeritud kasutajad, kanalite liigutamine lohistades, uus tekstiredaktor ja Aaron, kes näitab sulle Mumcordi.",

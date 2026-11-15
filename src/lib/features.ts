@@ -903,7 +903,7 @@ const source: Record<"de" | "en", FeaturesPage> = {
             shot: "settings-camera-1-dark",
             alt: "Die Kamera-Einstellungen mit Vorschau",
             title: "Kamera",
-            body: "Deine Kamera für alle in deinem Sprachkanal, nur über das Relay und Ende-zu-Ende-verschlüsselt. Sie startet mit einer Vorschau, die niemand sieht, und ein Kamera-Knopf in der Benutzerleiste, im Apps-Menü, im Tray und ein Tastenkürzel schalten sie ein und aus.",
+            body: "Deine Kamera für alle in deinem Sprachkanal, direkt oder über das Relay und Ende-zu-Ende-verschlüsselt. Sie startet mit einer Vorschau, die niemand sieht, und ein Kamera-Knopf in der Benutzerleiste, im Apps-Menü, im Tray und ein Tastenkürzel schalten sie ein und aus.",
             since: "0.7.0",
           },
           {
@@ -913,6 +913,12 @@ const source: Record<"de" | "en", FeaturesPage> = {
             title: "Kameraraum",
             body: "Die Kameras im Kanal stehen über dem Chat, bis zu neun Kacheln im Raster oder groß mit „Sprecher“. Neben einer Bildschirmübertragung oder Watch-Party sitzen sie als Streifen daneben oder darüber, oder du blendest sie aus.",
             since: "0.7.0",
+          },
+          {
+            id: "camera-path",
+            title: "Direkt oder übers Relay",
+            body: "Kamera und Bildschirm laufen in einem neuen Medienformat, direkt zwischen euch oder übers Relay. Für deine Kamera wählst du den Weg, und der Kameraraum zeigt bei jedem Zuschauer, welcher es ist. Sieht dich jemand nicht, sagt Mumcord warum.",
+            since: "0.9.0",
           },
           {
             id: "camera-backgrounds",
@@ -1264,6 +1270,12 @@ const source: Record<"de" | "en", FeaturesPage> = {
             title: "Absturzberichte",
             body: "Schließt sich Mumcord unerwartet, speichert es einen kurzen Bericht auf deinem Computer und sagt es dir beim nächsten Start. Unter Einstellungen → Erweitert & Entwickler siehst du die letzten 10, kopierst, exportierst oder löschst sie. Hochgeladen wird nur ein einzelner Bericht, nur nachdem du bestätigt hast, was genau gesendet wird.",
             since: "0.7.1",
+          },
+          {
+            id: "freeze-reports",
+            title: "Berichte für Hänger (Linux)",
+            body: "Reagiert das Fenster nicht mehr oder überzieht ein Audio-Thread sein Echtzeit-Budget, speichert Mumcord einen Bericht, der zeigt, wo es hängt. Wurde Mumcord von außen beendet, steht im Bericht, wodurch. Hochgeladen wird nur, wenn du es willst.",
+            since: "0.9.0",
           },
           {
             id: "aaron-tour",
@@ -2131,7 +2143,7 @@ const source: Record<"de" | "en", FeaturesPage> = {
             shot: "settings-camera-1-dark",
             alt: "The camera settings with a preview",
             title: "Camera",
-            body: "Your camera for everyone in your voice channel, only through the relay and end-to-end encrypted. It starts with a preview nobody sees, and a camera button in the user panel, the Apps menu, the tray and a hotkey turn it on and off.",
+            body: "Your camera for everyone in your voice channel, directly or through the relay and end-to-end encrypted. It starts with a preview nobody sees, and a camera button in the user panel, the Apps menu, the tray and a hotkey turn it on and off.",
             since: "0.7.0",
           },
           {
@@ -2141,6 +2153,12 @@ const source: Record<"de" | "en", FeaturesPage> = {
             title: "Camera room",
             body: "The cameras in the channel sit above the chat, up to nine tiles in a grid or one large tile with Speaker. Next to a screen share or watch party they form a strip beside or above it, or you hide them.",
             since: "0.7.0",
+          },
+          {
+            id: "camera-path",
+            title: "Direct or relay",
+            body: "Camera and screen share travel in a new media format, directly between you or through the relay. You pick the path for your camera, and the camera room shows which one each viewer gets. When someone can't see you, Mumcord says why.",
+            since: "0.9.0",
           },
           {
             id: "camera-backgrounds",
@@ -2492,6 +2510,12 @@ const source: Record<"de" | "en", FeaturesPage> = {
             title: "Crash reports",
             body: "When Mumcord closes unexpectedly it saves a short report on your computer and tells you at the next start. In Settings → Advanced & Developer you see the last 10 and copy, export or delete them. Only a single report is ever uploaded, and only after you confirmed what exactly is sent.",
             since: "0.7.1",
+          },
+          {
+            id: "freeze-reports",
+            title: "Freeze reports (Linux)",
+            body: "When the window stops answering or an audio thread overruns its real-time budget, Mumcord saves a report that shows where it hangs. When Mumcord was ended from outside, the report says by what. It is only uploaded if you want it to be.",
+            since: "0.9.0",
           },
           {
             id: "aaron-tour",

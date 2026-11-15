@@ -1431,7 +1431,7 @@
           {
             "id": "camera",
             "title": "Kamera",
-            "body": "Kamerasi kaikille puhekanavallasi, vain välityspalvelimen kautta ja päästä päähän salattuna. Se käynnistyy esikatselulla, jota kukaan ei näe, ja kamerapainike käyttäjäpaneelissa, Sovellukset-valikko, ilmaisinalue ja pikanäppäin kytkevät sen päälle ja pois.",
+            "body": "Kamerasi kaikille puhekanavallasi, suoraan tai välityspalvelimen kautta ja päästä päähän salattuna. Se käynnistyy esikatselulla, jota kukaan ei näe, ja kamerapainike käyttäjäpaneelissa, Sovellukset-valikko, ilmaisinalue ja pikanäppäin kytkevät sen päälle ja pois.",
             "alt": "Kameran asetukset esikatselun kanssa"
           },
           {
@@ -1439,6 +1439,11 @@
             "title": "Kamerahuone",
             "body": "Kanavan kamerat ovat chatin yläpuolella, jopa yhdeksän ruutua ruudukossa tai yksi suuri ruutu Puhujan kanssa. Näytön jaon tai watch partyn vieressä ne muodostavat kaistaleen sen vieressä tai yläpuolella, tai piilotat ne.",
             "alt": "Kamerahuone, jossa on useita kameroita chatin yläpuolella"
+          },
+          {
+            "id": "camera-path",
+            "title": "Suoraan tai relayn kautta",
+            "body": "Kamera ja näytönjako kulkevat uudessa mediamuodossa, suoraan teidän välillänne tai relayn kautta. Valitset kamerasi reitin, ja kamerahuone näyttää, minkä kukin katsoja saa. Kun joku ei näe sinua, Mumcord kertoo miksi."
           },
           {
             "id": "camera-backgrounds",
@@ -1718,6 +1723,11 @@
             "body": "Jos Mumcord sulkeutuu odottamatta, se tallentaa lyhyen raportin tietokoneellesi ja kertoo siitä seuraavalla käynnistyksellä. Kohdassa Asetukset → Lisäasetukset ja kehittäjä näet viimeiset 10 ja voit kopioida, viedä tai poistaa ne. Vain yksittäinen raportti ladataan, ja vasta kun olet vahvistanut, mitä tarkalleen lähetetään."
           },
           {
+            "id": "freeze-reports",
+            "title": "Jumiraportit (Linux)",
+            "body": "Kun ikkuna lakkaa vastaamasta tai äänisäie ylittää reaaliaikabudjettinsa, Mumcord tallentaa raportin, joka näyttää, mihin se jumittaa. Kun Mumcord lopetettiin ulkopuolelta, raportti kertoo, millä. Se lähetetään vain, jos haluat."
+          },
+          {
             "id": "aaron-tour",
             "title": "Aaron esittelee sinulle paikat",
             "body": "Käyttöönoton jälkeen Aaron, Mumcordin väreissä oleva aksolotli, kiertää kanssasi pääikkunan: palvelimet, kanavat, puhuminen, haku, chat, sovellukset ja teemat, yksi vinkki kerrallaan. Käyttöönottoavustajassa se antaa lyhyen vinkin jokaiseen vaiheeseen. Aloita kierros uudelleen milloin tahansa kohdasta Asetukset → Tietoja → Vinkit.",
@@ -1734,6 +1744,57 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.9.0",
+      "teaser": "Kamera ja näytönjako uudessa mediamuodossa, jokaiselle katsojalle suora tie tai relayn kautta, raportit Linuxin jumeista, FreeBSD asennusskriptissä ja paljon korjauksia.",
+      "summary": "0.9.0 siirtää kameran ja näytönjaon uuteen mediamuotoon: jokainen katsoja saa oman reittinsä, suoran tai relayn kautta, ja kamerahuone näyttää, kumman. Linuxissa jumit ja äkilliset sulkeutumiset jättävät nyt raportin, asennusskripti tukee FreeBSD:tä ja kuiskaus tavoittaa vain ne ihmiset, jotka valitsit. Lisäksi paljon korjauksia Windowsiin ja Linuxiin.",
+      "groups": [
+        {
+          "title": "Uutta",
+          "items": [
+            "Kamera ja näytönjako uudessa mediamuodossa (#492, #814): kameran ja näytönjaon kuva ja ääni kulkevat uudessa mediavirrassa, suoraan teidän välillänne tai relayn kautta, ja virran kuvaus on salattu relayssä. Vanhemmat Mumcord-versiot saavat edelleen vanhan muodon; jos se ei riitä, huomautus kertoo, että tarvitaan uudempi Mumcord.",
+            "Suoraan tai relayn kautta, katsojakohtaisesti: valitset kamerasi reitin istuntokohtaisesti, ja kamerahuone näyttää jokaisesta katsojasta, tuleeko kuva suoraan vai relayn kautta. Kun joku ei näe kameraasi, Mumcord kertoo miksi, myös näppäimistölle ja ruudunlukijalle.",
+            "Pakettitarkastaja lukee uutta mediavirtaa: muodon, kuvauksen, kanavat ja kuvat.",
+            "Jumiraportit (Linux): kun ikkuna ei ole vastannut noin 8 sekuntiin, Mumcord tallentaa ”freeze”-tyyppisen raportin kaikkien säikeiden pinoineen. Sovellus jatkaa toimintaansa, ja raportti lähetetään vain, jos haluat.",
+            "Reaaliaikaylityksen raportit (Linux): kun äänisäie ylittää reaaliaikabudjettinsa, raportti kohdassa Asetukset → Kaatumisraportit näyttää, missä se oli kiireinen. Se ei ole kaatuminen; sovellus jatkaa toimintaansa.",
+            "”Lopetti”-tieto (Linux): kun Mumcord suljettiin ilman asianmukaista sammutusta, raportti kertoo, mitä järjestelmä siitä kirjasi, esimerkiksi out-of-memory killerin tai ulkopuolelta tulleen SIGKILLin.",
+            "Asennusskripti tukee FreeBSD:tä (#781): FreeBSD 15.x:ssä (amd64) se lataa paketin, tarkistaa sen SHA256:lla ja asentaa komennolla pkg add. Uusi ajo päivittää Mumcordin, --uninstall poistaa sen."
+          ]
+        },
+        {
+          "title": "Parannettu",
+          "items": [
+            "Pitkät keskustelut vierivät sujuvammin, eivätkä jäsenluettelot enää järjesty uudelleen jokaisesta puheen merkkivalosta.",
+            "Kuvat ja media dekoodataan nopeammin, ja näytönjaon ja kameran varamuunnos käyttää vähemmän muistia.",
+            "Näytönjaon ja kameran videokooderit ja -dekooderit tulevat nyt avoimen lähdekoodin hwcodec-kirjastosta, jota Mumcord-tiimi ylläpitää omassa repositoriossaan (#449). Jakaminen näyttää ja toimii samoin kuin ennen.",
+            "Mumble-protokolla asuu nyt avoimen lähdekoodin mumble-client-protocol-kirjastossa (#455). Palvelimet näkevät Mumcordin edelleen nimellä ”Mumcord” ja sen versiolla."
+          ]
+        },
+        {
+          "title": "Korjattu",
+          "items": [
+            "Windows: upotetut YouTube-, Twitch-, Spotify- ja SoundCloud-soittimet ja yhteiskatselu pysyivät mustina versiosta 0.8.0 lähtien. Ne toistavat taas.",
+            "Windows: kun kamera ei antanut kuvaa, Mumcord jumittui poistuttaessa kamera-asetuksista, kameraa vaihdettaessa tai suljettaessa (”Ei vastaa”). Pysäytys luovuttaa nyt kahden sekunnin jälkeen.",
+            "Linux: ei enää pysyvää jumia, kun lopetat puhelun PipeWiren vastaamatta.",
+            "Linux: Mumcord ei enää katoa ilman kaatumisikkunaa, kun tietokone on todella kuormitettu (#844). Vain äänisäikeet säilyttävät nyt reaaliaikaisen prioriteetin.",
+            "Linux: hetkeksi kiireinen puhesäie säilyttää reaaliaikaisen prioriteettinsa, koska Mumcord palauttaa suunnitellun 100 ms:n varan puhelun aikana.",
+            "Linux: ilmoitus ”libayatana-appindicator is deprecated” ei enää näy päätteessä ja lokissa jokaisella käynnistyksellä (#822).",
+            "AppImage: kun H.264-toisto puuttuu, soitin ehdottaa päivitystä tai jakelusi pakettia gst-libavin sijaan, jota AppImage ei voi käyttää (#567).",
+            "Ei enää loputonta uudelleenyhdistämistä palvelimeen, joka sulkeutuu heti kirjautumisen jälkeen, esimerkiksi estetyllä varmenteella: 10 lyhyen yhteyden jälkeen Mumcord lopettaa ja kertoo, mitä tapahtui.",
+            "Kun yhteys päättyy, käynnissä oleva kuiskaus päättyy myös, ja pohjassa pidetty push-to-talk-näppäin lasketaan vapautetuksi.",
+            "Pakettitarkastaja: Markdown-vienti ei enää riko taulukon riviä, kun nimessä on kenoviiva (#771)."
+          ]
+        },
+        {
+          "title": "Tietoturva",
+          "items": [
+            "Kuiskaus tavoittaa vain ne ihmiset, jotka valitsit: tähän asti kohde haettiin joka kerta nimellä, joten samanniminen henkilö saattoi kuunnella mukana. Nyt kuiskaus on sidottu täsmälleen näihin ihmisiin; myöhemmin liittyvä ei kuule mitään, oli nimi mikä tahansa.",
+            "Chatin HTML ja lisäosien SVG:t käyttävät ammonian korjattua versiota (RUSTSEC-2026-0533, #819).",
+            "Uudet identiteettiavaimet tehdään korjatulla rsa 0.10 -kirjastolla (#131). Nykyiset identiteetit ja varmenteet pysyvät samoina."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.8.0",
       "teaser": "Ylläpitäjän komennot chatissa, rekisteröidyt käyttäjät, kanavien siirto vetämällä, uusi tekstieditori ja Aaron, joka esittelee sinulle Mumcordin.",
