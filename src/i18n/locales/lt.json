@@ -4678,5 +4678,63 @@
         ]
       }
     ]
+  },
+  "packageRepo": {
+    "title": "Paketų saugykla",
+    "badge": "Rekomenduojama „Linux“ ir „FreeBSD“",
+    "lead": "Kai ją pridėsi, Mumcord atnaujinamas įprasta tavo sistemos atnaujinimo priemone: `apt upgrade`, `dnf upgrade`, `zypper update`, `pacman -Syu` arba `pkg upgrade`.",
+    "stableOnly": "Saugykloje yra tik stabilios versijos, visada naujausia. Išleidimo kandidatai ten neskelbiami.",
+    "scriptTitle": "Paprasčiausia: diegimo skriptas",
+    "scriptBody": "Jis paklausia, kaip nori įdiegti Mumcord: per paketų saugyklą (numatytoji), kaip atsisiųstą paketą arba kaip AppImage, ir nustato saugyklą tavo vietoje.",
+    "linux": "Linux",
+    "freebsd": "FreeBSD",
+    "manualTitle": "Nustatyti rankiniu būdu",
+    "manualBody": "Tas pats, ką daro skriptas, žingsnis po žingsnio tavo sistemai.",
+    "systems": {
+      "apt": {
+        "name": "Debian, Ubuntu, Linux Mint (APT)",
+        "notes": [
+          "Raktas naudojamas tik šiai saugyklai (`Signed-By:` faile `mumcord.sources`), o ne visai sistemai; `apt-key` nereikia. Veikia amd64 ir arm64."
+        ]
+      },
+      "dnf": {
+        "name": "Fedora (DNF)",
+        "notes": [
+          "Pasirašyti ir paketai, ir saugyklos metaduomenys (`gpgcheck=1`, `repo_gpgcheck=1`)."
+        ]
+      },
+      "zypper": {
+        "name": "openSUSE (zypper)",
+        "notes": []
+      },
+      "pacman": {
+        "name": "Arch Linux (pacman)",
+        "notes": [
+          "Tada pridėk tai failo `/etc/pacman.conf` pabaigoje:",
+          "Ir įdiek:",
+          "Paketas vadinasi taip pat kaip AUR paketas `mumcord-bin`, todėl diegimas iš AUR per kitą `pacman -Syu` pats persijungia į saugyklą."
+        ]
+      },
+      "pkg": {
+        "name": "FreeBSD 15.x (pkg)",
+        "before": "Kaip root:",
+        "notes": [
+          "Jo priklausomybės, kaip įprasta, ateina iš oficialios FreeBSD saugyklos."
+        ]
+      }
+    },
+    "keyTitle": "Pasirašymo raktas",
+    "keyName": "Pavadinimas",
+    "keyFingerprint": "Kontrolinis kodas",
+    "keyValid": "Galioja iki",
+    "keyDownload": "Atsisiųsti",
+    "keyFreebsd": "FreeBSD pkg naudoja savo RSA raktą",
+    "keyCheck": "Prieš pasitikėdamas raktu, palygink kontrolinį kodą, pvz., su `gpg --show-keys mumcord.asc`.",
+    "removeTitle": "Saugyklos pašalinimas",
+    "removePacman": "pašalink bloką `[mumcord]` iš `/etc/pacman.conf`, tada",
+    "removeScript": "`install.sh --uninstall` tai irgi padaro už tave.",
+    "copy": "Kopijuoti",
+    "copied": "Nukopijuota!",
+    "failed": "Nukopijuoti nepavyko. Pažymėk komandą ir nukopijuok ją rankiniu būdu."
   }
 }

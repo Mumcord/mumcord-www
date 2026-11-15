@@ -1,0 +1,147 @@
+---
+// The package repository on the download page: the install script first, then the manual steps per
+// system (one accordion each), the signing key and how to remove the repository again.
+import CopyButton from "./CopyButton.astro";
+import { highlight, langOf } from "../lib/highlight";
+import type { Lang } from "../i18n";
+import { INSTALL_COMMAND } from "../lib/release";
+import { packageRepo, REPO_SYSTEMS, REPO_STEPS, REPO_REMOVE, SIGNING_KEY, FREEBSD_INSTALL_COMMAND } from "../lib/package-repo";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = packageRepo[lang];
+const copy = { label: t.copy, copied: t.copied, failed: t.failed };
+const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const md = (s: string) => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>");
+---
+
+<section class="wrap dlp-section pr" id="repository" aria-labelledby="pr-title">
+  <div class="pr-head" data-reveal>
+    <h2 id="pr-title" class="dlp-h">{t.title}</h2>
+    <span class="pill pill-new">{t.badge}</span>
+  </div>
+  <p class="dlp-lead" data-reveal set:html={md(t.lead)} />
+  <p class="pr-note" data-reveal>{t.stableOnly}</p>
+
+  <div class="one-line pr-script" data-reveal>
+    <div class="one-line-head">
+      <h3>{t.scriptTitle}</h3>
+    </div>
+    <p class="one-line-body">{t.scriptBody}</p>
+    {
+      [
+        { cmd: INSTALL_COMMAND, label: t.linux },
+        { cmd: FREEBSD_INSTALL_COMMAND, label: t.freebsd },
+      ].map((c, i) => (
+        <div class:list={["one-line-cmd", { "is-small": i > 0 }]}>
+          <span class="one-line-label">{c.label}</span>
+          <code>
+            <span aria-hidden="true">$ </span>
+            {c.cmd}
+          </code>
+          <CopyButton text={c.cmd} {...copy} />
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="pr-grid">
+    <div class="pr-manual" data-reveal>
+      <h3>{t.manualTitle}</h3>
+      <p class="pr-note">{t.manualBody}</p>
+      {
+        REPO_SYSTEMS.map((sys) => (
+          <details class="pr-sys" data-repo-system={sys}>
+            <summary>{t.systems[sys].name}</summary>
+            <div class="pr-sys-body">
+              {t.systems[sys].before && <p class="pr-note">{t.systems[sys].before}</p>}
+              {REPO_STEPS[sys].map((step, i) => (
+                <>
+                  <figure class="code">
+                    <figcaption>
+                      <span>{step.file}</span>
+                      <CopyButton text={step.code} {...copy} class="is-quiet" />
+                    </figcaption>
+                    <pre><code set:html={highlight(step.code, langOf(step.file === "Terminal" ? "Terminal" : "plain"))} /></pre>
+                  </figure>
+                  {t.systems[sys].notes[i] && <p class="pr-note" set:html={md(t.systems[sys].notes[i])} />}
+                </>
+              ))}
+            </div>
+          </details>
+        ))
+      }
+    </div>
+
+    <aside class="pr-side" data-reveal>
+      <div class="pr-box">
+        <h3>{t.keyTitle}</h3>
+        <dl class="pr-key">
+          <div><dt>{t.keyName}</dt><dd>{SIGNING_KEY.name}</dd></div>
+          <div><dt>{t.keyFingerprint}</dt><dd><code>{SIGNING_KEY.fingerprint}</code></dd></div>
+          <div><dt>{t.keyValid}</dt><dd><time datetime={SIGNING_KEY.validUntil}>{SIGNING_KEY.validUntil}</time></dd></div>
+          <div><dt>{t.keyDownload}</dt><dd><a class="text-link" href={SIGNING_KEY.url} rel="noopener">mumcord.asc</a></dd></div>
+        </dl>
+        <p class="pr-note">
+          {t.keyFreebsd}: <a class="text-link" href={SIGNING_KEY.freebsdUrl} rel="noopener">mumcord.pub</a>, SHA-256
+          <code class="pr-hash">{SIGNING_KEY.freebsdSha256}</code>
+        </p>
+        <p class="pr-note" set:html={md(t.keyCheck)} />
+      </div>
+
+      <div class="pr-box">
+        <h3>{t.removeTitle}</h3>
+        <ul class="pr-remove">
+          {
+            REPO_SYSTEMS.map((sys) => (
+              <li>
+                <b>{t.systems[sys].name.replace(/^.*\((.*)\)$/, "$1")}:</b>
+                {sys === "pacman" && <span set:html={` ${md(t.removePacman)} `} />}
+                <code>{REPO_REMOVE[sys]}</code>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="pr-note" set:html={md(t.removeScript)} />
+      </div>
+    </aside>
+  </div>
+</section>
+
+<script>
+  // Open the steps for the visitor's system. FreeBSD is always in the user agent, a Linux
+  // distribution only sometimes (Firefox on Ubuntu or Fedora). Chromium browsers also tell the
+  // kernel release on Linux (`6.17.4-2-cachyos`, `6.12.1-arch1-1`, `6.11.4-300.fc41.x86_64`),
+  // which names the distribution family. Unknown: nothing is opened rather than a wrong guess.
+  type UaData = { getHighEntropyValues?: (hints: string[]) => Promise<{ platform?: string; platformVersion?: string }> };
+  const fromText = (text: string): string | null =>
+    /FreeBSD/i.test(text)
+      ? "pkg"
+      : /Fedora|Red Hat|\.fc\d+|\.el\d+/i.test(text)
+        ? "dnf"
+        : /SUSE|-default$/i.test(text)
+          ? "zypper"
+          : /Arch Linux|Manjaro|EndeavourOS|CachyOS|Garuda|-arch\d|-zen\d|-lts$|cachyos|manjaro/i.test(text)
+            ? "pacman"
+            : /Ubuntu|Debian|Mint|Pop!_OS|-generic$|\+deb\d|-amd64$|-arm64$/i.test(text)
+              ? "apt"
+              : null;
+  const open = (sys: string | null) => {
+    const all = document.querySelectorAll<HTMLDetailsElement>("details[data-repo-system]");
+    all.forEach((d) => (d.open = !!sys && d.dataset.repoSystem === sys));
+  };
+  const ua = navigator.userAgent;
+  open(fromText(ua));
+  const uaData = (navigator as Navigator & { userAgentData?: UaData }).userAgentData;
+  if (!fromText(ua) && /Linux/i.test(ua) && uaData?.getHighEntropyValues) {
+    uaData
+      .getHighEntropyValues(["platformVersion"])
+      .then((v) => {
+        const sys = fromText(v.platformVersion ?? "");
+        if (sys) open(sys);
+      })
+      .catch(() => {});
+  }
+</script>

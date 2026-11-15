@@ -4678,5 +4678,63 @@
         ]
       }
     ]
+  },
+  "packageRepo": {
+    "title": "Repozitorij paketov",
+    "badge": "Priporočeno za Linux in FreeBSD",
+    "lead": "Ko ga dodaš, se Mumcord posodablja z običajnim orodjem za posodabljanje tvojega sistema: `apt upgrade`, `dnf upgrade`, `zypper update`, `pacman -Syu` ali `pkg upgrade`.",
+    "stableOnly": "Repozitorij vsebuje samo stabilne izdaje, vedno najnovejšo. Kandidati za izdajo tam niso objavljeni.",
+    "scriptTitle": "Najlažje: namestitveni skript",
+    "scriptBody": "Vpraša te, kako želiš namestiti Mumcord: prek repozitorija paketov (privzeto), kot prenesen paket ali kot AppImage, in repozitorij nastavi namesto tebe.",
+    "linux": "Linux",
+    "freebsd": "FreeBSD",
+    "manualTitle": "Nastavi ročno",
+    "manualBody": "Isto kot skript, korak za korakom za tvoj sistem.",
+    "systems": {
+      "apt": {
+        "name": "Debian, Ubuntu, Linux Mint (APT)",
+        "notes": [
+          "Ključ se uporablja samo za ta repozitorij (`Signed-By:` v `mumcord.sources`), ne za ves sistem; `apt-key` ni potreben. Deluje na amd64 in arm64."
+        ]
+      },
+      "dnf": {
+        "name": "Fedora (DNF)",
+        "notes": [
+          "Podpisani so tako paketi kot metapodatki repozitorija (`gpgcheck=1`, `repo_gpgcheck=1`)."
+        ]
+      },
+      "zypper": {
+        "name": "openSUSE (zypper)",
+        "notes": []
+      },
+      "pacman": {
+        "name": "Arch Linux (pacman)",
+        "notes": [
+          "Nato na konec datoteke `/etc/pacman.conf` dodaj to:",
+          "In namesti:",
+          "Paket ima enako ime kot paket AUR `mumcord-bin`, zato namestitev iz AUR ob naslednjem `pacman -Syu` sama preide na repozitorij."
+        ]
+      },
+      "pkg": {
+        "name": "FreeBSD 15.x (pkg)",
+        "before": "Kot root:",
+        "notes": [
+          "Njegove odvisnosti prihajajo kot običajno iz uradnega repozitorija FreeBSD."
+        ]
+      }
+    },
+    "keyTitle": "Podpisni ključ",
+    "keyName": "Ime",
+    "keyFingerprint": "Prstni odtis",
+    "keyValid": "Velja do",
+    "keyDownload": "Prenesi",
+    "keyFreebsd": "pkg v FreeBSD uporablja svoj ključ RSA",
+    "keyCheck": "Primerjaj prstni odtis, preden zaupaš ključu, npr. z `gpg --show-keys mumcord.asc`.",
+    "removeTitle": "Odstranitev repozitorija",
+    "removePacman": "odstrani blok `[mumcord]` iz `/etc/pacman.conf`, nato",
+    "removeScript": "`install.sh --uninstall` to naredi tudi namesto tebe.",
+    "copy": "Kopiraj",
+    "copied": "Kopirano!",
+    "failed": "Kopiranje ni uspelo. Označi ukaz in ga kopiraj ročno."
   }
 }

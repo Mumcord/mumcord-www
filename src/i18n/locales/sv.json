@@ -4678,5 +4678,63 @@
         ]
       }
     ]
+  },
+  "packageRepo": {
+    "title": "Paketförråd",
+    "badge": "Rekommenderas för Linux och FreeBSD",
+    "lead": "När du har lagt till det uppdateras Mumcord med systemets vanliga uppdateringsverktyg: `apt upgrade`, `dnf upgrade`, `zypper update`, `pacman -Syu` eller `pkg upgrade`.",
+    "stableOnly": "Förrådet innehåller bara stabila versioner, alltid den senaste. Release candidates publiceras inte där.",
+    "scriptTitle": "Enklast: installationsskriptet",
+    "scriptBody": "Det frågar hur du vill installera Mumcord: via paketförrådet (standard), som nedladdat paket eller som AppImage, och ställer in förrådet åt dig.",
+    "linux": "Linux",
+    "freebsd": "FreeBSD",
+    "manualTitle": "Ställ in det för hand",
+    "manualBody": "Samma sak som skriptet, steg för steg för ditt system.",
+    "systems": {
+      "apt": {
+        "name": "Debian, Ubuntu, Linux Mint (APT)",
+        "notes": [
+          "Nyckeln används bara för det här förrådet (`Signed-By:` i `mumcord.sources`), inte för hela systemet; `apt-key` behövs inte. Fungerar på amd64 och arm64."
+        ]
+      },
+      "dnf": {
+        "name": "Fedora (DNF)",
+        "notes": [
+          "Både paketen och förrådets metadata är signerade (`gpgcheck=1`, `repo_gpgcheck=1`)."
+        ]
+      },
+      "zypper": {
+        "name": "openSUSE (zypper)",
+        "notes": []
+      },
+      "pacman": {
+        "name": "Arch Linux (pacman)",
+        "notes": [
+          "Lägg sedan till detta sist i `/etc/pacman.conf`:",
+          "Och installera:",
+          "Paketet heter samma som AUR-paketet `mumcord-bin`, så en AUR-installation byter själv till förrådet vid nästa `pacman -Syu`."
+        ]
+      },
+      "pkg": {
+        "name": "FreeBSD 15.x (pkg)",
+        "before": "Som root:",
+        "notes": [
+          "Dess beroenden kommer som vanligt från FreeBSD:s officiella förråd."
+        ]
+      }
+    },
+    "keyTitle": "Signeringsnyckel",
+    "keyName": "Namn",
+    "keyFingerprint": "Fingeravtryck",
+    "keyValid": "Giltig till",
+    "keyDownload": "Ladda ner",
+    "keyFreebsd": "FreeBSD:s pkg använder en egen RSA-nyckel",
+    "keyCheck": "Jämför fingeravtrycket innan du litar på nyckeln, t.ex. med `gpg --show-keys mumcord.asc`.",
+    "removeTitle": "Ta bort förrådet",
+    "removePacman": "ta bort blocket `[mumcord]` från `/etc/pacman.conf` och kör sedan",
+    "removeScript": "`install.sh --uninstall` gör det också åt dig.",
+    "copy": "Kopiera",
+    "copied": "Kopierat!",
+    "failed": "Det gick inte att kopiera. Markera kommandot och kopiera det manuellt."
   }
 }

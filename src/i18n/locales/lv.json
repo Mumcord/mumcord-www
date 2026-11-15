@@ -4678,5 +4678,63 @@
         ]
       }
     ]
+  },
+  "packageRepo": {
+    "title": "Pakotņu krātuve",
+    "badge": "Ieteicams Linux un FreeBSD",
+    "lead": "Kad tā pievienota, Mumcord atjaunojas ar tavas sistēmas parasto atjaunināšanas rīku: `apt upgrade`, `dnf upgrade`, `zypper update`, `pacman -Syu` vai `pkg upgrade`.",
+    "stableOnly": "Krātuvē ir tikai stabilas versijas, vienmēr jaunākā. Izlaides kandidāti tur netiek publicēti.",
+    "scriptTitle": "Vienkāršāk: instalēšanas skripts",
+    "scriptBody": "Tas jautā, kā vēlies instalēt Mumcord: caur pakotņu krātuvi (noklusējums), kā lejupielādētu pakotni vai kā AppImage, un iestata krātuvi tavā vietā.",
+    "linux": "Linux",
+    "freebsd": "FreeBSD",
+    "manualTitle": "Iestatīt manuāli",
+    "manualBody": "Tas pats, ko dara skripts, soli pa solim tavai sistēmai.",
+    "systems": {
+      "apt": {
+        "name": "Debian, Ubuntu, Linux Mint (APT)",
+        "notes": [
+          "Atslēga tiek izmantota tikai šai krātuvei (`Signed-By:` failā `mumcord.sources`), nevis visai sistēmai; `apt-key` nav vajadzīgs. Darbojas uz amd64 un arm64."
+        ]
+      },
+      "dnf": {
+        "name": "Fedora (DNF)",
+        "notes": [
+          "Parakstītas ir gan pakotnes, gan krātuves metadati (`gpgcheck=1`, `repo_gpgcheck=1`)."
+        ]
+      },
+      "zypper": {
+        "name": "openSUSE (zypper)",
+        "notes": []
+      },
+      "pacman": {
+        "name": "Arch Linux (pacman)",
+        "notes": [
+          "Pēc tam pievieno šo faila `/etc/pacman.conf` beigās:",
+          "Un instalē:",
+          "Pakotnei ir tāds pats nosaukums kā AUR pakotnei `mumcord-bin`, tāpēc instalācija no AUR nākamajā `pacman -Syu` pati pāriet uz krātuvi."
+        ]
+      },
+      "pkg": {
+        "name": "FreeBSD 15.x (pkg)",
+        "before": "Kā root:",
+        "notes": [
+          "Tās atkarības kā parasti nāk no oficiālās FreeBSD krātuves."
+        ]
+      }
+    },
+    "keyTitle": "Paraksta atslēga",
+    "keyName": "Nosaukums",
+    "keyFingerprint": "Pirkstu nospiedums",
+    "keyValid": "Derīga līdz",
+    "keyDownload": "Lejupielādēt",
+    "keyFreebsd": "FreeBSD pkg izmanto savu RSA atslēgu",
+    "keyCheck": "Salīdzini pirkstu nospiedumu, pirms uzticies atslēgai, piem., ar `gpg --show-keys mumcord.asc`.",
+    "removeTitle": "Krātuves noņemšana",
+    "removePacman": "noņem bloku `[mumcord]` no `/etc/pacman.conf`, tad",
+    "removeScript": "`install.sh --uninstall` to izdara arī tavā vietā.",
+    "copy": "Kopēt",
+    "copied": "Nokopēts!",
+    "failed": "Kopēšana neizdevās. Atlasi komandu un nokopē to manuāli."
   }
 }
