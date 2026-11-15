@@ -102,6 +102,10 @@
       "plugins": {
         "title": "Tillägg",
         "desc": "Omröstningar, tärningar och mer"
+      },
+      "compare": {
+        "title": "Jämförelse",
+        "desc": "Mumble · Mumcord · mumpeer"
       }
     },
     "hero": {
@@ -773,6 +777,15 @@
           "body": "Musik, kommandon och kort i chatten. Mumbot körs bredvid vilken Mumble-server som helst och pratar med Mumcord."
         }
       }
+    },
+    "testServer": {
+      "kicker": "Testserver online",
+      "title": "Prova Mumcord direkt",
+      "body": "Vår testserver är redo: kanaler där ni kan prata, spela och titta tillsammans, och mumpeer-reläet för skärm, kamera och filer utan att visa din IP-adress.",
+      "join": "Anslut med Mumcord",
+      "copy": "Kopiera adressen",
+      "copied": "Kopierat!",
+      "download": "Har du inget Mumcord än? Hämta det här"
     }
   },
   "features": {
@@ -3199,6 +3212,46 @@
         ]
       },
       {
+        "id": "epic-4.2",
+        "title": "Allt som Mumble gör",
+        "summary": "Med 0.10.0 hinner Mumcord ikapp det som den officiella klienten länge har kunnat: lyssna på en kanal, spela in samtal, läsa upp meddelanden, tredjepartstillägg till Mumble och positionell ljudåtergivning utanför beta. Dessutom bekvämlighet för spelare och administratörer.",
+        "groups": [
+          {
+            "title": "Lyssna och prata",
+            "items": [
+              "Lyssna på en annan kanal utan att gå med i den, med en volym per kanal (#873, #863)",
+              "Sänd alltid som ett eget röstläge (#862)",
+              "Sänk andra program medan folk pratar (#866)",
+              "En snabbtangent tillbaka till föregående kanal (#871)",
+              "Rensa lokala ljudavstängningar vid start, om du vill (#872)"
+            ]
+          },
+          {
+            "title": "Inspelning och uppläsning",
+            "items": [
+              "Spela in samtal lokalt, som en enda mixning eller en fil per person (#860)",
+              "Låt chatten och händelser läsas upp (#861)"
+            ]
+          },
+          {
+            "title": "Spel och tillägg",
+            "items": [
+              "Tredjepartstillägg till Mumble via Mumbles tilläggs-API (#869)",
+              "Positionell ljudåtergivning med en visare och en snabbtangent, utanför beta (#868)",
+              "Overlay i spel med exklusivt helskärmsläge på Windows och på macOS (#864)"
+            ]
+          },
+          {
+            "title": "För administratörer och skript",
+            "items": [
+              "Hantera åtkomsttokens per server (#870)",
+              "Åtgärder som servern definierar, i menyerna (#867)",
+              "Styr Mumcord från skript, via kommandoraden och D-Bus (#865)"
+            ]
+          }
+        ]
+      },
+      {
         "id": "epic-5",
         "title": "Mumcord i din telefon",
         "summary": "Mumcord som app för Android och iOS, kompatibel med vanliga Mumble-servrar som på datorn. Först som APK att ladda ner och via TestFlight, appbutikerna kommer senare.",
@@ -4334,5 +4387,296 @@
     "sdkNote": "Verktyget och SDK:n finns på crates.io. I din Cargo.toml:",
     "docsAll": "All dokumentation",
     "wiki": "Wiki"
+  },
+  "compare": {
+    "title": "Mumble, Mumcord och mumpeer jämförda",
+    "description": "Vad den officiella Mumble-klienten gör, vad Mumcord lägger till på valfri Mumble-server och vad som kräver mumpeer-reläet: röst, chatt, delning och integritet.",
+    "label": "Jämförelse",
+    "intro": "Mumcord fungerar på vilken vanlig Mumble-server som helst, och de som använder den officiella klienten sitter i samma kanal. Vissa saker, som att dela filer eller dölja din IP-adress, kräver också mumpeer-reläet vid sidan av servern.",
+    "yes": "Ja",
+    "partly": "Delvis",
+    "no": "Nej",
+    "soon": "Kommer snart",
+    "legend": "Delvis betyder: med begränsningar, som anges under raden.",
+    "outroTitle": "Inte antingen eller",
+    "outroBody": "Mumcord och den officiella klienten talar samma protokoll. Din server förblir som den är, och reläet är valfritt: en community som kör mumpeer med relä-boten får filer, fler tittare och dolda IP-adresser på köpet.",
+    "download": "Hämta Mumcord",
+    "relay": "Ställ in mumpeer",
+    "asOf": "Per Mumcord 0.9, mumpeer 0.3 och Mumble 1.5.",
+    "columns": [
+      {
+        "name": "Mumble",
+        "sub": "Officiell klient 1.5"
+      },
+      {
+        "name": "Mumcord",
+        "sub": "På vilken Mumble-server som helst"
+      },
+      {
+        "name": "Mumcord + mumpeer",
+        "sub": "Med ett relä vid sidan av servern"
+      }
+    ],
+    "groups": [
+      {
+        "id": "voice",
+        "title": "Röst",
+        "rows": [
+          {
+            "id": "low-latency-opus-voice-through-the-mumbl",
+            "feature": "Opus-röst med låg latens via Mumble-servern",
+            "note": "Rösten går aldrig via reläet."
+          },
+          {
+            "id": "push-to-talk-with-keys-and-mouse-buttons",
+            "feature": "Push-to-talk med tangenter och musknappar",
+            "note": "Mumcord stöder även Wayland via genvägsportalen."
+          },
+          {
+            "id": "noise-suppression-and-echo-cancellation",
+            "feature": "Brusreducering och ekoeliminering",
+            "note": "Mumble: Speex eller RNNoise. Mumcord: Lätt, Standard, Avancerad (RNNoise-modell från 2024, beta)."
+          },
+          {
+            "id": "whisper-and-shout-to-people-or-channels",
+            "feature": "Viska och ropa till personer eller kanaler"
+          },
+          {
+            "id": "music-quality-and-low-latency-mode",
+            "feature": "Musikkvalitet och läge med låg latens",
+            "note": "Mumble: bitrate och ramstorlek i ljudinställningarna. Mumcord: en enda omkopplare, plus förinställningar per kanal."
+          },
+          {
+            "id": "listen-to-a-channel-s-voice-without-join",
+            "feature": "Lyssna på en kanals röst utan att gå med",
+            "note": "Mumble har kanallyssnare. Mumcord visar redan lyssnare och kan lyssna själv med 0.10.0."
+          },
+          {
+            "id": "recording-conversations",
+            "feature": "Spela in samtal",
+            "note": "Mumble har en inbyggd flerkanalsinspelare. Mumcord får inspelning med 0.10.0."
+          }
+        ]
+      },
+      {
+        "id": "chat",
+        "title": "Chatt",
+        "rows": [
+          {
+            "id": "text-chat-with-images",
+            "feature": "Textchatt med bilder",
+            "note": "I Mumble måste bilder rymmas inom serverns gräns för meddelandestorlek."
+          },
+          {
+            "id": "markdown-formatting",
+            "feature": "Markdown-formatering",
+            "note": "Mumcord lägger till kodmarkering och ett formateringsverktygsfält."
+          },
+          {
+            "id": "link-previews-and-youtube-twitch-music-e",
+            "feature": "Länkförhandsvisningar och inbäddningar från YouTube, Twitch och musik",
+            "note": "Hämtas av Mumcord själv; kan stängas av."
+          },
+          {
+            "id": "replies-and-quotes",
+            "feature": "Svar och citat",
+            "note": "Officiella Mumble-klienter ser ett läsbart citat."
+          },
+          {
+            "id": "mentions-with-their-own-notification",
+            "feature": "@omnämnanden med egen avisering",
+            "note": "Andra Mumble-klienter ser bara texten."
+          },
+          {
+            "id": "read-and-write-in-channels-you-are-not-i",
+            "feature": "Läsa och skriva i kanaler du inte är i",
+            "note": "Följ en kanal med ögonikonen."
+          },
+          {
+            "id": "chat-history-from-before-you-joined",
+            "feature": "Chatthistorik från innan du gick med",
+            "note": "Mumcord-användare för vidare upp till 7 dagars kanalhistorik. Full historik för de som varit borta kräver Mumbots historikbot, skild från reläet."
+          },
+          {
+            "id": "private-conversations-kept-across-sessio",
+            "feature": "Privata konversationer som sparas mellan sessioner",
+            "note": "Lagras bara på din dator, kan stängas av per server."
+          },
+          {
+            "id": "text-to-speech-for-messages",
+            "feature": "Text-till-tal för meddelanden",
+            "note": "Mumcord får text-till-tal med 0.10.0."
+          }
+        ]
+      },
+      {
+        "id": "media",
+        "title": "Media och delning",
+        "rows": [
+          {
+            "id": "full-size-images",
+            "feature": "Bilder i full storlek",
+            "note": "Utan reläet bara via en direktanslutning, som visar din IP för avsändaren. Officiella klienter ser förhandsvisningen."
+          },
+          {
+            "id": "file-sharing",
+            "feature": "Fildelning",
+            "note": "Upp till 2 GB, alltid via reläet; filen går aldrig via Mumble-servern."
+          },
+          {
+            "id": "screen-sharing-with-sound",
+            "feature": "Skärmdelning med ljud",
+            "note": "Direkt: upp till 8 tittare, var och en får sin egen kopia och ser din IP. Relä: upp till 25 tittare, IP dold."
+          },
+          {
+            "id": "camera",
+            "feature": "Kamera",
+            "note": "Direkt: upp till 8 tittare. Relä: upp till 18 kameror, 25 tittare vardera. Krypterat från ände till ände i båda fallen."
+          },
+          {
+            "id": "youtube-watch-party",
+            "feature": "Gemensam YouTube-tittning",
+            "note": "Synkroniserad via Mumble-servern, inget relä behövs."
+          }
+        ]
+      },
+      {
+        "id": "privacy",
+        "title": "Servrar och integritet",
+        "rows": [
+          {
+            "id": "several-servers-connected-at-once",
+            "feature": "Flera servrar anslutna samtidigt",
+            "note": "Upp till 5 som standard, kan justeras upp till 15."
+          },
+          {
+            "id": "ip-address-hidden-from-other-users",
+            "feature": "IP-adress dold för andra användare",
+            "note": "Mumcord ansluter direkt först efter att du har godkänt, och då ser den andra personen din IP-adress. Med ”alltid relä” ser ingen den. Mumble har inga direktanslutningar."
+          },
+          {
+            "id": "sharing-works-behind-cgnat-or-strict-fir",
+            "feature": "Delning fungerar bakom CGNAT eller strikta brandväggar",
+            "note": "Utan reläet kräver delning en direkt väg (IPv6 eller portmappning i routern)."
+          },
+          {
+            "id": "several-identities-certificates",
+            "feature": "Flera identiteter (certifikat)",
+            "note": "Mumble använder ett certifikat i taget; Mumcord väljer ett per server."
+          },
+          {
+            "id": "block-people-across-servers",
+            "feature": "Blockera personer över alla servrar",
+            "note": "Mumble: lokal tystning och ignorera meddelanden per session."
+          },
+          {
+            "id": "control-who-may-send-private-messages",
+            "feature": "Styra vem som får skicka privata meddelanden till dig"
+          },
+          {
+            "id": "no-telemetry",
+            "feature": "Ingen telemetri",
+            "note": "Mumble kan skicka anonym användningsstatistik, som du kan stänga av."
+          }
+        ]
+      },
+      {
+        "id": "plugins",
+        "title": "Tillägg och spel",
+        "rows": [
+          {
+            "id": "positional-audio-in-games",
+            "feature": "Positionell ljudåtergivning i spel",
+            "note": "Mumcord använder Mumble Link och Mumbles officiella speltillägg (beta)."
+          },
+          {
+            "id": "in-game-overlay",
+            "feature": "Overlay i spelet",
+            "note": "Mumcord: Vulkan-lager på Linux, klickgenomsläppligt fönster på Windows; inte på macOS eller FreeBSD."
+          },
+          {
+            "id": "mumble-plugins",
+            "feature": "Mumble-tillägg",
+            "note": "Inbyggda tillägg, främst för positionellt ljud i spel. Mumcord använder Mumbles officiella speltillägg (beta)."
+          },
+          {
+            "id": "mumcord-plugins",
+            "feature": "Mumcord-tillägg",
+            "note": "Isolerade, signerade WebAssembly-tillägg med en butik: omröstningar, tärningar, spel, en whiteboard och mer."
+          },
+          {
+            "id": "polls-dice-and-mini-games-in-the-channel",
+            "feature": "Omröstningar, tärningar och minispel i kanalen",
+            "note": "Via Mumble-servern. Officiella klienter röstar i omröstningar med !poll."
+          },
+          {
+            "id": "large-plugin-game-data",
+            "feature": "Stora data från tillägg och spel",
+            "note": "Utan reläet bara små meddelanden via Mumble-servern; med det upp till 64 KB per meddelande, krypterat från ände till ände."
+          }
+        ]
+      },
+      {
+        "id": "admin",
+        "title": "Administration",
+        "rows": [
+          {
+            "id": "permissions-acl-and-groups-editor",
+            "feature": "Behörigheter (ACL) och grupper-redigerare",
+            "note": "Mumcord förklarar varje svar och varnar innan du låser ute dig själv."
+          },
+          {
+            "id": "kick-ban-and-ban-list",
+            "feature": "Kick, ban och banlista"
+          },
+          {
+            "id": "registered-users",
+            "feature": "Registrerade användare"
+          },
+          {
+            "id": "create-edit-link-and-move-channels",
+            "feature": "Skapa, redigera, länka och flytta kanaler"
+          },
+          {
+            "id": "admin-commands-in-the-chat-kick-move",
+            "feature": "Admin-kommandon i chatten (/kick, /move …)"
+          }
+        ]
+      },
+      {
+        "id": "platforms",
+        "title": "Plattformar",
+        "rows": [
+          {
+            "id": "windows",
+            "feature": "Windows",
+            "note": "Mumcord även som portabel zip."
+          },
+          {
+            "id": "macos",
+            "feature": "macOS"
+          },
+          {
+            "id": "linux",
+            "feature": "Linux"
+          },
+          {
+            "id": "freebsd",
+            "feature": "FreeBSD",
+            "note": "Mumble via communityns ports-träd. Mumcord: där utan kamera, overlay eller ljud vid skärmdelning."
+          },
+          {
+            "id": "android-and-ios",
+            "feature": "Android och iOS",
+            "note": "Det finns Mumble-appar från tredje part (t.ex. Mumla); Mumcord-apparna kommer snart."
+          },
+          {
+            "id": "works-with-any-standard-mumble-server",
+            "feature": "Fungerar med vilken vanlig Mumble-server som helst",
+            "note": "Mumcord- och officiella Mumble-användare pratar och chattar tillsammans."
+          }
+        ]
+      }
+    ]
   }
 }

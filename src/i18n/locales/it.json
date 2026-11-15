@@ -102,6 +102,10 @@
       "plugins": {
         "title": "Plugin",
         "desc": "Sondaggi, dadi e altro"
+      },
+      "compare": {
+        "title": "Confronto",
+        "desc": "Mumble · Mumcord · mumpeer"
       }
     },
     "hero": {
@@ -773,6 +777,15 @@
           "body": "Musica, comandi e schede nella chat. Mumbot gira accanto a qualsiasi server Mumble e parla con Mumcord."
         }
       }
+    },
+    "testServer": {
+      "kicker": "Server di prova online",
+      "title": "Prova Mumcord subito",
+      "body": "Il nostro server di prova è pronto: canali dove parlare, giocare e guardare insieme, e il relay mumpeer per schermo, fotocamera e file senza mostrare il tuo indirizzo IP.",
+      "join": "Connettiti con Mumcord",
+      "copy": "Copia l’indirizzo",
+      "copied": "Copiato!",
+      "download": "Non hai ancora Mumcord? Scaricalo qui"
     }
   },
   "features": {
@@ -3199,6 +3212,46 @@
         ]
       },
       {
+        "id": "epic-4.2",
+        "title": "Tutto ciò che fa Mumble",
+        "summary": "Con la 0.10.0 Mumcord recupera ciò che il client ufficiale fa da tempo: ascoltare un canale, registrare le chiamate, leggere i messaggi ad alta voce, plugin di terze parti per Mumble e audio posizionale fuori dalla beta. In più, comodità per giocatori e admin.",
+        "groups": [
+          {
+            "title": "Ascoltare e parlare",
+            "items": [
+              "Ascolta un altro canale senza entrarvi, con un volume per ogni canale (#873, #863)",
+              "Trasmettere sempre come modalità vocale a sé (#862)",
+              "Abbassare le altre applicazioni mentre le persone parlano (#866)",
+              "Una scorciatoia per tornare al canale precedente (#871)",
+              "Cancellare i silenziamenti locali all’avvio, se vuoi (#872)"
+            ]
+          },
+          {
+            "title": "Registrare e leggere ad alta voce",
+            "items": [
+              "Registrare le chiamate in locale, come un unico mixaggio o un file per persona (#860)",
+              "Far leggere ad alta voce chat ed eventi (#861)"
+            ]
+          },
+          {
+            "title": "Giochi e plugin",
+            "items": [
+              "Plugin di terze parti per Mumble tramite l’API dei plugin di Mumble (#869)",
+              "Audio posizionale con un visualizzatore e una scorciatoia, fuori dalla beta (#868)",
+              "Overlay nei giochi a schermo intero esclusivo su Windows e su macOS (#864)"
+            ]
+          },
+          {
+            "title": "Per admin e script",
+            "items": [
+              "Gestire i token di accesso per ogni server (#870)",
+              "Azioni definite dal server, nei menu (#867)",
+              "Controllare Mumcord da script, con la riga di comando e D-Bus (#865)"
+            ]
+          }
+        ]
+      },
+      {
         "id": "epic-5",
         "title": "Mumcord sul tuo telefono",
         "summary": "Mumcord come app per Android e iOS, compatibile con i server Mumble standard come sul desktop. Prima come APK da scaricare e tramite TestFlight, gli store di app arriveranno più avanti.",
@@ -4334,5 +4387,296 @@
     "sdkNote": "Lo strumento e l’SDK sono su crates.io. Nel tuo Cargo.toml:",
     "docsAll": "Tutta la documentazione",
     "wiki": "Wiki"
+  },
+  "compare": {
+    "title": "Mumble, Mumcord e mumpeer a confronto",
+    "description": "Cosa fa il client Mumble ufficiale, cosa aggiunge Mumcord su qualsiasi server Mumble e cosa richiede il relay mumpeer: voce, chat, condivisione e privacy.",
+    "label": "Confronto",
+    "intro": "Mumcord funziona su qualsiasi server Mumble standard, e chi usa il client ufficiale sta nello stesso canale. Alcune cose, come condividere file o nascondere il tuo indirizzo IP, richiedono anche il relay mumpeer accanto al server.",
+    "yes": "Sì",
+    "partly": "In parte",
+    "no": "No",
+    "soon": "Presto",
+    "legend": "In parte significa: con dei limiti, elencati sotto la riga.",
+    "outroTitle": "Non è un aut aut",
+    "outroBody": "Mumcord e il client ufficiale parlano lo stesso protocollo. Il tuo server resta com'è e il relay è facoltativo: una community che usa mumpeer con il bot relay ottiene in più file, più spettatori e indirizzi IP nascosti.",
+    "download": "Scarica Mumcord",
+    "relay": "Configura mumpeer",
+    "asOf": "Aggiornato a Mumcord 0.9, mumpeer 0.3 e Mumble 1.5.",
+    "columns": [
+      {
+        "name": "Mumble",
+        "sub": "Client ufficiale 1.5"
+      },
+      {
+        "name": "Mumcord",
+        "sub": "Su qualsiasi server Mumble"
+      },
+      {
+        "name": "Mumcord + mumpeer",
+        "sub": "Con un relay accanto al server"
+      }
+    ],
+    "groups": [
+      {
+        "id": "voice",
+        "title": "Voce",
+        "rows": [
+          {
+            "id": "low-latency-opus-voice-through-the-mumbl",
+            "feature": "Voce Opus a bassa latenza tramite il server Mumble",
+            "note": "La voce non passa mai dal relay."
+          },
+          {
+            "id": "push-to-talk-with-keys-and-mouse-buttons",
+            "feature": "Push-to-talk con tasti e pulsanti del mouse",
+            "note": "Mumcord supporta anche Wayland tramite il portale delle scorciatoie."
+          },
+          {
+            "id": "noise-suppression-and-echo-cancellation",
+            "feature": "Soppressione del rumore e cancellazione dell'eco",
+            "note": "Mumble: Speex o RNNoise. Mumcord: Leggera, Standard, Avanzata (modello RNNoise 2024, beta)."
+          },
+          {
+            "id": "whisper-and-shout-to-people-or-channels",
+            "feature": "Sussurrare e gridare a persone o canali"
+          },
+          {
+            "id": "music-quality-and-low-latency-mode",
+            "feature": "Qualità musicale e modalità a bassa latenza",
+            "note": "Mumble: bitrate e dimensione dei frame nelle impostazioni audio. Mumcord: un solo interruttore, più preset per canale."
+          },
+          {
+            "id": "listen-to-a-channel-s-voice-without-join",
+            "feature": "Ascoltare la voce di un canale senza entrarvi",
+            "note": "I listener di canale di Mumble. Mumcord mostra già i listener e con la 0.10.0 sa anche ascoltare."
+          },
+          {
+            "id": "recording-conversations",
+            "feature": "Registrazione delle conversazioni",
+            "note": "Mumble ha un registratore multicanale integrato. Mumcord avrà la registrazione con la 0.10.0."
+          }
+        ]
+      },
+      {
+        "id": "chat",
+        "title": "Chat",
+        "rows": [
+          {
+            "id": "text-chat-with-images",
+            "feature": "Chat di testo con immagini",
+            "note": "In Mumble le immagini devono rientrare nel limite di dimensione dei messaggi del server."
+          },
+          {
+            "id": "markdown-formatting",
+            "feature": "Formattazione Markdown",
+            "note": "Mumcord aggiunge l'evidenziazione del codice e una barra degli strumenti di formattazione."
+          },
+          {
+            "id": "link-previews-and-youtube-twitch-music-e",
+            "feature": "Anteprime dei link e incorporamenti di YouTube/Twitch/musica",
+            "note": "Li recupera Mumcord stesso; si possono disattivare."
+          },
+          {
+            "id": "replies-and-quotes",
+            "feature": "Risposte e citazioni",
+            "note": "I client Mumble ufficiali vedono una citazione leggibile."
+          },
+          {
+            "id": "mentions-with-their-own-notification",
+            "feature": "@menzioni con una notifica dedicata",
+            "note": "Gli altri client Mumble vedono solo il testo."
+          },
+          {
+            "id": "read-and-write-in-channels-you-are-not-i",
+            "feature": "Leggere e scrivere nei canali in cui non sei",
+            "note": "Segui un canale con l'icona dell'occhio."
+          },
+          {
+            "id": "chat-history-from-before-you-joined",
+            "feature": "Cronologia della chat precedente al tuo ingresso",
+            "note": "Gli utenti Mumcord trasmettono fino a 7 giorni di cronologia del canale. La cronologia completa per chi era assente richiede il bot della cronologia di Mumbot, separato dal relay."
+          },
+          {
+            "id": "private-conversations-kept-across-sessio",
+            "feature": "Conversazioni private conservate tra le sessioni",
+            "note": "Salvate solo sul tuo computer, disattivabili per server."
+          },
+          {
+            "id": "text-to-speech-for-messages",
+            "feature": "Sintesi vocale per i messaggi",
+            "note": "Mumcord avrà la sintesi vocale con la 0.10.0."
+          }
+        ]
+      },
+      {
+        "id": "media",
+        "title": "Media e condivisione",
+        "rows": [
+          {
+            "id": "full-size-images",
+            "feature": "Immagini a dimensione piena",
+            "note": "Senza relay, solo con una connessione diretta, che mostra il tuo IP al mittente. I client ufficiali vedono l'anteprima."
+          },
+          {
+            "id": "file-sharing",
+            "feature": "Condivisione di file",
+            "note": "Fino a 2 GB, sempre tramite il relay; il file non tocca mai il server Mumble."
+          },
+          {
+            "id": "screen-sharing-with-sound",
+            "feature": "Condivisione dello schermo con audio",
+            "note": "Diretta: fino a 8 spettatori, ognuno riceve la propria copia e vede il tuo IP. Relay: fino a 25 spettatori, IP nascosto."
+          },
+          {
+            "id": "camera",
+            "feature": "Fotocamera",
+            "note": "Diretta: fino a 8 spettatori. Relay: fino a 18 fotocamere, 25 spettatori ciascuna. Cifratura end-to-end in entrambi i casi."
+          },
+          {
+            "id": "youtube-watch-party",
+            "feature": "Watch party su YouTube",
+            "note": "Sincronizzata tramite il server Mumble, senza bisogno del relay."
+          }
+        ]
+      },
+      {
+        "id": "privacy",
+        "title": "Server e privacy",
+        "rows": [
+          {
+            "id": "several-servers-connected-at-once",
+            "feature": "Più server connessi contemporaneamente",
+            "note": "Fino a 5 per impostazione predefinita, regolabile fino a 15."
+          },
+          {
+            "id": "ip-address-hidden-from-other-users",
+            "feature": "Indirizzo IP nascosto agli altri utenti",
+            "note": "Mumcord si collega direttamente solo dopo il tuo consenso, e a quel punto l’altra persona vede il tuo indirizzo IP. Con «sempre relay» nessuno lo vede. Mumble non ha connessioni dirette."
+          },
+          {
+            "id": "sharing-works-behind-cgnat-or-strict-fir",
+            "feature": "La condivisione funziona dietro CGNAT o firewall rigidi",
+            "note": "Senza relay la condivisione richiede un percorso diretto (IPv6 o port mapping del router)."
+          },
+          {
+            "id": "several-identities-certificates",
+            "feature": "Più identità (certificati)",
+            "note": "Mumble usa un certificato alla volta; Mumcord ne sceglie uno per server."
+          },
+          {
+            "id": "block-people-across-servers",
+            "feature": "Bloccare persone su tutti i server",
+            "note": "Mumble: silenziamento locale e messaggi ignorati per sessione."
+          },
+          {
+            "id": "control-who-may-send-private-messages",
+            "feature": "Controllo su chi può inviare messaggi privati"
+          },
+          {
+            "id": "no-telemetry",
+            "feature": "Nessuna telemetria",
+            "note": "Mumble può inviare statistiche d'uso anonime, che puoi disattivare."
+          }
+        ]
+      },
+      {
+        "id": "plugins",
+        "title": "Plugin e giochi",
+        "rows": [
+          {
+            "id": "positional-audio-in-games",
+            "feature": "Audio posizionale nei giochi",
+            "note": "Mumcord usa Mumble Link e i plugin di gioco ufficiali di Mumble (beta)."
+          },
+          {
+            "id": "in-game-overlay",
+            "feature": "Overlay in gioco",
+            "note": "Mumcord: layer Vulkan su Linux, finestra click-through su Windows; non su macOS né FreeBSD."
+          },
+          {
+            "id": "mumble-plugins",
+            "feature": "Plugin di Mumble",
+            "note": "Plugin nativi, soprattutto per l'audio posizionale nei giochi. Mumcord usa i plugin di gioco ufficiali di Mumble (beta)."
+          },
+          {
+            "id": "mumcord-plugins",
+            "feature": "Plugin di Mumcord",
+            "note": "Plugin WebAssembly firmati e isolati in sandbox, con uno store: sondaggi, dadi, giochi, una lavagna e altro."
+          },
+          {
+            "id": "polls-dice-and-mini-games-in-the-channel",
+            "feature": "Sondaggi, dadi e minigiochi nel canale",
+            "note": "Tramite il server Mumble. I client ufficiali votano nei sondaggi con !poll."
+          },
+          {
+            "id": "large-plugin-game-data",
+            "feature": "Grandi quantità di dati di gioco dei plugin",
+            "note": "Senza relay, solo piccoli messaggi tramite il server Mumble; con il relay fino a 64 KB per messaggio, cifrati end-to-end."
+          }
+        ]
+      },
+      {
+        "id": "admin",
+        "title": "Amministrazione",
+        "rows": [
+          {
+            "id": "permissions-acl-and-groups-editor",
+            "feature": "Editor di permessi (ACL) e gruppi",
+            "note": "Mumcord spiega ogni risposta e avvisa prima che tu ti blocchi fuori."
+          },
+          {
+            "id": "kick-ban-and-ban-list",
+            "feature": "Kick, ban ed elenco dei ban"
+          },
+          {
+            "id": "registered-users",
+            "feature": "Utenti registrati"
+          },
+          {
+            "id": "create-edit-link-and-move-channels",
+            "feature": "Creare, modificare, collegare e spostare canali"
+          },
+          {
+            "id": "admin-commands-in-the-chat-kick-move",
+            "feature": "Comandi admin nella chat (/kick, /move …)"
+          }
+        ]
+      },
+      {
+        "id": "platforms",
+        "title": "Piattaforme",
+        "rows": [
+          {
+            "id": "windows",
+            "feature": "Windows",
+            "note": "Mumcord anche come zip portatile."
+          },
+          {
+            "id": "macos",
+            "feature": "macOS"
+          },
+          {
+            "id": "linux",
+            "feature": "Linux"
+          },
+          {
+            "id": "freebsd",
+            "feature": "FreeBSD",
+            "note": "Mumble tramite il ports tree della community. Mumcord: lì senza fotocamera, overlay e audio della condivisione dello schermo."
+          },
+          {
+            "id": "android-and-ios",
+            "feature": "Android e iOS",
+            "note": "Esistono app Mumble di terze parti (ad es. Mumla); le app Mumcord arriveranno presto."
+          },
+          {
+            "id": "works-with-any-standard-mumble-server",
+            "feature": "Funziona con qualsiasi server Mumble standard",
+            "note": "Gli utenti Mumcord e Mumble ufficiale parlano e chattano insieme."
+          }
+        ]
+      }
+    ]
   }
 }

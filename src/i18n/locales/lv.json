@@ -102,6 +102,10 @@
       "plugins": {
         "title": "Spraudņi",
         "desc": "Aptaujas, kauliņi un vairāk"
+      },
+      "compare": {
+        "title": "Salīdzinājums",
+        "desc": "Mumble · Mumcord · mumpeer"
       }
     },
     "hero": {
@@ -773,6 +777,15 @@
           "body": "Mūzika, komandas un kartītes tērzētavā. Mumbot darbojas līdzās jebkuram Mumble serverim un runā ar Mumcord."
         }
       }
+    },
+    "testServer": {
+      "kicker": "Testa serveris tiešsaistē",
+      "title": "Izmēģini Mumcord uzreiz",
+      "body": "Mūsu testa serveris ir gatavs: kanāli, kur kopā runāt, spēlēt un skatīties, un mumpeer relejs ekrānam, kamerai un failiem, neatklājot tavu IP adresi.",
+      "join": "Pieslēgties ar Mumcord",
+      "copy": "Kopēt adresi",
+      "copied": "Nokopēts!",
+      "download": "Vēl nav Mumcord? Lejupielādē šeit"
     }
   },
   "features": {
@@ -3199,6 +3212,46 @@
         ]
       },
       {
+        "id": "epic-4.2",
+        "title": "Viss, ko dara Mumble",
+        "summary": "Ar 0.10.0 Mumcord panāk to, ko oficiālais klients jau sen prot: kanāla klausīšanos, zvanu ierakstīšanu, ziņu nolasīšanu skaļi, trešo pušu Mumble spraudņus un pozicionālo skaņu bez beta. Turklāt ērtības spēlētājiem un administratoriem.",
+        "groups": [
+          {
+            "title": "Klausīšanās un runāšana",
+            "items": [
+              "Klausies citu kanālu, neiejot tajā, ar atsevišķu skaļumu katram kanālam (#873, #863)",
+              "Vienmēr pārraidīt kā atsevišķu balss režīmu (#862)",
+              "Citu lietotņu klusināšana, kamēr cilvēki runā (#866)",
+              "Īsinājumtaustiņš atpakaļ uz iepriekšējo kanālu (#871)",
+              "Lokālo izslēgšanu notīrīšana startējot, ja vēlies (#872)"
+            ]
+          },
+          {
+            "title": "Ierakstīšana un nolasīšana skaļi",
+            "items": [
+              "Zvanu ierakstīšana lokāli, kā viens kopējs miksējums vai viens fails katram cilvēkam (#860)",
+              "Tērzēšanas un notikumu nolasīšana skaļi (#861)"
+            ]
+          },
+          {
+            "title": "Spēles un spraudņi",
+            "items": [
+              "Trešo pušu Mumble spraudņi, izmantojot Mumble spraudņu API (#869)",
+              "Pozicionālā skaņa ar skatītāju un īsinājumtaustiņu, bez beta (#868)",
+              "Overlay ekskluzīva pilnekrāna spēlēs operētājsistēmās Windows un macOS (#864)"
+            ]
+          },
+          {
+            "title": "Administratoriem un skriptiem",
+            "items": [
+              "Piekļuves pilnvaru pārvaldība katram serverim (#870)",
+              "Darbības, ko nosaka serveris, izvēlnēs (#867)",
+              "Mumcord vadība no skriptiem, ar komandrindu un D-Bus (#865)"
+            ]
+          }
+        ]
+      },
+      {
         "id": "epic-5",
         "title": "Mumcord tavā tālrunī",
         "summary": "Mumcord kā Android un iOS lietotne, saderīga ar standarta Mumble serveriem tāpat kā datorā. Vispirms kā APK lejupielādei un caur TestFlight, lietotņu veikali nāks vēlāk.",
@@ -4334,5 +4387,296 @@
     "sdkNote": "Rīks un SDK ir crates.io. Tavā Cargo.toml:",
     "docsAll": "Visa dokumentācija",
     "wiki": "Wiki"
+  },
+  "compare": {
+    "title": "Mumble, Mumcord un mumpeer salīdzinājums",
+    "description": "Ko dara oficiālais Mumble klients, ko Mumcord pievieno jebkurā Mumble serverī un kam vajadzīgs mumpeer relay: balss, tērzēšana, kopīgošana, privātums.",
+    "label": "Salīdzinājums",
+    "intro": "Mumcord darbojas ar jebkuru standarta Mumble serveri, un cilvēki ar oficiālo klientu sēž tajā pašā kanālā. Dažām lietām, piemēram, failu kopīgošanai vai IP adreses slēpšanai, blakus serverim vajadzīgs arī mumpeer relay.",
+    "yes": "Jā",
+    "partly": "Daļēji",
+    "no": "Nē",
+    "soon": "Drīzumā",
+    "legend": "Daļēji nozīmē: ar ierobežojumiem, kas uzskaitīti zem rindas.",
+    "outroTitle": "Ne viens vai otrs",
+    "outroBody": "Mumcord un oficiālais klients runā vienā protokolā. Tavs serveris paliek tāds, kāds ir, un relay nav obligāts: kopiena, kas darbina mumpeer ar relay botu, papildus iegūst failus, vairāk skatītāju un paslēptas IP adreses.",
+    "download": "Iegūt Mumcord",
+    "relay": "Iestatīt mumpeer",
+    "asOf": "Pēc stāvokļa Mumcord 0.9, mumpeer 0.3 un Mumble 1.5.",
+    "columns": [
+      {
+        "name": "Mumble",
+        "sub": "Oficiālais klients 1.5"
+      },
+      {
+        "name": "Mumcord",
+        "sub": "Jebkurā Mumble serverī"
+      },
+      {
+        "name": "Mumcord + mumpeer",
+        "sub": "Ar relay blakus serverim"
+      }
+    ],
+    "groups": [
+      {
+        "id": "voice",
+        "title": "Balss",
+        "rows": [
+          {
+            "id": "low-latency-opus-voice-through-the-mumbl",
+            "feature": "Opus balss ar zemu aizturi caur Mumble serveri",
+            "note": "Balss nekad neiet caur relay."
+          },
+          {
+            "id": "push-to-talk-with-keys-and-mouse-buttons",
+            "feature": "Push-to-talk ar taustiņiem un peles pogām",
+            "note": "Mumcord atbalsta arī Wayland ar īsinājumtaustiņu portālu."
+          },
+          {
+            "id": "noise-suppression-and-echo-cancellation",
+            "feature": "Trokšņu slāpēšana un atbalss novēršana",
+            "note": "Mumble: Speex vai RNNoise. Mumcord: Viegla, Standarta, Uzlabota (2024. gada RNNoise modelis, beta)."
+          },
+          {
+            "id": "whisper-and-shout-to-people-or-channels",
+            "feature": "Čukstēšana un kliegšana cilvēkiem vai kanāliem"
+          },
+          {
+            "id": "music-quality-and-low-latency-mode",
+            "feature": "Mūzikas kvalitāte un zemas aiztures režīms",
+            "note": "Mumble: bitrate un kadra izmērs audio iestatījumos. Mumcord: viens slēdzis un iestatījumi katram kanālam."
+          },
+          {
+            "id": "listen-to-a-channel-s-voice-without-join",
+            "feature": "Kanāla balss klausīšanās, neiejot tajā",
+            "note": "Mumble kanāla klausītāji. Mumcord klausītājus jau rāda, un ar 0.10.0 pats arī var klausīties."
+          },
+          {
+            "id": "recording-conversations",
+            "feature": "Sarunu ierakstīšana",
+            "note": "Mumble ir iebūvēts daudzkanālu ierakstītājs. Mumcord ierakstīšanu iegūs ar 0.10.0."
+          }
+        ]
+      },
+      {
+        "id": "chat",
+        "title": "Tērzēšana",
+        "rows": [
+          {
+            "id": "text-chat-with-images",
+            "feature": "Teksta tērzēšana ar attēliem",
+            "note": "Mumble attēliem jāietilpst servera ziņas izmēra ierobežojumā."
+          },
+          {
+            "id": "markdown-formatting",
+            "feature": "Markdown formatēšana",
+            "note": "Mumcord pievieno koda izcelšanu un formatēšanas rīkjoslu."
+          },
+          {
+            "id": "link-previews-and-youtube-twitch-music-e",
+            "feature": "Saišu priekšskatījumi un YouTube/Twitch/mūzikas iegulumi",
+            "note": "Tos iegūst pats Mumcord; var izslēgt."
+          },
+          {
+            "id": "replies-and-quotes",
+            "feature": "Atbildes un citāti",
+            "note": "Oficiālie Mumble klienti redz lasāmu citātu."
+          },
+          {
+            "id": "mentions-with-their-own-notification",
+            "feature": "@pieminējumi ar savu paziņojumu",
+            "note": "Citi Mumble klienti redz tikai tekstu."
+          },
+          {
+            "id": "read-and-write-in-channels-you-are-not-i",
+            "feature": "Lasīšana un rakstīšana kanālos, kuros neesi",
+            "note": "Seko kanālam ar acs ikonu."
+          },
+          {
+            "id": "chat-history-from-before-you-joined",
+            "feature": "Tērzēšanas vēsture no laika pirms tavas pievienošanās",
+            "note": "Mumcord lietotāji nodod līdz 7 dienām kanāla vēstures. Pilnai vēsturei tiem, kas bija prom, vajadzīgs Mumbot vēstures bots, atsevišķi no relay."
+          },
+          {
+            "id": "private-conversations-kept-across-sessio",
+            "feature": "Privātas sarunas, kas saglabājas starp sesijām",
+            "note": "Glabājas tikai tavā datorā, katram serverim var izslēgt."
+          },
+          {
+            "id": "text-to-speech-for-messages",
+            "feature": "Ziņu pārvēršana runā",
+            "note": "Mumcord ziņu pārvēršanu runā iegūs ar 0.10.0."
+          }
+        ]
+      },
+      {
+        "id": "media",
+        "title": "Mediji un kopīgošana",
+        "rows": [
+          {
+            "id": "full-size-images",
+            "feature": "Pilna izmēra attēli",
+            "note": "Bez relay tikai ar tiešu savienojumu, kas sūtītājam parāda tavu IP. Oficiālie klienti redz priekšskatījumu."
+          },
+          {
+            "id": "file-sharing",
+            "feature": "Failu kopīgošana",
+            "note": "Līdz 2 GB, vienmēr caur relay; fails nekad nonāk Mumble serverī."
+          },
+          {
+            "id": "screen-sharing-with-sound",
+            "feature": "Ekrāna kopīgošana ar skaņu",
+            "note": "Tieši: līdz 8 skatītājiem, katrs saņem savu kopiju un redz tavu IP. Relay: līdz 25 skatītājiem, IP paslēpts."
+          },
+          {
+            "id": "camera",
+            "feature": "Kamera",
+            "note": "Tieši: līdz 8 skatītājiem. Relay: līdz 18 kamerām, katrai 25 skatītāji. Abos gadījumos end-to-end šifrēts."
+          },
+          {
+            "id": "youtube-watch-party",
+            "feature": "YouTube watch party",
+            "note": "Sinhronizēta caur Mumble serveri, relay nav vajadzīgs."
+          }
+        ]
+      },
+      {
+        "id": "privacy",
+        "title": "Serveri un privātums",
+        "rows": [
+          {
+            "id": "several-servers-connected-at-once",
+            "feature": "Vairāki serveri pieslēgti vienlaikus",
+            "note": "Pēc noklusējuma līdz 5, pielāgojams līdz 15."
+          },
+          {
+            "id": "ip-address-hidden-from-other-users",
+            "feature": "IP adrese paslēpta no citiem lietotājiem",
+            "note": "Mumcord izveido tiešu savienojumu tikai pēc tavas piekrišanas, un tad otra persona redz tavu IP adresi. Ar „vienmēr relay” to neredz neviens. Mumble nav tiešu savienojumu."
+          },
+          {
+            "id": "sharing-works-behind-cgnat-or-strict-fir",
+            "feature": "Kopīgošana darbojas aiz CGNAT vai stingrām ugunsmūriem",
+            "note": "Bez relay kopīgošanai vajadzīgs tiešs ceļš (IPv6 vai maršrutētāja portu pārsūtīšana)."
+          },
+          {
+            "id": "several-identities-certificates",
+            "feature": "Vairākas identitātes (sertifikāti)",
+            "note": "Mumble vienlaikus izmanto vienu sertifikātu; Mumcord izvēlas vienu katram serverim."
+          },
+          {
+            "id": "block-people-across-servers",
+            "feature": "Cilvēku bloķēšana visos serveros",
+            "note": "Mumble: vietēja izslēgšana un ziņu ignorēšana katrai sesijai."
+          },
+          {
+            "id": "control-who-may-send-private-messages",
+            "feature": "Kontrole, kas drīkst sūtīt privātas ziņas"
+          },
+          {
+            "id": "no-telemetry",
+            "feature": "Bez telemetrijas",
+            "note": "Mumble var sūtīt anonīmu lietošanas statistiku, ko vari izslēgt."
+          }
+        ]
+      },
+      {
+        "id": "plugins",
+        "title": "Spraudņi un spēles",
+        "rows": [
+          {
+            "id": "positional-audio-in-games",
+            "feature": "Pozicionālā skaņa spēlēs",
+            "note": "Mumcord izmanto Mumble Link un oficiālos Mumble spēļu spraudņus (beta)."
+          },
+          {
+            "id": "in-game-overlay",
+            "feature": "Pārklājums spēlē",
+            "note": "Mumcord: Vulkan slānis Linux, logs ar caurklikšķināšanu Windows; ne macOS vai FreeBSD."
+          },
+          {
+            "id": "mumble-plugins",
+            "feature": "Mumble spraudņi",
+            "note": "Dzimtie spraudņi, galvenokārt pozicionālajai skaņai spēlēs. Mumcord izmanto oficiālos Mumble spēļu spraudņus (beta)."
+          },
+          {
+            "id": "mumcord-plugins",
+            "feature": "Mumcord spraudņi",
+            "note": "Izolēti, parakstīti WebAssembly spraudņi ar veikalu: aptaujas, kauliņi, spēles, tāfele un citi."
+          },
+          {
+            "id": "polls-dice-and-mini-games-in-the-channel",
+            "feature": "Aptaujas, kauliņi un mini spēles kanālā",
+            "note": "Caur Mumble serveri. Oficiālie klienti balso aptaujās ar !poll."
+          },
+          {
+            "id": "large-plugin-game-data",
+            "feature": "Lieli spraudņu spēļu dati",
+            "note": "Bez relay tikai mazas ziņas caur Mumble serveri; ar to līdz 64 KB ziņā, end-to-end šifrēti."
+          }
+        ]
+      },
+      {
+        "id": "admin",
+        "title": "Administrēšana",
+        "rows": [
+          {
+            "id": "permissions-acl-and-groups-editor",
+            "feature": "Atļauju (ACL) un grupu redaktors",
+            "note": "Mumcord paskaidro katru atbildi un brīdina, pirms pats sevi izslēdz."
+          },
+          {
+            "id": "kick-ban-and-ban-list",
+            "feature": "Izmešana, aizliegums un aizliegumu saraksts"
+          },
+          {
+            "id": "registered-users",
+            "feature": "Reģistrētie lietotāji"
+          },
+          {
+            "id": "create-edit-link-and-move-channels",
+            "feature": "Kanālu izveide, rediģēšana, sasaiste un pārvietošana"
+          },
+          {
+            "id": "admin-commands-in-the-chat-kick-move",
+            "feature": "Administratora komandas tērzēšanā (/kick, /move …)"
+          }
+        ]
+      },
+      {
+        "id": "platforms",
+        "title": "Platformas",
+        "rows": [
+          {
+            "id": "windows",
+            "feature": "Windows",
+            "note": "Mumcord arī kā portatīvs zip."
+          },
+          {
+            "id": "macos",
+            "feature": "macOS"
+          },
+          {
+            "id": "linux",
+            "feature": "Linux"
+          },
+          {
+            "id": "freebsd",
+            "feature": "FreeBSD",
+            "note": "Mumble caur kopienas ports koku. Mumcord: tur bez kameras, pārklājuma un ekrāna kopīgošanas skaņas."
+          },
+          {
+            "id": "android-and-ios",
+            "feature": "Android un iOS",
+            "note": "Pastāv trešo pušu Mumble lietotnes (piem., Mumla); Mumcord lietotnes drīz būs klāt."
+          },
+          {
+            "id": "works-with-any-standard-mumble-server",
+            "feature": "Darbojas ar jebkuru standarta Mumble serveri",
+            "note": "Mumcord un oficiālā Mumble lietotāji kopā runā un tērzē."
+          }
+        ]
+      }
+    ]
   }
 }

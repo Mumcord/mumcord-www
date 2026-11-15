@@ -6,7 +6,7 @@ import { EXTRA_LANGS, LANGS, LANG_INFO, type Lang } from "./langs";
 export { LANGS, EXTRA_LANGS, LANG_INFO };
 export type { Lang };
 export type { ExtraLang } from "./langs";
-export type PageId = "home" | "features" | "games" | "themes" | "roadmap" | "changelog" | "download" | "server" | "mumbot" | "plugins" | "mumpeer" | "mumquiz" | "hwcodec" | "protocol" | "imprint" | "privacy";
+export type PageId = "home" | "features" | "games" | "themes" | "roadmap" | "changelog" | "download" | "server" | "mumbot" | "plugins" | "mumpeer" | "mumquiz" | "hwcodec" | "protocol" | "compare" | "imprint" | "privacy";
 
 /** Builds a per-language record: German and English as given, the others from their translation file. */
 export function localized<T>(base: { de: T; en: T }, extra: (lang: (typeof EXTRA_LANGS)[number]) => T): Record<Lang, T> {
@@ -47,6 +47,7 @@ const base: Record<PageId, { de: string; en: string }> = {
   mumpeer: { de: "/mumpeer", en: "/en/mumpeer" },
   mumquiz: { de: "/mumquiz", en: "/en/mumquiz" },
   hwcodec: { de: "/hwcodec", en: "/en/hwcodec" },
+  compare: { de: "/vergleich", en: "/en/comparison" },
   protocol: { de: "/mumble-client-protocol", en: "/en/mumble-client-protocol" },
   imprint: { de: "/impressum", en: "/en/legal-notice" },
   privacy: { de: "/datenschutz", en: "/en/privacy" },

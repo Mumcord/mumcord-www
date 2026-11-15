@@ -102,6 +102,10 @@
       "plugins": {
         "title": "Plugins",
         "desc": "Stħarriġ, dadi u aktar"
+      },
+      "compare": {
+        "title": "Tqabbil",
+        "desc": "Mumble · Mumcord · mumpeer"
       }
     },
     "hero": {
@@ -773,6 +777,15 @@
           "body": "Mużika, kmandi u kards fiċ-chat. Mumbot jaħdem maġenb kwalunkwe server Mumble u jitkellem ma' Mumcord."
         }
       }
+    },
+    "testServer": {
+      "kicker": "Server tat-test online",
+      "title": "Ipprova Mumcord issa stess",
+      "body": "Is-server tat-test tagħna lest: kanali biex titkellmu, tilagħbu u tarraw flimkien, u r-relay mumpeer għall-iskrin, il-kamera u l-fajls mingħajr ma juri l-indirizz IP tiegħek.",
+      "join": "Qabbad ma’ Mumcord",
+      "copy": "Ikkopja l-indirizz",
+      "copied": "Ikkupjat!",
+      "download": "Għad m’għandekx Mumcord? Ġibu hawn"
     }
   },
   "features": {
@@ -3199,6 +3212,46 @@
         ]
       },
       {
+        "id": "epic-4.2",
+        "title": "Dak kollu li jagħmel Mumble",
+        "summary": "Bil-0.10.0 Mumcord jilħaq dak li l-klijent uffiċjali ilu jagħmel: smigħ ta’ kanal, reġistrazzjoni ta’ sejħiet, qari ta’ messaġġi b’leħen għoli, plugins ta’ Mumble minn partijiet terzi u awdjo pożizzjonali barra mill-beta. Flimkien ma’ aktar kumdità għall-plejers u għall-amministraturi.",
+        "groups": [
+          {
+            "title": "Smigħ u kliem",
+            "items": [
+              "Isma’ kanal ieħor mingħajr ma tidħol fih, b’volum għal kull kanal (#873, #863)",
+              "Dejjem trażmetti bħala modalità tal-leħen waħedha (#862)",
+              "Naqqas il-volum tal-applikazzjonijiet l-oħra waqt li n-nies jitkellmu (#866)",
+              "Hotkey lura għall-kanal preċedenti (#871)",
+              "Neħħi l-mute lokali mal-bidu, jekk trid (#872)"
+            ]
+          },
+          {
+            "title": "Reġistrazzjoni u qari b’leħen għoli",
+            "items": [
+              "Irreġistra s-sejħiet lokalment, bħala mix wieħed jew fajl wieħed għal kull persuna (#860)",
+              "Aqra ċ-chat u l-avvenimenti b’leħen għoli (#861)"
+            ]
+          },
+          {
+            "title": "Logħob u plugins",
+            "items": [
+              "Plugins ta’ Mumble minn partijiet terzi permezz tal-API tal-plugins ta’ Mumble (#869)",
+              "Awdjo pożizzjonali b’viewer u hotkey, barra mill-beta (#868)",
+              "Overlay f’logħob full-screen esklussiv fuq Windows u fuq macOS (#864)"
+            ]
+          },
+          {
+            "title": "Għall-amministraturi u l-iscripts",
+            "items": [
+              "Immaniġġja t-tokens tal-aċċess għal kull server (#870)",
+              "Azzjonijiet li jiddefinixxi s-server, fil-menus (#867)",
+              "Ikkontrolla Mumcord minn scripts, bil-linja tal-kmand u D-Bus (#865)"
+            ]
+          }
+        ]
+      },
+      {
         "id": "epic-5",
         "title": "Mumcord fuq it-telefon tiegħek",
         "summary": "Mumcord bħala app għal Android u iOS, kompatibbli ma’ servers standard ta’ Mumble bħal fuq id-desktop. L-ewwel bħala APK biex tniżżel u permezz ta’ TestFlight, il-ħwienet tal-apps jiġu aktar tard.",
@@ -4334,5 +4387,296 @@
     "sdkNote": "L-għodda u l-SDK jinsabu fuq crates.io. Fil-Cargo.toml tiegħek:",
     "docsAll": "Id-dokumentazzjoni kollha",
     "wiki": "Wiki"
+  },
+  "compare": {
+    "title": "Mumble, Mumcord u mumpeer imqabblin",
+    "description": "X'jagħmel il-client uffiċjali ta' Mumble, x'iżid Mumcord fuq kull server ta' Mumble u x'jeħtieġ ir-relay mumpeer: leħen, chat, sharing u privatezza.",
+    "label": "Tqabbil",
+    "intro": "Mumcord jaħdem fuq kull server standard ta' Mumble, u n-nies bil-client uffiċjali jkunu fl-istess kanal. Xi affarijiet, bħall-qsim tal-fajls jew il-moħbija tal-indirizz IP tiegħek, jeħtieġu wkoll ir-relay mumpeer ħdejn is-server.",
+    "yes": "Iva",
+    "partly": "Parzjalment",
+    "no": "Le",
+    "soon": "Dalwaqt",
+    "legend": "Parzjalment tfisser: b'limiti, elenkati taħt ir-ringiela.",
+    "outroTitle": "Mhux jew/jew",
+    "outroBody": "Mumcord u l-client uffiċjali jitkellmu bl-istess protokoll. Is-server tiegħek jibqa' kif inhu, u r-relay huwa fakultattiv: komunità li tħaddem mumpeer bil-bot tar-relay tikseb fuq dan fajls, aktar telespettaturi u indirizzi IP moħbija.",
+    "download": "Niżżel Mumcord",
+    "relay": "Issettja mumpeer",
+    "asOf": "Mill-Mumcord 0.9, mumpeer 0.3 u Mumble 1.5.",
+    "columns": [
+      {
+        "name": "Mumble",
+        "sub": "Client uffiċjali 1.5"
+      },
+      {
+        "name": "Mumcord",
+        "sub": "Fuq kull server ta' Mumble"
+      },
+      {
+        "name": "Mumcord + mumpeer",
+        "sub": "B'relay ħdejn is-server"
+      }
+    ],
+    "groups": [
+      {
+        "id": "voice",
+        "title": "Leħen",
+        "rows": [
+          {
+            "id": "low-latency-opus-voice-through-the-mumbl",
+            "feature": "Leħen Opus b'dewmien baxx permezz tas-server ta' Mumble",
+            "note": "Il-leħen qatt ma jgħaddi mir-relay."
+          },
+          {
+            "id": "push-to-talk-with-keys-and-mouse-buttons",
+            "feature": "Push-to-talk b'tasti u buttuni tal-maws",
+            "note": "Mumcord jappoġġja wkoll Wayland permezz tal-portal tax-shortcuts."
+          },
+          {
+            "id": "noise-suppression-and-echo-cancellation",
+            "feature": "Tneħħija tal-istorbju u tal-eku",
+            "note": "Mumble: Speex jew RNNoise. Mumcord: Ħafif, Standard, Avvanzat (mudell RNNoise tal-2024, beta)."
+          },
+          {
+            "id": "whisper-and-shout-to-people-or-channels",
+            "feature": "Whisper u shout lil nies jew kanali"
+          },
+          {
+            "id": "music-quality-and-low-latency-mode",
+            "feature": "Kwalità tal-mużika u modalità b'dewmien baxx",
+            "note": "Mumble: bitrate u daqs tal-frames fis-settings tal-awdjo. Mumcord: swiċċ wieħed, flimkien ma' presets għal kull kanal."
+          },
+          {
+            "id": "listen-to-a-channel-s-voice-without-join",
+            "feature": "Smigħ tal-leħen ta' kanal mingħajr ma tidħol fih",
+            "note": "Il-listeners tal-kanal ta' Mumble. Mumcord diġà juri l-listeners u bil-0.10.0 jista' jisma' hu stess."
+          },
+          {
+            "id": "recording-conversations",
+            "feature": "Reġistrazzjoni tal-konversazzjonijiet",
+            "note": "Mumble għandu recorder multikanal integrat. Mumcord se jingħata r-reġistrazzjoni mal-0.10.0."
+          }
+        ]
+      },
+      {
+        "id": "chat",
+        "title": "Chat",
+        "rows": [
+          {
+            "id": "text-chat-with-images",
+            "feature": "Chat tat-test bi stampi",
+            "note": "F'Mumble, l-istampi jridu jidħlu fil-limitu tad-daqs tal-messaġġ tas-server."
+          },
+          {
+            "id": "markdown-formatting",
+            "feature": "Formattjar Markdown",
+            "note": "Mumcord iżid highlighting tal-kodiċi u toolbar tal-formattjar."
+          },
+          {
+            "id": "link-previews-and-youtube-twitch-music-e",
+            "feature": "Previews tal-links u embeds ta' YouTube/Twitch/mużika",
+            "note": "Jinġabru minn Mumcord innifsu; jistgħu jintfew."
+          },
+          {
+            "id": "replies-and-quotes",
+            "feature": "Tweġibiet u kwoti",
+            "note": "Il-clients uffiċjali ta' Mumble jaraw kwota li tinqara."
+          },
+          {
+            "id": "mentions-with-their-own-notification",
+            "feature": "@mentions bin-notifika tagħhom",
+            "note": "Clients oħra ta' Mumble jaraw biss it-test."
+          },
+          {
+            "id": "read-and-write-in-channels-you-are-not-i",
+            "feature": "Aqra u ikteb f'kanali li m'intix fihom",
+            "note": "Segwi kanal bl-ikona tal-għajn."
+          },
+          {
+            "id": "chat-history-from-before-you-joined",
+            "feature": "Storja tal-chat minn qabel ma ndaħalt",
+            "note": "L-utenti ta' Mumcord jgħaddu sa 7 ijiem ta' storja tal-kanal. L-istorja sħiħa għal dawk li kienu assenti teħtieġ il-bot tal-istorja ta' Mumbot, separat mir-relay."
+          },
+          {
+            "id": "private-conversations-kept-across-sessio",
+            "feature": "Konversazzjonijiet privati miżmuma bejn sessjonijiet",
+            "note": "Maħżuna biss fuq il-kompjuter tiegħek, jistgħu jintfew għal kull server."
+          },
+          {
+            "id": "text-to-speech-for-messages",
+            "feature": "Text-to-speech għal messaġġi",
+            "note": "Mumcord se jingħata t-text-to-speech mal-0.10.0."
+          }
+        ]
+      },
+      {
+        "id": "media",
+        "title": "Media u sharing",
+        "rows": [
+          {
+            "id": "full-size-images",
+            "feature": "Stampi bid-daqs sħiħ",
+            "note": "Mingħajr ir-relay, biss permezz ta' konnessjoni diretta, li turi l-IP tiegħek lil min jibgħat. Il-clients uffiċjali jaraw il-preview."
+          },
+          {
+            "id": "file-sharing",
+            "feature": "Qsim ta' fajls",
+            "note": "Sa 2 GB, dejjem permezz tar-relay; il-fajl qatt ma jmiss is-server ta' Mumble."
+          },
+          {
+            "id": "screen-sharing-with-sound",
+            "feature": "Screen sharing bil-ħoss",
+            "note": "Dirett: sa 8 telespettaturi, kull wieħed jieħu l-kopja tiegħu u jara l-IP tiegħek. Relay: sa 25 telespettatur, IP moħbi."
+          },
+          {
+            "id": "camera",
+            "feature": "Kamera",
+            "note": "Dirett: sa 8 telespettaturi. Relay: sa 18-il kamera, 25 telespettatur kull waħda. Encrypted end-to-end fiż-żewġ każijiet."
+          },
+          {
+            "id": "youtube-watch-party",
+            "feature": "Watch party ta' YouTube",
+            "note": "Sinkronizzata permezz tas-server ta' Mumble, mingħajr bżonn ta' relay."
+          }
+        ]
+      },
+      {
+        "id": "privacy",
+        "title": "Servers u privatezza",
+        "rows": [
+          {
+            "id": "several-servers-connected-at-once",
+            "feature": "Diversi servers konnessi f'daqqa",
+            "note": "Sa 5 b'mod awtomatiku, jista' jiżdied sa 15."
+          },
+          {
+            "id": "ip-address-hidden-from-other-users",
+            "feature": "Indirizz IP moħbi mill-utenti l-oħra",
+            "note": "Mumcord jitqabbad direttament biss wara li taqbel, u mbagħad il-persuna l-oħra tara l-indirizz IP tiegħek. B'“dejjem relay” ħadd ma jarah. Mumble m'għandux konnessjonijiet diretti."
+          },
+          {
+            "id": "sharing-works-behind-cgnat-or-strict-fir",
+            "feature": "Is-sharing jaħdem wara CGNAT jew firewalls stretti",
+            "note": "Mingħajr ir-relay, is-sharing jeħtieġ triq diretta (IPv6 jew port mapping tar-router)."
+          },
+          {
+            "id": "several-identities-certificates",
+            "feature": "Diversi identitajiet (ċertifikati)",
+            "note": "Mumble juża ċertifikat wieħed kull darba; Mumcord jagħżel wieħed għal kull server."
+          },
+          {
+            "id": "block-people-across-servers",
+            "feature": "Imblukkar nies madwar is-servers",
+            "note": "Mumble: mute lokali u injorar tal-messaġġi għal kull sessjoni."
+          },
+          {
+            "id": "control-who-may-send-private-messages",
+            "feature": "Kontroll ta' min jista' jibgħat messaġġi privati"
+          },
+          {
+            "id": "no-telemetry",
+            "feature": "Ebda telemetrija",
+            "note": "Mumble jista' jibgħat statistika anonima tal-użu, li tista' tintefa."
+          }
+        ]
+      },
+      {
+        "id": "plugins",
+        "title": "Plugins u logħob",
+        "rows": [
+          {
+            "id": "positional-audio-in-games",
+            "feature": "Awdjo pożizzjonali fil-logħob",
+            "note": "Mumcord juża Mumble Link u l-plugins uffiċjali tal-logħob ta' Mumble (beta)."
+          },
+          {
+            "id": "in-game-overlay",
+            "feature": "Overlay fil-logħba",
+            "note": "Mumcord: saff Vulkan fuq Linux, tieqa li tgħaddi l-klikk fuq Windows; mhux fuq macOS jew FreeBSD."
+          },
+          {
+            "id": "mumble-plugins",
+            "feature": "Plugins ta' Mumble",
+            "note": "Plugins nattivi, l-aktar għal awdjo pożizzjonali fil-logħob. Mumcord juża l-plugins uffiċjali tal-logħob ta' Mumble (beta)."
+          },
+          {
+            "id": "mumcord-plugins",
+            "feature": "Plugins ta' Mumcord",
+            "note": "Plugins WebAssembly iffirmati u f'sandbox, b'store: stħarrġiet, dadi, logħob, lavanja bajda u aktar."
+          },
+          {
+            "id": "polls-dice-and-mini-games-in-the-channel",
+            "feature": "Stħarriġ, dadi u mini-logħob fil-kanal",
+            "note": "Permezz tas-server ta' Mumble. Il-clients uffiċjali jivvotaw fl-istħarriġ b'!poll."
+          },
+          {
+            "id": "large-plugin-game-data",
+            "feature": "Dejta kbira tal-logħob tal-plugins",
+            "note": "Mingħajr ir-relay, biss messaġġi żgħar permezz tas-server ta' Mumble; miegħu sa 64 KB għal kull messaġġ, encrypted end-to-end."
+          }
+        ]
+      },
+      {
+        "id": "admin",
+        "title": "Amministrazzjoni",
+        "rows": [
+          {
+            "id": "permissions-acl-and-groups-editor",
+            "feature": "Editur tal-permessi (ACL) u tal-gruppi",
+            "note": "Mumcord jispjega kull tweġiba u jwissi qabel ma tkeċċi lilek innifsek."
+          },
+          {
+            "id": "kick-ban-and-ban-list",
+            "feature": "Kick, ban u lista tal-bans"
+          },
+          {
+            "id": "registered-users",
+            "feature": "Utenti rreġistrati"
+          },
+          {
+            "id": "create-edit-link-and-move-channels",
+            "feature": "Ħolqien, editjar, rabta u ċaqliq ta' kanali"
+          },
+          {
+            "id": "admin-commands-in-the-chat-kick-move",
+            "feature": "Kmandi tal-admin fiċ-chat (/kick, /move …)"
+          }
+        ]
+      },
+      {
+        "id": "platforms",
+        "title": "Pjattaformi",
+        "rows": [
+          {
+            "id": "windows",
+            "feature": "Windows",
+            "note": "Mumcord ukoll bħala zip portabbli."
+          },
+          {
+            "id": "macos",
+            "feature": "macOS"
+          },
+          {
+            "id": "linux",
+            "feature": "Linux"
+          },
+          {
+            "id": "freebsd",
+            "feature": "FreeBSD",
+            "note": "Mumble permezz tas-siġra tal-ports tal-komunità. Mumcord: hemmhekk mingħajr kamera, overlay u ħoss tal-screen sharing."
+          },
+          {
+            "id": "android-and-ios",
+            "feature": "Android u iOS",
+            "note": "Teżisti apps ta' Mumble ta' partijiet terzi (eż. Mumla); l-apps ta' Mumcord ġejjin dalwaqt."
+          },
+          {
+            "id": "works-with-any-standard-mumble-server",
+            "feature": "Jaħdem ma' kull server standard ta' Mumble",
+            "note": "L-utenti ta' Mumcord u ta' Mumble uffiċjali jitkellmu u jiċċettjaw flimkien."
+          }
+        ]
+      }
+    ]
   }
 }

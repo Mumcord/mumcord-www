@@ -1,0 +1,12 @@
+---
+import Base from "../../layouts/Base.astro";
+import ComparePage from "../../components/ComparePage.astro";
+import { comparePage } from "../../lib/compare";
+import { pageJsonLd } from "../../lib/jsonld";
+
+const t = comparePage.en;
+---
+
+<Base lang="en" page="compare" title={t.title} description={t.description} jsonLd={pageJsonLd("en", Astro.site!, "compare", t.title)}>
+  <ComparePage lang="en" />
+</Base>
