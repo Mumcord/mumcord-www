@@ -4678,5 +4678,63 @@
         ]
       }
     ]
+  },
+  "packageRepo": {
+    "title": "Repożitorju tal-pakketti",
+    "badge": "Rakkomandat għal Linux u FreeBSD",
+    "lead": "Ladarba jiżdied, Mumcord jiġi aġġornat bl-għodda normali tal-aġġornament tas-sistema tiegħek: `apt upgrade`, `dnf upgrade`, `zypper update`, `pacman -Syu` jew `pkg upgrade`.",
+    "stableOnly": "Ir-repożitorju fih biss ħruġ stabbli, dejjem l-aħħar wieħed. Il-kandidati għall-ħruġ ma jiġux ippubblikati hemm.",
+    "scriptTitle": "L-eħfef mod: l-iskript tal-installazzjoni",
+    "scriptBody": "Jistaqsik kif trid tinstalla Mumcord: permezz tar-repożitorju tal-pakketti (id-default), bħala pakkett imniżżel jew bħala AppImage, u jissettja r-repożitorju għalik.",
+    "linux": "Linux",
+    "freebsd": "FreeBSD",
+    "manualTitle": "Issettjah bl-idejn",
+    "manualBody": "L-istess bħall-iskript, pass pass għas-sistema tiegħek.",
+    "systems": {
+      "apt": {
+        "name": "Debian, Ubuntu, Linux Mint (APT)",
+        "notes": [
+          "Iċ-ċavetta tintuża biss għal dan ir-repożitorju (`Signed-By:` f'`mumcord.sources`), mhux għas-sistema kollha tiegħek; `apt-key` mhux meħtieġ. Taħdem fuq amd64 u arm64."
+        ]
+      },
+      "dnf": {
+        "name": "Fedora (DNF)",
+        "notes": [
+          "Kemm il-pakketti kif ukoll il-metadata tar-repożitorju huma ffirmati (`gpgcheck=1`, `repo_gpgcheck=1`)."
+        ]
+      },
+      "zypper": {
+        "name": "openSUSE (zypper)",
+        "notes": []
+      },
+      "pacman": {
+        "name": "Arch Linux (pacman)",
+        "notes": [
+          "Imbagħad żid dan fl-aħħar ta' `/etc/pacman.conf`:",
+          "U installa:",
+          "Il-pakkett għandu l-istess isem bħall-pakkett AUR `mumcord-bin`, għalhekk installazzjoni mill-AUR taqleb waħedha għar-repożitorju fil-`pacman -Syu` li jmiss."
+        ]
+      },
+      "pkg": {
+        "name": "FreeBSD 15.x (pkg)",
+        "before": "Bħala root:",
+        "notes": [
+          "Id-dipendenzi tiegħu jiġu mir-repożitorju uffiċjali ta' FreeBSD bħas-soltu."
+        ]
+      }
+    },
+    "keyTitle": "Ċavetta tal-firma",
+    "keyName": "Isem",
+    "keyFingerprint": "Marka tas-swaba'",
+    "keyValid": "Valida sa",
+    "keyDownload": "Niżżel",
+    "keyFreebsd": "Il-pkg ta' FreeBSD juża ċavetta RSA tiegħu stess",
+    "keyCheck": "Qabbel il-marka tas-swaba' qabel tafda ċ-ċavetta, eż. b'`gpg --show-keys mumcord.asc`.",
+    "removeTitle": "Neħħi r-repożitorju",
+    "removePacman": "neħħi l-blokk `[mumcord]` minn `/etc/pacman.conf`, imbagħad",
+    "removeScript": "`install.sh --uninstall` jagħmel dan ukoll għalik.",
+    "copy": "Ikkopja",
+    "copied": "Ikkupjat!",
+    "failed": "L-ikkupjar ma rnexxiex. Agħżel il-kmand u kkopjah bl-idejn."
   }
 }

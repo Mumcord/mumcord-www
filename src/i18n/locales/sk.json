@@ -4678,5 +4678,63 @@
         ]
       }
     ]
+  },
+  "packageRepo": {
+    "title": "Repozitár balíkov",
+    "badge": "Odporúčané pre Linux a FreeBSD",
+    "lead": "Keď ho pridáš, Mumcord sa aktualizuje bežným nástrojom na aktualizáciu tvojho systému: `apt upgrade`, `dnf upgrade`, `zypper update`, `pacman -Syu` alebo `pkg upgrade`.",
+    "stableOnly": "Repozitár obsahuje len stabilné vydania, vždy to najnovšie. Release kandidáty sa tam nezverejňujú.",
+    "scriptTitle": "Najjednoduchšie: inštalačný skript",
+    "scriptBody": "Opýta sa, ako chceš Mumcord nainštalovať: cez repozitár balíkov (predvolené), ako stiahnutý balík alebo ako AppImage, a repozitár ti nastaví sám.",
+    "linux": "Linux",
+    "freebsd": "FreeBSD",
+    "manualTitle": "Nastaviť ručne",
+    "manualBody": "To isté ako skript, krok za krokom pre tvoj systém.",
+    "systems": {
+      "apt": {
+        "name": "Debian, Ubuntu, Linux Mint (APT)",
+        "notes": [
+          "Kľúč sa používa len pre tento repozitár (`Signed-By:` v `mumcord.sources`), nie pre celý systém; `apt-key` nie je potrebný. Funguje na amd64 a arm64."
+        ]
+      },
+      "dnf": {
+        "name": "Fedora (DNF)",
+        "notes": [
+          "Podpísané sú balíky aj metadáta repozitára (`gpgcheck=1`, `repo_gpgcheck=1`)."
+        ]
+      },
+      "zypper": {
+        "name": "openSUSE (zypper)",
+        "notes": []
+      },
+      "pacman": {
+        "name": "Arch Linux (pacman)",
+        "notes": [
+          "Potom na koniec `/etc/pacman.conf` pridaj toto:",
+          "A nainštaluj:",
+          "Balík sa volá rovnako ako balík z AUR `mumcord-bin`, takže inštalácia z AUR prejde na repozitár sama pri ďalšom `pacman -Syu`."
+        ]
+      },
+      "pkg": {
+        "name": "FreeBSD 15.x (pkg)",
+        "before": "Ako root:",
+        "notes": [
+          "Jeho závislosti sa ako zvyčajne berú z oficiálneho repozitára FreeBSD."
+        ]
+      }
+    },
+    "keyTitle": "Podpisový kľúč",
+    "keyName": "Meno",
+    "keyFingerprint": "Odtlačok",
+    "keyValid": "Platný do",
+    "keyDownload": "Stiahnuť",
+    "keyFreebsd": "pkg vo FreeBSD používa vlastný kľúč RSA",
+    "keyCheck": "Skôr než kľúču dôveruješ, porovnaj odtlačok, napr. pomocou `gpg --show-keys mumcord.asc`.",
+    "removeTitle": "Odstránenie repozitára",
+    "removePacman": "odstráň blok `[mumcord]` z `/etc/pacman.conf`, potom",
+    "removeScript": "`install.sh --uninstall` to urobí tiež za teba.",
+    "copy": "Kopírovať",
+    "copied": "Skopírované!",
+    "failed": "Kopírovanie nevyšlo. Označ príkaz a skopíruj ho ručne."
   }
 }

@@ -2,6 +2,7 @@
 // The download card: one big button for the visitor's system (picked in src/scripts/download.ts
 // from the browser), the other systems one tab away. Without JS it shows Windows and the tabs
 // still link to the full download page.
+import { FREEBSD_INSTALL_COMMAND } from "../lib/package-repo";
 import CopyButton from "./CopyButton.astro";
 import { dicts, routes, type Lang } from "../i18n";
 import { PLATFORM_GLYPHS } from "../lib/glyphs";
@@ -136,6 +137,16 @@ import Arrow from "./Arrow.astro";
                     {pkgAddCommand(main[0].name)}
                   </code>
                   <CopyButton text={pkgAddCommand(main[0].name)} label={t.oneLine.copy} copied={t.oneLine.copied} failed={t.oneLine.failed} />
+                </div>
+              )}
+              {p === "freebsd" && release?.installer && (
+                <div class="dl-cmd">
+                  <span class="dl-cmd-label">{s.orLine}</span>
+                  <code>
+                    <span aria-hidden="true">$ </span>
+                    {FREEBSD_INSTALL_COMMAND}
+                  </code>
+                  <CopyButton text={FREEBSD_INSTALL_COMMAND} label={t.oneLine.copy} copied={t.oneLine.copied} failed={t.oneLine.failed} />
                 </div>
               )}
               {p === "linux" && release?.installer && (

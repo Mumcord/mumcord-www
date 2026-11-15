@@ -1,3 +1,4 @@
+import type { PackageRepoBundle } from "../lib/package-repo";
 import type { CompareText } from "../lib/compare";
 // The text of one extra language (see langs.ts), in one file under ./locales/<code>.json.
 // It holds words only: screenshots, versions, statuses, links and code come from the English
@@ -70,6 +71,8 @@ export interface LocaleBundle {
   tools?: ToolsText;
   /** Missing in translations made before the comparison page; English fills in. */
   compare?: CompareText;
+  /** Missing in translations made before the package repository; English fills in. */
+  packageRepo?: PackageRepoBundle;
 }
 
 export interface ToolsText extends Partial<Omit<ToolsPage, "pages">> {

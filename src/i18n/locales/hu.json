@@ -4678,5 +4678,63 @@
         ]
       }
     ]
+  },
+  "packageRepo": {
+    "title": "Csomagtár",
+    "badge": "Ajánlott Linuxhoz és FreeBSD-hez",
+    "lead": "Miután hozzáadtad, a Mumcord a rendszered szokásos frissítőeszközével frissül: `apt upgrade`, `dnf upgrade`, `zypper update`, `pacman -Syu` vagy `pkg upgrade`.",
+    "stableOnly": "A csomagtár csak stabil kiadásokat tartalmaz, mindig a legfrissebbet. A kiadásjelölteket nem teszik közzé benne.",
+    "scriptTitle": "A legegyszerűbb: a telepítőszkript",
+    "scriptBody": "Megkérdezi, hogyan szeretnéd telepíteni a Mumcordot: a csomagtáron át (alapértelmezett), letöltött csomagként vagy AppImage-ként, és a csomagtárat is beállítja helyetted.",
+    "linux": "Linux",
+    "freebsd": "FreeBSD",
+    "manualTitle": "Beállítás kézzel",
+    "manualBody": "Ugyanaz, mint a szkript, lépésről lépésre a te rendszeredhez.",
+    "systems": {
+      "apt": {
+        "name": "Debian, Ubuntu, Linux Mint (APT)",
+        "notes": [
+          "A kulcsot csak ehhez a csomagtárhoz használja a rendszer (`Signed-By:` a `mumcord.sources` fájlban), nem az egész rendszerhez; az `apt-key` nem kell. amd64-en és arm64-en működik."
+        ]
+      },
+      "dnf": {
+        "name": "Fedora (DNF)",
+        "notes": [
+          "A csomagok és a csomagtár metaadatai is alá vannak írva (`gpgcheck=1`, `repo_gpgcheck=1`)."
+        ]
+      },
+      "zypper": {
+        "name": "openSUSE (zypper)",
+        "notes": []
+      },
+      "pacman": {
+        "name": "Arch Linux (pacman)",
+        "notes": [
+          "Ezután add hozzá ezt a `/etc/pacman.conf` végéhez:",
+          "És telepítsd:",
+          "A csomag neve megegyezik az AUR `mumcord-bin` csomagéval, ezért az AUR-ból telepített változat a következő `pacman -Syu` során magától átáll a csomagtárra."
+        ]
+      },
+      "pkg": {
+        "name": "FreeBSD 15.x (pkg)",
+        "before": "Rootként:",
+        "notes": [
+          "A függőségei a szokásos módon a hivatalos FreeBSD-csomagtárból jönnek."
+        ]
+      }
+    },
+    "keyTitle": "Aláírókulcs",
+    "keyName": "Név",
+    "keyFingerprint": "Ujjlenyomat",
+    "keyValid": "Érvényes eddig",
+    "keyDownload": "Letöltés",
+    "keyFreebsd": "A FreeBSD pkg saját RSA-kulcsot használ",
+    "keyCheck": "Hasonlítsd össze az ujjlenyomatot, mielőtt megbízol a kulcsban, pl. a `gpg --show-keys mumcord.asc` paranccsal.",
+    "removeTitle": "A csomagtár eltávolítása",
+    "removePacman": "töröld a `[mumcord]` blokkot a `/etc/pacman.conf` fájlból, majd",
+    "removeScript": "Az `install.sh --uninstall` ezt is elvégzi helyetted.",
+    "copy": "Másolás",
+    "copied": "Másolva!",
+    "failed": "A másolás nem sikerült. Jelöld ki a parancsot, és másold ki kézzel."
   }
 }

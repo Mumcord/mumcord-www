@@ -4678,5 +4678,63 @@
         ]
       }
     ]
+  },
+  "packageRepo": {
+    "title": "Depozit de pachete",
+    "badge": "Recomandat pentru Linux și FreeBSD",
+    "lead": "După ce îl adaugi, Mumcord se actualizează cu instrumentul obișnuit de actualizare al sistemului tău: `apt upgrade`, `dnf upgrade`, `zypper update`, `pacman -Syu` sau `pkg upgrade`.",
+    "stableOnly": "Depozitul conține doar versiuni stabile, mereu cea mai nouă. Versiunile candidat nu sunt publicate acolo.",
+    "scriptTitle": "Cel mai simplu: scriptul de instalare",
+    "scriptBody": "Te întreabă cum vrei să instalezi Mumcord: prin depozitul de pachete (implicit), ca pachet descărcat sau ca AppImage, și configurează depozitul pentru tine.",
+    "linux": "Linux",
+    "freebsd": "FreeBSD",
+    "manualTitle": "Configurează manual",
+    "manualBody": "La fel ca scriptul, pas cu pas pentru sistemul tău.",
+    "systems": {
+      "apt": {
+        "name": "Debian, Ubuntu, Linux Mint (APT)",
+        "notes": [
+          "Cheia este folosită doar pentru acest depozit (`Signed-By:` în `mumcord.sources`), nu pentru tot sistemul; `apt-key` nu e necesar. Funcționează pe amd64 și arm64."
+        ]
+      },
+      "dnf": {
+        "name": "Fedora (DNF)",
+        "notes": [
+          "Atât pachetele, cât și metadatele depozitului sunt semnate (`gpgcheck=1`, `repo_gpgcheck=1`)."
+        ]
+      },
+      "zypper": {
+        "name": "openSUSE (zypper)",
+        "notes": []
+      },
+      "pacman": {
+        "name": "Arch Linux (pacman)",
+        "notes": [
+          "Apoi adaugă asta la sfârșitul fișierului `/etc/pacman.conf`:",
+          "Și instalează:",
+          "Pachetul are același nume ca pachetul AUR `mumcord-bin`, deci o instalare din AUR trece singură la depozit la următorul `pacman -Syu`."
+        ]
+      },
+      "pkg": {
+        "name": "FreeBSD 15.x (pkg)",
+        "before": "Ca root:",
+        "notes": [
+          "Dependențele lui vin ca de obicei din depozitul oficial FreeBSD."
+        ]
+      }
+    },
+    "keyTitle": "Cheie de semnare",
+    "keyName": "Nume",
+    "keyFingerprint": "Amprentă",
+    "keyValid": "Valabilă până la",
+    "keyDownload": "Descarcă",
+    "keyFreebsd": "pkg din FreeBSD folosește propria cheie RSA",
+    "keyCheck": "Compară amprenta înainte să ai încredere în cheie, de ex. cu `gpg --show-keys mumcord.asc`.",
+    "removeTitle": "Eliminarea depozitului",
+    "removePacman": "elimină blocul `[mumcord]` din `/etc/pacman.conf`, apoi",
+    "removeScript": "`install.sh --uninstall` face și asta pentru tine.",
+    "copy": "Copiază",
+    "copied": "Copiat!",
+    "failed": "Copierea n-a mers. Selectează comanda și copiaz-o manual."
   }
 }

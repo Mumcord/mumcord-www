@@ -4678,5 +4678,63 @@
       }
     ],
     "soon": "Bientôt"
+  },
+  "packageRepo": {
+    "title": "Dépôt de paquets",
+    "badge": "Recommandé pour Linux et FreeBSD",
+    "lead": "Une fois ajouté, Mumcord se met à jour avec l’outil de mise à jour habituel de ton système : `apt upgrade`, `dnf upgrade`, `zypper update`, `pacman -Syu` ou `pkg upgrade`.",
+    "stableOnly": "Le dépôt ne contient que des versions stables, toujours la plus récente. Les versions candidates n’y sont pas publiées.",
+    "scriptTitle": "Le plus simple : le script d’installation",
+    "scriptBody": "Il te demande comment tu veux installer Mumcord : via le dépôt de paquets (par défaut), comme paquet téléchargé ou comme AppImage, et configure le dépôt pour toi.",
+    "linux": "Linux",
+    "freebsd": "FreeBSD",
+    "manualTitle": "Le configurer à la main",
+    "manualBody": "Comme le script, étape par étape pour ton système.",
+    "systems": {
+      "apt": {
+        "name": "Debian, Ubuntu, Linux Mint (APT)",
+        "notes": [
+          "La clé n’est utilisée que pour ce dépôt (`Signed-By:` dans `mumcord.sources`), pas pour tout ton système ; `apt-key` n’est pas nécessaire. Fonctionne sur amd64 et arm64."
+        ]
+      },
+      "dnf": {
+        "name": "Fedora (DNF)",
+        "notes": [
+          "Les paquets comme les métadonnées du dépôt sont signés (`gpgcheck=1`, `repo_gpgcheck=1`)."
+        ]
+      },
+      "zypper": {
+        "name": "openSUSE (zypper)",
+        "notes": []
+      },
+      "pacman": {
+        "name": "Arch Linux (pacman)",
+        "notes": [
+          "Ajoute ensuite ceci à la fin de `/etc/pacman.conf` :",
+          "Et installe :",
+          "Le paquet porte le même nom que le paquet AUR `mumcord-bin` ; une installation depuis l’AUR passe donc d’elle-même au dépôt lors du prochain `pacman -Syu`."
+        ]
+      },
+      "pkg": {
+        "name": "FreeBSD 15.x (pkg)",
+        "before": "En tant que root :",
+        "notes": [
+          "Ses dépendances viennent comme d’habitude du dépôt officiel de FreeBSD."
+        ]
+      }
+    },
+    "keyTitle": "Clé de signature",
+    "keyName": "Nom",
+    "keyFingerprint": "Empreinte",
+    "keyValid": "Valide jusqu’au",
+    "keyDownload": "Télécharger",
+    "keyFreebsd": "Le pkg de FreeBSD utilise sa propre clé RSA",
+    "keyCheck": "Compare l’empreinte avant de faire confiance à la clé, par ex. avec `gpg --show-keys mumcord.asc`.",
+    "removeTitle": "Retirer le dépôt",
+    "removePacman": "supprime le bloc `[mumcord]` de `/etc/pacman.conf`, puis",
+    "removeScript": "`install.sh --uninstall` le fait aussi pour toi.",
+    "copy": "Copier",
+    "copied": "Copié !",
+    "failed": "La copie n’a pas marché. Sélectionne la commande et copie-la à la main."
   }
 }

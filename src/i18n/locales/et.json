@@ -4678,5 +4678,63 @@
       }
     ],
     "soon": "Tulekul"
+  },
+  "packageRepo": {
+    "title": "Paketihoidla",
+    "badge": "Soovitatav Linuxi ja FreeBSD jaoks",
+    "lead": "Kui hoidla on lisatud, uueneb Mumcord sinu süsteemi tavalise uuendustööriistaga: `apt upgrade`, `dnf upgrade`, `zypper update`, `pacman -Syu` või `pkg upgrade`.",
+    "stableOnly": "Hoidlas on ainult stabiilsed väljalasked, alati uusim. Väljalaskekandidaate seal ei avaldata.",
+    "scriptTitle": "Kõige lihtsam: paigaldusskript",
+    "scriptBody": "See küsib, kuidas soovid Mumcordi paigaldada: paketihoidla kaudu (vaikimisi), allalaaditud paketina või AppImage'ina, ning seadistab hoidla sinu eest.",
+    "linux": "Linux",
+    "freebsd": "FreeBSD",
+    "manualTitle": "Seadista käsitsi",
+    "manualBody": "Sama mis skript, samm-sammult sinu süsteemile.",
+    "systems": {
+      "apt": {
+        "name": "Debian, Ubuntu, Linux Mint (APT)",
+        "notes": [
+          "Võtit kasutatakse ainult selle hoidla jaoks (`Signed-By:` failis `mumcord.sources`), mitte kogu süsteemi jaoks; `apt-key` pole vaja. Töötab amd64 ja arm64 peal."
+        ]
+      },
+      "dnf": {
+        "name": "Fedora (DNF)",
+        "notes": [
+          "Allkirjastatud on nii paketid kui ka hoidla metaandmed (`gpgcheck=1`, `repo_gpgcheck=1`)."
+        ]
+      },
+      "zypper": {
+        "name": "openSUSE (zypper)",
+        "notes": []
+      },
+      "pacman": {
+        "name": "Arch Linux (pacman)",
+        "notes": [
+          "Lisa siis see faili `/etc/pacman.conf` lõppu:",
+          "Ja paigalda:",
+          "Paketi nimi on sama mis AUR-i paketil `mumcord-bin`, nii et AUR-ist paigaldatud versioon läheb järgmisel `pacman -Syu` ise hoidlale üle."
+        ]
+      },
+      "pkg": {
+        "name": "FreeBSD 15.x (pkg)",
+        "before": "Root-kasutajana:",
+        "notes": [
+          "Selle sõltuvused tulevad nagu tavaliselt FreeBSD ametlikust hoidlast."
+        ]
+      }
+    },
+    "keyTitle": "Allkirjastamisvõti",
+    "keyName": "Nimi",
+    "keyFingerprint": "Sõrmejälg",
+    "keyValid": "Kehtib kuni",
+    "keyDownload": "Laadi alla",
+    "keyFreebsd": "FreeBSD pkg kasutab oma RSA-võtit",
+    "keyCheck": "Võrdle sõrmejälge enne, kui võtmesse usaldad, nt käsuga `gpg --show-keys mumcord.asc`.",
+    "removeTitle": "Hoidla eemaldamine",
+    "removePacman": "eemalda plokk `[mumcord]` failist `/etc/pacman.conf` ja seejärel",
+    "removeScript": "`install.sh --uninstall` teeb seda samuti sinu eest.",
+    "copy": "Kopeeri",
+    "copied": "Kopeeritud!",
+    "failed": "Kopeerimine ei õnnestunud. Vali käsk ja kopeeri see käsitsi."
   }
 }

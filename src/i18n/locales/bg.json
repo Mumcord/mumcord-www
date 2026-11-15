@@ -4678,5 +4678,63 @@
       }
     ],
     "soon": "Скоро"
+  },
+  "packageRepo": {
+    "title": "Хранилище с пакети",
+    "badge": "Препоръчва се за Linux и FreeBSD",
+    "lead": "След като го добавиш, Mumcord се обновява с обичайния инструмент за обновяване на системата ти: `apt upgrade`, `dnf upgrade`, `zypper update`, `pacman -Syu` или `pkg upgrade`.",
+    "stableOnly": "Хранилището съдържа само стабилни издания, винаги най-новото. Кандидат-изданията не се публикуват там.",
+    "scriptTitle": "Най-лесно: инсталационният скрипт",
+    "scriptBody": "Той те пита как искаш да инсталираш Mumcord: през хранилището с пакети (по подразбиране), като изтеглен пакет или като AppImage, и настройва хранилището вместо теб.",
+    "linux": "Linux",
+    "freebsd": "FreeBSD",
+    "manualTitle": "Настрой го ръчно",
+    "manualBody": "Същото като скрипта, стъпка по стъпка за твоята система.",
+    "systems": {
+      "apt": {
+        "name": "Debian, Ubuntu, Linux Mint (APT)",
+        "notes": [
+          "Ключът се използва само за това хранилище (`Signed-By:` в `mumcord.sources`), а не за цялата ти система; `apt-key` не е нужен. Работи на amd64 и arm64."
+        ]
+      },
+      "dnf": {
+        "name": "Fedora (DNF)",
+        "notes": [
+          "И пакетите, и метаданните на хранилището са подписани (`gpgcheck=1`, `repo_gpgcheck=1`)."
+        ]
+      },
+      "zypper": {
+        "name": "openSUSE (zypper)",
+        "notes": []
+      },
+      "pacman": {
+        "name": "Arch Linux (pacman)",
+        "notes": [
+          "После добави това в края на `/etc/pacman.conf`:",
+          "И инсталирай:",
+          "Пакетът се казва като AUR пакета `mumcord-bin`, затова инсталация от AUR преминава към хранилището сама при следващия `pacman -Syu`."
+        ]
+      },
+      "pkg": {
+        "name": "FreeBSD 15.x (pkg)",
+        "before": "Като root:",
+        "notes": [
+          "Зависимостите му идват от официалното хранилище на FreeBSD, както обикновено."
+        ]
+      }
+    },
+    "keyTitle": "Ключ за подписване",
+    "keyName": "Име",
+    "keyFingerprint": "Отпечатък",
+    "keyValid": "Валиден до",
+    "keyDownload": "Изтегляне",
+    "keyFreebsd": "pkg на FreeBSD използва собствен RSA ключ",
+    "keyCheck": "Сравни отпечатъка, преди да се довериш на ключа, напр. с `gpg --show-keys mumcord.asc`.",
+    "removeTitle": "Премахване на хранилището",
+    "removePacman": "премахни блока `[mumcord]` от `/etc/pacman.conf`, после",
+    "removeScript": "`install.sh --uninstall` също го прави вместо теб.",
+    "copy": "Копирай",
+    "copied": "Копирано!",
+    "failed": "Копирането не стана. Маркирай командата и я копирай ръчно."
   }
 }

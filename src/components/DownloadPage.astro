@@ -1,4 +1,5 @@
 ---
+import PackageRepo from "./PackageRepo.astro";
 import TestServer from "./TestServer.astro";
 import CopyButton from "./CopyButton.astro";
 import DownloadSpotlight from "./DownloadSpotlight.astro";
@@ -11,8 +12,6 @@ import {
   BREW_CASK,
   BREW_FORMULA,
   BREW_TAP_URL,
-  INSTALL_COMMAND,
-  UNINSTALL_COMMAND,
   RELEASES_URL,
   WIKI_URL,
   type Platform,
@@ -65,6 +64,8 @@ import Arrow from "./Arrow.astro";
     </div>
   </div>
 
+  <PackageRepo lang={lang} />
+
   {
     release && (
       <section class="wrap dlp-section" aria-labelledby="dlp-files">
@@ -116,49 +117,7 @@ import Arrow from "./Arrow.astro";
   }
 
   <section class="wrap dlp-section dlp-terminal" aria-labelledby="dlp-terminal">
-    <h2 id="dlp-terminal" class="sr-only">{one.title} · {t.brewTitle}</h2>
-    <div class="one-line" data-reveal>
-      <div class="one-line-head">
-        <h3>{one.title}</h3>
-      </div>
-      <p class="one-line-body">{one.body}</p>
-      {
-        [
-          { cmd: INSTALL_COMMAND, label: one.title },
-          { cmd: UNINSTALL_COMMAND, label: one.uninstall },
-        ].map((c, i) => (
-          <div class:list={["one-line-cmd", { "is-small": i > 0 }]}>
-            {i > 0 && <span class="one-line-label">{c.label}</span>}
-            <code>
-              <span aria-hidden="true">$ </span>
-              {c.cmd}
-            </code>
-            <CopyButton text={c.cmd} {...copy} />
-          </div>
-        ))
-      }
-      <table class="one-line-table">
-        <thead>
-          <tr>
-            <th scope="col">{one.distroHead}</th>
-            <th scope="col">{one.howHead}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            one.rows.map((r) => (
-              <tr>
-                <th scope="row">{r.distro}</th>
-                <td>{r.how}</td>
-              </tr>
-            ))
-          }
-        </tbody>
-      </table>
-      <p class="one-line-note">{one.manager}</p>
-      <p class="one-line-note">{one.asks}</p>
-    </div>
-
+    <h2 id="dlp-terminal" class="sr-only">{t.brewTitle}</h2>
     <div class="one-line" data-reveal>
       <div class="one-line-head">
         <h3>{t.brewTitle}</h3>

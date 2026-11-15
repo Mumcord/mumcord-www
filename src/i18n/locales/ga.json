@@ -4678,5 +4678,63 @@
         ]
       }
     ]
+  },
+  "packageRepo": {
+    "title": "Stór pacáistí",
+    "badge": "Molta do Linux agus FreeBSD",
+    "lead": "Nuair a bheidh sé curtha leis, nuashonraítear Mumcord leis an ngnáthuirlis nuashonraithe de do chóras: `apt upgrade`, `dnf upgrade`, `zypper update`, `pacman -Syu` nó `pkg upgrade`.",
+    "stableOnly": "Ní choinníonn an stór ach eisiúintí cobhsaí, an ceann is nuaí i gcónaí. Ní fhoilsítear iarrthóirí eisiúna ann.",
+    "scriptTitle": "An bealach is éasca: an script suiteála",
+    "scriptBody": "Fiafraíonn sé díot conas atá Mumcord le suiteáil: tríd an stór pacáistí (an réamhshocrú), mar phacáiste íoslódáilte nó mar AppImage, agus socraíonn sé an stór duit.",
+    "linux": "Linux",
+    "freebsd": "FreeBSD",
+    "manualTitle": "Socraigh de láimh é",
+    "manualBody": "An rud céanna leis an script, céim ar chéim do do chóras.",
+    "systems": {
+      "apt": {
+        "name": "Debian, Ubuntu, Linux Mint (APT)",
+        "notes": [
+          "Úsáidtear an eochair don stór seo amháin (`Signed-By:` in `mumcord.sources`), ní do do chóras iomlán; níl `apt-key` ag teastáil. Oibríonn sé ar amd64 agus arm64."
+        ]
+      },
+      "dnf": {
+        "name": "Fedora (DNF)",
+        "notes": [
+          "Tá na pacáistí agus meiteashonraí an stóir araon sínithe (`gpgcheck=1`, `repo_gpgcheck=1`)."
+        ]
+      },
+      "zypper": {
+        "name": "openSUSE (zypper)",
+        "notes": []
+      },
+      "pacman": {
+        "name": "Arch Linux (pacman)",
+        "notes": [
+          "Ansin cuir seo le deireadh `/etc/pacman.conf`:",
+          "Agus suiteáil:",
+          "Tá an t-ainm céanna ar an bpacáiste agus atá ar phacáiste AUR `mumcord-bin`, mar sin aistríonn suiteáil AUR chuig an stór léi féin ag an gcéad `pacman -Syu` eile."
+        ]
+      },
+      "pkg": {
+        "name": "FreeBSD 15.x (pkg)",
+        "before": "Mar root:",
+        "notes": [
+          "Tagann a spleáchais ón stór oifigiúil FreeBSD mar is gnách."
+        ]
+      }
+    },
+    "keyTitle": "Eochair shínithe",
+    "keyName": "Ainm",
+    "keyFingerprint": "Méarlorg",
+    "keyValid": "Bailí go dtí",
+    "keyDownload": "Íoslódáil",
+    "keyFreebsd": "Úsáideann pkg FreeBSD a eochair RSA féin",
+    "keyCheck": "Déan comparáid idir na méarloirg sula gcuireann tú muinín san eochair, m.sh. le `gpg --show-keys mumcord.asc`.",
+    "removeTitle": "Bain an stór",
+    "removePacman": "bain an bloc `[mumcord]` de `/etc/pacman.conf`, agus ansin",
+    "removeScript": "Déanann `install.sh --uninstall` é seo duit freisin.",
+    "copy": "Cóipeáil",
+    "copied": "Cóipeáilte!",
+    "failed": "Níor éirigh leis an gcóipeáil. Roghnaigh an t-ordú agus cóipeáil de láimh é."
   }
 }

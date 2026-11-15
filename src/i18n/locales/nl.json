@@ -4678,5 +4678,63 @@
         ]
       }
     ]
+  },
+  "packageRepo": {
+    "title": "Pakketrepository",
+    "badge": "Aanbevolen voor Linux en FreeBSD",
+    "lead": "Zodra je hem hebt toegevoegd, wordt Mumcord bijgewerkt met het gewone updatehulpmiddel van je systeem: `apt upgrade`, `dnf upgrade`, `zypper update`, `pacman -Syu` of `pkg upgrade`.",
+    "stableOnly": "De repository bevat alleen stabiele releases, altijd de nieuwste. Release candidates worden daar niet gepubliceerd.",
+    "scriptTitle": "Het makkelijkst: het installatiescript",
+    "scriptBody": "Het vraagt hoe je Mumcord wilt installeren: via de pakketrepository (standaard), als gedownload pakket of als AppImage, en stelt de repository voor je in.",
+    "linux": "Linux",
+    "freebsd": "FreeBSD",
+    "manualTitle": "Zelf instellen",
+    "manualBody": "Hetzelfde als het script, stap voor stap voor jouw systeem.",
+    "systems": {
+      "apt": {
+        "name": "Debian, Ubuntu, Linux Mint (APT)",
+        "notes": [
+          "De sleutel wordt alleen voor deze repository gebruikt (`Signed-By:` in `mumcord.sources`), niet voor je hele systeem; `apt-key` is niet nodig. Werkt op amd64 en arm64."
+        ]
+      },
+      "dnf": {
+        "name": "Fedora (DNF)",
+        "notes": [
+          "Zowel de pakketten als de metadata van de repository zijn ondertekend (`gpgcheck=1`, `repo_gpgcheck=1`)."
+        ]
+      },
+      "zypper": {
+        "name": "openSUSE (zypper)",
+        "notes": []
+      },
+      "pacman": {
+        "name": "Arch Linux (pacman)",
+        "notes": [
+          "Voeg dit daarna toe aan het eind van `/etc/pacman.conf`:",
+          "En installeer:",
+          "Het pakket heeft dezelfde naam als het AUR-pakket `mumcord-bin`, dus een AUR-installatie schakelt bij de volgende `pacman -Syu` zelf over op de repository."
+        ]
+      },
+      "pkg": {
+        "name": "FreeBSD 15.x (pkg)",
+        "before": "Als root:",
+        "notes": [
+          "De afhankelijkheden komen zoals gewoonlijk uit de officiële FreeBSD-repository."
+        ]
+      }
+    },
+    "keyTitle": "Ondertekeningssleutel",
+    "keyName": "Naam",
+    "keyFingerprint": "Vingerafdruk",
+    "keyValid": "Geldig tot",
+    "keyDownload": "Downloaden",
+    "keyFreebsd": "Het pkg van FreeBSD gebruikt een eigen RSA-sleutel",
+    "keyCheck": "Vergelijk de vingerafdruk voordat je de sleutel vertrouwt, bijv. met `gpg --show-keys mumcord.asc`.",
+    "removeTitle": "De repository verwijderen",
+    "removePacman": "verwijder het blok `[mumcord]` uit `/etc/pacman.conf`, en dan",
+    "removeScript": "`install.sh --uninstall` doet dit ook voor je.",
+    "copy": "Kopiëren",
+    "copied": "Gekopieerd!",
+    "failed": "Kopiëren is mislukt. Selecteer het commando en kopieer het zelf."
   }
 }
