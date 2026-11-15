@@ -6,7 +6,7 @@ import { getLatestRelease } from "../lib/release";
 // Pages a new release changes; the others carry no lastmod, since a made-up date is worse than none.
 const RELEASE_PAGES: PageId[] = ["home", "features", "changelog", "download", "roadmap"];
 
-const priority: Record<PageId, string> = { home: "1.0", features: "0.8", games: "0.7", themes: "0.7", roadmap: "0.6", changelog: "0.6", download: "0.9", server: "0.6", mumbot: "0.6", plugins: "0.7", mumpeer: "0.5", mumquiz: "0.5", hwcodec: "0.5", compare: "0.7", protocol: "0.5", imprint: "0.2", privacy: "0.2" };
+const priority: Record<PageId, string> = { home: "1.0", features: "0.8", games: "0.7", themes: "0.7", roadmap: "0.6", changelog: "0.6", download: "0.9", server: "0.6", mumbot: "0.6", plugins: "0.7", mumpeer: "0.5", mumquiz: "0.5", hwcodec: "0.5", bgmatte: "0.5", compare: "0.7", protocol: "0.5", imprint: "0.2", privacy: "0.2" };
 
 // Hand-written so every URL carries its hreflang alternates.
 export const GET: APIRoute = async ({ site }) => {

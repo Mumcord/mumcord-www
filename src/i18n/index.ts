@@ -6,7 +6,7 @@ import { EXTRA_LANGS, LANGS, LANG_INFO, type Lang } from "./langs";
 export { LANGS, EXTRA_LANGS, LANG_INFO };
 export type { Lang };
 export type { ExtraLang } from "./langs";
-export type PageId = "home" | "features" | "games" | "themes" | "roadmap" | "changelog" | "download" | "server" | "mumbot" | "plugins" | "mumpeer" | "mumquiz" | "hwcodec" | "protocol" | "compare" | "imprint" | "privacy";
+export type PageId = "home" | "features" | "games" | "themes" | "roadmap" | "changelog" | "download" | "server" | "mumbot" | "plugins" | "mumpeer" | "mumquiz" | "hwcodec" | "protocol" | "bgmatte" | "compare" | "imprint" | "privacy";
 
 /** Builds a per-language record: German and English as given, the others from their translation file. */
 export function localized<T>(base: { de: T; en: T }, extra: (lang: (typeof EXTRA_LANGS)[number]) => T): Record<Lang, T> {
@@ -48,6 +48,7 @@ const base: Record<PageId, { de: string; en: string }> = {
   mumquiz: { de: "/mumquiz", en: "/en/mumquiz" },
   hwcodec: { de: "/hwcodec", en: "/en/hwcodec" },
   compare: { de: "/vergleich", en: "/en/comparison" },
+  bgmatte: { de: "/bgmatte", en: "/en/bgmatte" },
   protocol: { de: "/mumble-client-protocol", en: "/en/mumble-client-protocol" },
   imprint: { de: "/impressum", en: "/en/legal-notice" },
   privacy: { de: "/datenschutz", en: "/en/privacy" },
@@ -55,7 +56,7 @@ const base: Record<PageId, { de: string; en: string }> = {
 
 /** Pages only in German and English; the other languages link to the English ones. Legal pages stay
  * binding in those two, and the library docs are for developers, who read English. */
-const legal = new Set<PageId>(["imprint", "privacy", "hwcodec", "protocol"]);
+const legal = new Set<PageId>(["imprint", "privacy", "hwcodec", "protocol", "bgmatte"]);
 
 export const routes = Object.fromEntries(
   (Object.keys(base) as PageId[]).map((page) => [

@@ -1,0 +1,13 @@
+---
+import Base from "../layouts/Base.astro";
+import LibPage from "../components/LibPage.astro";
+import { libsPage } from "../lib/libs";
+import { libJsonLd } from "../lib/jsonld";
+
+const t = libsPage.de;
+const p = t.pages.bgmatte;
+---
+
+<Base lang="de" page="bgmatte" title={`${p.title} — ${p.menu}`} description={p.description} jsonLd={libJsonLd("de", Astro.site!, "bgmatte")}>
+  <LibPage lang="de" lib="bgmatte" />
+</Base>

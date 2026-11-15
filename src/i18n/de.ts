@@ -49,6 +49,7 @@ export const de = {
     libs: "Bibliotheken",
     libCodec: { title: "hwcodec", desc: "AV1 und VP9 kodieren, ohne FFmpeg" },
     libProtocol: { title: "mumble-client-protocol", desc: "Das Mumble-Protokoll für Rust" },
+    libBgmatte: { title: "bgmatte", desc: "Kamera-Hintergründe in Echtzeit" },
     botIssues: { title: "Issues", desc: "Ideen und Fehler zu Mumbot" },
   },
   testServer: {

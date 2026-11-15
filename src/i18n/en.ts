@@ -51,6 +51,7 @@ export const en: Dict = {
     libs: "Libraries",
     libCodec: { title: "hwcodec", desc: "AV1 and VP9 encoding, no FFmpeg" },
     libProtocol: { title: "mumble-client-protocol", desc: "The Mumble protocol for Rust" },
+    libBgmatte: { title: "bgmatte", desc: "Camera backgrounds in real time" },
     botIssues: { title: "Issues", desc: "Ideas and bugs for Mumbot" },
   },
   testServer: {
