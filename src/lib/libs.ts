@@ -1,12 +1,12 @@
-// The open-source Rust libraries that came out of Mumcord: hwcodec (video encoding) and
-// mumble-client-protocol (the Mumble protocol). Each gets a documentation page that follows its
+// The open-source Rust libraries that came out of Mumcord: hwcodec (video encoding),
+// mumble-client-protocol (the Mumble protocol) and bgmatte (camera background effects). Each gets a documentation page that follows its
 // README; the API reference itself stays on docs.rs. German and English only: the other languages
 // link to the English pages, like the legal pages. Texts may contain `code` in backticks.
 import type { PageId } from "../i18n";
 
-export type LibId = "hwcodec" | "protocol";
-export const LIB_IDS: LibId[] = ["hwcodec", "protocol"];
-export const LIB_PAGE: Record<LibId, PageId> = { hwcodec: "hwcodec", protocol: "protocol" };
+export type LibId = "hwcodec" | "protocol" | "bgmatte";
+export const LIB_IDS: LibId[] = ["hwcodec", "protocol", "bgmatte"];
+export const LIB_PAGE: Record<LibId, PageId> = { hwcodec: "hwcodec", protocol: "protocol", bgmatte: "bgmatte" };
 
 export interface LibMeta {
   crate: string;
@@ -18,6 +18,7 @@ export interface LibMeta {
 export const LIB_META: Record<LibId, LibMeta> = {
   hwcodec: { crate: "hwcodec", repo: "Mumcord/hwcodec", license: "MIT OR Apache-2.0", msrv: "1.90" },
   protocol: { crate: "mumble-client-protocol", repo: "Mumcord/mumble-client-protocol", license: "MIT OR Apache-2.0", msrv: "1.90" },
+  bgmatte: { crate: "bgmatte", repo: "Mumcord/bgmatte", license: "MIT OR Apache-2.0", msrv: "1.92" },
 };
 
 export const libLinks = (id: LibId) => {
@@ -103,12 +104,46 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
   },
   protocolBot: { file: "Terminal", code: `cargo run --example text_bot -- localhost 64738 text-bot` },
   protocolTests: { file: "Terminal", code: `MUMBLE_LIVE=1 cargo test --tests -- --ignored --test-threads=1` },
+  bgmatteInstall: { file: "Cargo.toml", code: `[dependencies]\nbgmatte = "0.1"` },
+  bgmatteBlur: {
+    file: "src/main.rs",
+    code: `use std::time::Duration;
+use bgmatte::{Background, Config, Effects, Frame};
+
+fn main() -> Result<(), bgmatte::Error> {
+    // Optional: without this, ORT_DYLIB_PATH or the system's library search path is used.
+    bgmatte::init_runtime("/opt/onnxruntime/lib/libonnxruntime.so.1.23.2")?;
+
+    let mut effects = Effects::new(Config::new(30, Background::Blur { strength: 60 }));
+    let (width, height) = (1280, 720);
+    let mut rgba = vec![0u8; width * height * 4];
+    // For each camera frame, in order:
+    effects.process(Frame::rgba(&mut rgba, width as u32, height as u32), Duration::from_millis(33))?;
+    println!("{:?}", effects.stats());
+    Ok(())
+}`,
+  },
+  bgmatteImage: {
+    file: "src/background.rs",
+    code: `use std::sync::Arc;
+use bgmatte::{Background, BackgroundImage, Effects};
+
+fn use_beach(effects: &mut Effects) -> Result<(), bgmatte::Error> {
+    let beach = BackgroundImage::open("beach.jpg")?;
+    effects.set_background(Background::Image(Arc::new(beach)));
+    Ok(())
+}`,
+  },
+  bgmatteRun: {
+    file: "Terminal",
+    code: `cargo run --release --example replace_background -- photo.jpg out.png blur=80\ncargo run --release --example bench`,
+  },
 } as const;
 export type LibCodeId = keyof typeof LIB_CODE;
 
 export type Block =
   | { p: string }
-  | { code: LibCodeId; note?: string }
+  | { code: LibCodeId; note?: string; /** Shown only until the crate has its first release. */ beforeRelease?: string }
   | { list: string[] }
   | { table: { head: string[]; rows: string[][] } }
   | { terms: [string, string][] };
@@ -275,6 +310,58 @@ export const libsPage: Record<"de" | "en", LibsPage> = {
               { p: "Für 0.2 geplant: Dekodieren in Hardware und eine Qualitätsvorgabe." },
             ],
           },
+        ],
+      },
+      bgmatte: {
+        title: "bgmatte",
+        menu: "Kamera-Hintergründe in Echtzeit",
+        description: "bgmatte ist eine Rust-Bibliothek für Hintergrund-Unschärfe und Hintergrundbilder bei Kamerabildern: Personen-Segmentierung mit ONNX Runtime, saubere Kanten, ohne Flackern.",
+        lead: "Hintergrund-Unschärfe und Hintergrundbilder für Kamerabilder in Echtzeit, in Rust. Die Person erkennt ein mitgeliefertes Segmentierungsmodell über ONNX Runtime auf der CPU, Kanten und Übergänge bleiben sauber. Mumcord nutzt bgmatte für die Kamera-Hintergründe.",
+        status: "Version 0.1, best effort: Gemessen auf wenigen Rechnern, Berichte sind willkommen.",
+        highlights: [
+          { title: "Personen-Segmentierung", body: "Der MediaPipe Selfie Segmenter läuft über ONNX Runtime auf der CPU. Beide Modelle sind dabei, nichts wird beim Bauen oder zur Laufzeit heruntergeladen." },
+          { title: "Saubere Kanten", body: "Ein Guided Filter legt die Maske in voller Auflösung an Haare und Schultern, und eine zeitliche Glättung nimmt das Flackern, ohne Geisterbilder." },
+          { title: "Unschärfe oder Bild", body: "Hintergrund mit einstellbarer Stärke unscharf oder durch ein Bild ersetzt, mit einem Light Wrap, der die Farbe des Hintergrunds an die Kante der Person bringt." },
+          { title: "Passt sich an", body: "Qualität Auto, Best oder Light. Auto misst, was der Rechner schafft, und schaltet zurück, wenn er nicht mitkommt oder auf Akku läuft." },
+          { title: "Bild rein, Bild raus", body: "NV12 direkt an Ort und Stelle, RGB oder RGBA. Einmal warm, braucht ein Frame keine einzige Speicheranforderung." },
+          { title: "Schnell", body: "Etwa 8 ms pro 720p-Frame auf der vollen Stufe und unter 5 ms auf der leichten, auf einem CPU-Kern." },
+        ],
+        sections: [
+          { id: "installation", title: "Installation", blocks: [
+            { code: "bgmatteInstall", beforeRelease: "bgmatte ist noch nicht auf crates.io. Bis dahin steht der Quellcode auf GitHub." },
+            { p: "bgmatte bringt ONNX Runtime nicht mit und lädt es nie herunter. Deine Anwendung liefert die Bibliothek (Version 1.23 oder neuer, getestet mit 1.23.2), bgmatte lädt sie zur Laufzeit. Fehlt sie, startet dein Programm trotzdem: Die Effekte melden `Error::Unavailable` mit dem Grund, und die Bilder bleiben unverändert." },
+          ] },
+          { id: "schnellstart", title: "Schnellstart", blocks: [
+            { p: "Den Hintergrund jedes Kamerabilds unscharf machen:" },
+            { code: "bgmatteBlur" },
+            { p: "Den Hintergrund stattdessen durch ein Bild ersetzen:" },
+            { code: "bgmatteImage" },
+            { p: "`Effects::set_background`, `set_quality` und `set_on_battery` ändern den Effekt, während weiter Bilder kommen. Die Beispiele im Repository zeigen ganze Programme:" },
+            { code: "bgmatteRun" },
+          ] },
+          { id: "onnx-runtime", title: "ONNX Runtime finden", blocks: [
+            { list: ["`bgmatte::init_runtime(path)` mit dem Pfad zur Bibliothek, etwa neben deinem Programm. Vor dem ersten Bild aufrufen.", "Die Umgebungsvariable `ORT_DYLIB_PATH`.", "Der Bibliotheksname der Plattform (`onnxruntime.dll`, `libonnxruntime.so`, `libonnxruntime.dylib`) im Suchpfad des Systems."] },
+            { p: "Die offiziellen CPU-Builds gibt es in den ONNX-Runtime-Releases von Microsoft. `bgmatte::availability()` sagt, ob das Laden geklappt hat und warum nicht." },
+          ] },
+          { id: "bilder", title: "Bildformate", blocks: [
+            { table: { head: ["Format", "Aufbau", "Verarbeitung"], rows: [["NV12", "Y-Ebene, dann U/V verschränkt in halber Auflösung, BT.601 limited range", "An Ort und Stelle"], ["RGB", "3 Byte pro Pixel", "Nach NV12 umgerechnet, verarbeitet, geänderte Pixel zurück"], ["RGBA", "4 Byte pro Pixel", "Wie RGB; Alpha bleibt unberührt"]] } },
+            { p: "Zeilen müssen lückenlos liegen, beide Seiten mindestens 64 Pixel und durch 8 teilbar. Pixel der Person behalten in jedem Format exakt ihre Werte. Bilder einer Kamera der Reihe nach mit ihrem Aufnahmezeitpunkt übergeben: Die Glättung merkt sich den Verlauf." },
+          ] },
+          { id: "qualitaet", title: "Qualitätsstufen", blocks: [
+            { table: { head: ["Einstellung", "Verhalten"], rows: [["`Quality::Best`", "Immer die volle Stufe: quadratisches Modell bei jedem Bild, Guided-Filter-Kanten, Light Wrap bei Bildern, feinere Unschärfe."], ["`Quality::Light`", "Immer die leichte Stufe: Querformat-Modell mit 15 fps, einfachere Kanten, gröbere Unschärfe. Etwa die halbe Arbeit."], ["`Quality::Auto`", "Misst die volle Stufe auf den ersten Bildern und behält sie, wenn sie in 60 % des Bildintervalls passt. Schaltet nach 3 s über dem Budget oder auf Akku zurück und nach 30 s darunter am Netz wieder hoch."]] } },
+          ] },
+          { id: "leistung", title: "Leistung", blocks: [
+            { table: { head: ["Fall", "Median", "Davon Modell"], rows: [["Volle Stufe, Unschärfe", "8,3 ms", "3,5 ms"], ["Volle Stufe, Bild", "6,5 ms", "3,5 ms"], ["Leichte Stufe, Unschärfe", "4,7 ms", "0,8 ms"], ["Leichte Stufe, Bild", "2,9 ms", "0,8 ms"], ["Volle Stufe, Unschärfe, RGBA-Bild", "16,3 ms", "3,5 ms"]] } },
+            { p: "Median pro 1280×720-Bild mit `cargo run --release --example bench` auf einem AMD Ryzen 7 5800X3D (ein Kern für das Modell), ONNX Runtime 1.23.2 unter Linux." },
+          ] },
+          { id: "api", title: "Die wichtigsten Typen", blocks: [
+            { terms: [["Effects", "Der Effekt für eine Kamera: Hintergrund, Qualität, Akku-Modus und Statistiken"], ["Config", "Bildrate und Hintergrund zum Start"], ["Background", "`Blur { strength }` oder `Image(Arc<BackgroundImage>)`"], ["Frame", "Ein Bild als NV12, RGB oder RGBA"], ["Pipeline", "Die Arbeit an einem Bild, eine pro Bildgröße"], ["Segmenter, OnnxSegmenter", "Erzeugt die Maske; eigene Umsetzungen sind möglich, etwa für Tests"], ["LevelController", "Macht aus gemessenen Bildzeiten eine Stufe"]] },
+            { p: "Die vollständige Referenz steht in der API-Dokumentation (`cargo doc --open`)." },
+          ] },
+          { id: "grenzen", title: "Grenzen und Modelle", blocks: [
+            { list: ["Nur CPU: GPU-Execution-Provider von ONNX Runtime nutzt 0.1 nicht.", "Gemacht für Videocalls: ein oder zwei Leute nah an der Kamera. Viele Leute weit weg oder gar niemand geben schwache Masken.", "Bildseiten durch 8 teilbar, Zeilen ohne Auffüllung.", "RGB- und RGBA-Bilder brauchen etwa doppelt so lange wie NV12."] },
+            { p: "Die beiden Modelle sind der MediaPipe Selfie Segmenter von Google (256×256 und 256×144) in den ONNX-Fassungen der ONNX Community, unter Apache-2.0. Wer bgmatte ausliefert, sollte die NOTICE-Datei mitliefern." },
+          ] },
         ],
       },
       protocol: {
@@ -482,6 +569,58 @@ export const libsPage: Record<"de" | "en", LibsPage> = {
               { p: "Planned for 0.2: hardware decoding and a quality preset." },
             ],
           },
+        ],
+      },
+      bgmatte: {
+        title: "bgmatte",
+        menu: "Camera backgrounds in real time",
+        description: "bgmatte is a Rust library for background blur and background images in camera pictures: person segmentation with ONNX Runtime, clean edges, no flicker.",
+        lead: "Realtime background blur and background replacement for camera pictures, in Rust. A bundled segmentation model finds the person through ONNX Runtime on the CPU, and edges and transitions stay clean. Mumcord uses bgmatte for its camera backgrounds.",
+        status: "Version 0.1, best effort: measured on few machines, reports are welcome.",
+        highlights: [
+          { title: "Person segmentation", body: "The MediaPipe Selfie Segmenter runs through ONNX Runtime on the CPU. Both models are bundled; nothing is downloaded at build or run time." },
+          { title: "Clean edges", body: "A guided filter snaps the mask to hair and shoulders at full resolution, and temporal smoothing removes flicker without ghosting." },
+          { title: "Blur or image", body: "Blur the background with adjustable strength or replace it with a picture, with a light wrap that lets the background's colour touch the person's edge." },
+          { title: "Adapts itself", body: "Quality Auto, Best or Light. Auto measures what the machine can do and steps down when it falls behind or runs on battery." },
+          { title: "Frame in, frame out", body: "NV12 in place, RGB or RGBA. Once warmed up, processing a frame allocates nothing." },
+          { title: "Fast", body: "About 8 ms per 720p frame at the full level and under 5 ms at the light level, on one CPU core." },
+        ],
+        sections: [
+          { id: "installation", title: "Installation", blocks: [
+            { code: "bgmatteInstall", beforeRelease: "bgmatte is not on crates.io yet. Until then the source code is on GitHub." },
+            { p: "bgmatte does not ship ONNX Runtime and never downloads it. Your application provides the library (version 1.23 or newer, tested with 1.23.2) and bgmatte loads it at run time. Without it your program still starts: the effects report `Error::Unavailable` with the reason, and frames pass unchanged." },
+          ] },
+          { id: "quick-start", title: "Quick start", blocks: [
+            { p: "Blur the background of every camera frame:" },
+            { code: "bgmatteBlur" },
+            { p: "Replace the background with a picture instead:" },
+            { code: "bgmatteImage" },
+            { p: "`Effects::set_background`, `set_quality` and `set_on_battery` change the effect while frames keep coming. The examples in the repository show complete programs:" },
+            { code: "bgmatteRun" },
+          ] },
+          { id: "onnx-runtime", title: "Finding ONNX Runtime", blocks: [
+            { list: ["`bgmatte::init_runtime(path)` with the library's path, for example next to your executable. Call it before the first frame.", "The environment variable `ORT_DYLIB_PATH`.", "The platform's library name (`onnxruntime.dll`, `libonnxruntime.so`, `libonnxruntime.dylib`) on the system's library search path."] },
+            { p: "The official CPU builds are in Microsoft's ONNX Runtime releases. `bgmatte::availability()` tells you whether loading worked and why not." },
+          ] },
+          { id: "frames", title: "Frames", blocks: [
+            { table: { head: ["Format", "Layout", "How it is processed"], rows: [["NV12", "Y plane, then interleaved U/V at half resolution, BT.601 limited range", "In place"], ["RGB", "3 bytes per pixel", "Converted to NV12, processed, changed pixels converted back"], ["RGBA", "4 bytes per pixel", "Like RGB; alpha is left untouched"]] } },
+            { p: "Rows must be tightly packed, both sides at least 64 pixels and divisible by 8. The person's pixels keep their exact values in every format. Feed one camera's frames in order with their capture timestamps: the smoothing keeps history." },
+          ] },
+          { id: "quality", title: "Quality levels", blocks: [
+            { table: { head: ["Setting", "Behaviour"], rows: [["`Quality::Best`", "Always the full level: square model on every frame, guided-filter edges, light wrap for images, finer blur."], ["`Quality::Light`", "Always the light level: landscape model at 15 fps, simpler edges, coarser blur. About half the work."], ["`Quality::Auto`", "Measures the full level on the first frames and keeps it if it fits 60 % of the frame interval. Steps down after 3 s over budget or on battery, and back up after 30 s under budget on mains power."]] } },
+          ] },
+          { id: "performance", title: "Performance", blocks: [
+            { table: { head: ["Case", "Median", "Model share"], rows: [["Full level, blur", "8.3 ms", "3.5 ms"], ["Full level, image", "6.5 ms", "3.5 ms"], ["Light level, blur", "4.7 ms", "0.8 ms"], ["Light level, image", "2.9 ms", "0.8 ms"], ["Full level, blur, RGBA frame", "16.3 ms", "3.5 ms"]] } },
+            { p: "Median per 1280×720 frame from `cargo run --release --example bench` on an AMD Ryzen 7 5800X3D (one core for the model), with ONNX Runtime 1.23.2 on Linux." },
+          ] },
+          { id: "api", title: "The main types", blocks: [
+            { terms: [["Effects", "The effect for one camera: background, quality, battery mode and stats"], ["Config", "Frame rate and background to start with"], ["Background", "`Blur { strength }` or `Image(Arc<BackgroundImage>)`"], ["Frame", "One picture as NV12, RGB or RGBA"], ["Pipeline", "The work on one frame, one per frame size"], ["Segmenter, OnnxSegmenter", "Makes the mask; your own implementation works too, for example in tests"], ["LevelController", "Turns measured frame times into a level"]] },
+            { p: "The full reference is in the API documentation (`cargo doc --open`)." },
+          ] },
+          { id: "limits", title: "Limits and models", blocks: [
+            { list: ["CPU only: 0.1 does not use ONNX Runtime's GPU execution providers.", "Made for video calls: one or two people near the camera. Several people far away, or nobody, give weak masks.", "Frame sides divisible by 8, rows without padding.", "RGB and RGBA frames take about twice the time of NV12."] },
+            { p: "The two models are Google's MediaPipe Selfie Segmenter (256×256 and 256×144) in the ONNX Community's conversions, under Apache-2.0. Applications that ship bgmatte should ship the NOTICE file too." },
+          ] },
         ],
       },
       protocol: {
