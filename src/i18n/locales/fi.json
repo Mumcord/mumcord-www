@@ -102,6 +102,10 @@
       "plugins": {
         "title": "Lisäosat",
         "desc": "Äänestykset, nopat ja muuta"
+      },
+      "compare": {
+        "title": "Vertailu",
+        "desc": "Mumble · Mumcord · mumpeer"
       }
     },
     "hero": {
@@ -773,6 +777,15 @@
           "body": "Musiikkia, komentoja ja kortteja chatissa. Mumbot toimii minkä tahansa Mumble-palvelimen rinnalla ja puhuu Mumcordin kanssa."
         }
       }
+    },
+    "testServer": {
+      "kicker": "Testipalvelin online",
+      "title": "Kokeile Mumcordia heti",
+      "body": "Testipalvelimemme on valmis: kanavia, joilla voitte puhua, pelata ja katsoa yhdessä, sekä mumpeer-relay näytölle, kameralle ja tiedostoille ilman että IP-osoitteesi paljastuu.",
+      "join": "Yhdistä Mumcordilla",
+      "copy": "Kopioi osoite",
+      "copied": "Kopioitu!",
+      "download": "Ei vielä Mumcordia? Hae se täältä"
     }
   },
   "features": {
@@ -3199,6 +3212,46 @@
         ]
       },
       {
+        "id": "epic-4.2",
+        "title": "Kaikki, mitä Mumble tekee",
+        "summary": "Versiolla 0.10.0 Mumcord kuroo kiinni sen, minkä virallinen asiakas on osannut jo pitkään: kanavan kuuntelu, puheluiden tallennus, viestien lukeminen ääneen, kolmansien osapuolten Mumble-lisäosat ja paikkaan perustuva ääni pois beetasta. Lisäksi mukavuutta pelaajille ja ylläpitäjille.",
+        "groups": [
+          {
+            "title": "Kuuntelu ja puhuminen",
+            "items": [
+              "Kuuntele toista kanavaa liittymättä siihen, kanavakohtaisella äänenvoimakkuudella (#873, #863)",
+              "Lähetä aina omana puhetilanaan (#862)",
+              "Muiden sovellusten hiljentäminen, kun ihmiset puhuvat (#866)",
+              "Pikanäppäin takaisin edelliselle kanavalle (#871)",
+              "Paikallisten mykistysten tyhjennys käynnistyksessä, jos haluat (#872)"
+            ]
+          },
+          {
+            "title": "Tallennus ja ääneen lukeminen",
+            "items": [
+              "Puheluiden tallennus paikallisesti, yhtenä miksauksena tai yhtenä tiedostona henkilöä kohden (#860)",
+              "Keskustelun ja tapahtumien lukeminen ääneen (#861)"
+            ]
+          },
+          {
+            "title": "Pelit ja lisäosat",
+            "items": [
+              "Kolmansien osapuolten Mumble-lisäosat Mumblen lisäosarajapinnan kautta (#869)",
+              "Paikkaan perustuva ääni katselimella ja pikanäppäimellä, pois beetasta (#868)",
+              "Overlay yksinomaisen koko näytön peleissä Windowsissa ja macOS:ssa (#864)"
+            ]
+          },
+          {
+            "title": "Ylläpitäjille ja skripteille",
+            "items": [
+              "Käyttöoikeustunnisteiden hallinta palvelinkohtaisesti (#870)",
+              "Palvelimen määrittelemät toiminnot valikoissa (#867)",
+              "Mumcordin ohjaus skripteistä, komentorivin ja D-Busin kautta (#865)"
+            ]
+          }
+        ]
+      },
+      {
         "id": "epic-5",
         "title": "Mumcord puhelimessasi",
         "summary": "Mumcord Android- ja iOS-sovelluksena, yhteensopiva tavallisten Mumble-palvelimien kanssa kuten työpöydällä. Ensin APK-tiedostona ladattavaksi ja TestFlightin kautta, sovelluskaupat tulevat myöhemmin.",
@@ -4334,5 +4387,296 @@
     "sdkNote": "Työkalu ja SDK ovat crates.io:ssa. Cargo.tomlissasi:",
     "docsAll": "Kaikki ohjeet",
     "wiki": "Wiki"
+  },
+  "compare": {
+    "title": "Mumble, Mumcord ja mumpeer vertailussa",
+    "description": "Mitä virallinen Mumble-asiakas tekee, mitä Mumcord lisää millä tahansa Mumble-palvelimella ja mikä vaatii mumpeer-releen: puhe, chat, jakaminen ja yksityisyys.",
+    "label": "Vertailu",
+    "intro": "Mumcord toimii millä tahansa tavallisella Mumble-palvelimella, ja virallisen asiakkaan käyttäjät ovat samalla kanavalla. Jotkin asiat, kuten tiedostojen jakaminen tai IP-osoitteen piilottaminen, vaativat lisäksi mumpeer-releen palvelimen rinnalle.",
+    "yes": "Kyllä",
+    "partly": "Osittain",
+    "no": "Ei",
+    "legend": "Osittain tarkoittaa: rajoituksin, jotka on kerrottu rivin alla.",
+    "outroTitle": "Ei kumpaa tahansa",
+    "outroBody": "Mumcord ja virallinen asiakas puhuvat samaa protokollaa. Palvelimesi pysyy ennallaan, ja rele on valinnainen: yhteisö, joka ajaa mumpeeriä rele-botin kanssa, saa lisäksi tiedostot, enemmän katsojia ja piilotetut IP-osoitteet.",
+    "download": "Lataa Mumcord",
+    "relay": "Ota mumpeer käyttöön",
+    "asOf": "Tilanne: Mumcord 0.9, mumpeer 0.3 ja Mumble 1.5.",
+    "columns": [
+      {
+        "name": "Mumble",
+        "sub": "Virallinen asiakas 1.5"
+      },
+      {
+        "name": "Mumcord",
+        "sub": "Millä tahansa Mumble-palvelimella"
+      },
+      {
+        "name": "Mumcord + mumpeer",
+        "sub": "Releellä palvelimen rinnalla"
+      }
+    ],
+    "groups": [
+      {
+        "id": "voice",
+        "title": "Puhe",
+        "rows": [
+          {
+            "id": "low-latency-opus-voice-through-the-mumbl",
+            "feature": "Opus-puhe pienellä viiveellä Mumble-palvelimen kautta",
+            "note": "Puhe ei koskaan kulje releen kautta."
+          },
+          {
+            "id": "push-to-talk-with-keys-and-mouse-buttons",
+            "feature": "Push-to-talk näppäimillä ja hiiren painikkeilla",
+            "note": "Mumcord tukee myös Waylandia pikanäppäinportaalin kautta."
+          },
+          {
+            "id": "noise-suppression-and-echo-cancellation",
+            "feature": "Kohinanvaimennus ja kaiunpoisto",
+            "note": "Mumble: Speex tai RNNoise. Mumcord: Kevyt, Tavallinen, Edistynyt (vuoden 2024 RNNoise-malli, beeta)."
+          },
+          {
+            "id": "whisper-and-shout-to-people-or-channels",
+            "feature": "Kuiskaus ja huuto ihmisille tai kanaville"
+          },
+          {
+            "id": "music-quality-and-low-latency-mode",
+            "feature": "Musiikin laatu ja pienen viiveen tila",
+            "note": "Mumble: bittinopeus ja kehyskoko ääniasetuksissa. Mumcord: yksi kytkin sekä kanavakohtaiset esiasetukset."
+          },
+          {
+            "id": "listen-to-a-channel-s-voice-without-join",
+            "feature": "Kanavan puheen kuuntelu liittymättä siihen",
+            "note": "Mumblen kanavakuuntelijat. Mumcord näyttää kuuntelijat jo nyt ja osaa kuunnella itse versiosta 0.10.0 alkaen."
+          },
+          {
+            "id": "recording-conversations",
+            "feature": "Keskustelujen tallennus",
+            "note": "Mumblessa on sisäänrakennettu monikanavatallennin. Mumcord saa tallennuksen versiossa 0.10.0."
+          }
+        ]
+      },
+      {
+        "id": "chat",
+        "title": "Chat",
+        "rows": [
+          {
+            "id": "text-chat-with-images",
+            "feature": "Tekstichat kuvineen",
+            "note": "Mumblessa kuvien on mahduttava palvelimen viestikokorajaan."
+          },
+          {
+            "id": "markdown-formatting",
+            "feature": "Markdown-muotoilu",
+            "note": "Mumcord lisää koodin korostuksen ja muotoilutyökalupalkin."
+          },
+          {
+            "id": "link-previews-and-youtube-twitch-music-e",
+            "feature": "Linkkien esikatselut sekä YouTube-, Twitch- ja musiikkiupotukset",
+            "note": "Mumcord hakee ne itse; voi kytkeä pois."
+          },
+          {
+            "id": "replies-and-quotes",
+            "feature": "Vastaukset ja lainaukset",
+            "note": "Viralliset Mumble-asiakkaat näkevät luettavan lainauksen."
+          },
+          {
+            "id": "mentions-with-their-own-notification",
+            "feature": "@maininnat omalla ilmoituksellaan",
+            "note": "Muut Mumble-asiakkaat näkevät vain tekstin."
+          },
+          {
+            "id": "read-and-write-in-channels-you-are-not-i",
+            "feature": "Lue ja kirjoita kanavilla, joilla et ole",
+            "note": "Seuraa kanavaa silmäkuvakkeella."
+          },
+          {
+            "id": "chat-history-from-before-you-joined",
+            "feature": "Chat-historia ajalta ennen liittymistäsi",
+            "note": "Mumcord-käyttäjät välittävät jopa 7 päivän kanavahistorian. Koko historia poissaolleille vaatii Mumbotin historiabotin, joka on erillään releestä."
+          },
+          {
+            "id": "private-conversations-kept-across-sessio",
+            "feature": "Yksityiset keskustelut säilyvät istuntojen välillä",
+            "note": "Tallennetaan vain tietokoneellesi, voi kytkeä pois palvelinkohtaisesti."
+          },
+          {
+            "id": "text-to-speech-for-messages",
+            "feature": "Viestien tekstistä puheeksi -toiminto",
+            "note": "Mumcord saa tekstistä puheeksi -toiminnon versiossa 0.10.0."
+          }
+        ]
+      },
+      {
+        "id": "media",
+        "title": "Media ja jakaminen",
+        "rows": [
+          {
+            "id": "full-size-images",
+            "feature": "Kuvat täysikokoisina",
+            "note": "Ilman relettä vain suoran yhteyden kautta, jolloin lähettäjä näkee IP-osoitteesi. Viralliset asiakkaat näkevät esikatselun."
+          },
+          {
+            "id": "file-sharing",
+            "feature": "Tiedostojen jakaminen",
+            "note": "Jopa 2 Gt, aina releen kautta; tiedosto ei koskaan kulje Mumble-palvelimen kautta."
+          },
+          {
+            "id": "screen-sharing-with-sound",
+            "feature": "Näytönjako äänellä",
+            "note": "Suora: jopa 8 katsojaa, jokainen saa oman kopionsa ja näkee IP-osoitteesi. Rele: jopa 25 katsojaa, IP piilossa."
+          },
+          {
+            "id": "camera",
+            "feature": "Kamera",
+            "note": "Suora: jopa 8 katsojaa. Rele: jopa 18 kameraa, kullakin 25 katsojaa. Päästä päähän salattu molemmissa tapauksissa."
+          },
+          {
+            "id": "youtube-watch-party",
+            "feature": "YouTube-katselubileet",
+            "note": "Synkronoidaan Mumble-palvelimen kautta, relettä ei tarvita."
+          }
+        ]
+      },
+      {
+        "id": "privacy",
+        "title": "Palvelimet ja yksityisyys",
+        "rows": [
+          {
+            "id": "several-servers-connected-at-once",
+            "feature": "Useita palvelimia yhdistettynä samaan aikaan",
+            "note": "Oletuksena 5, säädettävissä jopa 15:een."
+          },
+          {
+            "id": "ip-address-hidden-from-other-users",
+            "feature": "IP-osoite piilotettu muilta käyttäjiltä",
+            "note": "Mumcord muodostaa suoran yhteyden vasta, kun suostut, ja silloin toinen näkee IP-osoitteesi. Asetuksella “aina rele” kukaan ei näe sitä. Mumblessa ei ole suoria yhteyksiä."
+          },
+          {
+            "id": "sharing-works-behind-cgnat-or-strict-fir",
+            "feature": "Jakaminen toimii CGNAT:n tai tiukkojen palomuurien takana",
+            "note": "Ilman relettä jakaminen vaatii suoran reitin (IPv6 tai reitittimen porttiohjaus)."
+          },
+          {
+            "id": "several-identities-certificates",
+            "feature": "Useita identiteettejä (varmenteita)",
+            "note": "Mumble käyttää yhtä varmennetta kerrallaan; Mumcord valitsee yhden palvelinta kohti."
+          },
+          {
+            "id": "block-people-across-servers",
+            "feature": "Ihmisten estäminen kaikilla palvelimilla",
+            "note": "Mumble: paikallinen mykistys ja viestien huomiotta jättäminen istuntokohtaisesti."
+          },
+          {
+            "id": "control-who-may-send-private-messages",
+            "feature": "Hallitse, kuka saa lähettää yksityisviestejä"
+          },
+          {
+            "id": "no-telemetry",
+            "feature": "Ei telemetriaa",
+            "note": "Mumble voi lähettää anonyymeja käyttötilastoja, jotka voit kytkeä pois."
+          }
+        ]
+      },
+      {
+        "id": "plugins",
+        "title": "Lisäosat ja pelit",
+        "rows": [
+          {
+            "id": "positional-audio-in-games",
+            "feature": "Paikkaan perustuva ääni peleissä",
+            "note": "Mumcord käyttää Mumble Linkiä ja Mumblen virallisia pelilisäosia (beeta)."
+          },
+          {
+            "id": "in-game-overlay",
+            "feature": "Peliin piirtyvä overlay",
+            "note": "Mumcord: Vulkan-kerros Linuxissa, klikkausten läpäisevä ikkuna Windowsissa; ei macOS:ssä eikä FreeBSD:ssä."
+          },
+          {
+            "id": "mumble-plugins",
+            "feature": "Mumblen lisäosat",
+            "note": "Natiivit lisäosat, lähinnä paikkaan perustuvaan ääneen peleissä. Mumcord käyttää Mumblen virallisia pelilisäosia (beta)."
+          },
+          {
+            "id": "mumcord-plugins",
+            "feature": "Mumcordin lisäosat",
+            "note": "Hiekkalaatikossa ajettavat, allekirjoitetut WebAssembly-lisäosat ja kauppa: kyselyt, nopat, pelit, taulu ja paljon muuta."
+          },
+          {
+            "id": "polls-dice-and-mini-games-in-the-channel",
+            "feature": "Äänestykset, nopat ja minipelit kanavalla",
+            "note": "Mumble-palvelimen kautta. Viralliset asiakkaat äänestävät kyselyissä komennolla !poll."
+          },
+          {
+            "id": "large-plugin-game-data",
+            "feature": "Lisäosien suuret pelidatat",
+            "note": "Ilman relettä vain pieniä viestejä Mumble-palvelimen kautta; releellä jopa 64 kt viestiä kohti, päästä päähän salattuna."
+          }
+        ]
+      },
+      {
+        "id": "admin",
+        "title": "Ylläpito",
+        "rows": [
+          {
+            "id": "permissions-acl-and-groups-editor",
+            "feature": "Oikeuksien (ACL) ja ryhmien muokkain",
+            "note": "Mumcord selittää jokaisen vastauksen ja varoittaa, ennen kuin lukitset itsesi ulos."
+          },
+          {
+            "id": "kick-ban-and-ban-list",
+            "feature": "Potkiminen, porttikielto ja porttikieltolista"
+          },
+          {
+            "id": "registered-users",
+            "feature": "Rekisteröidyt käyttäjät"
+          },
+          {
+            "id": "create-edit-link-and-move-channels",
+            "feature": "Kanavien luonti, muokkaus, linkitys ja siirto"
+          },
+          {
+            "id": "admin-commands-in-the-chat-kick-move",
+            "feature": "Ylläpitokomennot chatissa (/kick, /move …)"
+          }
+        ]
+      },
+      {
+        "id": "platforms",
+        "title": "Alustat",
+        "rows": [
+          {
+            "id": "windows",
+            "feature": "Windows",
+            "note": "Mumcord myös kannettavana zip-pakettina."
+          },
+          {
+            "id": "macos",
+            "feature": "macOS"
+          },
+          {
+            "id": "linux",
+            "feature": "Linux"
+          },
+          {
+            "id": "freebsd",
+            "feature": "FreeBSD",
+            "note": "Mumble yhteisön ports-puun kautta. Mumcord: siellä ei kameraa, overlayta eikä näytönjaon ääntä."
+          },
+          {
+            "id": "android-and-ios",
+            "feature": "Android ja iOS",
+            "note": "Kolmannen osapuolen Mumble-sovelluksia on (esim. Mumla); Mumcord-sovellukset tulevat pian."
+          },
+          {
+            "id": "works-with-any-standard-mumble-server",
+            "feature": "Toimii millä tahansa tavallisella Mumble-palvelimella",
+            "note": "Mumcordin ja virallisen Mumblen käyttäjät puhuvat ja keskustelevat yhdessä."
+          }
+        ]
+      }
+    ],
+    "soon": "Tulossa pian"
   }
 }

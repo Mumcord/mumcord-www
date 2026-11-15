@@ -102,6 +102,10 @@
       "plugins": {
         "title": "Pluginad",
         "desc": "Hääletused, täringud ja muud"
+      },
+      "compare": {
+        "title": "Võrdlus",
+        "desc": "Mumble · Mumcord · mumpeer"
       }
     },
     "hero": {
@@ -773,6 +777,15 @@
           "body": "Muusika, käsud ja kaardid vestluses. Mumbot töötab iga Mumble'i serveri kõrval ja räägib Mumcordiga."
         }
       }
+    },
+    "testServer": {
+      "kicker": "Testserver online",
+      "title": "Proovi Mumcordi kohe praegu",
+      "body": "Meie testserver on valmis: kanalid, kus koos rääkida, mängida ja vaadata, ning mumpeeri relee ekraani, kaamera ja failide jaoks ilma sinu IP-aadressi näitamata.",
+      "join": "Ühendu Mumcordiga",
+      "copy": "Kopeeri aadress",
+      "copied": "Kopeeritud!",
+      "download": "Sul pole Mumcordi veel? Hangi see siit"
     }
   },
   "features": {
@@ -3199,6 +3212,46 @@
         ]
       },
       {
+        "id": "epic-4.2",
+        "title": "Kõik, mida Mumble teeb",
+        "summary": "Versiooniga 0.10.0 jõuab Mumcord järele sellele, mida ametlik klient on juba ammu osanud: kanali kuulamine, kõnede salvestamine, sõnumite ettelugemine, kolmandate osapoolte Mumble'i pluginad ja positsiooniline heli beetast väljas. Lisaks mugavust mängijatele ja administraatoritele.",
+        "groups": [
+          {
+            "title": "Kuulamine ja rääkimine",
+            "items": [
+              "Kuula teist kanalit sellega liitumata, igale kanalile oma helitugevusega (#873, #863)",
+              "Alati edastamine eraldi häälerežiimina (#862)",
+              "Teiste rakenduste vaigistamine, kui inimesed räägivad (#866)",
+              "Kiirklahv tagasi eelmisele kanalile (#871)",
+              "Kohalike vaigistuste tühistamine käivitamisel, kui soovid (#872)"
+            ]
+          },
+          {
+            "title": "Salvestamine ja ettelugemine",
+            "items": [
+              "Kõnede salvestamine kohapeal, ühe ühise miksina või ühe failina inimese kohta (#860)",
+              "Vestluse ja sündmuste ettelugemine (#861)"
+            ]
+          },
+          {
+            "title": "Mängud ja pluginad",
+            "items": [
+              "Kolmandate osapoolte Mumble'i pluginad Mumble'i plugina-API kaudu (#869)",
+              "Positsiooniline heli vaaturi ja kiirklahviga, beetast väljas (#868)",
+              "Overlay eksklusiivse täisekraaniga mängudes Windowsis ja macOS-is (#864)"
+            ]
+          },
+          {
+            "title": "Administraatoritele ja skriptidele",
+            "items": [
+              "Pääsuloendite haldus serveri kaupa (#870)",
+              "Tegevused, mille server määrab, menüüdes (#867)",
+              "Mumcordi juhtimine skriptidest, käsurea ja D-Busi kaudu (#865)"
+            ]
+          }
+        ]
+      },
+      {
         "id": "epic-5",
         "title": "Mumcord sinu telefonis",
         "summary": "Mumcord rakendusena Androidile ja iOS-ile, ühilduv tavaliste Mumble’i serveritega nagu arvutiski. Esmalt APK-na allalaadimiseks ja TestFlighti kaudu, rakenduste poed tulevad hiljem.",
@@ -4334,5 +4387,296 @@
     "sdkNote": "Tööriist ja SDK on crates.io-s. Sinu Cargo.toml-is:",
     "docsAll": "Kõik juhendid",
     "wiki": "Viki"
+  },
+  "compare": {
+    "title": "Mumble, Mumcord ja mumpeer kõrvuti",
+    "description": "Mida ametlik Mumble’i klient teeb, mida Mumcord lisab igal Mumble’i serveril ja mis vajab mumpeeri releed: hääl, vestlus, jagamine ja privaatsus.",
+    "label": "Võrdlus",
+    "intro": "Mumcord töötab igal tavalisel Mumble’i serveril ning ametliku kliendi kasutajad on samas kanalis. Mõni asi, näiteks failide jagamine või IP-aadressi peitmine, vajab lisaks serveri kõrval mumpeeri releed.",
+    "yes": "Jah",
+    "partly": "Osaliselt",
+    "no": "Ei",
+    "legend": "Osaliselt tähendab: piirangutega, mis on toodud rea all.",
+    "outroTitle": "Mitte kas-kas",
+    "outroBody": "Mumcord ja ametlik klient räägivad sama protokolli. Sinu server jääb samaks ja relee on valikuline: kogukond, mis käitab mumpeeri koos relee botiga, saab lisaks failid, rohkem vaatajaid ja peidetud IP-aadressid.",
+    "download": "Laadi Mumcord alla",
+    "relay": "Seadista mumpeer",
+    "asOf": "Seis: Mumcord 0.9, mumpeer 0.3 ja Mumble 1.5.",
+    "columns": [
+      {
+        "name": "Mumble",
+        "sub": "Ametlik klient 1.5"
+      },
+      {
+        "name": "Mumcord",
+        "sub": "Igal Mumble’i serveril"
+      },
+      {
+        "name": "Mumcord + mumpeer",
+        "sub": "Releega serveri kõrval"
+      }
+    ],
+    "groups": [
+      {
+        "id": "voice",
+        "title": "Hääl",
+        "rows": [
+          {
+            "id": "low-latency-opus-voice-through-the-mumbl",
+            "feature": "Väikese viivitusega Opus-hääl läbi Mumble’i serveri",
+            "note": "Hääl ei käi kunagi läbi relee."
+          },
+          {
+            "id": "push-to-talk-with-keys-and-mouse-buttons",
+            "feature": "Push-to-talk klahvide ja hiirenuppudega",
+            "note": "Mumcord toetab ka Waylandi otseteede portaali kaudu."
+          },
+          {
+            "id": "noise-suppression-and-echo-cancellation",
+            "feature": "Mürasummutus ja kaja tühistamine",
+            "note": "Mumble: Speex või RNNoise. Mumcord: Kerge, Tavaline, Täiustatud (2024. aasta RNNoise’i mudel, beeta)."
+          },
+          {
+            "id": "whisper-and-shout-to-people-or-channels",
+            "feature": "Sosistamine ja hüüdmine inimestele või kanalitele"
+          },
+          {
+            "id": "music-quality-and-low-latency-mode",
+            "feature": "Muusika kvaliteet ja väikese viivitusega režiim",
+            "note": "Mumble: bitikiirus ja kaadri suurus heliseadetes. Mumcord: üks lüliti ning kanalipõhised eelseaded."
+          },
+          {
+            "id": "listen-to-a-channel-s-voice-without-join",
+            "feature": "Kanali hääle kuulamine liitumata",
+            "note": "Mumble’i kanalikuulajad. Mumcord näitab kuulajaid juba praegu ja versioonist 0.10.0 alates oskab ka ise kuulata."
+          },
+          {
+            "id": "recording-conversations",
+            "feature": "Vestluste salvestamine",
+            "note": "Mumble’il on sisseehitatud mitmekanaliline salvesti. Mumcord saab salvestuse versiooniga 0.10.0."
+          }
+        ]
+      },
+      {
+        "id": "chat",
+        "title": "Vestlus",
+        "rows": [
+          {
+            "id": "text-chat-with-images",
+            "feature": "Tekstivestlus piltidega",
+            "note": "Mumble’is peavad pildid mahtuma serveri sõnumi suuruse piiri sisse."
+          },
+          {
+            "id": "markdown-formatting",
+            "feature": "Markdowni vormindus",
+            "note": "Mumcord lisab koodi esiletõstu ja vormindusriba."
+          },
+          {
+            "id": "link-previews-and-youtube-twitch-music-e",
+            "feature": "Linkide eelvaated ning YouTube’i, Twitchi ja muusika manused",
+            "note": "Toob Mumcord ise; saab välja lülitada."
+          },
+          {
+            "id": "replies-and-quotes",
+            "feature": "Vastused ja tsitaadid",
+            "note": "Ametlikud Mumble’i kliendid näevad loetavat tsitaati."
+          },
+          {
+            "id": "mentions-with-their-own-notification",
+            "feature": "@mainimised oma teavitusega",
+            "note": "Teised Mumble’i kliendid näevad ainult teksti."
+          },
+          {
+            "id": "read-and-write-in-channels-you-are-not-i",
+            "feature": "Lugemine ja kirjutamine kanalites, kus sa ei ole",
+            "note": "Jälgi kanalit silmaikooniga."
+          },
+          {
+            "id": "chat-history-from-before-you-joined",
+            "feature": "Vestlusajalugu ajast enne sinu liitumist",
+            "note": "Mumcordi kasutajad annavad edasi kuni 7 päeva kanali ajalugu. Täisajalugu eemalolnutele vajab Mumboti ajaloobotti, mis on releest eraldi."
+          },
+          {
+            "id": "private-conversations-kept-across-sessio",
+            "feature": "Privaatvestlused säilivad seansside vahel",
+            "note": "Salvestatakse ainult sinu arvutisse, serveripõhiselt välja lülitatav."
+          },
+          {
+            "id": "text-to-speech-for-messages",
+            "feature": "Sõnumite tekstist kõneks",
+            "note": "Mumcord saab teksti kõneks versiooniga 0.10.0."
+          }
+        ]
+      },
+      {
+        "id": "media",
+        "title": "Meedia ja jagamine",
+        "rows": [
+          {
+            "id": "full-size-images",
+            "feature": "Täissuuruses pildid",
+            "note": "Ilma releeta ainult otseühenduse kaudu, mis näitab saatjale sinu IP-d. Ametlikud kliendid näevad eelvaadet."
+          },
+          {
+            "id": "file-sharing",
+            "feature": "Failide jagamine",
+            "note": "Kuni 2 GB, alati läbi relee; fail ei puutu kunagi Mumble’i serverit."
+          },
+          {
+            "id": "screen-sharing-with-sound",
+            "feature": "Ekraani jagamine heliga",
+            "note": "Otse: kuni 8 vaatajat, igaüks saab oma koopia ja näeb sinu IP-d. Relee: kuni 25 vaatajat, IP peidus."
+          },
+          {
+            "id": "camera",
+            "feature": "Kaamera",
+            "note": "Otse: kuni 8 vaatajat. Relee: kuni 18 kaamerat, igaühel 25 vaatajat. Mõlemal juhul otspunktkrüptitud."
+          },
+          {
+            "id": "youtube-watch-party",
+            "feature": "YouTube’i vaatepidu",
+            "note": "Sünkroonitakse Mumble’i serveri kaudu, releed pole vaja."
+          }
+        ]
+      },
+      {
+        "id": "privacy",
+        "title": "Serverid ja privaatsus",
+        "rows": [
+          {
+            "id": "several-servers-connected-at-once",
+            "feature": "Mitu serverit korraga ühendatud",
+            "note": "Vaikimisi kuni 5, kohandatav kuni 15-ni."
+          },
+          {
+            "id": "ip-address-hidden-from-other-users",
+            "feature": "IP-aadress teistele kasutajatele peidetud",
+            "note": "Mumcord loob otseühenduse alles pärast sinu nõusolekut ja siis näeb teine inimene sinu IP-aadressi. Valikuga „alati relee” ei näe seda keegi. Mumble’is pole otseühendusi."
+          },
+          {
+            "id": "sharing-works-behind-cgnat-or-strict-fir",
+            "feature": "Jagamine töötab CGNAT-i või rangete tulemüüride taga",
+            "note": "Ilma releeta vajab jagamine otsest teed (IPv6 või ruuteri pordisuunamine)."
+          },
+          {
+            "id": "several-identities-certificates",
+            "feature": "Mitu identiteeti (sertifikaati)",
+            "note": "Mumble kasutab korraga ühte sertifikaati; Mumcord valib ühe serveri kohta."
+          },
+          {
+            "id": "block-people-across-servers",
+            "feature": "Inimeste blokeerimine üle serverite",
+            "note": "Mumble: kohalik vaigistus ja sõnumite eiramine seansi kaupa."
+          },
+          {
+            "id": "control-who-may-send-private-messages",
+            "feature": "Kontrolli, kes tohib saata privaatsõnumeid"
+          },
+          {
+            "id": "no-telemetry",
+            "feature": "Telemeetriata",
+            "note": "Mumble võib saata anonüümset kasutusstatistikat, mille saad välja lülitada."
+          }
+        ]
+      },
+      {
+        "id": "plugins",
+        "title": "Pluginad ja mängud",
+        "rows": [
+          {
+            "id": "positional-audio-in-games",
+            "feature": "Positsiooniline heli mängudes",
+            "note": "Mumcord kasutab Mumble Linki ja Mumble’i ametlikke mänguplugin’aid (beeta)."
+          },
+          {
+            "id": "in-game-overlay",
+            "feature": "Mängusisene overlay",
+            "note": "Mumcord: Vulkani kiht Linuxis, klõpsudest läbipaistev aken Windowsis; mitte macOS-is ega FreeBSD-s."
+          },
+          {
+            "id": "mumble-plugins",
+            "feature": "Mumble'i pluginad",
+            "note": "Natiivsed pluginad, peamiselt positsioonilise heli jaoks mängudes. Mumcord kasutab Mumble'i ametlikke mänguplugin'aid (beeta)."
+          },
+          {
+            "id": "mumcord-plugins",
+            "feature": "Mumcordi pluginad",
+            "note": "Liivakastis töötavad allkirjastatud WebAssembly pluginad poega: küsitlused, täringud, mängud, tahvel ja palju muud."
+          },
+          {
+            "id": "polls-dice-and-mini-games-in-the-channel",
+            "feature": "Küsitlused, täringud ja minimängud kanalis",
+            "note": "Mumble’i serveri kaudu. Ametlikud kliendid hääletavad küsitlustes käsuga !poll."
+          },
+          {
+            "id": "large-plugin-game-data",
+            "feature": "Pluginate suured mänguandmed",
+            "note": "Ilma releeta ainult väikesed sõnumid Mumble’i serveri kaudu; releega kuni 64 KB sõnumi kohta, otspunktkrüptitud."
+          }
+        ]
+      },
+      {
+        "id": "admin",
+        "title": "Haldus",
+        "rows": [
+          {
+            "id": "permissions-acl-and-groups-editor",
+            "feature": "Õiguste (ACL) ja gruppide redaktor",
+            "note": "Mumcord selgitab iga vastust ja hoiatab, enne kui end välja lukustad."
+          },
+          {
+            "id": "kick-ban-and-ban-list",
+            "feature": "Väljaviskamine, keelamine ja keelunimekiri"
+          },
+          {
+            "id": "registered-users",
+            "feature": "Registreeritud kasutajad"
+          },
+          {
+            "id": "create-edit-link-and-move-channels",
+            "feature": "Kanalite loomine, muutmine, linkimine ja teisaldamine"
+          },
+          {
+            "id": "admin-commands-in-the-chat-kick-move",
+            "feature": "Halduskäsud vestluses (/kick, /move …)"
+          }
+        ]
+      },
+      {
+        "id": "platforms",
+        "title": "Platvormid",
+        "rows": [
+          {
+            "id": "windows",
+            "feature": "Windows",
+            "note": "Mumcord ka kaasaskantava zip-failina."
+          },
+          {
+            "id": "macos",
+            "feature": "macOS"
+          },
+          {
+            "id": "linux",
+            "feature": "Linux"
+          },
+          {
+            "id": "freebsd",
+            "feature": "FreeBSD",
+            "note": "Mumble kogukonna ports-puu kaudu. Mumcord: seal ilma kaamera, overlay ja ekraanijagamise helita."
+          },
+          {
+            "id": "android-and-ios",
+            "feature": "Android ja iOS",
+            "note": "Kolmandate osapoolte Mumble’i rakendusi on olemas (nt Mumla); Mumcordi rakendused tulevad peagi."
+          },
+          {
+            "id": "works-with-any-standard-mumble-server",
+            "feature": "Töötab igal tavalisel Mumble’i serveril",
+            "note": "Mumcordi ja ametliku Mumble’i kasutajad räägivad ja vestlevad koos."
+          }
+        ]
+      }
+    ],
+    "soon": "Tulekul"
   }
 }

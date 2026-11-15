@@ -1,3 +1,4 @@
+import type { CompareText } from "../lib/compare";
 // The text of one extra language (see langs.ts), in one file under ./locales/<code>.json.
 // It holds words only: screenshots, versions, statuses, links and code come from the English
 // content and are merged in by id or position, so a translation cannot break them. Anything a
@@ -67,6 +68,8 @@ export interface LocaleBundle {
   mumbot?: MumbotText;
   /** Missing in translations made before the mumpeer and mumquiz pages; English fills in. */
   tools?: ToolsText;
+  /** Missing in translations made before the comparison page; English fills in. */
+  compare?: CompareText;
 }
 
 export interface ToolsText extends Partial<Omit<ToolsPage, "pages">> {

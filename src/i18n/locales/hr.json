@@ -102,6 +102,10 @@
       "plugins": {
         "title": "Dodaci",
         "desc": "Ankete, kocke i više"
+      },
+      "compare": {
+        "title": "Usporedba",
+        "desc": "Mumble · Mumcord · mumpeer"
       }
     },
     "hero": {
@@ -773,6 +777,15 @@
           "body": "Glazba, naredbe i kartice u chatu. Mumbot radi uz bilo koji Mumble poslužitelj i razgovara s Mumcordom."
         }
       }
+    },
+    "testServer": {
+      "kicker": "Testni poslužitelj online",
+      "title": "Isprobaj Mumcord odmah",
+      "body": "Naš testni poslužitelj je spreman: kanali za razgovor, igranje i zajedničko gledanje te mumpeer relay za zaslon, kameru i datoteke bez otkrivanja tvoje IP adrese.",
+      "join": "Spoji se s Mumcordom",
+      "copy": "Kopiraj adresu",
+      "copied": "Kopirano!",
+      "download": "Još nemaš Mumcord? Preuzmi ga ovdje"
     }
   },
   "features": {
@@ -3199,6 +3212,46 @@
         ]
       },
       {
+        "id": "epic-4.2",
+        "title": "Sve što Mumble radi",
+        "summary": "S verzijom 0.10.0 Mumcord sustiže ono što službeni klijent odavno radi: slušanje kanala, snimanje poziva, čitanje poruka naglas, Mumble dodaci trećih strana i pozicijski zvuk izvan bete. Uz to udobnost za igrače i administratore.",
+        "groups": [
+          {
+            "title": "Slušanje i govor",
+            "items": [
+              "Slušaj drugi kanal bez ulaska u njega, s jačinom zvuka za svaki kanal (#873, #863)",
+              "Uvijek odašiljanje kao zaseban glasovni način (#862)",
+              "Stišavanje drugih aplikacija dok ljudi govore (#866)",
+              "Tipkovnički prečac za povratak u prethodni kanal (#871)",
+              "Brisanje lokalnih utišavanja pri pokretanju, ako želiš (#872)"
+            ]
+          },
+          {
+            "title": "Snimanje i čitanje naglas",
+            "items": [
+              "Lokalno snimanje poziva, kao jedan zajednički miks ili jedna datoteka po osobi (#860)",
+              "Naglas čitanje chata i događaja (#861)"
+            ]
+          },
+          {
+            "title": "Igre i dodaci",
+            "items": [
+              "Mumble dodaci trećih strana preko Mumbleova API-ja za dodatke (#869)",
+              "Pozicijski zvuk s pregledom i tipkovničkim prečacem, izvan bete (#868)",
+              "Overlay u igrama na cijelom zaslonu u ekskluzivnom načinu na Windowsu i na macOS-u (#864)"
+            ]
+          },
+          {
+            "title": "Za administratore i skripte",
+            "items": [
+              "Upravljanje pristupnim tokenima po poslužitelju (#870)",
+              "Radnje koje definira poslužitelj, u izbornicima (#867)",
+              "Upravljanje Mumcordom iz skripti, naredbenim retkom i preko D-Busa (#865)"
+            ]
+          }
+        ]
+      },
+      {
         "id": "epic-5",
         "title": "Mumcord na tvom mobitelu",
         "summary": "Mumcord kao aplikacija za Android i iOS, kompatibilna sa standardnim Mumble poslužiteljima kao i na računalu. Prvo kao APK za preuzimanje i putem TestFlighta, trgovine aplikacija dolaze kasnije.",
@@ -4334,5 +4387,296 @@
     "sdkNote": "Alat i SDK nalaze se na crates.io. U tvom Cargo.toml:",
     "docsAll": "Sva dokumentacija",
     "wiki": "Wiki"
+  },
+  "compare": {
+    "title": "Usporedba: Mumble, Mumcord i mumpeer",
+    "description": "Što radi službeni Mumble klijent, što Mumcord dodaje na bilo kojem Mumble poslužitelju i što traži mumpeer relay: glas, chat, dijeljenje i privatnost.",
+    "label": "Usporedba",
+    "intro": "Mumcord radi na svakom standardnom Mumble poslužitelju, a ljudi sa službenim klijentom sjede u istom kanalu. Neke stvari, poput dijeljenja datoteka ili skrivanja tvoje IP adrese, traže i mumpeer relay pored poslužitelja.",
+    "yes": "Da",
+    "partly": "Djelomično",
+    "no": "Ne",
+    "soon": "Uskoro",
+    "legend": "Djelomično znači: uz ograničenja, navedena ispod retka.",
+    "outroTitle": "Nije ili-ili",
+    "outroBody": "Mumcord i službeni klijent govore isti protokol. Tvoj poslužitelj ostaje kakav jest, a relay je neobavezan: zajednica koja pokreće mumpeer s relay botom dobiva datoteke, više gledatelja i skrivene IP adrese povrh toga.",
+    "download": "Preuzmi Mumcord",
+    "relay": "Postavi mumpeer",
+    "asOf": "Od Mumcorda 0.9, mumpeera 0.3 i Mumblea 1.5.",
+    "columns": [
+      {
+        "name": "Mumble",
+        "sub": "Službeni klijent 1.5"
+      },
+      {
+        "name": "Mumcord",
+        "sub": "Na bilo kojem Mumble poslužitelju"
+      },
+      {
+        "name": "Mumcord + mumpeer",
+        "sub": "S relayem pored poslužitelja"
+      }
+    ],
+    "groups": [
+      {
+        "id": "voice",
+        "title": "Glas",
+        "rows": [
+          {
+            "id": "low-latency-opus-voice-through-the-mumbl",
+            "feature": "Opus glas s niskom latencijom preko Mumble poslužitelja",
+            "note": "Glas nikad ne ide preko relaya."
+          },
+          {
+            "id": "push-to-talk-with-keys-and-mouse-buttons",
+            "feature": "Push-to-talk tipkama i gumbima miša",
+            "note": "Mumcord podržava i Wayland preko portala za prečace."
+          },
+          {
+            "id": "noise-suppression-and-echo-cancellation",
+            "feature": "Suzbijanje šuma i poništavanje jeke",
+            "note": "Mumble: Speex ili RNNoise. Mumcord: Lagano, Standardno, Napredno (RNNoise model iz 2024., beta)."
+          },
+          {
+            "id": "whisper-and-shout-to-people-or-channels",
+            "feature": "Šaptanje i vikanje ljudima ili kanalima"
+          },
+          {
+            "id": "music-quality-and-low-latency-mode",
+            "feature": "Kvaliteta glazbe i način niske latencije",
+            "note": "Mumble: bitrate i veličina okvira u postavkama zvuka. Mumcord: jedan prekidač, plus postavke po kanalu."
+          },
+          {
+            "id": "listen-to-a-channel-s-voice-without-join",
+            "feature": "Slušanje glasa kanala bez ulaska u njega",
+            "note": "Mumbleovi slušatelji kanala. Mumcord već prikazuje slušatelje, a s 0.10.0 i sam može slušati."
+          },
+          {
+            "id": "recording-conversations",
+            "feature": "Snimanje razgovora",
+            "note": "Mumble ima ugrađeni višekanalni snimač. Mumcord dobiva snimanje s 0.10.0."
+          }
+        ]
+      },
+      {
+        "id": "chat",
+        "title": "Chat",
+        "rows": [
+          {
+            "id": "text-chat-with-images",
+            "feature": "Tekstualni chat sa slikama",
+            "note": "U Mumbleu slike moraju stati u ograničenje veličine poruke na poslužitelju."
+          },
+          {
+            "id": "markdown-formatting",
+            "feature": "Markdown oblikovanje",
+            "note": "Mumcord dodaje isticanje koda i traku s alatima za oblikovanje."
+          },
+          {
+            "id": "link-previews-and-youtube-twitch-music-e",
+            "feature": "Pretpregledi poveznica i YouTube/Twitch/glazbeni umetci",
+            "note": "Dohvaća ih sam Mumcord; mogu se isključiti."
+          },
+          {
+            "id": "replies-and-quotes",
+            "feature": "Odgovori i citati",
+            "note": "Službeni Mumble klijenti vide čitljiv citat."
+          },
+          {
+            "id": "mentions-with-their-own-notification",
+            "feature": "@spominjanja s vlastitom obavijesti",
+            "note": "Ostali Mumble klijenti vide samo tekst."
+          },
+          {
+            "id": "read-and-write-in-channels-you-are-not-i",
+            "feature": "Čitanje i pisanje u kanalima u kojima nisi",
+            "note": "Prati kanal ikonom oka."
+          },
+          {
+            "id": "chat-history-from-before-you-joined",
+            "feature": "Povijest chata od prije tvog dolaska",
+            "note": "Mumcord korisnici prenose do 7 dana povijesti kanala. Potpuna povijest za one koji su bili odsutni traži Mumbotov bot za povijest, odvojen od relaya."
+          },
+          {
+            "id": "private-conversations-kept-across-sessio",
+            "feature": "Privatni razgovori sačuvani između sesija",
+            "note": "Pohranjeni su samo na tvom računalu, a mogu se isključiti po poslužitelju."
+          },
+          {
+            "id": "text-to-speech-for-messages",
+            "feature": "Pretvaranje poruka u govor",
+            "note": "Mumcord dobiva pretvaranje teksta u govor s 0.10.0."
+          }
+        ]
+      },
+      {
+        "id": "media",
+        "title": "Mediji i dijeljenje",
+        "rows": [
+          {
+            "id": "full-size-images",
+            "feature": "Slike u punoj veličini",
+            "note": "Bez relaya samo preko izravne veze, što pošiljatelju pokazuje tvoj IP. Službeni klijenti vide pretpregled."
+          },
+          {
+            "id": "file-sharing",
+            "feature": "Dijeljenje datoteka",
+            "note": "Do 2 GB, uvijek preko relaya; datoteka nikad ne dotiče Mumble poslužitelj."
+          },
+          {
+            "id": "screen-sharing-with-sound",
+            "feature": "Dijeljenje zaslona sa zvukom",
+            "note": "Izravno: do 8 gledatelja, svaki dobiva svoju kopiju i vidi tvoj IP. Relay: do 25 gledatelja, IP skriven."
+          },
+          {
+            "id": "camera",
+            "feature": "Kamera",
+            "note": "Izravno: do 8 gledatelja. Relay: do 18 kamera, 25 gledatelja za svaku. U oba slučaja end-to-end šifrirano."
+          },
+          {
+            "id": "youtube-watch-party",
+            "feature": "YouTube watch party",
+            "note": "Sinkronizirano preko Mumble poslužitelja, relay nije potreban."
+          }
+        ]
+      },
+      {
+        "id": "privacy",
+        "title": "Poslužitelji i privatnost",
+        "rows": [
+          {
+            "id": "several-servers-connected-at-once",
+            "feature": "Više poslužitelja povezanih odjednom",
+            "note": "Prema zadanom do 5, podesivo do 15."
+          },
+          {
+            "id": "ip-address-hidden-from-other-users",
+            "feature": "IP adresa skrivena od drugih korisnika",
+            "note": "Mumcord se izravno povezuje tek nakon tvog pristanka, a tada druga osoba vidi tvoju IP adresu. Uz „uvijek relay” nitko je ne vidi. Mumble nema izravnih veza."
+          },
+          {
+            "id": "sharing-works-behind-cgnat-or-strict-fir",
+            "feature": "Dijeljenje radi iza CGNAT-a ili strogih vatrozida",
+            "note": "Bez relaya dijeljenje traži izravan put (IPv6 ili preusmjeravanje porta na usmjerivaču)."
+          },
+          {
+            "id": "several-identities-certificates",
+            "feature": "Više identiteta (certifikata)",
+            "note": "Mumble koristi jedan certifikat odjednom; Mumcord bira jedan po poslužitelju."
+          },
+          {
+            "id": "block-people-across-servers",
+            "feature": "Blokiranje ljudi na svim poslužiteljima",
+            "note": "Mumble: lokalno utišavanje i ignoriranje poruka po sesiji."
+          },
+          {
+            "id": "control-who-may-send-private-messages",
+            "feature": "Kontrola tko smije slati privatne poruke"
+          },
+          {
+            "id": "no-telemetry",
+            "feature": "Bez telemetrije",
+            "note": "Mumble može slati anonimnu statistiku korištenja, koju možeš isključiti."
+          }
+        ]
+      },
+      {
+        "id": "plugins",
+        "title": "Dodaci i igre",
+        "rows": [
+          {
+            "id": "positional-audio-in-games",
+            "feature": "Pozicijski zvuk u igrama",
+            "note": "Mumcord koristi Mumble Link i Mumbleove službene dodatke za igre (beta)."
+          },
+          {
+            "id": "in-game-overlay",
+            "feature": "Overlay u igri",
+            "note": "Mumcord: Vulkan sloj na Linuxu, prozor kroz koji se klikće na Windowsima; ne na macOS-u ni FreeBSD-u."
+          },
+          {
+            "id": "mumble-plugins",
+            "feature": "Mumble dodaci",
+            "note": "Nativni dodaci, uglavnom za pozicijski zvuk u igrama. Mumcord koristi Mumbleove službene dodatke za igre (beta)."
+          },
+          {
+            "id": "mumcord-plugins",
+            "feature": "Mumcord dodaci",
+            "note": "Dodaci u izoliranom okruženju, potpisani WebAssembly, s trgovinom: ankete, kockice, igre, ploča i više."
+          },
+          {
+            "id": "polls-dice-and-mini-games-in-the-channel",
+            "feature": "Ankete, kocke i mini igre u kanalu",
+            "note": "Preko Mumble poslužitelja. Službeni klijenti glasaju u anketama s !poll."
+          },
+          {
+            "id": "large-plugin-game-data",
+            "feature": "Veliki podaci igara iz dodataka",
+            "note": "Bez relaya samo male poruke preko Mumble poslužitelja; s njim do 64 KB po poruci, end-to-end šifrirano."
+          }
+        ]
+      },
+      {
+        "id": "admin",
+        "title": "Administracija",
+        "rows": [
+          {
+            "id": "permissions-acl-and-groups-editor",
+            "feature": "Uređivač dozvola (ACL) i grupa",
+            "note": "Mumcord objašnjava svaki odgovor i upozorava prije nego što sam sebe zaključaš."
+          },
+          {
+            "id": "kick-ban-and-ban-list",
+            "feature": "Izbacivanje, zabrana i popis zabrana"
+          },
+          {
+            "id": "registered-users",
+            "feature": "Registrirani korisnici"
+          },
+          {
+            "id": "create-edit-link-and-move-channels",
+            "feature": "Izrada, uređivanje, povezivanje i premještanje kanala"
+          },
+          {
+            "id": "admin-commands-in-the-chat-kick-move",
+            "feature": "Admin naredbe u chatu (/kick, /move …)"
+          }
+        ]
+      },
+      {
+        "id": "platforms",
+        "title": "Platforme",
+        "rows": [
+          {
+            "id": "windows",
+            "feature": "Windows",
+            "note": "Mumcord i kao prijenosni zip."
+          },
+          {
+            "id": "macos",
+            "feature": "macOS"
+          },
+          {
+            "id": "linux",
+            "feature": "Linux"
+          },
+          {
+            "id": "freebsd",
+            "feature": "FreeBSD",
+            "note": "Mumble preko ports stabla zajednice. Mumcord: ondje bez kamere, overlaya i zvuka dijeljenja zaslona."
+          },
+          {
+            "id": "android-and-ios",
+            "feature": "Android i iOS",
+            "note": "Postoje Mumble aplikacije trećih strana (npr. Mumla); Mumcord aplikacije stižu uskoro."
+          },
+          {
+            "id": "works-with-any-standard-mumble-server",
+            "feature": "Radi s bilo kojim standardnim Mumble poslužiteljem",
+            "note": "Mumcord i službeni Mumble korisnici zajedno pričaju i chatuju."
+          }
+        ]
+      }
+    ]
   }
 }

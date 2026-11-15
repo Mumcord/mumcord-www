@@ -1,0 +1,40 @@
+---
+import { routes, type Lang } from "../i18n";
+import { comparePage } from "../lib/compare";
+import Arrow from "./Arrow.astro";
+import CompareTable from "./CompareTable.astro";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = comparePage[lang];
+const download = routes.download[lang];
+---
+
+<article class="wrap cmp-page">
+  <header class="rp-head cmp-head">
+    <p class="label" data-reveal>{t.label}</p>
+    <h1 class="h2" data-reveal>{t.title}</h1>
+    <p class="body" data-reveal>{t.intro}</p>
+    <ul class="cmp-legend" data-reveal>
+      <li><span class="cmp-mark cmp-y" aria-hidden="true"></span>{t.yes}</li>
+      <li><span class="cmp-mark cmp-p" aria-hidden="true"></span>{t.partly}</li>
+      <li><span class="cmp-mark cmp-s" aria-hidden="true"></span>{t.soon}</li>
+      <li><span class="cmp-mark cmp-n" aria-hidden="true"></span>{t.no}</li>
+      <li class="cmp-legend-note">{t.legend}</li>
+    </ul>
+  </header>
+
+  <CompareTable lang={lang} />
+  <p class="cmp-asof" data-reveal>{t.asOf}</p>
+
+  <section class="fp-ask" aria-labelledby="cmp-outro-h" data-reveal>
+    <h2 id="cmp-outro-h">{t.outroTitle}</h2>
+    <p>{t.outroBody}</p>
+    <p class="fp-actions">
+      <a class="btn btn-small btn-glow" href={download}>{t.download}</a>
+      <a class="text-link" href={routes.mumpeer[lang]}>{t.relay}<Arrow /></a>
+    </p>
+  </section>
+</article>

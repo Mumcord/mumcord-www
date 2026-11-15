@@ -102,6 +102,10 @@
       "plugins": {
         "title": "Pluginy",
         "desc": "Ankety, kostky a další"
+      },
+      "compare": {
+        "title": "Porovnání",
+        "desc": "Mumble · Mumcord · mumpeer"
       }
     },
     "hero": {
@@ -773,6 +777,15 @@
           "body": "Hudba, příkazy a karty v chatu. Mumbot běží vedle libovolného serveru Mumble a komunikuje s Mumcordem."
         }
       }
+    },
+    "testServer": {
+      "kicker": "Testovací server online",
+      "title": "Vyzkoušej Mumcord hned teď",
+      "body": "Náš testovací server je připraven: kanály, kde si můžete povídat, hrát a koukat spolu, a relay mumpeer pro sdílení obrazovky, kamery a soubory bez odhalení tvé IP adresy.",
+      "join": "Připojit se přes Mumcord",
+      "copy": "Kopírovat adresu",
+      "copied": "Zkopírováno!",
+      "download": "Ještě nemáš Mumcord? Stáhni si ho zde"
     }
   },
   "features": {
@@ -3199,6 +3212,46 @@
         ]
       },
       {
+        "id": "epic-4.2",
+        "title": "Všechno, co umí Mumble",
+        "summary": "S verzí 0.10.0 Mumcord dohání, co oficiální klient umí už dávno: poslech kanálu, nahrávání hovorů, předčítání zpráv, pluginy Mumble od třetích stran a pozicový zvuk mimo beta. K tomu pohodlí pro hráče a správce.",
+        "groups": [
+          {
+            "title": "Poslech a mluvení",
+            "items": [
+              "Poslouchej jiný kanál, aniž bys do něj vstoupil, s hlasitostí pro každý kanál (#873, #863)",
+              "Vysílání vždy jako samostatný hlasový režim (#862)",
+              "Ztišení ostatních aplikací, když lidé mluví (#866)",
+              "Klávesová zkratka zpět do předchozího kanálu (#871)",
+              "Zrušení lokálních ztlumení při startu, pokud chceš (#872)"
+            ]
+          },
+          {
+            "title": "Nahrávání a předčítání",
+            "items": [
+              "Nahrávání hovorů lokálně, jako jeden společný mix nebo jeden soubor na člověka (#860)",
+              "Předčítání chatu a událostí (#861)"
+            ]
+          },
+          {
+            "title": "Hry a pluginy",
+            "items": [
+              "Pluginy Mumble od třetích stran přes plugin API Mumblu (#869)",
+              "Pozicový zvuk s prohlížečem a klávesovou zkratkou, mimo beta (#868)",
+              "Overlay ve hrách na celou obrazovku v exkluzivním režimu na Windows a na macOS (#864)"
+            ]
+          },
+          {
+            "title": "Pro správce a skripty",
+            "items": [
+              "Správa přístupových tokenů pro každý server (#870)",
+              "Akce, které definuje server, v nabídkách (#867)",
+              "Ovládání Mumcordu ze skriptů, příkazovou řádkou a přes D-Bus (#865)"
+            ]
+          }
+        ]
+      },
+      {
         "id": "epic-5",
         "title": "Mumcord v telefonu",
         "summary": "Mumcord jako aplikace pro Android a iOS, kompatibilní se standardními servery Mumble stejně jako na počítači. Nejdřív jako APK ke stažení a přes TestFlight, obchody s aplikacemi přijdou později.",
@@ -4334,5 +4387,296 @@
     "sdkNote": "Nástroj i SDK jsou na crates.io. Ve tvém Cargo.toml:",
     "docsAll": "Veškerá dokumentace",
     "wiki": "Wiki"
+  },
+  "compare": {
+    "title": "Mumble, Mumcord a mumpeer v porovnání",
+    "description": "Co umí oficiální klient Mumble, co Mumcord přidává na jakémkoli serveru Mumble a co vyžaduje relay mumpeer: hlas, chat, sdílení a soukromí.",
+    "label": "Porovnání",
+    "intro": "Mumcord běží na každém standardním serveru Mumble a lidé s oficiálním klientem jsou ve stejném kanálu. Některé věci, třeba sdílení souborů nebo skrytí tvé IP adresy, vyžadují navíc relay mumpeer vedle serveru.",
+    "yes": "Ano",
+    "partly": "Částečně",
+    "no": "Ne",
+    "legend": "Částečně znamená: s omezeními, uvedenými pod řádkem.",
+    "outroTitle": "Ne buď, anebo",
+    "outroBody": "Mumcord a oficiální klient mluví stejným protokolem. Tvůj server zůstává, jak je, a relay je volitelný: komunita, která provozuje mumpeer s relay botem, získá navíc soubory, víc diváků a skryté IP adresy.",
+    "download": "Stáhnout Mumcord",
+    "relay": "Nastavit mumpeer",
+    "asOf": "Stav: Mumcord 0.9, mumpeer 0.3 a Mumble 1.5.",
+    "columns": [
+      {
+        "name": "Mumble",
+        "sub": "Oficiální klient 1.5"
+      },
+      {
+        "name": "Mumcord",
+        "sub": "Na jakémkoli serveru Mumble"
+      },
+      {
+        "name": "Mumcord + mumpeer",
+        "sub": "S relay vedle serveru"
+      }
+    ],
+    "groups": [
+      {
+        "id": "voice",
+        "title": "Hlas",
+        "rows": [
+          {
+            "id": "low-latency-opus-voice-through-the-mumbl",
+            "feature": "Hlas Opus s nízkou latencí přes server Mumble",
+            "note": "Hlas nikdy neprochází relay."
+          },
+          {
+            "id": "push-to-talk-with-keys-and-mouse-buttons",
+            "feature": "Push-to-talk s klávesami a tlačítky myši",
+            "note": "Mumcord podporuje i Wayland přes portál zkratek."
+          },
+          {
+            "id": "noise-suppression-and-echo-cancellation",
+            "feature": "Potlačení šumu a ozvěny",
+            "note": "Mumble: Speex nebo RNNoise. Mumcord: Lehké, Standardní, Pokročilé (model RNNoise z roku 2024, beta)."
+          },
+          {
+            "id": "whisper-and-shout-to-people-or-channels",
+            "feature": "Šeptání a křik k lidem nebo do kanálů"
+          },
+          {
+            "id": "music-quality-and-low-latency-mode",
+            "feature": "Kvalita hudby a režim nízké latence",
+            "note": "Mumble: bitrate a velikost rámce v nastavení zvuku. Mumcord: jeden přepínač a předvolby pro každý kanál."
+          },
+          {
+            "id": "listen-to-a-channel-s-voice-without-join",
+            "feature": "Poslech hlasu v kanálu bez připojení",
+            "note": "Posluchači kanálu v Mumble. Mumcord posluchače už zobrazuje a s verzí 0.10.0 už umí i poslouchat."
+          },
+          {
+            "id": "recording-conversations",
+            "feature": "Nahrávání hovorů",
+            "note": "Mumble má vestavěný vícekanálový záznamník. Mumcord dostane nahrávání ve verzi 0.10.0."
+          }
+        ]
+      },
+      {
+        "id": "chat",
+        "title": "Chat",
+        "rows": [
+          {
+            "id": "text-chat-with-images",
+            "feature": "Textový chat s obrázky",
+            "note": "V Mumble se obrázky musí vejít do limitu serveru na velikost zprávy."
+          },
+          {
+            "id": "markdown-formatting",
+            "feature": "Formátování Markdown",
+            "note": "Mumcord přidává zvýraznění kódu a lištu formátování."
+          },
+          {
+            "id": "link-previews-and-youtube-twitch-music-e",
+            "feature": "Náhledy odkazů a vložené YouTube/Twitch/hudba",
+            "note": "Stahuje je sám Mumcord; lze vypnout."
+          },
+          {
+            "id": "replies-and-quotes",
+            "feature": "Odpovědi a citace",
+            "note": "Oficiální klienti Mumble vidí čitelnou citaci."
+          },
+          {
+            "id": "mentions-with-their-own-notification",
+            "feature": "@zmínky s vlastním upozorněním",
+            "note": "Ostatní klienti Mumble vidí jen text."
+          },
+          {
+            "id": "read-and-write-in-channels-you-are-not-i",
+            "feature": "Čtení a psaní v kanálech, ve kterých nejsi",
+            "note": "Kanál sleduj ikonou oka."
+          },
+          {
+            "id": "chat-history-from-before-you-joined",
+            "feature": "Historie chatu z doby před tvým příchodem",
+            "note": "Uživatelé Mumcordu předávají až 7 dní historie kanálu. Úplná historie pro ty, kdo byli pryč, vyžaduje history bota od Mumbota, odděleného od relay."
+          },
+          {
+            "id": "private-conversations-kept-across-sessio",
+            "feature": "Soukromé konverzace zachované mezi relacemi",
+            "note": "Ukládají se jen na tvém počítači, lze vypnout pro každý server."
+          },
+          {
+            "id": "text-to-speech-for-messages",
+            "feature": "Převod zpráv na řeč",
+            "note": "Mumcord dostane převod textu na řeč ve verzi 0.10.0."
+          }
+        ]
+      },
+      {
+        "id": "media",
+        "title": "Média a sdílení",
+        "rows": [
+          {
+            "id": "full-size-images",
+            "feature": "Obrázky v plné velikosti",
+            "note": "Bez relay jen přímým spojením, které odesílateli ukáže tvou IP. Oficiální klienti vidí náhled."
+          },
+          {
+            "id": "file-sharing",
+            "feature": "Sdílení souborů",
+            "note": "Až 2 GB, vždy přes relay; soubor se serveru Mumble nikdy nedotkne."
+          },
+          {
+            "id": "screen-sharing-with-sound",
+            "feature": "Sdílení obrazovky se zvukem",
+            "note": "Přímo: až 8 diváků, každý dostane vlastní kopii a vidí tvou IP. Relay: až 25 diváků, IP skrytá."
+          },
+          {
+            "id": "camera",
+            "feature": "Kamera",
+            "note": "Přímo: až 8 diváků. Relay: až 18 kamer, každá pro 25 diváků. V obou případech end-to-end šifrováno."
+          },
+          {
+            "id": "youtube-watch-party",
+            "feature": "Watch party na YouTube",
+            "note": "Synchronizace přes server Mumble, relay není potřeba."
+          }
+        ]
+      },
+      {
+        "id": "privacy",
+        "title": "Servery a soukromí",
+        "rows": [
+          {
+            "id": "several-servers-connected-at-once",
+            "feature": "Více serverů připojených najednou",
+            "note": "Ve výchozím nastavení až 5, upravitelné až na 15."
+          },
+          {
+            "id": "ip-address-hidden-from-other-users",
+            "feature": "IP adresa skrytá před ostatními uživateli",
+            "note": "Mumcord se připojí přímo, až když souhlasíš, a pak druhý vidí tvou IP adresu. S volbou „vždy relay“ ji nikdo nevidí. Mumble nemá přímá spojení."
+          },
+          {
+            "id": "sharing-works-behind-cgnat-or-strict-fir",
+            "feature": "Sdílení funguje za CGNAT nebo přísnými firewally",
+            "note": "Bez relay vyžaduje sdílení přímou cestu (IPv6 nebo přesměrování portů na routeru)."
+          },
+          {
+            "id": "several-identities-certificates",
+            "feature": "Více identit (certifikátů)",
+            "note": "Mumble používá najednou jeden certifikát; Mumcord vybírá jeden pro každý server."
+          },
+          {
+            "id": "block-people-across-servers",
+            "feature": "Blokování lidí napříč servery",
+            "note": "Mumble: lokální ztlumení a ignorování zpráv v rámci relace."
+          },
+          {
+            "id": "control-who-may-send-private-messages",
+            "feature": "Kontrola, kdo smí posílat soukromé zprávy"
+          },
+          {
+            "id": "no-telemetry",
+            "feature": "Žádná telemetrie",
+            "note": "Mumble může odesílat anonymní statistiky používání, které lze vypnout."
+          }
+        ]
+      },
+      {
+        "id": "plugins",
+        "title": "Pluginy a hry",
+        "rows": [
+          {
+            "id": "positional-audio-in-games",
+            "feature": "Pozicový zvuk ve hrách",
+            "note": "Mumcord používá Mumble Link a oficiální herní pluginy Mumble (beta)."
+          },
+          {
+            "id": "in-game-overlay",
+            "feature": "Overlay ve hře",
+            "note": "Mumcord: vrstva Vulkan na Linuxu, okno propouštějící kliknutí na Windows; ne na macOS ani FreeBSD."
+          },
+          {
+            "id": "mumble-plugins",
+            "feature": "Pluginy Mumble",
+            "note": "Nativní pluginy, hlavně pro pozicový zvuk ve hrách. Mumcord používá oficiální herní pluginy Mumble (beta)."
+          },
+          {
+            "id": "mumcord-plugins",
+            "feature": "Pluginy Mumcord",
+            "note": "Izolované podepsané pluginy WebAssembly s obchodem: ankety, kostky, hry, tabule a další."
+          },
+          {
+            "id": "polls-dice-and-mini-games-in-the-channel",
+            "feature": "Ankety, kostky a minihry v kanálu",
+            "note": "Přes server Mumble. Oficiální klienti hlasují v anketách příkazem !poll."
+          },
+          {
+            "id": "large-plugin-game-data",
+            "feature": "Velká herní data pluginů",
+            "note": "Bez relay jen malé zprávy přes server Mumble; s ním až 64 KB na zprávu, end-to-end šifrované."
+          }
+        ]
+      },
+      {
+        "id": "admin",
+        "title": "Správa",
+        "rows": [
+          {
+            "id": "permissions-acl-and-groups-editor",
+            "feature": "Editor oprávnění (ACL) a skupin",
+            "note": "Mumcord vysvětlí každou odpověď a varuje, než se sám zamkneš."
+          },
+          {
+            "id": "kick-ban-and-ban-list",
+            "feature": "Vyhození, ban a seznam banů"
+          },
+          {
+            "id": "registered-users",
+            "feature": "Registrovaní uživatelé"
+          },
+          {
+            "id": "create-edit-link-and-move-channels",
+            "feature": "Vytváření, úprava, propojení a přesun kanálů"
+          },
+          {
+            "id": "admin-commands-in-the-chat-kick-move",
+            "feature": "Správcovské příkazy v chatu (/kick, /move …)"
+          }
+        ]
+      },
+      {
+        "id": "platforms",
+        "title": "Platformy",
+        "rows": [
+          {
+            "id": "windows",
+            "feature": "Windows",
+            "note": "Mumcord také jako přenosný zip."
+          },
+          {
+            "id": "macos",
+            "feature": "macOS"
+          },
+          {
+            "id": "linux",
+            "feature": "Linux"
+          },
+          {
+            "id": "freebsd",
+            "feature": "FreeBSD",
+            "note": "Mumble přes komunitní strom portů. Mumcord: tam bez kamery, overlaye a zvuku při sdílení obrazovky."
+          },
+          {
+            "id": "android-and-ios",
+            "feature": "Android a iOS",
+            "note": "Existují aplikace třetích stran pro Mumble (např. Mumla); aplikace Mumcord brzy přijdou."
+          },
+          {
+            "id": "works-with-any-standard-mumble-server",
+            "feature": "Funguje s jakýmkoli standardním serverem Mumble",
+            "note": "Uživatelé Mumcordu a oficiálního Mumble spolu mluví i chatují."
+          }
+        ]
+      }
+    ],
+    "soon": "Již brzy"
   }
 }

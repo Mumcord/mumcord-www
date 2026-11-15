@@ -1,4 +1,5 @@
 ---
+import TestServer from "./TestServer.astro";
 import CopyButton from "./CopyButton.astro";
 import DownloadSpotlight from "./DownloadSpotlight.astro";
 import { dicts, routes, type Lang, LANG_INFO } from "../i18n";
@@ -232,6 +233,8 @@ import Arrow from "./Arrow.astro";
       </section>
     )
   }
+
+  <TestServer lang={lang} />
 
   <section class="wrap dlp-section dlp-cards" aria-label={`${t.mobileTitle} · ${t.moreTitle}`}>
     <div class="dlp-card" data-reveal>

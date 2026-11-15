@@ -102,6 +102,10 @@
       "plugins": {
         "title": "Pluginuri",
         "desc": "Sondaje, zaruri și altele"
+      },
+      "compare": {
+        "title": "Comparație",
+        "desc": "Mumble · Mumcord · mumpeer"
       }
     },
     "hero": {
@@ -773,6 +777,15 @@
           "body": "Muzică, comenzi și carduri în chat. Mumbot rulează lângă orice server Mumble și vorbește cu Mumcord."
         }
       }
+    },
+    "testServer": {
+      "kicker": "Server de test online",
+      "title": "Încearcă Mumcord chiar acum",
+      "body": "Serverul nostru de test este gata: canale în care să vorbiți, să vă jucați și să vă uitați împreună, și releul mumpeer pentru ecran, cameră și fișiere fără să îți arate adresa IP.",
+      "join": "Conectează-te cu Mumcord",
+      "copy": "Copiază adresa",
+      "copied": "Copiat!",
+      "download": "Nu ai încă Mumcord? Descarcă-l de aici"
     }
   },
   "features": {
@@ -3199,6 +3212,46 @@
         ]
       },
       {
+        "id": "epic-4.2",
+        "title": "Tot ce face Mumble",
+        "summary": "Cu 0.10.0 Mumcord le ajunge din urmă pe cele pe care clientul oficial le face de mult: ascultarea unui canal, înregistrarea apelurilor, citirea mesajelor cu voce tare, pluginuri Mumble de la terți și audio pozițional ieșit din beta. Plus confort pentru jucători și administratori.",
+        "groups": [
+          {
+            "title": "Ascultare și vorbire",
+            "items": [
+              "Ascultă un alt canal fără să intri în el, cu un volum pentru fiecare canal (#873, #863)",
+              "Transmitere mereu, ca mod de voce separat (#862)",
+              "Reducerea volumului celorlalte aplicații cât timp vorbesc oamenii (#866)",
+              "O scurtătură de tastatură înapoi la canalul anterior (#871)",
+              "Ștergerea dezactivărilor locale ale sunetului la pornire, dacă vrei (#872)"
+            ]
+          },
+          {
+            "title": "Înregistrare și citire cu voce tare",
+            "items": [
+              "Înregistrarea apelurilor local, ca un singur mix sau câte un fișier pentru fiecare persoană (#860)",
+              "Citirea cu voce tare a chatului și a evenimentelor (#861)"
+            ]
+          },
+          {
+            "title": "Jocuri și pluginuri",
+            "items": [
+              "Pluginuri Mumble de la terți prin API-ul de pluginuri al Mumble (#869)",
+              "Audio pozițional cu vizualizator și scurtătură de tastatură, ieșit din beta (#868)",
+              "Overlay în jocurile pe ecran complet exclusiv pe Windows și pe macOS (#864)"
+            ]
+          },
+          {
+            "title": "Pentru administratori și scripturi",
+            "items": [
+              "Gestionarea token-urilor de acces pentru fiecare server (#870)",
+              "Acțiuni definite de server, în meniuri (#867)",
+              "Controlul Mumcord din scripturi, prin linia de comandă și D-Bus (#865)"
+            ]
+          }
+        ]
+      },
+      {
         "id": "epic-5",
         "title": "Mumcord pe telefonul tău",
         "summary": "Mumcord ca aplicație pentru Android și iOS, compatibilă cu serverele Mumble standard ca pe desktop. Mai întâi ca APK de descărcat și prin TestFlight, magazinele de aplicații vin mai târziu.",
@@ -4334,5 +4387,296 @@
     "sdkNote": "Instrumentul și SDK-ul sunt pe crates.io. În Cargo.toml-ul tău:",
     "docsAll": "Toată documentația",
     "wiki": "Wiki"
+  },
+  "compare": {
+    "title": "Mumble, Mumcord și mumpeer comparate",
+    "description": "Ce face clientul oficial Mumble, ce adaugă Mumcord pe orice server Mumble și ce necesită releul mumpeer: voce, chat, partajare și confidențialitate.",
+    "label": "Comparație",
+    "intro": "Mumcord funcționează pe orice server Mumble standard, iar cei cu clientul oficial stau în același canal. Unele lucruri, precum partajarea fișierelor sau ascunderea adresei tale IP, au nevoie și de releul mumpeer lângă server.",
+    "yes": "Da",
+    "partly": "Parțial",
+    "no": "Nu",
+    "soon": "În curând",
+    "legend": "Parțial înseamnă: cu limite, menționate sub rând.",
+    "outroTitle": "Nu e una sau alta",
+    "outroBody": "Mumcord și clientul oficial vorbesc același protocol. Serverul tău rămâne cum e, iar releul este opțional: o comunitate care rulează mumpeer cu botul de releu primește în plus fișiere, mai mulți spectatori și adrese IP ascunse.",
+    "download": "Descarcă Mumcord",
+    "relay": "Configurează mumpeer",
+    "asOf": "La data versiunilor Mumcord 0.9, mumpeer 0.3 și Mumble 1.5.",
+    "columns": [
+      {
+        "name": "Mumble",
+        "sub": "Client oficial 1.5"
+      },
+      {
+        "name": "Mumcord",
+        "sub": "Pe orice server Mumble"
+      },
+      {
+        "name": "Mumcord + mumpeer",
+        "sub": "Cu un releu lângă server"
+      }
+    ],
+    "groups": [
+      {
+        "id": "voice",
+        "title": "Voce",
+        "rows": [
+          {
+            "id": "low-latency-opus-voice-through-the-mumbl",
+            "feature": "Voce Opus cu latență mică prin serverul Mumble",
+            "note": "Vocea nu trece niciodată prin releu."
+          },
+          {
+            "id": "push-to-talk-with-keys-and-mouse-buttons",
+            "feature": "Push-to-talk cu taste și butoane de mouse",
+            "note": "Mumcord acceptă și Wayland prin portalul de scurtături."
+          },
+          {
+            "id": "noise-suppression-and-echo-cancellation",
+            "feature": "Suprimarea zgomotului și anularea ecoului",
+            "note": "Mumble: Speex sau RNNoise. Mumcord: Ușor, Standard, Avansat (model RNNoise din 2024, beta)."
+          },
+          {
+            "id": "whisper-and-shout-to-people-or-channels",
+            "feature": "Șoaptă și strigăt către persoane sau canale"
+          },
+          {
+            "id": "music-quality-and-low-latency-mode",
+            "feature": "Calitate pentru muzică și mod cu latență mică",
+            "note": "Mumble: bitrate și dimensiunea cadrului în setările audio. Mumcord: un singur comutator, plus presetări pentru fiecare canal."
+          },
+          {
+            "id": "listen-to-a-channel-s-voice-without-join",
+            "feature": "Ascultarea vocii unui canal fără a intra în el",
+            "note": "Mumble are ascultători de canal. Mumcord îi arată deja, iar cu 0.10.0 poate asculta și el însuși."
+          },
+          {
+            "id": "recording-conversations",
+            "feature": "Înregistrarea conversațiilor",
+            "note": "Mumble are un recorder multicanal încorporat. Mumcord primește înregistrare în 0.10.0."
+          }
+        ]
+      },
+      {
+        "id": "chat",
+        "title": "Chat",
+        "rows": [
+          {
+            "id": "text-chat-with-images",
+            "feature": "Chat text cu imagini",
+            "note": "În Mumble, imaginile trebuie să se încadreze în limita de mărime a mesajelor de pe server."
+          },
+          {
+            "id": "markdown-formatting",
+            "feature": "Formatare Markdown",
+            "note": "Mumcord adaugă evidențierea codului și o bară de formatare."
+          },
+          {
+            "id": "link-previews-and-youtube-twitch-music-e",
+            "feature": "Previzualizări de linkuri și conținut încorporat YouTube, Twitch și muzică",
+            "note": "Preluate chiar de Mumcord; pot fi dezactivate."
+          },
+          {
+            "id": "replies-and-quotes",
+            "feature": "Răspunsuri și citate",
+            "note": "Clienții oficiali Mumble văd un citat ușor de citit."
+          },
+          {
+            "id": "mentions-with-their-own-notification",
+            "feature": "Mențiuni @ cu notificare proprie",
+            "note": "Ceilalți clienți Mumble văd doar textul."
+          },
+          {
+            "id": "read-and-write-in-channels-you-are-not-i",
+            "feature": "Citire și scriere în canale în care nu te afli",
+            "note": "Urmărești un canal cu pictograma ochi."
+          },
+          {
+            "id": "chat-history-from-before-you-joined",
+            "feature": "Istoricul chatului de dinainte să intri",
+            "note": "Utilizatorii Mumcord transmit până la 7 zile de istoric al canalului. Istoricul complet pentru cei care au lipsit are nevoie de botul de istoric din Mumbot, separat de releu."
+          },
+          {
+            "id": "private-conversations-kept-across-sessio",
+            "feature": "Conversații private păstrate între sesiuni",
+            "note": "Stocate doar pe calculatorul tău, pot fi dezactivate pentru fiecare server."
+          },
+          {
+            "id": "text-to-speech-for-messages",
+            "feature": "Text-to-speech pentru mesaje",
+            "note": "Mumcord primește text-to-speech în 0.10.0."
+          }
+        ]
+      },
+      {
+        "id": "media",
+        "title": "Media și partajare",
+        "rows": [
+          {
+            "id": "full-size-images",
+            "feature": "Imagini la dimensiune completă",
+            "note": "Fără releu, doar printr-o conexiune directă, care îți arată IP-ul expeditorului. Clienții oficiali văd previzualizarea."
+          },
+          {
+            "id": "file-sharing",
+            "feature": "Partajare de fișiere",
+            "note": "Până la 2 GB, mereu prin releu; fișierul nu ajunge niciodată pe serverul Mumble."
+          },
+          {
+            "id": "screen-sharing-with-sound",
+            "feature": "Partajare de ecran cu sunet",
+            "note": "Direct: până la 8 spectatori, fiecare primește propria copie și îți vede IP-ul. Releu: până la 25 de spectatori, IP ascuns."
+          },
+          {
+            "id": "camera",
+            "feature": "Cameră",
+            "note": "Direct: până la 8 spectatori. Releu: până la 18 camere, câte 25 de spectatori fiecare. Criptat end-to-end în ambele cazuri."
+          },
+          {
+            "id": "youtube-watch-party",
+            "feature": "Vizionare împreună pe YouTube",
+            "note": "Sincronizată prin serverul Mumble, fără releu."
+          }
+        ]
+      },
+      {
+        "id": "privacy",
+        "title": "Servere și confidențialitate",
+        "rows": [
+          {
+            "id": "several-servers-connected-at-once",
+            "feature": "Mai multe servere conectate simultan",
+            "note": "Până la 5 implicit, reglabil până la 15."
+          },
+          {
+            "id": "ip-address-hidden-from-other-users",
+            "feature": "Adresa IP ascunsă față de ceilalți utilizatori",
+            "note": "Mumcord se conectează direct doar după ce ești de acord, iar atunci cealaltă persoană îți vede adresa IP. Cu „mereu releu” nimeni nu o vede. Mumble nu are conexiuni directe."
+          },
+          {
+            "id": "sharing-works-behind-cgnat-or-strict-fir",
+            "feature": "Partajarea funcționează în spatele CGNAT sau al firewallurilor stricte",
+            "note": "Fără releu, partajarea are nevoie de o cale directă (IPv6 sau redirecționare de porturi pe router)."
+          },
+          {
+            "id": "several-identities-certificates",
+            "feature": "Mai multe identități (certificate)",
+            "note": "Mumble folosește un singur certificat odată; Mumcord alege câte unul pentru fiecare server."
+          },
+          {
+            "id": "block-people-across-servers",
+            "feature": "Blocarea persoanelor pe toate serverele",
+            "note": "Mumble: dezactivare locală a sunetului și ignorarea mesajelor, pe sesiune."
+          },
+          {
+            "id": "control-who-may-send-private-messages",
+            "feature": "Controlul cine îți poate trimite mesaje private"
+          },
+          {
+            "id": "no-telemetry",
+            "feature": "Fără telemetrie",
+            "note": "Mumble poate trimite statistici anonime de utilizare, pe care le poți dezactiva."
+          }
+        ]
+      },
+      {
+        "id": "plugins",
+        "title": "Pluginuri și jocuri",
+        "rows": [
+          {
+            "id": "positional-audio-in-games",
+            "feature": "Audio pozițional în jocuri",
+            "note": "Mumcord folosește Mumble Link și pluginurile oficiale de jocuri ale Mumble (beta)."
+          },
+          {
+            "id": "in-game-overlay",
+            "feature": "Overlay în joc",
+            "note": "Mumcord: strat Vulkan pe Linux, fereastră transparentă la clicuri pe Windows; nu pe macOS sau FreeBSD."
+          },
+          {
+            "id": "mumble-plugins",
+            "feature": "Pluginuri Mumble",
+            "note": "Pluginuri native, mai ales pentru audio pozițional în jocuri. Mumcord folosește pluginurile oficiale de jocuri ale Mumble (beta)."
+          },
+          {
+            "id": "mumcord-plugins",
+            "feature": "Pluginuri Mumcord",
+            "note": "Pluginuri WebAssembly izolate și semnate, cu magazin: sondaje, zaruri, jocuri, o tablă și altele."
+          },
+          {
+            "id": "polls-dice-and-mini-games-in-the-channel",
+            "feature": "Sondaje, zaruri și minijocuri în canal",
+            "note": "Prin serverul Mumble. Clienții oficiali votează în sondaje cu !poll."
+          },
+          {
+            "id": "large-plugin-game-data",
+            "feature": "Date mari de pluginuri și jocuri",
+            "note": "Fără releu, doar mesaje mici prin serverul Mumble; cu el, până la 64 KB pe mesaj, criptat end-to-end."
+          }
+        ]
+      },
+      {
+        "id": "admin",
+        "title": "Administrare",
+        "rows": [
+          {
+            "id": "permissions-acl-and-groups-editor",
+            "feature": "Editor de permisiuni (ACL) și grupuri",
+            "note": "Mumcord explică fiecare răspuns și te avertizează înainte să te blochezi singur."
+          },
+          {
+            "id": "kick-ban-and-ban-list",
+            "feature": "Kick, ban și lista de banuri"
+          },
+          {
+            "id": "registered-users",
+            "feature": "Utilizatori înregistrați"
+          },
+          {
+            "id": "create-edit-link-and-move-channels",
+            "feature": "Crearea, editarea, legarea și mutarea canalelor"
+          },
+          {
+            "id": "admin-commands-in-the-chat-kick-move",
+            "feature": "Comenzi de administrare în chat (/kick, /move …)"
+          }
+        ]
+      },
+      {
+        "id": "platforms",
+        "title": "Platforme",
+        "rows": [
+          {
+            "id": "windows",
+            "feature": "Windows",
+            "note": "Mumcord și ca zip portabil."
+          },
+          {
+            "id": "macos",
+            "feature": "macOS"
+          },
+          {
+            "id": "linux",
+            "feature": "Linux"
+          },
+          {
+            "id": "freebsd",
+            "feature": "FreeBSD",
+            "note": "Mumble prin arborele de porturi al comunității. Mumcord: acolo fără cameră, overlay sau sunet la partajarea ecranului."
+          },
+          {
+            "id": "android-and-ios",
+            "feature": "Android și iOS",
+            "note": "Există aplicații Mumble de la terți (de ex. Mumla); aplicațiile Mumcord vin în curând."
+          },
+          {
+            "id": "works-with-any-standard-mumble-server",
+            "feature": "Funcționează cu orice server Mumble standard",
+            "note": "Utilizatorii Mumcord și cei ai Mumble oficial vorbesc și scriu împreună."
+          }
+        ]
+      }
+    ]
   }
 }

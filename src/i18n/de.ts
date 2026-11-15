@@ -32,6 +32,7 @@ export const de = {
     plugins: { title: "Plugins", desc: "Umfragen, Würfel und mehr" },
     roadmap: { title: "Roadmap", desc: "Was fertig ist und was als Nächstes kommt" },
     changelog: { title: "Changelog", desc: "Was jede Version gebracht hat" },
+    compare: { title: "Vergleich", desc: "Mumble, Mumcord und mumpeer im Überblick" },
     how: { title: "So funktioniert's", desc: "Ein Client für jeden Mumble-Server" },
     source: { title: "Quellcode", desc: "Open Source unter AGPL-3.0" },
     docs: { title: "Doku", desc: "Anleitungen und Antworten im Wiki" },
@@ -49,6 +50,15 @@ export const de = {
     libCodec: { title: "hwcodec", desc: "AV1 und VP9 kodieren, ohne FFmpeg" },
     libProtocol: { title: "mumble-client-protocol", desc: "Das Mumble-Protokoll für Rust" },
     botIssues: { title: "Issues", desc: "Ideen und Fehler zu Mumbot" },
+  },
+  testServer: {
+    kicker: "Testserver online",
+    title: "Probier Mumcord direkt aus",
+    body: "Auf unserem Testserver ist alles bereit: Kanäle zum Reden, Spielen und Zuschauen und das Relay mumpeer für Bildschirm, Kamera und Dateien, ohne deine IP-Adresse zu zeigen.",
+    join: "Mit Mumcord verbinden",
+    copy: "Adresse kopieren",
+    copied: "Kopiert",
+    download: "Noch kein Mumcord? Hier laden",
   },
   hero: {
     kicker: "Der alternative Mumble-Client",

@@ -102,6 +102,10 @@
       "plugins": {
         "title": "Bővítmények",
         "desc": "Szavazások, kockák és még több"
+      },
+      "compare": {
+        "title": "Összehasonlítás",
+        "desc": "Mumble · Mumcord · mumpeer"
       }
     },
     "hero": {
@@ -773,6 +777,15 @@
           "body": "Zene, parancsok és kártyák a chatben. A Mumbot bármelyik Mumble-szerver mellett fut, és beszél a Mumcorddal."
         }
       }
+    },
+    "testServer": {
+      "kicker": "Tesztszerver online",
+      "title": "Próbáld ki a Mumcordot most",
+      "body": "A tesztszerverünk készen áll: csatornák, ahol együtt beszélgethettek, játszhattok és nézhettek, valamint a mumpeer relay a képernyőhöz, kamerához és fájlokhoz anélkül, hogy az IP-címed kiderülne.",
+      "join": "Csatlakozás a Mumcorddal",
+      "copy": "Cím másolása",
+      "copied": "Másolva!",
+      "download": "Még nincs Mumcordod? Töltsd le itt"
     }
   },
   "features": {
@@ -3199,6 +3212,46 @@
         ]
       },
       {
+        "id": "epic-4.2",
+        "title": "Minden, amit a Mumble tud",
+        "summary": "A 0.10.0-val a Mumcord behozza, amit a hivatalos kliens már régóta tud: csatorna hallgatása, hívások rögzítése, üzenetek felolvasása, harmadik féltől származó Mumble-bővítmények és a pozicionális hang a bétából kikerülve. Hozzá kényelem játékosoknak és adminoknak.",
+        "groups": [
+          {
+            "title": "Hallgatás és beszéd",
+            "items": [
+              "Hallgass egy másik csatornát belépés nélkül, csatornánkénti hangerővel (#873, #863)",
+              "Mindig adás, önálló hangmódként (#862)",
+              "Más alkalmazások halkítása, amíg az emberek beszélnek (#866)",
+              "Gyorsbillentyű az előző csatornához való visszatéréshez (#871)",
+              "A helyi némítások törlése indításkor, ha szeretnéd (#872)"
+            ]
+          },
+          {
+            "title": "Rögzítés és felolvasás",
+            "items": [
+              "Hívások helyi rögzítése, egyetlen keverékként vagy személyenként egy fájlként (#860)",
+              "A csevegés és az események felolvasása (#861)"
+            ]
+          },
+          {
+            "title": "Játékok és bővítmények",
+            "items": [
+              "Harmadik féltől származó Mumble-bővítmények a Mumble bővítmény-API-ján át (#869)",
+              "Pozicionális hang nézővel és gyorsbillentyűvel, a bétából kikerülve (#868)",
+              "Overlay kizárólagos teljes képernyős játékokban Windowson és macOS-en (#864)"
+            ]
+          },
+          {
+            "title": "Adminoknak és szkripteknek",
+            "items": [
+              "Hozzáférési tokenek kezelése szerverenként (#870)",
+              "A szerver által meghatározott műveletek a menükben (#867)",
+              "A Mumcord vezérlése szkriptekből, parancssorral és D-Bussal (#865)"
+            ]
+          }
+        ]
+      },
+      {
         "id": "epic-5",
         "title": "Mumcord a telefonodon",
         "summary": "A Mumcord Android- és iOS-appként, a szabványos Mumble-szerverekkel kompatibilisen, mint az asztali gépen. Először letölthető APK-ként és a TestFlighton át, az appboltok később jönnek.",
@@ -4334,5 +4387,296 @@
     "sdkNote": "Az eszköz és az SDK a crates.io-n van. A Cargo.tomlodban:",
     "docsAll": "Minden dokumentáció",
     "wiki": "Wiki"
+  },
+  "compare": {
+    "title": "Mumble, Mumcord és mumpeer összehasonlítása",
+    "description": "Mit tud a hivatalos Mumble-kliens, mit ad hozzá a Mumcord bármely Mumble-szerveren, és mihez kell a mumpeer relay: hang, chat, megosztás és adatvédelem.",
+    "label": "Összehasonlítás",
+    "intro": "A Mumcord bármely szabványos Mumble-szerveren fut, és a hivatalos klienst használók ugyanabban a csatornában ülnek. Néhány dologhoz, például fájlmegosztáshoz vagy az IP-címed elrejtéséhez a szerver mellett mumpeer relay is kell.",
+    "yes": "Igen",
+    "partly": "Részben",
+    "no": "Nem",
+    "soon": "Hamarosan",
+    "legend": "Részben azt jelenti: korlátokkal, a sor alatt felsorolva.",
+    "outroTitle": "Nem vagy-vagy",
+    "outroBody": "A Mumcord és a hivatalos kliens ugyanazt a protokollt beszéli. A szervered marad, ami, a relay pedig opcionális: az a közösség, amely a mumpeert relay bottal futtatja, fájlokat, több nézőt és rejtett IP-címeket kap hozzá.",
+    "download": "Mumcord letöltése",
+    "relay": "mumpeer beállítása",
+    "asOf": "A Mumcord 0.9, a mumpeer 0.3 és a Mumble 1.5 szerint.",
+    "columns": [
+      {
+        "name": "Mumble",
+        "sub": "Hivatalos kliens 1.5"
+      },
+      {
+        "name": "Mumcord",
+        "sub": "Bármely Mumble-szerveren"
+      },
+      {
+        "name": "Mumcord + mumpeer",
+        "sub": "Relay-vel a szerver mellett"
+      }
+    ],
+    "groups": [
+      {
+        "id": "voice",
+        "title": "Hang",
+        "rows": [
+          {
+            "id": "low-latency-opus-voice-through-the-mumbl",
+            "feature": "Kis késleltetésű Opus hang a Mumble-szerveren át",
+            "note": "A hang sosem megy át a relayen."
+          },
+          {
+            "id": "push-to-talk-with-keys-and-mouse-buttons",
+            "feature": "Push-to-talk billentyűkkel és egérgombokkal",
+            "note": "A Mumcord a Waylandet is támogatja a gyorsbillentyű-portálon keresztül."
+          },
+          {
+            "id": "noise-suppression-and-echo-cancellation",
+            "feature": "Zajszűrés és visszhangtalanítás",
+            "note": "Mumble: Speex vagy RNNoise. Mumcord: Könnyű, Normál, Haladó (2024-es RNNoise-modell, béta)."
+          },
+          {
+            "id": "whisper-and-shout-to-people-or-channels",
+            "feature": "Suttogás és kiabálás emberekhez vagy csatornákhoz"
+          },
+          {
+            "id": "music-quality-and-low-latency-mode",
+            "feature": "Zenei minőség és kis késleltetésű mód",
+            "note": "Mumble: bitráta és keretméret a hangbeállításokban. Mumcord: egy kapcsoló, plusz csatornánkénti előbeállítások."
+          },
+          {
+            "id": "listen-to-a-channel-s-voice-without-join",
+            "feature": "Csatorna hangjának hallgatása belépés nélkül",
+            "note": "A Mumble csatornafigyelői. A Mumcord már megmutatja a figyelőket, és a 0.10.0-val maga is tud figyelni."
+          },
+          {
+            "id": "recording-conversations",
+            "feature": "Beszélgetések rögzítése",
+            "note": "A Mumble beépített többcsatornás felvevővel rendelkezik. A Mumcord a 0.10.0-val kap felvételt."
+          }
+        ]
+      },
+      {
+        "id": "chat",
+        "title": "Chat",
+        "rows": [
+          {
+            "id": "text-chat-with-images",
+            "feature": "Szöveges chat képekkel",
+            "note": "A Mumble-ben a képeknek bele kell férniük a szerver üzenetméret-korlátjába."
+          },
+          {
+            "id": "markdown-formatting",
+            "feature": "Markdown formázás",
+            "note": "A Mumcord kódkiemelést és formázó eszköztárat ad hozzá."
+          },
+          {
+            "id": "link-previews-and-youtube-twitch-music-e",
+            "feature": "Linkelőnézetek és YouTube/Twitch/zenei beágyazások",
+            "note": "A Mumcord maga tölti le őket; kikapcsolhatók."
+          },
+          {
+            "id": "replies-and-quotes",
+            "feature": "Válaszok és idézetek",
+            "note": "A hivatalos Mumble-kliensek olvasható idézetet látnak."
+          },
+          {
+            "id": "mentions-with-their-own-notification",
+            "feature": "@említések saját értesítéssel",
+            "note": "A többi Mumble-kliens csak a szöveget látja."
+          },
+          {
+            "id": "read-and-write-in-channels-you-are-not-i",
+            "feature": "Olvasás és írás olyan csatornákban, amelyekben nem vagy bent",
+            "note": "A csatornát a szem ikonnal követheted."
+          },
+          {
+            "id": "chat-history-from-before-you-joined",
+            "feature": "Chat-előzmények a csatlakozásod előttről",
+            "note": "A Mumcord-felhasználók legfeljebb 7 napnyi csatornaelőzményt adnak tovább. A távol lévők teljes előzményeihez a Mumbot előzménybotja kell, a relaytől külön."
+          },
+          {
+            "id": "private-conversations-kept-across-sessio",
+            "feature": "Munkamenetek között megőrzött privát beszélgetések",
+            "note": "Csak a számítógépeden tárolódnak, szerverenként kikapcsolhatók."
+          },
+          {
+            "id": "text-to-speech-for-messages",
+            "feature": "Üzenetek felolvasása",
+            "note": "A Mumcord a 0.10.0-val kap felolvasást."
+          }
+        ]
+      },
+      {
+        "id": "media",
+        "title": "Média és megosztás",
+        "rows": [
+          {
+            "id": "full-size-images",
+            "feature": "Teljes méretű képek",
+            "note": "Relay nélkül csak közvetlen kapcsolaton át, ami megmutatja az IP-címedet a küldőnek. A hivatalos kliensek az előnézetet látják."
+          },
+          {
+            "id": "file-sharing",
+            "feature": "Fájlmegosztás",
+            "note": "Legfeljebb 2 GB, mindig a relayen át; a fájl sosem érinti a Mumble-szervert."
+          },
+          {
+            "id": "screen-sharing-with-sound",
+            "feature": "Képernyőmegosztás hanggal",
+            "note": "Közvetlen: legfeljebb 8 néző, mindegyik saját másolatot kap és látja az IP-címedet. Relay: legfeljebb 25 néző, rejtett IP-cím."
+          },
+          {
+            "id": "camera",
+            "feature": "Kamera",
+            "note": "Közvetlen: legfeljebb 8 néző. Relay: legfeljebb 18 kamera, egyenként 25 néző. Mindkét esetben végpontok közötti titkosítással."
+          },
+          {
+            "id": "youtube-watch-party",
+            "feature": "YouTube watch party",
+            "note": "A Mumble-szerveren át szinkronizálva, relay nem kell hozzá."
+          }
+        ]
+      },
+      {
+        "id": "privacy",
+        "title": "Szerverek és adatvédelem",
+        "rows": [
+          {
+            "id": "several-servers-connected-at-once",
+            "feature": "Egyszerre több szerverhez csatlakozás",
+            "note": "Alapból legfeljebb 5, 15-ig állítható."
+          },
+          {
+            "id": "ip-address-hidden-from-other-users",
+            "feature": "IP-cím elrejtése a többi felhasználó elől",
+            "note": "A Mumcord csak a beleegyezésed után csatlakozik közvetlenül, és ekkor a másik fél látja az IP-címedet. „Mindig relay” esetén senki sem látja. A Mumble-ben nincs közvetlen kapcsolat."
+          },
+          {
+            "id": "sharing-works-behind-cgnat-or-strict-fir",
+            "feature": "A megosztás működik CGNAT vagy szigorú tűzfal mögött is",
+            "note": "Relay nélkül a megosztáshoz közvetlen út kell (IPv6 vagy útválasztó-portleképezés)."
+          },
+          {
+            "id": "several-identities-certificates",
+            "feature": "Több identitás (tanúsítvány)",
+            "note": "A Mumble egyszerre egy tanúsítványt használ; a Mumcord szerverenként választ egyet."
+          },
+          {
+            "id": "block-people-across-servers",
+            "feature": "Emberek letiltása szerverek között",
+            "note": "Mumble: helyi némítás és üzenetek figyelmen kívül hagyása munkamenetenként."
+          },
+          {
+            "id": "control-who-may-send-private-messages",
+            "feature": "Annak szabályozása, ki küldhet privát üzenetet"
+          },
+          {
+            "id": "no-telemetry",
+            "feature": "Nincs telemetria",
+            "note": "A Mumble névtelen használati statisztikát küldhet, amit kikapcsolhatsz."
+          }
+        ]
+      },
+      {
+        "id": "plugins",
+        "title": "Bővítmények és játékok",
+        "rows": [
+          {
+            "id": "positional-audio-in-games",
+            "feature": "Pozicionális hang játékokban",
+            "note": "A Mumcord a Mumble Linket és a Mumble hivatalos játékbővítményeit használja (béta)."
+          },
+          {
+            "id": "in-game-overlay",
+            "feature": "Játékon belüli overlay",
+            "note": "Mumcord: Vulkan-réteg Linuxon, átkattintható ablak Windowson; macOS-en és FreeBSD-n nincs."
+          },
+          {
+            "id": "mumble-plugins",
+            "feature": "Mumble-bővítmények",
+            "note": "Natív bővítmények, főleg pozicionális hanghoz játékokban. A Mumcord a Mumble hivatalos játékbővítményeit használja (béta)."
+          },
+          {
+            "id": "mumcord-plugins",
+            "feature": "Mumcord-bővítmények",
+            "note": "Homokozóban futó, aláírt WebAssembly-bővítmények áruházzal: szavazások, kockák, játékok, tábla és még sok más."
+          },
+          {
+            "id": "polls-dice-and-mini-games-in-the-channel",
+            "feature": "Szavazások, kockák és minijátékok a csatornában",
+            "note": "A Mumble-szerveren át. A hivatalos kliensek a !poll paranccsal szavaznak."
+          },
+          {
+            "id": "large-plugin-game-data",
+            "feature": "Nagy bővítmény-játékadatok",
+            "note": "Relay nélkül csak kis üzenetek a Mumble-szerveren át; vele üzenetenként legfeljebb 64 KB, végpontok közötti titkosítással."
+          }
+        ]
+      },
+      {
+        "id": "admin",
+        "title": "Adminisztráció",
+        "rows": [
+          {
+            "id": "permissions-acl-and-groups-editor",
+            "feature": "Jogosultságok (ACL) és csoportok szerkesztője",
+            "note": "A Mumcord minden válaszát megmagyarázza, és figyelmeztet, mielőtt kizárnád magad."
+          },
+          {
+            "id": "kick-ban-and-ban-list",
+            "feature": "Kirúgás, tiltás és tiltólista"
+          },
+          {
+            "id": "registered-users",
+            "feature": "Regisztrált felhasználók"
+          },
+          {
+            "id": "create-edit-link-and-move-channels",
+            "feature": "Csatornák létrehozása, szerkesztése, összekapcsolása és mozgatása"
+          },
+          {
+            "id": "admin-commands-in-the-chat-kick-move",
+            "feature": "Admin parancsok a chatben (/kick, /move …)"
+          }
+        ]
+      },
+      {
+        "id": "platforms",
+        "title": "Platformok",
+        "rows": [
+          {
+            "id": "windows",
+            "feature": "Windows",
+            "note": "A Mumcord hordozható zipként is."
+          },
+          {
+            "id": "macos",
+            "feature": "macOS"
+          },
+          {
+            "id": "linux",
+            "feature": "Linux"
+          },
+          {
+            "id": "freebsd",
+            "feature": "FreeBSD",
+            "note": "Mumble a közösségi ports-fán át. Mumcord: ott nincs kamera, overlay és képernyőmegosztás-hang."
+          },
+          {
+            "id": "android-and-ios",
+            "feature": "Android és iOS",
+            "note": "Léteznek harmadik féltől származó Mumble-appok (pl. Mumla); a Mumcord-appok hamarosan érkeznek."
+          },
+          {
+            "id": "works-with-any-standard-mumble-server",
+            "feature": "Bármely szabványos Mumble-szerverrel működik",
+            "note": "A Mumcord- és a hivatalos Mumble-felhasználók együtt beszélgetnek és csetelnek."
+          }
+        ]
+      }
+    ]
   }
 }

@@ -676,6 +676,49 @@ const source: Record<"de" | "en", RoadmapPage> = {
         ],
       },
       {
+        id: "epic-4.2",
+        tag: "Epic 4.2",
+        title: "Alles, was Mumble kann",
+        status: "now",
+        version: "0.10.0",
+        summary: "Mit 0.10.0 holt Mumcord auf, was der offizielle Client schon lange kann: einem Kanal zuhören, Gespräche aufnehmen, Nachrichten vorlesen, Mumble-Plugins von Dritten und Positional Audio ohne Beta. Dazu Komfort für Vielspieler und Admins.",
+        groups: [
+          {
+            title: "Zuhören und Sprechen",
+            items: [
+              "Einem anderen Kanal zuhören, ohne ihn zu betreten, mit eigener Lautstärke je Kanal (#873, #863)",
+              "Dauerhaft senden als eigener Sprachmodus (#862)",
+              "Andere Programme leiser, während jemand spricht (#866)",
+              "Ein Tastenkürzel zurück in den vorherigen Kanal (#871)",
+              "Lokale Stummschaltungen beim Start zurücksetzen, wenn du willst (#872)",
+            ],
+          },
+          {
+            title: "Aufnehmen und Vorlesen",
+            items: [
+              "Gespräche lokal aufnehmen, als eine Mischung oder eine Datei pro Person (#860)",
+              "Chat und Ereignisse vorlesen lassen (#861)",
+            ],
+          },
+          {
+            title: "Spiele und Plugins",
+            items: [
+              "Mumble-Plugins von Dritten über Mumbles Plugin-Schnittstelle (#869)",
+              "Positional Audio mit Ansicht und Tastenkürzel, raus aus der Beta (#868)",
+              "Overlay auch in Vollbild-Spielen unter Windows und auf macOS (#864)",
+            ],
+          },
+          {
+            title: "Für Admins und Skripte",
+            items: [
+              "Zugangs-Tokens je Server verwalten (#870)",
+              "Aktionen, die der Server festlegt, in den Menüs (#867)",
+              "Mumcord aus Skripten steuern, über die Kommandozeile und D-Bus (#865)",
+            ],
+          },
+        ],
+      },
+      {
         id: "epic-5",
         tag: "Epic 5",
         title: "Mumcord fürs Handy",
@@ -1357,6 +1400,49 @@ const source: Record<"de" | "en", RoadmapPage> = {
             mockups: [
               { shot: "admin-commands-list-dark", issue: 378, caption: "The command list in the chat" },
               { shot: "admin-commands-names-dark", issue: 378, caption: "Suggestions for names" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "epic-4.2",
+        tag: "Epic 4.2",
+        title: "Everything Mumble does",
+        status: "now",
+        version: "0.10.0",
+        summary: "With 0.10.0 Mumcord catches up on what the official client has long done: listening to a channel, recording calls, reading messages aloud, third-party Mumble plugins and positional audio out of beta. Plus comfort for gamers and admins.",
+        groups: [
+          {
+            title: "Listening and talking",
+            items: [
+              "Listen to another channel without joining it, with a volume per channel (#873, #863)",
+              "Always transmit as a voice mode of its own (#862)",
+              "Lower other applications while people talk (#866)",
+              "A hotkey back to the previous channel (#871)",
+              "Clear local mutes on start if you want (#872)",
+            ],
+          },
+          {
+            title: "Recording and reading aloud",
+            items: [
+              "Record calls locally, as one mixdown or one file per person (#860)",
+              "Have chat and events read aloud (#861)",
+            ],
+          },
+          {
+            title: "Games and plugins",
+            items: [
+              "Third-party Mumble plugins through Mumble's plugin API (#869)",
+              "Positional audio with a viewer and a hotkey, out of beta (#868)",
+              "Overlay in exclusive full-screen games on Windows and on macOS (#864)",
+            ],
+          },
+          {
+            title: "For admins and scripts",
+            items: [
+              "Manage access tokens per server (#870)",
+              "Actions the server defines, in the menus (#867)",
+              "Control Mumcord from scripts, by command line and D-Bus (#865)",
             ],
           },
         ],
