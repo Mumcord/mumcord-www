@@ -1,0 +1,13 @@
+---
+import Base from "../../layouts/Base.astro";
+import LibPage from "../../components/LibPage.astro";
+import { libsPage } from "../../lib/libs";
+import { libJsonLd } from "../../lib/jsonld";
+
+const t = libsPage.en;
+const p = t.pages.hwcodec;
+---
+
+<Base lang="en" page="hwcodec" title={`${p.title} — ${p.menu}`} description={p.description} jsonLd={libJsonLd("en", Astro.site!, "hwcodec")}>
+  <LibPage lang="en" lib="hwcodec" />
+</Base>

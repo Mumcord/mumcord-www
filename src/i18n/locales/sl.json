@@ -1431,7 +1431,7 @@
           {
             "id": "camera",
             "title": "Kamera",
-            "body": "Tvoja kamera za vse v tvojem glasovnem kanalu, samo prek relaya in šifrirana od konca do konca. Začne se s predogledom, ki ga nihče ne vidi, vklopita in izklopita pa jo gumb za kamero v uporabniški plošči, meni Aplikacije, sistemska vrstica in bližnjica.",
+            "body": "Tvoja kamera za vse v tvojem glasovnem kanalu, neposredno ali prek relaya in šifrirana od konca do konca. Začne se s predogledom, ki ga nihče ne vidi, vklopita in izklopita pa jo gumb za kamero v uporabniški plošči, meni Aplikacije, sistemska vrstica in bližnjica.",
             "alt": "Nastavitve kamere s predogledom"
           },
           {
@@ -1439,6 +1439,11 @@
             "title": "Soba s kamerami",
             "body": "Kamere v kanalu so nad klepetom, do devet ploščic v mreži ali ena velika ploščica z načinom Govorec. Ob deljenem zaslonu ali skupnem gledanju tvorijo trak ob njem ali nad njim, lahko pa jih skriješ.",
             "alt": "Soba s kamerami z več kamerami nad klepetom"
+          },
+          {
+            "id": "camera-path",
+            "title": "Neposredno ali prek releja",
+            "body": "Kamera in deljenje zaslona potujeta v novi obliki predstavnosti, neposredno med vama ali prek releja. Pot za kamero izbereš ti, soba s kamerami pa pokaže, katero dobi vsak gledalec. Kadar te nekdo ne vidi, Mumcord pove zakaj."
           },
           {
             "id": "camera-backgrounds",
@@ -1718,6 +1723,11 @@
             "body": "Če se Mumcord nepričakovano zapre, na tvoj računalnik shrani kratko poročilo in ti to pove ob naslednjem zagonu. V Nastavitve → Napredno in razvijalec vidiš zadnjih 10 in jih lahko kopiraš, izvoziš ali izbrišeš. Naloži se vedno le eno poročilo, in to šele, ko potrdiš, kaj natanko se pošlje."
           },
           {
+            "id": "freeze-reports",
+            "title": "Poročila o zamrznitvah (Linux)",
+            "body": "Ko okno preneha odgovarjati ali zvočna nit preseže proračun realnega časa, Mumcord shrani poročilo, ki pokaže, kje se zatika. Ko je bil Mumcord končan od zunaj, poročilo pove, s čim. Naloži se le, če želiš."
+          },
+          {
             "id": "aaron-tour",
             "title": "Aaron ti vse pokaže",
             "body": "Po nastavitvi te Aaron, aksolotl v barvah Mumcorda, popelje po glavnem oknu: strežniki, kanali, govorjenje, iskanje, klepet, aplikacije in teme, vsakič en nasvet. V čarovniku za nastavitev da kratek nasvet za vsak korak. Ogled znova zaženeš kadar koli v Nastavitve → O programu → Nasveti.",
@@ -1734,6 +1744,57 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.9.0",
+      "teaser": "Kamera in deljenje zaslona v novi obliki predstavnosti z neposredno ali relay potjo za vsakega gledalca, poročila o zamrznitvah v Linuxu, FreeBSD v namestitvenem skriptu in veliko popravkov.",
+      "summary": "Različica 0.9.0 prestavi kamero in deljenje zaslona v novo obliko predstavnosti: vsak gledalec dobi svojo pot, neposredno ali prek releja, soba s kamerami pa pokaže, katero. V Linuxu zamrznitve in nenadni izhodi zdaj pustijo poročilo, namestitveni skript podpira FreeBSD, šepet pa doseže natanko ljudi, ki si jih izbral. Poleg tega veliko popravkov za Windows in Linux.",
+      "groups": [
+        {
+          "title": "Novo",
+          "items": [
+            "Kamera in deljenje zaslona v novi obliki predstavnosti (#492, #814): slika in zvok kamere ter deljenja zaslona potujeta po novem pretoku predstavnosti, neposredno med vama ali prek releja, opis pretoka pa je na releju šifriran. Starejše različice Mumcorda še vedno dobijo staro obliko; kjer to ne zadošča, obvestilo pove, da je potreben novejši Mumcord.",
+            "Neposredno ali prek releja, za vsakega gledalca: pot za svojo kamero izbereš za vsako sejo, soba s kamerami pa za vsakega gledalca pokaže, ali slika prihaja neposredno ali prek releja. Kadar nekdo ne vidi tvoje kamere, Mumcord pojasni zakaj, tudi prek tipkovnice in bralnika zaslona.",
+            "Pregledovalnik paketov bere nov pretok predstavnosti: obliko, opis, kanale in sličice.",
+            "Poročila o zamrznitvah (Linux): ko okno približno 8 sekund ne odgovarja, Mumcord shrani poročilo vrste »freeze« s sklada vseh niti. Aplikacija teče naprej, poročilo pa se naloži le, če želiš.",
+            "Poročila o prekoračitvi realnega časa (Linux): ko zvočna nit preseže svoj proračun realnega časa, poročilo v Nastavitve → Poročila o zrušitvah pokaže, kje je bila zaposlena. To ni zrušitev; aplikacija teče naprej.",
+            "»Končal« (Linux): ko je bil Mumcord zaprt brez običajnega izklopa, poročilo navede, kaj je sistem zabeležil o tem, na primer out-of-memory killer ali SIGKILL od zunaj.",
+            "Namestitveni skript podpira FreeBSD (#781): na FreeBSD 15.x (amd64) prenese paket, ga preveri s SHA256 in namesti s pkg add. Ponoven zagon posodobi Mumcord, --uninstall ga odstrani."
+          ]
+        },
+        {
+          "title": "Izboljšano",
+          "items": [
+            "Dolgi pogovori se drsijo bolj gladko, seznami članov pa se ne razvrščajo več znova ob vsakem kazalniku govorjenja.",
+            "Slike in predstavnost se dekodirajo hitreje, nadomestna pretvorba za deljenje zaslona in kamero pa porabi manj pomnilnika.",
+            "Video kodirniki in dekodirniki za deljenje zaslona in kamero zdaj prihajajo iz odprtokodne knjižnice hwcodec, ki jo ekipa Mumcorda vzdržuje v lastnem repozitoriju (#449). Deljenje izgleda in deluje enako.",
+            "Protokol Mumble zdaj živi v odprtokodni knjižnici mumble-client-protocol (#455). Strežniki še vedno vidijo Mumcord kot »Mumcord« z njegovo različico."
+          ]
+        },
+        {
+          "title": "Popravljeno",
+          "items": [
+            "Windows: vdelani predvajalniki YouTube, Twitch, Spotify in SoundCloud ter watch party so od 0.8.0 ostajali črni. Spet predvajajo.",
+            "Windows: ko kamera ni dajala slike, se je Mumcord zataknil ob izhodu iz nastavitev kamere, pri menjavi kamere ali ob zapiranju (»Se ne odziva«). Ustavljanje zdaj obupa po dveh sekundah.",
+            "Linux: ni več trajne zamrznitve, ko odložiš, medtem ko PipeWire ne odgovarja.",
+            "Linux: Mumcord ne izgine več brez pogovornega okna o zrušitvi, ko je računalnik zelo zaseden (#844). Prednost realnega časa zdaj obdržijo samo zvočne niti.",
+            "Linux: za kratek čas zasedena glasovna nit obdrži prednost realnega časa, ker Mumcord med klicem obnovi predvideno rezervo 100 ms.",
+            "Linux: obvestilo »libayatana-appindicator is deprecated« se ne prikazuje več v terminalu in dnevniku ob vsakem zagonu (#822).",
+            "AppImage: ko manjka predvajanje H.264, predvajalnik predlaga posodobitev ali paket tvoje distribucije namesto gst-libav, ki ga AppImage ne more uporabiti (#567).",
+            "Ni več neskončnega ponovnega povezovanja s strežnikom, ki se zapre takoj po prijavi, na primer pri prepovedanem certifikatu: po 10 kratkih povezavah se Mumcord ustavi in pove, kaj se je zgodilo.",
+            "Ko se povezava konča, se konča tudi šepet v teku, držana tipka push-to-talk pa se šteje za spuščeno.",
+            "Pregledovalnik paketov: izvoz v Markdown ne pokvari več vrstice tabele, ko ime vsebuje poševnico nazaj (#771)."
+          ]
+        },
+        {
+          "title": "Varnost",
+          "items": [
+            "Šepet doseže samo ljudi, ki si jih izbral: doslej se je cilj vsakič iskal po imenu, zato je lahko poslušal tudi nekdo z enakim imenom. Šepet je zdaj vezan natanko na te ljudi; kdor se pridruži pozneje, ne sliši nič, ne glede na ime.",
+            "HTML klepeta in SVG-ji vtičnikov uporabljajo popravljeno različico ammonia (RUSTSEC-2026-0533, #819).",
+            "Novi identitetni ključi se ustvarjajo s popravljeno knjižnico rsa 0.10 (#131). Obstoječe identitete in certifikati ostanejo enaki."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.8.0",
       "teaser": "Skrbniški ukazi v klepetu, registrirani uporabniki, premikanje kanalov z vlečenjem, nov urejevalnik besedila in Aaron, ki ti vse pokaže.",

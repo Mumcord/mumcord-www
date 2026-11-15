@@ -1,6 +1,7 @@
 ---
 // Tick the features, get docker-compose.yml, .env and the setup commands. Runs in the browser only;
 // without JavaScript the page shows the defaults the guide below explains.
+import { getImageVersions } from "../lib/images";
 import CopyButton from "./CopyButton.astro";
 import { type Lang } from "../i18n";
 import { guides } from "../lib/server-guide";
@@ -18,7 +19,8 @@ const c = g.configurator;
 const fileLang = lang === "de" ? "de" : "en";
 const released = await getMumbotVersion();
 const mumbotVersion = await getBotImageVersion();
-const d = { ...DEFAULTS[fileLang], mumbotVersion };
+const mumpeerVersion = (await getImageVersions()).mumpeer;
+const d = { ...DEFAULTS[fileLang], mumbotVersion, mumpeerVersion };
 const site = Astro.site!.origin;
 // All bots run as one Mumbot with modules, which comes with 0.2.0; until it is out, say so.
 const modulesOut = atLeast(released, MUMBOT_MODULES_FROM);
@@ -39,7 +41,7 @@ const files = [
 ];
 ---
 
-<section class="cfg" id="configurator" aria-labelledby="cfg-h" data-configurator data-lang={fileLang} data-site={site} data-mumbot={mumbotVersion}>
+<section class="cfg" id="configurator" aria-labelledby="cfg-h" data-configurator data-lang={fileLang} data-site={site} data-mumbot={mumbotVersion} data-mumpeer={mumpeerVersion}>
   <h2 id="cfg-h" class="cfg-title" data-reveal><span class="live-dot" aria-hidden="true"></span>{c.title}</h2>
   <p class="body" data-reveal set:html={md(c.intro)} />
 
@@ -228,6 +230,7 @@ const files = [
         history: maybe("history"),
         quality: ((form.elements.namedItem("quality") as RadioNodeList).value || "standard") as Quality,
         mumbotVersion: root.dataset.mumbot!,
+        mumpeerVersion: root.dataset.mumpeer!,
         relayGuests: (form.elements.namedItem("relayGuests") as RadioNodeList).value === "1",
         pluginLimit: Number(v("pluginLimit").value),
         pluginBurst: Number(v("pluginBurst").value),

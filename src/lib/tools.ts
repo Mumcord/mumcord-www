@@ -227,13 +227,14 @@ export interface ToolRelease {
   url: string;
 }
 
-const cache = new Map<ToolId, Promise<ToolRelease | null>>();
+const cache = new Map<string, Promise<ToolRelease | null>>();
 
-async function load(id: ToolId): Promise<ToolRelease | null> {
+async function load(repo: string): Promise<ToolRelease | null> {
+  const id = repo;
   const headers: Record<string, string> = { Accept: "application/vnd.github+json", "User-Agent": "mumcord-www-build" };
   if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
   try {
-    const res = await fetch(`https://api.github.com/repos/${TOOL_REPO[id]}/releases?per_page=5`, { headers });
+    const res = await fetch(`https://api.github.com/repos/${repo}/releases?per_page=5`, { headers });
     if (!res.ok) {
       console.warn(`[tools] GitHub API answered ${res.status} for ${id}; building without release data`);
       return null;
@@ -248,7 +249,10 @@ async function load(id: ToolId): Promise<ToolRelease | null> {
 }
 
 /** The newest published release of a tool, or null before the first one. */
-export function getToolRelease(id: ToolId): Promise<ToolRelease | null> {
-  if (!cache.has(id)) cache.set(id, load(id));
-  return cache.get(id)!;
+export const getToolRelease = (id: ToolId) => getRepoRelease(TOOL_REPO[id]);
+
+/** The newest published release of any Mumcord repo ("Mumcord/hwcodec"), or null before the first one. */
+export function getRepoRelease(repo: string): Promise<ToolRelease | null> {
+  if (!cache.has(repo)) cache.set(repo, load(repo));
+  return cache.get(repo)!;
 }

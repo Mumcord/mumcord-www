@@ -1431,7 +1431,7 @@
           {
             "id": "camera",
             "title": "Kamera",
-            "body": "A kamerád mindenkinek a hangcsatornádban, csak a relén keresztül és végpontok közötti titkosítással. Egy előnézettel indul, amelyet senki sem lát, és a felhasználói panel kamera gombja, az Appok menü, a tálca és egy gyorsbillentyű kapcsolja be és ki.",
+            "body": "A kamerád mindenkinek a hangcsatornádban, közvetlenül vagy a relén keresztül és végpontok közötti titkosítással. Egy előnézettel indul, amelyet senki sem lát, és a felhasználói panel kamera gombja, az Appok menü, a tálca és egy gyorsbillentyű kapcsolja be és ki.",
             "alt": "A kamera beállításai előnézettel"
           },
           {
@@ -1439,6 +1439,11 @@
             "title": "Kameraszoba",
             "body": "A csatorna kamerái a chat fölött vannak, legfeljebb kilenc csempe rácsban vagy egy nagy csempe a Beszélővel. Képernyőmegosztás vagy watch party mellett sávot alkotnak mellette vagy fölötte, vagy elrejted őket.",
             "alt": "A kameraszoba több kamerával a chat fölött"
+          },
+          {
+            "id": "camera-path",
+            "title": "Közvetlen vagy relay",
+            "body": "A kamera és a képernyőmegosztás új médiaformátumban utazik, közvetlenül köztetek vagy a relayen át. Te választod meg a kamerád útját, a kameraszoba pedig megmutatja, melyiket kapja az egyes néző. Ha valaki nem lát téged, a Mumcord megmondja, miért."
           },
           {
             "id": "camera-backgrounds",
@@ -1718,6 +1723,11 @@
             "body": "Ha a Mumcord váratlanul bezárul, rövid jelentést ment a gépedre, és a következő indításkor szól róla. A Beállítások → Haladó és fejlesztő alatt látod az utolsó 10-et, és másolhatod, exportálhatod vagy törölheted őket. Mindig csak egyetlen jelentés töltődik fel, és csak azután, hogy megerősítetted, pontosan mi megy el."
           },
           {
+            "id": "freeze-reports",
+            "title": "Lefagyásjelentések (Linux)",
+            "body": "Ha az ablak nem válaszol, vagy egy hangszál túllépi a valós idejű keretét, a Mumcord elment egy jelentést, amely megmutatja, hol akad el. Ha a Mumcordot kívülről állították le, a jelentés megmondja, mivel. Csak akkor töltődik fel, ha te akarod."
+          },
+          {
             "id": "aaron-tour",
             "title": "Aaron körbevezet",
             "body": "A beállítás után Aaron, a Mumcord színeiben pompázó axolotl végigvezet a főablakon: szerverek, csatornák, beszéd, keresés, csevegés, appok és témák, egyszerre egy tippel. A beállítóvarázslóban minden lépéshez ad egy rövid tippet. A körutat bármikor újraindíthatod a Beállítások → Névjegy → Tippek alatt.",
@@ -1734,6 +1744,57 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.9.0",
+      "teaser": "Kamera és képernyőmegosztás új médiaformátumban, nézőnként közvetlen vagy relay-úton, jelentések Linuxon a lefagyásokról, FreeBSD a telepítőszkriptben és sok javítás.",
+      "summary": "A 0.9.0 új médiaformátumra állítja át a kamerát és a képernyőmegosztást: minden néző saját utat kap, közvetlenül vagy a relayen át, és a kameraszoba mutatja, melyiket. Linuxon a lefagyások és a hirtelen kilépések most jelentést hagynak, a telepítőszkript támogatja a FreeBSD-t, a suttogás pedig pontosan csak azokhoz jut el, akiket kiválasztottál. Ráadásul sok javítás Windowsra és Linuxra.",
+      "groups": [
+        {
+          "title": "Új",
+          "items": [
+            "Kamera és képernyőmegosztás új médiaformátumban (#492, #814): a kamera és a képernyőmegosztás képe és hangja új médiafolyamban utazik, közvetlenül köztetek vagy a relayen át, a folyam leírása pedig titkosított a relayen. A régebbi Mumcord-verziók továbbra is a régi formátumot kapják; ahol ez nem elég, egy megjegyzés jelzi, hogy újabb Mumcord kell.",
+            "Közvetlen vagy relay, nézőnként: a kamerád útját munkamenetenként te választod, a kameraszoba pedig minden nézőnél megmutatja, hogy a kép közvetlenül vagy a relayen át érkezik-e. Ha valaki nem látja a kameradat, a Mumcord megmondja, miért, billentyűzettel és képernyőolvasóval is.",
+            "A csomagvizsgáló olvassa az új médiafolyamot: formátum, leírás, csatornák és képkockák.",
+            "Lefagyásjelentések (Linux): ha az ablak körülbelül 8 másodpercig nem válaszol, a Mumcord elment egy „freeze” típusú jelentést az összes szál veremével. Az alkalmazás tovább fut, a jelentés pedig csak akkor töltődik fel, ha te akarod.",
+            "Valós idejű túllépés jelentések (Linux): ha egy hangszál túllépi a valós idejű keretét, a Beállítások → Összeomlásjelentések alatti jelentés megmutatja, hol volt elfoglalva. Ez nem összeomlás; az alkalmazás tovább fut.",
+            "„Ended by” (Linux): ha a Mumcord leállítás nélkül záródott be, a jelentés megnevezi, mit jegyzett fel róla a rendszer, például az out-of-memory killert vagy egy kívülről érkező SIGKILL-t.",
+            "A telepítőszkript támogatja a FreeBSD-t (#781): FreeBSD 15.x-en (amd64) letölti a csomagot, SHA256-tal ellenőrzi és pkg add-dal telepíti. Újrafuttatva frissíti a Mumcordot, a --uninstall eltávolítja."
+          ]
+        },
+        {
+          "title": "Továbbfejlesztve",
+          "items": [
+            "A hosszú beszélgetések simábban görgethetők, a tagok listája pedig már nem rendeződik újra minden beszédjelzőnél.",
+            "A képek és a média gyorsabban dekódolódnak, a képernyőmegosztás és a kamera tartalék átalakítása pedig kevesebb memóriát használ.",
+            "A képernyőmegosztás és a kamera videókódolói és -dekódolói mostantól a nyílt forráskódú hwcodec könyvtárból jönnek, amelyet a Mumcord csapata a saját repójában gondoz (#449). A megosztás ugyanúgy néz ki és működik.",
+            "A Mumble protokoll mostantól a nyílt forráskódú mumble-client-protocol könyvtárban él (#455). A szerverek továbbra is „Mumcord” néven látják a Mumcordot a verziójával."
+          ]
+        },
+        {
+          "title": "Javítva",
+          "items": [
+            "Windows: a beágyazott YouTube-, Twitch-, Spotify- és SoundCloud-lejátszók és a watch party a 0.8.0 óta feketék maradtak. Újra lejátszanak.",
+            "Windows: ha a kamera nem adott képet, a Mumcord lefagyott a kamerabeállítások elhagyásakor, kameraváltáskor vagy bezáráskor („Nem válaszol”). A leállítás most két másodperc után feladja.",
+            "Linux: nincs többé tartós lefagyás, ha leteszed a hívást, miközben a PipeWire nem válaszol.",
+            "Linux: a Mumcord többé nem tűnik el összeomlás-párbeszédablak nélkül, ha a gép nagyon leterhelt (#844). Valós idejű prioritást most már csak a hangszálak tartanak meg.",
+            "Linux: egy rövid ideig elfoglalt hangszál megtartja a valós idejű prioritását, mert a Mumcord hívás közben visszaállítja a tervezett 100 ms-os tartalékot.",
+            "Linux: a „libayatana-appindicator is deprecated” üzenet már nem jelenik meg a terminálban és a naplóban minden induláskor (#822).",
+            "AppImage: ha hiányzik a H.264 lejátszás, a lejátszó frissítést vagy a disztribúciód csomagját javasolja a gst-libav helyett, amelyet az AppImage nem tud használni (#567).",
+            "Nincs többé végtelen újracsatlakozás egy olyan szerverhez, amely a bejelentkezés után azonnal bezár, például tiltott tanúsítvány miatt: 10 rövid kapcsolat után a Mumcord leáll, és megmondja, mi történt.",
+            "Ha a kapcsolat megszakad, a futó suttogás is véget ér, a lenyomva tartott push-to-talk billentyű pedig felengedettnek számít.",
+            "Csomagvizsgáló: a Markdown-exportálás már nem töri el a táblázat sorát, ha egy név fordított perjelet tartalmaz (#771)."
+          ]
+        },
+        {
+          "title": "Biztonság",
+          "items": [
+            "A suttogás csak azokhoz jut el, akiket kiválasztottál: eddig a célt minden alkalommal név alapján keresték meg, így egy azonos nevű valaki belehallgathatott. A suttogás mostantól pontosan ezekhez az emberekhez kötődik; aki később csatlakozik, semmit nem hall, bármi is a neve.",
+            "A chat HTML-je és a bővítmények SVG-i az ammonia javított verzióját használják (RUSTSEC-2026-0533, #819).",
+            "Az új identitáskulcsok a javított rsa 0.10 könyvtárral készülnek (#131). A meglévő identitások és tanúsítványok változatlanok maradnak."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.8.0",
       "teaser": "Admin parancsok a csevegésben, regisztrált felhasználók, húzással mozgatható csatornák, új szövegszerkesztő, és Aaron, aki körbevezet.",

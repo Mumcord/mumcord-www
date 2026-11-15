@@ -1,4 +1,5 @@
 ---
+import { getImageVersions, withImageVersions } from "../lib/images";
 import CopyButton from "./CopyButton.astro";
 import ServerConfigurator from "./ServerConfigurator.astro";
 import { highlight, langOf } from "../lib/highlight";
@@ -20,6 +21,7 @@ const services = [
   { name: "mumbot", port: "8080" },
 ];
 import Arrow from "./Arrow.astro";
+const images = await getImageVersions();
 ---
 
 <article class="wrap guide">
@@ -93,7 +95,7 @@ import Arrow from "./Arrow.astro";
                   <span>{c.file ?? "Terminal"}</span>
                   <CopyButton label={g.copy} copied={g.copied} class="is-quiet" />
                 </figcaption>
-                <pre><code set:html={highlight(c.code.trimEnd(), langOf(c.file))} /></pre>
+                <pre><code set:html={highlight(withImageVersions(c.code.trimEnd(), images), langOf(c.file))} /></pre>
               </figure>
             ))}
             {s.after?.map((p) => <p set:html={p} />)}

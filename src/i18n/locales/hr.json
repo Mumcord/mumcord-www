@@ -1431,7 +1431,7 @@
           {
             "id": "camera",
             "title": "Kamera",
-            "body": "Tvoja kamera za sve u tvom glasovnom kanalu, samo preko releja i end-to-end šifrirana. Počinje pregledom koji nitko ne vidi, a gumb kamere u korisničkoj ploči, izbornik Aplikacije, traka sustava i prečac uključuju je i isključuju.",
+            "body": "Tvoja kamera za sve u tvom glasovnom kanalu, izravno ili preko releja i end-to-end šifrirana. Počinje pregledom koji nitko ne vidi, a gumb kamere u korisničkoj ploči, izbornik Aplikacije, traka sustava i prečac uključuju je i isključuju.",
             "alt": "Postavke kamere s pregledom"
           },
           {
@@ -1439,6 +1439,11 @@
             "title": "Soba kamera",
             "body": "Kamere u kanalu su iznad chata, do devet pločica u mreži ili jedna velika pločica uz Govornika. Uz dijeljenje zaslona ili watch party tvore traku pored ili iznad njega, ili ih sakriješ.",
             "alt": "Soba kamera s nekoliko kamera iznad chata"
+          },
+          {
+            "id": "camera-path",
+            "title": "Izravno ili preko releja",
+            "body": "Kamera i dijeljenje zaslona putuju novim medijskim formatom, izravno među vama ili preko releja. Ti biraš put za svoju kameru, a soba kamera pokazuje koji dobiva svaki gledatelj. Kad te netko ne vidi, Mumcord kaže zašto."
           },
           {
             "id": "camera-backgrounds",
@@ -1718,6 +1723,11 @@
             "body": "Ako se Mumcord neočekivano zatvori, sprema kratko izvješće na tvoje računalo i javi ti to pri sljedećem pokretanju. U Postavke → Napredno i razvoj vidiš zadnjih 10 i možeš ih kopirati, izvesti ili izbrisati. Učitava se uvijek samo jedno izvješće, i to tek nakon što potvrdiš što se točno šalje."
           },
           {
+            "id": "freeze-reports",
+            "title": "Izvješća o zamrzavanju (Linux)",
+            "body": "Kad prozor prestane odgovarati ili audio dretva prekorači svoj proračun u stvarnom vremenu, Mumcord sprema izvješće koje pokazuje gdje zapinje. Kad je Mumcord prekinut izvana, izvješće kaže čime. Šalje se samo ako to želiš."
+          },
+          {
             "id": "aaron-tour",
             "title": "Aaron te vodi kroz aplikaciju",
             "body": "Nakon postavljanja Aaron, aksolotl u bojama Mumcorda, provede te kroz glavni prozor: poslužitelji, kanali, govor, pretraga, chat, aplikacije i teme, jedan savjet po jedan. U čarobnjaku za postavljanje daje kratak savjet za svaki korak. Obilazak možeš ponovno pokrenuti kad god želiš pod Postavke → O programu → Savjeti.",
@@ -1734,6 +1744,57 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.9.0",
+      "teaser": "Kamera i dijeljenje zaslona u novom medijskom formatu s izravnim putem ili putem releja za svakog gledatelja, izvješća o zamrzavanju na Linuxu, FreeBSD u instalacijskoj skripti i mnogo ispravaka.",
+      "summary": "Verzija 0.9.0 prebacuje kameru i dijeljenje zaslona na novi medijski format: svaki gledatelj dobiva vlastiti put, izravno ili preko releja, a soba kamera pokazuje koji. Na Linuxu zamrzavanja i nagla zatvaranja sada ostavljaju izvješće, instalacijska skripta podržava FreeBSD, a whisper stiže samo do točno onih ljudi koje si odabrao. Uz to mnogo ispravaka za Windows i Linux.",
+      "groups": [
+        {
+          "title": "Novo",
+          "items": [
+            "Kamera i dijeljenje zaslona u novom medijskom formatu (#492, #814): slika i zvuk kamere i dijeljenja zaslona putuju novim medijskim tokom, izravno među vama ili preko releja, a opis toka na releju je šifriran. Starije verzije Mumcorda i dalje dobivaju stari format; gdje to nije dovoljno, napomena kaže da je potreban noviji Mumcord.",
+            "Izravno ili preko releja, po gledatelju: put za svoju kameru biraš po sesiji, a soba kamera za svakog gledatelja pokazuje stiže li slika izravno ili preko releja. Kad netko ne vidi tvoju kameru, Mumcord objašnjava zašto, i tipkovnicom i čitačem zaslona.",
+            "Inspektor paketa čita novi medijski tok: format, opis, kanale i okvire.",
+            "Izvješća o zamrzavanju (Linux): kad prozor ne odgovara oko 8 sekundi, Mumcord sprema izvješće vrste „freeze” sa stogovima svih dretvi. Aplikacija nastavlja raditi, a izvješće se šalje samo ako to želiš.",
+            "Izvješća o prekoračenju u stvarnom vremenu (Linux): kad audio dretva prekorači svoj proračun u stvarnom vremenu, izvješće pod Postavke → Izvješća o rušenju pokazuje gdje je bila zauzeta. To nije rušenje; aplikacija nastavlja raditi.",
+            "„Ended by” (Linux): kad je Mumcord zatvoren bez uredna gašenja, izvješće navodi što je sustav o tome zabilježio, na primjer out-of-memory killer ili SIGKILL izvana.",
+            "Instalacijska skripta podržava FreeBSD (#781): na FreeBSD-u 15.x (amd64) preuzima paket, provjerava ga prema SHA256 i instalira s pkg add. Ponovno pokretanje ažurira Mumcord, --uninstall ga uklanja."
+          ]
+        },
+        {
+          "title": "Poboljšano",
+          "items": [
+            "Dugi razgovori glatnije se pomiču, a popisi članova više se ne presortiraju uz svaki indikator govora.",
+            "Slike i mediji dekodiraju se brže, a rezervna konverzija za dijeljenje zaslona i kameru troši manje memorije.",
+            "Video koderi i dekoderi za dijeljenje zaslona i kameru sada dolaze iz otvorene biblioteke hwcodec, koju Mumcord tim održava u vlastitom repozitoriju (#449). Dijeljenje izgleda i radi isto.",
+            "Mumble protokol sada živi u otvorenoj biblioteci mumble-client-protocol (#455). Poslužitelji i dalje vide Mumcord kao „Mumcord” s njegovom verzijom."
+          ]
+        },
+        {
+          "title": "Popravljeno",
+          "items": [
+            "Windows: ugrađeni YouTube, Twitch, Spotify i SoundCloud playeri i watch party ostajali su crni od verzije 0.8.0. Ponovno se reproduciraju.",
+            "Windows: kad kamera nije slala sliku, Mumcord se zaglavio pri izlasku iz postavki kamere, promjeni kamere ili zatvaranju („Ne odgovara”). Zaustavljanje sada odustaje nakon dvije sekunde.",
+            "Linux: nema više trajnog zamrzavanja kad prekineš poziv dok PipeWire ne odgovara.",
+            "Linux: Mumcord više ne nestaje bez dijaloga o rušenju kad je računalo jako opterećeno (#844). Prioritet u stvarnom vremenu sada zadržavaju samo audio dretve.",
+            "Linux: kratko zauzeta glasovna dretva zadržava prioritet u stvarnom vremenu, jer Mumcord tijekom poziva vraća predviđenu rezervu od 100 ms.",
+            "Linux: obavijest „libayatana-appindicator is deprecated” više se ne prikazuje u terminalu i logu pri svakom pokretanju (#822).",
+            "AppImage: kad nedostaje H.264 reprodukcija, player predlaže ažuriranje ili paket tvoje distribucije umjesto gst-libav, koji AppImage ne može koristiti (#567).",
+            "Nema više beskrajnog ponovnog spajanja na poslužitelj koji se zatvara odmah nakon prijave, na primjer zbog zabranjenog certifikata: nakon 10 kratkih veza Mumcord staje i kaže što se dogodilo.",
+            "Kad veza završi, završava i whisper koji je u tijeku, a držana push-to-talk tipka računa se kao otpuštena.",
+            "Inspektor paketa: Markdown izvoz više ne lomi redak tablice kad ime sadrži obrnutu kosu crtu (#771)."
+          ]
+        },
+        {
+          "title": "Sigurnost",
+          "items": [
+            "Whisper stiže samo do ljudi koje si odabrao: do sada se cilj svaki put tražio po imenu, pa je netko s istim imenom mogao prisluškivati. Whisper je sada vezan točno uz te ljude; tko se pridruži kasnije, ne čuje ništa, bez obzira na ime.",
+            "HTML chata i SVG-ovi dodataka koriste zakrpanu verziju ammonije (RUSTSEC-2026-0533, #819).",
+            "Novi ključevi identiteta izrađuju se ispravljenom bibliotekom rsa 0.10 (#131). Postojeći identiteti i certifikati ostaju isti."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.8.0",
       "teaser": "Admin naredbe u chatu, registrirani korisnici, kanali koje premještaš povlačenjem, novi uređivač teksta i Aaron koji te vodi kroz aplikaciju.",

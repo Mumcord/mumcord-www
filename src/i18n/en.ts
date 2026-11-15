@@ -47,6 +47,9 @@ export const en: Dict = {
     tools: "Tools",
     toolPeer: { title: "mumpeer", desc: "Relay for direct connections" },
     toolQuiz: { title: "mumquiz", desc: "Quiz bot for your server" },
+    libs: "Libraries",
+    libCodec: { title: "hwcodec", desc: "AV1 and VP9 encoding, no FFmpeg" },
+    libProtocol: { title: "mumble-client-protocol", desc: "The Mumble protocol for Rust" },
     botIssues: { title: "Issues", desc: "Ideas and bugs for Mumbot" },
   },
   hero: {

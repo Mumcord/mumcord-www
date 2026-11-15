@@ -27,6 +27,57 @@ export interface ChangelogEntry {
 const source: Record<"de" | "en", ChangelogEntry[]> = {
   de: [
     {
+      version: "0.9.0",
+      teaser: "Kamera und Bildschirm im neuen Medienformat mit direktem oder Relay-Weg je Zuschauer, Berichte für Hänger unter Linux, FreeBSD im Installskript und viele Korrekturen.",
+      summary: "0.9.0 bringt Kamera und Bildschirm teilen auf ein neues Medienformat: Jeder Zuschauer bekommt seinen eigenen Weg, direkt oder übers Relay, und der Kameraraum zeigt, welcher es ist. Unter Linux hinterlassen Hänger und Abbrüche jetzt einen Bericht, das Installskript kann FreeBSD, und Flüstern geht nur noch an genau die Leute, die du gewählt hast. Dazu viele Korrekturen für Windows und Linux.",
+      groups: [
+        {
+          title: "Neu",
+          items: [
+            "Kamera und Bildschirm im neuen Medienformat (#492, #814): Bild und Ton von Kamera und Bildschirm teilen laufen in einem neuen Medienstrom, direkt zwischen euch oder übers Relay, und die Beschreibung des Stroms ist auf dem Relay verschlüsselt. Ältere Mumcord-Versionen bekommen weiter das alte Format; wo das nicht reicht, sagt ein Hinweis, dass ein neueres Mumcord nötig ist.",
+            "Direkt oder übers Relay, je Zuschauer: Für deine Kamera wählst du den Weg pro Sitzung, und der Kameraraum zeigt bei jedem Zuschauer, ob das Bild direkt oder übers Relay kommt. Sieht jemand deine Kamera nicht, erklärt Mumcord warum, auch per Tastatur und Screenreader.",
+            "Der Paket-Inspektor liest den neuen Medienstrom: Format, Beschreibung, Kanäle und Frames.",
+            "Berichte für Hänger (Linux): Reagiert das Fenster etwa 8 Sekunden nicht, speichert Mumcord einen Bericht der Art „Hänger“ mit den Stacks aller Threads. Die App läuft weiter, und der Bericht wird nur hochgeladen, wenn du es willst.",
+            "Berichte bei Zeitüberschreitung (Linux): Läuft ein Audio-Thread über sein Echtzeit-Budget, zeigt ein Bericht unter Einstellungen → Absturzberichte, wo er beschäftigt war. Das ist kein Absturz, die App läuft weiter.",
+            "„Beendet durch“ (Linux): Wurde Mumcord ohne Herunterfahren beendet, nennt der Bericht, was das System dazu aufgezeichnet hat, etwa den Out-of-Memory-Killer oder ein SIGKILL von außen.",
+            "Das Installskript kann FreeBSD (#781): Auf FreeBSD 15.x (amd64) lädt es das Paket, prüft es per SHA256 und installiert es mit pkg add. Erneut ausgeführt aktualisiert es Mumcord, --uninstall entfernt es wieder.",
+          ],
+        },
+        {
+          title: "Verbessert",
+          items: [
+            "Lange Unterhaltungen scrollen flüssiger, und Mitgliederlisten sortieren nicht mehr bei jeder Sprechanzeige neu.",
+            "Bilder und Medien dekodieren schneller, und die Ersatz-Umrechnung für Bildschirm und Kamera braucht weniger Speicher.",
+            "Die Video-Encoder und -Decoder für Bildschirm und Kamera kommen jetzt aus der offenen Bibliothek hwcodec, die das Mumcord-Team in einem eigenen Repository pflegt (#449). Am Teilen ändert sich nichts.",
+            "Das Mumble-Protokoll steckt jetzt in der offenen Bibliothek mumble-client-protocol (#455). Server sehen Mumcord weiter als „Mumcord“ mit seiner Version.",
+          ],
+        },
+        {
+          title: "Behoben",
+          items: [
+            "Windows: Eingebettete YouTube-, Twitch-, Spotify- und SoundCloud-Player und die Watch Party blieben seit 0.8.0 schwarz. Sie spielen wieder.",
+            "Windows: Lieferte eine Kamera kein Bild, hing Mumcord beim Verlassen der Kamera-Einstellungen, beim Kamerawechsel oder beim Schließen („Keine Rückmeldung“). Das Stoppen gibt jetzt nach zwei Sekunden auf.",
+            "Linux: Kein dauerhaftes Einfrieren mehr beim Auflegen, wenn PipeWire nicht antwortet.",
+            "Linux: Mumcord verschwindet nicht mehr ohne Absturzdialog, wenn der Rechner stark ausgelastet ist (#844). Nur noch die Audio-Threads laufen mit Echtzeit-Priorität.",
+            "Linux: Ein kurz beschäftigter Sprach-Thread behält seine Echtzeit-Priorität, weil Mumcord den vorgesehenen Spielraum von 100 ms während eines Gesprächs wiederherstellt.",
+            "Linux: Der Hinweis „libayatana-appindicator is deprecated“ erscheint nicht mehr bei jedem Start im Terminal und im Log (#822).",
+            "AppImage: Fehlt die H.264-Wiedergabe, schlägt der Player ein Update oder das Paket deiner Distribution vor statt gst-libav, das die AppImage nicht nutzen kann (#567).",
+            "Kein endloses Neuverbinden mehr zu einem Server, der direkt nach der Anmeldung trennt, etwa bei gesperrtem Zertifikat: Nach 10 kurzen Verbindungen hört Mumcord auf und sagt, was passiert ist.",
+            "Endet die Verbindung, endet auch ein laufendes Flüstern, und eine gehaltene Push-to-Talk-Taste gilt als losgelassen.",
+            "Paket-Inspektor: Der Markdown-Export zerreißt keine Tabellenzeile mehr, wenn ein Name einen Backslash enthält (#771).",
+          ],
+        },
+        {
+          title: "Sicherheit",
+          items: [
+            "Flüstern geht nur noch an die Leute, die du gewählt hast: Bisher wurde das Ziel jedes Mal per Name gesucht, sodass jemand mit demselben Namen mithören konnte. Jetzt ist ein Flüstern an genau diese Personen gebunden; wer später dazukommt, hört nichts, egal wie er heißt.",
+            "Chat-HTML und Plugin-SVGs nutzen eine abgesicherte Version von ammonia (RUSTSEC-2026-0533, #819).",
+            "Neue Identitätsschlüssel entstehen mit der korrigierten Bibliothek rsa 0.10 (#131). Bestehende Identitäten und Zertifikate bleiben unverändert.",
+          ],
+        },
+      ],
+    },
+    {
       version: "0.8.0",
       teaser: "Admin-Befehle im Chat, registrierte Nutzer, Kanäle per Ziehen verschieben, ein neuer Texteditor und Aaron, der dir Mumcord zeigt.",
       summary: "Mit 0.8.0 ist der Admin-Teil komplett: Admin-Befehle direkt im Chat, registrierte Nutzer verwalten, Kanäle per Ziehen verschieben und ein Admin-Bereich in den Server-Infos. Dazu kommen Benachrichtigungen je Art, #Kanal-Erwähnungen, ein neuer Editor für Kommentare und Beschreibungen, Aaron als Begleiter für den ersten Start und eigene Downloads für Macs mit Apple Silicon und Intel.",
@@ -870,6 +921,57 @@ const source: Record<"de" | "en", ChangelogEntry[]> = {
     },
   ],
   en: [
+    {
+      version: "0.9.0",
+      teaser: "Camera and screen share in a new media format with a direct or relay path per viewer, reports for freezes on Linux, FreeBSD in the install script and many fixes.",
+      summary: "0.9.0 moves camera and screen sharing to a new media format: every viewer gets their own path, direct or through the relay, and the camera room shows which. On Linux, freezes and abrupt exits now leave a report, the install script supports FreeBSD, and a whisper only reaches the exact people you picked. Plus many fixes for Windows and Linux.",
+      groups: [
+        {
+          title: "New",
+          items: [
+            "Camera and screen share in a new media format (#492, #814): picture and sound from camera and screen share travel in a new media stream, directly between you or through the relay, with the stream description encrypted on the relay. Older Mumcord versions still get the old format; where that is not enough, a note says a newer Mumcord is needed.",
+            "Direct or relay, per viewer: you choose the path for your camera per session, and the camera room shows for every viewer whether the picture comes directly or through the relay. When someone can't see your camera, Mumcord explains why, also by keyboard and screen reader.",
+            "The packet inspector reads the new media stream: format, description, channels and frames.",
+            "Freeze reports (Linux): when the window hasn't answered for about 8 seconds, Mumcord saves a report of kind \"freeze\" with the stacks of all threads. The app keeps running, and the report is only uploaded if you want it to be.",
+            "Real-time overrun reports (Linux): when an audio thread runs past its real-time budget, a report under Settings → Crash reports shows where it was busy. It is not a crash; the app keeps running.",
+            "\"Ended by\" (Linux): when Mumcord was closed without shutting down, the report names what the system recorded about it, such as the out-of-memory killer or a SIGKILL from outside.",
+            "The install script supports FreeBSD (#781): on FreeBSD 15.x (amd64) it downloads the package, checks it against SHA256 and installs it with pkg add. Running it again updates Mumcord, --uninstall removes it.",
+          ],
+        },
+        {
+          title: "Improved",
+          items: [
+            "Long conversations scroll more smoothly, and member lists no longer re-sort on every talking indicator.",
+            "Images and media decode faster, and the fallback conversion for screen share and camera uses less memory.",
+            "The video encoders and decoders for screen share and camera now come from the open-source hwcodec library, which the Mumcord team maintains in its own repository (#449). Sharing looks and works the same.",
+            "The Mumble protocol now lives in the open-source mumble-client-protocol library (#455). Servers still see Mumcord as \"Mumcord\" with its version.",
+          ],
+        },
+        {
+          title: "Fixed",
+          items: [
+            "Windows: embedded YouTube, Twitch, Spotify and SoundCloud players and the watch party stayed black since 0.8.0. They play again.",
+            "Windows: when a camera delivered no picture, Mumcord hung when leaving the camera settings, switching cameras or closing (\"Not responding\"). Stopping now gives up after two seconds.",
+            "Linux: no more lasting freeze when you hang up while PipeWire isn't answering.",
+            "Linux: Mumcord no longer disappears without a crash dialog when the computer is very busy (#844). Only the audio threads keep real-time priority now.",
+            "Linux: a briefly busy voice thread keeps its real-time priority, because Mumcord restores the intended 100 ms margin during a call.",
+            "Linux: the notice \"libayatana-appindicator is deprecated\" no longer shows in the terminal and the log on every start (#822).",
+            "AppImage: when H.264 playback is missing, the player suggests an update or your distribution's package instead of gst-libav, which the AppImage can't use (#567).",
+            "No more endless reconnecting to a server that closes right after login, for example with a banned certificate: after 10 short connections Mumcord stops and says what happened.",
+            "When the connection ends, a running whisper ends too, and a held push-to-talk key counts as released.",
+            "Packet inspector: the Markdown export no longer breaks a table row when a name contains a backslash (#771).",
+          ],
+        },
+        {
+          title: "Security",
+          items: [
+            "A whisper only reaches the people you picked: until now the target was looked up by name each time, so someone with the same name could listen in. A whisper is now tied to exactly those people; anyone who joins later hears nothing, whatever their name.",
+            "Chat HTML and plugin SVGs use a patched version of ammonia (RUSTSEC-2026-0533, #819).",
+            "New identity keys are made with the fixed rsa 0.10 library (#131). Existing identities and certificates stay the same.",
+          ],
+        },
+      ],
+    },
     {
       version: "0.8.0",
       teaser: "Admin commands in the chat, registered users, drag channels to move them, a new text editor, and Aaron to show you around.",

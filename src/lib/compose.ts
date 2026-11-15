@@ -6,7 +6,7 @@
 export type CommentLang = "de" | "en";
 
 export const IMAGE = "mumblevoip/mumble-server:v1.5.735";
-export const MUMPEER_IMAGE = "ghcr.io/mumcord/mumpeer:0.2.0";
+export const MUMPEER_IMAGE = "ghcr.io/mumcord/mumpeer";
 export const MUMBOT_IMAGE = "ghcr.io/mumcord/mumbot";
 /** The Mumbot release that brings the music and history bots. */
 export const MUMBOT_MODULES_FROM = "0.2.0";
@@ -45,6 +45,8 @@ export interface ServerOptions {
   history: boolean;
   /** The Mumbot image tag every bot service uses. */
   mumbotVersion: string;
+  /** The mumpeer image tag (the newest release). */
+  mumpeerVersion: string;
 }
 
 /** The Mumble server's own defaults; only other values go into the file. */
@@ -144,8 +146,8 @@ const COMMENTS = {
 } as const;
 
 export const DEFAULTS: Record<CommentLang, ServerOptions> = {
-  de: { name: "Unser Server", welcome: "Willkommen! Sag Hallo im Chat.", users: 50, password: false, bigImages: true, longText: true, relay: false, webhook: false, pluginLimit: 4, pluginBurst: 15, quality: "standard", music: false, history: false, mumbotVersion: "0.1.0", relayGuests: false },
-  en: { name: "Our Server", welcome: "Welcome! Say hi in the chat.", users: 50, password: false, bigImages: true, longText: true, relay: false, webhook: false, pluginLimit: 4, pluginBurst: 15, quality: "standard", music: false, history: false, mumbotVersion: "0.1.0", relayGuests: false },
+  de: { name: "Unser Server", welcome: "Willkommen! Sag Hallo im Chat.", users: 50, password: false, bigImages: true, longText: true, relay: false, webhook: false, pluginLimit: 4, pluginBurst: 15, quality: "standard", music: false, history: false, mumbotVersion: "0.1.0", mumpeerVersion: "0.2.0", relayGuests: false },
+  en: { name: "Our Server", welcome: "Welcome! Say hi in the chat.", users: 50, password: false, bigImages: true, longText: true, relay: false, webhook: false, pluginLimit: 4, pluginBurst: 15, quality: "standard", music: false, history: false, mumbotVersion: "0.1.0", mumpeerVersion: "0.2.0", relayGuests: false },
 };
 
 /** Whether version a is at least b (plain x.y.z). */
@@ -212,7 +214,7 @@ export function buildCompose(lang: CommentLang, o: ServerOptions, template = fal
       "",
       `  # ${c.relay}`,
       "  mumpeer:",
-      `    image: ${MUMPEER_IMAGE}`,
+      `    image: ${MUMPEER_IMAGE}:${o.mumpeerVersion}`,
       "    restart: unless-stopped",
       "    environment:",
       `      MUMPEER_API_SECRET: \${PEER_API_SECRET:?${c.peerMissing}}`,
@@ -331,12 +333,12 @@ const QUALITIES = Object.keys(BANDWIDTH) as Quality[];
 export const variantId = (lang: CommentLang, o: ServerOptions) => `${lang}-${FLAGS.map((f) => (o[f] ? 1 : 0)).join("")}${o.quality[0]}`;
 
 /** Every variant, with its options; the free-text parts come from the URL. */
-export function allVariants(mumbotVersion: string): { id: string; lang: CommentLang; options: ServerOptions }[] {
+export function allVariants(mumbotVersion: string, mumpeerVersion: string): { id: string; lang: CommentLang; options: ServerOptions }[] {
   const out = [];
   for (const lang of ["de", "en"] as const)
     for (let bits = 0; bits < 1 << FLAGS.length; bits++)
       for (const quality of QUALITIES) {
-        const options = { ...DEFAULTS[lang], quality, mumbotVersion };
+        const options = { ...DEFAULTS[lang], quality, mumbotVersion, mumpeerVersion };
         FLAGS.forEach((f, i) => (options[f] = Boolean(bits & (1 << (FLAGS.length - 1 - i)))));
         out.push({ id: variantId(lang, options), lang, options });
       }

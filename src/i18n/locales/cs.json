@@ -1431,7 +1431,7 @@
           {
             "id": "camera",
             "title": "Kamera",
-            "body": "Tvá kamera pro všechny v hlasovém kanálu, jen přes relay a s koncovým šifrováním. Začíná náhledem, který nikdo nevidí, a tlačítko kamery v uživatelském panelu, nabídka Aplikace, oznamovací oblast a klávesová zkratka ji zapínají a vypínají.",
+            "body": "Tvá kamera pro všechny v hlasovém kanálu, přímo nebo přes relay a s koncovým šifrováním. Začíná náhledem, který nikdo nevidí, a tlačítko kamery v uživatelském panelu, nabídka Aplikace, oznamovací oblast a klávesová zkratka ji zapínají a vypínají.",
             "alt": "Nastavení kamery s náhledem"
           },
           {
@@ -1439,6 +1439,11 @@
             "title": "Místnost s kamerami",
             "body": "Kamery v kanálu jsou nad chatem, až devět dlaždic v mřížce nebo jedna velká dlaždice s Řečníkem. Vedle sdílení obrazovky nebo watch party tvoří pruh vedle nebo nad ním, nebo je skryješ.",
             "alt": "Místnost s kamerami, několik kamer nad chatem"
+          },
+          {
+            "id": "camera-path",
+            "title": "Přímo nebo přes relay",
+            "body": "Kamera a sdílení obrazovky putují v novém mediálním formátu, přímo mezi vámi nebo přes relay. Cestu pro svou kameru volíš ty a místnost s kamerami ukáže, kterou dostane který divák. Když tě někdo nevidí, Mumcord řekne proč."
           },
           {
             "id": "camera-backgrounds",
@@ -1718,6 +1723,11 @@
             "body": "Když se Mumcord neočekávaně zavře, uloží do tvého počítače krátké hlášení a při příštím spuštění ti to řekne. V Nastavení → Pokročilé a vývojář vidíš posledních 10 a můžeš je kopírovat, exportovat nebo mazat. Nahrává se vždy jen jedno hlášení, a to až poté, co potvrdíš, co přesně se odešle."
           },
           {
+            "id": "freeze-reports",
+            "title": "Hlášení o zamrznutí (Linux)",
+            "body": "Když okno přestane odpovídat nebo zvukové vlákno překročí svůj rozpočet reálného času, Mumcord uloží hlášení, které ukáže, kde to visí. Když byl Mumcord ukončen zvenčí, hlášení řekne čím. Odešle se, jen když to chceš."
+          },
+          {
             "id": "aaron-tour",
             "title": "Aaron ti vše ukáže",
             "body": "Po nastavení tě Aaron, axolotl v barvách Mumcordu, provede hlavním oknem: servery, kanály, mluvení, hledání, chat, aplikace a motivy, tip po tipu. V průvodci nastavením dává ke každému kroku krátký tip. Prohlídku spustíš kdykoli znovu v Nastavení → O aplikaci → Tipy.",
@@ -1734,6 +1744,57 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.9.0",
+      "teaser": "Kamera a sdílení obrazovky v novém mediálním formátu s přímou cestou nebo přes relay pro každého diváka, hlášení o zamrznutích na Linuxu, FreeBSD ve skriptu instalace a mnoho oprav.",
+      "summary": "Verze 0.9.0 přesouvá kameru a sdílení obrazovky do nového mediálního formátu: každý divák dostane vlastní cestu, přímou nebo přes relay, a místnost s kamerami ukáže, kterou. Na Linuxu po zamrznutích a náhlých ukončeních zůstane hlášení, instalační skript podporuje FreeBSD a šepot dojde jen k přesně vybraným lidem. K tomu spousta oprav pro Windows a Linux.",
+      "groups": [
+        {
+          "title": "Nové",
+          "items": [
+            "Kamera a sdílení obrazovky v novém mediálním formátu (#492, #814): obraz a zvuk z kamery a sdílení obrazovky putují v novém mediálním streamu, přímo mezi vámi nebo přes relay, přičemž popis streamu je na relay šifrovaný. Starší verze Mumcordu dál dostávají starý formát; kde to nestačí, poznámka řekne, že je potřeba novější Mumcord.",
+            "Přímo nebo přes relay, pro každého diváka: cestu pro svou kameru volíš pro každou relaci a místnost s kamerami u každého diváka ukáže, jestli obraz přichází přímo, nebo přes relay. Když někdo tvou kameru nevidí, Mumcord vysvětlí proč, i pro klávesnici a čtečku obrazovky.",
+            "Inspektor paketů čte nový mediální stream: formát, popis, kanály a snímky.",
+            "Hlášení o zamrznutí (Linux): když okno asi 8 sekund neodpovídá, Mumcord uloží hlášení typu „freeze“ se zásobníky všech vláken. Aplikace běží dál a hlášení se odešle, jen když to chceš.",
+            "Hlášení o překročení reálného času (Linux): když zvukové vlákno překročí svůj rozpočet reálného času, hlášení v Nastavení → Hlášení pádů ukáže, kde bylo zaneprázdněné. Není to pád; aplikace běží dál.",
+            "„Ukončeno čím“ (Linux): když byl Mumcord zavřen bez řádného ukončení, hlášení uvede, co o tom systém zaznamenal, třeba out-of-memory killer nebo SIGKILL zvenčí.",
+            "Instalační skript podporuje FreeBSD (#781): na FreeBSD 15.x (amd64) stáhne balíček, ověří ho pomocí SHA256 a nainstaluje pomocí pkg add. Při dalším spuštění Mumcord aktualizuje, --uninstall ho odstraní."
+          ]
+        },
+        {
+          "title": "Vylepšeno",
+          "items": [
+            "Dlouhé konverzace se posouvají plynuleji a seznamy členů se už nepřeřazují při každém indikátoru mluvení.",
+            "Obrázky a média se dekódují rychleji a záložní převod pro sdílení obrazovky a kameru zabírá méně paměti.",
+            "Video kodéry a dekodéry pro sdílení obrazovky a kameru teď pocházejí z open-source knihovny hwcodec, kterou tým Mumcordu udržuje ve vlastním repozitáři (#449). Sdílení vypadá a funguje stejně.",
+            "Protokol Mumble teď žije v open-source knihovně mumble-client-protocol (#455). Servery dál vidí Mumcord jako „Mumcord“ s jeho verzí."
+          ]
+        },
+        {
+          "title": "Opraveno",
+          "items": [
+            "Windows: vložené přehrávače YouTube, Twitch, Spotify a SoundCloud a watch party zůstávaly od verze 0.8.0 černé. Zase hrají.",
+            "Windows: když kamera nedodala obraz, Mumcord se zasekl při odchodu z nastavení kamery, přepnutí kamer nebo zavření („Neodpovídá“). Zastavení se teď po dvou sekundách vzdá.",
+            "Linux: žádné dlouhé zamrznutí, když zavěsíš, zatímco PipeWire neodpovídá.",
+            "Linux: Mumcord už nemizí bez dialogu o pádu, když je počítač hodně vytížený (#844). Prioritu reálného času si teď drží jen zvuková vlákna.",
+            "Linux: krátce vytížené hlasové vlákno si ponechá prioritu reálného času, protože Mumcord během hovoru obnoví zamýšlenou rezervu 100 ms.",
+            "Linux: hlášení „libayatana-appindicator is deprecated“ se už nezobrazuje v terminálu a v logu při každém spuštění (#822).",
+            "AppImage: když chybí přehrávání H.264, přehrávač navrhne aktualizaci nebo balíček tvé distribuce místo gst-libav, který AppImage použít nemůže (#567).",
+            "Konec nekonečného opakovaného připojování k serveru, který se hned po přihlášení zavře, například kvůli zakázanému certifikátu: po 10 krátkých připojeních Mumcord přestane a řekne, co se stalo.",
+            "Když spojení skončí, skončí i probíhající šepot a držená klávesa push-to-talk se bere jako uvolněná.",
+            "Inspektor paketů: export do Markdownu už neláme řádek tabulky, když jméno obsahuje zpětné lomítko (#771)."
+          ]
+        },
+        {
+          "title": "Zabezpečení",
+          "items": [
+            "Šepot dojde jen k lidem, které jsi vybral: dosud se cíl pokaždé hledal podle jména, takže mohl poslouchat někdo se stejným jménem. Šepot je teď vázaný přesně na tyto lidi; kdo se připojí později, neuslyší nic, ať se jmenuje jakkoli.",
+            "HTML v chatu a SVG pluginů používají opravenou verzi ammonia (RUSTSEC-2026-0533, #819).",
+            "Nové klíče identity se vytvářejí opravenou knihovnou rsa 0.10 (#131). Stávající identity a certifikáty zůstávají stejné."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.8.0",
       "teaser": "Admin příkazy v chatu, registrovaní uživatelé, přesouvání kanálů tažením, nový textový editor a Aaron, který ti Mumcord provede.",

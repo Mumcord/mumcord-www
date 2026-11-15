@@ -45,6 +45,9 @@ export const de = {
     tools: "Tools",
     toolPeer: { title: "mumpeer", desc: "Relay für direkte Verbindungen" },
     toolQuiz: { title: "mumquiz", desc: "Quiz-Bot für deinen Server" },
+    libs: "Bibliotheken",
+    libCodec: { title: "hwcodec", desc: "AV1 und VP9 kodieren, ohne FFmpeg" },
+    libProtocol: { title: "mumble-client-protocol", desc: "Das Mumble-Protokoll für Rust" },
     botIssues: { title: "Issues", desc: "Ideen und Fehler zu Mumbot" },
   },
   hero: {

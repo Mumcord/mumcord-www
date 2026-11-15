@@ -1,14 +1,16 @@
-// A tiny syntax highlighter for the site's code blocks: shell, YAML and .env. It runs at build time
+// A tiny syntax highlighter for the site's code blocks: shell, YAML, .env, TOML and Rust. It runs at build time
 // and in the configurator's script (no library, so the CSP stays strict). Output is escaped HTML
 // with <span class="hl-…">; copy buttons read textContent, so copies stay plain text.
 
-export type CodeLang = "shell" | "yaml" | "env" | "plain";
+export type CodeLang = "shell" | "yaml" | "env" | "toml" | "rust" | "plain";
 
 /** The language of a code block from its caption ("docker-compose.yml", ".env", "Terminal"). */
 export function langOf(file?: string): CodeLang {
   if (!file || file === "Terminal") return "shell";
   if (/\.ya?ml$/.test(file)) return "yaml";
   if (file === ".env" || file.endsWith(".env")) return "env";
+  if (file.endsWith(".toml")) return "toml";
+  if (file.endsWith(".rs")) return "rust";
   return "plain";
 }
 
@@ -20,6 +22,8 @@ const RULES: Record<Exclude<CodeLang, "plain">, RegExp> = {
   shell:
     /(?<c>(?:^|(?<=\s))#.*$)|(?<s>"(?:[^"\\]|\\.)*"|'[^']*')|(?<v>\$\([^)]*\)|\$\{[^}]*\}|\$\w+)|(?<u>https?:\/\/[^\s'"]+)|(?<k>(?<=^\s*|(?:&&|\|\||\||;)\s*)[a-z][\w.-]*)|(?<f>(?<=\s)--?[\w-]+)/g,
   env: /(?<c>^\s*#.*$)|(?<k>^[A-Za-z_][\w]*(?==))|(?<v>\$\([^)]*\))/g,
+  toml: /(?<c>(?:^|(?<=\s))#.*$)|(?<s>"(?:[^"\\]|\\.)*")|(?<k>^\s*\[[^\]]+\]|^\s*[\w.-]+(?=\s*=)|(?<=[{,]\s*)[\w-]+(?=\s*=))|(?<n>\b(?:true|false|\d+(?:\.\d+)*)\b)/g,
+  rust: /(?<c>\/\/.*$)|(?<s>"(?:[^"\\]|\\.)*")|(?<v>#\[[^\]]*\]|\b[a-z_]+!)|(?<k>\b(?:use|fn|let|mut|match|async|await|for|in|while|if|else|return|pub|struct|impl|break|Some|None|Ok|Err|Self|self)\b)|(?<n>\b\d[\d_]*\b)/g,
 };
 
 function line(text: string, lang: Exclude<CodeLang, "plain">): string {

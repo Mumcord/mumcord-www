@@ -1431,7 +1431,7 @@
           {
             "id": "camera",
             "title": "Camera",
-            "body": "Je camera voor iedereen in je spraakkanaal, alleen via de relay en end-to-end versleuteld. Het begint met een voorbeeld dat niemand ziet, en een cameraknop in het gebruikerspaneel, het Apps-menu, het systeemvak en een sneltoets zetten hem aan en uit.",
+            "body": "Je camera voor iedereen in je spraakkanaal, rechtstreeks of via de relay en end-to-end versleuteld. Het begint met een voorbeeld dat niemand ziet, en een cameraknop in het gebruikerspaneel, het Apps-menu, het systeemvak en een sneltoets zetten hem aan en uit.",
             "alt": "De camera-instellingen met een voorbeeld"
           },
           {
@@ -1439,6 +1439,11 @@
             "title": "Cameraruimte",
             "body": "De camera’s in het kanaal staan boven de chat, maximaal negen tegels in een raster of één grote tegel met Spreker. Naast een scherm delen of watchparty vormen ze een strook ernaast of erboven, of je verbergt ze.",
             "alt": "De cameraruimte met meerdere camera’s boven de chat"
+          },
+          {
+            "id": "camera-path",
+            "title": "Rechtstreeks of relay",
+            "body": "Camera en scherm delen gaan in een nieuw mediaformaat, rechtstreeks tussen jullie of via de relay. Je kiest de route voor je camera en de cameraruimte laat zien welke elke kijker krijgt. Als iemand je niet kan zien, zegt Mumcord waarom."
           },
           {
             "id": "camera-backgrounds",
@@ -1718,6 +1723,11 @@
             "body": "Als Mumcord onverwacht sluit, slaat het een kort rapport op je computer op en meldt dat bij de volgende start. Onder Instellingen → Geavanceerd & ontwikkelaar zie je de laatste 10 en kopieer, exporteer of verwijder je ze. Er wordt altijd maar één rapport geüpload, en alleen nadat je hebt bevestigd wat er precies wordt verstuurd."
           },
           {
+            "id": "freeze-reports",
+            "title": "Vastlooprapporten (Linux)",
+            "body": "Als het venster niet meer reageert of een audiothread zijn real-time-budget overschrijdt, slaat Mumcord een rapport op dat laat zien waar het vastzit. Is Mumcord van buitenaf beëindigd, dan zegt het rapport waardoor. Het wordt alleen geüpload als je dat wilt."
+          },
+          {
             "id": "aaron-tour",
             "title": "Aaron leidt je rond",
             "body": "Na de installatie loopt Aaron, een axolotl in de kleuren van Mumcord, met je door het hoofdvenster: servers, kanalen, praten, zoeken, chat, apps en thema’s, steeds één tip. In de installatiewizard geeft Aaron bij elke stap een korte tip. Start de rondleiding op elk moment opnieuw via Instellingen → Over → Tips.",
@@ -1734,6 +1744,57 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.9.0",
+      "teaser": "Camera en scherm delen in een nieuw mediaformaat met per kijker een directe of relay-route, rapporten bij vastlopers op Linux, FreeBSD in het installatiescript en veel oplossingen.",
+      "summary": "0.9.0 zet camera en scherm delen over op een nieuw mediaformaat: elke kijker krijgt zijn eigen route, rechtstreeks of via de relay, en de cameraruimte laat zien welke. Op Linux laten vastlopers en abrupt afgesloten sessies nu een rapport achter, het installatiescript ondersteunt FreeBSD en gefluister bereikt alleen de mensen die je hebt gekozen. Daarnaast veel oplossingen voor Windows en Linux.",
+      "groups": [
+        {
+          "title": "Nieuw",
+          "items": [
+            "Camera en scherm delen in een nieuw mediaformaat (#492, #814): beeld en geluid van camera en scherm delen gaan via een nieuwe mediastroom, rechtstreeks tussen jullie of via de relay, met de beschrijving van de stroom versleuteld op de relay. Oudere Mumcord-versies krijgen nog het oude formaat; waar dat niet genoeg is, meldt een opmerking dat een nieuwere Mumcord nodig is.",
+            "Rechtstreeks of relay, per kijker: je kiest per sessie de route voor je camera, en de cameraruimte laat voor elke kijker zien of het beeld rechtstreeks of via de relay komt. Als iemand je camera niet kan zien, legt Mumcord uit waarom, ook via toetsenbord en schermlezer.",
+            "De packet inspector leest de nieuwe mediastroom: formaat, beschrijving, kanalen en frames.",
+            "Vastlooprapporten (Linux): als het venster ongeveer 8 seconden niet reageert, slaat Mumcord een rapport van het type „freeze” op met de stacks van alle threads. De app blijft draaien en het rapport wordt alleen geüpload als je dat wilt.",
+            "Rapporten over real-time-overschrijding (Linux): als een audiothread zijn real-time-budget overschrijdt, laat een rapport onder Instellingen → Crashrapporten zien waar hij mee bezig was. Het is geen crash; de app blijft draaien.",
+            "„Beëindigd door” (Linux): als Mumcord is gesloten zonder af te sluiten, noemt het rapport wat het systeem erover heeft vastgelegd, zoals de out-of-memory-killer of een SIGKILL van buitenaf.",
+            "Het installatiescript ondersteunt FreeBSD (#781): op FreeBSD 15.x (amd64) downloadt het het pakket, controleert het met SHA256 en installeert het met pkg add. Opnieuw uitvoeren werkt Mumcord bij, --uninstall verwijdert het."
+          ]
+        },
+        {
+          "title": "Verbeterd",
+          "items": [
+            "Lange gesprekken scrollen soepeler en ledenlijsten worden niet meer opnieuw gesorteerd bij elke spreekindicator.",
+            "Afbeeldingen en media worden sneller gedecodeerd en de terugvalconversie voor scherm delen en camera gebruikt minder geheugen.",
+            "De videoencoders en -decoders voor scherm delen en camera komen nu uit de opensourcebibliotheek hwcodec, die het Mumcord-team in een eigen repository onderhoudt (#449). Delen ziet er hetzelfde uit en werkt hetzelfde.",
+            "Het Mumble-protocol zit nu in de opensourcebibliotheek mumble-client-protocol (#455). Servers zien Mumcord nog steeds als „Mumcord” met zijn versie."
+          ]
+        },
+        {
+          "title": "Opgelost",
+          "items": [
+            "Windows: ingebedde YouTube-, Twitch-, Spotify- en SoundCloud-spelers en de watchparty bleven zwart sinds 0.8.0. Ze spelen weer af.",
+            "Windows: als een camera geen beeld leverde, liep Mumcord vast bij het verlaten van de camera-instellingen, het wisselen van camera of het afsluiten („Reageert niet”). Stoppen geeft nu na twee seconden op.",
+            "Linux: geen blijvende vastloper meer als je ophangt terwijl PipeWire niet reageert.",
+            "Linux: Mumcord verdwijnt niet meer zonder crashmelding als de computer erg druk is (#844). Alleen de audiothreads houden nu real-time-prioriteit.",
+            "Linux: een kort drukke stemthread houdt zijn real-time-prioriteit, omdat Mumcord tijdens een gesprek de bedoelde marge van 100 ms herstelt.",
+            "Linux: de melding „libayatana-appindicator is deprecated” verschijnt niet meer bij elke start in de terminal en het log (#822).",
+            "AppImage: als H.264-weergave ontbreekt, stelt de speler een update of het pakket van je distributie voor in plaats van gst-libav, dat de AppImage niet kan gebruiken (#567).",
+            "Geen eindeloos opnieuw verbinden meer met een server die direct na het inloggen sluit, bijvoorbeeld bij een verbannen certificaat: na 10 korte verbindingen stopt Mumcord en zegt wat er gebeurde.",
+            "Als de verbinding eindigt, eindigt ook een lopend fluisteren en telt een ingedrukte push-to-talk-toets als losgelaten.",
+            "Packet inspector: de Markdown-export breekt een tabelrij niet meer als een naam een backslash bevat (#771)."
+          ]
+        },
+        {
+          "title": "Beveiliging",
+          "items": [
+            "Een fluisteren bereikt alleen de mensen die je hebt gekozen: tot nu toe werd het doel elke keer op naam opgezocht, waardoor iemand met dezelfde naam kon meeluisteren. Een fluisteren is nu gekoppeld aan precies die mensen; wie later binnenkomt hoort niets, ongeacht de naam.",
+            "Chat-HTML en plug-in-SVG's gebruiken een gepatchte versie van ammonia (RUSTSEC-2026-0533, #819).",
+            "Nieuwe identiteitssleutels worden gemaakt met de gerepareerde bibliotheek rsa 0.10 (#131). Bestaande identiteiten en certificaten blijven hetzelfde."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.8.0",
       "teaser": "Beheercommando’s in de chat, geregistreerde gebruikers, kanalen verplaatsen door te slepen, een nieuwe teksteditor en Aaron die je rondleidt.",

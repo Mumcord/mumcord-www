@@ -1431,7 +1431,7 @@
           {
             "id": "camera",
             "title": "Caméra",
-            "body": "Ta caméra pour tout le monde dans ton salon vocal, uniquement via le relais et chiffrée de bout en bout. Elle démarre avec un aperçu que personne ne voit, et un bouton caméra dans le panneau utilisateur, le menu Apps, la zone de notification et un raccourci clavier l’allument et l’éteignent.",
+            "body": "Ta caméra pour tout le monde dans ton salon vocal, directement ou via le relais et chiffrée de bout en bout. Elle démarre avec un aperçu que personne ne voit, et un bouton caméra dans le panneau utilisateur, le menu Apps, la zone de notification et un raccourci clavier l’allument et l’éteignent.",
             "alt": "Les paramètres de la caméra avec un aperçu"
           },
           {
@@ -1439,6 +1439,11 @@
             "title": "Salle des caméras",
             "body": "Les caméras du salon se trouvent au-dessus du chat, jusqu’à neuf vignettes en grille ou une grande vignette avec Orateur. À côté d’un partage d’écran ou d’une watch party, elles forment une bande à côté ou au-dessus, ou tu les masques.",
             "alt": "La salle des caméras avec plusieurs caméras au-dessus du chat"
+          },
+          {
+            "id": "camera-path",
+            "title": "Direct ou relay",
+            "body": "La caméra et le partage d’écran passent par un nouveau format média, directement entre vous ou par le relay. Tu choisis le chemin de ta caméra, et la salle des caméras montre lequel chaque spectateur reçoit. Quand quelqu’un ne peut pas te voir, Mumcord dit pourquoi."
           },
           {
             "id": "camera-backgrounds",
@@ -1718,6 +1723,11 @@
             "body": "Quand Mumcord se ferme de façon inattendue, il enregistre un court rapport sur ton ordinateur et te le dit au prochain démarrage. Dans Paramètres → Avancé & développeur, tu vois les 10 derniers et tu les copies, exportes ou supprimes. Un seul rapport est envoyé à la fois, et seulement après que tu as confirmé ce qui est envoyé exactement."
           },
           {
+            "id": "freeze-reports",
+            "title": "Rapports de blocage (Linux)",
+            "body": "Quand la fenêtre ne répond plus ou qu’un thread audio dépasse son budget temps réel, Mumcord enregistre un rapport qui montre où ça bloque. Quand Mumcord a été arrêté de l’extérieur, le rapport dit par quoi. Il n’est envoyé que si tu le veux."
+          },
+          {
             "id": "aaron-tour",
             "title": "Aaron te fait visiter",
             "body": "Après la configuration, Aaron, un axolotl aux couleurs de Mumcord, te guide dans la fenêtre principale : serveurs, salons, prise de parole, recherche, chat, apps et thèmes, un conseil à la fois. Dans l’assistant de configuration, il donne un court conseil pour chaque étape. Relance la visite quand tu veux dans Réglages → À propos → Conseils.",
@@ -1734,6 +1744,57 @@
     ]
   },
   "changelog": [
+    {
+      "version": "0.9.0",
+      "teaser": "Caméra et partage d’écran dans un nouveau format média avec un chemin direct ou par le relay pour chaque spectateur, rapports de blocage sous Linux, FreeBSD dans le script d’installation et de nombreuses corrections.",
+      "summary": "La 0.9.0 passe la caméra et le partage d’écran à un nouveau format média : chaque spectateur a son propre chemin, direct ou par le relay, et la salle des caméras montre lequel. Sous Linux, les blocages et les arrêts brutaux laissent désormais un rapport, le script d’installation prend en charge FreeBSD et un chuchotement n’atteint que les personnes exactes que tu as choisies. Et de nombreuses corrections pour Windows et Linux.",
+      "groups": [
+        {
+          "title": "Nouveau",
+          "items": [
+            "Caméra et partage d’écran dans un nouveau format média (#492, #814) : l’image et le son de la caméra et du partage d’écran passent par un nouveau flux média, directement entre vous ou par le relay, avec la description du flux chiffrée sur le relay. Les anciennes versions de Mumcord reçoivent toujours l’ancien format ; là où cela ne suffit pas, une note indique qu’il faut un Mumcord plus récent.",
+            "Direct ou relay, par spectateur : tu choisis le chemin de ta caméra par session, et la salle des caméras montre pour chaque spectateur si l’image arrive directement ou par le relay. Quand quelqu’un ne peut pas voir ta caméra, Mumcord explique pourquoi, aussi au clavier et avec un lecteur d’écran.",
+            "L’inspecteur de paquets lit le nouveau flux média : format, description, canaux et images.",
+            "Rapports de blocage (Linux) : quand la fenêtre ne répond plus depuis environ 8 secondes, Mumcord enregistre un rapport de type « freeze » avec les piles de tous les threads. L’appli continue de tourner, et le rapport n’est envoyé que si tu le veux.",
+            "Rapports de dépassement du temps réel (Linux) : quand un thread audio dépasse son budget temps réel, un rapport sous Paramètres → Rapports de plantage montre où il était occupé. Ce n’est pas un plantage ; l’appli continue de tourner.",
+            "« Terminé par » (Linux) : quand Mumcord a été fermé sans s’arrêter proprement, le rapport nomme ce que le système en a enregistré, par exemple l’out-of-memory killer ou un SIGKILL venu de l’extérieur.",
+            "Le script d’installation prend en charge FreeBSD (#781) : sous FreeBSD 15.x (amd64), il télécharge le paquet, le vérifie avec SHA256 et l’installe avec pkg add. Le relancer met Mumcord à jour, --uninstall le supprime."
+          ]
+        },
+        {
+          "title": "Amélioré",
+          "items": [
+            "Les longues conversations défilent plus en douceur, et les listes de membres ne se retrient plus à chaque indicateur de prise de parole.",
+            "Les images et les médias se décodent plus vite, et la conversion de secours pour le partage d’écran et la caméra utilise moins de mémoire.",
+            "Les encodeurs et décodeurs vidéo du partage d’écran et de la caméra viennent désormais de la bibliothèque open source hwcodec, que l’équipe Mumcord maintient dans son propre dépôt (#449). Le partage a la même apparence et fonctionne de la même façon.",
+            "Le protocole Mumble vit désormais dans la bibliothèque open source mumble-client-protocol (#455). Les serveurs voient toujours Mumcord comme « Mumcord » avec sa version."
+          ]
+        },
+        {
+          "title": "Corrigé",
+          "items": [
+            "Windows : les lecteurs YouTube, Twitch, Spotify et SoundCloud intégrés et la watch party restaient noirs depuis la 0.8.0. Ils fonctionnent de nouveau.",
+            "Windows : quand une caméra ne fournissait aucune image, Mumcord se figeait en quittant les paramètres de la caméra, en changeant de caméra ou en se fermant (« Ne répond pas »). L’arrêt abandonne désormais au bout de deux secondes.",
+            "Linux : plus de blocage durable quand tu raccroches alors que PipeWire ne répond pas.",
+            "Linux : Mumcord ne disparaît plus sans boîte de dialogue de plantage quand l’ordinateur est très sollicité (#844). Seuls les threads audio gardent désormais la priorité temps réel.",
+            "Linux : un thread vocal brièvement occupé garde sa priorité temps réel, car Mumcord rétablit la marge prévue de 100 ms pendant un appel.",
+            "Linux : l’avis « libayatana-appindicator is deprecated » ne s’affiche plus dans le terminal et le journal à chaque démarrage (#822).",
+            "AppImage : quand la lecture H.264 manque, le lecteur propose une mise à jour ou le paquet de ta distribution au lieu de gst-libav, que l’AppImage ne peut pas utiliser (#567).",
+            "Fini la reconnexion sans fin à un serveur qui se ferme juste après la connexion, par exemple avec un certificat banni : après 10 connexions courtes, Mumcord s’arrête et dit ce qui s’est passé.",
+            "Quand la connexion se termine, un chuchotement en cours se termine aussi, et une touche push-to-talk maintenue est considérée comme relâchée.",
+            "Inspecteur de paquets : l’export Markdown ne casse plus une ligne de tableau quand un nom contient une barre oblique inverse (#771)."
+          ]
+        },
+        {
+          "title": "Sécurité",
+          "items": [
+            "Un chuchotement n’atteint que les personnes que tu as choisies : jusqu’ici, la cible était recherchée par son nom à chaque fois, donc quelqu’un portant le même nom pouvait écouter. Un chuchotement est désormais lié exactement à ces personnes ; quiconque arrive plus tard n’entend rien, quel que soit son nom.",
+            "Le HTML du chat et les SVG des plugins utilisent une version corrigée d’ammonia (RUSTSEC-2026-0533, #819).",
+            "Les nouvelles clés d’identité sont créées avec la bibliothèque rsa 0.10 corrigée (#131). Les identités et certificats existants restent les mêmes."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.8.0",
       "teaser": "Commandes d’administration dans le chat, utilisateurs enregistrés, déplacement des salons par glisser-déposer, un nouvel éditeur de texte et Aaron pour te faire découvrir Mumcord.",
